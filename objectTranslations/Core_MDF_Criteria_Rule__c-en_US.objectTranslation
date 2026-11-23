@@ -25,10 +25,6 @@
         <label><!-- Operator --></label>
         <name>Core_MDF_Operator__c</name>
         <picklistValues>
-            <masterLabel>Any</masterLabel>
-            <translation><!-- Any --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Equal</masterLabel>
             <translation><!-- Equal --></translation>
         </picklistValues>
@@ -65,5 +61,12 @@
         <label><!-- Value --></label>
         <name>Core_MDF_Value__c</name>
     </fields>
+    <layouts>
+        <layout>Criteria Rule Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

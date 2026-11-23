@@ -21,9 +21,7 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
         Messaging.InboundEmailResult result = new Messaging.InboundEmailresult();
         result.success = true;
         try {
-             
-            if(email != null && checkEmailSubject(email.Subject)){
-                
+            if(email != null && email.Subject.contains('Intel Partner Alliance: Business License Needed')){
                 String emailId = email.fromAddress;
                 List<PRM_Registration_Request__c> regRequestList;
                 
@@ -34,22 +32,16 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
                     if(!regRequestList.isEmpty()){                       
                        List<PRM_Registration_Request__c> requestsToUpdate = new List<PRM_Registration_Request__c>();
                        PRM_Registration_Request__c regRequest = regRequestList[0];
-                       Boolean isFileTypeRestricted = false;
                        if(email.binaryAttachments != null && !email.binaryAttachments.isEmpty()){
                         
-                           List<ContentVersion> contentVersions = new List<ContentVersion>();                           
-                           for (Messaging.InboundEmail.BinaryAttachment attachment : email.binaryAttachments) {                                
-                               System.debug('attachment.mimeTypeSubType:' + attachment.mimeTypeSubType);
-                               if(String.isNotBlank(attachment.mimeTypeSubType) && LabelConfiguration__mdt.getInstance('PRM_IPA_Document_Upload_Email_File_Types').Value__c.containsIgnoreCase(attachment.mimeTypeSubType.substringAfterLast('/'))){
-                                   ContentVersion cv = new ContentVersion();
-                                   cv.Title = attachment.fileName;
-                                   cv.PathOnClient = '/' + attachment.fileName;
-                                   cv.VersionData = attachment.body;
-                                   cv.Origin = 'H'; // For historical upload source
-                                   contentVersions.add(cv);
-                               } else if(!LabelConfiguration__mdt.getInstance('PRM_IPA_Document_Upload_Email_File_Types').Value__c.containsIgnoreCase(attachment.mimeTypeSubType.substringAfterLast('/'))){
-                               	   isFileTypeRestricted = true;	    
-                               }
+                           List<ContentVersion> contentVersions = new List<ContentVersion>();
+                           for (Messaging.InboundEmail.BinaryAttachment attachment : email.binaryAttachments) {                        
+                               ContentVersion cv = new ContentVersion();
+                               cv.Title = attachment.fileName;
+                               cv.PathOnClient = '/' + attachment.fileName;
+                               cv.VersionData = attachment.body;
+                               cv.Origin = 'H'; // For historical upload source
+                               contentVersions.add(cv);
                            }
                            
                            if (!contentVersions.isEmpty()) {
@@ -97,10 +89,7 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
                         log.PRM_Subject__c = email.subject;
                         log.PRM_Type__c = 'IPA';
                         log.PRM_IPA_Registration_Request__c = regRequest.Id;
-                        log.PRM_Email_API_Response__c = 'Email received successfully.';
-                        if(isFileTypeRestricted == true){
-                        	log.PRM_Email_API_Response__c = LabelConfiguration__mdt.getInstance('PRM_IPA_File_Type_Not_Supported_Message').Value__c;    
-                        }
+                        log.PRM_Email_API_Response__c = 'Email received successfully';
                         log.PRM_EmailDeliverabilityStatus__c = true;
                         
                         PRM_DMLUtility.doinsert(new List<PRM_EmailLog__c>{log},'PRM_EmailLog__c', 'PRM_IPA_DocumentUploadEmailService.handleInboundEmail'); 
@@ -125,15 +114,15 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
             String sfdcBaseURL = URL.getOrgDomainUrl().toExternalForm();
             String hyperlink;
             List<String> toAddresses = new List<String>();
-            for(GroupMember gm: [Select UserOrGroup.email from GroupMember where Group.DeveloperName = :LabelConfiguration__mdt.getInstance('IPA_All_Admin_Group_Name').Value__c and UserOrGroup.isActive = true]){
-            	if(String.IsNotBlank(gm.UserOrGroup.email) && toAddresses.size() < Integer.valueOf(LabelConfiguration__mdt.getInstance('PRM_IPA_Admin_Group_Users_Limit').Value__c))
+            for(GroupMember gm: [Select UserOrGroup.email from GroupMember where Group.DeveloperName = 'IPA_All_Intel_Admin_Users']){
+            	if(String.IsNotBlank(gm.UserOrGroup.email))
 	                toAddresses.add(gm.UserOrGroup.email);    
             }
             for(PRM_Registration_Request__c req: reqList){
             	hyperlink = '<a href="' + sfdcBaseURL + '/' + req.id + '" target="_self">' + req.Name + '</a>' + '<br>';    
             }
             
-            EmailTemplate temp = [select id, developername, name,HtmlValue,Body,Subject from EmailTemplate where developername = :LabelConfiguration__mdt.getInstance('IPA_Doc_Upload_Complete_EmailTemp_Name').Value__c];
+            EmailTemplate temp = [select id, developername, name,HtmlValue,Body,Subject from EmailTemplate where developername = 'PRM_IPA_Document_Upload_Complete_Email'];
             Messaging.SingleEmailMessage mail = PRM_SendDocumentUploadEmail.createEmailRecord(temp,toAddresses,null ); 
             String htmlBody = mail.getHTMLBody();
             mail.setHTMLBody(htmlBody.replace('{hyperlinks}', hyperlink));
@@ -143,16 +132,5 @@ public with sharing class PRM_IPA_DocumentUploadEmailService implements Messagin
             } 
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] {mail});
         }	    
-    }
-    
-    private boolean checkEmailSubject(String receivedEmailSubject){
-        boolean isSubMatching = false;
-        for(String uploadEmailSubject: System.label.PRM_IPA_File_Upload_Email_Subject.split(';')){
-            if(receivedEmailSubject.contains(uploadEmailSubject)){
-            	isSubMatching = true;    
-            }    
-        }
-        
-        return isSubMatching;
     }
 }

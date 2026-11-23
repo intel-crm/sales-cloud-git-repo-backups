@@ -848,7 +848,7 @@ public without sharing class PRM_BenefitUtility{
         // UPDATED by DINESH - to AVOID Upserting existing BE Record to Success - TWC727-711
         if(isAdminProcess){ // Inserting/Updating Batch Entitlements records.
             if((beCon != null && !beCon.IsEmpty()) && (beEnt != null && !beEnt.IsEmpty())){ // Updating batch entitlement records.
-                for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where (PRM_Status_Nm__c = 'New' OR PRM_Status_Nm__c = 'In Progress') AND PRM_Contact_Id__c IN:beCon AND PRM_Entitlement_Id__c IN :beEnt]){
+                for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c/*,PRM_IsRemove_Ind__c*/ From PRM_Batch_Entitlement__c Where (PRM_Status_Nm__c = 'New' OR PRM_Status_Nm__c = 'In Progress') AND PRM_Contact_Id__c IN:beCon AND PRM_Entitlement_Id__c IN :beEnt]){//ATHR Fix - TWC729-9556 - SJ
                     nonProccessedBERecord.add(batchEntitlements.PRM_Contact_Id__c+'_'+batchEntitlements.PRM_Entitlement_Id__c);
                 }
             }
@@ -983,8 +983,8 @@ public without sharing class PRM_BenefitUtility{
     }
 }
  }
-
- public static void fetchingAndAssociatingBenefitsFromSpecialityAndBenefitGroup(Set<string> setOfSpeciality,Map<string,Set<string>> mapOfspecialityAndListOgBenifitGroup,Set<string> benifitGroup, Map<string,Set<String>> mapOfBenifitGroupToBenifit, Map<string,Set<Id>> mapOfBenifitGroupToBenifitId,Map<string,Set<String>> mapOfSpeacailityIdAndBenifitId,Map<string,Set<Id>> mapOfSpeacailityAndBenifit,Map<String,Set<String>> mapOfAccountIdAndSpeciality, Map<string,Set<String>> mapOfAccountAndBenifit, Map<string,Set<Id>> mapOfAccountAndBenifitId)
+//ATHR Fix - TWC729-9556 - SJ
+ /*public static void fetchingAndAssociatingBenefitsFromSpecialityAndBenefitGroup(Set<string> setOfSpeciality,Map<string,Set<string>> mapOfspecialityAndListOgBenifitGroup,Set<string> benifitGroup, Map<string,Set<String>> mapOfBenifitGroupToBenifit, Map<string,Set<Id>> mapOfBenifitGroupToBenifitId,Map<string,Set<String>> mapOfSpeacailityIdAndBenifitId,Map<string,Set<Id>> mapOfSpeacailityAndBenifit,Map<String,Set<String>> mapOfAccountIdAndSpeciality, Map<string,Set<String>> mapOfAccountAndBenifit, Map<string,Set<Id>> mapOfAccountAndBenifitId)
  {
     //Fetching benefit group from speciality. 
     if(setOfSpeciality !=null && !setOfSpeciality.isEmpty()){
@@ -1073,5 +1073,5 @@ public without sharing class PRM_BenefitUtility{
              }    
          }
 
- }
+ }*/
 }

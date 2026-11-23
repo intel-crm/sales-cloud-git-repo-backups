@@ -6,7 +6,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Core_MDF_Claim_Status_OnHold_Internal</name>
     <style>none</style>
-    <subject>Claim #  has been put on hold</subject>
+    <subject>Reimbursement request on hold</subject>
     <type>visualforce</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -1,0 +1,290 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:page ></apex:page>
+<!-- <apex:page >
+    <apex:includeLightning />
+    <html lang="en" style="overflow-y:hidden;">
+    <head>
+    <style>
+            /* Added below css snippets for tooltip as in lightning-out somehow slds standard tooltip css is not loading. Ref link: https://www.salesforcexyz.com/salesforce/lightning-helptext-component-in-lighting-out/ */
+            .slds-popover__body,
+            .slds-popover__footer,
+            .slds-popover__header {
+                position: relative;
+                padding: .5rem .75rem;
+                word-wrap: break-word
+            }
+
+            .slds-popover {
+                position: relative;
+                border-radius: .25rem;
+                width: 20rem;
+                min-height: 2rem;
+                z-index: 6000;
+                background-color: #fff;
+                display: inline-block;
+                box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .16);
+                border: 1px solid #d9dbdd
+            }
+
+            .slds-popover--tooltip,
+            .slds-popover_tooltip {
+                width: auto;
+                max-width: 20rem;
+                background: #16325c;
+                border: 0
+            }
+            .slds-popover--tooltip .slds-popover__body,
+            .slds-popover_tooltip .slds-popover__body {
+                font-size: .75rem;
+                color: #fff
+            }
+
+            .slds-fall-into-ground {
+                visibility: hidden;
+                opacity: 0;
+                transform: translate(0, 0);
+                transition: opacity .1s linear, visibility .1s linear, transform .1s linear;
+                will-change: transform
+            }
+
+            .slds-nubbin--bottom-left:before,
+            .slds-nubbin_bottom-left-corner:before,
+            .slds-nubbin_bottom-left:before {
+                width: 1rem;
+                height: 1rem;
+                position: absolute;
+                transform: rotate(45deg);
+                content: '';
+                background-color: inherit;
+                bottom: -.5rem;
+                margin-left: -.5rem
+            }
+
+            .slds-nubbin--bottom-left:after,
+            .slds-nubbin--bottom-left:before,
+            .slds-nubbin_bottom-left-corner:after,
+            .slds-nubbin_bottom-left-corner:before,
+            .slds-nubbin_bottom-left:after,
+            .slds-nubbin_bottom-left:before {
+                left: 1.5rem;
+                top: 100%;
+                margin-top: -.5rem
+            }
+
+            .slds-nubbin--bottom-left:after,
+            .slds-nubbin_bottom-left-corner:after,
+            .slds-nubbin_bottom-left:after {
+                box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, .16);
+                z-index: -1
+            }
+
+            .slds-popover :last-child {
+                margin-bottom: 0
+            }
+        </style>
+        <script>
+    document.addEventListener("svevent_surveyloaded", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#SurveyResultMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+
+            document.addEventListener("svevent_savedraftclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+            
+            document.addEventListener("svevent_previousbuttonclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+            
+            document.addEventListener("svevent_nextbuttonclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+            
+            document.addEventListener("svevent_submitbuttonclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+document.addEventListener("svevent_surveysubmitted", function(event){
+                var textLabel = document.querySelector("#surveysubmittedMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+            
+            document.addEventListener("svevent_thankyoubuttonclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+    document.addEventListener("svevent_languageswitcherclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+            document.addEventListener("svevent_updatesurveyresult", function(event){
+                console.log('vf event data window svevent_updatesurveyresult '+ JSON.stringify(event.detail));
+                var textLabel = document.querySelector("#UpdateResultMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+document.addEventListener("svevent_thankyouquestionclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel3 = document.querySelector("#NavigationButtonsMessage");
+                textLabel3.innerHTML = '';
+                var textLabel = document.querySelector("#ThankYouQuestionMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+
+document.addEventListener("svevent_questionvalidationerrornextclicked", function(event){
+    var textLabel2 = document.querySelector("#UpdateResultMessage");
+    textLabel2.innerHTML = '';
+    var textLabel = document.querySelector("#NavigationButtonsMessage");
+    textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+});
+document.addEventListener("svevent_surveyloaderror", function(event){
+    var textLabel2 = document.querySelector("#UpdateResultMessage");
+    textLabel2.innerHTML = '';
+    var textLabel = document.querySelector("#ErrorMessage");
+    textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+});
+
+document.addEventListener("svevent_surveyexception", function(event){
+    var textLabel2 = document.querySelector("#UpdateResultMessage");
+    textLabel2.innerHTML = '';
+    var textLabel = document.querySelector("#ErrorMessage");
+    textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+});
+</script>-->
+        
+<!-- // No need for below line as we have already added "<apex:includeLightning />"
+<script src="https://surveyfm5.force.com/CustomerService/lightning/lightning.out.js">//Salesforce Community (Site URL)</script> -->
+        <!--<script>
+            \$Lightning.use("ArdiraSurvey:EmbeddedSurvey", // name of the Lightning app
+            function() {
+            \$Lightning.createComponent(
+                "ArdiraSurvey:surveyResponder",
+                { /* attributes to set on the component when created */
+                recordId:'a80KR0000004D0HYAU', // ArdiraSurvey__Survey__c.Id
+                externalIntegration:true,
+                logicalId:'97d2b9b9-4817-10ae-6f4f-47d2935b733d',   //ArdiraSurvey__Logical_Id__c
+                }, "ArdiraSurvey_SurveyResponder",
+                function(cmp) {}
+            );
+            }, 'https://intel--crmdevipa.sandbox.my.site.com/imp'); //Salesforce Community (Site URL)
+        </script>
+        </head>
+        <body style="overflow-y:hidden;">
+            <div id="ArdiraSurvey_SurveyResponder">
+            <script>
+                /* To auto adjust height of iframe based on contents */
+                let elem = document.querySelector('#ArdiraSurvey_SurveyResponder');
+                let iframes = window.parent.document.getElementsByTagName('iframe');
+                var vfPageIframe;
+                if(iframes && iframes.length > 0) {
+                   for(let i = 0; i < iframes.length; i++) {
+                       let frameName = iframes[i].getAttribute("name");
+                       if(frameName && frameName.includes("vfFrameId_")) {
+                          vfPageIframe = iframes[i];
+                       }
+                   }
+                }
+                let scrollY;
+                let preventScroll = false;
+                setInterval(function(){
+                  if(elem && vfPageIframe){
+                scrollY = window.parent.pageYOffset || window.parent.document.documentElement.scrollTop;
+                        vfPageIframe.height = '500px';
+                        let rectHeight = elem.offsetHeight+200;
+                        if(rectHeight && rectHeight < 500){
+                            rectHeight = 500;
+                            }
+                            //If survey internally highlight specific area then it behaves weird in iframe integration so add below code to adjust it accordingly (e.g: Repeated section focused add new row)
+                                                                                           if(document.documentElement.scrollTop > 0) {
+                                                                                                  scrollY += document.documentElement.scrollTop;
+                                                                                                  window.scrollTo(0, 0);
+                                                                                           }
+                        vfPageIframe.height = rectHeight + 'px';
+                        if(scrollY) {
+                            window.parent.scrollTo(0, scrollY);
+                        }
+                    } else {
+                        elem = document.querySelector('#ArdiraSurvey_SurveyResponder');
+                    }
+                },2000);
+                /* End code for To auto adjust height of iframe based on contents */
+                let timeRef;
+                window.parent.document.addEventListener('scroll', function(e) {
+                    preventScroll = true;
+                    if(timeRef) {
+                     clearTimeout(timeRef);
+                    }
+                    timeRef = setTimeout(()=>{
+                        preventScroll = false;
+                    }, 500);
+                });
+
+
+                /* For scroll top on click of next, previous, submit and thank you button */
+                document.addEventListener("svevent_nextbuttonclicked", handler, false);
+                document.addEventListener("svevent_previousbuttonclicked", handler, false);
+                document.addEventListener("svevent_submitbuttonclicked", handler, false);
+                document.addEventListener("svevent_thankyoubuttonclicked", handler, false);
+                document.addEventListener("svevent_thankyouquestionclicked", handler, false);
+                document.addEventListener("svevent_scrolltotop", scrollToTop, false);
+                // Below event will bring the user at the top of the page.
+                function handler(event){
+                   window.parent.document.body.scrollIntoView(true);
+                }
+               /* scroll up to top when modal dialog open */
+                function scrollToTop(event) {
+                    scrollY = 0;
+                    window.parent.scrollTo(0, scrollY);
+                }
+
+
+            </script>
+             <br/>
+             <br/>
+                <label id="SurveyResultMessage"/>
+         <br/>
+                <br/>
+                <p>Received message from LWC: </p>
+                <br/>
+                <br/>
+                <label id="UpdateResultMessage"/>
+                <br/>
+                <br/>
+                <label id="NavigationButtonsMessage"/>
+                <br/>
+                <br/>
+                <label id="surveysubmittedMessage"/>
+                <br/>
+        <br/>
+                <label id="ThankYouQuestionMessage"/>
+                <br/>
+                <br/>
+                <label id="ErrorMessage"/>
+                <br/>
+        </div>
+        </body>
+    </html>
+</apex:page> -->

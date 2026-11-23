@@ -1,5 +1,6 @@
 import checkValidPartner from '@salesforce/apex/PMP_SearchMarketplaceController.checkValidPartner';
 import getPartnerDetails from '@salesforce/apex/PMP_MarketplaceNewPartnerDetail.getPartnerDetails';
+import getLocations from '@salesforce/apex/PMP_MarketplaceNewPartnerDetail.getLocations';
 import { handleError } from 'c/ipaErrorServiceMarketplace';
 import errorPageURL from '@salesforce/label/c.PMP_Error_Page_URL';
 
@@ -16,11 +17,18 @@ const languageCode = langLocale.replaceAll('-', '_');
 export default async (partnerId) => {
   let partner = {};
   let partnerData = {};
+  let mapMarkersList = [];
   const valid = await checkValidPartner({ partnerId });
   if (valid) {
     await getPartnerDetails({ partnerId, langCode: languageCode })
       .then((result) => {
         partner = result;
+      }).catch((error) => {
+        handleError(error, 'partnerInfo', 'console');
+      });
+    await getLocations({ partnerId })
+      .then((result) => {
+        mapMarkersList = result;
       }).catch((error) => {
         handleError(error, 'partnerInfo', 'console');
       });
@@ -55,6 +63,7 @@ export default async (partnerId) => {
         urlLabel: resource.linkUrl,
         resourceType: resource.type,
       })),
+      mapMarkers: mapMarkersList,
     };
   } else {
     window.location.href = errorPageURL;

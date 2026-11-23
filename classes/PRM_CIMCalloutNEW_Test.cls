@@ -12,7 +12,6 @@ Modification Log :
 *********************************************************************************************************************/
 @isTest
 private class PRM_CIMCalloutNEW_Test {
-    public static boolean ipaRefresh = Boolean.valueOf(Label.PRM_IPARefresh);
     @testSetup
     static void createData(){
         List<ChannelProgram> cpp = new List<ChannelProgram>();
@@ -37,21 +36,9 @@ private class PRM_CIMCalloutNEW_Test {
                              UserName='adminTest'+Crypto.getRandomLong()+'@intel.com');
          insert user; 
         
-        User user2 = new User(Alias = 'itadmin', 
-                             Email='itadminTestCovered@intel.com', 
-                             EmailEncodingKey='UTF-8',
-                             LastName='UnitTestItAdmin',
-                             LanguageLocaleKey='en_US', 
-                             LocaleSidKey='en_US', 
-                             ProfileId = itAdminProfile.Id, 
-                             TimeZoneSidKey='America/Los_Angeles',
-                             FirstName = 'Test covered',
-                             UserName='adminTest'+Crypto.getRandomLong()+'@intel.com');
-         insert user2; 
-        
     }
     
-   /* @isTest static void testCallout() {
+    @isTest static void testCallout() {
         Id accountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
 
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
@@ -97,11 +84,9 @@ private class PRM_CIMCalloutNEW_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
         insert acm;
-        
         TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
         cccm.Country_Code__c = 'IN';
@@ -124,7 +109,6 @@ private class PRM_CIMCalloutNEW_Test {
         requestDetails.put('Website','www.testwb.com');
         System.debug('REQ--> '+requestDetails.get('Website'));
         
-        
         PRM_Registration_Request__c regReq  = PRM_TestUtility.getPRMRegistrationRequest();
         insert regReq;
         PRM_CIMSearchResults__c cim = new PRM_CIMSearchResults__c();
@@ -135,142 +119,7 @@ private class PRM_CIMCalloutNEW_Test {
         insert cim;
         
         try{
-            
-            PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper wrap = new PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper();
-            wrap.AccountID ='';
-            wrap.AccountName ='';
-            wrap.PartnerRole ='';
-            wrap.AddressLine1 ='';
-            wrap.AddressLine2 ='';
-            wrap.Country ='IND';
-            wrap.State ='MH';
-            
-            wrap.DuplicateInfo ='';
-            wrap.SelectedRow ='';
-            wrap.AccountDuplicateStatus ='';
-            wrap.ContactDuplicateStatus ='NoDuplicate';
-            wrap.accountAssociatedToExistingContact ='';
-            wrap.duplicateContactRecord ='';
-            wrap.associatedAccountIsIPA ='';
-            wrap.SuppressEmail ='';
-            
-            PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper wrapper = (PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper) JSON.deserialize(JSON.serialize(requestDetails),PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper.class);
-            PRM_AdminRegistrationFlowCntrl.getDuplicateAccountContact(new List<PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper>{wrapper});
             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
-        }catch(Exception e){
-            System.debug('CustomException1 occurred: ' + e.getMessage());
-        }
-        
-        Test.stopTest();
-        System.assertEquals(requestDetails.get('ContactEmail'),'new@b.com','Value does not match');
-        
-    }*/
-    @isTest static void testFlowActionCntrl() {
-        Id accountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
-
-        PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Account acc = PRM_TestUtility.getAccount();
-        acc.Name = 'Teledyne';
-        acc.website = 'www.testwb.com';
-        acc.BillingCity='Bengaluru';
-        acc.BillingCountry='GBR';
-        acc.BillingState = 'ENG';
-        acc.BillingStreet='4th Floor,ITPL,Brookfield';
-        acc.BillingPostalCode='560037';
-        acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
-        acc.Industry = 'Construction';
-        acc.Core_CIM_ID__c='22213672';
-        acc.Core_Customer_Aggregation_Type__c = 'UNFD_GLBL_CUST';
-        acc.Unified_Hierarchy_View__c = 'Global';
-        acc.Core_Business_Party_Id__c = '8q879q';
-        acc.Core_Address_Details__c = 'test11idwoh';
-        acc.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
-        acc.Core_Export_Compliance_Block__c = false;
-        acc.Core_IPA_Partner_Role__c = 'Distributor';
-        acc.Core_Account_Type__c = 'Distributor';
-        acc.Core_MDM_Website__c = 'www.testwb.com';
-        acc.RecordTypeId = accountRecordType;
-        TriggerHandler.bypass('Core_AccounTriggeHandler');
-        insert acc;
-        TriggerHandler.clearbypass('Core_AccounTriggeHandler');
-        contact ct = new contact();
-        ct.FirstName='None';
-        ct.LastName='New';
-        ct.Email='new@b.com';
-        ct.AccountId=acc.id;
-        ct.MailingCountry ='USA';
-        ct.MailingCity ='Mississippi';
-        ct.MailingPostalCode='421910';
-        ct.MailingState ='AK';
-        ct.MailingStreet ='BandraStreet';
-        insert ct;
-        
-        ChannelProgram cp = [Select Id, Name From ChannelProgram Where Name = 'Intel Partner Alliance' LIMIT 1];
-        
-        PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c();
-        acm.PRM_Account_Id__c=acc.id;
-        acm.PRM_Channel_Program_Id__c=cp.id;
-        acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
-        TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
-        insert acm;
-        
-        TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
-        Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
-        cccm.Country_Code__c = 'IN';
-        cccm.ISO_Code__c = 'IND';
-        cccm.name = 'India';
-        insert cccm;
-       
-        Test.setMock(HttpCalloutMock.class, new PRM_UIMockHttpResponse());
-        map<string,string> requestDetails = new map<string,string>();
-        requestDetails.put('DuplicateInfo','');
-        requestDetails.put('AccountName','Teledyne');
-        requestDetails.put('ContactEmail','new@b.com');
-        requestDetails.put('AddressLine1','700 Chestnut Ridge Rd');
-        requestDetails.put('City','Chestnut Ridge');
-        requestDetails.put('State','ENG');
-        requestDetails.put('PostalCode','109776435');
-        requestDetails.put('Country','GBR');
-        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
-        requestDetails.put('PartnerRole','Seller');
-        requestDetails.put('Website','www.testwb.com');
-        System.debug('REQ--> '+requestDetails.get('Website'));
-        
-        
-        PRM_Registration_Request__c regReq  = PRM_TestUtility.getPRMRegistrationRequest();
-        insert regReq;
-        PRM_CIMSearchResults__c cim = new PRM_CIMSearchResults__c();
-        cim.PRM_RegReq_Id__c = regReq.id;
-        cim.PRM_Account_Id__c = acc.Id;
-        cim.PRM_AddressLine1_Txt__c = 'testqjak';
-        Test.startTest();
-        insert cim;
-        
-        try{
-            
-            PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper wrap = new PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper();
-            wrap.AccountID ='';
-            wrap.AccountName ='';
-            wrap.PartnerRole ='';
-            wrap.AddressLine1 ='';
-            wrap.AddressLine2 ='';
-            wrap.Country ='IND';
-            wrap.State ='MH';
-            
-            wrap.DuplicateInfo ='';
-            wrap.SelectedRow ='';
-            wrap.AccountDuplicateStatus ='';
-            wrap.ContactDuplicateStatus ='NoDuplicate';
-            wrap.accountAssociatedToExistingContact ='';
-            wrap.duplicateContactRecord ='';
-            wrap.associatedAccountIsIPA ='';
-            wrap.SuppressEmail ='';
-            
-            PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper wrapper = (PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper) JSON.deserialize(JSON.serialize(requestDetails),PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper.class);
-            PRM_AdminRegistrationFlowCntrl.getDuplicateAccountContact(new List<PRM_AdminRegistrationFlowCntrl.AccountDetailsWrapper>{wrapper});
-            //accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }catch(Exception e){
             System.debug('CustomException1 occurred: ' + e.getMessage());
         }
@@ -281,10 +130,7 @@ private class PRM_CIMCalloutNEW_Test {
     }
     @isTest static void testCallout1() {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-		
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
@@ -319,10 +165,8 @@ private class PRM_CIMCalloutNEW_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
-        
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
         cccm.Country_Code__c = 'IN';
         cccm.ISO_Code__c = 'IND';
@@ -363,10 +207,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     }
     @isTest static void testCallout2() {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         //acc.BillingCity='Bengaluru';
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
@@ -403,8 +244,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
         cccm.Country_Code__c = 'IN';
@@ -449,10 +289,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     }
     @isTest static void testCallout3() {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         //acc.BillingCity='Bengaluru';
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
@@ -494,8 +331,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         
         Test.startTest();
@@ -536,10 +372,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     }
     @isTest static void testCallout4() {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
@@ -579,8 +412,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         
         PRM_CIM_Request__mdt cimMdt=new PRM_CIM_Request__mdt();
@@ -648,10 +480,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     public static void testCallout5()
     {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
@@ -693,11 +522,9 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c = 'Test class';
+        acm.PRM_Partner_Role__c='Seller';
         TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
         insert acm;
-        
         TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
         
         Test.startTest();
@@ -745,10 +572,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     private static void testCallout6()
     {
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
-        Id intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
-        acc.RecordTypeId=intelAccRecTypeId;
         acc.BillingCity='Bengaluru';
         acc.BillingCountryCode='IND';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
@@ -776,8 +600,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c=!ipaRefresh?'Seller':'Builder';
-        acm.PRM_Status_Reason_Txt__c='Test';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         Core_Country_Code_Mapping__c cccm = new Core_Country_Code_Mapping__c();
         cccm.Country_Code__c = 'IN';
@@ -1092,7 +915,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     @isTest
     private static void testCallout12(){
         List<PRM_AdminRegistrationDuplicateDetails.matchingAccWrapper> accList = new List<PRM_AdminRegistrationDuplicateDetails.matchingAccWrapper>();
-        User ur = [Select id, Name from User where Email='itadminTestCovered@intel.com'];
+        User ur = [Select id, Name from User where Email='itadminTest@intel.com'];
         Id accountRecordTypeIntel = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
     
         List<Account> accToInsert = new List<Account>();
@@ -1143,10 +966,6 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acc3.OwnerId = ur.id;
         acc3.RecordTypeId = accountRecordTypeIntel;
         acc3.Core_Deactivated__c = false;
-        acc3.Core_Account_Primary_Coverage__c = 'Intel Covered';
-        acc3.Core_Account_Category__c = 'End Customer';
-        acc3.Core_Sales_Groups__c = 'EMEA Partner Led';
-        acc3.Core_Account_Level__c = 'Level1';
         accToInsert.add(acc2);
         accToInsert.add(acc3);
         Insert accToInsert;
@@ -1180,7 +999,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         prmRegRequest1.Name = 'checkuser';
         prmRegRequest1.PRM_Salesforce_ID__c = acc2.Id;
         prmRegRequest1.PRM_Channel_Program__c =channelPrg.Id;
-        prmRegRequest1.PRM_Partner_Role__c='Distributor';
+        prmRegRequest1.PRM_Partner_Role__c='FPGA Designer';
         prmRegRequest1.PRM_First_Name__c='Check';
         prmRegRequest1.PRM_Last_Name__c='User';
         prmRegRequest1.PRM_Email_ID__c='checkuser@mailinator.com';
@@ -1196,7 +1015,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         prmRegRequest2.PRM_Salesforce_ID__c = acc3.Id;
         prmRegRequest2.PRM_Matching_Contact__c = con.Id;
         prmRegRequest2.PRM_Channel_Program__c =channelPrg.Id;
-        prmRegRequest2.PRM_Partner_Role__c='Distributor';
+        prmRegRequest2.PRM_Partner_Role__c='FPGA Designer';
         prmRegRequest2.PRM_First_Name__c='Check';
         prmRegRequest2.PRM_Last_Name__c='User';
         prmRegRequest2.PRM_Email_ID__c='checkuser@mailinator.com';
@@ -1228,7 +1047,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
     private static void testCallout14_test(){
         
         List<PRM_AdminRegistrationDuplicateDetails.matchingAccWrapper> accList = new List<PRM_AdminRegistrationDuplicateDetails.matchingAccWrapper>();
-        User ur = [Select id, Name from User where Email='itadminTestCovered@intel.com'];
+        User ur = [Select id, Name from User where Email='itadminTest@intel.com'];
         Id accountRecordTypeIntel = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
     
         List<Account> accToInsert = new List<Account>();
@@ -1254,10 +1073,6 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         acc3.OwnerId = ur.id;
         acc3.RecordTypeId = accountRecordTypeIntel;
         acc3.Core_Deactivated__c = false;
-        acc3.Core_Account_Primary_Coverage__c = 'Intel Covered';
-        acc3.Core_Account_Category__c = 'End Customer';
-        acc3.Core_Sales_Groups__c = 'EMEA Partner Led';
-        acc3.Core_Account_Level__c = 'Level1';
         accToInsert.add(acc3);
         Insert accToInsert;
         
@@ -1292,7 +1107,7 @@ System.debug('CustomException1 occurred: ' + e.getMessage());
         prmRegRequest2.PRM_Salesforce_ID__c = acc3.Id;
         prmRegRequest2.PRM_Matching_Contact__c = con.Id;
         prmRegRequest2.PRM_Channel_Program__c =channelPrg.Id;
-        prmRegRequest2.PRM_Partner_Role__c='Distributor';
+        prmRegRequest2.PRM_Partner_Role__c='FPGA Designer';
         prmRegRequest2.PRM_First_Name__c='Check';
         prmRegRequest2.PRM_Last_Name__c='User';
         prmRegRequest2.PRM_Email_ID__c='checkuser@mailinator.com';

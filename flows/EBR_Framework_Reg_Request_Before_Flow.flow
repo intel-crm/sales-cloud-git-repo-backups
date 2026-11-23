@@ -5,7 +5,7 @@
     <assignments>
         <name>Add_Single_LA_to_List</name>
         <label>Add Single LA to List</label>
-        <locationX>462</locationX>
+        <locationX>429</locationX>
         <locationY>2819</locationY>
         <assignmentItems>
             <assignToReference>LAcollection</assignToReference>
@@ -19,39 +19,10 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_CIMID_to_RegRecord</name>
-        <label>Assign CIMID to RegRecord</label>
-        <locationX>1194</locationX>
-        <locationY>7553</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.PRM_CIM_ID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.PRM_Salesforce_ID__r.Core_CIM_ID__c</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
-    <assignments>
-        <name>Assign_CMP_ID</name>
-        <label>Assign CMP ID</label>
-        <locationX>842</locationX>
-        <locationY>6335</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.ER_CMP_ID__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>responseValueF</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Reset_Profile_Response</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_Contact</name>
         <label>Assign Contact</label>
-        <locationX>743</locationX>
-        <locationY>2027</locationY>
+        <locationX>341</locationX>
+        <locationY>1943</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Matching_Contact__c</assignToReference>
             <operator>Assign</operator>
@@ -66,8 +37,8 @@
     <assignments>
         <name>Assign_Contact_and_Account_to_Reg</name>
         <label>Assign Contact and Account to Reg</label>
-        <locationX>875</locationX>
-        <locationY>1811</locationY>
+        <locationX>473</locationX>
+        <locationY>1727</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Contact_Salesforce_Id__c</assignToReference>
             <operator>Assign</operator>
@@ -90,7 +61,7 @@
         <description>Assign ENG to Preferred Language</description>
         <name>Assign_ENG_Language</name>
         <label>Assign ENG Language</label>
-        <locationX>908</locationX>
+        <locationX>660</locationX>
         <locationY>1211</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Preferred_Language__c</assignToReference>
@@ -104,9 +75,25 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_Entitlement_Detail_to_IQR</name>
+        <label>Assign Entitlement Detail to IQR</label>
+        <locationX>501</locationX>
+        <locationY>7493</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.Entitlement_Details__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_IQR_Matrix_Record_by_Account.PRM_Entitlement_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Values_to_Registration_record</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_IsDuplicate_to_True</name>
         <label>Assign IsDuplicate to True</label>
-        <locationX>330</locationX>
+        <locationX>99</locationX>
         <locationY>4751</locationY>
         <assignmentItems>
             <assignToReference>IsDuplicate</assignToReference>
@@ -122,7 +109,7 @@
     <assignments>
         <name>Assign_isSubmitted_to_True</name>
         <label>Assign isSubmitted to True</label>
-        <locationX>506</locationX>
+        <locationX>275</locationX>
         <locationY>5351</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_isSubmitted__c</assignToReference>
@@ -138,7 +125,7 @@
     <assignments>
         <name>Assign_LA_to_Variable</name>
         <label>Assign LA to Variable</label>
-        <locationX>462</locationX>
+        <locationX>429</locationX>
         <locationY>2603</locationY>
         <assignmentItems>
             <assignToReference>RegistrationRequest_LAs</assignToReference>
@@ -161,7 +148,7 @@
     <assignments>
         <name>Assign_LegalAgreement_to_Fail</name>
         <label>Assign LegalAgreement to Fail</label>
-        <locationX>792</locationX>
+        <locationX>759</locationX>
         <locationY>3359</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Legal_Agreement_Criteria__c</assignToReference>
@@ -171,26 +158,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_legalAgreement_to_Null</name>
-        <label>Assign legalAgreement to Null</label>
-        <locationX>1056</locationX>
-        <locationY>2603</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.PRM_Legal_Agreement_Criteria__c</assignToReference>
-            <operator>Assign</operator>
-        </assignmentItems>
-        <connector>
-            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
+            <targetReference>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_LegalAgreement_to_Success</name>
         <label>Assign LegalAgreement to Success</label>
-        <locationX>528</locationX>
+        <locationX>495</locationX>
         <locationY>3359</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Legal_Agreement_Criteria__c</assignToReference>
@@ -200,13 +174,13 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
+            <targetReference>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</targetReference>
         </connector>
     </assignments>
     <assignments>
         <name>Assign_metadata_labels_to_List</name>
         <label>Assign metadata labels to List</label>
-        <locationX>1282</locationX>
+        <locationX>1051</locationX>
         <locationY>803</locationY>
         <assignmentItems>
             <assignToReference>Triggermetadatalist</assignToReference>
@@ -222,7 +196,7 @@
     <assignments>
         <name>Assign_Profile_Response_to_Variable</name>
         <label>Assign Profile_Response to Variable</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>6011</locationY>
         <assignmentItems>
             <assignToReference>profile_Response</assignToReference>
@@ -238,7 +212,7 @@
     <assignments>
         <name>Assign_Program_to_Source</name>
         <label>Assign Program to Source</label>
-        <locationX>1062</locationX>
+        <locationX>831</locationX>
         <locationY>395</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Source__c</assignToReference>
@@ -302,7 +276,7 @@
     <assignments>
         <name>Assign_Status_to_Rejected</name>
         <label>Assign Status to Rejected</label>
-        <locationX>638</locationX>
+        <locationX>407</locationX>
         <locationY>5135</locationY>
         <assignmentItems>
             <assignToReference>$Record.PRM_Status__c</assignToReference>
@@ -323,9 +297,29 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_Values_to_Registration_record</name>
+        <label>Assign Values to Registration record</label>
+        <locationX>501</locationX>
+        <locationY>7601</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.PRM_Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Account_Create_Request_RecordType.Id</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
         <name>Assigning_IsDuplicate_to_True</name>
         <label>Assigning IsDuplicate to True</label>
-        <locationX>770</locationX>
+        <locationX>539</locationX>
         <locationY>4751</locationY>
         <assignmentItems>
             <assignToReference>IsDuplicate</assignToReference>
@@ -341,7 +335,7 @@
     <assignments>
         <name>Get_single_LA</name>
         <label>Get single LA</label>
-        <locationX>462</locationX>
+        <locationX>429</locationX>
         <locationY>2711</locationY>
         <assignmentItems>
             <assignToReference>singleagreement</assignToReference>
@@ -357,7 +351,7 @@
     <assignments>
         <name>Get_Single_Profile_Response</name>
         <label>Get Single Profile Response</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>6119</locationY>
         <assignmentItems>
             <assignToReference>singleResponse</assignToReference>
@@ -371,39 +365,9 @@
         </connector>
     </assignments>
     <assignments>
-        <name>RegRecord_Status_to_Approved</name>
-        <label>RegRecord Status to Approved</label>
-        <locationX>1106</locationX>
-        <locationY>7277</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.PRM_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.RecordTypeId</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Get_Account_Create_Request_RecordType.Id</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.ActualApprover__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Approver</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_CIMID_to_RegRecord</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Reset_Profile_Response</name>
         <label>Reset Profile_Response</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>6527</locationY>
         <assignmentItems>
             <assignToReference>profile_Response</assignToReference>
@@ -419,7 +383,7 @@
     <assignments>
         <name>Update_LA</name>
         <label>Update LA</label>
-        <locationX>462</locationX>
+        <locationX>429</locationX>
         <locationY>2927</locationY>
         <assignmentItems>
             <assignToReference>RegistrationRequest_LAs</assignToReference>
@@ -432,13 +396,6 @@
             <targetReference>Verify_LA</targetReference>
         </connector>
     </assignments>
-    <constants>
-        <name>CMP_ID</name>
-        <dataType>String</dataType>
-        <value>
-            <stringValue>CMP_ID</stringValue>
-        </value>
-    </constants>
     <constants>
         <name>project_budget</name>
         <dataType>String</dataType>
@@ -461,10 +418,76 @@
         </value>
     </constants>
     <decisions>
+        <name>Check_Record_Validation</name>
+        <label>Check Record Validation</label>
+        <locationX>633</locationX>
+        <locationY>7169</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Record_Valid_for_Approval</name>
+            <conditionLogic>1  OR (2 AND 3)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PSG</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>IQR</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Entitlement_Details__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Assign_Values_to_Registration_record</targetReference>
+            </connector>
+            <label>Record Valid for Approval</label>
+        </rules>
+        <rules>
+            <name>IQR_Assign_Entitlement_Detail</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>IQR</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Entitlement_Details__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Account_Name__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_IQR_Matrix_Record_by_Account</targetReference>
+            </connector>
+            <label>IQR Assign Entitlement Detail</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>New_Reg_Record_Email</name>
         <label>Verify New Reg Record Email</label>
-        <locationX>1194</locationX>
-        <locationY>1487</locationY>
+        <locationX>792</locationX>
+        <locationY>1403</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Legal_Agreement_CheckInsert_Trigger_Label</targetReference>
         </defaultConnector>
@@ -486,48 +509,9 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Verify_Account</name>
-        <label>Verify Account</label>
-        <locationX>1194</locationX>
-        <locationY>7061</locationY>
-        <defaultConnector>
-            <targetReference>Assign_CIMID_to_RegRecord</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Account_Found</name>
-            <conditionLogic>1 AND (2 OR 3)</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PRM_Salesforce_ID__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Salesforce_ID__r.Core_CIM_ID__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Salesforce_ID__r.Core_Business_Party_Id__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Verify_Valid_Records</targetReference>
-            </connector>
-            <label>Account Found</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Verify_Contact_Salesforce_ID_is_Empty_and_Same</name>
         <label>Verify Contact Salesforce ID is Empty and Same</label>
-        <locationX>550</locationX>
+        <locationX>319</locationX>
         <locationY>4643</locationY>
         <defaultConnector>
             <targetReference>Assigning_IsDuplicate_to_True</targetReference>
@@ -581,7 +565,7 @@
     <decisions>
         <name>Verify_Duplicate_Record</name>
         <label>Verify Duplicate Record</label>
-        <locationX>792</locationX>
+        <locationX>561</locationX>
         <locationY>4535</locationY>
         <defaultConnector>
             <targetReference>Verify_IsDuplicate</targetReference>
@@ -606,10 +590,10 @@
     <decisions>
         <name>Verify_ER_Legal_Agreement_CheckInsert_Trigger_Label</name>
         <label>Verify ER_Legal_Agreement_CheckInsert Trigger Label</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>2387</locationY>
         <defaultConnector>
-            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
+            <targetReference>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -638,10 +622,10 @@
     <decisions>
         <name>Verify_ER_Prfl_Resp_CheckInsert_Trigger_Label</name>
         <label>Verify ER_Prfl_Resp_CheckInsert Trigger Label</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>5795</locationY>
         <defaultConnector>
-            <targetReference>Verify_Account</targetReference>
+            <targetReference>Verify_status_and_entitlement_details</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -670,8 +654,8 @@
     <decisions>
         <name>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</name>
         <label>Verify ER_Reject_Duplicate_ResultsInsert Trigger Label</label>
-        <locationX>1194</locationX>
-        <locationY>3911</locationY>
+        <locationX>963</locationX>
+        <locationY>3803</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Prfl_Resp_CheckInsert_Trigger_Label</targetReference>
         </defaultConnector>
@@ -702,10 +686,10 @@
     <decisions>
         <name>Verify_ER_SetEVAndLanguage_Trigger_Label</name>
         <label>Verify ER_SetEVAndLanguage Trigger Label</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>995</locationY>
         <defaultConnector>
-            <targetReference>New_Reg_Record_Email</targetReference>
+            <targetReference>Verify_ER_Legal_Agreement_CheckInsert_Trigger_Label</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -732,9 +716,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Verify_IQR_matrix_record</name>
+        <label>Verify IQR matrix record</label>
+        <locationX>633</locationX>
+        <locationY>7385</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>IQR_Matrix_Record_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_IQR_Matrix_Record_by_Account</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Assign_Entitlement_Detail_to_IQR</targetReference>
+            </connector>
+            <label>IQR Matrix Record Found</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Verify_IsDuplicate</name>
         <label>Verify IsDuplicate</label>
-        <locationX>792</locationX>
+        <locationX>561</locationX>
         <locationY>5027</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Prfl_Resp_CheckInsert_Trigger_Label</targetReference>
@@ -759,7 +765,7 @@
     <decisions>
         <name>Verify_LA</name>
         <label>Verify LA</label>
-        <locationX>462</locationX>
+        <locationX>429</locationX>
         <locationY>3035</locationY>
         <defaultConnector>
             <targetReference>Get_PartnerAgreement_Record</targetReference>
@@ -785,8 +791,8 @@
     <decisions>
         <name>Verify_Matching_Contact</name>
         <label>Verify Matching Contact</label>
-        <locationX>875</locationX>
-        <locationY>1919</locationY>
+        <locationX>473</locationX>
+        <locationY>1835</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Legal_Agreement_CheckInsert_Trigger_Label</targetReference>
         </defaultConnector>
@@ -810,8 +816,8 @@
     <decisions>
         <name>Verify_Matching_Email_Contact_is_Empty</name>
         <label>Verify Matching Email Contact is Empty</label>
-        <locationX>1029</locationX>
-        <locationY>1703</locationY>
+        <locationX>627</locationX>
+        <locationY>1619</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Legal_Agreement_CheckInsert_Trigger_Label</targetReference>
         </defaultConnector>
@@ -835,7 +841,7 @@
     <decisions>
         <name>Verify_Partner_Agreement_Record</name>
         <label>Verify Partner Agreement Record</label>
-        <locationX>660</locationX>
+        <locationX>627</locationX>
         <locationY>3251</locationY>
         <defaultConnector>
             <targetReference>Assign_LegalAgreement_to_Fail</targetReference>
@@ -860,7 +866,7 @@
     <decisions>
         <name>Verify_Preferred_Language</name>
         <label>Verify Preferred Language</label>
-        <locationX>1040</locationX>
+        <locationX>792</locationX>
         <locationY>1103</locationY>
         <defaultConnector>
             <targetReference>New_Reg_Record_Email</targetReference>
@@ -885,10 +891,10 @@
     <decisions>
         <name>Verify_Profile_Response</name>
         <label>Verify Profile Response</label>
-        <locationX>930</locationX>
+        <locationX>732</locationX>
         <locationY>5903</locationY>
         <defaultConnector>
-            <targetReference>Verify_Account</targetReference>
+            <targetReference>Verify_status_and_entitlement_details</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -910,10 +916,10 @@
     <decisions>
         <name>Verify_ProfileResponse</name>
         <label>Verify ProfileResponse</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>6635</locationY>
         <defaultConnector>
-            <targetReference>Verify_Account</targetReference>
+            <targetReference>Verify_status_and_entitlement_details</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -936,7 +942,7 @@
     <decisions>
         <name>Verify_questioncode_Value</name>
         <label>Verify questioncode_Value</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>6227</locationY>
         <defaultConnector>
             <targetReference>Reset_Profile_Response</targetReference>
@@ -987,26 +993,11 @@
             </connector>
             <label>questioncode equals project_timeframe</label>
         </rules>
-        <rules>
-            <name>Question_Code_Equals_CMP_ID</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>questioncodeF</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>CMP_ID</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_CMP_ID</targetReference>
-            </connector>
-            <label>Question Code Equals CMP ID</label>
-        </rules>
     </decisions>
     <decisions>
         <name>Verify_RecordType</name>
         <label>Verify RecordType</label>
-        <locationX>638</locationX>
+        <locationX>407</locationX>
         <locationY>5243</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Prfl_Resp_CheckInsert_Trigger_Label</targetReference>
@@ -1031,7 +1022,7 @@
     <decisions>
         <name>Verify_Required_Attributes_of_Reg_Record</name>
         <label>Verify Required Attributes of Reg Record</label>
-        <locationX>792</locationX>
+        <locationX>561</locationX>
         <locationY>4235</locationY>
         <defaultConnector>
             <targetReference>Verify_Duplicate_Record</targetReference>
@@ -1105,7 +1096,7 @@
     <decisions>
         <name>Verify_Source</name>
         <label>Verify Source</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>287</locationY>
         <defaultConnector>
             <targetReference>Get_Trigger_Execution_Metadata_Records</targetReference>
@@ -1128,12 +1119,69 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Verify_status_and_entitlement_details</name>
+        <label>Verify status and entitlement details</label>
+        <locationX>963</locationX>
+        <locationY>7061</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>status_and_entitlement_details</name>
+            <conditionLogic>(1 AND (2 OR 3) AND 4) OR (5 AND 6)</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Entitlement_Details__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>New</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Salesforce_ID__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Entitlement_Details__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>IQR</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Check_Record_Validation</targetReference>
+            </connector>
+            <label>status and entitlement details</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Verify_Status_and_LA</name>
         <label>Verify Status_and_LA</label>
-        <locationX>891</locationX>
+        <locationX>726</locationX>
         <locationY>2495</locationY>
         <defaultConnector>
-            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
+            <targetReference>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -1155,9 +1203,9 @@
             </conditions>
             <conditions>
                 <leftValueReference>$Record.PRM_Legal_Agreement_Criteria__c</leftValueReference>
-                <operator>NotEqualTo</operator>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>SUCCESS</stringValue>
+                    <stringValue>PENDING</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -1165,26 +1213,11 @@
             </connector>
             <label>LA Pending</label>
         </rules>
-        <rules>
-            <name>LA_Empty</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PRM_Legal_Agreements__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_legalAgreement_to_Null</targetReference>
-            </connector>
-            <label>LA Empty</label>
-        </rules>
     </decisions>
     <decisions>
         <name>Verify_Status_and_RecordType</name>
         <label>Verify Status and RecordType</label>
-        <locationX>1001</locationX>
+        <locationX>770</locationX>
         <locationY>4127</locationY>
         <defaultConnector>
             <targetReference>Verify_ER_Prfl_Resp_CheckInsert_Trigger_Label</targetReference>
@@ -1220,108 +1253,8 @@
             <label>Record Found</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>Verify_Valid_Records</name>
-        <label>Verify Valid Records</label>
-        <locationX>1018</locationX>
-        <locationY>7169</locationY>
-        <defaultConnector>
-            <targetReference>RegRecord_Status_to_Approved</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Record Valid for Approval</defaultConnectorLabel>
-        <rules>
-            <name>Record_Not_Valid_for_Approval</name>
-            <conditionLogic>(1 OR 2) AND (3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11)</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record.PRM_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>New</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Pending</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>DZP</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IPS</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Siaas_Service</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>OnDemand_Rev</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>QDMS</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>EPS_Verified_C</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IIPAM</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Dev_Cloud_Ent</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IPA - Portal</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_CIMID_to_RegRecord</targetReference>
-            </connector>
-            <label>Record Not Valid for Approval</label>
-        </rules>
-    </decisions>
     <description>This flow covers the logic for Auto approval, Reject Duplicates, Legal Agreements check, Profile Response check, Set Language and Assign Matching Contact.</description>
     <environments>Default</environments>
-    <formulas>
-        <name>Approver</name>
-        <dataType>String</dataType>
-        <expression>{!$User.FirstName}&amp;&apos; &apos;&amp;{!$User.LastName}</expression>
-    </formulas>
     <formulas>
         <name>last1Day</name>
         <dataType>Date</dataType>
@@ -1374,7 +1307,7 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <loops>
         <name>Loop_through_trigger_metadata_records</name>
         <label>Loop through trigger metadata records</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>695</locationY>
         <collectionReference>Get_Trigger_Execution_Metadata_Records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -1407,11 +1340,11 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <recordLookups>
         <name>Get_Account_Create_Request_RecordType</name>
         <label>Get Account Create Request RecordType</label>
-        <locationX>1194</locationX>
-        <locationY>3803</locationY>
+        <locationX>770</locationX>
+        <locationY>4019</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Verify_ER_Reject_Duplicate_ResultsInsert_Trigger_Label</targetReference>
+            <targetReference>Verify_Status_and_RecordType</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1436,11 +1369,11 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <recordLookups>
         <name>Get_Admin_Registration_RecordType</name>
         <label>Get Admin Registration RecordType</label>
-        <locationX>1001</locationX>
-        <locationY>4019</locationY>
+        <locationX>770</locationX>
+        <locationY>3911</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Verify_Status_and_RecordType</targetReference>
+            <targetReference>Get_Account_Create_Request_RecordType</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -1464,8 +1397,8 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <recordLookups>
         <name>Get_Contact_with_Matching_Email</name>
         <label>Get Contact with Matching Email</label>
-        <locationX>1029</locationX>
-        <locationY>1595</locationY>
+        <locationX>627</locationX>
+        <locationY>1511</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Verify_Matching_Email_Contact_is_Empty</targetReference>
@@ -1485,7 +1418,7 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <recordLookups>
         <name>Get_Duplicate_Registration_Record</name>
         <label>Get Duplicate Registration Record</label>
-        <locationX>660</locationX>
+        <locationX>429</locationX>
         <locationY>4343</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1553,9 +1486,30 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Get_IQR_Matrix_Record_by_Account</name>
+        <label>Get IQR Matrix Record by Account</label>
+        <locationX>633</locationX>
+        <locationY>7277</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_IQR_matrix_record</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Salesforce_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PRM_VXEnttlmntMatrix__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_PartnerAgreement_Record</name>
         <label>Get PartnerAgreement Record</label>
-        <locationX>660</locationX>
+        <locationX>627</locationX>
         <locationY>3143</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1583,7 +1537,7 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
     <recordLookups>
         <name>Get_Trigger_Execution_Metadata_Records</name>
         <label>Get Trigger Execution Metadata Records</label>
-        <locationX>1194</locationX>
+        <locationX>963</locationX>
         <locationY>587</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1637,7 +1591,7 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>1068</locationX>
+        <locationX>837</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Verify_Source</targetReference>
@@ -1648,13 +1602,6 @@ LEN(LEFT({!profile_Response}, FIND(&quot;}&quot;,{!profile_Response})))+1)</expr
             <operator>IsNull</operator>
             <value>
                 <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Rejected</stringValue>
             </value>
         </filters>
         <object>PRM_Registration_Request__c</object>

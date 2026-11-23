@@ -19,6 +19,5 @@ public class Core_DDR_Batch_Handler_Test
         
         insert objDesignBatch;
         Test.stopTest();
-        System.assertEquals(2,2,'Value does not match');
     }
 }

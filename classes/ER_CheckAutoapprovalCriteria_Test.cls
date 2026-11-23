@@ -6,7 +6,6 @@ public class ER_CheckAutoapprovalCriteria_Test
     static void setupTestData() {
         
         Test.startTest();
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         Account newAccount = new Account();//Account
         newAccount.Name='John Rick';
         newAccount.BillingCity='City';
@@ -17,7 +16,6 @@ public class ER_CheckAutoapprovalCriteria_Test
         newAccount.Core_User_Defined_Website__c = 'WWW.test123.com';
         newAccount.Core_CIM_ID__c = '563210';
         newAccount.Core_CNDA_Number__c = '987631';
-        newAccount.RecordTypeId = recordTypeIdAccount;
         insert newAccount;
         
         Account newAccount1 = new Account();//Account
@@ -30,7 +28,6 @@ public class ER_CheckAutoapprovalCriteria_Test
         newAccount1.Core_User_Defined_Website__c = 'www.test.com';
         newAccount1.Core_CIM_ID__c = '563211';
         newAccount1.Core_CNDA_Number__c = '987632';
-        newAccount1.RecordTypeId = recordTypeIdAccount;
         insert newAccount1;
         
         List<Contact> con = new List<Contact>();

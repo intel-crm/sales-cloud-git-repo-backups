@@ -5,7 +5,7 @@
         <label>Send Welcome Email to PSG Contact</label>
         <locationX>647</locationX>
         <locationY>143</locationY>
-        <actionName>01p3b0000019BGxNotFound</actionName>
+        <actionName>01p8A000008zLzDNotFound</actionName>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>contactIds</name>
@@ -50,7 +50,7 @@
             <field>Core_Entitlement_Nm__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>PSG Licensing User</stringValue>
+                <stringValue>PSG External Self Service Licensing Center</stringValue>
             </value>
         </filters>
         <filters>
@@ -60,16 +60,9 @@
                 <stringValue>Complete</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Selected__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <object>Core_Contact_Entitlement__c</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
 </Flow>

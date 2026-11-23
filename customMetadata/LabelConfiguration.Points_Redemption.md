@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Category__c</field>
-        <value xsi:type="xsd:string">PRM</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Value__c</field>

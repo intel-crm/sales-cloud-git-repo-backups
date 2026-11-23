@@ -13,7 +13,7 @@ Modification Log
 *****************************************************************************************************************************************/
 
 @RestResource(urlMapping='/SecureContent/Accounts')
-global without sharing class Core_RestAPI_SecureContent_Account {  
+global class Core_RestAPI_SecureContent_Account {  
 
     // Class to store the list of all Accounts
     global class AccountWrapperList {

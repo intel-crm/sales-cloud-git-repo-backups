@@ -9,6 +9,14 @@
         <value>Profile Responses</value>
     </caseValues>
     <fields>
+        <label><!-- LastModifiedBy --></label>
+        <name>LastModifiedBy__c</name>
+    </fields>
+    <fields>
+        <label><!-- LastModifiedDate --></label>
+        <name>LastModifiedDate__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>PRM_Account_Id__c</name>
         <relationshipLabel><!-- Profile Responses --></relationshipLabel>
@@ -49,6 +57,10 @@
         <name>PRM_Reason_Text__c</name>
     </fields>
     <fields>
+        <label><!-- ResponseDate --></label>
+        <name>PRM_ResponseDate__c</name>
+    </fields>
+    <fields>
         <label><!-- Response Text --></label>
         <name>PRM_Response_Txt__c</name>
     </fields>
@@ -60,9 +72,20 @@
         <label><!-- Unique Key --></label>
         <name>Unique_Key__c</name>
     </fields>
+    <layouts>
+        <layout>Profile Responses Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- You can not edit this flag --></errorMessage>
+        <name>Disable_Points</name>
+    </validationRules>
 </CustomObjectTranslation>

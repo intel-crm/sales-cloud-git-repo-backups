@@ -8,7 +8,7 @@
     <textOnly>Mise à jour du compte de l&apos;entreprise
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 Cette notification a pour but de vous informer qu&apos;une personne a choisi d&apos;arrêter de partager les informations du programme Intel® Technology Provider avec les distributeurs Intel® agréés et/ou les fournisseurs Intel® agréés (fournisseurs de services) sélectionnés.
 
@@ -27,8 +27,8 @@ Cordialement,
 Votre équipe Alliance partenaire Intel®
 
 Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
 Confidentialité | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

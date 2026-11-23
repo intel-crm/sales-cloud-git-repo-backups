@@ -91,6 +91,16 @@
         <label>BWP - Botswana Pula</label>
     </customValue>
     <customValue>
+        <fullName>BYN</fullName>
+        <default>false</default>
+        <label>BYN - Belarussian Ruble</label>
+    </customValue>
+    <customValue>
+        <fullName>BYR</fullName>
+        <default>false</default>
+        <label>BYR - Belarus Ruble</label>
+    </customValue>
+    <customValue>
         <fullName>BZD</fullName>
         <default>false</default>
         <label>BZD - Belize Dollar</label>
@@ -99,6 +109,11 @@
         <fullName>CAD</fullName>
         <default>false</default>
         <label>CAD - Canadian Dollar</label>
+    </customValue>
+    <customValue>
+        <fullName>CDF</fullName>
+        <default>false</default>
+        <label>CDF - Franc Congolais</label>
     </customValue>
     <customValue>
         <fullName>CHF</fullName>
@@ -124,6 +139,11 @@
         <fullName>CRC</fullName>
         <default>false</default>
         <label>CRC - Costa Rica Colon</label>
+    </customValue>
+    <customValue>
+        <fullName>CYP</fullName>
+        <default>false</default>
+        <label>CYP - Cypriot Pound</label>
     </customValue>
     <customValue>
         <fullName>CZK</fullName>
@@ -166,6 +186,11 @@
         <label>GEL - Georgia Lari</label>
     </customValue>
     <customValue>
+        <fullName>GHC</fullName>
+        <default>false</default>
+        <label>GHC - Ghana Cedi</label>
+    </customValue>
+    <customValue>
         <fullName>GTQ</fullName>
         <default>false</default>
         <label>GTQ - Guatemala Quetzal</label>
@@ -204,6 +229,11 @@
         <fullName>INR</fullName>
         <default>false</default>
         <label>INR - Indian Rupee</label>
+    </customValue>
+    <customValue>
+        <fullName>IQD</fullName>
+        <default>false</default>
+        <label>IQD - Iraqi Dinar</label>
     </customValue>
     <customValue>
         <fullName>ISK</fullName>
@@ -271,6 +301,11 @@
         <label>LVL - Latvian Lat</label>
     </customValue>
     <customValue>
+        <fullName>LYD</fullName>
+        <default>false</default>
+        <label>LYD - Libyan Dinar</label>
+    </customValue>
+    <customValue>
         <fullName>MAD</fullName>
         <default>false</default>
         <label>MAD - Moroccan Dirham</label>
@@ -284,6 +319,16 @@
         <fullName>MKD</fullName>
         <default>false</default>
         <label>MKD - Macedonian Denar</label>
+    </customValue>
+    <customValue>
+        <fullName>MMK</fullName>
+        <default>false</default>
+        <label>MMK - Myanmar Kyat</label>
+    </customValue>
+    <customValue>
+        <fullName>MTL</fullName>
+        <default>false</default>
+        <label>MTL - Maltese Lira</label>
     </customValue>
     <customValue>
         <fullName>MUR</fullName>
@@ -386,6 +431,11 @@
         <label>RUB - Russian Rouble</label>
     </customValue>
     <customValue>
+        <fullName>RWF</fullName>
+        <default>false</default>
+        <label>RWF - Rwanda Franc</label>
+    </customValue>
+    <customValue>
         <fullName>SAR</fullName>
         <default>false</default>
         <label>SAR - Saudi Arabian Riyal</label>
@@ -399,6 +449,11 @@
         <fullName>SGD</fullName>
         <default>false</default>
         <label>SGD - Singapore Dollar</label>
+    </customValue>
+    <customValue>
+        <fullName>SIT</fullName>
+        <default>false</default>
+        <label>SIT - Slovenian Tolar</label>
     </customValue>
     <customValue>
         <fullName>SVC</fullName>
@@ -436,9 +491,19 @@
         <label>TWD - Taiwan Dollar</label>
     </customValue>
     <customValue>
+        <fullName>TZS</fullName>
+        <default>false</default>
+        <label>TZS - Tanzanian Shilling</label>
+    </customValue>
+    <customValue>
         <fullName>UAH</fullName>
         <default>false</default>
         <label>UAH - Ukraine Hryvnia</label>
+    </customValue>
+    <customValue>
+        <fullName>UGX</fullName>
+        <default>false</default>
+        <label>UGX - Ugandan Shilling</label>
     </customValue>
     <customValue>
         <fullName>USD</fullName>
@@ -456,14 +521,39 @@
         <label>UZS - Uzbekistan Sum</label>
     </customValue>
     <customValue>
+        <fullName>VES</fullName>
+        <default>false</default>
+        <label>VES  - Venezuelan Bolivar Fuerte</label>
+    </customValue>
+    <customValue>
         <fullName>VND</fullName>
         <default>false</default>
         <label>VND - Vietnam Dong</label>
     </customValue>
     <customValue>
+        <fullName>XAF</fullName>
+        <default>false</default>
+        <label>XAF - CFA Franc (BEAC)</label>
+    </customValue>
+    <customValue>
+        <fullName>XOF</fullName>
+        <default>false</default>
+        <label>XOF - CFA Franc (BCEAO)</label>
+    </customValue>
+    <customValue>
+        <fullName>YUM</fullName>
+        <default>false</default>
+        <label>YUM - Yugoslav Dinar</label>
+    </customValue>
+    <customValue>
         <fullName>ZAR</fullName>
         <default>false</default>
         <label>ZAR - South African Rand</label>
+    </customValue>
+    <customValue>
+        <fullName>ZMK</fullName>
+        <default>false</default>
+        <label>ZMK - Zambian Kwacha (New)</label>
     </customValue>
     <customValue>
         <fullName>PGK</fullName>
@@ -640,10 +730,10 @@
         <label>DJF - Dijibouti Franc</label>
     </customValue>
     <customValue>
-        <fullName>CVE</fullName>
+        <fullName>AOA</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>CVE - Cape Verde Escudo</label>
+        <label>AOA - Angola Kwanza</label>
     </customValue>
     <customValue>
         <fullName>CUP</fullName>
@@ -694,130 +784,10 @@
         <label>AFN - Afghanistan Afghani (New)</label>
     </customValue>
     <customValue>
-        <fullName>ZMK</fullName>
+        <fullName>CVE</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>ZMK - Zambian Kwacha (New)</label>
-    </customValue>
-    <customValue>
-        <fullName>YUM</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>YUM - Yugoslav Dinar</label>
-    </customValue>
-    <customValue>
-        <fullName>XCD</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>XCD - East Caribbean Dollar</label>
-    </customValue>
-    <customValue>
-        <fullName>XAF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>XAF - CFA Franc (BEAC)</label>
-    </customValue>
-    <customValue>
-        <fullName>VES</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>VES  - Venezuelan Bolivar Fuerte</label>
-    </customValue>
-    <customValue>
-        <fullName>UGX</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>UGX - Ugandan Shilling</label>
-    </customValue>
-    <customValue>
-        <fullName>TZS</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>TZS - Tanzanian Shilling</label>
-    </customValue>
-    <customValue>
-        <fullName>SIT</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>SIT - Slovenian Tolar</label>
-    </customValue>
-    <customValue>
-        <fullName>RWF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>RWF - Rwanda Franc</label>
-    </customValue>
-    <customValue>
-        <fullName>MTL</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>MTL - Maltese Lira</label>
-    </customValue>
-    <customValue>
-        <fullName>MMK</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>MMK - Myanmar Kyat</label>
-    </customValue>
-    <customValue>
-        <fullName>LYD</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>LYD - Libyan Dinar</label>
-    </customValue>
-    <customValue>
-        <fullName>IQD</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>IQD - Iraqi Dinar</label>
-    </customValue>
-    <customValue>
-        <fullName>GHC</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>GHC - Ghana Cedi</label>
-    </customValue>
-    <customValue>
-        <fullName>CYP</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CYP - Cypriot Pound</label>
-    </customValue>
-    <customValue>
-        <fullName>CDF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>CDF - Franc Congolais</label>
-    </customValue>
-    <customValue>
-        <fullName>BYR</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>BYR - Belarus Ruble</label>
-    </customValue>
-    <customValue>
-        <fullName>BYN</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>BYN - Belarussian Ruble</label>
-    </customValue>
-    <customValue>
-        <fullName>XOF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>XOF - CFA Franc (BCEAO)</label>
-    </customValue>
-    <customValue>
-        <fullName>XPF</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>XPF - Pacific Franc</label>
-    </customValue>
-    <customValue>
-        <fullName>YER</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>YER - Yemen Riyal</label>
+        <label>CVE - Cape Verde Escudo</label>
     </customValue>
     <customValue>
         <fullName>ZWL</fullName>
@@ -826,10 +796,22 @@
         <label>ZWL - Zimbabwe Dollar</label>
     </customValue>
     <customValue>
-        <fullName>AOA</fullName>
+        <fullName>YER</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>AOA - Angola Kwanza</label>
+        <label>YER - Yemen Riyal</label>
+    </customValue>
+    <customValue>
+        <fullName>XPF</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>XPF - Pacific Franc</label>
+    </customValue>
+    <customValue>
+        <fullName>XCD</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>XCD - East Caribbean Dollar</label>
     </customValue>
     <customValue>
         <fullName>WST</fullName>

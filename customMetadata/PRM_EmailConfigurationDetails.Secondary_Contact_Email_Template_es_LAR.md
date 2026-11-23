@@ -56,10 +56,10 @@
     </values>
     <values>
         <field>PRM_TemplateName__c</field>
-        <value xsi:type="xsd:string">SCRUACCTADD_Spanish</value>
+        <value xsi:type="xsd:string">SCRUACCTADD_Spanish_LAR</value>
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SCRUACCTADD_Spanish</value>
+        <value xsi:type="xsd:string">SCRUACCTADD_Spanish_LAR</value>
     </values>
 </CustomMetadata>

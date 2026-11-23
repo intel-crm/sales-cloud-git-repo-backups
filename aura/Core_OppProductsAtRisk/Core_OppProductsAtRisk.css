@@ -24,30 +24,60 @@
     padding-left:1%;
 }
 
+.THIS .SupportReqCls{
+    width:50%;
+    padding-top:2%;
+    padding-left:1%;
+}
+
 .THIS .TrCls{
     border-bottom: 1px solid lightgray;
 }
 
-.THIS .borderRight{
+.THIS .Th1Cls{
+    width:20%;
     border-right: 1px solid lightgray;
 }
 
-.THIS .paddRight170{
-    padding-right: 170px;
+.THIS .Th2Cls{
+    width:1%;
+    border-right: 1px solid lightgray;
 }
 
-.THIS .paddRight100{
-    padding-right: 100px;
+.THIS .Th3Cls{
+    width:1%;
+    border-right: 1px solid lightgray;
 }
 
-.THIS .paddRight70{
-    padding-right: 70px;
+.THIS .Th4Cls{
+    width:17%;
+    border-right: 1px solid lightgray;
 }
 
-.THIS .wordWrap{
-    white-space: break-spaces;
+.THIS .Th5Cls{
+    width:17%;
+    border-right: 1px solid lightgray;
 }
 
-.THIS .boldCls{
+.THIS .Th7Cls{
+    width:15%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th8Cls{
+    width:13%;
+    border-right: 1px solid lightgray;
+}
+
+.THIS .Th9Cls{
+    width:16%;
+}
+
+.THIS .Td1Cls{
     font-weight: bold;
+    white-space: normal;
+}
+
+.THIS .Td2Cls{
+    text-align:center;
 }

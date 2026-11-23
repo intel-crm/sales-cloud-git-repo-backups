@@ -6,7 +6,9 @@ public class Core_HomePage_KPIMsg_Controller_Test {
       Core_KPI_Refresh_Message__c kpi=new Core_KPI_Refresh_Message__c();
         kpi.Name='New Msg';
         kpi.Core_LastModifiedDate__c=system.today();
-        insert kpi;        
+        insert kpi;
+        system.debug('the kpi record id is==>'+kpi.id);
+        
         
     }
     

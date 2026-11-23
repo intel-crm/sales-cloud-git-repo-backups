@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fieldSets>
         <fullName>Core_OpportunityPartnerSearch</fullName>
         <description>Opportunity Partner Search</description>
@@ -187,18 +187,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>CRM_Unified_Global_Opportunity_Partner__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Partner__r.Core_Unified_Global_Customer_Name__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Unified Global Opportunity Partner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_3rd_Party__c</fullName>
         <description>3rd Party related to the Opportunity Partner</description>
         <externalId>false</externalId>
@@ -216,15 +204,6 @@
         <description>Fulfillment company related to the Opportunity Partner</description>
         <inlineHelpText>A third party such as systems integrator, distributor, contract manufacturer purchasing from the Partner on behalf of the Customer. Used to track shipments.</inlineHelpText>
         <label>Fulfillment Company</label>
-        <lookupFilter>
-            <active>true</active>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>notEqual</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Opportunity Partners (Fulfillment Company)</relationshipLabel>
         <relationshipName>Opportunity_Partners1</relationshipName>
@@ -288,17 +267,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_Opportunity_Partner_Prime__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Partner__r.Core_Prime_Account_Name__c</formula>
-        <label>Opportunity Partner Prime</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Opportunity__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Look up to an Opportunity record</description>
@@ -316,7 +284,7 @@
         <externalId>false</externalId>
         <formula>text(Core_Partner__r.Core_Account_Country__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Partner Country/Region</label>
+        <label>Partner Country</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -486,34 +454,14 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Academia &amp; research institutions</fullName>
+                    <fullName>Cloud Service Provider</fullName>
                     <default>false</default>
-                    <label>Academia &amp; research institutions</label>
+                    <label>Cloud Service Provider</label>
                 </value>
                 <value>
-                    <fullName>Branded Value Added Reseller (bVAR)</fullName>
+                    <fullName>Design House</fullName>
                     <default>false</default>
-                    <label>Branded Value Added Reseller (bVAR)</label>
-                </value>
-                <value>
-                    <fullName>Cloud Service Provider (CSP)</fullName>
-                    <default>false</default>
-                    <label>Cloud Service Provider (CSP)</label>
-                </value>
-                <value>
-                    <fullName>Comm Service Provider (CoSP)</fullName>
-                    <default>false</default>
-                    <label>Comm Service Provider (CoSP)</label>
-                </value>
-                <value>
-                    <fullName>Contract Manufacturer (CM)</fullName>
-                    <default>false</default>
-                    <label>Contract Manufacturer (CM)</label>
-                </value>
-                <value>
-                    <fullName>Digital Services (Social Media, Streaming, eWallet)</fullName>
-                    <default>false</default>
-                    <label>Digital Services (Social Media, Streaming, eWallet)</label>
+                    <label>Design House</label>
                 </value>
                 <value>
                     <fullName>Distributor</fullName>
@@ -521,19 +469,19 @@
                     <label>Distributor</label>
                 </value>
                 <value>
-                    <fullName>Domain Expert Integrator</fullName>
+                    <fullName>DMR</fullName>
                     <default>false</default>
-                    <label>Domain Expert Integrator</label>
+                    <label>DMR</label>
                 </value>
                 <value>
-                    <fullName>Electronic Manufacturing Services (EMS)</fullName>
+                    <fullName>Embedded Board Manufacturer</fullName>
                     <default>false</default>
-                    <label>Electronic Manufacturing Services (EMS)</label>
+                    <label>Embedded Board Manufacturer</label>
                 </value>
                 <value>
-                    <fullName>Embedded Board Manufacturer (EBM)</fullName>
+                    <fullName>EMS</fullName>
                     <default>false</default>
-                    <label>Embedded Board Manufacturer (EBM)</label>
+                    <label>EMS</label>
                 </value>
                 <value>
                     <fullName>End Customer</fullName>
@@ -541,99 +489,34 @@
                     <label>End Customer</label>
                 </value>
                 <value>
-                    <fullName>Enterprise Influencer</fullName>
+                    <fullName>ESF Firm</fullName>
                     <default>false</default>
-                    <label>Enterprise Influencer</label>
+                    <label>ESF Firm</label>
                 </value>
                 <value>
-                    <fullName>FPGA Design Services</fullName>
+                    <fullName>ISV/OSV</fullName>
                     <default>false</default>
-                    <label>FPGA Design Services</label>
+                    <label>ISV/OSV</label>
                 </value>
                 <value>
-                    <fullName>Global System Integrator (GSI)</fullName>
+                    <fullName>LOEM</fullName>
                     <default>false</default>
-                    <label>Global System Integrator (GSI)</label>
+                    <label>LOEM</label>
                 </value>
                 <value>
-                    <fullName>Hardware System Integrator (HSI)</fullName>
+                    <fullName>ODM</fullName>
                     <default>false</default>
-                    <label>Hardware System Integrator (HSI)</label>
+                    <label>ODM</label>
                 </value>
                 <value>
-                    <fullName>Independent Design House</fullName>
+                    <fullName>OEM</fullName>
                     <default>false</default>
-                    <label>Independent Design House</label>
+                    <label>OEM</label>
                 </value>
                 <value>
-                    <fullName>Independent Software Vendor (ISV)</fullName>
+                    <fullName>Publisher</fullName>
                     <default>false</default>
-                    <label>Independent Software Vendor (ISV)</label>
-                </value>
-                <value>
-                    <fullName>Intel Approved Component Supplier (IACS)</fullName>
-                    <default>false</default>
-                    <label>Intel Approved Component Supplier (IACS)</label>
-                </value>
-                <value>
-                    <fullName>Intel Authorized Distributor (IAD)</fullName>
-                    <default>false</default>
-                    <label>Intel Authorized Distributor (IAD)</label>
-                </value>
-                <value>
-                    <fullName>Local Original Design Manufacturer (LODM)</fullName>
-                    <default>false</default>
-                    <label>Local Original Design Manufacturer (LODM)</label>
-                </value>
-                <value>
-                    <fullName>Local Original Equipment Manufacturer (LOEM)</fullName>
-                    <default>false</default>
-                    <label>Local Original Equipment Manufacturer (LOEM)</label>
-                </value>
-                <value>
-                    <fullName>Managed Service Provider (MSP)</fullName>
-                    <default>false</default>
-                    <label>Managed Service Provider (MSP)</label>
-                </value>
-                <value>
-                    <fullName>National Solution Integrator (NSI)</fullName>
-                    <default>false</default>
-                    <label>National Solution Integrator (NSI)</label>
-                </value>
-                <value>
-                    <fullName>National Solution Provider (NSP)</fullName>
-                    <default>false</default>
-                    <label>National Solution Provider (NSP)</label>
-                </value>
-                <value>
-                    <fullName>Intel Approved Device Supplier (IADS)</fullName>
-                    <default>false</default>
-                    <label>Intel Approved Device Supplier (IADS)</label>
-                </value>
-                <value>
-                    <fullName>Operational Technology System Integrator (OTSI)</fullName>
-                    <default>false</default>
-                    <label>Operational Technology System Integrator (OTSI)</label>
-                </value>
-                <value>
-                    <fullName>Original Design Manufacturer (ODM)</fullName>
-                    <default>false</default>
-                    <label>Original Design Manufacturer (ODM)</label>
-                </value>
-                <value>
-                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
-                    <default>false</default>
-                    <label>Original Equipment Manufacturer (OEM)</label>
-                </value>
-                <value>
-                    <fullName>Other</fullName>
-                    <default>false</default>
-                    <label>Other</label>
-                </value>
-                <value>
-                    <fullName>PSG Team</fullName>
-                    <default>false</default>
-                    <label>PSG Team</label>
+                    <label>Publisher</label>
                 </value>
                 <value>
                     <fullName>Reseller</fullName>
@@ -646,14 +529,19 @@
                     <label>Retailer</label>
                 </value>
                 <value>
-                    <fullName>Telco Equipment Manufacturer (TEM)</fullName>
+                    <fullName>Service Provider</fullName>
                     <default>false</default>
-                    <label>Telco Equipment Manufacturer (TEM)</label>
+                    <label>Service Provider</label>
                 </value>
                 <value>
-                    <fullName>Value Added Reseller (VAR)</fullName>
+                    <fullName>Solution Integration (SI/ITO/bVAR)</fullName>
                     <default>false</default>
-                    <label>Value Added Reseller (VAR)</label>
+                    <label>Solution Integration (SI/ITO/bVAR)</label>
+                </value>
+                <value>
+                    <fullName>TEM</fullName>
+                    <default>false</default>
+                    <label>TEM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -668,14 +556,19 @@
             <active>true</active>
             <filterItems>
                 <field>Account.RecordTypeId</field>
+                <operation>notEqual</operation>
+                <value>CoMarketing, Intel Ultimate Account, Inactive Account</value>
+            </filterItems>
+            <filterItems>
+                <field>Account.Core_Covered_Account__c</field>
                 <operation>equals</operation>
-                <value>Partner Account Group, Intel Account</value>
+                <value>True</value>
             </filterItems>
             <infoMessage>Intel ultimate and Inactive accounts have been excluded from the below-listed accounts as they should not be selected. Please DO NOT OVERRIDE the filter criteria by clicking on &quot;Search All&quot; link below and only select an account from the ones listed below.</infoMessage>
-            <isOptional>false</isOptional>
+            <isOptional>true</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Opportunities</relationshipLabel>
+        <relationshipLabel>Opportunity Partners</relationshipLabel>
         <relationshipName>Opportunity_Partners</relationshipName>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -797,77 +690,6 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <fields>
-        <fullName>Core_UCD_Partner_Account_Name__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Partner__r.Core_Data_Simplified_Account_Nm__c</formula>
-        <label>Unified Partner Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Decision_Date__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.Decision_Date__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Decision Date</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>OpportunityStage__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_Opportunity__r.StageName)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Stage</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Opportunity_Owner_Full_Name__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Owner.FirstName &amp;&quot; &quot;&amp; Core_Opportunity__r.Owner.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Owner Full Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Opportunity_Record_Type__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.RecordType.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Record Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Opportunity_Technical_Owner__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Opportunity__r.Core_Technical_Owner__r.FirstName &amp;&quot; &quot;&amp; Core_Opportunity__r.Core_Technical_Owner__r.LastName</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Technical Owner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Opportunity Partner</label>
     <nameField>
         <displayFormat>OP-{00000000}</displayFormat>
@@ -878,20 +700,6 @@
     <pluralLabel>Opportunity Partners</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
-    <validationRules>
-        <fullName>Core_OppPartner_Prevent_Account</fullName>
-        <active>true</active>
-        <description>Allow only Intel and Partner Account Record Types.</description>
-        <errorConditionFormula>IF($Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,FALSE,
-AND(
-Core_Partner__c != &apos;&apos;,
-Core_Partner__r.RecordType.DeveloperName != &apos;Mastered_Account&apos;,
-Core_Partner__r.RecordType.DeveloperName != &apos;Core_Partner_Account_Group&apos;
-)
-)</errorConditionFormula>
-        <errorDisplayField>Core_3rd_Party__c</errorDisplayField>
-        <errorMessage>The account you are attempting to relate this Opportunity Partner to is not an Intel or Partner Account. Please choose an Intel or Partner Account</errorMessage>
-    </validationRules>
     <validationRules>
         <fullName>Core_Partner_Led_External_Opp_Check</fullName>
         <active>true</active>

@@ -197,57 +197,57 @@ Modification Log :
                                  id="A1_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q1_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A1__c}" label="" rendered="{!(numQuestions >= 1) && (isLocked)}"  />
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q2__c)}" label="" rendered="{!(numQuestions >= 2)}" escape="false" id="Q2" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q2__c}" label="" rendered="{!(numQuestions >= 2)}" escape="false" id="Q2" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A2__c}" label="" rendered="{!(numQuestions >= 2) && (!isLocked)}"
                                  id="A2_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q2_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A2__c}" label="" rendered="{!(numQuestions >= 2) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q3__c)}" label="" rendered="{!(numQuestions >= 3)}" escape="false" id="Q3" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q3__c}" label="" rendered="{!(numQuestions >= 3)}" escape="false" id="Q3" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A3__c}" label="" rendered="{!(numQuestions >= 3) && (!isLocked)}"
                                  id="A3_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q3_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A3__c}" label="" rendered="{!(numQuestions >= 3) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q4__c)}" label="" rendered="{!(numQuestions >= 4)}" escape="false" id="Q4" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q4__c}" label="" rendered="{!(numQuestions >= 4)}" escape="false" id="Q4" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A4__c}" label="" rendered="{!(numQuestions >= 4) && (!isLocked)}"
                                  id="A4_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q4_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A4__c}" label="" rendered="{!(numQuestions >= 4) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q5__c)}" label="" rendered="{!(numQuestions >= 5)}" escape="false" id="Q5" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q5__c}" label="" rendered="{!(numQuestions >= 5)}" escape="false" id="Q5" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A5__c}" label="" rendered="{!(numQuestions >= 5) && (!isLocked)}"
                                  id="A5_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q5_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A5__c}" label="" rendered="{!(numQuestions >= 5) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q6__c)}" label="" rendered="{!(numQuestions >= 6)}" escape="false" id="Q6" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q6__c}" label="" rendered="{!(numQuestions >= 6)}" escape="false" id="Q6" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A6__c}" label="" rendered="{!(numQuestions >= 6) && (!isLocked)}"
                                  id="A6_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q6_Textbox__c}" styleClass="slds-input" />
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A6__c}" label="" rendered="{!(numQuestions >= 6) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q7__c)}" label="" rendered="{!(numQuestions >= 7)}" escape="false" id="Q7" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q7__c}" label="" rendered="{!(numQuestions >= 7)}" escape="false" id="Q7" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A7__c}" label="" rendered="{!(numQuestions >= 7) && (!isLocked)}"
                                  id="A7_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q7_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A7__c}" label="" rendered="{!(numQuestions >= 7) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q8__c)}" label="" rendered="{!(numQuestions >= 8)}" escape="false" id="Q8" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q8__c}" label="" rendered="{!(numQuestions >= 8)}" escape="false" id="Q8" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A8__c}" label="" rendered="{!(numQuestions >= 8) && (!isLocked)}"
                                  id="A8_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q8_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A8__c}" label="" rendered="{!(numQuestions >= 8) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q9__c)}" label="" rendered="{!(numQuestions >= 9)}" escape="false" id="Q9" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q9__c}" label="" rendered="{!(numQuestions >= 9)}" escape="false" id="Q9" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A9__c}" label="" rendered="{!(numQuestions >= 9) && (!isLocked)}"
                                  id="A9_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q9_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A9__c}" label="" rendered="{!(numQuestions >= 9) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q10__c)}" label="" rendered="{!(numQuestions >= 10)}" escape="false" id="Q10" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q10__c}" label="" rendered="{!(numQuestions >= 10)}" escape="false" id="Q10" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A10__c}" label="" rendered="{!(numQuestions >= 10) && (!isLocked)}"
                                  id="A10_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q10_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A10__c}" label="" rendered="{!(numQuestions >= 10) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q11__c)}" label="" rendered="{!(numQuestions >= 11)}" escape="false" id="Q11" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q11__c}" label="" rendered="{!(numQuestions >= 11)}" escape="false" id="Q11" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A11__c}" label="" rendered="{!(numQuestions >= 11) && (!isLocked)}"
                                  id="A11_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q11_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A11__c}" label="" rendered="{!(numQuestions >= 11) && (isLocked)}"/>
                 
-                <apex:outputText value="{!JSENCODE(Core_MAG_Questionnaire__c.Core_Q12__c)}" label="" rendered="{!(numQuestions >= 12)}" escape="false" id="Q12" styleClass="slds-text-longform"/>
+                <apex:outputText value="{!Core_MAG_Questionnaire__c.Core_Q12__c}" label="" rendered="{!(numQuestions >= 12)}" escape="false" id="Q12" styleClass="slds-text-longform"/>
                 <apex:inputField value="{!Core_MAG_Questionnaire__c.Core_A12__c}" label="" rendered="{!(numQuestions >= 12) && (!isLocked)}"
                                  id="A12_input" html-placeholder="{!Core_MAG_Questionnaire__c.Core_Q12_Textbox__c}" styleClass="slds-input"/>
                 <apex:outputField value="{!Core_MAG_Questionnaire__c.Core_A12__c}" label="" rendered="{!(numQuestions >= 12) && (isLocked)}"/>

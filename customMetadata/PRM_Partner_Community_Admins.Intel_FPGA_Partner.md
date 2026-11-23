@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>PRM_CommunityAdminEmail__c</field>
-        <value xsi:type="xsd:string">Fpga.ipa.community@intel.com</value>
+        <value xsi:type="xsd:string">sys_iahprmqa@intel.com</value>
     </values>
 </CustomMetadata>

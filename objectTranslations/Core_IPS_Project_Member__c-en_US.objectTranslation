@@ -72,22 +72,37 @@
         <name>Core_User__c</name>
         <relationshipLabel><!-- Premier Support Project Members --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Project Member Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- You cannot remove the owner of a project.  If you would like to remove this user from this project, change the owner first to someone else. --></errorMessage>
         <name>Core_IPS_Inactivating_ProjectOwner</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- User value cannot be changed/Status value cannot be changed when Project is Submitted --></errorMessage>
+        <name>Core_IPS_PreventEdit</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- User value cannot be changed. --></errorMessage>
         <name>Core_IPS_PreventUserLookupChange</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- User is always required --></errorMessage>
+        <name>Core_Project_Member_User_is_required</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Add_Members --></label>
+        <name>Add_Members</name>
+    </webLinks>
     <webLinks>
         <label><!-- Add_Members_For_External_Customers --></label>
         <name>Add_Members_For_External_Customers</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Core_IPS_Add_Members --></label>
-        <name>Core_IPS_Add_Members</name>
     </webLinks>
     <webLinks>
         <label><!-- New --></label>

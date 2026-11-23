@@ -7,10 +7,6 @@
         <value xsi:type="xsd:string">Tend_Mgmt</value>
     </values>
     <values>
-        <field>Core_Source__c</field>
-        <value xsi:type="xsd:string">ERPM</value>
-    </values>
-    <values>
         <field>EntitlementProgName__c</field>
         <value xsi:type="xsd:string">Intel Quote Request</value>
     </values>

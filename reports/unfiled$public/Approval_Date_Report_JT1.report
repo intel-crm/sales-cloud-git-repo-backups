@@ -63,8 +63,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CLOSE_DATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
         <interval>INTERVAL_YESTERDAY</interval>

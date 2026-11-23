@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>&quot;To send Notification messages when OPID meets 90% of the next tier criteria	&quot;</description>
+    <environments>Default</environments>
+    <interviewLabel>PRM_VXData_Notification_Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_VXData_Notification_Message</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
+        <filterFormula>AND(NOT(ISNEW()),ISCHANGED({!$Record.PRM_Percent_to_next_tier_Nbr__c}),{!$Record.PRM_Percent_to_next_tier_Nbr__c} &lt;= 10,NOT(ISBLANK({!$Record.PRM_One_Partner_Id__c})), {!$Record.PRM_Tier_Id__r.Name} = {!$Label.PRM_Tier_Titanium}, {!$Record.PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c} = true)</filterFormula>
+        <object>PRM_Value_Exchange_Data__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>InvalidDraft</status>
+</Flow>

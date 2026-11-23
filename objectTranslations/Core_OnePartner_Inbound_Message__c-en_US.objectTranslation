@@ -13,7 +13,7 @@
         <name>Comments__c</name>
     </fields>
     <fields>
-        <label><!-- UCD ID --></label>
+        <label><!-- CIM ID --></label>
         <name>Core_CIM_ID__c</name>
     </fields>
     <fields>
@@ -35,6 +35,14 @@
     <fields>
         <label><!-- Error Details --></label>
         <name>Core_Error_Detail_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- InboundToProcess --></label>
+        <name>Core_InboundToProcess__c</name>
+    </fields>
+    <fields>
+        <label><!-- Core OnDemand ReqId --></label>
+        <name>Core_OnDemandReqId__c</name>
     </fields>
     <fields>
         <label><!-- OnePartnerID --></label>

@@ -68,7 +68,7 @@
                 <tr>
                     <td style="padding-left:50px;">
                         <br/>Hello<br/><br/>
-                        <apex:outputText rendered="{!IF(AND(partnerData.PMP_Partner_Submitter_UserId__c != null, partnerData.PMP_Partner_Submitter_UserId__r.IsActive==false,partnerData.PMP_Partner_Submitter_UserId__r.Partner_License_Reclaimed__c==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
+                        <apex:outputText rendered="{!IF(AND(partnerData.PMP_Partner_Submitter_UserId__c != null, partnerData.PMP_Partner_Submitter_UserId__r.IsActive==false),true,false)}" > {!$Label.PMP_Inactive_User_Message}<br/><br/> </apex:outputText>
                         Thank you again for submitting your storefront. Before we can publish it, your action is required.<br/><br/> 
                         Please use the link and follow the instructions below.<br/> 
                     </td>

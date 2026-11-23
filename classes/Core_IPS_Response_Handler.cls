@@ -17,7 +17,7 @@ Modification Log :
 *Karthick                     15/06/2018            Modified - Defect fix DE40163,DE40160
 ****************************************************************************************************/       
 
-public without sharing class Core_IPS_Response_Handler {
+public class Core_IPS_Response_Handler {
     
     /***************************************************************************************************
     Method Name         : updateEnvironmentDetailsOnCase
@@ -37,35 +37,24 @@ public without sharing class Core_IPS_Response_Handler {
     * ----------------------------------------------------------------------------                 
     * Yogesh Sharma              18/12/2017              Created
     ****************************************************************************************************/       
+    
     public static void updateEnvironmentDetailsOnCase(List<Core_IPS_Response__c> newList){
-        List<Case> lstCase2Update = new List<Case>(); // Added as part of code refactor
-        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateEnvDetailsOnCaseFromCoreResponse')){
-            updateSurveySubmitFieldOnCase(newList); // Added as part of code refactor
+        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateEnvDetailsOnCaseFromCoreResponse'))
             return;
-        }
-        if(newList==null) return;	
-        List<Case> lstCase=new List<Case>();
+        
+        if(newList==null) return;
         Set<Id> setCaseId = new Set<Id>();
         for(Core_IPS_Response__c objResp : newList) {
             setCaseId.add(objResp.Core_IPS_Case__c);
         }
-        //FLS check added-Venugopal
-        if(Case.SObjectType.getDescribe().isAccessible()){
-            lstCase = [SELECT Id,(SELECT Id,Core_IPS_Agent_Only__c,Core_IPS_Question__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c,Core_IPS_Question_Master__r.Core_IPS_Datatype__c,Core_IPS_Question_Master__r.RecordType.DeveloperName FROM Core_IPS_Responses__r WHERE Core_IPS_Question_Master__r.RecordType.DeveloperName='EDQ' OR Core_IPS_Question_Master__r.RecordType.DeveloperName = :Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT') ),Core_Environment_Details__c , Core_IPS_External_Environment_Details__c,Asset.Product2.name,Core_IPS_Survey_Captured__c FROM Case WHERE Id IN :setCaseId];
-        }
+        List<Case> lstCase = [SELECT Id,(SELECT Id,Core_IPS_Agent_Only__c,Core_IPS_Question__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c,Core_IPS_Question_Master__r.Core_IPS_Datatype__c FROM Core_IPS_Responses__r WHERE Core_IPS_Question_Master__r.RecordType.DeveloperName='EDQ'),Core_Environment_Details__c , Core_IPS_External_Environment_Details__c,Asset.Product2.name FROM Case WHERE Id IN :setCaseId];
         Map<Id,Map<Id,wrapResponse>> mapCaseId2QuestionResponse = new Map<Id,Map<Id,wrapResponse>>(); // holds the Case Id Key => Map of Question and Related responses
-        map<id,string>caseToResponsesMap=new map<id,string>();// Added as part of code refactor
         if(lstCase!=null) {
             for(Case objCase : lstCase) {
                 if(!mapCaseId2QuestionResponse.containsKey(objCase.Id)) {
                     mapCaseId2QuestionResponse.put(objCase.Id, new Map<Id,wrapResponse>());
                 }
                 for(Core_IPS_Response__c objResponse : objCase.Core_IPS_Responses__r) {     
-			// Added as part of code refactor
-                    if (objResponse.Core_IPS_Question_Master__r.RecordType.DeveloperName == Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')) {
-                       caseToResponsesMap.put(objCase.Id, 'true');
-                    }
-                    if(objResponse.Core_IPS_Question_Master__r.RecordType.DeveloperName=='EDQ'){     
                     if(!mapCaseId2QuestionResponse.get(objCase.Id).containsKey(objResponse.Core_IPS_Question_Master__c)) {
                         mapCaseId2QuestionResponse.get(objCase.Id).put(objResponse.Core_IPS_Question_Master__c, new wrapResponse());
                     } 
@@ -80,10 +69,9 @@ public without sharing class Core_IPS_Response_Handler {
                 }
             }
         }
-        }
         
         if(mapCaseId2QuestionResponse.size()>0) {
-            
+            List<Case> lstCase2Update = new List<Case>();
             
             for(Id caseId : mapCaseId2QuestionResponse.keySet()) {
                 String strEnvDetails = '';
@@ -133,19 +121,22 @@ public without sharing class Core_IPS_Response_Handler {
                 gen.writeEndObject();
                 String jsonString = gen.getAsString();
                 Case objCase = new Case(Id=caseId);
+                /*US1021249 - 05/27/2021 - yamini - FLS Check for security vulnerability --*/
+                if (Schema.sObjectType.Case.fields.Core_jsonfield__c.isUpdateable()) {
                 objCase.Core_jsonfield__c = jsonString;
+                }
                 strEnvDetails += '</table>';
                 strEnvDetailsExternal += '</table>';
+                if (Schema.sObjectType.Case.fields.Core_Environment_Details__c.isUpdateable()) {
                 objCase.Core_Environment_Details__c = strEnvDetails;
+                }
+                if (Schema.sObjectType.Case.fields.Core_IPS_External_Environment_Details__c.isUpdateable()) {
                 objCase.Core_IPS_External_Environment_Details__c = strEnvDetailsExternal;
-                //added as part of code refactor
-                if(caseToResponsesMap.containsKey(objCase.id)){
-                    objCase.Core_IPS_Survey_Captured__c=True;
                 }
                 lstCase2Update.add(objCase);
             }
-            //FLS Added as Part of code refactor
-            if(Schema.sObjectType.Case.isUpdateable() && lstCase2Update.size()>0) {
+            if(lstCase2Update.size()>0) {
+                Core_CaseTrigger_Dispatcher.backendPromotionRecursive = true;
                 update lstCase2Update;
             }
         }
@@ -247,9 +238,7 @@ public without sharing class Core_IPS_Response_Handler {
                 
             }
             
-        }
-        catch(Exception ex){ 
-        } 
+        }catch(Exception ex){ System.debug('error message-->'+ex.getMessage());        } 
         
     }
 
@@ -279,23 +268,19 @@ public without sharing class Core_IPS_Response_Handler {
                         
             Set<Id> setCaseId = new Set<Id>();
             List<Case> lstCase2Update = new List<Case>();
-            //FLS check added-Venugopal
-            if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){
-               // APEX GURU - SOQL FIX
-               Map<Id, Core_IPS_Response__c> newListMap = new Map<Id, Core_IPS_Response__c>(newList);
-               for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newListMap.keySet() AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                              
-            // for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newList AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                
+            
+            for(Core_IPS_Response__c resp : [SELECT Id,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Id IN :newList AND Core_IPS_Question_Master__r.RecordType.DeveloperName=:Core_IPS_Helper_Utility.getIPSLabel('CoreQuestionSurveyRT')]){                
                 if(!setCaseId.contains(resp.Core_IPS_Case__c)) {
                     setCaseId.add(resp.Core_IPS_Case__c);
                     lstCase2Update.add(new Case(Id=resp.Core_IPS_Case__c, Core_IPS_Survey_Captured__c=true));
                 }
-            }
             }
             if(lstCase2Update.size()>0) update lstCase2Update;            
         }
             
         catch(Exception e){  
             Core_IPS_ExceptionHandling.logEntryWithException(e, 'Core_IPS_Response__c', 'Core_IPS_Response_Handler'); 
+            System.debug('Error in Core_IPS_Response_Handler-->updateSurveySubmitFieldOnCase-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber()); 
         }        
     }
 }

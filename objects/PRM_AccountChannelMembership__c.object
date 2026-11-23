@@ -130,17 +130,20 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Account_Channel_Membership_Record_Page2</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Account_Channel_Membership_Record_Page2</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -158,6 +161,18 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Dummy_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>IQR Membership</relationshipLabel>
+        <relationshipName>Account_Channel_Memberships</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
     <fields>
         <fullName>PRM_Account_Channel_Program_Key__c</fullName>
         <description>This field will be used as an unique key to Identify the duplicate records.</description>
@@ -232,7 +247,7 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
         <fullName>PRM_IsUpdated__c</fullName>
         <defaultValue>false</defaultValue>
         <label>IsUpdated</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -269,6 +284,11 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
                     <label>Distributor</label>
                 </value>
                 <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
                     <fullName>Independent Software Vendor</fullName>
                     <default>false</default>
                     <label>Independent Software Vendor</label>
@@ -289,12 +309,6 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
                     <label>Guest</label>
                 </value>
                 <value>
-                    <fullName>FPGA Designer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>FPGA Design Services</label>
-                </value>
-                <value>
                     <fullName>Manufacturer</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
@@ -305,12 +319,6 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Not Applicable</label>
-                </value>
-                <value>
-                    <fullName>OEM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>OEM</label>
                 </value>
                 <value>
                     <fullName>Original Equipment Manufacturer (OEM)</fullName>
@@ -351,7 +359,7 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
         <description>This is used to capture the Status change timestamp of the Channel Program Level</description>
         <label>Status Change Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -400,7 +408,7 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
         <fullName>PRM_Suppress_Email__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Suppress Email</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -429,12 +437,22 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
         <columns>PRM_Status_Reason_Txt__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>IQR_ListView</fullName>
+        <columns>PRM_Account_Id__c</columns>
+        <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_Status_Nm__c</columns>
+        <columns>PRM_Status_Change_Dt__c</columns>
+        <columns>PRM_Record_Link__c</columns>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Channel_Program_Id__c</field>
-            <operation>notEqual</operation>
-            <value>Intel Partner Alliance</value>
+            <operation>contains</operation>
+            <value>Quote</value>
         </filters>
-        <label>All</label>
+        <label>IQR ListView</label>
     </listViews>
     <nameField>
         <displayFormat>ACM-{00000}</displayFormat>
@@ -456,6 +474,57 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
             </values>
             <values>
                 <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Guest</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Independent Software Vendor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Service Provider</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Solution Integrator</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>PRM_Status_Nm__c</picklist>
+            <values>
+                <fullName>Approved</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Inactive</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Pending</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Test_RecordType</fullName>
+        <active>true</active>
+        <label>Test RecordType</label>
+        <picklistValues>
+            <picklist>PRM_Partner_Role__c</picklist>
+            <values>
+                <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -502,7 +571,7 @@ IF(ISPICKVAL(PRM_Partner_Role__c, &quot;Not Applicable&quot;), NULL, &quot;/&quo
     <validationRules>
         <fullName>PRM_Validate_Tier</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(PRM_Channel_Program_Level_Id__r.PRM_inactind__c, PRM_Channel_Program_Level_Id__r.Program.Name = &apos;Intel Partner Alliance&apos;, $Label.PRM_IPARefresh =&apos;TRUE&apos;)</errorConditionFormula>
+        <errorConditionFormula>AND(PRM_Channel_Program_Level_Id__r.PRM_inactind__c, PRM_Channel_Program_Level_Id__r.Program.Name = &apos;Intel Partner Alliance&apos;, $Label.PRM_IPARefresh =&apos;True&apos;)</errorConditionFormula>
         <errorMessage>Please select either Partner/Prestige tier</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

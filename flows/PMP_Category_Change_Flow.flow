@@ -6,7 +6,7 @@
         <name>partner_category_records_to_be_updated</name>
         <label>partner category records to be updated</label>
         <locationX>490</locationX>
-        <locationY>935</locationY>
+        <locationY>863</locationY>
         <assignmentItems>
             <assignToReference>Partner_Category_Records</assignToReference>
             <operator>Add</operator>
@@ -22,7 +22,7 @@
         <name>Update_Shadow_Record_Name</name>
         <label>Update Shadow Record Name</label>
         <locationX>490</locationX>
-        <locationY>815</locationY>
+        <locationY>755</locationY>
         <assignmentItems>
             <assignToReference>update_all_partner_category_records.Name</assignToReference>
             <operator>Assign</operator>
@@ -38,7 +38,7 @@
         <name>Create_Shadow_Category</name>
         <label>Create Shadow Category</label>
         <locationX>292</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <defaultConnector>
             <targetReference>Update_Name_on_Name_Change</targetReference>
         </defaultConnector>
@@ -63,7 +63,10 @@
         <name>Update_Name_on_Name_Change</name>
         <label>Update Name on Name Change</label>
         <locationX>534</locationX>
-        <locationY>455</locationY>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Deployment_Test</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Update_Name_on_Name_Change1</name>
@@ -89,12 +92,12 @@
         <expression>ISNEW()</expression>
     </formulas>
     <interviewLabel>PMP_Category_Change_Flow {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>PMP_Category_Change_Flow</label>
+    <label>PMP_Category_Change_Flow Deployment Test</label>
     <loops>
         <name>update_all_partner_category_records</name>
         <label>update all partner category records</label>
         <locationX>402</locationX>
-        <locationY>695</locationY>
+        <locationY>647</locationY>
         <collectionReference>Get_partner_category_records</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -127,7 +130,7 @@
         <name>Create_Shadow_Category_Record</name>
         <label>Create Shadow Category Record</label>
         <locationX>50</locationX>
-        <locationY>455</locationY>
+        <locationY>431</locationY>
         <inputAssignments>
             <field>Name</field>
             <value>
@@ -144,10 +147,28 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
+        <name>Deployment_Test</name>
+        <label>Deployment Test</label>
+        <locationX>666</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>FirstName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PMP_Ancestor_Category_Nm__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_partner_category_records</name>
         <label>Get partner category records</label>
         <locationX>402</locationX>
-        <locationY>575</locationY>
+        <locationY>539</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>update_all_partner_category_records</targetReference>
@@ -168,7 +189,7 @@
         <name>update_all_partner_categories</name>
         <label>update all partner categories</label>
         <locationX>402</locationX>
-        <locationY>1151</locationY>
+        <locationY>1055</locationY>
         <inputReference>Partner_Category_Records</inputReference>
     </recordUpdates>
     <start>

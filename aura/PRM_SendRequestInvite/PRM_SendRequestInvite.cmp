@@ -1,0 +1,27 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="PRM_SendRegistrationRequestInvite" access="global">
+	<aura:attribute name="message" type="String"/>
+    <aura:attribute name="recordId" type="Id"/>
+    
+   <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  -->
+    
+    <div class="slds-modal__container" style="width:max-content;padding:0;display:contents !important">
+        <!--Modal Box Header Start-->
+        <header class="slds-modal__header">
+            <h1 class="slds-text-heading--medium">Confirmation</h1>
+        </header>
+        <!--Modal Box Header End-->
+        
+        <!--Modal Box Content Start-->
+        <div class="slds-modal__content slds-p-top_x-large slds-p-right_x-large slds-p-bottom_x-large" style="width:max-content">
+            <center>This will trigger the notification to complete the registration request. Click on 'Confirm' to continue.</center>
+        </div>
+        <!--Modal Box Content End-->
+        
+        <!--Modal Box Button Start-->
+        <footer class="slds-modal__footer">
+            <lightning:button name='Confirm' label='Cancel' onclick='{!c.handleConfirmDialogNo}'/>
+            <lightning:button variant="brand" name='Cancel' label='Confirm' onclick='{!c.handleConfirmDialogYes}'/>
+        </footer>
+        <!--Modal Box Button End-->
+    </div>
+</aura:component>

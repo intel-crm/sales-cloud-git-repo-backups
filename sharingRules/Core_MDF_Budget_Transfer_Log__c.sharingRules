@@ -45,17 +45,6 @@
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>
-        <fullName>External_CMDF_All_Sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>External CMDF All Sharing</label>
-        <sharedTo>
-            <group>Core_All_Users_CCP_Internal</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Channel_MDF_EXTERNAL_All</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
         <fullName>External_DCF_All_Sharing</fullName>
         <accessLevel>Read</accessLevel>
         <label>External DCF All Sharing</label>
@@ -86,17 +75,6 @@
         </sharedTo>
         <sharedFrom>
             <group>Core_MDF_CCP_CCF_INTERNAL_ALL</group>
-        </sharedFrom>
-    </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>Internal_CMDF_All_Sharing</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Internal CMDF All Sharing</label>
-        <sharedTo>
-            <group>Core_All_Users_CCP_Internal</group>
-        </sharedTo>
-        <sharedFrom>
-            <group>Core_MDF_CCP_Channel_MDF_INTERNAL_All</group>
         </sharedFrom>
     </sharingOwnerRules>
     <sharingOwnerRules>

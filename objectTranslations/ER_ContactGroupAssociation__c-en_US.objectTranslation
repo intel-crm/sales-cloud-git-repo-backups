@@ -25,10 +25,6 @@
         <name>ER_Account__c</name>
     </fields>
     <fields>
-        <label><!-- Active CMF Count --></label>
-        <name>ER_Active_CMF_Count_Formula__c</name>
-    </fields>
-    <fields>
         <label><!-- Active --></label>
         <name>ER_Active__c</name>
     </fields>
@@ -81,19 +77,17 @@
         <name>ER_Phone__c</name>
     </fields>
     <fields>
-        <label><!-- Post Delete Association --></label>
-        <name>ER_Post_Delete_Association__c</name>
-        <relationshipLabel><!-- Contact Associations (Post Delete Association) --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Start Date --></label>
         <name>ER_StartDate__c</name>
     </fields>
+    <layouts>
+        <layout>ContactGroupAssociation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Only Active Contacts Can be Added to CMF Group --></errorMessage>
-        <name>ER_Allow_only_active_contacts</name>
-    </validationRules>
     <webLinks>
         <label><!-- Delete --></label>
         <name>Delete</name>

@@ -8,7 +8,7 @@
     <textOnly>业务帐户更新
 
 
-尊敬的 !%UserFirstName%!, :
+尊敬的 !%UserFirstName%!, ,
 
 本通知旨在告知您，已有个人选择开始与选定的英特尔® 授权总代理和/或英特尔® 认证供应商（服务提供商）共享英特尔® 合作伙伴联盟计划信息。
 
@@ -21,13 +21,13 @@
 
 
 如果您不同意此操作，或认为发生错误，可以修改选择或选择退出。
-如果您有任何疑问，请通过此电子邮箱与我们联系：programs@intel.com.
+如果您有任何疑问，请通过此电子邮箱与我们联系：programs@intel.com。
 
 谢谢！
 英特尔® 合作伙伴联盟团队
 
 发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} 英特尔公司版权所有
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
 隐私 | Cookies</textOnly>
     <type>custom</type>

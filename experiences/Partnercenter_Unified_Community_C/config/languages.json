@@ -7,7 +7,7 @@
     "fallbackLanguageId" : null,
     "id" : "e544034b-cb0f-4973-be69-f97a02ff5090",
     "isActive" : true,
-    "label" : "Chinese (Simplified) - &amp;amp;#20013;&amp;amp;#25991;&amp;amp;#65288;&amp;amp;#31616;&amp;amp;#20307;&amp;amp;#65289; (CN)",
+    "label" : "Chinese (Simplified) - 中文（简体） (CN)",
     "languageCode" : "zh",
     "type" : "language"
   }, {
@@ -15,7 +15,7 @@
     "fallbackLanguageId" : null,
     "id" : "2f7ae1f1-5a85-4c59-a20c-1b84e61f6665",
     "isActive" : true,
-    "label" : "Japanese - &#26085;&#26412;&#35486;",
+    "label" : "Japanese - 日本語",
     "languageCode" : "ja",
     "type" : "language"
   }, {
@@ -23,7 +23,7 @@
     "fallbackLanguageId" : null,
     "id" : "609091e6-2104-4dcd-9737-8623d551a1f3",
     "isActive" : true,
-    "label" : "French - fran&ccedil;ais",
+    "label" : "French - français",
     "languageCode" : "fr",
     "type" : "language"
   }, {
@@ -39,7 +39,7 @@
     "fallbackLanguageId" : null,
     "id" : "13215a1c-375b-48f4-946f-7f4cd8676514",
     "isActive" : true,
-    "label" : "Korean - &#54620;&#44397;&#50612;",
+    "label" : "Korean - 한국어",
     "languageCode" : "ko",
     "type" : "language"
   }, {
@@ -47,7 +47,7 @@
     "fallbackLanguageId" : null,
     "id" : "754487f0-7136-4a00-8177-94f566d2b1e0",
     "isActive" : true,
-    "label" : "Spanish - espa&ntilde;ol",
+    "label" : "Spanish - español",
     "languageCode" : "es",
     "type" : "language"
   }, {
@@ -55,7 +55,7 @@
     "fallbackLanguageId" : null,
     "id" : "7161dede-eaad-43cc-b0bf-ffd236934b60",
     "isActive" : true,
-    "label" : "Spanish (Mexico) - espa&ntilde;ol (MX)",
+    "label" : "Spanish (Mexico) - español (MX)",
     "languageCode" : "es",
     "type" : "language"
   }, {
@@ -63,7 +63,7 @@
     "fallbackLanguageId" : null,
     "id" : "baabed6e-2c61-48a6-8733-4481cc396ba2",
     "isActive" : true,
-    "label" : "Chinese (Traditional) - &#20013;&#25991;&#65288;&#32321;&#39636;&#65289; (TW)",
+    "label" : "Chinese (Traditional) - 中文（繁體） (TW)",
     "languageCode" : "zh",
     "type" : "language"
   }, {
@@ -79,7 +79,7 @@
     "fallbackLanguageId" : null,
     "id" : "f8ecc931-8b62-4f6a-8da5-7bdc30e58702",
     "isActive" : true,
-    "label" : "Russian - &#1088;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;",
+    "label" : "Russian - русский",
     "languageCode" : "ru",
     "type" : "language"
   }, {
@@ -87,7 +87,7 @@
     "fallbackLanguageId" : null,
     "id" : "0a738f00-4c24-40bb-9853-c8cc50423d70",
     "isActive" : true,
-    "label" : "Portuguese (Brazil) - portugu&ecirc;s (BR)",
+    "label" : "Portuguese (Brazil) - português (BR)",
     "languageCode" : "pt",
     "type" : "language"
   } ],

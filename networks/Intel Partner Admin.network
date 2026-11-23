@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Network xmlns="http://soap.sforce.com/2006/04/metadata">
-    <allowInternalUserLogin>false</allowInternalUserLogin>
+    <allowInternalUserLogin>true</allowInternalUserLogin>
     <allowMembersToFlag>false</allowMembersToFlag>
-    <changePasswordTemplate>Testt/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
+    <changePasswordTemplate>unfiled$public/CommunityChangePasswordEmailTemplate</changePasswordTemplate>
     <communityRoles/>
     <disablePvtPagesForPwdResetInLWR>false</disablePvtPagesForPwdResetInLWR>
     <disableReputationRecordConversations>false</disableReputationRecordConversations>
     <emailDomainSubstitutionEnabled>false</emailDomainSubstitutionEnabled>
-    <emailSenderAddress>wsm-postmaster@intel.com</emailSenderAddress>
-    <emailSenderName>Intel Corporation-NoReply</emailSenderName>
+    <emailSenderAddress>hemanta.k.patra@intel.com</emailSenderAddress>
+    <emailSenderName>Partner Lead Management</emailSenderName>
     <embeddedLoginEnabled>true</embeddedLoginEnabled>
     <enableApexCDNCaching>false</enableApexCDNCaching>
-    <enableCustomVFErrorPageOverrides>false</enableCustomVFErrorPageOverrides>
+    <enableCustomVFErrorPageOverrides>true</enableCustomVFErrorPageOverrides>
     <enableDirectMessages>true</enableDirectMessages>
     <enableExpFriendlyUrlsAsDefault>false</enableExpFriendlyUrlsAsDefault>
     <enableExperienceBundleBasedSnaOverrideEnabled>true</enableExperienceBundleBasedSnaOverrideEnabled>
     <enableGuestChatter>false</enableGuestChatter>
-    <enableGuestFileAccess>false</enableGuestFileAccess>
+    <enableGuestFileAccess>true</enableGuestFileAccess>
     <enableGuestMemberVisibility>false</enableGuestMemberVisibility>
     <enableImageOptimizationCDN>true</enableImageOptimizationCDN>
     <enableInvitation>false</enableInvitation>
@@ -32,34 +32,16 @@
     <enableTopicAssignmentRules>true</enableTopicAssignmentRules>
     <enableTopicSuggestions>false</enableTopicSuggestions>
     <enableUpDownVote>false</enableUpDownVote>
-    <forgotPasswordTemplate>Testt/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
+    <forgotPasswordTemplate>unfiled$public/CommunityForgotPasswordEmailTemplate</forgotPasswordTemplate>
     <gatherCustomerSentimentData>false</gatherCustomerSentimentData>
-    <headlessForgotPasswordTemplate>Testt/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
-    <headlessRegistrationTemplate>Testt/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
+    <headlessForgotPasswordTemplate>unfiled$public/CommunityHeadlessForgotPasswordTemplate</headlessForgotPasswordTemplate>
+    <headlessRegistrationTemplate>unfiled$public/CommunityHeadlessRegistrationTemplate</headlessRegistrationTemplate>
     <networkMemberGroups>
         <permissionSet>PMP_Internal_Intel_Admin</permissionSet>
-        <permissionSet>PMP_External_Partner_Admin</permissionSet>
-        <permissionSet>PMP_External_Lead_Development_Representative</permissionSet>
-        <permissionSet>PCC_EBV</permissionSet>
-        <permissionSet>PCC_Rutronik</permissionSet>
-        <permissionSet>PCC_Rutronik_Partner_User</permissionSet>
-        <permissionSet>PCC_Eastronics</permissionSet>
-        <permissionSet>PCC_Arrow_Electronics</permissionSet>
-        <permissionSet>PCC_AdlinkTech</permissionSet>
         <permissionSet>Core_DDR_Permission_Set</permissionSet>
-        <permissionSet>PCC_Advantech</permissionSet>
-        <permissionSet>PCC_Deal_Reg_Partner_Access</permissionSet>
         <profile>admin</profile>
         <profile>it admin</profile>
-        <profile>sales ops</profile>
-        <profile>ccp - core access</profile>
-        <profile>sales manager</profile>
-        <profile>sales rep-bb</profile>
-        <profile>sales rep-cw</profile>
-        <profile>smg/gmc read only</profile>
-        <profile>sales rep-bb-dual ips</profile>
-        <profile>a&amp;e user</profile>
-        <profile>ipa a&amp;e user</profile>
+        <profile>partner</profile>
     </networkMemberGroups>
     <networkPageOverrides>
         <changePasswordPageOverrideSetting>Standard</changePasswordPageOverrideSetting>
@@ -80,5 +62,5 @@
         <standardTab>Chatter</standardTab>
     </tabs>
     <urlPathPrefix>partneradmin</urlPathPrefix>
-    <welcomeTemplate>Testt/CommunityWelcomeEmailTemplate</welcomeTemplate>
+    <welcomeTemplate>unfiled$public/CommunityWelcomeEmailTemplate</welcomeTemplate>
 </Network>

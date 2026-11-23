@@ -18,9 +18,9 @@
             <field>Core_AAQC_On_Behalf_Of__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_owner_when_status_changes_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_owner_when_status_changes_HTML</template>
     </alerts>
     <alerts>
         <fullName>Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct</fullName>
@@ -30,33 +30,29 @@
             <field>Core_AAQC_Created_by_s_Manager_Email__c</field>
             <type>email</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct_HTML</template>
     </alerts>
     <alerts>
         <fullName>CEP_Case_Assignment</fullName>
-        <ccEmails>customer.excellence@intel.com</ccEmails>
-        <ccEmails>venu.karumuru@intel.com</ccEmails>
         <description>CEP Case Assignment - New</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>CEP_Case_Reminder</fullName>
-        <ccEmails>customer.excellence@intel.com</ccEmails>
-        <ccEmails>venu.karumuru@intel.com</ccEmails>
         <description>CEP Case Reminder - New</description>
         <protected>false</protected>
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>CEP_Email_Templates/Core_CEP_Case_Reminder</template>
     </alerts>
@@ -67,13 +63,12 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CEP_Case_Assignment</template>
+        <template>unfiled$public/CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_Requestor_s_Info</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Awaiting Requestor’s Info</description>
         <protected>false</protected>
         <recipients>
@@ -88,13 +83,12 @@
             <field>Core_AAQC_Requested_for__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requester_on_Status_Awaiting_Requestor_s_Info_H</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requester_on_Status_Awaiting_Requestor_s_Info_H</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_resolution_Confirmation</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requester on Status Equal to Awaiting resolution confirmation</description>
         <protected>false</protected>
         <recipients>
@@ -109,13 +103,12 @@
             <field>Core_AAQC_Requested_for__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Alert_to_Requester_on_Status_Awaiting_resoluton_Confirmation_HT</template>
+        <template>unfiled$public/Ask_Commissions_Alert_to_Requester_on_Status_Awaiting_resoluton_Confirmation_HT</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_on_Status_Equal_to_Cancelled</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor/owner  on Status Equal to Cancelled</description>
         <protected>false</protected>
         <recipients>
@@ -130,13 +123,12 @@
             <field>Core_AAQC_Requested_for__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_owner_on_Status_Equal_to_Cancelled_HTM</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_owner_on_Status_Equal_to_Cancelled_HTM</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Owner_Requester_on_New_case</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Owner/Requester on New case</description>
         <protected>false</protected>
         <recipients>
@@ -154,9 +146,9 @@
             <field>Core_AAQC_Requested_for__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Owner_Requester_on_New_case_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Owner_Requester_on_New_case_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Owner_on_case_Re_assignment</fullName>
@@ -176,13 +168,12 @@
             <field>Core_AAQC_On_Behalf_Of__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_AAQC_Notification_to_Owner_on_case_Re_assignment_HTML</template>
+        <template>unfiled$public/Core_AAQC_Notification_to_Owner_on_case_Re_assignment_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_AAQC_Notification_to_Requestor_on_Status_Equal_to_Closed</fullName>
-        <ccEmails>pritix.bhale@intel.com</ccEmails>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Closed</description>
         <protected>false</protected>
         <recipients>
@@ -197,9 +188,9 @@
             <field>Core_AAQC_Requested_for__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commissions_Notification_to_Requestor_on_Status_Equal_to_Closed_HTML</template>
+        <template>unfiled$public/Ask_Commissions_Notification_to_Requestor_on_Status_Equal_to_Closed_HTML</template>
     </alerts>
     <alerts>
         <fullName>Core_IPS_Case_Close_Notif_For_No_Assigned_Conact_Case</fullName>
@@ -208,7 +199,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -235,7 +226,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -265,7 +256,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -277,7 +268,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -292,7 +283,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -319,7 +310,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -338,7 +329,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -354,7 +345,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -365,7 +356,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -380,7 +371,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Agent</template>
     </alerts>
@@ -392,7 +383,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close</template>
     </alerts>
@@ -416,7 +407,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_No_Update</template>
     </alerts>
@@ -440,7 +431,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Close_Pending</template>
     </alerts>
@@ -452,7 +443,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -468,7 +459,7 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -484,7 +475,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -496,7 +487,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Attachment</template>
     </alerts>
@@ -508,7 +499,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Close_Survey</template>
     </alerts>
@@ -520,7 +511,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Create</template>
     </alerts>
@@ -532,7 +523,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -544,7 +535,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Update</template>
     </alerts>
@@ -564,7 +555,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -580,7 +571,7 @@
             <field>Core_IPS_Supported_Contact__c</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -592,7 +583,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External_Partner</template>
     </alerts>
@@ -604,7 +595,7 @@
             <recipient>IPS External Interested Party</recipient>
             <type>caseTeam</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_External_Reopen</template>
     </alerts>
@@ -616,7 +607,7 @@
             <field>Core_IPS_Partner_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_External</template>
     </alerts>
@@ -628,7 +619,7 @@
             <field>ContactId</field>
             <type>contactLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Ext_Close_Survey</template>
     </alerts>
@@ -640,7 +631,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -652,7 +643,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
     </alerts>
@@ -663,7 +654,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Assigned</template>
     </alerts>
@@ -686,7 +677,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -709,7 +700,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -721,7 +712,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_GEC</template>
     </alerts>
@@ -733,7 +724,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -748,7 +739,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -771,7 +762,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -794,7 +785,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -809,7 +800,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Close</template>
     </alerts>
@@ -824,7 +815,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Request_Reopen</template>
     </alerts>
@@ -835,7 +826,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Attachment</template>
     </alerts>
@@ -846,7 +837,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Close</template>
     </alerts>
@@ -857,7 +848,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Create</template>
     </alerts>
@@ -868,7 +859,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Reopen</template>
     </alerts>
@@ -879,7 +870,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -902,7 +893,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_Update</template>
     </alerts>
@@ -929,7 +920,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -956,7 +947,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Partner</template>
     </alerts>
@@ -983,7 +974,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1010,7 +1001,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1025,7 +1016,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Overdue</template>
     </alerts>
@@ -1040,7 +1031,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1055,7 +1046,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_Case_Internal_SLA_Reminder</template>
     </alerts>
@@ -1070,7 +1061,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1082,7 +1073,7 @@
             <field>Core_Intel_Sup_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1093,7 +1084,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1108,7 +1099,7 @@
             <field>Core_Case_Co_Owner__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_Private</template>
     </alerts>
@@ -1119,7 +1110,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal</template>
     </alerts>
@@ -1128,27 +1119,11 @@
         <description>Core IPS MAG Questionnaire Completed Notif</description>
         <protected>false</protected>
         <recipients>
-            <field>ContactEmail</field>
-            <type>email</type>
-        </recipients>
-        <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates_PSG_Onboarding/Core_IPS_Case_Internal_No</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Case_notification_to_Claim_Owner</fullName>
-        <description>Case notification to Claim Owner</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/Core_MDF_Claim_Status_Changed_Notify</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Email_Alert_Before_15_Days_of_Document_Submission_Deadline_Date</fullName>
@@ -1158,9 +1133,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUploadBefore15Days</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUploadBefore15Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Email_Alert_Before_5_Days_of_Document_Submission_Deadline_Date</fullName>
@@ -1170,81 +1145,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUploadBefore5Days</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Email_Alert_Retail</fullName>
-        <description>Core_MDF_Email Alert Retail</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_Retail</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Email_Alert_Retail_RSA_MD</fullName>
-        <description>Core_MDF_Email Alert Retail	RSA MD</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocumentUpload_Retail_RSA</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_IPA_Case_Cancel_External</fullName>
-        <description>Core_MDF_IPA_Case_Cancel_External</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnIPACaseCancel_External</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_IPA_Email_Alert_1</fullName>
-        <description>Core_MDF_IPA_Email_Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_IPA_External</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_IPA_Email_Alert_2</fullName>
-        <description>Core_MDF_IPA_Email_Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_IPA_External</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_IPA_Immediate_Email_Alert</fullName>
-        <description>Core_MDF_IPA_Immediate_Email_Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Imm_NotifyDocUpload_IPA_Ext</template>
+        <template>unfiled$public/Core_MDF_NotifyDocUploadBefore5Days</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Immediate_Email_Alert</fullName>
@@ -1254,9 +1157,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocumentUpload</template>
+        <template>unfiled$public/Core_MDF_NotifyDocumentUpload</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyCaseOwnersOnMessage</fullName>
@@ -1265,9 +1168,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Submitter_Message</template>
+        <template>unfiled$public/Core_MDF_Claim_Submitter_Message</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_NotifyClaimCaseReviewerOnMessage</fullName>
@@ -1277,21 +1180,9 @@
             <field>Core_MDF_Claim_Case_Reviewer_Lookup__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Claim_Submitter_Message</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_NotifyRetailClaimSubmitterOnCaseClosure</fullName>
-        <description>Notify Retail Claim Submitter on Case Closure</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnRetailCaseClosure</template>
+        <template>unfiled$public/Core_MDF_Claim_Submitter_Message</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Claim_Submitter_on_Case_cancellation</fullName>
@@ -1301,33 +1192,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyonCaseCancellation</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Closure</fullName>
-        <description>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Closure</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyOnIPACaseClosure_External</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Creation</fullName>
-        <description>Core_MDF_Notify_IPA_Claim_Submitter_On_Case_Creation</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_IPA_CaseCreation_External</template>
+        <template>unfiled$public/Core_MDF_NotifyonCaseCancellation</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notifying_Partner_for_Claim_Review_Status_Notice</fullName>
@@ -1337,9 +1204,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Email_for_Claim_Review_Notice</template>
+        <template>unfiled$public/Core_MDF_Email_for_Claim_Review_Notice</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notifying_Partner_on_Case_creation_with_Under_Review_Status</fullName>
@@ -1349,21 +1216,9 @@
             <field>Core_MDF_Claim_Submitter__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyonCaseCreation</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Retail_Immediate_Email_Alert</fullName>
-        <description>Core_MDF_Retail_Immediate Email Alert</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyDocUpload_ImmediateRetail</template>
+        <template>unfiled$public/Core_MDF_NotifyonCaseCreation</template>
     </alerts>
     <alerts>
         <fullName>Email_Case_Owner</fullName>
@@ -1372,9 +1227,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>customer.excellence@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/CEP_Case_Assignment</template>
+        <template>unfiled$public/CEP_Case_Assignment</template>
     </alerts>
     <alerts>
         <fullName>Notification_to_the_Owner_created_by_when_the_Case_comment_is_added</fullName>
@@ -1383,9 +1238,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Ask_Commission_Notification_Case_Comment_is_Updated_HTML</template>
+        <template>unfiled$public/Ask_Commission_Notification_Case_Comment_is_Updated_HTML</template>
     </alerts>
     <fieldUpdates>
         <fullName>Ask_Commissions_Assigning_Case_to_Triage</fullName>
@@ -1906,19 +1761,8 @@ Core_IPS_Promote_Count_Inbound__c + 1
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_MDF_CCP_Update_Reminder_Notif_2</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>2</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_MDF_Change_status_to_Non_Compliant</fullName>
-        <field>Core_MDF_Status__c</field>
+        <field>Core_MDF_Review_Case_Status__c</field>
         <literalValue>Non-compliant</literalValue>
         <name>Change status to Non-Compliant</name>
         <notifyAssignee>false</notifyAssignee>
@@ -1927,142 +1771,10 @@ Core_IPS_Promote_Count_Inbound__c + 1
         <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_MDF_RSA_Update_Reminder_Notif_1</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>1</formula>
-        <name>Update Reminder Notification 1</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_RSA_Update_Reminder_Notif_2</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>2</formula>
-        <name>Update Reminder Notification 2</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_RSA_Update_Reminder_Notif_3</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>3</formula>
-        <name>Update Reminder Notification 3</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_RSA_Update_Reminder_Notif_4</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>4</formula>
-        <name>Update Reminder Notification 4</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Retail_Update_Reminder_Notif_1</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>1</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Retail_Update_Reminder_Notif_2</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>2</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Retail_Update_Reminder_Notif_3</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>3</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Retail_Update_Reminder_Notif_4</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>4</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Update_CCP_Reminder_Notif_1</fullName>
-        <description>Update Reminder Notification field on Case</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>1</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Update_Reminder_Notification_1</fullName>
-        <description>Update the Reminder Notification Field</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>1</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Update_Reminder_Notification_2</fullName>
-        <description>Update Reminder Notification Field</description>
-        <field>Core_MDF_Reminder_Notification_Nbr__c</field>
-        <formula>2</formula>
-        <name>Update Reminder Notification</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_MDF_Update_Review_Case_Status</fullName>
         <field>Core_MDF_Status__c</field>
         <literalValue>Pending Documents</literalValue>
         <name>Core MDF Update Review Case Status</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Update_Status_to_Non_Compliant</fullName>
-        <description>Change case status to Non-Compliant</description>
-        <field>Core_MDF_Review_Case_Status__c</field>
-        <literalValue>Non-compliant</literalValue>
-        <name>Update Status to Non Compliant</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
@@ -2134,7 +1846,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseFieldUpdate_Backend_OutMsg</fullName>
         <apiVersion>35.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseObjectUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2147,7 +1859,7 @@ null
     <outboundMessages>
         <fullName>Core_IPS_CaseStatusUpdate_Backend_OutMsg</fullName>
         <apiVersion>38.0</apiVersion>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
@@ -2164,7 +1876,7 @@ null
         <fullName>Core_IPS_Case_Backend_OutMsg</fullName>
         <apiVersion>34.0</apiVersion>
         <description>Backend Case Outbound Message</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCasePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_ID__c</fields>
         <fields>Id</fields>
@@ -2178,7 +1890,7 @@ null
         <fullName>Core_IPS_Case_Depromote_Backend_OutMsg</fullName>
         <apiVersion>41.0</apiVersion>
         <description>Backend depromotion outbound messages</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseDePromote</endpointUrl>
         <fields>CaseNumber</fields>
         <fields>Core_IPS_Backend_Previous_Status__c</fields>
         <fields>Id</fields>
@@ -2194,7 +1906,7 @@ null
             <name>UpdateCaseAutoCloseDate</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions - Case Auto close based on Time frame allotted to reply, before system automatically closes open case</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;, ISPICKVAL(Status ,&apos;Awaiting Resolution Confirmation&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2205,7 +1917,7 @@ null
             <name>Ask_Commissions_Notification_to_Manager_when_assigned_by_Direct</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;, NOT(ISBLANK( Core_AAQC_Created_by_s_Manager_Email__c )))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
@@ -2219,7 +1931,7 @@ null
             <name>OwnerUpdatedYes</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Assigning Case to Triage Group on case Creation</description>
         <formula>AND(RecordType.DeveloperName==&apos;Core_AAQC_Case_recordType&apos;, ISPICKVAL(Status,&apos;New&apos;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2230,7 +1942,7 @@ null
             <name>Notification_to_the_Owner_created_by_when_the_Case_comment_is_added</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>US110977 - E-mail sent to Case owner when End User responds</description>
         <formula>AND( RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;, ISCHANGED( Core_AAQC_Case_Comment_Id__c ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2241,7 +1953,7 @@ null
             <name>Core_AAQC_Changing_Status_on_Owner_Chang</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Changing Status to assigned when Owner Changes and Status is New</description>
         <formula>AND(RecordType.DeveloperName==&apos;Core_AAQC_Case_recordType&apos;,ISPICKVAL( Status , &apos;New&apos;),ISCHANGED(OwnerId),NOT(ISPICKVAL( PRIORVALUE( Status ), &quot;Draft&quot; )))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2252,7 +1964,7 @@ null
             <name>Ask_Commissions_Email_is_sent_to_owner_when_the_status_field_updates</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Email is sent to owner/creator when the status is updated</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;, ISCHANGED(Status), NOT(ISNEW()))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2263,7 +1975,7 @@ null
             <name>Core_AAQC_Notification_to_Owner_on_case_Re_assignment</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Notification to Owner on Case Reassignment</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;, NOT(ISNEW()) ,ISCHANGED( OwnerId ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2274,7 +1986,7 @@ null
             <name>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_resolution_Confirmation</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Notification to Requester on Status Equal to Awaiting resolution Confirmation</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;,ISPICKVAL(Status ,&apos;Awaiting Resolution Confirmation&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2285,7 +1997,7 @@ null
             <name>Core_AAQC_Notification_on_Status_Equal_to_Awaiting_Requestor_s_Info</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Awaiting Requestor’s Info</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;,ISPICKVAL(Status ,&apos;Awaiting Requestor’s Info&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2296,7 +2008,7 @@ null
             <name>Core_AAQC_Notification_to_Requestor_on_Status_Equal_to_Closed</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Notification to Requestor on Status Equal to Closed</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;,ISPICKVAL(Status ,&apos;Closed&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2307,10 +2019,30 @@ null
             <name>Core_AAQC_Notification_on_Status_Equal_to_Cancelled</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Ask Commissions-Notification to Requestor/owner  on Status Equal to Cancelled</description>
         <formula>AND(RecordType.DeveloperName ==&apos;Core_AAQC_Case_recordType&apos;,ISPICKVAL(Status ,&apos;Cancelled&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>CEP Case Assignment</fullName>
+        <actions>
+            <name>Queue_Assignment</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>CEP Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.OwnerId</field>
+            <operation>equals</operation>
+            <value>Integration User</value>
+        </criteriaItems>
+        <description>CEP Case Assignment when contact owner not assigned</description>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>CEP Case Notification</fullName>
@@ -2337,14 +2069,432 @@ null
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
+        <fullName>CEP Case Reminder - New</fullName>
+        <active>false</active>
+        <formula>AND ( CONTAINS(RecordType.Name, &apos;CEP Case&apos;), ISPICKVAL(Status, &apos;Open&apos;) || ISPICKVAL(Status, &apos;New&apos;) )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>CEP_Case_Reminder</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Case.CreatedDate</offsetFromField>
+            <timeLength>3</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
         <fullName>Core IPS Case Escalated Date Stamp</fullName>
         <actions>
             <name>Core_IPS_Case_Escalated_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Case Escalated Date value needs to be stamped with Escalated Level changes</description>
         <formula>AND(ISCHANGED( Core_IPS_Escalated_Level__c ),OR(ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Level 2&quot;),			ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Level 3&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Domain Expert&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Engineering&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 1 / Front Line&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 2&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Level 3&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Domain Expert&quot;),ISPICKVAL(Core_IPS_Escalated_Level__c,&quot;Consult Engineering&quot;)))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Non-SA Assigned</fullName>
+        <actions>
+            <name>Core_IPS_Case_Non_SA_Assigned</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>notEqual</operation>
+            <value>IPS No Assigned Contact Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Self_Assigned__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ProfileId</field>
+            <operation>notEqual</operation>
+            <value>IPS Data Migration</value>
+        </criteriaItems>
+        <description>IPS Case Non-SA: When new Case is created/updated with record type other than Self Assigned then uncheck the checkbox field named Self Assigned.
+
+(Case: Case Record TypeNOT EQUAL TOIPS Case Create Self Assigned) AND (Case: Self AssignedEQUALSTrue)</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif DCG Restricted Secret</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_DCG_RS_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Core_Product_Organization__c</field>
+            <operation>equals</operation>
+            <value>Data Center</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Contact Attachment WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Contact_Attachment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that a file has been attached to their Case.</description>
+        <formula>AND(RecordTypeId=&apos;012o0000000TPVh&apos;,  OR(ISPICKVAL( Status ,&apos;Open&apos;),ISPICKVAL( Status ,&apos;New&apos;)),  Core_IPS_File_Attachment_Flag__c , Core_IPS_Is_Notification_Active__c , Contact.Core_IPS_Active__c , NOT(Contact.Core_IPS_Email_Opt_Out__c) , Core_IPS_Customer_Visible__c,$Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Contact Close WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Contact_Close_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that their Case has been Closed.</description>
+        <formula>AND( ISCHANGED( Status ), ISPICKVAL( Status , &quot;Closed&quot;), Core_IPS_Is_Notification_Active__c = TRUE, OR(RecordType.Name = &quot;IPS Case Create&quot;, RecordType.Name = &quot;IPS Closed Case&quot;,RecordType.Name = &quot;IPS No Assigned Contact Case&quot;, RecordType.Name = &quot;IPS GEC ReadOnly&quot; ),  Contact.Core_IPS_Active__c = TRUE,  Contact.Core_IPS_Email_Opt_Out__c = FALSE, Core_IPS_Customer_Visible__c = TRUE  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Contact Create WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Contact_Create_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS Case Create,IPS GEC ReadOnly</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.Core_IPS_Email_Opt_Out__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Is_Notification_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Contact.Core_IPS_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Customer_Visible__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that their Case has been Created.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Contact Reopen WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Contact_Reopen_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that their Case has been Reopened.</description>
+        <formula>AND(  OR( RecordType.Name = &quot;IPS Case Create&quot;, RecordType.Name = &quot;IPS Closed Case&quot;), ISCHANGED(Status),  OR(ISPICKVAL(Status,&quot;Open&quot;),ISPICKVAL(Status,&quot;New&quot;)),  ISPICKVAL(PRIORVALUE(Status),&quot;Closed&quot;),  Contact.Core_IPS_Active__c = TRUE,  Contact.Core_IPS_Email_Opt_Out__c = FALSE,  Core_IPS_Is_Notification_Active__c = TRUE, Core_IPS_Customer_Visible__c = TRUE  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Contact Update WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Contact_Update_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that an Update has been made on their Case.</description>
+        <formula>AND( $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;,RecordType.Name = &apos;IPS Case Create&apos;, Contact.Core_IPS_Email_Opt_Out__c = FALSE,  Contact.Core_IPS_Active__c = TRUE,  Core_IPS_Is_Notification_Active__c = TRUE,  OR(ISPICKVAL(Status, &apos;New&apos;), ISPICKVAL(Status, &apos;Open&apos;)), ISCHANGED( Core_Last_Case_Comment__c ), Core_IPS_Customer_Visible__c = TRUE )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Int Close WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Close_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, Internal and External Interested Parties letting them know that their Case has been Closed.</description>
+        <formula>AND(   ISCHANGED( Status ),  ISPICKVAL( Status , &quot;Closed&quot;),  Core_IPS_Is_Notification_Active__c = TRUE, OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id, RecordTypeId = $Label.Core_IPS_GEC_ReadOnly_RT_Id ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Int Close WF2 - External Only</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Close_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, Internal and External Interested Parties letting them know that their Case has been Closed.</description>
+        <formula>AND(   ISCHANGED( Status ),  ISPICKVAL( Status , &quot;Closed&quot;),  Core_IPS_Is_Notification_Active__c = TRUE, OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id, RecordTypeId = $Label.Core_IPS_GEC_ReadOnly_RT_Id ),  Core_IPS_Customer_Visible__c = TRUE )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Int Comment WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Comment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Case Co-Owner, Intel Support Owner, Internal and External Interested Parties letting them know that an Update has been made on their Case.</description>
+        <formula>AND($Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;, OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id ), OR(ISPICKVAL(Status, &apos;New&apos;), ISPICKVAL(Status, &apos;Open&apos;)), Core_IPS_Is_Notification_Active__c = TRUE, ISCHANGED( Core_Last_Case_Comment__c ), Core_IPS_Customer_Visible__c = TRUE )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Int Reopen WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Reopen_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, Internal and External Interested Parties letting them know that their Case has been Reopened.</description>
+        <formula>AND( OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id), ISCHANGED(Status), OR(ISPICKVAL(Status,&quot;Open&quot;),ISPICKVAL(Status,&quot;New&quot;)), ISPICKVAL(PRIORVALUE(Status),&quot;Closed&quot;), Core_IPS_Is_Notification_Active__c =TRUE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Ext Int Reopen WF2 -External Only</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Ext_Reopen_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, Internal and External Interested Parties letting them know that their Case has been Reopened.</description>
+        <formula>AND( OR(RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id), ISCHANGED(Status), OR(ISPICKVAL(Status,&quot;Open&quot;),ISPICKVAL(Status,&quot;New&quot;)), ISPICKVAL(PRIORVALUE(Status),&quot;Closed&quot;), Core_IPS_Is_Notification_Active__c =TRUE,  Core_IPS_Customer_Visible__c = TRUE)</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif External Contact Close WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_External_Contact_Close_Survey</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the External Contact letting them know that their Case has been Closed with Survey link</description>
+        <formula>AND(  	 ISCHANGED( Status ),  	 ISPICKVAL( Status , &quot;Closed&quot;),  	 Core_IPS_Is_Notification_Active__c = TRUE,  	 CONTAINS(RecordType.Name,&apos;IPS&apos;),           Contact.Core_IPS_Active__c = TRUE,  	 Contact.Core_IPS_Email_Opt_Out__c = FALSE, 	 Core_IPS_Customer_Visible__c = TRUE     )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int GEC Case WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_GEC_Create_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow kicks off when a case is created on a MAG account.</description>
+        <formula>IF(AND($Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;,Contact.Account.Core_Military_Aerospace_and_Government__c = TRUE, Core_IPS_GEC_Flag__c = TRUE, Core_IPS_Is_Notification_Active__c = TRUE),TRUE,FALSE)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int GEC Create WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_GEC_Create_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>IF(AND(Contact.Account.Core_Military_Aerospace_and_Government__c = TRUE, Core_IPS_GEC_Flag__c = TRUE),TRUE,FALSE)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int ISO Create WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_ISO_Create_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS Case Create,IPS GEC ReadOnly</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Is_Notification_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ProfileId</field>
+            <operation>notEqual</operation>
+            <value>IPS Data Migration</value>
+        </criteriaItems>
+        <description>IPS Case Notification: Workflow sends email notification to the Intel Support Owner letting them know that a Contact they oversee has Created a Case.</description>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int Owner Attachment WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Owner_Attachment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, and Internal Interested Parties letting them know that a File has been attached to their Case.</description>
+        <formula>AND(RecordTypeId=&apos;012o0000000TPVh&apos;, OR(ISPICKVAL( Status ,&apos;Open&apos;),ISPICKVAL( Status ,&apos;New&apos;)), Core_IPS_File_Attachment_Flag__c , Core_IPS_Is_Notification_Active__c,$Profile.Name &lt;&gt; &apos;IPS Data Migration&apos; )</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int Private Comment</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Private_Comment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND( OR( RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id,RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id ), OR(ISPICKVAL(Status, &quot;New&quot;), ISPICKVAL(Status, &quot;Open&quot;)), Core_IPS_Is_Notification_Active__c = TRUE, ISCHANGED(  Core_Last_Private_Case_Comment__c  ))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int Request Close WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Request_Close_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND(OR( RecordType.Name = &quot;IPS Case Create&quot;, RecordType.Name = &quot;IPS Closed Case&quot;,RecordType.Name = &quot;IPS No Assigned Contact Case&quot; ), Core_IPS_Is_Notification_Active__c = TRUE,  ISCHANGED(Core_Sub_Status__c),  ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Close&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int Request Reopen WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Request_Reopen_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND( Core_IPS_Is_Notification_Active__c = TRUE,  ISCHANGED(Core_Sub_Status__c),  ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Reopen&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int SA Attachment WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_SA_Attachment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the internal Case Creator(Self Assigned Case) letting them know that a File has been attached to their Case.</description>
+        <formula>AND(RecordTypeId=&apos;012o0000000TPVg&apos;, OR(ISPICKVAL( Status ,&apos;Open&apos;),ISPICKVAL( Status ,&apos;New&apos;)), Core_IPS_Self_Assigned__c,  Core_IPS_File_Attachment_Flag__c , Core_IPS_Is_Notification_Active__c,$Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int SA Closed WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_SA_Closed_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Is_Notification_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>User.ProfileId</field>
+            <operation>notEqual</operation>
+            <value>IPS Data Migration</value>
+        </criteriaItems>
+        <description>IPS Case Notification: Workflow sends email notification to the internal Case Creator(Self Assigned Case) letting them know that their Case has been Closed.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int SA Create WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_SA_Create_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>New</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Is_Notification_Active__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </criteriaItems>
+        <description>IPS Case Notification: Workflow sends email notification to the internal Case Creator(Self Assigned Case) letting them know that their Case has been Created.</description>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int SA Reopen WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_SA_Reopen_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the internal Case Creator(Self Assigned Case) letting them know that their Case has been Reopened.</description>
+        <formula>AND( RecordType.Name = &quot;IPS No Assigned Contact Case&quot;, ISCHANGED(Status), ISPICKVAL(Status,&quot;Closed&quot;), ISPICKVAL(PRIORVALUE(Status),&quot;Open&quot;) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int SA Update WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_SA_Update_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the internal Case Creator(Self Assigned Case) when Case Owner and Case creator are different letting them know that an Update has been made on their Case.</description>
+        <formula>AND(  $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id, OR(ISPICKVAL(Status, &quot;New&quot;), ISPICKVAL(Status, &quot;Open&quot;)), Core_IPS_Is_Notification_Active__c = TRUE, ISCHANGED( Core_Last_Case_Comment__c ),OwnerId &lt;&gt; CreatedById )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case Notif Int Update WF</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Update_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>IPS Case Notification: Workflow sends email notification to the Case Owner, Comm. Owner, Intel Support Owner, and Internal Interested Parties letting them know that an Update has been made on their Case and Case Comment(Core IPS Case Notif Ext Int ComWF).</description>
+        <formula>/*---------------------------Commented to optimize triggering of multiple notifications----------------------------------- AND( OR( RecordType.Name = &quot;IPS Case Create&quot;, RecordType.Name = &quot;IPS Closed Case&quot;,RecordType.Name = &quot;IPS No Assigned Contact Case&quot;, RecordType.Name = &quot;IPS GEC ReadOnly&quot; ), NOT(OR(ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Close&quot;) , ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Reopen&quot;))), OR( ISCHANGED(ContactId), ISCHANGED(AssetId), ISCHANGED(Core_IPS_Project_Case__c), ISCHANGED(Core_Sub_Status__c) ), Core_IPS_Is_Notification_Active__c = TRUE ) -------------------------------------------------------------------------------------------------------------------*/    AND(Core_IPS_Is_Notification_Active__c = TRUE,   	IF(  		OR( RecordTypeId = $Label.Core_IPS_Case_Create_RecordType_Id, RecordTypeId = $Label.Core_IPS_Closed_Case_RT_Id, RecordTypeId = $Label.Core_IPS_No_Assigned_Contact_Case_RT_Id), 		 		OR( ISCHANGED(Core_Severity__c ),  		 			AND( OR(ISPICKVAL(Status, &quot;New&quot;), ISPICKVAL(Status, &quot;Open&quot;) ), ISCHANGED( Core_Last_Case_Comment__c ) ), 			 			AND( NOT( OR(ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Close*&quot;) , 		ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Reopen&quot;) ) ), 			 				OR( ISCHANGED(ContactId), ISCHANGED(AssetId), ISCHANGED(Core_IPS_Project_Case__c),  				 					AND ( NOT(ISPICKVAL((PRIORVALUE(Core_Sub_Status__c)), &quot;Close-Pending&quot;)),ISCHANGED(Core_Sub_Status__c) ) 				 					 				)  			)  		), 		 		AND(RecordTypeId = $Label.Core_IPS_GEC_ReadOnly_RT_Id,  			OR( ISCHANGED(ContactId), ISCHANGED(AssetId), ISCHANGED(Core_IPS_Project_Case__c),  			 				AND ( NOT(ISPICKVAL((PRIORVALUE(Core_Sub_Status__c)), &quot;Close-Pending&quot;)),ISCHANGED(Core_Sub_Status__c) ),  			 				ISCHANGED(Core_Severity__c )  			),  			 			NOT( OR(ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Close*&quot;) , ISPICKVAL(Core_Sub_Status__c, &quot;Customer Requesting Reopen&quot;) ) )  		 		)  	 	)  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Case SA Assigned</fullName>
+        <actions>
+            <name>Core_IPS_Self_Assigned_To_True</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.Core_IPS_Self_Assigned__c</field>
+            <operation>equals</operation>
+            <value>False</value>
+        </criteriaItems>
+        <description>IPS Case SA: When a Case is created/updated with record type as Self Assigned then tick the checkbox field named Self Assigned.</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -2369,7 +2519,7 @@ null
             <name>Core_IPS_Updates_the_GEC_Flag_to_true</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.Core_IPS_GEC_Case__c</field>
             <operation>equals</operation>
@@ -2389,12 +2539,67 @@ null
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
+        <fullName>Core IPS GEC Status For Approved</fullName>
+        <actions>
+            <name>Core_IPS_GEC_Flow_Approve_Status_Change</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_IPS_GEC_Is_Stopped_False</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_IPS_GEC_Sub_Status_Changed_To_Blank</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_IPS_Main_Status_As_New</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>When GEC team sets the GEC Status = Approved then the Main Case Status automatically should be changed to New, IsStopped becomes False and Record Type is changed to IPS Case Create.</description>
+        <formula>IF(AND(ISPICKVAL(Core_IPS_GEC_Status__c,&apos;Approved&apos;), OR(Core_IPS_GEC_Case__c = TRUE,Core_IPS_GEC_Flag__c = TRUE)),TRUE,FALSE)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS GEC Status For Permanent Hold</fullName>
+        <actions>
+            <name>Core_IPS_Closed_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>When GEC team sets the GEC Status = Not Approved, then the main case Status automatically is changed to Closed.</description>
+        <formula>IF(AND(ISPICKVAL(Core_IPS_GEC_Status__c,&apos;Not Approved&apos;), OR(Core_IPS_GEC_Flag__c = TRUE, Core_IPS_GEC_Case__c = TRUE)),TRUE,FALSE)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core IPS Update case Origin for Customers</fullName>
+        <actions>
+            <name>Core_IPS_Update_case_Origin_for_Customer</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <formula>ISPICKVAL($User.UserType,&apos;PowerCustomerSuccess&apos;)</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core MDF Update Review Case Status</fullName>
+        <actions>
+            <name>Core_MDF_Update_Review_Case_Status</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <description>Review Case Status will be updated to Pending Documents once the required more document checkbox checked.</description>
+        <formula>IF(RecordType.DeveloperName==&apos;Core_MDF_Audit&apos; &amp;&amp; Core_MDF_More_Documentation_Required__c , true, false)</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
         <fullName>Core_IPS_Backend_Promotion_Outbound_Capture</fullName>
         <actions>
             <name>Core_IPS_Case_Promote_Count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture the outbound case promotion details</description>
         <formula>AND(Core_IPS_Backend_System__c &lt;&gt; null, Core_IPS_Backend_ID__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false ,Core_IPS_BK_Flds_UpdatedAt__c &lt;&gt; Core_IPS_BK_Flds_UpdatedAt_PreVal__c , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) )  || AND(Core_IPS_Backend_System__c &lt;&gt; null, Core_IPS_Backend_ID__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c = false , Core_IPS_Backend_Previous_Status__c &lt;&gt; null, Core_IPS_Backend_Previous_Status__c &lt;&gt; &apos;&apos;, OR(ISCHANGED(Core_IPS_Backend_Previous_Status__c), ISCHANGED(Core_Sub_Status__c)) , ($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2409,7 +2614,7 @@ null
             <name>Core_IPS_Case_Promote_Inbound_Count</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture case promotion success details</description>
         <formula>ISCHANGED( Core_Promote_Status__c ) &amp;&amp; ISPICKVAL(Core_Promote_Status__c , &apos;DONE&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2424,10 +2629,41 @@ null
             <name>Core_IPS_BK_Promote_Start_DateTime</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This WF capture the case promotion details</description>
         <formula>AND( (($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)|| CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;)),Core_IPS_Backend_ID__c == null,  Core_IPS_Backend_System__r.Core_IPS_Backend_Connection_String__c &lt;&gt; null, Core_IPS_Backend_System__r.Core_IPS_Deactivated__c  = false,  ISPICKVAL( Core_Promote_Status__c , &apos;In Progress&apos;) , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ( ISBLANK(TEXT(Core_IPS_GEC_Status__c)) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved&apos;) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved with Guardrails&apos;))  )</formula>
         <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_CaseClassification</fullName>
+        <actions>
+            <name>Core_IPS_CaseClassification</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>The Classification value should default to &apos;Intel Confidential&apos; if the Account on the Case has an NDA. The Classification value should set to &apos;Public&apos; if the Account on the Case has no NDA.</description>
+        <formula>AND($Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;,NOT(ISBLANK( Account.Core_CNDA_Number__c )))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_CaseClose_RecTypeChange</fullName>
+        <actions>
+            <name>Core_IPS_Chg_to_Case_Closed_Record_type</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Status</field>
+            <operation>equals</operation>
+            <value>Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Case.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>IPS No Assigned Contact Case,IPS Case Create,IPS GEC ReadOnly,IPS Case Read Only</value>
+        </criteriaItems>
+        <description>When an IPS Case status = Closed, change the record type to Case Closed.</description>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_IPS_Case_Backend_WF</fullName>
@@ -2438,7 +2674,7 @@ null
         <active>false</active>
         <description>This work rule sends outbound message for a Case required to be promoted to backend System (JIRA, HSD ES..etc)</description>
         <formula>AND( (($Profile.Name &lt;&gt; &apos;Integration&apos; &amp;&amp; $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;)|| CONTAINS($User.Username, &apos;ips.file.integrationuser&apos;)),Core_IPS_Backend_ID__c == null,  Core_IPS_Backend_System__c !=null,  ISPICKVAL( Core_Promote_Status__c , &apos;In Progress&apos;) , NOT(ISPICKVAL( Status , &apos;Closed&apos;)), ( ISBLANK(TEXT(Core_IPS_GEC_Status__c)) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved&apos;) || ISPICKVAL( Core_IPS_GEC_Status__c, &apos;Approved with Guardrails&apos;))  )</formula>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_IPS_Case_Backend_depromotion_WF</fullName>
@@ -2468,9 +2704,20 @@ null
             <name>Core_IPS_Update_Custom_Case_Queue_Field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>rule to auto-populate the Last Assigned Queue field on case.  Only assigns a value when case owner is set to a queue and then again anytime the owner changes to a different queue.</description>
         <formula>AND(Owner:Queue.Id &lt;&gt; NULL, CONTAINS(RecordType.DeveloperName, &quot;IPS_&quot;),Or(ISCHANGED(OwnerId), Isnew()))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_Case_Send_Assignment_Notification</fullName>
+        <actions>
+            <name>Core_IPS_Case_Notif_Int_Assignment_EA</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>Sends IPS case assignment emails whenever: A new case is created, a case owner is changed, or the product on a case is changed.  Will exclude sending emails to a queue if the queue is in the exclusion custom label: Core_IPS_Case_Q_Exclude_Asgnmt_Email</description>
+        <formula>AND(   $Profile.Name &lt;&gt; &apos;IPS Data Migration&apos;, /*Case must be of IPS record type */  CONTAINS(RecordType.DeveloperName, &apos;IPS_&apos;),  /*Ignore cases that specifically want notifications disabled by the the Migration Team */  Core_IPS_Is_Notification_Active__c,  /*If case owner is a queue and not a user then check if the queue id is in the queue notification exclusion list stored in custom label - if so, do not send notification */  IF(ISBLANK(Owner:Queue.Id), TRUE, NOT (CONTAINS($Label.Core_IPS_Case_Q_Exclude_Asgnmt_Email,Owner:Queue.DeveloperName))),  /*Case must also be new or have an owner change or a product change in order to send notification*/ OR( ISNEW(),ISCHANGED(OwnerId),ISCHANGED(Core_IPS_Product__c) ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -2486,7 +2733,7 @@ null
     </rules>
     <rules>
         <fullName>Core_IPS_Set_Status_Closed_after_20Days_ClosePending</fullName>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.Core_Sub_Status__c</field>
             <operation>equals</operation>
@@ -2527,7 +2774,7 @@ null
             <name>Core_IPS_Uncheck_Customer_Visible</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Case.RecordTypeId</field>
             <operation>equals</operation>
@@ -2537,23 +2784,167 @@ null
         <triggerType>onCreateOnly</triggerType>
     </rules>
     <rules>
-        <fullName>Core_MDF Notifications to Partner of Documents Required v2</fullName>
+        <fullName>Core_IPS_Update Case Request Close Status</fullName>
+        <actions>
+            <name>Core_IPS_Update_Case_Request_Close_Stat</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_IPS_Update_Case_Request_Close_Statu</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Case.Core_Request_Case_Close__c</field>
+            <operation>equals</operation>
+            <value>Close Case</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_UpdateCloseCaseRecordtype</fullName>
+        <actions>
+            <name>Core_IPS_UpdateCloseCaseRecordtype</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Update the record type  of the case after  the un-assigned case is re-open</description>
+        <formula>AND(RecordType.DeveloperName = &apos;IPS_Closed_Case&apos;,ISPICKVAL(PRIORVALUE(Status),  &apos;Closed&apos;),NOT(ISPICKVAL(Status,&apos;Closed&apos;)) ,OR(ContactId=null,ContactId=&apos;&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_UpdateCloseCaseRecordtypeWithContact</fullName>
+        <actions>
+            <name>Core_IPS_UpdateCloseCaseRecordtypeWithCo</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Update the record type  of the case after  the un-assigned case is re-open</description>
+        <formula>AND ( $User.ProfileId &lt;&gt; &apos;00e7A000000DfHp&apos;,  ( AND(Core_IPS_Self_Assigned__c=false ,NOT(ISNEW()),RecordType.DeveloperName = &apos;IPS_Closed_Case&apos;,ISPICKVAL(PRIORVALUE(Status),  &apos;Closed&apos;),NOT(ISPICKVAL(Status,&apos;Closed&apos;)),ContactId!=null) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_IPS_UpdateCloseCaseRecordtypeWithContact1</fullName>
+        <actions>
+            <name>Core_IPS_UpdateCloseCaseRecordtypeWithc1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Update the record type  of the case after  the un-assigned case is re-open</description>
+        <formula>AND ( $User.ProfileId &lt;&gt; &apos;00e7A000000DfHp&apos;,  ( AND(Core_IPS_Self_Assigned__c=true,NOT(ISNEW()),RecordType.DeveloperName = &apos;IPS_Closed_Case&apos;,ISPICKVAL(PRIORVALUE(Status),  &apos;Closed&apos;),NOT(ISPICKVAL(Status,&apos;Closed&apos;)),ContactId!=null) ) )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner for Claim Review Outcome Notice</fullName>
+        <actions>
+            <name>Core_MDF_Notifying_Partner_for_Claim_Review_Status_Notice</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Email Notification will be sent to Partner if the value of field &quot;Review Case Status&quot; is changed to either &quot;Compliant&quot; or &quot;Non-compliant&quot;</description>
+        <formula>ISCHANGED(Core_MDF_Review_Case_Status__c) &amp;&amp; (RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;) &amp;&amp; (ISPICKVAL(Core_MDF_Review_Case_Status__c,&apos;Compliant&apos;)||ISPICKVAL(Core_MDF_Review_Case_Status__c,&apos;Non-compliant&apos;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner of Case Creation</fullName>
+        <actions>
+            <name>Core_MDF_Notifying_Partner_on_Case_creation_with_Under_Review_Status</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>Email Notification will be sent to Partner when Case is created and Case in &quot;Under Review&quot; Status.</description>
+        <formula>(RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;) &amp;&amp;   (ISPICKVAL(Core_MDF_Status__c,&apos;Under Review&apos;))</formula>
+        <triggerType>onCreateOnly</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner of Documents Required</fullName>
         <actions>
             <name>Core_MDF_Immediate_Email_Alert</name>
             <type>Alert</type>
         </actions>
         <active>false</active>
-        <description>This workflow rule is updated version of workflow rule &quot;Core_MDF Notifications to Partner of Documents Required v1&quot;. Updated Document Submission Due Date (Date) field with Document Submission Due Date (Date/Time) field.</description>
-        <formula>RecordType.DeveloperName==&apos;Core_MDF_Audit&apos; &amp;&amp;   ISPICKVAL(Core_MDF_Status__c, &apos;Pending Documents&apos;) &amp;&amp; Core_MDF_Channel_Program_txt__c != &apos;Retail Marketing Funds&apos; &amp;&amp; Core_MDF_Channel_Program_txt__c != &apos;Intel Partner Alliance&apos; &amp;&amp; NOT(ISPICKVAL(Core_MDF_AuditType_nm__c,&apos;Document Hold&apos;))</formula>
+        <formula>(RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;) &amp;&amp;   (ISPICKVAL(Core_MDF_Status__c,&apos;Pending Documents&apos;))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
             <actions>
                 <name>Core_MDF_Email_Alert_Before_15_Days_of_Document_Submission_Deadline_Date</name>
                 <type>Alert</type>
             </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>-15</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
             <actions>
-                <name>Core_MDF_Update_CCP_Reminder_Notif_1</name>
+                <name>Core_MDF_Change_status_to_Non_Compliant</name>
                 <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>0</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Before_5_Days_of_Document_Submission_Deadline_Date</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner of Documents Required v1</fullName>
+        <actions>
+            <name>Core_MDF_Immediate_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <description>This workflow rule is updated version of workflow rule&quot;Rule Core_MDF Notifications to Partner of Documents Required&quot;. Cases were getting closed on 29th day instead of 30th. Modified time trigger for field update &quot;Change status to Non-Compliant&quot; as a fix.</description>
+        <formula>(RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;) &amp;&amp;   (ISPICKVAL(Core_MDF_Status__c,&apos;Pending Documents&apos;))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Before_15_Days_of_Document_Submission_Deadline_Date</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>-15</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Before_5_Days_of_Document_Submission_Deadline_Date</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>-5</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Change_status_to_Non_Compliant</name>
+                <type>FieldUpdate</type>
+            </actions>
+            <offsetFromField>Case.Core_MDF_DocumentSubmissionDeadlineDate__c</offsetFromField>
+            <timeLength>1</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+    </rules>
+    <rules>
+        <fullName>Core_MDF Notifications to Partner of Documents Required v2</fullName>
+        <actions>
+            <name>Core_MDF_Immediate_Email_Alert</name>
+            <type>Alert</type>
+        </actions>
+        <active>true</active>
+        <description>This workflow rule is updated version of workflow rule &quot;Core_MDF Notifications to Partner of Documents Required v1&quot;. Updated Document Submission Due Date (Date) field with Document Submission Due Date (Date/Time) field.</description>
+        <formula>(RecordType.DeveloperName==&apos;Core_MDF_Audit&apos;) &amp;&amp;   (ISPICKVAL(Core_MDF_Status__c,&apos;Pending Documents&apos;))</formula>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+        <workflowTimeTriggers>
+            <actions>
+                <name>Core_MDF_Email_Alert_Before_15_Days_of_Document_Submission_Deadline_Date</name>
+                <type>Alert</type>
             </actions>
             <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
             <timeLength>-15</timeLength>
@@ -2563,10 +2954,6 @@ null
             <actions>
                 <name>Core_MDF_Email_Alert_Before_5_Days_of_Document_Submission_Deadline_Date</name>
                 <type>Alert</type>
-            </actions>
-            <actions>
-                <name>Core_MDF_CCP_Update_Reminder_Notif_2</name>
-                <type>FieldUpdate</type>
             </actions>
             <offsetFromField>Case.Core_MDF_Document_Submission_DueDate_dtm__c</offsetFromField>
             <timeLength>-5</timeLength>

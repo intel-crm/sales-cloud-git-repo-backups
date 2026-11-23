@@ -38,7 +38,7 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
 
         if(isActive('ABA_Insert_ERPM_Integration_Trigger') && firstRun) {
             if(system.isBatch()){
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+                new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType());
             }
             else{
                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
@@ -76,11 +76,11 @@ public without sharing class PRM_aba_TriggerHandler extends TriggerHandler {
         if(isActive('ABA_Update_ERPM_Integration_Trigger') && firstRun) {
             
             if(system.isBatch()){
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+                new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType());
             }
             else{
                 //Id jobid = 
-                    System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
+System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_AccountBenefitAssociation__c>)Trigger.new,  Trigger.new.getSObjectType()));
             }
             firstRun = false;
         }

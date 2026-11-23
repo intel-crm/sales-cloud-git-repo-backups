@@ -99,6 +99,18 @@
         <fields>NAME</fields>
         <relatedList>Core_MDF_Partner_Group_Mapping__c.Core_MDF_Channel_Program__c</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_Account_Whitelisted_Domains__c.Partner_Program__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_Channel_Program_Domaindetails__c.Partner_Program__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Integration_Log__c.PCC_Partner_Program__c</relatedList>
+    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

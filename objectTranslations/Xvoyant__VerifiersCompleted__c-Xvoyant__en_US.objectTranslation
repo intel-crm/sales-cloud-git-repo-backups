@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VerifiersCompleted</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VerifiersCompleted</value>
+    </caseValues>
+    <fields>
+        <label><!-- DateCompleted --></label>
+        <name>Xvoyant__DateCompleted__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsIncomplete --></label>
+        <name>Xvoyant__IsIncomplete__c</name>
+    </fields>
+    <fields>
+        <label><!-- OpportunityId --></label>
+        <name>Xvoyant__OpportunityId__c</name>
+    </fields>
+    <fields>
+        <label><!-- VerifierId --></label>
+        <name>Xvoyant__VerifierId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

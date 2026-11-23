@@ -15,7 +15,7 @@
     User FAEUser;
     Id RoleId;
     Id CaseId;
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  AllFilesUtilityListRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -31,10 +31,9 @@
     private static testMethod void AllFilesUtilityListRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.AllFilesUtilityListTest();  
-        System.assert(FileUtilityListTest!= null);
+        FileUtilityListTest.AllFilesUtilityListTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  AllFilesUtilityAuthRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -50,11 +49,9 @@
     private static testMethod void AllFilesUtilityAuthRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.AllFilesUtilityAuthTest(); 
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.AllFilesUtilityAuthTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  FAEFilesUtilityListRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -70,11 +67,9 @@
     private static testMethod void FAEFilesUtilityListRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.FAEFilesUtilityListTest(); 
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.FAEFilesUtilityListTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  FAEFilesUtilityAuthRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -90,11 +85,9 @@
     private static testMethod void FAEFilesUtilityAuthRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.FAEFilesUtilityListTest();
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.FAEFilesUtilityListTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  CCPFilesUtilityListRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -110,11 +103,9 @@
     private static testMethod void CCPFilesUtilityListRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.CCPFilesUtilityListTest(); 
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.CCPFilesUtilityListTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  CCPFilesUtilityAuthRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -130,11 +121,9 @@
     private static testMethod void CCPFilesUtilityAuthRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.CCPFilesUtilityAuthTest();
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.CCPFilesUtilityAuthTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  CCPNoFilesUtilityAuthRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -150,11 +139,9 @@
     private static testMethod void CCPNoFilesUtilityAuthRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, true, 'Complete', true, false);
-        FileUtilityListTest.CCPNoFilesUtilityAuthTest();  
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.CCPNoFilesUtilityAuthTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  CCPExpFilesUtilityListRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -170,11 +157,9 @@
     private static testMethod void CCPExpFilesUtilityListRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, false, 'Complete', false, false);
-        FileUtilityListTest.CCPNoFilesUtilityListTest(); 
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.CCPNoFilesUtilityListTest();       
     }
-    /***************************************************************************************************
+/***************************************************************************************************
 * Method Name:  CaseFilesUtilityAllAuthRestTest
 * Method Type: Test Method
 * Version     : 1.0 
@@ -190,9 +175,7 @@
     private static testMethod void CaseFilesUtilityAllAuthRestTest(){ 
         Core_IPS_File_Utility_Test FileUtilityListTest = new Core_IPS_File_Utility_Test();
         FileUtilityListTest.SetUpRestTestData(10, false, 'Complete', false, true);
-        FileUtilityListTest.CaseFilesUtilityAllAuthTest();
-        System.assert(FileUtilityListTest!= null);
-        
+        FileUtilityListTest.CaseFilesUtilityAllAuthTest();       
     }
     
     private void AllFilesUtilityListTest() {
@@ -521,64 +504,6 @@
                 Database.insert(cs);
                 system.assert(cs.id != null);
                 CaseId = cs.Id;
-                // start added by rajeswari for remove nullpoint exception 24 june 22
-                Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
-                triggerExecution.Name = 'myIntelIntegration';
-                triggerExecution.Core_Active__c = true;
-                triggerExecution.Core_Class_Name__c ='Core_IPS_CaseTriggerHandler';
-                triggerExecution.Core_Description__c = 'To update Case fields.';
-                triggerExecution.Core_Object__c = 'Case';
-                triggerExecution.Core_Trigger_Events__c = 'before insert';
-                insert triggerExecution;
-                Core_Trigger_Executions__c settings = new Core_Trigger_Executions__c();
-                settings.Name = 'InsertCaseCommentForAttach';
-                settings.Core_Class_Name__c = 'Core_IPS_Case_Attachments_Handler';
-                settings.Core_Description__c = 'ABC';
-                settings.Core_Object__c = 'Core_IPS_Case_Comments__c';
-                settings.Core_Trigger_Events__c = 'After Insert, After update';
-                settings.Core_Active__c = True;
-                insert settings;
-                // Create Ips Labels added by Aayushi for US79852
-                List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
-                for(Core_IPS_Labels__c IL: IPSLabels){
-                    if(IL.name=='ProjectGroupPrefix'){
-                        IL.Value__c = 'IPS_Proj_';
-                    }
-                    if(IL.name=='CoreStatus_SPtoActive_Error'){
-                        IL.Value__c = 'Project Status cannot be changed from Submitted Pending to Active';
-                    }
-                    if(IL.name=='Core_OneProjProdMem_Error'){
-                        IL.Value__c = 'Project cannot be submitted without atleast one account and one Product and one Project Member';
-                    }
-                    if(IL.name=='CoreStatus_Draft'){
-                        IL.Value__c = 'Draft'; 
-                    }
-                    if(IL.name=='CoreStatus_Active'){
-                        IL.Value__c = 'Active' ;
-                    }
-                    if(IL.name=='CoreStatus_Inactive'){
-                        IL.Value__c = 'Inactive' ;
-                    }
-                    if(IL.name=='CoreStatus_SP'){
-                        IL.Value__c = 'Submitted Pending' ;
-                    }
-                }
-                // Avoid Hardcoding Id Fix  - Shipra
-                //Profile dataMigPrf = [select id, name from Profile where name = 'IPS Data Migration' Limit 1];
-                
-                Core_IPS_Labels__c labels2 = new Core_IPS_Labels__c ();
-                labels2.name= 'Data Migration Profile Id';
-                //labels2.value__c=dataMigPrf.Id;
-                labels2.value__c='00eo0000000f7Gd';
-                
-                insert labels2; 
-                Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
-                labels.name= 'COMPLETE';
-                labels.value__c='COMPLETE';
-                insert labels;
-                
-                //end  added by rajeswari for remove nullpoint exception 24 june 22  
-                
                 ///Case Share -> not required for sys
                 //Case Attachment 
                 Core_IPS_Case_Attachments__c CSAttach = new Core_IPS_Case_Attachments__c();
@@ -586,8 +511,8 @@
                 CSAttach.Core_File_Name__c =  'Testcsfl';
                 CSAttach.Core_Upload_Status__c =  Status;
                 CSAttach.Core_Case__c =  cs.id;
-                //Database.insert(CSAttach);
-                //system.assert(CSAttach.Id != null);        
+                Database.insert(CSAttach);
+                system.assert(CSAttach.Id != null);        
             }
             
         }

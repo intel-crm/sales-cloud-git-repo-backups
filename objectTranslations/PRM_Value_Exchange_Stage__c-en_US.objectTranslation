@@ -49,6 +49,10 @@
         <name>PRM_MP_Solutions_Count_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Notes --></label>
+        <name>PRM_Notes_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Number Of Employees Done Training --></label>
         <name>PRM_Number_Of_Employees_Nbr__c</name>
     </fields>
@@ -79,6 +83,10 @@
     <fields>
         <label><!-- Tier --></label>
         <name>PRM_Tier_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- TimePeriod --></label>
+        <name>PRM_TimePeriod_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Time Period --></label>

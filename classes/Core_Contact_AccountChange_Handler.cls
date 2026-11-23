@@ -9,26 +9,22 @@ Description    : This class is handle account change for Case, Assest, Project, 
 * ----------------------------------------------------------------------------                 
 * Sugandha                    25/05/2018                  Modified(Defect DE39470 Iteration 11)
 **********************************************************************************************/
-public without sharing class Core_Contact_AccountChange_Handler {
+public class Core_Contact_AccountChange_Handler {
     public static boolean IS_CHANGE_ACCOUNT = false;
     /*This method is called when account is changed on the contact and validate target account*/
     public static void validateTargetAccount(List<Contact> lstNewContacts){
         Map<Id,Id> stContNewAccId = new Map<Id,Id>();
-         Map<Id,Account> newAccountMap = new Map<Id,Account>();
         set<Id> stConId = new set<Id>();
-        List<Contact> lstContacts = new List<Contact>();
+        
         for(Contact objConRef : lstNewContacts){
             stConId.add(objConRef.id);
             stContNewAccId.put(objConRef.id,objConRef.accountID);
-            ////System.debug('New Account: '+objConRef.accountID);
+            system.debug('New Account: '+objConRef.accountID);
         }
-        //FLS Check Fixed - Aditya
-        if(Account.SObjectType.getDescribe().isAccessible()){
-         newAccountMap =new Map<ID,Account>( [SELECT id,Name,Core_Business_Party_Id__c,Core_CNDA_Number__c,Core_Deactivated__c,Core_Deactivation_Reason__c,Core_English_Only_Name__c,Core_B2B_Entitlement__c,Core_IPS_Active__c,Owner.UserRole.Name,Core_IsODM__c,Core_Export_Compliance_Block__c from Account where id in : stContNewAccId.values()]);
-        }
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-         lstContacts = [SELECT id,Core_AGS_Integration_Status__c,Core_IPS_Active__c,Core_ERPM_Integration_Status__c,AccountId,Account.name,Account.Core_IPS_Active__c,Account.Core_English_Only_Name__c,Account.Core_IsODM__c,Account.Core_Export_Compliance_Block__c,Email,(SELECT id,Core_Contact_Id__c,Core_Selected__c,Core_From_Source__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_Category__c FROM Contact_Entitlements__r where Core_Selected__c=true and Core_From_Source__c=false ) FROM Contact Where Id IN : stConId];
-        }
+        Map<Id,Account> newAccountMap=new Map<ID,Account>([SELECT id,Name,Core_CIM_ID__c,Core_CNDA_Number__c,Core_Deactivated__c,Core_Deactivation_Reason__c,Core_English_Only_Name__c,Core_B2B_Entitlement__c,Core_IPS_Active__c,Owner.UserRole.Name,Core_IsODM__c,Core_Export_Compliance_Block__c from Account where id in : stContNewAccId.values()]);
+        
+        List<Contact> lstContacts = [SELECT id,Core_AGS_Integration_Status__c,Core_IPS_Active__c,Core_ERPM_Integration_Status__c,AccountId,Account.name,Account.Core_IPS_Active__c,Account.Core_English_Only_Name__c,Account.Core_IsODM__c,Account.Core_Export_Compliance_Block__c,Email,(SELECT id,Core_Contact_Id__c,Core_Selected__c,Core_From_Source__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_IsActive__c,Core_Entitlement_Id__r.Core_Category__c FROM Contact_Entitlements__r where Core_Selected__c=true and Core_From_Source__c=false ) FROM Contact Where Id IN : stConId];
+        
         for(Contact contactRef : lstContacts){
             Contact objContact = new Contact();
             Integer ContactIndex=null;
@@ -37,16 +33,16 @@ public without sharing class Core_Contact_AccountChange_Handler {
                     ContactIndex=index;
                 }
             }
-            ////System.debug('Queried old Account :'+contactRef.accountID);
+            system.debug('Queried old Account :'+contactRef.accountID);
             
             Account newAccountRec=newAccountMap.get(stContNewAccId.get(contactRef.id));
             
             Boolean blnSelectedContactEntitlement=false;
             
             for(Core_Contact_Entitlement__c objConEntitlement : contactRef.Contact_Entitlements__r){
-                ////System.debug('=====1======'+objConEntitlement.Core_Entitlement_Id__r.Core_IsActive__c);
-                ////System.debug('=====2======'+objConEntitlement.Core_Selected__c);
-                ////System.debug('=====3======'+objConEntitlement.Core_From_Source__c);
+                System.debug('=====1======'+objConEntitlement.Core_Entitlement_Id__r.Core_IsActive__c);
+                System.debug('=====2======'+objConEntitlement.Core_Selected__c);
+                System.debug('=====3======'+objConEntitlement.Core_From_Source__c);
                 if(objConEntitlement.Core_Entitlement_Id__r.Core_IsActive__c == true ){
                     blnSelectedContactEntitlement=true;
                 }
@@ -55,8 +51,8 @@ public without sharing class Core_Contact_AccountChange_Handler {
             
             
             if(blnSelectedContactEntitlement){
-                if(String.ISBLANK(newAccountRec.Core_Business_Party_Id__c)){
-                    AllErrorMessages = AllErrorMessages+'\n Account Unified ID is missing, ';
+                if(String.ISBLANK(newAccountRec.Core_CIM_ID__c)){
+                    AllErrorMessages = AllErrorMessages+'\n Account CIMID is missing, ';
                     lstNewContacts[ContactIndex].accountid.addError(AllErrorMessages);
                 }
                 
@@ -110,25 +106,25 @@ public without sharing class Core_Contact_AccountChange_Handler {
             //eRPM trigger logic  atb
             //Updating this to pending in after update section in trigger (core_contact)
             //lstNewContacts[ContactIndex].Core_ERPM_Integration_Status__c = 'Pending';
-            //lstNewContacts[ContactIndex].Core_AGS_Integration_Status__c = 'Pending';
-
+            //lstNewContacts[ContactIndex].Core_AGS_Integration_Status__c = 'Pending'; 
+            
         }
     }
-
-
+    
+    
     /*This method is called when account is changed on the contact. This method retrives cases and accounts related to the contact and sending updateAssetsToCase method*/
     public static void updateAssets(List<Contact> lstNewContacts){
-        ////System.debug('*****>>in updateAssets method<<****');
+        System.debug('*****>>in updateAssets method<<****');
         set<Id> stAccId = new set<Id>();
         set<Id> stConId = new set<Id>();
         List<Case> lstCases = new List<Case>();
         set<ID> gecCaseContact=new set<ID>();
         List<ID> getcaseContactLst=new List<Id>();
         Set<String> stGECStatus = new Set<String>{'On Hold - GEC Review in Progress','On Hold - Government Authorization Needed '};
-
+            
             // No need to check profile.
             Profile userProfileName = [Select Name from Profile where Id = : UserInfo.getProfileId() limit 1];
-
+        
         for(Contact objConRef : lstNewContacts){
             stAccId.add(objConRef.AccountId);
             stConId.add(objConRef.id);
@@ -136,13 +132,11 @@ public without sharing class Core_Contact_AccountChange_Handler {
         
         // Core_IPS_Project_Case__c ==null filter should be added  and remove GEC Hold Condition add old account id removed  Core_IPS_GEC_Status__c NOT IN :stGECStatus AND 
         //added Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c field by Sugandha for DE39470 
-        //FLS check already added - Aditya
-        if(Case.SObjectType.getDescribe().isAccessible()){
         lstCases = [SELECT id,Product.name,Contactid,Core_IPS_GEC_Status__c,Core_IPS_Supported_Product__r.Core_Product__c,contact.Accountid,Core_IPS_Project_Case__c,Core_IPS_Supported_Product__r.Core_Supported_Product_Alias__c,Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c,AccountId,Core_IPS_Product_Org1__c,Core_IPS_Supported_Product__c,asset.status,Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c FROM Case WHERE Contactid IN : stConId AND Core_IPS_Project_Case__c = null AND RecordType.Name != 'CEP Case'];
-            }
+        
         //Any GEC Hold Condition through message.
         for(Case caseObj : lstCases){
-            ////System.debug(stGECStatus+'Object msg: GEC Status : '+caseObj.Core_IPS_GEC_Status__c);
+            system.debug(stGECStatus+'Object msg: GEC Status : '+caseObj.Core_IPS_GEC_Status__c);
             if(stGECStatus.contains(caseObj.Core_IPS_GEC_Status__c)){
                 //Add error for GEC Hold
                 gecCaseContact.add(caseObj.Contactid);
@@ -159,72 +153,66 @@ public without sharing class Core_Contact_AccountChange_Handler {
                 }
             }
         }
-
-        ////System.debug('Core_Contact_AccountChange_Handler.updateAssets==lstCases==>'+lstCases);
-        // Check for lstCases size > 0
+        
+        System.debug('Core_Contact_AccountChange_Handler.updateAssets==lstCases==>'+lstCases);
+        // Check for lstCases size > 0 
         if(lstCases.size()>0){
             updateAssetsToCase(lstCases,stAccId);
-            ////System.debug('No of cases :: '+lstCases.size());
+            system.debug('No of cases :: '+lstCases.size());
             //Update the addtional Fields to Account, B2B and IPS
             updateTargetAccountAdditionalFields(lstNewContacts);
         }
-        ////System.debug('*****>>End of updateAssets method<<****');
+        System.debug('*****>>End of updateAssets method<<****');
     }
-    /* This method is to retrive all the assets for the new accounts and assign to the respected cases or creating an asset if requires. */
+    /* This method is to retrive all the assets for the new accounts and assign to the respected cases or creating an asset if requires. */   
     public static void updateAssetsToCase(List<Case> lstCases,set<Id> stAccId){
-        ////System.debug('*****>>in updateAssetsToCase method<<****');
+        System.debug('*****>>in updateAssetsToCase method<<****');
         List<Asset> lstCreateAsset = new List<Asset>();
         List<Case> lstUpdateCase = new List<Case>();
         List<Asset> lstAssetsForNewAcc = new List<Asset>();
         Map<String,Asset> mapAsset = new Map<String,Asset>();
         List<Case> lstCaseForReupdate = new List<Case>();
         Set<String> stTobeUpdatedAsset = new Set<String>();
-        ////System.debug('Limits.getDMLStatements :: '+Limits.getDMLStatements());
-        //FLS check already added - Aditya
-        if(Asset.SObjectType.getDescribe().isAccessible()){
-        	lstAssetsForNewAcc = [SELECT id,Core_IPS_Project__c,Core_Product_Organization__c,Core_Supported_Product__c,Accountid FROM Asset WHERE Accountid IN : stAccId];
-        }
-        ////System.debug('Core_Contact_AccountChange_Handler.updateAssets ==lstAssetsForNewAcc===>'+lstAssetsForNewAcc);
-
+        system.debug('Limits.getDMLStatements :: '+Limits.getDMLStatements());
+        lstAssetsForNewAcc = [SELECT id,Core_IPS_Project__c,Core_Product_Organization__c,Core_Supported_Product__c,Accountid FROM Asset WHERE Accountid IN : stAccId];
+        System.debug('Core_Contact_AccountChange_Handler.updateAssets ==lstAssetsForNewAcc===>'+lstAssetsForNewAcc);
+        
         for(Asset objAssetRef : lstAssetsForNewAcc){
             if(objAssetRef.Accountid != null) {
                 mapAsset.put(string.valueof(objAssetRef.Accountid) + string.valueof(objAssetRef.Core_Product_Organization__c)  +  string.valueof(objAssetRef.Core_Supported_Product__c),objAssetRef);
             }
         }
-       // //System.debug('Core_Contact_AccountChange_Handler ===mapAsset===>'+mapAsset);
-
+        System.debug('Core_Contact_AccountChange_Handler ===mapAsset===>'+mapAsset);
+        
         for(Case objCaseRef : lstCases){
-
+            
             objCaseRef.AccountId = objCaseRef.contact.Accountid;
-
-            /*//System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Project_Case__c====>'+objCaseRef.Core_IPS_Project_Case__c);
-//System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Product_Org1__c====>'+objCaseRef.Core_IPS_Product_Org1__c);
-//System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Supported_Product__c====>'+objCaseRef.Core_IPS_Supported_Product__c);
-//System.debug('Core_Contact_AccountChange_Handler.updateAssets===AccountID====>'+objCaseRef.AccountID);
-//System.debug('====Productid===>'+objCaseRef.Productid);
-//System.debug('====Productid===>'+objCaseRef.Product.name);
-//System.debug('public prod?::'+objCaseRef.Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c);
-//System.debug('case account?::'+objCaseRef.AccountId);*/
+            
+            /*System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Project_Case__c====>'+objCaseRef.Core_IPS_Project_Case__c);
+            System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Product_Org1__c====>'+objCaseRef.Core_IPS_Product_Org1__c);
+            System.debug('Core_Contact_AccountChange_Handler.updateAssets===Core_IPS_Supported_Product__c====>'+objCaseRef.Core_IPS_Supported_Product__c);
+            System.debug('Core_Contact_AccountChange_Handler.updateAssets===AccountID====>'+objCaseRef.AccountID);
+            System.debug('====Productid===>'+objCaseRef.Productid);
+            System.debug('====Productid===>'+objCaseRef.Product.name);
+            system.debug('public prod?::'+objCaseRef.Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c);
+            system.debug('case account?::'+objCaseRef.AccountId);*/
             //added check for public product by Sugandha for DE39470
             if(objCaseRef.AccountID != null && objCaseRef.Core_IPS_Product_Org1__c !=null && objCaseRef.Core_IPS_Supported_Product__c!= null && !objCaseRef.Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c){
-
+                       
                 string strKey_Asset = string.valueof(objCaseRef.AccountID) + string.valueof(objCaseRef.Core_IPS_Product_Org1__c)  +  string.valueof(objCaseRef.Core_IPS_Supported_Product__c) ;
-
+                
                 if(!mapAsset.isEmpty() && mapAsset.containsKey(strKey_Asset)){
                     objCaseRef.AssetId = mapAsset.get(strKey_Asset).id;
                     lstUpdateCase.add(objCaseRef);
                 }else{
-                    /*//System.debug('===objcaseref.Core_IPS_Supported_Product__c==>'+objCaseRef.Core_IPS_Supported_Product__c);
-			//System.debug('===objCaseRef.supportedprofuct.name==>'+objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c);
-			//System.debug('===strKey_Asset==>'+strKey_Asset);
-			//System.debug('===stTobeUpdatedAsset.contains(strKey_Asset)==>'+stTobeUpdatedAsset.contains(strKey_Asset));*/
-                    	if(objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c !=null && !stTobeUpdatedAsset.contains(strKey_Asset)){
+                    /*system.debug('===objcaseref.Core_IPS_Supported_Product__c==>'+objCaseRef.Core_IPS_Supported_Product__c);
+                    system.debug('===objCaseRef.supportedprofuct.name==>'+objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c);
+                    system.debug('===strKey_Asset==>'+strKey_Asset);
+                    system.debug('===stTobeUpdatedAsset.contains(strKey_Asset)==>'+stTobeUpdatedAsset.contains(strKey_Asset));*/
+                    if(objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c !=null && !stTobeUpdatedAsset.contains(strKey_Asset)){
                         Asset objAsset = new Asset();
-			//fls check Added by Nishitha
-                        if (Schema.sObjectType.Asset.fields.Name.isCreateable()) {
-                        	objAsset.Name = objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c;
-                        }
-			objAsset.Product2Id=objCaseRef.Core_IPS_Supported_Product__r.Core_Product__c;
+                        objAsset.Name = objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Name__c;
+                        objAsset.Product2Id=objCaseRef.Core_IPS_Supported_Product__r.Core_Product__c;
                         objAsset.Core_IPS_Asset__c=true;
                         objAsset.core_alias__c=objCaseRef.Core_IPS_Supported_Product__r.Core_Supported_Product_Alias__c;
                         objAsset.recordtypeid = schema.sobjecttype.Asset.getrecordtypeinfosbyname().get('IPS Asset').getRecordTypeId();
@@ -234,145 +222,100 @@ public without sharing class Core_Contact_AccountChange_Handler {
                         objAsset.Status = 'Inactive';
                         objAsset.InstallDate = system.today()-1;
                         objAsset.UsageEndDate = system.today();
-
+                        
                         lstCreateAsset.add(objAsset);
                         stTobeUpdatedAsset.add(strKey_Asset);
                     }
                     lstCaseForReupdate.add(objCaseRef);
                 }
             }
-            //added by Sugandha to update new account to case for public products for DE39470
-            else if(objCaseRef.Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c){
+            //added by Sugandha to update new account to case for public products for DE39470            
+            else if(objCaseRef.Core_IPS_Supported_Product__r.Core_IPS_Public_Product__c){                
                 lstUpdateCase.add(objCaseRef);
             }
             //end
         }
-        /*//System.debug('Core_Contact_AccountChange_Handler.updateAssets====lstUpdateCase===>'+lstUpdateCase);
-//System.debug('Core_Contact_AccountChange_Handler.updateAssets====lstCreateAsset===>'+lstCreateAsset);*/
+        /*System.debug('Core_Contact_AccountChange_Handler.updateAssets====lstUpdateCase===>'+lstUpdateCase);
+        System.debug('Core_Contact_AccountChange_Handler.updateAssets====lstCreateAsset===>'+lstCreateAsset);*/
         try{
             if(lstUpdateCase.size()>0){
-                update lstUpdateCase;
+                update lstUpdateCase;  
             }
             if(lstCreateAsset.size()>0){
-                insert lstCreateAsset;
+                insert lstCreateAsset; 
                 if(lstCaseForReupdate.size()>0){
                     Set<Id> staccIdNew = new Set<Id>();
                     for(Case objCase : lstCaseForReupdate){
-                        staccIdNew.add(objCase.AccountId);
+                        staccIdNew.add(objCase.AccountId); 
                     }
                     updateAssetsToCase(lstCaseForReupdate,staccIdNew);
                 }
             }
-
+            
         }catch(Exception e){
-            ////System.debug('Core_Contact_AccountChange_Handler.updateAssets Exception:'+e);
+            system.debug('Core_Contact_AccountChange_Handler.updateAssets Exception:'+e);
             throw e;
         }
-        ////System.debug('*****>>End of updateAssetsToCase method<<****');
+        System.debug('*****>>End of updateAssetsToCase method<<****'); 
     }
-
-
+    
+    
     //Set the target accounts additional fields, currently IPS and B2B flags are setting as per the source contact/Account fields
     public static void updateTargetAccountAdditionalFields(List<Contact> lstNewContacts ){
-
+        
         Set<Id> stConId = new Set<Id>();
         Set<Account> setAcc =new Set<Account>();
-        List<Contact> lstContacts = new List<Contact>();
         for(Contact objConRef : lstNewContacts){
             stConId.add(objConRef.id);
         }
-        //FLS check already added - Adita
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-         	lstContacts = [SELECT id,Core_IPS_Active__c,Core_Contact_B2B_Indicator__c,AccountId,Account.name,Account.Core_IPS_Active__c,Account.Core_B2B_Entitlement__c,Email FROM Contact Where Id IN : stConId ];
-        }
+        List<Contact> lstContacts = [SELECT id,Core_IPS_Active__c,Core_Contact_B2B_Indicator__c,AccountId,Account.name,Account.Core_IPS_Active__c,Account.Core_B2B_Entitlement__c,Email FROM Contact Where Id IN : stConId ];
+        
         for(Contact contactRef : lstContacts){
             Account acc=new Account();
-
+            
             //Code to update IPS flag in account if the contact IPS flag is true
             if(contactRef.Core_IPS_Active__c == true && contactRef.Account.Core_IPS_Active__c == false ){
                 acc.Id = contactRef.AccountId;
                 acc.Core_IPS_Active__c = true;
             }
-
+            
             //Set the Account.B2b indicator to true if it is false when the current contact B2B indicator is true
             if(contactRef.Core_Contact_B2B_Indicator__c == true && contactRef.Account.Core_B2B_Entitlement__c == false){
                 acc.Id = contactRef.AccountId;
                 acc.Core_B2B_Entitlement__c = true;
             }
-
+            
             //Add acc Only if IPSFlag or B2B flag is set.
             if(String.isNotBlank(acc.Id))
                 setAcc.add(acc);
-        }
+        }  
         //Update account
         if(setAcc.size()>0)
             update new List<Account>(setAcc);
-
+        
     }
-
-    /*Pooja*/
+    
+     /*Pooja*/
 
     public static void UpdateintStatusLastUpdate(List<Contact> newList, Map<Id, Contact> oldList) {
         for(Contact conObj : newList) {
             if(oldList !=null){
-               // //System.debug('### Contact Update Pooja1' + conObj.Core_ERPM_Integration_Status__c + '  Id :' + conObj.Id+'old status : '+oldList.get(conObj.Id).Core_ERPM_Integration_Status__c);
-                if(conObj.Core_ERPM_Integration_Status__c != oldList.get(conObj.Id).Core_ERPM_Integration_Status__c) {
-
-                    conObj.Core_ERPM_Status_Change_Date_Time__c = System.now();
-                }
-               // //System.debug('### Contact Update Pooja2' + conObj.Core_AGS_Integration_Status__c + '  Id :' + conObj.Id+'old status : '+oldList.get(conObj.Id).Core_AGS_Integration_Status__c );
-
-                if(conObj.Core_AGS_Integration_Status__c != oldList.get(conObj.Id).Core_AGS_Integration_Status__c) {
-                    conObj.Core_AGS_Status_Change_Date_Time__c = System.now();
-                }
-                
-                if(conObj.Core_Entitlement_Assignment_Status__c != oldList.get(conObj.Id).Core_Entitlement_Assignment_Status__c) {
-            		conObj.Core_Entitlement_Status_Change_Date_Time__c = System.now();
-            	}
-
-
-                //Gireesh-Start
-                if(conObj.Core_Sales_Do_Not_Contact_Ind__c !=oldList.get(conObj.Id).Core_Sales_Do_Not_Contact_Ind__c){ //SalesDoNotContact
-                    {
-                        if(conObj.Core_Sales_Do_Not_Contact_Ind__c){ //SalesDoNotContact
-                            conObj.Core_Do_Not_Contact_Dtm__c=DateTime.now(); //SalesDoNotContactDate
-                        }
-                        else{
-                            conObj.Core_Do_Not_Contact_Dtm__c=Null;//SalesDoNotContactDate
-                        }
-                    }
-                }
-                    if(conObj.Core_Do_Not_Contact__c !=oldList.get(conObj.Id).Core_Do_Not_Contact__c){ //MarketingDoNotContactDate
-
-                        if(conObj.Core_Do_Not_Contact__c){ //MarketingDoNotContact
-                            conObj.Core_Marketing_Do_Not_Contact_Dtm__c=DateTime.now(); //MarketingDoNotContactDate
-                        }
-                        else{
-                            conObj.Core_Marketing_Do_Not_Contact_Dtm__c=Null;//MarketingDoNotContactDate
-                        }
-
-                    }
-                
-                if(conObj.Core_Do_Not_Contact_Dtm__c !=oldList.get(conObj.Id).Core_Do_Not_Contact_Dtm__c){//Clear SalesDoNotContact if DT is cleared
-                    if(conObj.Core_Do_Not_Contact_Dtm__c==Null){
-                        conObj.Core_Sales_Do_Not_Contact_Ind__c=False;
-                    }
-                    else{
-                        conObj.Core_Sales_Do_Not_Contact_Ind__c=True;
-                    }
-                }
-                if(conObj.Core_Marketing_Do_Not_Contact_Dtm__c !=oldList.get(conObj.Id).Core_Marketing_Do_Not_Contact_Dtm__c){//Clear MarketingDoNotContactDate if DT is cleared
-                    if(conObj.Core_Marketing_Do_Not_Contact_Dtm__c==Null){
-                        conObj.Core_Do_Not_Contact__c=False;
-                    }else{
-                        conObj.Core_Do_Not_Contact__c=True;
-                    }
-
-                }
-
-                //GireeshEnd
+            System.debug('### Contact Update Pooja1' + conObj.Core_ERPM_Integration_Status__c + '  Id :' + conObj.Id+'old status : '+oldList.get(conObj.Id).Core_ERPM_Integration_Status__c);
+            if(conObj.Core_ERPM_Integration_Status__c != oldList.get(conObj.Id).Core_ERPM_Integration_Status__c) {
+            
+            conObj.Core_ERPM_Status_Change_Date_Time__c = System.now();
+            }
+            System.debug('### Contact Update Pooja2' + conObj.Core_AGS_Integration_Status__c + '  Id :' + conObj.Id+'old status : '+oldList.get(conObj.Id).Core_AGS_Integration_Status__c );
+            
+            if(conObj.Core_AGS_Integration_Status__c != oldList.get(conObj.Id).Core_AGS_Integration_Status__c) {
+            conObj.Core_AGS_Status_Change_Date_Time__c = System.now();
+            }
+            
+            if(conObj.Core_Entitlement_Assignment_Status__c != oldList.get(conObj.Id).Core_Entitlement_Assignment_Status__c) {
+            conObj.Core_Entitlement_Status_Change_Date_Time__c = System.now();
             }
         }
+    }
     }
     
     /*Pooja*/

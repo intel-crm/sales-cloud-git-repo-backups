@@ -34,11 +34,7 @@ import {track} from 'lwc';
 //  import PRM_Manage_Solutions from '@salesforce/label/c.PRM_Manage_Solutions'; breadcrumb removal IPA 2.0
  import PRM_Partner_University_URL from '@salesforce/label/c.PRM_Partner_University_URL';
  import PRM_DDRBreadCrumb_URL from '@salesforce/label/c.PRM_DDRBreadCrumb_URL';
- import IPA_DealRegistrationText from '@salesforce/label/c.IPA_DealRegistrationText';
- //import IPA_DealRegistrationUrl from '@salesforce/label/c.IPA_DealRegHome_Url';
- import IPA_DealRegistrationHomeUrl from '@salesforce/label/c.DealReg_Home_Url';
  import { whichSite } from 'c/coreIntcSso';
-
 
 
 
@@ -75,9 +71,7 @@ const getBreadcrumbsData = (site, pageUrl) => {
     manageBenefitsBreadcrumb.selected = true;
     const myLeadsBreadcrumb = createChildBreadcrumb(site, pageUrl, 'Leads', 9, PRM_Breadcrumb_MyLeads_URL, manageBenefitsData, PMP_Leads_Heading);
     const myDDRPage = createChildBreadcrumb(site, pageUrl, null, 10, PRM_DDRBreadCrumb_URL, null, PRM_DDRBreadCrumb_Text,'_blank');
-    //const myDealRegPage = createChildBreadcrumb(site, pageUrl, null, 11, IPA_DealRegistrationUrl, null, IPA_DealRegistrationText,'_blank');
-    const myDealRegPage = createChildBreadcrumb(site, pageUrl, null, 11, IPA_DealRegistrationHomeUrl, null, IPA_DealRegistrationText,'_blank');
-    manageBenefitsBreadcrumb.children = [myLeadsBreadcrumb, myDDRPage,myDealRegPage];
+    manageBenefitsBreadcrumb.children = [myLeadsBreadcrumb, myDDRPage];
 
   }
 
@@ -111,7 +105,7 @@ const getBreadcrumbsData = (site, pageUrl) => {
   children.push(createChildBreadcrumb(site, pageUrl, null, 6, PRM_Breadcrumb_SalesEnablementResources_URL, null, PRM_Breadcrumb_SalesEnablementResources, '_blank'));
   children.push(createChildBreadcrumb(site, pageUrl, null, 7, PRM_Partner_University_URL, null, PRM_Breadcrumb_PartnerUniversity_Text, '_blank'));
   children.push(createChildBreadcrumb(site, pageUrl, null, 8, PRM_Breadcrumb_MarketingStudio_URL, null, PRM_Breadcrumb_MarketingStudio_Text, '_blank'));
-  //children.push(createChildBreadcrumb(site, pageUrl, null, 9, PRM_Breadcrumb_PartnerCommunitiesSecure_URL, null, PRM_Breadcrumb_PartnerCommunities_Text, '_blank'));
+  children.push(createChildBreadcrumb(site, pageUrl, null, 9, PRM_Breadcrumb_PartnerCommunitiesSecure_URL, null, PRM_Breadcrumb_PartnerCommunities_Text, '_blank'));
   //children.push(createChildBreadcrumb(site, pageUrl, null, 10, PRM_Breadcrumb_SubmitSolutionSecure_URL, null, PRM_Manage_Solutions, '_blank'));breadcrumb removal IPA 2.0
   children.push(createChildBreadcrumb(site, pageUrl, null, 11, PRM_Breadcrumb_AboutMembership_URL, null, PRM_Breadcrumb_AboutMembership_Txt, '_blank'));
   //children.push(createChildBreadcrumb(site, pageUrl, null, 13, PRM_DDRBreadCrumb_URL, null, PRM_DDRBreadCrumb_Text,'_blank'));

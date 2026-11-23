@@ -10,6 +10,9 @@
   z-index: 1033;
   transform: translate3d(0, 0, 0);
 }
+.THIS ul > li.slds-tabs_scoped__item.slds-is-active > a {
+   background-color: yellow !important ;
+}
 
 .THIS .placeHolder {
   display: none;
@@ -50,17 +53,19 @@
 .THIS .innerLinkList button.active {
   border-bottom: 4px t(digitalBlue) solid;
 }
+
 .THIS .innerLinkList button:focus {
-  /*background-color: #003366 !important;*/
-  outline: none !important;
-  border:2px solid white;
-  box-shadow: 0 0 10px #3b3a3a;
+    /*background-color: #003366 !important;*/
+    outline: none !important;
+    border:2px solid white;
+    box-shadow: 0 0 10px #3b3a3a;
 }
 
 .THIS .innerLinkList button:hover {
-background-color: #454343 !important;
-
+  background-color: #454343 !important;
+  
 }
+
 /* Slider Buttons */
 .THIS .sliderButton {
   background-color: rgba(0, 0, 0, 0.5);

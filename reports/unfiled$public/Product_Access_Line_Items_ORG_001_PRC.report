@@ -25,10 +25,10 @@
         <field>Core_IPS_Map_Par_Line_Item__c.Core_Asset_Status__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_MAP_PAR__c.Core_Support_Org_Name__c</field>
+        <field>Core_IPS_Map_Par_Line_Item__c.Core_Approving_Product_Organization__c</field>
     </columns>
     <columns>
-        <field>CHILD_CREATED_NAME</field>
+        <field>CUST_CREATED_NAME</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -85,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>techvision intelligent,thundersoft software,tongfang hongkong,tongfang hong kong,IMC BUSINESS (SHENZHEN) CORP,shenzhen ip3 centry,Shenzhen Eii Tech,tencent,byd,weibu,kylinsoft</value>
+            <value>techvision intelligent,thundersoft software,tongfang hongkong,tongfang hong kong,IMC BUSINESS (SHENZHEN) CORP,shenzhen ip3 centry,Shenzhen Eii Tech,tencent,byd,weibu</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

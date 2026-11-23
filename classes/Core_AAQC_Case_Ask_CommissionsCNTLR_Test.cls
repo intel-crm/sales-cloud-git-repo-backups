@@ -3,7 +3,7 @@ private class Core_AAQC_Case_Ask_CommissionsCNTLR_Test{
     public static testmethod void commissions()
     {    
           Profile p = [SELECT Id FROM Profile WHERE Name='Sales Rep-BB'];
-       /*   User u = new User(Alias = 'salrep',
+          User u = new User(Alias = 'salrep',
                             Email='SalesRepBB@example.com',
                             EmailEncodingKey='UTF-8',
                             LastName='Testing',
@@ -11,10 +11,8 @@ private class Core_AAQC_Case_Ask_CommissionsCNTLR_Test{
                             LocaleSidKey='en_US',
                             ProfileId = p.Id,
                             TimeZoneSidKey='America/Los_Angeles',
-                            UserName='Salestest@example.com'+ Math.floor(Math.random() * 1000));*/
-        
-       User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId =: p.Id AND isActive = true LIMIT 1];
-       System.runAs(usr)
+                            UserName='Salestest@example.com');
+       System.runAs(u)
       {
         Case c= new Case();
         c.Origin = 'My Origin';
@@ -24,6 +22,7 @@ private class Core_AAQC_Case_Ask_CommissionsCNTLR_Test{
         
         Core_AAQC_Commissions_Case__c com =new Core_AAQC_Commissions_Case__c ();
         com.Core_AAQC_Case__c=c.id;
+        system.debug('afda'+com);
         insert com;
         
         PageReference pageRef = Page.Core_AAQC_Case_Ask_Commissions_Layout;
@@ -67,7 +66,7 @@ private class Core_AAQC_Case_Ask_CommissionsCNTLR_Test{
     public static testmethod void Newcommissions()
     {    
           Profile p = [SELECT Id FROM Profile WHERE Name='Sales Rep-BB'];
-        /*  User u = new User(Alias = 'salrep',
+          User u = new User(Alias = 'salrep',
                             Email='SalesRepBB@example.com',
                             EmailEncodingKey='UTF-8',
                             LastName='Testing',
@@ -75,9 +74,8 @@ private class Core_AAQC_Case_Ask_CommissionsCNTLR_Test{
                             LocaleSidKey='en_US',
                             ProfileId = p.Id,
                             TimeZoneSidKey='America/Los_Angeles',
-                            UserName='Salestest@example.com'+ Math.floor(Math.random() * 1000));*/
-        User usr = [SELECT id, Name, isActive FROM User WHERE ProfileId =: p.Id AND isActive = true LIMIT 1];
-      System.runAs(usr)
+                            UserName='Salestest@example.com');
+      System.runAs(u)
       {
             Case c= new Case();
             c.Origin = 'My Origin';

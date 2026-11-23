@@ -46,7 +46,7 @@
             <targetReference>Send_Welcome_Email_to_IQR_Contact</targetReference>
         </connector>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>(1 OR 2) AND 3</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Entitlement_Nm__c</field>
             <operator>EqualTo</operator>
@@ -58,7 +58,14 @@
             <field>Core_Entitlement_Nm__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>IQR Quote Request Customer Standard Access</stringValue>
+                <stringValue>Quote Request Customer Drafter Access</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Entitlement_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Quote Request Customer Standard Access</stringValue>
             </value>
         </filters>
         <filters>

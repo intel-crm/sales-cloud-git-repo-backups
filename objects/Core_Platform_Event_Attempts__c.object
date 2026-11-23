@@ -5,7 +5,6 @@
     <enableFeeds>false</enableFeeds>
     <fields>
         <fullName>Core_Batch_Size__c</fullName>
-        <description>Batch Size for Republish and Purge batches</description>
         <externalId>false</externalId>
         <label>Batch Size</label>
         <precision>18</precision>
@@ -17,7 +16,6 @@
     </fields>
     <fields>
         <fullName>Core_Days_To_Purge_Until__c</fullName>
-        <description>Holds number of days to keep records from deleting</description>
         <externalId>false</externalId>
         <label>Core Days To Purge Until</label>
         <precision>18</precision>
@@ -37,7 +35,6 @@
     </fields>
     <fields>
         <fullName>Core_Number_Of_Attempts__c</fullName>
-        <description>Holds number of attempts the Platform Event Bus can republish</description>
         <externalId>false</externalId>
         <label>Number Of Attempts</label>
         <precision>18</precision>
@@ -49,8 +46,6 @@
     </fields>
     <fields>
         <fullName>Core_Support_Email_Address__c</fullName>
-        <description>Holds Email Address of Support Team to notify failed messages</description>
-        <inlineHelpText>In case of more than one email address enter using comma separated</inlineHelpText>
         <label>Support Email Address</label>
         <required>false</required>
         <trackTrending>false</trackTrending>

@@ -7,8 +7,8 @@ import fatchPickListValue from '@salesforce/apex/PRM_AddPartnerController.fetchP
 import filterAccsData from '@salesforce/apex/PRM_AddPartnerController.filterAccsData';
 import fatchAccTypePickListValue from '@salesforce/apex/PRM_AddPartnerController.fetchAccTypePickListValue';
 import fatchAccCouPickListValue from '@salesforce/apex/PRM_AddPartnerController.fetchAccCouPickListValue';
-import { getPicklistValues, getObjectInfo } from 'lightning/uiObjectInfoApi';
-import Account_Object from '@salesforce/schema/Account';
+// import { getPicklistValues, getObjectInfo } from 'lightning/uiObjectInfoApi';
+// import Account_Object from '@salesforce/schema/Account';
 import fetchTierPickListValue from '@salesforce/apex/PRM_AddPartnerController.fetchTierPickListValue';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
@@ -26,6 +26,7 @@ import PRM_InputCharacterLimit_ErrMsg from '@salesforce/label/c.PRM_InputCharact
 import PRM_SelectionOfRecLimit_ErrMsg from '@salesforce/label/c.PRM_SelectionOfRecLimit_ErrMsg';
 import fetchSpeCritRelToACM from '@salesforce/apex/PRM_AddPartnerController.fetchSpeCritRelToACM';
 import fetchCustomSettingValues from '@salesforce/apex/PRM_AddPartnerController.fetchCustomSettingValues';
+import accountIdErrorMsg from '@salesforce/label/c.PRM_Account_Id_Error_Message';
 //import WrapperOfAccIdRoleAndSpCrit from '@salesforce/apex/PRM_AddPartnerController.WrapperOfAccIdRoleAndSpCrit';
 
 const columns = [
@@ -77,7 +78,7 @@ export default class DatatableUpdateExample extends LightningElement {
     //AddPartner START
     @track searchData = [];
     @track columns = columns;
-    strSearchAccName = '';
+    strSearchAccNameOrId = '';
     @track errorMsg = '';
     @track openfilterModel = false;
     @track selectedValue = '';
@@ -135,6 +136,8 @@ export default class DatatableUpdateExample extends LightningElement {
     // @track isSpinnerLoaded = false;    
     // @track isSpCritSelected = true;
     // @track lstOfWrapperRecToDelete = [];    
+
+
     connectedCallback() {
         this.searchData = [];
         this.isSearchData = false;
@@ -147,12 +150,16 @@ export default class DatatableUpdateExample extends LightningElement {
         if (this.selectedRecordLst === null || this.selectedRecordLst === undefined || this.selectedRecordLst.length === 0) {
             this.isData = false;
         }
+
     }
+
+
     @wire(fetchCustomSettingValues) custsettingValues({ error, data }) {
         if (data) {
             this.lstOfcustsettingValues = data;
         }
     }
+
     @wire(fetchPendingData, { currentspecialtyId: '$recordId' }) pendingLst({ error, data }) {
         if (data) {
             let nameUrl;
@@ -294,20 +301,7 @@ export default class DatatableUpdateExample extends LightningElement {
             }
             this.stringValofGlobalSuppressEmailMap = JSON.stringify(Array.from(this.globalSuppressEmailMap.entries()));
         }
-        //alert('stringValofGlobalSuppressEmailMap'+JSON.stringify(this.stringValofGlobalSuppressEmailMap));
-
-    }
-    mapSuppressEmailValueChange(event) {
-        var mapOfSuppressEmail = new Map(event.detail);
-        for (let accKey of mapOfSuppressEmail.keys()) {
-            this.lstSuppressEmailchngAccId.push(accKey);
-            for (let suppressEmailValues of mapOfSuppressEmail.values()) {
-                this.globalSuppressEmailMap.set(accKey, suppressEmailValues);
-            }
-            this.stringValofGlobalSuppressEmailMap = JSON.stringify(Array.from(this.globalSuppressEmailMap.entries()));
-        }
-        //alert('stringValofGlobalSuppressEmailMap'+JSON.stringify(this.stringValofGlobalSuppressEmailMap));
-
+        
     }
     
     approvePartners() {
@@ -334,7 +328,7 @@ export default class DatatableUpdateExample extends LightningElement {
                 }
             }
             this.stringValofGlobalCommentMap = JSON.stringify(Array.from(this.globalCommentMap.entries()));
-
+            
             for(let i =0; i <this.selectedRecordLst.length; i++){
                 if (this.lstSuppressEmailchngAccId.length === 0) {
                     this.globalSuppressEmailMap.set(this.selectedRecordLst[i].id, false);
@@ -349,7 +343,6 @@ export default class DatatableUpdateExample extends LightningElement {
             console.log('critListMap?????', JSON.stringify(this.critListMap));
             console.log('lstOfSpCritIdsReltoSp approve>>>', JSON.stringify(this.lstOfSpCritIdsReltoSp));
             //let finallstOfSpCritRelToSp = JSON.stringify(Array.from(this.lstOfSpCritIdsReltoSp));
-
             insertRelatedRecords({ lstaccIdAndAcm: this.finalAccounts, specialtyId: this.recordId, accCommentsMap: this.stringValofGlobalCommentMap, lstOfTotalSpCritRelSp: this.lstOfSpCritIdsReltoSp,accSuppressEmailMap:this.stringValofGlobalSuppressEmailMap })
                 .then(result => {
                     if (result === 'Success') {
@@ -382,20 +375,22 @@ export default class DatatableUpdateExample extends LightningElement {
         }
     }
 
-    handleAccountName(event) {
-        this.strSearchAccName = event.detail.value;
+    handleAccountNameOrID(event) {
+        this.strSearchAccNameOrId = event.detail.value;
     }
     handleChangeofValue(event) {
         this.valueOfFormulaValues = event.target.value;
     }
 
+    // check for account
     handleSearch() {
         var result;
         var errMsg;
         this.selectedrows = [];
         this.isLoaded = !this.isLoaded;
-
-        if (!this.strSearchAccName) {
+        console.log(typeof (this.strSearchAccNameOrId.length));
+        console.log('accountIdErrorMsg :' + accountIdErrorMsg);
+        if (!this.strSearchAccNameOrId) {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error',
@@ -408,7 +403,7 @@ export default class DatatableUpdateExample extends LightningElement {
             this.isLoaded = false;
             return;
         }
-        if (this.strSearchAccName.length < 3) {
+        if (this.strSearchAccNameOrId.length < 3 && this.strSearchAccNameOrId.length > 0 && !this.strSearchAccNameOrId.startsWith('00')) {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error',
@@ -421,7 +416,20 @@ export default class DatatableUpdateExample extends LightningElement {
             this.isLoaded = false;
             return;
         }
-        serachAccs({ accountName: this.strSearchAccName, currentspecialtyId: this.recordId })
+        if ((this.strSearchAccNameOrId.length < 15 || this.strSearchAccNameOrId.length < 18 || this.strSearchAccNameOrId.length > 18) && this.strSearchAccNameOrId.startsWith('00')) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: accountIdErrorMsg,// need to add custom labels for output msg
+                    variant: 'error',
+                }),
+            );
+            this.searchData = [];
+            this.isSearchData = false;
+            this.isLoaded = false;
+            return;
+        }
+        serachAccs({ accountName: this.strSearchAccNameOrId, currentspecialtyId: this.recordId })
             .then(returnedResult => {
                 if (returnedResult !== null && returnedResult !== undefined && returnedResult.length > 0) {
                     for (let lst = 0; lst < returnedResult.length; lst++) {
@@ -499,6 +507,7 @@ export default class DatatableUpdateExample extends LightningElement {
     onCountrySelection(event) {
         this.selectedCouInput = event.target.value;
     }
+    //open hidden filters
     openfilterModal() {
         if (this.openfilterModel === true) {
             this.openfilterModel = false;
@@ -512,7 +521,7 @@ export default class DatatableUpdateExample extends LightningElement {
         var result;
         var errMsg;
         this.isLoaded = true;
-        if (this.strSearchAccName.length > 0 && this.strSearchAccName.length < 3) {
+        if (this.strSearchAccNameOrId.length > 0 && this.strSearchAccNameOrId.length < 3 && !this.strSearchAccNameOrId.startsWith('00')) {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error',
@@ -525,7 +534,22 @@ export default class DatatableUpdateExample extends LightningElement {
             this.isLoaded = false;
             return;
         }
-        filterAccsData({ accountName: this.strSearchAccName, partnerRoleValues: this.selectedValue, accType: this.selectedAccType, countryValues: this.selectedCouInput, tierValue: this.valueOfFormulaValues, currentspecialtyId: this.recordId })
+        console.log('Account id/name :>>' + this.strSearchAccNameOrId);
+        if ((this.strSearchAccNameOrId.length < 15 || this.strSearchAccNameOrId.length < 18 || this.strSearchAccNameOrId.length > 18) && this.strSearchAccNameOrId.startsWith('00')) {
+            this.dispatchEvent(
+                new ShowToastEvent({
+                    title: 'Error',
+                    message: accountIdErrorMsg,// need to add custom labels for output msg
+                    variant: 'error',
+                }),
+            );
+            this.searchData = [];
+            this.isSearchData = false;
+            this.isLoaded = false;
+            return;
+        }
+
+        filterAccsData({ accountName: this.strSearchAccNameOrId, partnerRoleValues: this.selectedValue, accType: this.selectedAccType, countryValues: this.selectedCouInput, tierValue: this.valueOfFormulaValues, currentspecialtyId: this.recordId })
             .then(filteredresult => {
                 if (filteredresult !== null && filteredresult !== undefined && filteredresult.length > 0) {
                     for (let lst = 0; lst < filteredresult.length; lst++) {

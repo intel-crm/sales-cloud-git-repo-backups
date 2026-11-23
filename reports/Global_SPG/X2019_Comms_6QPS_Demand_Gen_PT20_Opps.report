@@ -152,7 +152,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Lighthouse,Regional Strategic</value>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -201,6 +201,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

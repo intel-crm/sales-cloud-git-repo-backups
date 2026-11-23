@@ -134,14 +134,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>telecommunications,technology,media,consulting,software and services</value>
+            <value>telecommunications,technology,media,consulting</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Intel® Optane™ Persistent Memory,barlow pass,crow pass,donahue pass</value>
+            <value>Intel® Optane™ Persistent Memory</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

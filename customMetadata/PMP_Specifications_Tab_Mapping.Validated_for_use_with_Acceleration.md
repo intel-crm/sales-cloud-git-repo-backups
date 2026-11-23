@@ -56,7 +56,7 @@
     </values>
     <values>
         <field>Tab__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Tab3</value>
     </values>
     <values>
         <field>is_Inline_Radio__c</field>

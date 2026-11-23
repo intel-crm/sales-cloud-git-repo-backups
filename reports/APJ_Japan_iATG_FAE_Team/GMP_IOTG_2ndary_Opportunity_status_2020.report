@@ -7,9 +7,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>PARTNER_ACCOUNT_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <columns>
@@ -25,10 +22,22 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
+        <field>Account.Core_Sales_Groups__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_IoT__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -55,7 +64,7 @@
         <field>OpportunityLineItem.Core_Design_Product_Category__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Division_Code_Short_Name__c</field>
@@ -112,6 +121,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Account.Core_Sub_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IJKK</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -133,7 +149,7 @@
             <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -149,7 +165,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

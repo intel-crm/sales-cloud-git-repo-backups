@@ -43,6 +43,10 @@
                 <behavior>Edit</behavior>
                 <field>PRM_IPA_Partner_Role_Nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_IPARefreshChecK__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

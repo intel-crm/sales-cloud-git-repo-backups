@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Assigned the new offering for review to Intel Admin Queue</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_OfferingAssignedAllAdminNotify</name>
+    <style>none</style>
+    <subject>Intel Marketplace Admin has been assigned to review the offering</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

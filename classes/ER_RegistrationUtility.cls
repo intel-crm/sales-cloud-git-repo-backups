@@ -10,7 +10,7 @@ Modification Log :
 *****************************************************************************************************************************************/
 
 
-public without sharing class ER_RegistrationUtility { 
+public without sharing class ER_RegistrationUtility {
     
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
@@ -28,7 +28,7 @@ public without sharing class ER_RegistrationUtility {
             }
             else {
                 registrationTypes.add(Label.RegistrationTypeGeneric);
-            } 
+            }
         }        
         return registrationTypes;
     }
@@ -43,13 +43,13 @@ public without sharing class ER_RegistrationUtility {
             AND Business_Types__r.Is_Active__c = true]) {
                 if(!businessTypeMap.containsKey(matrix.PRM_Entitlement_Id__r.Name)) {
                     businessTypeMap.put(matrix.PRM_Entitlement_Id__r.Name, matrix.Business_Types__r.Name);
-                }                
+                }	    
             }
         }
         return businessTypeMap;
     }
-     
-    /*commented as part of EBR framework and implemented this logic with flows
+    
+    
     //Sets EV criteria, language and matching contact
     public static void SetEVAndLanguage(List<PRM_Registration_Request__c> registrationRequests) {
         Set<String> emails = new Set<String>();
@@ -79,21 +79,25 @@ public without sharing class ER_RegistrationUtility {
             //request.PRM_EV_Token_Renewed_Date__c = datetime.now();
             
             //TWC722-734 - Commented as part of CiDaas -ATB
-            if(String.isNotBlank(String.valueOf(request.PRM_EmailVerifiedDateTime__c))){
+            /*if(String.isNotBlank(String.valueOf(request.PRM_EmailVerifiedDateTime__c))){
                 request.PRM_Email_Verification_Criteria__c = System.Label.PRM_Success;
-            }
+            }*/
         }
-    }*/
+    }
     
     //Added for Assigning Default value for 'Assigned to' field on New Registration
     //Added on 4/5/2022 by Gaurav
     Public static void setAssignedTo(List<PRM_Registration_Request__c> registrationRequests){
+        System.debug('inside in Assign value');
         List<String> newReg_AssignTo = new List<String>();
         String params = '';
         
         try{
                 for(User asUser : [Select id, name from User where name =: System.Label.Assigned_to_Dafault and IsActive = true]){
-                    newReg_AssignTo.add(asUser.id);           
+                    
+                    System.debug('asUser:::'+asUser);
+                    newReg_AssignTo.add(asUser.id);
+                    System.debug('Assign:::'+newReg_AssignTo+ 'size::' +newReg_AssignTo.size());            
                 }
                 
                
@@ -103,18 +107,21 @@ public without sharing class ER_RegistrationUtility {
                         throw new ER_ErrorUtility.CustomException('exception');
                     }
             
-                    if(request.Entitlement_Details__c != null && (request.PRM_Source__c == 'DZP' || request.PRM_Source__c == 'IPA - Portal') && request.Assigned_To__c == null && newReg_AssignTo.size() > 0)
+                    if(request.Entitlement_Details__c != null && newReg_AssignTo.size() > 0)
                     {
+                        
                         request.Assigned_To__c = newReg_AssignTo[0];
+                        System.debug('Assign:::'+newReg_AssignTo+ 'size::' +newReg_AssignTo.size());
                     }
                 }
           }
             catch(Exception ex)
             {
+                system.debug('AssignedTo Exception: '+ex.getmessage());
                 ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();custEx.Message = ex.getMessage(); custEx.Cause = ex.getCause();custEx.StackTraceString = ex.getStackTraceString();custEx.LineNumber = ex.getLineNumber();custEx.TypeName = ex.getTypeName();ER_ErrorUtility.createLogEntry('Error while updating Assigned To field', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
             }
     }
-   
+    
     public static void autoApproveRegReq(List<Contact_Business_Types__c> newCBTs, Map<Id, Contact_Business_Types__c> oldMap)
     {
         string params = '';
@@ -132,24 +139,25 @@ public without sharing class ER_RegistrationUtility {
             }
             if(isUpdated)
             {
-                Set<String> emailSet = new Set<String>();
                 for(Contact_Business_Types__c cbt : [SELECT Contact__r.Email FROM Contact_Business_Types__c WHERE Status__c = 'Approved' AND Id =: newCBTs])
                 {
-                    if (cbt.Contact__r.Email != null) {
-                       emailSet.add(cbt.Contact__r.Email);
-                    }
-                }  
-                List<PRM_Registration_Request__c> requests =[SELECT ID,Current_Status__c,PRM_Status__c FROM PRM_Registration_Request__c WHERE Current_Status__c = 'Auto-Approval Pending' AND PRM_Email_ID__c =:emailSet  ORDER BY LastModifiedDate DESC];
-                for(PRM_Registration_Request__c req : requests){
+                    PRM_Registration_Request__c req = [SELECT ID,Current_Status__c,PRM_Status__c FROM PRM_Registration_Request__c WHERE Current_Status__c = 'Auto-Approval Pending' AND PRM_Email_ID__c =: cbt.Contact__r.Email ORDER BY LastModifiedDate DESC LIMIT 1];
                     req.Current_Status__c = 'Auto-Approval Approved';
                     req.PRM_Status__c = 'Approved';
                     reqToBeUpdated.add(req);
                 }
                 
-                    if(reqToBeUpdated.size() > 0 && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable())
+                System.debug('reqToBeUpdated'+reqToBeUpdated);
+                
+                if(reqToBeUpdated.size() > 0)
+                {
+                    if(Schema.sObjectType.PRM_Registration_Request__c.isUpdateable())
                     {
+                        System.debug('Update Success'+reqToBeUpdated);
                         Update reqToBeUpdated;
+                        System.debug('Update Success 2'+reqToBeUpdated);
                     }
+                }
             }
         }
         catch(Exception ex) 

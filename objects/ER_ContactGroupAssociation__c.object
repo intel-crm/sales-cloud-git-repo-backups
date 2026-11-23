@@ -207,18 +207,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>ER_Active_CMF_Count_Formula__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(ER_Customer_Master_File_Group__r.ER_Count_of_Customer_Master_Files__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Active CMF Count</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>ER_Active__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
@@ -254,7 +242,7 @@
         <fullName>ER_Contact_Email_backend__c</fullName>
         <externalId>false</externalId>
         <label>Contact Email</label>
-        <length>120</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -353,18 +341,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>ER_Post_Delete_Association__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>This field is created to track the deleted records in a new related list of CMF group</description>
-        <label>Post Delete Association</label>
-        <referenceTo>ER_Customer_Master_File_Group__c</referenceTo>
-        <relationshipName>Contacts</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>ER_StartDate__c</fullName>
         <label>Start Date</label>
         <required>false</required>
@@ -375,28 +351,12 @@
     <label>Contact Association</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>ER_Customer_Master_File_Group__c</columns>
         <columns>ER_Contact__c</columns>
         <columns>ER_Account_Name__c</columns>
         <columns>ER_Phone__c</columns>
         <columns>ER_Contact_Email__c</columns>
-        <columns>ER_Active__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>CMFG_Contact_Associations</fullName>
-        <columns>NAME</columns>
-        <columns>ER_Customer_Master_File_Group__c</columns>
-        <columns>ER_Contact__c</columns>
-        <columns>ER_Contact_Email_backend__c</columns>
-        <columns>ER_Account__c</columns>
-        <columns>ER_First_Name__c</columns>
-        <columns>ER_Last_Name__c</columns>
-        <columns>ER_Account_IsODM__c</columns>
-        <columns>ER_Active__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>CMFG Contact Associations</label>
     </listViews>
     <nameField>
         <displayFormat>CAG - {0000000}</displayFormat>
@@ -406,20 +366,13 @@
     </nameField>
     <pluralLabel>Contact Associations</pluralLabel>
     <searchLayouts>
-        <searchResultsAdditionalFields>ER_Contact__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ER_Contact_Email_backend__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ER_Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ER_Contact_Fields_Merged__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>ER_Customer_Master_File_Group__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Contact__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Account__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Contact_Email__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ER_Phone__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
-    <validationRules>
-        <fullName>ER_Allow_only_active_contacts</fullName>
-        <active>true</active>
-        <description>Only active contacts can be added in the CMF Group</description>
-        <errorConditionFormula>AND(ISNEW(),NOT(ISPICKVAL(ER_Contact__r.Core_Login_Status__c ,&apos;Active&apos;)),ISNULL( ER_End_Date__c))</errorConditionFormula>
-        <errorMessage>Only Active Contacts Can be Added to CMF Group</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Delete</fullName>

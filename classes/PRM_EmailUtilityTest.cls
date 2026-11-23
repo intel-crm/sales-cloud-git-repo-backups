@@ -86,7 +86,7 @@ public class PRM_EmailUtilityTest {
             a1.BillingPostalCode='5600371';
             a1.ownerId= portalAccountOwner1.id ;
             a1.Core_User_Defined_Website__c='www.testww1.com';
-               a1.website='www.testww1.com';
+        	a1.website='www.testww1.com';
             accLst.add(a1);
             //insert a1;
             
@@ -121,7 +121,7 @@ public class PRM_EmailUtilityTest {
             a12.BillingPostalCode='5600322';
             a12.ownerId= portalAccountOwner1.id ;
             a12.Core_User_Defined_Website__c='www.testww122.com';
-               a12.website='www.testww122.com';
+        	a12.website='www.testww122.com';
             accLst.add(a12);
         insert accLst;
             
@@ -188,13 +188,12 @@ public class PRM_EmailUtilityTest {
             //acctContRel.PRM_Account_Channel_Membership_Id__c=acm.Id;
             acctContRel.PRM_Relationship_Id__c=contRelation.Id;
             acctContRel.PRM_InActive_Ind__c=false;
-                                           acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
             test.startTest();
-            Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
             insert acctContRel;
+            
             acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
             update acctContRel;
-            Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+            
         }
         
         UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -235,9 +234,9 @@ public class PRM_EmailUtilityTest {
             //Test.startTest();
             PRM_EmailUtility.EmailNotification en = new PRM_EmailUtility.EmailNotification();
             Map<String,String> paramMap = new Map<String,String>();
-                                                 en.EmailID= regRequest.PRM_Email_ID__c ;
-                                                 en.Language = regRequest.PRM_Preferred_Language__c ;
-                                                 paramMap.put('Registration_Request_ID',regRequest.id);
+			      en.EmailID= regRequest.PRM_Email_ID__c ;
+			      en.Language = regRequest.PRM_Preferred_Language__c ;
+			      paramMap.put('Registration_Request_ID',regRequest.id);
             paramMap.put('Contact_ID',cont.id);
             en.BusinessEvent = 'BENEFIT ADDITION40';
             en.InputParameters=paramMap;
@@ -276,7 +275,7 @@ public class PRM_EmailUtilityTest {
         ChannelProgram cp = PRM_TestUtility.getChannelPrograms();
         insert cp;
         ChannelProgramLevel cpl=new ChannelProgramLevel();
-        cpl.Name='Member';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         insert cpl;
         
@@ -510,7 +509,6 @@ public class PRM_EmailUtilityTest {
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-                             acm.PRM_Status_Reason_Txt__c = 'Testclass';'
         insert acm;
         
         PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -519,12 +517,10 @@ public class PRM_EmailUtilityTest {
         acctContRel.PRM_Relationship_Id__c = cr.Id;
         acctContRel.PRM_InActive_Ind__c=false;
         acctContRel.PRM_execute_trigger__c=true;
-                             acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acctContRel;     
+        insert acctContRel;
+        
         acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
         update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         
         
         PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -658,7 +654,6 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acm.PRM_Channel_Program_Id__c=cp.Id;
       acm.PRM_Channel_Program_Level_Id__c=cpl.Id;
       acm.PRM_Partner_Role__c='Service Provider';
-              acm.PRM_Status_Reason_Txt__c = 'Testclass';
       insert acm;
       
       PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -667,13 +662,10 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
       acctContRel.PRM_Relationship_Id__c = cr.Id;
       acctContRel.PRM_InActive_Ind__c=false;
       acctContRel.PRM_execute_trigger__c=true;
-              acctContRel.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');     
-insert acctContRel;
+      insert acctContRel;
+      
       acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
       update acctContRel;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');   
-
       
       
       PRM_Specialty__c spec = new PRM_Specialty__c();
@@ -766,17 +758,17 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         insert cp;
         
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
-        cpl.Name='Member';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         insert cpl;
         
         ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
-        cpl1.Name='Gold';
+        cpl1.Name='Partner';
         cpl1.ProgramId=cp.Id;
         insert cpl1;
         
          ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
-        cpl2.Name='Titanium';
+        cpl2.Name='Prestige';
         cpl2.ProgramId=cp.Id;
         insert cpl2;
         Test.startTest();
@@ -903,10 +895,7 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr.PRM_Start_Date_Dt__c= system.today()-2; 
         acr.PRM_Status_Nm__c = 'Complete';
         acr.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');    
-insert acr;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+        insert acr;
         //system.debug('acr--1>'+acr);
         
         PRM_Account_Contact_Relationship__c acr1=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
@@ -919,10 +908,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr1.PRM_Start_Date_Dt__c= system.today()-2;    
         acr1.PRM_Status_Nm__c = 'Complete';
         acr1.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr1.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');        
-insert acr1;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');      
+        insert acr1;
+        
          PRM_Account_Contact_Relationship__c acr2=new PRM_Account_Contact_Relationship__c();//Account Contact Relationship
         acr2.PRM_InActive_Ind__c= false;
         acr2.PRM_Account_Id__c=childAccount.Id;
@@ -932,10 +919,8 @@ Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
         acr2.PRM_Start_Date_Dt__c= system.today()-2;    
         acr2.PRM_Status_Nm__c = 'Complete';
         acr2.PRM_End_Date_Dt__c= acr.PRM_Start_Date_Dt__c+1; 
-                             acr2.PRM_Status_Reason_Txt__c = 'Testclass';
-Triggerhandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acr2;
-Triggerhandler.clearbypass('PRM_AcctContRel_TriggerHandlerNew');
+
        Test.stopTest();   
 
         List<PRM_AccountChannelMembership__c> acmList = new List<PRM_AccountChannelMembership__c>();

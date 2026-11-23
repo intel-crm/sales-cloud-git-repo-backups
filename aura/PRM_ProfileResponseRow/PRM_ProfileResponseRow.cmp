@@ -25,8 +25,6 @@
     
     
     
-   
-
     <!-- DOM Starts here -->
     <tr class="slds-hint-parent">
         <th data-label="question" scope="row">
@@ -46,7 +44,7 @@
                     <span><ui:outputRichText value="{!v.res.response.PRM_View_History__c}" /></span>                    
                 </aura:if>
                 <aura:if isTrue = "{!v.res.question.PRM_Question_Cd__c == 'IPA_Registration_Source'}">
-                <lightning:input value="{!v.res.response.PRM_Response_Txt__c}" required="true" disabled="{!v.isDisable}"/>
+                    <lightning:input value="{!v.res.response.PRM_Response_Txt__c}" required="true" disabled="{!v.isDisable}"/>
                 </aura:if>
                 
                 

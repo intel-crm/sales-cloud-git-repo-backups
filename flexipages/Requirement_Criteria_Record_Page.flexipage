@@ -41,7 +41,7 @@
                 <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-2b8507a2-285b-43e4-8839-05001760b922</name>
+        <name>Facet-262407ea-89aa-45b8-af40-8c3cf73c933d</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -51,7 +51,7 @@
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b017d824-d38f-45a8-a751-71f511e5eab8</name>
+        <name>Facet-645220ee-658c-4e54-b9ac-fba7b9d17d32</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -63,7 +63,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-2b8507a2-285b-43e4-8839-05001760b922</value>
+                    <value>Facet-262407ea-89aa-45b8-af40-8c3cf73c933d</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -81,7 +81,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-b017d824-d38f-45a8-a751-71f511e5eab8</value>
+                    <value>Facet-645220ee-658c-4e54-b9ac-fba7b9d17d32</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -91,7 +91,7 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-f7633c67-0e29-40da-ba42-666e2576b120</name>
+        <name>Facet-24a04c74-0e7f-4ec4-9a80-3c5b671c4346</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -99,7 +99,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-f7633c67-0e29-40da-ba42-666e2576b120</value>
+                    <value>Facet-24a04c74-0e7f-4ec4-9a80-3c5b671c4346</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>

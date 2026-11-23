@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ECI TELECOMMUNICATION CO LTD Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ECI TELECOMMUNICATION CO LTD Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>ECITELECOMMUNICATIONCOLTDCustomerExecutive</parentRole>
+</Role>

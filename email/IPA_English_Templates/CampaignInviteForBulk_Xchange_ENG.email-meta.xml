@@ -1,18 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>Campaign Invite Exchange Template</description>
     <encodingKey>UTF-8</encodingKey>
     <name>CampaignInviteForBulk_Xchange_ENG</name>
     <style>none</style>
     <subject>Thank you for visiting us at Xchange.  More details on joining the Intel® Partner Alliance are inside!</subject>
-    <textOnly>IPU learning campaign
+    <textOnly>We invite you to join our Intel Partner Alliance Program!
 
-Here&apos;s why you should join the Intel Partner Alliance today
-The Intel® Partner Alliance membership gives you exclusive business-building opportunities, like entry to our global marketplace, advanced training, and promotional support—all tailored to your needs.
-Not only that but, once you sign up for IPA, you will receive 1,000 Welcome Bonus Points. Look out for more exciting and upcoming happenings we have in-store for you in the next 7 Days!
+Get access to training, developer resources, a global ecosystem, support, and more.
 
-Benefits of being an IPA Member:</textOnly>
+Take the Next Step: Complete Your Registration Now
+
+Click to join
+
+First Name: {!Contact.FirstName}
+Last Name: {!Contact.LastName}
+Username (Email Address): {!Contact.Email}
+Note your email address is your username.
+
+Get the support you need to accelerate innovation and grow your business when you join the Intel® Partner Alliance Program.
+
+Your membership provides instant access to an exclusive network of ecosystem partners.
+
+Get rewarded for being an active partner when you join the Intel® Partner Alliance. Partners receive access to advanced training, developer and marketing resources, the partner showcase, support, and partner-to-partner community rewards.
+
+Enable growth and facilitate greater collaboration through various membership tiers. Explore the program&apos;s benefits, requirements and member roles below. Join Intel® Partner Alliance to reach more audiences; accelerate innovation; and meet new partners.
+
+Take a few moments to complete your registration and get started today.
+
+Click to join
+
+This link will expire in 24 hours – click the existing ‘Click to Join’ link to get a refreshed link.
+
+Reap the benefits of being an Intel partner, register for Intel® Partner Alliance and start with 1,000 points¹
+
+Not only does Intel® Partner Alliance offer a large variety of tools to help grow your business, but it also offers Points Benefits, with multiple opportunities to earn &amp; redeem points for eligible purchases, training, and other activities. If you haven’t registered, now is the perfect time. See the points terms and conditions.
+
+Need help signing up to be a partner?
+Contact support
+
+¹Must be Points eligible to qualify. See eligibility requirements.
+
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

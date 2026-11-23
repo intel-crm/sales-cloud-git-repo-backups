@@ -9,12 +9,6 @@
     <columns>
         <field>ACCOUNT_OWNER</field>
     </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Solution_Group__c</field>
-    </columns>
     <description>Shows all products that the customer has purchased from Intel in a determined period of time. Filter by account name and time frame for desired results.</description>
     <filter>
         <criteriaItems>
@@ -29,7 +23,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Roche Group</value>
+            <value>CrowdStrike</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_RECORDTYPE</column>
@@ -65,7 +59,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>closedwon</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -80,8 +74,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
-    <sortColumn>CLOSE_DATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

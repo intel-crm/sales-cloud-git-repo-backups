@@ -223,7 +223,7 @@ update lstContacts;
             for (Contact contact : mapNew.values()) {
                 if (mapOld.get(contact.Id).Core_IPA_Contact_Segment__c != contact.Core_IPA_Contact_Segment__c) {
                     updatedContactIds.add(contact.Id);
-                }   
+                }	
             }
             if (updatedContactIds != null && !updatedContactIds.isEmpty()) {
                 if (Schema.sObjectType.Core_Contact_Entitlement__c.fields.Name.isAccessible()) {
@@ -523,7 +523,7 @@ Upsert IntegrtionStatusDetailList;
                                                                  acr.PRM_End_Date_Dt__c = System.today();
                                                                  //TWC729-9097 - Add login status as status reason on ACR where deletion reason is blank on contact 
                                                                  if(String.isNotBlank(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c)){
-                                                                 acr.PRM_Status_Reason_Txt__c = deletionreasonValeLabelMap.get(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c);
+                                                                    acr.PRM_Status_Reason_Txt__c = deletionreasonValeLabelMap.get(newMap.get(acr.PRM_Contact_Id__c).Core_Deletion_Reason__c);
                                                                  }
                                                                  else{
                                                                     acr.PRM_Status_Reason_Txt__c = newMap.get(acr.PRM_Contact_Id__c).Core_Login_Status__c;
@@ -560,7 +560,7 @@ update acrEmployeeFinalList;
         }
     }  
     //Added by Agate Team
-   /* public static void assignPartnerCommunityContactEntitlements(map<Id,Contact> cntMapOld, List<Contact> conList) {    
+    public static void assignPartnerCommunityContactEntitlements(map<Id,Contact> cntMapOld, List<Contact> conList) {    
         Map<id, List<String>> contactIdCommunitymap = new Map<Id, List<String>>();        
         Map<id, List<String>> newConComMap = new Map<Id, List<String>>();
         Set<String> communitiesAvailable = new Set<String>();
@@ -625,7 +625,7 @@ update acrEmployeeFinalList;
             //Logic ending for userstory TWC729-2033
             
             /****************************** Create Contact Subscription starts - TWC729-2258 *************************************/
-           /* if(contactIdCommunitymap.size()>0 || noComOptOut.size()>0){
+            if(contactIdCommunitymap.size()>0 || noComOptOut.size()>0){
                 //get values from Subscription MetaData            
                 for(PRM_Partner_Subscription__c PSub :[select id,Name,PRM_Community__c from PRM_Partner_Subscription__c where PRM_Community__c in :communitiesAvailable and PRM_InActive_Ind__c = false]){
                     subMap.put(PSub.PRM_Community__c, string.valueof(PSub.Id));
@@ -713,7 +713,7 @@ update acrEmployeeFinalList;
             //Logic ending for userstory TWC729-2033
             
             // get contact Entitlement records 
-           /* if(contactIdCommunitymap!=Null && contactIdCommunitymap.size()>0 && contactIdCommunitymap.keySet()!=null){      
+            if(contactIdCommunitymap!=Null && contactIdCommunitymap.size()>0 && contactIdCommunitymap.keySet()!=null){      
                 Map<id, Map<String,Core_Contact_Entitlement__c>> contactIdEntitlementsMap = new Map<Id, Map<String,Core_Contact_Entitlement__c>>();        
                 for(Core_Contact_Entitlement__c ce : [Select ID,Core_Contact_Id__c,Core_Selected__c,Core_Entitlement_Id__c,Core_Entitlement_Id__r.Name,Core_Status__c  from Core_Contact_Entitlement__c where Core_Entitlement_Id__r.Name in :Label.PRM_Commuinty_Entitlements.split(';') and Core_Contact_Id__c in :contactIdCommunitymap.keySet()]){
                     contactEntilementList.add(ce);
@@ -856,7 +856,7 @@ update acrEmployeeFinalList;
             }
         }
     }
-    */
+    
     //Below code is added as part of userstory TWC729-2033, This will create enrollment request record when contact IPA Community is updated
     public static PRM_Partner_Community_Enrollment_Request__c createEnrollmentRequest(Id conId, String ctcomm, String Status){
         PRM_Partner_Community_Enrollment_Request__c newRequest = new PRM_Partner_Community_Enrollment_Request__c();
@@ -1086,93 +1086,4 @@ update acrEmployeeFinalList;
             UCD_ACM_Logger.setLogDetails();
         }
     }
-
-    public static void erpmProcessFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
-        Integer processLimit=Integer.valueOf(Label.Contact_Process_Limit);
-        List<Contact> contactsToProcess = new List<Contact>();
-        if(!newContacts.isEmpty()){
-            for(Contact con : newContacts){
-                if(con.Core_Erpm_Integration_Status__c == 'Pending' && con.Core_ERPM_Integration_Queue_txt__c != 'Full' && !con.Core_IPS_Employee_Customer__c){
-                    contactsToProcess.add(con);
-                }
-            }
-        }
-        if(!contactsToProcess.isEmpty() && contactsToProcess.size() <= processLimit  && !System.isBatch() && !System.isFuture()){
-            processLiveFlow(contactsToProcess, oldContactMap);
-        }
-        else if(!contactsToProcess.isEmpty() && contactsToProcess.size() > processLimit){
-            processBulkFlow(contactsToProcess, oldContactMap);
-        }
-    }
-
-    public static void processLiveFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
-        try{
-            List<Core_ACM_Integration_Queue__c> queueRecords = Core_IntegrationQueueService.createQueueRecords(
-                newContacts,
-                oldContactMap,
-                Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.LIVE)
-            );
-            if(!queueRecords.isEmpty()){
-                Set<Id> queueRecordIds = new Set<Id>();
-                for(Core_ACM_Integration_Queue__c queueRecord : queueRecords){
-                    if(queueRecord.Id != null){
-                        queueRecordIds.add(queueRecord.Id);
-                    }
-                }
-                if(!queueRecordIds.isEmpty()){
-                    Core_ACM_ERPMAPIBatchProcessor liveBatch=new Core_ACM_ERPMAPIBatchProcessor(
-                        queueRecordIds,
-                        Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.LIVE)
-                    );
-                    Database.executeBatch(liveBatch,10);
-                }
-            }
-        }
-        catch(Exception ex) {
-            UCD_ACM_Logger.error('Core_ContactHandler','processLiveFlow','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
-        } 
-        finally {
-            UCD_ACM_Logger.setLogDetails();
-        }
-    }
-    public static void processBulkFlow(List<Contact> newContacts, Map<Id, Contact> oldContactMap){
-        try{
-            BulkIdentity__e platformevent = new BulkIdentity__e();
-            Set<Id> contactIds = new Set<Id>();
-            for(Contact con : newContacts){
-                contactIds.add(con.Id);
-            }
-            platformEvent.Contact_Ids__c = JSON.serialize(contactIds);
-            platformEvent.Old_Contact_Map__c = JSON.serialize(oldContactMap);
-            platformEvent.Operation_Type__c = Core_ACM_Constants.getProcessTypeValue(Core_ACM_Constants.ProcessType.BULK_MODE);
-            Database.SaveResult sr = EventBus.publish(platformevent);
-            if(!sr.isSuccess()){
-                for (Database.Error error : sr.getErrors()) {
-                    UCD_ACM_Logger.error('Core_ContactHandler', 'processBulkFlow', 'Platform Event Publish Error: ' + error.getMessage(),NULL);
-                }
-            }
-        }
-        catch(Exception ex) {
-            UCD_ACM_Logger.error('Core_ContactHandler','processBulkFlow','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
-        } 
-        finally {
-            UCD_ACM_Logger.setLogDetails();
-        }
-    }
-    
-    //rohitx.podder@intel.com 30/09/2026 -- START
-    public static void countryCodeConversion(List<Contact> listContacts) {
-        Map<String,String> mapCountryCodeIsoCode = new Map<String,String>();
-        
-        for (Core_Country_Code_Mapping__c ccd : [SELECT ID, Country_Code__c, ISO_Code__c FROM Core_Country_Code_Mapping__c]) {
-            mapCountryCodeIsoCode.put(ccd.Country_Code__c, ccd.ISO_Code__c);
-        }
-        
-        for (Contact con : listContacts) {
-            if (con.MailingCountryCode!=null && con.MailingCountryCode.length() == 2) {
-                con.MailingCountryCode = mapCountryCodeIsoCode.get(con.MailingCountryCode);
-            }
-        } 
-    }
-    //END
 }

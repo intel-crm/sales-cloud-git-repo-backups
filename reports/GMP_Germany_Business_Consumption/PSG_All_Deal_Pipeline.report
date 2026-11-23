@@ -23,7 +23,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
     </columns>
-    <description>Industrie 4.0 Dashboard</description>
     <filter>
         <criteriaItems>
             <column>CUST_NAME</column>
@@ -33,11 +32,11 @@
             <value>PSG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Florian Ranner,Donal,Christian Donitzky</value>
+            <operator>equals</operator>
+            <value>EMP of Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

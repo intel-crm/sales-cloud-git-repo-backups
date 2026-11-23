@@ -36,6 +36,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Deal: Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -124,7 +127,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>

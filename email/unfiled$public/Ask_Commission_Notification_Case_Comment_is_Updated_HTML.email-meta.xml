@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>Ask_Commissions_Letterhead</letterhead>
+    <name>Ask Commissions-Notification Case Comment is updated HTML</name>
+    <style>freeForm</style>
+    <subject>Case Number: {!Case.CaseNumber} - New Case Comment has been added to the Case.</subject>
+    <textOnly>New case comment has been added to Case.
+
+Case Number: {!Case.CaseNumber}
+Status: {!Case.Status}
+New Case Comment: {!Case.Core_AAQC_Latest_Case_Comment__c}
+
+For more details, click on the link to visit the Case:
+{!Case.Core_AAQC_Commission_InquiryId_Hyperlink__c}
+
+
+***NOTE: Do not reply to this mail as there is no inbox being monitored***</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

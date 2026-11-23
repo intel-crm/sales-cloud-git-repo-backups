@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Khoros Community Syndication Blade</masterLabel>
+    <description>Full Width - Khoros Community Syndication Blade</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Heading" name="heading" type="String" description="Optional heading" />
+            <property label="Heading Style" name="headingStyle" type="String" default="h3" datasource="h2,h3,h4" description="Optional heading style" />
+            <property label="CTA Label" name="ctaLabel" type="String" description="Optional link label text" />
+            <property label="CTA Link URL" name="ctaLink" type="String" description="Optional link url" />
+            <property label="Inverse" name="inverse" type="Boolean" description="Optional inverse property for usage on dark backgrounds (Note: Must match up with a 'dark theme' Khoros Skin ID)" />
+            <property label="Locations" name="widgetCategory" type="String" />
+            <property label="Discussion Style" name="discussionStyle" type="String" datasource="Blogs,Contests,Forums,Ideas,Knowledge Base,Q and A" default="Blogs" />
+            <property label="Labels" name="labels" type="String" description="Optional comma-separated list of labels" />
+            <property label="Tags" name="tags" type="String" description="Optional comma-separated list of tags" />
+            <property label="Display Style" name="displayStyle" type="String" datasource="Card View,List View" default="Card View" />
+            <property label="Skin ID" name="skinId" type="String" datasource="intelcommunitymsgsyndication,IntelCommunityMsgSyndication,IntelCommunityMSGList" default="IntelCommunityMsgSyndication" description="Provide a custom style/skin id. Use 'IntelCommunityMsgSyndication' for 'Card View' and 'IntelCommunityMSGList' for 'List View'" />
+            <property label="Number of Messages" name="numberOfMessages" type="String" datasource="1,2,3,4,5,6,7,8,9,10" default="1" />
+            <property label="Sort By" name="sortBy" type="String" datasource="Most Kudos,Most Comments,Most Views,Created Date (newest to oldest),Created Date (oldest to newest)" default="Most Kudos" />
+            <property label="Show Avatars" name="showAvatars" type="Boolean" default="true" />
+            <property label="Show Author Name" name="showAuthorName" type="Boolean" default="true" />
+            <property label="Show Date Time" name="showDateTime" type="Boolean" default="true" />
+            <property label="Show Kudos" name="showKudos" type="Boolean" default="true" />
+            <property label="Show Comments" name="showComments" type="Boolean" default="true" />
+            <property label="Show Views" name="showViews" type="Boolean" default="true" />
+            <property label="Show Image" name="showImage" type="Boolean" description="If display style is 'List View' this value is ignored." default="true" />
+            <property label="Show Message Body" name="showMessageBody" type="Boolean" default="true" />
+            <property label="Number of Body Lines" name="numberOfBodyLines" type="String" description="If 'Show Message Body' is unchecked this value is ignored." datasource="1,2,3,4,5" default="2" />
+            <property label="Data Config - List Item URL" name="listItemUrl" type="String" default="https://omywm49848.stage.lithium.com/t5/activecast/iframepage" description="This is the config endpoint for the data-li-url attribute (Note: this domain must be in the CSP whitelist)" />
+            <property label="Data Config - Widget JS Script URL" name="khorosScriptSrc" type="String" default="https://omywm49848.stage.lithium.com/html/assets/js/activecast/widget.js" description="This is the config endpoint for the widget script src (Note: this domain must be in the CSP whitelist)" />
+            <property label="Data Config - Khoros Widget ID" name="widgetId" type="String" default="content.syndication.widget.message-list" description="This is the config id for the widget" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

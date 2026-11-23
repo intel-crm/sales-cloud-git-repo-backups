@@ -14,27 +14,27 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         
         Id IntelContRecTypeId = Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
         List<Contact> contacts = new List<Contact>();
-        Contact cnt1 = new Contact(Core_Enterprise_Id__c = '12345', Core_Login_Id__c = '123456',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact1',Email='test12345@spamok.com', AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  MailingCountryCode = 'USA',Core_AGS_Integration_Message__c ='abc');
+        Contact cnt1 = new Contact(Core_Enterprise_Id__c = '12345', Core_Login_Id__c = '123456',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact1',Email='test12345@mailinator.com', AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  MailingCountryCode = 'USA',Core_AGS_Integration_Message__c ='abc');
         contacts.add(cnt1);
         
-        Contact cnt2 = new Contact(Core_Enterprise_Id__c = '12345678', Core_Login_Id__c = '12345678',Core_Preferred_Language__c='SPA',FirstName='Test1',LastName='Contact12',Email='test12345678@spamok.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Distributor', Core_AGS_Integration_Status__c ='xyz', Core_AGS_Integration_Message__c ='xyz' );
+        Contact cnt2 = new Contact(Core_Enterprise_Id__c = '12345678', Core_Login_Id__c = '12345678',Core_Preferred_Language__c='SPA',FirstName='Test1',LastName='Contact12',Email='test12345678@mailinator.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Distributor', Core_AGS_Integration_Status__c ='xyz', Core_AGS_Integration_Message__c ='xyz' );
         contacts.add(cnt2);
         
-        Contact cnt3 = new Contact(Core_Enterprise_Id__c = '1234567899', Core_Login_Id__c = '1234567899',Core_Preferred_Language__c='SPA',FirstName='Test12',LastName='Contact123',Email='test1234567899@spamok.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Distributor');
+        Contact cnt3 = new Contact(Core_Enterprise_Id__c = '1234567899', Core_Login_Id__c = '1234567899',Core_Preferred_Language__c='SPA',FirstName='Test12',LastName='Contact123',Email='test1234567899@mailinator.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Distributor');
         contacts.add(cnt3);
         
-        Contact cnt4 = new Contact(Core_Enterprise_Id__c = '1234567890', Core_Login_Id__c = '1234567890',Core_Preferred_Language__c='SPA',FirstName='Test123',LastName='Contact1234',Email='test1234567890@spamok.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId);
+        Contact cnt4 = new Contact(Core_Enterprise_Id__c = '1234567890', Core_Login_Id__c = '1234567890',Core_Preferred_Language__c='SPA',FirstName='Test123',LastName='Contact1234',Email='test1234567890@mailinator.com',AccountId=acc.Id, MailingCity='delhi1',MailingCountry='India',MailingPostalCode='12345633',RecordTypeId=IntelContRecTypeId);
         contacts.add(cnt4);
         
         
         
-        Contact cnt5 = new Contact(FirstName='TestFirstName',LastName='TestLastName',AccountId=acc.Id, Email='test1234567890@spamok.com', Core_Enterprise_Id__c = '1234655567890', MailingCountryCode = 'USA',Core_IPA_PartnerRole__c='Distributor' );
+        Contact cnt5 = new Contact(FirstName='TestFirstName',LastName='TestLastName',AccountId=acc.Id, Email='test1234567890@mailinator.com', Core_Enterprise_Id__c = '1234655567890', MailingCountryCode = 'USA',Core_IPA_PartnerRole__c='Distributor' );
         contacts.add(cnt5);
         
-        Contact cnt6 = new Contact(Core_Enterprise_Id__c = '1234567', Core_Login_Id__c = '654321',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact6',Email='test654@spamok.com', Core_IPA_Email_Verification_Date__c= System.now(), AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',MailingCountryCode = 'USA',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  Core_AGS_Integration_Message__c ='abc');
+        Contact cnt6 = new Contact(Core_Enterprise_Id__c = '1234567', Core_Login_Id__c = '654321',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact6',Email='test654@mailinator.com', Core_IPA_Email_Verification_Date__c= System.now(), AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',MailingCountryCode = 'USA',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  Core_AGS_Integration_Message__c ='abc');
         contacts.add(cnt6);
         
-        Contact cnt7 = new Contact(Core_Enterprise_Id__c = '739929', Core_Login_Id__c = 'test6547@spamok.com',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact7',Email='test6547@spamok.com', Core_IPA_Email_Verification_Date__c= System.now(), AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',MailingCountryCode = 'USA',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  Core_AGS_Integration_Message__c ='abc');
+        Contact cnt7 = new Contact(Core_Enterprise_Id__c = '739929', Core_Login_Id__c = 'test6547@mailinator.com',Core_Preferred_Language__c='ENG',FirstName='Test',LastName='Contact7',Email='test6547@mailinator.com', Core_IPA_Email_Verification_Date__c= System.now(), AccountId=acc.Id, MailingCity='San Jose',MailingPostalCode='123456',MailingCountryCode = 'USA',RecordTypeId=IntelContRecTypeId,Core_IPA_PartnerRole__c='Service Provider', Core_AGS_Integration_Status__c ='abc',  Core_AGS_Integration_Message__c ='abc');
         contacts.add(cnt7);
         
         insert contacts;
@@ -132,7 +132,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody = '{"EnterpriseID" : "12345","cidaas":"true", "LoginID" : "123456", "EmailID" : "test12345@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "12345","cidaas":"true", "LoginID" : "123456", "EmailID" : "test12345@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;        
         PRM_Contact_AGS_CallbackHandler.OutputMessage strJSON = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -148,7 +148,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody = '{"EnterpriseID" : "","cidaas":"true", "LoginID" : "", "EmailID" : "test12345@spamok.com", "retryCount" : "1", "EmailVerificationDateTime" : "", "status" :"Failed" }';
+        String reqBody = '{"EnterpriseID" : "","cidaas":"true", "LoginID" : "", "EmailID" : "test12345@mailinator.com", "retryCount" : "1", "EmailVerificationDateTime" : "", "status" :"Failed" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;        
         PRM_Contact_AGS_CallbackHandler.OutputMessage strJSON = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -164,7 +164,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody = '{"EnterpriseID" : "123456", "LoginID" : "654321", "EmailID" : "test654@spamok.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "123456", "LoginID" : "654321", "EmailID" : "test654@mailinator.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage strJSON = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -179,13 +179,13 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage strJSON = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
         system.assert(strJSON.msg.indexOf('Contact updated successfully') >= -1 );
         test.stopTest();
-        List <Contact> cont = [select id from Contact where email = 'test1234567890@spamok.com' limit 1];
+        List <Contact> cont = [select id from Contact where email = 'test1234567890@mailinator.com' limit 1];
         PRM_Contact_AGS_CallbackHandler.createLogEntryNoInsert('errorMsg', 'msg detail', cont[0], null, 'error', 'PRM_Account_Contact_Relationship__c');
         
     }   
@@ -197,7 +197,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage strJSON = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -213,7 +213,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Email
-        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody  = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -243,7 +243,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.requestUri = '/services/apexrest/Contact/AGSCallBackHandler/';
         request.httpMethod = 'POST';
         
-        String reqBody = '{"EnterpriseID" : "12345", "LoginID" : "", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "12345", "LoginID" : "", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -258,7 +258,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.requestUri = '/services/apexrest/Contact/AGSCallBackHandler/';
         request.httpMethod = 'POST';
         
-        String reqBody = '{"EnterpriseID" : "12345", "LoginID" : "", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "12345", "LoginID" : "", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -274,7 +274,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.requestUri = '/services/apexrest/Contact/AGSCallBackHandler/';
         request.httpMethod = 'POST';
        
-        String reqBody = '{"EnterpriseID" : "739929", "LoginID" : "test12345678@spamok.com", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "739929", "LoginID" : "test12345678@mailinator.com", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);    
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -291,7 +291,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.requestUri = '/services/apexrest/Contact/AGSCallBackHandler/';
         request.httpMethod = 'POST';
        
-        String reqBody = '{"EnterpriseID" : "739929", "LoginID" : "test12345678@spamok.com", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "739929", "LoginID" : "test12345678@mailinator.com", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);    
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -307,7 +307,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.requestUri = '/services/apexrest/Contact/AGSCallBackHandler/';
         request.httpMethod = 'POST'; 
         
-        String reqBody = '{"EnterpriseID" : "", "LoginID" : "", "EmailID" : "test1234567899@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
+        String reqBody = '{"EnterpriseID" : "", "LoginID" : "", "EmailID" : "test1234567899@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -328,20 +328,20 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         system.assert(OutputMessage.success == false );   
         
         //Passing non JSON String
-        reqBody = '{"EnterpriseID" : "12121221, "LoginID" : "121212wwewe", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
+        reqBody = '{"EnterpriseID" : "12121221, "LoginID" : "121212wwewe", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
         system.assert(OutputMessage.success == false );
         
-        reqBody = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test1234567890@spamok.com", "EVPasswordToken" : "wwerersdasdweer34454dfgdsdfsd", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
+        reqBody = '{"EnterpriseID" : "12345", "LoginID" : "123456", "EmailID" : "test1234567890@mailinator.com", "EVPasswordToken" : "wwerersdasdweer34454dfgdsdfsd", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
        // system.assert(OutputMessage.success == false );
         
         //Passing non JSON String
-        reqBody = '{"EnterpriseID" : "12121221, "LoginID" : "121212wwewe", "EmailID" : "test12345678@spamok.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
+        reqBody = '{"EnterpriseID" : "12121221, "LoginID" : "121212wwewe", "EmailID" : "test12345678@mailinator.com", "EVPasswordToken" : "12345qwerty", "EmailVerificationDateTime" : "2019-06-27 14:26:44", "status" :"success" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -358,7 +358,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Enterprise id
-        String reqBody = '{ "EmailID" : "test1234567890@spamok.com", "status" : "Failure" }';
+        String reqBody = '{ "EmailID" : "test1234567890@mailinator.com", "status" : "Failure" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();
@@ -373,7 +373,7 @@ public class PRM_Contact_AGS_CallbackHandler_Test {
         request.httpMethod = 'POST';
         
         //Condition of Enterprise id
-        String reqBody = '{ "EmailID" : "test1234567890@spamok.com", "status" : "somerandomvaluetocausefailure" }';
+        String reqBody = '{ "EmailID" : "test1234567890@mailinator.com", "status" : "somerandomvaluetocausefailure" }';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Contact_AGS_CallbackHandler.OutputMessage OutputMessage = PRM_Contact_AGS_CallbackHandler.AGSCallbackHandler();

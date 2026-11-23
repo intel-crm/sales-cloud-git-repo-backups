@@ -294,8 +294,12 @@
         <columns>Core_Technical_DeDup_Number__c</columns>
         <columns>Core_IsActive__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>NAME</field>
+            <operation>contains</operation>
+            <value>developer zone</value>
+        </filters>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>ERPM Engagement Name</label>

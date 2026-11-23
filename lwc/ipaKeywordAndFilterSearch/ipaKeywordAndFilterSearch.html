@@ -1,0 +1,95 @@
+<template>
+    <div class="quick-search-container" data-border-top={separatorAbove} data-border-bottom={separatorBelow}
+        data-padding-top={paddingAbove} data-padding-bottom={paddingBelow}>
+        <h3 class="h4"></h3>
+        <div class="slds-grid slds-wrap quick-search-inner-container slds-is-relative">
+            <!--Search Box Code-->
+            <div class="slds-input" style="padding: 0px;">
+                <lightning-input label="" type="search" placeholder="Enter a keyword  to Search" variant="label-hidden"
+                    value={val}>
+                </lightning-input>
+            </div>
+            <!--Filters for Selection Starts-->
+            <template for:each={filters} for:item="filter">
+                <div key={filter.key} class="quick-search-select">
+                    <!--Label goes here-->
+                    <label aria-label={filter.label} for={filter.name}>{filter.label}</label>
+                    <div class="select slds-m-bottom_medium" data-disabled={filter.disabled}>
+                        <!--Spinner if still loading-->
+                        <template if:true={loading}>
+                            <div>
+                                <lightning-spinner class="zIndexStandardPageHigher"
+                                    alternative-text={labels.searchLoading} size="small"></lightning-spinner>
+                            </div>
+                        </template>
+                        <!--Filter Picklist values here-->
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container">
+                                <div key={filter.key}
+                                    class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click"
+                                    onmouseleave={closeDropDown} data-id={filter.label} title={filter.label}
+                                    aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                        role="none">
+                                        <input type="text" name={filter.label}
+                                            class="slds-input slds-combobox__input slds-combobox__input-value"
+                                            placeholder="Select a value" onclick={openDropdown} value={selectedValue} />
+                                        <span
+                                            class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right"
+                                            title="Down icon">
+                                            <lightning-icon icon-name="utility:down" size="xx-small"
+                                                class="slds-icon-text-default"></lightning-icon>
+                                            <span class="slds-assistive-text">Down icon</span>
+                                        </span>
+                                    </div>
+                                    <div role="listbox">
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_fluid"
+                                            role="presentation">
+                                            <div class="slds-scrollable">
+                                                <template for:each={filter.options} for:item="option">
+                                                        <li key={option.label.id} role="presentation"
+                                                            class="slds-listbox__item">
+                                                            <div data-id={option.isChecked} data-name={option.label}
+                                                                title={filter.name} onclick={selectOption}
+                                                                class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta" role="option">
+                                                                <span class="slds-media__figure">
+                                                                    <lightning-icon icon-name="utility:check"
+                                                                        size="xx-small"
+                                                                        class="slds-listbox__icon-selected">
+                                                                    </lightning-icon>
+                                                                </span>
+                                                                <span class="slds-media__body">
+                                                                    <span class="slds-truncate" style="color:black;"
+                                                                        title={option.label}>{option.label}</span>
+                                                                </span>
+                                                            </div>
+                                                        </li>
+                                                </template>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+        </div>
+        <!--Search Button Code here-->
+        <div style="line-height: 0.786rem !important;">
+            <lightning-button class="button-full-width button-arrow slds-float_right" variant="brand" label="Search">
+            </lightning-button>
+        </div>
+    </div>
+    <!--Lightning Pills at the bottom-->
+    <template for:each={filters} for:item="filter">
+        <template for:each={filter.options} for:item="option">
+                <template if:true={option.isChecked}>
+                    <span key={option.label}>
+                        <lightning-pill label={option.label} name={filter.key} class="slds-m-around_xx-small">
+                        </lightning-pill>
+                    </span>
+            </template>
+        </template>
+    </template>
+</template>

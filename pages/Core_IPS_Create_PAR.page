@@ -177,10 +177,10 @@
                         <apex:column >
                             <apex:inputcheckbox value="{!prod1.selected}" id="inputId2" disabled="{!IF(!prod1.colorvalue,false,true)}"/>
                         </apex:column> 
-                        <apex:column headerValue="Supported Product Name" value="{!prod1.SupProduct.Core_Supported_Product_Name__c}" style="{!JSINHTMLENCODE(prod1.color)}"/> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
-                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_IPS_Support_Org_Name__c.label}" value="{!prod1.prodOrgName}" style="{!JSINHTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
-                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_Organization_Description__c.label}" value="{!prod1.prodOrgDescription}" style="{!HTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
-                        <apex:column headerValue="Approval Type" value="{!prod1.FlagStatus}" style="{!JSINHTMLENCODE(prod1.color)}" /> <!--- US967150 --- 02/06/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                        <apex:column headerValue="Supported Product Name" value="{!prod1.SupProduct.Core_Supported_Product_Name__c}" style="{!prod1.color}"/>
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_IPS_Support_Org_Name__c.label}" value="{!prod1.prodOrgName}" style="{!prod1.color}" />
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_Organization_Description__c.label}" value="{!prod1.prodOrgDescription}" style="{!prod1.color}" />
+                        <apex:column headerValue="Approval Type" value="{!prod1.FlagStatus}" style="{!prod1.color}" />
                     </apex:pageBlockTable>
                 </apex:pageBlockSection>
                 <apex:pageBlockSection Title="LineItems" rendered="{!NOT(lineItemListvalue)}" columns="1">

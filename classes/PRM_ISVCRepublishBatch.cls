@@ -41,6 +41,7 @@ global class PRM_ISVCRepublishBatch implements Database.Batchable<SObject>, Data
                 }
             }
         }
+        System.debug(LoggingLevel.ERROR,'Success Map Size = ' + latestSuccessMap.size());
         for(Core_Integration_Outbound_Message__c pendingMsg : pendingList){
             Core_Integration_Outbound_Message__c successMsg = latestSuccessMap.get(pendingMsg.Core_Tags__c);
             Boolean republish = false;
@@ -50,6 +51,7 @@ global class PRM_ISVCRepublishBatch implements Database.Batchable<SObject>, Data
             }else if(successMsg.CreatedDate < pendingMsg.CreatedDate){
                 republish = true;
             }
+            System.debug(LoggingLevel.ERROR,'Republish Decision -> ' +'Tag=' + pendingMsg.Core_Tags__c +', PendingId=' + pendingMsg.Id +', PendingCreated=' + pendingMsg.CreatedDate +', SuccessId=' + (successMsg == null ? 'NULL' : successMsg.Id) +', SuccessCreated=' +(successMsg == null ? 'NULL' : String.valueOf(successMsg.CreatedDate)) +', Republish=' + republish);
             if(republish){               
                 //if(pendingMsg.Core_MessageType__c == 'Account Integration' && pendingMsg.PRM_Account_Id__c != null){
                 if(pendingMsg.Core_MessageType__c =='Account Integration' && String.isNotBlank(pendingMsg.Core_Tags__c)){

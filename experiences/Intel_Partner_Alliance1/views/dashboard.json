@@ -317,7 +317,7 @@
         "srcSelector" : "div[data-region-name=\"dashboard1\"]"
       },
       "componentName" : "c:ipaDashboardUpdater",
-      "id" : "adbebb84-d16f-48a6-834c-541941257986",
+      "id" : "f027f95b-d60f-4f07-8107-f82404ae278c",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -327,7 +327,7 @@
         "recordId" : "joXjeuIsbwICOZCOTRExlIhhgJSzCz"
       },
       "componentName" : "forceCommunity:dashboard",
-      "id" : "72ed945d-36bc-4820-91e6-cc86b36bc14c",
+      "id" : "7756b84c-02b3-4440-be20-297dd339ab8e",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -342,21 +342,11 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "dashboardId" : "ipa-training",
-        "srcSelector" : "div[data-region-name=\"dashboard2\"]"
-      },
-      "componentName" : "c:ipaDashboardUpdater",
-      "id" : "9cdff588-6149-4896-8827-000d1df8647b",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
         "height" : "485",
         "recordId" : "kQjugehjPKZsowqelmSswvTwUxNfqE"
       },
       "componentName" : "forceCommunity:dashboard",
-      "id" : "5f7705ac-7b46-4ac5-9455-48b259d35b24",
+      "id" : "fa93ee61-3477-4001-a015-5dd99c86b7e1",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -368,10 +358,10 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z8A000000DNrUUAW"
+        "recordId" : "kQjugehjPKZsowqelmSswvTwUxNfqE"
       },
       "componentName" : "forceCommunity:dashboard",
-      "id" : "f3582385-4f96-4627-898e-4097bc9deb05",
+      "id" : "2f676dd2-6fae-4df7-b827-0c251ce8718d",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -383,7 +373,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z8A000000DNrUUAW"
+        "recordId" : "joXjeuIsbwICOZCOTRExlIhhgJSzCz"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "7fbee47a-35cb-4c19-b477-c2106a22a6cd",
@@ -398,7 +388,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z8A000000DNCRUA4"
+        "recordId" : "kQjugehjPKZsowqelmSswvTwUxNfqE"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "18e1c096-02d0-4a9b-aa7d-0439416476e5",
@@ -413,7 +403,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z8A000000DNCRUA4"
+        "recordId" : "kQjugehjPKZsowqelmSswvTwUxNfqE"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "8a6f6859-6ba4-4675-a7f1-5ac133f4a5a9",
@@ -428,7 +418,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "485",
-        "recordId" : "01Z8A000000DNrTUAW"
+        "recordId" : "jFncQAnKVjBUadUzRZbQjegWfFNbts"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "fb1baf8d-865b-416f-bea1-6465c678df08",
@@ -461,7 +451,7 @@
         "recordId" : "jFncQAnKVjBUadUzRZbQjegWfFNbts"
       },
       "componentName" : "forceCommunity:dashboard",
-      "id" : "4c0651c3-25a8-4c53-965c-70d68bcb9052",
+      "id" : "ba51f734-5e42-4f83-8bdf-e7892283891b",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -481,7 +471,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:pRM_Contact_Training_Details",
-      "id" : "933e4097-7d5f-4071-98ba-298d3f5cec82",
+      "id" : "cab2e943-b4cb-4a18-a4f8-4cc670c20a16",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -523,7 +513,7 @@
     "components" : [ {
       "componentAttributes" : {
         "height" : "400",
-        "recordId" : "msvKNYpGsFtFbaNWWLcZHNFCxAwpzf"
+        "recordId" : "msvKNYpGsFtFbaNWWLcZHNFCxAwpzf1"
       },
       "componentName" : "forceCommunity:dashboard",
       "id" : "249e54c0-cf15-4d37-a0eb-fbaf76062149",
@@ -548,6 +538,25 @@
     } ],
     "id" : "8ab7d0dd-85db-4d8b-91b6-df4328129b29",
     "regionName" : "tab10",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "height" : "485",
+        "recordId" : "kQjugehjPKZsowqelmSswvTwUxNfqE"
+      },
+      "componentName" : "forceCommunity:dashboard",
+      "id" : "46d05edc-36dc-423b-be8e-c541c90a34db",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3da4deac-a269-4d94-9fe5-71c6cda72c0a",
+    "regionName" : "dashboard13",
+    "type" : "region"
+  }, {
+    "id" : "cc566fbf-59af-4375-a80d-8384ff9a2f43",
+    "regionName" : "tab11",
     "type" : "region"
   } ],
   "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",

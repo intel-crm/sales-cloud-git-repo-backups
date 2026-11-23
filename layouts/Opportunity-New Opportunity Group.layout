@@ -189,8 +189,8 @@
         <fields>TotalPrice</fields>
         <fields>Core_Write_In_Product_Name__c</fields>
         <fields>Core_BU_Short_Name__c</fields>
+        <fields>Core_KPI_Product_Group__c</fields>
         <fields>Core_Vendor__c</fields>
-        <fields>Core_Vendor_InActive__c</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>

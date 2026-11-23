@@ -38,7 +38,7 @@ Filtered on Assigned to SDRs</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>ALICE UYEN NGUYEN THI NGOC,Chia Hoey Oon,Issac Wei Lun Lee,Kevin Wei Ming Tan,Sheryl Lim,Yat-Lee Mun,Xuan Ying Lim,Wei Lun Lee,THI NGOC UYEN NGUYEN,Tomomi Aoki</value>
+            <value>ALICE UYEN NGUYEN THI NGOC,Chia Hoey Oon,Issac Wei Lun Lee,Kevin Wei Ming Tan,Sheryl Lim,Yat-Lee Mun,Xuan Ying Lim,Wei Lun Lee,THI NGOC UYEN NGUYEN</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -53,7 +53,7 @@ Filtered on Assigned to SDRs</description>
         <field>STATUS</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>APJ SDR Activity Report</name>
+    <name>Copy of Activity Report APJ Inside Sales</name>
     <params>
         <name>closed</name>
         <value>all</value>

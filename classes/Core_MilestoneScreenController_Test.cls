@@ -24,7 +24,7 @@ public class Core_MilestoneScreenController_Test {
                                         
         ApexPages.StandardController StndContr = new ApexPages.standardController(lstCase[0]);
         Core_MilestoneScreenController ctrlMSC = new Core_MilestoneScreenController(StndContr);
-        Core_IPS_MilestoneScreen_Controller.getcaseMilestones(lstCase[0].id);
+            
         List<Core_MilestoneScreenController.WrapMileStone> lstWMS = ctrlMSC.getcaseMilestones();
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_atm</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_atm</value>
+    </caseValues>
+    <fields>
+        <label><!-- atmHierarchyLabel --></label>
+        <name>Xvoyant__atmHierarchyLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- atmOppField --></label>
+        <name>Xvoyant__atmOppField__c</name>
+    </fields>
+    <fields>
+        <label><!-- atmUserField --></label>
+        <name>Xvoyant__atmUserField__c</name>
+    </fields>
+    <fields>
+        <label><!-- stdHierarchyLabel --></label>
+        <name>Xvoyant__stdHierarchyLabel__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

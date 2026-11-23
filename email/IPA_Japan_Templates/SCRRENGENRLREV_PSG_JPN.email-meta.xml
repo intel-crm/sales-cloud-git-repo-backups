@@ -34,7 +34,7 @@ https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_
 
 
 このメッセージは、インテル® プログラマブル・ソリューション・グループと FPGA ソフトウェアおよび/または IP ライセンス資格に関連する重要なコミュニケーションとしてお客様に送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.co.jp
 プライバシー &amp;verbar; Cookie</textOnly>
     <type>custom</type>

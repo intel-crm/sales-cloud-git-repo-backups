@@ -4,10 +4,6 @@
         <application>Core_MDF_CoMarketing</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_SPCF_USER</name>
-    </customPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>SPCF USER</label>
     <license>Partner Community</license>

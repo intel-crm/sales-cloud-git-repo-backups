@@ -235,6 +235,14 @@
         <visibleLines>10</visibleLines>
     </fields>
     <label>Core Apex EmailNotification</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Email_Template_Nm__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <label>Core Apex EmailNotification Name</label>
         <type>Text</type>

@@ -12,8 +12,7 @@ Modification Log :
 *********************************************************************************************************************/
 
 trigger PRM_AccountBenefitAssociation_Trigger on PRM_AccountBenefitAssociation__c(before insert, before update, after insert, after update,before delete) {
-    // Added custom permission check by Dinesh as part of IPA2.0 refresh
-    if(prm_skip_trigger__c.getInstance('ABA_Trigger')<>null && !prm_skip_trigger__c.getInstance('ABA_Trigger').inactive__c && !FeatureManagement.checkPermission('PCC_Bypass_Automation')){
+    if(prm_skip_trigger__c.getInstance('ABA_Trigger')<>null && !prm_skip_trigger__c.getInstance('ABA_Trigger').inactive__c){
         new PRM_aba_TriggerHandler().run();
     }
     

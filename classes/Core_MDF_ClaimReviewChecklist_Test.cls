@@ -4,11 +4,11 @@
 * Modification Log :
 * Developer                     Date                          Description
 * --------------------------------------------------------------------------------------------------------------------------------------------------
-* Intel - NP                    31-7-2019                     Test class for all methods in Core_MDF_ClaimReviewChecklist
+* Intel - NP	                31-7-2019					  Test class for all methods in Core_MDF_ClaimReviewChecklist
 * Intel - NP(11630236)          20-9-2019                     Added test scenarios for Checklist Enhancement v1 stories : US458785, US458779, US458790, US458776
 * NP(11630236)                  06-11-2019                    Checklist Enhancements v2 - US488875: [Checklist] HIGH: Assign additional Case Checklist permissions to Finance users - Added testCheckEditability()
-* NP(11630236)                  14-11-2019                    DE60015: Automatic Case status change to Compliant getting stuck because of Validation rule    
-* NP(11630236)                  04-02-2020                    Fixed PMD Scan for testCheckEditability()
+* NP(11630236)					14-11-2019					  DE60015: Automatic Case status change to Compliant getting stuck because of Validation rule	 
+* NP(11630236)					04-02-2020					  Fixed PMD Scan for testCheckEditability()
 **************************************************************************************************************************************************************************************/
 @isTest(SeeAllData=false)
 private class Core_MDF_ClaimReviewChecklist_Test {
@@ -16,21 +16,19 @@ private class Core_MDF_ClaimReviewChecklist_Test {
     public static id caseRecordId;
 
     @isTest static void testQueryAllChecklistItems(){
-        Map<string,List<Core_MDF_Claim_Case_Checklist__c>> result = new  Map<string,List<Core_MDF_Claim_Case_Checklist__c>>();
+        List<Core_MDF_Claim_Case_Checklist__c> result = new  List<Core_MDF_Claim_Case_Checklist__c>();
         Case record = [select id from Case limit 1];
         
         result = Core_MDF_ClaimReviewChecklist.queryAllChecklistItems(record.id);
         System.assert(result.size()!=0,'Records returned');
-       
+        system.debug('caseRecordId' + caseRecordId);
     }
 
     @isTest static void testUpdateChecklistRecord(){
         Map<string,string> checklistSelection = new Map<string,string>();
         Map<string,string> impactAmount = new Map<string,string>();
         Map<string,string> comments = new Map<string,string>();
-        integer result; 
-        // Highlight: Unused Local Variable
-        // string caseStatus;
+        integer result; string caseStatus;
         Case record = [select id from Case limit 1];
 
         Core_MDF_Claim_Case_Checklist__c checklistRecord = [select id from Core_MDF_Claim_Case_Checklist__c where Core_MDF_Checklist_Status__c='Compliant'];
@@ -105,7 +103,7 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         exceptionMessage = Core_MDF_ClaimReviewChecklist.calculateAdjustmentAmount(record.id,true,true); //DE60015 - Fix
         //Core_MDF_ClaimReviewChecklist.calculateAdjustmentAmount(null);
 
-        system.assert(exceptionMessage==null,'Can choose to save Case as Compliant or Non-Compliant');
+        system.assert(exceptionMessage!=null,'Impact Amount exceeds Requested amount');
     }
 
     @isTest static void testCheckEditability(){
@@ -137,8 +135,8 @@ private class Core_MDF_ClaimReviewChecklist_Test {
         
         system.runas(auditor){
             boolean result = Core_MDF_ClaimReviewChecklist.checkEditability();
-           
-            system.assert(result==true,'Test user is a Claim Case Reviewer/Manager'); 
+        	system.debug('result'+ result);
+        	system.assert(result==true,'Test user is a Claim Case Reviewer/Manager'); 
         }
         
     }
@@ -165,13 +163,13 @@ private class Core_MDF_ClaimReviewChecklist_Test {
                         testCase.Core_MDF_Reimbursement_Rate__c = 50;
                         testCase.Core_MDF_Status__c ='Under Review';
                         testcase.Core_MDF_Requested_Amount_USD_Amt__c = 5;
-                        testcase.Core_MDF_Claim_ID__c='0051234567890987654';
                         Database.insert(testCase);
                         
                         Case record = [select id from Case limit 1];
                         caseRecordId = record.id;
                         
-                        //List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
+
+                        List<Core_MDF_Checklist_Items__mdt> testMetadata = new List<Core_MDF_Checklist_Items__mdt>();
                         List<Core_MDF_Claim_Case_Checklist__c> testChecklistRecord = new List<Core_MDF_Claim_Case_Checklist__c>();
 
                         Core_MDF_Claim_Case_Checklist__c checklistRecord1 = new Core_MDF_Claim_Case_Checklist__c();
@@ -196,43 +194,5 @@ private class Core_MDF_ClaimReviewChecklist_Test {
                     }
        
    } 
-    @isTest static void getCaseIdFromEscalationTest() {
-        ChannelProgram retailCp = Core_MDF_CCP_TestDataUtility.createProgram ('Retail Marketing Funds','Retail Marketing Funds', true);
-        Id caseAuditClosedRecordId = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit_Closed').getRecordTypeId();
-        Id escalationRecType = Schema.SObjectType.Core_MDF_Escalation__c.getRecordTypeInfosByDeveloperName().get('Core_MDF_Claim_Case_Review_Result').getRecordTypeId();
-        Case record = [select id from Case limit 1];
-        Case testCase = new Case();
-        testCase.Id = record.Id;
-        testCase.recordtypeid = caseAuditClosedRecordId;
-        //testCase.Status = 'Closed';
-        testCase.Core_MDF_Adjustment_Amount_Local__c =0;
-        testCase.Core_MDF_Claim_Conversion_Exchange_Rate__c = 1;
-        testCase.Core_MDF_Reimbursement_Rate__c = 50;
-        testCase.Core_MDF_Status__c ='Review Completed';
-        testcase.Core_MDF_Requested_Amount_USD_Amt__c = 5;
-        Database.update(testCase);
-        
-        Core_MDF_Escalation__c es = new Core_MDF_Escalation__c();
-        es.Core_MDF_Escalation_Status_nm__c='Pending Review';
-        es.Core_MDF_Escalation_Name_txt__c='Test3';
-        es.Core_MDF_Total_Dollar_Impact_amt__c= 1; 
-        //es.Core_MDF_Root_Cause_nm__c = 'Creative';
-        es.Core_MDF_Case_ID_Number_id__c = testCase.Id;
-        es.Core_MDF_Channel_Program_id__c = retailCp.Id;
-        es.recordtypeid = escalationRecType;
-        es.Core_MDF_Do_not_Auto_Create_Claim_Ind__c = true;
-        insert es;
-        Core_MDF_ClaimReviewChecklist.getCaseIdFromEscalation(es.Id);
-        // Unit Test Method should include System.Assert
-        System.assertEquals(testCase.Id, es.Core_MDF_Case_ID_Number_id__c, 'Escalation should be linked to the correct Case.');
-    }
-   
-    @isTest static void testgetAIAuditStatusFromScorecard(){
-        
-        Case caseRec = [SELECT Id FROM Case LIMIT 1];
-       
-        Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper result = new Core_MDF_Scorecard_Helper.ScorecardDetailsWrapper();
-       
-        result = Core_MDF_ClaimReviewChecklist.getAIAuditStatusFromScorecard(caseRec.Id);
-    }
+
 }

@@ -150,14 +150,13 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>false</enableReports>
+    <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
         <fullName>Comments__c</fullName>
-        <description>Holds the user comments on Delinking and Relinking scenarios</description>
         <label>Comments</label>
         <length>32768</length>
         <trackHistory>false</trackHistory>
@@ -167,9 +166,10 @@
     </fields>
     <fields>
         <fullName>Core_Business_Party_Id__c</fullName>
-        <description>Holds the Unified Id of the associated Intel Account.</description>
+        <description>Pull UCD ID from Account object</description>
         <externalId>false</externalId>
         <formula>Core_Intel_Account_Id__r.Core_Business_Party_Id__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Unified ID</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -272,7 +272,6 @@
     </fields>
     <fields>
         <fullName>Inactive_Account__c</fullName>
-        <description>If true then indicates that the corresponding Intel account is deactivated</description>
         <formula>IF( Core_Intel_Account_Id__r.RecordType.Name = &apos;Inactive Account&apos;,true , false)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Inactive Account</label>
@@ -282,7 +281,6 @@
     </fields>
     <fields>
         <fullName>Intel_Account_Name__c</fullName>
-        <description>Holds name of the corresponding Intel account</description>
         <externalId>false</externalId>
         <formula>Core_Intel_Account_Id__r.Name</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -325,13 +323,13 @@
         <defaultValue>false</defaultValue>
         <description>Indicates if the account is primary node and responsible for the linkage to OPID</description>
         <label>UCD Primary Account</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>UCD_Hierarchy__c</fullName>
-        <description>Holds the hierarchy value of the Intel account in the UCD Hierarchy (Eg: Unified Global Customer, Unified Country Customer, Unified Location Customer or Unified Intermediate Customer)</description>
+        <description>This is the lookup field of Core_Customer_Aggregation_Type__c on Account.Inorder to get the labels from the picklist fields we have used CASE function. If the parent field is modified, this formula also needed to change.</description>
         <externalId>false</externalId>
         <formula>CASE(Core_Intel_Account_Id__r.Core_Customer_Aggregation_Type__c,
 &quot;UNFD_GLBL_CUST&quot;,&quot;Unified Global Customer&quot;,
@@ -357,12 +355,38 @@
         <columns>RECORDTYPE</columns>
         <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Partner_Account_Id__c</field>
-            <operation>contains</operation>
-            <value>Seashore</value>
-        </filters>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>X1PID_without_UCD_Global</fullName>
+        <columns>NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Intel_Partner_Alliance_PartnerGroup__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <filters>
+            <field>UCD_Hierarchy__c</field>
+            <operation>equals</operation>
+            <value>Unified Global Customer</value>
+        </filters>
+        <filters>
+            <field>Primary_Account__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Core_Inactive_Ind__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <filters>
+            <field>Inactive_Account__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>1PID without UCD(Global)</label>
     </listViews>
     <nameField>
         <displayFormat>PAG-MEM-{0000000}</displayFormat>

@@ -23,7 +23,7 @@ public class ER_ABT_TriggerHandler_Utility_Test {
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -45,16 +45,16 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsEnglishNameTest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
-                                          /*Core_Account_Type__c='Other', // BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',
+        
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
@@ -80,16 +80,16 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsCNDATest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
-                                         /* Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
+        
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = true);
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
@@ -115,18 +115,16 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsCIMIDTest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-
         
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId, 
-                                          /*Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_English_Only_Name__c = 'testAccountSetup',
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                          Core_Account_Type__c='Other', Industry='Others',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
@@ -152,17 +150,16 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationsCoverdAcctTest() {
         Test.startTest();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         List<User> u =[select id,name from user where name = 'Uncovered Account'];
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts', OwnerId = u[0].Id,RecordTypeId=intelAccRecTypeId,
-                                          /*Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts', OwnerId = u[0].Id,
+                                          Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                          AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
         
         insert testContact;
@@ -201,14 +198,14 @@ public class ER_ABT_TriggerHandler_Utility_Test {
             Test.startTest();
             
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                              /*Core_Account_Type__c='Other',// BizOrgType code removal*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
+                                              Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -243,14 +240,14 @@ public class ER_ABT_TriggerHandler_Utility_Test {
             
             
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                             /* Core_Account_Type__c='Other',*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
+                                              Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'Henry',Core_English_Only_Last_Name__c = 'John',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'Henry',Core_English_Only_Last_Name__c = 'John',
                                               Core_Contact_B2B_Indicator__c=true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -284,10 +281,12 @@ public class ER_ABT_TriggerHandler_Utility_Test {
                                                                               Core_Selected__c=true,Core_Status__c = 'Complete');
             insert ce1;
             
+            System.debug('BeforeRejection');
             Test.startTest();
             aType.Status__c = 'Rejected';
             update aType;
             Test.stopTest();
+            System.debug('After Rejection');
             
             Contact_Business_Types__c bTy1 = [select Id, Status__c from Contact_Business_Types__c where Contact__c=:testContact.Id];
             system.assertEquals('Rejection - Pending', bTy1.Status__c);
@@ -311,14 +310,14 @@ public class ER_ABT_TriggerHandler_Utility_Test {
             Test.startTest();
             
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                              /*Core_Account_Type__c='Other',*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
+                                              Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'Lime',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'Lime',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -364,16 +363,14 @@ public class ER_ABT_TriggerHandler_Utility_Test {
     
     static testMethod void ABTValidationRuleException()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId, 
-                                              /*Core_Account_Type__c='Other',*/ Industry='Others',Core_English_Only_Name__c = 'exception',
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                              Core_Account_Type__c='Other', Industry='Others',Core_English_Only_Name__c = 'exception',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -406,32 +403,30 @@ public class ER_ABT_TriggerHandler_Utility_Test {
         regRequest.RecordTypeId = accCreateRequestId;
         insert regRequest;
             
-        Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
-        
-        insert business;
-        
-        Map<Id,Id> entBusinessTypeMap = new Map<Id,Id>();
-        entBusinessTypeMap.put(ee.Id, business.Id);
+            Business_Types__c business = new Business_Types__c(Business_Type_Code__c='Developer Zone Premier', Name='DZP', Is_Active__c = true);
+            
+            insert business;
         
         List<Id> reqIdList = new List<Id>();
         reqIdList.add(regRequest.Id);
+         System.debug('Adding ABT');
         Test.startTest();
-        ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(new List<PRM_Registration_Request__c>{regRequest}, entBusinessTypeMap);
-        ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(null, null);
+        ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(reqIdList);
         Test.stopTest();
+        
+        System.debug('After ABT');
     }
     
     static testMethod void ABTValidationRuleSuccess()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',RecordTypeId=intelAccRecTypeId,
-                                             /* Core_Account_Type__c='Other',*/ Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
+        Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
+                                              Core_Account_Type__c='Other', Industry='Others',Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'exception',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',MailingCountry='India',
+                                              AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId());
             
             insert testContact;
@@ -461,9 +456,6 @@ public class ER_ABT_TriggerHandler_Utility_Test {
         em.PRM_Approval_Type_Nm__c = 'Manual';
         insert em;
         
-        Map<Id,Id> entBusinessTypeMap = new Map<Id,Id>();
-        entBusinessTypeMap.put(ee.Id, business.Id);
-        
         Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
         
         PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
@@ -484,8 +476,11 @@ public class ER_ABT_TriggerHandler_Utility_Test {
         
         List<Id> reqIdList = new List<Id>();
         reqIdList.add(regRequest.Id);
+         System.debug('Adding ABT');
         Test.startTest();
-        ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(new List<PRM_Registration_Request__c>{regRequest}, entBusinessTypeMap);
+        ER_ABT_TriggerHandler_Utility.AssignAccountBusinessTypes(reqIdList);
         Test.stopTest();
+        
+        System.debug('After ABT');
     }
 }

@@ -5,6 +5,14 @@
   "id" : "0cbb7747-40e3-4cc5-883b-da2547bc5451",
   "label" : "Dashboard List",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "471041ae-c2ed-4f79-910f-18229251a15f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "9349a00e-b9f5-4bec-b824-d0ec2350e0d9",
     "regionName" : "header",
     "type" : "region"

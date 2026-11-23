@@ -9,8 +9,7 @@ public class Core_IntegrationOptimization {
 		Set<Id> acctIds= new Set<Id>();
         Map<Id,DateTime> acctCreateDateMap=new Map<Id,DateTime>();
         Map<Id,List<Core_Account_ERPM_Engagement__c>>  enggAcctNumMap =new Map<Id,List<Core_Account_ERPM_Engagement__c>> ();
-        Id inactiveAccountRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Inactive_Account').getRecordTypeId();
-        List<Account> matchSFaccounts = [SELECT Id,(select Id from Contacts),Core_CIM_ID__c,Core_Intel_Partner_Alliance_PartnerGroup__c,OwnerId,Owner.FirstName,Core_IPA_Partner_Role__c,CreatedDate, RecordTypeId FROM Account WHERE Core_CIM_ID__c  IN : cimId and RecordTypeId <>: inactiveAccountRTId ORDER by CreatedDate asc];
+        List<Account> matchSFaccounts = [SELECT Id,(select Id from Contacts),Core_CIM_ID__c,Core_Intel_Partner_Alliance_PartnerGroup__c,OwnerId,Owner.FirstName,Core_IPA_Partner_Role__c,CreatedDate FROM Account WHERE Core_CIM_ID__c  IN : cimId or Core_Business_Party_Id__c IN : cimId ORDER by CreatedDate asc];// added condition for Core_Business_Party_Id__c as a part of TWC729-6955:-CIM Prime EOL –  Get Profile API - CIM EOL Activities
         Map<Id,Integer> acctContactNoMap=GetContactCountfromAccount(matchSFaccounts);
         System.debug('matchSFaccounts.size'+matchSFaccounts.Size());
         if(matchSFaccounts.size() >0) {

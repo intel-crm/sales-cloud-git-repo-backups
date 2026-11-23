@@ -16,7 +16,7 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
+        <field>ACCOUNT_OWNER</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
@@ -58,7 +58,7 @@
         <field>OpportunityLineItem.Core_Approved_KPI_Product_Group__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Area__c</field>
@@ -93,36 +93,18 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
-    <columns>
-        <field>DESCRIPTION</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Status_Update__c</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>ADDRESS1_COUNTRY_CODE</column>
+            <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>FRA,NLD</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
+            <value>GMP France Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>ROLLUP_DESCRIPTION</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>FRBC_2020_Oppty with Products</name>
+    <format>Tabular</format>
+    <name>2020_Business Consumption France_Report</name>
     <params>
         <name>terr</name>
         <value>all</value>

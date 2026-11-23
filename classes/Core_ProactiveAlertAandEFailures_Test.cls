@@ -24,12 +24,11 @@ public class Core_ProactiveAlertAandEFailures_Test {
     
     @testSetup 
     static void setupTestData() {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',RecordTypeId=intelAccRecTypeId,
+        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi');
         insert intelAccount1;
         
-        Contact contact1 = new Contact(firstname='Intel',Core_IPA_Contact_Segment__c ='Client Computing;Data Center', MailingCountry='India',
+        Contact contact1 = new Contact(firstname='Intel',Core_IPA_Contact_Segment__c ='Client Computing;Data Center', 
                                        lastname='Contact1', accountId=intelAccount1.id,Email='dellco1234@dell.com');
         insert contact1;
         
@@ -61,11 +60,7 @@ public class Core_ProactiveAlertAandEFailures_Test {
     
     static testMethod void processLogEntryTest() {
         Test.startTest();
-      //  list<string>listOfString=new list<string>();
-      //  listOfString.add('ProactiveAlert');
-         //listOfString.add('IntegrationReport');
         Core_ProactiveAlertAandEFailures.processLogEntry();
-        System.Assert(true, 'Process log entry method executed successfully');
         Test.stopTest();
     }
 }

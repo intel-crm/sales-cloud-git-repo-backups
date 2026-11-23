@@ -10,6 +10,7 @@
             var state = response.getState();            
             if (state === "SUCCESS") {
                 var listViewResult = response.getReturnValue();                
+                console.log('listViewResult:'+listViewResult);
                 if(listViewResult.length > 0){                   
                     // set listViewResult attribute with response
                     component.set("v.listViewResult",listViewResult);
@@ -48,6 +49,7 @@
             var state = response.getState();
             if (state === "SUCCESS") {                
                 var respValue = response.getReturnValue();             
+                console.log('Value ColKey '+JSON.stringify(respValue));
                 //set the column keys for the selected list view.
                 component.set('v.ColKeys', response.getReturnValue());
                 component.set("v.accessErrorMsg", '');
@@ -128,9 +130,9 @@
         //get the export type and the list view name to be set as file name.
         var exportType = component.get("v.exportType");
         var listViewName = component.get("v.currentListViewName");
-       
+        var blob = new Blob(["\ufeff",convertToCsvOrExcel]);
         var a = window.document.createElement("a");
-        a.href = 'data:application/vnd.ms-excel,' + encodeURIComponent(convertToCsvOrExcel);
+        a.href = window.URL.createObjectURL(blob,{type:"text/plain"});
         if(exportType=='csv'){           
             a.download = listViewName+".csv";
         }
@@ -145,7 +147,6 @@
     
     convertArrayOfObjectsToCSV : function(component,event,sObj){    
         
-        var userTimeZone = $A.get("$Locale.timezone");
         var today = $A.localizationService.formatDate(new Date(), "YYYY-MM-DD hh:mm a");
         var listViewName = component.get("v.currentListViewName");
         var csvStringResult, counter, columnDivider, lineDivider;
@@ -153,17 +154,19 @@
         //keymap will have the value of columns as map<selectedlistitem:label>
         //ex: {"Title":"Claim Name","Core_MDF_Claim_Ref_Number__c":"Claim ID"}
         var keyMap = component.get("v.ColKeys");  
+        console.log('keyMap '+JSON.stringify(keyMap));
         
         var keys= [keyMap.length];var p=0;
         //save the label in keys[]
         for (var key in keyMap) {
-            keys[p] = keyMap[key].label;
+            keys[p] = keyMap[key];
             p++;
             
         }
         var keysunique= [keyMap.length];var p=0;
         //save the api name in keysunique[]
         for (var key in keyMap) {
+            console.log('printKey: '+key);
             keysunique[p] = key;
             p++;
             
@@ -174,14 +177,7 @@
         }
         // store ,[comma] in columnDivider variabel for sparate CSV values and \t for excel
         // for start next line use '\n' [new line] in lineDivider varaible 
-        var exportType = component.get("v.exportType");
-        if(exportType=='csv'){           
         columnDivider = ',';
-        }
-        else{           
-            columnDivider = '\t';
-        }
-        
         
         lineDivider =  '\n';
         
@@ -211,20 +207,24 @@
                     //in case the name contains '.' we need to separate the values
                     var a  = skey.split(".");          
                     var b = objectRecords[i];
-                    let formattedData = '';
+                    
                     //if contains toLable then we need to pop the value inside '() '                   
                     for(var j= 0; j<a.length; j++){
                         if (a[j].includes("toLabel")){
                             a[j]=(a[j]).match(/\((.*)\)/).pop();
                             
-                        }else if(keyMap[skey] != undefined && keyMap[skey].type === 'datetime'){// formatting the datetime
-                            //We use TimeZone for DateTime as the queried result for DateTime always comes in GMT whereas for Date it comes in User's Timezone
-                            var currUserDateTimeValue = (b[a[j]] != undefined) ? new Date(b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', timeZone: userTimeZone}) : '';
-                            b[a[j]] =  currUserDateTimeValue != undefined ? ' ' + currUserDateTimeValue.replaceAll(',', '') : '';                
-                        }else if(keyMap[skey] != undefined && keyMap[skey].type === 'date'){// formatting the date
-                            //Removing new Date initialization as it was getting intialised with browser's Timezone. 
+                        }
+                        // formatting the date
+                        else if(a[j].includes("Date")){
+                            var dateValue = b[a[j]];
+                            var date2 = new Date(dateValue);
                             
-                            b[a[j]] = (b[a[j]] != undefined) ? (b[a[j]]).toLocaleString("en-US", {year: 'numeric', month: '2-digit', day: '2-digit'}) : '';
+                            
+                            if(!isNaN(date2.getTime())) {
+                            var formatedate = $A.localizationService.formatDate(b[a[j]] ," MM/dd/yyyy hh:mm a");
+                            b[a[j]]= formatedate;
+                            }
+                                  
                         }
                         
                             else if(a[j].includes("Owner")){
@@ -253,14 +253,14 @@
                         
                         //if b is not undefined set it to the next related value.
                         if(b != undefined){
-                            formattedData = (formattedData != undefined && formattedData != '') ? formattedData[a[j]] : (b[a[j]] != undefined && b[a[j]] != '') ? b[a[j]] : ''; 
+                            b = b[a[j]]; 
                         }
                         counter++;                        
                     }
                     
                     //check the final value of b and set the string.
                     if(b!=undefined){
-                        csvStringResult += '"'+ formattedData+'"';
+                        csvStringResult += '"'+ b+'"';
                     }
                     else{
                         csvStringResult += '"'+''+'"';

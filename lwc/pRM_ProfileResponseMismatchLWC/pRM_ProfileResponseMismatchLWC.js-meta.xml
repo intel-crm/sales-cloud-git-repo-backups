@@ -14,7 +14,7 @@
           <property name="pagesize" label="Records per Page" type="Integer" default="10"/>  
           <property name="reportdatasetname" label="CSV File Name" type="String" placeholder="file name for CSV extract" default="Account Profile Mismatch Report"/>          
           <property name="reportname" label="Report Name" type="String" placeholder="Name for the Report" default="Account Profile Report" />          
-          <property name="columns" label="Column JSON" type="String" placeholder="Formatted JSON Value" default="" />          
+          <property name="columns" label="Column JSON" type="String" placeholder="Formatted JSON Value" default='[{"type": "button-icon","fixedWidth": 40,"typeAttributes": {"iconName": { "fieldName": "iconName" },"name": "Expand","title": "Expand","variant": "bare","size": "small","alternativeText": "Expand","disabled": { "fieldName": "disableIcon" }}},{"fieldName": "accountURL", "label": "OPID/Account Name", "typeAttributes": {"label": {"fieldName": "accountName"}, "target": "_blank"}, "type": "url", "sortable": "true", "cellAttributes": { "wrapText": "true" }},{ "label": "Points Opt-In", "fieldName": "ptsOptIn" },{ "label": "Points Not Eligible", "fieldName": "ptsNotEligible" },{ "label": "Branded Points", "fieldName": "brandedPtsEarningExl" },{ "label": "Component Points", "fieldName": "cmpPtsEarningExl" },{ "label": "ODM Points", "fieldName": "odmWhiteboxPtsEarningExl" }]' />          
 
 
       </targetConfig>

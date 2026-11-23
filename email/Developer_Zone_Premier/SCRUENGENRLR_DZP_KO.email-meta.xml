@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome to the Developer Zone Premiere - Pending Approval</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUENGENRLR_DZP_KO</name>
+    <style>none</style>
+    <subject>Welcome to the Developer Zone Premiere - Pending Approval</subject>
+    <textOnly>인텔 등록 확인 - Developer Zone 프리미어 계정
+
+승인 대기 중
+
+
+{!Contact.FirstName} 님, 환영합니다. {!Contact.LastName}님, 안녕하십니까?
+
+Developer Zone 프리미어 계정에 등록해 주셔서 감사합니다.
+
+인텔과 기업 비공개 계약(CNDA)에 서명하지 않은 경우, 프리미어 계정 요청을 검토하는 데 최대 10영업일이 소요될 수 있습니다. 3영업일 내에 상태 업데이트를 받게 됩니다.
+
+프리미어 계정 응용 프로그램이 검토되면 즉시 표준 사용자로 인텔 Developer Zone에 액세스할 수 있습니다.
+
+사용자 이름: {!Contact.Name}
+이메일 주소: {!Contact.Email}
+
+향후 참조를 위해 이 이메일을 보관하십시오.
+
+비밀번호는 기밀로 보호해야 합니다. 비밀번호와 인텔 웹 사이트 사용에는 인텔의 이용 약관이 적용됩니다. 이 이용 약관에는 각 해당 사이트의 웹 페이지 하단에 있는 링크를 통해 연결할 수 있습니다.
+
+문의 사항이 있는 경우 당사에 문의해주십시오.
+
+사용 가능한 마케팅 구독을 포함해 프로필을 관리하려면 My Intel에 방문하십시오.
+
+이 메일에 회신하지 마십시오. 이 메일은 자동 회신된 메일입니다. 이메일을 계속 수신하려면 주소록에 추가해 주십시오.
+
+
+인텔은 귀하의 개인정보를 보호하기 위해 노력합니다. 자세한 내용은 인텔 개인정보 보호 공지를 참조하십시오. 인텔 쿠키 공지
+
+법률 정보 &amp;verbar; 상표 &amp;verbar; © 인텔사!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

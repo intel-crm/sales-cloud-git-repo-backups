@@ -47,7 +47,7 @@
         <connector>
             <targetReference>PRM_SubscribeToARQEvents</targetReference>
         </connector>
-        <flowRunAsUser>DefaultWorkflowUser</flowRunAsUser>
+        <flowRunAsUser>TriggeringUser</flowRunAsUser>
         <object>ACM_Account_Request_Event__e</object>
         <triggerType>PlatformEvent</triggerType>
     </start>

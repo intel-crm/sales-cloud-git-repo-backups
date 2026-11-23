@@ -16,6 +16,9 @@
         <field>Case.Core_IPS_Project_Case__c</field>
     </columns>
     <columns>
+        <field>Account.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
         <field>STATUS</field>
     </columns>
     <columns>
@@ -41,9 +44,6 @@
     </columns>
     <columns>
         <field>Case.Core_Product_Organization__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Platform_Name__c</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>

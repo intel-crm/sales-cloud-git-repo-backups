@@ -1,0 +1,86 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "c:IPAPartnerLayout",
+  "dataProviders" : [ ],
+  "id" : "0a80af11-5fe4-4477-b416-3605490f1fbc",
+  "label" : "PartnerBenefit",
+  "regions" : [ {
+    "id" : "e80cabe6-976a-4700-b393-44350af4ca98",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "205b12b2-305d-4083-a394-b382eec26ea7",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "26cb345e-cecc-4859-a893-7d4174acb8e0",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "description" : "Deprecated",
+        "devFonts" : false,
+        "title" : "Manage Benefits"
+      },
+      "componentName" : "c:ipaBenefitCardList_copy",
+      "id" : "bfbda00f-3e9d-42ab-95d0-18f90e252589",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "13d7c17b-cefe-443b-8f60-0021aa35384b",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "0851f3c5-80e5-4fe9-b735-eaf9b284a007",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "1586ecd5-fdcd-48bd-9cec-64e82cf09d74",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "9283ce4a-60c1-473d-aad8-fbce13abb477",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "5a8d684b-2fc3-4243-9ef3-08a07f54a1b8",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "b33081a8-ba78-4487-a0af-17b200eb2046",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "864ae2cf-478a-45e2-8478-946b541600ee",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "5dc15c8b-177a-4983-bfb8-30278e24070e",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "3d1d627d-c4c5-4497-986f-4ae6443c9d8d",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "PartnerBenefit"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "0db361c8-8f48-4b2f-8861-e4c1d0d31c21",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "25623478-331f-4a8e-8b95-fa0bb1f6a204",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-partnerbenefit"
+}

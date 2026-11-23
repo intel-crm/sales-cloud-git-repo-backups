@@ -98,7 +98,6 @@
         <field>BucketField_69283090</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5)</booleanFilter>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -122,13 +121,6 @@
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>ferment,galluccio,sunil gupta,rather,prengler,zurlo</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Technical_Owner_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

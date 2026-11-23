@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP OF Jia Jun Liew</description>
+    <description>Manager not assigned in Salesforce</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>EMP_11555795_Sin Yong Chuah</name>
+    <name>EMP_11555795_Sin_Yong_Chuah</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12052996_Jia_Jun_Liew</parentRole>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
 </Role>

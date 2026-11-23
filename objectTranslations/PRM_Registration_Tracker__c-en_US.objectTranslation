@@ -17,9 +17,17 @@
         <name>PRM_AGD_ID_Updated__c</name>
     </fields>
     <fields>
+        <label><!-- AGS ID Creation Retried --></label>
+        <name>PRM_AGS_ID_Creation_Retried__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>PRM_Account__c</name>
         <relationshipLabel><!-- Registration Trackers --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Active --></label>
+        <name>PRM_Active__c</name>
     </fields>
     <fields>
         <label><!-- GetProfile API Called --></label>
@@ -30,12 +38,28 @@
         <name>PRM_CIM_CallOut_for_Dup_Check__c</name>
     </fields>
     <fields>
+        <label><!-- Completed --></label>
+        <name>PRM_Completed__c</name>
+    </fields>
+    <fields>
         <label><!-- Current Step --></label>
         <name>PRM_Current_Step__c</name>
     </fields>
     <fields>
+        <label><!-- EV Retriggered --></label>
+        <name>PRM_EV_Retriggered__c</name>
+    </fields>
+    <fields>
         <label><!-- Email --></label>
         <name>PRM_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Error --></label>
+        <name>PRM_Error__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_InactiveIndicator --></label>
+        <name>PRM_InactiveIndicator__c</name>
     </fields>
     <fields>
         <label><!-- Integration Log --></label>
@@ -51,19 +75,23 @@
         <name>PRM_Log_Entries__c</name>
     </fields>
     <fields>
+        <label><!-- PRM_PathIdentifier --></label>
+        <name>PRM_PathIdentifier__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous Step --></label>
+        <name>PRM_Previous_Step__c</name>
+    </fields>
+    <fields>
+        <label><!-- RegCombo --></label>
+        <name>PRM_RegCombo__c</name>
+    </fields>
+    <fields>
         <label><!-- Registration Type --></label>
         <name>PRM_Registration_Type__c</name>
         <picklistValues>
             <masterLabel>Admin Invite</masterLabel>
             <translation><!-- Admin Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Admin Partner Invite</masterLabel>
-            <translation><!-- Admin Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
@@ -76,6 +104,10 @@
         <picklistValues>
             <masterLabel>External Partner Invite</masterLabel>
             <translation><!-- External Partner Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GetProfile</masterLabel>
+            <translation><!-- GetProfile --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partner Invite</masterLabel>
@@ -100,13 +132,16 @@
         <name>PRM_Step_Number__c</name>
     </fields>
     <fields>
-        <help><!-- Time Taken between Previous Milestone and current Milestone --></help>
         <label><!-- Time Taken --></label>
         <name>PRM_Time_Difference__c</name>
     </fields>
     <fields>
         <label><!-- User Loggedin Time --></label>
         <name>PRM_User_Loggedin_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Yet to Process --></label>
+        <name>PRM_Yet_to_Process__c</name>
     </fields>
     <fields>
         <label><!-- Contact --></label>
@@ -341,5 +376,28 @@
             <translation><!-- Welcome Email Yet to Send --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- User Type --></label>
+        <name>User_Type__c</name>
+        <picklistValues>
+            <masterLabel>New User</masterLabel>
+            <translation><!-- New User --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old User</masterLabel>
+            <translation><!-- Old User --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Registration Tracker Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Mile Stones --></label>
+            <section>Mile Stones</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

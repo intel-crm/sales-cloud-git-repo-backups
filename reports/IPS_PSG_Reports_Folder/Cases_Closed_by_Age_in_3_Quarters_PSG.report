@@ -489,15 +489,6 @@
     <columns>
         <field>STATUS</field>
     </columns>
-    <columns>
-        <field>BucketField_9253579</field>
-    </columns>
-    <columns>
-        <field>BucketField_57505999</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Assigned_Queue__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
@@ -519,20 +510,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Invalid</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2,eASIC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

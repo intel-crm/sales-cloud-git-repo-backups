@@ -9,32 +9,12 @@
         <translation>已完成的</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Declined</masterLabel>
-        <translation>已拒绝</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Draft</masterLabel>
-        <translation>草稿</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>处理中</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>进行中，待批准</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>进行中，待审核</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>进行中，需要修订</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>待批</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>
@@ -43,6 +23,10 @@
     <valueTranslation>
         <masterLabel>Planned</masterLabel>
         <translation>已计划</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rejected</masterLabel>
+        <translation><!-- Rejected --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Revision Required</masterLabel>

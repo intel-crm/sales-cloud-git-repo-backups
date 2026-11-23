@@ -197,6 +197,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_Approve_Reject_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK( &apos;/lightning/r/ProcessInstanceWorkitem/&apos; &amp; PRM_ProcessInstanceWorkItem_Id__c &amp; &apos;/view&apos; ,&apos;Approve/Reject&apos;,&quot;_blank&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Approval/Rejection Link</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Comments__c</fullName>
         <label>Notes</label>
         <required>false</required>
@@ -277,6 +288,16 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_ProcessInstanceWorkItem_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Process Instance Work Item</label>
+        <length>20</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Status__c</fullName>
         <label>Status</label>
         <required>false</required>
@@ -328,6 +349,32 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>PRM_Suppress_Email__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Creating a new field as part of this user story#US96902</description>
+        <label>Suppress Email</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Tier_Name_txt__c</fullName>
+        <externalId>false</externalId>
+        <formula>PRM_Account_Channel_Membership__r.PRM_Channel_Program_Id__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Tier Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Submitted_for_Approval__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Submitted for Approval</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>prm_error_summary__c</fullName>
         <description>Populate Errors in transaction as part of this change request</description>
         <label>Error summary</label>
@@ -337,6 +384,36 @@
         <visibleLines>3</visibleLines>
     </fields>
     <label>ACM Change Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>PRM_ACM_Approval_Queue_PRM_IPA_Membership</fullName>
+        <filterScope>Queue</filterScope>
+        <label>ACM Approval Queue</label>
+        <queue>PRM_ACM_Approval_Queue</queue>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>PRM_Items_to_Approve</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Account_Name__c</columns>
+        <columns>PRM_Old_Partner_Tier__c</columns>
+        <columns>PRM_Partner_Tier__c</columns>
+        <columns>PRM_Old_Partner_Role__c</columns>
+        <columns>PRM_Partner_Role__c</columns>
+        <columns>PRM_Status__c</columns>
+        <columns>PRM_Approve_Reject_Link__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>Items to Approve</label>
+        <sharedTo>
+            <group>PRM_ACM_Approval_Group</group>
+        </sharedTo>
+    </listViews>
     <nameField>
         <displayFormat>Mem-{0000}</displayFormat>
         <label>PRM_IPA_Membership Name</label>
@@ -348,7 +425,7 @@
     <validationRules>
         <fullName>PRM_IPA_Tier_Selection</fullName>
         <active>true</active>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; PRM_Partner_Tier__r.Program.Name !=&apos;Intel Partner Alliance&apos;</errorConditionFormula>
+        <errorConditionFormula>PRM_Partner_Tier__r.Program.Name !=&apos;Intel Partner Alliance&apos;</errorConditionFormula>
         <errorDisplayField>PRM_Partner_Tier__c</errorDisplayField>
         <errorMessage>Please select IPA specific Partner tier</errorMessage>
     </validationRules>
@@ -356,14 +433,14 @@
         <fullName>PRM_PartOf_1PID</fullName>
         <active>true</active>
         <description>If the location account is part of 1PID then there will be validation to disallow admins from submitting a role/tier update through this option.</description>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; NOT(ISBLANK(PRM_Account_Channel_Membership__r.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)) &amp;&amp;  PRM_Account_Channel_Membership__r.PRM_Account_Id__r.RecordType.Name  = &apos;Mastered_Account&apos;</errorConditionFormula>
+        <errorConditionFormula>NOT(ISBLANK(PRM_Account_Channel_Membership__r.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)) &amp;&amp;  PRM_Account_Channel_Membership__r.PRM_Account_Id__r.RecordType.Name  = &apos;Mastered_Account&apos;</errorConditionFormula>
         <errorMessage>The request cannot be submitted as the Location account is a part of 1PID.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_Partner_Role_Tier_Combination</fullName>
         <active>true</active>
         <description>Validation to dis allow and new request with the same role tier combination when the request is not in Rejected state</description>
-        <errorConditionFormula>AND(NOT( $Permission.PCC_Bypass_Automation ),ISNEW(),(TEXT(PRM_Account_Channel_Membership__r.PRM_Partner_Role__c ) = TEXT(PRM_Partner_Role__c ) &amp;&amp; (PRM_Account_Channel_Membership__r.PRM_Channel_Program_Level_Id__r.Name = PRM_Partner_Tier__r.Name )))</errorConditionFormula>
+        <errorConditionFormula>AND(ISNEW(),(TEXT(PRM_Account_Channel_Membership__r.PRM_Partner_Role__c ) = TEXT(PRM_Partner_Role__c ) &amp;&amp; (PRM_Account_Channel_Membership__r.PRM_Channel_Program_Level_Id__r.Name = PRM_Partner_Tier__r.Name )))</errorConditionFormula>
         <errorMessage>Partner Role and Partner tier Combination already exist.</errorMessage>
     </validationRules>
     <validationRules>

@@ -1,0 +1,97 @@
+<template>
+
+    <lightning-card>
+        <c-ipa-custom-report-chart chart-type={chartType}></c-ipa-custom-report-chart>
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <lightning-combobox
+                     name="Records Per Page"
+                     label="Rows"
+                     value={selectedPageSize}
+                     placeholder="Records Per Page"
+                     options={pageSizeOptions}
+                     onchange={handleRowChange}
+                     style="width:100px;"></lightning-combobox>
+                </div>     
+                <div class="slds-col">
+                  <br/>  
+                  Record Count - <b> {totalRecountCount}</b>
+                </div>
+                <div class="slds-col">
+                    <lightning-input 
+                    type="search" 
+                    onchange={handleKeyChange} 
+                    class="slds-m-bottom_small"           
+                    placeholder="Search" 
+                    value={searchKey}>
+                </lightning-input>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox
+                     name="Filter Year"
+                     label="Filter(Year)"
+                     value={selectedYear}
+                     placeholder="Year"
+                     options={yearOptions}
+                     onchange={handleYearChange}
+                     style="width:80px;"></lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <lightning-combobox
+                     name="Filter"
+                     label="Filter"
+                     value={selectedYear}
+                     placeholder="Year"
+                     options={yearOptions}
+                     onchange={handleYearChange}
+                     style="width:100px;"></lightning-combobox>
+                </div>
+                <div class="slds-col">
+                    <br/>
+                    <lightning-button variant="brand" label="Export" title="Export" onclick={exportData}></lightning-button>
+                </div>
+            </div>
+         <div if:false={recordSpinner}>
+            <lightning-datatable 
+                data-id="table" 
+                key-field="Id" 
+                data={data} 
+                columns={columns} 
+                hide-checkbox-column="true"
+                sorted-by={sortedBy}
+                sorted-direction={sortedDirection} 
+                onsort={sortColumns}>
+           </lightning-datatable>
+         </div>
+           <div if:true={recordSpinner} class="slds-spinner_inline spinner-padding">
+            <lightning-spinner variant="brand" 
+                               alternative-text="Loading"     
+                               size="medium">
+            </lightning-spinner>
+         </div>
+           <br/>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button 
+                        label="Previous" 
+                        icon-name="utility:chevronleft" 
+                        onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button 
+                        label="Next" 
+                        icon-name="utility:chevronright" 
+                        icon-position="right"
+                        onclick={nextHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+
+</template>

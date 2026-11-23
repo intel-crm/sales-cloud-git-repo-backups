@@ -25,20 +25,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p class=&quot;ql-indent-1&quot;&gt;&lt;b style=&quot;font-size: 16px; color: rgb(34, 114, 211);&quot;&gt;﻿&lt;/b&gt;&lt;b style=&quot;font-size: 16px; color: rgb(221, 70, 14);&quot;&gt;Please Contact Admin to add specialty to Partner Program Specialty if it is not available.&lt;/b&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
             </componentInstance>
@@ -172,31 +158,17 @@
                 <identifier>force_relatedListContainer2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-ce554a8b-e4f8-4151-9ce5-1ed9ec146166</name>
+        <name>Facet-662f3ea3-2ab4-4dda-bb8a-e68eeb16020a</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(34, 114, 211);&quot;&gt;﻿&lt;/strong&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(221, 70, 14);&quot;&gt;Please Contact Admin to add specialty to Partner Program Specialty if it is not available.&lt;/strong&gt;&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText2</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-84663f66-4700-4e34-a14b-96969a381b3a</name>
+        <name>Facet-a67babd0-bb07-4a85-850f-511237044e86</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -208,7 +180,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-ce554a8b-e4f8-4151-9ce5-1ed9ec146166</value>
+                    <value>Facet-662f3ea3-2ab4-4dda-bb8a-e68eeb16020a</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -222,7 +194,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-84663f66-4700-4e34-a14b-96969a381b3a</value>
+                    <value>Facet-a67babd0-bb07-4a85-850f-511237044e86</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -232,7 +204,7 @@
                 <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b94b6489-c1de-4884-8e6c-9449ed972afd</name>
+        <name>Facet-1bf25fc1-ddd0-4771-9b0d-41e79ed48315</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -240,7 +212,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-b94b6489-c1de-4884-8e6c-9449ed972afd</value>
+                    <value>Facet-1bf25fc1-ddd0-4771-9b0d-41e79ed48315</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>

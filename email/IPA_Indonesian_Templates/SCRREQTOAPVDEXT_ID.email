@@ -37,7 +37,7 @@
 <th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
 <h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;">Perusahaan Anda Sudah Terdaftar</h1>
 </th>
-<th class="callout-inner" style="padding:15px;"><img src="https://intel--c.documentforce.com/servlet/servlet.ImageServer?id=0153b000005OXH2&oid=00Do0000000aRcf&lastMod=1609662404000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
+<th class="callout-inner" style="padding:15px;"><img src="https://intel--crmdevipa--c.cs45.content.force.com/servlet/servlet.ImageServer?id=0158A00000028LJ&oid=00D8A0000005uU8&lastMod=1600939268000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
 </tbody>
@@ -73,10 +73,11 @@
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">{!PRM_Registration_Request__c.PRM_First_Name__c},<br>
 <br>Selamat Anda telah menjadi mitra Intel&reg; Partner Alliance! Perusahaan Anda cocok dengan akun yang ada, jadi Anda telah ditambahkan ke profil perusahaan Intel&reg; Partner Alliance berikut:<br><b>Nama Perusahaan:</b> {!Account.Name}<br><b>ID Bisnis:</b> {!Account.AccountNumber}<br>
 </p>
-<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a href="https://www.intel.com/libs/apps/intel/logout.json/deletesecuritytoken?target=https://partner.intel.com/s/post-launch-primary" style="color:#FF0000;">Login</a> ke untuk melihat detail profil Intel&reg; Partner Alliance Anda.<br>
-
+<p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;"><a href="https://wcm-qa.intel.com/content/www/us/en/ipa-homepage-loggedIn.html" style="color:#FF0000;">Login</a> ke untuk melihat detail profil Intel&reg; Partner Alliance Anda.<br>
+<p
+style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">Login ke <a href="https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary" style="color:#FF0000;">https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/post-launch-primary</a> untuk peran Anda.</p>
 <br>Mitra Intel memiliki sejarah inovasi yang panjang, dan bersama Intel&reg; Partner Alliance, kami akan membantu Anda mengakselerasi pengembangan solusi untuk ekonomi yang berpusat pada data. Bersama, kita dapat terhubung, berinovasi, dan berkembang untuk mewujudkan berbagai peluang luar biasa.<br>
-<br>Kunjungi <a href="https://www.intel.com/content/www/id/id/partner-alliance/help/overview.html" style="color:#FF0000;">https://www.intel.com/content/www/id/id/partner-alliance/help/overview.html</a> untuk mendapat bantuan lain tentang cara memulai.<br>
+<br>Kunjungi <a href="https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html" style="color:#FF0000;">https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html</a> untuk mendapat bantuan lain tentang cara memulai.<br>
 <br>Terima kasih,<br>Tim Intel&reg; Partner Alliance Anda</p>
 </th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; visibility: hidden;"></th>
@@ -116,13 +117,13 @@
 <td class="auto-style1" valign="top" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel&reg; Partner Alliance.</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px;text-align: center;">&copy; {!$Label.PRM_CurrentYear} Intel Corporation</td>
+<td class="auto-style1" valign="top" style="font-size: 10px;color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px;text-align: center;">&copy; {!Contact.Core_Current_Year__c} Intel Corporation</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/id/id/homepage.html" target="_blank" _rte_href="http://www.intel.com/">www.intel.com</a></td>
+<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="http://www.intel.com/" target="_blank" _rte_href="http://www.intel.com/">www.intel.com</a></td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;"><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/id/id/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/id/id/privacy/intel-privacy-notice.html">Privasi</a><span class="Apple-converted-space"> </span>|<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.com/content/www/id/id/privacy/intel-cookie-notice.html" _rte_href="https://www.intel.com/content/www/id/id/privacy/intel-cookie-notice.html">Cookie</a><span class="Apple-converted-space"> </span><span class="Apple-converted-space"> </span></td>
+<td class="auto-style1" valign="top" style="font-size: 10px; border: 1px #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; text-align: center;"><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.co.id/content/www/id/id/privacy/intel-privacy-notice.html" _rte_href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Privasi</a><span class="Apple-converted-space"> </span>|<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.co.id/content/www/id/id/privacy/intel-cookie-notice.html" _rte_href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html">Cookie</a><span class="Apple-converted-space"> </span><span class="Apple-converted-space"> </span></td>
 </tr>
 </tbody>
 </table>
@@ -130,6 +131,7 @@
 </tr>
 </tbody>
 </table>
+<p style="color: #000000; font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;"><img width="352" height="1" src="./sample_files/spacer.gif" border="0" _rte_src="https://www-ssl.intel.com/Assets/en_US/Image/tab/spacer.gif"></p>
 </th>
 </tr>
 </tbody>

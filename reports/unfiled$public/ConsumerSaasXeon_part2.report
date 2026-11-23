@@ -78,7 +78,7 @@
             <value>Hulu,Intesis,Intuit,iStreamPlanet,JD.com,Kakao,Kingsoft,kuaishou,Kunlun.com,LeTV,Line/Naver,Linkedin,Lionsgate,Lucas,Lyft,Machine Zone,Mail.ru,Major League Baseball (MLB) AM,MakeMyTrip,Match Group,Meituan,Mobike,National Football League (NFL),NBCUniversal,NCSoft,Netease,Netflix,NHN Entertainment,OLA</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

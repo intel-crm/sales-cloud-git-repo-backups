@@ -9,7 +9,7 @@ Modification Log :
 * Malhotra, Abhimanyu S     09/23/2015              Created
 ****************************************************************************************************/
 
-public with sharing class Core_IPS_FileUpload_Controller {    
+public class Core_IPS_FileUpload_Controller {    
     public Boolean noDataFlag { get; set; }
     public string fileId {get;set;}
     public string URL {get;set;}
@@ -24,8 +24,7 @@ public with sharing class Core_IPS_FileUpload_Controller {
         fUpldmMasterPrefix = '/' + fUpldmMasterObj.getKeyPrefix() + '/o';
         Schema.Describesobjectresult fAssignObj = Schema.Sobjecttype.Core_IPS_File_Assignment__c;
         fAssignPrefix = '/' + fAssignObj.getKeyPrefix() + '/o';        
-        //URL = System.Label.Core_IPS_File_SCFT_URL; existing url
-        URL = System.Label.Core_IPS_File_SCFT_URL+'&console=true'; //TWC745-321 - IPS: Update upload URLs and field mappings [KIIT] - 16/09/2021 - Popcornapps
+        URL = System.Label.Core_IPS_File_SCFT_URL;
     }
     
     //Get File Upload details

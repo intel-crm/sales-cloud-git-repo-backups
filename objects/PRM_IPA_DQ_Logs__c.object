@@ -187,6 +187,11 @@
         <unique>false</unique>
     </fields>
     <label>IPA DQ Log</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>IPALog-{0000}</displayFormat>
         <label>IPA DQ Log Number</label>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
     <height>120</height>
-    <label>Approve- High Touch Design</label>
-    <lightningComponent>DDR_Accept_Hight_Touch</lightningComponent>
+    <label>Approve Design</label>
+    <lightningComponent>Core_DDR_Accept</lightningComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <type>LightningComponent</type>
     <width>-100</width>

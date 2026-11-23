@@ -61,44 +61,44 @@ Id recordTypeIdPAGAccount = Schema.SObjectType.Account.getRecordTypeInfosByName(
         // Call method and test the response for the scenario with an existing Core_Account_Group_Member record
         Test.startTest();
         String result = UCD_OPID_Creation_Association.getMessageFromApex(testAccount.Id);
-        //Test.stopTest();
+        Test.stopTest();
         
         // Validate the result for the case when agm is not empty
-        //System.assertEquals('Please delink the existing 1PID association to create a new one', result);
+        System.assertEquals('Please delink the existing 1PID association to create a new one', result);
 
         // Now test for an Account with Unified_Hierarchy_View__c = 'Intermediate'
         testAccount.Unified_Hierarchy_View__c = 'Intermediate';
         update testAccount;
 
-        //Test.startTest();
+        Test.startTest();
         result = UCD_OPID_Creation_Association.getMessageFromApex(testAccount.Id);
-        //Test.stopTest();
+        Test.stopTest();
         
         // Validate the result for the account with valid Unified_Hierarchy_View__c
-        //System.assertEquals(null, result);
+        System.assertEquals(null, result);
 
         // Test for the case when there is an inbound message
         inboundRecord.Core_Status__c = 'NEW'; // Ensure the record still exists
         update inboundRecord;
 
-        //Test.startTest();
+        Test.startTest();
         result = UCD_OPID_Creation_Association.getMessageFromApex(testAccount.Id);
-        //Test.stopTest();
+        Test.stopTest();
 
         // Validate that the message is returned for the inbound message
-        //System.assertEquals('The 1PID creation/association is in progress and a notification will be sent once the process is completed.', result);
+        System.assertEquals('The 1PID creation/association is in progress and a notification will be sent once the process is completed.', result);
 
         // Test for the case when account is not associated with any PRM_AccountChannelMembership and Core_Intel_Partner_Alliance_PartnerGroup__c is false (assuming this condition might be used later)
         testAccount.Unified_Hierarchy_View__c = 'Global'; // Reset Unified_Hierarchy_View
         testAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         update testAccount;
 
-        //Test.startTest();
+        Test.startTest();
         result = UCD_OPID_Creation_Association.getMessageFromApex(testAccount.Id);
         Test.stopTest();
 
         // Assuming the final else condition works when there are no inbound or association records
-        //System.assertEquals(null, result);
+        System.assertEquals(null, result);
     }
     @isTest
     static void testGetMessageFromApex2() {

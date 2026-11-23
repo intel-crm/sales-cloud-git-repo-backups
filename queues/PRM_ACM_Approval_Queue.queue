@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>ACM Approval Queue</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>PRM_ACM_Approval_Group</publicGroup>
+        </publicGroups>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>PRM_IPA_Membership__c</sobjectType>
+    </queueSobject>
+</Queue>

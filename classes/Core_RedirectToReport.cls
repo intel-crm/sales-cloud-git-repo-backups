@@ -16,7 +16,6 @@ public class Core_RedirectToReport{
     Public String productCreditId {get; set;}
     public String recordId{get;set;}
     public boolean isClassic;
-    Public String oppCreditId {get; set;}
     
     /*
      * Method name  : Core_RedirectToReport
@@ -41,7 +40,6 @@ public class Core_RedirectToReport{
         goalCreditId = mapReport.get('Goal_Credit').Core_Report_URL__c;
         milestoneCreditId = mapReport.get('Milestone_Credit').Core_Report_URL__c;
         productCreditId = mapReport.get('Product_Credit').Core_Report_URL__c;
-        oppCreditId = mapReport.get('Opportunity_Credit').Core_Report_URL__c;
     }
     /*
      * Method name  : DWGPageRef
@@ -49,7 +47,6 @@ public class Core_RedirectToReport{
      * Return Type  : PageReference
      * Parameter    : none
      */
-    //DWG EOL Temporary fix - switch to be added | Permanent fix - code to be re-configured
     public PageReference DWGPageRef(){
         PageReference pageRef;
         if(isClassic){
@@ -89,22 +86,6 @@ public class Core_RedirectToReport{
             pageRef = new PageReference('/'+productCreditId+'?pv0='+recordId);
         }else{
             pageRef = new PageReference('/one/one.app#/sObject/'+productCreditId+'/view?fv0='+recordId);
-        }
-        pageRef.setRedirect(true);
-        return pageRef;
-    }
-    /*
-     * Method name  : PCPageRef
-     * Description  : Redirect to Product credit report
-     * Return Type  : PageReference
-     * Parameter    : none
-     */
-    public PageReference OppCPageRef(){
-        PageReference pageRef;
-        if(isClassic){
-            pageRef = new PageReference('/'+oppCreditId+'?pv0='+recordId);
-        }else{
-            pageRef = new PageReference('/one/one.app#/sObject/'+oppCreditId+'/view?fv0='+recordId);
         }
         pageRef.setRedirect(true);
         return pageRef;

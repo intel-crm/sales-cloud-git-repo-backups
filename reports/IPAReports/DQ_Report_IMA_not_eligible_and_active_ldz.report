@@ -20,7 +20,7 @@
     <columns>
         <field>PRM_IPAMembership_Attributes__c.PRM_Point_Status_Txt__c</field>
     </columns>
-    <description>A  report to identify any 1PID or account, where not Eligible =true and points status is Active</description>
+    <description>A a report to identify any 1PID or account, where not Eligible =true and points status is Active</description>
     <filter>
         <criteriaItems>
             <column>FK_ACC_RECORDTYPE</column>

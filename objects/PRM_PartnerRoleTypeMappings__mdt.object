@@ -17,7 +17,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Biz Org Type</label>
-        <length>150</length>
+        <length>60</length>
         <required>false</required>
         <type>Text</type>
         <unique>true</unique>
@@ -27,7 +27,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>PRM Partner Role Label</label>
-        <length>100</length>
+        <length>60</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -37,7 +37,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Partner Role</label>
-        <length>150</length>
+        <length>60</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -68,17 +68,6 @@
         <type>Checkbox</type>
     </fields>
     <label>PRM PartnerRoleType Mapping</label>
-    <listViews>
-        <fullName>IPA_View</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>PRM_Biz_Org_Type__c</columns>
-        <columns>PRM_Partner_Role__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>IPA View</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>PRM PartnerRoleType Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -6,9 +6,10 @@ import filterLabel from '@salesforce/label/c.PMP_Search_Filter';
 import filtersLabel from '@salesforce/label/c.PMP_Search_Filters';
 import cancelLabel from '@salesforce/label/c.PMP_Search_Cancel';
 import doneLabel from '@salesforce/label/c.PMP_Done';
-import offeringsByCategoryLabel from '@salesforce/label/c.PMP_L0_Offerings_Category';
+import offeringsByCategoryLabel from '@salesforce/label/c.PMP_Filter_Offerings_Category';
 import offeringFiltersLabel from '@salesforce/label/c.PMP_Offering_Filters';
 import resultsLabel from '@salesforce/label/c.PMP_results';
+import offeringsLabel from '@salesforce/label/c.PMP_Marketplace_Offerings';
 
 import mainTemplate from './ipaStorefrontDetailFilters.html';
 import mobileTemplate from './mobile.html';
@@ -52,6 +53,7 @@ class IpaStorefrontDetailFilters extends LightningElement {
     offeringsByCategory: offeringsByCategoryLabel,
     offeringFilters: offeringFiltersLabel,
     results: resultsLabel,
+    offeringBy: offeringsLabel,
   };
 
   /**

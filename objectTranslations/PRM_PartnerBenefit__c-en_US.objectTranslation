@@ -73,6 +73,17 @@
         <label><!-- Quantitative Indicator --></label>
         <name>PRM_Quantitative_Ind__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Benefit Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add Contact Group --></label>
+        <name>PRM_Add_Contact_Group</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

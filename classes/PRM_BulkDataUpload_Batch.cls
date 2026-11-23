@@ -19,7 +19,7 @@ global class PRM_BulkDataUpload_Batch implements Database.Batchable<PRM_Bulk_Dat
     global static List<Messaging.SingleEmailMessage> mapEmailMessaging = new List<Messaging.SingleEmailMessage>();
 
     public static String sanitizedSearchKey = String.escapeSingleQuotes(UserInfo.getUserId());
-    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
+    public static User user = [select Id,IsPortalEnabled, username,Core_IPA_One_Partner_Id__c,Core_IPS_AccountId__c,Email from User where Id = :sanitizedSearchKey];//where Id =: currentUserId  
     public static string userEmail=string.valueOf(user.email);
     public static boolean isExtPartnerInvite=false;
     public static boolean IsPortalUser=user.IsPortalEnabled;

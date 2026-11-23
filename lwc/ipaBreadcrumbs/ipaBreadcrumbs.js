@@ -57,6 +57,7 @@ class IpaBreadcrumbs extends LightningElement {
     if (!this.breadcrumbsRendered) {
       this.breadcrumbsRendered = true;
       if (this.communityName === 'Marketplace') {
+        console.log('I am here inside marketplace');
         this.renderBreadcrumbs(getMarketplaceBreadcrumbs);
       } else if (this.communityName === 'IPA') {
         this.renderBreadcrumbs(getIpaBreadcrumbs);
@@ -76,7 +77,8 @@ class IpaBreadcrumbs extends LightningElement {
     // Call the service to get the breadcrumbs
     getBreadcrumbData()
       .then((breadcrumbs) => {
-        const breadcrumbsComponent = this.template.querySelector('c-core-intc-breadcrumbs');
+        console.log('breadcrumbs',...breadcrumbs);
+        const breadcrumbsComponent = this.template.querySelector('c-core-intc-breadcrumbs');   
         if (breadcrumbsComponent) {
           breadcrumbsComponent.renderBreadcrumbs({
             ...breadcrumbs,

@@ -31,6 +31,10 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Event_Screen_Reader_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Clear_Cache__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

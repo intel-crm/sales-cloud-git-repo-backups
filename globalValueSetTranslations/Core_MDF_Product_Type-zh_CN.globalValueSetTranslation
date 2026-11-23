@@ -6,143 +6,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ACPC</masterLabel>
-        <translation>全互联电脑</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AIO</masterLabel>
-        <translation>一体机</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>All-in-One Desktop</masterLabel>
-        <translation><!-- All-in-One Desktop --></translation>
+        <translation><!-- ACPC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>All-in-one</masterLabel>
         <translation>一体机</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Altera®</masterLabel>
-        <translation><!-- Altera® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Appliance</masterLabel>
-        <translation>设备</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Athena</masterLabel>
-        <translation><!-- Athena --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Chromebook</masterLabel>
         <translation><!-- Chromebook --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>客户端</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>云</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Cloud Instance Consumption</masterLabel>
-        <translation>云实例消费</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Communications</masterLabel>
         <translation>通信</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Component</masterLabel>
-        <translation>组件</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>台式机</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Edge Gateway</masterLabel>
-        <translation>边缘网关</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>边缘/物联网</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>FPGA Programmable Solution</masterLabel>
-        <translation>FPGA 可编程解决方案</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC</masterLabel>
-        <translation><!-- HPC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Handheld</masterLabel>
-        <translation>手持设备</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Hyper Converged Solutions</masterLabel>
         <translation>超融合解决方案</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Unite®</masterLabel>
-        <translation><!-- Intel Unite® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel vPro®</masterLabel>
-        <translation>英特尔® 博锐®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>智能边缘/物联网</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i3</masterLabel>
-        <translation>英特尔® 酷睿™ i3</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i5</masterLabel>
-        <translation>英特尔® 酷睿™ i5</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i7</masterLabel>
-        <translation>英特尔® 酷睿™ i7</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i9</masterLabel>
-        <translation>英特尔® 酷睿™ i9</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Enpirion®</masterLabel>
-        <translation>英特尔® Enpirion®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Movidius™</masterLabel>
-        <translation>英特尔® Movidius™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Nervana™</masterLabel>
-        <translation>英特尔® Nervana™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™</masterLabel>
-        <translation>英特尔® 傲腾™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™ DC</masterLabel>
-        <translation>英特尔® 傲腾™ 数据中心级</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® RealSense™</masterLabel>
-        <translation>英特尔® 实感™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon®</masterLabel>
-        <translation>英特尔® 至强®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Laptop</masterLabel>
@@ -154,111 +42,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC w/NUC</masterLabel>
-        <translation>迷你 PC 与 NUC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mini PC/NUC</masterLabel>
-        <translation>迷你电脑/NUC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
-        <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Motherboard</masterLabel>
-        <translation>主板</translation>
+        <translation><!-- Mini PC w/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NUC</masterLabel>
         <translation><!-- NUC --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>网络与电信</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>网络/以太网</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Notebook</masterLabel>
-        <translation>笔记本电脑</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OpenVINO™</masterLabel>
-        <translation><!-- OpenVINO™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Other</masterLabel>
-        <translation>其它</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Programmable Solution</masterLabel>
-        <translation>可编程解决方案</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Server</masterLabel>
         <translation>服务器</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (AI/GPU)</masterLabel>
-        <translation>服务器（AI/GPU）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (Cloud)</masterLabel>
-        <translation>服务器（云）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (ESMB)</masterLabel>
-        <translation>服务器（ESMB）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (HPC)</masterLabel>
-        <translation>服务器（HPC）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (non-HPC)</masterLabel>
-        <translation>服务器（非 HPC）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Service</masterLabel>
-        <translation>服务</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Software</masterLabel>
-        <translation>软件</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Solution</masterLabel>
-        <translation>解决方案</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Storage</masterLabel>
         <translation>存储</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>电信</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
-        <translation>轻薄</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Desktop</masterLabel>
-        <translation><!-- Traditional Desktop --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Notebook</masterLabel>
-        <translation>传统笔记本</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation</masterLabel>
-        <translation><!-- Workstation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation - Desktop</masterLabel>
-        <translation>工作站 - 桌面</translation>
+        <translation><!-- Thin &amp; Light --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation - Fixed</masterLabel>
@@ -267,9 +67,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>工作站——移动式</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation>至强</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

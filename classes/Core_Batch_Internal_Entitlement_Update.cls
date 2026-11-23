@@ -49,7 +49,7 @@ global without sharing class Core_Batch_Internal_Entitlement_Update implements D
         }
 
         for(Id conId : contactIds){
-            contactToUpdate.add(new Contact(Id = conId, Core_Entitlement_Assignment_Status__c = 'Successful', Core_Entitlement_Assignment_Message__c = 'Timestamp: ' + System.now() + ' GMT', Core_Republish_OBM_s__c = true)); 
+            contactToUpdate.add(new Contact(Id = conId, Core_AGS_Integration_Status__c = 'Successful', Core_AGS_Integration_Message__c = 'Timestamp: ' + System.now() + ' GMT')); 
         }
 
         Database.update(EntitlementToUpdate, false);

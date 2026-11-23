@@ -94,6 +94,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Turkey</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>South Africa</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -158,6 +161,9 @@
             </sourceValues>
             <sourceValues>
                 <sourceValue>Serbia</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Czech Republic</sourceValue>
             </sourceValues>
             <sourceValues>
                 <sourceValue>Romania</sourceValue>
@@ -311,6 +317,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

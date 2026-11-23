@@ -1,5 +1,6 @@
 global with sharing class PMP_Locale_JSONParser {
-
+    //Commented as part of IPA2.0 EOL'ing
+/*
     global wrapOfferingMain offeringMain;
 
     global static wrapOfferingMain parse(String json) {
@@ -22,4 +23,5 @@ global with sharing class PMP_Locale_JSONParser {
         global Date ModifiedDate {get; set;}
 
     }
+*/
 }

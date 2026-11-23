@@ -43,7 +43,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -67,8 +67,8 @@
             <column>CREATED_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>5/18/2020 12:00 AM</value>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2020 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -97,6 +97,8 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

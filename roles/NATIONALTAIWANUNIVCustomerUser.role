@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>NATIONAL TAIWAN UNIV Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NATIONALTAIWANUNIVCustomerManager</parentRole>
 </Role>

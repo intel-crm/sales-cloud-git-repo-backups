@@ -9,34 +9,6 @@
         <value>Product Access</value>
     </caseValues>
     <fields>
-        <label><!-- Access Flag --></label>
-        <name>Core_IPS_MAP_Access_Flag__c</name>
-        <picklistValues>
-            <masterLabel>Approval Required</masterLabel>
-            <translation><!-- Approval Required --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Approve</masterLabel>
-            <translation><!-- Auto Approve --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Par Hidden</masterLabel>
-            <translation><!-- Par Hidden --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- # Supported Accounts --></label>
-        <name>Core_IPS_MAP_Count_Supp_acct__c</name>
-    </fields>
-    <fields>
-        <label><!-- # Supported Products --></label>
-        <name>Core_IPS_MAP_Count_Supp_prod__c</name>
-    </fields>
-    <fields>
-        <label><!-- Description --></label>
-        <name>Core_IPS_MAP_Description__c</name>
-    </fields>
-    <fields>
         <help><!-- Naming Convention:   Org - Product/Platform Grouping - Geo - Team
 (example:  &quot;DCG - Skylake - All - None&quot;) --></help>
         <label><!-- MAP Name --></label>
@@ -74,6 +46,24 @@
         <label><!-- isPARRequest --></label>
         <name>Core_isPARRequest__c</name>
     </fields>
+    <layouts>
+        <layout>MAP Standard Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PAR Standard Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- Used for MAP --></description>
         <label><!-- MAP --></label>

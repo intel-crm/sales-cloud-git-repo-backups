@@ -1,12 +1,5 @@
 ({
-	displaySuccessErrorMsg: function(Message,Title,Type){
-        var toastEvent = $A.get("e.force:showToast");
-        toastEvent.setParams({
-            title: Title,
-            message:Message,
-            type: Type
-            
-        });
-        toastEvent.fire();
-    },
+	helperMethod : function() {
+		
+	}
 })

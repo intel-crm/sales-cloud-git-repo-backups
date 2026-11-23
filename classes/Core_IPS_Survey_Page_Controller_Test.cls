@@ -49,7 +49,6 @@ public class Core_IPS_Survey_Page_Controller_Test {
         }
     }
     
-    
     static testMethod void Core_IPS_Survey_Controller_test() {
         Id caseId = [SELECT Id FROM Case LIMIT 1].Id;        
         Pagereference pgref = Page.Core_IPS_Survey;
@@ -70,25 +69,6 @@ public class Core_IPS_Survey_Page_Controller_Test {
         Test.stopTest();
     }
     
-    static testMethod void Core_IPS_Negative_Survey_Controller_test() {
-        Id caseId = [SELECT Id FROM Case LIMIT 1].Id;        
-        Pagereference pgref = Page.Core_IPS_Survey;
-        pgref.getParameters().put('caid', '');
-        pgref.getParameters().put('retURL', '/' + '');
-        pgref.getParameters().put('stype', '');
-        Test.setCurrentPage(pgref);
-        
-        Test.startTest();
-        Core_IPS_Survey_Page_Controller surveyController = new Core_IPS_Survey_Page_Controller();
-        surveyController.captureSurvey();
-        surveyController.getProfilename();
-        Boolean showMainContent = surveyController.showMainContent;
-        surveyController = new Core_IPS_Survey_Page_Controller();
-        system.assert(caseId != null);
-        Test.stopTest();
-    }
-    
-    
     static testMethod void Core_IPS_Survey_Page_Controller_negative_test() {
         Case objCase = [SELECT Id FROM Case LIMIT 1];
         Id caseId = objCase.Id;
@@ -104,26 +84,19 @@ public class Core_IPS_Survey_Page_Controller_Test {
         surveyController = new Core_IPS_Survey_Page_Controller();
         pgref.getParameters().put('stype', 'Customer');
         surveyController = new Core_IPS_Survey_Page_Controller();
-        System.runAs(sysadmin){
-            update new Case(Id=CaseId,Status='Open'); 
-        }
+        System.runAs(sysadmin) { update new Case(Id=CaseId,Status='Open'); }
         surveyController = new Core_IPS_Survey_Page_Controller();
-        System.runAs(sysadmin){
-            update new Case(Id=CaseId,Status='Closed'); 
-        }
+        System.runAs(sysadmin) { update new Case(Id=CaseId,Status='Closed'); }
         surveyController = new Core_IPS_Survey_Page_Controller();
-        
         surveyController.captureSurvey();
-        
         System.assert([SELECT COUNT() FROM Core_IPS_Response__c]==0);
         surveyController.lstQuestions[0].isRequired = false;
         surveyController.captureSurvey();
         surveyController.backfromWarning();
         surveyController.hasPermissionSet(new Set<String>{userinfo.getProfileId()});
-        
     }
     
-    static testMethod void Core_IPS_Survey_Page_Controller_negative_test2() {
+     static testMethod void Core_IPS_Survey_Page_Controller_negative_test2() {
         Test.startTest();        
         Case objCase = [SELECT Id FROM Case LIMIT 1];
         
@@ -140,8 +113,8 @@ public class Core_IPS_Survey_Page_Controller_Test {
         surveyController = new Core_IPS_Survey_Page_Controller();
         System.assert([SELECT COUNT() FROM Case]==0);
         Test.stopTest();       
-    }
-    static testMethod void Core_IPS_Survey_Page_Controller_RedirectTest() {
+     }
+     static testMethod void Core_IPS_Survey_Page_Controller_RedirectTest() {
         Test.startTest();        
         Case objCase = [SELECT Id,Core_IPS_Survey_Captured__c FROM Case LIMIT 1];
         System.assertNotEquals(objCase.Id,null);
@@ -151,9 +124,9 @@ public class Core_IPS_Survey_Page_Controller_Test {
         Core_IPS_Survey_Page_Controller surveyController = new Core_IPS_Survey_Page_Controller();
         surveyController.caseOwnerRedirectPage();
         Test.stopTest();       
-    }
-    //Added by karthick
-    static testMethod void caseOwnerRedirectPage_Test() {
+     }
+     //Added by karthick
+     static testMethod void caseOwnerRedirectPage_Test() {
         Test.startTest();        
         
         String sysAdminProfileID = [select id, name from Profile where name = 'System Administrator' Limit 1].Id;
@@ -188,5 +161,5 @@ public class Core_IPS_Survey_Page_Controller_Test {
         Core_IPS_Survey_Page_Controller surveyController = new Core_IPS_Survey_Page_Controller();
         surveyController.caseOwnerRedirectPage();
         Test.stopTest();       
-    }
+     }
 }

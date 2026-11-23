@@ -181,6 +181,11 @@
     </fields>
     <label>GA Banner</label>
     <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
         <fullName>Core_GA_BannerList</fullName>
         <columns>NAME</columns>
         <columns>Core_Message__c</columns>
@@ -188,6 +193,15 @@
         <columns>Core_End_Date__c</columns>
         <filterScope>Mine</filterScope>
         <label>GA Banner</label>
+    </listViews>
+    <listViews>
+        <fullName>GA_Banner</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Message__c</columns>
+        <columns>Core_Start_Date__c</columns>
+        <columns>Core_End_Date__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>GA Banner_copy</label>
     </listViews>
     <nameField>
         <label>GA Banner Name</label>

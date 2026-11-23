@@ -128,16 +128,22 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Large</formFactor>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Registration_Tracker_Record_Page1</content>
         <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Registration_Tracker_Record_Page1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -152,18 +158,26 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>IsActive__c</fullName>
         <defaultValue>true</defaultValue>
         <label>Active</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_AGD_ID_Updated__c</fullName>
         <label>AGD ID Updated</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PRM_AGS_ID_Creation_Retried__c</fullName>
+        <label>AGS ID Creation Retried</label>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -182,6 +196,14 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Active</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_Attempted_for_IPA__c</fullName>
         <label>GetProfile API Called</label>
         <required>false</required>
@@ -198,6 +220,14 @@
         <type>DateTime</type>
     </fields>
     <fields>
+        <fullName>PRM_Completed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Completed</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_Current_Step__c</fullName>
         <externalId>false</externalId>
         <label>Current Step</label>
@@ -210,8 +240,16 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_EV_Retriggered__c</fullName>
+        <label>EV Retriggered</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>PRM_Email__c</fullName>
-        <externalId>false</externalId>
+        <externalId>true</externalId>
         <label>Email</label>
         <length>200</length>
         <required>false</required>
@@ -219,6 +257,23 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Error__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Error</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_InactiveIndicator__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>The checkbox to identify the reonboarding scenarios.If PCR is inactivated , make this true</description>
+        <label>PRM_InactiveIndicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_Integration_Log__c</fullName>
@@ -250,6 +305,40 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>PRM_PathIdentifier__c</fullName>
+        <externalId>false</externalId>
+        <label>PRM_PathIdentifier</label>
+        <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Previous_Step__c</fullName>
+        <externalId>false</externalId>
+        <label>Previous Step</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_RegCombo__c</fullName>
+        <externalId>false</externalId>
+        <label>RegCombo</label>
+        <length>250</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Registration_Type__c</fullName>
         <label>Registration Type</label>
         <required>false</required>
@@ -257,7 +346,6 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
-            <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
@@ -276,6 +364,11 @@
                     <label>Partner Invite</label>
                 </value>
                 <value>
+                    <fullName>GetProfile</fullName>
+                    <default>false</default>
+                    <label>GetProfile</label>
+                </value>
+                <value>
                     <fullName>Bulk Invite</fullName>
                     <default>false</default>
                     <label>Bulk Invite</label>
@@ -289,16 +382,6 @@
                     <fullName>Bulk Add</fullName>
                     <default>false</default>
                     <label>Bulk Add</label>
-                </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Admin Partner Invite</fullName>
-                    <default>false</default>
-                    <label>Admin Partner Invite</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -338,12 +421,14 @@
     <fields>
         <fullName>PRM_Time_Difference__c</fullName>
         <externalId>false</externalId>
-        <formula>IF (FLOOR((CreatedDate - PRM_Last_Milestone_DateTime__c )) &gt; 0, TEXT(FLOOR((CreatedDate - PRM_Last_Milestone_DateTime__c )) ) &amp; &quot; day(s) &quot;, &quot;&quot;) 
-&amp; IF(FLOOR(MOD((CreatedDate - PRM_Last_Milestone_DateTime__c )* 24, 24 )) &gt; 0, TEXT(FLOOR(MOD((CreatedDate - PRM_Last_Milestone_DateTime__c )* 24, 24 ))) &amp; &quot; hour(s) &quot;,&quot;&quot;) 
-&amp; TEXT(ROUND(MOD(ABS((CreatedDate - PRM_Last_Milestone_DateTime__c ))* 24 * 60, 60 ), 0)) &amp; &quot; min(s) &quot;
-&amp; TEXT(ROUND(MOD(ABS((CreatedDate - PRM_Last_Milestone_DateTime__c) )* 24 * 60*60, 60 ), 0)) &amp; &quot; sec(s)&quot;</formula>
+        <formula>IF(
+  CreatedDate - PRM_Last_Milestone_DateTime__c &gt; 0 ,
+  TEXT( FLOOR( CreatedDate - PRM_Last_Milestone_DateTime__c ) ) &amp; &quot; days &quot;
+  &amp; TEXT( FLOOR( MOD( (CreatedDate - PRM_Last_Milestone_DateTime__c ) * 24, 24 ) ) ) &amp; &quot; hours &quot;
+  &amp; TEXT( ROUND( MOD( (CreatedDate - PRM_Last_Milestone_DateTime__c ) * 24 * 60, 60 ), 0 ) ) &amp; &quot; minutes&quot;,
+  &quot;&quot;
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <inlineHelpText>Time Taken between Previous Milestone and current Milestone</inlineHelpText>
         <label>Time Taken</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -358,6 +443,14 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Yet_to_Process__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Yet to Process</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_contact__c</fullName>
@@ -462,22 +555,22 @@
                     <label>Subscription Not Added</label>
                 </value>
                 <value>
-                    <fullName>18</fullName>
+                    <fullName>16</fullName>
                     <default>false</default>
                     <label>Benefit Assigned</label>
                 </value>
                 <value>
-                    <fullName>19</fullName>
+                    <fullName>17</fullName>
                     <default>false</default>
                     <label>Benefit Not Assigned</label>
                 </value>
                 <value>
-                    <fullName>16</fullName>
+                    <fullName>18</fullName>
                     <default>false</default>
                     <label>Entitlement Assigned</label>
                 </value>
                 <value>
-                    <fullName>17</fullName>
+                    <fullName>19</fullName>
                     <default>false</default>
                     <label>Entitlement Not Assigned</label>
                 </value>
@@ -647,9 +740,9 @@
                     <label>OPID Not Assigned</label>
                 </value>
                 <value>
-                    <fullName>57</fullName>
+                    <fullName>59</fullName>
                     <default>false</default>
-                    <label>Benefit Entitlement Assigned</label>
+                    <label>Benefit Entitlement Yet to Assign</label>
                 </value>
                 <value>
                     <fullName>58</fullName>
@@ -657,22 +750,79 @@
                     <label>Benefit Entitlement Not Assigned</label>
                 </value>
                 <value>
-                    <fullName>59</fullName>
+                    <fullName>57</fullName>
                     <default>false</default>
-                    <label>Benefit Entitlement Yet to Assign</label>
+                    <label>Benefit Entitlement Assigned</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>Registration Tracker</label>
-    <nameField>
-        <displayFormat>RT-{000000000}</displayFormat>
-        <label>Name</label>
+    <fields>
+        <fullName>User_Type__c</fullName>
+        <label>User Type</label>
+        <required>false</required>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <controllingField>PRM_Registration_Type__c</controllingField>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New User</fullName>
+                    <default>false</default>
+                    <label>New User</label>
+                </value>
+                <value>
+                    <fullName>Old User</fullName>
+                    <default>false</default>
+                    <label>Old User</label>
+                </value>
+            </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>Self Registration</controllingFieldValue>
+                <controllingFieldValue>Admin Invite</controllingFieldValue>
+                <controllingFieldValue>Partner Invite</controllingFieldValue>
+                <controllingFieldValue>GetProfile</controllingFieldValue>
+                <controllingFieldValue>Bulk Invite</controllingFieldValue>
+                <controllingFieldValue>External Partner Invite</controllingFieldValue>
+                <controllingFieldValue>Bulk Add</controllingFieldValue>
+                <valueName>New User</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>Self Registration</controllingFieldValue>
+                <controllingFieldValue>Admin Invite</controllingFieldValue>
+                <controllingFieldValue>Partner Invite</controllingFieldValue>
+                <controllingFieldValue>GetProfile</controllingFieldValue>
+                <controllingFieldValue>Bulk Invite</controllingFieldValue>
+                <controllingFieldValue>External Partner Invite</controllingFieldValue>
+                <controllingFieldValue>Bulk Add</controllingFieldValue>
+                <valueName>Old User</valueName>
+            </valueSettings>
+        </valueSet>
+    </fields>
+    <label>Registration Tracker</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_contact__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>PRM_Registration__c</columns>
+        <columns>Stage__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <label>Registration Tracker Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
     </nameField>
     <pluralLabel>Registration Trackers</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchFilterFields>PRM_Email__c</searchFilterFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

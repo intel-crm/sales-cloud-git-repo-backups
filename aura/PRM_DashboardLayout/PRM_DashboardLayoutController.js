@@ -51,7 +51,7 @@
                     if(tabPermission != null && tabPermission != 'undefined'){
                         for (var key in tabPermission) {
                             if (tabPermission.hasOwnProperty(key)) {
-                               // console.log(key + " -> " + tabPermission[key]);
+                                console.log(key + "---tabPermission " + tabPermission[key]);
                                 if(key == 'showPointsTab'){
                                     console.log('Inside Show Points Tab method');
                                     component.set("v.showPointsTab",tabPermission[key]);  
@@ -109,8 +109,7 @@
                                     console.log('renewalTab '+tabPermission[key] );
                                     if(retval.renewalContent){
                                     component.set("v.renewalc",retval.renewalContent["content"]);
-                                     component.set("v.renewalc2",retval.renewalContent["content2"]);
-                                    component.set("v.yesno",retval.renewalContent["val"]); 
+                                     
                                     }
                                 } *///IPA2.0 TWC727-3135
                             }

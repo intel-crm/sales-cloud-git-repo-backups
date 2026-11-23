@@ -1,23 +1,11 @@
 {
   "forgotPasswordRouteId" : "51798ef8-420b-4e26-9c84-3ef2e4ae9b2f",
   "isAvailableToGuests" : false,
-  "isFilteredComponentsView" : true,
+  "isFilteredComponentsView" : false,
   "isProgressiveRenderingEnabled" : false,
   "loginAppPageId" : "d8192ff4-927d-4111-88f9-7186fcbb1b52",
   "mainAppPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
   "preferredDomain" : "none",
   "selfRegistrationRouteId" : "da2adfda-5307-4cfc-95c2-0fc5a18e1c52",
-  "trustedSitesForIFrame" : [ {
-    "id" : "15255b48-646e-46ec-991a-b5ce93e223f1",
-    "trustedDomainsForInlineFrames" : [ ],
-    "type" : "trustedSitesForIFrame"
-  } ],
-  "trustedSitesForScript" : [ {
-    "id" : "2cd7d142-1e67-4c96-9782-2906d59b98ec",
-    "isActive" : true,
-    "trustedSiteName" : "Avaamo",
-    "trustedSiteUrl" : "https://c0.avaamo.com/",
-    "type" : "trustedSitesForScripts"
-  } ],
   "type" : "site"
 }

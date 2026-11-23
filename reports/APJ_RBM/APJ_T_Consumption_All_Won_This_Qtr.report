@@ -48,6 +48,9 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Production Lost</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -73,6 +76,9 @@
         <values>
             <sourceValues>
                 <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deleted</sourceValue>
             </sourceValues>
             <value>Cancelled/Deleted</value>
         </values>
@@ -260,7 +266,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang,Albert WANG</value>
+            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_72264943</column>
@@ -281,7 +287,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Jason Kay Siah Ang,Faisal Qamar,I&apos;ng Chin Tan</value>
+            <value>Jason Kay Siah Ang,Faisal Qamar</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_12541241</column>
@@ -300,7 +306,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>APJ T Consumption - All - Won This Qtr</name>

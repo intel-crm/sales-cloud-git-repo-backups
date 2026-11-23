@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <block>
         <blockInfo>
             <blockId>B1</blockId>
@@ -34,10 +34,16 @@
             <field>Account$Core_IPA_Badge_Tier__c</field>
         </columns>
         <columns>
+            <field>Account$Core_IPA_Partner_Segment__c</field>
+        </columns>
+        <columns>
+            <field>Account.Company_Informations__r$PMP_Partner_Program_nm__c</field>
+        </columns>
+        <columns>
             <field>Account.Company_Informations__r$PMP_Account_Program_Membership__c</field>
         </columns>
         <filter>
-            <booleanFilter>((1 AND 2) OR (3 AND 1)) AND 4 AND 5</booleanFilter>
+            <booleanFilter>((1 AND 2) OR 3 OR (4 AND 1)) AND 5</booleanFilter>
             <criteriaItems>
                 <column>Account.Company_Informations__r$PMP_Is_Working_Copy_Ind__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -53,11 +59,11 @@
                 <value>Solutions Marketplace Basic Profile</value>
             </criteriaItems>
             <criteriaItems>
-                <column>Account.Company_Informations__r$PMP_Partner_Benefit_Type__c</column>
+                <column>Account.Company_Informations__r$PMP_Is_Working_Copy_Ind__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
                 <operator>equals</operator>
-                <value>Solution Marketplace Basic Access</value>
+                <value>0</value>
             </criteriaItems>
             <criteriaItems>
                 <column>Account.Company_Informations__r$PMP_Marketing_Profile_Id__c</column>
@@ -109,7 +115,7 @@
             <field>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</field>
         </columns>
         <filter>
-            <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
+            <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
             <criteriaItems>
                 <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -139,18 +145,11 @@
                 <value>Marketing specialist</value>
             </criteriaItems>
             <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Status__c</column>
+                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>Complete</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Selected__c</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>1</value>
+                <operator>contains</operator>
+                <value>Offering Editor</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -169,7 +168,7 @@
         </timeFrameFilter>
     </block>
     <blockInfo>
-        <blockId xsi:nil="true"/>
+        <blockId>B1</blockId>
         <joinTable>Account</joinTable>
     </blockInfo>
     <chart>

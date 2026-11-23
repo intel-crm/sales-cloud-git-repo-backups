@@ -28,6 +28,9 @@
         <field>PartnerFundRequest$Core_MDF_Activity_Types__c</field>
     </columns>
     <columns>
+        <field>PartnerFundRequest$Core_MDF_Brand__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest$Core_MDF_ActivityCategory__c</field>
     </columns>
     <columns>
@@ -137,6 +140,18 @@
     </columns>
     <columns>
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Bank__c.Core_MDF_Supplier_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.Claim_Offset__r$Core_MDF_Offset_Amount_Amt__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.Claim_Offset__r$Core_MDF_Offset_Claim_Nbr__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.Claim_Offset__r$Core_MDF_Offset_Claim_Nbr__c.Core_MDF_Claim_Ref_Number__c</field>
+    </columns>
+    <columns>
+        <field>PartnerFundRequest.PartnerFundClaims.Claim_Offset__r$Core_MDF_Adjustment_Claim_Nbr__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>

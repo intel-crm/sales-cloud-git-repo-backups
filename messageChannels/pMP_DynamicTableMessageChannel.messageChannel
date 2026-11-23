@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Channel sends information from dynamicTableGrid cmp to datatableLookup and picklistDataTable</description>
+    <isExposed>true</isExposed>
+    <lightningMessageFields>
+        <description>showEditForm</description>
+        <fieldName>showEditForm</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <description>showViewForm</description>
+        <fieldName>showViewForm</fieldName>
+    </lightningMessageFields>
+    <masterLabel>dynamicTableMessageChannel</masterLabel>
+</LightningMessageChannel>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>OpportunityLineItem.Core_Vendor__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
@@ -18,9 +15,6 @@
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
@@ -89,7 +83,7 @@
         <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 ) AND (3 OR 4 OR 5) AND 6 AND 7 AND 8 AND 9 )</booleanFilter>
+        <booleanFilter>(1 AND 2 ) AND (3 OR 4 OR 5) AND 6 AND 7 AND 8 AND 9 AND 10 AND 11</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -147,11 +141,25 @@
             <value>Won,Win Approved,Production Win,Pending,submit,lost,Lost,On Hold</value>
         </criteriaItems>
         <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>DCG</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
             <value>DCG-Consulting</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Commissionable__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yes</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

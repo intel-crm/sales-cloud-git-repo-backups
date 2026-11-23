@@ -13,52 +13,8 @@
         <name>Core_MDF_Abbreviated_ProgramName_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Budget Amount Check Required --></label>
-        <name>Core_MDF_Act_Budget_Amt_Chk_Reqd__c</name>
-    </fields>
-    <fields>
-        <label><!-- Bank Document Hold Required - Countries --></label>
-        <name>Core_MDF_BankDocHold_Countries_Required__c</name>
-    </fields>
-    <fields>
         <label><!-- Bank Program Value --></label>
         <name>Core_MDF_Bank_Program_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- BudgetTypeBasedSharing --></label>
-        <name>Core_MDF_BudgetTypeBasedSharing_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Camp Not Editable Fields When PFR Exists --></label>
-        <name>Core_MDF_CampNotEditFieldsWhenPFRExists__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Picklist Fields --></label>
-        <name>Core_MDF_Campaign_Picklist_Fields__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign Text Fields --></label>
-        <name>Core_MDF_Campaign_Text_Fields__c</name>
-    </fields>
-    <fields>
-        <label><!-- Claim Submitter Entitlement name --></label>
-        <name>Core_MDF_ClaimSubEntitlementName_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Campaign CAP Validation Required --></label>
-        <name>Core_MDF_Cmpgn_CAP_Validation_Required__c</name>
-    </fields>
-    <fields>
-        <label><!-- Contact Entitlement Name --></label>
-        <name>Core_MDF_Contact_Entitlement_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ignore External Allocation Sharing --></label>
-        <name>Core_MDF_Ignore_External_Alloc_Sharing__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ignore External Budget Sharing --></label>
-        <name>Core_MDF_Ignore_External_Budget_Sharing__c</name>
     </fields>
     <fields>
         <label><!-- VR Incentive Question Label Reference --></label>
@@ -84,5 +40,12 @@
         <label><!-- Geo-Based Sharing Required --></label>
         <name>Geo_Based_Sharing_Required__c</name>
     </fields>
+    <layouts>
+        <layout>Channel Program Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

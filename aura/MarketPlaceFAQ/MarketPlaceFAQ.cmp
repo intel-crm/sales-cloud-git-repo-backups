@@ -17,7 +17,7 @@
   <aura:attribute name="helpLabel" type="string" />
   <aura:attribute name="showSiteMap" type="boolean" default="false" />
     
-  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+ <!--  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
   <aura:handler event="c:MarketplacePageEvent"  action="{!c.handlePageEvent}"/>
   <c:coreIntcSso aura:id="ssoLibrary" />
@@ -32,7 +32,7 @@
                 <aura:iteration items="{!faqset.questions}" var="faq" indexVar="idx">
                       <c:MarketPlaceAccordionSection name="{!'faq-' + idx}" label="{!faq.question}" aura:id="accordion" id="{!faq.qid}">
                           <div class="slds-p-vertical_medium">
-                            <lightning:formattedRichText value="{!faq.answer}" /> <!-- mgdanies: force migration update 5/4/20 -->
+                            <lightning:formattedRichText value="{!faq.answer}" /> 
                           </div>
                   </c:MarketPlaceAccordionSection>  
                 </aura:iteration>
@@ -50,15 +50,11 @@
             {!v.helpLabel} <span class="fa-angle-right"></span>
           </c:IntelLink>   
         
-          <!-- <aura:if isTrue="{!v.showSiteMap}">
-            <c:IntelLink url="{!v.siteMapUrl}" class="slds-float_right siteMap">
-              {!$Label.c.PMP_SiteMap_Link} <span class="fa-angle-right"></span>
-            </c:IntelLink>
-          </aura:if> -->
+          
         </div>
 
       </div>
     </div>
 
-  </aura:if>
+  </aura:if>-->
 </aura:component>

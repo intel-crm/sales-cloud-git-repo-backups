@@ -54,13 +54,6 @@
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_PSG_Tier__c</field>
-    </columns>
     <filter>
         <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6 OR 7 OR 8) AND 9</booleanFilter>
         <criteriaItems>
@@ -71,10 +64,10 @@
             <value>Design Win,Production Win</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>PSG</value>
         </criteriaItems>
         <criteriaItems>
@@ -116,8 +109,8 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Bettina Smithson,DJ Gianduso,Daggu Bhargavi,Chloe Steel,Mark Frost,Charan Kumar</value>
+            <operator>equals</operator>
+            <value>Bettina Smithson</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_Country__c</column>
@@ -170,6 +163,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

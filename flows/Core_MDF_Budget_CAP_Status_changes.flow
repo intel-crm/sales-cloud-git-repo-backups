@@ -25,7 +25,6 @@
         <locationY>200</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -131,37 +130,6 @@
                     <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <processMetadataValues>
-                    <name>inputDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>leftHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>operatorDataType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <processMetadataValues>
-                    <name>rightHandSideType</name>
-                    <value>
-                        <stringValue>String</stringValue>
-                    </value>
-                </processMetadataValues>
-                <leftValueReference>myVariable_current.RecordType.DeveloperName</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>Core_MDF_IPA_Budget_Type_Cap</stringValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>myRule_4_A1</targetReference>
             </connector>
@@ -235,7 +203,7 @@
                 <stringValue>[Core_MDF_Budget_Cap__c].Core_MDF_Budget_Name_id__r.Id &amp; TEXT([Core_MDF_Budget_Cap__c].Core_MDF_Cap_Type_nm__c )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_4064475996</name>
+        <name>formula_2_myRule_1_A1_8442946635</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.Core_MDF_Budget_Name_id__r.Id} &amp; TEXT({!myVariable_current.Core_MDF_Cap_Type_nm__c} )</expression>
     </formulas>
@@ -243,38 +211,38 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, OR(ISNEW(),ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Cap_Type_nm__c ) ))</stringValue>
+                <stringValue>ISNEW()  || ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Cap_Type_nm__c ) </stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>AND({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, OR(ISNEW(),ISCHANGED({!myVariable_current.Core_MDF_Cap_Type_nm__c} ) ))</expression>
+        <expression>ISNEW()  || ISCHANGED({!myVariable_current.Core_MDF_Cap_Type_nm__c} )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c )) </stringValue>
+                <stringValue>ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c ) </stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_6</name>
         <dataType>Boolean</dataType>
-        <expression>AND({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} ))</expression>
+        <expression>ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} )</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>AND([Core_MDF_Budget_Cap__c].RecordType.DeveloperName &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos; ,OR(AND(ISNEW(),[Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c &gt;0),
-AND(NOT(ISNEW()),ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c ))))</stringValue>
+                <stringValue>OR(AND(ISNEW(),[Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c &gt;0),
+AND(NOT(ISNEW()),ISCHANGED([Core_MDF_Budget_Cap__c].Core_MDF_Requested_Cap_amt__c )))</stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_8</name>
         <dataType>Boolean</dataType>
-        <expression>AND({!myVariable_current.RecordType.DeveloperName} &lt;&gt; &apos;Core_MDF_IPA_Budget_Type_Cap&apos; ,OR(AND(ISNEW(),{!myVariable_current.Core_MDF_Requested_Cap_amt__c} &gt;0),
-AND(NOT(ISNEW()),ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} ))))</expression>
+        <expression>OR(AND(ISNEW(),{!myVariable_current.Core_MDF_Requested_Cap_amt__c} &gt;0),
+AND(NOT(ISNEW()),ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} )))</expression>
     </formulas>
-    <interviewLabel>Core_MDF_Budget_CAP_Status_changes-5_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_MDF_Budget_CAP_Status_changes-3_InterviewLabel</interviewLabel>
     <label>Budget CAP Status changes</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -380,7 +348,7 @@ AND(NOT(ISNEW()),ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} )
             </processMetadataValues>
             <field>Core_MDF_Budget_Channel_Program_Key__c</field>
             <value>
-                <elementReference>formula_2_myRule_1_A1_4064475996</elementReference>
+                <elementReference>formula_2_myRule_1_A1_8442946635</elementReference>
             </value>
         </inputAssignments>
         <object>Core_MDF_Budget_Cap__c</object>
@@ -587,7 +555,7 @@ AND(NOT(ISNEW()),ISCHANGED({!myVariable_current.Core_MDF_Requested_Cap_amt__c} )
         <object>Core_MDF_Budget_Cap__c</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

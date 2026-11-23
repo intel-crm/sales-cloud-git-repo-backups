@@ -13,71 +13,6 @@
         <name>Core_MDF_ExceptionReviewer</name>
     </customPermissions>
     <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Active_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Budget_Type_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Country_Region_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_ExceptionIdAccountId_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Exception_Status_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Expose_Externally_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_HostRegion_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_OwnerId_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Program_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Program_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Region_txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Select_All_Accounts_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception_Account_Mapping__c.Core_MDF_Select_All_Country_ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>false</editable>
         <field>Core_MDF_Exception_Case_Mapping__c.Core_MDF_Case_Id_id__c</field>
         <readable>true</readable>
@@ -129,6 +64,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_MDF_Exception_Case_Mapping__c.Core_MDF_Exception_id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_MDF_Exception_Case_Mapping__c.Core_MDF_Exception_status_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -145,11 +85,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Exception__c.Core_MDF_Activity_Cate_and_Type_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_MDF_Exception__c.Core_MDF_Approver_1_Comments_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -183,7 +118,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Core_MDF_Exception__c.Core_MDF_Exception_Status_nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -195,11 +130,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Core_MDF_Exception__c.Core_MDF_Name_of_Exception_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>Core_MDF_Exception__c.Core_MDF_Notes_txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -225,16 +155,6 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Internal SPCF Exception Reviewer</label>
     <license>Salesforce</license>
-    <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Core_MDF_Exception_Account_Mapping__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
-    </objectPermissions>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>

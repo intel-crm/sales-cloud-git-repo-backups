@@ -1,0 +1,8 @@
+.bluecoloradded:hover {
+ background-color: var(--classic-blue-tint1);
+ color: var(--white);
+}
+
+.iconcolor {
+    --lwc-colorTextIconDefault: #000000;
+}

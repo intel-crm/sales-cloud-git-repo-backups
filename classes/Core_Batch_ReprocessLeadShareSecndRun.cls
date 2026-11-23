@@ -16,10 +16,10 @@ global class Core_Batch_ReprocessLeadShareSecndRun implements Database.Batchable
     global Core_Batch_ReprocessLeadShareSecndRun(List<Lead> leadList){
         leadListBatch = new List<Lead>();
         leadListBatch = leadList;
-        
+        system.debug('leadListBatch->'+leadListBatch);
     }
     global Database.QueryLocator start(Database.BatchableContext BC){
-        String query = 'SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where id in:leadListBatch order by CreatedDate desc';
+        String query = 'SELECT id,Core_Remove_Current_Sharing_Ind__c, Core_Reprocess_Lead_Sharing__c from LEAD where id in:leadListBatch';
         return Database.getQueryLocator(query);
     }
     global void execute(Database.BatchableContext BC,List<lead> scope){
@@ -29,8 +29,9 @@ global class Core_Batch_ReprocessLeadShareSecndRun implements Database.Batchable
                 Ld.Core_Remove_Current_Sharing_Ind__c = false;
                 ld.Core_Reprocess_Lead_Sharing__c = true;
             }
+            
             database.update(scope,allOrNone);
-             if(Test.isRunningTest()){
+            if(Test.isRunningTest()){
                 allOrNone = null;
                 database.update(scope,allOrNone );
             }

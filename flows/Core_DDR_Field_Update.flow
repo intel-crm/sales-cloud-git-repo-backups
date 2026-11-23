@@ -2,33 +2,82 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>If_Partner_User</name>
+        <label>If Partner User</label>
+        <locationX>578</locationX>
+        <locationY>323</locationY>
+        <defaultConnector>
+            <targetReference>Check_for_product_group</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Partner_Users</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Core_User_Profile_Name__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partner_Role_Biz_Org</targetReference>
+            </connector>
+            <label>If Partner Users</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Partner_Role_Biz_Org</name>
+        <label>Partner Role/Biz Org</label>
+        <locationX>314</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>High_Low</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>If_Partner_Role_is_Distributor</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Contact.Account.Core_IPA_Partner_Role__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Distributor</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Partner_Role</targetReference>
+            </connector>
+            <label>If Partner Role is Distributor</label>
+        </rules>
+        <rules>
+            <name>Biz_Org_type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Owner:User.Contact.Account.Core_Account_Type__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Original Design Manufacturer (ODM)</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Biz_Org</targetReference>
+            </connector>
+            <label>Biz Org type</label>
+        </rules>
+    </decisions>
     <description>To update the fields in DDR</description>
     <environments>Default</environments>
     <formulas>
         <name>HighTouch_LowTouch</name>
         <dataType>String</dataType>
-        <expression>IF(
-        ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
-        ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;),
-        &apos;Disti Design Registration High&apos;,
-        IF(
-            ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp;
-            ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;ASMO&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;EMEA&apos;),
-            NULL,
-IF(
-NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
-(ISPICKVAL({!$Record__Prior.Core_Product_Group_Nm__c},&apos;Embedded/IOT&apos;) || ISPICKVAL({!$Record__Prior.Core_Product_Group_Nm__c},&apos;FPGA/Power&apos;)),
-	NULL,
-     TEXT({!$Record.Core_Intel_Support_Status__c})
-)
-       
-        )
-)</expression>
+        <expression>if({!IsFpga},&apos;High Touch&apos;,&apos;Low Touch&apos;)</expression>
     </formulas>
     <formulas>
         <name>IsFpga</name>
         <dataType>Boolean</dataType>
-        <expression>if((ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;FPGA/Power&apos;) || ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;Embedded/IOT&apos;) &amp;&amp; ({!$Record.Core_Partner_Account_Region_Cd__c} = &apos;APJ&apos; || {!$Record.Core_Partner_Account_Region_Cd__c} = &apos;PRC&apos;)), true,false )</expression>
+        <expression>if(ISPICKVAL({!$Record.Core_Product_Group_Nm__c}, &apos;FPGA/Power&apos;), true,false )</expression>
     </formulas>
     <interviewLabel>Core DDR Field Update {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core DDR Field Update</label>
@@ -52,10 +101,77 @@ NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordUpdates>
+        <name>Biz_Org</name>
+        <label>Biz Org</label>
+        <locationX>314</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_DDR_Partner_Type_Txt__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>ODM</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_DDR_Partner_Type_Txt__c</field>
+            <value>
+                <stringValue>ODM</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Intel_Support_Status__c</field>
+            <value>
+                <elementReference>HighTouch_LowTouch</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Check_for_product_group</name>
+        <label>Check for product group</label>
+        <locationX>842</locationX>
+        <locationY>431</locationY>
+        <inputAssignments>
+            <field>Core_Intel_Support_Status__c</field>
+            <value>
+                <elementReference>HighTouch_LowTouch</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
         <name>High_Low</name>
         <label>High/Low</label>
-        <locationX>176</locationX>
-        <locationY>287</locationY>
+        <locationX>578</locationX>
+        <locationY>539</locationY>
+        <inputAssignments>
+            <field>Core_Intel_Support_Status__c</field>
+            <value>
+                <elementReference>HighTouch_LowTouch</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Partner_Role</name>
+        <label>Partner Role</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_DDR_Partner_Type_Txt__c</field>
+            <operator>NotEqualTo</operator>
+            <value>
+                <stringValue>Distributor</stringValue>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_DDR_Partner_Type_Txt__c</field>
+            <value>
+                <stringValue>Distributor</stringValue>
+            </value>
+        </inputAssignments>
         <inputAssignments>
             <field>Core_Intel_Support_Status__c</field>
             <value>
@@ -65,18 +181,14 @@ NOT(ISBLANK(TEXT({!$Record__Prior.Core_Intel_Support_Status__c}))) &amp;&amp;
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <start>
-        <locationX>50</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>High_Low</targetReference>
+            <targetReference>If_Partner_User</targetReference>
         </connector>
-        <filterFormula>AND (
-OR ( ISBLANK(text({!$Record.Core_Intel_Support_Status__c} )) ,
-ISCHANGED({!$Record.Core_Product_Group_Nm__c}) ) ,
-{!$Permission.PCC_Bypass_Automation} = False  )</filterFormula>
         <object>Core_Design_Registration__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
     <variables>

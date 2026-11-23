@@ -18,10 +18,6 @@
         <name>Core_MDF_Approval_Criteria_Description__c</name>
     </fields>
     <fields>
-        <label><!-- Approval Criteria Automation Refer Code --></label>
-        <name>Core_MDF_Approval_Criteria_Ref_Code_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Approval Process --></label>
         <name>Core_MDF_Approval_Process__c</name>
     </fields>
@@ -493,6 +489,53 @@
         <label><!-- Value 9 --></label>
         <name>Core_MDF_Value_9__c</name>
     </fields>
+    <layouts>
+        <layout>Criteria Layout</layout>
+        <sections>
+            <label><!-- Approval Criteria 1 --></label>
+            <section>Approval Criteria 1</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 10 --></label>
+            <section>Approval Criteria 10</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 2 --></label>
+            <section>Approval Criteria 2</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 3 --></label>
+            <section>Approval Criteria 3</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 4 --></label>
+            <section>Approval Criteria 4</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 5 --></label>
+            <section>Approval Criteria 5</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 6 --></label>
+            <section>Approval Criteria 6</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 7 --></label>
+            <section>Approval Criteria 7</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 8 --></label>
+            <section>Approval Criteria 8</section>
+        </sections>
+        <sections>
+            <label><!-- Approval Criteria 9 --></label>
+            <section>Approval Criteria 9</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Active Approval Criteria must have at least one active approver. Please uncheck Active checkbox. --></errorMessage>

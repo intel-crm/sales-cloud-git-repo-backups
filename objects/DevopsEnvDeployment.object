@@ -130,11 +130,6 @@
     <enableFeeds>false</enableFeeds>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>BackSyncStageId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>CheckDeployCompletionDate</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -173,11 +168,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>DevopsPipelnStgPromId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>EndRevisionCounter</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -204,11 +194,6 @@
     <fields>
         <fullName>Status</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>SwapStageId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>TargetDeployOrgId</fullName>

@@ -11,6 +11,11 @@
         <label>Distributor</label>
     </customValue>
     <customValue>
+        <fullName>FPGA Designer</fullName>
+        <default>false</default>
+        <label>FPGA Design Services</label>
+    </customValue>
+    <customValue>
         <fullName>Independent Software Vendor</fullName>
         <default>false</default>
         <label>Independent Software Vendor</label>
@@ -31,34 +36,10 @@
         <label>Guest</label>
     </customValue>
     <customValue>
-        <fullName>Original Equipment Manufacturer (OEM)</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Original Equipment Manufacturer (OEM)</label>
-    </customValue>
-    <customValue>
         <fullName>Sponsor</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Sponsor</label>
-    </customValue>
-    <customValue>
-        <fullName>OEM</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>OEM</label>
-    </customValue>
-    <customValue>
-        <fullName>Not Applicable</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Not Applicable</label>
-    </customValue>
-    <customValue>
-        <fullName>FPGA Designer</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>FPGA Design Services</label>
     </customValue>
     <customValue>
         <fullName>Manufacturer</fullName>
@@ -67,10 +48,22 @@
         <label>Manufacturer</label>
     </customValue>
     <customValue>
+        <fullName>Original Equipment Manufacturer (OEM)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Original Equipment Manufacturer (OEM)</label>
+    </customValue>
+    <customValue>
         <fullName>Seller</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Solution Provider</label>
+    </customValue>
+    <customValue>
+        <fullName>Not Applicable</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Not Applicable</label>
     </customValue>
     <masterLabel>IPA Partner Role</masterLabel>
     <sorted>false</sorted>

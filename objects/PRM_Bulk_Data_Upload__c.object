@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>PRM_AccountId__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -212,8 +212,8 @@
     <fields>
         <fullName>PRM_Contact_Email__c</fullName>
         <externalId>false</externalId>
-        <label>Contact Email Old</label>
-        <required>false</required>
+        <label>Contact Email</label>
+        <required>true</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
@@ -275,6 +275,11 @@
                     <label>Distributor</label>
                 </value>
                 <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
                     <fullName>Guest</fullName>
                     <default>false</default>
                     <label>Guest</label>
@@ -292,18 +297,12 @@
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Solution Integrator</label>
+                    <label>Service Integrator</label>
                 </value>
                 <value>
                     <fullName>Builder</fullName>
                     <default>false</default>
                     <label>Builder</label>
-                </value>
-                <value>
-                    <fullName>FPGA Designer</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>FPGA Design Services</label>
                 </value>
                 <value>
                     <fullName>Manufacturer</fullName>
@@ -445,11 +444,6 @@
                     <fullName>Employee</fullName>
                     <default>false</default>
                     <label>Employee</label>
-                </value>
-                <value>
-                    <fullName>Partner Admin Delegate</fullName>
-                    <default>false</default>
-                    <label>Partner Admin Delegate</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -596,8 +590,50 @@
                     <default>false</default>
                     <label>Ukrainian</label>
                 </value>
+                <value>
+                    <fullName>ENU</fullName>
+                    <default>false</default>
+                    <label>English(UK)</label>
+                </value>
+                <value>
+                    <fullName>ESP</fullName>
+                    <default>false</default>
+                    <label>Spanish(EMEA)</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_RegistrationType__c</fullName>
+        <label>Registration Type</label>
+        <required>true</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Admin Invite</fullName>
+                    <default>false</default>
+                    <label>Admin Invite</label>
+                </value>
+                <value>
+                    <fullName>Partner Invite</fullName>
+                    <default>true</default>
+                    <label>Partner Invite</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Send_Reminders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Send Reminders</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_Stack_Trace__c</fullName>
@@ -642,11 +678,6 @@
                     <default>false</default>
                     <label>Failed</label>
                 </value>
-                <value>
-                    <fullName>Discarded</fullName>
-                    <default>false</default>
-                    <label>Discarded</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -654,6 +685,14 @@
         <fullName>PRM_Suppress_Email__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Suppress Email</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Suppress_Reminders__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Suppress Reminders</label>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -679,137 +718,46 @@
                     <default>true</default>
                     <label>Bulk Invite</label>
                 </value>
-                <value>
-                    <fullName>Auto Granted IPA for DZP</fullName>
-                    <default>false</default>
-                    <label>Auto Granted IPA for DZP</label>
-                </value>
-                <value>
-                    <fullName>Auto DZP Enrollment</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Auto DZP Enrollment</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_isRetrying__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>isRetrying</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <label>Bulk Data Upload</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Contact_Email__c</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PRM_Status__c</columns>
+        <columns>PRM_Partner_Relationship__c</columns>
+        <columns>PRM_Contact_Id__c</columns>
+        <columns>PRM_BatchID__c</columns>
+        <columns>PRM_CampaignId__c</columns>
+        <columns>PRM_Email_Template__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>All_Records</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_BatchID__c</columns>
-        <columns>PRM_CampaignId__c</columns>
-        <columns>PRM_AccountId__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
-        <columns>PRM_First_Name__c</columns>
-        <columns>PRM_Last_Name__c</columns>
-        <columns>PRM_ContactEmail__c</columns>
-        <columns>PRM_Contact_Phone__c</columns>
-        <columns>PRM_Preferred_Language__c</columns>
-        <columns>PRM_Partner_Relationship__c</columns>
-        <columns>PRM_Status__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Records</label>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000009</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_BatchID__c</columns>
-        <columns>PRM_CampaignId__c</columns>
-        <columns>PRM_AccountId__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
-        <columns>PRM_First_Name__c</columns>
-        <columns>PRM_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Contact_Phone__c</columns>
-        <columns>PRM_Preferred_Language__c</columns>
-        <columns>PRM_Partner_Relationship__c</columns>
-        <columns>PRM_Status__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_BatchID__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000009</value>
-        </filters>
-        <label>BATCH-0000009</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000010</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_BatchID__c</columns>
-        <columns>PRM_CampaignId__c</columns>
-        <columns>PRM_AccountId__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
-        <columns>PRM_First_Name__c</columns>
-        <columns>PRM_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Contact_Phone__c</columns>
-        <columns>PRM_Preferred_Language__c</columns>
-        <columns>PRM_Partner_Relationship__c</columns>
-        <columns>PRM_Status__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_BatchID__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000010</value>
-        </filters>
-        <label>BATCH-0000010</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000012</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_BatchID__c</columns>
-        <columns>PRM_CampaignId__c</columns>
-        <columns>PRM_AccountId__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
-        <columns>PRM_First_Name__c</columns>
-        <columns>PRM_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Contact_Phone__c</columns>
-        <columns>PRM_Preferred_Language__c</columns>
-        <columns>PRM_Partner_Relationship__c</columns>
-        <columns>PRM_Status__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_BatchID__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000012</value>
-        </filters>
-        <label>BATCH-0000012</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
         <fullName>Contact_Bulk_Uploads</fullName>
         <columns>NAME</columns>
-        <columns>PRM_ContactEmail__c</columns>
+        <columns>PRM_Contact_Id__c</columns>
+        <columns>PRM_AccountId__c</columns>
+        <columns>PRM_Contact_Email__c</columns>
+        <columns>PRM_Status__c</columns>
+        <columns>PRM_Suppress_Email__c</columns>
         <columns>CREATED_DATE</columns>
+        <columns>PRM_CampaignId__c</columns>
         <columns>CREATEDBY_USER</columns>
+        <columns>PRM_OperationType__c</columns>
         <columns>PRM_Upload_Type__c</columns>
-        <columns>PRM_Object__c</columns>
+        <columns>PRM_Partner_Relationship__c</columns>
         <filterScope>Everything</filterScope>
         <label>Contact Bulk Uploads</label>
     </listViews>
@@ -825,7 +773,7 @@
     <validationRules>
         <fullName>PRM_Validate_IPA_Contact_Attributes</fullName>
         <active>true</active>
-        <errorConditionFormula>IF(AND(ISBLANK(PRM_First_Name__c),ISBLANK(PRM_Last_Name__c),ISBLANK(PRM_ContactEmail__c)),true ,false )</errorConditionFormula>
+        <errorConditionFormula>IF(AND(ISBLANK(PRM_First_Name__c),ISBLANK(PRM_Last_Name__c),ISNULL(PRM_Contact_Email__c)),true ,false )</errorConditionFormula>
         <errorMessage>Required fields are missing for IPA Contact</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

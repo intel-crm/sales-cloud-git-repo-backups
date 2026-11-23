@@ -37,6 +37,10 @@
                 <behavior>Readonly</behavior>
                 <field>MKT_Campaign_Brief_Details_Formula_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Bulk_Add_Invite_Email_Template__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -163,6 +167,14 @@
         <fields>TOT_BUDGETED_COST</fields>
         <fields>TOT_ACTUAL_COST</fields>
         <relatedList>RelatedCampaignHierarchyList</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Bulk_Data_Upload__c.PRM_CampaignId__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Account_Contact_Relationship__c.PRM_CampaignId__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

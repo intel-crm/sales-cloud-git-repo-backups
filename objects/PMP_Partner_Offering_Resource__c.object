@@ -475,10 +475,117 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>PMP_Video_Avg_Seconds_Viewed_Txt__c</fullName>
+        <description>this is used to store average viewed seconds for brightcove video</description>
+        <externalId>false</externalId>
+        <label>Video Avg Seconds Viewed</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Engagement_Score_Txt__c</fullName>
+        <description>this is used to store engagement score of brightcove video</description>
+        <externalId>false</externalId>
+        <label>Video Engagement Score</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Impression_Txt__c</fullName>
+        <description>this is used to store video impression</description>
+        <externalId>false</externalId>
+        <label>Video Impression</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Percent_Viewed_Txt__c</fullName>
+        <description>this is used to store viewed percentage for brightcove video</description>
+        <externalId>false</externalId>
+        <label>Video Percent Viewed</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Play_Rate_Txt__c</fullName>
+        <description>this is used to store video play rate</description>
+        <externalId>false</externalId>
+        <label>Video Play Rate</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Play_Request_Txt__c</fullName>
+        <description>this is used to store video play request</description>
+        <externalId>false</externalId>
+        <label>Video Play Request</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_S3URL_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>BrightCove Video S3 URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_Seconds_Viewed_Txt__c</fullName>
+        <description>this is used to store viewed seconds for brightcove video</description>
+        <externalId>false</externalId>
+        <label>Video Seconds Viewed</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PMP_Video_Title_Txt__c</fullName>
         <description>created as a part of upload and  display of Gallery Video</description>
         <externalId>false</externalId>
         <label>Video Title</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Video_View_Txt__c</fullName>
+        <description>this is used to store video view count</description>
+        <externalId>false</externalId>
+        <label>Video View</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -491,11 +598,6 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Resource_Type_Nm__c</field>
-            <operation>equals</operation>
-            <value>Image</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

@@ -11,9 +11,8 @@ Public class Core_IPS_TrianingListCont_SvcConsoleTest
         
         Map <String,Core_IPS_Training_SvcConsole__c> Maptopic =  new Map <String,Core_IPS_Training_SvcConsole__c>();
        Maptopic.put('TRNG001',Training);
-        //commented for Classic EOL :Tejaswini
-         /*       PageReference TrainingPage = Page.Core_IPS_Training_SvcConsole;
-                Test.setCurrentPage(TrainingPage);*/
+                PageReference TrainingPage = Page.Core_IPS_Training_SvcConsole;
+                Test.setCurrentPage(TrainingPage);
                 
                Core_IPS_TrainingListContr_SvcConsole TrianingListController =  new Core_IPS_TrainingListContr_SvcConsole();
                TrianingListController.topicList = Maptopic;

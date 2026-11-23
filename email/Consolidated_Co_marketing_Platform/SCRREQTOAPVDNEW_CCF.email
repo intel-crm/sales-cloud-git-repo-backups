@@ -25,7 +25,7 @@
 <tr style="height: 93px;">
 <td style="height: 93px; width: 666.333px;">
 <p><span style="font-size: 11pt; color: #666666;">This notice is to inform you that a profile has been created for you by an Intel</span></p>
-<p><span style="font-size: 11pt;"><span style="color: #666666;">Account Representative so you may participate in the</span> <span style="color: #086db6;"><a href="https://partnercenter.intel.com" style="color: #086db6;">Intel<sup>®</sup> Partner Investment Center</a></span> <span style="color: #666666;">for your company.</span></span></p>
+<p><span style="font-size: 11pt;"><span style="color: #666666;">Account Representative so you may participate in the</span> <span style="color: #086db6;"><a href="https://partnercenter.intel.com" style="color: #086db6;">Intel Co-Marketing Portal</a></span> <span style="color: #666666;">for your company,</span></span></p>
 <p><span style="font-size: 11pt; color: #666666;">With the log in information below you can access the web portal at:</span></p>
 <p><span style="font-size: 11pt; color: #086db6;"><a href="https://partnercenter.intel.com" style="color: #086db6;">https://partnercenter.intel.com</a>.</span></p>
 <p><span style="font-size: 11pt; color: #666666;">Please retain this e-mail for future reference.</span></p>
@@ -35,7 +35,6 @@
 <td style="height: 41px; width: 666.333px;">
 <p><span style="font-family: calibri; font-size: 12pt; color: #666666;"><strong>Email ID:<span> </span></strong>{!Contact.Email}</span>
 <br/><span style="font-family: calibri; font-size: 12pt; color: #666666;"><span><strong>Intel Business Account Name</strong>: </span><span>{!Account.Name}</span></span></p>
-<br/><span style="font-family: calibri; font-size: 12pt; color: #666666;"><span><strong>Program</strong>:</span><span> Client </span></span></p>
 </td>
 </tr>
 <tr style="height: 41px;">
@@ -58,7 +57,7 @@
 </td>
 </tr>
 <tr>
-<td style="border: none; text-align: left;"><footer><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png"   height="42" width="64" /></span></footer></td>
+<td style="border: none; text-align: right;"><footer><span style="font-family: 'intel clear', sans-serif;"> <img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png"   height="42" width="64" /></span></footer></td>
 </tr>
 <tr>
 <td style="border: none; padding: 10.5pt .75pt 10.5pt 33.0pt;">

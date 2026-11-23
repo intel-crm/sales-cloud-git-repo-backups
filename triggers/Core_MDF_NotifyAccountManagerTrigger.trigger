@@ -4,7 +4,7 @@ trigger Core_MDF_NotifyAccountManagerTrigger on Core_MDF_Notify_Account_Manager_
     
     if(mapFunctionalityNameTriggerExecution.containsKey('Core_MDF_EscalationErrorsNotification') &&
        mapFunctionalityNameTriggerExecution.get('Core_MDF_EscalationErrorsNotification').Core_Active__c){
-            //Core_MDF_SendEmailHelper.sendEmail(Trigger.New);       
+    		Core_MDF_SendEmailHelper.sendEmail(Trigger.New);       
        }
     
 }

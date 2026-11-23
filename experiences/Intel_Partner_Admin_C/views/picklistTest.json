@@ -1,0 +1,68 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "79d7f97a-8109-48b5-aeaa-6626e6221e82",
+  "label" : "Picklist Test",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "a78541b9-1402-45b3-b734-79e0567c4063",
+          "columns" : [ {
+            "UUID" : "44e85eb9-fc09-4118-a33d-9b81ec454f49",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "a78541b9-1402-45b3-b734-79e0567c4063",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:test_picklist",
+          "id" : "93ae16b3-9a11-477f-8969-6de34c0d33c2",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "44e85eb9-fc09-4118-a33d-9b81ec454f49",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "b45551d5-ca84-46d4-bffd-966897cd1dea",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "Picklist Test"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f633f4b8-2a24-4580-ab6a-2bcc3ad34253",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "41ea2da7-bd75-46af-aa48-d5c351c5bcb9",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-picklist-test"
+}

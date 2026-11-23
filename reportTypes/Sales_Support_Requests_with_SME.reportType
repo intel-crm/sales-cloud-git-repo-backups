@@ -231,11 +231,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_URL__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Entry_SPP_US__c</field>
             <table>Opportunity</table>
         </columns>
@@ -467,11 +462,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Node_Controller__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Unified_Global_Customer_BP_Id__c</field>
             <table>Opportunity</table>
         </columns>
         <columns>
@@ -1126,37 +1116,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Assist_Pop_Up_Enabled__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Is_KPI_Failed__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_PW_Approval_Status__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_Geo_INDIA__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Opportunity_Team_Geo_INDIA__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Multi_boarded__c</field>
-            <table>Opportunity</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sustainability_Compliance__c</field>
+            <field>Core_No_of_On_Hold_Opportunity_Products__c</field>
             <table>Opportunity</table>
         </columns>
         <masterLabel>Opportunities</masterLabel>

@@ -166,52 +166,10 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_IPS_Contact_Email__c</fullName>
-        <description>Field for Case Deflection</description>
-        <externalId>false</externalId>
-        <label>Contact Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_IPS_Contact_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
-        <relationshipLabel>Deflected Objects</relationshipLabel>
-        <relationshipName>Deflected_Objects</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_Description__c</fullName>
-        <label>Description</label>
-        <length>32768</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_Description_on_Coveo__c</fullName>
-        <description>For Deflection Object</description>
-        <label>Description on Coveo</label>
-        <length>131072</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_Product__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Product</label>
-        <referenceTo>Asset</referenceTo>
         <relationshipLabel>Deflected Objects</relationshipLabel>
         <relationshipName>Deflected_Objects</relationshipName>
         <required>false</required>
@@ -264,36 +222,19 @@
                     <default>false</default>
                     <label>Case Created</label>
                 </value>
-                <value>
-                    <fullName>Abandoned</fullName>
-                    <default>false</default>
-                    <label>Abandoned</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <label>Deflected Object</label>
     <listViews>
         <fullName>All</fullName>
-        <booleanFilter>1</booleanFilter>
         <columns>NAME</columns>
         <columns>Core_IPS_Contact_Id__c</columns>
         <columns>Core_IPS_Status__c</columns>
         <columns>Core_IPS_Case_ID__c</columns>
         <columns>Core_IPS_Search_JSON__c</columns>
-        <columns>Core_IPS_Description__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_IPS_Description_on_Coveo__c</columns>
-        <columns>Core_IPS_Product__c</columns>
-        <columns>Core_IPS_Contact_Email__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IPS_Contact_Email__c</field>
-            <operation>equals</operation>
-            <value>Helen.Herzog@gd-ms.com</value>
-        </filters>
         <label>All</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

@@ -1,0 +1,83 @@
+<template>
+    <div class="slds-p-around_large" style="min-height: 100%;">
+        <h2 class="intel-clear">Buttons and Links</h2>
+        <lightning-layout class="slds-p-vertical_x-large" multiple-rows >
+            <lightning-layout-item class="light-theme" size="12" medium-device-size="4">
+                <h4 class="slds-p-top_x-large slds-p-horizontal_x-large">Light Theme</h4>
+                <lightning-layout class="slds-p-vertical_x-large slds-p-horizontal_x-large" multiple-rows >
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="brand"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="neutral"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" disabled></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item class="dark-theme-background" size="12" medium-device-size="4">
+                <h4 class="slds-p-top_x-large slds-p-horizontal_x-large color-white">Dark Theme</h4>
+                <lightning-layout class="slds-p-vertical_x-large slds-p-horizontal_x-large" multiple-rows >
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="brand" class="dark-theme"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="neutral" class="dark-theme"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" disabled></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item class="dark-theme-imagery-background" size="12" medium-device-size="4">
+                <h4 class="slds-p-top_x-large slds-p-horizontal_x-large color-white">Dark Theme over Imagery</h4>
+                <lightning-layout class="slds-p-vertical_x-large slds-p-horizontal_x-large" multiple-rows >
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="brand" class="dark-theme"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" variant="neutral" class="dark-theme"></lightning-button>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="12" class="slds-p-vertical_small">
+                        <lightning-button label="Lorem ipsu" disabled></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <hr></hr>
+
+        <lightning-layout multiple-rows >
+            <lightning-layout-item size="12" class="slds-p-vertical_small">
+                <lightning-button label="Full Width Button" class="button-full-width" variant="brand"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" class="slds-p-vertical_small">
+                <c-ipa-button-menu-dropdown title="Button Menu" menu-items={buttonMenuItems} auto-scroll-off></c-ipa-button-menu-dropdown>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <hr></hr>
+
+        <h4 class="slds-p-bottom_large">Text Links</h4>
+        <div class="slds-p-bottom_small">
+            <c-ps-mp-link label="Lorem ipsu" community-page="home" caret></c-ps-mp-link>
+        </div>
+        <div class="slds-p-bottom_small">
+            <p style="width: 25%">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sit amet convallis tellus, <c-ps-mp-link class="text-underline" label="Lorem ipsu" community-page="home"></c-ps-mp-link>&nbsp;id accumsan lacus. Sed viverra, nisi vitae tincidunt facilisis, lorem elit congue felis, vel congue sapien dolor eget odio.</p>
+        </div>
+        <div class="slds-p-bottom_small">
+            <c-ps-mp-link label="Lorem ipsu" external-url="https://www.intel.com"></c-ps-mp-link>
+        </div>
+        <div class="slds-m-top_medium slds-p-around_medium bg-charcoal">
+            <p><a class="slds-p-bottom_small color-white text-underline" href="javascript:void(0);">Dolore magna aliqua</a></p>
+            <p><a class="slds-p-bottom_small color-white text-underline-hover" href="javascript:void(0);">Dolore magna aliqua</a></p>
+            <c-ps-mp-link class-name="slds-p-bottom_small color-white text-underline iconWhite" external-url="https://www.intel.com">Intel.com Home</c-ps-mp-link>
+        </div>
+    </div>
+
+    <div class="slds-p-around_small slds-align_absolute-center text-upcase text-bold color-white h5"
+        style="position: fixed; bottom: 1rem; left: 1rem; border-radius: 4px; background: var(--digitalBlue); z-index: 100000;">
+        {breakpoint.abbr}
+    </div>
+</template>

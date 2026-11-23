@@ -2,34 +2,8 @@
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <buckets>
         <bucketType>text</bucketType>
-        <developerName>BucketField_68635119</developerName>
-        <masterLabel>PAC Cards</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
-            </sourceValues>
-            <value>Vista</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
-            </sourceValues>
-            <value>Rush</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
-            </sourceValues>
-            <value>Darby</value>
-        </values>
-    </buckets>
-    <buckets>
-        <bucketType>text</bucketType>
         <developerName>BucketField_53185288</developerName>
-        <masterLabel>PACs</masterLabel>
+        <masterLabel>Product Name</masterLabel>
         <nullTreatment>n</nullTreatment>
         <otherBucketLabel>Other</otherBucketLabel>
         <sourceColumnName>Case.Core_IPS_Product_name__c</sourceColumnName>
@@ -38,31 +12,34 @@
             <sourceValues>
                 <sourceValue>Intel® FPGA PAC N3000</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
-            </sourceValues>
-            <value>Vista</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
-            </sourceValues>
-            <value>Darby</value>
+            <value>Vista Creek</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Intel® PAC With Arria® 10 GX FPGA</sourceValue>
             </sourceValues>
-            <value>Rush</value>
+            <value>Rush Creek</value>
         </values>
         <values>
             <sourceValues>
-                <sourceValue>Intel® SNIC Third Party</sourceValue>
+                <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
             </sourceValues>
-            <value>SNIC (ADP)</value>
+            <sourceValues>
+                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
+            </sourceValues>
+            <value>Darby Creek</value>
+        </values>
+        <values>
+            <value>Lightning Creek</value>
+        </values>
+        <values>
+            <value>Pyramid Lake</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
+            </sourceValues>
+            <value>A10 Dev</value>
         </values>
     </buckets>
     <buckets>
@@ -172,9 +149,6 @@
         <field>AGE</field>
     </columns>
     <columns>
-        <field>BucketField_68635119</field>
-    </columns>
-    <columns>
         <field>Case.Core_IPS_Product_name__c</field>
     </columns>
     <columns>
@@ -196,6 +170,14 @@
         <field>Case.Core_Product_Organization__c</field>
     </columns>
     <filter>
+        <booleanFilter>(1 AND 2 AND (3 AND 4)) AND 5</booleanFilter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Case.Core_AAQC_Case_recordType</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Product_Organization__c</column>
             <columnToColumn>false</columnToColumn>
@@ -211,24 +193,24 @@
             <value>Invalid</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Case.Core_External_Issue_Category__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Intel OFS,Acceleration</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>BucketField_53185288</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Vista,rush,Darby,SNIC</value>
+            <value>Vista,Darby,Rush,A10,Light,Pyramid</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_External_Issue_Category__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Acceleration</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>Month</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -253,8 +235,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2018-07-01</startDate>
     </timeFrameFilter>
 </Report>

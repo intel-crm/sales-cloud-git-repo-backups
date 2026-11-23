@@ -10,22 +10,29 @@
         <field>COMPANY</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>Lead.Core_Project_Timeframe__c</field>
+    </columns>
+    <columns>
+        <field>Lead.Core_Project_Size__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Lead.Core_Contact_Established_Engaged__c</field>
     </columns>
-    <columns>
-        <field>Lead.Core_Lead_Notes__c</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>CREATED_DATE</column>
+            <column>Lead.Core_Contact_Established_Engaged__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>3/1/2021 12:00 AM</value>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Lead.Core_Lead_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Accepted</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -163,9 +163,17 @@
     "languageCode" : "en",
     "type" : "language"
   }, {
+    "countryCode" : "",
+    "fallbackLanguageId" : null,
+    "id" : "4381b96e-1e38-4099-b438-c2088cb029e4",
+    "isActive" : true,
+    "label" : "Spanish",
+    "languageCode" : "es",
+    "type" : "language"
+  }, {
     "countryCode" : "GB",
     "fallbackLanguageId" : null,
-    "id" : "b3fa3107-0041-485a-ad0f-f5da36e0f17c",
+    "id" : "7ffdf081-4223-4997-88b6-ac434078d88e",
     "isActive" : true,
     "label" : "English (UK) (GB)",
     "languageCode" : "en",

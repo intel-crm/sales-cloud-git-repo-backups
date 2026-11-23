@@ -18,6 +18,26 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Partner_Segment_Value_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Segment_English_Dsc_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Segment_Japanese_Dsc_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Segment_Chinese_Dsc_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Segment_Chinese_Name_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Segment_Japanese_Name_Txt__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -1,0 +1,99 @@
+<apex:page showHeader="false" sidebar="false">
+
+  <style type="text/css">
+    body {
+      padding: 0 !important;
+    }
+
+    #khoros {
+      overflow: hidden;
+    }
+
+    html,
+    body,
+    #khoros {
+      background: white !important;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+
+  <div id="khoros"></div>
+
+  <script>
+    var params = new URLSearchParams(window.location.search);
+
+    var li = document.createElement('li:component');
+
+    var paramMap = {
+      id: 'id',
+      skinId: 'skin-id',
+      // CONTENT
+      locationDisplayId: 'location-display-id',
+      discussionStyle: 'discussion-style',
+      // UI
+      displayStyle: 'display-style',
+      numberOfMessages: 'number-of-messages',
+      sortBy: 'sort-by',
+      showAvatars: 'show-avatars',
+      showAuthorName: 'show-author-name',
+      showDateTime: 'show-date-and-time',
+      showKudos: 'show-kudos',
+      showComments: 'show-comments',
+      showViews: 'show-views',
+      showImage: 'show-image',
+      numberOfBodyLines: 'number-of-body-lines',
+      showMessageBody: 'show-message-body',
+    };
+
+    // set <li> attributes from URL params for Khoros Widget JS
+    Object.keys(paramMap).forEach(function (param) {
+      var p = params.get(param);
+      if (p !== null) {
+        li.setAttribute(paramMap[param], p);
+      }
+    });
+
+    // add <li> to page
+    document.querySelector('#khoros').appendChild(li);
+
+    var errorTimeout = setTimeout(function() {
+      window.parent.postMessage(
+        { type: 'khorosTimeout' },
+        window.location.origin
+      );
+    }, 10000); // show Error Message after 10 seconds
+
+    // Wait for IFrame to Load -> Then Post Message Height to LWC Parent
+    var loaded = false;
+    var load = function () {
+      var iframe = document.querySelector('iframe');
+      if (iframe) {
+        iframe.addEventListener('load', function() {
+          clearTimeout(errorTimeout);
+        });
+        window.addEventListener('message', function (evt) {
+          // listen to Khoros Widget JS IFrame postMessage
+          const resizeData = evt.data.match(/iFrameResizer(\d+):(\d+):(\d+):[init|resizeParent]/);
+          if (resizeData) {
+            const height = `${resizeData[2]}px`;
+            window.parent.postMessage(
+              { type: 'khorosIframeHeight', height: height },
+              window.location.origin
+            );
+          }
+        });
+      } else {
+        setTimeout(load, 50);
+      }
+    }
+    load();
+
+    var script = document.createElement('script');
+    script.setAttribute('id', 'lia-syndicate');
+    script.setAttribute('data-li-url', params.get('dataLiUrl'));
+    script.setAttribute('src', params.get('khorosSrc'));
+    document.querySelector('#khoros').appendChild(script);
+  </script>
+
+</apex:page>

@@ -182,6 +182,11 @@
         <unique>false</unique>
     </fields>
     <label>Partner Tier</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Partner Tier Name</label>
         <type>Text</type>

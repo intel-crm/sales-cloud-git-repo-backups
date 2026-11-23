@@ -114,20 +114,21 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
             Map<String,Schema.RecordTypeInfo>  recordTypeInfo = resSchema.getRecordTypeInfosByDeveloperName();
             
             //Create Id to store CCF recordtype Id
-            Id ccfPFARecordTypeId = recordTypeInfo.get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Zero_Bdgt_Alloctn_Rcrd_Type_CCF')).getRecordTypeId();
+            Id ccfPFARecordTypeId = recordTypeInfo.get(System.Label.Core_MDF_Zero_Budget_Allocation_Record_Type_CCF).getRecordTypeId();
             
             //Create Id to store DCF recordtype Id
-            Id dcfPFARecordTypeId = recordTypeInfo.get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_Zero_Bdgt_Alloctn_Rcrd_Type_DCF')).getRecordTypeId();
+            Id dcfPFARecordTypeId = recordTypeInfo.get(System.Label.Core_MDF_Zero_Budget_Allocation_Record_Type_DCF).getRecordTypeId();
+
             resSchema = NULL;
             recordTypeInfo = NULL;
             resSchema = PartnerFundRequest.sObjectType.getDescribe();
             recordTypeInfo = resSchema.getRecordTypeInfosByDeveloperName();
             
             //Create Id to store CCF recordtype Id of PartnerFundRequest
-            Id ccfPFRRecordTypeId = recordTypeInfo.get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_CCF')).getRecordTypeId();
+            Id ccfPFRRecordTypeId = recordTypeInfo.get(System.Label.Core_MDF_PFR_CCF).getRecordTypeId();
             
             //Create Id to store DCF recordtype Id of PartnerFundRequest
-            Id dcfPFRRecordTypeId = recordTypeInfo.get(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_DCF')).getRecordTypeId();
+            Id dcfPFRRecordTypeId = recordTypeInfo.get(System.Label.Core_MDF_PFR_DCF).getRecordTypeId();
             
             //Map of PFRId and PMB
             Map<Id,PartnerMarketingBudget> pFRIdPMBMap = new Map<Id,PartnerMarketingBudget>();
@@ -163,7 +164,7 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
             }
 
             if(campaignIdAccountIdMap.size() > 0){
-                //SELECT Id, Title FROM PartnerMarketingBudget WHERE StartDate <= pfr.Core_MDF_Start_Date__c.format(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_Date_Format')) AND EndDate >= pfr.Core_MDF_End_Date__c.format(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_Date_Format')) AND Core_MDF_Budget_Partner__c = campaignList[0].Core_MDF_Account__c AND Core_MDF_Budget_Status__c = 'Released'
+                //SELECT Id, Title FROM PartnerMarketingBudget WHERE StartDate <= pfr.Core_MDF_Start_Date__c.format(System.Label.Core_MDF_PFR_Date_Format) AND EndDate >= pfr.Core_MDF_End_Date__c.format(System.Label.Core_MDF_PFR_Date_Format) AND Core_MDF_Budget_Partner__c = campaignList[0].Core_MDF_Account__c AND Core_MDF_Budget_Status__c = 'Released'
                 //Create string to hold dynamic query to retrieve budget details
                 Map<Id,List<PartnerMarketingBudget>> accountIdPMBsMap = new Map<Id,List<PartnerMarketingBudget>>();
                 for(PartnerMarketingBudget pmb : [SELECT Id, Title,Core_MDF_Budget_Partner__c, StartDate, EndDate, 
@@ -185,8 +186,8 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
                     for(PartnerFundRequest pfrRecord : pfrList){
                         Datetime sd = pfrRecord.Core_MDF_Start_Date__c;
                         Datetime ed = pfrRecord.Core_MDF_End_Date__c;
-                        String startDate = sd.format(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_Date_Format'));            
-                        String endDate = ed.format(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PFR_Date_Format'));
+                        String startDate = sd.format(System.Label.Core_MDF_PFR_Date_Format);            
+                        String endDate = ed.format(System.Label.Core_MDF_PFR_Date_Format);
                         if(pfrIdCampaignIdMap.get(pfrRecord.Id) != NULL && 
                            campaignIdAccountIdMap.get(pfrIdCampaignIdMap.get(pfrRecord.Id)) != NULL && 
                            accountIdPMBsMap.get(campaignIdAccountIdMap.get(pfrIdCampaignIdMap.get(pfrRecord.Id))) != NULL){
@@ -206,7 +207,7 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
                             }
                         }
                         else if(accountIdPMBsMap.get(campaignIdAccountIdMap.get(pfrIdCampaignIdMap.get(pfrRecord.Id))) == NULL){
-                            mailBodyForUnprocessed += pfrRecord.Id + equalStr + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_UpdateAllocatnIdOnPFR_NoBgt_Fnd') + commaStr;
+                            mailBodyForUnprocessed += pfrRecord.Id + equalStr + Label.Core_MDF_UpdateAllocationIdOnPFR_NoBudgetFound + commaStr;
                         }
                     }
                 }
@@ -279,9 +280,9 @@ public class Core_MDF_UpdateAllocationIdOnPFR implements Database.Batchable<sObj
             }
             for(PartnerFundRequest pfrRecord : pfrList){
                 if (pFRIdPFRMap.containsKey(pfrRecord.Id)) {
-                    pfrRecord.Core_MDF_Log__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_UpdateAllocatnIdOnPFR_NoBgt_Fnd');
+                    pfrRecord.Core_MDF_Log__c = Label.Core_MDF_UpdateAllocationIdOnPFR_NoBudgetFound;
                     pfrMapToBeUpdated.put(pfrRecord.Id, pfrRecord);
-                    mailBodyForUnprocessed += pfrRecord.Id + equalStr + Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_UpdateAllocatnIdOnPFR_NoBgt_Fnd') + commaStr;
+                    mailBodyForUnprocessed += pfrRecord.Id + equalStr + Label.Core_MDF_UpdateAllocationIdOnPFR_NoBudgetFound + commaStr;
                 }
             }
             List<Database.SaveResult> updateResults = Database.update(pfrMapToBeUpdated.values(), false);

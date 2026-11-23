@@ -379,16 +379,7 @@
     <label>Partner Offering Specification</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>PMP_Specification_Id__c</columns>
-        <columns>PMP_Specification_Nm__c</columns>
-        <columns>PMP_Specification_Value_Cd__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Specification_Nm__c</field>
-            <operation>contains</operation>
-            <value>12th Generation Intel® Core™ i9 Processors</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

@@ -5,25 +5,5 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11408655@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>12326008@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>12318791@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>All_Users_Sales_Internal</sharedTo>
-        <sharedToType>Group</sharedToType>
-    </folderShares>
     <name>Emea Data Ops Public</name>
 </DashboardFolder>

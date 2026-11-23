@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk,a2W8A000003Hsun,a2W8A000003Hsuo,a2W8A000003Hsul,a2W8A000003Hsum,a2W8A000003Hsup,a2W8A000003Hsuq,a2W8A000003Hsur,a2W8A000003Hsus,a2W8A000003Hsut,a2W8A000003HyJN</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfh</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuu</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">CCFB User</value>
+        <value xsi:type="xsd:string">Partner Admin Delegate</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3ff</value>
+        <value xsi:type="xsd:string">a2W8A000003Ht3P</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">CCF Boost Special Reports Viewer</value>
+        <value xsi:type="xsd:string">Partner Portal</value>
     </values>
 </CustomMetadata>

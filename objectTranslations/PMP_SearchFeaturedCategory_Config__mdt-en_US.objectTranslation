@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_SearchFeaturedCategory_Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_Featured_Category_Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Category Id --></label>
+        <name>Category_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PIM Category Id --></label>
+        <name>PIM_Category_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Active --></label>
+        <name>PMP_Is_Active_Ind__c</name>
+    </fields>
+    <layouts>
+        <layout>PMP_SearchFeaturedCategory_Config Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

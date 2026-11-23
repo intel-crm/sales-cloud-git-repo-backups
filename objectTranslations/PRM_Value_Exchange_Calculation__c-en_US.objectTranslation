@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Value Exchange Calculation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Value Exchange Calculations</value>
+    </caseValues>
+    <fields>
+        <label><!-- One Partner Id --></label>
+        <name>PRM_One_Partner_Id__c</name>
+        <relationshipLabel><!-- Value Exchange Calculations --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Sales Amount --></label>
+        <name>PRM_Sales_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sales Calculation Group --></label>
+        <name>PRM_Sales_Calculation_Group_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Time Period --></label>
+        <name>PRM_Time_Period__c</name>
+        <picklistValues>
+            <masterLabel>Q4 2025 - Q3 2026</masterLabel>
+            <translation><!-- Q4 2025 - Q3 2026 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2026 - Q3 2027</masterLabel>
+            <translation><!-- Q4 2026 - Q3 2027 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Total Sales Out Units --></label>
+        <name>PRM_Total_Sales_Out_Units_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Training Credit Points Count --></label>
+        <name>PRM_Training_Credit_Points_Count_Nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

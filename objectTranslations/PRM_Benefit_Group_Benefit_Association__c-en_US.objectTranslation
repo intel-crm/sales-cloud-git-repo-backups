@@ -52,6 +52,13 @@
             <translation><!-- Pending --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Benefit Group Benefit Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- End Date cannot be same or prior to the Start Date. --></errorMessage>

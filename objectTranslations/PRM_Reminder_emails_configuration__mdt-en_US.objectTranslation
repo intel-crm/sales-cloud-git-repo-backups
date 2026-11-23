@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Reminder emails configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reminder emails configurations</value>
+    </caseValues>
+    <fields>
+        <help><!-- Comma separated days for reminders (E.g., 1,3,6,7) --></help>
+        <label><!-- Custom Interval --></label>
+        <name>PRM_Custom_Interval__c</name>
+    </fields>
+    <fields>
+        <help><!-- API name of the email template to be used in reminder emails --></help>
+        <label><!-- Email Template --></label>
+        <name>PRM_Email_Template__c</name>
+    </fields>
+    <fields>
+        <help><!-- The day the first reminder to be sent (E.g., 2) --></help>
+        <label><!-- First reminder day --></label>
+        <name>PRM_First_Reminder_Day__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interval (In days) --></label>
+        <name>PRM_Interval__c</name>
+    </fields>
+    <fields>
+        <label><!-- Number of reminders --></label>
+        <name>PRM_Number_Of_Reminders__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

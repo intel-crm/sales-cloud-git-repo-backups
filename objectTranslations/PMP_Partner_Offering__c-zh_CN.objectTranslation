@@ -4,6 +4,14 @@
         <plural>false</plural>
         <value>Partner Offering</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- Column_Field_Set --></label>
+        <name>Column_Field_Set</name>
+    </fieldSets>
+    <fields>
+        <label><!-- DataCleanupflag --></label>
+        <name>DataCleanupflag__c</name>
+    </fields>
     <fields>
         <label><!-- Offering Power 1 --></label>
         <name>Offering_Power_1__c</name>
@@ -63,6 +71,10 @@
         <name>PMP_Category_nm__c</name>
     </fields>
     <fields>
+        <label><!-- Clear Cache --></label>
+        <name>PMP_Clear_Cache__c</name>
+    </fields>
+    <fields>
         <label><!-- Company Information --></label>
         <name>PMP_Company_Id__c</name>
         <relationshipLabel><!-- Partner Offerings --></relationshipLabel>
@@ -74,6 +86,10 @@
     <fields>
         <label><!-- Logged in user --></label>
         <name>PMP_Current_User_Offering_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Edit/Clone Offering --></label>
@@ -327,11 +343,11 @@
         <name>PMP_Partner_Offering_Visibility_Nm__c</name>
         <picklistValues>
             <masterLabel>All Access - Available to the Public</masterLabel>
-            <translation>完全访问 - 向公众开放</translation>
+            <translation>公共内容</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Restricted Access - Intel Pre-Release Product</masterLabel>
-            <translation>受限访问 - 英特尔预发布产品</translation>
+            <translation>英特尔内部资料</translation>
         </picklistValues>
     </fields>
     <fields>
@@ -426,6 +442,10 @@
         <name>PMP_Translation_Status__c</name>
     </fields>
     <fields>
+        <label><!-- View Offering --></label>
+        <name>PMP_View_Offering__c</name>
+    </fields>
+    <fields>
         <label>查看产品/产品解决方案</label>
         <name>PMP_View_Offerings__c</name>
     </fields>
@@ -444,17 +464,61 @@
         <name>PMP_Working_Copy_Id__c</name>
         <relationshipLabel>合作伙伴产品/产品解决方案</relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Partner Offering Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>标题</nameFieldLabel>
     <recordTypes>
         <label><!-- Default Record Type --></label>
         <name>Default_Record_Type</name>
     </recordTypes>
+    <recordTypes>
+        <description><!-- New Record Type --></description>
+        <label><!-- PMP Partner Offering --></label>
+        <name>PMP_Partner_Offering</name>
+    </recordTypes>
+    <validationRules>
+        <errorMessage><!-- Offering cannot be archived if the status is in Draft, Update required or Pending FSE/FAE approval --></errorMessage>
+        <name>PMP_Archive_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Error – Intel only visible offering, cannot be publicly featured. --></errorMessage>
+        <name>PMP_Featured_Offering_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Kindly add review comments (Approved / Rejected / Update Required) in the comment box --></errorMessage>
+        <name>PMP_Mandate_FAE_Comment_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- An offering can be published only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
+        <name>PMP_Publish_Offering_Validation</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- An offering can be Rejected only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
         <name>PMP_Reject_Offering_Validation</name>
     </validationRules>
     <validationRules>
+        <errorMessage><!-- Please enter comments before rejecting or archiving the offering --></errorMessage>
+        <name>PMP_Rejection_Comment_Validation</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Record cannot be modified until offering editor has made all the necessary changes --></errorMessage>
+        <name>PMP_Update_Offering_Check</name>
+    </validationRules>
+    <validationRules>
         <errorMessage><!-- An offering can be sent for Update only if it is reviewed by Admin. Offering previous status should be &quot;Admin Review&quot; --></errorMessage>
         <name>PMP_Update_Offering_Validation</name>
     </validationRules>
+    <validationRules>
+        <errorMessage><!-- The date entered is irrelevant. --></errorMessage>
+        <name>PMP_ValidityPeriodCheck</name>
+    </validationRules>
+    <webLinks>
+        <label><!-- Export --></label>
+        <name>Export</name>
+    </webLinks>
 </CustomObjectTranslation>

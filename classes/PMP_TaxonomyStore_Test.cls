@@ -15,7 +15,7 @@ private class PMP_TaxonomyStore_Test {
         PMP_Company__c testPartner1 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner1',accId , false);
         testPartner1.PMP_Account_Region__c = 'EMEA';
         testPartner1.PMP_Account_Sub_Region__c = 'TAIWAN';
-        testPartner1.PMP_Account_Specialty__c = 'None';
+        testPartner1.PMP_Account_Specialty__c = 'Artificial Intelligence Specialist';
         testPartner1.PMP_Account_Industry__c = 'Energy';
         testPartner1.PMP_Account_Application__c = 'Storage';
         testPartner1.PMP_Partner_Program_nm__c = 'Cloud & Comms Service Provider;ODM-LOEM;Distributor';

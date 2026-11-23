@@ -337,7 +337,7 @@ public with sharing class PMP_SearchContextualFilterController extends PMP_Searc
             }
             
         }catch(Exception e){
-            System.debug(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
+            //System.debug(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
             throw new AuraHandledException(e.getMessage()+' '+e.getLineNumber()+' '+e.getCause());
         }
         return Filter;
@@ -435,360 +435,360 @@ return filter;
 }*/
     
     //Update by nikhil to increase performance
-   /* public static List<Filter> getOfferingCategoryFilters(List<String> pimIds, List<String> offerings, String langCode){
-        String userLanguage = langCode;
-        // system.debug('userLanguage'+userLanguage);
-        String catNameAPI = PMP_SearchUtilityController.getFieldApiName('PMP_Category__c','Name',userLanguage); 
-        // system.debug('catNameAPI'+catNameAPI);
-        if(String.isEmpty(catNameAPI)){
-            catNameAPI = 'Name';
-        }
+    // public static List<Filter> getOfferingCategoryFilters(List<String> pimIds, List<String> offerings, String langCode){
+    //     String userLanguage = langCode;
+    //     // system.debug('userLanguage'+userLanguage);
+    //     String catNameAPI = PMP_SearchUtilityController.getFieldApiName('PMP_Category__c','Name',userLanguage); 
+    //     // system.debug('catNameAPI'+catNameAPI);
+    //     if(String.isEmpty(catNameAPI)){
+    //         catNameAPI = 'Name';
+    //     }
         
-        Map<String,Tag> catTagMap = new Map<String,Tag>();
-        // system.debug('catTagMap'+catTagMap);
-        List<Filter> filters = new List<Filter>();
-        List<PMP_Category__c> catList = new List<PMP_Category__c>();
-        // System.debug('catList'+catList);
-        String offCatQuery = '';
-        Map<String,Filter> filterMap = new Map<String,Filter>();
-        // System.debug('filterMap'+filterMap);
-        List<AggregateResult> offeringCatList = new List<AggregateResult>();
+    //     Map<String,Tag> catTagMap = new Map<String,Tag>();
+    //     // system.debug('catTagMap'+catTagMap);
+    //     List<Filter> filters = new List<Filter>();
+    //     List<PMP_Category__c> catList = new List<PMP_Category__c>();
+    //     // System.debug('catList'+catList);
+    //     String offCatQuery = '';
+    //     Map<String,Filter> filterMap = new Map<String,Filter>();
+    //     // System.debug('filterMap'+filterMap);
+    //     List<AggregateResult> offeringCatList = new List<AggregateResult>();
         
-        try{
-           // if(Schema.sObjectType.PMP_Category__c.isAccessible()){
-                catList = [SELECT Id,Name,PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c,PMP_Partner_Product_Category_Cd__c,
-              PMP_Category_Display_Sequence_Nbr__c           
-                           FROM PMP_Category__c WHERE PMP_Partner_Product_Category_Cd__c IN :pimIds AND PMP_Active_Ind__c = true WITH SECURITY_ENFORCED
-                          Order By PMP_Category_Display_Sequence_Nbr__c];
-                // System.debug('catList'+catList);
-           // }
-            offCatQuery = 'SELECT COUNT(PMP_Offering_Id__c)cnt, PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+                
-        'PMP_Category_Id__r.PMP_Parent_Category_Id__c FROM PMP_Partner_Offering_Category__c WHERE PMP_Offering_Id__c IN : offerings AND PMP_Category_Id__r.PMP_Active_Ind__c = true AND (';
+    //     try{
+    //        // if(Schema.sObjectType.PMP_Category__c.isAccessible()){
+    //             catList = [SELECT Id,Name,PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c,PMP_Partner_Product_Category_Cd__c,
+    //           PMP_Category_Display_Sequence_Nbr__c           
+    //                        FROM PMP_Category__c WHERE PMP_Partner_Product_Category_Cd__c IN :pimIds AND PMP_Active_Ind__c = true WITH SECURITY_ENFORCED
+    //                       Order By PMP_Category_Display_Sequence_Nbr__c];
+    //             // System.debug('catList'+catList);
+    //        // }
+    //         offCatQuery = 'SELECT COUNT(PMP_Offering_Id__c)cnt, PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+                
+    //     'PMP_Category_Id__r.PMP_Parent_Category_Id__c FROM PMP_Partner_Offering_Category__c WHERE PMP_Offering_Id__c IN : offerings AND PMP_Category_Id__r.PMP_Active_Ind__c = true AND (';
             
-            // System.debug('offCatQuery'+offCatQuery);
-            for(PMP_Category__c cat: catList){
-                Filter filter = new Filter();
-                filter.name = cat.Id;     //value
-                filter.label = String.valueOf(cat.get(catNameAPI));
-                if(String.isEmpty(filter.label)){
-                    filter.label = cat.Name;
-                }
-                filter.type='tag';
-                if(catList.indexOf(cat) == 0){
-                    offCatQuery += 'PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
-                }else{
-                    offCatQuery += ' OR PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
-                }
-                filter.tags = new List<Tag>();
-                filterMap.put(cat.Id,filter);
-            }
-            offCatQuery += ') GROUP BY PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
-                'PMP_Category_Id__r.PMP_Parent_Category_Id__c';
-            // system.debug('query :' + offCatQuery);
+    //         // System.debug('offCatQuery'+offCatQuery);
+    //         for(PMP_Category__c cat: catList){
+    //             Filter filter = new Filter();
+    //             filter.name = cat.Id;     //value
+    //             filter.label = String.valueOf(cat.get(catNameAPI));
+    //             if(String.isEmpty(filter.label)){
+    //                 filter.label = cat.Name;
+    //             }
+    //             filter.type='tag';
+    //             if(catList.indexOf(cat) == 0){
+    //                 offCatQuery += 'PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
+    //             }else{
+    //                 offCatQuery += ' OR PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
+    //             }
+    //             filter.tags = new List<Tag>();
+    //             filterMap.put(cat.Id,filter);
+    //         }
+    //         offCatQuery += ') GROUP BY PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
+    //             'PMP_Category_Id__r.PMP_Parent_Category_Id__c';
+    //         // system.debug('query :' + offCatQuery);
             
             
-           // if(Schema.sObjectType.PMP_Partner_Offering_Category__c.isAccessible()){
-           /*before PMD SOQL INJECTION FIX
-                offeringCatList = Database.query(offCatQuery);
-			before PMD SOQL INJECTION FIX
+    //        // if(Schema.sObjectType.PMP_Partner_Offering_Category__c.isAccessible()){
+    //        /*before PMD SOQL INJECTION FIX
+    //             offeringCatList = Database.query(offCatQuery);
+	// 		before PMD SOQL INJECTION FIX*/
             
-            string strquery = offCatQuery; //// added to avoid SOQL injection -- PMD Fix
-            offeringCatList = Database.query(strquery);
-           // } 
+    //         string strquery = offCatQuery; //// added to avoid SOQL injection -- PMD Fix
+    //         offeringCatList = Database.query(strquery);
+    //        // } 
              
        
             
             
-            if(!offeringCatList.isEmpty()){
-                /* ------------To sort categories based on sequence Number US705467/US705466 ----------
-                 Note: This is a workaround, as sf does not allow order by in aggregate queries
-                 (PMP_Category_Display_Sequence_Nbr__c is numeric field and group by is not allowed for numeric fields )
-                 Need to replace the offeringCatList with sortedOffCatList 
+    //         if(!offeringCatList.isEmpty()){
+    //             /* ------------To sort categories based on sequence Number US705467/US705466 ----------
+    //              Note: This is a workaround, as sf does not allow order by in aggregate queries
+    //              (PMP_Category_Display_Sequence_Nbr__c is numeric field and group by is not allowed for numeric fields )
+    //              Need to replace the offeringCatList with sortedOffCatList */
                 
-                List<AggregateResult> sortedOffCatList = sortAggregateCategories(offeringCatList);
+    //             List<AggregateResult> sortedOffCatList = sortAggregateCategories(offeringCatList);
                         
                 
-              //--------------------End of US705467/US705466 --------------  
-                for (AggregateResult offCat:sortedOffCatList)
-                {
-                    String catId = (String)offCat.get('PMP_Category_Id__c');
-                    if(!catTagMap.containsKey(catId)){
-                        Tag tag = new Tag();
-                        tag.label = String.valueOf(offCat.get(catNameAPI));
-                        if(String.isEmpty(tag.label)){
-                            tag.label = (String)offCat.get(PMP_StaticConstants_Partner.CAT_NAME_FIELD);// added as part of PMD Fix          
-                        }
+    //           //--------------------End of US705467/US705466 --------------  
+    //             for (AggregateResult offCat:sortedOffCatList)
+    //             {
+    //                 String catId = (String)offCat.get('PMP_Category_Id__c');
+    //                 if(!catTagMap.containsKey(catId)){
+    //                     Tag tag = new Tag();
+    //                     tag.label = String.valueOf(offCat.get(catNameAPI));
+    //                     if(String.isEmpty(tag.label)){
+    //                         tag.label = (String)offCat.get(PMP_StaticConstants_Partner.CAT_NAME_FIELD);// added as part of PMD Fix          
+    //                     }
                             
-                        tag.value = catId;
-                        tag.count = (Integer)offCat.get('cnt');
+    //                     tag.value = catId;
+    //                     tag.count = (Integer)offCat.get('cnt');
                         
-                        tag.parent = (String)offCat.get('PMP_Parent_Category_Id__c');
-                        tag.children = new List<Tag>();
+    //                     tag.parent = (String)offCat.get('PMP_Parent_Category_Id__c');
+    //                     tag.children = new List<Tag>();
                         
-                        catTagMap.put(catId,tag);
-                        if(filterMap.containsKey(tag.parent)){
-                            filterMap.get(tag.parent).tags.add(tag);
-                        }
-                    }
+    //                     catTagMap.put(catId,tag);
+    //                     if(filterMap.containsKey(tag.parent)){
+    //                         filterMap.get(tag.parent).tags.add(tag);
+    //                     }
+    //                 }
                     
-                } 
+    //             } 
                 
-                //To Map Parent Child Relationship
-                for(Tag tag :catTagMap.values()){
-                    if(catTagMap.containsKey(tag.parent)){
-                        catTagMap.get(tag.parent).children.add(tag);
-                    }
-                }
+    //             //To Map Parent Child Relationship
+    //             for(Tag tag :catTagMap.values()){
+    //                 if(catTagMap.containsKey(tag.parent)){
+    //                     catTagMap.get(tag.parent).children.add(tag);
+    //                 }
+    //             }
                 
-            }
+    //         }
             
-        }catch(Exception e){
-            System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
-            throw new AuraHandledException(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
-        }
-        for(Filter filter :filterMap.values()){
-            if(!filter.tags.isEmpty()){
-                filters.add(filter);
-            }
-        }
+    //     }catch(Exception e){
+    //         System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
+    //         throw new AuraHandledException(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
+    //     }
+    //     for(Filter filter :filterMap.values()){
+    //         if(!filter.tags.isEmpty()){
+    //             filters.add(filter);
+    //         }
+    //     }
         
-        //filters.add(PMP_SearchFilterLazyLoading.getCategoryTags(langCode, offerings, pimIds[0], filterMap.get(catList[0].Id), catList));
-        return filters;
-    }
+    //     //filters.add(PMP_SearchFilterLazyLoading.getCategoryTags(langCode, offerings, pimIds[0], filterMap.get(catList[0].Id), catList));
+    //     return filters;
+    // }
     
     //Update by nikhil to increase performance
-    public static List<Filter> getPartnerCategoryFilters(List<String> pimIds, List<String> partners, String langCode){
-        String userLanguage = langCode;
-        // system.debug('userLanguage'+userLanguage);
-        String catNameAPI = PMP_SearchUtilityController.getFieldApiName('PMP_Category__c','Name',userLanguage); 
-        if(String.isEmpty(catNameAPI)){
-            catNameAPI = 'Name';
-        }
-        Map<String,Tag> catTagMap = new Map<String,Tag>();
-        List<Filter> filters = new List<Filter>();
-        List<PMP_Category__c> catList = new List<PMP_Category__c>();
-        String ptnrCatQuery = '';
-        Map<String,Filter> filterMap = new Map<String,Filter>();
-        List<AggregateResult> ptnrCatList = new List<AggregateResult>();
+    // public static List<Filter> getPartnerCategoryFilters(List<String> pimIds, List<String> partners, String langCode){
+    //     String userLanguage = langCode;
+    //     // system.debug('userLanguage'+userLanguage);
+    //     String catNameAPI = PMP_SearchUtilityController.getFieldApiName('PMP_Category__c','Name',userLanguage); 
+    //     if(String.isEmpty(catNameAPI)){
+    //         catNameAPI = 'Name';
+    //     }
+    //     Map<String,Tag> catTagMap = new Map<String,Tag>();
+    //     List<Filter> filters = new List<Filter>();
+    //     List<PMP_Category__c> catList = new List<PMP_Category__c>();
+    //     String ptnrCatQuery = '';
+    //     Map<String,Filter> filterMap = new Map<String,Filter>();
+    //     List<AggregateResult> ptnrCatList = new List<AggregateResult>();
         
-        try{
-           // if(Schema.sObjectType.PMP_Category__c.isAccessible()){
-                catList = [SELECT Id,Name,PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c,PMP_Partner_Product_Category_Cd__c 
-                           FROM PMP_Category__c WHERE PMP_Partner_Product_Category_Cd__c IN :pimIds AND PMP_Active_Ind__c = true WITH SECURITY_ENFORCED];
-           // }
-            ptnrCatQuery = 'SELECT COUNT(PMP_Partner_Id__c)cnt, PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
-                'PMP_Category_Id__r.PMP_Parent_Category_Id__c FROM PMP_Partner_Category__c WHERE PMP_Partner_Id__c IN : partners AND PMP_Category_Id__r.PMP_Active_Ind__c = true AND (';
+    //     try{
+    //        // if(Schema.sObjectType.PMP_Category__c.isAccessible()){
+    //             catList = [SELECT Id,Name,PMP_Category_Chinese_Nm__c,PMP_Category_Japanese_Nm__c,PMP_Partner_Product_Category_Cd__c 
+    //                        FROM PMP_Category__c WHERE PMP_Partner_Product_Category_Cd__c IN :pimIds AND PMP_Active_Ind__c = true WITH SECURITY_ENFORCED];
+    //        // }
+    //         ptnrCatQuery = 'SELECT COUNT(PMP_Partner_Id__c)cnt, PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
+    //             'PMP_Category_Id__r.PMP_Parent_Category_Id__c FROM PMP_Partner_Category__c WHERE PMP_Partner_Id__c IN : partners AND PMP_Category_Id__r.PMP_Active_Ind__c = true AND (';
             
-            for(PMP_Category__c cat: catList){
-                Filter filter = new Filter();
-                filter.name = cat.Id;     //value
-                filter.label = String.valueOf(cat.get(catNameAPI));
-                if(String.isEmpty(filter.label)){
-                    filter.label = cat.Name;
-                }
-                filter.type='tag';
-                if(catList.indexOf(cat) == 0){
-                    ptnrCatQuery += 'PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
-                }else{
-                    ptnrCatQuery += ' OR PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
-                }
-                filter.tags = new List<Tag>();
-                filterMap.put(cat.Id,filter);
-            }
-            ptnrCatQuery += ') GROUP BY PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
-                'PMP_Category_Id__r.PMP_Parent_Category_Id__c';
+    //         for(PMP_Category__c cat: catList){
+    //             Filter filter = new Filter();
+    //             filter.name = cat.Id;     //value
+    //             filter.label = String.valueOf(cat.get(catNameAPI));
+    //             if(String.isEmpty(filter.label)){
+    //                 filter.label = cat.Name;
+    //             }
+    //             filter.type='tag';
+    //             if(catList.indexOf(cat) == 0){
+    //                 ptnrCatQuery += 'PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
+    //             }else{
+    //                 ptnrCatQuery += ' OR PMP_Category_Id__r.PMP_Ancestor_Category_Cd__c LIKE \'' + String.escapeSingleQuotes(cat.PMP_Partner_Product_Category_Cd__c) + '%\'';
+    //             }
+    //             filter.tags = new List<Tag>();
+    //             filterMap.put(cat.Id,filter);
+    //         }
+    //         ptnrCatQuery += ') GROUP BY PMP_Category_Id__c,PMP_Category_Id__r.PMP_Category_Chinese_Nm__c,PMP_Category_Id__r.PMP_Category_Japanese_Nm__c,PMP_Category_Id__r.Name,'+
+    //             'PMP_Category_Id__r.PMP_Parent_Category_Id__c';
             
             
             
-           // if(Schema.sObjectType.PMP_Partner_Category__c.isAccessible()){
-                string strquery = ptnrCatQuery; // added to avoid SOQL injection -- PMD fix
-                ptnrCatList = Database.query(strquery);
-           // } 
+    //        // if(Schema.sObjectType.PMP_Partner_Category__c.isAccessible()){
+    //             string strquery = ptnrCatQuery; // added to avoid SOQL injection -- PMD fix
+    //             ptnrCatList = Database.query(strquery);
+    //        // } 
             
-            if(!ptnrCatList.isEmpty()){
-                /* ------------To sort categories based on sequence Number US705467/US705466 ----------
-                 Note: This is a workaround, as sf does not allow order by in aggregate queries
-                 (PMP_Category_Display_Sequence_Nbr__c is numeric field and group by is not allowed for numeric fields )
-                 Need to replace the ptnrCatList with sortedPtnrCatList 
+    //         if(!ptnrCatList.isEmpty()){
+    //             /* ------------To sort categories based on sequence Number US705467/US705466 ----------
+    //              Note: This is a workaround, as sf does not allow order by in aggregate queries
+    //              (PMP_Category_Display_Sequence_Nbr__c is numeric field and group by is not allowed for numeric fields )
+    //              Need to replace the ptnrCatList with sortedPtnrCatList */
         
-        List<AggregateResult> sortedPtnrCatList = sortAggregateCategories(ptnrCatList);
-                //--------------------End of US705467/US705466 -------------- 
+    //     List<AggregateResult> sortedPtnrCatList = sortAggregateCategories(ptnrCatList);
+    //             //--------------------End of US705467/US705466 -------------- 
         
-        //To Add all the immediate child of given category
+    //     //To Add all the immediate child of given category
                 
-                for (AggregateResult ptnrCat: sortedPtnrCatList)
-                {
-                    String catId = (String)ptnrCat.get('PMP_Category_Id__c');
-                    if(!catTagMap.containsKey(catId)){
-                        Tag tag = new Tag();
-                        tag.label = String.valueOf(ptnrCat.get(catNameAPI));
-                        if(String.isEmpty(tag.label)){
-                            tag.label = (String)ptnrCat.get(PMP_StaticConstants_Partner.CAT_NAME_FIELD);// added as part of PMD fix
-                        }
+    //             for (AggregateResult ptnrCat: sortedPtnrCatList)
+    //             {
+    //                 String catId = (String)ptnrCat.get('PMP_Category_Id__c');
+    //                 if(!catTagMap.containsKey(catId)){
+    //                     Tag tag = new Tag();
+    //                     tag.label = String.valueOf(ptnrCat.get(catNameAPI));
+    //                     if(String.isEmpty(tag.label)){
+    //                         tag.label = (String)ptnrCat.get(PMP_StaticConstants_Partner.CAT_NAME_FIELD);// added as part of PMD fix
+    //                     }
                            
-                        tag.value = catId;
-                        tag.count = (Integer)ptnrCat.get('cnt');
+    //                     tag.value = catId;
+    //                     tag.count = (Integer)ptnrCat.get('cnt');
                         
-                        tag.parent = (String)ptnrCat.get('PMP_Parent_Category_Id__c');
-                        tag.children = new List<Tag>();
+    //                     tag.parent = (String)ptnrCat.get('PMP_Parent_Category_Id__c');
+    //                     tag.children = new List<Tag>();
                         
-                        catTagMap.put(catId,tag);
-                        if(filterMap.containsKey(tag.parent)){
-                            filterMap.get(tag.parent).tags.add(tag);
-                        }
-                    }
+    //                     catTagMap.put(catId,tag);
+    //                     if(filterMap.containsKey(tag.parent)){
+    //                         filterMap.get(tag.parent).tags.add(tag);
+    //                     }
+    //                 }
                     
-                } 
+    //             } 
                 
-                //To Map Parent Child Relationship
-                for(Tag tag :catTagMap.values()){
-                    if(catTagMap.containsKey(tag.parent)){
-                        catTagMap.get(tag.parent).children.add(tag);
-                    }
-                }
+    //             //To Map Parent Child Relationship
+    //             for(Tag tag :catTagMap.values()){
+    //                 if(catTagMap.containsKey(tag.parent)){
+    //                     catTagMap.get(tag.parent).children.add(tag);
+    //                 }
+    //             }
                 
-            }
+    //         }
             
-        }catch(Exception e){
-            System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
-            throw new AuraHandledException(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
-        }
-        for(Filter filter :filterMap.values()){
-            if(!filter.tags.isEmpty()){
-                filters.add(filter);
-            }
-        }
-        return filters;
-    }
-*/    
+    //     }catch(Exception e){
+    //         System.debug(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
+    //         throw new AuraHandledException(e.getMessage()+' '+ e.getCause()+' '+e.getLineNumber());
+    //     }
+    //     for(Filter filter :filterMap.values()){
+    //         if(!filter.tags.isEmpty()){
+    //             filters.add(filter);
+    //         }
+    //     }
+    //     return filters;
+    // }
+    
     
     //Created by Nikhil 12-Aug-2019 //Modified by Nikhil 26-Aug-2019
-    /*public static Filter getPartnerSpecialtyFilter(List<String> partners){
+    // public static Filter getPartnerSpecialtyFilter(List<String> partners){
         
-        //Mapping between spec value and translated label. We will use valueLabelMap to fetch translation
-        Map<String,String> valueLabelMap = new Map<String,String>();
-        Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Account_Specialty__c.getDescribe();      
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        for( Schema.PicklistEntry pickListVal : ple){
-            valueLabelMap.put(pickListVal.getValue(),pickListVal.getLabel());
-        }
+    //     //Mapping between spec value and translated label. We will use valueLabelMap to fetch translation
+    //     Map<String,String> valueLabelMap = new Map<String,String>();
+    //     Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Account_Specialty__c.getDescribe();      
+    //     List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+    //     for( Schema.PicklistEntry pickListVal : ple){
+    //         valueLabelMap.put(pickListVal.getValue(),pickListVal.getLabel());
+    //     }
         
-        //Created by Kartik
-        //We will use valueIdMap to fetch metadata record id for each specialty
-        Map<String,Id> valueIdMap = new Map<String,Id>();
+    //     //Created by Kartik
+    //     //We will use valueIdMap to fetch metadata record id for each specialty
+    //     Map<String,Id> valueIdMap = new Map<String,Id>();
       
-        List<PMP_Partner_Specialty__c> specialtyList = [SELECT id, Name, PMP_Is_Active_Ind__c from PMP_Partner_Specialty__c WHERE PMP_Is_Active_Ind__c = TRUE WITH SECURITY_ENFORCED];
-        for(PMP_Partner_Specialty__c specData: specialtyList){
-            valueIdMap.put(specData.Name, specData.Id); 
-        }
-        //End
+    //     List<PMP_Partner_Specialty__c> specialtyList = [SELECT id, Name, PMP_Is_Active_Ind__c from PMP_Partner_Specialty__c WHERE PMP_Is_Active_Ind__c = TRUE WITH SECURITY_ENFORCED];
+    //     for(PMP_Partner_Specialty__c specData: specialtyList){
+    //         valueIdMap.put(specData.Name, specData.Id); 
+    //     }
+    //     //End
         
-        List<String> specList = new List<String>();
-        Map<String,Tag> specTagMap = new Map<String,Tag>();
-        Map<String, Integer> valueCountMap = new Map<String, Integer>();
-        Filter filter = new Filter();
-        filter.tags = new List<Tag>();
-        filter.name = 'Specialty_Partner';       //Value of Filter
-        filter.label = System.Label.PMP_Specialty;
-        filter.type = 'tag';
-        List<PMP_Company__c> companyList = new List<PMP_Company__c>();
+    //     List<String> specList = new List<String>();
+    //     Map<String,Tag> specTagMap = new Map<String,Tag>();
+    //     Map<String, Integer> valueCountMap = new Map<String, Integer>();
+    //     Filter filter = new Filter();
+    //     filter.tags = new List<Tag>();
+    //     filter.name = 'Specialty_Partner';       //Value of Filter
+    //     filter.label = System.Label.PMP_Specialty;
+    //     filter.type = 'tag';
+    //     List<PMP_Company__c> companyList = new List<PMP_Company__c>();
         
-            companyList = [SELECT PMP_Account_Specialty__c from PMP_Company__c WHERE id in :partners AND PMP_Account_Specialty__c != null WITH SECURITY_ENFORCED ];
+    //         companyList = [SELECT PMP_Account_Specialty__c from PMP_Company__c WHERE id in :partners AND PMP_Account_Specialty__c != null WITH SECURITY_ENFORCED ];
         
         
-        for(PMP_Company__c partner:companyList){
-            specList.addAll(partner.PMP_Account_Specialty__c.split(';'));
-        }
-        for(String spec : specList){
-            if(valueLabelMap.containsKey(spec) && !spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
-                //if(!spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
-                    if(!specTagMap.containsKey(spec)){
-                        Tag tag = new Tag();
-                        tag.label = valueLabelMap.get(spec);
-                        tag.value = valueIdMap.get(spec);    //Added by Kartik
-                        tag.count= 1;
-                        tag.children  = new List<Tag>();
-                        filter.tags.add(tag);
-                        specTagMap.put(spec,tag);
-                    }else{
-                        specTagMap.get(spec).count += 1;
-                    }
-                //}
-            }
-        }
-        return filter;
-    }*/
+    //     for(PMP_Company__c partner:companyList){
+    //         specList.addAll(partner.PMP_Account_Specialty__c.split(';'));
+    //     }
+    //     for(String spec : specList){
+    //         if(valueLabelMap.containsKey(spec) && !spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
+    //             //if(!spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
+    //                 if(!specTagMap.containsKey(spec)){
+    //                     Tag tag = new Tag();
+    //                     tag.label = valueLabelMap.get(spec);
+    //                     tag.value = valueIdMap.get(spec);    //Added by Kartik
+    //                     tag.count= 1;
+    //                     tag.children  = new List<Tag>();
+    //                     filter.tags.add(tag);
+    //                     specTagMap.put(spec,tag);
+    //                 }else{
+    //                     specTagMap.get(spec).count += 1;
+    //                 }
+    //             //}
+    //         }
+    //     }
+    //     return filter;
+    // }
     
     
     
     
     //Created by Kartik 07-Jan-2020
-    /*@AuraEnabled(cacheable=true)
-    public static Filter getPartnerSpecialtyFilterOfferings(List<String> offerings){
+    // @AuraEnabled(cacheable=true)
+    // public static Filter getPartnerSpecialtyFilterOfferings(List<String> offerings){
         
-        Map<String,String> valueLabelMap = new Map<String,String>();
-        //Map is passing label and value of the picklist
-        Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Account_Specialty__c.getDescribe();  
-        //Schema.DescribeFieldResult is used to read the values of the picklist
-        List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
-        //Storing the picklist values in a list
-        for( Schema.PicklistEntry pickListVal : ple){
-            valueLabelMap.put(pickListVal.getValue(),pickListVal.getLabel());
-        }
-        //adding the label and values in the map.
-        List<String> specList = new List<String>();
-        //Wrapper class data fetching
-        Map<String,Tag> specTagMap = new Map<String,Tag>();
-        Map<String, Integer> valueCountMap = new Map<String, Integer>(); //Map for count
-        Filter filter = new Filter();
-        filter.tags = new List<Tag>();
-        filter.name = 'Specialty_Offering';       //Value of Filter
-        filter.label = System.Label.PMP_Specialty; //replace with custom label
-        filter.type = 'tag';
+    //     Map<String,String> valueLabelMap = new Map<String,String>();
+    //     //Map is passing label and value of the picklist
+    //     Schema.DescribeFieldResult fieldResult = PMP_Company__c.PMP_Account_Specialty__c.getDescribe();  
+    //     //Schema.DescribeFieldResult is used to read the values of the picklist
+    //     List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+    //     //Storing the picklist values in a list
+    //     for( Schema.PicklistEntry pickListVal : ple){
+    //         valueLabelMap.put(pickListVal.getValue(),pickListVal.getLabel());
+    //     }
+    //     //adding the label and values in the map.
+    //     List<String> specList = new List<String>();
+    //     //Wrapper class data fetching
+    //     Map<String,Tag> specTagMap = new Map<String,Tag>();
+    //     Map<String, Integer> valueCountMap = new Map<String, Integer>(); //Map for count
+    //     Filter filter = new Filter();
+    //     filter.tags = new List<Tag>();
+    //     filter.name = 'Specialty_Offering';       //Value of Filter
+    //     filter.label = System.Label.PMP_Specialty; //replace with custom label
+    //     filter.type = 'tag';
         
-        //Added as part of US603233 - 03/05/2020
-        //valueIdMap is used to fetch metadata record id for each specialty
-        Map<String,Id> valueIdMap = new Map<String,Id>();
+    //     //Added as part of US603233 - 03/05/2020
+    //     //valueIdMap is used to fetch metadata record id for each specialty
+    //     Map<String,Id> valueIdMap = new Map<String,Id>();
         
-        List<PMP_Partner_Specialty__c> specialtyList = [SELECT id, Name, PMP_Is_Active_Ind__c from PMP_Partner_Specialty__c WHERE PMP_Is_Active_Ind__c = TRUE WITH SECURITY_ENFORCED];
-        for(PMP_Partner_Specialty__c specData: specialtyList){
-            valueIdMap.put(specData.Name, specData.Id); 
-        }
-        //End
+    //     List<PMP_Partner_Specialty__c> specialtyList = [SELECT id, Name, PMP_Is_Active_Ind__c from PMP_Partner_Specialty__c WHERE PMP_Is_Active_Ind__c = TRUE WITH SECURITY_ENFORCED];
+    //     for(PMP_Partner_Specialty__c specData: specialtyList){
+    //         valueIdMap.put(specData.Name, specData.Id); 
+    //     }
+    //     //End
         
-        List<PMP_Partner_Offering__c> offList = new List<PMP_Partner_Offering__c>();
+    //     List<PMP_Partner_Offering__c> offList = new List<PMP_Partner_Offering__c>();
 
-            offList = [SELECT PMP_Company_Id__r.PMP_Account_Specialty__c FROM PMP_Partner_Offering__c WHERE Id in :offerings AND PMP_Company_Id__r.PMP_Account_Specialty__c != null WITH SECURITY_ENFORCED]; 
+    //         offList = [SELECT PMP_Company_Id__r.PMP_Account_Specialty__c FROM PMP_Partner_Offering__c WHERE Id in :offerings AND PMP_Company_Id__r.PMP_Account_Specialty__c != null WITH SECURITY_ENFORCED]; 
 
         
-        for(PMP_Partner_Offering__c offering:offList){    
-            if(offering.PMP_Company_Id__r.PMP_Account_Specialty__c != null){
-                specList.addAll(offering.PMP_Company_Id__r.PMP_Account_Specialty__c.split(';'));
-            }
-        }
-        for(String spec : specList){
-            if(valueLabelMap.containsKey(spec) && !spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
-                //if(!spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
-                    if(!specTagMap.containsKey(spec)){
-                        //If satisfies the condition add to Map.
-                        Tag tag = new Tag();
-                        tag.label = valueLabelMap.get(spec);
-                        //tag.value = spec.replace(' ','_');
-                        tag.value = valueIdMap.get(spec);    //Added by Kartik
-                        tag.count= 1;
-                        tag.children  = new List<Tag>();
-                        filter.tags.add(tag);
-                        specTagMap.put(spec,tag);
-                    }else{
-                        //If already satisfying the condition, take the count 
-                        specTagMap.get(spec).count += 1;
-                    }
-                //}
-            }
-        }
-        return filter;
-    }
-    */
+    //     for(PMP_Partner_Offering__c offering:offList){    
+    //         if(offering.PMP_Company_Id__r.PMP_Account_Specialty__c != null){
+    //             specList.addAll(offering.PMP_Company_Id__r.PMP_Account_Specialty__c.split(';'));
+    //         }
+    //     }
+    //     for(String spec : specList){
+    //         if(valueLabelMap.containsKey(spec) && !spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
+    //             //if(!spec.equals(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)){
+    //                 if(!specTagMap.containsKey(spec)){
+    //                     //If satisfies the condition add to Map.
+    //                     Tag tag = new Tag();
+    //                     tag.label = valueLabelMap.get(spec);
+    //                     //tag.value = spec.replace(' ','_');
+    //                     tag.value = valueIdMap.get(spec);    //Added by Kartik
+    //                     tag.count= 1;
+    //                     tag.children  = new List<Tag>();
+    //                     filter.tags.add(tag);
+    //                     specTagMap.put(spec,tag);
+    //                 }else{
+    //                     //If already satisfying the condition, take the count 
+    //                     specTagMap.get(spec).count += 1;
+    //                 }
+    //             //}
+    //         }
+    //     }
+    //     return filter;
+    // }
+    
     //Created by Kartik
     //Method to fetch offerings based on the Specialty selected//
     
@@ -877,102 +877,102 @@ return filter;
     }
     
     //Add Partner Program Filter
-    /*public static Filter getOfferingPartnerProgramFilter(List<String> offerings,String langCode){
+    // public static Filter getOfferingPartnerProgramFilter(List<String> offerings,String langCode){
         
-        Map<String,Integer> countMap = new Map<String,Integer>(); //build count
-        List<String> progSpecList = new List<String>(); //List of Values
+    //     Map<String,Integer> countMap = new Map<String,Integer>(); //build count
+    //     List<String> progSpecList = new List<String>(); //List of Values
         
-        List<PMP_Partner_Offering__c> offList = [SELECT id, PMP_Company_Id__r.PMP_Partner_Program_nm__c,PMP_Company_Id__r.PMP_Account_Specialty__c from PMP_Partner_Offering__c where id in: offerings WITH SECURITY_ENFORCED];
+    //     List<PMP_Partner_Offering__c> offList = [SELECT id, PMP_Company_Id__r.PMP_Partner_Program_nm__c,PMP_Company_Id__r.PMP_Account_Specialty__c from PMP_Partner_Offering__c where id in: offerings WITH SECURITY_ENFORCED];
         
-        for(PMP_Partner_Offering__c off : offList){
-            if(off.PMP_Company_Id__r.PMP_Partner_Program_nm__c!=null){
-                progSpecList.addAll(off.PMP_Company_Id__r.PMP_Partner_Program_nm__c.split(';'));
+    //     for(PMP_Partner_Offering__c off : offList){
+    //         if(off.PMP_Company_Id__r.PMP_Partner_Program_nm__c!=null){
+    //             progSpecList.addAll(off.PMP_Company_Id__r.PMP_Partner_Program_nm__c.split(';'));
                 
-            }
-            if(off.PMP_Company_Id__r.PMP_Account_Specialty__c!=null && off.PMP_Company_Id__r.PMP_Account_Specialty__c.contains(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program))
-            {
-                progSpecList.add(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program);
-            }
-        }
-        // system.debug('specList' + progSpecList);
+    //         }
+    //         if(off.PMP_Company_Id__r.PMP_Account_Specialty__c!=null && off.PMP_Company_Id__r.PMP_Account_Specialty__c.contains(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program))
+    //         {
+    //             progSpecList.add(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program);
+    //         }
+    //     }
+    //     // system.debug('specList' + progSpecList);
         
-        for(String progSpec: progSpecList){
-            if(countMap.get(progSpec) == null){
-                countMap.put(progSpec,1);
+    //     for(String progSpec: progSpecList){
+    //         if(countMap.get(progSpec) == null){
+    //             countMap.put(progSpec,1);
                 
-            }else{
-                Integer count = countMap.get(progSpec)+1;//increment count
-                countMap.put(progSpec,count);//updating the count
-            }
+    //         }else{
+    //             Integer count = countMap.get(progSpec)+1;//increment count
+    //             countMap.put(progSpec,count);//updating the count
+    //         }
             
-        }
+    //     }
         
-        Filter filter = new Filter();
-        filter.tags = new List<Tag>();
-        filter.name = 'Partner_Program_Offering';//Value of Filter
-        filter.label = System.Label.PMP_Partner_Programs; //replace with custom label
-        filter.type = 'tag';
-        
-        
-     /*   String partnerProgName = PMP_SearchUtilityController.getFieldApiName('PMP_SearchPartnerProgram_Config__mdt', 'Partner_Program_Name',langCode);
-        if(String.isEmpty(partnerProgName)){
-            partnerProgName = 'PMP_Partner_Program_Name__c';
-        }
-        List<PMP_SearchPartnerProgram_Config__mdt> ppList = new List<PMP_SearchPartnerProgram_Config__mdt>();
-        
-        ppList = [SELECT Label,PMP_Partner_Program_Name__c,Active__c,  PMP_Partner_Program_value__c,
-                  PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c,
-                  PMP_Partner_Program_Desc__c, PMP_Partner_Program_Desc_Chinese__c, PMP_Partner_Program_Desc_Japanese__c
-                  FROM PMP_SearchPartnerProgram_Config__mdt
-                  WHERE Active__c = true WITH SECURITY_ENFORCED ORDER BY PMP_Partner_Program_Name__c ];
+    //     Filter filter = new Filter();
+    //     filter.tags = new List<Tag>();
+    //     filter.name = 'Partner_Program_Offering';//Value of Filter
+    //     filter.label = System.Label.PMP_Partner_Programs; //replace with custom label
+    //     filter.type = 'tag';
         
         
-        for(PMP_SearchPartnerProgram_Config__mdt pp : ppList){
-            Tag tag = new Tag();
-            tag.label = String.valueOf(pp.get(partnerProgName)); //translated value
-            tag.value = pp.PMP_Partner_Program_value__c;
+    //  /*   String partnerProgName = PMP_SearchUtilityController.getFieldApiName('PMP_SearchPartnerProgram_Config__mdt', 'Partner_Program_Name',langCode);
+    //     if(String.isEmpty(partnerProgName)){
+    //         partnerProgName = 'PMP_Partner_Program_Name__c';
+    //     }
+    //     List<PMP_SearchPartnerProgram_Config__mdt> ppList = new List<PMP_SearchPartnerProgram_Config__mdt>();
+        
+    //     ppList = [SELECT Label,PMP_Partner_Program_Name__c,Active__c,  PMP_Partner_Program_value__c,
+    //               PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c,
+    //               PMP_Partner_Program_Desc__c, PMP_Partner_Program_Desc_Chinese__c, PMP_Partner_Program_Desc_Japanese__c
+    //               FROM PMP_SearchPartnerProgram_Config__mdt
+    //               WHERE Active__c = true WITH SECURITY_ENFORCED ORDER BY PMP_Partner_Program_Name__c ];
+        
+        
+    //     for(PMP_SearchPartnerProgram_Config__mdt pp : ppList){
+    //         Tag tag = new Tag();
+    //         tag.label = String.valueOf(pp.get(partnerProgName)); //translated value
+    //         tag.value = pp.PMP_Partner_Program_value__c;
             
-            tag.children = new List<Tag>();
-            if(countMap.get(pp.PMP_Partner_Program_value__c)!=null){
-                tag.count = countMap.get(pp.PMP_Partner_Program_value__c);
-                filter.tags.add(tag);
-            } 
-        } 
+    //         tag.children = new List<Tag>();
+    //         if(countMap.get(pp.PMP_Partner_Program_value__c)!=null){
+    //             tag.count = countMap.get(pp.PMP_Partner_Program_value__c);
+    //             filter.tags.add(tag);
+    //         } 
+    //     } */
         
-        List<PMP_Partner_Program__c> ppList = new List<PMP_Partner_Program__c>();
+    //     List<PMP_Partner_Program__c> ppList = new List<PMP_Partner_Program__c>();
         
-        if(Schema.sObjectType.PMP_Partner_Program__c.isAccessible()){
-        	ppList = [select id,Name, PMP_Is_Active_Ind__c, PMP_Partner_Program_Value_Txt__c, PMP_Partner_Program_Desc__c, PMP_Partner_Program_Desc_Chinese__c, 
-                  	  PMP_Partner_Program_Desc_Japanese__c, PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c from PMP_Partner_Program__c 
-                      WHERE PMP_Is_Active_Ind__c = true ORDER BY Name];
-        }
+    //     if(Schema.sObjectType.PMP_Partner_Program__c.isAccessible()){
+    //     	ppList = [select id,Name, PMP_Is_Active_Ind__c, PMP_Partner_Program_Value_Txt__c, PMP_Partner_Program_Desc__c, PMP_Partner_Program_Desc_Chinese__c, 
+    //               	  PMP_Partner_Program_Desc_Japanese__c, PMP_Partner_Program_Name_Chinese__c, PMP_Partner_Program_Name_Japanese__c from PMP_Partner_Program__c 
+    //                   WHERE PMP_Is_Active_Ind__c = true ORDER BY Name];
+    //     }
         
-        for(PMP_Partner_Program__c pp : ppList){
-            String progname=PMP_SearchUtilityController.getLocalisedName(pp, PMP_StaticConstants_Partner.CAT_NAME_FIELD, langCode);
-            Tag tag = new Tag();
-            tag.label = progname; //translated value
-            tag.value = pp.PMP_Partner_Program_Value_Txt__c;
+    //     for(PMP_Partner_Program__c pp : ppList){
+    //         String progname=PMP_SearchUtilityController.getLocalisedName(pp, PMP_StaticConstants_Partner.CAT_NAME_FIELD, langCode);
+    //         Tag tag = new Tag();
+    //         tag.label = progname; //translated value
+    //         tag.value = pp.PMP_Partner_Program_Value_Txt__c;
             
-            tag.children = new List<Tag>();
-            if(countMap.get(pp.PMP_Partner_Program_Value_Txt__c)!=null){
-                tag.count = countMap.get(pp.PMP_Partner_Program_Value_Txt__c);
-                filter.tags.add(tag);
-            } 
-        } 
+    //         tag.children = new List<Tag>();
+    //         if(countMap.get(pp.PMP_Partner_Program_Value_Txt__c)!=null){
+    //             tag.count = countMap.get(pp.PMP_Partner_Program_Value_Txt__c);
+    //             filter.tags.add(tag);
+    //         } 
+    //     } 
         
-        Tag tag = new Tag();
-        tag.label =System.Label.PMP_Partner_Directory_title3; //translated value
-        tag.value =PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program.replace(' ','_');
+    //     Tag tag = new Tag();
+    //     tag.label =System.Label.PMP_Partner_Directory_title3; //translated value
+    //     tag.value =PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program.replace(' ','_');
         
-        tag.children = new List<Tag>();
-        if(countMap.get(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)!=null){
-            tag.count = countMap.get(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program);
-            filter.tags.add(tag);
+    //     tag.children = new List<Tag>();
+    //     if(countMap.get(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program)!=null){
+    //         tag.count = countMap.get(PMP_StaticConstants_Partner.LOEM_ODM_Partner_Program);
+    //         filter.tags.add(tag);
             
-        } 
+    //     } 
         
-        return filter;
-    }*/
+    //     return filter;
+    // }
     
 /*@Description: To sort the aggregate query of Offering category or Partner category object
                 based on the PMP_Category_Display_Sequence_Nbr__c field of the Category Object.

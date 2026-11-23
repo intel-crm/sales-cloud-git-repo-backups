@@ -36,5 +36,12 @@
         <name>PMP_Specification_Value_Id__c</name>
         <relationshipLabel><!-- Specification SpecValue Associations --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Specification SpecValue Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

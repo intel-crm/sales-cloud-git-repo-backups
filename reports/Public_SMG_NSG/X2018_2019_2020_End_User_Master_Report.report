@@ -10,10 +10,22 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
     </columns>
     <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
         <field>Account.Core_Account_Country__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Consumption_Market__c</field>
@@ -22,10 +34,13 @@
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
     </columns>
     <columns>
-        <field>PRODUCT_NAME</field>
+        <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
+        <field>OpportunityLineItem.Core_Vendor_Group__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Date__c</field>
@@ -34,12 +49,18 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Last_Activity_Date__c</field>
+    </columns>
+    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>QUANTITY</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
     </columns>
     <description>Used for NSM Update</description>
     <filter>
@@ -58,7 +79,7 @@
             <value>Yes</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -94,8 +115,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2021-01-02</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2017-12-30</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

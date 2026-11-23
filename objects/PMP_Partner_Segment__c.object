@@ -215,6 +215,15 @@
         <unique>false</unique>
     </fields>
     <label>Marketplace Partner Segment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Is_Active_Ind__c</columns>
+        <columns>PMP_Partner_Segment_Value_Txt__c</columns>
+        <columns>PMP_Partner_Segment_English_Dsc_Txt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Marketplace Partner Segment Name</label>
         <type>Text</type>

@@ -6,7 +6,7 @@
         <masterLabel>Commissionable</masterLabel>
         <nullTreatment>n</nullTreatment>
         <otherBucketLabel>Other</otherBucketLabel>
-        <sourceColumnName>OpportunityLineItem.Core_BU_Short_Name_Old__c</sourceColumnName>
+        <sourceColumnName>OpportunityLineItem.Core_BU_Short_Name__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
             <sourceValues>
@@ -125,7 +125,7 @@
         <groupingColumn>BucketField_31708393</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_TOP</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</secondaryGroupingColumn>
         <showAxisLabels>true</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -293,7 +293,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>EMEA OSG DW Embedded QTD</name>
@@ -322,6 +322,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

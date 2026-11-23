@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>43.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>This page is used to redirect users to appropriate case attach pages based on the Profile and Permission sets.</description>
+    <label>Core_IPS_External_AttachFile_Redirect</label>
+</ApexPage>

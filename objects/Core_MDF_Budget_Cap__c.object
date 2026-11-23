@@ -212,27 +212,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Budget_Type_nm__c</fullName>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Budget_Types</valueSetName>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Campaigns_Link_failed_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field is used to indicate whether campaigns linking got failed for the budget cap; If even single campaign didnt get link due to failure then the checkbox will be true otherwise false.</description>
-        <label>Campaigns Linking failed?</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Cap_Status_nm__c</fullName>
         <label>Cap Status</label>
         <required>false</required>
@@ -242,26 +221,16 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>Active</fullName>
-                    <default>false</default>
-                    <label>Active</label>
+                    <fullName>Pending Review</fullName>
+                    <default>true</default>
+                    <label>Pending Review</label>
                 </value>
                 <value>
                     <fullName>Approved</fullName>
                     <default>false</default>
                     <label>Approved</label>
-                </value>
-                <value>
-                    <fullName>Inactive</fullName>
-                    <default>false</default>
-                    <label>Inactive</label>
-                </value>
-                <value>
-                    <fullName>Pending Review</fullName>
-                    <default>true</default>
-                    <label>Pending Review</label>
                 </value>
                 <value>
                     <fullName>Revision Required</fullName>
@@ -281,21 +250,11 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Channel Led Activity</fullName>
                     <default>true</default>
                     <label>Channel Led Activity</label>
-                </value>
-                <value>
-                    <fullName>Channel MDF Budget Type Cap</fullName>
-                    <default>false</default>
-                    <label>Channel MDF Budget Type Cap</label>
-                </value>
-                <value>
-                    <fullName>IPA Budget Type Cap</fullName>
-                    <default>false</default>
-                    <label>IPA Budget Type Cap</label>
                 </value>
                 <value>
                     <fullName>Variable Reimbursement Incentive Applied</fullName>
@@ -317,22 +276,6 @@
         <type>Currency</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Effective_End_Date_Dt__c</fullName>
-        <label>Effective End Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Effective_Start_Date_Dt__c</fullName>
-        <label>Effective Start Date</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Program_txt__c</fullName>
         <externalId>false</externalId>
         <label>Program</label>
@@ -344,54 +287,8 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Region_nm__c</fullName>
-        <description>Stores the Region name for the Budget Cap</description>
-        <label>Geo</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>APJ</fullName>
-                    <default>false</default>
-                    <label>APJ</label>
-                </value>
-                <value>
-                    <fullName>ASMO</fullName>
-                    <default>false</default>
-                    <label>ASMO</label>
-                </value>
-                <value>
-                    <fullName>EMEA</fullName>
-                    <default>false</default>
-                    <label>EMEA</label>
-                </value>
-                <value>
-                    <fullName>PRC</fullName>
-                    <default>false</default>
-                    <label>PRC</label>
-                </value>
-                <value>
-                    <fullName>WW</fullName>
-                    <default>false</default>
-                    <label>WW</label>
-                </value>
-                <value>
-                    <fullName>INDIA</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>INDIA</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Remaining_Cap_amt__c</fullName>
-        <formula>IF( RecordType.DeveloperName  = &apos;Core_MDF_CCP_Budget_Cap&apos;,(Core_MDF_Approved_Cap_amt__c - Core_MDF_Claimed_Cap_amt__c),( Core_MDF_Requested_Cap_amt__c -  Core_MDF_Claimed_Cap_amt__c ))</formula>
+        <formula>(Core_MDF_Approved_Cap_amt__c - Core_MDF_Claimed_Cap_amt__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Remaining Cap Amount</label>
         <precision>18</precision>
@@ -428,8 +325,6 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Cap_Type_nm__c</columns>
-        <columns>Core_MDF_Budget_Type_nm__c</columns>
-        <columns>Core_MDF_Region_nm__c</columns>
         <columns>Core_MDF_Cap_Status_nm__c</columns>
         <columns>Core_MDF_Requested_Cap_amt__c</columns>
         <columns>Core_MDF_Approved_Cap_amt__c</columns>
@@ -439,6 +334,7 @@
         <columns>Core_MDF_Budget_Amount_amt__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Core_MDF_CCFB_Budget_Caps_Approved</fullName>
@@ -783,173 +679,6 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Budget Caps</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <recordTypes>
-        <fullName>Core_MDF_CCP_Budget_Cap</fullName>
-        <active>true</active>
-        <label>CCP Budget Cap</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Cap_Status_nm__c</picklist>
-            <values>
-                <fullName>Approved</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Pending Review</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Revision Required</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Cap_Type_nm__c</picklist>
-            <values>
-                <fullName>Channel Led Activity</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Variable Reimbursement Incentive Applied</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Region_nm__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WW</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
-    <recordTypes>
-        <fullName>Core_MDF_IPA_Budget_Type_Cap</fullName>
-        <active>true</active>
-        <label>IPA Budget Type Cap</label>
-        <picklistValues>
-            <picklist>Core_MDF_Budget_Type_nm__c</picklist>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Specialties MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Premier - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Targeted - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ODM Growth Plan - Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal I MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal II MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Cap_Status_nm__c</picklist>
-            <values>
-                <fullName>Active</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>Inactive</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Cap_Type_nm__c</picklist>
-            <values>
-                <fullName>IPA Budget Type Cap</fullName>
-                <default>true</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Region_nm__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WW</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
     <validationRules>
@@ -960,97 +689,11 @@
         <errorMessage>Budget cap can’t be created on Rejected budget</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_MDF_IPABudgetCaps_ActiveValidation</fullName>
-        <active>true</active>
-        <description>IPA Budget Type Caps can&apos;t be Inactive during creation</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , ISNEW(),ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Inactive&apos;))</errorConditionFormula>
-        <errorMessage>IPA Budget Caps can&apos;t be Inactive during creation</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_BudgetType_cannotbeEdited</fullName>
-        <active>true</active>
-        <description>For IPA Budget Caps; Budget Type field cannot be edited.</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, NOT(ISNEW()),ISCHANGED(Core_MDF_Budget_Type_nm__c))</errorConditionFormula>
-        <errorMessage>Budget Type cannot be changed.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_Geo_cannotbeEdited</fullName>
-        <active>true</active>
-        <description>For IPA Budget Caps; Geo field cannot be edited.</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),ISCHANGED(Core_MDF_Region_nm__c),  TEXT(Core_MDF_Cap_Status_nm__c)=&apos;Active&apos;  )</errorConditionFormula>
-        <errorMessage>Geo cannot be changed.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_MandatoryEffectiveStartDate</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(Core_MDF_Effective_Start_Date_Dt__c))</errorConditionFormula>
-        <errorMessage>Effective Start Date is mandatory</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_Mandatory_BudgetType</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(TEXT( Core_MDF_Budget_Type_nm__c )))</errorConditionFormula>
-        <errorMessage>Budget Type is mandatory</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_Mandatory_EffectiveEndDate</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISBLANK(Core_MDF_Effective_End_Date_Dt__c))</errorConditionFormula>
-        <errorMessage>Effective End Date is mandatory</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_Mandatory_Geo</fullName>
-        <active>true</active>
-        <description>Geo is mandatory for IPA</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,ISBLANK(TEXT( Core_MDF_Region_nm__c)))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Region_nm__c</errorDisplayField>
-        <errorMessage>Geo is mandatory</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_IPA_Mandatory_ReqCapAmt</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(RecordType.DeveloperName =&apos;Core_MDF_IPA_Budget_Type_Cap&apos;,
-ISNULL( Core_MDF_Requested_Cap_amt__c ))</errorConditionFormula>
-        <errorMessage>Requested Cap Amount is mandatory</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Validate_ReqCapAmt_OnAmtChange</fullName>
-        <active>true</active>
-        <description>Requested Cap Amount cannot be less than Claimed Cap Amount on requested amount change</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; ,NOT(ISNEW()),ISCHANGED( Core_MDF_Requested_Cap_amt__c ) , Core_MDF_Requested_Cap_amt__c &lt;  Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
-        <errorMessage>The revised Requested Cap Amount cannot be lesser than Claimed Cap Amount.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Validate_ReqCapAmt_OnCreation</fullName>
-        <active>true</active>
-        <description>This rule validates the Budget Cap&apos;s requested amount with claimed amount while creation or activation</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos;, Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c ,OR(ISNEW(), AND(ISCHANGED( Core_MDF_Cap_Status_nm__c ),
-ISPICKVAL(Core_MDF_Cap_Status_nm__c, &apos;Active&apos;))
-))</errorConditionFormula>
-        <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount for the given time period.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Validate_ReqCapAmt_OnDateChange</fullName>
-        <active>true</active>
-        <description>This rule validates budget cap amount with claimed cap amount when time period of budget cap is changed</description>
-        <errorConditionFormula>AND( RecordType.DeveloperName = &apos;Core_MDF_IPA_Budget_Type_Cap&apos; , NOT(ISNEW()),OR(ISCHANGED( Core_MDF_Effective_Start_Date_Dt__c  ) , ISCHANGED( Core_MDF_Effective_End_Date_Dt__c )),  Core_MDF_Requested_Cap_amt__c &lt; Core_MDF_Claimed_Cap_amt__c)</errorConditionFormula>
-        <errorMessage>The Requested Cap Amount cannot be lesser than Claimed Cap Amount (due to change in the time period).</errorMessage>
-    </validationRules>
-    <validationRules>
         <fullName>Core_MDF_Validate_ReqCapAmt_With_BdgtAmt</fullName>
         <active>true</active>
         <description>Requested Cap Amount should be lesser than or equal to Budget Amount.</description>
-        <errorConditionFormula>AND(RecordType.DeveloperName = &apos;Core_MDF_CCP_Budget_Cap&apos;, Core_MDF_Requested_Cap_amt__c &gt; Core_MDF_Budget_Amount_amt__c)</errorConditionFormula>
+        <errorConditionFormula>Core_MDF_Requested_Cap_amt__c &gt; Core_MDF_Budget_Amount_amt__c</errorConditionFormula>
         <errorMessage>Requested Cap Amount should be lesser than or equal to Budget Amount.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Validate_StartDate_EndDate</fullName>
-        <active>true</active>
-        <errorConditionFormula>Core_MDF_Effective_End_Date_Dt__c &lt; Core_MDF_Effective_Start_Date_Dt__c</errorConditionFormula>
-        <errorMessage>Effective End Date should be greater than Effective Start Date</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

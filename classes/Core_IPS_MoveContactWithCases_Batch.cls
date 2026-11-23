@@ -104,9 +104,6 @@ global class Core_IPS_MoveContactWithCases_Batch implements Database.Batchable<s
         if(attachmentLst!= null && !attachmentLst.isEmpty()) {
             mail.setFileAttachments(attachmentLst);    
         }
-        if(!Test.isRunningTest()) {
-        mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
         Messaging.sendEmail(new Messaging.Email[] { mail });
-        }
     }
 }

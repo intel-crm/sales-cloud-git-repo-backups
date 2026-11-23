@@ -11,6 +11,27 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "description" : "",
+        "marqueeDataSource" : "Benefit Service",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "#",
+        "rightCta1Label" : "Company Info",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "",
+        "title" : "Partner Benefit"
+      },
+      "componentName" : "c:lwctestMQ",
+      "id" : "982a52db-03d8-4449-bd3d-de6b0d630bea",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
         "tabsetConfig" : {
           "UUID" : "92e54daf-e51c-4aad-8e12-8b9ac0abaa29",
           "activeTab" : "tab1",

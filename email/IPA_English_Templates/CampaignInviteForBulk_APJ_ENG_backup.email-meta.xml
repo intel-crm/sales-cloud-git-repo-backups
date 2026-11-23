@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>CampaignInviteForBulk_APJ_ENG_backup</name>
+    <style>none</style>
+    <subject>Join the Intel® Partner Alliance today!  An invitation from your companies admin awaits!</subject>
+    <textOnly>We invite you to join our Intel Partner Alliance Program!
+
+Get access to advanced training, developer resources, marketing and sales tools and support.
+
+Why do partners like you grow with Intel ?
+
+Click to join
+
+Dear: {!Contact.FirstName}  {!Contact.LastName}
+Email Address: {!Contact.Email}
+
+
+Where there’s cloud there’s Intel. Partner with us to maximise your opportunities, accelerate innovation and grow your business when you join the Intel® Partner Alliance Program.  Be a part of our growing network of ecosystem partners.
+
+When you join Intel® Partner Alliance, you will receive access to advanced training, tech talks from Cloud Solution Architects, developer resources, marketing and sales tools and support.
+
+Resources are there to help you sell services and solutions for cloud, security, IoT, high performance computing, AI, and other technology solution areas.  Plan, recommend or build Intel-based solutions and services that deliver customer value.
+
+Take a few moments to complete your registration and get started today.
+
+Click to join
+
+This link will expire in 5 days – click the existing ‘Click to Join’ link to get a refreshed link.  We’ll use your email address as your username.
+
+¹Must be Points eligible to qualify. See eligibility requirements.
+
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Unsubscribe</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

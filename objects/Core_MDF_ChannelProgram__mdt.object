@@ -5,25 +5,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Abbreviated ProgramName</label>
-        <length>10</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Act_Budget_Amt_Chk_Reqd__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To validate that the total amount across all claims submitted for the activity does not exceed the amount on the activity</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Activity Budget Amount Check Required</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_BankDocHold_Countries_Required__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Bank Document Hold Required - Countries</label>
-        <length>100</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -33,86 +15,10 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Bank Program Value</label>
-        <length>50</length>
+        <length>255</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_BudgetTypeBasedSharing_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>BudgetTypeBasedSharing</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_CampNotEditFieldsWhenPFRExists__c</fullName>
-        <description>The campaign field value can not be changed if an activity exists.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Camp Not Editable Fields When PFR Exists</label>
-        <length>32768</length>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Campaign_Picklist_Fields__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Campaign Picklist Fields</label>
-        <length>32000</length>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Campaign_Text_Fields__c</fullName>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Campaign Text Fields</label>
-        <length>32000</length>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_ClaimSubEntitlementName_Txt__c</fullName>
-        <description>It will store claim submitter entitlement name. It can handle semi colon separated  values also.</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Claim Submitter Entitlement name</label>
-        <length>100</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Cmpgn_CAP_Validation_Required__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Validate all sum of valida claims amount against the campaign cap amount</description>
-        <fieldManageability>SubscriberControlled</fieldManageability>
-        <label>Campaign CAP Validation Required</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Contact_Entitlement_Nm__c</fullName>
-        <description>It holds contact entitlement corresponding to program</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Contact Entitlement Name</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Ignore_External_Alloc_Sharing__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Ignore External Allocation Sharing</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Ignore_External_Budget_Sharing__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>SubscriberControlled</fieldManageability>
-        <label>Ignore External Budget Sharing</label>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_InctQuest_Label_Ref__c</fullName>

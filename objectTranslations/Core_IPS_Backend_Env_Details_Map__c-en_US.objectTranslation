@@ -35,6 +35,13 @@
         <name>Core_IPS_Environmental_Variable_Name__c</name>
         <relationshipLabel><!-- Backend Env Details Maps --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Backend Env Details Map Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Select Environmental Variable which is defined for the Support Organization --></errorMessage>

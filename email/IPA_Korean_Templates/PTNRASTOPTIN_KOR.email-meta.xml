@@ -8,7 +8,7 @@
     <textOnly>비즈니스 계정 업데이트
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 이 안내는 개인이 자신의 인텔® 파트너 얼라이언스 프로그램 정보를 인텔® 공인 디스트리뷰터 및/또는 인텔® 공식 공급업체(서비스 공급자)와 공유하기로 선택했음을 알리기 위해 발송되었습니다.
 
@@ -21,13 +21,13 @@
 
 
 만약 이를 승인하지 않거나 오류가 있다고 생각되는 경우 여기를 클릭하여 선택 항목을 수정 또는 취소하십시오.
-질문이 있는 경우, programs@intel.com.에 문의하십시오.
+질문이 있는 경우, programs@intel.com에 문의하십시오.
 
 감사합니다.
 인텔® 파트너 얼라이언스 팀
 
 이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} 인텔사
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 개인정보 처리방침 | 쿠키</textOnly>
     <type>custom</type>

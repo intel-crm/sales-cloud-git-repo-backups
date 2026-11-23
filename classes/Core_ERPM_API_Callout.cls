@@ -9,10 +9,10 @@ Modification Log :
 * Developer                   Date                    Description
 * ----------------------------------------------------------------------------
 * Akshay Bhimrao More        26-SEP-2022             Original version
-* Shreyas Sanghai	         17-JULY-2023            Added logic to send Subscription details in the Payload to ERPM
+* Shreyas Sanghai	     17-JULY-2023            Added logic to send Subscription details in the Payload to ERPM
 *****************************************************************************************************************************************/
 
-global  without sharing class Core_ERPM_API_Callout {
+global class Core_ERPM_API_Callout {
     public static final String LOG_ENTRY_ORIGIN    = 'SFDC';
     public static final String LOG_ENTRY_PROJECT    = 'Entitlement';
     public static final String LOG_ENTRY_ERROR    = 'error';
@@ -25,8 +25,8 @@ global  without sharing class Core_ERPM_API_Callout {
         Map<string, ERPMSFEngagementSetting__mdt> erpmSFSettingMap = new Map<string, ERPMSFEngagementSetting__mdt>();
         
         //Custom metadata to store entitlement/program to engagement mapping
-        for(ERPMSFEngagementSetting__mdt mdt : [SELECT MasterLabel, EntitlementProgName__c, Code__c, Notify__c,core_removalRequired__c FROM ERPMSFEngagementSetting__mdt WHERE Core_Source__c IN ('Salesforce','Both')]) {
-            erpmSFSettingMap.put(mdt.MasterLabel,mdt);
+        for(ERPMSFEngagementSetting__mdt mdt : [SELECT EntitlementProgName__c, Code__c, Notify__c,core_removalRequired__c FROM ERPMSFEngagementSetting__mdt]) {
+            erpmSFSettingMap.put(mdt.EntitlementProgName__c,mdt);
         }
         
         //Process the input string and seperate the contact Id and Entitlement Name
@@ -38,7 +38,7 @@ global  without sharing class Core_ERPM_API_Callout {
             contactId = (Id)conEnt.split('-->')[0];
             entitlementName = conEnt.split('-->')[1];
             selected=Boolean.valueOf(conEnt.split('-->')[2]);
-            
+                
             if(conIdEntitlMap.containsKey(contactId)){
                 conIdEntitlMap.get(contactId).add(entitlementName);
             }
@@ -46,22 +46,23 @@ global  without sharing class Core_ERPM_API_Callout {
                 conIdEntitlMap.put(contactId, new List<String>{entitlementName});
             }
         }
-        
+
         List<Contact> conListAPI = [SELECT Id, FirstName, LastName, Email, Core_Job_Function__c, Core_Preferred_Language__c, Core_Profession__c, 
-                                    Core_Account_Primary_Country__c,Core_Account_Primary_Street__c ,Core_Account_Primary_City__c, MailingStreet,MailingCity,MailingState,MailingPostalCode,MailingCountry,
+                                    Core_Account_Primary_Country__c,Core_Account_Primary_Street__c ,Core_Account_Primary_City__c, 
                                     Core_Account_Primary_State__c, Core_Account_Primary_Postal_Code__c,Phone,Core_Do_Not_Contact__c, Core_Login_Status__c,
-                                    (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c,PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c FROM Contact_Subscription_Associations__r WHERE PRM_Partner_Subscription_Id__r.PRM_InActive_Ind__c=false)
+                                    (SELECT PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c,PRM_Partner_Subscription_Id__r.Name,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c FROM Contact_Subscription_Associations__r)
                                     FROM Contact
                                     WHERE Id =: conIdEntitlMap.keySet()];
         
         //Get Contact details using ContactId
         for(Contact con : conListAPI){
-            // Make Set-Profile API call ONLY if the user is Active OR the call is being made for Assignment (specifically for UIOLI)
-            if(con.Core_Login_Status__c == 'Active' || String.isBlank(con.Core_Login_Status__c) || selected){
+            // Make Set-Profile API call ONLY if the user is Active
+            if(con.Core_Login_Status__c == 'Active' || con.Core_Login_Status__c == ''){
                 //Generate payload using Contact
                 json = GeneratePayload(con, erpmSFSettingMap, conIdEntitlMap.get(con.Id),selected);
                 //Call eRPM setprofile v2 api only if payload is formed
                 if(string.IsNotBlank(json)) {
+                    system.debug('Executing API callout for ContactId: ' + con.Id + ' with payload as: ' + json);
                     ExecuteAPI(json, con.Id, con.Email, conIdEntitlMap.get(con.Id));                                                  
                 }  
             }                                                                                                                                                        
@@ -80,12 +81,13 @@ global  without sharing class Core_ERPM_API_Callout {
             pAcctProfile.EmailID = con.Email;
             pAcctProfile.JobFunction = con.Core_Job_Function__c;
             pAcctProfile.LanguageCode = con.Core_Preferred_Language__c;
-            pAcctProfile.ExternalAttributes.ProfessionCode = con.Core_Profession__c;
+            pAcctProfile.ExternalAttributes.ProfessionCode = con.Core_Profession__c ;
             
             //Person physical address
-            if(String.isNotBlank(con.MailingCountry)) {  
-                String CountryCodeISO2 = getISO2CountryCode(con.MailingCountry) != null ? getISO2CountryCode(con.MailingCountry) : con.MailingCountry;
-                Ent_Reg_eRPMApiModel.PersonPhysicalAddresses phyAddr =new Ent_Reg_eRPMApiModel.PersonPhysicalAddresses(con.MailingStreet , con.MailingCity,con.MailingState,CountryCodeISO2, con.MailingPostalCode);
+            if(String.isNotBlank(con.Core_Account_Primary_Country__c)) {  
+                String CountryCodeISO2 = getISO2CountryCode(con.Core_Account_Primary_Country__c) != null ? getISO2CountryCode(con.Core_Account_Primary_Country__c) : con.Core_Account_Primary_Country__c;
+                Ent_Reg_eRPMApiModel.PersonPhysicalAddresses phyAddr =new Ent_Reg_eRPMApiModel.PersonPhysicalAddresses(con.Core_Account_Primary_Street__c , con.Core_Account_Primary_City__c, 
+                                                                                                                       con.Core_Account_Primary_State__c,CountryCodeISO2, con.Core_Account_Primary_Postal_Code__c);
                 pAcctProfile.PersonPhysicalAddresses.add(phyAddr);
             }
             //Person electronic address
@@ -95,23 +97,22 @@ global  without sharing class Core_ERPM_API_Callout {
             
             //Get the Engagement name for the Entitlement turned to TRUE-Complete state
             inputModel.blnNotify = true;
+            system.debug('List of EntitlementName: '+ entitlementName);
             if(entitlementName.size() != 0) {
                 //Fetch engagement from Custom metadata which stores entitlement/program to engagement mapping
                 for(String ent : entitlementName){
-                    for(String engsettings :erpmSFMap.keyset()){
-                        if(ent.equals(erpmSFMap.get(engsettings).EntitlementProgName__c) && selected ){
-                            pAcctProfile.Memberships.add(new Ent_Reg_eRPMApiModel.Memberships(erpmSFMap.get(engsettings).Code__c,'ENGSTSAPRD'));  
-                        }
-                        if(ent.equals(erpmSFMap.get(engsettings).EntitlementProgName__c) && (!selected && erpmSFMap.get(engsettings).core_removalRequired__c)){
-                            pAcctProfile.Memberships.add(new Ent_Reg_eRPMApiModel.Memberships(erpmSFMap.get(engsettings).Code__c,'ENGSTSRJTD'));  
-                        }
-                        if(ent.equals(erpmSFMap.get(engsettings).EntitlementProgName__c) && (!selected && !erpmSFMap.get(engsettings).core_removalRequired__c)){
-                            //system.debug('Entitlement unselected but removal is not required.'); 
-                        }
-                        
-                        if(erpmSFMap.get(engsettings).Notify__c == false){
-                            inputModel.blnNotify = false;
-                        }
+                    if(selected){
+                         pAcctProfile.Memberships.add(new Ent_Reg_eRPMApiModel.Memberships(erpmSFMap.get(ent).Code__c,'ENGSTSAPRD'));  
+                    }
+                    if(!selected && erpmSFMap.get(ent).core_removalRequired__c){
+                         pAcctProfile.Memberships.add(new Ent_Reg_eRPMApiModel.Memberships(erpmSFMap.get(ent).Code__c,'ENGSTSRJTD'));  
+                    }
+                    if(!selected && !erpmSFMap.get(ent).core_removalRequired__c){
+                         system.debug('Entitlement unselected but removal is not required.'); 
+                    }
+                   
+                    if(erpmSFMap.get(ent).Notify__c == false){
+                        inputModel.blnNotify = false;
                     }
                 } 
             }
@@ -130,6 +131,8 @@ global  without sharing class Core_ERPM_API_Callout {
             }
             
             inputModel.PersonAccountProfile = pAcctProfile;
+            
+            system.debug('json- '+ JSON.serialize(inputModel));
             payload = JSON.serialize(inputModel);
             if(Test.isRunningTest() && con.Email == 'test_rdcuser44@mailinator.com'){
                 throw new ER_ErrorUtility.CustomException('Empty');
@@ -142,6 +145,7 @@ global  without sharing class Core_ERPM_API_Callout {
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();
+            system.debug('error- '+custEx);            
             createLogEntry('Error in GeneratePayload', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, con.Id, null, null);            
         }
         return payload;
@@ -149,6 +153,7 @@ global  without sharing class Core_ERPM_API_Callout {
     
     @future(callout=true)
     global static void ExecuteAPI(string json, Id requestId, string conEmail, List<String> entitlementList) {
+        system.debug('execute api method');
         ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
         string tags = requestId + ', Email: ' + conEmail;
         try {
@@ -162,6 +167,7 @@ global  without sharing class Core_ERPM_API_Callout {
             httpReq.setBody(json);
             response = new Http().send(httpReq);           
             custEx.Message = response.getBody();
+            system.debug('response- '+response.getBody());
             createLogEntry('Set-Profile API Call made to ERPM - Result: Success', custEx, LOG_ENTRY_INFO, LOG_ENTRY_SCOPE, tags, entitlementList, json);                    
         }
         catch(Exception ex){
@@ -170,13 +176,14 @@ global  without sharing class Core_ERPM_API_Callout {
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();
+            system.debug('error- '+custEx);            
             createLogEntry('Set-Profile API Call made to ERPM - Result: Error', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, tags, entitlementList, json);
         }    
     }
     
     public static String getISO2CountryCode (String countrycode) {
         List<Core_Country_Code_Mapping__c> lcs = Core_Country_Code_Mapping__c.getall().values();
-        
+
         if(lcs != null && lcs.size() > 0) {
             for(Core_Country_Code_Mapping__c cs : lcs) {
                 if(cs.ISO_Code__c == countrycode) {
@@ -188,7 +195,7 @@ global  without sharing class Core_ERPM_API_Callout {
             return null;
         }
     }
-    
+
     public static void createLogEntry(String Msg, ER_ErrorUtility.CustomException ex, String Severity, String scope, String params, List<String> entitlementList, String json){
         try{         
             String strDetailsAndEx = '';
@@ -214,6 +221,8 @@ global  without sharing class Core_ERPM_API_Callout {
             {insert objCLE;}
             
         }catch(Exception e){
+            system.debug('Error Cause ==>Log Entry -->'+ e.getCause());
+            system.debug('Error Message==>Log Entry -->'+ e.getMessage());
         }
     }
 }

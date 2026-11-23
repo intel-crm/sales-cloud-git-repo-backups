@@ -1,0 +1,19 @@
+<aura:component>
+    <aura:attribute name="marquee" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="container" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="footer" type="Aura.Component[]" required="false"></aura:attribute>
+    
+    <div>
+        <div class="marquee">
+            {!v.marquee}
+        </div>
+        
+        <div class="bannerBlade">
+            {!v.container}
+        </div>
+        
+        <div class="bannerBlade">
+            {!v.footer}
+        </div>
+    </div>
+</aura:component>

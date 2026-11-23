@@ -1,17 +1,17 @@
 <template>
-    <a class={aClass} href={href} onclick={handleClick} title={label} aria-label={label}>
-        <template if:true={truncatedString}>
-            {truncatedString}&hellip;
+    <a class={classes} href={href} onclick={handleClick} title={label} aria-label={label}>
+        <template if:false={hasSlotContent}>
+            {label}
         </template>
-        <template if:false={truncatedString}>
-            <template if:false={hasSlotContent}>
-                {label}
+        <slot class={slotClass} onslotchange={handleSlotChange}>
+            Missing slot content and/or label value.
+        </slot>
+        <template if:false={hideIcon}>
+            <template if:true={caret}>
+                <span class="intel-icon i-angle-right slds-m-left_xx-small"></span>
             </template>
-            <slot class={slotClass} onslotchange={handleSlotChange}>
-                Missing slot content and/or label value.
-            </slot>
-            <template if:true={showNewWindowIcon}>
-                <lightning-icon icon-name="utility:new_window" class="slds-m-left_xx-small iconTextSize"></lightning-icon>
+            <template if:true={externalUrlOrNewWindow}>
+                <span class="intel-icon i-link-ext slds-m-left_xx-small"></span>
             </template>
         </template>
     </a>

@@ -79,12 +79,12 @@ insert coreAccnt;*/
         cont.AccountId=newAccount.Id;
         cont.lastName='Grill';
         cont.FirstName='Adam';
-        cont.MailingCountry='USA';
         cont.email='AdamGrill@rediff.com';
         cont.Core_Job_Function__c='Branch Manager';
         cont.Core_eRPM_Language_Code__c='Eng';
         // cont.Core_IPA_Partner_Role__c = 'Service Provider';
         cont.Core_IPA_PartnerRole__c = 'Service Provider';
+        cont.MailingCountry='USA';
         insert cont;
         
         ChannelProgram cp = new ChannelProgram(); //Channel Program

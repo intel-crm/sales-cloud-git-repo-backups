@@ -19,6 +19,7 @@ const getBenefitResult = (userId) => {
         userId: userId
     }).then(result => {
         if (result != undefined && result != null) {
+            console.log("Benefits are->>>>",JSON.stringify(result));
             console.log("Benefits>> ", JSON.parse(JSON.stringify(result)));
             resultdata = result;
             return Promise.resolve(resultdata);

@@ -8,7 +8,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Srikant Joshi             10/16/2014              Original Version
 *************************************************************************************/
-public without sharing class Core_FeatureSetHandler{
+public class Core_FeatureSetHandler{
     
     // Boolean variable used to check if the Triggers RUNS only once
     private static boolean bRunOnceFeatureSetTrigger = true;

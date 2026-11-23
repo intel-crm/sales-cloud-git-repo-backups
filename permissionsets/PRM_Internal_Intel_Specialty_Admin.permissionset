@@ -25,6 +25,14 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>Core_ContactEntitlementHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_ContactEntitlementHandler_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>Core_ContactEntitlementValidation</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -34,6 +42,22 @@
     </classAccesses>
     <classAccesses>
         <apexClass>Core_Entitlement_Outbound_Integrations</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_IntInboundMsgERPM_Account</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_IntInboundMsgERPM_Account_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_IntInboundMsgERPM_Contact</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_IntInboundMsgERPM_Contact_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -66,6 +90,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>IPA_Apigee_Auth_Provider</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>IPA_Apigee_Auth_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -145,11 +173,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_AddContToGrBasedOncondCont_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_AddContToGrBasedOncondController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>PRM_AddContactsToGroupController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_AddContactsToGroupController_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -217,11 +253,31 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_CGCA_Trigger_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_CGCA_Trigger_Utility</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_CIMAccountSearch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_CIMAccountSearchHttpResponse</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMAccountSearchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMCallout</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMCallout_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -273,6 +329,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_DashboardTabVisibilityControllerTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_EmailToPrimaryContact</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -301,11 +361,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_Externa_Objects_Data</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_External_Objects_Data</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>PRM_IPAPartnerOnboarding_CTRL</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_IPAPartnerOnboarding_CTRL_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -318,6 +386,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PRM_MCGA_Trigger_Handler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_MCGA_Trigger_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -358,6 +430,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PRM_Partner_Assist_Utility</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_Partner_Assist_Utility_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -453,6 +529,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_SendNotificationMessages_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_Specialty_Benefit_Group_Asso_Handler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -533,6 +613,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_VXData_SendNotification_Test</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_VXRecommendation_Handler</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -546,6 +630,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>PRM_VXUpgRecomListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_VXUpgRecomListTest</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -605,6 +693,10 @@
         <name>PRM_BatchCustomSetting__c</name>
     </customSettingAccesses>
     <description>User with this permission set would have access to the IPA App and the read access to all IPA related objects and read/write access to all the specialty related objects.</description>
+    <externalCredentialPrincipalAccesses>
+        <enabled>true</enabled>
+        <externalCredentialPrincipal>ServiceNow-PRM_Internal_Intel_Specialty_Admin_LspsVDP1679643749922</externalCredentialPrincipal>
+    </externalCredentialPrincipalAccesses>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AccountNumber</field>
@@ -968,106 +1060,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_Contact_Entitlement__c.Core_Update_Reason__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Category__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.DeveloperName__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_1_Text_Area_Long__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_1_Text_Area__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_1__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_2_Text_Area_Long__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_2_Text_Area__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_2__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_3_Text_Area__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_3__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_4_Text_Area__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_4__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_5__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_6__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_7__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Field_8__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Header_row__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.MasterLabel__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Metadata_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Core_CustomMetadata_Object__c.Program__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2507,16 +2499,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PRM_SBC_Account_Search_Configuration__c.Contact_Email__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PRM_SBC_Account_Search_Configuration__c.PRM_Contact__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PRM_Sales_Calculation_Group__c.PRM_Inactive_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2777,6 +2759,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Competency_Achieved_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Design_Registration_Count_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2852,6 +2839,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Sales_To_Next_Tier__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Sales_to_next_tier_percent_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2917,6 +2909,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Recommendation__c.PRM_Account_Coverage_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Recommendation__c.PRM_Account_Coverage_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2932,7 +2929,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Recommendation__c.PRM_CNDA_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Recommendation__c.PRM_CNDA_Indicator_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Recommendation__c.PRM_Competency_Achieved_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3017,6 +3024,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Recommendation__c.PRM_Specialty_Present_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Recommendation__c.PRM_Specialty_Present_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3083,6 +3095,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Value_Exchange_Stage__c.PRM_MP_Solutions_Count_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Stage__c.PRM_Notes_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3417,16 +3434,6 @@
         <object>Core_Contact_Entitlement__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
-        <allowCreate>false</allowCreate>
-        <allowDelete>false</allowDelete>
-        <allowEdit>false</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>false</modifyAllRecords>
-        <object>Core_CustomMetadata_Object__c</object>
-        <viewAllFields>false</viewAllFields>
-        <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <objectPermissions>
         <allowCreate>false</allowCreate>
@@ -3928,12 +3935,12 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
-    <pageAccesses>
-        <apexPage>Core_Industry_Warning</apexPage>
-        <enabled>true</enabled>
-    </pageAccesses>
     <recordTypeVisibilities>
         <recordType>PRM_IPA_Affiliation__c.Intel_Account_Affiliation</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PRM_IPA_Affiliation__c.Partner_Account_Group_Affiliation</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -4074,10 +4081,6 @@
     </tabSettings>
     <tabSettings>
         <tab>PRM_Specialty_Data__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>PRM_Specialty__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

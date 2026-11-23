@@ -18,6 +18,13 @@
         <label><!-- Meeting Objectives --></label>
         <name>Core_Account_Meeting_Brief_Objectives__c</name>
     </fields>
+    <layouts>
+        <layout>Meeting Objective Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_New_Objective --></label>

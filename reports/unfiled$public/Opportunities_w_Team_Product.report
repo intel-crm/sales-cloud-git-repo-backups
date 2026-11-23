@@ -40,7 +40,7 @@
         <field>Opportunity.Core_Opportunity_Owner_Sub_Geo__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>

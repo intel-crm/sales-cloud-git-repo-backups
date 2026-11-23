@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VerifiersConfig</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VerifiersConfig</value>
+    </caseValues>
+    <fields>
+        <label><!-- ActivityType --></label>
+        <name>Xvoyant__ActivityType__c</name>
+    </fields>
+    <fields>
+        <label><!-- CoachId --></label>
+        <name>Xvoyant__CoachId__c</name>
+    </fields>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- ManualActivityName --></label>
+        <name>Xvoyant__ManualActivityName__c</name>
+    </fields>
+    <fields>
+        <label><!-- RasrComponent --></label>
+        <name>Xvoyant__RasrComponent__c</name>
+        <relationshipLabel><!-- VerifiersConfig --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- StageName --></label>
+        <name>Xvoyant__StageName__c</name>
+    </fields>
+    <fields>
+        <label><!-- isSalesSide --></label>
+        <name>Xvoyant__isSalesSide__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

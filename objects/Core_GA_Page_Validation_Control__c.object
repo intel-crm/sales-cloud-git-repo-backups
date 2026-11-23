@@ -6,7 +6,6 @@
     <fields>
         <fullName>Core_Entitlement_Display_Name__c</fullName>
         <caseSensitive>false</caseSensitive>
-        <description>Name of the entitlement for which you want to suppress popup or hard validation</description>
         <externalId>false</externalId>
         <label>Entitlement Display Name</label>
         <length>255</length>
@@ -17,7 +16,7 @@
     </fields>
     <fields>
         <fullName>Suppress_Popup__c</fullName>
-        <defaultValue>true</defaultValue>
+        <defaultValue>false</defaultValue>
         <description>Check this box to suppress the popup (Soft Validation) on Grant Access Page</description>
         <label>Suppress Popup</label>
         <trackTrending>false</trackTrending>
@@ -25,7 +24,7 @@
     </fields>
     <fields>
         <fullName>cCore_Suppress_Hard_Validation__c</fullName>
-        <defaultValue>true</defaultValue>
+        <defaultValue>false</defaultValue>
         <description>Check this box to suppress the Hard Validation on Grant Access Page</description>
         <label>Suppress Hard Validation</label>
         <trackTrending>false</trackTrending>

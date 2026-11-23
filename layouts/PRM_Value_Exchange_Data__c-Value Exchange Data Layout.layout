@@ -21,6 +21,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
+                <field>PRM_Percent_to_next_tier_Nbr__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
                 <field>PRM_Training_Credit_Points_Count_Nbr__c</field>
             </layoutItems>
             <layoutItems>
@@ -95,6 +99,10 @@
                 <behavior>Edit</behavior>
                 <field>PRM_TimePeriod_Nm__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Sum_of_Training_Credits__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -139,7 +147,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6C000000FTp7</masterLabel>
+        <masterLabel>00h8A000000T454</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

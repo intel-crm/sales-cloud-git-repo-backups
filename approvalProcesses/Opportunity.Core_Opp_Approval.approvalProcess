@@ -34,14 +34,6 @@
         </approvalActions>
         <assignedApprover>
             <approver>
-                <name>Core_Approver_4__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
-                <name>Core_Approver_3__c</name>
-                <type>relatedUserField</type>
-            </approver>
-            <approver>
                 <name>Core_Approver_5__c</name>
                 <type>relatedUserField</type>
             </approver>
@@ -53,54 +45,31 @@
                 <name>Core_Approver_1__c</name>
                 <type>relatedUserField</type>
             </approver>
+            <approver>
+                <name>Core_Approver_4__c</name>
+                <type>relatedUserField</type>
+            </approver>
+            <approver>
+                <name>Core_Approver_3__c</name>
+                <type>relatedUserField</type>
+            </approver>
             <whenMultipleApprovers>FirstResponse</whenMultipleApprovers>
         </assignedApprover>
-        <label>Opportunity Approved for Design Win</label>
-        <name>Opportunity_Approved_for_Design_Win</name>
+        <label>Opportunity Approved</label>
+        <name>Opportunity_Approved</name>
     </approvalStep>
-    <description>Opportunity approval process. Allows submission for approval if all of the following are true: Submitter is Owner/Technical Owner/Creator or System Admin/Data Ops, Record Type is Opportunity, Compliance Status is not On Hold (any reason) or Not Approved, Stage is not Lost/Cancelled, and there&apos;s either at least one Pending product or no products at all, if opportunity doesn&apos;t have a &quot;Write In product&quot;  associated and it is non-PCC opportunity.</description>
-    <emailTemplate>Core_Opportunity_Management/Core_Opportunity_Approval_Email</emailTemplate>
+    <description>Opportunity approval process. Allows submission for approval if all of the following are true: Submitter is Owner/Technical Owner/Creator or System Admin/Data Ops, Record Type is Opportunity, Compliance Status is not On Hold (any reason) or Not Approved, Stage is not Lost/Cancelled, and there&apos;s either at least one Pending product or no products at all and if opportunity doesn&apos;t have a &quot;Write In product&quot;  associated.</description>
+    <emailTemplate>unfiled$public/Core_Opportunity_Approval_Email</emailTemplate>
     <enableMobileDeviceAccess>true</enableMobileDeviceAccess>
     <entryCriteria>
-        <formula>AND(
-	OR(
-		$User.Username = Core_Technical_Owner__r.Username,
-		$User.Username = Owner.Username, 
-		$User.Username = CreatedBy.Username, 
-		$Profile.Name = &apos;System Administrator&apos;, 
-		$Profile.Name = &apos;Data Ops&apos;
-		),
-	NOT(
-		OR(
-			ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Review in Progress&apos;),
-			ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Government Authorization Needed&apos;),
-			ISPICKVAL(Core_Compliance_Status__c, &apos;Not Approved&apos;)
-			)
-		),
-	NOT(
-		OR(
-			ISPICKVAL(StageName, &apos;Lost&apos;),
-			ISPICKVAL(StageName, &apos;Production Lost&apos;), 
-			ISPICKVAL(StageName, &apos;Production Cancelled&apos;), 
-			ISPICKVAL(StageName, &apos;Cancelled&apos;),
-			ISPICKVAL(StageName, &apos;Design Win&apos;)
-			)
-		),	
-	Core_Write_In_Product_Count__c = 0,
-	OR(
-		Core_Pending_Product_Count__c &gt; 0, 
-		Core_Product_Count__c = 0
-		),
-	NOT(Core_Product_At_Risk__c),
-	!Core_Decimal_Check__c, 
-	Account.RecordType.Name = &apos;Intel Account&apos;,
-				NOT(
-								AND(
-												 ISPICKVAL(Core_Opportunity_Coverage_Nm__c , &apos;Partner-Led Opportunity&apos;),
-												 ISPICKVAL(Core_Coverage_Type_Nm__c , &apos;Deal Registration&apos;) 
-												)
-								)
-	)</formula>
+        <formula>AND(OR($User.Username = Core_Technical_Owner__r.Username, $User.Username = Owner.Username, $User.Username = CreatedBy.Username, $Profile.Name = &apos;System Administrator&apos;, $Profile.Name = &apos;Data Ops&apos;),
+RecordType.Name = &apos;Opportunity&apos;,
+NOT(OR(ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Review in Progress&apos;), ISPICKVAL(Core_Compliance_Status__c, &apos;On Hold – Government Authorization Needed&apos;), ISPICKVAL(Core_Compliance_Status__c, &apos;Not Approved&apos;))),
+NOT(OR(ISPICKVAL(StageName, &apos;Lost&apos;), ISPICKVAL(StageName, &apos;Production Lost&apos;), ISPICKVAL(StageName, &apos;Production Cancelled&apos;), ISPICKVAL(StageName, &apos;Cancelled&apos;))),
+Core_Write_In_Product_Count__c = 0,
+OR(Core_Pending_Product_Count__c &gt; 0, Core_Product_Count__c = 0),
+Core_Oppty_Check_BU_Short_Name__c = 0,
+NOT(AND(CONTAINS( TEXT(Core_Opportunity_Type__c) , &quot;Deal&quot;),OR(ISBLANK(Core_Solution_Type__c),ISBLANK(Core_Combined_Solution_Detail__c)))))</formula>
     </entryCriteria>
     <finalApprovalActions>
         <action>
@@ -109,10 +78,6 @@
         </action>
         <action>
             <name>Core_Opp_Set_Approved_Sales_Group</name>
-            <type>FieldUpdate</type>
-        </action>
-        <action>
-            <name>Override_CloseDate_On_Approval</name>
             <type>FieldUpdate</type>
         </action>
     </finalApprovalActions>

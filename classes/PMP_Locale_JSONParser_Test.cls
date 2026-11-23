@@ -1,6 +1,7 @@
 @isTest
 public class PMP_Locale_JSONParser_Test {
-
+    //Commented as part of IPA2.0 EOL'ing
+/*
     static testMethod void parse(){
         test.startTest();
         
@@ -23,4 +24,5 @@ public class PMP_Locale_JSONParser_Test {
         
         system.assertEquals(wom.Offerings.size(),1);
     }
+*/
 }

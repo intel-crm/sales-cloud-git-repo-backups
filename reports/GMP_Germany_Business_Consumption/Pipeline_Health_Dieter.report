@@ -97,14 +97,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Germany Sales Group,EMEA Named Account Sales Group</value>
+            <value>GMP Germany Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Donal O Donnabhain,Christian Donitzky,Thomas Kellerer,Oliver Freundel</value>
+            <operator>equals</operator>
+            <value>EMP of Dieter Hoffend</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -119,7 +119,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pipeline Health I 4.0</name>
+    <name>Pipeline Health Dieter</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -137,7 +137,6 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>

@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SPECBNFTAITURKISH</value>
+        <value xsi:type="xsd:string">SPECBNFTAITUR</value>
     </values>
 </CustomMetadata>

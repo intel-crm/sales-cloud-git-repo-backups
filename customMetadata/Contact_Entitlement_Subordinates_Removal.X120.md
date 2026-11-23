@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H4TB,a2W1J000001H4T9,a2W1J000001H4T7,a2W1J000001H4TC,a2W1J000001H4TA,a2W1J000001H4T8</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3fj</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">SPCF Special Reports Viewer</value>
+        <value xsi:type="xsd:string">Employee</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H4TD</value>
+        <value xsi:type="xsd:string">a2W8A000003Htq6</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">SPCF USER</value>
+        <value xsi:type="xsd:string">Intel Solutions Library</value>
     </values>
 </CustomMetadata>

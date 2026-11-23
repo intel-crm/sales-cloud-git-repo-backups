@@ -1,59 +1,54 @@
-<table style="background-color: #0071c5; font-family: intel clear;" width="75%">
-<tbody>
-<tr>
-<td style="padding-left: 50px; border: none;">
-<div style="color: white;">
-<h1>YOU HAVE A NEW LEAD!</h1>
-</div>
-</td>
-<td style="border: none; padding-right: 20px;" align="right"><img src="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000005EBdu&amp;oid=00Do0000000aRcf" /></td>
-</tr>
-</tbody>
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta name=Generator content="Microsoft Word 15 (filtered medium)">
+</head>
+
+<body lang=EN-US>
+
+ <table style="background-color: #0071c5;" width="850">
+  <tbody>
+    <tr>
+	  <td style="padding-left: 50px; border: none;">
+	    <div style="color: white;">
+		  <h1>WE HAVE A NEW LEAD FOR YOU!</h1>
+		 </div>
+		</td>
+		<td style="border: none; padding-right: 20px;" align="right">
+		<img src="https://intel--c.na104.content.force.com/servlet/servlet.ImageServer?id=0153b000004Pg4i&amp;oid=00Do0000000aRcf" />
+		</td>
+		</tr>
+		</tbody>
 </table>
-<table style="border-collapse: collapse; font-family: intel clear;" width="75%">
+
+<table style="height: 303px;" width="850" style="border-style: ridge;border-width:thin; border:0.10em solid #F9F9F9">
 <tbody>
+<div>
 <tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
-<p>Hello:</p>
-<p>Great news! Intel has generated a <b>New Lead</b> for you. To act on it and help ensure the quality of leads we send you, please  <br> promptly
-  <a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">log in and accept or reject it</a>. To see the full information about this lead please login and download the <br>Standard Leads Report.</p>
-<p>Thank you for your partnership!</p>
-<p>Intel® Partner Alliance</p>
-<p><strong>LEAD SUMMARY </strong>(for full details, follow the review links below)</p>
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
-<p>Lead Name : <a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Name}</a><br />
-  Company : <a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Company}</a> <br />
-Country :<a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Core_CountryLabel__c}</a><br/>
-Lead Action :<a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Core_Lead_PMP_Action__c}</a><br/>
-Lead Priority :<a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Core_Lead_Priority__c}</a><br/>
-Lead Notes :<a style="color: #339966;" href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Core_Lead_Notes__c}</a><br/>
-  </p>
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
-<p><a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}"><b>Click here to review your lead </b></a><br /> Can&rsquo;t access the link above? <br /> <a href="{!$Label.Core_PartnerLead_Help}">View Help for processing Intel leads </a></p>
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
-<p>Questions? Contact Intel® Partner Alliance Support:  <br /> <a href="mailto:partnerleads@intel.com">programs@intel.com</a></p>
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px; padding-top: 5px; padding-bottom: 5px; font-size: 14px;">
-<p>Note :<span style="color: red;"> Please don't reply to this email as it is auto-generated, any reply to this email will not be monitored.</span></p>
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #d3d3d3; padding-left: 50px;">
-<p style="text-align: center; font-size: 10px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation<br/>&copy; {! YEAR( TODAY() )} Intel Corporation<br /> Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<br/> 
-<a href="http://www.intel.com">www.intel.com</a><br/> 
-<a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+<td style="width: 540.667px;">
+ <p>&nbsp;Hello<o:p></o:p></p>
+ <p>&nbsp;Great news—we have a new lead that may interest you. To take action on it and help ensure the quality of leads <br> &nbsp; we send you, please 
+  <a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">log in and accept or reject it within 30 days</a>.
+ </p>
+ <p>&nbsp;Wishing you continued success</p>
+ <p>&nbsp;The Intel Lead Management Team</p>
+<hr/>
+ <p>&nbsp;LEAD SUMMARY (for full details, follow the review links below)</p>
+  <p>&nbsp;Lead Name :<a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Name}</a><o:p></o:p></p>
+  <p>&nbsp;Lead Company :<a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Company}</a><o:p></o:p></p>
+  <p>&nbsp;Lead Notes :<a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">{!Lead.Core_Lead_Notes__c}</a></p>
+	<hr/>
+	<p><a href="{!$Label.Core_Partner_Community}/s/lead/{!Lead.Id}">&nbsp;Review Lead</a></p>
+	<hr/>
+	<p><o:p>&nbsp;Can’t access the link above?</o:p></p>
+	<p><o:p>&nbsp;<a href="{!$Label.Core_Partner_Community}/s/?Lead-filterId={!$Label.Core_My_Lead_Listview_Id}">{!$Label.Core_Partner_Community}/s/?Lead-filterId={!$Label.Core_My_Lead_Listview_Id}</a></o:p></p>
+	<hr/>
+	<p><o:p>Questions? Let our Partner Admin Team help:<a href="mailto:partnerleads@intel.com">partnerleads@intel.com</a></o:p></p>
+	<hr/>
+	<p style="text-align: center;font-size: 10px;">This message was sent to you as an important business communication related to your current relationship with Intel Corporation</br>&copy; 2019 Intel Corporation<br /> Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.</br> <a href="http://www.intel.com">www.intel.com</a></br><a href="http://www.intel.com/privacy">Privacy</a> | <a href="http://www.intel.com/cookies">Cookies</a></p>
+
+  </td>
+ </tr>
+ </div>
+ </tbody>
+ </table>
+ </body>
+ </html>

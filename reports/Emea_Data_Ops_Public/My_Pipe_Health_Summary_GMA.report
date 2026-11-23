@@ -19,50 +19,28 @@
         <field>OWNER_MANAGER</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Approval_Status__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Date_Submitted_for_Approval__c</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Past_Due__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Inactive__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Low_Velocity__c</field>
+    </columns>
+    <columns>
         <field>HASOPPLINEITEM</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_has_Solution__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Pushes__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Compliance_Status__c</field>
     </columns>
     <columns>
-        <field>AGE</field>
+        <field>STAGE_NAME</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>AGE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
@@ -72,13 +50,20 @@
     </columns>
     <description>My Salesforce Data dashboard</description>
     <filter>
-        <booleanFilter>1 AND (2 OR ((3 OR 4) AND 5) OR 6) AND 7 AND 8</booleanFilter>
+        <booleanFilter>1 AND 2 AND (3 OR 4 OR 5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Core_New_Opportunity,Opportunity.Core_Opportunity</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>
@@ -88,46 +73,25 @@
             <value>TODAY</value>
         </criteriaItems>
         <criteriaItems>
-            <column>HASOPPLINEITEM</column>
+            <column>Opportunity.Core_Inactive__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>0</value>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>STAGE_NAME</column>
+            <column>Opportunity.Core_Low_Velocity__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define</value>
+            <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>CLOSE_DATE</column>
+            <column>Opportunity.Core_Compliance_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>THIS_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Push_Counter__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterThan</operator>
-            <value>3</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Coverage_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Intel-Led Opportunity</value>
+            <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -137,7 +101,7 @@
         <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>My Low Confidence opportunities summary</name>
+    <name>My Pipe Health Summary</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -155,7 +119,7 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <scope>team</scope>
+    <scope>user</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

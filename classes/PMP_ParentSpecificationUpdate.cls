@@ -58,7 +58,10 @@ public with sharing class PMP_ParentSpecificationUpdate {
                 try
                 {
                     if(Schema.sObjectType.PMP_Specification__c.isUpdateable()) {
-                        update uploadOffSpec;
+                        //update uploadOffSpec;
+                        Database.SaveResult[] uploadOSlist = Database.update(uploadOffSpec, false);
+						PMP_Utility.logDmlErrors((Object[]) uploadOSlist, 'PMP_ParentSpecificationUpdate-updateParentSpec');
+
                     }
                 }
                 catch(Exception exp)

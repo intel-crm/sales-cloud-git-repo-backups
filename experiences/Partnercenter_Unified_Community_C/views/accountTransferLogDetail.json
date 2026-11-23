@@ -66,13 +66,12 @@
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "fieldsToMask" : "",
             "internalUserName" : "Intel System User",
             "objectApiName" : "Core_MDF_Budget_Transfer_Log__c",
             "recordId" : "{!recordId}"
           },
           "componentName" : "c:core_MDF_HistoryComponent",
-          "id" : "ce2a7ac6-55d2-4004-997a-3f7dcc41d287",
+          "id" : "5beebcc6-a64c-49cd-a33b-1f8067f43223",
           "renditionMap" : { },
           "type" : "component"
         } ],

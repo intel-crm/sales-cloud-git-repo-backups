@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_Video_Specialty_POR</name>
     <style>none</style>
@@ -24,14 +24,14 @@ Acesse as vantagens
 
 Os parceiros da Intel têm um longo histórico de inovação e, com a Intel® Partner Alliance, nós ajudaremos você a acelerar a criação de soluções para a economia centrada em dados. Juntos, podemos nos conectar, inovar e crescer, possibilitando oportunidades extraordinárias.
 
-Acesse https://www.intel.com/content/www/br/pt/partner-alliance/help/overview.html para ajuda e orientações sobre como otimizar sua parceria.
+Acesse intel.com/partnerhelp para ajuda e orientações sobre como otimizar sua parceria.
 
 
 Obrigado,
 Sua equipe Intel® Partner Alliance
 
 Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacidade | Cookies</textOnly>
     <type>custom</type>

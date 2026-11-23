@@ -1,15 +1,464 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>This action is called by apex class &apos;ER_Contact_Bulk_Creation&apos; to avoid creation of duplicate contacts creation during bulk operation.</description>
+        <name>ER_Contact_Bulk_Creation</name>
+        <label>ER_Contact_Bulk_Creation</label>
+        <locationX>1040</locationX>
+        <locationY>539</locationY>
+        <actionName>ER_AddContacts</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_Contact_Record</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>countryCode</name>
+            <value>
+                <elementReference>$Record.PRM_Contact_Country__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>newRegistration</name>
+            <value>
+                <elementReference>$Record</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>ER_AddContacts</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
     <apiVersion>59.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Add_Single_LA_to_List</name>
+        <label>Add Single LA to List</label>
+        <locationX>502</locationX>
+        <locationY>3119</locationY>
+        <assignmentItems>
+            <assignToReference>LAcollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>singleLA</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_LA</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_ALA_to_List</name>
+        <label>Assign ALA to List</label>
+        <locationX>746</locationX>
+        <locationY>4175</locationY>
+        <assignmentItems>
+            <assignToReference>ALA_List</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_though_ALA_Association.PRM_Partner_Agreement_Id__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_though_ALA_Association</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_ALA_Variables</name>
+        <label>Assign ALA Variables</label>
+        <locationX>1030</locationX>
+        <locationY>4667</locationY>
+        <assignmentItems>
+            <assignToReference>ALARecord.PRM_Partner_Agreement_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Loop_trough_Partner_Agreements</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ALARecord.PRM_Account_Id__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_Record.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ALARecord.PRM_Contact__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Contact_Record.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>ALARecord.PRM_Agreement_Sign_Dt__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Assign_Record_to_List</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_LA_to_Variable</name>
+        <label>Assign LA to Variable</label>
+        <locationX>502</locationX>
+        <locationY>2903</locationY>
+        <assignmentItems>
+            <assignToReference>RegistrationRequestLAs</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Record.PRM_Legal_Agreements__c</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>RegistrationRequestLAs</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <stringValue>;</stringValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Get_single_LA</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Record_to_List</name>
+        <label>Assign Record to List</label>
+        <locationX>1030</locationX>
+        <locationY>4775</locationY>
+        <assignmentItems>
+            <assignToReference>ALACollection</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>ALARecord</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_trough_Partner_Agreements</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Get_single_LA</name>
+        <label>Get single LA</label>
+        <locationX>502</locationX>
+        <locationY>3011</locationY>
+        <assignmentItems>
+            <assignToReference>singleagreement</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>singleLA</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Add_Single_LA_to_List</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>List_PA_Ids</name>
+        <label>List PA Ids</label>
+        <locationX>854</locationX>
+        <locationY>3659</locationY>
+        <assignmentItems>
+            <assignToReference>PartnerAgreementIDs</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Loop_through_PAs.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_through_PAs</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Update_LA</name>
+        <label>Update LA</label>
+        <locationX>502</locationX>
+        <locationY>3227</locationY>
+        <assignmentItems>
+            <assignToReference>RegistrationRequestLAs</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Updated_RegistrationRequest_LAs</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Verify_LA</targetReference>
+        </connector>
+    </assignments>
     <decisions>
-        <name>Verify_SourceType_For_Legal_Agreements</name>
-        <label>Verify SourceType For Legal Agreements</label>
-        <locationX>182</locationX>
-        <locationY>647</locationY>
+        <name>CE_Record_status</name>
+        <label>CE Record status</label>
+        <locationX>996</locationX>
+        <locationY>1055</locationY>
+        <defaultConnector>
+            <targetReference>Update_CE_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Inactive CE</defaultConnectorLabel>
+        <rules>
+            <name>Active_CE</name>
+            <conditionLogic>(1 OR 2) AND 3</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_Entitlement_Records.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Complete</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact_Entitlement_Records.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Contact_Entitlement_Records.Core_Selected__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Reg_Req_Subscription_Validation</targetReference>
+            </connector>
+            <label>Active CE</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Reg_Req_Subscription_Validation</name>
+        <label>Reg Req Subscription Validation</label>
+        <locationX>1172</locationX>
+        <locationY>1439</locationY>
+        <defaultConnector>
+            <targetReference>Get_Entitlement_Matrix_Record</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Valid_Record_for_Legal_Agreements</name>
+            <name>Subscription_Present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Subscriptions__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Contact_Subscription_Assignment</targetReference>
+            </connector>
+            <label>Subscription Present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_ABT_Approved</name>
+        <label>Verify ABT Approved</label>
+        <locationX>314</locationX>
+        <locationY>2279</locationY>
+        <defaultConnector>
+            <targetReference>Verify_SourceType</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ABT_Not_Approved</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Account_Business_Types.Status__c</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_ABT_to_Approved</targetReference>
+            </connector>
+            <label>ABT Not Approved</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_ABT_Found</name>
+        <label>Verify ABT Found</label>
+        <locationX>534</locationX>
+        <locationY>2171</locationY>
+        <defaultConnector>
+            <targetReference>Create_Account_Business_Types</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>ABT_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Existing_Account_Business_Types</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Verify_ABT_Approved</targetReference>
+            </connector>
+            <label>ABT Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_ALA_Association</name>
+        <label>Verify ALA Association</label>
+        <locationX>766</locationX>
+        <locationY>3959</locationY>
+        <defaultConnector>
+            <targetReference>Loop_trough_Partner_Agreements</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>ALA Not Exist</defaultConnectorLabel>
+        <rules>
+            <name>ALA_Already_Exist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_AccountLegalAgreementAssociation</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_though_ALA_Association</targetReference>
+            </connector>
+            <label>ALA Already Exist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_Contact_Entitlement</name>
+        <label>Verify Contact Entitlement</label>
+        <locationX>1172</locationX>
+        <locationY>947</locationY>
+        <defaultConnector>
+            <targetReference>Create_Contact_Entitlement</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Existing CE Record</defaultConnectorLabel>
+        <rules>
+            <name>CE_Record_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Contact_Entitlement_Records</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>CE_Record_status</targetReference>
+            </connector>
+            <label>CE Record found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_Entitlement_Matrix_Record</name>
+        <label>Verify Entitlement Matrix Record</label>
+        <locationX>1172</locationX>
+        <locationY>1847</locationY>
+        <defaultConnector>
+            <targetReference>Verify_SourceType</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entitlement_Matrix_found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Entitlement_Matrix_Record</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_CBT</targetReference>
+            </connector>
+            <label>Entitlement Matrix found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_existing_contact</name>
+        <label>Verify existing contact</label>
+        <locationX>1172</locationX>
+        <locationY>431</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact_Record</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Valid_existing_contact_not_present</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Contact_Salesforce_Id__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>ER_Contact_Bulk_Creation</targetReference>
+            </connector>
+            <label>Valid existing contact not present</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_LA</name>
+        <label>Verify LA</label>
+        <locationX>502</locationX>
+        <locationY>3335</locationY>
+        <defaultConnector>
+            <targetReference>Get_Partner_Agreement_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>LA_Found</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RegistrationRequestLAs</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <isGoTo>true</isGoTo>
+                <targetReference>Get_single_LA</targetReference>
+            </connector>
+            <label>LA Found</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_LA_and_ALA</name>
+        <label>Verify LA and ALA</label>
+        <locationX>942</locationX>
+        <locationY>4559</locationY>
+        <defaultConnector>
+            <targetReference>Assign_ALA_Variables</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>LA_and_ALA_matches</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ALA_List</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <elementReference>Loop_trough_Partner_Agreements</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Loop_trough_Partner_Agreements</targetReference>
+            </connector>
+            <label>LA and ALA matches</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_SourceType</name>
+        <label>Verify SourceType</label>
+        <locationX>1172</locationX>
+        <locationY>2795</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>PSG_or_IQR</name>
             <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>$Record.PRM_Source__c</leftValueReference>
@@ -22,26 +471,19 @@
                 <leftValueReference>$Record.PRM_Source__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Tend_Mgmt</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Dev_Cloud_Ent</stringValue>
+                    <stringValue>IQR</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>ALA_Association_creation</targetReference>
+                <targetReference>Assign_LA_to_Variable</targetReference>
             </connector>
-            <label>Valid Record for Legal Agreements</label>
+            <label>PSG or IQR</label>
         </rules>
     </decisions>
     <decisions>
         <name>Verify_Status_and_entitlement_details</name>
         <label>Verify Status and entitlement details</label>
-        <locationX>380</locationX>
+        <locationX>1903</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -69,7 +511,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Contact_Creation</targetReference>
+                <targetReference>Verify_existing_contact</targetReference>
             </connector>
             <label>Status and entitlement details</label>
         </rules>
@@ -94,6 +536,48 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
     </formulas>
     <interviewLabel>EBR Framework Reg Request After Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>EBR Framework Reg Request After Flow</label>
+    <loops>
+        <name>Loop_though_ALA_Association</name>
+        <label>Loop though ALA Association</label>
+        <locationX>658</locationX>
+        <locationY>4067</locationY>
+        <collectionReference>Get_AccountLegalAgreementAssociation</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Assign_ALA_to_List</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Loop_trough_Partner_Agreements</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_through_PAs</name>
+        <label>Loop through PA&apos;s</label>
+        <locationX>766</locationX>
+        <locationY>3551</locationY>
+        <collectionReference>Get_Partner_Agreement_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>List_PA_Ids</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Get_AccountLegalAgreementAssociation</targetReference>
+        </noMoreValuesConnector>
+    </loops>
+    <loops>
+        <name>Loop_trough_Partner_Agreements</name>
+        <label>Loop Partner Agreements</label>
+        <locationX>766</locationX>
+        <locationY>4451</locationY>
+        <collectionReference>PartnerAgreementIDs</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Verify_LA_and_ALA</targetReference>
+        </nextValueConnector>
+        <noMoreValuesConnector>
+            <targetReference>Create_ALA_Records</targetReference>
+        </noMoreValuesConnector>
+    </loops>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -113,8 +597,594 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>Create_Account_Business_Types</name>
+        <label>Create Account Business Types</label>
+        <locationX>754</locationX>
+        <locationY>2279</locationY>
+        <connector>
+            <targetReference>Verify_SourceType</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Core_log_Entry_Rec_for_ABT</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Account__c</field>
+            <value>
+                <elementReference>$Record.PRM_Salesforce_ID__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Business_Types__c</field>
+            <value>
+                <elementReference>Get_Entitlement_Matrix_Record.Business_Types__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account_Business_Types__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_ALA_Records</name>
+        <label>Create ALA Records</label>
+        <locationX>766</locationX>
+        <locationY>5051</locationY>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Core_log_Entry_Rec_For_ALA_Association</targetReference>
+        </faultConnector>
+        <inputReference>ALACollection</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_CBT</name>
+        <label>Create CBT</label>
+        <locationX>534</locationX>
+        <locationY>1955</locationY>
+        <connector>
+            <targetReference>Get_Existing_Account_Business_Types</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec_for_CBT</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Business_Types__c</field>
+            <value>
+                <elementReference>Get_Entitlement_Matrix_Record.Business_Types__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Contact__c</field>
+            <value>
+                <elementReference>Get_Contact_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Contact_Business_Types__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Contact_Entitlement</name>
+        <label>Create Contact Entitlement</label>
+        <locationX>1348</locationX>
+        <locationY>1055</locationY>
+        <connector>
+            <targetReference>Reg_Req_Subscription_Validation</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Core_Contact_Id__c</field>
+            <value>
+                <elementReference>Get_Contact_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Data_Loaded__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Entitlement_Id__c</field>
+            <value>
+                <elementReference>$Record.Entitlement_Details__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Selected__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Status__c</field>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Contact_Entitlement__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec</name>
+        <label>Create Core log Entry Rec</label>
+        <locationX>2370</locationX>
+        <locationY>947</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>Contact Entitlement</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec_for_ABT</name>
+        <label>Create Core log Entry Rec for ABT</label>
+        <locationX>1282</locationX>
+        <locationY>2171</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>Account Business type</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec_For_ALA_Association</name>
+        <label>Create Core log Entry Rec For ALA Association</label>
+        <locationX>1314</locationX>
+        <locationY>3959</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>Account Legal Agreement Association</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec_for_CBT</name>
+        <label>Create Core log Entry Rec for CBT</label>
+        <locationX>1546</locationX>
+        <locationY>2063</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>contact Business type</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec_for_Entitlement_matrix</name>
+        <label>Create Core log Entry Rec for Entitlement matrix</label>
+        <locationX>2106</locationX>
+        <locationY>1847</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>entitlement Matrix</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Core_log_Entry_Rec_For_PA</name>
+        <label>Create Core log Entry Rec For PA</label>
+        <locationX>1578</locationX>
+        <locationY>3551</locationY>
+        <inputAssignments>
+            <field>Core_Message__c</field>
+            <value>
+                <elementReference>$Flow.FaultMessage</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>EBR Framework Reg Request After Flow</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>Medium</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_sObjectType__c</field>
+            <value>
+                <stringValue>Partner Agreement</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_AccountLegalAgreementAssociation</name>
+        <label>Get AccountLegalAgreementAssociation</label>
+        <locationX>766</locationX>
+        <locationY>3851</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_ALA_Association</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec_For_ALA_Association</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Partner_Agreement_Id__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>PartnerAgreementIDs</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_InActive_Ind__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Signed_By_Name__c</field>
+            <operator>EndsWith</operator>
+            <value>
+                <elementReference>Get_Contact_Record.Email</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>PRM_Signed_By_Name__c</field>
+            <operator>StartsWith</operator>
+            <value>
+                <elementReference>Get_Contact_Record.Name</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PRM_AccountLegalAgreemntAssociation__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Entitlement_Records</name>
+        <label>Get Contact Entitlement Records</label>
+        <locationX>1172</locationX>
+        <locationY>839</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_Contact_Entitlement</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Entitlement_Details__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Contact_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact_Record.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Core_Contact_Entitlement__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Record</name>
+        <label>Get Contact Record</label>
+        <locationX>1172</locationX>
+        <locationY>731</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Contact_Entitlement_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Email</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Email_ID__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Entitlement_Matrix_Record</name>
+        <label>Get Entitlement Matrix Record</label>
+        <locationX>1172</locationX>
+        <locationY>1739</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_Entitlement_Matrix_Record</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec_for_Entitlement_matrix</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Entitlement_Id__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Entitlement_Details__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Business_Types__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>PRM_VXEnttlmntMatrix__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Existing_Account_Business_Types</name>
+        <label>Get Existing Account Business Types</label>
+        <locationX>534</locationX>
+        <locationY>2063</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_ABT_Found</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec_for_ABT</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Account__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Salesforce_ID__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Business_Types__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Entitlement_Matrix_Record.Business_Types__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Account_Business_Types__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Partner_Agreement_Records</name>
+        <label>Get Partner Agreement Records</label>
+        <locationX>766</locationX>
+        <locationY>3443</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_through_PAs</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Create_Core_log_Entry_Rec_For_PA</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>PRM_Agreement_Cd__c</field>
+            <operator>In</operator>
+            <value>
+                <elementReference>LAcollection</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>PRM_PartnerAgreement__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <name>Update_ABT_to_Approved</name>
+        <label>Update ABT to Approved</label>
+        <locationX>50</locationX>
+        <locationY>2387</locationY>
+        <connector>
+            <targetReference>Verify_SourceType</targetReference>
+        </connector>
+        <faultConnector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Create_Core_log_Entry_Rec_for_ABT</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Existing_Account_Business_Types.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Status__c</field>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Account_Business_Types__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_CE_Record</name>
+        <label>Update CE Record</label>
+        <locationX>1084</locationX>
+        <locationY>1163</locationY>
+        <connector>
+            <targetReference>Reg_Req_Subscription_Validation</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Contact_Entitlement_Records.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Core_Selected__c</field>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Status__c</field>
+            <value>
+                <stringValue>Pending</stringValue>
+            </value>
+        </inputAssignments>
+        <object>Core_Contact_Entitlement__c</object>
+    </recordUpdates>
     <start>
-        <locationX>254</locationX>
+        <locationX>1777</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Verify_Status_and_entitlement_details</targetReference>
@@ -127,82 +1197,33 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
                 <booleanValue>false</booleanValue>
             </value>
         </filters>
-        <filters>
-            <field>PRM_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Rejected</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Current_Status__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>Auto-Approval Approved</stringValue>
-            </value>
-        </filters>
         <object>PRM_Registration_Request__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <subflows>
-        <name>ALA_Association_creation</name>
-        <label>ALA Association creation</label>
-        <locationX>50</locationX>
-        <locationY>755</locationY>
-        <flowName>ER_Account_legalAgreement_Association</flowName>
-        <inputAssignments>
-            <name>TriggeredcontactInput</name>
-            <value>
-                <elementReference>Contact_Creation.contactRecordOutput</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>TriggeredNewRegrequestinput</name>
-            <value>
-                <elementReference>$Record</elementReference>
-            </value>
-        </inputAssignments>
-    </subflows>
-    <subflows>
-        <name>Contact_Creation</name>
-        <label>Contact Creation</label>
-        <locationX>182</locationX>
-        <locationY>431</locationY>
+        <name>Contact_Subscription_Assignment</name>
+        <label>Contact Subscription Assignment</label>
+        <locationX>1040</locationX>
+        <locationY>1547</locationY>
         <connector>
-            <targetReference>Contact_Entitlement_Creation</targetReference>
+            <targetReference>Get_Entitlement_Matrix_Record</targetReference>
         </connector>
-        <flowName>EBR_Framework_Contact_Creation</flowName>
+        <flowName>ER_New_registration_Subscription</flowName>
         <inputAssignments>
-            <name>triggeredRegisteredRecord</name>
+            <name>contactId</name>
+            <value>
+                <elementReference>Get_Contact_Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>newRegistration</name>
             <value>
                 <elementReference>$Record</elementReference>
             </value>
         </inputAssignments>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-    </subflows>
-    <subflows>
-        <name>Contact_Entitlement_Creation</name>
-        <label>Contact Entitlement Creation</label>
-        <locationX>182</locationX>
-        <locationY>539</locationY>
-        <connector>
-            <targetReference>Verify_SourceType_For_Legal_Agreements</targetReference>
-        </connector>
-        <flowName>EBR_Framework_Upsert_Contact_Entitlement</flowName>
-        <inputAssignments>
-            <name>contactInput</name>
-            <value>
-                <elementReference>Contact_Creation.contactRecordOutput</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <name>RegRecordInput</name>
-            <value>
-                <elementReference>$Record</elementReference>
-            </value>
-        </inputAssignments>
     </subflows>
     <variables>
         <name>accountCreateRequestRT</name>
@@ -250,13 +1271,6 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         <isOutput>false</isOutput>
     </variables>
     <variables>
-        <name>newRegEmailList</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
         <name>Oldrequeststatus</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
@@ -283,13 +1297,5 @@ LEN(LEFT({!RegistrationRequestLAs}, FIND(&quot;;&quot;,{!RegistrationRequestLAs}
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>Triggerednewregrequestforinput</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>true</isOutput>
-        <objectType>PRM_Registration_Request__c</objectType>
     </variables>
 </Flow>

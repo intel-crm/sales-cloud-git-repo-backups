@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Repeating Goal</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Repeating Goals</value>
+    </caseValues>
+    <fields>
+        <label><!-- AssignedTo --></label>
+        <name>Xvoyant__AssignedTo__c</name>
+        <relationshipLabel><!-- Repeating Goals --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Description --></label>
+        <name>Xvoyant__Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- EndAfterOccurences --></label>
+        <name>Xvoyant__EndAfterOccurences__c</name>
+    </fields>
+    <fields>
+        <label><!-- EndOnDate --></label>
+        <name>Xvoyant__EndOnDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Name --></label>
+        <name>Xvoyant__GoalName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Goal Start Date --></label>
+        <name>Xvoyant__GoalStartDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Monetary Goal --></label>
+        <name>Xvoyant__MonetaryGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- RepeatNum --></label>
+        <name>Xvoyant__RepeatNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- RepeatPeriod --></label>
+        <name>Xvoyant__RepeatPeriod__c</name>
+    </fields>
+    <fields>
+        <label><!-- active --></label>
+        <name>Xvoyant__active__c</name>
+    </fields>
+    <fields>
+        <label><!-- expired --></label>
+        <name>Xvoyant__expired__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

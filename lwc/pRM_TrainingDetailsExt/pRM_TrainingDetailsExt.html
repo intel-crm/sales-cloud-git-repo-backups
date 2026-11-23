@@ -35,11 +35,11 @@
         </lightning-layout-item>
       </lightning-layout>
     </div>
-    <div if:true={spinner} class="slds-spinner_inline spinner-padding">
-      <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
-      </lightning-spinner>
-    </div>
     <div dir="auto" class="myUniqueTable slds-m-around_medium slds-box">
+      <div if:true={spinner} class="slds-spinner_inline spinner-padding">
+        <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
+        </lightning-spinner>
+      </div>
       <template if:true={isData}>
         <div class="slds-m-around_medium slds-box">
           <lightning-datatable key-field="id" data={records} hide-checkbox-column="true" show-row-number-column="true"

@@ -274,7 +274,7 @@
     <fields>
         <fullName>Core_File_Hyperlink__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c ,&apos;Download&apos;,&apos;Self&apos;),HYPERLINK($Label.Core_IPS_File_SCFT_URL + &apos;&amp;caseid=&apos;+  CASESAFEID(Core_Case__c) +&apos;&amp;visibility=&apos;+TEXT(Core_IPS_Attachment_Visibility__c)+&apos;&amp;appfileId=&apos;+Core_File_GUID__c  ,&apos;Resume&apos;,&apos;Self&apos;  ))</formula>
+        <formula>IF(ISPICKVAL(Core_Upload_Status__c, &apos;Complete&apos;),HYPERLINK(Core_File_URL__c ,&apos;Download&apos;,&apos;Self&apos;),TEXT(Core_Upload_Status__c))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>File Download Link</label>
         <required>false</required>
@@ -397,64 +397,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_IPS_BES_BackendType__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Case__r.Core_IPS_New_Backend_System__r.Core_IPS_SCFT_Backend_Type__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>BackendType</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_BES_Promote_Status__c</fullName>
-        <label>Promote Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>In Progress</fullName>
-                    <default>false</default>
-                    <label>In Progress</label>
-                </value>
-                <value>
-                    <fullName>Sent Successfully</fullName>
-                    <default>false</default>
-                    <label>Sent Successfully</label>
-                </value>
-                <value>
-                    <fullName>Done</fullName>
-                    <default>false</default>
-                    <label>Done</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_BackendId__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Case__r.Core_IPS_BackendID__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>BackendId</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_IPS_File_Upload__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>IPS File Upload</label>
@@ -465,88 +407,6 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_IP_Type__c</fullName>
-        <label>IP Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Document (Intel Confidential)</fullName>
-                    <default>false</default>
-                    <label>Document (Intel Confidential)</label>
-                </value>
-                <value>
-                    <fullName>Document (Public)</fullName>
-                    <default>false</default>
-                    <label>Document (Public)</label>
-                </value>
-                <value>
-                    <fullName>Document (Customer Specific)</fullName>
-                    <default>false</default>
-                    <label>Document (Customer Specific)</label>
-                </value>
-                <value>
-                    <fullName>Design Review Result</fullName>
-                    <default>false</default>
-                    <label>Design Review Result</label>
-                </value>
-                <value>
-                    <fullName>Firmware for debug</fullName>
-                    <default>false</default>
-                    <label>Firmware for debug</label>
-                </value>
-                <value>
-                    <fullName>Customized Firmware</fullName>
-                    <default>false</default>
-                    <label>Customized Firmware</label>
-                </value>
-                <value>
-                    <fullName>Software for debug</fullName>
-                    <default>false</default>
-                    <label>Software for debug</label>
-                </value>
-                <value>
-                    <fullName>Customized Software</fullName>
-                    <default>false</default>
-                    <label>Customized Software</label>
-                </value>
-                <value>
-                    <fullName>Software hotfix</fullName>
-                    <default>false</default>
-                    <label>Software hotfix</label>
-                </value>
-                <value>
-                    <fullName>Firmware hotfix</fullName>
-                    <default>false</default>
-                    <label>Firmware hotfix</label>
-                </value>
-                <value>
-                    <fullName>Customized SW+FW package</fullName>
-                    <default>false</default>
-                    <label>Customized SW+FW package</label>
-                </value>
-                <value>
-                    <fullName>SW+FW hotfix package</fullName>
-                    <default>false</default>
-                    <label>SW+FW hotfix package</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_Security_Compliance__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>New SFT Design fields</description>
-        <label>Security Compliance</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_IPS_Uploaded_By_Email__c</fullName>
@@ -738,13 +598,6 @@ ISPICKVAL(PRIORVALUE( Core_Upload_Status__c ),&quot;Complete&quot;), NOT(ISPICKV
 )</errorConditionFormula>
         <errorMessage>Status Change not allowed once set to Complete</errorMessage>
     </validationRules>
-    <validationRules>
-        <fullName>IPS_Altera_Go_Live_Attmt_Restriction</fullName>
-        <active>true</active>
-        <description>Restricting the user to add attachments on a case with Altera products during migration</description>
-        <errorConditionFormula>AND($Label.IPS_Altera_Go_Live= &apos;True&apos;,Core_Case__r.Core_IPS_Product_Org_Number__c = &apos;025&apos;,  $User.Id  &lt;&gt;  $Label.Altera_Bypass_UserId )</errorConditionFormula>
-        <errorMessage>Not allowed to create or update record related to Org 025</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_Attach_File</fullName>
@@ -789,6 +642,24 @@ window.open(&quot;{!URLFOR($Site.Prefix+&apos;/Core_IPS_File_AttachToCase?id=&ap
 } 
 //Previous code as URL 
 //{!URLFOR($Site.Prefix+&apos;/Core_IPS_File_AttachToCase?id=&apos;+Case.Id)}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Link_File</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Link File</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/35.0/connection.js&quot;)}
+{!REQUIRESCRIPT(&quot;/support/console/35.0/integration.js&quot;)}
+
+if (sforce.console.isInConsole()) {
+srcSelf(&apos;/apex/Core_IPS_File_LinkToCase?id={!Case.Id}&amp;isdtp=vw&apos;);
+} else {
+window.open(&quot;/apex/Core_IPS_File_LinkToCase?id={!Case.Id}&quot;, &apos;_self&apos;);
+}</url>
     </webLinks>
     <webLinks>
         <fullName>Core_Refresh_to_See_New_Attachments</fullName>

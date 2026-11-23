@@ -171,7 +171,7 @@
                 lstOfFinalAcmRecWrap.add(finalRecWrapperObj);           
             }
             catch(DmlException e) {
-                System.debug('The following exception has occurred: ' + e.getMessage());
+                //System.debug('The following exception has occurred: ' + e.getMessage());
             }         
             return lstOfFinalAcmRecWrap;
         }    
@@ -420,7 +420,7 @@
                 lstOfFinalAcmRecWrap.add(finalRecWrapperObj);   
             }
             catch(DmlException e) {
-                System.debug('The following exception has occurred: ' + e.getMessage());
+                //System.debug('The following exception has occurred: ' + e.getMessage());
             }     
             
             return lstOfFinalAcmRecWrap; 
@@ -679,7 +679,7 @@
                 //Delete approved records from Persist Partner Object----END
             }
             catch(DmlException e) {
-                System.debug('The following exception has occurred: ' + e.getMessage());
+                //System.debug('The following exception has occurred: ' + e.getMessage());
             }         
             return result;
             }
@@ -742,7 +742,7 @@
                         succlstOfpersPartners =  Database.insert(persPartnerslist,false);
                     } 
                 }catch(DmlException e) {
-                    System.debug('The following exception has occurred: ' + e.getMessage());
+                    //System.debug('The following exception has occurred: ' + e.getMessage());
                 } 
             }
             
@@ -830,7 +830,7 @@
                         //succlstOfpersPartners =  Database.insert(persPartnerslist,false);
                     }  
                 }catch(DmlException e) {
-                    System.debug('The following exception has occurred: ' + e.getMessage());
+                    //System.debug('The following exception has occurred: ' + e.getMessage());
                 }        
                 
             }     
@@ -844,7 +844,7 @@
                         delete lstToDeleteSpCritRec; 
                     }
                 }catch(DmlException e) {
-                    System.debug('The following exception has occurred: ' + e.getMessage());
+                    //System.debug('The following exception has occurred: ' + e.getMessage());
                 } 
             }
             
@@ -956,7 +956,7 @@
                         }
                     }
                 }catch(DmlException e) {
-                    System.debug('The following exception has occurred: ' + e.getMessage());
+                    //System.debug('The following exception has occurred: ' + e.getMessage());
                 }        
                 
                 return finallstOfAccAndAcmWrapper;
@@ -1096,7 +1096,7 @@
                         delete lstToDeleteRecords;
                     }    
                 }catch(DmlException e) {
-                    System.debug('The following exception has occurred: ' + e.getMessage());
+                    //System.debug('The following exception has occurred: ' + e.getMessage());
                 } 
             }
             

@@ -12,9 +12,9 @@ public without sharing class PRM_PartnerAssistConsent_Handler extends TriggerHan
     public static boolean IPAfirstRun = true;
     public override void afterInsert(){
         if(isActive('PRM_PartnerAssistConsent_Switch')){
+            //system.debug('PAC after insert trigger entered');
             PRM_EmailUtility.sendOptInEmail(Trigger.new);
         }
-        //chaithaly - commenting as part of IP2.0
        /* if(isActive('PAC_Insert_IPA_Integration_Trigger') && IPAfirstRun) {            
             System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_Partner_Assist_Consent__c>)Trigger.new,  Trigger.new.getSObjectType()));
             IPAfirstRun = false;
@@ -22,6 +22,7 @@ public without sharing class PRM_PartnerAssistConsent_Handler extends TriggerHan
     }
     public override void afterUpdate(){
         if(isActive('PRM_PartnerAssistConsent_Switch')){
+            //system.debug('PAC after update trigger entered');
             PRM_EmailUtility.sendOptOutEmail(Trigger.new,(Map<Id,PRM_Partner_Assist_Consent__c>)Trigger.oldMap);
             PRM_EmailUtility.sendPartnerModifyEmail(Trigger.new,(Map<Id,PRM_Partner_Assist_Consent__c>)Trigger.oldMap);
         }

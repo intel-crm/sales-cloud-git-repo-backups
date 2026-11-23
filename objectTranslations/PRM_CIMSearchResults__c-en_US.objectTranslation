@@ -50,6 +50,10 @@
         <name>PRM_CIM_Id__c</name>
     </fields>
     <fields>
+        <label><!-- CIM Search Score New --></label>
+        <name>PRM_CIM_Search_Score_New_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- City Name --></label>
         <name>PRM_City_Nm__c</name>
     </fields>

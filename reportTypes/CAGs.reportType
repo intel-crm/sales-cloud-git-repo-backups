@@ -139,7 +139,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Intel Account Name</displayNameOverride>
+            <displayNameOverride>UCD Primary Account Name</displayNameOverride>
             <field>Core_Intel_Account_Id__c.Name</field>
             <table>Core_Account_Group_Member__c</table>
         </columns>

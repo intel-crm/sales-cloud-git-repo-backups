@@ -12,7 +12,7 @@
 
 To update this Case with a comment by email use &apos;Reply&apos; only, not &apos;Reply All&apos;, and do not change the email subject line; replies to Closed Cases will be ignored as well as any email file attachments.Replies will have the same visibility type as the comment below.
 
-{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Latest &apos;Private to Agents&apos; Case Comment Submitted By: &quot;)}{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Latest_Comment_Submitter__c)}
+{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot;Latest &apos;Private to Agents&apos; Case Comment Submitted By: &quot;)}{!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Last_Private_Case_Comment_Submitter__c)}
 {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,Case.Core_Latest_Case_Comment__c)}
 _______________________________________________________________
 Case Details

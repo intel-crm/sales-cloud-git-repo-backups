@@ -5,232 +5,306 @@ Description:        Before Insert/Upadte call these functions and update the act
 Added By:           Sridhar   06-17-2019
 Modified By:        Date:           Changes:
 Shivaprasad         08-29-2019      Added the condition to check closed status of PFR records in populateBackEndFieldsUpdate method.
-Ayush               12-18-2024      Added changes for "Reclaiming SF Partner License"
 *******************************************************************************************************/
 public without sharing class Core_MDF_UpdateActivityFields {
     
-    public static void getActivityRejectionComments(List<flowInputs> inputIdList){
-        Set<Id> pfrIDSet = new Set<Id>();
-        Set<Id> acctIdSet = new Set<Id>();
-
-        Map<Id,String> pfrIdmemberIdMap = new Map<ID,String>();
-        List<PartnerFundRequest> ipaPFRList = new List<PartnerFundRequest>();
-        List<PartnerFundRequest> pfrList = new List<PartnerFundRequest>();
-        Map<Id,List<ProcessInstanceStep>> piAndListofPiStepMap = new Map<Id,List<ProcessInstanceStep>>();
-        Map<Id,Id> pfrIdProcessInstId = new Map<Id,Id>();
-
-        Map<Id,String> stepNodeIdStepNameMap = new Map<Id,String>();
-
-        List<Id> processDefList = new List<id>();
-        Boolean priceReviewerFlag = FeatureManagement.checkPermission('Core_MDF_PriceReviewer');
-        List<Id> pfrIdList = new List<Id>();
-        Map<Id,Boolean> userActiveMap = new Map<Id,Boolean>(); 
+    public static Map<Id, PartnerFundRequest> oldStaticPFRMap = new Map<Id, PartnerFundRequest>();
+    
+    /****************************************************************************************************** 
+    Method Name:        populateBackEndFieldsUpdate
+    @return  :          void
+    @parameters:        PFR Map
+    Description:        This method is used to update the to be closed date before update trigger
+    Added By:           Sridhar - 06/17/2019
+    Modified By:        Date:         Changes: 
+    Shivaprasad         08-29-2019    Added the condition to check closed status of PFR records.
+    *******************************************************************************************************/
+    
+    public static void populateBackEndFieldsUpdate(Map<Id,PartnerFundRequest> newMap, Map<Id,PartnerFundRequest> oldMap)
+    {
+        try
+        {
+            if(oldMap != NULL && oldMap.size() > 0){
+                oldStaticPFRMap = oldMap;
+            }
+            List<PartnerFundRequest> pfrs = new List<PartnerFundRequest>();
+            for(PartnerFundRequest pfr: newMap.values()){
+                if(pfr.Core_MDF_Fund_Request_Status__c != label.Core_MDF_PFR_Status_Closed){
+                    pfrs.add(newMap.get(pfr.Id));   
+                }
+            }
+            
+            if (pfrs.size() > 0)
+            {
+                processPFRRecords(pfrs,oldMap);
+            }
+        }
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);} 
+    }
+    
+    /****************************************************************************************************** 
+    Method Name:        populateBackEndFieldsInsert
+    @return  :          void
+    @parameters:        PFR Map
+    Description:        This method is used to update the to be closed date in before insert
+    Added By:           Sridhar - 06/17/2019
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+    public static void populateBackEndFieldsInsert(List<PartnerFundRequest> newList)
+    {
+        try
+        {
+            if (newList != NULL && newList.size() > 0)
+            {
+                //close activity & activity event rules method call
+                processPFRRecords(newList,NULL);
+            }
+        }
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);} 
+    }
+    
+    /****************************************************************************************************** 
+    Method Name:        getMetaDataValues
+    @return  :          void
+    @parameters:        PFR Map
+    Description:        get meta data values to know the no of days after the activity to be closed
+    Added By:           Sridhar - 06/17/2019
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+        
+    private static Map<string,Integer> getMetaDataValues()
+    {
+        Map<string,Integer> metadtMap = new Map<string,Integer>();
+        
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt mtrecord : [select Id, Core_MDF_Activity_Close_Days__c,Core_MDF_Activity_RecordType_txt__c from Core_MDF_ClaimActAllocRecTypeMapping__mdt])
+        {
+            if (!metadtMap.containsKey(mtrecord.Core_MDF_Activity_RecordType_txt__c))
+            {
+                metadtMap.put(mtrecord.Core_MDF_Activity_RecordType_txt__c,(Integer)mtrecord.Core_MDF_Activity_Close_Days__c);
+            }
+        }
+        return metadtMap;
+    } 
+    
+    /****************************************************************************************************** 
+    Method Name:        getCCPRTNames
+    @return  :          void
+    @parameters:        PFR Map
+    Description:        return the record type id and names for all programs passed in input
+    Added By:           Sridhar - 06/17/2019
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+    private static Map<Id,string> getCCPRTNames(Map<string,Integer> metaDataMap)
+    {
+        Map<Id,string> ccpRTNames = new Map<Id,string>();
+        for(string programe : metaDataMap.keySet())
+        {
+            if (Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get(programe) != null)
+            {
+                id recordTypeId = Schema.SObjectType.PartnerFundRequest.getRecordTypeInfosByDeveloperName().get(programe).getRecordTypeId();
+                ccpRTNames.put(recordTypeId,programe);       
+            }
+            
+        }
+        
+        return ccpRTNames;
+    }
+    
+    /****************************************************************************************************** 
+    Method Name:        processPFRRecords
+    @return  :          void
+    @parameters:        list of PFR
+    Description:        proess all the records and update the to be closed date and event activity validation
+    Added By:           Sridhar - 06/17/2019
+    Modified By:        Date:      Changes: 
+    *******************************************************************************************************/
+    
+    public static void processPFRRecords(List<PartnerFundRequest> pfrList, Map<Id,PartnerFundRequest> oldPfrMap)
+    {
+        Map<string,Integer> metadtMap = new Map<string,Integer>();
+        Map<Id,string> ccpRecordTypeIds = new Map<Id,string>();
+        Date endDate = null;
+        
+        metadtMap = getMetaDataValues();
+        ccpRecordTypeIds = getCCPRTNames(metadtMap);
         try{
-            //Ayush - getting PFR Id's in a list for quering relationship fields below
-            for(flowInputs pfr : inputIdList){
-                pfrIdList.add(pfr.pfrId);
-            }
-            if(!pfrIdList.isEmpty()){
-                //Ayush - quering if createdby user of member user is active or is partner liscence reclaimed and storing in a map of PFRId to boolean.
-                for(PartnerFundRequest pfrRecord : [SELECT Id, CreatedById, CreatedBy.IsActive, CreatedBy.Partner_License_Reclaimed__c, Core_MDF_Member_Acceptor_Id__c, Core_MDF_Member_Acceptor_Id__r.IsActive, Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c 
-                                                    FROM PartnerFundRequest WHERE Id IN: pfrIdList ]){
-                                                    
-                                                    // Flatten nested IF statements for CreatedById user active check
-                                                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                                                    if(pfrRecord.CreatedById != null && !userActiveMap.containsKey(pfrRecord.CreatedById)){
-                                                        Boolean isActive = pfrRecord.CreatedBy.IsActive || pfrRecord.CreatedBy.Partner_License_Reclaimed__c;
-                                                        userActiveMap.put(pfrRecord.CreatedById, isActive);
-                                                    }
-                                                    
-                                                    // Flatten nested IF statements for Core_MDF_Member_Acceptor_Id__c user active check
-                                                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                                                    if(pfrRecord.Core_MDF_Member_Acceptor_Id__c != null && !userActiveMap.containsKey(pfrRecord.Core_MDF_Member_Acceptor_Id__c)){
-                                                        Boolean isActive = pfrRecord.Core_MDF_Member_Acceptor_Id__r.IsActive || pfrRecord.Core_MDF_Member_Acceptor_Id__r.Partner_License_Reclaimed__c;
-                                                        userActiveMap.put(pfrRecord.Core_MDF_Member_Acceptor_Id__c, isActive);
-                                                    }
-                                                }
-            }
+                //Fetch owner id from pfrList
+                    Id OwnerId = null;
+            for(PartnerFundRequest pfr: pfrList){
+                //closed date validations
+                endDate = pfr.Core_MDF_End_Date__c;
+                String progName = ccpRecordTypeIds.get(pfr.recordTypeId);
 
-            for(flowInputs pfr : inputIdList){    
-                pfrIDSet.add(pfr.pfrId);
-                if(pfr.program == 'Intel Partner Alliance' && pfr.proposalBasedIndicator == false && pfr.createdByExternal == true && pfr.pfrStatus == 'Revision Required'){
-                    //Ayush - Added Activity's Created by user's active or is Manually Deactivated check for "Reclaiming SF Partner License" 
-                    if(!userActiveMap.isEmpty() && userActiveMap.containsKey(pfr.createdById) && userActiveMap.get(pfr.createdById) == true){
-                        pfrIdmemberIdMap.put(pfr.pfrId,pfr.createdById);    
+                if (oldPfrMap != null && oldPfrMap.get(pfr.Id).Core_MDF_Fund_Request_Status__c == 'Cancelled'
+                    && pfr.Core_MDF_Fund_Request_Status__c != 'Cancelled'){
+                        pfr.Core_MDF_Fund_Request_Status__c = 'Cancelled';
                     }
-                }
-                else{
-                    //Ayush - Added Activity's memberId's active or is Manually Deactivated check for "Reclaiming SF Partner License" 
-                    if(pfr.memberId != null && pfr.memberId !='' && (!userActiveMap.isEmpty() && userActiveMap.containsKey(pfr.memberId) && userActiveMap.get(pfr.memberId) == true)){
-                        pfrIdmemberIdMap.put(pfr.pfrId,pfr.memberId);
-                    }
-                }
-            }
-            
-            for(ProcessInstance pi : [SELECT Id,TargetObjectId, Status, ProcessDefinitionId, (SELECT Id, StepStatus, Comments, ActorId, StepNodeId FROM Steps WHERE StepStatus = 'Rejected' Order By CreatedDate ASC Limit 1) FROM ProcessInstance 
-                                      WHERE TargetObjectId IN :pfrIDSet order by createdDate desc]){
-                                          if(!pfrIdProcessInstId.containsKey(pi.TargetObjectId)){
-                                              pfrIdProcessInstId.put(pi.TargetObjectId, pi.Id);  
-                                          }
-                                          piAndListofPiStepMap.put(pi.Id,pi.Steps);
-                                          processDefList.add(pi.ProcessDefinitionId);
-                                      }
-            if(processDefList != null && processDefList.size() > 0){
-                for(ProcessNode pn : [Select Id,Name, ProcessDefinition.Description From ProcessNode Where ProcessDefinition.Id IN :processDefList]){
-                    stepNodeIdStepNameMap.put(pn.Id, pn.Name);
-                }
-            }
-             //US - TWC702-14285: Flatten nested IFs (no logic change)
-            if (piAndListofPiStepMap == null || piAndListofPiStepMap.size() == 0) {
-                return; // or continue with next operation
-            }
 
-            for (Id pfr : pfrIDSet) {
-                PartnerFundRequest p = new PartnerFundRequest();
-                p.Id = pfr;
-                
-                // Early exit if no process instance ID exists
-                 //US - TWC702-14285: Flatten nested IFs (no logic change)
-                if (!pfrIdProcessInstId.containsKey(p.Id) || pfrIdProcessInstId.get(p.Id) == null) {
-                    continue;
+                if (metadtMap.containsKey(progName))
+                {
+                    Integer actCloseDays  = (Integer)metadtMap.get(progName);
+                    pfr.Core_MDF_ToBeClosedDate__c = endDate.addDays(actCloseDays);
                 }
-                
-                Id processInstanceId = pfrIdProcessInstId.get(p.Id);
-                
-                // Early exit if no process instance steps exist
-                 //US - TWC702-14285: Flatten nested IFs (no logic change)
-                if (!piAndListofPiStepMap.containsKey(processInstanceId) || piAndListofPiStepMap.get(processInstanceId) == null) {
-                    continue;
-                }
-                
-                for (ProcessInstanceStep pistep : piAndListofPiStepMap.get(processInstanceId)) {
-                    // Only process rejected steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (pistep.StepStatus != 'Rejected') {
-                        continue;
-                    }
-                    
-                    String stepName = stepNodeIdStepNameMap.get(pistep.StepNodeId);
-                    
-                    // Handle non-Price Reviewer steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (stepName != 'Price Reviewer') {
-                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments != null ? pistep.Comments : '';
-                        pfrList.add(p);
-                        continue;
-                    }
-                    
-                    // Handle Price Reviewer steps
-                     //US - TWC702-14285: Flatten nested IFs (no logic change)
-                    if (priceReviewerFlag) {
-                        p.Core_MDF_Rejection_Comments_txt__c = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_PCTApprover_GenericComment');
-                    } else {
-                        p.Core_MDF_Rejection_Comments_txt__c = pistep.Comments;
-                    }
-                    pfrList.add(p);
-                }
-            }
-            List<PartnerFundRequest> activityList = [Select Id,ChannelPartnerId,Core_MDF_Approval_Step_Completed__c,Core_MDF_Fund_Request_Status__c,Core_MDF_Program__c,Core_MDF_Internal_Approval_Comment_txt__c,Core_MDF_Proposal_Based_Ind__c
-                                                     FROM PartnerFundRequest 
-                                                     WHERE Id IN:pfrIDSet];
-            if(activityList!= null && activityList.size()>0){
-                for(PartnerFundRequest pfr1 : activityList){
-                    acctIdSet.add(pfr1.ChannelPartnerId);
-                    if(pfr1.Core_MDF_Program__c =='Intel Partner Alliance' && pfr1.Core_MDF_Proposal_Based_Ind__c == false && pfr1.Core_MDF_Fund_Request_Status__c =='Pending Approval'){
-                        ipaPFRList.add(pfr1);
-                    }
-                }
-            }
-            Database.update(pfrList,false);
-            if(ipaPFRList != null){
-                Core_MDF_ProcessCCP_PartnerFundRequest.notifyExternalReviewers(ipaPFRList,acctIdSet);
+                endDate = NULL;
+
+                //closed date validations complete
+                //Storing Owner id
+                OwnerId = pfr.OwnerId;
             }
             
-            //Ayush - Added pfrIdmemberIdMap null checks 
-            if(pfrIdmemberIdMap != null && !pfrIdmemberIdMap.isEmpty()){
-                notifyExternalUsers(pfrIdmemberIdMap);
-            }             
-        }catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-    
-    @Invocablemethod(label='Get PFR records updated to Revision Required' category='PartnerFundRequest')
-    public static void sendNotificationOnRRPA(List<notificationWrapperInput> inputIdList){
-        List<flowInputs> flwInputList = new List<flowInputs>();
-        if(inputIdList != NULL && inputIdList.Size() > 0){
-            for(notificationWrapperInput notiWrap : inputIdList){
-                for(Core_MDF_FlowInputWrapper flwImputWrap : notiWrap.flowInputWrapperList){
-                    flowInputs flwInput = new flowInputs();
-                    flwInput.pfrId = flwImputWrap.recordId;
-                    flwInput.memberId = flwImputWrap.memberOfActivity;
-                    flwInput.program = flwImputWrap.program;
-                    flwInput.proposalBasedIndicator = flwImputWrap.proposalBasedIndicator;
-                    flwInput.createdByExternal = flwImputWrap.createdByExternal;
-                    flwInput.createdById = flwImputWrap.createdById;
-                    flwInput.pfrStatus = flwImputWrap.status;
-                    flwInputList.add(flwInput);
+            //hasCustomPermission is Boolean type contains whether the Internal Account Manager custom permission is present or not
+            Boolean hasCustomPermission = FeatureManagement.checkPermission(Label.Core_MDF_Custom_Permission_IAM);
+            //Retail 14 day validation
+            Boolean hasRetailCustomPermission = FeatureManagement.checkPermission(Label.Core_MDF_Custom_Permission_IAM_Retail);
+            
+            //loop meta data and form Map --> Record type id, list of metadata
+            Map<String,List<Core_MDF_PFR_Event_Rule__mdt>> pfrRecordIdMetadataMap = new Map<String,List<Core_MDF_PFR_Event_Rule__mdt>>();
+            
+            //Map of Record Type id and Record Type Developer Name
+            Map<Id, String> recordTypeIdDevName = new Map<Id, String>();
+            for(RecordType recordType : [SELECT Id, Name, DeveloperName FROM RecordType WHERE SobjectType = 'PartnerFundRequest' ] ){
+                recordTypeIdDevName.put(recordType.Id ,recordType.DeveloperName);
+            }    
+            //Record type restrict
+            for(Core_MDF_PFR_Event_Rule__mdt metadata : ([SELECT Id, Core_MDF_PFR_RecordType__c,Core_MDF_Country_Picklist_Value__c,
+                                                          Core_MDF_Activity_Category__c, Core_MDF_Requested_Amount__c, Core_MDF_Activity_Types__c,
+                                                          Core_MDF_Day_Difference__c, Core_MDF_PFR_RecordType_Id__c, Core_MDF_PFR_StartDate__c,
+                                                          Core_MDF_Amount_Operator__c, Core_MDF_Days_Difference_Operator__c, Core_MDF_Error_Message__c 
+                                                          FROM Core_MDF_PFR_Event_Rule__mdt ])){
+                if(pfrRecordIdMetadataMap.containsKey(metadata.Core_MDF_PFR_RecordType__c)){                    
+                    pfrRecordIdMetadataMap.get(metadata.Core_MDF_PFR_RecordType__c).add(metadata);
+                }
+                else
+                {
+                    pfrRecordIdMetadataMap.put(metadata.Core_MDF_PFR_RecordType__c, 
+                                                new List<Core_MDF_PFR_Event_Rule__mdt> {metadata}); 
+                }
+            }
+            
+            // Country Geo Map
+            Map<String , String> countryGeoMap = new Map <String , String>();
+            Map<String , String> countrySubGeoMap = new Map <String , String>();
+            for (Core_MDF_CCP_Country_Geo_Mapping__mdt countryGeoMetaData : [SELECT Id, MasterLabel, Core_MDF_Geo__c, Core_MDF_Sub_Geo__c FROM Core_MDF_CCP_Country_Geo_Mapping__mdt]){
+                countryGeoMap.put(countryGeoMetaData.MasterLabel , countryGeoMetaData.Core_MDF_Geo__c );
+                countrySubGeoMap.put(countryGeoMetaData.MasterLabel, countryGeoMetaData.Core_MDF_Sub_Geo__c);
+            }
+            // Program and Required Geo Map
+            Map<String, List<String>> programGeoReqMap = new Map<String,List<String>>();
+            
+            for(Core_MDF_ClaimActAllocRecTypeMapping__mdt claimActAllocRectypeMetadata : [SELECT Id, Core_MDF_Activity_RecordType_txt__c, Core_MDF_Region_cd__c FROM Core_MDF_ClaimActAllocRecTypeMapping__mdt ]){
+                if(claimActAllocRectypeMetadata.Core_MDF_Region_cd__c != NULL){//if Region Code has some values for that particular program record
+                    List<String> geoProgramList = claimActAllocRectypeMetadata.Core_MDF_Region_cd__c.split(';');//split the Region Code into List of Regions
+                    if(geoProgramList != NULL && geoProgramList.size() > 0){
+                        programGeoReqMap.put(claimActAllocRectypeMetadata.Core_MDF_Activity_RecordType_txt__c, geoProgramList );
+                    }
+                }
+            }
+            
+            //Fetch the owner language locale and store in ownerIdLangLocaleMap
+            Map<Id, String> ownerIdLangLocaleMap = new Map<Id, String>();
+            for(User ownerLang : [SELECT Id, LanguageLocaleKey
+                                            FROM User
+                                            WHERE Id  =: OwnerId]){
+                ownerIdLangLocaleMap.put(ownerLang.Id , ownerLang.LanguageLocaleKey);
+            }
+            
+            if(pfrList != NULL && pfrList.size() > 0){
+                for(PartnerFundRequest pfr: pfrList){                    
+                    Boolean errorthrown = false;
+                    // List<String> countryList = pfr.Core_MDF_Country_nm__c.split(';');
+                    Date startDate = pfr.Core_MDF_Start_Date__c;
+                    Date todayDate = System.today()    ;
+                    Integer daysDifference = todayDate.daysBetween(startDate);
+                    String dayDifference = String.valueOf(daysDifference);
+                    String amount = String.valueOf(pfr.RequestedAmount); //looping over the queried metadata list
+                    for(Core_MDF_PFR_Event_Rule__mdt customMetadata : pfrRecordIdMetadataMap.get(recordTypeIdDevName.get(pfr.RecordTypeId))) {
+                        if(pfr.Core_MDF_Country_nm__c != NULL){
+                            List< String > countryList = pfr.Core_MDF_Country_nm__c.split(';');
+                            if(countryList != null && countryList.size() > 0){
+                                for(String country : countryList){
+                                    if(customMetadata.Core_MDF_Country_Picklist_Value__c != NULL && recordTypeIdDevName.get(pfr.RecordTypeId) == customMetadata.Core_MDF_PFR_RecordType__c && customMetadata.Core_MDF_PFR_StartDate__c > pfr.Core_MDF_Start_Date__c && !customMetadata.Core_MDF_Country_Picklist_Value__c.contains(country)){
+                                        pfr.addError(Label.Core_MDF_Country_CCFB_2020_Validation);errorthrown = true;break;
+                                    }                                                           
+                                }
+                            }
+                        }
+			if(!hasCustomPermission){
+                            if((oldPfrMap != NULL && oldPfrMap.size() > 0 && ((oldPfrMap.get(pfr.Id).Core_MDF_Start_Date__c != pfr.Core_MDF_Start_Date__c) || (oldPfrMap.get(pfr.Id).Core_MDF_ActivityCategory__c != pfr.Core_MDF_ActivityCategory__c ) || (oldPfrMap.get(pfr.Id).Core_MDF_Activity_Types__c != pfr.Core_MDF_Activity_Types__c) || (oldPfrMap.get(pfr.Id).RequestedAmount != pfr.RequestedAmount))) || (pfr.Id == NULL)){     //Calling the Generic Compare Method
+                                Boolean checkDate = Core_MDF_GenericApprovalProcess.validateRule(customMetadata.Core_MDF_Day_Difference__c, dayDifference, customMetadata.Core_MDF_Days_Difference_Operator__c, 'DOUBLE');
+                                Boolean checkAmount = Core_MDF_GenericApprovalProcess.validateRule(customMetadata.Core_MDF_Requested_Amount__c,amount, customMetadata.Core_MDF_Amount_Operator__c, 'DOUBLE');
+                                //checking the pfr recordtype, pfr activity category, pfr activity type, pfr status
+                                if(customMetadata.Core_MDF_PFR_RecordType__c == recordTypeIdDevName.get(pfr.RecordTypeId) &&   customMetadata.Core_MDF_Activity_Category__c == pfr.Core_MDF_ActivityCategory__c &&  customMetadata.Core_MDF_Activity_Types__c.contains(pfr.Core_MDF_Activity_Types__c) && !(pfr.Core_MDF_Fund_Request_Status__c.Contains(Label.Core_MDF_PFR_Status))) {
+                                    // 30 and 60 days validation for event activity starting from 01.01.2020 with budget less than and greater than or equal 50K
+                                    if(startDate >= customMetadata.Core_MDF_PFR_StartDate__c && checkDate && checkAmount){ pfr.addError(customMetadata.Core_MDF_Error_Message__c); errorthrown = true;break;
+                                                                                                                         }
+                                    // 22 days validation for event activity starting before 01.01.2020
+                                    else if(startDate < customMetadata.Core_MDF_PFR_StartDate__c && pfr.RequestedAmount >= (Double.valueof(customMetadata.Core_MDF_Requested_Amount__c)) && customMetadata.Core_MDF_Activity_Category__c == pfr.Core_MDF_ActivityCategory__c && daysDifference < Integer.valueOf(Label.Core_MDF_22_Days_More_Than_50K) && pfr.Core_MDF_Activity_Types__c != Label.Core_MDF_Activity_Type_Promotion){
+                                        pfr.addError(Label.Core_MDF_Activity_Event_22_Days);errorthrown = true;break;
+                                    }
+                                }
+                            }
+                        }
+                        //Retail 14 day validation 
+                        if(hasRetailCustomPermission)
+                        {
+                            if((oldPfrMap != NULL && oldPfrMap.get(pfr.Id).Core_MDF_Start_Date__c != pfr.Core_MDF_Start_Date__c && oldPfrMap.size() > 0) || (pfr.Id == NULL))
+                            {
+                                if(!(pfr.Core_MDF_Fund_Request_Status__c.Contains(Label.Core_MDF_PFR_Status)) && customMetadata.Core_MDF_PFR_RecordType__c == recordTypeIdDevName.get(pfr.RecordTypeId) && recordTypeIdDevName.get(pfr.RecordTypeId) == Label.Core_MDF_PFR_Retail && daysDifference < Integer.valueOf(customMetadata.Core_MDF_Day_Difference__c))
+                                {
+                                    pfr.addError(Label.Core_MDF_Activity_Retail_14_Days);
+                                    errorthrown = true;
+                                    break;
+                                }                                       
+                            }                           
+                        }
+                       
+                    }
+                    //closed date validations
+                    if(!errorthrown){
+                        Set<String> geoSet = new Set<String>();
+                        Set<String> subGeoSet = new Set<String>();
+                        if(pfr.Core_MDF_Country_nm__c != NULL){ 
+                           List<String> splitCountry = pfr.Core_MDF_Country_nm__c.split(';');
+                            for(String country : splitCountry){
+                                if(countryGeoMap.containsKey(country)){
+                                    if(countrySubGeoMap.containsKey(country)){
+                                        subGeoSet.add(countrySubGeoMap.get(country));
+                                    }
+                                    geoSet.add(countryGeoMap.get(country));
+                                    
+                                }                                
+                            }
+                            
+                           // if((geoSet != NULL && geoSet.size() > 1 ) || (subGeoSet != NULL && subGeoSet.size() > 1)){
+                                
+                                if(geoSet != NULL && geoSet.size() > 1 ){
+                                    pfr.addError(Label.Core_MDF_Country_Multiple_Geo_Error);
+                                    break;
+                                }else if(subGeoSet != NULL && subGeoSet.size() > 1
+                                    && (programGeoReqMap != NULL && programGeoReqMap.size() > 0 && programGeoReqMap.containsKey(recordTypeIdDevName.get(pfr.RecordTypeId)))){
+                                    pfr.addError(Label.Core_MDF_Country_Multiple_SubGeo_Error);
+                                    break;
+                                }else{
+                                List<String> geoSetList = new List<String>();                                
+                                geoSetList.addAll(geoSet);
+                                String test =  geoSetList[0];
+                                pfr.Core_MDF_Region_cd__c =  geoSetList[0];
+                                if(programGeoReqMap != NULL && programGeoReqMap.size() > 0 && recordTypeIdDevName.containsKey(pfr.RecordTypeId) && programGeoReqMap.containsKey(recordTypeIdDevName.get(pfr.RecordTypeId))){
+                                    List<String> geoProgramList = programGeoReqMap.get(recordTypeIdDevName.get(pfr.RecordTypeId));
+                                    if(geoProgramList != NULL && geoProgramList.contains(geoSetList[0])){
+                                        List<String> subGeoSetList = New List<String>();
+                                        subGeoSetList.addAll(subGeoSet);
+                                        pfr.Core_MDF_Sub_Region_cd__c = subGeoSetList[0];
+                                    }
+                                }
+                            }
+                                
+                        }
+                    }
+                   
                 }
             }
         }
-        
-        if(flwInputList != NULL && flwInputList.Size() > 0){
-            getActivityRejectionComments(flwInputList);
-        }
-    }
-    
-    public static void notifyExternalUsers(Map<Id,Id> activityIdmemberIdMap){
-        try{
-            
-            Id extUser;
-            List<Core_MDF_GenericClassToSendMail.MailParams> inputList = new List<Core_MDF_GenericClassToSendMail.MailParams>();
-            for(Id pfrId : activityIdmemberIdMap.keySet()){
-                List<Id> extUserList = new List<Id>();
-               
-                extUser = activityIdmemberIdMap.get(pfrId);
-                extUserList.add(extUser);
-                
-                Core_MDF_GenericClassToSendMail.MailParams sendEmailToExt = new Core_MDF_GenericClassToSendMail.MailParams();
-                sendEmailToExt.recordId = pfrId;
-               
-                sendEmailToExt.templateName = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_NotifyRejectionComments_ExtUser');
-                sendEmailToExt.userIdList = extUserList;
-                sendEmailToExt.sendDiff = false;
-                inputList.add(sendEmailToExt);
-            }
-            if(inputList != NULL && inputList.size() >0){
-                Core_MDF_GenericClassToSendMail.sendEmailMethod(inputList);
-            }
-            
-        }catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-        }
-    }
-    
-    public class notificationWrapperInput{
-        @InvocableVariable
-        public List<Core_MDF_FlowInputWrapper> flowInputWrapperList;
-    }
-    public class flowInputs{
-        @InvocableVariable(label='PartnerFundRequest Id')
-        public Id pfrId;
-        
-        @InvocableVariable(label='Member Activity Owner Id of PFR')
-        public String memberId;
-        
-        @InvocableVariable(label='Program of PFR')
-        public String program;
-        
-        @InvocableVariable
-        public Boolean proposalBasedIndicator;
-        
-        @InvocableVariable
-        public Boolean createdByExternal;
-        
-        @InvocableVariable
-        public String createdById;
-        
-        @InvocableVariable
-        public String pfrStatus;
+        catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);}
     }
 }

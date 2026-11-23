@@ -2,21 +2,9 @@
 <StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <sorted>false</sorted>
     <standardValue>
-        <fullName>Marketing Engaged Lead</fullName>
-        <default>true</default>
-        <label>Marketing Engaged Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
         <fullName>Marketing Qualified Lead</fullName>
-        <default>false</default>
+        <default>true</default>
         <label>Marketing Qualified Lead</label>
-        <converted>false</converted>
-    </standardValue>
-    <standardValue>
-        <fullName>Sales Generated Lead</fullName>
-        <default>false</default>
-        <label>Sales Generated Lead</label>
         <converted>false</converted>
     </standardValue>
     <standardValue>

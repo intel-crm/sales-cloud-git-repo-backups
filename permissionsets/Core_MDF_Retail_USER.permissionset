@@ -4,20 +4,12 @@
         <application>Core_MDF_CoMarketing</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_RMF_USER</name>
-    </customPermissions>
     <description>Permission Set for External Retail Users with Partner Community License</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP Retail USER</label>
     <license>Partner Community</license>
     <recordTypeVisibilities>
         <recordType>Campaign.Core_MDF_Retail_Marketing_Funds</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Claim_RMF_Batch_Record</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <recordTypeVisibilities>
@@ -39,10 +31,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>CreateCustomizeFilters</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ViewAllForeignKeyNames</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

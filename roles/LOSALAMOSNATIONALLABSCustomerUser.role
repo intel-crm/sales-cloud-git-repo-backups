@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>LOS ALAMOS NATIONAL LABS Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LOSALAMOSNATIONALLABSCustomerManager</parentRole>
 </Role>

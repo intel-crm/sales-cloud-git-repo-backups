@@ -1,0 +1,14 @@
+Hi  ,</br>
+</br>
+
+
+Email Updated from :{!fromEmail}</br>
+Email Updated To :{!toEmail}</br>
+</br>
+
+Following the e-mail address change, below is the list of entitlements associated to this contact. If there are any entitlement changes required please visit the Grant Entitlements screen in Salesforce to make the necessary changes.</br>
+</br>
+
+{!myCustomString}</br>
+
+Thanks

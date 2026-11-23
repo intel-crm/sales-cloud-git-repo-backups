@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Resource Link</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Resource Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Resource --></label>
+        <name>Xvoyant__Resource__c</name>
+    </fields>
+    <fields>
+        <label><!-- Url --></label>
+        <name>Xvoyant__Url__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Xvoyant__isActive__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

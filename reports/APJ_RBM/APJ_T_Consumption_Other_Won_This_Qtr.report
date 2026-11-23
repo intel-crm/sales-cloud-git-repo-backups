@@ -48,6 +48,9 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Production Cancelled</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -73,6 +76,9 @@
         <values>
             <sourceValues>
                 <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deleted</sourceValue>
             </sourceValues>
             <value>Cancelled/Deleted</value>
         </values>
@@ -277,7 +283,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Jason Kay Siah Ang,Faisal Qamar,I&apos;ng Chin Tan</value>
+            <value>Jason Kay Siah Ang,Faisal Qamar</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_12541241</column>
@@ -301,7 +307,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>APJ T Consumption - Other - Won This Qtr</name>

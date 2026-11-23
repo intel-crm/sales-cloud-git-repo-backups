@@ -202,8 +202,10 @@ public with sharing class PRM_DisplayTrackerCtrl {
 
     private static List<String> getTrackerFields(){
         List<String> fields = new List<String>();
-    SObjectType trackerType = Schema.getGlobalDescribe().get('PRM_Tracker__c');
-    Map<String,Schema.SObjectField> mfields = trackerType.getDescribe().fields.getMap();        
+    /*SObjectType trackerType = Schema.getGlobalDescribe().get('PRM_Tracker__c');
+    Map<String,Schema.SObjectField> mfields = trackerType.getDescribe().fields.getMap();  */
+        //JB
+        Map<String,Schema.SObjectField>mfields=PRM_Tracker__c.SObjectType.getDescribe().fields.getMap();
         for (Schema.SObjectField d: mfields.values()) {
         fields.add(String.valueOf(d));
     }

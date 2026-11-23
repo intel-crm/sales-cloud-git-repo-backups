@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Case Owneres will receives an email if Claim Submitter submits any message</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Claim Submitter Message to Case Owners</name>
+    <style>none</style>
+    <subject>Claim Submitter Message for Case</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

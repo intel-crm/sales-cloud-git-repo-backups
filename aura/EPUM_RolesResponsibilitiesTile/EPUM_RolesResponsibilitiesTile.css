@@ -1,0 +1,23 @@
+.THIS.c-container {
+    border: none;
+   
+    background:#FFFFFF;
+}
+.THIS .page-section {
+    border: none;
+    padding: 1rem;
+}
+.THIS .page-header,
+.THIS .page-footer {
+    height: 50px;
+}
+.THIS .page-main {
+    background: #FFFFFF;
+}
+.THIS .page-left,
+.THIS .page-right {
+    background: #FFFFFF;
+}
+.THIS .slds-card_boundary{
+    border:none;
+}

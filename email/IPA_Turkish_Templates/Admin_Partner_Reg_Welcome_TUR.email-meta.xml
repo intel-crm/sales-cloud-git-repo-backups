@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Admin_Partner_Reg_Welcome_TUR</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Intel® Ortağı İş Birliği Kaydınızı Tamamlamak için Eylem Gerekli
+
+
+
+
+{!Contact.FirstName},
+
+Tebrikler; şirket yöneticiniz veya Intel temsilcisi sizi bir Intel® Ortağı İş Birliği hesabına ekledi! Kaydınızı tamamlamak için yalnızca birkaç adım kaldı.
+
+Sizin için aşağıdaki profil bilgileri oluşturuldu:
+
+Kullanıcı adı: {!Contact.Core_Login_Id__c}
+E-posta Adresi: {!Contact.Email}
+Şirket Adı: {{ACCOUNTNAME}}
+Intel® Ortağı İş Birliği İş Kimlik No.: {{ACCOUNTNUMBER}}
+
+
+Kaydınızı tamamlamak için lütfen aşağıdaki bağlantıya tıklayın
+
+
+Kaydı Tamamla
+
+Yukarıdaki bağlantıya erişemiyor musunuz?
+
+https://intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner-alliance/help/overview.html
+Herhangi bir sorunuz varsa lütfen şu sayfada bizimle iletişime geçin: https://signin.intel.com/ContactUs?Culture=tr-tr.
+Sizi programda görmek için sabırsızlanıyoruz!
+Saygılarımızla,
+Intel® Ortağı İş Birliği ekibiniz
+
+
+Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 ABD. www.intel.com
+Gizlilik | Çerezler
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

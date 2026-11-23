@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_ACR_Notification_Messages</name>
         <label>Send ACR Notification Messages</label>
-        <locationX>658</locationX>
-        <locationY>487</locationY>
+        <locationX>698</locationX>
+        <locationY>496</locationY>
         <actionName>PRM_ACRNotificationMessage</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -26,7 +26,12 @@
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Send Notification messages to contacts when new ACR record is created or updated</description>
     <environments>Default</environments>
-    <interviewLabel>PRM_ACR_Notification_Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <formulas>
+        <name>formula_3_myRule_1_A1_8512871295</name>
+        <dataType>String</dataType>
+        <expression>{!$Label.PRM_Msgcd_NewContact}</expression>
+    </formulas>
+    <interviewLabel>PRM_ACR_Notification_Message_1 {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_ACR_Notification_Message</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -40,19 +45,14 @@
             <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
-    <processMetadataValues>
-        <name>OriginBuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>543</locationX>
+        <locationX>544</locationX>
         <locationY>48</locationY>
         <connector>
             <targetReference>Send_ACR_Notification_Messages</targetReference>
         </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
         <filterFormula>AND(
 {!$Record.PRM_Account_Id__r.RecordType.DeveloperName} = {!$Label.PRM_Intel_Account} , {!$Record.PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c} = true, {!$Record.PRM_InActive_Ind__c} = false, ISPICKVAL({!$Record.PRM_Status_Nm__c} ,&apos;Complete&apos;),
 NOT(ISBLANK({!$Record.PRM_Contact_Id__c} )),
@@ -62,5 +62,5 @@ NOT(ISBLANK({!$Record.PRM_Account_Id__c} ))
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
 </Flow>

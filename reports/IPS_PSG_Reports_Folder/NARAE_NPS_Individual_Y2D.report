@@ -123,7 +123,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER</column>

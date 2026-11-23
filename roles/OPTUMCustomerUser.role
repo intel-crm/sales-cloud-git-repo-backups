@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>OPTUM Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11710005_Wendy_Tolls</parentRole>
+    <parentRole>OPTUMCustomerManager</parentRole>
 </Role>

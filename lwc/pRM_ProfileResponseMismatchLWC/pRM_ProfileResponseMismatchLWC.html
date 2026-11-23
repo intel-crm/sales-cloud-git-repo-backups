@@ -29,7 +29,7 @@
         <template if:true={allrecordProcessed}>
           <lightning-layout-item size="4" flexibility="auto" padding="horizontal-small slds-p-top_x-small"
             class="slds-text-align_right slds-p-bottom_small">
-            <lightning-input placeholder="Search by Account Name" type="text" value={inputValue} onchange={handleChange}>
+            <lightning-input placeholder="Seach by Account Name" type="text" value={inputValue} onchange={handleChange}>
             </lightning-input>
           </lightning-layout-item>
         </template>
@@ -40,12 +40,7 @@
           hide-checkbox-column="true" show-row-number-column="true" onrowaction={handlerowaction}>
         </lightning-datatable>
       </div>
-      <template if:true={searchFilter}>
-        <template if:false={recordPresent}>
-          <p class="slds-align_absolute-center"> No records found for {searchVal}</p>
-        </template>
-      </template>
-      
+
       <template if:true={allrecordProcessed}>
         <template if:false={searchFilter}>
           <div class="slds-p-around_small slds-align_absolute-center">

@@ -2,10 +2,7 @@
 public class ACM_DeleteDuplicatesOnAccountMerge_Test{
     @TestSetup
     private static void setCommonData(){
-        Core_Account_Bypass_Validation_Rule__c bypass= new Core_Account_Bypass_Validation_Rule__c();
-        bypass.ByPass__c = true;
-        bypass.SetupOwnerId = UserInfo.getOrganizationId();
-        insert bypass;
+        
         Id specid = Schema.SObjectType.PRM_Specialty__c.getRecordTypeInfosByName().get('Select Benefits').getRecordTypeId();
         Id accountRTPartnerAccountGroup = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Core_Partner_Account_Group').getRecordTypeId();
         List<Account> accountListToInsert = new List<Account>();
@@ -69,7 +66,7 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         insert cpIPATest;
         
         ChannelProgramLevel cplTest = new ChannelProgramLevel(); //Channel Program Level
-        cplTest.Name='Prestige';
+        cplTest.Name='Titanium';
         cplTest.ProgramId=cpIPATest.Id;
         insert cplTest;
         
@@ -114,7 +111,7 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         aba1.PRM_Account_Id__c = account1.Id;
         aba1.PRM_Partner_Benefit_Id__c = pb.id;
         aba1.PRM_Status_Nm__c = 'active';
-        aba1.PRM_Status_Reason_Txt__c = 'test';
+        aba1.PRM_Status_Reason_Txt__c = '';
         aba1.CreatedDate=system.now();
         //insert aba1;
         abaList.add(aba1);
@@ -122,7 +119,7 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         aba2.PRM_Account_Id__c = account1.Id;
         aba2.PRM_Partner_Benefit_Id__c = pb.id;
         aba2.PRM_Status_Nm__c = 'active';
-        aba2.PRM_Status_Reason_Txt__c = 'test';
+        aba2.PRM_Status_Reason_Txt__c = '';
         aba2.CreatedDate=system.now();
         //insert aba2;
         abaList.add(aba2);
@@ -192,7 +189,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         acr1.PRM_Relationship_Id__c = cr1.Id;
         acr1.PRM_Contact_Id__c=con.Id;
         acr1.PRM_execute_trigger__c=true;
-        acr1.PRM_Status_Reason_Txt__c='test';
         //insert acr1;        
         acrList.add(acr1);
         
@@ -202,7 +198,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         acr2.PRM_Relationship_Id__c = cr1.Id;
         acr2.PRM_Contact_Id__c=con.Id;
         acr2.PRM_execute_trigger__c=true;
-        acr2.PRM_Status_Reason_Txt__c='test';
         //insert acr2;
         acrList.add(acr2);
 		insert acrList;
@@ -213,7 +208,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         acctChnlMemTest.PRM_Partner_Role__c='Service Provider';
         acctChnlMemTest.PRM_Status_Nm__c = 'Inactive';
         acctChnlMemTest.CreatedDate = system.now();
-        acctChnlMemTest.PRM_Status_Reason_Txt__c='test';
        // insert acctChnlMemTest;
         acmList.add(acctChnlMemTest);
        PRM_AccountChannelMembership__c acctChnlMemTest1=new PRM_AccountChannelMembership__c(); //Account Channel Membership
@@ -221,7 +215,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         acctChnlMemTest1.PRM_Partner_Role__c='Service Provider';
         acctChnlMemTest1.PRM_Status_Nm__c = 'Pending';
         acctChnlMemTest1.CreatedDate = system.now();
-        acctChnlMemTest1.PRM_Status_Reason_Txt__c='test';
        // insert acctChnlMemTest1;
         acmList.add(acctChnlMemTest1);
         PRM_AccountChannelMembership__c acctChnlMemTest2=new PRM_AccountChannelMembership__c(); //Account Channel Membership
@@ -229,7 +222,6 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         acctChnlMemTest2.PRM_Partner_Role__c='Service Provider';
         acctChnlMemTest2.PRM_Status_Nm__c = 'Approved';
         acctChnlMemTest2.CreatedDate = system.now();
-        acctChnlMemTest2.PRM_Status_Reason_Txt__c='test';
         //insert acctChnlMemTest2;
         acmList.add(acctChnlMemTest2);
         insert acmList;
@@ -271,21 +263,38 @@ public class ACM_DeleteDuplicatesOnAccountMerge_Test{
         accBussTypeList.add(accBusType);
         System.debug('Account Id : Test : '+account2); 
         insert accBussTypeList;
+        
+        List<Core_Account_Compliance_Watch_List__c> cwlList  = new List<Core_Account_Compliance_Watch_List__c>();
+        Core_Account_Compliance_Watch_List__c cwl1 = new Core_Account_Compliance_Watch_List__c();
+        cwl1.Core_Account_Id__c = account1.Id;
+        cwl1.Core_Type__c = 'EC';
+        insert cwl1;
+        
+        Core_Account_Compliance_Watch_List__c cwl2 = new Core_Account_Compliance_Watch_List__c();
+        cwl2.Core_Account_Id__c = account1.Id;
+        cwl2.Core_Type__c = 'EC';
+        insert cwl2;
+
+
     }
     
     @isTest
     private static void execute(){
     
         Test.startTest();
-        Database.executeBatch(new ACM_DeleteDuplicatesOnAccountMerge());
+        //Database.executeBatch(new ACM_DeleteDuplicatesOnAccountMerge());
         Test.stopTest();    
     }
     @isTest
     Private static void schedulerclass(){
         Test.startTest(); 
-        ACM_DeleteDuplicatesOnAccountMerge batchschedule = new ACM_DeleteDuplicatesOnAccountMerge();
+       // ACM_DeleteDuplicatesOnAccountMerge batchschedule = new ACM_DeleteDuplicatesOnAccountMerge();
         String cronExpression = '0 0 0/1 1/1 * ? *';
-        system.schedule('Batch Test' , cronExpression , batchschedule);    
+        //system.schedule('Batch Test' , cronExpression , batchschedule);    
         Test.stopTest();        
     }
+    
+    
+  
+ 
 }

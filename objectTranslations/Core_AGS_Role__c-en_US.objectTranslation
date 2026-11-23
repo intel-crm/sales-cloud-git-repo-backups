@@ -29,5 +29,12 @@
         <name>Core_Technical_Requested_By_Id__c</name>
         <relationshipLabel><!-- AGS Roles --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>AGS Role Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

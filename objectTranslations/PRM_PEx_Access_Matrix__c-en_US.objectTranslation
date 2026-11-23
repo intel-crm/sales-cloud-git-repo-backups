@@ -36,6 +36,10 @@
             <translation><!-- Device as a Service Specialty --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Docebo</masterLabel>
+            <translation><!-- Docebo --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Enablement Zones</masterLabel>
             <translation><!-- Enablement Zones --></translation>
         </picklistValues>
@@ -149,6 +153,10 @@
         <name>PRM_Benefit_Priority__c</name>
     </fields>
     <fields>
+        <label><!-- Click To Action Priorities --></label>
+        <name>PRM_CTA_Priorities__c</name>
+    </fields>
+    <fields>
         <label><!-- Click To Action Priority --></label>
         <name>PRM_CTA_Priority__c</name>
     </fields>
@@ -211,10 +219,18 @@
             <masterLabel>https://www.intelmanagepersonnel.com</masterLabel>
             <translation><!-- https://www.intelmanagepersonnel.com --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>manage_personnel__c</masterLabel>
+            <translation><!-- manage_personnel__c --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- IPA URL --></label>
         <name>PRM_IPA_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Logo Icon Class --></label>
+        <name>PRM_Logo_Icon_Class__c</name>
     </fields>
     <fields>
         <label><!-- Metric --></label>
@@ -238,6 +254,13 @@
         <label><!-- isActive --></label>
         <name>PRM_isActive_Indicator__c</name>
     </fields>
+    <layouts>
+        <layout>Access Matrix Setup Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Benefit Access Rule --></label>
         <name>Benefit_Access_Rule</name>

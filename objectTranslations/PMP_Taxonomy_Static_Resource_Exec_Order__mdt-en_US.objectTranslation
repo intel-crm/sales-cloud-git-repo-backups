@@ -17,5 +17,12 @@
         <label><!-- Static Resource Name --></label>
         <name>Static_Resource_Name__c</name>
     </fields>
+    <layouts>
+        <layout>PMP Taxonomy Static Resource Exec Order Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

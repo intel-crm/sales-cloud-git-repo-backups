@@ -9,18 +9,50 @@
     <dashboardColorPalette>accessible</dashboardColorPalette>
     <dashboardFilters>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>1/1/2021 12:00 AM</values>
+            <operator>equals</operator>
+            <values>TODAY</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>2/1/2021 12:00 AM</values>
+            <operator>equals</operator>
+            <values>YESTERDAY</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
-            <operator>greaterOrEqual</operator>
-            <values>12/1/2020 12:00 AM</values>
+            <operator>equals</operator>
+            <values>LAST_WEEK</values>
         </dashboardFilterOptions>
-        <name>New Registration: Last Modified Date</name>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_WEEK</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_WEEKS:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>THIS_MONTH</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:2</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:3</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:6</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>LAST_N_MONTHS:8</values>
+        </dashboardFilterOptions>
+        <name>Registration Request: Created Date</name>
     </dashboardFilters>
     <dashboardGridLayout>
         <dashboardGridComponents>
@@ -36,8 +68,9 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>Column</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
+                <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
@@ -75,7 +108,7 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>ColumnGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -120,7 +153,7 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>ColumnGrouped</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -165,11 +198,11 @@
                 <componentChartTheme>dark</componentChartTheme>
                 <componentType>Column</componentType>
                 <dashboardFilterColumns>
-                    <column>CUST_LAST_UPDATE</column>
+                    <column>CUST_CREATED_DATE</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <drillDownUrl>https://intel.lightning.force.com/lightning/r/Report/00O3b000006gIihEAE/view?queryScope=userFolders</drillDownUrl>
+                <drillDownUrl>https://intel--crmdevipa.lightning.force.com/lightning/r/Report/00O8A000000Try1/view</drillDownUrl>
                 <drillEnabled>false</drillEnabled>
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>

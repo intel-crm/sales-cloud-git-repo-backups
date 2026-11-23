@@ -71,7 +71,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -119,7 +119,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -167,7 +167,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -215,7 +215,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -263,7 +263,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -313,7 +313,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -358,7 +358,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -402,7 +402,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -447,7 +447,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -492,7 +492,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -541,10 +541,10 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <aggregateType>Sum</aggregateType>
@@ -580,7 +580,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -668,7 +668,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>FULL_NAME</column>
@@ -706,7 +706,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -752,7 +752,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -791,7 +791,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>
@@ -836,7 +836,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <displayUnits>Auto</displayUnits>
             <drillEnabled>false</drillEnabled>
@@ -865,7 +865,7 @@
                 <column>LAST_STAGE_CHANGE_DATE</column>
             </dashboardFilterColumns>
             <dashboardFilterColumns>
-                <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             </dashboardFilterColumns>
             <dashboardTableColumn>
                 <column>OPPORTUNITY_NAME</column>

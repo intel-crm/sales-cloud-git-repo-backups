@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <available>true</available>
+    <description>Template for Email for Claim Review Outcome Notice</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Core_MDF_Email for Claim Review Notice</name>
+    <style>none</style>
+    <subject>Review completed for your claim #</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

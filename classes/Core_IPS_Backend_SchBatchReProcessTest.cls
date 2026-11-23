@@ -22,20 +22,24 @@ public class Core_IPS_Backend_SchBatchReProcessTest {
         customSettings.add(cs1);
         customSettings.add(cs2);  
         Database.insert(customSettings);
+        System.debug('*** Custom settings inserted:'+ customSettings);
         
         //inserting Product to be associated to Case rec
         Product2 testProduct = Core_IPS_Backend_TestClass_Utility.getProduct();
         testProduct.Core_Product_Org__c='IPS';
         Database.insert(testProduct);
+        System.debug('***testProduct '+ testProduct);
         
         //Inserting Support Org & Backend System
         Core_IPS_Product_Organization__c suppOrg = Core_IPS_Backend_TestClass_Utility.getSupportOrg();
         Database.insert(suppOrg);
+        System.debug('***suppOrg inserted'+ suppOrg );
         
         Core_IPS_Backend_System__c backendSystem = Core_IPS_Backend_TestClass_Utility.getBackendSystem();
         backendSystem.name='Test Backend System';
         backendSystem.Core_IPS_Support_Org__c=suppOrg.id;
         Database.insert(backendSystem);
+        System.debug('***backendSystem inserted'+ backendSystem);
         
         
         //inserting Case records for log entries
@@ -47,6 +51,7 @@ public class Core_IPS_Backend_SchBatchReProcessTest {
         List<Core_Log_Entry__c> testDeleteRecords = getLogEntriesToBeDeleted(50, testCaseRecords);
         database.insert(testDeleteRecords);
         System.assertEquals(50, testDeleteRecords.size());
+        System.debug('***testDeleteRecords '+ testDeleteRecords[0] );
         
         //inserting Log entry records to be updated
         List<Core_Log_Entry__c> testUpdateRecords = Core_IPS_Backend_TestClass_Utility.getListOfLogEntries(50, testCaseRecords );

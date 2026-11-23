@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Scanitech Aps Partner Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Scanitech Aps Partner Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11713834_Lukasz_Balas</parentRole>
+</Role>

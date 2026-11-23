@@ -1,4 +1,4 @@
-public without sharing class Core_KPI_History_Handler {
+public class Core_KPI_History_Handler {
 
     private static Core_KPI_History_Handler instance = null;
     

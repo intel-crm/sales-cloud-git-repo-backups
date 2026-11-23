@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ONG-IT GmbH (Saimos) Partner User</description>
+    <description>ONG-IT GmbH Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ONG-IT GmbH (Saimos) Partner User</name>
+    <name>ONG-IT GmbH Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12267256_Janusz_Smok</parentRole>
+    <parentRole>ONGITGmbHPartnerManager</parentRole>
 </Role>

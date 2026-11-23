@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>ACS Spa Partner User</description>
+    <description>ACS Data Systems Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>ACS Spa Partner User</name>
+    <name>ACS Data Systems Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>ACSDataSystemsPartnerManager</parentRole>
 </Role>

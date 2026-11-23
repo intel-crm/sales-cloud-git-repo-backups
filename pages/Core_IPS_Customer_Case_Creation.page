@@ -1,0 +1,1110 @@
+<apex:page standardController="case" extensions="Core_IPS_Customer_Case_Controller" action="{!PageInit}" cache="false" id="page" >
+    <apex:includeScript value="{!$Resource.Core_IPS_Jquery11}"/>
+    <apex:includeScript value="{!Urlfor($Resource.Core_IPS_DataTable,'jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_DataTable,'jquery-ui.css')}" />
+    <!--MultiSelect-->
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.min.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Jquery_Dropdown, 'jquery.dropdown.js')}"/>
+    <style>
+        .custom-combobox {
+            position: relative;
+            display: inline-block;
+        }
+        .custom-combobox-toggle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin-left: -1px;
+            padding: 0;
+        }
+        .custom-combobox-input {
+            margin: 0;
+            padding: 2px 3px;
+            background-color:white;
+        }
+        .ui-autocomplete {
+            max-height: 300px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .label-Variant {
+            text-align: right;
+            font-size: 91%;
+            font-weight: bold;
+            width: 16.75%;
+            display: inline-block;
+            padding-right: 16px;
+            color: #4a4a56;
+        }
+        .owner a{
+            color:#000;
+            text-decoration:none;
+            pointer-events:none;
+        }
+        .ui-dialog .ui-dialog-titlebar-close {
+            display:none;
+        }
+    </style>
+    <!--Added by Geetha as per user story US78568-->
+    <style type="text/css">
+        .popup
+        {
+            background-color: white;
+            border-width: 2px;
+            border-style: solid;
+            z-index: 9999;
+            left: 50%;
+            padding:10px;
+            position: absolute;
+            width: 800px;
+            margin-left: -400px;
+            top:80px;
+        }
+        .popup1
+        {
+            width: 500px;
+            height: 300px;
+        }
+        .popupBg
+        {
+            background-color:black;
+            opacity: 0.20;
+            filter: alpha(opacity = 70);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 9998;
+        }
+        .closeButton {
+            position: absolute;
+            right: 7px;
+            background: white;
+            top: 2px;
+        }
+        .test .apexp{
+            overflow:scroll;
+            height:300px;
+        }
+        .errorM4 .msgIcon, .errorSmall {
+            background-image: url(/img/samples/flag_red.gif) !important;
+        }
+        .myCustomMessage .message {
+            background: none  !important;
+            border: none !important;
+        }
+        
+        .targetCustProject{
+            min-width: 171px !important;
+            max-width: 380px !important;
+            width: auto !important;
+        }
+        #spinner{
+            display: none;
+            width:200px;
+            height: 50px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            text-align:center;
+            padding:10px;
+            font:normal 16px Tahoma, Geneva, sans-serif;
+            margin-left: -100px;
+            margin-top: -100px;
+            z-index:2;
+            overflow: auto;
+            border:1px solid #CCC;
+            background-color:white;
+            z-index:100;
+            padding:5px;
+            line-height:20px;
+        }
+        #opaque {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: none;
+            background-color: gray;
+            filter: alpha(opacity=30);
+            opacity: 0.3;
+            -moz-opacity:0.3;
+            -khtml-opacity:0.3
+        }
+        * html #opaque {
+            position: absolute;
+        }
+        .enableVariant label {
+            display: inline-block;
+            width: 17%;
+            text-align: right;
+            margin-right: 15px;
+            color: #4a4a56;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .enableVariant1 label {
+            display: inline-block;
+            width: 34%;
+            text-align: right;
+            margin-right: 15px;
+            color: #4a4a56;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .ui-dialog .ui-dialog-content {
+            height:130px !important;
+        }
+        /*Start--US253124--MINDS Case Creation*/
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(2) th {
+            width: 60%;
+            text-align: left;
+            padding-left: 30px;
+            padding-top: 15px;
+        }
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:first-child td {
+            font-size: 13px;
+        }
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(2) th label {
+            color: #000;
+            font-weight: normal;
+            font-size: 12px;
+            
+        }
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(2) td {
+            padding-left: 0;
+        }
+          .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(3) th {
+                text-align: left;
+                padding-left: 30px;
+                font-size: 12px;
+                font-weight: normal;
+                width: 22%;
+                padding-right: 0;
+                color: #000;
+        }
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(3) td {
+                padding-left: 0;
+                position: relative;
+        }
+         .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(3) td table td {
+                padding-left: 0;
+                position: relative;
+        }
+        .bPageBlock span:nth-child(2) .MAGSec .detailList tr:nth-child(3) td table td:before {
+            content: '';
+            background-color: #c00;
+            position: absolute;
+            left: -4px;
+            width: 3px;
+            height: 17px;
+            top: 6px;
+            bottom: 1px;
+        }
+    /*End--US253124--MINDS Case Creation*/
+    </style>
+    <apex:stylesheet value="{!URLFOR($Resource.customCSS, 'customCSS.css')}"/>
+    <script>
+    $( function() {
+        $.widget( "custom.combobox", {
+            _create: function() {
+                this.wrapper = $( "<span>" )
+                .addClass( "custom-combobox" )
+                .insertAfter( this.element );
+                this.element.hide();
+                this._createAutocomplete();
+                this._createShowAllButton();
+            },
+            _createAutocomplete: function() {
+                var selected = this.element.children( ":selected" ),
+                value = selected.val() ? selected.text() : "";
+                this.input = $( "<input>" )
+                .appendTo( this.wrapper )
+                .val( value )
+                .attr( "title", "" )
+                .attr( "placeholder", "--Select--" )
+                .addClass( "custom-combobox-input ui-widget ui-widget-content ui-state-default ui-corner-left" )
+                .autocomplete({
+                    delay: 0,
+                    minLength: 0,
+                    source: $.proxy( this, "_source" ),
+                })
+                .tooltip({
+                    classes: {
+                        "ui-tooltip": "ui-state-highlight"
+                    }
+                });
+                this._on( this.input, {
+                    autocompleteselect: function( event, ui ) {
+                        ui.item.option.selected = true;
+                        //-- Fire the Event --
+                        $(this.element).trigger( "change" );
+                        this._trigger( "select", event, {
+                            item: ui.item.option
+                        });
+                    },
+                    autocompletechange: "_removeIfInvalid"
+                });
+                //Adjust select option width automatically - DE37840- Karthick
+                $(this.input).width($(this.element).width() > 50 ? $(this.element).width()-10 : $(this.element).width());  
+                $(this.input).data("uiAutocomplete").menu._isDivider = function( item ) {
+                    return false;
+                }
+            },
+            _createShowAllButton: function() {
+                var input = this.input,
+                    wasOpen = false;
+                $( "<a>" )
+                .attr( "tabIndex", -1 )
+                .attr( "title", "Type to autocomplete or click to show All options" )
+                .tooltip()
+                .appendTo( this.wrapper )
+                .button({
+                    icons: {
+                        primary: "ui-icon-triangle-1-s"
+                    },
+                    text: false
+                })
+                .removeClass( "ui-corner-all" )
+                .addClass( "custom-combobox-toggle ui-corner-right" )
+                .on( "mousedown", function() {
+                    wasOpen = input.autocomplete( "widget" ).is( ":visible" );
+                })
+                .on( "click", function() {
+                    input.trigger( "focus" );
+                    // Close if already visible
+                    if ( wasOpen ) {
+                        return;
+                    }
+                    // Pass empty string as value to search for, displaying all results
+                    input.autocomplete( "search", "" );
+                });
+            },
+            _source: function( request, response ) {
+                var matcher = new RegExp( $.ui.autocomplete.escapeRegex(request.term), "i" );
+                response( this.element.children( "option" ).map(function() {
+                    var text = $( this ).text();
+                    if ( this.value && ( !request.term || matcher.test(text) ) )
+                        return {
+                            label: text,
+                            value: text,
+                            option: this
+                        };
+                }) );
+            },
+            _removeIfInvalid: function( event, ui ) {
+                // Selected an item, nothing to do
+                if ( ui.item ) {
+                    return;
+                }
+                // Search for a match (case-insensitive)
+                var value = this.input.val(),
+                    valueLowerCase = value.toLowerCase(),
+                    valid = false;
+                this.element.children( "option" ).each(function() {
+                    if ( $( this ).text().toLowerCase() === valueLowerCase ) {
+                        this.selected = valid = true;
+                        return false;
+                    }
+                });
+                // Found a match, nothing to do
+                if ( valid ) {
+                    return;
+                }
+                // Remove invalid value
+                this.input
+                .val( "" )
+                .attr( "title", value + " didn't match any item" )
+                .tooltip( "open" );
+                this.element.val( "" );
+                this._delay(function() {
+                    this.input.tooltip( "close" ).attr( "title", "" );
+                }, 2500 );
+                this.input.autocomplete( "instance" ).term = "";
+            },
+            _destroy: function() {
+                this.wrapper.remove();
+                this.element.show();
+            }
+        });
+        renderCombobox();
+    });
+    function renderCombobox(){
+        //update the select list which has to be made autocomplete with styleClass/class="cust-combobox"
+        $('.cust-combobox').combobox();
+        $("select[id$='Variant']").combobox();
+        $("select[id$='targetCustProject']").combobox();
+        register_MultiSelect();
+    }
+    function register_MultiSelect() {
+        //multiselect dropdown
+        console.log('---Inside register_MultiSelect--');            
+        $(".custom-multiselect select option[value='']").remove();
+        $('.multiselect-dropdown').css({'display':'none'});
+        $('.custom-multiselect').dropdown({                
+            multipleMode: 'label',
+            // search field
+            input: '<input type="text" maxLength="20" placeholder="Search and Select Multiple...">'
+        });
+        console.log('---End register_MultiSelect--');           
+    }
+    </script>
+    <script>        
+    var newWin=null;
+    function callback(item1,item2)
+    {
+        passingProdInfo(item1,item2);    
+        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + 'callback'+item1+item2);
+    }
+    $( document ).ready(function() {
+        console.log('In Ready');        
+        if("{!$CurrentPage.parameters.mode}" == 'new'){
+            $('[id$=RelatedMessage]').css("display","block");
+            //Added by Geetha as per US96836    
+        }else if(("{!$CurrentPage.parameters.mode}" == 'edit' || "{!$CurrentPage.parameters.mode}" == 'asset' || "{!$CurrentPage.parameters.mode}" == 'sslc' || "{!$CurrentPage.parameters.mode}" == 'sNew') && ($('[id$=ProjectId]').text()=="" && '{!isMigratedSource}'=='false')){
+            console.log('In Edit');
+            $('[id$=RelatedMessage]').css("display","block");
+        }
+        if("{!$CurrentPage.parameters.mode}" == 'edit' && $('[id$=supportOwner]').text().trim().length == 0){
+            console.log('In Edit PSO');
+            $('[id$=targetCustaccount]').css("display","none");
+        }
+        //Start--US413073--Aniket--Added to disable minds section on edit mode
+        if("{!$CurrentPage.parameters.mode}" == 'edit'){
+            console.log('In Edit');
+            $(".MAGSec").css("display", "none");
+        }
+        //End--US413073--Aniket--Added to disable minds section on edit mode
+    }); 
+    
+    (function($) {
+        $.fn.extend( {
+            limiter: function(limit, remaining, total) {
+                $(this).on("keydown keyup focus", function() {
+                    setCount(this, remaining, total);
+                });
+                function setCount(src, remaining, total) {
+                    var charsCurrent = src.value.length;
+                    var chars = 0;
+                    $(".countTarget").each(function(index, value){chars += $(value).val().length});
+                    if (chars > limit) {
+                        src.value = src.value.substr(0, (limit - chars + charsCurrent));
+                        chars = limit;
+                    }
+                    //remaining.html((limit - chars)+' Out of');
+                    if(chars > 249)
+                    {
+                        //remaining.attr('style','color:red;');
+                        total.attr('style','color:red;');
+                    }
+                    else
+                    {
+                        //remaining.attr('style','');
+                        total.attr('style','');
+                        
+                    }
+                    total.html(chars);
+                    $("#showExample").html(' Out of '+limit+' entered ');    
+                }
+                //setCount($(this)[0], elem);
+            }
+        });
+    })(jQuery);
+    $(document).ready(
+        function()
+        {
+            var remaining = $("#charCountRemaining");
+            var total = $("#charCountTotal");
+            var showExamples = $("#showExample");
+            $(".countTarget").limiter(255, remaining, total);
+        }
+    );
+    function showSpinner()
+    {
+        document.getElementById('opaque').style.display='block';
+        var popUp = document.getElementById('spinner');
+        console.log('called');
+        popUp.style.display = 'block';  
+    }
+    function UpdateProjectSection(itm)
+    {
+        if(itm.value != 'NA' && itm.value !='' && itm.value !=null && itm.value !='NoProj')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Click <a href='#' style='color:blue' onclick='CallRemoteAction(false);return false;'>here</a> for the list of available products in the selected project</span>");
+            clearProject();
+        }
+        else if(itm.value =='' || itm.value ==null || itm.value == 'NA' || itm.value =='NoProj')
+        {    $("div[id*=productPanel2]").find(".pbSubsection").find("span[id='spanMoreData']").remove();
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Please type product name in the \"Search Product\" field and search for the product. <span>");
+            clearProject();
+        }
+       
+    }
+    function RefreshData(itm)
+    {
+        clearProduct();
+    }
+    function clearDiv()
+    {
+        $("div[id*=productPanel2]").find(".pbSubsection").html('');
+    }
+    function updateProjectSectionAfterProductRefresh()
+    {
+        var itm ='';
+        $(".helpOrb").css('position','static');
+        //console.log(itm);
+        $(".targetCustProject option").each(function(){
+            var  attr = $(this).attr("selected");
+            if (typeof attr !== typeof undefined && attr !== false) {
+                itm = $(this).val();
+            }
+        });
+        //console.functionlog(itm.value);
+        $("input[id*='targetProdCustomer']").focus();
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>{!selectedProject}");
+        if(itm.length > 2 && itm!='NoProj')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Click <a href='#' style='color:blue' onclick='CallRemoteAction(false);return false;'>here</a> for the list of available products in the selected project</span>");
+        }
+        else if(itm==''|| itm=='NA' || itm=='NoProj')
+        {
+            $("div[id*=productPanel2]").find(".pbSubsection").html('');
+            $("div[id*=productPanel2]").find(".pbSubsection").append("<span id='spanMoreData'>Please type product name in the \"Search Product\" field and search for the product. <span>");
+        }
+    }
+    
+    function fnConfirmBox()
+    {
+        $( "#dialog-confirm" ).dialog({
+            resizable: false,
+            height:170,
+            modal: true,
+            buttons: {
+                "Ok": function() {
+                    ConfirmBox();
+                    $( this ).dialog( "close" );
+                },
+                Cancel: function() {
+                    $( this ).dialog( "close" );
+                }
+            }
+        });  
+    }
+    function fnConfirmProductChange()//Added by Mahendra per US79769
+    {
+      
+        $( "#dialog-confirm-productchange" ).dialog({
+            resizable: false,
+            width:350,
+            height:200,
+            modal: true,
+            classes: {
+                "ui-dialog-titlebar": "hide-dialog"
+            },
+            buttons: {
+                "Yes": function() {
+                   $("[id$='showProductRelInfoDialog']").val(false);
+                   clearAlldetails();
+                    $("[id$='targetProdCustomer']")[0].value = '';
+                    $("[id$='targetProdIdCustomer']")[0].value = null;
+                    $( this ).dialog( "close" );
+                    
+                },
+                "No": function() {
+                    if(selectedProjId==null || selectedProjId=='')
+                        selectedProjId='NoProj';
+                    $("[id$='targetCustProject']").val(selectedProjId);
+                    //cancelProductRelInfo();
+                     clearProject();
+                   
+                    $( this ).dialog( "close" );
+                }
+            }
+        }).parent().find(".ui-dialog-titlebar").show();  
+    }
+    </script>
+    <style>
+        #dialog-confirm-productchange .ui-dialog-title{ display:none }
+        .hide-dialog{ display:none; }
+    </style>
+    <div id="dialog-confirm" title="Confirmation:" style="display:none;">
+        
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>You will lose all your changes. Are you sure you want to Cancel?</p>
+    </div>
+    <div id="opaque"/>
+    <div id="spinner">
+        <p align="center" style='{font-family:"Arial", Helvetica, sans-serif; font-size:20px;}'><apex:image value="/img/loading.gif"/>&nbsp;Please wait</p>
+    </div>
+    <apex:outputPanel id="modelDialogID"> <!--Added by Mahendra per US79769 start-->
+    <apex:outputPanel rendered="{!showProductRelInfoDialog}">
+         <div id="dialog-confirm-productchange" title="Confirmation:"  style="display:none; ">
+            <p><span  style="float:left;"></span>
+            <apex:outputText value="{!$Label.Core_IPS_Change_Project_Message}" escape="false"></apex:outputText>
+              </p>
+        </div>
+       <script>
+           selectedProjId= '{!IF(ISBLANK(selectedProjId),'',selectedProjId)}';
+            fnConfirmProductChange();
+       </script><!--Added by Mahendra per US79769-->
+    </apex:outputPanel>
+    </apex:outputPanel>
+    <apex:form id="fm" rendered="{!if(OR(AND(AND(mode ='edit',isEditable),case.Core_IPS_Customer_Visible__c),mode!='edit'),true,false)}">  
+        <apex:inputHidden value="{!selectedAccountId}" id="targetAccId"/>  
+        <apex:actionstatus id="status1" >
+            <apex:facet name="start">
+                <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb;
+                                                                     height: 100%;opacity:0.65;width:100%;">
+                    <div class="waitingHolder" style="top: 74.2px; width: 91px;">
+                        <img class="waitingImage" src="/img/loading.gif" title="Please Wait..." />
+                        <span class="waitingDescription">Please Wait...</span>
+                    </div>
+                </div>
+            </apex:facet>
+        </apex:actionstatus> 
+        <apex:actionFunction name="clearAlldetails" action="{!clearAlldetails}" reRender="ProductDetails1,environment2" status="status1" ></apex:actionFunction><!--Added by Mahendra per US79769-->
+        <apex:actionFunction name="BindEvent" action="{!BindEvent}" reRender="casesubcatId,subCategorypbs,subCategory,subCategoryName,environment1,environment2" status="status1" oncomplete="renderCombobox()"></apex:actionFunction> <!-- ,ProductDetails,ProductDetails1 -->
+        <apex:actionFunction name="projRender" action="{!showProjListBasedOnSelectedProd}" reRender="cdetails,targetCustaccountSec,styleReq,caseCustomerDetail" status="status1">
+            <apex:param name="paramId" value=""/>
+            <!--<apex:param name="paramReqId" value=""/>-->
+        </apex:actionFunction>
+        <apex:actionFunction name="panelrender" action="{!LookupChange}" reRender="caseInformation,ProductDetails,environment1,errors,ProductDetails1,environment2" >
+            <apex:param assignTo="{!objectSelected}" name="firstparam" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction name="passingProdInfo" action="{!productChanges}" reRender="targetProdCustomer,targetCustProject,targetProdIdCustomer,ProductDetails,environment1,varIsShowVariant,varIsShowVariant_cc,environment2,ProductDetails1" oncomplete="Init();clearDiv();renderCombobox();" status="status1">
+            <apex:param name="firstparameter" value=""/>
+            <apex:param name="secparameter" value=""/>
+        </apex:actionFunction>
+        <apex:actionFunction name="clearProject" action="{!clearProject}" reRender="cdetails,targetProdCustomer,targetProdIdCustomer,ProjectComp1,ProductDetails,environment1,targetCustaccount,varIsShowVariant_cc,ProductDetails1,modelDialogID" status="status1" oncomplete="Init();renderCombobox();" />
+        <apex:actionFunction name="clearProduct" action="{!clearProduct}" reRender="targetProdCustomer,targetProdIdCustomer,ProductDetails,environment1,targetCustProjectPanel,varIsShowVariant1,ProductDetails1" oncomplete="Init();updateProjectSectionAfterProductRefresh();renderCombobox();" />
+        <apex:actionFunction name="ConfirmBox" action="{!CancelAction}"/>
+        <!--Added by Geetha as per user story US78568-->
+        <apex:actionFunction name="showPopup" action="{!showPopup}" rerender="popup"/>
+        <!--Ended by Geetha as per user story US78568-->
+        <apex:pageblock id="FirstScreen" rendered="{!IF(sbs == 'pss',true,false)}">
+            <apex:pageMessages id="errors"></apex:pageMessages>  
+            <apex:outputPanel id="cdetails">
+                <apex:pageblockSection columns="2" title="Case Information" id="varIsShowVariant" rendered="{!NOT(caseInformationReadOnly)}" >
+                    <apex:pageblockSectionItem id="projectPanel" rendered="{!HasProject}">
+                        <apex:outputLabel value="Select Project:" id="SelectProject" />
+                        <apex:outputPanel styleClass="requiredInput" id="targetCustProjectPanel" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:actionRegion >
+                                <apex:selectList id="targetCustProject" styleclass="targetCustProject" value="{!selectedProject}" size="1" onchange="UpdateProjectSection(this);" required="true" label="Please Select Project">                             
+                                    <apex:selectOptions value="{!projectList}"/>
+                                </apex:selectList>
+                            </apex:actionRegion>
+                            <span class="helpButton" style="margin-left:25px; !important">
+                                <img src="/s.gif" class="helpOrb" title="Projects enable different teams, often from different companies, to collaborate on resolving cases.If this case is related to one of your projects, select the project name from the dropdown list.If you would like to create a new project, select the Premier Support Projects tab, where you have the option to create a New project."/>                        
+                            </span>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!HasProject}"></apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem id="productPanel1">
+                        <apex:outputLabel value="Search Product: "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <!-- Start of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <apex:actionFunction name="isShowVar" action="{!DisplayProductVariant}" rerender="varIsShowVariant1">
+                                <apex:param name="p" value="{!selectedProductId}"/>
+                            </apex:actionFunction>
+                            <!--End of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <apex:inputText title="{!selectedProduct}" value="{!selectedProduct}" styleclass="targetProdCustomer" html-autocomplete="off" html-placeholder="Search Product..." id="targetProdCustomer" disabled="false">
+                            </apex:inputText> 
+                            <span class="helpButton">
+                                <img src="/s.gif" class="helpOrb" title="Please type in at least 3 chars of the product name. If you do not see your product listed, please check the Intel Products tab to verify it is available."/>                        
+                            </span>
+                        </apex:outputPanel>         
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant">
+                        <apex:pageBlockSectionItem rendered="{!blnShowVariant}">
+                            <apex:outputLabel value="Product Variant:" />
+                            <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" style="min-width:171px;max-width:250px" >       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                    </apex:outputPanel>
+                    <apex:inputHidden value="{!selectedProductId}" id="targetProdIdCustomer" />
+                    <apex:pageBlockSectionItem id="productPanel45">
+                        <c:Core_IPS_ProjectComponent id="ProjectComp1" autocomplete_textbox="targetProdCustomer" object_name="Asset" fieldSet_Name="Core_IPS_Global_Search_Field_Result" related_Id="{!selectedProject}" Section_title="productPanel2" hiddenProductIdField="targetProdIdCustomer"></c:Core_IPS_ProjectComponent>
+                    </apex:pageBlockSectionItem>    
+                </apex:pageblockSection>
+            </apex:outputPanel>
+            <!--Added by Geetha as per user story US78568-->
+            <apex:outputText escape="false" id="RelatedMessage" style="color:red;margin-left:10%;display:none" value="{!$Label.Core_IPS_Project_Related_Message}" />
+            <!--Ended by Geetha as per user story US78568-->
+            <apex:pageBlockSection id="productPanel2" columns="1" title="List of products" rendered="{!if(mode=='edit',false,true)}">
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <!--<apex:commandButton value="Cancel" onclick="return confirm('You will lose all your changes. Are you sure you want to Cancel?');" action="{!CancelAction}" />-->
+                <apex:commandButton value="Next" action="{!NextCaseDetails}"/>               <!-- onclick="showSpinner()"-->      
+                <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/>                          
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+        <apex:pageblock id="SearchScreen" rendered="{!IF(sbs == 'scs',true,false)}" >
+            <apex:pageMessages id="errors"></apex:pageMessages>          
+            <apex:outputPanel id="cdetails">
+                <apex:pageblockSection columns="2" title="Search Details" rendered="{!caseInformationReadOnly}">
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Project: " />
+                        <apex:outputText value="{!selectedProjectName}" id="ProjectId" />
+                    </apex:pageblockSectionItem>
+                    <apex:pageblockSectionItem ></apex:pageblockSectionItem>
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Product: " style="font-weight: bold;"/>
+                        <apex:outputText value="{!selectedProduct}" id="ProductId"/>                      
+                    </apex:pageblockSectionItem>
+                    <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant1" >
+                        <apex:pageBlockSectionItem rendered="{!blnShowVariant}">
+                            <apex:outputLabel value="Product Variant:"  styleClass="testag"/>
+                             <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" style="min-width:171px;max-width:250px" >       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                    </apex:outputPanel>
+                </apex:pageblockSection>
+                <!--Added by Geetha as per user story US78568-->
+                <apex:outputText escape="false" id="RelatedMessage" style="color:red;margin-left:10%;display:none" value="{!$Label.Core_IPS_Project_Related_Message}" />
+                <!-- {!If(HasProject,2,1)}-->
+                <apex:pageblockSection columns="1" title="Case Information" id="varIsShowVariant" rendered="{!NOT(caseInformationReadOnly)}" >
+                    <apex:pageblockSectionItem id="projectPanel" rendered="{!HasProject}">
+                        <apex:outputLabel value="Select Project:" id="SelectProject" />
+                        <apex:outputPanel styleClass="requiredInput" id="targetCustProjectPanel" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:actionRegion >
+                                <apex:selectList id="targetCustProject" styleclass="targetCustProject" value="{!selectedProject}" size="1" onchange="UpdateProjectSection(this);">                             
+                                    <apex:selectOptions value="{!projectList}"/>
+                                </apex:selectList>
+                            </apex:actionRegion>
+                            <span class="helpButton">
+                                <img src="/s.gif" class="helpOrb" title="Projects enable different teams, often from different companies, to collaborate on resolving cases.If this case is related to one of your projects, select the project name from the dropdown list.If you would like to create a new project, select the Premier Support Projects tab, where you have the option to create a New project."/>                        
+                            </span>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+                    <apex:pageBlockSectionItem id="varIsShowVariant">
+                        <apex:outputLabel value="Search Product: "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <!-- Start of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <apex:actionFunction name="isShowVar" action="{!DisplayProductVariant}" rerender="varIsShowVariant1">
+                                <apex:param name="p" value="{!selectedProductId}"/>
+                            </apex:actionFunction>
+                            <!--End of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <apex:inputText title="{!selectedProduct}" value="{!selectedProduct}" styleclass="targetProdCustomer" html-autocomplete="off" html-placeholder="Search Product..." id="targetProdCustomer" disabled="false">
+                            </apex:inputText> 
+                            <span class="helpButton">
+                                <img src="/s.gif" class="helpOrb" title="Please type in at least 3 chars of the product name"/>                        
+                            </span>
+                        </apex:outputPanel>         
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant">
+                        <apex:pageBlockSectionItem rendered="{!blnShowVariant}">
+                            <apex:outputLabel value="Product Variant:" />
+                             <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" >       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                    </apex:outputPanel>
+                    <apex:inputHidden value="{!selectedProductId}" id="targetProdIdCustomer" />
+                    <apex:pageBlockSectionItem id="productPanel45">
+                        <!--<apex:inputText value="{!selectedProduct}" id="ProjectData"  />-->
+                        <c:Core_IPS_ProjectComponent id="ProjectComp1" autocomplete_textbox="targetProdCustomer" object_name="Asset" fieldSet_Name="Core_IPS_Global_Search_Field_Result" related_Id="{!selectedProject}" Section_title="productPanel2" hiddenProductIdField="targetProdIdCustomer"></c:Core_IPS_ProjectComponent>
+                    </apex:pageBlockSectionItem>    
+                </apex:pageblockSection>
+            </apex:outputPanel>
+            <apex:pageBlockSection id="subject" columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel >Subject:</apex:outputLabel>
+                    <apex:outputPanel styleClass="requiredInput" layout="block">
+                        <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                        <apex:inputText value="{!subject}" id="Subject" label="Subject:" size="50" />
+                    </apex:outputPanel>
+                </apex:pageBlockSectionItem>
+                
+            </apex:pageBlockSection>
+            <apex:outputpanel id="ProductDetails" > 
+                <apex:pageblockSection columns="1" rendered="{!IF(AND(AND(selectedProductId != null,selectedProductId != ''),AND(categoryOptions!=null,categoryOptions.size>1)),TRUE,FALSE)}">
+                    <apex:pageBlockSectionItem rendered="{!displayCategories}">
+                        <apex:outputLabel value="Case Category:" for="category" />
+                        <apex:actionRegion >
+                            <apex:outputPanel styleClass="requiredInput" rendered="{!categoryOptions.size>1}" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:selectList value="{!categorySelected}" size="1" id="categorypbs" styleClass="cust-combobox custom-combobox">
+                                    <apex:selectOptions value="{!categoryOptions}"/> 
+                                    <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none" status="status1" oncomplete="BindEvent();"/> 
+                                </apex:selectList> 
+                            </apex:outputPanel>                
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!displaySubCategories}">
+                        <apex:outputPanel id="casesubcatId">
+                            <apex:outputLabel value="Case Subcategory: " rendered="{!subCategoryOptions.SIZE>1}"/>                       
+                        </apex:outputPanel>        
+                        <apex:actionRegion >                               
+                            <apex:outputPanel id="subCategorypbs">                                                                
+                                <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!AND(categoryOptions.size>1,subCategoryOptions.SIZE>1)}">
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!subCategoryOptions.size>1}"/>
+                                    <apex:selectList value="{!subCategorySelected}" size="1" id="subCategoryList" styleClass="cust-combobox custom-combobox">
+                                        <apex:selectOptions value="{!subCategoryOptions}" />  
+                                        <apex:actionSupport event="onchange" action="{!getEnvironmentDets}" reRender="none" status="status1" oncomplete="BindEvent();"/>
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                        <!--</apex:outputPanel>-->
+                    </apex:pageBlockSectionItem>
+                    <apex:inputHidden value="{!selectedProductId}" id="targetProdId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                    <apex:inputHidden value="{!selectedContactId}" id="targetId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                    <apex:inputHidden value="{!selectedProjId}"   id="targetProjId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                </apex:pageblockSection>
+               <apex:pageblockSection > <apex:pageBlockSectionItem helpText="This field should match the language entered in the ''Subject'' field.  This language will only be used to search results for your case, not for any other functionality on IPS.">
+                    <apex:outputLabel >Language:</apex:outputLabel>
+                    <apex:selectList id="Language" value="{!selectedLanguage}" size="1" label="Language" >       
+                                <apex:selectOptions value="{!languageList}"/>      
+                    </apex:selectList>
+                </apex:pageBlockSectionItem></apex:pageblockSection>
+            </apex:outputpanel>
+            <apex:outputPanel id="environment1" >
+                <!-- Added by Prem as part of Altera CX-->
+                <c:Core_IPS_Case_Creation_EDQ_Section displayEnvDetails="{!displayEnvDetails}" selectedProductId="{!selectedProductId}"
+                                                      selectedSAProductId="{!selectedSAProductId}" subCategorySelected="{!subCategorySelected}"
+                                                      envDetails="{!filteredEnvDetails}" subCatenvDetList="{!filteredSubCatenvDetList}"/>
+            </apex:outputPanel>   
+            <apex:pageBlockButtons >
+                <!--<apex:commandButton value="Cancel" onclick="return confirm('You will lose all your changes. Are you sure you want to Cancel?');" action="{!CancelAction}" />-->
+                <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/>                          
+                <apex:commandButton value="Search" action="{!SearchBeforeSubmit}" onclick="showSpinner()"/>                     
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+        <apex:pageblock id="IframeScreen" rendered="{!IF(sbs == 'ss',true,false)}" >
+            <apex:pageBlockSection columns="1" >
+                <apex:iframe src="{!productSearchIframeUrl}" scrolling="true" />
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons >
+                <!--<apex:commandButton value="Cancel" onclick="return confirm('You will lose all your changes. Are you sure you want to Cancel?');" action="{!CancelAction}" />-->
+                <apex:commandButton value="Continue to Case Creation" action="{!CaseCreation}" onclick="showSpinner()"/>      
+                <input type="button" value="Close" class="btn" onclick="fnConfirmBox();"/>                          
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+        <apex:pageblock id="CaseCreateScreen"  rendered="{!IF(sbs == 'ccs',true,false)}" >
+            <apex:pageMessages id="errors"></apex:pageMessages>          
+            <apex:outputPanel >
+                <!--Start--US253124--MINDS Case Creation-->
+                <div  class="MAGSec">
+                    <apex:pageBlockSection title="{!$Label.Core_IPS_MINDS_Information}"  columns="1">
+                 <apex:pageBlockSectionItem >
+                            <apex:outputLabel value="{!$Label.Core_IPS_My_Settings_Data}" escape="false"/>
+                    </apex:pageBlockSectionItem> 
+                    
+                    <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Core_IPS_MAG_Question}"  />
+                       <apex:selectRadio value="{!isMindsFlag}" > 
+                         <apex:selectOption itemValue="true" itemLabel=" Yes " /> 
+                         <apex:selectOption itemValue="false" itemLabel=" No " />
+                        </apex:selectRadio>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSection columns="1">
+                <apex:pageBlockSectionItem >
+                    <apex:outputlabel value="{!$Label.Core_IPS_MAG_Country_Region}"/>
+                    <apex:selectList id="countries" value="{!selectedCountry}" size="1" required="true" >
+                        <apex:selectOptions value="{!countries}"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                
+                </apex:pageBlockSection>
+                </div>
+                <!--End--US253124--MINDS Case Creation-->
+                
+                 
+            </apex:outputPanel>
+            <apex:outputPanel id="cdetails" >
+                <apex:pageblockSection columns="1" title="Case Information" rendered="{!caseInformationReadOnly}">
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Project: " />
+                        <apex:outputText value="{!selectedProjectName}" id="ProjectId" />
+                    </apex:pageblockSectionItem>
+                    <apex:pageblockSectionItem >
+                        <apex:outputLabel value="Product: " style="font-weight: bold;" />
+                        <apex:outputText value="{!selectedProduct}" id="ProductId"/>                      
+                    </apex:pageblockSectionItem>
+                    <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant " >
+                        <apex:pageBlockSectionItem rendered="{!blnShowVariant}">
+                            <apex:outputLabel value="Product Variant:"  />
+                            <!-- Added disabled="{!isClosed} by Geetha for User Story US95437 Iteration 8 -->
+                             <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" style="min-width:171px;" disabled="{!isClosed}">       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                        </apex:pageBlockSectionItem>
+                    </apex:outputPanel>
+                </apex:pageblockSection>
+                <!-- {!If(HasProject,2,1)}-->
+                <apex:pageblockSection columns="1" title="Case Information" id="varIsShowVariant_cc" rendered="{!NOT(caseInformationReadOnly)}" >
+                    <apex:pageblockSectionItem id="projectPanel" rendered="{!HasProject}">
+                        <apex:outputLabel value="Select Project:" id="SelectProject" />
+                        <apex:outputPanel styleClass="requiredInput" id="targetCustProjectPanel" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block" />
+                            <apex:actionRegion >
+                                <!-- Added disabled="{!isClosed} by Geetha for User Story US95437 Iteration 8 -->
+                                <apex:selectList id="targetCustProject" styleclass="targetCustProject" value="{!selectedProject}" size="1" onchange="UpdateProjectSection(this);" disabled="{!isClosed}" required="true" label="Please Select Project " >                             
+                                    <apex:selectOptions value="{!projectList}"/>
+                                </apex:selectList>
+                            </apex:actionRegion>
+                            <span class="helpButton" style="margin-left:25px; !important">
+                                <img src="/s.gif" class="helpOrb" title="Projects enable different teams, often from different companies, to collaborate on resolving cases.If this case is related to one of your projects, select the project name from the dropdown list.If you would like to create a new project, select the Premier Support Projects tab, where you have the option to create a New project."/>                        
+                            </span>
+                        </apex:outputPanel>
+                    </apex:pageblockSectionItem>
+                    <apex:pageBlockSectionItem id="productPanel1">
+                        <apex:outputLabel value="Search Product: "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <!-- Start of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <apex:actionFunction name="isShowVar" action="{!DisplayProductVariant}" rerender="varIsShowVariant1">
+                                <apex:param name="p" value="{!selectedProductId}"/>
+                            </apex:actionFunction>
+                            <!--End of user story- changes made for user story-US80347--Adding Product Variant-->
+                            <!-- Added disabled="{!isClosed} by Geetha for User Story US95437 Iteration 8 -->
+                            <apex:inputText title="{!selectedProduct}" value="{!selectedProduct}" styleclass="targetProdCustomer"  disabled="{!isClosed}" html-autocomplete="off" html-placeholder="Search Product..." id="targetProdCustomer" >
+                            </apex:inputText>
+                            <span class="helpButton">
+                                <img src="/s.gif" class="helpOrb" title="Please type in at least 3 chars of the product name"/>                        
+                            </span>
+                        </apex:outputPanel>         
+                    </apex:pageBlockSectionItem>
+                    <apex:outputPanel id="varIsShowVariant1" styleClass="enableVariant">
+                        <apex:pageBlockSectionItem rendered="{!blnShowVariant}">
+                            <apex:outputPanel >
+                                <apex:outputLabel value="Product Variant:" ></apex:outputLabel> 
+                            </apex:outputPanel>
+                            <!-- Added rendered="{!isClosed} by Geetha for User Story US95437 Iteration 8 -->
+                            <apex:outputPanel >   
+                                <apex:selectList id="Variant" value="{!SelectedVariant}" size="1" label="Product Variant" rendered="{!!isClosed}" style="width:171px;">       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                                <apex:selectList id="Variant1" value="{!SelectedVariant}" size="1" label="Product Variant" rendered="{!isClosed}"  style="width:171px;" disabled="true">       
+                                   <apex:selectOptions value="{!variantsList[0]}" rendered="{!If(variantsList.size>0,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[1]}" rendered="{!If(variantsList.size>1,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[2]}" rendered="{!If(variantsList.size>2,true,false)}" />  
+                                   <apex:selectOptions value="{!variantsList[3]}" rendered="{!If(variantsList.size>3,true,false)}" />
+                                   <apex:selectOptions value="{!variantsList[4]}" rendered="{!If(variantsList.size>4,true,false)}" />
+                            </apex:selectList>
+                            </apex:outputPanel> 
+                        </apex:pageBlockSectionItem>
+                    </apex:outputPanel>
+                    <apex:inputHidden value="{!selectedProductId}" id="targetProdIdCustomer" />
+                    <apex:pageBlockSectionItem id="productPanel45">
+                        <!--<apex:inputText value="{!selectedProduct}" id="ProjectData"  />-->
+                        <c:Core_IPS_ProjectComponent id="ProjectComp1" autocomplete_textbox="targetProdCustomer" object_name="Asset" fieldSet_Name="Core_IPS_Global_Search_Field_Result" related_Id="{!selectedProject}" Section_title="productPanel2" hiddenProductIdField="targetProdIdCustomer"></c:Core_IPS_ProjectComponent>
+                    </apex:pageBlockSectionItem>    
+                </apex:pageblockSection>
+            </apex:outputPanel>
+            <!--Added by Geetha as per user story US78568-->
+            <apex:outputText escape="false" id="RelatedMessage" style="color:red;margin-left:10%;display:none" value="{!$Label.Core_IPS_Project_Related_Message}" />
+            <!--Ended by Geetha as per user story US78568-->
+            <!--Raj added this below rendered condition rendered="{!if(mode=='edit',false,true)}"-->
+            <apex:pageBlockSection id="productPanel2" columns="1" title="List of products" rendered="{!if((((mode!='edit' && caseInformationReadOnly == false) ||( mode=='edit' && isPartnerAgent == True && caseInformationReadOnly == false )) ),true,false)}">
+            </apex:pageBlockSection>
+            <!---Customer Case Details FieldSet-->
+            <apex:pageblockSection title="Case Details" columns="1" rendered="{!NOT(isAgent)}" id="caseCustomerDetail">            
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Core_Customer_Case_Fields}" var="f" >
+                    <apex:pageBlockSectionItem rendered="{!if(OR(f.label=='Subject',f.label=='End Customer',f.label=='Severity Reason'),false,true)}" helpText="{!if(f.label='Case Description',$ObjectType.Case.fields[f].InlineHelpText,'')}" >
+                        <apex:outputLabel value="{!f.label}" />
+                        <apex:outputPanel > 
+                            <div Class="requiredInput">
+                                <div Class="requiredBlock"></div>
+                                <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false) && !isClosed}"/>
+                                <apex:outputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label!='Severity',true,false) && isClosed}"/>
+                                <apex:inputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false) && !isClosed}" id="PriorityId">
+                                    <apex:actionSupport event="onchange" rerender="showPriorityReason" action="{!DisplayPriorityReason}"/>
+                                </apex:inputField>
+                                <apex:outputField value="{!cs[f.fieldPath]}" rendered="{!if(f.label=='Severity',true,false) && isClosed}" />  
+                            </div>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem rendered="{!if(f.label=='Subject',true,false)}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputPanel styleClass="requiredInput"  layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock"  layout="block"/>
+                            <!-- /////// Modified below line for US61133/////-->
+                            <apex:inputField value="{!cs[f.fieldPath]}" style="width:99%" styleClass="countTarget" rendered="{!!isClosed}"/>
+                            <apex:outputField value="{!cs[f.fieldPath]}" style="width:99%" styleClass="countTarget" rendered="{!isClosed}"/>
+                            <span id="charCountRemaining"/>
+                            <span id="charCountTotal"/>
+                            <span id="showExample"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+            </apex:pageblockSection>
+            <apex:outputpanel id="showPriorityReason">
+                <apex:pageblockSection columns="1" rendered="{!if(DisplayPriorityReason==true,true,false)}">                
+                    <apex:pageBlockSectionItem helpText="{!$ObjectType.Case.fields.Core_Severity_Reason__c.InlineHelpText}">                
+                        <apex:outputLabel value="Severity Reason "/>
+                        <apex:outputPanel styleClass="requiredInput" layout="block"> 
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                            <!-- Added rendered="{!!isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                            <apex:inputField value="{!cs.Core_Severity_Reason__c}" rendered="{!!isClosed}"/> 
+                            <!-- Added outputfield for closed case by Sugandha for User Story US83594 Iteration 6 -->
+                            <apex:outputField value="{!cs.Core_Severity_Reason__c}" rendered="{!isClosed}"/>
+                        </apex:outputPanel>                                           
+                    </apex:pageBlockSectionItem> 
+                </apex:pageblockSection>
+            </apex:outputpanel>
+            <apex:pageblockSection columns="1" rendered="{!NOT(isAgent)}" id="caseCustomerDetail2">
+                <apex:repeat value="{!$ObjectType.Case.FieldSets.Customer_Case_Fields_Optional}" var="f">
+                    <!-- Added rendered="{&& !isClosed} by Sugandha for User Story US83594 Iteration 6 -->
+                    <apex:pageBlockSectionItem helptext="{!$ObjectType.Case.fields[f].InlineHelpText}" rendered="{!!isClosed}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:inputField value="{!cs[f.fieldPath]}"/>
+                    </apex:pageBlockSectionItem>
+                    <!-- Added section item for closed case by Sugandha for User Story US83594 Iteration 6 -->
+                    <apex:pageBlockSectionItem helptext="{!$ObjectType.Case.fields[f].InlineHelpText}" rendered="{!isClosed}">
+                        <apex:outputLabel value="{!f.label}"/>
+                        <apex:outputField value="{!cs[f.fieldPath]}"/>
+                    </apex:pageBlockSectionItem>
+                </apex:repeat>
+                <!--Added by geetha as per US98246-->
+                <apex:outputPanel styleClass="owner"> 
+                    <apex:pageBlockSection >
+                        <apex:pageBlockSectionItem rendered="{!IF((contains($Label.Core_IPS_Partner_AE_Profile_Id,LEFT($Profile.Id,15)) || isPartnerFAE),true,false)}">
+                            <apex:outputLabel value="Partner Support Owner"/>
+                            <apex:outputField id="supportOwner" value="{!cs.Core_IPS_Partner_Sup_Owner__c}" />
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                </apex:outputPanel> 
+                <!--Ended by geetha as per US98246-->
+                
+                <apex:pageBlockSectionItem rendered="{!(isPartnerAgent || isPartnerFAE)}" id="targetCustaccountSec" >
+                    <apex:outputLabel value="Partner Supported Account"/>
+                    <!-- Added disabled="{!isClosed} by Geetha for User Story US95437 Iteration 8 -->
+                    <apex:outputPanel styleClass="requiredInput" layout="block" ><!--//RK Changes for US104046-->
+                        <apex:outputPanel styleClass="requiredBlock" layout="block" id="styleReq" rendered="{!(mode!='edit') && (selectedProject!= '' &&selectedProject!= null)}"  /><!--//RK Changes for US104046|| Rendering this required red bar for IPS Agent Partner and DFAE when case has a Project ||&& (selectedProject!= '') -->
+                        <apex:selectList id="targetCustaccount" styleclass="targetCustaccount" label="Partner Supported Account" value="{!selectedAccountId}" size="1" disabled="{!isClosed}" required="true" >  
+                            <apex:selectOptions value="{!IPSParentAccountList}"/>
+                        </apex:selectList>
+                    </apex:outputPanel><!--//RK Changes for US104046--> 
+                </apex:pageBlockSectionItem> 
+                
+            </apex:pageblockSection>
+            <apex:outputpanel id="ProductDetails1" > 
+                <apex:pageblockSection title="Product/Project Info" columns="1" rendered="{!IF(OR(AND(platformOptions != null,platformOptions.size>1),AND(categoryOptions!=null,categoryOptions.size>1)),TRUE,FALSE)}">
+                    <apex:pageBlockSectionItem rendered="{!categoryOptions.size>1}">
+                        <apex:outputLabel value="Case Category:" for="category" />
+                        <apex:actionRegion >
+                            <apex:outputPanel styleClass="requiredInput" rendered="{!categoryOptions.size>1}" layout="block">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                <apex:selectList value="{!categorySelected}" rendered="{!!isClosed}" size="1" id="category" styleClass="{!IF(!isClosed,'cust-combobox custom-combobox', '')}">
+                                    <apex:selectOptions value="{!categoryOptions}"/> 
+                                    <apex:actionSupport event="onchange" action="{!getEnvDetails}" reRender="none" status="stid" oncomplete="BindEvent();"/> 
+                                </apex:selectList>
+                                <apex:selectList value="{!categorySelected}"  disabled="true" rendered="{!isClosed}" size="1" id="category1" >
+                                    <apex:selectOptions value="{!categoryOptions}"/> 
+                                </apex:selectList> 
+                            </apex:outputPanel>               
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem id="stid" >
+                        <apex:outputPanel id="subCategoryName">
+                            <apex:outputLabel value="Case Subcategory: " rendered="{!subCategoryOptions.size > 1}"/>                       
+                        </apex:outputPanel>        
+                        <apex:actionRegion >                               
+                            <apex:outputPanel id="subCategory">  
+                                <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!AND(categoryOptions.size > 1,subCategoryOptions.size > 1)}"> 
+                                    <apex:outputPanel styleClass="requiredBlock" layout="block"/>
+                                    <!-- Added disabled="{!isClosed'} by Sugandha for User Story US83594 Iteration 6 -->
+                                    <apex:selectList value="{!subCategorySelected}" rendered="{!!isClosed}" size="1" id="subCategoryList" styleClass="{!IF(!isClosed,'cust-combobox custom-combobox ', '')}">
+                                        <apex:selectOptions value="{!subCategoryOptions}" />  
+                                        <apex:actionSupport event="onchange" action="{!getEnvironmentDets}" reRender="none" status="status1" oncomplete="BindEvent();"/>
+                                    </apex:selectList>
+                                    <apex:selectList value="{!subCategorySelected}" disabled="true" rendered="{!isClosed}"  size="1" id="subCategoryList1" >
+                                        <apex:selectOptions value="{!subCategoryOptions}" />  
+                                    </apex:selectList>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                        </apex:actionRegion> 
+                    </apex:pageBlockSectionItem>
+                    <!-- Add Platform Name Functionality-- Raj changes Begin--> 
+                    <apex:pageBlockSectionItem rendered="{!displayPlatform && isPartnerAgent}" >
+                        <apex:outputLabel value="Select Platform:" for="platform"/>
+                        <apex:actionRegion >
+                            <apex:outputPanel styleClass="requiredInput" layout="block" rendered="{!platformOptions.size>1}">
+                                <apex:outputPanel styleClass="requiredBlock" layout="block" rendered="{!platformOptions.size>1}"/> 
+                                <apex:selectList value="{!platformSelected}" size="1" id="platform" disabled="{!isClosed}">
+                                    <apex:selectOptions value="{!platformOptions}"/> 
+                                </apex:selectList>
+                            </apex:outputPanel>
+                        </apex:actionRegion>
+                    </apex:pageBlockSectionItem>
+                    <!-- End Platform  name changes -->
+                    <apex:inputHidden value="{!selectedProductId}" id="targetProdId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                    <apex:inputHidden value="{!selectedContactId}" id="targetId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                    <apex:inputHidden value="{!selectedProjId}"   id="targetProjId" rendered="{!AND(IF(mode=='edit',true,false),isAgent,Not(displaySelfAssigned))}"/>
+                </apex:pageblockSection>
+            </apex:outputpanel>
+            <apex:outputPanel id="environment2">
+                <!-- Added by Prem as part of Altera CX-->
+                <c:Core_IPS_Case_Creation_EDQ_Section displayEnvDetails="{!displayEnvDetails}" selectedProductId="{!selectedProductId}"
+                                                      selectedSAProductId="{!selectedSAProductId}" subCategorySelected="{!subCategorySelected}"
+                                                      envDetails="{!envDetails}" subCatenvDetList="{!subCatenvDetList}"/>
+            </apex:outputPanel>   
+            <apex:pageBlockButtons >
+                <!--<apex:commandButton value="Cancel" onclick="return confirm('You will lose all your changes. Are you sure you want to Cancel?');" action="{!CancelAction}" />-->
+                <input type="button" value="Cancel" class="btn" onclick="fnConfirmBox();"/>                          
+                <apex:commandButton value="Submit" action="{!saveCaseDetails}" onclick="showSpinner();"/>                     
+            </apex:pageBlockButtons>
+        </apex:pageblock>
+        <apex:outputPanel id="popup" >
+            <apex:outputPanel styleClass="popupBg" layout="block" rendered="{!displayPopUp}" />
+            <apex:outputPanel styleClass="popup test"  layout="block" rendered="{!displayPopUp}" >
+                <apex:commandLink value="Close" action="{!closePopup}" rerender="popup" styleClass="closeButton"/>
+                <apex:pageBlock title="List of Contacts"  >
+                    <apex:pageblockSection title="Contact Information" collapsible="false" columns="1"  >
+                        <apex:pageBlockTable value="{!con}" var="contact">
+                            <apex:column value="{!contact.FirstName}"/>
+                            <apex:column value="{!contact.LastName}"/>
+                            <apex:column value="{!contact.Email}"/>
+                        </apex:pageBlockTable>
+                    </apex:pageblockSection>
+                </apex:pageBlock> 
+            </apex:outputPanel>
+        </apex:outputPanel>
+        <!--Ended by Geetha as per user story US78568-->  
+    </apex:form>
+    <apex:PageBlock rendered="{!if(OR(AND(mode ='edit',isEditable),mode!='edit'),false,true)}">
+        <span style="color:red;align:center;">You have insufficient privilege to edit the Case.</span>
+    </apex:PageBlock>
+    <apex:PageBlock rendered="{!if(AND(mode=='edit',case.Core_IPS_Customer_Visible__c=false),true,false)}">
+        <span style="font-weight: bold; font-size: 12pt;">Data Not Available</span><br/><br/>
+        The data you were trying to access could not be found. It may be due to another user deleting the data or a system error. If you know the data is not deleted but cannot access it, please look at our <a href="javascript:openPopupFocusEscapePounds('https://help.salesforce.com/apex/htdoor?body=%2Ftrain%2FonlineSupport.jsp&amp;loc=support&amp;language=en_US&amp;release=210.16.4&amp;instance=CS92&amp;showSplash=true', 'Help', 1024, 768, 'width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no', false, false);" title="support (New Window)">support</a> page.
+    </apex:PageBlock>
+    <script>
+        $.each($("select[id*=caseCustomerDetail]"), function( index, value ) { 
+          if(value[0].innerHTML=='--None--'){value[0].innerHTML='--Select--';}
+        });
+    </script>
+</apex:page>

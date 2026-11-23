@@ -112,6 +112,13 @@
         <label><!-- is Inline Radio --></label>
         <name>is_Inline_Radio__c</name>
     </fields>
+    <layouts>
+        <layout>PMP Specifications Tab Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Interaction type should be recursive when &quot;Show Select All&quot; is set to true --></errorMessage>

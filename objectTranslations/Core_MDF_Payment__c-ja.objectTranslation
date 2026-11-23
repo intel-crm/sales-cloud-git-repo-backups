@@ -5,41 +5,8 @@
         <value>支払い</value>
     </caseValues>
     <fields>
-        <label><!-- Account (Company) --></label>
-        <name>Core_MDF_AccountCompany_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Account (Company) --></label>
-        <name>Core_MDF_Account_Id__c</name>
-        <relationshipLabel><!-- Payments --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Comments --></label>
-        <name>Core_MDF_Comments_txt__c</name>
-    </fields>
-    <fields>
-        <label>コンバージョン率</label>
-        <name>Core_MDF_Conversion_Rate_Nbr__c</name>
-    </fields>
-    <fields>
-        <label>換算後の金額</label>
-        <name>Core_MDF_Converted_Amt_Nbr__c</name>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>通貨コード</label>
-        <name>Core_MDF_Currency_Cd_Txt__c</name>
     </fields>
     <fields>
         <label>EFT 番号</label>
@@ -91,29 +58,20 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Payment Sub Geo --></label>
-        <name>Core_MDF_Payment_Sub_Geo_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Payment Type --></label>
-        <name>Core_MDF_Payment_Type_txt__c</name>
-    </fields>
-    <fields>
         <label>請求</label>
         <name>Core_MDF_Program_Txt__c</name>
     </fields>
-    <fields>
-        <label>実際の支払い金額</label>
-        <name>Core_MDF_RMF_Actual_Payment_Amt__c</name>
-    </fields>
-    <fields>
-        <label>提示された支払い金額</label>
-        <name>Core_MDF_RMF_Proposed_Payment_Amt__c</name>
-    </fields>
+    <layouts>
+        <layout>Payment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>支払いの参照先</nameFieldLabel>
     <recordTypes>
-        <description><!-- Client Program Record Type --></description>
-        <label><!-- Client --></label>
+        <description><!-- CCF Program Record Type --></description>
+        <label><!-- Client Co-Marketing Fund --></label>
         <name>Core_MDF_Client_Co_Marketing_Fund</name>
     </recordTypes>
     <recordTypes>
@@ -122,39 +80,9 @@
         <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- CCF MDF Record Type --></description>
-        <label><!-- Client MDF --></label>
-        <name>Core_MDF_Client_Co_Marketing_Fund_MDF</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Co-GTM Record Type --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
         <description><!-- DCF Program Record Type --></description>
-        <label><!-- Datacenter --></label>
+        <label><!-- Data Center Co-Marketing Fund --></label>
         <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- DCF MDF Record Type --></description>
-        <label><!-- Datacenter MDF --></label>
-        <name>Core_MDF_Data_Center_Co_Marketing_Fund_MDF</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Program Record Type --></description>
-        <label><!-- Intel Partner Alliance --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- RSA MD Record Type --></description>
-        <label><!-- RSA MD --></label>
-        <name>Core_MDF_RMF_MD</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Retail MDF Record Type --></description>
-        <label><!-- Retail MDF --></label>
-        <name>Core_MDF_RMF_MDF</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Retail Co-Marketing purposes --></description>
@@ -166,30 +94,6 @@
         <label><!-- Service Provider Co-Marketing Fund --></label>
         <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
     </recordTypes>
-    <validationRules>
-        <errorMessage><!-- Payment status update is only allowed for Vistex Cash and Vistex Credit payments. --></errorMessage>
-        <name>Core_COGTM_Payment_Edit_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Actual Payment Amount Cannot Exceed the Proposed Payment Amount --></errorMessage>
-        <name>Core_MDF_ActualAmtGreaterThanProposedAmt</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- This user does not have access to edit the MDF Payment. --></errorMessage>
-        <name>Core_MDF_Allow_Edit_MDF_Payments</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- A payment marked as Paid cannot be reverted to Pending Payment. --></errorMessage>
-        <name>Core_MDF_BlockPaidToPendingPayment</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Actual Payment Amount is mandatory. --></errorMessage>
-        <name>Core_MDF_CheckActualPaymentAmtNotBlank</name>
-    </validationRules>
-    <webLinks>
-        <label><!-- Core_MDF_Bulk_Update_Payment_Status --></label>
-        <name>Core_MDF_Bulk_Update_Payment_Status</name>
-    </webLinks>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>
         <name>Core_MDF_Export_List_View</name>

@@ -9,11 +9,6 @@
         <value>Account Legal Agreement Associations</value>
     </caseValues>
     <fields>
-        <label><!-- Design-Deal Registration --></label>
-        <name>PCC_Design_Deal_Registration__c</name>
-        <relationshipLabel><!-- Account Legal Agreement Associations --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Account --></label>
         <name>PRM_Account_Id__c</name>
         <relationshipLabel><!-- Legal Agreements --></relationshipLabel>
@@ -60,6 +55,17 @@
         <label><!-- Signed By Name --></label>
         <name>PRM_Signed_By_Name__c</name>
     </fields>
+    <layouts>
+        <layout>Account Legal Agreement Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Back --></label>
+        <name>PRM_Back_Navigation</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

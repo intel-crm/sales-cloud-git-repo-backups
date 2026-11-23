@@ -25,8 +25,8 @@ function addCanonicalLink() {
  */
 function callAnalytics(pageData, communityName, includeCanonical) {
   // Get additional analytics data
+  
   const analyticsData = getAnalyticsData(pageData, communityName);
-
   // Use the library component to send the analytics data. There is a
   // window message listener in the HEAD script that will call the salesforceHit method.
   makeIpaAnalyticsCall(analyticsData);
@@ -64,7 +64,13 @@ function getAnalyticsData(pageData, communityName) {
   if (communityName === 'Marketplace') {
     analyticsData.offeringId = getOfferingId();
     analyticsData.mdaId = getPartnerId();
+    console.log('enter');
+    if(analyticsData.offeringId){
+      analyticsData.pageType = 'OfferingDetailPage';
+    }
+    console.log(analyticsData.pageType);
   }
+  console.log('analyticsData--->',analyticsData);
   return analyticsData;
 }
 

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This custom setting would control the roles that would be sent in AGS outbound message. If this set to TRUE, all the roles (Pending+Complete) 
+will be sent to AGS. If set to FALSE, only Pending roles will be sent.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Republish_All_Roles__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>This custom setting would control the roles that would be sent in AGS outbound message. If this set to TRUE, all the roles (Pending+Complete) will be sent to AGS. If set to FALSE, only Pending roles will be sent.</description>
+        <label>Republish All Roles</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>A&amp;E Republish All Roles</label>
+    <visibility>Public</visibility>
+</CustomObject>

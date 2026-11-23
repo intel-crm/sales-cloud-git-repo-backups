@@ -3,7 +3,6 @@
     <excludeButtons>ChangeOwnerOne</excludeButtons>
     <excludeButtons>ChangeRecordType</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
@@ -33,12 +32,16 @@
                 <field>Core_Partner_FAE_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>DDR_Partner_FAE_Email__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_Partner_FSR_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Partner_FSR_Nm__c</field>
+                <field>Core_Design_Solution_Network_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>DDR_Partner_FAE_Email__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -62,14 +65,6 @@
                 <behavior>Readonly</behavior>
                 <field>Core_Opportunity_Id__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_Design_Type__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>PCC_ODM_Board_partner__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
@@ -80,11 +75,11 @@
         <label>End Customer Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_End_Customer_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_End_Customer_Street_Addr_Line1_Txt__c</field>
             </layoutItems>
             <layoutItems>
@@ -92,20 +87,20 @@
                 <field>Core_End_Customer_Street_Addr_Line2_Txt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_End_Customer_City_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_End_Customer_Country_Subdivision_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_End_Customer_Postal_Cd__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>PCC_End_Customer_Country__c</field>
+                <behavior>Required</behavior>
+                <field>Core_End_Customer_Country_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -125,21 +120,8 @@
                 <behavior>Edit</behavior>
                 <field>Core_End_Customer_Contact_Phone_Txt__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_End_Customer_URL__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>MINDS Message</label>
-        <layoutColumns/>
-        <layoutColumns/>
-        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -164,15 +146,15 @@
                 <field>Core_Production_End_Dt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
+                <field>Core_Vertical_Market_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Core_Intel_Platform_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MINDS_Message_Txt__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_Product_Segment_Nm__c</field>
@@ -182,12 +164,12 @@
                 <field>Core_Product_Application_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_Vertical_Market_Nm__c</field>
+                <behavior>Edit</behavior>
+                <field>Core_Manufacturing_Region_Cd__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_Manufacturing_Region_Cd__c</field>
+                <field>Core_FPGA_Quote_Comments_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -208,7 +190,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>DDR_Technical_Owner__c</field>
+                <field>Core_Intel_Technical_Owner_Id__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -285,6 +267,7 @@
         <fields>Core_End_Customer_City_Nm__c</fields>
         <fields>Core_End_Customer_Country_Subdivision_Nm__c</fields>
         <fields>Core_End_Customer_Postal_Cd__c</fields>
+        <fields>Core_End_Customer_Country_Nm__c</fields>
         <fields>Core_Military_Aerospace_Gvrnmt_Use_Ind__c</fields>
         <fields>Core_Opportunity_Decision_Dt__c</fields>
         <fields>Core_First_Customer_Ship_Dt__c</fields>
@@ -294,59 +277,7 @@
         <fields>Core_Product_Segment_Nm__c</fields>
         <fields>Core_Product_Application_Nm__c</fields>
     </miniLayout>
-    <platformActionList>
-        <actionListContext>Record</actionListContext>
-        <platformActionListItems>
-            <actionName>NewTask</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>RecordShareHierarchy</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Clone</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Edit</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>3</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>Core_Design_Registration__c.New_Product</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>4</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>SendSurveyInvitation</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>6</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>PrintableView</actionName>
-            <actionType>StandardButton</actionType>
-            <sortOrder>7</sortOrder>
-        </platformActionListItems>
-    </platformActionList>
-    <quickActionList>
-        <quickActionListItems>
-            <quickActionName>FeedItem.MobileSmartActions</quickActionName>
-        </quickActionListItems>
-    </quickActionList>
     <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_Product_Id__c</fields>
         <fields>Core_Design_Product_Status_Nm__c</fields>
@@ -359,15 +290,7 @@
         <sortOrder>Desc</sortOrder>
     </relatedLists>
     <relatedLists>
-        <excludeButtons>MassChangeOwner</excludeButtons>
-        <excludeButtons>New</excludeButtons>
-        <fields>PCC_MM_ID__c</fields>
-        <fields>PCC_Old_MM_Id__c</fields>
-        <fields>PCC_Ordering_Cd__c</fields>
-        <fields>PCC_L5_Product_Name__c</fields>
-        <fields>PCC_Design_Registration_Product__c</fields>
-        <fields>PCC_Opportunity__c</fields>
-        <relatedList>PCC_DDR_L5_Product_Mapping__c.PCC_Design_Registration__c</relatedList>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

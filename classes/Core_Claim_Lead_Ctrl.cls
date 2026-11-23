@@ -15,17 +15,15 @@ public without sharing class Core_Claim_Lead_Ctrl {
     public static String verifyOwner(String leadId){
         String loggedInUserId = UserInfo.getUserId();
         String alertMsg;
-        Lead leadRecord = [select Id,Recordtype.Name, Recordtype.DeveloperName, OwnerId,Status,Core_Lead_State__c, Core_Rejection_Comments__c, Core_Rejection__c,Core_Lead_Status__c,
-                           Core_Partner_Lead_Owner__c,Core_Lead_Sub_Status__c from Lead where Id =: leadId];
+        Lead leadRecord = [select Id,Recordtype.Name,OwnerId,Status,Core_Lead_State__c, Core_Rejection_Comments__c, Core_Rejection__c,
+                           Core_Partner_Lead_Owner__c from Lead where Id =: leadId];
         String SalesleadID = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Sales Lead').getRecordTypeId();
         String PartnerLeadId = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Partner Lead').getRecordTypeId();
-        
         
         If (leadRecord.RecordtypeId == PartnerLeadId){
             leadRecord.Core_Partner_Lead_Owner__c = UserInfo.getUserId();
             alertMsg=System.Label.Core_Lead_Claimed;
         }
-        
         //If the lead is Sales record type
         If (leadRecord.RecordtypeId != PartnerLeadId){
             
@@ -37,16 +35,13 @@ public without sharing class Core_Claim_Lead_Ctrl {
                 
             }
         }
-        
-        updateStatusOnClaim(leadRecord);          
-        
         try{
             update leadRecord;
         }catch(DmlException de){
             alertMsg = '';
             Integer numErrors = de.getNumDml();
             for(Integer i=0;i<numErrors;i++) {
-                
+                System.debug('getDmlMessage=' + de.getDmlMessage(i));
                 alertMsg += de.getDmlMessage(i);
                 if(i < numErrors-1){
                     alertMsg += ';';
@@ -54,29 +49,6 @@ public without sharing class Core_Claim_Lead_Ctrl {
             }
         }
         return alertMsg;
-    }
-    private static void updateStatusOnClaim(Lead leadRecord){
-       If( leadRecord.Recordtype.DeveloperName == 'Lead' && leadRecord.Status == 'Marketing Qualified Lead' && leadRecord.Core_Lead_Status__c == 'New' && 
-           leadRecord.Core_Lead_Sub_Status__c == 'Waiting to be Claimed' && leadRecord.Core_Lead_State__c== 'Unclaimed'){
-               
-               leadRecord.Core_Lead_Status__c= 'Accepted';
-               leadRecord.Core_Lead_Sub_Status__c='Attempting Contact';
-               leadRecord.Core_Lead_State__c='In Pursuit';
-           }else
-        		If(leadRecord.Recordtype.DeveloperName == 'Lead' && leadRecord.Status == 'Marketing Qualified Lead' && leadRecord.Core_Lead_Status__c == 'Qualified' && 
-           		leadRecord.Core_Lead_Sub_Status__c == 'In Contact' && leadRecord.Core_Lead_State__c=='In Pursuit'){
-               
-               leadRecord.Status = 'Sales Accepted Lead';
-           }
-          updateStatusOnSalesLead(leadRecord);
-        		
-    }
-    private static void updateStatusOnSalesLead(Lead leadRecord){
-        If(leadRecord.Recordtype.Name == 'Sales Lead' && leadRecord.Status == 'Sales Generated Lead' && leadRecord.Core_Lead_Status__c == 'Accepted' && 
-           		leadRecord.Core_Lead_Sub_Status__c == 'In Contact' && leadRecord.Core_Lead_State__c=='In Pursuit'){
-               
-               leadRecord.Status = 'Sales Accepted Lead';
-           }
     }
     
     @auraEnabled

@@ -99,7 +99,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -124,7 +124,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Lost - Business Relationship,Lost - Intel Discontinued Product,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Product Features,Lost - Product Performance,Lost - Schedule</value>
+            <value>,Lost - Business Relationship,Lost - Intel Discontinued Product,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Price,Lost - Product Features,Lost - Product Performance,Lost - Schedule,Lost - Supply</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
@@ -180,6 +180,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

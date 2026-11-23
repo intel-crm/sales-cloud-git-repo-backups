@@ -53,7 +53,7 @@
     </crossFilters>
     <description>DataOps metrics dashboard</description>
     <filter>
-        <booleanFilter>1 AND 2</booleanFilter>
+        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Covered_Account__c</column>
             <columnToColumn>false</columnToColumn>
@@ -62,11 +62,11 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Geo__c</column>
+            <column>USERS.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA</value>
+            <value>A&amp;E Account Owner</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

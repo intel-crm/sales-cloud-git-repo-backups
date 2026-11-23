@@ -35,12 +35,12 @@
             
             if(currentState.selectedCategoryId==null){
                 var type = 'filter';
-                var element = 'search-offerings-filter';
+                // var element = 'search-offerings-filter';IPA2.0 + US TWC4497-1631
                 var detail = currentState.searchResultsCount + '|'+ ((currentState.searchString=='')?'no keyword':currentState.searchString);
                 analyticsData.formAnalyticsData(type,detail,element);
             }else{
                 var type = 'filter';
-                var element = 'search-offerings-filter';
+                // var element = 'search-offerings-filter';IPA2.0 + US TWC4497-1631
                 var detail = currentState.searchResultsCount + '|'+ ((currentState.searchString=='')?'no keyword':currentState.searchString) + '|' + currentState.selectedCategoryId;
                 analyticsData.formAnalyticsData(type,detail,element);
             }

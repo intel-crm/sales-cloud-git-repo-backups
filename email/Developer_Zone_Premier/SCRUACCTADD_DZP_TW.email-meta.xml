@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Welcome to the Developer Zone Premiere</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUACCTADD_DZP_TW</name>
+    <style>none</style>
+    <subject>Welcome to the Developer Zone Premiere</subject>
+    <textOnly>開發人員專區 Premier 帳戶已核准
+
+歡迎來到開發人員專區 Premier
+
+
+親愛的 {!Contact.FirstName} {!Contact.LastName},
+
+您開發人員專區 Premier 帳戶的申請已核准。請使用下方列出的認證登入 Intel 開發人員專區。
+
+使用者名稱：{!Contact.Name}
+電子郵件地址：{!Contact.Email}
+
+請保留此封電子郵件以供日後參考。
+
+請確實保護您的密碼，不要外洩。您使用密碼和  Intel 網站時，必須遵守 Intel 的使用條款。各網站網頁最下方均有使用條款的連結。
+
+如果您有任何疑問，請與我們聯絡。
+
+若要管理您的個人檔案，包括可用的行銷訂閱，請造訪 My Intel。
+
+請勿回覆此電子郵件訊息。此郵件是系統自動傳送。為確保您可以繼續收到我們的電子郵件，請將我們加進您的通訊錄。
+
+
+Intel 承諾保護您的隱私權。如需更多資訊，請參閱 Intel 隱私權聲明。Intel Cookie 注意事項。
+
+法律聲明 &amp;verbar; 商標 © Intel Corporation。!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

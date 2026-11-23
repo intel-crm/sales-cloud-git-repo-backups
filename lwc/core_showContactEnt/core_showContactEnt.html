@@ -1,0 +1,33 @@
+<template>
+        <lightning-card icon-name="standard:entitlement" class="slds-m-around_medium">
+            <h1 slot="title"><strong>Contact Entitlements</strong></h1>
+            <div class="slds-card__header slds-grid"> 
+                <header class="slds-media slds-media_center slds-has-flexi-truncate slds-scrollable_x headercolor">
+                    <template if:true={consData}>
+                        <lightning-datatable
+                            class="datatable-full-size"
+                            key-field="Id"
+                            data={consData}
+                            columns={columns}
+                            show-row-number-column="true"
+                            
+                        >
+                        </lightning-datatable>
+                    </template>
+                </header>
+            </div>
+            <div >
+                <footer class="slds-card__footer slds-align_absolute-center">
+                    <lightning-button
+                    class="slds-m-right_small"
+                    variant="brand"
+                    label={buttonLabel}
+                    title="View All Entitlements"
+                    onclick={viewAllHandler}
+                    >
+                    </lightning-button>
+                </footer>
+            </div>
+            
+        </lightning-card>
+</template>

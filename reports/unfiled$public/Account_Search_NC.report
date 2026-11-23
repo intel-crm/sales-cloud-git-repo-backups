@@ -10,13 +10,10 @@
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>Account.Core_Direct_Legal_Parent_Id__c</field>
+        <field>PARENT_ID</field>
     </columns>
     <columns>
-        <field>Account.Core_Direct_Pricing_Parent_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Legal_Name__c</field>
+        <field>PARENT.NAME</field>
     </columns>
     <columns>
         <field>ADDRESS1_LINE1</field>
@@ -32,9 +29,6 @@
     </columns>
     <columns>
         <field>USERS.NAME</field>
-    </columns>
-    <columns>
-        <field>INDUSTRY</field>
     </columns>
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
@@ -55,28 +49,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>outdoor wireless</value>
+            <value>motorola</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Direct_Pricing_Parent_Id__c</column>
+            <column>ADDRESS1_CITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Direct_Legal_Parent_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ADDRESS1_STATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>startsWith</operator>
-            <value></value>
+            <operator>contains</operator>
+            <value>schaumburg</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

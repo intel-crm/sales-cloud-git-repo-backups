@@ -21,7 +21,7 @@ Per completare il passaggio successivo e impostare la tua password, utilizza il 
 Nome utente: {!PRM_Registration_Request__c.PRM_Email_ID__c}
 
 Non riesci ad accedere al collegamento sopra?
-https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=it&amp;target=	 https://wcm-ciqa.intel.com/content/www/it/it/secure/partner/forms/ipa-account-search.html
+https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=it&amp;target=https://wcm-ciqa.intel.com/content/www/it/it/secure/partner/forms/ipa-account-search.html
 
 
 Non vediamo l&apos;ora di averti nel programma!
@@ -29,7 +29,7 @@ Cordiali saluti,
 Il tuo team Intel® Partner Alliance
 
 Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
 Privacy&amp;verbar;Cookies</textOnly>
     <type>custom</type>

@@ -157,19 +157,17 @@
     <fields>
         <fullName>A_E_Contact_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>Gets Contact from Contact Object</description>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
         <relationshipLabel>Entitlement Integration Status Details</relationshipLabel>
-        <relationshipName>Integration_status_Details1</relationshipName>
+        <relationshipName>Entitlement_Integration_Status_Details</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
     <fields>
         <fullName>A_E_Error_Description_Txt__c</fullName>
-        <description>Gives simple description to A&amp;E Error codes</description>
         <externalId>false</externalId>
         <formula>A_E_Error_Mapping_Id__r.A_E_Error_Description_Txt__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -187,9 +185,9 @@
         <label>Error Code Id</label>
         <referenceTo>A_E_Error_Mapping__c</referenceTo>
         <relationshipLabel>Entitlement Integration Status Details</relationshipLabel>
-        <relationshipName>Integration_status_Details</relationshipName>
+        <relationshipName>Entitlement_Integration_Status_Details</relationshipName>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -197,8 +195,8 @@
         <fullName>A_E_Integration_Error_Description_Txt__c</fullName>
         <description>Gets The error description from ERPM and AGS</description>
         <label>Integration Error Description</label>
-        <length>131072</length>
-        <trackHistory>true</trackHistory>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>7</visibleLines>
@@ -210,7 +208,7 @@
         <label>Integration Error</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -219,7 +217,7 @@
         <fullName>A_E_Integration_Status_Txt__c</fullName>
         <label>Integration Status</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -232,14 +230,14 @@
                     <label>Pending</label>
                 </value>
                 <value>
-                    <fullName>Successful</fullName>
+                    <fullName>Success</fullName>
                     <default>false</default>
-                    <label>Successful</label>
+                    <label>Success</label>
                 </value>
                 <value>
-                    <fullName>Failed</fullName>
+                    <fullName>Failure</fullName>
                     <default>false</default>
-                    <label>Failed</label>
+                    <label>Failure</label>
                 </value>
                 <value>
                     <fullName>In-Progress</fullName>
@@ -254,7 +252,7 @@
         <description>This field will Specify the Integration Type (ERPM or AGS)</description>
         <label>Integration Type</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -276,7 +274,6 @@
     </fields>
     <fields>
         <fullName>A_E_Next_Steps_Txt__c</fullName>
-        <description>Gets the next steps to resolve integration error from Error mapping Table</description>
         <externalId>false</externalId>
         <formula>A_E_Error_Mapping_Id__r.A_E_Next_Steps_Txt__c</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
@@ -290,17 +287,13 @@
     <label>Entitlement Integration Status Detail</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>A_E_Integration_Type_Txt__c</columns>
-        <columns>A_E_Integration_Error_Txt__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
-        <label>Integration status Detail Name</label>
-        <trackHistory>true</trackHistory>
+        <label>Integration Status Detail Name</label>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Entitlement Integration Status Details</pluralLabel>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Welcome_Email_to_IQRPSG_Contact</name>
+        <label>Send Welcome Email to IQRPSG Contact</label>
+        <locationX>619</locationX>
+        <locationY>148</locationY>
+        <actionName>01p8A00000BSlLgNotFound</actionName>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>contactIds</name>
+            <value>
+                <elementReference>$Record.Core_Contact_Id__c</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <interviewLabel>Send Welcome Email to IQR PSG Contact {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Send Welcome Email to IQR PSG Contact</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>72</locationX>
+        <locationY>58</locationY>
+        <connector>
+            <targetReference>Send_Welcome_Email_to_IQRPSG_Contact</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Entitlement_Nm__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>PSG Disti Quoting Access</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <object>Core_Contact_Entitlement__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

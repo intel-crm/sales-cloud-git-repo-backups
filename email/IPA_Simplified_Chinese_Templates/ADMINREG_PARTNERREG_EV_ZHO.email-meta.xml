@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_ZHO</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>完成英特尔® 合作伙伴联盟注册需要执行的操作
+
+
+
+
+尊敬的 {!Contact.FirstName}：
+
+恭喜，您的公司管理员或英特尔代表已将您添加到英特尔® 合作伙伴联盟帐户！您离完成注册只有几步之遥了。
+
+已为您创建以下资料信息：
+
+用户名： {!Contact.Core_Login_Id__c}
+电子邮件地址： {!Contact.Email}
+公司名称： {{ACCOUNTNAME}}
+英特尔® 合作伙伴联盟业务代码： {{ACCOUNTNUMBER}}
+
+
+请单击以下链接完成您的注册
+
+
+验证您的电子邮件并设置密码
+
+
+请注意此链接 24 小时后失效无法访问上面的链接？
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=zh-CN&amp;target=https://www.intel.com/content/www/zh/cn/secure/partner/forms/ipa-account-search.html
+如果您有任何问题，请通过 https://signin.intel.com/ContactUs?Culture=zh-cn 与我们联系。
+衷心期待您参加本计划！
+顺祝商祺
+英特尔® 合作伙伴联盟团队
+
+
+本邮件是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
+© {!Contact.Core_Current_Year__c} 英特尔公司
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+隐私条款 | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

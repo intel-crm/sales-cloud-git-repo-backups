@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">hariprakashx.narasanna@intel.com,shahrukhx.riyan@intel.com</value>
+        <value xsi:type="xsd:string">hariprakashx.narasanna@intel.com,shahrukhx.riyan@intel.com,yashasvix.aggarwal@intel.com</value>
     </values>
 </CustomMetadata>

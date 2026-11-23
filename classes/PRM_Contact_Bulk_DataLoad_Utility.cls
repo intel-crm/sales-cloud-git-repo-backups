@@ -64,8 +64,8 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
             contactBulkLoad =true;
             Map<String,Set<String>> partnerRelationShipMap = new Map<String,Set<String>>();
             Set<Id> contactRecordId =new Set<Id>();      
-            //List<PRM_Bulk_Data_Upload__c> recordsToUpdate = new List<PRM_Bulk_Data_Upload__c>();
-           
+            List<PRM_Bulk_Data_Upload__c> recordsToUpdate = new List<PRM_Bulk_Data_Upload__c>();
+
             List<RecordType> recType = [select id, DeveloperName from RecordType where DeveloperName =: 'Core_Intel_Contact' limit 1];
             for(PRM_Bulk_Data_Upload__c inpreq :inputBulkLoadMap.values()){
                 String stackTraceMethodEntryComment = 'processContactRecords Method Invoked at:'+System.Now().format('MM/dd/YYYY HH:MM:SS','PST')+' PST dt@@@; ';
@@ -142,19 +142,26 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
             }
         }
         catch(Exception ex){
+           System.debug('Error Msg--'+ ex.getMessage());
            logEntryMsg+=PRM_ProcessInboundOPIDLogEntriesUtility.processException(ex);//Added error log statement
            
        }
        finally{  
         for(String email : inputBulkLoadMap.keySet()){
             PRM_Bulk_Data_Upload__c bulkObject = inputBulkLoadMap.get(email);
+            //if(String.isBlank(bulkObject.PRM_Status_Reason__c)){
+            //bulkObject.PRM_Status_Reason__c = 'bulk invite by partner admin from manage personnel';
+        //}
             List<Schema.PicklistEntry> entries = Account.BillingCountryCode.getDescribe().getPicklistValues();
                 list<string> countryList=new list<string>();
                 for (Schema.PicklistEntry entry : entries) {
                     countryList.add(entry.getLabel());  
                 }
                 //string countries= String.join(countryList,';'); //IPA2.0 TWC727-2962
+                system.debug('countrylist'+countryList);
+                //system.debug('countries'+countries);
         
+            System.debug('processingStackTrace=== '+processingStackTrace);
             if(processingStackTrace.containsKey(email)){
                 bulkObject.PRM_Stack_Trace__c = processingStackTrace.get(email);
                 if(processingStackTrace.get(email).contains('upsert failed')){
@@ -185,6 +192,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
                    || label.Blocked_Domains_Prc2.split(';').contains(bulkemailDomain)){
                        bulkObject.PRM_Status__c = 'Failed';
                        bulkObject.PRM_Comments__c='Invalid_Domain';
+                       system.debug('bulkObject.PRM_Status__c if-->'+bulkObject.PRM_Status__c);
                    }
             }
             else if(String.isNotBlank(bulkemailDomain)){
@@ -201,7 +209,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
             //     bulkObject.PRM_Comments__c='Invalid_Domain';
             // }
             //IPA2.0 TWC727-2962 ends here
-            if(emailToDomain != null && email !=null && emailToDomain.containsKey(email) && emailToDomain.get(email)==true){
+            if(emailToDomain != null && email !=null && emailToDomain.containsKey(email)&& emailToDomain.get(email)==true){
                 bulkObject.PRM_Status__c = 'Failed';
                 bulkObject.PRM_Comments__c='Invalid_Domain';
             }//updated IPA2.0
@@ -283,7 +291,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
     //Method to Insert/Update Data
     public static Set<id> upsertOperation(List<SObject> newLst, String ObjectType) {
         Set<Id> successRecordId = new Set<Id>();
-        //List<PRM_Bulk_Data_Upload__c> listToUpdate = new List<PRM_Bulk_Data_Upload__c>();
+        List<PRM_Bulk_Data_Upload__c> listToUpdate = new List<PRM_Bulk_Data_Upload__c>();
 
         if(newLst!=null && !newLst.isEmpty()) {
             Database.UpsertResult[] urList = Database.upsert(newLst, false);
@@ -376,7 +384,7 @@ public class PRM_Contact_Bulk_DataLoad_Utility {
 
     public static List<PRM_Account_Contact_Relationship__c> createACRLists(Map<String,Contact> contEmailMap, Map<String,Set<String>> partnerRelationMap,Map<String,PRM_Bulk_Data_Upload__c> inputBulkrecords){
         List<PRM_Account_Contact_Relationship__c> newACRList = new List<PRM_Account_Contact_Relationship__c>(); 
-        //Map<String, Integer> actUserExitsMp =new Map<String, Integer>();
+        Map<String, Integer> actUserExitsMp =new Map<String, Integer>();
         Map<String,PRM_Contact_Relationship__c> relationshipIdsCs = PRM_Contact_Relationship__c.getAll(); //created custom setting to store value
         for(Contact con:contEmailMap.values()){  
             //if(partnerRelationMap.containskey(con.Email) && partnerRelationMap.get(con.Email)!=null){         

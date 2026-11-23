@@ -223,15 +223,9 @@
     </fields>
     <label>Marketing Profile Translation</label>
     <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
         <fullName>PMP_Marketing_Profile_Articles</fullName>
         <columns>OBJECT_ID</columns>
         <columns>PMP_Company_Information_Id__c</columns>
-        <columns>NAME</columns>
         <columns>PMP_English_Txt__c</columns>
         <columns>PMP_Chinese_Txt__c</columns>
         <columns>PMP_Japanese_Txt__c</columns>

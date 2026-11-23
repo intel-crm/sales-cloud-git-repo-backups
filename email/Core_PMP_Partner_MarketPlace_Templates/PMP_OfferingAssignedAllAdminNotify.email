@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="Intel Showcase Admin has been assigned to review the {!relatedTo.PMP_Partner_Offering_Nm__c} offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+    <messaging:htmlEmailBody >
+        <c:PMP_OfferingAssignedToAllAdmin offeringRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

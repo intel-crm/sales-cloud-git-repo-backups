@@ -25,28 +25,56 @@
                 <field>Core_MDF_Enabled_Auto_Transfer__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Active_Ind__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Geo__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Payment_Type_nm__c</field>
+                <field>Core_MDF_Auto_Transfer_Account__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Partner_Type_nm__c</field>
+                <field>PRM_Active_Associations__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDM_Secondary_Country_Nm__c</field>
+                <field>Core_Sales_Group_New__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDM_Secondary_State_Cd__c</field>
+                <field>Core_MDF_Group_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Account_OPID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Account_OPID_Dummy__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Data_Simplified_Local_Language_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_UnifiedHierarchy__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Prime_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Parent_Business_Party_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Business_Party_Idd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_IPAMembership_Attributes__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -59,20 +87,12 @@
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Auto_Transfer_Account__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPA_Partner_Role__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Active_Ind__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_Sub_Geo__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Payment_Type_NodeLevel_nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -96,6 +116,10 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>LastModifiedById</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_Account_Owner__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -129,6 +153,21 @@
     <platformActionList>
         <actionListContext>Record</actionListContext>
         <platformActionListItems>
+            <actionName>FeedItem.TextPost</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>0</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>CallHighlightAction</actionName>
+            <actionType>ProductivityAction</actionType>
+            <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Account.Core_MDF_Inactivate_Account</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
             <actionName>Account.Account_Transfer</actionName>
             <actionType>QuickAction</actionType>
             <sortOrder>3</sortOrder>
@@ -139,31 +178,16 @@
             <sortOrder>4</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Account.Core_MDF_Inactivate_Account</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>2</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>CallHighlightAction</actionName>
-            <actionType>ProductivityAction</actionType>
-            <sortOrder>1</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
             <actionName>Edit</actionName>
             <actionType>StandardButton</actionType>
             <sortOrder>5</sortOrder>
-        </platformActionListItems>
-        <platformActionListItems>
-            <actionName>FeedItem.TextPost</actionName>
-            <actionType>QuickAction</actionType>
-            <sortOrder>0</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
         <excludeButtons>New</excludeButtons>
         <fields>NAME</fields>
         <fields>Core_MDF_User__c</fields>
-        <fields>Core_MDF_Active_Ind__c</fields>
+        <fields>Core_MDF_AccountIdUserId__c</fields>
         <relatedList>Core_MDF_Partner_Node_User_Mapping__c.Core_MDF_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -172,7 +196,123 @@
         <relatedList>Core_MDF_Account_Bank_Mapping__c.Core_MDF_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <fields>ExternalId</fields>
+        <fields>DisplayUrl</fields>
+        <relatedList>k_v_f_training_detail_sfdcs__x.business_organization_party_id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ExternalId</fields>
+        <fields>DisplayUrl</fields>
+        <relatedList>k_v_f_detail_value_exchange_sfdcs__x.business_organization_party_id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Consent_Distributor__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>PRM_Consent_Provided_Ind__c</fields>
+        <fields>PRM_Consent_Provided_By_Id__c</fields>
+        <fields>PRM_Distributor_Id__c</fields>
+        <fields>PRM_Choice_Nm__c</fields>
+        <fields>PRM_Start_Date_Dt__c</fields>
+        <fields>PRM_InActive_Ind__c</fields>
+        <relatedList>PRM_Partner_Assist_Consent__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>Core_Platform_Event_Log__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>OP_CIMID__c</fields>
+        <fields>Status__c</fields>
+        <relatedList>OPID_Sync_Request__c.OPID_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Registration_Request__c.Account_ID__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Notification_Event_Log__c.PRM_One_Partner_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Notification_Event_Log__c.PRM_Intel_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Registration_Tracker__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Documents__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Builder_Strategy__c</fields>
+        <fields>PRM_Active__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>LAST_UPDATE</fields>
+        <fields>Record_Link__c</fields>
+        <relatedList>PRM_IPA_Affiliation__c.PRM_Account__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Owner__c</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Sales_Assist_Count__c</fields>
+        <fields>Core_CIM_ID__c</fields>
+        <fields>Core_Partner_Alliance_Program__c</fields>
+        <fields>Core_Account_Type__c</fields>
+        <fields>Core_Account_ID__c</fields>
+        <relatedList>Account.Account_OPID__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Owner__c</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Sales_Assist_Count__c</fields>
+        <fields>Core_CIM_ID__c</fields>
+        <fields>Core_Partner_Alliance_Program__c</fields>
+        <fields>Core_Account_Type__c</fields>
+        <fields>Core_Account_ID__c</fields>
+        <relatedList>Account.Account_OPID_Dummy__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Report_Matrix__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Report_Matrix__c.PRM_One_Partner_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Customer_Master_File_Grouping__c</fields>
+        <relatedList>Account_CMF_Groups__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>PRM_Points_Opt_in_Ind__c</fields>
+        <fields>PRM_Points_Opt_in_Dt__c</fields>
+        <fields>PRM_Points_Not_Eligible_Ind__c</fields>
+        <fields>PRM_Points_Not_Eligible_Dt__c</fields>
+        <fields>PRM_Point_Status_Txt__c</fields>
+        <fields>PRM_Point_Status_Dt__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_IPAMembership_Attributes__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <runAssignmentRulesDefault>true</runAssignmentRulesDefault>

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Megekko B.V. Partner User</description>
+    <description>CD-ROM LAND Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Megekko B.V. Partner User</name>
+    <name>CD-ROM LAND Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12016502_Laura_Veltman</parentRole>
+    <parentRole>CDROMLANDPartnerManager</parentRole>
 </Role>

@@ -6,8 +6,8 @@
         <description>Choose metadata record based on Program and Budget Type</description>
         <name>Core_MDF_Select_based_on_Program_and_Budget</name>
         <label>Select based on Program and Budget</label>
-        <locationX>801</locationX>
-        <locationY>207</locationY>
+        <locationX>646</locationX>
+        <locationY>225</locationY>
         <defaultConnector>
             <targetReference>Core_MDF_Loop_through_metadata</targetReference>
         </defaultConnector>
@@ -16,67 +16,30 @@
             <name>Core_MDF_Program_and_Budget_type_exists</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Program__c</leftValueReference>
+                <leftValueReference>metadataRecord.Core_MDF_Program_Txt__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>varProgram</elementReference>
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Budget_Type__c</leftValueReference>
+                <leftValueReference>metadataRecord.Core_MDF_Budget_Type_Txt__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>varBudgetType</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Doc_Submission_Window__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>Core_MDF_Update_Case</targetReference>
             </connector>
-            <label>Program and Budget type exists (Submission SLA != 0)</label>
-        </rules>
-        <rules>
-            <name>Program_and_Budget_type_exists_SLA_0</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Program__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>varProgram</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Budget_Type__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>varBudgetType</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CCP_Submission_Window.Core_MDF_Doc_Submission_Window__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Case_RSA_MD</targetReference>
-            </connector>
-            <label>Program and Budget type exists (Submission SLA = 0)</label>
+            <label>Program and Budget type exists</label>
         </rules>
     </decisions>
     <description>Updates the Document Submission SLA based on Program and Budget Type</description>
-    <environments>Default</environments>
     <formulas>
         <name>varDocumentSubmissionDueDate</name>
         <dataType>DateTime</dataType>
-        <expression>{!varNOW}+ {!CCP_Submission_Window.Core_MDF_Doc_Submission_Window__c}</expression>
+        <expression>{!varNOW}+ {!metadataRecord.Core_MDF_Submission_SLA_Nbr__c}</expression>
     </formulas>
     <formulas>
         <name>varPendingDocumentFlag</name>
@@ -90,10 +53,10 @@
         <description>Loop through the metadata records</description>
         <name>Core_MDF_Loop_through_metadata</name>
         <label>Loop through metadata</label>
-        <locationX>533</locationX>
+        <locationX>359</locationX>
         <locationY>51</locationY>
-        <assignNextValueToReference>CCP_Submission_Window</assignNextValueToReference>
-        <collectionReference>CCPSubMetadataRecords</collectionReference>
+        <assignNextValueToReference>metadataRecord</assignNextValueToReference>
+        <collectionReference>MetadataRecords</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Core_MDF_Select_based_on_Program_and_Budget</targetReference>
@@ -103,12 +66,6 @@
         <name>BuilderType</name>
         <value>
             <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -122,34 +79,25 @@
         <description>Query Core_MDF_CCP_Claim_Window__mdt to get the metadata records</description>
         <name>Core_MDF_Get_Metadata_Records</name>
         <label>Get Metadata Records</label>
-        <locationX>380</locationX>
+        <locationX>206</locationX>
         <locationY>49</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_Loop_through_metadata</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_MDF_Budget_Type__c</field>
-            <operator>NotEqualTo</operator>
-            <value>
-                <stringValue>RSA MD</stringValue>
-            </value>
-        </filters>
-        <object>Core_MDF_CCP_Submission_Window__mdt</object>
-        <outputReference>CCPSubMetadataRecords</outputReference>
+        <object>Core_MDF_CCP_Claim_Window__mdt</object>
+        <outputReference>MetadataRecords</outputReference>
         <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Budget_Type__c</queriedFields>
-        <queriedFields>Core_MDF_Case_SLA__c</queriedFields>
-        <queriedFields>Core_MDF_Program__c</queriedFields>
-        <queriedFields>Core_MDF_Doc_Submission_Window__c</queriedFields>
+        <queriedFields>Core_MDF_Budget_Type_Txt__c</queriedFields>
+        <queriedFields>Core_MDF_Submission_SLA_Nbr__c</queriedFields>
+        <queriedFields>Core_MDF_Program_Txt__c</queriedFields>
     </recordLookups>
     <recordUpdates>
-        <description>Update Case with Document Submission Due Date and Pending Document Flag</description>
+        <description>Update Case with Document Submission Due Date</description>
         <name>Core_MDF_Update_Case</name>
-        <label>Update Case (Document Submission Due Date and Pending Doc Flag)</label>
-        <locationX>1186</locationX>
-        <locationY>53</locationY>
+        <label>Update Case</label>
+        <locationX>1019</locationX>
+        <locationY>50</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -172,28 +120,6 @@
         </inputAssignments>
         <object>Case</object>
     </recordUpdates>
-    <recordUpdates>
-        <description>Update only Pending Documentation Flag</description>
-        <name>Update_Case_RSA_MD</name>
-        <label>Update Case (Pending Documentation Flag)</label>
-        <locationX>1193</locationX>
-        <locationY>323</locationY>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>varCaseId</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>Core_MDF_Pending_Document_Flag__c</field>
-            <value>
-                <elementReference>varPendingDocumentFlag</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Case</object>
-    </recordUpdates>
     <start>
         <locationX>40</locationX>
         <locationY>50</locationY>
@@ -203,20 +129,21 @@
     </start>
     <status>Active</status>
     <variables>
-        <name>CCP_Submission_Window</name>
+        <name>metadataRecord</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Core_MDF_CCP_Submission_Window__mdt</objectType>
+        <objectType>Core_MDF_CCP_Claim_Window__mdt</objectType>
     </variables>
     <variables>
-        <name>CCPSubMetadataRecords</name>
+        <description>Stores the metadata records</description>
+        <name>MetadataRecords</name>
         <dataType>SObject</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
-        <objectType>Core_MDF_CCP_Submission_Window__mdt</objectType>
+        <objectType>Core_MDF_CCP_Claim_Window__mdt</objectType>
     </variables>
     <variables>
         <name>varBudgetType</name>

@@ -16,7 +16,8 @@
     <aura:attribute name="showFullWidth" type="Boolean" default="true"></aura:attribute>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler event="c:MarketplacePageEvent" action="{!c.handlePageEvent}" />
-    <aura:handler event="c:PSS_HandleAdminReview" action="{!c.handleAdminEvent}"/>
+    <!-- IPA2.0: US-TWC729-7976 -->
+    <!--<aura:handler event="c:PSS_HandleAdminReview" action="{!c.handleAdminEvent}"/>-->
     
     <div>
       <div class="bannerBlade">
@@ -33,12 +34,12 @@
               {!v.main}
           </div>
       </div>
-       <aura:if isTrue="{!v.showFullWidth}"> 
+       <!--<aura:if isTrue="{!v.showFullWidth}"> 
      <div class="bg-white">
          
           {!v.mainFullWidth}
       </div>
-        </aura:if>
+        </aura:if>-->
       <div class="bg-blade-odd">
         <div class="container">
           {!v.blade1}

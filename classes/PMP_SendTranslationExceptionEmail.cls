@@ -20,7 +20,7 @@ public with sharing class PMP_SendTranslationExceptionEmail {
    
     public static void  sendEmail(String emailTemplate, List<Core_Integration_Inbound_Message__c> testData) {
         
-       /* tableData = testData;
+        tableData = testData;
         
         list<Messaging.SingleEmailMessage> sendemaillist = new list<Messaging.SingleEmailMessage>();
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage(); 
@@ -65,7 +65,7 @@ public with sharing class PMP_SendTranslationExceptionEmail {
             if(!test.isRunningTest()){
                 Messaging.sendEmail(sendemaillist);
             }    
-        } */
+        } 
     
-
+}*/
 }

@@ -5,40 +5,32 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_DZP</name>
     <style>none</style>
-    <subject>Welcome to Developer Zone Premier</subject>
-    <textOnly>Developer Zone Premier Account Approved
-
-Approval Email
-
-Welcome to Developer Zone Premier
+    <subject>Intel Registration Confirmation - Developer Zone Premier Account</subject>
+    <textOnly>Welcome to Developer Zone Premier
 
 
-Welcome {!Contact.Name},
+Welcome {!Contact.Core_Login_Id__c}
 
-Your request for a Developer Zone Premier account is approved and includes the following benefits:
+This notice is to inform you that a profile has been created for you on the Developer Zone Premier Tool to submit price quote requests to Intel Corporation. You are able to access DZP at {{TOOLLINK}}www.dzp.com. Please bookmark this URL.
 
-1.	Secure access to pre-release software
-2.	Secure access to pre-release specifications, documentation, and roadmaps
-3.	Secure access to custom training and certification
-4.	Hardware testing support
+Please retain this e-mail for future reference.
 
-Visit the Developer Zone to get started and Manage your profile, including available marketing subscriptions via My Intel
+Login Id: {!Contact.Core_Login_Id__c}
+E-mail Address: {!Contact.Email}
+Intel Business Account Name: {{ACCOUNTNAME}}
 
-As a reminder, you are obligated to treat Intel’s Confidential Information carefully by either the confidentiality obligations contained in Section 4 of the Intel Partner Alliance Terms and Conditions or by the active CNDA in place between your Company and Intel.  Please be aware that you must uphold those obligations  as recipient of Developer Zone Premier access.
+Your password should be protected as confidential. Your use of the password and Intel’s website are governed by Intel’s Terms of Use linked from the bottom of each respective site’s web pages.
 
+Please DO NOT reply to this e-mail message. This is an automated response.
+To ensure that you continue receiving your e-mails, please add us to your address book.
 
-Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only. Your password should be protected as confidential information. Your use of the password and Intel’s websites are governed by Intel’s Terms of Use.
+Kind Regards,
+Developer Zone Premier Team
 
-If you have any questions, please contact us.
-
-Sincerely, Developer Zone Registration Administrator
-
-Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
-
-
-Intel is committed to protecting your privacy. For more Information, please see the Intel Privacy Notice. Intel Cookie Notice.
-
-Legal Information | Trademarks |  ©  Intel Corporation.</textOnly>
+This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
+© 2020 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

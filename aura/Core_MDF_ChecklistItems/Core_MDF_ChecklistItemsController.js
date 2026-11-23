@@ -21,12 +21,12 @@
 					var record = impactComp[i];
 					if(record.get("v.name") == sourceComponent.get('v.name')){
 						record.set("v.required",false);
-						record.set("v.placeholder", "");
-						record.set("v.title","");
-                        record.set("v.value","");
-                        impactAmountMap[record.get('v.name')] = record.get('v.value');
-						component.set("v.impactAmount", impactAmountMap);
-                        record.set("v.disabled",true);
+						record.set("v.placeholder", "Amount can include 2 decimal places");
+						record.set("v.title","Amount can include 2 decimal places");
+                        record.set("v.step","0.01");
+						//impactAmountMap[record.get('v.name')] = record.get('v.value');
+						//component.set("v.impactAmount", impactAmountMap);	
+						record.set("v.disabled",false);
 						$A.util.removeClass(record, "slds-has-error"); // remove red border
 					}
 				}

@@ -19,7 +19,13 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
         <field>Product2.Core_Product_Series__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -37,17 +43,13 @@
         <field>OpportunityLineItem.Core_Lost_Sales_Price__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_Production_Lost_Sales_Price__c</field>
+    </columns>
+    <columns>
         <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -56,10 +58,10 @@
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
+        <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <columns>
-        <field>DESCRIPTION</field>
+        <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Product_Segment__c</field>
@@ -138,6 +140,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_Claim_Date__c</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

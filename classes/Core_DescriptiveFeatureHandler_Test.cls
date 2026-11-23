@@ -58,30 +58,9 @@ public class Core_DescriptiveFeatureHandler_Test{
         
         insert lstTriggerExecution;
         
-       
-          
         // Construct the Opportunity instances
-        //lstOpportunity = Core_Test_Utility.Core_Opportunity(100);
-         SObjectType r = ((SObject)Type.forName('Schema','Account').newInstance()).getSObjectType();
-         Id recTypeId = r.getDescribe().getRecordTypeInfosByDeveloperName().get(Label.Pricing_Tender_Account_RecordType_IntelAccount).getRecordTypeId();
-         Account accountInstance = new Account(Name = 'TestoppAcchandle', BillingStreet = '123 Fake St',
-                                              BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',Industry='Agriculture',Core_Sub_Industry__c= 'Crop Production',
-                                              BillingPostalCode = '12345',Core_Sales_Groups__c=Core_CRM_Utility.getSalesGroupAPI(),RecordTypeId=recTypeId);
+        lstOpportunity = Core_Test_Utility.Core_Opportunity(100);
         
-      	insert accountInstance;
-       		Opportunity opportunityInstance = new Opportunity();
-            opportunityInstance.CloseDate = System.Today().addDays(24);
-            opportunityInstance.StageName = 'Qualify';
-            opportunityInstance.Name = 'TestRE1';
-            opportunityInstance.AccountId =accountInstance.id;
-            opportunityInstance.Core_Product_Segment__c='Client Computing';
-            opportunityInstance.Core_Consumption_Market__c = 'Education';
-            opportunityInstance.Core_Product_Application__c ='Business Mobility';
-            opportunityInstance.Core_Opportunity_Type__c = 'Design: Original';
-            opportunityInstance.Core_Opportunity_Coverage_Nm__c = 'Intel-Led Opportunity';
-            opportunityInstance.Description = 'test';
-            opportunityInstance.Core_IsClone__c = False;
- 			lstOpportunity.add(opportunityInstance);
         // Insert the intialized Opportunity 
         Database.SaveResult[] lstSaveResultCS = Database.insert(lstOpportunity, false);
         
@@ -90,13 +69,17 @@ public class Core_DescriptiveFeatureHandler_Test{
         
         // Insert the intialized Feature
         Database.SaveResult[] lstFeatureResults = Database.insert(lstFeature, false);
-                
+        
+        System.debug('--------'+lstFeature[0]+lstFeature[1]);
+        
         // Construct the Feature Header instances
         lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);
         
         // Insert the intialized Feature Header 
         Database.SaveResult[] lstFeatureHeaderResults = Database.insert(lstFeatureHeader, false);
-                                
+                        
+        System.debug('--------'+lstFeatureHeader[0]+lstFeatureHeader[1]);
+        
         // Construct the Feature Set instances
         lstFeatureSet = Core_Test_Utility.CreateFeatureSet(70);
         
@@ -111,7 +94,9 @@ public class Core_DescriptiveFeatureHandler_Test{
         
         // Insert the intialized Feature Set
         Database.SaveResult[] lstFeatureSetResults = Database.insert(lstFeatureSet, false);        
-                                
+                        
+        System.debug('--------'+lstFeatureSet[0]+lstFeatureSet[1]);
+        
         // Construct the Feature Set instances
         lstOpportunityFeature = Core_Test_Utility.CreateOpportunityFeature(60);
         
@@ -119,13 +104,14 @@ public class Core_DescriptiveFeatureHandler_Test{
         iRowNo =0;        
         for(Core_Opportunity_Features__c sobjFeatureSet : lstOpportunityFeature ){
             sobjFeatureSet.Core_Feature_Set__c = lstFeatureSet[iRowNo].Id;
-            sobjFeatureSet.Core_Opportunity__c = lstOpportunity [0].Id;
+            sobjFeatureSet.Core_Opportunity__c = lstOpportunity [iRowNo].Id;
             iRowNo++;
         }
         
         // Insert the intialized Feature Set
         Database.SaveResult[] lstOppFeatureResults = Database.insert(lstOpportunityFeature, false);
         
+        System.debug('--------'+lstOpportunityFeature[0]+lstOpportunityFeature[1]);
     }
     
     /*
@@ -141,15 +127,15 @@ public class Core_DescriptiveFeatureHandler_Test{
         lstOpportunityFacts = [select Id, Core_Entry_SPP_Us__c from Core_Opportunity_Facts__c where Core_Entry_SPP_Us__c != null
                                order by Core_Entry_SPP_Us__c];
         
-     //   System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
         
         lstOpportunityFeature[0].Core_Feature_Set__c=lstFeatureSet[1].Id;
         //update lstOpportunityFeature;
         Database.SaveResult[] lstOppFeatureResults1 = Database.Update(lstOpportunityFeature, false);
 
-     //   System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
                 
-     //   Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
+        Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
         
     }
     
@@ -168,18 +154,24 @@ public class Core_DescriptiveFeatureHandler_Test{
         lstFeatureSet = new List<Core_Feature_Set__c >{};
         lstOpportunityFeature = new List<Core_Opportunity_Features__c >{};
         lstOpportunityFacts = new List<Core_Opportunity_Facts__c>{};
-    	List<Core_Feature__c> featureList = [SELECT Id,Core_Feature_Type__c,Core_Feature_Value__c FROM Core_Feature__c LIMIT 70];
-        //lstFeature = Core_Test_Utility.CreateFeature(90);
+    
+        lstFeature = Core_Test_Utility.CreateFeature(90);
         
-        for(Core_Feature__c sobjFeature : featureList ){
-            sobjFeature.Core_Multi_Select__c = false;
+        for(Core_Feature__c sobjFeature : lstFeature ){
+            sobjFeature.Core_Multi_Select__c = TRUE;
         }
         
         // Insert the intialized Feature
-        Database.SaveResult[] lstFeatureResults = Database.update(featureList, false);
+        Database.SaveResult[] lstFeatureResults = Database.insert(lstFeature, false);
         
-        List<Core_Feature_Header__c> headList=[SELECT Id,Core_Header_Name__c,Core_Header_Type__c FROM Core_Feature_Header__c];
-       
+        System.debug('----------'+lstFeature);
+        
+        // Construct the Feature Header instances
+        lstFeatureHeader = Core_Test_Utility.CreateFeatureHeader(80);
+        
+        // Insert the intialized Feature Header 
+        Database.SaveResult[] lstFeatureHeaderResults = Database.insert(lstFeatureHeader, false);
+        
         // Construct the Feature Set instances
         lstFeatureSet = Core_Test_Utility.CreateFeatureSet(70);
         
@@ -187,8 +179,8 @@ public class Core_DescriptiveFeatureHandler_Test{
         Integer iRowNo =0;
         
         for(Core_Feature_Set__c sobjFeatureSet : lstFeatureSet){       
-            sobjFeatureSet.Core_Feature__c = featureList[iRowNo].Id;
-            sobjFeatureSet.Core_Feature_Header__c = headList[iRowNo].Id;
+            sobjFeatureSet.Core_Feature__c = lstFeature[iRowNo].Id;
+            sobjFeatureSet.Core_Feature_Header__c = lstFeatureHeader[iRowNo].Id;
             iRowNo++;
         }
         
@@ -202,24 +194,25 @@ public class Core_DescriptiveFeatureHandler_Test{
         iRowNo =0;        
         for(Core_Opportunity_Features__c sobjFeatureSet : lstOpportunityFeature ){
             sobjFeatureSet.Core_Feature_Set__c = lstFeatureSet[iRowNo].Id;
-            sobjFeatureSet.Core_Opportunity__c = lstOpportunity [0].Id;
+            sobjFeatureSet.Core_Opportunity__c = lstOpportunity [iRowNo].Id;
             iRowNo++;
         }
         
         // Insert the intialized Feature Set
         Database.SaveResult[] lstOppFeatureResults = Database.insert(lstOpportunityFeature, false);
-        system.debug('Test class lstOpportunityFeature'+lstOppFeatureResults);  
+           
         lstOpportunityFacts = [select Id, Core_Entry_SPP_Us__c from Core_Opportunity_Facts__c where Core_Entry_SPP_Us__c != null
                                order by Core_Entry_SPP_Us__c];
-        system.debug('OPP FACTS'+lstOpportunityFacts);
-       // System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+        
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
         
         lstOpportunityFeature[0].Core_Feature_Set__c=lstFeatureSet[1].Id;
-        system.debug('Test class 2 lstOpportunityFeature'+lstOpportunityFeature); //update lstOpportunityFeature; 
+        //update lstOpportunityFeature;
         Database.SaveResult[] lstOppFeatureResults1 = Database.Update(lstOpportunityFeature, false);
-        system.debug('Test class 3 lstOpportunityFeature'+lstOpportunityFeature);
-     //   System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
-        Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
-        system.debug('Test class 4 lsDeletetOppFeatureResults'+lsDeletetOppFeatureResults);
+
+        System.assertEquals('value0', lstOpportunityFacts[0].Core_Entry_SPP_Us__c);
+                
+        //Database.DeleteResult[] lsDeletetOppFeatureResults = Database.Delete(lstOpportunityFeature, false);
+        
     }
 }

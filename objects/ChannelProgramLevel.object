@@ -182,19 +182,43 @@
         <fullName>Rank</fullName>
         <trackHistory>false</trackHistory>
     </fields>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>Name</columns>
+        <columns>Program</columns>
+        <columns>Description</columns>
+        <columns>Rank</columns>
+        <columns>PRM_inactind__c</columns>
+        <columns>PRM_Partner_Tier_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Program</field>
+            <operation>equals</operation>
+            <value>Intel Partner Alliance</value>
+        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All_Channel_Program_Levels</fullName>
+        <columns>Name</columns>
+        <columns>Program</columns>
+        <columns>Rank</columns>
+        <columns>Description</columns>
+        <columns>PRM_inactind__c</columns>
+        <columns>PRM_Partner_Tier_Name__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Channel Program Levels</label>
+    </listViews>
+    <profileSearchLayouts>
+        <fields>Name</fields>
+        <fields>Program</fields>
+        <profileName>System Administrator</profileName>
+    </profileSearchLayouts>
     <searchLayouts>
         <customTabListAdditionalFields>Program</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Rank</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Description</customTabListAdditionalFields>
         <lookupDialogsAdditionalFields>Program</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Rank</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Description</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>Program</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Rank</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>Description</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Program</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Rank</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Description</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>
 </CustomObject>

@@ -33,10 +33,10 @@
             <field>CREATED_DATE</field>
         </columns>
         <columns>
-            <field>CUST_CREATED_NAME</field>
+            <field>CREATED</field>
         </columns>
         <filter>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND (4 AND 5) AND 6</booleanFilter>
             <criteriaItems>
                 <column>PRM_Account_Contact_Relationship__c.PRM_Status_Nm__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -61,16 +61,23 @@
             <criteriaItems>
                 <column>FK_CNTC_EMAIL</column>
                 <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
+                <isUnlocked>false</isUnlocked>
+                <operator>notContain</operator>
+                <value>mailosaur</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>FK_CNTC_EMAIL</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
                 <operator>notContain</operator>
                 <value>mailinator</value>
             </criteriaItems>
             <criteriaItems>
                 <column>ACCOUNT.NAME</column>
                 <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
+                <isUnlocked>false</isUnlocked>
                 <operator>notContain</operator>
-                <value>test</value>
+                <value>Test</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -102,7 +109,7 @@
             <field>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</field>
         </columns>
         <columns>
-            <field>CUST_CREATED_NAME</field>
+            <field>CREATED</field>
         </columns>
         <filter>
             <criteriaItems>
@@ -129,9 +136,9 @@
             <criteriaItems>
                 <column>ACCOUNT.NAME</column>
                 <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
+                <isUnlocked>false</isUnlocked>
                 <operator>notContain</operator>
-                <value>test</value>
+                <value>Test</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -159,7 +166,7 @@
         <field>ACCOUNT.NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Pending Admin Invites</name>
+    <name>Pending Admin Invites_old</name>
     <params>
         <name>lsk</name>
         <value>1</value>

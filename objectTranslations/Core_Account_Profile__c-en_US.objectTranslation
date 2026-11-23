@@ -273,6 +273,17 @@
         <label><!-- Version --></label>
         <name>Core_Version__c</name>
     </fields>
+    <layouts>
+        <layout>Account Profile Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Q &amp; A --></label>
+            <section>Q &amp; A</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_EOT --></label>

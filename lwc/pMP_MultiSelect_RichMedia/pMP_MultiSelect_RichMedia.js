@@ -72,8 +72,7 @@ export default class pMP_MultiSelect_RichMedia extends LightningElement {
     handleCheckboxChange(event){
         let selectItemTemp = event.detail.value;
         
-        //all the chosen checkbox items will come as follows: selectItemTemp=0032v00002x7UE9AAM,0032v00002x7UEHAA2
-        console.log(' handleCheckboxChange  value=', event.detail.value);        
+        //all the chosen checkbox items will come as follows: selectItemTemp=0032v00002x7UE9AAM,0032v00002x7UEHAA2      
         this.selectedItems = []; //it will hold only newly selected checkbox items.        
         
         /* find the value in items array which has been prepared during database call
@@ -115,7 +114,7 @@ export default class pMP_MultiSelect_RichMedia extends LightningElement {
         });
         
         //now add newly selected items to the globalSelectedItems
-        this.globalSelectedItems.push(...this.selectedItems);        
+        this.globalSelectedItems.push(...this.selectedItems);      
         const arrItems = this.globalSelectedItems;
         
         //store current selection as previousSelectionItems

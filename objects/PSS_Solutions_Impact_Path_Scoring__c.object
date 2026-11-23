@@ -147,7 +147,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
@@ -173,6 +173,7 @@
         <relationshipLabel>Solutions Impact Path Scorings</relationshipLabel>
         <relationshipName>Solutions_Select_Benefits</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -183,6 +184,7 @@
         <label>IPA Tier</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -195,6 +197,7 @@
         <relationshipLabel>Solutions Impact Path Scorings</relationshipLabel>
         <relationshipName>Solutions_Impact_Path_Scorings</relationshipName>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -210,6 +213,7 @@
     <nameField>
         <displayFormat>S-{0000}</displayFormat>
         <label>Solutions Select Benefit Name</label>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Solutions Impact Path Scorings</pluralLabel>

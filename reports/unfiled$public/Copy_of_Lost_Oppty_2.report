@@ -168,7 +168,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Duplicate</value>
+            <value>Cancelled - Duplicate,Cancelled - Entered in Error</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -180,7 +180,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

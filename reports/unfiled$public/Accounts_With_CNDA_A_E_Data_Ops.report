@@ -1,75 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumn</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>Account.Core_Account_Primary_Coverage__c</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>ACCOUNT.NAME</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_LINE1</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_STATE_CODE</field>
-    </columns>
-    <columns>
-        <field>USERS.NAME</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
         <field>Account.Core_CNDA_Number__c</field>
     </columns>
     <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_LINE1</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_CITY</field>
+    </columns>
+    <columns>
+        <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Military_Aerospace_and_Government__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Geo__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_D_B_Hierarchy__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Deactivated__c</field>
     </columns>
     <description>Report on Account with and without CNDA number(s)</description>
     <filter>
         <criteriaItems>
-            <column>USERS.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>ipa,sap,test,consolidation</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ACCOUNT.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>test</value>
+            <operator>contains</operator>
+            <value>Newisys</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Account.Core_Account_Primary_Coverage__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Accounts by Primary Coverage</name>
+    <format>Tabular</format>
+    <name>Accounts With CNDA - A&amp;E Data Ops.</name>
     <params>
         <name>co</name>
         <value>1</value>

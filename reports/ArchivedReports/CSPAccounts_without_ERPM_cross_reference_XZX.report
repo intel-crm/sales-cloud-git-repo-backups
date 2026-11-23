@@ -90,6 +90,10 @@
         <scope>organization</scope>
         <showGrandTotal>true</showGrandTotal>
         <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Account$PRM_IPA_Badge_Tier_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
     </block>
     <blockInfo>
         <blockId xsi:nil="true"/>

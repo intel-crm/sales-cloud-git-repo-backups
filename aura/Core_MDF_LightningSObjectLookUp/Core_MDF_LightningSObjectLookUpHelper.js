@@ -9,10 +9,10 @@
         var lookupList = cmp.find('lookuplist');
 		var returnFields = cmp.get("v.returnFields");
         var filterCriteria = cmp.get("v.filterCriteria");
-        var searchFields = cmp.get("v.searchFields");
-        //var lookupPill = cmp.find("lookup-pill"); 
+        var lookupPill = cmp.find("lookup-pill"); 
         // Clear any errors and destroy the old lookup items container
         inputElement.set('v.errors', null);
+        console.log('Inside doSearch:::');
         // We need at least 2 characters for an effective search
         if (typeof searchString === 'undefined' || searchString.length < 2)
         {
@@ -38,12 +38,12 @@
 
         // Mark the action as abortable, this is to prevent multiple events from the keyup executing
         action.setAbortable();
+        console.log('Parameters are ::::'+searchString + ' '+sObjectAPIName + ' '+returnFields);
         // Set the parameters
         action.setParams({ "searchString" : searchString, 
                            "sObjectAPIName" : sObjectAPIName,
                           "fieldsToReturn" : returnFields,
-                          "whereClause" : filterCriteria,
-                          "searchFields" : searchFields});                  
+                          "whereClause" : filterCriteria});                  
         // Define the callback
         action.setCallback(this, function(response) {
             var state = response.getState();
@@ -66,6 +66,7 @@
             else if (state === "ERROR") // Handle any error by reporting it
             {
                 var errors = response.getError();
+                console.log("errors:::",errors);
                 if (errors) 
                 {
                     if (errors[0] && errors[0].message) 
@@ -94,7 +95,11 @@
         // The Object label is the inner text)
         var objectLabel = event.currentTarget.innerText;
 
-        // Log the Object Id and Label to the console        
+        // Log the Object Id and Label to the console
+        console.log('event.currentTarget=' ,event.currentTarget);
+        console.log('objectId=' + objectId);
+        console.log('objectLabel=' + objectLabel);
+                
         // Create the UpdateLookupId event
         var updateEvent = cmp.getEvent("updateLookupIdEvent");
         
@@ -109,8 +114,6 @@
         // Fire the event
         updateEvent.fire();
 
-        // Expose the same selection to a Flow screen without changing legacy event consumers.
-        cmp.set("v.selectedId", objectId);
         // Update the Searchstring with the Label
         cmp.set("v.searchString", objectLabel);
 
@@ -127,9 +130,9 @@
         var lookupPill = cmp.find("lookup-pill");
         $A.util.addClass(lookupPill, 'slds-show');
         $A.util.removeClass(lookupPill, 'slds-hide'); 
-        // Lookup Div has selection //Major Security Scan :NameChanged "inputElement->inputDivElement"
-        var inputDivElement = cmp.find('lookup-div');
-        $A.util.addClass(inputDivElement, 'slds-has-selection');
+        // Lookup Div has selection
+        var inputElement = cmp.find('lookup-div');
+        $A.util.addClass(inputElement, 'slds-has-selection');
 		
         var clearIcon = cmp.find("clearIcon"); 
         $A.util.addClass(clearIcon, 'slds-hide'); 
@@ -153,9 +156,6 @@
         // Fire the event
         clearEvent.fire();
 
-        // Clear the Flow output when the selected record is removed.
-        cmp.set("v.selectedId", '');
-
         // Clear the Searchstring
         cmp.set("v.searchString", '');        
 
@@ -174,9 +174,9 @@
         $A.util.removeClass(inputElement, 'slds-hide'); /*Divya: Summer'18 release issue fix*/
         $A.util.addClass(inputElement, 'slds-show');
        
-        // Lookup Div has no selection  //Major Security Scan :NameChanged "inputElement->inputDivElement"
-        var inputDivElement = cmp.find('lookup-div');
-        $A.util.removeClass(inputDivElement, 'slds-has-selection');
+        // Lookup Div has no selection
+        var inputElement = cmp.find('lookup-div');
+        $A.util.removeClass(inputElement, 'slds-has-selection');
     },
 
     /**
@@ -225,9 +225,7 @@
         });
         
         // Fire the event
-        //clearEvent.fire(); //commenting due to stack size
-
-        cmp.set("v.selectedId", '');
+        //clearEvent.fire(); commenting due to stack size
 
         // Clear the Searchstring
         cmp.set("v.searchString", '');        
@@ -240,9 +238,9 @@
         var inputElement = cmp.find('lookup');
         $A.util.removeClass(inputElement, 'slds-hide');
         $A.util.addClass(inputElement, 'slds-show');
-        // Lookup Div has no selection //Major Security Scan :NameChanged "inputElement->inputDivElement"
-        var inputDivElement = cmp.find('lookup-div');
-        $A.util.removeClass(inputDivElement, 'slds-has-selection');
+        // Lookup Div has no selection
+        var inputElement = cmp.find('lookup-div');
+        $A.util.removeClass(inputElement, 'slds-has-selection');
         
         // Hide the Lookup list
         var lookuplist = cmp.find("lookuplist");
@@ -267,9 +265,9 @@
         var lookupPill = cmp.find("lookup-pill");
         $A.util.addClass(lookupPill, 'slds-show');
         
-        // Lookup Div has selection //Major Security Scan :NameChanged "inputElement->inputDivElement"
-        var inputDivElement = cmp.find('lookup-div');
-        $A.util.addClass(inputDivElement, 'slds-has-selection');
+        // Lookup Div has selection
+        var inputElement = cmp.find('lookup-div');
+        $A.util.addClass(inputElement, 'slds-has-selection');
 
     },
     
@@ -281,7 +279,8 @@
         var clearIcon = cmp.find("clearIcon");
         $A.util.addClass(clearIcon, 'slds-hide');
         $A.util.removeClass(clearIcon, 'slds-show');
-       
+        console.log('here');
+        
         var inputElement = cmp.find('lookup-div');
         $A.util.addClass(inputElement, 'slds-has-selection');
 

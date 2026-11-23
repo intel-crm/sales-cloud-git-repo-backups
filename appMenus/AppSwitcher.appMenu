@@ -5,7 +5,7 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>BETA</name>
+        <name>Opportunity_Management_Lightning</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -17,123 +17,11 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Core_Pre_Sales</name>
+        <name>standard__Sales</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>ACE_Cloud</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel_PreSales_Support_Console</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Insights</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_Sales_Console</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__LightningService</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel Partner Community</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPS Temp</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__LightningInstrumentation</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AllTabSet</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_MDF_CoMarketing</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Partnercenter Unified Community</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel Partner Admin</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel® Solutions Marketplace</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_IPS_Pre_Sales_Lightning</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Tenders</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Pricing_Intel_Quote_Request</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__OnlineSales</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel Partner Alliance</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__DataManager</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>sbaa__AdvancedApprovals</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel® FPGA SSLC</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Content</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_PSG_Quoting_Licensing</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Optimizer</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__ExpressionSetConsole</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel® Partner Portal</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>GBLite__GridBuddyLEX</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Opportunity_Management_Lightning</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Sales</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -146,6 +34,22 @@
     </appMenuItems>
     <appMenuItems>
         <name>GBLite__GridBuddy</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>APXTConga4__CongaMerge</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Conga_Composer</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Conga_Composer_SF1</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>BLND_DreamFactory_Utilities</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -166,6 +70,10 @@
     </appMenuItems>
     <appMenuItems>
         <name>standard__Community</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__AppLauncher</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -249,7 +157,15 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>Core_Pre_Sales</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>IPS_Backend_Integration</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel_PreSales_Support_Console</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -265,12 +181,24 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>standard__Insights</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>Wave_Dataset_Testing_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>MySamples</name>
         <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Core_Sales_Console</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__LightningService</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>Core_Access_Entitlement</name>
@@ -285,11 +213,35 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
+        <name>MobileAdmin_Android</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>MobileAdmin_iOS</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel Partner Community</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel® Partner Portal</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IPS Temp</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>DRD</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>Data_Migration</name>
+        <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>SalesforceIQ</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
@@ -313,12 +265,24 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
+        <name>standard__AllTabSet</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>OIQ_Integration</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
+        <name>Core_MDF_CoMarketing</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>UserInterface_API</name>
         <type>ConnectedApp</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Partnercenter Unified Community</name>
+        <type>Network</type>
     </appMenuItems>
     <appMenuItems>
         <name>trailheadapp__Trailhead_Tracker</name>
@@ -327,6 +291,18 @@
     <appMenuItems>
         <name>standard__SalesforceCMS</name>
         <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Xvoyant__Xvoyant</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel Partner Admin</name>
+        <type>Network</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel® Solutions Marketplace</name>
+        <type>Network</type>
     </appMenuItems>
     <appMenuItems>
         <name>Copado_DX</name>
@@ -341,31 +317,19 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
+        <name>SDOC__S_Docs</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
         <name>Eloqua</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>DEVHUB_yih3wv9it6pi6fs0mvqi</name>
-        <type>ConnectedApp</type>
+        <name>Intel Partner Alliance</name>
+        <type>Network</type>
     </appMenuItems>
     <appMenuItems>
-        <name>IPS_B2B_HPE</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__ThreatDetection</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>SBQQ__QuoteQuickly</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPA_Connected_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_MDF_CoMarketing_Mobile</name>
+        <name>Custom_Metadata_Loader</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
@@ -373,319 +337,11 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>CoveoV2__Coveo</name>
+        <name>standard__OnlineSales</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Coveo_for_Salesforce</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_HPE_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventEvents__CventClassicApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventEvents__CventLightningApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventSFDC</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Seismic_oauth</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Pricing_Intel_QuoteRequest_Mgmt_App</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>LEXMAGICMOVER__Attachments_and_Notes_migrator</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Seismic_Livesend</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_MyDeals</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_PSG_Product_Console</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PSS_Solution_Management</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PSS_IOTG_Data_Migration</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_CISCO_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>rtsync__Reltio_SFDC_Connector</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_Lenovo_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>DIT_Integration_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CventEvents__CventMobileApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel_AE_Management</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_Integration_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Intel_PreSales_Support_Console_Lightning</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Marketplace_API</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>SalesforceCaseRecordsExport</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_DELL_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_HPI_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_Lenovo_CCG_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>COE_Connected_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Quota_Setup_Tool</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>espy__Batch_Monitoring</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Quip_SSO</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Monitoring</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Tooling_API</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Microsoft_Power_Platform</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_AdlinkTech_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Arrow_Electronics_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_EBV_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Eastronics_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Rutronik_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Test_APJ_JWT</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Test_ASMO_CC</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Customer_Selection_Tool</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>TLS_Cert_Automation</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PCC_Advantech_B2B</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>jiffle__Jifflenow</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>jiffle__Jifflenow_Lightning</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PeopleAiCanvasApp</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>PeopleAiCanvasAppSPI</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>timeline__Timeline</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__PreconfiguredLightningServiceConsole</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Audience360</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__FlowsApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>SWS_Software_Sales</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CRM_Data_Analytics</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>GDPR_Securiti_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>MySamples_Apigee</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Test_PCC_JWT</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>BRE_Callback</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPS_IAH_Data_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Azure_Connected_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__SalesCloudMobile</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>AzureAPI</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Azure_Data_Factory</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Reltio_SFDC_Integration</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__Approvals</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__MSJApp</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__DataGovernanceConsole</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_Einstein_AuthApp</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>DDR</name>
-        <type>Network</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AppLauncher</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__IndustriesEpc</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Altera_Data_Migration</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Marketo_Partner</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>SFDX_CRMProd_Deployment_Actions</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Unrival_External_App</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Access_Agent</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Copado_DevOps_EMEA</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Copado_DevOps_N_A</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Odaseva_for_Salesforce</name>
+        <name>OPIDBatchProcesses</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
@@ -693,172 +349,124 @@
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>sfdc_6sense_oauth_app</name>
+        <name>Pricing_Intel_QuoteRequest_Mgmt_App</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Postman</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>dataloader_io_v2</name>
+        <name>PSS_Solution_Management</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>IOTG_Data_Migration</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>dataloader_io</name>
+        <name>Intel_Access_Entitlement_Management</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Intel_AE_Management</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>standard__Content</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>WeChat_API</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>apexguru_c2c_Production</name>
+        <name>standard__DataManager</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Salesforce_API</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Workbench_App</name>
+        <name>standard__ExpressionSetConsole</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>eRPM_Connected_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Wave_Web</name>
+        <name>Marketplace_API</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Wave_Connector</name>
+        <name>issuebox__Issue_Box</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>issuebox__Issue_Box_Standard</name>
+        <type>CustomApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>PCC_Arrow_B2B</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Trailhead_Connected_App</name>
+        <name>PCC_JWT_Testing_App</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Trailblazer_me</name>
+        <name>PCC_Arrow_B2B_JWT</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>TableauID</name>
+        <name>postmanint</name>
         <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Tableau_Desktop</name>
-        <type>ConnectedApp</type>
+        <name>Release survey</name>
+        <type>Network</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Slack</name>
-        <type>ConnectedApp</type>
+        <name>standard__FlowsApp</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Seismic_Business_Data_Enrichment</name>
-        <type>ConnectedApp</type>
+        <name>standard__SalesCloudMobile</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>SecurityHub</name>
-        <type>ConnectedApp</type>
+        <name>standard__Approvals</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Salesforce_Security_Assesment</name>
-        <type>ConnectedApp</type>
+        <name>standard__DataGovernanceConsole</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Salesforce_Partner_Community</name>
-        <type>ConnectedApp</type>
+        <name>standard__MSJApp</name>
+        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Salesforce_Integration_with_Microsoft_Teams</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Inspector_Reloaded</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Help_Training</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Help</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Event_Log_File_Browser</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Developers</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_DevTools</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Desktop</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Compliance_Site</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_Advanced_Search</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Salesforce_APIs_Collection_for_Postman</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Quip</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Einstein_Platform</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Coveo_Admin</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CommunityPrompt</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Community</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>CodeScan_Cloud</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>AppExchange</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>ADOBE_CDP_Connected_App</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Marketo</name>
+        <name>SFDX_Migration_MP_POC</name>
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>CopilotForSalesConnectedApp</name>
-        <type>ConnectedApp</type>
+        <name>SFDX_Devipa_Deployment_Actions</name>
+        <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>standard__Shield</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__DigitalWallet</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>jason_app</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>scott_app</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
         <name>CDB_Agent_Connected_App</name>
         <type>ExternalClientApplication</type>
+    </appMenuItems>
+    <appMenuItems>
+        <name>Copado_DevOps_N_A</name>
+        <type>ConnectedApp</type>
     </appMenuItems>
     <appMenuItems>
         <name>standard__AgentforceStudio</name>
@@ -869,40 +477,8 @@
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Microsoft_Power_Query</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_DELL_B2B_v2</name>
+        <name>ReportApiApp</name>
         <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IQR_My_Deals_v1</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Core_MDF_Chatbot_Integration</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPIC_Lenovo_B2B</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPIC_AnETest_B2B</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__IndustriesEcm</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPIC_Dell_B2B</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__CommerceStarter</name>
-        <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
         <name>ImpartnerPRM__ImpartnerPRM</name>
@@ -917,63 +493,15 @@
         <type>ExternalClientApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>Coveo</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>IPS_AI_Agent_Integration</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Keren_App</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>BigID</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>BigID_Integration</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>standard__AlmDevops</name>
+        <name>standard__ScaleTestApp</name>
         <type>CustomApplication</type>
     </appMenuItems>
     <appMenuItems>
-        <name>CCP_External_Inbound_Integration_App</name>
-        <type>ExternalClientApplication</type>
+        <name>partnerexperience</name>
+        <type>Network</type>
     </appMenuItems>
     <appMenuItems>
-        <name>standard__HealthInsights</name>
-        <type>CustomApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Symon_AI</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Symon_AI</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Microsoft_Power_Query_Prod</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Microsoft_Power_Query_Refresh</name>
-        <type>ConnectedApp</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Draco_AGS_JWT_Integration_App</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>n8n_Agent</name>
-        <type>ExternalClientApplication</type>
-    </appMenuItems>
-    <appMenuItems>
-        <name>Headless_360</name>
-        <type>ExternalClientApplication</type>
+        <name>MyReactCommunityApp</name>
+        <type>Network</type>
     </appMenuItems>
 </AppMenu>

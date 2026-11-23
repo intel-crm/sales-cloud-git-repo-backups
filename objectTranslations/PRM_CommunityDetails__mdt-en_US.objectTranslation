@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_CommunityDetails</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_CommunityDetails</value>
+    </caseValues>
+    <fields>
+        <label><!-- Affiliation --></label>
+        <name>Affiliation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Catagory --></label>
+        <name>Catagory__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Partner_Role --></label>
+        <name>PRM_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- order --></label>
+        <name>order__c</name>
+    </fields>
+    <fields>
+        <label><!-- selectBenefit --></label>
+        <name>selectBenefit__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

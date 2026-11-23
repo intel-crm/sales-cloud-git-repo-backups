@@ -3,9 +3,9 @@
     <available>true</available>
     <description>Secure Org Engagement Request for new user (with EV link) - Admin Reg</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>NEWADMINUSERREG_IQR</name>
+    <name>NEWADMINUSERREG</name>
     <style>none</style>
-    <subject>Welcome to Intel® Quote Request</subject>
+    <subject>Intel Registration Confirmation</subject>
     <textOnly>Intel Registration Confirmation
 
 Welcome to Intel Quote Request (IQR)
@@ -14,9 +14,9 @@ A profile has been created for you to use the Intel Quote Request tool to submit
 
 
 
-E-mail Address: {!Contact.Email}
+E-mail Address: {!PRM_Registration_Request__c.PRM_Email_ID__c}
 
-Intel Business Account Name: {!Account.Name}
+Intel Business Account Name: {!PRM_Registration_Request__c.PRM_Account_Name__c}
 
 
 

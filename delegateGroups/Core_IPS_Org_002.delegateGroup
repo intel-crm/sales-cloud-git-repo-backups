@@ -7,8 +7,6 @@
     <groups>CCG - SPG_Whitebook</groups>
     <groups>CCG-SPG APJ ISVC</groups>
     <groups>CCG-SPG - APJ</groups>
-    <groups>CCG-SPG Elements ISVC</groups>
-    <groups>CCG-NUCG ICS</groups>
     <groups>IPS - Org Admin - CCG-SPG</groups>
     <groups>CCG-SPG - ASMO-NAR</groups>
     <groups>CCG-SPG - EMEA</groups>
@@ -19,5 +17,4 @@
     <label>IPS - Org Admin - CCG-CISD</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
 </DelegateGroup>

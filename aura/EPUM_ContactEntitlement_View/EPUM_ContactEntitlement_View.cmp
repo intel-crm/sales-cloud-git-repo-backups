@@ -1,0 +1,105 @@
+<aura:component controller="EPUM_PartnerContactEnt_Controller" implements="forceCommunity:availableForAllPageTypes" access="global">
+    <!-- <aura:attribute name="pContactIdStr" type="String"/>
+    <aura:attribute name="PCAccountIdStr" type="String"/>
+
+    <aura:attribute name="onePartnerIdStr" type="String" description="use to store the one partner Id(OPID) to which contact belongs to"/>
+    -->
+    <aura:attribute name="sContactIdStr" type="String" description="use to store the searched contact details"/>
+    <aura:attribute type="EPUM_ContactEntitlement_Wrapper[]" name="lstContactEntitlements"  description="list of available entitlements on primary contact to delegate to secondary contact"/>
+    <aura:attribute name="recordNotFound" default="true" type="Boolean"/>
+    <aura:attribute name="errorMessageStr" type="String"/>
+    <aura:attribute name="sourceCmp" type="String"/>
+    <aura:attribute name="loadSource" type="String"/>
+    <aura:attribute name="requireValidation" type="Boolean" default="false"/>
+    <aura:attribute name="disableCheckbox" type="Boolean" default="false"/>
+   <!-- source{!v.sourceCmp}
+    load source{!v.loadSource}-->
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> -->
+    <aura:handler event="c:EPUM_Contact_Entitlement_Event" action="{!c.displayContactEntitlements}"  />
+    <aura:if isTrue ="{!v.sourceCmp == v.loadSource}">
+        
+    <form class="slds-form--stacked">
+        <div class="placeHolderDiv"></div>
+        <div class="spinnerHolder slds-hide" aura:id="mySpinner"  >
+            <lightning:spinner/>
+        </div>
+        <div class="placeHolderDiv1">{!v.errorMessageStr}</div>
+        <div class="entitlementTable slds-hide" aura:id="entitlementTableDiv">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_8-of-12"> <b>Responsibility Name</b> </div>
+                <div class="slds-col slds-size_2-of-12"> <b>Status</b>  </div>
+                <div class="slds-col slds-size_2-of-12"> <b>Access</b>  </div>
+            </div>
+            <aura:iteration items="{!v.lstContactEntitlements}" var="contactEntitlement" indexVar="index">
+                <div class="{!index%2 == 0 ? 'slds-grid slds-wrap even': 'slds-grid slds-wrap odd'}" id="{!contactEntitlement.entitlementId}">
+                    <div class="slds-col slds-size_8-of-12">
+                        <span>{!contactEntitlement.entitlementNameStr}</span>&nbsp;
+                        <lightning:helptext content="{!contactEntitlement.entitlehelpText}" />
+                    </div>
+                    <div class="slds-col slds-size_2-of-12"> 
+                        <!--Id value = {!contactEntitlement.status}-->
+                        <div class="{!(contactEntitlement.status == 'Processing')? 'slds-show': 'slds-hide'}">
+                            <!--Processing-->
+                            <aura:if isTrue="{!contactEntitlement.isSelected}">
+                                Being Assigned
+                                <aura:set attribute="else">
+                                    Being Removed
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12">
+                        
+                        <lightning:input type="checkbox" name="{!contactEntitlement}" aura:id="entSelcheckbox" label="" checked="{!contactEntitlement.isSelected}" disabled="{!contactEntitlement.readOnly}" onchange="{!c.saveEntBtn}"/>
+                        
+                    </div>
+                </div> 
+            </aura:iteration>
+        </div>
+        <lightning:button label="Save" 
+                          class="slds-m-top--medium saveEntlButton"
+                          variant="brand"
+                          onclick="{!c.saveEntitlementChanges}"
+                          disabled="{!v.recordNotFound}"/>
+        <lightning:button label="Cancel" 
+                          class="slds-m-top--medium saveEntlButton"
+                          variant="brand"
+                          onclick="{!c.onCancel}"
+                          disabled="{!v.recordNotFound}"/>
+        <div class="placeHolderDiv"></div>
+       
+    </form>
+        
+        <aura:if isTrue="{!v.requireValidation}" >
+        <section role="dialog" tabindex="-1"  aria-modal="true" class="slds-modal slds-fade-in-open" >
+            <div class="slds-modal__container ">
+                <div class="slds-is-relative">
+                <header class="slds-modal__header">
+                    <!--lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.hideModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/-->
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Are you sure?</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>Removal of Employee role would remove him/her from IPA program. Do you wish to continue with the removal</p>   
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="No"
+                                      title="Cancel"
+                                      onclick="{! c.hideModal }"/>
+                    <lightning:button variant="brand"
+                                      label="Yes"
+                                      title="OK"
+                                      onclick="{!c.onAgree}"/>
+                </footer>
+            </div>
+                </div>
+        </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+        
+    </aura:if>
+</aura:component>

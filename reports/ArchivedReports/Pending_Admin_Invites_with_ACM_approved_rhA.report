@@ -12,6 +12,9 @@
             <field>Account.Contacts$LastName</field>
         </columns>
         <columns>
+            <field>Account.Contacts$Core_Login_Id__c</field>
+        </columns>
+        <columns>
             <field>Account.Contacts$Email</field>
         </columns>
         <columns>
@@ -32,8 +35,14 @@
         <columns>
             <field>Account.Contacts.Account_Contact_Relationships__r$CreatedBy.Email</field>
         </columns>
+        <columns>
+            <field>Account.Contacts$ReportsTo.External_User_State__c</field>
+        </columns>
+        <columns>
+            <field>Account.Contacts$ReportsTo.External_User_State_Change_Date_Times__c</field>
+        </columns>
         <filter>
-            <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+            <booleanFilter>1 AND 2 AND 3 AND (4 OR 5 OR 6) AND 7 AND 8</booleanFilter>
             <criteriaItems>
                 <column>Account.Contacts.Account_Contact_Relationships__r$PRM_Status_Nm__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -56,6 +65,20 @@
                 <value>Account.Inactive_Account</value>
             </criteriaItems>
             <criteriaItems>
+                <column>Account.Contacts$Email</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>notContain</operator>
+                <value>mailinator</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Account.Contacts$Email</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>notContain</operator>
+                <value>mailosaur</value>
+            </criteriaItems>
+            <criteriaItems>
                 <column>Account$Name</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>false</isUnlocked>
@@ -63,15 +86,22 @@
                 <value>Test</value>
             </criteriaItems>
             <criteriaItems>
-                <column>Account.Contacts.Account_Contact_Relationships__r$PRM_InActive_Ind__c</column>
+                <column>Account.Contacts.Account_Contact_Relationships__r$CreatedBy.Email</column>
                 <columnToColumn>false</columnToColumn>
-                <isUnlocked>false</isUnlocked>
+                <isUnlocked>true</isUnlocked>
+                <operator>contains</operator>
+                <value>@intel.com</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Account.Contacts$External_User_State__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
                 <operator>equals</operator>
-                <value>0</value>
+                <value>Pending Acceptance</value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
-        <name>Accounts with ACR and Users block 1</name>
+        <name>Accounts with ACR and Users block 2</name>
         <params>
             <name>co</name>
             <value>1</value>
@@ -93,11 +123,44 @@
             <joinTable>a</joinTable>
         </blockInfo>
         <columns>
-            <field>FK_NAME</field>
-        </columns>
-        <columns>
             <field>PRM_AccountChannelMembership__c.PRM_Channel_Program_Level_Id__c</field>
         </columns>
+        <columns>
+            <field>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</field>
+        </columns>
+        <columns>
+            <field>CUST_CREATED_NAME</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>equals</operator>
+                <value>Pending</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>PRM_AccountChannelMembership__c.PRM_Status_Nm__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>notEqual</operator>
+                <value>Inactive</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>RECORDTYPE</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>notEqual</operator>
+                <value>Account.Inactive_Account</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>ACCOUNT.NAME</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>false</isUnlocked>
+                <operator>notContain</operator>
+                <value>Test</value>
+            </criteriaItems>
+        </filter>
         <format>Summary</format>
         <name>Accounts with Account  Channel M block 1</name>
         <params>
@@ -105,7 +168,7 @@
             <value>1</value>
         </params>
         <reportType>AccountCustomEntity$PRM_AccountChannelMembership__c@PRM_AccountChannelMembership__c.PRM_Channel_Program_Id__c</reportType>
-        <scope>user</scope>
+        <scope>organization</scope>
         <showGrandTotal>true</showGrandTotal>
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
@@ -123,7 +186,7 @@
         <field>Account$Name</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PendingPartnerInvites_Archived</name>
+    <name>Pending Admin Invites with ACM Pending</name>
     <params>
         <name>lsk</name>
         <value>1</value>

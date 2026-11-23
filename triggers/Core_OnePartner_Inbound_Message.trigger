@@ -17,7 +17,7 @@ trigger  Core_OnePartner_Inbound_Message on Core_OnePartner_Inbound_Message__c (
         Core_InboundMsg_TriggerHandler.updateOnDemandSyncRecords(onDemandSyncrecIds);
     }
     //TWC729-7912Trigger execiton record can be made inactive to skip the logic
-    if(retryBypass != null && retryBypass.Core_Active__c ==true){
+    if(retryBypass.Core_Active__c ==true){
         Core_InboundMsg_TriggerHandler.retryInboundProcessing(Trigger.new);
     }
 }

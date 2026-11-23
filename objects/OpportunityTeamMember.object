@@ -143,13 +143,6 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>CRM_VBS_isActive__c</fullName>
-        <formula>User.IsActive</formula>
-        <label>isActive</label>
-        <trackHistory>false</trackHistory>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Account_Name__c</fullName>
         <externalId>false</externalId>
         <formula>Opportunity.Account.Name</formula>
@@ -170,13 +163,6 @@
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>Core_Description_of_Contribution__c</fullName>
-        <label>Description of Contribution</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <type>TextArea</type>
-    </fields>
-    <fields>
         <fullName>Core_Is_OSC__c</fullName>
         <description>Used to determine if user is part of OSC or not.</description>
         <formula>IF( Core_OSC_Snapshot__c =1,TRUE,IF(Core_OSC_Snapshot__c = 0, FALSE,User.Core_Is_OSC__c))</formula>
@@ -193,7 +179,7 @@
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <type>Number</type>
         <unique>false</unique>
     </fields>
@@ -207,53 +193,6 @@
         <trackHistory>false</trackHistory>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Production_Win_Member_Role__c</fullName>
-        <label>Production Win Member Role</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Team Member (100%)</fullName>
-                    <default>false</default>
-                    <label>Team member (100% commitment over the lifetime of the opportunity)</label>
-                </value>
-                <value>
-                    <fullName>Technical Owner (100%)</fullName>
-                    <default>false</default>
-                    <label>Technical owner (100% commitment over the lifetime of the opportunity)</label>
-                </value>
-                <value>
-                    <fullName>Contributor (50%)</fullName>
-                    <default>false</default>
-                    <label>Contributor (50%)</label>
-                </value>
-                <value>
-                    <fullName>Contributor (33.3%)</fullName>
-                    <default>false</default>
-                    <label>Contributor (33.3%)</label>
-                </value>
-                <value>
-                    <fullName>Viewer (0%)</fullName>
-                    <default>false</default>
-                    <label>Viewer (0%)</label>
-                </value>
-                <value>
-                    <fullName>Customer A&amp;E (0%)</fullName>
-                    <default>false</default>
-                    <label>Customer A&amp;E (0%)</label>
-                </value>
-                <value>
-                    <fullName>Sales Account Manager</fullName>
-                    <default>false</default>
-                    <label>Sales Account Manager</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_Team_Member_Department__c</fullName>
@@ -293,28 +232,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_User_Type_Indicator__c</fullName>
-        <description>This field used to identify the either use is external/internal based on color codes.</description>
-        <externalId>false</externalId>
-        <formula>User.Core_User_Type_Indicator__c</formula>
-        <label>User Type Indicator</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_User_Type__c</fullName>
-        <description>The field is used identify the team member is internal/external user.</description>
-        <externalId>false</externalId>
-        <formula>User.Core_User_Type__c</formula>
-        <label>User Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>OpportunityAccessLevel</fullName>
     </fields>
     <fields>
@@ -330,46 +247,4 @@
         <fullName>UserId</fullName>
         <type>Lookup</type>
     </fields>
-    <validationRules>
-        <fullName>Core_ProductionWin_MemberRole_DealOpp</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-Opportunity.RecordType.DeveloperName!=&apos;Core_Design_Opportunity&apos;,
-
-ISCHANGED(Core_Production_Win_Member_Role__c ))</errorConditionFormula>
-        <errorMessage>For Deal Opportunity, Production Win Member Role is not applicable.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_ProductionWin_MemberRole_NotNull</fullName>
-        <active>true</active>
-        <description>ProductionWinMemberRole should not be null</description>
-        <errorConditionFormula>AND(
-Opportunity.RecordType.DeveloperName =&apos;Core_Design_Opportunity&apos;,
-ISPICKVAL(Opportunity.StageName , &quot;Production Win&quot;),
-ISCHANGED(Core_Production_Win_Member_Role__c ),
-ISPICKVAL(Core_Production_Win_Member_Role__c , &quot;&quot;)
-)</errorConditionFormula>
-        <errorMessage>Please assign the Production Win Member Role for all the Team Members.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_validation_For_SAM_TeamMember</fullName>
-        <active>true</active>
-        <description>FSE Team Member is only available for Partner-Led Design High Touch and Intel-Led Design</description>
-        <errorConditionFormula>IF(
-$Setup.Core_Opp_Bypass_Validation_Rule__c.Bypass__c=TRUE,
-FALSE,
-NOT(  
-IF(ISPICKVAL( TeamMemberRole , &quot;Sales Account Manager&quot;), AND(
-Opportunity.RecordType.DeveloperName =&apos;Core_Design_Opportunity&apos;,
-OR(ISPICKVAL(Opportunity.Core_Opportunity_Coverage_Nm__c, 
-&quot;Partner-Led Opportunity&quot;),
-ISPICKVAL(Opportunity.Core_Opportunity_Coverage_Nm__c, &quot;Intel-Led Opportunity&quot;)
-)
-), 
-true) 
-
-)
-)</errorConditionFormula>
-        <errorMessage>Sales Account Manager Team Member Role is applicable for Intel Led Design and Partner Led Design Opportunities only</errorMessage>
-    </validationRules>
 </CustomObject>

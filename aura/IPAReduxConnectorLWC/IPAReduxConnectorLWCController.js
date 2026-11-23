@@ -19,10 +19,10 @@
             };
   
             var oldError = window.console.error;
-            window.console.error = function(err) {
+            window.console.error = function(...args) {
               // filter annoying Javascript errors
-              if (err.toString().match('WireContextEvent')) return;
-              oldError(err);
+              if (args.length && args[0].toString().match('WireContextEvent')) return;
+		          oldError(...args);
             };
         }
         

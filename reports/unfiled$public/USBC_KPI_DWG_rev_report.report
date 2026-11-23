@@ -8,10 +8,6 @@
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Goal__c.Core_Approved_KPI_Revenue__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Goal__c.Core_KPI_Revenue__c</field>
     </columns>
     <columns>
@@ -49,24 +45,18 @@
     <columns>
         <field>Core_Goal__c.Core_Goal_Owner__c</field>
     </columns>
-    <columns>
-        <field>CUST_OWNER_NAME</field>
-    </columns>
-    <columns>
-        <field>Core_Goal__c.Core_Goal_Approved_By__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>CUST_OWNER_ROLE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>jarrar,wood,cook,gordon,chehreh,robinson,valcich,weston,descheemaeker,swanger,haynes,mclaughlin,clifton,o&apos;donnell</value>
+            <value>cook,gordon,weston,descheemaeker,swanger,rodman,haynes,mushahwar,herrman,o&apos;donnell</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>US Enterprise and PS KPI DWG rev report</name>
+    <name>USBC KPI DWG rev report</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -78,6 +68,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Goal__c.Core_Goal_Accept_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

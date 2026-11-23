@@ -13,25 +13,29 @@ public without sharing class PRM_BenefitMatrixUtility{
 
  /**
 *  @description      : Check Benefit matrix duplicate records
-*  @name             : DuplicateBMXCheck
+*  @name             : duplicateBMXCheck
 *  @param            : List<PRM_Account_Contact_Relationship__c>
 *  @throws exception : if the AGS message is not generated//
 **/
 
-public static void DuplicateBMXCheck(List<PRM_VXBnftMatrix__c> bmxNewList)
+public static void duplicateBMXCheck(List<PRM_VXBnftMatrix__c> bmxNewList)
     {
+        System.debug('bmxNewList :-'+bmxNewList);
         List<String> uniqstr = new List<String>(); 
       Map<String,Id> uniqmap = new Map<String,Id>();
         for(PRM_VXBnftMatrix__c bmx: bmxNewList){
            
             uniqstr.add(bmx.PRM_BenfitMatrix_Combination__c);
         }
+        System.debug('uniqstr :-'+uniqstr);
         List<PRM_VXBnftMatrix__c> bmxList = [SELECT Id, PRM_BenfitMatrix_Combination__c FROM PRM_VXBnftMatrix__c where PRM_BenfitMatrix_Combination__c IN: uniqstr];
+        System.debug('bmxList :-'+bmxList);
         for(PRM_VXBnftMatrix__c beneMax: bmxList){
            
             uniqmap.put(beneMax.PRM_BenfitMatrix_Combination__c, beneMax.Id);
             
         }
+        System.debug('uniqmap :-'+uniqmap);
         for(PRM_VXBnftMatrix__c benMax: bmxNewList){
            
             if(uniqmap.containsKey(benMax.PRM_BenfitMatrix_Combination__c)){
@@ -41,7 +45,7 @@ public static void DuplicateBMXCheck(List<PRM_VXBnftMatrix__c> bmxNewList)
         
     }
     
-    public static void DuplicateUpdateBMXCheck(List<PRM_VXBnftMatrix__c> bmxNewList)
+    public static void duplicateUpdateBMXCheck(List<PRM_VXBnftMatrix__c> bmxNewList)
     {
         List<String> uniqstr = new List<String>();
         List<Id> idslist = new List<Id>();

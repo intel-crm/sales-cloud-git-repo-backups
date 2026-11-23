@@ -8,7 +8,7 @@
     <textOnly>ビジネスアカウントの更新
 
 
-!%UserFirstName%!, 様、
+!%UserFirstName%!,  様、
 
 本通知は、認定インテル® ディストリビューターおよび / または認定インテル® サプライヤー (サービス・プロバイダー) に対し、インテル® パートナー・アライアンスの情報共有オプションを変更された方をお知らせするものです。
 
@@ -27,9 +27,9 @@
 インテル® パートナー・アライアンス
 
 このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-プライバシー  |  Cookies</textOnly>
+プライバシー・ポリシー  |  Cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

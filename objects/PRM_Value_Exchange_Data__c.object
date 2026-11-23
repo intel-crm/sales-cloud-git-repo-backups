@@ -155,12 +155,12 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>PRM_Account_Id__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Value Exchange Data</relationshipLabel>
         <relationshipName>Value_Exchange_Data</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -170,6 +170,16 @@
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Competency_Achieved_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Competency Achieved</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Country_Market_Type_Nm__c</fullName>
@@ -262,6 +272,17 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>PRM_PAG_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(OR($Profile.Name = &quot;System Administrator&quot;,$Profile.Name = &quot;IT Admin&quot;),&apos;TRUE&apos;, IF ($User.PMP_One_Partner_ID__c == PRM_One_Partner_Id__c, &apos;TRUE&apos;,IF ($User.PMP_One_Partner_ID__c == &quot;&quot;, &apos;TRUE&apos;, &apos;FALSE&apos;)))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PAG ID</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Partner_Role_Check__c</fullName>
         <description>Compares Logged in User Partner Role with VX Data Partner Role for Report Purpose</description>
         <externalId>false</externalId>
@@ -284,6 +305,19 @@
         </valueSet>
     </fields>
     <fields>
+        <fullName>PRM_Percent_To_Next_Tier_Report_Nbr__c</fullName>
+        <defaultValue>100</defaultValue>
+        <description>This will show total percentage to next tier for reporting purpose only</description>
+        <externalId>false</externalId>
+        <label>Total Percent To Next Tier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Percent_to_next_tier_Nbr__c</fullName>
         <defaultValue>100</defaultValue>
         <externalId>false</externalId>
@@ -293,6 +327,17 @@
         <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Previous_One_Partner_Account_ID__c</fullName>
+        <description>This field will contain the OPID account Id associated with this record before disassociation with location account</description>
+        <externalId>false</externalId>
+        <label>Previous One Partner Account ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -365,6 +410,17 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Sales_To_Next_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Duplicate Sales to next tier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -443,46 +499,45 @@
                     <label>Q4 2019 - Q3 2020</label>
                 </value>
                 <value>
-                    <fullName>Q4 2020 - Q3 2021</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2020 - Q3 2021</label>
-                </value>
-                <value>
                     <fullName>Q4 2021 - Q3 2022</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Q4 2021 - Q3 2022</label>
                 </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Time_Period__c</fullName>
+        <label>Time Period</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>Q4 2022 - Q3 2023</fullName>
+                    <fullName>Q4 2025 - Q3 2026</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2022 - Q3 2023</label>
-                </value>
-                <value>
-                    <fullName>Q4 2023 - Q3 2024</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Q4 2023 - Q3 2024</label>
+                    <label>Q4 2025 - Q3 2026</label>
                 </value>
                 <value>
                     <fullName>Q4 2024 - Q3 2025</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Q4 2024 - Q3 2025</label>
                 </value>
                 <value>
-                    <fullName>Q42020-Q32021</fullName>
+                    <fullName>Q4 2018 - Q3 2019</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>Q42020-Q32021</label>
+                    <label>Q4 2018 - Q3 2019</label>
                 </value>
                 <value>
-                    <fullName>Q42021-Q32022</fullName>
+                    <fullName>Q4 2019 - Q3 2020</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
-                    <label>Q42021-Q32022</label>
+                    <label>Q4 2019 - Q3 2020</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -542,6 +597,17 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_TrainingToNextTierPer_Report_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>Training credits to next tier percent</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Training_Credit_Points_Count_Nbr__c</fullName>
         <externalId>false</externalId>
         <label>Training Credit Points Count</label>
@@ -570,6 +636,17 @@
         <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>Training credits to next tier</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Training_Credits_to_Next_Tier__c</fullName>
+        <externalId>false</externalId>
+        <label>Needs to be deleted Training credits</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -624,21 +701,17 @@
     <label>Value Exchange Data</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>PRM_Account_Id__c</columns>
         <columns>NAME</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>PRM_Change_Date_Dt__c</columns>
         <columns>PRM_Processed_Date_Time_Dt__c</columns>
         <columns>PRM_One_Partner_Id__c</columns>
+        <columns>PRM_Country_Market_Type_Nm__c</columns>
         <columns>PRM_Tier_Id__c</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>PRM_Value_Exchange_ext_id__c</columns>
-        <columns>PRM_Training_Credit_Points_Count_Nbr__c</columns>
-        <columns>PRM_Sales_Amount_Nbr__c</columns>
-        <columns>PRM_Sales_To_Next_Tier_Nbr__c</columns>
-        <columns>PRM_Sales_to_next_tier_percent_nbr__c</columns>
+        <columns>PRM_Account_Id__c</columns>
         <columns>PRM_Sales_Calculation_Group_Txt__c</columns>
-        <columns>PRM_Country_Market_Type_Nm__c</columns>
-        <columns>PRM_Number_Of_Employees_Nbr__c</columns>
-        <columns>PRM_Percent_to_next_tier_Nbr__c</columns>
+        <columns>PRM_Sales_Amount_Report_Nbr__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -654,7 +727,6 @@
         <columns>PRM_Sales_Amount_Nbr__c</columns>
         <columns>PRM_Number_Of_Employees_Nbr__c</columns>
         <columns>PRM_Total_Achieved_Competency_Nbr__c</columns>
-        <columns>PRM_IsChanged_Ind__c</columns>
         <filterScope>Everything</filterScope>
         <label>Value Exchange Data</label>
     </listViews>

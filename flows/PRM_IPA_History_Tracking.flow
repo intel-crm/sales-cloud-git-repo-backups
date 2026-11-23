@@ -2,19 +2,6 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>66.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Assign_updated_Partner_Role_to_text_field</name>
-        <label>Assign updated Partner Role to text field</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>$Record.Core_IPA_Partner_Role_History__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.Core_IPA_Partner_Role__c</elementReference>
-            </value>
-        </assignmentItems>
-    </assignments>
     <description>Tracks History for IPA Account fields</description>
     <environments>Default</environments>
     <interviewLabel>IPA History Tracking {!$Flow.CurrentDateTime}</interviewLabel>
@@ -38,11 +25,72 @@
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
+    <recordCreates>
+        <name>PRM_IPA_tracking_history</name>
+        <label>IPA tracking history</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <faultConnector>
+            <targetReference>PRM_Log_Entry</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>PRM_Account__c</field>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_New_Value__c</field>
+            <value>
+                <elementReference>$Record.Core_IPA_Partner_Role__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_Old_Value__c</field>
+            <value>
+                <elementReference>$Record__Prior.Core_IPA_Partner_Role__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>PRM_User__c</field>
+            <value>
+                <elementReference>$User.Username</elementReference>
+            </value>
+        </inputAssignments>
+        <object>PRM_IPA_Attribute_History__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>PRM_Log_Entry</name>
+        <label>Log Entry</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <inputAssignments>
+            <field>Core_Origin__c</field>
+            <value>
+                <stringValue>origin</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_Severity__c</field>
+            <value>
+                <stringValue>high</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Core_When__c</field>
+            <value>
+                <elementReference>$System.OriginDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Core_Log_Entry__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
     <start>
         <locationX>0</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Assign_updated_Partner_Role_to_text_field</targetReference>
+            <targetReference>PRM_IPA_tracking_history</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -52,16 +100,9 @@
                 <booleanValue>true</booleanValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Account_Record_Type__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Account</stringValue>
-            </value>
-        </filters>
         <object>Account</object>
         <recordTriggerType>Update</recordTriggerType>
-        <triggerType>RecordBeforeSave</triggerType>
+        <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
 </Flow>

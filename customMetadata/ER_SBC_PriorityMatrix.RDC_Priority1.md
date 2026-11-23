@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>AccountType__c</field>
-        <value xsi:type="xsd:string">Developer Zone Premier</value>
+        <value xsi:type="xsd:string">RDC</value>
     </values>
     <values>
         <field>PriorityField__c</field>
@@ -24,6 +24,6 @@
     </values>
     <values>
         <field>isSearchScore__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
 </CustomMetadata>

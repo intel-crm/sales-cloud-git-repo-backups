@@ -15,12 +15,13 @@ SSLC 會以引導的方式，協助您執行基本授權權利功能。我們也
 
 請儲存您的登入資訊以供日後參考：
 
+使用者名稱：{!Contact.Core_Login_Id__c}
 電子郵件地址：{!Contact.Email}
 
 請確實保護您的密碼，不要外洩。在 Intel 網站上使用此密碼必須遵守 Intel 的使用條款與細則，您可透過個別網站網頁最下方的連結進入閱覽。
 
 
-請登入  licensing.intel.com  查看與管理您的 Intel® PSG 軟體和 IP 授權權利。
+請登入 intel.com/sslc 查看與管理您的 Intel® PSG 軟體和 IP 授權權利。
 
 
 謝謝您，
@@ -28,7 +29,7 @@ SSLC 會以引導的方式，協助您執行基本授權權利功能。我們也
 
 
 此訊息為業務訊息，對於您與 Intel® 可程式化解決方案事業群的 FPGA 軟體和/或 IP 授權權利關係密切。
-© {!$Label.PRM_CurrentYear} Intel 公司
+© {!Contact.Core_Current_Year__c} Intel 公司
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。www.intel.com.tw
 隱私權&amp;verbar;Cookies</textOnly>
     <type>custom</type>

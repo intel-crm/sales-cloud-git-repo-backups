@@ -62,7 +62,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design Win,Production Win</value>
+            <value>Design Win,Production Win,Lost,Cancelled,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>

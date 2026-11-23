@@ -5,4 +5,9 @@
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <description>Grid used to manage Opportunities based on time.</description>
     <label>Opportunity Review</label>
+    <packageVersions>
+        <majorNumber>8</majorNumber>
+        <minorNumber>1</minorNumber>
+        <namespace>GBLite</namespace>
+    </packageVersions>
 </ApexPage>

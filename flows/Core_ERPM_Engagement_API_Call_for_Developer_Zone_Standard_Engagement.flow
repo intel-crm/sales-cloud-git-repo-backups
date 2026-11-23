@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Apex_Callout_for_ERPM_Engagement</name>
-        <label>Apex Callout for ERPM Engagement</label>
-        <locationX>774</locationX>
-        <locationY>695</locationY>
+        <name>Apex_Action_for_ERPM_API_Callout</name>
+        <label>Apex Action for ERPM API Callout</label>
+        <locationX>769</locationX>
+        <locationY>691</locationY>
         <actionName>Core_ERPM_API_Callout</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>ContactIdEntitlementName</name>
+            <name>contactIds</name>
             <value>
-                <elementReference>ContactIdEntitlementNameConcat</elementReference>
+                <elementReference>$Record.Core_Contact_Id__c</elementReference>
             </value>
         </inputParameters>
         <nameSegment>Core_ERPM_API_Callout</nameSegment>
@@ -19,27 +19,22 @@
     <apiVersion>56.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_ContactId_and_EntitlementName_to_List</name>
-        <label>Assign ContactId and EntitlementName to List</label>
-        <locationX>774</locationX>
-        <locationY>516</locationY>
+        <name>Add_Contact_Id_to_the_List</name>
+        <label>Add Contact Id to the List</label>
+        <locationX>769</locationX>
+        <locationY>513</locationY>
         <assignmentItems>
-            <assignToReference>ContactIdEntitlementName</assignToReference>
+            <assignToReference>ContactIdList</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>ContactIdEntitlementNameConcat</elementReference>
+                <elementReference>$Record.Core_Contact_Id__c</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Apex_Callout_for_ERPM_Engagement</targetReference>
+            <targetReference>Apex_Action_for_ERPM_API_Callout</targetReference>
         </connector>
     </assignments>
     <environments>Default</environments>
-    <formulas>
-        <name>ContactIdEntitlementNameConcat</name>
-        <dataType>String</dataType>
-        <expression>{!$Record.Core_Contact_Id__c} &amp; &quot;--&gt;&quot; &amp; {!$Record.Core_Entitlement_Id__r.Name}  &amp; &quot;--&gt;&quot; &amp; IF({!$Record.Core_Selected__c}, &quot;TRUE&quot;, &quot;FALSE&quot;)</expression>
-    </formulas>
     <interviewLabel>Core ERPM Engagement API Call for Developer Zone Standard Engagement {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core ERPM Engagement API Call for Developer Zone Standard Engagement</label>
     <processMetadataValues>
@@ -129,12 +124,20 @@
         <connector>
             <targetReference>Create_Log_Entry</targetReference>
         </connector>
-        <filterLogic>(2 OR 3 OR 4 OR 7 OR 8) AND (1 AND (5 OR 6))</filterLogic>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Core_Status__c</field>
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Complete</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Core_Selected__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <filters>
@@ -144,82 +147,26 @@
                 <stringValue>Developer Zone Premier(CNDA required)</stringValue>
             </value>
         </filters>
-        <filters>
-            <field>Core_Display_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>IPA Developer Zone Standard Entitlement</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Display_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Employee</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Selected__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Display_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>EPS Verified Company</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Display_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Premier Support</stringValue>
-            </value>
-        </filters>
         <object>Core_Contact_Entitlement__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <scheduledPaths>
             <connector>
-                <targetReference>Assign_ContactId_and_EntitlementName_to_List</targetReference>
+                <targetReference>Add_Contact_Id_to_the_List</targetReference>
             </connector>
             <pathType>AsyncAfterCommit</pathType>
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>LogEntryDetailText</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
         <text>&lt;p&gt;Developer Zone Premier Contact Entitlement turned to TRUE-Complete for Contact {!$Record.Core_Contact_Id__r.Email}&lt;/p&gt;</text>
     </textTemplates>
     <variables>
-        <name>ContactIdEntitlementName</name>
-        <dataType>String</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
         <name>ContactIdList</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>true</isOutput>
-    </variables>
-    <variables>
-        <name>EngagementName</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>true</isOutput>
     </variables>

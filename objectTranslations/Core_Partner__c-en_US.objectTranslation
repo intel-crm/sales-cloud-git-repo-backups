@@ -89,5 +89,16 @@
             <translation><!-- Telco/Service Provider --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Partner Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -5,13 +5,18 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import {NavigationMixin} from 'lightning/navigation';
 import AttachTermsAndConditions from "@salesforce/label/c.PRM_Terms_and_Conditions";
 import AttachDocuments from "@salesforce/label/c.PRM_Attach_Documents";
+//import AcceptedFormats from "@salesforce/label/c.PRM_Accepted_Format";
 import Close from "@salesforce/label/c.PRM_Close";
 import TypeofAttachment from "@salesforce/label/c.PRM_Type_of_Attachment";
 import TermsAndConditions from "@salesforce/label/c.PRM_LA_Header";
+import UploadedDocuments from "@salesforce/label/c.PRM_Uploaded_Documents";
+import FileName from "@salesforce/label/c.PRM_FileName";
+import SizeMessage from "@salesforce/label/c.PRM_size_message";
+import getUploadedDoc from "@salesforce/apex/PRM_CompanyProfileController.getUploadedDoc";
 
 export default class PRM_UploadDocuments extends NavigationMixin(LightningElement) {
 
-    //@api recordId='0018A00000UcEYKPRODUCTION';
+    //@api recordId='0018A00000UcEYKQA3';
     @api recordId;
     @track AcceptedFormatsArr = [];
     showUploadLWC=false;
@@ -25,10 +30,16 @@ export default class PRM_UploadDocuments extends NavigationMixin(LightningElemen
         AttachDocuments,
         Close,
         TypeofAttachment,
-        TermsAndConditions
+        TermsAndConditions,
+        UploadedDocuments,
+        FileName,
+        SizeMessage
     }
 
     get acceptedFormats() {
+        //this.AcceptedFormatsArr =  AcceptedFormats.split(', ');
+        //console.log('this.AcceptedFormatsArr----->'+this.AcceptedFormatsArr);
+        //return this.AcceptedFormatsArr;
         return ['.png', '.jpeg', '.jpg', '.doc', '.docx', '.pdf'];      
     }
 
@@ -58,6 +69,7 @@ export default class PRM_UploadDocuments extends NavigationMixin(LightningElemen
         getUploadedTermsnCondition({docArray: docArray, accId :this.recordId}).then(response => {
             if(response){
                  this.displayShowToastMessage('Document uploaded successfully','DocumentUpload','success');
+                 this.checktermsAndConditions();
             }
         })       
         .catch(error => {
@@ -78,6 +90,22 @@ export default class PRM_UploadDocuments extends NavigationMixin(LightningElemen
                 console.log('Error',error);
             });
     }
+
+    /**
+	 * fetching documents of type terms and conditions
+	 */
+	checktermsAndConditions(){
+		getUploadedDoc({recId :this.recordId}).then(response => {
+			if(response.length> 0){
+				console.log('documents--->',response);
+				this.docList=response;
+                this.uploaderVisibility = true;
+			}
+		})       
+		.catch(error => {
+			console.log("Error in  saveUploadedDoc-->", error);
+		});
+	}
     
     showPopUp(){
         this.showModal = true;
@@ -122,6 +150,7 @@ export default class PRM_UploadDocuments extends NavigationMixin(LightningElemen
  
     connectedCallback(){
         this.showDoc();
+        this.checktermsAndConditions();
         console.log('Account Id----->',this.recordId);
     }
 }

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>CarUX Technology Europe B.V. Customer User</description>
+    <description>Innolux Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>CarUX Technology Europe B.V. Customer User</name>
+    <name>Innolux Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>InnoluxCustomerManager</parentRole>
 </Role>

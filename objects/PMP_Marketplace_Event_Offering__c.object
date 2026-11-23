@@ -198,6 +198,14 @@
         <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <label>Marketplace Event Offering</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Event_Id__c</columns>
+        <columns>PMP_Offering_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>{000}</displayFormat>
         <label>Name</label>

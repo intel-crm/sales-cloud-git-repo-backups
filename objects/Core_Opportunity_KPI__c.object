@@ -344,21 +344,6 @@
                     <default>false</default>
                     <label>Salesforce Pipeline Units</label>
                 </value>
-                <value>
-                    <fullName>Salesforce Production Win Opp Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win Opp Count</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Production Win $</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win $</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Opp KPI Product Group Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Opp KPI Product Group Count</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -406,18 +391,8 @@
     <label>Opportunity KPI</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Opp_KPI_Achieved__c</columns>
-        <columns>Core_Opp_KPI_Add_Date__c</columns>
-        <columns>Core_Opp_KPI_BatchTime__c</columns>
-        <columns>Core_Opp_KPI_BU_Owner__c</columns>
-        <columns>Core_Opp_KPI_Quantity__c</columns>
-        <columns>Core_Opp_KPI_Total_Price__c</columns>
-        <columns>Core_Opp_KPI_Type__c</columns>
-        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>KPI Name</label>

@@ -38,17 +38,14 @@ public class Core_Utility{
         boolean bHasValidStates;
         
         //map to hold the reference to the Country State custom setting data
-        map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();
-                    
-        //map to hold the reference to the Country State custom setting data
-        map<String, Core_Country_Reference__c> mCountryCodeGeoRef1 = new map<String, Core_Country_Reference__c>();
-                    
+            map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();
+        
         //Check if the Sobject is of type lead
         boolean bIsLeadOp = Schema.Lead.getSObjectType() == listNewSObject[0].getSobjectType() ? true: false;
         
         // Capture the set of status for which the validation rule must be applicable
-        Set<String> setLeadStatuses = new Set<String>{ System.Label.Core_LeadStatusSalesAcceptedLead
-                                                    };
+        Set<String> setLeadStatuses = new Set<String>{ System.Label.Core_LeadStatusSalesAcceptedLead,
+                                                    System.Label.Core_LeadStatusSalesQualifiedLead};
         
         //call the function to store the User record    
         Set<String> sProfileName = new Set<String>{}; 
@@ -67,10 +64,8 @@ public class Core_Utility{
         //Returns a map of the data sets defined for the custom setting with ISO Code as keyset.
         for(Core_Country_Reference__c sobjStateRef : Core_Country_Reference__c.getall().values()){
             mCountryCodeGeoRef.put(sobjStateRef.Core_ISO_Code__c,sobjStateRef);
-            //Added by Kavyashree HR(Infosys Team) for the US781258
-            mCountryCodeGeoRef1.put(sobjStateRef.Name,sobjStateRef);
         }
-
+       
         // iterate over the new set of records
         for(sObject thisSObj : listNewSObject){
             try{
@@ -85,7 +80,7 @@ public class Core_Utility{
                     sOldCountry = String.valueOf(oOldSObject.get(countryFields[0]));
                     sOldCountryCode = String.valueOf(oOldSObject.get(countryFields[1]));
                     sOldState = String.valueOf(oOldSObject.get(stateFields[0]));
-                    sOldStateCode = String.valueOf(oOldSObject.get(stateFields[1]));
+                    sOldStateCode = String.valueOf(oOldSObject.get(stateFields[1])); 
                 }
                 
                 // If the operation is insert then enter the loop or if there is any change in the field values
@@ -126,14 +121,7 @@ public class Core_Utility{
                         //Assign empty value if the combination is NOT present
                         thisSObj.put(sGeoField,NULL);
                         thisSObj.put(sSubGeoField,NULL); 
-                    }
-                         if(String.isNotEmpty(sNewCountry)){
-                         // Additional conditions are added by Kavyashree HR(Infosys Team) for the US781258
-                         if(mCountryCodeGeoRef1.containsKey(sNewCountry) && bIsLeadOp && thisSObj.get('Core_Prospect__c')!= null && Trigger.isInsert){
-                            thisSObj.put(sGeoField, mCountryCodeGeoRef1.get(sNewCountry).Core_Geo__c);
-                            thisSObj.put(sSubGeoField, mCountryCodeGeoRef1.get(sNewCountry).Core_Sub_Geo__c);
-                        }
-                         }
+                    } 
                 }               
             } catch(Exception e){
                 //If there is any exception, append it to the list of sobject records
@@ -191,7 +179,7 @@ public class Core_Utility{
     }
     
     //Variable to store the User record
-    private static User currentUser{get;set;}
+    public static User currentUser{get;set;}
     
     /*
     * Method name  : getcurrentUser
@@ -204,10 +192,7 @@ public class Core_Utility{
             return currentUser;
         } 
         else{
-            List<User> userList = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
-            if(userList.size() > 0) {
-                currentUser = userList[0];
-            }
+            currentUser = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()];
             return null;
         }
     }
@@ -241,12 +226,9 @@ public class Core_Utility{
         //**************************** Sent email to contacts ************************/
     public static void sendEmail(set<String> toAddresses, id templateId) 
     {  
-        contact c = new contact();
     if(toaddresses!=null){
     Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-        c=[select id, name from contact limit 1];
-        }
+       contact c=[select id, name from contact limit 1];
         list<string> ls=new list<string>();
         
         for(string s:toaddresses)
@@ -613,8 +595,8 @@ public class Core_Utility{
         isLoggeInUserMigrationUser = Core_IPS_CaseTriggerHandler.isMigrationUser(string.valueof(userinfo.getuserId()));
         system.debug('coming in here test#####');
         str = str.replaceAll('\n','<br>');
-        //By Gourav: For RTF
-        boolean isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId()));
+        //By Gourav: For RTF 	
+        boolean isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId())); 	
         if((isLoggeInUserIntegrationUser && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for Integ User') != null && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for Integ User').Core_Feature_Enabled__c) || (!isLoggeInUserIntegrationUser  && !isLoggeInUserMigrationUser) ||(isLoggeInUserMigrationUser && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for DM') != null && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for DM').Core_Feature_Enabled__c) )
         str = str.unescapeHTML4();
         system.debug('unescape output>>>>>>>>'+str);      
@@ -628,7 +610,7 @@ public class Core_Utility{
         String prtCust = '0PS1J000000LIlp';//System.Label.Core_IPS_Partner_Customer_Permission_Set;
         String prtDFAE =  System.Label.Core_IPS_Partner_DFAE_Permission_Set;
         List<PermissionSetAssignment> partnersInPermsnSet = new List<PermissionSetAssignment>();
-        partnersInPermsnSet = [Select id,PermissionSetId,AssigneeId from PermissionSetAssignment where AssigneeId = :userId and (PermissionSetId =:prtDFAE OR PermissionSetId =:prtCust) LIMIT 1];
+        partnersInPermsnSet = [Select id,PermissionSetId,AssigneeId from PermissionSetAssignment where AssigneeId = :userId and (PermissionSetId =:prtDFAE OR PermissionSetId =:prtCust) LIMIT 1];            	
 
           if(partnersInPermsnSet.size()>0 && partnersInPermsnSet !=null){
              for(PermissionSetAssignment permSet: partnersInPermsnSet ){
@@ -701,8 +683,8 @@ public class Core_Utility{
     
     public static String stripandunescapeHtmlTags(String str){     
         isLoggeInUserMigrationUser = Core_IPS_CaseTriggerHandler.isMigrationUser(string.valueof(userinfo.getuserId()));
-        //By Gourav: For  Integration RTF
-        boolean isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId()));
+        //By Gourav: For  Integration RTF 	
+        boolean isLoggeInUserIntegrationUser = Core_IPS_Case_Comments_Handler.isIntegrationUser(string.valueof(userinfo.getuserId())); 	
         if((isLoggeInUserIntegrationUser && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for Integ User') != null && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for Integ User').Core_Feature_Enabled__c) || (!isLoggeInUserIntegrationUser  && !isLoggeInUserMigrationUser) ||(isLoggeInUserMigrationUser && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for DM') != null && Core_IPS_Feature_Toggle__c.getValues('SkyHighEOL- RTF update for DM').Core_Feature_Enabled__c) )
         str = str.unescapeHTML4(); 
        // if(!isLoggeInUserMigrationUser){

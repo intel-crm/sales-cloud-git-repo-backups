@@ -3,7 +3,8 @@
 	<aura:attribute name="label" type="string" required="true" description="Label for the Sticky Tab Instance"/>
     <aura:attribute name="id" type="string" description="Internal component state"/>
     <aura:attribute name="anchorId" type="string" description="Internal component state"/>
-	<div id="{!v.anchorId}">
+
+	<div id="{!v.anchorId}" >
 		{!v.body}
 	</div>
 

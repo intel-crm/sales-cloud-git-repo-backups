@@ -13,9 +13,8 @@
 }
 
 .IPA_DZS_RDC_Min{
-    /* font: 200;
-    font-size: small; */
-    font: 300;
+    font: 200;
+    font-size: small;
     color: rgb(222, 3, 3);
 }
 
@@ -23,37 +22,4 @@
     margin-left: 5px;
     cursor: pointer;
     color: rgb(222, 3, 3);
-}
-
-.textAlignDesign{
-    text-align: center;
-}
-
-.custom-tooltip {
-    position: relative;
-    display: inline-block;
-}
-
-.custom-info-icon {
-    cursor: pointer; /* Make it look clickable */
-}
-
-.tooltip-hidden {
-    display: none;
-}
-
-.tooltip-visible {
-    position: absolute;    
-    /* top: 30px; */
-    margin-left: -82px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: white;
-    color: black;
-    padding: 5px;
-    border-radius: 4px;
-    z-index: 1;
-    height: 55px;
-    width: 400px;
-    font-size: 12px;
 }

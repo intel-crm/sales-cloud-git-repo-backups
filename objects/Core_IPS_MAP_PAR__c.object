@@ -158,72 +158,6 @@ This object will have related Line Items that capture the unique Account/Support
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_IPS_MAP_Access_Flag__c</fullName>
-        <description>It is to easily identify who can see the MAP and how users request to add an Account to the MAP. It is  automatically calculated based on the MAP&apos;s Supported Products (SP)</description>
-        <label>Access Flag</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Approval Required</fullName>
-                    <default>false</default>
-                    <label>Approval Required</label>
-                </value>
-                <value>
-                    <fullName>Auto Approve</fullName>
-                    <default>false</default>
-                    <label>Auto Approve</label>
-                </value>
-                <value>
-                    <fullName>Par Hidden</fullName>
-                    <default>false</default>
-                    <label>Par Hidden</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_MAP_Count_Supp_acct__c</fullName>
-        <description>This field is created for history tracking of total number of supported accounts under MAP.</description>
-        <externalId>false</externalId>
-        <label># Supported Accounts</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_MAP_Count_Supp_prod__c</fullName>
-        <description>This field is created for history tracking of total number of supported products under MAP.</description>
-        <externalId>false</externalId>
-        <label># Supported Products</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_MAP_Description__c</fullName>
-        <externalId>false</externalId>
-        <label>Description</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Name__c</fullName>
         <description>Name of the MAP.  Not used by PAR.</description>
         <externalId>false</externalId>
@@ -535,42 +469,6 @@ This object will have related Line Items that capture the unique Account/Support
             <allInternalUsers></allInternalUsers>
         </sharedTo>
     </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_MAP_PAR</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <nameField>
         <displayFormat>IAR-{0000000000}</displayFormat>
         <label>Access Record</label>
@@ -584,21 +482,6 @@ This object will have related Line Items that capture the unique Account/Support
         <active>true</active>
         <description>Used for MAP</description>
         <label>MAP</label>
-        <picklistValues>
-            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
-            <values>
-                <fullName>Approval Required</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto Approve</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Par Hidden</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
         <picklistValues>
             <picklist>Core_Status__c</picklist>
             <values>
@@ -616,21 +499,6 @@ This object will have related Line Items that capture the unique Account/Support
         <active>true</active>
         <description>Used for PAR</description>
         <label>PAR</label>
-        <picklistValues>
-            <picklist>Core_IPS_MAP_Access_Flag__c</picklist>
-            <values>
-                <fullName>Approval Required</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Auto Approve</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Par Hidden</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
         <picklistValues>
             <picklist>Core_Status__c</picklist>
             <values>

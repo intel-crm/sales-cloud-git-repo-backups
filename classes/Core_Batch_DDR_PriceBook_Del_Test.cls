@@ -97,7 +97,7 @@ public class Core_Batch_DDR_PriceBook_Del_Test
         Core_Batch_DDR_PriceBook_Del objPartnerPB1 = new Core_Batch_DDR_PriceBook_Del();  
         Database.executeBatch(objPartnerPB1); 
         
-       // Core_Batch_DDR_PriceBook_Del_Scheduler.SchedulerMethod();  
+        Core_Batch_DDR_PriceBook_Del_Scheduler.SchedulerMethod();  
         Test.StopTest();
     }     
    

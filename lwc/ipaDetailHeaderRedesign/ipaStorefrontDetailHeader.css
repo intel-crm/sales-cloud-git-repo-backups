@@ -1,0 +1,35 @@
+@import "./detailHeader.css";
+
+.badge-name {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.badge-container {
+  align-items: center;
+  display: flex;
+  padding-right: 18px;
+  width: auto;
+}
+
+.badge-and-border {
+  display: flex;
+}
+
+.badge-border {
+  border-left: 1px solid var(--lightGray);
+  padding-left: 18px;
+}
+
+.specialty-img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.partner-status-gold {
+  color: var(--gold);
+}
+
+.partner-status-titanium {
+  color: var(--gray);
+}

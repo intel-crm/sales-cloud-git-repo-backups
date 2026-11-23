@@ -47,35 +47,7 @@
     </fields>
     <fields>
         <label>Status des Antragsstapels</label>
-        <name>Core_MDF_ClaimBatch_Status_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation>Ausgefallen</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>Unterlagen fehlen noch</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>Eingereicht</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Successful</masterLabel>
-            <translation>Erfolgreich</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Status des Antragsstapels</label>
         <name>Core_MDF_Claim_Batch_Status_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Anzahl der Anträge (eingereicht)</label>
-        <name>Core_MDF_Claim_Count_InProgress_Cnt__c</name>
-    </fields>
-    <fields>
-        <label>Zahl der Anträge (ausstehende Dokumente)</label>
-        <name>Core_MDF_Claim_Count_Pending_Document__c</name>
     </fields>
     <fields>
         <label>Anzahl der Anträge (fehlgeschlagen)</label>
@@ -90,26 +62,17 @@
         <name>Core_MDF_Claim_Total_Cnt__c</name>
     </fields>
     <fields>
-        <label>Creato da</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Autore ultima modifica</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label>Proprietario</label>
-        <name>Core_MDF_Owner_Nm__c</name>
-    </fields>
-    <fields>
         <label>Programm</label>
         <name>Core_MDF_Program_Id__c</name>
         <relationshipLabel><!-- Claim Batches --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Send Email --></label>
-        <name>Core_MDF_Send_Email__c</name>
-    </fields>
     <gender>Neuter</gender>
+    <layouts>
+        <layout>Claim Batch Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>Bezeichnung des Antragsstapels</nameFieldLabel>
 </CustomObjectTranslation>

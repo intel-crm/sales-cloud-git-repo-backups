@@ -1,0 +1,7 @@
+.edit_hover_class {
+    display: none;
+}
+
+.edit_hover_class_parent:hover .edit_hover_class{
+  display: block;
+}

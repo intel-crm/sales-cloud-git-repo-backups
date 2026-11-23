@@ -63,12 +63,20 @@ public class Core_Batch_User_GroupMembership_Test {
             // copy of rules asof today
             Database.Insert(new List<Core_User_Group_Rule__c> {
                 new Core_User_Group_Rule__c(
+                    Name = 'Employees Group Rule', Core_Field_Name__c  = 'Core_Employee_Type_Code__c', 
+                    Core_Field_Value__c = 'EMP', Core_Group_Name__c  = 'Core_All_Employees_Group'
+                ),
+                new Core_User_Group_Rule__c(
+                    Name = 'Non-Badged Group Rule', Core_Field_Name__c  = 'Core_Employee_Type_Code__c',  
+                    Core_Field_Value__c = 'Non-Badged', Core_Group_Name__c  = 'Core_All_Non_Badged_Users_Group'
+                ),
+                new Core_User_Group_Rule__c(
                     Name = 'Contingent Workers Group Rule', Core_Field_Name__c  = 'Core_Employee_Type_Code__c', 
                     Core_Field_Value__c = 'CTW', Core_Group_Name__c  = 'Core_All_Contingent_Workers_Group'
                 )
             });
         }
-        System.debug(TestUsers);
+       
 	}
     
     static Boolean CheckCTW() {
@@ -114,11 +122,11 @@ public class Core_Batch_User_GroupMembership_Test {
 		Test.startTest();
         Core_Batch_User_GroupMembership MyTest = new Core_Batch_User_GroupMembership();
 		Database.executeBatch(MyTest);
-        
-		Test.stopTest();
         MyTest.CompareGroup('x','x','x');
-	//	System.assert(CheckCTW());
-		//System.assert(CheckEMP());
-        //System.assert(CheckNon());
+		Test.stopTest();
+        
+		System.assert(CheckCTW());
+		System.assert(CheckEMP());
+        System.assert(CheckNon());
 	}
 }

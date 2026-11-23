@@ -1,0 +1,31 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <template if:true={account.data}>
+        <lightning-card title="">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item padding="around-small" size="12">
+                    <lightning-layout>
+                        <lightning-layout-item padding="around-small" size="4">
+                            <lightning-input name="accountName" type="text" label="Account Name"
+                                value={account.data.accountName} read-only="true"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="4">
+                            <lightning-input name="accountNumber" type="text" label="Account Number"
+                                value={account.data.accountNumber} read-only="true"></lightning-input>
+                        </lightning-layout-item>
+                        <lightning-layout-item padding="around-small" size="4">
+                            <lightning-input name="partnerAdmin" type="text" label="Partner Admin"
+                                value={account.data.partnerAdmin} read-only="true"></lightning-input>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-card>
+        <template if:true={account.data.contacts}>
+            <lightning-card title="Contacts">
+                <lightning-datatable key-field="contactId" data={account.data.contacts} columns={columns}>
+                </lightning-datatable>
+            </lightning-card>
+        </template>
+    </template>
+</template>

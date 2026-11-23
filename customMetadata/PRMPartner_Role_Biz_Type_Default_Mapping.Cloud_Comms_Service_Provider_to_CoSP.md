@@ -3,6 +3,10 @@
     <label>Cloud &amp; Comms Service Provider to CoSP</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">Comm Service Provider (CoSP)</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Service Provider</value>
     </values>

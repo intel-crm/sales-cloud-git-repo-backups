@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ReportDataPoint</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ReportDataPoints</value>
+    </caseValues>
+    <fields>
+        <label><!-- coachability --></label>
+        <name>Xvoyant__coachability__c</name>
+    </fields>
+    <fields>
+        <label><!-- criteriaHash__c --></label>
+        <name>Xvoyant__criteriaHash__c</name>
+    </fields>
+    <fields>
+        <label><!-- P2R Dollar Goal --></label>
+        <name>Xvoyant__dollarGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- P2R Dollar Starts --></label>
+        <name>Xvoyant__dollarStarts__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal progress --></label>
+        <name>Xvoyant__goalProgress__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal --></label>
+        <name>Xvoyant__goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- P2R Opp Goal --></label>
+        <name>Xvoyant__oppGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- P2R Opp Starts --></label>
+        <name>Xvoyant__oppStarts__c</name>
+    </fields>
+    <fields>
+        <label><!-- periodNum --></label>
+        <name>Xvoyant__periodNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- periodType --></label>
+        <name>Xvoyant__periodType__c</name>
+    </fields>
+    <fields>
+        <label><!-- Prorated Sum of Goals Overlapping Period --></label>
+        <name>Xvoyant__totalGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Wins in Period --></label>
+        <name>Xvoyant__totalWins__c</name>
+    </fields>
+    <fields>
+        <label><!-- userId --></label>
+        <name>Xvoyant__userId__c</name>
+    </fields>
+    <fields>
+        <label><!-- Velocity (Days) --></label>
+        <name>Xvoyant__velocity__c</name>
+    </fields>
+    <fields>
+        <label><!-- winRate Number Opps Closed --></label>
+        <name>Xvoyant__winRateNumClosed__c</name>
+    </fields>
+    <fields>
+        <label><!-- winRate Number Opps Won --></label>
+        <name>Xvoyant__winRateNumWon__c</name>
+    </fields>
+    <fields>
+        <label><!-- year --></label>
+        <name>Xvoyant__year__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -51,6 +51,9 @@
                 <sourceValue>Cancelled</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Deleted</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Lost</sourceValue>
             </sourceValues>
             <value>Lost/Cancelled/Deleted</value>
@@ -65,6 +68,9 @@
             <value>Pending</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
             <sourceValues>
                 <sourceValue>Production Lost</sourceValue>
             </sourceValues>
@@ -170,7 +176,7 @@
         <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
@@ -206,6 +212,9 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
     <columns>
@@ -221,7 +230,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ Sales Territory</value>
+            <value>GMP APJ Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -252,11 +261,11 @@
             <value>Win Approved,7</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>NEX</value>
+            <operator>equals</operator>
+            <value>IOTG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

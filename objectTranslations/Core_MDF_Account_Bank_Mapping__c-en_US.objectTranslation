@@ -33,10 +33,13 @@
         <label><!-- Program --></label>
         <name>Core_MDF_Program__c</name>
     </fields>
-    <sharingReasons>
-        <label><!-- AccountNodeGroup --></label>
-        <name>Core_MDF_AccountNodeGroup</name>
-    </sharingReasons>
+    <layouts>
+        <layout>Account Bank Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Select Bank with same program as of Account --></errorMessage>

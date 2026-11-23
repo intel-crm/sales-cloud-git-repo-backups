@@ -21,13 +21,6 @@
                 <elementReference>$User.Id</elementReference>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>$Record.ER_Customer_Master_File_backend__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>$Record.ER_Customer_Master_File__r.Name</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
             <targetReference>Get_Matching_Duplicate_Record</targetReference>
         </connector>

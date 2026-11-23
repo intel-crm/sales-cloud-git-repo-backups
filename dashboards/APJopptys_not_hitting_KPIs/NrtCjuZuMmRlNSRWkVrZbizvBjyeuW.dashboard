@@ -27,7 +27,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>BucketField_12541241</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -38,13 +38,14 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>APJT NW CSP (Deal Won)</header>
-                <legendPosition>Right</legendPosition>
+                <header>APJ T Consumption - NWCSP</header>
+                <legendPosition>Bottom</legendPosition>
                 <report>APJ_RBM/APJ_T_Consumption_NWCSP1</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
+                <title>(Won + Pending with &gt;50% Probability)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -68,22 +69,21 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
+                <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
-                        <sortOrder>d</sortOrder>
+                        <sortOrder>a</sortOrder>
                     </groupingSorts>
                     <groupingSorts>
                         <groupingLevel>g2</groupingLevel>
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>APJT NW CSP (Deal Won)</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJ_T_Consumption_NWCSP1</report>
+                <header>APJ T Consumption - NWCSP - Won This Qtr</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/APJ_T_Consumption_NWCSP_Won_This_Qtr</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
@@ -111,8 +111,8 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
                 <groupingColumn>FULL_NAME</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -123,147 +123,21 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>APJT NW CSP (Deal Pending)</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJ_T_Consumption_NWCSP_Deal_Pending</report>
+                <header>APJ T Consumption - NWCSP - Pen This Qtr</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/APJ_T_Consumption_NWCSP_Pen_This_Qtr</report>
                 <showPercentage>false</showPercentage>
                 <showValues>false</showValues>
                 <sortBy>RowLabelAscending</sortBy>
                 <sortLegendValues>false</sortLegendValues>
+                <title>(Won + Pending with &gt;50% Probability)</title>
                 <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
             <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</groupingColumn>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QOS Approved)</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJ_T_6QPS_NWCSP</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>4</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>ACCOUNT_NAME</groupingColumn>
-                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</sortColumn>
-                        <sortOrder>d</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Approved)</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJ_T_6QPS_NWCSP</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>8</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <chartAxisRange>Auto</chartAxisRange>
-                <chartSummary>
-                    <aggregate>Sum</aggregate>
-                    <axisBinding>y</axisBinding>
-                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
-                </chartSummary>
-                <componentType>BarStacked</componentType>
-                <decimalPrecision>-1</decimalPrecision>
-                <displayUnits>Auto</displayUnits>
-                <drillEnabled>false</drillEnabled>
-                <drillToDetailEnabled>false</drillToDetailEnabled>
-                <enableHover>false</enableHover>
-                <expandOthers>false</expandOthers>
-                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</groupingColumn>
-                <groupingColumn>FULL_NAME</groupingColumn>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Pending)</header>
-                <legendPosition>Right</legendPosition>
-                <report>APJ_RBM/APJT_NW_CSP_6QPS_Pending</report>
-                <showPercentage>false</showPercentage>
-                <showValues>false</showValues>
-                <sortBy>RowLabelAscending</sortBy>
-                <sortLegendValues>false</sortLegendValues>
-                <useReportChart>false</useReportChart>
-            </dashboardComponent>
-            <rowIndex>8</rowIndex>
-            <rowSpan>8</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
+            <colSpan>12</colSpan>
             <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
@@ -271,29 +145,93 @@
                 <flexComponentProperties>
                     <decimalPrecision>-1</decimalPrecision>
                     <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
                         <reportColumn>OPPORTUNITY_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>grouping</type>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</reportColumn>
+                        <reportColumn>OPPORTUNITY_ID</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>aggregate</type>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ACCOUNT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>BucketField_72264943</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>CLOSE_DATE</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Risk_Reason__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Opportunity.Core_Support_Requested__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>PRODUCT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OpportunityLineItem.Core_KPI_Total_Price__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>OPPORTUNITY_NAME</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
+                <groupingSortProperties/>
+                <header>APJ T Consumption - NWCSP - @RisK</header>
+                <report>APJ_RBM/APJ_T_Consumption_NWCSP_RisK</report>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>6</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</groupingColumn>
+                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -304,15 +242,64 @@
                         <sortOrder>a</sortOrder>
                     </groupingSorts>
                 </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Approved)</header>
+                <header>APJ T 6QPS - NWCSP</header>
+                <legendPosition>Bottom</legendPosition>
                 <report>APJ_RBM/APJ_T_6QPS_NWCSP</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Won Opportunities (Design/Production W)</title>
+                <useReportChart>false</useReportChart>
             </dashboardComponent>
             <rowIndex>16</rowIndex>
-            <rowSpan>10</rowSpan>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <dashboardGridComponents>
-            <colSpan>8</colSpan>
-            <columnIndex>4</columnIndex>
+            <colSpan>6</colSpan>
+            <columnIndex>6</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <aggregate>Sum</aggregate>
+                    <axisBinding>y</axisBinding>
+                    <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</column>
+                </chartSummary>
+                <componentType>BarStacked</componentType>
+                <decimalPrecision>-1</decimalPrecision>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>false</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</groupingColumn>
+                <groupingColumn>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                    <groupingSorts>
+                        <groupingLevel>g2</groupingLevel>
+                        <sortOrder>a</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <header>APJ T 6QPS - NWCSP</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>APJ_RBM/APJ_T_6QPS_NWCSP</report>
+                <showPercentage>false</showPercentage>
+                <showValues>false</showValues>
+                <sortBy>RowLabelAscending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>12</colSpan>
+            <columnIndex>0</columnIndex>
             <dashboardComponent>
                 <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
                 <componentType>FlexTable</componentType>
@@ -322,155 +309,75 @@
                         <reportColumn>OPPORTUNITY_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>grouping</type>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>OPPORTUNITY_ID</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>ACCOUNT_NAME</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
                         <reportColumn>FK_NAME</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>grouping</type>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</reportColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_Core_FC_Appvd_SalesPrice__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>aggregate</type>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</reportColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</reportColumn>
                         <showSubTotal>false</showSubTotal>
                         <showTotal>false</showTotal>
-                        <type>aggregate</type>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
+                    </flexTableColumn>
+                    <flexTableColumn>
+                        <reportColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Approval_Status__c</reportColumn>
+                        <showSubTotal>false</showSubTotal>
+                        <showTotal>false</showTotal>
+                        <type>detail</type>
                     </flexTableColumn>
                     <flexTableSortInfo>
+                        <sortColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter__c</sortColumn>
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
                     <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Approved)</header>
+                <groupingSortProperties/>
+                <header>APJ T 6QPS - NWCSP</header>
                 <report>APJ_RBM/APJ_T_6QPS_NWCSP</report>
             </dashboardComponent>
-            <rowIndex>16</rowIndex>
-            <rowSpan>10</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>4</colSpan>
-            <columnIndex>0</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>ACCOUNT_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Pending)</header>
-                <report>APJ_RBM/APJT_NW_CSP_6QPS_Pending</report>
-            </dashboardComponent>
-            <rowIndex>26</rowIndex>
-            <rowSpan>10</rowSpan>
-        </dashboardGridComponents>
-        <dashboardGridComponents>
-            <colSpan>8</colSpan>
-            <columnIndex>4</columnIndex>
-            <dashboardComponent>
-                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
-                <componentType>FlexTable</componentType>
-                <flexComponentProperties>
-                    <decimalPrecision>-1</decimalPrecision>
-                    <flexTableColumn>
-                        <reportColumn>OPPORTUNITY_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>FK_NAME</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>grouping</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>RowCount</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableColumn>
-                        <reportColumn>s!Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</reportColumn>
-                        <showSubTotal>false</showSubTotal>
-                        <showTotal>false</showTotal>
-                        <type>aggregate</type>
-                    </flexTableColumn>
-                    <flexTableSortInfo>
-                        <sortOrder>1</sortOrder>
-                    </flexTableSortInfo>
-                    <hideChatterPhotos>true</hideChatterPhotos>
-                    <useReportTableSetting>false</useReportTableSetting>
-                </flexComponentProperties>
-                <groupingSortProperties>
-                    <groupingSorts>
-                        <groupingLevel>g1</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                    <groupingSorts>
-                        <groupingLevel>g2</groupingLevel>
-                        <sortOrder>a</sortOrder>
-                    </groupingSorts>
-                </groupingSortProperties>
-                <header>APJT NW CSP (6QPS Pending)</header>
-                <report>APJ_RBM/APJT_NW_CSP_6QPS_Pending</report>
-            </dashboardComponent>
-            <rowIndex>26</rowIndex>
-            <rowSpan>10</rowSpan>
+            <rowIndex>24</rowIndex>
+            <rowSpan>8</rowSpan>
         </dashboardGridComponents>
         <numberOfColumns>12</numberOfColumns>
         <rowHeight>36</rowHeight>
@@ -478,9 +385,9 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11568039@intel.com.crm</owner>
-    <runningUser>10689819@intel.com.crm</runningUser>
+    <runningUser>11568039@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
-    <title>💵 APJT DCG NW CSP</title>
+    <title>💵 APJT Next Wave CSP</title>
     <titleColor>#000000</titleColor>
     <titleSize>12</titleSize>
 </Dashboard>

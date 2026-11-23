@@ -44,5 +44,12 @@
         <label><!-- Score Bar --></label>
         <name>Score_Bar__c</name>
     </fields>
+    <layouts>
+        <layout>PRM CIM Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

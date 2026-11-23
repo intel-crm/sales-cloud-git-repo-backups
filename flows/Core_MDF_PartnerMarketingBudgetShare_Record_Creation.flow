@@ -243,7 +243,7 @@
         <sortOrder>Asc</sortOrder>
     </recordLookups>
     <startElementReference>Core_MDF_GetMetadataRecords</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <subflows>
         <name>Core_MDF_Iteration</name>
         <label>Iterator</label>

@@ -3,6 +3,10 @@
     <label>Guest to Enterprise Influencer*</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">Enterprise Influencer*</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Guest</value>
     </values>

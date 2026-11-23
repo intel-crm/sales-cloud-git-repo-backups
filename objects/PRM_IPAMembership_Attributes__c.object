@@ -283,8 +283,9 @@
     </fields>
     <fields>
         <fullName>PRM_Points_Not_Eligible_Reason_Txt__c</fullName>
+        <inlineHelpText>Update Reason incase of any updates to Points Not Eligible indicator</inlineHelpText>
         <label>Points Not Eligible Reason Text</label>
-        <required>false</required>
+        <required>true</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
@@ -307,9 +308,9 @@
     </fields>
     <fields>
         <fullName>PRM_Record_Link__c</fullName>
+        <description>This is used to navigate to the Record page from the Related List</description>
         <externalId>false</externalId>
         <formula>HYPERLINK(&quot;/&quot; &amp; Id, &apos;Record Link&apos;, &quot;_self&quot; )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Record Link</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
@@ -347,6 +348,11 @@
         </valueSet>
     </fields>
     <label>IPA Membership Attribute</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>IPAMA-{0000000}</displayFormat>
         <label>PRM_IPAMembership Attributes Name</label>

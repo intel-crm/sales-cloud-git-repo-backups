@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>Input_Parameter__c</field>
-        <value xsi:type="xsd:string">Registration_Request_ID;LanguageCulture_MDT</value>
+        <value xsi:type="xsd:string">Registration_Request_ID</value>
     </values>
     <values>
         <field>Language__c</field>

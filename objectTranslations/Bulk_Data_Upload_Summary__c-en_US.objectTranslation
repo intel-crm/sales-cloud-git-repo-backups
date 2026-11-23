@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Bulk Data Upload Summary</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Bulk Data Upload Summaries</value>
+    </caseValues>
+    <fields>
+        <label><!-- Invited By --></label>
+        <name>PRM_Invited_By__c</name>
+        <relationshipLabel><!-- Bulk Data Upload Summaries --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Invited Date --></label>
+        <name>PRM_Invited_Date__c</name>
+    </fields>
+    <layouts>
+        <layout>Bulk Data Upload Summary Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

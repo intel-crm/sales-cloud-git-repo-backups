@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Conditional_Display__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>PRM_Failed_Step__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Milestone_Display_Name__c</field>
-        <value xsi:type="xsd:string">Badge tier updated</value>
+        <value xsi:type="xsd:string">Badge tier updated to PRM_Merge_field_1__c</value>
     </values>
     <values>
         <field>PRM_Order__c</field>

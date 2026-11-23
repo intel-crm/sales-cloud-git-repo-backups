@@ -1,0 +1,84 @@
+<template>
+    <lightning-spinner
+        alternative-text="Loading"
+        size="small"
+        if:true={isSpinner}
+    ></lightning-spinner>
+    <template if:true={showpage1}>
+        <h1><b>Enter Your Information</b></h1>
+        <div class="slds-p-bottom_large slds-p-left_large" style="width: 500px">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="Email"
+                    onchange={handleInputEmailChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="FirstName"
+                    onchange={handleInputFirstNameChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="LastName"
+                    onchange={handleInputLastnameChange}
+                ></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="Country"
+                    onchange={handleInputCountry}
+                ></lightning-input>
+            </div>
+            <lightning-button
+                variant="brand"
+                label="Next"
+                title="Next"
+                onclick={handleClick}
+            >
+            </lightning-button>
+        </div>
+    </template>
+    <template if:true={showpage2}>
+        <h1><b>Connect to Your Account</b></h1>
+
+        <div class="slds-p-bottom_large slds-p-left_large" style="width: 500px">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="Account Name"
+                    onchange={handleAccName}
+                ></lightning-input>
+            </div>
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-input
+                    type="text"
+                    label="WebSite"
+                    onchange={handleWebsite}
+                ></lightning-input>
+            </div>
+            <lightning-button
+                variant="brand"
+                label="Expand Search"
+                title="Expand Search"
+                onclick={handleExpandClick}
+            >
+            </lightning-button>
+        </div>
+    </template>
+    <template if:true={showpage2}>
+        <lightning-datatable
+            data={resultobj}
+            hide-checkbox-column="false"
+            columns={columns}
+            key-field="AccountID"
+            onrowaction={handleRowAction}
+        >
+        </lightning-datatable>
+    </template>
+</template>

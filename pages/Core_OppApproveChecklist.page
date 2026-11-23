@@ -39,11 +39,10 @@ function closewindow(){
     <table width="75%">
         <tr>
             <th><u>Field Name</u></th>
-            <th style="width:10%;"><u>Indicator</u></th>
+            <th><u>Indicator</u></th>
             <th><u>Field Description</u></th>
         </tr>
         <br/>
-        
         <tr class="spaceUnder" >
         <td width="10%"><br/><b>BU Short Name</b></td>
         <td ><br/>
@@ -62,16 +61,6 @@ function closewindow(){
         </td>
         <td width="660px" >Compliance Status does NOT imply or confer government authorization for any transaction. Intel parties must work within defined <a href="https://salescrm.intel.com/training-and-help/opportunity-management/minds-opp-handling/#guardrails" target="_blank">guardrails.</a> <a href="https://www.intel.com/content/www/us/en/distributor/ddr-training/mag.html " target="_blank">Non-Intel parties</a> are responsible for compliance with any applicable trade regulations.<b> There is no submission for opportunity possible with a red compliance indicator.</b></td>
         </tr>
-        
-        <tr class="spaceUnder" >
-        <td width="10%"><br/><b>Product At Risk</b></td>
-        <td ><br/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.Core_Product_At_Risk__c}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!NOT(Opportunity.Core_Product_At_Risk__c)}" style="margin-top:-2px; margin-left: 12px;"/>          
-        </td>
-            <td  width="660px"><br/>Please make sure all <a href="{!'/lightning/cmp/c__Core_OppProductsAtRisk?c__recordId='+Opportunity.Id}">products with "At Risk"</a> flag have a risk status of "Closed: Support Provided" or "Closed: Support Not Provided" prior to closing your opportunity.
-        </td>
-        </tr>
 
         <tr class="spaceUnder">
         <td width="14%"><b>Write In Products</b></td>
@@ -82,17 +71,6 @@ function closewindow(){
         <td width="660px" >Please insert the correct Intel product from the product list before submitting for approval. If the product you are looking for is not found in the pick-list, submit an Ask a Question. <b>There is no submission for approval possible with a write-in product.</b></td>
         </tr>
 
-        
-        <tr class="spaceUnder">
-        <td width="14%"><b>Quantity Validate</b></td>
-        <td> 
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(QuantityValidate)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!QuantityValidate}" style="margin-top:-2px; margin-left: 12px;"/>
-        </td>
-        <td width="660px" >Product Quantity field only supports whole numbers.  <b>Edit Quantity field(s) by removing the decimal to enable submission.</b></td>
-        </tr>
-        
-        
         <tr class="spaceUnder">
         <td width="16%"><b>Proof of Performance</b></td>
         <td>
@@ -103,66 +81,13 @@ function closewindow(){
         <td width="660px" >Please attach a note or document labeled "Proof or Performance" or "POP" prior to submit for approval, that meets the requirements as detailed <a href="https://goto/POPTraining" target="_blank">here</a>.</td>
 
         </tr>
-        <!-- Start-> TWC3123-3676-Added as part of Production win approval process -->
         <tr class="spaceUnder">
-        <td width="16%"><b>Production Win Proof of Performance</b></td>
-        <td>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!NOT(PW_Note_Attachmentsize) && Opportunity.Core_Commissionable__c == 'Yes'}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!NOT(PW_Note_Attachmentsize) && Opportunity.Core_Commissionable__c == 'No'}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!PW_Note_Attachmentsize}" style="margin-top:-2px; margin-left: 12px;"/>      
-        </td>
-        <td width="660px" >Please attach a note or document labeled "Production Win POP" prior to submit for approval, that meets the requirements as detailed <a href="https://goto/POPTraining" target="_blank">here</a>.</td>
-
-        </tr>
-        <tr class="spaceUnder">
-            <td>
-                <!--Areefa:Please dont Remove this Space , this we needed for  distinguishing between Manditory and Optional Checklist -->
-                <br/>
-            </td>
-        </tr>
-        <!-- End -> TWC3123-3676 -->
-        
-          <!--<tr class="spaceUnder">
-
-        <!-- added as part of TWC3123-3085 --
-        <td width="14%"><br/><br/><b>  CoE Status </b></td>
+            <td width="16%"><br/><br/><b>Competitive/Architecture Conversion </b></td>
         <td> <br/><br/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c ==''}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c =='New'}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!Opportunity.CoE_Status__c =='Closed: Support Provided'}" style="margin-top:-2px; margin-left: 12px;"/> 
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c =='Closed: Support Not Provided'}" style="margin-top:-2px; margin-left: 12px;"/>
-         </td>
-        <td width="660px" > <br/><br/> Please update the CoE Status field with either “Closed: Support Provided” or “Closed: Support Not Provided” prior to closing your opportunity </td>
- 
-        </tr>-->
-
-        <!-- Start-> TWC3123-4164-Added check for oppty Solutions -->
-        <tr class="spaceUnder">
-        <td width="16%"><b>Opportunity Solutions</b></td>
-        <td>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!NOT(isOppotySolutionAdded)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isOppotySolutionAdded}" style="margin-top:-2px; margin-left: 12px;"/>      
-        </td>
-        <td width="660px" >Please add appropriate solution to the opportunity, Please note some KPIs require solutions with the correct attributes added.</td>
-        </tr>
-        <!-- End -> TWC3123-4164 -->          
- <!-- Start->  TWC3123-4822 - Added Description of Contribution Check -->
-        <tr class="spaceUnder">
-        <td width="16%"><b>Description Of Contribution</b></td>
-        <td>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isDescriptionOfContribution)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isDescriptionOfContribution}" style="margin-top:-2px; margin-left: 12px;"/>      
-        </td>
-        <td width="660px" >Please ensure that you provide Description of Contribution for all the Opportunity Team Members</td>
-        </tr>
-        <!-- End -> TWC3123-4822 -->  
-        <tr class="spaceUnder">
-            <td width="16%"><b>Competitive/Architecture Conversion </b></td>
-        <td> 
             <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c== null || Opportunity.Core_Competitive_Architecture__c == '' }" style="margin-top:-2px; margin-left: 12px;"/>
             <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c != null || Opportunity.Core_Competitive_Architecture__c != ''}" style="margin-top:-2px; margin-left: 12px;"/>     
         </td>
-        <td width="660px" >  Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
+        <td width="660px" > <br/><br/> Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA.</td>
         </tr>
 
         <tr class="spaceUnder">
@@ -186,10 +111,10 @@ function closewindow(){
         <tr class="spaceUnder">
         <td width="14%"><b> Descriptive Features </b></td>
         <td> 
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Not(DescriptiveFeature)}" style="margin-top:-2px; margin-left: 12px;"/>
+            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Not(DescriptiveFeature)}" style="margin-top:-2px; margin-left: 12px;"/>
             <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!DescriptiveFeature}" style="margin-top:-2px; margin-left: 12px;"/>  
         </td>
-        <td width="660px" > Please enter the descriptive features for the Intel platform value if applicable/available. More details at goto/descriptivefeatures. </td>
+        <td width="660px" >Please enter the required descriptive features (for ISG, choose Intel platform value ISG for required fields). </td>
         </tr>
 
         <tr class="spaceUnder">
@@ -228,7 +153,6 @@ function closewindow(){
         <td width="660px" > Please specify in which region the manufacturing/billings will occur.</td>
         </tr>
         
-        <apex:outputPanel rendered="{!ExcludeVolume}">
         <tr class="spaceUnder">
         <td width="14%"><b> Volume </b></td>
         <td>  
@@ -237,7 +161,7 @@ function closewindow(){
         </td>
         <td width="660px" > Please enter the number of sets / customer products expected to be sold, especially when there are multiple components in one product application. </td>
         </tr>
-        </apex:outputPanel>
+        
         <tr class="spaceUnder">
           <td width="14%"><b> Exclude from KPIs </b></td>
           <td>
@@ -246,165 +170,15 @@ function closewindow(){
           </td>
           <td width="660px" >If the indicator is yellow, you have checked the ‘Exclude from KPI’ box and therefore this opportunity will not receive KPI credit </td>
         </tr>
-        <!--TWC3123-1204 start-->
-        <tr class="spaceUnder">
-         <td width="14%"><b> Inactive Opportunity Account </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(InactiveOppAccount)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!InactiveOppAccount}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >{!$Label.Core_InactiveAccountLabel}</td>
-        </tr>
-        <tr class="spaceUnder">
-         <td width="14%"><b> Inactive Vendor Account </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(InactiveVendorAccount)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!InactiveVendorAccount}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >{!$Label.Core_InactiveVendorLabel}</td>
-        </tr>
-        <!--TWC3123-1204 end-->
-        <!--TWC3123-2055 start
-        <tr class="spaceUnder">
-         <td width="14%"><b> To Be Deleted Opportunity Product </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(ToBeDeletedPrd)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!ToBeDeletedPrd}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >One of the Opportunity status is Delete in Progress. Please wait until it is deleted.</td>
-        </tr>
-        -->
-        <tr class="spaceUnder">
-            <td width="16%"><br/><br/><b>Decision Date</b></td>
-        <td> <br/><br/>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!DecisionDateCheck}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!NOT(DecisionDateCheck)}" style="margin-top:-2px; margin-left: 12px;"/>     
-        </td>
-        <td width="660px" > <br/><br/> Please enter the Decision date today's date or within one year from todays date.</td>
-        </tr>
-        <!--As part of TWC3123-4634|| Commented the  bonus criteria from checklist-->
-        <!--
-        <apex:outputPanel rendered="{!isDevelopOrDesignAndGrowth}">
-        <tr class="spaceUnder">
-               <td colspan="3" ><br/><br/><b><u>Pipeline Growth Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard) </u></b></td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!OpportunityDevelopPlus}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(OpportunityDevelopPlus)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the develop+ stage. </td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>Complete Current and Future State Analysis</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted1}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted1)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" >If the indicator is red, please complete the Complete Current and Future State Analysis task in the Activities Tab and add customer meeting notes to the comments field of the task.</td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>Desired end State</b></td>
-                <td>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!DesiredEndState}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(DesiredEndState)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Desired end State field under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder">
-                <td width="16%"><b>Technology and Readiness Gaps </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!TechnologyAndReadinessGaps}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(TechnologyAndReadinessGaps)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Technology and Readiness Gaps under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Business Need </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!BusinessNeed}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(BusinessNeed)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Business Need under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Technical Need </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!TechnicalNeed}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(TechnicalNeed)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Technical Need under Summary Information in the Details Tab. </td>
-            </tr> 
-
-			 <tr class="spaceUnder" >
-                <td width="16%"><b>Manager Bonus Approval</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted2}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted2)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >If the indicator is red, please have your manager complete the Manager Bonus Approval Task in the Activities Tab. </td>
-            </tr>
-    
-            <tr class="spaceUnder">
-                <td colspan="3"><br/><br/><b><u>Design Win Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u></b></td>
-            </tr>
-            <tr class="spaceUnder">
-            <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!OpportunityDesignWin}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(OpportunityDesignWin)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the Design Win stage. </td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>FAD Start Date</b></td>
-                <td>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!FADStartDate}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(FADStartDate)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the FAD Start Date under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder">
-                <td width="16%"><b>FAD End Date</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!FADEndDate}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(FADEndDate)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the FAD end date under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Competitive Threat Mitigation</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!CompetitiveThreatMitigation}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(CompetitiveThreatMitigation)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >Please enter information into the Competitive Threat Mitigation under Summary Information in the Details Tab. </td>
-            </tr> 
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Complete Win Analysis</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!WinAnalysisTask}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(WinAnalysisTask)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >After Opportunity is won, please submit your opportunity for the Customer Reference Nomination program and complete the Complete Win Analysis task in the Activities Tab. </td>
-            </tr> 
-        </apex:outputPanel>
-		-->
         
-        <!--TWC3123-2055 end-->
+        
         <!-- Added -->
         <tr class="spaceUnder">
             <td width="16%"><br/><br/><b><u>LEGEND:</u></b></td>
             <td> <br/><br/>
                 <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  style="margin-top:-2px; margin-left: 12px;"/>
             </td>
-            <td width="660px" ><br/><br/><b> Required per description.</b> </td>
+            <td width="660px" ><br/><br/><b> Required or important per description.</b> </td>
         </tr> 
         
         <tr class="spaceUnder">
@@ -422,7 +196,7 @@ function closewindow(){
             </td>
             <td width="660px" ><b> Data is complete. </b></td>
         </tr> 
-
+        
     </table>
     </body>
     </html>
@@ -446,7 +220,7 @@ function closewindow(){
     <table width="75%" >
         <tr>
             <th><u>Field Name</u></th>
-            <th style="width:10%;"><u>Indicator</u></th>
+            <th><u>Indicator</u></th>
             <th><u>Field Description</u></th>
         </tr>
         
@@ -467,16 +241,6 @@ function closewindow(){
         </td>
         <td width="660px" >Compliance Status does NOT imply or confer government authorization for any transaction. Intel parties must work within defined <a href="https://salescrm.intel.com/training-and-help/opportunity-management/minds-opp-handling/#guardrails" target="_blank">guardrails. </a><a href="https://www.intel.com/content/www/us/en/distributor/ddr-training/mag.html " target="_blank">Non-Intel parties</a> are responsible for compliance with any applicable trade regulations.<b> There is no submission for opportunity possible with a red compliance indicator.</b></td>
         </tr>
-        
-        <tr class="spaceUnder" >
-        <td width="10%"><br/><b>Product At Risk</b></td>
-        <td ><br/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.Core_Product_At_Risk__c}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!NOT(Opportunity.Core_Product_At_Risk__c)}" style="margin-top:-2px; margin-left: 12px;"/>          
-        </td>
-            <td  width="660px"><br/>Please make sure all <a href="{!'/lightning/cmp/c__Core_OppProductsAtRisk?c__recordId='+Opportunity.Id}">products with "At Risk"</a> flag have a risk status of "Closed: Support Provided" or "Closed: Support Not Provided" prior to closing your opportunity.
-        </td>
-        </tr>
 
         <tr class="spaceUnder">
         <td width="14%"><b>Write In Products</b></td>
@@ -486,16 +250,6 @@ function closewindow(){
         </td>
         <td width="660px" >Please insert the correct Intel product from the product list before submitting for approval. If the product you are looking for is not found in the pick-list, submit an Ask a Question. <b>There is no submission for approval possible with a write-in product.</b></td>
         </tr>
-        
-        <tr class="spaceUnder">
-        <td width="14%"><b>Quantity Validate</b></td>
-        <td> 
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(QuantityValidate)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!QuantityValidate}" style="margin-top:-2px; margin-left: 12px;"/>
-        </td>
-        <td width="660px" >Product Quantity field only supports whole numbers.  <b>Edit Quantity field(s) by removing the decimal to enable submission.</b></td>
-        </tr>
-        
         
          <tr class="spaceUnder">
         <td width="16%"><b>Proof of Performance</b></td>
@@ -507,7 +261,7 @@ function closewindow(){
         <td width="660px" >Please attach a note or document labeled "Proof or Performance" or "POP" prior to submit for approval, that meets the requirements as detailed <a href="https://goto/POPTraining" target="_blank">here</a>.</td>
     </tr>
 
-<!--
+
          <tr class="spaceUnder">
         <td width="14%"><b>  Solution Type and Detail </b></td>
         <td> 
@@ -517,48 +271,15 @@ function closewindow(){
         <td width="660px" >Please select the Solution Type and Detail.<b> There is no submission for approval possible without solutions input as it is relevant for KPI tracking. </b>In case you do not work on solutions, please select "Not Applicable". </td>
         </tr>
           <br/>
--->
-            <!--<tr class="spaceUnder">
 
-        <!-- added as part of TWC3123-3085 --
-        <td width="14%"><br/><br/><b>  CoE Status </b></td>
-        <td> <br/><br/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c ==''}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c =='New'}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!Opportunity.CoE_Status__c =='Closed: Support Provided'}" style="margin-top:-2px; margin-left: 12px;"/> 
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.CoE_Status__c =='Closed: Support Not Provided'}" style="margin-top:-2px; margin-left: 12px;"/>
-         </td>
-        <td width="660px" > <br/><br/> Please update the CoE Status field with either “Closed: Support Provided” or “Closed: Support Not Provided” prior to closing your opportunity </td>
-        </tr> -->
-
-        <!-- Start-> TWC3123-4164-Added check for oppty Solutions -->
-        <tr class="spaceUnder">
-        <td width="16%"><b>Opportunity Solutions</b></td>
-        <td>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!NOT(isOppotySolutionAdded)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isOppotySolutionAdded}" style="margin-top:-2px; margin-left: 12px;"/>      
-        </td>
-        <td width="660px" >Please add appropriate solution to the opportunity, Please note some KPIs require solutions with the correct attributes added.</td>
-        </tr>
-        <!-- End -> TWC3123-4164 -->
-<!-- Start->  TWC3123-4822 - Added Description of Contribution Check -->
-        <tr class="spaceUnder">
-        <td width="16%"><b>Description Of Contribution</b></td>
-        <td>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isDescriptionOfContribution)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isDescriptionOfContribution}" style="margin-top:-2px; margin-left: 12px;"/>      
-        </td>
-        <td width="660px" >Please ensure that you provide Description of Contribution for all the Opportunity Team Members</td>
-        </tr>
-        <!-- End -> TWC3123-4822 -->  
         
         <tr class="spaceUnder">
-            <td width="16%"><b>Competitive/Architecture Conversion </b></td>
-        <td> 
+            <td width="16%"><br/><br/><b>Competitive/Architecture Conversion </b></td>
+        <td> <br/><br/>
             <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c== null}" style="margin-top:-2px; margin-left: 12px;"/>
             <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!Opportunity.Core_Competitive_Architecture__c != null}" style="margin-top:-2px; margin-left: 12px;"/>     
         </td>
-        <td width="660px" > Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA. </td>
+        <td width="660px" ><br/><br/> Please enter the competitor’s name and select the conversion box if your opportunity is competing against another supplier, and if it is converting from another architecture to IA. </td>
         </tr>
 
         <tr class="spaceUnder">
@@ -606,203 +327,7 @@ function closewindow(){
           </td>
           <td width="660px" >If the indicator is yellow, you have checked the ‘Exclude from KPI’ box and therefore this opportunity will not receive KPI credit </td>
         </tr>
-        <!--TWC3123-1204 start-->
-        <tr class="spaceUnder">
-         <td width="14%"><b> Inactive Opportunity Account </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(InactiveOppAccount)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!InactiveOppAccount}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >{!$Label.Core_InactiveAccountLabel}</td>
-        </tr>
-        <tr class="spaceUnder">
-         <td width="14%"><b> Inactive Vendor Account </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(InactiveVendorAccount)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!InactiveVendorAccount}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >{!$Label.Core_InactiveVendorLabel}</td>
-        </tr>
-        <!--TWC3123-1204 end-->
         
-        <!--TWC3123-2055 start
-        <tr class="spaceUnder">
-         <td width="14%"><b> To Be Deleted Opportunity Product </b></td>
-          <td>
-           <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18" rendered="{!NOT(ToBeDeletedPrd)}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!ToBeDeletedPrd}"  style="margin-top:-2px; margin-left: 12px;"/>    
-          </td>
-          <td width="660px" >One of the Opportunity status is Delete in Progress. Please wait until it is deleted.</td>
-        </tr>
-        -->
-         <tr class="spaceUnder">
-            <td width="16%"><br/><br/><b>Decision Date</b></td>
-        <td> <br/><br/>
-            <apex:image value="{!$Resource.Checklist_Yellow}" width="20" height="18"  rendered="{!DecisionDateCheck}" style="margin-top:-2px; margin-left: 12px;"/>
-            <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!NOT(DecisionDateCheck)}" style="margin-top:-2px; margin-left: 12px;"/>     
-        </td>
-        <td width="660px" > <br/><br/> Please enter the Decision date today's date or within one year from todays date.</td>
-        </tr>
-        <!--TWC3123-2055 end-->
-        
-<!--Started TWC3123-6061 -->
-        <!--As part of TWC3123-4634|| Commented bonus criteria from the checklist-->
-        <!--
-        <apex:outputPanel rendered="{!isDevelopOrDesignAndGrowth}">
-           <tr class="spaceUnder">
-               <td colspan="3" ><br/><br/><b><u>Pipeline Growth Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard) </u></b></td>
-               
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!OpportunityDevelopPlus}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(OpportunityDevelopPlus)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the develop+ stage. </td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>Complete Current and Future State Analysis</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted1}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted1)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" >If the indicator is red, please complete the Complete Current and Future State Analysis task in the Activities Tab and add customer meeting notes to the comments field of the task.</td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>Desired end State</b></td>
-                <td>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!DesiredEndState}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(DesiredEndState)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Desired end State field under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder">
-                <td width="16%"><b>Technology and Readiness Gaps </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!TechnologyAndReadinessGaps}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(TechnologyAndReadinessGaps)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Technology and Readiness Gaps under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Business Need </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!BusinessNeed}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(BusinessNeed)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Business Need under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Technical Needs </b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!TechnicalNeed}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(TechnicalNeed)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the Technical Need under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Manager Bonus Approval</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted2}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted2)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >If the indicator is red, please have your manager complete the Manager Bonus Approval Task in the Activities Tab. </td>
-            </tr> 
-			
-            <tr class="spaceUnder">
-                <td colspan="3"><br/><br/><b><u>Deal Win Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u></b></td>
-            </tr>
-            <tr class="spaceUnder">
-            <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!OpportunityDesignWin}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(OpportunityDesignWin)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the Design Win stage. </td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="16%"><b>FAD Start Date</b></td>
-                <td>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!FADStartDate}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(FADStartDate)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the FAD Start Date under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder">
-                <td width="16%"><b>FAD End Date</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!FADEndDate}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(FADEndDate)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" > Please enter information into the FAD end date under Summary Information in the Details Tab. </td>
-            </tr> 
-            
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Competitive Threat Mitigation</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!CompetitiveThreatMitigation}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(CompetitiveThreatMitigation)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >Please enter information into the Competitive Threat Mitigation under Summary Information in the Details Tab. </td>
-            </tr> 
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Complete Win Analysis</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!WinAnalysisTask}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(WinAnalysisTask)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >After Opportunity is won, please submit your opportunity for the Customer Reference Nomination program and complete the Complete Win Analysis task in the Activities Tab. </td>
-            </tr> 
-        </apex:outputPanel>
-        
-        <apex:outputPanel rendered="{!isDevelopOrDesignAndCore}">
-            <tr class="spaceUnder">
-                <td colspan="3"><br/><br/><b><u>Pipeline Core Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u> </b></td>
-            </tr>
-            <tr class="spaceUnder">
-            <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!CoreOpportunityDevelopPlus}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(CoreOpportunityDevelopPlus)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the Develop+ stage. </td>
-            </tr>
-            <tr class="spaceUnder">
-                <td width="14%"><b>Complete Current and Future State Analysis</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!isTaskCompleted3}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(isTaskCompleted3)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" >If the indicator is red, please complete the Complete Current and Future State Analysis task in the Activities Tab and add customer meeting notes to the comments field of the task.</td>
-            </tr>
-            <tr class="spaceUnder">
-                <td colspan="3"><br/><br/><b><u>Deal Win Bonus Qualified Criteria (for use if Opportunity appears as bonus potential in Bonus Dashboard)</u></b></td>
-            </tr>
-            <tr class="spaceUnder">
-            <td width="16%"><br/><b>Opportunity Stage Name</b></td>
-                <td> <br/>
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!CoreOpportunityDesignWin}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(CoreOpportunityDesignWin)}" style="margin-top:-2px; margin-left: 12px;"/>
-                </td>
-                <td width="660px" ><br/>If the indicator is green, you have reached the Design Win stage. </td>
-            </tr>
-            <tr class="spaceUnder" >
-                <td width="16%"><b>Competitive Threat Mitigation</b></td>
-                <td> 
-                    <apex:image value="{!$Resource.Checklist_Green}" width="20" height="18"  rendered="{!CompetitiveThreatMitigation1}" style="margin-top:-2px; margin-left: 12px;"/>
-                    <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  rendered="{!NOT(CompetitiveThreatMitigation1)}" style="margin-top:-2px; margin-left: 12px;"/>  
-                </td>
-                <td width="660px" >Please enter information into the Competitive Threat Mitigation under Summary Information in the Details Tab. </td>
-            </tr>        
-        </apex:outputPanel>
-        -->
         
         <!--Added-->
         <tr class="spaceUnder">
@@ -810,7 +335,7 @@ function closewindow(){
             <td> <br/><br/>
                 <apex:image value="{!$Resource.Checklist_Red}" width="20" height="18"  style="margin-top:-2px; margin-left: 12px;"/>
             </td>
-            <td width="660px" ><br/><br/><b> Required per description.</b> </td>
+            <td width="660px" ><br/><br/><b> Required or important per description.</b> </td>
         </tr> 
         
         <tr class="spaceUnder">

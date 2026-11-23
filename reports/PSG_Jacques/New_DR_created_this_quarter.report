@@ -34,9 +34,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
@@ -80,21 +77,21 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>AND,BEL,ESP,ITA,LUX,NLD,PRT</value>
+            <value>BEL,FRA,ITA,LUX,NLD,PRT,ESP,TUN</value>
         </criteriaItems>
         <criteriaItems>
             <column>PROBABILITY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>0</value>
+            <value>0.0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Approval_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Approved,Not Submitted,Recalled,Rejected,Submitted</value>
+            <value>Not Submitted,Submitted,Rejected,Recalled</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -149,6 +146,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2025-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2018-01-01</startDate>
     </timeFrameFilter>
 </Report>

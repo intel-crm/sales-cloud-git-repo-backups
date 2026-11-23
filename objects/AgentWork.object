@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <enableFeeds>false</enableFeeds>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>AbandonedDateTime</fullName>
     </fields>
@@ -27,17 +27,6 @@
         <fullName>AgentIntCapacityWhenDeclined</fullName>
     </fields>
     <fields>
-        <fullName>AgenticWorkerReferenceObjId</fullName>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>BotId</fullName>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>BotType</fullName>
-    </fields>
-    <fields>
         <fullName>CancelDateTime</fullName>
     </fields>
     <fields>
@@ -57,10 +46,6 @@
     </fields>
     <fields>
         <fullName>DeclineReason</fullName>
-    </fields>
-    <fields>
-        <fullName>ExternalBotId</fullName>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>FinalStatusTime</fullName>

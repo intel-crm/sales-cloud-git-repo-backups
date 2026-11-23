@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>TRUMPF HUTTINGER Customer User</description>
+    <description>TRUMPF HUETTINGER Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>TRUMPF HUTTINGER Customer User</name>
+    <name>TRUMPF HUETTINGER Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>TRUMPFHUETTINGERCustomerManager</parentRole>
 </Role>

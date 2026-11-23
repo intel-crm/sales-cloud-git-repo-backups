@@ -19,7 +19,7 @@
         <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -47,10 +47,10 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
         </criteriaItems>
         <criteriaItems>
@@ -72,14 +72,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing</value>
+            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Entered in Error,Cancelled - POP Unobtainable,Cancelled - Timing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Application__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -87,12 +87,7 @@
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_Loss_Cancel_Reason__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Loss Reason by Product Application</name>
+    <name>Loss Reason by BU Product Segment</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -116,7 +111,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

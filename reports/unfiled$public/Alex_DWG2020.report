@@ -44,7 +44,7 @@
         <field>Core_Goal__c.Core_Goal_BU_Focus_Area__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Alex DWG2021</name>
+    <name>Alex DWG2020</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -58,6 +58,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

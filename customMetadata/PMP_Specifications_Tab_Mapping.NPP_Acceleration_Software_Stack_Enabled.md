@@ -40,7 +40,7 @@
     </values>
     <values>
         <field>PMP_Is_Search_Ind__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>PMP_Search_Filter_Group_Txt__c</field>

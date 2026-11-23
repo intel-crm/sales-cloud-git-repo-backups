@@ -106,7 +106,7 @@ public without sharing class Pricing_RegistrationReqUtility {
                             cont.Core_Preferred_Language__c =System.Label.PRM_ENG;
                             cont.Core_eRPM_Language_Code__c=System.Label.PRM_ENG;
                         }
-                        //cont.Core_Login_Id__c= regRequest.PRM_Contact_Login_ID__c ; 
+                        cont.Core_Login_Id__c= regRequest.PRM_Contact_Login_ID__c ; 
                         cont.RecordTypeId = contactRecordType;
                         cont.Core_Enterprise_Id__c=regRequest.PRM_Enterprise_ID__c;
                         cont.Core_IPA_PartnerRole__c = regRequest.PRM_Partner_Role__c ; 
@@ -131,7 +131,7 @@ public without sharing class Pricing_RegistrationReqUtility {
                 system.debug('existingConts==>'+existingConts);
                 system.debug('contList==>'+contList.size());
                 Set<Id> contactIds = new Set<Id>();               
-                if(contList.size() > 0){				 
+                if(contList.size() > 0){         
                     insert contList; 
                     //contList.addAll(existingConts);                
                     for(Contact cont: contList){
@@ -150,33 +150,28 @@ public without sharing class Pricing_RegistrationReqUtility {
                     //Map<Id,Account> acctMap = new Map<Id,Account>([SELECT id,Name FROM Account WHERE Id IN :acctIds]);
                     //insertEntitlesForIQRContacts(contList, contactIds, acctMap);
                     insertEntitlesForIQRContactsNew(contList, contactIds, acctIds);
-                }			   
+                }         
             }
         }
     }    
     
     public static void insertIQRLegalAgreements(List<Contact> contacts, Set<Id> contactIds, Map<String,PRM_Registration_Request__c>  regReqEmailMap, Set<String> legalAgrmntValues){
-                system.debug('insidelegalAgrmnt==>'+legalAgrmntValues);
         if(regReqEmailMap.size() > 0 && legalAgrmntValues.size() > 0){
             List<PRM_AccountLegalAgreemntAssociation__c> accLAs = new List<PRM_AccountLegalAgreemntAssociation__c>();
             Map<String,Id> legalAgrmntMap = new Map<String,Id>();
-            Map<String,Set<String>> contactLAAssocs = new Map<String,Set<String>>();
+            Map<Id,Set<String>> contactLAAssocs = new Map<Id,Set<String>>();
             
             for(PRM_PartnerAgreement__c pa : [Select Id,Name,PRM_Agreement_Cd__c from PRM_PartnerAgreement__c where PRM_Agreement_Cd__c IN : legalAgrmntValues]){
                 legalAgrmntMap.put(pa.PRM_Agreement_Cd__c,pa.id);
             }
-            set<String>conEmail= new set<String>();
-            for(Contact con1: contacts){
-                conEmail.add(con1.Email);
-            }
             system.debug('legalAgrmntMap==>'+legalAgrmntMap);
-            for(PRM_AccountLegalAgreemntAssociation__c legalAgrment : [SELECT id,PRM_Signed_By_Email__c, PRM_Signed_By_Name__c,PRM_Partner_Agreement_Id__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c  
+            for(PRM_AccountLegalAgreemntAssociation__c legalAgrment : [SELECT id,PRM_Contact__c,PRM_Partner_Agreement_Id__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c  
                                                                        FROM PRM_AccountLegalAgreemntAssociation__c 
-                                                                       WHERE PRM_Signed_By_Email__c IN :conEmail AND PRM_Partner_Agreement_Id__c in : legalAgrmntMap.values() AND PRM_InActive_Ind__c = false]){
-                                                                           if(contactLAAssocs.containsKey(legalAgrment.PRM_Signed_By_Email__c)){
-                                                                               contactLAAssocs.get(legalAgrment.PRM_Signed_By_Email__c).add(legalAgrment.PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c);
+                                                                       WHERE PRM_Contact__c IN :contactIds AND PRM_Partner_Agreement_Id__c in : legalAgrmntMap.values() AND PRM_InActive_Ind__c = false]){
+                                                                           if(contactLAAssocs.containsKey(legalAgrment.PRM_Contact__c)){
+                                                                               contactLAAssocs.get(legalAgrment.PRM_Contact__c).add(legalAgrment.PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c);
                                                                            }else{
-                                                                               contactLAAssocs.put(legalAgrment.PRM_Signed_By_Email__c, new Set<String>{legalAgrment.PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c});
+                                                                               contactLAAssocs.put(legalAgrment.PRM_Contact__c, new Set<String>{legalAgrment.PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c});
                                                                            }
                                                                        }
             for(Contact cont: contacts){
@@ -184,13 +179,12 @@ public without sharing class Pricing_RegistrationReqUtility {
                 if(!String.isEmpty(legalAgrmnts)){
                     for(String legalagrmnt :  legalAgrmnts.split(';')){
                         system.debug('legalagrmnt==>'+legalagrmnt+';;;contactLAAssocs==>'+contactLAAssocs.get(cont.Id));
-                        if(legalAgrmntMap.containsKey(legalagrmnt) && (!contactLAAssocs.containsKey(cont.Email) || (contactLAAssocs.containsKey(cont.Email) && !contactLAAssocs.get(cont.Email).contains(legalagrmnt)))){
+                        if(legalAgrmntMap.containsKey(legalagrmnt) && (!contactLAAssocs.containsKey(cont.Id) || (contactLAAssocs.containsKey(cont.Id) && !contactLAAssocs.get(cont.Id).contains(legalagrmnt)))){
                             system.debug('Creating new Association');
                             PRM_AccountLegalAgreemntAssociation__c acntLegalAgrAssoc = new PRM_AccountLegalAgreemntAssociation__c();
                             acntLegalAgrAssoc.PRM_Partner_Agreement_Id__c = legalAgrmntMap.get(legalagrmnt);
                             acntLegalAgrAssoc.PRM_Account_Id__c = cont.AccountId ;
-                            acntLegalAgrAssoc.PRM_Signed_By_Email__c = cont.Email ;
-                            acntLegalAgrAssoc.PRM_Signed_By_Name__c = cont.FirstName+' '+cont.LastName ;
+                            acntLegalAgrAssoc.PRM_Contact__c = cont.id ;
                             acntLegalAgrAssoc.PRM_Agreement_Sign_Dt__c = System.Now();
                             accLAs.add(acntLegalAgrAssoc);
                         }
@@ -269,7 +263,7 @@ public without sharing class Pricing_RegistrationReqUtility {
             for(Pricing_Account_Entitlements_Mapping__mdt acctEntMdt : [SELECT MasterLabel,Pricing_Entitlement_Nm__c 
                                                                         FROM  Pricing_Account_Entitlements_Mapping__mdt WHERE MasterLabel IN :acctIdNameMap.values() ]){
                                                                             List<String> entNamesLst = acctEntMdt.Pricing_Entitlement_Nm__c.split(',');
-                                                                            acctNameEntitlementsMap.put(acctEntMdt.MasterLabel, acctEntMdt.Pricing_Entitlement_Nm__c.split(','));  				
+                                                                            acctNameEntitlementsMap.put(acctEntMdt.MasterLabel, acctEntMdt.Pricing_Entitlement_Nm__c.split(','));          
                                                                             entNames.addAll(entNamesLst);                                                           
                                                                         }            
             
@@ -313,8 +307,8 @@ public without sharing class Pricing_RegistrationReqUtility {
     @InvocableMethod(label='Send Welcome Email to IQR Contact' description='Sends Welcome Email to IQR contacts once IQR Entitlement is Marked completed')
     public static void sendWelcomeEmail(List<Id> contactIds){
         try{
-			List<PRM_EmailUtility.EmailNotification> objEmailNotifList=  new List<PRM_EmailUtility.EmailNotification>();
-			 List<String> contEmailList=new List<String>();
+      List<PRM_EmailUtility.EmailNotification> objEmailNotifList=  new List<PRM_EmailUtility.EmailNotification>();
+       List<String> contEmailList=new List<String>();
             if(contactIds.size() > 0){
                 List<Contact> contacts = [SELECT id,FirstName,Email,Account.Name FROM Contact WHERE id IN :contactIds];
                 if(contacts.size() > 0){
@@ -327,22 +321,21 @@ public without sharing class Pricing_RegistrationReqUtility {
                         paramMap.put('EV_Contact_ID',cont.Id);
                         objEmailNotif.InputParameters=paramMap;
                         objEmailNotif.BusinessEvent= Label.Pricing_Welcome_email_on_request_approval_New;
-						objEmailNotifList.add(objEmailNotif);
-						contEmailList.add(cont.Email);
+            objEmailNotifList.add(objEmailNotif);
+            contEmailList.add(cont.Email);
                         PRM_EmailUtility.customPlaceholdersMap = new Map<String,String>{'{{ACCOUNTNAME}}' => cont.Account.Name, '{{IQRTOOLLINK}}' => Label.Pricing_Tender_Portal_Link};
                           //  PRM_EmailUtility.sendEmail(objEmailNotif);  
                           //  //added as part of governor limit story:4380
-						//PRM_EmailUtility.sendEmail(new List<PRM_EmailUtility.EmailNotification> {objEmailNotif});      
+            //PRM_EmailUtility.sendEmail(new List<PRM_EmailUtility.EmailNotification> {objEmailNotif});      
                         //PRM_createAccountandRelatedRecords.linkEmailLogToContact(cont.Email);
                     }
-					
                 }
             }
             
-			if(!objEmailNotifList.isEmpty()){
-					PRM_EmailUtility.sendEmail(objEmailNotifList);  
-					}
-			 if(!contEmailList.isEmpty()){
+      if(!objEmailNotifList.isEmpty()){
+          PRM_EmailUtility.sendEmail(objEmailNotifList);  
+          }
+       if(!contEmailList.isEmpty()){
                 PRM_createAccountandRelatedRecords.linkBulkEmailLogToContact(contEmailList);
             }
         }catch(Exception exp){/*Pricing_Tender_Utility.logError(ex);*/}        

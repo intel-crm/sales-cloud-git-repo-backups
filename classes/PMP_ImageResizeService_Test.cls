@@ -1,10 +1,33 @@
 @isTest
 private class PMP_ImageResizeService_Test{
-    
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_ImageResizeService.isWorking();
-        System.assertEquals(true, result);
+      @isTest
+    static void testPMPImageResizeService() {
+        // Create test data - remove the insert since createIntelAccount already inserts
+        Account testAccount = PMP_TestDataUtility.createIntelAccount('account1', PMP_TestDataUtility.intel_Account_Record_Type, true);
+        // Remove this line: insert testAccount;
+        
+        PMP_ImageResizeService service = new PMP_ImageResizeService();
+        
+        Test.startTest();
+        
+        // Test retryCallout with single ID
+        Boolean result1 = service.retryCallout(testAccount.Id);
+        System.assertEquals(true, result1);
+        
+        // Test retryCallout with list of IDs
+        List<Id> recordIds = new List<Id>{testAccount.Id};
+        Map<Id, Boolean> result2 = service.retryCallout(recordIds);
+        System.assertEquals(null, result2);
+        
+        // Test isWorking static method
+        Boolean result3 = PMP_ImageResizeService.isWorking();
+        System.assertEquals(true, result3);
+        
+        // Test generateThumbnailImage method
+        Boolean result4 = service.generateThumbnailImage(testAccount.Id);
+        System.assertEquals(true, result4);
+        
+        Test.stopTest();
     }
 		//IPA2.0:US-4497-1631_OfferingEOL
     // @testSetup

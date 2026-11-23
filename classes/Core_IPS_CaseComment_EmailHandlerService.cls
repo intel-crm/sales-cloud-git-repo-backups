@@ -1,5 +1,5 @@
 /***************************************************************************************************
-Apex Class Name:  Core_IPS_CaseComment_EmailHandlerService
+Apex Class Name:  Core_IPS_CaseComment_EmailHandlerService 
 Version     : 1.0 
 Created Date: 30 Oct 2017
 Function    : Email Handler service class for Case Comment creation through email and processing exception email 
@@ -13,17 +13,45 @@ Modification Log :
 * Sumukh                       06/06/2018              Modified - Handled logic for comment source field I-12, R-4.3, US-105428 
 ****************************************************************************************************/
 
-public without sharing class Core_IPS_CaseComment_EmailHandlerService {
+public class Core_IPS_CaseComment_EmailHandlerService {
 
     public static Core_IPS_Case_Comments__c createCaseComment(String htmlComment, String caseCommentType,String authorType, User usr, Id caseId){
         Core_IPS_Case_Comments__c comment = new Core_IPS_Case_Comments__c();
-        comment.Core_IPS_Case__c =  caseId; 
-        comment.Core_IPS_Case_Comment_Type__c = caseCommentType;
-        comment.Core_IPS_Rich_Comment__c = (htmlComment.length()>131000)? htmlComment.subString(0,131000):htmlComment;
-        comment.Core_IPS_Comment_Author_Type__c = authorType;
-        comment.Core_IPS_Case_Comment_Source__c = Core_IPS_Labels__c.getValues('Comment Source - Email').value__c; // Added by sumukh for comment source for US 105428
-        comment.CreatedById = usr.Id;
-        comment.LastModifiedById = usr.Id;
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case__c.isUpdateable())
+        {
+            comment.Core_IPS_Case__c =  caseId; 
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isUpdateable())
+        {
+            comment.Core_IPS_Case_Comment_Type__c = caseCommentType;
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isUpdateable())
+        {
+            comment.Core_IPS_Rich_Comment__c = (htmlComment.length()>131000)? htmlComment.subString(0,131000):htmlComment;
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isUpdateable())
+        {
+            comment.Core_IPS_Comment_Author_Type__c = authorType;
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Source__c.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Source__c.isUpdateable())
+        {
+            comment.Core_IPS_Case_Comment_Source__c = Core_IPS_Labels__c.getValues('Comment Source - Email').value__c; // Added by sumukh for comment source for US 105428
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.CreatedById.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.CreatedById.isUpdateable())
+        {
+            comment.CreatedById = usr.Id;
+        }
+        /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+        if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.LastModifiedById.isCreateable() || Schema.sObjectType.Core_IPS_Case_Comments__c.fields.LastModifiedById.isUpdateable())
+        {
+            comment.LastModifiedById = usr.Id;
+        }        
         insert comment;  
         return comment;
     }
@@ -34,6 +62,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         Map< String, Attachment > mapEmailAttachments = new Map< String, Attachment >(); 
         List<Attachment> attachmentList = new List<Attachment>();
         String replacedHeaderVal='';
+       
         for(Messaging.InboundEmail.BinaryAttachment bA : email.binaryAttachments) {
            
             for(integer i = 0; i < bA.headers.size(); i++) {
@@ -41,6 +70,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
                 //Header Value
                 String headerValue = bA.headers[i].value;
                 
+               
                 //if(headerValue.startsWith('< image')|| headerValue.startsWith('<image') || headerValue.startsWith('<ii') || headerValue.startsWith('<_wpsmail')) {
                 if(headerValue.startsWith('<') && headerValue.endsWith('>') ) {
                     headerValue = headerValue.replaceAll('<', '').replaceAll('>', '');
@@ -49,33 +79,40 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
                 }
             }
         }
+      
         //Insert attachment
         try{            
             insert mapAttachments.values();
         }catch(Exception ex){
+           
         }
         
         //Process inline images and update the HTML Body
         for(String headerValue : mapAttachments.keySet()) {
+            
             //Reference Link
             String refLink = System.Label.Core_IPS_Salesforce_Org_URL+'/servlet/servlet.FileDownload?file=' + mapAttachments.get(headerValue).Id;
-            comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Rich_Comment__c.replaceAll('cid:' + headerValue, refLink);
+            /*US1038991 - 19/07/2021 - Farhaad - FLS Check for security vulnerability --*/
+            if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isUpdateable()){
+                comment.Core_IPS_Rich_Comment__c = comment.Core_IPS_Rich_Comment__c.replaceAll('cid:' + headerValue, refLink);
+            }
+            /*US1038991 - 09/07/2021 - Karthik - FLS Check for security vulnerability --*/
+            if(Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isUpdateable())
+            {
+                comment.Core_IPS_Rich_Comment__c = (comment.Core_IPS_Rich_Comment__c.length()>131000)? comment.Core_IPS_Rich_Comment__c.subString(0,131000):comment.Core_IPS_Rich_Comment__c;
+            } 
             
-            comment.Core_IPS_Rich_Comment__c = (comment.Core_IPS_Rich_Comment__c.length()>131000)? comment.Core_IPS_Rich_Comment__c.subString(0,131000):comment.Core_IPS_Rich_Comment__c;
             
         }
         update comment;
+       
         return comment;
     }
     
     
     //Process exception email.
     public static void sendExceptionEmailUpdate(String fromAdd, Case mailCase) {
-        List<OrgWideEmailAddress> orgWideEmailList = new List<OrgWideEmailAddress>();
-        //FLS check added-Venugopal
-        if(OrgWideEmailAddress.SObjectType.getDescribe().isAccessible()){
-            orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support' limit 1];
-        }
+        List<OrgWideEmailAddress> orgWideEmailList = [select id, address from OrgWideEmailAddress where displayname = :'Intel Premier Support' limit 1];
         String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
         List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
         EmailTemplate et = [SELECT Id,Body,HtmlValue,Subject FROM EmailTemplate WHERE DeveloperName ='Core_IPS_Case_Comment_Exception_Email'];
@@ -108,6 +145,8 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         lskyh.add( new Skyh_Class('Core_IPS_Rich_Comment__c', commentString));
         allObjects.add(new List<Skyh_Class>(lskyh));
 
+    
+
         String finalJSON = '{\"Core_IPS_Case_Comments__c\": ' + JSON.serialize(allObjects) + '}';
 
         // Value:https://encapicrm.intelqa.shnpoc.net/encryption/2/encrypt
@@ -117,6 +156,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         //Value: EAASCertificate
         string certName = Label.EAASCertificate_Name;
 
+   
         req.setBody(finalJSON);
         req.setHeader('Content-Type', 'application/json'); 
         req.setEndpoint(endpoint);
@@ -130,6 +170,7 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
         if(!test.isrunningtest()){
             HTTPResponse res = http.send(req);
             if(res.getStatus()=='OK'){
+               
                 return res.getBody();
             }else
                 return 'Encryption Failed';
@@ -147,4 +188,5 @@ public without sharing class Core_IPS_CaseComment_EmailHandlerService {
             value = val;
         }
     } */
+      
 }

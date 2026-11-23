@@ -37,5 +37,12 @@
         <label><!-- Start Date --></label>
         <name>PRM_Start_Date_Dt__c</name>
     </fields>
+    <layouts>
+        <layout>Specialty Benefit Group Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

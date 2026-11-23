@@ -10,12 +10,6 @@
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <columns>
@@ -28,32 +22,21 @@
         <field>OpportunityLineItem.Core_Division_Code__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>LINEITEM_CREATED_DATE</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>HASOPPLINEITEM</field>
-    </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <column>OPPORTUNITY_ID</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>HASOPPLINEITEM</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <value>006o000000O0xwE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

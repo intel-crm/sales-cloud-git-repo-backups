@@ -25,24 +25,8 @@
         <name>Core_Division_Shortname__c</name>
     </fields>
     <fields>
-        <label><!-- End of Week Processed --></label>
-        <name>Core_End_of_Week_Processed__c</name>
-    </fields>
-    <fields>
         <label><!-- Integration Load ID --></label>
         <name>Core_Load_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Mid Week Processed --></label>
-        <name>Core_Mid_Week_Processed__c</name>
-    </fields>
-    <fields>
-        <label><!-- Owning BU Short Name --></label>
-        <name>Core_Owning_BU_Short_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Processed --></label>
-        <name>Core_Processed__c</name>
     </fields>
     <fields>
         <label><!-- Product Application --></label>

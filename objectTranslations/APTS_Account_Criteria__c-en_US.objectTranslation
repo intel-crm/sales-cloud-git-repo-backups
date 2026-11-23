@@ -16,5 +16,12 @@
         <label><!-- Description --></label>
         <name>APTS_Description__c</name>
     </fields>
+    <layouts>
+        <layout>Account Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

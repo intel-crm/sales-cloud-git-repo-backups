@@ -27,8 +27,7 @@
         <template if:true={allrecordProcessed}>
           <lightning-layout-item size="4" flexibility="auto" padding="horizontal-small slds-p-top_x-small"
             class="slds-text-align_right slds-p-bottom_small">
-            <lightning-input placeholder="Search by Account Name" type="text" value={inputValue}
-              onchange={handleChange}>
+            <lightning-input placeholder="Seach by Account Name" type="text" value={inputValue} onchange={handleChange}>
             </lightning-input>
           </lightning-layout-item>
         </template>
@@ -41,13 +40,6 @@
           </lightning-datatable>
         </lightning-layout-item>
       </lightning-layout>
-      
-      <template if:true={searchFilter}>
-        <template if:false={recordPresent}>
-          <p class="slds-align_absolute-center"> No records found for {searchVal}</p>
-        </template>
-      </template>
-      
       <template if:false={searchFilter}>
         <template if:true={allrecordProcessed}>
           <div class="slds-p-around_small slds-align_absolute-center">
@@ -66,7 +58,6 @@
       <lightning-spinner variant="brand" alternative-text="Loading Data" size="medium">
       </lightning-spinner>
     </div>
-
     <template if:false={spinner}>
       <template if:false={hasData}>
         <p class="slds-align_absolute-center">Error Encountered!</p>

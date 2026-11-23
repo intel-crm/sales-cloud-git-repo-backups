@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Elizabeth Collett</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11512350_Natalia_Zaitseva</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_10625349_Elizabeth_Collett</parentRole>
+</Role>

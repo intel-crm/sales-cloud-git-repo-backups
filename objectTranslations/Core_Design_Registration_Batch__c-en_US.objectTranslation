@@ -32,6 +32,10 @@
         <relationshipLabel><!-- Design Registration Batches --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Partner Prime  Account Name --></label>
+        <name>Core_Partner_Prime_Account_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Design Count (Pass) --></label>
         <name>Core_Pass_Design_Cnt__c</name>
     </fields>
@@ -51,9 +55,24 @@
         <label><!-- Total Rows --></label>
         <name>Core_Total_Row_Cnt__c</name>
     </fields>
+    <fields>
+        <label><!-- test --></label>
+        <name>test__c</name>
+        <relationshipLabel><!-- Design Registration Batches --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Design Registration Batch Layout - Intel User</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Design Registration Batch Layout - Partner User</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
-    <webLinks>
-        <label><!-- Core_View_Detail_Report --></label>
-        <name>Core_View_Detail_Report</name>
-    </webLinks>
 </CustomObjectTranslation>

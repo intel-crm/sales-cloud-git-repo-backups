@@ -15,8 +15,6 @@ global class Core_CampaignTaskGeneration_Batch implements Database.Batchable<sOb
     private static final String BATCH_STARTED = 'Generation Started';
     private static final String BATCH_COMPLETE = 'Generation Complete';
     private static final String BATCH_ERROR = 'Generation Error';
-    
-    private static String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
         
@@ -39,13 +37,12 @@ global class Core_CampaignTaskGeneration_Batch implements Database.Batchable<sOb
         List<Id> campaignMemberIds = new List<Id>();
         for (CampaignMember cm : campaignMembers)
             campaignMemberIds.add(cm.Id);
-         
-        Core_CampaignTaskGeneration_Controller.generateTasksForSpecificMembers(campaignMemberIds);
         
+        Core_CampaignTaskGeneration_Controller.generateTasksForSpecificMembers(campaignMemberIds);
     }
     
     global void finish(Database.BatchableContext bc) {
-       
+        
         // Get the batch job information
         AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email
                           FROM AsyncApexJob WHERE Id =:bc.getJobId()];
@@ -67,9 +64,8 @@ global class Core_CampaignTaskGeneration_Batch implements Database.Batchable<sOb
         mail.setSubject('Salesforce task generation for sales campaign has finished. Batch status: ' + a.Status + '.');
         mail.setPlainTextBody(strEmailBody);
         mail.setToAddresses(new String[]{a.CreatedBy.Email});
-        mail.setOrgWideEmailAddressId(fromEmailAddress);
         Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
-         
+        
         // Update the batch generation flag for the campaign(s) we generated tasks for
         List<Campaign> campaigns = [select Id, Core_Task_Batch_Status__c
                                     from Campaign where Core_Task_Batch_Job_ID__c = :bc.getJobId()];

@@ -62,12 +62,13 @@ public without sharing class PRM_ProfileResponseOPIDCtlr {
                 }    
             }  
         }
-        if(channelProg != null && channelProg.contains(',')){
-            channelProgramNames = channelProg.split(',');
+        if(channelProg != null){
+            if(channelProg.contains(',')){
+                channelProgramNames = channelProg.split(',');
             }else{
                 channelProgramNames.add(channelProg);
             }
-        
+        }
         for(ChannelProgram cp :[select id from channelProgram where name in : channelProgramNames]){
             channelProgId.add(cp.id);
         }
@@ -77,6 +78,7 @@ public without sharing class PRM_ProfileResponseOPIDCtlr {
                 lstQues.add(ques);
             }
         }
+        system.debug('---lstQues '+lstQues);
         if(!setQuesId.isEmpty()){
             for(PRM_Profile_Answer__c objAns : [select id,PRM_Answer_Display_Txt__c,PRM_Answer_Cd__c,PRM_Profile_Questions_Id__c from PRM_Profile_Answer__c where PRM_Profile_Questions_Id__c in: setQuesId]){
                 if(mapQuesToAns.containsKey(objAns.PRM_Profile_Questions_Id__c)) {List<PRM_Profile_Answer__c> ansList = mapQuesToAns.get(objAns.PRM_Profile_Questions_Id__c);
@@ -97,6 +99,7 @@ public without sharing class PRM_ProfileResponseOPIDCtlr {
                 }
             }
         }
+        system.debug('---mapQuesToRes'+mapQuesToRes);
         
         //Id userId = UserInfo.getUserId();
         List<UserRecordAccess> userRecordAccess= [SELECT RecordId, HasEditAccess FROM UserRecordAccess WHERE UserId=:UserInfo.getUserId() AND RecordId =: accId];
@@ -124,18 +127,26 @@ public without sharing class PRM_ProfileResponseOPIDCtlr {
             }
             returnList.add(returnWrap);
         }
+        system.debug('---returnList '+returnList);
         return returnList;
     } 
     @AuraEnabled 
     public static void saveResponse(List<PRM_Profile_Responses__c> lstResp,List<PRM_Profile_Responses__c> delResp,id accId){
         /*List<PRM_Profile_Responses__c> updateRes = new List<PRM_Profile_Responses__c>();
-		List<PRM_Profile_Responses__c> updateRes1 = new List<PRM_Profile_Responses__c>();
-		List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();*/
+        List<PRM_Profile_Responses__c> updateRes1 = new List<PRM_Profile_Responses__c>();
+        List<PRM_Profile_Responses__c> updateRes2 = new List<PRM_Profile_Responses__c>();*/
+        
+        
         if(!delResp.isEmpty()){
-            update delResp;
+           
+             update delResp;
         }
         if(!lstResp.isEmpty()){
+            system.debug('lstResp---'+lstResp.size());
+            system.debug('lstResp---'+lstResp[0].PRM_InActive_Ind__c);
             upsert lstResp;
-        }
     }
+    
+}
+        
 }

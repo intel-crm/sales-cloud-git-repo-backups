@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Audience xmlns="http://soap.sforce.com/2006/04/metadata">
-    <audienceName>CCF_DCF_SPCF_CCFB_Retail User Admin</audienceName>
+    <audienceName>CCF_DCF_SPCF_CCFB User Admin</audienceName>
     <container>Partnercenter Unified Community</container>
     <criteria>
         <criterion>
@@ -14,22 +14,44 @@
         <criterion>
             <criteriaNumber>2</criteriaNumber>
             <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_CCP_User_Administrator</permissionName>
-                <permissionType>Custom</permissionType>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>SPCF User Administrator</fieldValue>
             </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF User Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>DCF User Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Boost User Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
         </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>6de411c8-808e-4c15-913b-b6aa312b682e</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Grant_Access_Grant_Access_Page</targetValue>
-        </target>
-    </targets>
 </Audience>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>Intel® Optane™ Technology Data Center Specialty</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_OPTANE_DATA_CENTER_ZHO</name>
@@ -24,13 +24,11 @@
 
 
 负责英特尔® 傲腾™ 技术专家通信的主要联系人
-名称：
-电子邮件：
+名称：电子邮件：
 
 
 获取其他销售和推广材料
-实际邮寄地址：
-电话：
+实际邮寄地址：电话：
 
 获得权益
 
@@ -39,14 +37,14 @@
 
 英特尔的合作伙伴总是在不断创新，而英特尔® 合作伙伴联盟的出现将为您的创新提供鼎力支持，帮助您加速构建创新解决方案，在以数据为中心的经济大潮中乘风破浪。我们将与您携手共同创造非凡机遇，实现连接、创新与成长。
 
-访问 https://www.intel.com/content/www/cn/zh/partner-alliance/help/overview.html，获取关于如何优化会员状态的帮助和指导。
+访问 intel.com/partnerhelp，获取关于如何优化会员状态的帮助和指导。
 
 
 谢谢！
 英特尔® 合作伙伴联盟团队
 
 发送给您的这一封，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} 英特尔公司版权所有
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
 隐私 | Cookies</textOnly>
     <type>custom</type>

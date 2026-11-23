@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Milestone_Display_Name__c</field>
-        <value xsi:type="xsd:string">OPID Request In Progress</value>
+        <value xsi:type="xsd:string">Inbound In Progress</value>
     </values>
     <values>
         <field>PRM_Order__c</field>

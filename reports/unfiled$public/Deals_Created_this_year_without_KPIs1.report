@@ -48,14 +48,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,gordon,descheemaeker,o&apos;donnell,swanger,weston,Herrmann,haynes</value>
+            <value>cook,gordon,descheemaeker,o&apos;donnell,swanger,weston,Herrmann,haynes,rodman,mushahwar</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>12/31/2021</value>
+            <value>1/1/2021</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

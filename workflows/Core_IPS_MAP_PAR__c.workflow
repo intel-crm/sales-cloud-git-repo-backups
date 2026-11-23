@@ -7,7 +7,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_PAR_Internal_Created</template>
     </alerts>
@@ -17,7 +17,7 @@
             <name>Core_Send_email_receipt_to_PAR_Submitter</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_IPS_MAP_PAR__c.RecordTypeId</field>
             <operation>equals</operation>

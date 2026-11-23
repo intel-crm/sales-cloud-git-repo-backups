@@ -1,0 +1,6 @@
+.THIS .slds-th__action-button{
+    display: none ;
+}
+.THIS.first-row-bold table tr:first-child * {
+    font-weight: 800;
+}

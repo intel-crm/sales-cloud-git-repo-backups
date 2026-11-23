@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>DEKTEC DIGITAL VIDEO BV Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>DEKTECDIGITALVIDEOBVCustomerManager</parentRole>
 </Role>

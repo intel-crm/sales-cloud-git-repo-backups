@@ -14,7 +14,7 @@ Modification Log :
 public class Core_Contact_Business_Type_Handler_Test {
     
     
-   /* static testMethod void InsertContactEntApprovedABT_Test() {
+    static testMethod void InsertContactEntApprovedABT_Test() {
         
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
@@ -46,14 +46,14 @@ public class Core_Contact_Business_Type_Handler_Test {
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',
                                               Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                              Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                              Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact;
             
             Contact testContact2 = new Contact(FirstName='testFirst',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLast', Email='test@testing.com.testsetup',
                                                AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='145',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;
             
@@ -85,15 +85,13 @@ public class Core_Contact_Business_Type_Handler_Test {
             
             Test.stopTest();
         }
-    }  */
+    }
     
     static testMethod void InsertContactBTNoEngNameTest() {
         
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
@@ -114,21 +112,21 @@ public class Core_Contact_Business_Type_Handler_Test {
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                               Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',
                                               Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                              Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                              Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact;
             
             Contact testContact2 = new Contact(FirstName='testFirst',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLast', Email='test@testing.com.testsetup',
                                                AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,
                                                Core_Enterprise_Id__c='145',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_First_Name__c = 'testFirst', Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;
             
@@ -169,8 +167,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
@@ -191,21 +187,21 @@ public class Core_Contact_Business_Type_Handler_Test {
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                               Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',Core_English_Only_First_Name__c = 'testFirst',
                                               Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                              Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                              Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact;
             
             Contact testContact2 = new Contact(FirstName='testFirst',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLast', Email='test@testing.com.testsetup',
                                                AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='145',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;
             
@@ -233,14 +229,11 @@ public class Core_Contact_Business_Type_Handler_Test {
             try {
                 insert bType;
             }
-            
             catch(Exception ex) {
                 Boolean expectedExceptionThrown =  ex.getMessage().contains('Script-thrown exception') ? true : false;
                 System.assertEquals(expectedExceptionThrown, false);
             }         
             Test.stopTest();
-            bType.Status__c = 'Rejected';
-            update bType;
         }
     }
     
@@ -251,27 +244,25 @@ public class Core_Contact_Business_Type_Handler_Test {
         Map<id, Contact_Business_Types__c> lstEnt = new  Map<id, Contact_Business_Types__c>();
         List<Contact_Business_Types__c> lstBT = new  List<Contact_Business_Types__c>();
         List<PRM_VXEnttlmntMatrix__c> entMatrix = new List<PRM_VXEnttlmntMatrix__c>();
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                           Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                          BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
         Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                           AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                           Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                          Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                          Core_English_Only_Last_Name__c ='testFirst');
         
         insert testContact;
         
         Contact testContact2 = new Contact(FirstName='testFirst',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLast', Email='test@testing.com.testsetup',
                                            AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                            Core_Enterprise_Id__c='145',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                           Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                           Core_English_Only_Last_Name__c ='testFirst');
         
         insert testContact2;
         
@@ -308,8 +299,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
@@ -327,21 +316,21 @@ public class Core_Contact_Business_Type_Handler_Test {
             Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
                                               Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                              BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount;
             System.assert(true,testAccount.Core_CNDA_Number__c != null);
             
             Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                               AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                              Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                              Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact;
             
             Contact testContact2 = new Contact(FirstName='testFirst',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLast', Email='test@testing.com.testsetup',
                                                AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='145',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;
             
@@ -380,16 +369,15 @@ public class Core_Contact_Business_Type_Handler_Test {
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
-        
-        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
+        User itAdminUser = new User(Alias = 'itAdm22',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
                                     LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
                                     ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
                                     UserName='salesRepTestx21@intel.com', UserRoleId=admin.Id);
         insert itAdminUser;
         system.runas(itAdminUser) {
+               System.debug('Acct Owner1 : '+itAdminUser.Alias);
             
             List<Core_Contact_Entitlement__c> lstEnt = new  List<Core_Contact_Entitlement__c>();
             List<Contact_Business_Types__c> lstBT = new  List<Contact_Business_Types__c>();
@@ -397,22 +385,36 @@ public class Core_Contact_Business_Type_Handler_Test {
             Map<id, Contact_Business_Types__c> listrecords = new Map<id, Contact_Business_Types__c>();    
             Account testAccount1 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
                                                Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
-                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,OwnerId=itAdminUser.Id,
+                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount1;
+            Account act = [Select OwnerID, Owner.ID From Account where ID = :testAccount1.id];
             System.assert(true,testAccount1.Core_CNDA_Number__c != null);
+            System.assert(true,testAccount1.Core_CNDA_Number__c != null);
+            System.debug('OWner : '+act.OwnerID);
+            System.debug('OWner : '+testAccount1.OwnerID);
+             System.debug('User Id : '+itAdminUser.Id);
             
+         
+             System.debug('Covered Acct : '+ testAccount1.Core_Covered_Account__c);
+             System.debug('CIM : '+ testAccount1.Core_CIM_ID__c);
+            System.debug('B2B : '+ testAccount1.Core_B2B_Entitlement__c);
+            System.debug('CNDA : '+ testAccount1.Core_CNDA_Number__c);
+            
+            
+                
+                         
             Contact testContact2 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;  
             
             Contact testContact3 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test8877@testing.com.testsetup',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact3;
             
@@ -478,8 +480,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         Map<id, Contact_Business_Types__c> listrecords = new Map<id, Contact_Business_Types__c>();
         
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
         
@@ -494,21 +494,21 @@ public class Core_Contact_Business_Type_Handler_Test {
             Account testAccount1 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
                                                Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                                BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount1;
             System.assert(true,testAccount1.Core_CNDA_Number__c != null);
             
             Contact testContact2 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='gkinto@dispostable.com',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;  
             
             Contact testContact3 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test8877@testing.com.testsetup',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact3;
             
@@ -579,8 +579,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
         
         UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
                                     EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
@@ -597,21 +595,21 @@ public class Core_Contact_Business_Type_Handler_Test {
             Account testAccount1 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
                                                Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                                BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
             insert testAccount1;
             System.assert(true,testAccount1.Core_CNDA_Number__c != null);
             
             Contact testContact2 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact2;  
             
             Contact testContact3 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test8877@testing.com.testsetup',
                                                AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                                Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                               Core_English_Only_Last_Name__c ='testFirst');
             
             insert testContact3;
             
@@ -651,19 +649,17 @@ public class Core_Contact_Business_Type_Handler_Test {
     static testmethod void testSubscriptionApproved(){
         
         List<PRM_Registration_Request__c> requestList = new List<PRM_Registration_Request__c>();
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         Account testAccount4 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
                                            Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                            BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount4;
         
         Contact testContact4 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                            AccountId=testAccount4.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                            Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                           Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                           Core_English_Only_Last_Name__c ='testFirst');
         
         insert testContact4; 
         
@@ -689,7 +685,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         csa.PRM_Partner_Subscription_Id__c = pS.Id;
         csa.PRM_Contact_Id__c = testContact4.Id;
         csa.PRM_Status_Nm__c = 'Active';
-        csa.PRM_Status_Reason_Txt__c ='Activated as contact is eligible for Subscription';//TWC729-8089 : Adding reason text 
         insert csa;
         
         PRM_BatchCustomSetting__c bm = new PRM_BatchCustomSetting__c();//Custom Setting Benefit Mapping
@@ -746,19 +741,17 @@ public class Core_Contact_Business_Type_Handler_Test {
     static testmethod void testSubscriptionRejected(){
         
         List<PRM_Registration_Request__c> requestList = new List<PRM_Registration_Request__c>();
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         
         Account testAccount4 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
                                            Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
                                            BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true,RecordTypeId = recordTypeIdAccount);
+                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
         insert testAccount4;
         
         Contact testContact4 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                            AccountId=testAccount4.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
                                            Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                           Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
+                                           Core_English_Only_Last_Name__c ='testFirst');
         
         insert testContact4; 
         
@@ -775,7 +768,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         regRequest.PRM_First_Name__c = 'Test G';
         regRequest.PRM_Last_Name__c = 'Test K';       
         regRequest.Entitlement_Details__c = entitle.id;
-        regRequest.PRM_Status__c = 'Approved';
         regRequest.Name = 'Test Regiistration';
         regRequest.PRM_Email_ID__c = testContact4.Email;
         regRequest.PRM_Account_Partner_Type__c = 'Cloud Service Provider (CSP)';
@@ -793,7 +785,6 @@ public class Core_Contact_Business_Type_Handler_Test {
         csa.PRM_Partner_Subscription_Id__c = pS.Id;
         csa.PRM_Contact_Id__c = testContact4.Id;
         csa.PRM_Status_Nm__c = 'Active';
-        csa.PRM_Status_Reason_Txt__c ='Inactivated as contact is not eligible for Subscription';//TWC729-8089 : Adding reason text 
         insert csa;
         List<Contact_Business_Types__c> cbtList = new List<Contact_Business_Types__c>();
         Contact_Business_Types__c bType = new Contact_Business_Types__c(Contact__c = testContact4.Id, Business_Types__c= business.Id, 
@@ -806,82 +797,5 @@ public class Core_Contact_Business_Type_Handler_Test {
         Core_Contact_Business_Type_Handler.upsertSubscription(cbtList);
         Test.stopTest();
     }
-    
-   /* static testMethod void rejectCBT_Test() {
-        
-        Profile itAdminPrf = [select id, name from Profile where name = 'System Administrator' Limit 1];
-        
-        UserRole admin = [Select id, name from UserRole where name = 'Admin' limit 1];
-        
-        User itAdminUser = new User(Alias = 'itAdm21',   Email='itAdminTestx21@intel.com', 
-                                    EmailEncodingKey='UTF-8',   LastName='UnitTestAdmin1',
-                                    LanguageLocaleKey='en_US',  LocaleSidKey='en_US', 
-                                    ProfileId = itAdminPrf.Id,  TimeZoneSidKey='America/Los_Angeles',
-                                    UserName='salesRepTestx21@intel.com', UserRoleId=admin.Id);
-        insert itAdminUser;
-        system.runas(itAdminUser) {
-            
-            List<Core_Contact_Entitlement__c> lstEnt = new  List<Core_Contact_Entitlement__c>();
-            List<Contact_Business_Types__c> lstBT = new  List<Contact_Business_Types__c>();
-            List<PRM_VXEnttlmntMatrix__c> entMatrix = new List<PRM_VXEnttlmntMatrix__c>();
-            Map<id, Contact_Business_Types__c> listrecords = new Map<id, Contact_Business_Types__c>();    
-            Account testAccount1 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
-                                               Core_Account_Type__c='Other', Industry='Others', Core_CIM_ID__c = '223255',Core_English_Only_Name__c = 'testAccountSetup',
-                                               BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',Core_B2B_Entitlement__c = true,
-                                               BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',Core_IPS_Active__c = true);
-            insert testAccount1;
-            System.assert(true,testAccount1.Core_CNDA_Number__c != null);
-            
-            Contact testContact2 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
-                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
-            
-            insert testContact2;  
-            
-            Contact testContact3 = new Contact(FirstName='testFirstName1234',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test8877@testing.com.testsetup',
-                                               AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = false,Core_English_Only_First_Name__c = 'testFirst',
-                                               Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
-                                               Core_English_Only_Last_Name__c ='testFirst',MailingCountry='USA');
-            
-            insert testContact3;
-            
-            Business_Types__c business = new Business_Types__c(Business_Type_Code__c='DZP', Name=System.Label.ER_CBT_DZP, Is_Active__c = true);
-            
-            insert business;
-            System.assertNotEquals(null, business.Id);
-            
-            Core_Entitlement__c entitle=new Core_Entitlement__c (name ='Resource & Design Center for Secure Content', Core_Category__c='Order Management',Core_Sub_Category__c='Web Reporting',Core_Help_Text__c='Help text',Core_Display_Name__c='Resource & Design Center for Secure Conten',Core_IsActive__c=true);
-            insert entitle;
-            System.assert(true,entitle.Core_Category__c!= null);
-            
-            PRM_VXEnttlmntMatrix__c matrix = new PRM_VXEnttlmntMatrix__c(PRM_Entitlement_Id__c =entitle.id, Business_Types__c = business.Id,
-                                                                         PRM_Approval_Type_Nm__c = 'Manual', PRM_IsActive_Ind__c = true);
-            
-            insert matrix;
-            System.assertNotEquals(null, matrix.Id);
-            
-            Account_Business_Types__c aType = new Account_Business_Types__c(Account__c=testAccount1.Id, Business_Types__c= business.Id,
-                                                                            Status__c = 'Approved');
-            insert aType;
-            List<Contact_Business_Types__c> cbtList = new List<Contact_Business_Types__c>(); 
-            Contact_Business_Types__c bType = new Contact_Business_Types__c(Contact__c = testContact2.Id, Business_Types__c= business.Id);        
-            cbtList.add(bType);                           
-            insert cbtList;
-            
-            List<Core_Contact_Entitlement__c> enti = [SELECT Core_Contact_Id__c, Core_Entitlement_Id__c, Core_Selected__c, Core_Status__c
-                                                      FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c =: testContact2.Id AND Core_Entitlement_Id__c=: entitle.id];
-            
-            enti[0].Core_Status__c = 'Complete';
-            update enti;
-            
-            Test.startTest();
-            bType.Status__c = 'Rejection - Pending';
-            update bType;
-            Test.stopTest();
-        }
-        
-    }*/
-
     
 }

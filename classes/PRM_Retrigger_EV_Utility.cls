@@ -68,7 +68,7 @@ public without sharing class PRM_Retrigger_EV_Utility {
         public String BizOrgType{get;set;}
         public Boolean fromComponent{get;set;}
         public Id regRequestId{get;set;}
-    }//Athr fixes
+    }//JB
 	@AuraEnabled
     Public static String Retrigger_EV(Retrigger_EVWrapper att)
 {

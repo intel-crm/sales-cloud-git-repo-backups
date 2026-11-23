@@ -34,7 +34,6 @@ public class ER_DupCheck_CIMCallout_Test {
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.FirstName='test';
         c.LastName='Contact';
-        c.MailingCountry='India';
         c.RecordTypeId = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
         insert c;
         
@@ -72,7 +71,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc1.BillingPostalCode='560037';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc1.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc1.Core_Account_Type__c = 'Distributor';
+        acc1.Core_Account_Type__c = 'Distributor';
         acc1.Industry = '';
         //acc1.Core_CIM_ID__c='22213672';
         acc1.Core_CIM_ID__c='10100006';
@@ -98,7 +97,6 @@ public class ER_DupCheck_CIMCallout_Test {
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.FirstName='test';
         c.LastName='Contact';
-        c.MailingCountry='India';
         c.RecordTypeId = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
         insert c;
         
@@ -136,7 +134,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc1.BillingPostalCode='560037';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc1.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc1.Core_Account_Type__c = 'Distributor';
+        acc1.Core_Account_Type__c = 'Distributor';
         acc1.Industry = '';
         //acc1.Core_CIM_ID__c='22213672';
         acc1.Core_CIM_ID__c='10100006';
@@ -151,7 +149,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc2.BillingPostalCode='5600378';
         acc2.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc2.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc2.Core_Account_Type__c = 'Distributor';
+        acc2.Core_Account_Type__c = 'Distributor';
         acc2.Industry = '';
         acc1.Core_CIM_ID__c='22213672';
         //acc2.Core_CIM_ID__c='10100006';
@@ -165,7 +163,6 @@ public class ER_DupCheck_CIMCallout_Test {
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.FirstName='test';
         c.LastName='Contact';
-        c.MailingCountry='India';
         c.RecordTypeId = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
         insert c;
         
@@ -202,7 +199,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc1.BillingPostalCode='560037';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc1.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc1.Core_Account_Type__c = 'Distributor';
+        acc1.Core_Account_Type__c = 'Distributor';
         acc1.Industry = '';
         //acc1.Core_CIM_ID__c='22213672';
         acc1.Core_CIM_ID__c='10100006';
@@ -217,7 +214,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc2.BillingPostalCode='5600378';
         acc2.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc2.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc2.Core_Account_Type__c = 'Distributor';
+        acc2.Core_Account_Type__c = 'Distributor';
         acc2.Industry = '';
         acc1.Core_CIM_ID__c='22213672';
         //acc2.Core_CIM_ID__c='10100006';
@@ -231,7 +228,6 @@ public class ER_DupCheck_CIMCallout_Test {
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.FirstName='test';
         c.LastName='Contact';
-        c.MailingCountry='India';
         c.RecordTypeId = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
         insert c;
         
@@ -267,7 +263,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc1.BillingPostalCode='560037';
         acc1.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc1.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc1.Core_Account_Type__c = 'Distributor';
+        acc1.Core_Account_Type__c = 'Distributor';
         acc1.Industry = '';
         //acc1.Core_CIM_ID__c='22213672';
         acc1.Core_CIM_ID__c='10100006';
@@ -282,7 +278,7 @@ public class ER_DupCheck_CIMCallout_Test {
         acc2.BillingPostalCode='5600378';
         acc2.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc2.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc2.Core_Account_Type__c = 'Distributor';
+        acc2.Core_Account_Type__c = 'Distributor';
         acc2.Industry = '';
         acc1.Core_CIM_ID__c='22213672';
         //acc2.Core_CIM_ID__c='10100006';
@@ -296,7 +292,6 @@ public class ER_DupCheck_CIMCallout_Test {
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.FirstName='test';
         c.LastName='Contact';
-        c.MailingCountry='India';
         c.RecordTypeId = Schema.getGlobalDescribe().get('Contact').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Contact).getRecordTypeId();
         insert c;
         
@@ -325,7 +320,7 @@ public class ER_DupCheck_CIMCallout_Test {
     public static Account getAccount(){
         Account a = new Account();
         a.Name='Intel';
-        //a.Core_Account_Type__c ='Distributor';
+        a.Core_Account_Type__c ='Distributor';
         a.Industry='Agriculture';
         //a.Company_Domain__c='intel.com';
         return a;

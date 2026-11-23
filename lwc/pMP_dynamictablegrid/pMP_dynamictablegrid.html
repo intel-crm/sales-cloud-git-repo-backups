@@ -1,0 +1,215 @@
+<!-- sldsValidatorIgnore --> 
+<template>    
+    <lightning-card >
+            <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                            <div class="slds-combobox_container slds-size_small">
+                                    <div class={dropdownTriggerClass} aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                                                    role="none" onclick={handleClickExtend}>
+                                                    <h3 class="current_filter" slot="title">
+                                                    <lightning-icon icon-name="utility:table" size="medium">
+                                                    </lightning-icon>{currentfilterlabel}
+                                                    <lightning-icon
+                                                                    class="slds-button__icon slds-icon-utility-down slds-icon_container forceIcon"
+                                                                    data-data-rendering-service-uid="232" data-aura-rendered-by="371:0"
+                                                                    data-aura-class="forceIcon" icon-name="utility:down" size="x-small">
+                                                     </lightning-icon></h3>
+                            
+                                                    <div id="listbox-id-1" class="slds-dropdown slds-dropdown_length-5 "
+                                                    role="listbox">
+                                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                                    <template for:each={filterOptions} for:item="option">
+                                                                            <li role="presentation" class="slds-listbox__item" key={option.value}>
+                                                                                    <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small"
+                                                                                    data-filter={option.value} data-filterlabel = {option.label} onclick={handleFilterChangeButton}
+                                                                                    onpicklistchanged={handlePicklist}>
+                                                                                            <span class="slds-media__figure slds-listbox__option-icon"
+                                                                                            data-filter={option.value} data-filterlabel = {option.label}></span>
+                                                                                                    <span class="slds-media__body" data-filter={option.value} data-filterlabel = {option.label}>
+                                                                                                            <span class="slds-truncate" title={option.label}
+                                                                                                                    data-filter={option.value} data-filterlabel = {option.label}>{option.label}</span>
+                                                                                            </span>
+                                                                                    </div>
+                                                                            </li>
+                                                                    </template>
+                                                            </ul>
+                                                    </div>
+                                            </div>
+                    
+                                    </div>
+                            </div>
+                    </div>
+            </div> 
+            <div class="slds-float_right">
+                <lightning-button-group> 
+                        <lightning-button icon-name="utility:download" 
+                                                label="Download as CSV" 
+                                                title="Download CSV File"
+                                                onclick={downloadCSVFile} variant="brand"></lightning-button>
+                     <template if:true={EnableNewRecordCreation}>  
+                        <lightning-button variant="brand"
+                                label="New"
+                                title="New"
+                                onclick={openRecordTypeModal}
+                                class="slds-var-m-left_x-small">
+                        </lightning-button>
+                     </template>
+                     <template if:true={EnableSelectAndReorderColumns}>   
+                        <lightning-button class="slds-var-p-left_small" variant="brand" onclick={openModal} label="Select and Reorder Column" value="Select and Reorder Column">
+                        </lightning-button>
+                     </template>     
+                </lightning-button-group> 
+        </div>
+           <div class="slds-box slds-theme_shade slds-clearfix" style="padding: 5px;height: 45px;">	
+                    <div class="slds-align_absolute-center">
+                            <template if:true={showSearchBox}>
+                                <lightning-input label="" type="search" placeholder="Search by any Col Value" records= {searchResult} variant="label-hidden" 
+                                onkeypress={handlePaginatorChange} value = {val} ></lightning-input>
+                            </template>
+                    </div>
+            </div>
+            <br/>
+            <c-p-m-p_lookupdatatable
+                    key-field="Id"
+                    data={recordsToDisplay}
+                    columns={columns}
+                    onlookupselect={handleSelection}
+                    onpicklistchanged={handlePicklist}
+                    draft-values={draftValues} 
+                    min-column-width="200"
+                    max-column-width="600"
+                    min-column-height="200"
+                    max-column-height="600"
+                    hide-checkbox-column 
+                    default-sort-direction={defaultSortDirection}
+                    sorted-direction={sortDirection}
+                    sorted-by={sortedBy}
+                    onsave={handleSave}
+                    oncancel={handleCancel}
+                    onsort={onHandleSort}  >
+            </c-p-m-p_lookupdatatable>
+            
+            <template if:true={EnablePagination}>
+                    <div class="slds-align_absolute-center">
+                    <lightning-button label="Prev" onclick={onPrev} disabled={isFirstPage}></lightning-button>
+                    <span class="slds-var-p-horizontal_small">
+                            Page {pageNumber} | Showing records from {fromPageNumber}  to {toPageNumber}
+                    </span>
+                    <lightning-button label="Next" disabled={isLastPage} onclick={onNext}></lightning-button>
+                    </div>
+            </template>
+
+            <template if:true={isModalOpen}>
+                    <!-- Modal/Popup Box LWC starts here -->
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                    <!-- Modal/Popup Box LWC header here -->
+                                    <header class="slds-modal__header">
+                                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                                                    <lightning-icon icon-name="utility:close"
+                                                            alternative-text="close"
+                                                            variant="inverse"
+                                                            size="small" ></lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                            </button>
+                                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Add More columns </h2>
+                                    </header>
+                                    <!-- Modal/Popup Box LWC body starts here -->
+                                    <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+                                            <lightning-dual-listbox name="DatatableColumns"
+                                        label="Select Columns"
+                                        source-label="Available"
+                                        selected-label="Selected"
+                                        field-level-help="Select your preferred columns"
+                                        options={TotalColumn}
+                                        value={fieldList}
+                                        onchange={handleChange}></lightning-dual-listbox>
+                                    </div>
+                                    <!-- Modal/Popup Box LWC footer starts here -->
+                                    <footer class="slds-modal__footer">
+                                            <button class="slds-button slds-button_neutral" onclick={closeModal} title="Cancel">Cancel</button>
+                                            <button class="slds-button slds-button_brand" onclick={submitDetails} title="OK">OK</button>
+                                    </footer>
+                            </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+            </template> 
+            
+            
+
+            <template if:true={isRecordTypeNewModalOpen}>
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                    <!-- Modal/Popup Box LWC header here -->
+                                    <header class="slds-modal__header">
+                                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeRecordTypeModal}>
+                                                    <lightning-icon icon-name="utility:close"
+                                                            alternative-text="close"
+                                                            variant="inverse"
+                                                            size="small" ></lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                            </button>
+                                            <h2 id="modal-heading-2" class="slds-text-heading_medium slds-hyphenate">Modal/PopUp Box header LWC</h2>
+                                    </header>
+                                    <!-- Modal/Popup Box LWC body starts here -->
+                                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                                            
+                                                    <lightning-radio-group name="radioGroup"
+                                                    label="Radio Group"
+                                                    options={recordTypeOptions}
+                                                    value={selectedRecordType}
+                                                    required
+                                                    onchange={handleRecordTypeSelect}
+                                                    type="radio"></lightning-radio-group>
+                                            
+                                       
+                                    </div>
+                                    <!-- Modal/Popup Box LWC footer starts here -->
+                                    <footer class="slds-modal__footer">
+                                            <button class="slds-button slds-button_neutral" onclick={closeRecordTypeModal} title="Cancel">Cancel</button>
+                                            <button class="slds-button slds-button_brand" onclick={openNewModal} title="OK">NEXT</button>
+                                    </footer>
+                            </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+
+            <template if:true={isNewModalOpen}>
+                    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                            <div class="slds-modal__container">
+                                    <!-- Modal/Popup Box LWC header here -->
+                                    <header class="slds-modal__header">
+                                            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeNewModal}>
+                                                    <lightning-icon icon-name="utility:close"
+                                                            alternative-text="close"
+                                                            variant="inverse"
+                                                            size="small" ></lightning-icon>
+                                                    <span class="slds-assistive-text">Close</span>
+                                            </button>
+                                            <h2 id="modal-heading-3" class="slds-text-heading_medium slds-hyphenate">Create Record</h2>
+                                    </header>
+                                    <!-- Modal/Popup Box LWC body starts here -->
+                                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                                            
+                                                    <lightning-record-form
+                                                            object-api-name={objectName}
+                                                            layout-type="Full"
+                                                            record-type-id={selectedRecordType}
+                                                            onsuccess={handleRecordCreated}
+                                                            oncancel={closeNewModal}>
+                                                    </lightning-record-form>
+                                               
+                                    </div>
+                                    <!-- Modal/Popup Box LWC footer starts here -->
+                                    <footer class="slds-modal__footer">
+                                     
+                                    </footer>
+                            </div>
+                    </section>
+                    <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+    </lightning-card>    
+</template>

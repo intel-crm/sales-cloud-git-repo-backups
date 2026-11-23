@@ -19,10 +19,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_OPN__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Deactivation_Date__c</field>
-            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

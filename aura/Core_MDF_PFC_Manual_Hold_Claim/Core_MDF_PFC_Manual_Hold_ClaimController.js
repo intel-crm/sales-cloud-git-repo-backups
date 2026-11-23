@@ -16,13 +16,7 @@
     },
     
     closeModel: function(component, event, helper) {
-        if(component.get("v.isCustomComp")){
-            let closeModalEvent = component.getEvent("closeModalEvent");
-            closeModalEvent.fire();
-        }
-        else{
-            $A.get("e.force:closeQuickAction").fire();
-        }
+        $A.get("e.force:closeQuickAction").fire();
     },
     
     closeErrorToast:function(component, event, helper) {

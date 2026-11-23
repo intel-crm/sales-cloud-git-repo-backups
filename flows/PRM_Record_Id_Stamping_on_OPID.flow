@@ -2,9 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <description>This flow stamps the record id on the 1PID account when its created</description>
     <environments>Default</environments>
-    <interviewLabel>PRM Record Id Stamping on {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Stamp Id on OPID {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM Record Id Stamping on OPID</label>
     <processMetadataValues>
         <name>BuilderType</name>

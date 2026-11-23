@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to owner when MAG opportunity is NOT approved</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>MAG Opportunity Not Approved</name>
+    <style>none</style>
+    <subject>GEC did NOT Approve your SFDC Opportunity ID {!Opportunity.Id} Account Name {!Account.Name}</subject>
+    <textOnly>Hello {!Opportunity.OwnerFullName},
+
+Your MAG opportunity referenced in the subject line has NOT been approved by GEC (Global Export Compliance) based on our review of the MAG questionnaire that you completed.  GEC did not approve this opportunity because it will put Intel at an unacceptable export compliance risk if we pursue this opportunity based on the information provided in the questionnaire.
+
+Please contact Export.customer@intel.com if you have any questions or concerns.
+
+Best regards,
+Global Export Compliance / Global Tax &amp; Trade</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

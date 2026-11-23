@@ -1,5 +1,5 @@
 <!-----------------------------------------------------------------------------------------------------------
-VF Page Name: Core_IPS_Survey_Page 
+VF Page Name: Core_IPS_Survey_Page
 Version     : 1.0 
 Function    : Visualforce Page to Submit survey after close case 
 Modification Log :
@@ -7,43 +7,32 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Amritesh                   12/12/2017               Created
 * Amritesh                   06/19/2018               Updated - US107855
-
 ------------------------------------------------------------------------------------------------------------>
 <apex:page controller="Core_IPS_Survey_Page_Controller" title="Intel Premier Support Survey - Case {!CaseNumber}" showHeader="true" action="{!caseOwnerRedirectPage}">
-  <!---  <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, 'survey_style.css')}"/>
-
-
+    
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, 'survey_style.css')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, SUBSTITUTE(surveyType,' ','_')&'_survey_style.css')}"/>
     <apex:includeScript value="/soap/ajax/29.0/connection.js"/>
     <apex:includeScript value="/support/console/35.0/integration.js"/>
     <style>     
-     <apex:outputPanel rendered="{!surveyType=='Customer'}" layout="none">
+        <apex:outputPanel rendered="{!surveyType=='Customer'}" layout="none">
             .answer7:before { content:url('{!$Resource.Core_IPS_Survey_Rating_Image}');  }
         </apex:outputPanel>
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(1) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_SadEmoji}') " " "Strongly Disagree"  }  
-        </apex:outputPanel>
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(3) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_NeutralEmoji}') "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Neither"  } 
-        </apex:outputPanel>
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(5) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_HappyEmoji}') " " "Strongly &nbsp;&nbsp;Agree"}
-        </apex:outputPanel>
-        <apex:outputText value="{!HTMLENCODE(containerCSS)}" escape="false" />
+        <apex:outputText value="{!containerCSS}" escape="false" />
     </style>
-      <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Survey,'jquery1124min.js')}"/>-->
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Survey,'jquery1124min.js')}"/>
     <script>function setFocusOnLoad() {}
     </script>
-  <!-- <div class="mainContent {!SUBSTITUTE(surveyType,' ','_')}"> 
-        <<apex:form >
-            <!-- Survey Logo--> 
-            <div class="logocontainer" >                
-                <apex:image value="{!$Resource[logoImageResource]}" rendered="{!NOT(ISBLANK(logoImageResource))}" style="width: 60%;"/>
+    <div class="mainContent {!SUBSTITUTE(surveyType,' ','_')}"> 
+        <apex:form >
+            <!-- Survey Logo -->
+            <div class="logocontainer">                
+                <apex:image value="{!$Resource[logoImageResource]}" rendered="{!NOT(ISBLANK(logoImageResource))}"/>
             </div>
             
-           <!-- <apex:pageMessages escape="false"></apex:pageMessages>
+            <apex:pageMessages escape="false"></apex:pageMessages>
             <!-- Sneha US288043 Survey question is getting displayed twice in the feedback section 
-                                        if 'Submit' button is clicked more than once START
+										if 'Submit' button is clicked more than once START-->
             <apex:actionstatus id="status1">
                 <apex:facet name="start">
                     <div class="waitingSearchDiv" id="el_loading" style="background-color: #fbfbfb; height: 5000%;opacity:0.65;width:100%;">
@@ -54,10 +43,10 @@ Modification Log :
                     </div>
                 </apex:facet>
             </apex:actionstatus>
-            <!-- US288043 END
+            <!-- US288043 END-->
             <apex:outputPanel rendered="{!showMainContent}">       
                 <div class="subsection">
-                    <!-- Header 
+                    <!-- Header -->
                     <div class="surveyheader">                        
                         <apex:outputText value="{!$Label[surveyHeaderLabel]}" escape="false" rendered="{!NOT(ISBLANK(surveyHeaderLabel))}">
                             <apex:param value="{!casenumber}"/>
@@ -65,7 +54,7 @@ Modification Log :
                     </div>                          
                     
                     <apex:variable value="{!0}" var="index"/>
-                    <!-- List of Questions 
+                    <!-- List of Questions -->
                     <apex:dataTable cellpadding="5" cellspacing="0" value="{!lstQuestions}" var="ques" styleClass="surveyQuesTable">
                         <apex:column >
                             <apex:variable value="{!index+1}" var="index"/>
@@ -77,7 +66,7 @@ Modification Log :
                                 
                                 <div class="answer_wrap answer{!ques.orderNo} {!IF(ques.isRequired,'required','')}">
                                     <div class="float-left">
-                                        <!-- Answer Inputs                            
+                                        <!-- Answer Inputs-->                               
                                         <apex:outputPanel rendered="{!ques.answerType=='textarea'}" layout="block">
                                             <apex:inputTextarea value="{!ques.answer}" cols="50" rows="5" html-maxlength="5000" styleClass="textarealong-input input-answer"/>
                                         </apex:outputPanel>
@@ -94,11 +83,11 @@ Modification Log :
                                             <apex:inputText value="{!ques.answer}" styleClass="input-answer"/>
                                         </apex:outputPanel> 
                                     </div>
-                                    <!-- Added as part of US107855 - Amritesh 
+                                    <!-- Added as part of US107855 - Amritesh -->
                                     <div class="float-left valign-top">
                                         <apex:outputPanel rendered="{!ques.isRequired}" layout="none"><br/>&nbsp;&nbsp;<font color="red">*required</font></apex:outputPanel>   
                                         <apex:outputPanel styleClass="custom_errmsg" layout="none" rendered="{!NOT(ISBLANK(ques.errorMsg))}">
-                                            <apex:outputText value="{! HTMLENCODE(ques.errorMsg)}" escape="false" />
+                                            <apex:outputText value="{!ques.errorMsg}" escape="false" />
                                         </apex:outputPanel>
                                     </div>
                                 </div>
@@ -107,14 +96,14 @@ Modification Log :
                     </apex:dataTable>  
                 </div>
                 
-                <!-- Submit Button 
+                <!-- Submit Button -->
                 <div class="buttonContainer">      
                     <!-- Sneha US288043 Survey question is getting displayed twice in the feedback section 
-                                        if 'Submit' button is clicked more than once START
+										if 'Submit' button is clicked more than once START-->
                     
                         <apex:actionFunction name="submitFn" action="{!captureSurvey}" 
         oncomplete="buttonsEnabled(true);" status="status1" rerender="None"></apex:actionFunction>
-                    <!-- US288043 changes END
+                    <!-- US288043 changes END-->
                     <apex:commandButton value="Submit" styleClass="submitbutton" onclick="isSubmit=true; return validate_input(event)">
                         
                     </apex:commandButton>
@@ -123,7 +112,7 @@ Modification Log :
                 </div>
                 
                 <!-- Footer -->
-              <!--  <div class="surveyfooter">
+                <div class="surveyfooter">
                     <apex:outputText value="{!$Label[surveyFooterLabel]}" escape="false" rendered="{!NOT(ISBLANK(surveyFooterLabel))}"/>                   
                 </div>
                 
@@ -139,54 +128,12 @@ Modification Log :
             <apex:outputPanel rendered="{!isError && $CurrentPage.Parameters.caid!=null}">
                 <br/><br/>
                 <apex:commandButton action="{!skipToCase}" value="Go to Case >>"/>
-            </apex:outputPanel>-->
-      <!--      <br/>
-     <br/>
-     <br/>
-             <p style="line-height: 80px;
-    
-    font-size: 18px;
-    font-style: initial;
-    font-weight: 100;
-   line-height: 26pt;
-                       width: 50%;
-">
-               Your input is extremely important to Intel and our efforts to create a great Intel Premier Support experience. We may send you an email invitation to a survey in a few days if you have not already received one. If you prefer, you can click below and give feedback now. This will take you to a 3rd party survey we work closely with to analyze customer feedback. Thank you!
-            </p>
-            <br/>
-     <br/>
-     <br/>
-             <div>
-       
-        <apex:outputLink value="https://www.intel.com/content/www/us/en/jobs/jobs-at-intel.html" target="_blank" style=" font-size: 22px;font-style: normal;font-weight: 100">www.intelLightningPortal.com/{!CaseNumber}</apex:outputLink>
-       
-         </div>
-            <br/>
-     <br/>
-     <br/>
-            <div>
-    
-   
-    <p Style="line-height: 80px;
-    
-               
-    font-size: 18px;
-    font-style: initial;
-    font-weight: 100;
-    line-height: 26pt; 
-              width: 50%;
-              
-">
-               If you have already responded to a survey on this case using the email invitation, thank you – there is no need for further action. If you are unsure, the survey system will let you know if you click the link.
-
-            </p>
-     </div>
+            </apex:outputPanel>
         </apex:form>
-    </div>-->
+    </div>
     
     <script>
-    
-    // function buttonsEnabled(enabled) {
+   function buttonsEnabled(enabled) {
         // retrieve all of the buttons or links on the page
         // with the css class of btn
         var $buttons = jQuery('.btn');
@@ -199,8 +146,8 @@ Modification Log :
             $buttons.toggleClass('btnDisabled', false).attr('disabled', null);
         } 
     }
-    //  var isSubmit = false;
-    // window.onbeforeunload = function(evt) {
+    var isSubmit = false;
+    window.onbeforeunload = function(evt) {
         
         if(isSubmit) {
             return undefined;
@@ -253,6 +200,7 @@ Modification Log :
         if($(".selectradio-input").find("input[type='radio']:checked").length>0) {
             isAnyFilled = true;
         }
+        console.log("Validation : " + isAnyFilled);
         if(!isAnyFilled) {
             var conf = window.confirm("{!$Label.Core_IPS_Survey_Empty_Answer_Warning}");
             if(!conf) {
@@ -274,24 +222,6 @@ Modification Log :
         return conf;
     }
     </script>
-    <br/>
-    <br/>
     
-    <p style="line-height: 80px;
     
-    font-size: 16px;
-    font-style: initial;
-    font-weight: 100;
-                line-height: 15pt; width:60%;text-align: justify">
-        
-  Your input is extremely important to Intel and our efforts to create a great Intel Premier Support experience. We may send you an email invitation to a survey in a few days if you have not already received one. If you prefer, you can click below and give feedback now. This will take you to a 3rd party survey we work closely with to analyze customer feedback. Thank you!
-<br/>
-        <br/>
-        <apex:outputLink value="{!$Label.IPS_Survey_BannerLink }={!caseNumber}" target="_blank" style=" font-size: 16px;font-style: normal;font-weight: 100;padding-left: 15rem;font-weight: bold;">Start Survey</apex:outputLink>
-        <br/>
-        <br/>
-If you have already responded to a survey on this case using the email invitation, thank you – there is no need for further action. If you are unsure, the survey system will let you know if you click the link.
-</p>
-    
-  
 </apex:page>

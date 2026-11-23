@@ -1,0 +1,32 @@
+<template>
+  <div class="toastWrapper">
+    <template for:each={toastMessages}
+      for:item="toast">
+      <div key={toast.idx}
+        class="toastContainer slds-notify_container slds-is-relative">
+        <div class="slds-notify--toast slds-notify slds-notify--toast forceToastMessage"
+          role="status">
+          <span class="slds-assistive-text">info</span>
+          <span class="slds-icon_container slds-icon-utility-info slds-m-right_small slds-no-flex slds-align-top"
+            title="Description of icon when needed">
+            <lightning-icon icon-name="utility:warning"
+              alternative-text="Warning!"
+              title="Warning"></lightning-icon>
+          </span>
+          <div class="slds-notify__content">
+            <div class="slds-align-middle slds-hyphenate">{toast.messageContent}</div>
+          </div>
+          <div class="slds-notify__close">
+            <button class="slds-button slds-button_icon slds-button_icon-inverse"
+              title="Close"
+              onclick={closeToast}
+              data-idx={toast.idx}>
+              <lightning-icon icon-name="utility:close"></lightning-icon>
+              <span class="slds-assistive-text">Close</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+  </div>
+</template>

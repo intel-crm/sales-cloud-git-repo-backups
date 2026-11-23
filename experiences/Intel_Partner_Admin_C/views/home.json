@@ -200,27 +200,30 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
+        "disableManageEvents" : false,
         "disableManageLeads" : true,
         "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
         "disableManagedMPPartners" : false,
         "disableViewDashboard" : false,
         "fullWidth" : true,
         "portal" : "Partner Admin"
       },
       "componentName" : "c:MarketplaceNavigationBar",
-      "id" : "b180f00d-c6c0-43df-9728-2cec401323c5",
+      "id" : "0359ea14-8b0f-498d-a31e-85d2cbab2151",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     }, {
       "componentAttributes" : {
-        "analyticsPageType" : "{\"pageType\": \"leadHome\",\"title\":\"My Leads Home\"}",
+        "alignment" : "center",
+        "backgroundVariant" : "classic-blue-gradient",
         "recordId" : "{!recordId}",
         "subtitle" : "",
         "title" : "My Leads"
       },
       "componentName" : "c:ipaMarqueeLeads",
-      "id" : "7877ddd5-8ba7-44ad-be8a-da0d98326fca",
+      "id" : "a2957a4e-8930-4277-aad1-29cbefdd5273",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -243,6 +246,10 @@
     "regionName" : "main",
     "type" : "region"
   }, {
+    "id" : "57c7b71a-3632-491f-abde-97124274f828",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
     "components" : [ {
       "componentAttributes" : {
         "allMarketPlaceHelpLabel" : "All Marketplace help",
@@ -258,10 +265,6 @@
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "57c7b71a-3632-491f-abde-97124274f828",
-    "regionName" : "blade1",
-    "type" : "region"
-  }, {
     "id" : "5792ca55-9a16-44e1-b97b-c8eea47bbba0",
     "regionName" : "blade2",
     "type" : "region"
@@ -278,6 +281,20 @@
     "regionName" : "blade3",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "allMarketPlaceHelpLabel" : "All Marketplace help",
+        "headingLabel" : "FAQs",
+        "inverse" : false,
+        "paddingHorizontal" : true,
+        "theme" : "default"
+      },
+      "componentName" : "c:MarketPlaceFAQ",
+      "id" : "1bd848a8-1012-415a-b95c-e0dcc83bad9e",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "615d891f-2945-4934-a138-5836aadce504",
     "regionName" : "blade4",
     "type" : "region"
@@ -332,16 +349,6 @@
     "regionName" : "blade1white",
     "type" : "region"
   }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<p>&nbsp;</p>"
-      },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "fc584615-67b8-4070-8e18-0164b354a2ed",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "fa9d8dac-ae79-4297-90bc-af9b38f4804a",
     "regionName" : "manageOfferingBar",
     "type" : "region"

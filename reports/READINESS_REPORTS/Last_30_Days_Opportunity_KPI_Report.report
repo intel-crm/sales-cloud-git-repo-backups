@@ -25,9 +25,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>CUST_CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Last_Update_Date__c</field>
     </columns>
     <columns>
@@ -40,14 +37,7 @@
         <field>CUST_LAST_UPDATE</field>
     </columns>
     <columns>
-        <field>CUST_LAST_UPDATE_NAME</field>
-    </columns>
-    <columns>
         <field>CUST_NAME</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Achieved__c</field>
     </columns>
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
@@ -130,6 +120,6 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

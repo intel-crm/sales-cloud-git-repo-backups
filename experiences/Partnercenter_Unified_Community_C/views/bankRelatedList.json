@@ -7,13 +7,12 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "fieldsToMask" : "Owner",
         "internalUserName" : "Intel System User",
-        "objectApiName" : "{!objectApiName}",
+        "objectApiName" : "Core_MDF_Bank__c",
         "recordId" : "{!recordId}"
       },
       "componentName" : "c:core_MDF_HistoryComponent",
-      "id" : "fc78a97d-240b-44a6-8f3a-6407a1e4ba81",
+      "id" : "a062132f-6946-4316-878e-fb6b1139eb61",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

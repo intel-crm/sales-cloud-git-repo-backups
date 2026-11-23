@@ -1,0 +1,78 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:timesheet" alternative-text="Event" size="small"></lightning-icon>
+            &nbsp;Bulk Contact Creation
+        </h3>
+        <template for:each={itemList} for:item="item" for:index="index">
+            <lightning-layout multiple-rows key={item.id}>
+                <lightning-layout-item  size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <lightning-input data-target-id={item.id} data-id="contactForm"  label={label.EPUM_FirstName} name="firstname"
+                         onchange={onChange} required></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item  size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <lightning-input data-target-id={item.id} data-id="contactForm" label={label.EPUM_LastName} name="lastname"
+                        onchange={onChange} required></lightning-input>
+                </lightning-layout-item>
+                
+                <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <lightning-input data-target-id={item.id} data-id="contactForm" label={label.EPUM_WorkEmail} type="email" name="email"
+                    onchange={onChange} required></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <span class="customlabel"><span class="star">*</span>
+                        {label.EPUM_Country}</span>
+                    <select data-target-id={item.id} class="slds-select selectClass" name="Country" required onchange={onChange}>
+                        <option key={countryPicklist} value="Select an Option">
+                            {label.EPUM_SelectOption}</option>
+                        <template for:each={countryPicklistValues} for:item="countryPicklist" for:index="index">
+                            <option key={countryPicklist} value={countryPicklist.value}>
+                                {countryPicklist.label}</option>
+                        </template>
+                    </select>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <span class="customlabel"><span class="star">*</span>
+                        {label.EPUM_PreferredLanguage}</span>
+                    <select data-target-id={item.id} class="slds-select selectClass" aria-label={label.EPUM_PreferredLanguage}
+                        name="Preferred Language" required onchange={onChange}>
+                        <template for:each={preferredLanguagePicklistValues} for:item="preferredLanguage"
+                            for:index="index">
+                            <option key={preferredLanguage} value={preferredLanguage.value}>
+                                {preferredLanguage.label}</option>
+                        </template>
+                    </select>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" small-device-size="6" medium-device-size="4" large-device-size="2"
+                    padding="around-small">
+                    <div class="slds-p-top_medium">
+                        <lightning-icon icon-name="action:new" access-key={item.id} id={index}
+                            alternative-text="Add Row" size="small" title="Add Row" onclick={addRow}>
+                        </lightning-icon>
+                        <lightning-icon icon-name="action:delete" access-key={item.id} id={index}
+                            alternative-text="Delete Row" size="small" title="Delete Row" onclick={removeRow}>
+                        </lightning-icon>
+                    </div>
+                </lightning-layout-item>
+            </lightning-layout>
+
+
+        </template>
+        </br>
+        <lightning-layout>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="success" onclick={handleSubmit} name="submit" label="Submit">
+                </lightning-button>
+            </div>
+        </lightning-layout>
+    </lightning-card>
+</template>

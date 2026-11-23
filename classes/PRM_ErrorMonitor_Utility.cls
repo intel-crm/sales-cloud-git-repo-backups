@@ -16,8 +16,8 @@ Public with sharing class PRM_ErrorMonitor_Utility {
     Private static final string STATUS_FAILED = 'Failed';
     Private static final string STATUS_REP = 'Reprocessed';
     public static String CimPrimeEol=System.label.PRM_CIM_PRIME_Switch;// TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
-    Public static void checkInboundRecord(List<PRM_Value_Exchange_Recommendation__c> scope){
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*Public static void checkInboundRecord(List<PRM_Value_Exchange_Recommendation__c> scope){
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing //IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         Map<Id,PRM_Value_Exchange_Recommendation__c> recExchangeMap = new Map<Id,PRM_Value_Exchange_Recommendation__c>();
         Map<Id,PRM_Value_Exchange_Recommendation__c> opidRecMap = new Map<Id,PRM_Value_Exchange_Recommendation__c>();
         Map<Id,Core_OnePartner_Inbound_Message__c> inboundMap = new Map<Id,Core_OnePartner_Inbound_Message__c>();
@@ -99,10 +99,10 @@ Public with sharing class PRM_ErrorMonitor_Utility {
         }catch(DmlException e) {
             System.debug('Exception: ' + e.getMessage());            
         }}
-    }
-    public static Map<Id, PRM_Value_Exchange_Recommendation__c> getVXRecommendationMap(List<PRM_Value_Exchange_Recommendation__c> scope) {
-        Map<Id, PRM_Value_Exchange_Recommendation__c> opidRecMap = new Map<Id, PRM_Value_Exchange_Recommendation__c>();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    }*/
+    /*public static void Map<Id, PRM_Value_Exchange_Recommendation__c> getVXRecommendationMap(List<PRM_Value_Exchange_Recommendation__c> scope) {
+        /*Map<Id, PRM_Value_Exchange_Recommendation__c> opidRecMap = new Map<Id, PRM_Value_Exchange_Recommendation__c>();
+        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         for (PRM_Value_Exchange_Recommendation__c recRecord : scope) {
             if (recRecord.PRM_Account_Id__c != null && !opidRecMap.containsKey(recRecord.PRM_Account_Id__c)) {
                 opidRecMap.put(recRecord.PRM_Account_Id__c, recRecord);
@@ -110,10 +110,10 @@ Public with sharing class PRM_ErrorMonitor_Utility {
         }
         }
         return opidRecMap;
-    }
-    public static Map<Id, Core_OnePartner_Inbound_Message__c> getinboundMsg(Map<Id, PRM_Value_Exchange_Recommendation__c> opidRecMap) {
-        Map<Id,Core_OnePartner_Inbound_Message__c> inboundMap = new Map<Id,Core_OnePartner_Inbound_Message__c>();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    }*/
+    /*public static void Map<Id, Core_OnePartner_Inbound_Message__c> getinboundMsg(Map<Id, PRM_Value_Exchange_Recommendation__c> opidRecMap) {
+        //Map<Id,Core_OnePartner_Inbound_Message__c> inboundMap = new Map<Id,Core_OnePartner_Inbound_Message__c>();
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         List<Core_OnePartner_Inbound_Message__c> listOfInboundMsg = [SELECT
                                                             Id,
                                                             CreatedDate,
@@ -134,9 +134,9 @@ Public with sharing class PRM_ErrorMonitor_Utility {
             }
         }}
         return inboundMap;
-    }
-    public static void createTrackerRecords(Map<Id,PRM_Value_Exchange_Recommendation__c>recExchangeMap){
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    }*/
+    /*public static void createTrackerRecords(Map<Id,PRM_Value_Exchange_Recommendation__c>recExchangeMap){
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         List<PRM_Value_Exchange_Recommendation__c> opidRecListForTracker = new List<PRM_Value_Exchange_Recommendation__c>();  
         List<PRM_Tracker__c> trackerList = new List<PRM_Tracker__c>();     
         Set<Id> UpdatedOpidSet = new Set<Id>();
@@ -163,39 +163,44 @@ Public with sharing class PRM_ErrorMonitor_Utility {
         }catch(Exception ex){
             System.debug('Exception: ' + ex.getMessage());
         }}
-    }
-    public static List<PRM_Tracker__c> getTrackerListtoInsert(List<PRM_Value_Exchange_Recommendation__c> opidRecListForTracker){
+    }*/
+    /*public static void List<PRM_Tracker__c> getTrackerListtoInsert(List<PRM_Value_Exchange_Recommendation__c> opidRecListForTracker){
+        //PRM_Tracker_steps__mdt waitingForCimResMdt = PRM_Tracker_steps__mdt.getInstance('WAIT_CIM_RES');
+        //PRM_Tracker_steps__mdt opidCreatedMdt = PRM_Tracker_steps__mdt.getInstance('OPID_REQ_PROCESSED');
         Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('PRM_Tracker_steps__mdt');
         Map<String,Object> waitingForCimResMdt = customMetadata.getInstance('WAIT_CIM_RES');
         Map<String,Object> opidCreatedMdt = customMetadata.getInstance('OPID_REQ_PROCESSED');
         
-         List<PRM_Tracker__c> trackerList = new List<PRM_Tracker__c>();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        //List<PRM_Tracker__c> trackerList = new List<PRM_Tracker__c>();//
+       /* if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
          if(!opidRecListForTracker.isEmpty()){
                 for( PRM_Value_Exchange_Recommendation__c opidRec : opidRecListForTracker){
                     if(opidRec.PRM_Recommendation_Status_Nm__c == label.PRM_Waiting_for_CIM_response  && waitingForCimResMdt != null && !waitingForCimResMdt.isEmpty()){
+                        //PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(waitingForCimResMdt.PRM_Type__c,waitingForCimResMdt.DeveloperName, opidRec.Id, null, null, null, null, true,null,null, null);    //
                         PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(String.valueOf(waitingForCimResMdt.get('PRM_Type__c')),String.valueOf(waitingForCimResMdt.get('DeveloperName')), opidRec.Id, null, null, null, null, true,null,null, null);    
                         trackerList.add(tracker);
                     }
                     else if(opidRec.PRM_Recommendation_Status_Nm__c == label.PRM_FailedLabel && opidCreatedMdt != null && !opidCreatedMdt.isEmpty()){
+                        //PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(opidCreatedMdt.PRM_Type__c,opidCreatedMdt.DeveloperName, opidRec.Id, null, null, null, null, false,null,null, null);//
                         PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(String.valueOf(opidCreatedMdt.get('PRM_Type__c')),String.valueOf(opidCreatedMdt.get('DeveloperName')), opidRec.Id, null, null, null, null, false,null,null, null);    
                         trackerList.add(tracker);
                     }
                     else if(opidRec.PRM_Recommendation_Status_Nm__c == label.PRM_VX_RecommendationStatus_OPIDCreated && opidCreatedMdt != null ){
+                        //PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(opidCreatedMdt.PRM_Type__c,opidCreatedMdt.DeveloperName, opidRec.Id, null, null, null, null, true,null,null, null);    //
                         PRM_Tracker__c tracker  = PRM_IPA_Utility.createTrackerInstance(String.valueOf(opidCreatedMdt.get('PRM_Type__c')),String.valueOf(opidCreatedMdt.get('DeveloperName')), opidRec.Id, null, null, null, null, true,null,null, null);    
                         trackerList.add(tracker);
                     }
                 }  
          }}
             return trackerList;
-    }
+    }*/
     // Added by Rohit Narnaware
     // for Creating Monitor_Log__c records
     // Return Monitor_Log__c
-    public static Monitor_Log__c createMonitorLogs(Id opidRecId, Id inboundmsgId, String integrationType, String errorMsg, Id accountId, String status){
+    /*public static Monitor_Log__c createMonitorLogs(Id opidRecId, Id inboundmsgId, String integrationType, String errorMsg, Id accountId, String status){
         
         Monitor_Log__c logError = new Monitor_Log__c();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         logError.OPID_Recommendation__c = opidRecId;
         logError.One_Partner_Inbound_Message__c = inboundmsgId !=  null ? inboundmsgId : null;
         logError.Integration_Type__c = integrationType;
@@ -204,5 +209,5 @@ Public with sharing class PRM_ErrorMonitor_Utility {
         logError.Status__c = status;
         }
         return logError;
-        }//TWC729-6800 EOL activities--End
+        }*///TWC729-6800 EOL activities--End
 }

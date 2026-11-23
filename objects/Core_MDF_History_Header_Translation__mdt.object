@@ -2,112 +2,60 @@
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>It stores the object&apos;s History header translation</description>
     <fields>
-        <fullName>Core_MDF_History_Header_Translation_nm__c</fullName>
+        <fullName>Core_MDF_de_cd__c</fullName>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Core_MDF_History_Header_Translation</label>
-        <required>true</required>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Account User History</fullName>
-                    <default>false</default>
-                    <label>Account User History</label>
-                </value>
-                <value>
-                    <fullName>Claim History</fullName>
-                    <default>false</default>
-                    <label>Claim History</label>
-                </value>
-                <value>
-                    <fullName>Claim Adjustment Requests History</fullName>
-                    <default>false</default>
-                    <label>Claim Adjustment Requests History</label>
-                </value>
-                <value>
-                    <fullName>Partner Fund Allocations History</fullName>
-                    <default>false</default>
-                    <label>Partner Fund Allocations History</label>
-                </value>
-                <value>
-                    <fullName>ACTUAL METRICS</fullName>
-                    <default>false</default>
-                    <label>ACTUAL METRICS</label>
-                </value>
-                <value>
-                    <fullName>Budget History</fullName>
-                    <default>false</default>
-                    <label>Budget History</label>
-                </value>
-                <value>
-                    <fullName>POP Requirements</fullName>
-                    <default>false</default>
-                    <label>POP Requirements</label>
-                </value>
-                <value>
-                    <fullName>Hold Criteria List History</fullName>
-                    <default>false</default>
-                    <label>Hold Criteria List History</label>
-                </value>
-                <value>
-                    <fullName>Payment History</fullName>
-                    <default>false</default>
-                    <label>Payment History</label>
-                </value>
-                <value>
-                    <fullName>Payment Run History</fullName>
-                    <default>false</default>
-                    <label>Payment Run History</label>
-                </value>
-                <value>
-                    <fullName>Claim Offsets History</fullName>
-                    <default>false</default>
-                    <label>Claim Offsets History</label>
-                </value>
-                <value>
-                    <fullName>METRICS</fullName>
-                    <default>false</default>
-                    <label>METRICS</label>
-                </value>
-                <value>
-                    <fullName>Account Transfer Logs History</fullName>
-                    <default>false</default>
-                    <label>Account Transfer Logs History</label>
-                </value>
-                <value>
-                    <fullName>Co-Marketing Activity History</fullName>
-                    <default>false</default>
-                    <label>Co-Marketing Activity History</label>
-                </value>
-                <value>
-                    <fullName>Partner Group Mapping History</fullName>
-                    <default>false</default>
-                    <label>Partner Group Mapping History</label>
-                </value>
-                <value>
-                    <fullName>PLANNED METRICS</fullName>
-                    <default>false</default>
-                    <label>PLANNED METRICS</label>
-                </value>
-                <value>
-                    <fullName>Payment Details</fullName>
-                    <default>false</default>
-                    <label>Payment Details</label>
-                </value>
-                <value>
-                    <fullName>Payment Breakdown</fullName>
-                    <default>false</default>
-                    <label>Payment Breakdown</label>
-                </value>
-                <value>
-                    <fullName>Disbursement Status</fullName>
-                    <default>false</default>
-                    <label>Disbursement Status</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
+        <label>German Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_en_US_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>English Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_es_MX_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Spanish Mex Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_es_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Spanish Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_fr_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>French Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_it_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Italian Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ja_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Japanese Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ko_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Korean Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>Core_MDF_obj_nm__c</fullName>
@@ -115,6 +63,34 @@
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Please provide the Object&apos;s API name.</inlineHelpText>
         <label>Object Name</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_pt_BR_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Portuguese Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_ru_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Russian Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_zh_CN_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Chinese Sim Trans</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_zh_TW_cd__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Chinese Trad Trans</label>
         <required>false</required>
         <type>TextArea</type>
     </fields>

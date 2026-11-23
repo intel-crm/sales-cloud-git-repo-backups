@@ -83,6 +83,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Brand__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Cap_Type_nm__c</field>
             <table>PartnerFundClaim</table>
         </columns>
@@ -99,11 +104,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Claim_Comments__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Brand_nm__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <columns>
@@ -159,6 +159,11 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Duplicate_Claim__c</field>
+            <table>PartnerFundClaim</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_EFT_Nbr__c</field>
             <table>PartnerFundClaim</table>
         </columns>
         <columns>
@@ -431,13 +436,5 @@
             <table>PartnerFundClaim</table>
         </columns>
         <masterLabel>Partner Fund Claims</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_EFT_Number_txt__c</field>
-            <table>PartnerFundClaim</table>
-        </columns>
-        <masterLabel>Claims</masterLabel>
     </sections>
 </ReportType>

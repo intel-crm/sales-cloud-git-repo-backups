@@ -2178,7 +2178,7 @@ this method can be reused.
         
         
         if (setContacIdForIPAWelcomeEmail != null && !setContacIdForIPAWelcomeEmail.isEmpty()) {
-            for (Contact con : [SELECT Core_IPA_One_Partner_Id__c, Id, Core_AGS_Integration_Status__c FROM Contact WHERE Id IN :setContacIdForIPAWelcomeEmail]) {
+            for (Contact con : [SELECT Core_IPA_One_Partner_Id__c, Id/*, Core_AGS_Integration_Status__c*/ FROM Contact WHERE Id IN :setContacIdForIPAWelcomeEmail]) {
                 setOpidsForMPEmail.add(con.Core_IPA_One_Partner_Id__c);
             }
             
@@ -2232,6 +2232,10 @@ this method can be reused.
                     setallcontactsunderopid.add(acr.PRM_Contact_Id__c);
                 }				
                 // Fetch Companies
+                system.debug('accIdCompInfoMap--'+accIdCompInfoMap);
+                system.debug('intelAccCompInfoMap---'+intelAccCompInfoMap);
+                system.debug('intelAccountIds--'+intelAccountIds);
+                system.debug('setallcontactsunderopid==='+setallcontactsunderopid);
                 
                 if (!setCompaniesForWelcomeEmail.isEmpty()) {
                     System.debug('setCompaniesForWelcomeEmail: ' + setCompaniesForWelcomeEmail);
@@ -2251,6 +2255,7 @@ this method can be reused.
                        // if(!setallcontactsunderopid.contains(elog.PRM_Contact__c)){
                           //  finalcontactswithoutemail.add(elog.PRM_Contact__c);
                        // }	
+                       system.debug('eLog--'+eLog);
                        contactsWithEmail.add(eLog.PRM_Contact__c);				
                         existingEmailLogs.add(eLog);
                         //contactswithemails.add(log.con)
@@ -2261,6 +2266,9 @@ finalcontactswithoutemail.removeAll(contactsWithEmail);
                 }
             }
         }
+        system.debug('existingEmailLogs---'+existingEmailLogs);
+        system.debug('contactsWithEmail---'+contactsWithEmail);
+        system.debug('finalcontactswithoutemail--'+finalcontactswithoutemail);
         if(finalcontactswithoutemail!=null){
             
             List<User> userContactList = [SELECT Id, ContactId,AccountId, Contact.Core_Do_Not_Contact__c, Contact.Core_isEmailBounced_Ind__c,IsActive
@@ -2280,6 +2288,7 @@ userIds.add(pa.AssigneeId);
 }
 }*/
             //this might be having working copy id - so on the top when filtering with published copy id , existing email logs not coming
+            system.debug('userCompanyMap---'+userCompanyMap);
             if(!userCompanyMap.isempty())
             PMP_Utility.sendEmailAndLogData('PMP_CompanyInfoDraftEmail_Profile', userCompanyMap);  
             /* if (!lstCompaniesForWelcomeEmail.isEmpty() && existingEmailLogs.isEmpty()) {

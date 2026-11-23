@@ -7,8 +7,8 @@
     <emailServicesAddresses>
         <developerName>IPA_Registration</developerName>
         <isActive>true</isActive>
-        <localPart>ipa_registration_email_service</localPart>
-        <runAsUser>ipa-system-user@intel.com.crm</runAsUser>
+        <localPart>test_ipa_registration_email_service</localPart>
+        <runAsUser>ipa-system-user@intel.com.crm.crmdevipa</runAsUser>
     </emailServicesAddresses>
     <functionInactiveAction>Discard</functionInactiveAction>
     <functionName>IPA Registration Email Service</functionName>

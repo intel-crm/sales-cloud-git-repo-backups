@@ -67,7 +67,7 @@
             <value>Hewlett Packard,Amazon,Dropbox,Dell,Facebook,Google,IBM,LENOVO,Oracle,Apple,Softlayer,ebay,twitter,vmware,yahoo,SAP,Netfix,Disney,Hulu,Linkedin,salesforce,rackspace,uber,lyft,nimbix,supermicro,cloudflare</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

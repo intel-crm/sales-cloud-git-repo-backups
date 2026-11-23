@@ -9,7 +9,12 @@
         <value>Core Platform Event Logs</value>
     </caseValues>
     <fields>
-        <label><!-- IsActive --></label>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Core Platform Event Logs --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
         <name>Core_IsActive__c</name>
     </fields>
     <fields>
@@ -23,10 +28,6 @@
     <fields>
         <label><!-- Object API Name --></label>
         <name>Core_Object_API_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- Object Id --></label>
-        <name>Core_Object_Id__c</name>
     </fields>
     <fields>
         <label><!-- Status --></label>

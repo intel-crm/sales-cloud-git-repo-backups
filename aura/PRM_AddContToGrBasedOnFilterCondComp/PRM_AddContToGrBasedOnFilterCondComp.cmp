@@ -1,10 +1,11 @@
-<aura:component implements="force:hasRecordId,force:lightningQuickAction" access="global" >
+<aura:component implements="force:hasRecordId,force:lightningQuickAction" access="global" >    
     <aura:html tag="style">
         .slds-modal__container {
              width : 50% !important;
              max-width : 50% !important;        	 
          }
-    </aura:html>
-	<c:pRMAddContToGrBasedOnFilterCond recordId = "{!v.recordId}"></c:pRMAddContToGrBasedOnFilterCond>
-	
+    </aura:html>   
+    <c:pRMAddContToGrBasedOnFilterCond recordId = "{!v.recordId}"></c:pRMAddContToGrBasedOnFilterCond>
+    
+	 
 </aura:component>

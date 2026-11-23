@@ -1,7 +1,4 @@
 <template>
-  
-  <h2 class="h5 text-normal slds-p-top_x-large slds-p-bottom_x-small">{labels.offeringFilters}</h2>
-
   <div class="storefront-detail-filters-container">
     <fieldset>
       <legend><h3 class="p text-bold slds-p-vertical_xx-small">{labels.offeringsByCategory}</h3></legend>
@@ -49,7 +46,7 @@
       <template for:each={otherFilters} for:item="filter">
         <fieldset key={filter.label} class="slds-p-bottom_xx-small">
           <legend class="slds-p-top_small slds-p-bottom_xx-small">
-            <h3 class="p text-bold slds-p-vertical_xx-small">{filter.label}</h3>
+            <h3 class="p text-bold slds-p-vertical_xx-small">{labels.offeringBy}&nbsp;{filter.label}</h3>
           </legend>
           <template for:each={filter.children} for:item="filterChild">
             <div key={filterChild.id} class="slds-m-left_x-small">

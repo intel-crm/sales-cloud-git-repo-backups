@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>FunctionalGroup</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>FunctionalGroups</value>
+    </caseValues>
+    <fields>
+        <help><!-- Use this value for the FunctionalGroupID__c field in the User Object. --></help>
+        <label><!-- FunctionalGroupID --></label>
+        <name>Xvoyant__FunctionalGroupID__c</name>
+    </fields>
+    <fields>
+        <label><!-- Manager --></label>
+        <name>Xvoyant__Manager__c</name>
+        <relationshipLabel><!-- FunctionalGroups --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- ParentGroup --></label>
+        <name>Xvoyant__ParentGroup__c</name>
+        <relationshipLabel><!-- FunctionalGroups --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>FunctionalGroup Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

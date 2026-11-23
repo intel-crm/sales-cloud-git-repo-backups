@@ -29,7 +29,8 @@
                 var products = carousel.get('v.featuredProducts');
                 if(!products.length){
                     var userLangCode = $A.get("$Locale.langLocale");
-                    var action = component.get("c.getFeaturedOfferings");
+                    // IPA2.0 + US TWC4497-1631
+                    // var action = component.get("c.getFeaturedOfferings");
                     //var action1=component.get("c.getEventOfferings");
                     action.setParams({
                         catId : carousel.get('v.categoryId'),
@@ -70,7 +71,7 @@
                             
                             if(products.length ==firstLoadLimit){
                                 setTimeout($A.getCallback(function(){
-                                    var nextAction = component.get("c.getFeaturedOfferings");
+                                    // var nextAction = component.get("c.getFeaturedOfferings");IPA2.0 + US TWC4497-1631
                                     nextAction.setParams({
                                         catId : carousel.get('v.categoryId'),
                                         prevLmt : firstLoadLimit, //4

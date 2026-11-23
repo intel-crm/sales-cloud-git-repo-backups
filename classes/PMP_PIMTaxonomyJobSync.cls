@@ -24,10 +24,10 @@ global with sharing class PMP_PIMTaxonomyJobSync {
         // System.debug('modifiedFileNames' + modifiedFileNames);
         
         // first process the delta file then process other files received from PIM
-        /*if(modifiedFileNames.contains('Delta_IPA_Products'))
+        if(modifiedFileNames.contains('Delta_IPA_Products'))
         {
             PMP_ParseAllFilesJSONDelta.parseAllFilesJSONDelta('Delta_IPA_Products');
-        }*/
+        }
         List<String> fileNames = modifiedFileNames.split(',');
         // System.debug('fileNames' + fileNames);
         for(String fileName: fileNames)

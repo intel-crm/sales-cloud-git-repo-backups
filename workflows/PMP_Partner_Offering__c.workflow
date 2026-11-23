@@ -1,5 +1,269 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Notify_POE_when_an_offering_with_Pre_Release_is_published_future_date_arrived</fullName>
+        <description>Notify POE offering with Pre-ReleaseYES is published (future date arrived)</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingFuturePubPreReleaseArrivePOE</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_NotifyPOEtoChangeStartDate</fullName>
+        <description>NotifyPOEtoChangeStartDate</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingChangeStartDateNotifyPOE</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingAdminReviewingAlert</fullName>
+        <description>Notify to single Admin for offering review</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Intel_Admin_Id__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingAdminReviewingNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingAllAdminsReviewingAlert</fullName>
+        <description>Notify to all Admins for offering review</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>PMP_All_Intel_Admin_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingAllAdminsReviewingNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingAssignedAllAdminAlert</fullName>
+        <description>Alert when offering is assigned to Admin - email goes to All Intel MP Admin when assigned to that particular Admin</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>PMP_All_Intel_Admin_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingAssignedAllAdminNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingExpiryFirstReminderAlert</fullName>
+        <description>Alert to send 14 day reminder on offering expiry</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Offering_Submitter_UserId__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingExpiryFirstReminder</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingExpirySecondReminderAlert</fullName>
+        <description>Alert to send 7 day reminder on offering expiry</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Offering_Submitter_UserId__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingExpirySecondReminder</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingFuturePublishAlert</fullName>
+        <description>Send the Email when Offering is Published and start date is in future</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingFuturePublishNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingFuturePublishArrivedAlert</fullName>
+        <description>Notify POE when an offering is published (future date arrived)</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingFuturePublishArrivedNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingFuturePublishedAdminAlert</fullName>
+        <description>Alert when offering is published on future date to Intel MP Admin</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Intel_Admin_Id__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingFuturePublishAdminNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingNOPRPublishedAlert</fullName>
+        <description>PMP_OfferingNOPRPublishedAlert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingNOPRPublished</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingNoPRApprovedAlert</fullName>
+        <description>PMP_OfferingNoPRApprovedAlert</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingNoPRApproved</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingPreReleaseFuturePublishAlert</fullName>
+        <description>Send the Email when Offering with PreRelease is Approved and start date or PreRelease launch date is in future</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingPreReleaseFuturePubliNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingPublishedAlert</fullName>
+        <description>Alert to send POE, if offering is approved and published</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingPublishedNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingReAssignedAllAdminAlert</fullName>
+        <description>Alert when offering is assigned to one Admin to another Admin, Notify to All Admin</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>PMP_All_Intel_Admin_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingReAssignedAllAdminNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingReSubmittedAllAdminAlert</fullName>
+        <description>Alert when offering is re-submitted to Admin, POE has done Update required and resubmitted.</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>PMP_All_Intel_Admin_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingReSubmittedAllAdminNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingRejectedAlert</fullName>
+        <description>Alert when offering is rejected, notify POE</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingRejectedNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingResubmittedAlert</fullName>
+        <description>Notification to Offering Editor once Intel admin picks up for review - Edit Sumbitted</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingResubmittedNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingSubmittedAlert</fullName>
+        <description>Notify POE when offering is submitted by POE for Admin Review</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingSubmittedNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingSubmittedAllAdminAlert</fullName>
+        <description>Alert when offering is submitted to All Admins</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>PMP_All_Intel_Admin_Users</recipient>
+            <type>group</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingSubmittedAllAdminNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingUpdateRequiredAlert</fullName>
+        <description>Alert when offering is sent for update offering, Notify POE</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingUpdateRequiredNotification</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingUpdateRequiredFirstAlert</fullName>
+        <description>Send first reminder after 3 days for Update Required, Notify POE</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Offering_Submitter_UserId__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingUpdateRequiredFirstNotify</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_OfferingUpdateRequiredSecondAlert</fullName>
+        <description>Send second reminder after 10 days for Update Required, Notify POE</description>
+        <protected>false</protected>
+        <recipients>
+            <field>PMP_Offering_Submitter_UserId__c</field>
+            <type>userLookup</type>
+        </recipients>
+        <senderAddress>intel-partner-alliance@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_OfferingUpdateRequiredSecondNotify</template>
+    </alerts>
     <fieldUpdates>
         <fullName>Status_Date_Update</fullName>
         <description>To Update Last status update date</description>
@@ -34,9 +298,24 @@
         <fullName>PMP Offering Expiry Reminders</fullName>
         <active>false</active>
         <description>This workflow is used to schedule templates</description>
-        <formula>ISPICKVAL( PMP_Partner_Offering_Lifecycle_Status_Nm__c , &quot;Published&quot;) &amp;&amp; NOT(ISNULL(PMP_Partner_Offering_End_Dt__c)) &amp;&amp;  IF (PMP_Offering_Submitter_UserId__c!=NULL,   IF(PMP_Offering_Submitter_UserId__r.ContactId != NULL , Not(PMP_Offering_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true),  false)</formula>
+        <formula>ISPICKVAL( PMP_Partner_Offering_Lifecycle_Status_Nm__c , &quot;Published&quot;) &amp;&amp; NOT(ISNULL(PMP_Partner_Offering_End_Dt__c)) &amp;&amp;  IF (PMP_Offering_Submitter_UserId__c!=NULL,  
+IF(PMP_Offering_Submitter_UserId__r.ContactId != NULL , Not(PMP_Offering_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true), 
+false)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
+            <actions>
+                <name>PMP_OfferingExpiryFirstReminderAlert</name>
+                <type>Alert</type>
+            </actions>
+            <offsetFromField>PMP_Partner_Offering__c.PMP_Partner_Offering_End_Dt__c</offsetFromField>
+            <timeLength>-14</timeLength>
+            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
+        </workflowTimeTriggers>
+        <workflowTimeTriggers>
+            <actions>
+                <name>PMP_OfferingExpirySecondReminderAlert</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>PMP_Partner_Offering__c.PMP_Partner_Offering_End_Dt__c</offsetFromField>
             <timeLength>-7</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
@@ -46,24 +325,30 @@
             <timeLength>0</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
-        <workflowTimeTriggers>
-            <offsetFromField>PMP_Partner_Offering__c.PMP_Partner_Offering_End_Dt__c</offsetFromField>
-            <timeLength>-14</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
     </rules>
     <rules>
         <fullName>PMP_OfferingUpdateRequiredReminder_WF</fullName>
         <active>false</active>
         <description>Trigger an Email Alert to Partner Offering Editor, if there is no action taken even after 3 days and even after 10 days</description>
-        <formula>AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Update Required&apos;), NOT(ISBLANK(PMP_Intel_Admin_Id__c)), NOT(ISBLANK(PMP_Workflow_Three_Day_Trigger_Dt__c)), NOT(ISBLANK(PMP_Workflow_One_Week_Trigger_Dt__c)), IF (PMP_Offering_Submitter_UserId__c!=NULL,   IF(PMP_Offering_Submitter_UserId__r.ContactId != NULL , Not(PMP_Offering_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true),  false))</formula>
+        <formula>AND(ISPICKVAL(PMP_Partner_Offering_Lifecycle_Status_Nm__c,&apos;Update Required&apos;), NOT(ISBLANK(PMP_Intel_Admin_Id__c)), NOT(ISBLANK(PMP_Workflow_Three_Day_Trigger_Dt__c)), NOT(ISBLANK(PMP_Workflow_One_Week_Trigger_Dt__c)),
+IF (PMP_Offering_Submitter_UserId__c!=NULL,  
+IF(PMP_Offering_Submitter_UserId__r.ContactId != NULL , Not(PMP_Offering_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true), 
+false))</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
+            <actions>
+                <name>PMP_OfferingUpdateRequiredSecondAlert</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>PMP_Partner_Offering__c.PMP_Workflow_One_Week_Trigger_Dt__c</offsetFromField>
             <timeLength>10</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
         </workflowTimeTriggers>
         <workflowTimeTriggers>
+            <actions>
+                <name>PMP_OfferingUpdateRequiredFirstAlert</name>
+                <type>Alert</type>
+            </actions>
             <offsetFromField>PMP_Partner_Offering__c.PMP_Workflow_Three_Day_Trigger_Dt__c</offsetFromField>
             <timeLength>3</timeLength>
             <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>

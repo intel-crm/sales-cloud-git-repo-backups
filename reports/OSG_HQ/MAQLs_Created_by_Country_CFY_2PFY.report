@@ -1,32 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>HorizontalBar</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>COUNTRY_CODE</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
-    <columns>
-        <field>LEAD_SOURCE</field>
-    </columns>
     <columns>
         <field>CREATED_DATE</field>
     </columns>
@@ -66,19 +39,14 @@
     <columns>
         <field>CREATED</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
-        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -86,13 +54,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lead.Partner_Lead</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.SWS_Software_Lead__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -104,7 +65,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Lead.Core_Sub_Geo__c</field>
+        <field>LEAD_SOURCE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -124,6 +85,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2FY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

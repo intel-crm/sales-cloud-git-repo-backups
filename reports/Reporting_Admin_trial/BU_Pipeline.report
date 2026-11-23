@@ -18,24 +18,42 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Automotive - Other</sourceValue>
+            </sourceValues>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Smart Building</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -109,7 +127,7 @@
             <value>Pending,On Hold,Win Submitted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>

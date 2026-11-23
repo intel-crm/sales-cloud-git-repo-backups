@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This permission is used to show IPA fields on Registration page Layout</description>
+    <isLicensed>false</isLicensed>
+    <label>PRM_IPA_Reg_Fields</label>
+</CustomPermission>

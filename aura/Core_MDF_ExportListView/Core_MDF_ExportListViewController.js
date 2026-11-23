@@ -42,8 +42,8 @@
         component.set("v.currentListViewName", lstViewName);
         component.set("v.currentListViewId", lstViewId);
         //set the export type as csv/excel based on the button label.
-        var exportBtnType = event.getSource().get("v.title");
-        if(exportBtnType=='Export To CSV'){
+        var exportBtnType = event.getSource().get("v.label");
+        if(exportBtnType=='Export CSV'){
             component.set("v.exportType",'csv');
         }
         else{

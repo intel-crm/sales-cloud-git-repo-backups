@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>J ZIMMER MASCHINENBAU GESMBH Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>JZIMMERMASCHINENBAUGESMBHCustomerManager</parentRole>
 </Role>

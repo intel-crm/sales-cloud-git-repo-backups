@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_CoveredAccount_Notification</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/Core_Email_notification_for_lead_ownership_change</template>
     </alerts>
@@ -29,7 +29,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_Partner_Lead_Management/Core_Send_Email_To_PSG_Leads</template>
     </alerts>
@@ -41,7 +41,7 @@
             <type>owner</type>
         </recipients>
         <senderType>DefaultWorkflowUser</senderType>
-        <template>Testt/LeadsNewassignmentnotificationSAMPLE</template>
+        <template>unfiled$public/LeadsNewassignmentnotificationSAMPLE</template>
     </alerts>
     <alerts>
         <fullName>Core_MAQL_SLA_Expired_Alert</fullName>
@@ -50,7 +50,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/MAQL_SLA_EXPIRED</template>
     </alerts>
@@ -61,7 +61,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>unfiled$public/SAL_SLA_Expired</template>
     </alerts>
@@ -72,9 +72,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TAL_SLA_Expired</template>
+        <template>unfiled$public/TAL_SLA_Expired</template>
     </alerts>
     <alerts>
         <fullName>Core_TQL_SLA_Expired_Alert</fullName>
@@ -83,97 +83,14 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>lms.admin@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/TQL_SLA_Expired</template>
-    </alerts>
-    <alerts>
-        <fullName>MQL_In_Contact_SLA</fullName>
-        <description>MQL_In_Contact_SLA</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
         <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/MQL_In_Contact_SLA</template>
-    </alerts>
-    <alerts>
-        <fullName>MQL_Qualified_Lead_not_in_SAL</fullName>
-        <description>MQL_Qualified_Lead_not_in_SAL</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderAddress>salescrm_sb@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/MQL_Qualified_Lead_not_in_SAL</template>
-    </alerts>
-    <alerts>
-        <fullName>SAL_Not_Converted_in_30_days</fullName>
-        <description>SAL_Not_Converted_in_30_days</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderAddress>salescrm_sb@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/SAL_Not_Converted_in_30_days</template>
-    </alerts>
-    <alerts>
-        <fullName>SGL_Not_Contacted_in_21_days</fullName>
-        <description>SGL_Not_Contacted_in_21_days</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderAddress>salescrm_sb@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/SGL_Not_Contacted_in_21_days</template>
-    </alerts>
-    <alerts>
-        <fullName>SGL_Not_Converted_in_30_days</fullName>
-        <description>SGL_Not_Converted_in_30_days</description>
-        <protected>false</protected>
-        <recipients>
-            <type>owner</type>
-        </recipients>
-        <senderAddress>salescrm_sb@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>unfiled$public/SGL_Not_Converted_in_30_days</template>
+        <template>unfiled$public/TQL_SLA_Expired</template>
     </alerts>
     <fieldUpdates>
-        <fullName>Clear_One_Partner_Id</fullName>
+        <fullName>Core_Clear_One_Partner_Id</fullName>
         <field>Core_One_Partner_Id__c</field>
         <name>Clear One Partner Id</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Null</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Clear_Lead_Share_Error</fullName>
-        <field>Core_Lead_Sharing_Error__c</field>
-        <name>Clear Lead Share Error</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Null</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Clear_Lead_Share_Flag</fullName>
-        <field>Core_Is_Lead_Shared__c</field>
-        <literalValue>0</literalValue>
-        <name>Clear Lead Share Flag</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Clear_MPI_Id</fullName>
-        <field>Core_MPI_Id__c</field>
-        <name>Clear MPI Id</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Null</operation>
         <protected>false</protected>
@@ -862,16 +779,6 @@ AND(
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
-        <fullName>Core_Rejected_Flag</fullName>
-        <field>Core_Rejected_Flag__c</field>
-        <literalValue>0</literalValue>
-        <name>Core_Rejected_Flag</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
         <fullName>Core_Reset_State_Entrance_Date_Accepted</fullName>
         <description>Sets the State Entrance Date - Accepted to NULL</description>
         <field>Core_State_Entrance_Date_Accepted__c</field>
@@ -908,16 +815,6 @@ AND(
         <name>Core_Reset_State_Entrance_Date_Rejected</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Null</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_SQL_Converted_User</fullName>
-        <field>Core_SQL_Converted_User__c</field>
-        <formula>$User.FirstName +&apos; &apos;+$User.LastName</formula>
-        <name>SQL Converted User</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
@@ -1568,7 +1465,7 @@ IF(
             <name>Core_Lead_to_Opportunity_flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Lead.Status</field>
@@ -1588,7 +1485,7 @@ IF(
             <name>Core_CoveredAccount_Notification</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Sending email</description>
         <formula>OR( AND( ISNEW(), RecordType.Name = &quot;Lead&quot;,  ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;), Core_Covered_account_owner__c=Core_Lead_Owner_Name__c,  Core_Is_Covered_Account__c=true   ), AND( OR(ISCHANGED(Core_Existing_Covered_Account__c), ISCHANGED(OwnerId)), Core_Flag_on_Queue_or_User__c =&quot;User&quot;, RecordType.Name = &quot;Lead&quot;,  ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;), Core_Covered_account_owner__c=Core_Lead_Owner_Name__c,  Core_Is_Covered_Account__c=true   ), AND( ISNEW(), RecordType.Name = &quot;Sales Lead&quot;,  ISPICKVAL(Status, &quot;Tele Accepted Lead&quot;), Core_Covered_account_owner__c=Core_Lead_Owner_Name__c,  Core_Is_Covered_Account__c=true   ), AND( OR(ISCHANGED(Core_Existing_Covered_Account__c), ISCHANGED(OwnerId)), Core_Flag_on_Queue_or_User__c =&quot;User&quot;, RecordType.Name = &quot;Sales Lead&quot;,  ISPICKVAL(Status, &quot;Tele Accepted Lead&quot;), Core_Covered_account_owner__c=Core_Lead_Owner_Name__c,  Core_Is_Covered_Account__c=true   ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1627,7 +1524,7 @@ IF(
             <name>Core_Update_Status_on_SAL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Exception Flow : The following fields should be stamped when the Lead Stage changes from &quot;Marketing Qualified Lead&quot; to &quot;Sales Accepted Lead&quot; for Record Type = Lead</description>
         <formula>AND (  ISPICKVAL(PRIORVALUE(Status), &quot;Marketing Qualified Lead&quot;),  ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;),  RecordType.DeveloperName =&apos;Lead&apos;, ISCHANGED(Status ), OR( ISPICKVAL(Core_Lead_Status__c , &quot;New&quot;), ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;) ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1654,7 +1551,7 @@ IF(
             <name>Core_Update_Status_on_TAL_to_SAL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Exception Flow : The following fields should be stamped when the Lead Stage changes from &quot;Tele Accepted Lead&quot; to &quot;Sales Accepted Lead&quot; for Record Type = Sales Lead</description>
         <formula>AND (  ISPICKVAL(PRIORVALUE(Status), &quot;Tele Accepted Lead&quot;),  ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;),  RecordType.DeveloperName =&apos;Sales_Lead&apos;, ISCHANGED(Status ), OR( ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;), ISPICKVAL(Core_Lead_Status__c , &quot;Qualified&quot;) )    )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1665,7 +1562,7 @@ IF(
             <name>Core_Email_Notification_For_Lead_Ownership_Change</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>OR( AND( RecordType.DeveloperName =&quot;Lead&quot;, ISPICKVAL( Status, &quot;Marketing Qualified Lead&quot; ), ISCHANGED(OwnerId), Core_Flag_on_Queue_or_User__c =&quot;User&quot;, OR(Core_Covered_account_owner__c &lt;&gt; Core_Lead_Owner_Name__c, Core_Covered_account_owner__c = null) ), AND(  RecordType.DeveloperName =&quot;Sales_Lead&quot;, ISPICKVAL( Status, &quot;Tele Accepted Lead&quot; ), ISCHANGED(OwnerId), Core_Flag_on_Queue_or_User__c =&quot;User&quot;, OR(Core_Covered_account_owner__c &lt;&gt; Core_Lead_Owner_Name__c, Core_Covered_account_owner__c = null) ), AND(  RecordType.DeveloperName = &quot;Lead&quot;, OR(ISPICKVAL( Status, &quot;Tele Accepted Lead&quot; ),ISPICKVAL( Status, &quot;Tele Qualified Lead&quot; ),ISPICKVAL( Status, &quot;Sales Accepted Lead&quot; )), ISCHANGED(OwnerId), Core_Flag_on_Queue_or_User__c =&quot;User&quot; ), AND(  RecordType.DeveloperName = &quot;Sales_Lead&quot;, OR(ISPICKVAL( Status, &quot;Tele Qualified Lead&quot; ),ISPICKVAL( Status, &quot;Sales Accepted Lead&quot; )), ISCHANGED(OwnerId), Core_Flag_on_Queue_or_User__c =&quot;User&quot; ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1679,7 +1576,7 @@ IF(
             <name>Core_Exit_Dateee_SAL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Set when the lead Stage is set to &quot;Contact – No Opportunity&quot; and Lead Status is Disqualified</description>
         <formula>AND(  RecordType.Name &lt;&gt; &apos;Partner Lead&apos;,  ISPICKVAL(Status, &quot;Contact - No Opportunity&quot;),  ISPICKVAL (Core_Lead_Status__c, &quot;Disqualified&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1694,7 +1591,7 @@ IF(
             <name>Core_EntranceDate_TAP</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND ( ISNULL(Core_Entrance_Date_MQL__c), ISNULL(Core_Entrance_Date_TAL__c), ISPICKVAL(Status, &quot;Tele Accepted Lead&quot;), RecordType.Name &lt;&gt;&apos;Partner Lead&apos; )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1704,7 +1601,7 @@ IF(
             <name>Core_Flag_Update_Tasks</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>ISCHANGED(Status)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1738,12 +1635,11 @@ IF(
             <name>Core_Update_State_Entrance_Date_Open</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Converts a Prospect to a Lead.
 Resets the value of &apos;Lead State&apos; to &apos;Open&apos;. 
 Sets the &apos;State Entrance Date - Open&apos; to current date. 
 Resets all the other State Entrance Dates.</description>
-        <failedMigrationToolVersion>252.11.2</failedMigrationToolVersion>
         <formula>AND ( ISCHANGED(Status), ISPICKVAL(Status, &apos;Tele Qualified Lead&apos;), RecordType.Name = &apos;Prospect&apos; )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1769,7 +1665,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Stage_TQL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  RecordType.DeveloperName &lt;&gt; &apos;Partner_Lead&apos;,  NOT(ISCHANGED(Status)),  ISCHANGED(Core_Lead_Status__c) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1779,7 +1675,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Rating_Field_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.Core_Lead_Conversion_Point__c</field>
             <operation>equals</operation>
@@ -1798,7 +1694,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_MQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( ISNULL(Core_Entrance_Date_MQL__c), ISPICKVAL( Core_Lead_Status__c ,&quot;New&quot;), ISPICKVAL(Status, &quot;Marketing Qualified Lead&quot;),  RecordType.Name  &lt;&gt;  &apos;Partner Lead&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1808,7 +1704,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Priority_Cold_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Lead.Core_Lead_PMP_Action__c</field>
@@ -1828,7 +1724,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Priority_Hot_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Lead.Core_Lead_PMP_Action__c</field>
@@ -1848,7 +1744,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Priority_Warm_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.Core_Lead_PMP_Action__c</field>
             <operation>equals</operation>
@@ -1860,6 +1756,48 @@ Resets all the other State Entrance Dates.</description>
             <value>Partner Lead</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Lead_Reset_Lead_State</fullName>
+        <actions>
+            <name>Core_Lead_Reset_Lead_State_To_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Accepted</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Engaged</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_OnHold</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Reset_State_Entrance_Date_Rejected</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Update_State_Entrance_Date_Open</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <description>Resets the value of &apos;Lead State&apos; to &apos;Open&apos;.
+Resets Rejection Reason, Rejection Comments.
+Sets the &apos;State Entrance Date - Open&apos; to current date.
+Resets all the other State Entrance Dates.</description>
+        <formula>AND(ISCHANGED (OwnerId),RecordType.Name = &quot;Partner Lead&quot;)</formula>
+        <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Lead_Reset_Lead_State_New</fullName>
@@ -1883,7 +1821,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_Open</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Resets the value of &apos;Lead State&apos; to &apos;Unclaimed&apos;.
 Sets the &apos;State Entrance Date - Open&apos; to current date.
 Resets all the other State Entrance Dates.</description>
@@ -1891,8 +1829,23 @@ Resets all the other State Entrance Dates.</description>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
-        <fullName>Core_Lead_Send_Email_To_Partners</fullName>
+        <fullName>Core_Lead_Reset_Rejection_Data</fullName>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Comments</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_Lead_Reset_Rejection_Reason</name>
+            <type>FieldUpdate</type>
+        </actions>
         <active>false</active>
+        <description>Workflow to reset the Rejection Reason, Rejection Comments.</description>
+        <formula>AND( ISCHANGED(Core_Lead_State__c), NOT(ISPICKVAL(Core_Lead_State__c, &apos;Terminated&apos;))  )</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Lead_Send_Email_To_Partners</fullName>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.RecordTypeId</field>
             <operation>equals</operation>
@@ -1931,7 +1884,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Send_Email_To_Partners</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Workflow to send Email Notification to Partners when a lead is re-assigned from &apos;Invalid Partner Queue&apos; to another Partner Queue.</description>
         <formula>AND  (  ISCHANGED(OwnerId),  PRIORVALUE(OwnerId) = $Label.Core_Partner_Invalid_Queue_Id,  CONTAINS(Owner:Queue.DeveloperName, &quot;Core_PTNR&quot;), RecordType.Name = &apos;Partner Lead&apos;, ISPICKVAL(Core_PSG_Lead__c , &quot;PSG&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1950,7 +1903,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_Status_on_TQL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND (  ISPICKVAL(PRIORVALUE(Status), &quot;Tele Accepted Lead&quot;),  ISPICKVAL(Status, &quot;Tele Qualified Lead&quot;), RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, ISCHANGED(Status ), OR( ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;), ISPICKVAL(Core_Lead_Status__c , &quot;Qualified&quot;) )  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1960,7 +1913,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_Accepted</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Captures the date/time when Lead State changes to Accepted.</description>
         <formula>AND  (  ISBLANK (Core_State_Entrance_Date_Accepted__c), OR(ISNEW(), ISCHANGED(Core_Lead_State__c)),  ISPICKVAL (Core_Lead_State__c, &quot;Accepted&quot;)  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1971,7 +1924,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_Engaged</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Captures the date/time when Lead State changes to Engaged.</description>
         <formula>AND  (  ISBLANK (Core_State_Entrance_Date_Engaged__c), OR(ISNEW(), ISCHANGED(Core_Lead_State__c)),   ISPICKVAL (Core_Lead_State__c, &quot;Engaged&quot;)  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -1982,7 +1935,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_MQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(ISNULL(Core_Entrance_Date_MQL__c), ISPICKVAL(Status,&quot;Marketing Qualified Lead&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -1992,7 +1945,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_OnHold</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Captures the date/time when Lead State changes to On Hold.</description>
         <formula>AND  (  ISBLANK (Core_State_Entrance_Date_OnHold__c), OR(ISNEW(), ISCHANGED(Core_Lead_State__c)), ISPICKVAL (Core_Lead_State__c, &quot;On Hold&quot;)  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2019,7 +1972,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_Open</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Captures the date/time when Lead State changes to Open.</description>
         <formula>AND  (  ISBLANK (Core_State_Entrance_Date_Open__c), OR(ISNEW(), ISCHANGED(Core_Lead_State__c)),   ISPICKVAL (Core_Lead_State__c, &quot;Open&quot;)  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2030,7 +1983,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_State_Entrance_Date_Rejected</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Captures the date/time when Lead State changes to Rejected.</description>
         <formula>AND ( ISBLANK (Core_State_Entrance_Date_Rejected__c), OR(ISNEW(), ISCHANGED(Core_Lead_State__c)),  ISPICKVAL (Core_Lead_State__c, &quot;Rejected&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2049,7 +2002,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_Status_on_TQL_To_SAL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND (  ISPICKVAL(PRIORVALUE(Status), &quot;Tele Qualified Lead&quot;),  ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;),  RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, ISCHANGED(Status ), OR( ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;), ISPICKVAL(Core_Lead_Status__c , &quot;Qualified&quot;) ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2067,7 +2020,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_SQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( ISBLANK(Core_Entrance_Date_SQL__c), ISCHANGED(IsConverted), IsConverted=true, ISPICKVAL(Status, &quot;Sales Qualified Lead&quot;), RecordType.Name &lt;&gt;&apos;Partner Lead&apos;)</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2089,7 +2042,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_Status_on_TAL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND ( ISPICKVAL(PRIORVALUE(Status), &quot;Marketing Qualified Lead&quot;), ISPICKVAL(Status, &quot;Tele Accepted Lead&quot;), RecordType.Name &lt;&gt;&apos;Partner Lead&apos;, ISCHANGED(Status ),  OR(  ISPICKVAL(Core_Lead_Status__c , &quot;New&quot;),  ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;)  ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2099,7 +2052,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_TQL_Entrance_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND ( ISNULL(Core_Entrance_Date_TQL__c),  ISPICKVAL(Status,&quot;Tele Qualified Lead&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2109,8 +2062,18 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_Unqualified_Entrance_Da</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(ISNULL(Core_Entrance_Date_Unqualified__c),  ISPICKVAL(Status,&quot;Unqualified&quot;))</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_Lead_Transfer_SAL</fullName>
+        <actions>
+            <name>Core_Lead_Transfer_SAL</name>
+            <type>Alert</type>
+        </actions>
+        <active>false</active>
+        <formula>AND((ISCHANGED(  OwnerId  )),  ISPICKVAL( Status, &quot;Sales Accepted Lead&quot; ))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -2143,7 +2106,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Unreachable_flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.Core_Lead_Status__c</field>
             <operation>equals</operation>
@@ -2177,7 +2140,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_Street</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.Core_System_Update_Address__c</field>
             <operation>equals</operation>
@@ -2196,7 +2159,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_Country</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updates the Country value from Existing Account to the Lead Object. Sets the &apos;System Update Address&apos; to True so rest of the Address can be updated in the second workflow Core_Lead_Update_Address_From_Existing_Account.</description>
         <formula>OR (  AND ( ISNEW(),  NOT (ISBLANK(Core_Existing_Covered_Account__c)) ), AND ( ISCHANGED(Core_Existing_Covered_Account__c),  NOT (ISBLANK(Core_Existing_Covered_Account__c)) ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2207,7 +2170,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_Stage_Change_Date_Time</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the date/time when the Lead Stage had last changed.</description>
         <formula>ISCHANGED(Status)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2218,7 +2181,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_State_Change_Date_Time</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the date/time when the Lead State had last changed.</description>
         <formula>ISCHANGED(Core_Lead_State__c)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2229,7 +2192,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Lead_Update_State_To_Converted</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updating the lead state (Custom Field) to Converted when the lead is converted</description>
         <formula>IsConverted = True</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -2240,7 +2203,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Update_lead_Conversion_Flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>We are using this to validate while converting lead to Comarketing Account Record type</description>
         <formula>OR( AND( OR(RecordType.Name = &quot;Sales Lead&quot;,RecordType.Name=&quot;Lead&quot;), ISPICKVAL(Status, &quot;Sales Accepted Lead&quot;) ), AND( RecordType.Name=&quot;Partner Lead&quot;  ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2251,7 +2214,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Uncheck_Opp_Conversion_Flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(   RecordType.DeveloperName &lt;&gt; &apos;Partner_Lead&apos;,  OR(   ISCHANGED(Status),   ISCHANGED(Core_Lead_Status__c)  ),  ISPICKVAL(Status, &apos;Sales Accepted Lead&apos;),  ISPICKVAL(Core_Lead_Status__c, &apos;Accepted&apos;),  ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &apos;Disqualified&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2261,7 +2224,7 @@ Resets all the other State Entrance Dates.</description>
             <name>Core_Is_Owner_Changed_in_TQL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Lead Stage = Tele Qualified Lead
 If Record is not re-assigned (ownership change) within 1 business day of Meeting Task – Meeting Date (time of the MEETING, not time of the task)</description>
         <formula>AND(  RecordType.DeveloperName &lt;&gt; &quot;Partner_Lead&quot;,  ISCHANGED(OwnerId),  NOT(ISNULL(Core_Meeting_Due_Date__c)),   ISPICKVAL(Status, &apos;Tele Qualified Lead&apos;) )</formula>
@@ -2281,7 +2244,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Lead_Status_Eloqua</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Lead.RecordTypeId</field>
@@ -2317,7 +2280,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_State_partner</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  RecordType.Name = &apos;Partner Lead&apos;,  ISCHANGED(Core_Partner_Lead_Owner__c),  PRIORVALUE(Core_Partner_Lead_Owner__c)=Null,  Core_Partner_Lead_Owner__c &lt;&gt; Null, ISPICKVAL(Core_Lead_Status__c , &quot;New&quot;), NOT(ISPICKVAL(Core_Lead_State__c , &quot;Terminated&quot;)) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2327,7 +2290,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Update_Entrance_Date_Contact_Established</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  NOT(ISNULL(Core_PAL_Entry_Dt__c)), ISNULL( Core_Contact_Estb_Dt__c ), RecordType.Name = &apos;Partner Lead&apos;,  ISPICKVAL(Status, &quot;PAL&quot;),  ISPICKVAL (Core_Lead_Status__c, &quot;Contacted&quot;), Core_Lead_Contact_Estb_Dt__c = true )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2353,7 +2316,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Update_Lead_State_to_Converted</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND (   RecordType.Name = &quot;Partner Lead&quot;, ISCHANGED(Core_Lead_Status__c),  ISPICKVAL(Core_Lead_Status__c , &quot;Qualified&quot;), ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;Contacted&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2367,7 +2330,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Stage_to_PRL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  OR (ISNEW(), ISCHANGED(Core_Lead_Status__c)),  ISPICKVAL(Core_Lead_Status__c , &quot;New&quot;),  RecordType.Name = &quot;Partner Lead&quot; )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2377,7 +2340,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Entrance_Date_Contacted</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND(  NOT(ISNULL(Core_PAL_Entry_Dt__c)), ISNULL( Core_Entrance_Date_Contacted_Dt__c ), RecordType.Name = &apos;Partner Lead&apos;,  ISPICKVAL(Status, &quot;PAL&quot;),  ISPICKVAL(PRIORVALUE(Core_Lead_Status__c),&quot;Accepted&quot;), ISPICKVAL(Core_Lead_Status__c, &quot;Contacted&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2391,36 +2354,14 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Lead_Stage_Rejected</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( RecordType.Name = &apos;Partner Lead&apos;, ISCHANGED(Core_Lead_State__c), ISPICKVAL(Core_Lead_State__c, &quot;Terminated&quot;) )</formula>
-        <triggerType>onAllChanges</triggerType>
-    </rules>
-    <rules>
-        <fullName>Core_Reject_flag_update</fullName>
-        <actions>
-            <name>Core_Rejected_Flag</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
-        <formula>AND( ISPICKVAL(Core_Lead_State__c, &quot;In Pursuit&quot;), ISPICKVAL(PRIORVALUE(Core_Lead_State__c), &quot;Terminated&quot;), NOT(ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &quot;Unreachable&quot;)), ISCHANGED(Core_Lead_State__c), OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_Remove_Current_Lead_Sharing</fullName>
         <actions>
-            <name>Clear_One_Partner_Id</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Clear_Lead_Share_Error</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Clear_Lead_Share_Flag</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Clear_MPI_Id</name>
+            <name>Core_Clear_One_Partner_Id</name>
             <type>FieldUpdate</type>
         </actions>
         <actions>
@@ -2435,7 +2376,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Uncheck_Remove_Current_Sharing</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>ISCHANGED( Core_Remove_Current_Sharing_Ind__c ) &amp;&amp;  Core_Remove_Current_Sharing_Ind__c = true</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2445,7 +2386,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_SAL_SLAEmail</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>OR(AND(ISCHANGED(Core_SendEmail__c), Core_SendEmail__c = true, RecordType.DeveloperName &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( Status , &apos;Sales Accepted Lead&apos;), ISPICKVAL( Core_Lead_Status__c , &apos;Accepted&apos;), Core_Having_Tasks__c = false, Core_Created_Post_NewLead_Process__c=true, Core_SLA_Listed_User__c = true), AND(ISCHANGED( Core_SendEmail4__c ), Core_SendEmail4__c = true, RecordType.DeveloperName &lt;&gt; &apos;Partner_Lead&apos;, ISPICKVAL( Status , &apos;Sales Accepted Lead&apos;), ISPICKVAL( Core_Lead_Status__c , &apos;Accepted&apos;), Core_Created_Post_NewLead_Process__c=True, Core_SLA_Listed_User__c = true))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2467,7 +2408,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_4th_Reminder</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.RecordTypeId</field>
             <operation>equals</operation>
@@ -2509,7 +2450,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Unqualified_Lead_Coverage</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( OR( ISNEW(), ISCHANGED(Status) ), LEFT(OwnerId, 3) = &apos;005&apos;, OR( TEXT(PRIORVALUE(Status))=&quot;Unqualified&quot;, TEXT(PRIORVALUE(Status))=&quot;Sales Accepted Lead&quot;, TEXT(PRIORVALUE(Status))=&quot;Marketing Qualified Lead&quot;, TEXT(PRIORVALUE(Status))=&quot;Tele Qualified Lead&quot;,TEXT(PRIORVALUE(Status))=&quot;Tele Accepted Lead&quot; ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2523,13 +2464,13 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_TQL</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( OR(  ISNEW(),  ISCHANGED(IsConverted)  ),  IsConverted = True, LEFT(Owner:User.Id , 3) = &apos;005&apos;, OR( ISPICKVAL(Status,&quot;Sales Qualified Lead&quot;), ISPICKVAL(Status,&quot;Tele Qualified Lead&quot;) )  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
         <fullName>Core_TQL_Lead_Ownership_Change_SLA_Email_Alert</fullName>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( RecordType.DeveloperName &lt;&gt; &quot;Partner_Lead&quot;, Core_Ownership_change_in_one_day_TQL__c =false, Core_Having_Tasks_in_TQL__c=True, Core_SLA_Listed_User__c=True, Core_Created_Post_NewLead_Process__c=True, OR( ISPICKVAL(Core_Lead_Status__c , &quot;Accepted&quot;), ISPICKVAL(Core_Lead_Status__c , &quot;Qualified&quot;) ), ISPICKVAL(Status, &apos;Tele Qualified Lead&apos;) )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
@@ -2552,7 +2493,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Flag_Post_New_Process</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>US203595: New Lead Process : New hidden field to distinguish old records from new</description>
         <formula>AND(ISNEW(),OR(RecordType.Name = &quot;Lead&quot;, RecordType.Name = &quot;Sales Lead&quot;))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2567,7 +2508,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_New_Partner_Process_field</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>New Lead Process : New hidden field to distinguish old records from new</description>
         <formula>AND(ISNEW(), RecordType.Name = &quot;Partner Lead&quot;)</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2575,14 +2516,10 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
     <rules>
         <fullName>Core_Update_Lead_Status_onConvert</fullName>
         <actions>
-            <name>Core_SQL_Converted_User</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
             <name>Core_Update_Lead_Status_to_Opportunity</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Lead.IsConverted</field>
             <operation>equals</operation>
@@ -2601,7 +2538,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_FieldUpdate_State_Terminated</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update State to Terminated</description>
         <formula>AND( ISCHANGED(Core_Lead_Status__c), OR(ISPICKVAL(Core_Lead_Status__c , &apos;Rejected&apos;) , ISPICKVAL(Core_Lead_Status__c , &apos;Disqualified&apos;) ,  ISPICKVAL(Core_Lead_Status__c , &apos;Passed to Partner&apos;) ,  ISPICKVAL(Core_Lead_Status__c , &apos;Unreachable&apos;)) ,  RecordType.Name &lt;&gt; &apos;Partner Lead&apos; , NOT(ISCHANGED(OwnerId)) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -2612,7 +2549,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_FieldUpdate_State_to_InPursuit</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>OR( AND( ISCHANGED(Core_Lead_Status__c), ISPICKVAL(Core_Lead_Status__c , &apos;Accepted&apos;), OR(ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;New&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Rejected&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Disqualified&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Passed to Partner&apos;)), RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, NOT(ISCHANGED(OwnerId)) ), AND(  ISCHANGED(Core_Lead_Status__c),  ISPICKVAL(Core_Lead_Status__c , &apos;Qualified&apos;),  OR(  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Rejected&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Disqualified&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Passed to Partner&apos;)),  RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, NOT(ISCHANGED(OwnerId))  ),  AND(  ISPICKVAL(Status,&apos;Marketing Qualified Lead&apos;),  ISPICKVAL(Core_Lead_Status__c , &apos;New&apos;),  ISPICKVAL((PRIORVALUE(Core_Lead_Status__c)), &apos;Rejected&apos;), RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, NOT(ISCHANGED(OwnerId))  ),  AND( ISCHANGED(OwnerId), LEFT(PRIORVALUE(OwnerId),3) == &apos;00G&apos; , LEFT(OwnerId,3) == &apos;005&apos; , RecordType.Name &lt;&gt; &apos;Partner Lead&apos; )  )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2622,7 +2559,7 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_Task_flag_on_Lead</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>OR(AND ( NOT(ISNULL(Core_Entrance_Date_SAL__c)),  Core_Having_Tasks__c=true, RecordType.Name &lt;&gt; &apos;Partner Lead&apos;,ISPICKVAL(PRIORVALUE(Status), &apos;Tele Qualified Lead&apos;)), AND ( Core_Having_Tasks__c=true, ISPICKVAL(Status, &apos;Sales Accepted Lead&apos;) ,RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &apos;Unreachable&apos;),ISPICKVAL(Core_Lead_Status__c, &apos;Accepted&apos;) ), AND ( Core_Having_Tasks__c=true, ISPICKVAL(Status, &apos;Sales Accepted Lead&apos;) ,RecordType.Name &lt;&gt; &apos;Partner Lead&apos;, ISPICKVAL(PRIORVALUE(Core_Lead_Status__c), &apos;Accepted&apos;),OR(ISPICKVAL(Core_Lead_Status__c, &apos;Qualified&apos;),ISPICKVAL(Core_Lead_Status__c, &apos;Disqualified&apos;) ) ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -2640,10 +2577,9 @@ If Record is not re-assigned (ownership change) within 1 business day of Meeting
             <name>Core_Update_state</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Update the  stage and status fields while cloning</description>
-        <failedMigrationToolVersion>242.3.5</failedMigrationToolVersion>
-        <formula>OR( AND(  ISCLONE(), $Profile.Name &lt;&gt; &quot;Eloqua Integrator&quot; ,  $Profile.Name &lt;&gt; &quot;Integration&quot;,$Profile.Name &lt;&gt; &quot;Core Integration&quot; ), AND(  OR(ISNEW(),ISCLONE()), RecordType.Name = &quot;Sales Lead&quot; ) )</formula>
+        <formula>OR( AND(  ISCLONE(),  OR(RecordType.Name = &quot;Sales Lead&quot;,RecordType.Name=&quot;Lead&quot;),  $Profile.Name &lt;&gt; &quot;Eloqua Integrator&quot; ,  $Profile.Name &lt;&gt; &quot;Integration&quot; ), AND(  OR(ISNEW(),ISCLONE()), RecordType.Name = &quot;Sales Lead&quot; ) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
 </Workflow>

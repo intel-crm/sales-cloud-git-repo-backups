@@ -8,9 +8,9 @@
             <recipient>Core_MDF_CCP_CCF_Boost_Finance_User</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Claim_Case_Reviewer_upon_Late_Claim_Escalation_Approval</fullName>
@@ -20,9 +20,9 @@
             <recipient>Core_MDF_CCP_Claim_Case_Reviewer_Mgr_Grp</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Late_Claim_Escalation_Approval</template>
+        <template>unfiled$public/Core_MDF_Late_Claim_Escalation_Approval</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_DCF_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -32,21 +32,9 @@
             <recipient>Core_MDF_CCP_DCF_Finance_User</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Escalation_ClaimSubmitter_when_Approved</fullName>
-        <description>Notify Escalation ClaimSubmitter when Approved</description>
-        <protected>false</protected>
-        <recipients>
-            <field>Core_MDF_Claim_Submitter_Id__c</field>
-            <type>userLookup</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Notify_ClaimSubmitter</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -56,69 +44,9 @@
             <recipient>Core_MDF_CCP_CCF_Finance_User</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Retail_APJ_Finance_User_upon_Budget_Escalation_Approval</fullName>
-        <description>Notify Retail APJ Finance User upon Budget Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Retail_APJ_FinUser_Esc_Grp</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Retail_ASMO_LAR_Finance_User_upon_Budget_Escalation_Approval</fullName>
-        <description>Notify Retail ASMO LAR Finance User upon Budget Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Retail_ASMOLAR_FinUser_Esc</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Retail_ASMO_NAR_Finance_User_upon_Budget_Escalation_Approval</fullName>
-        <description>Notify Retail ASMO NAR Finance User upon Budget Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Retail_ASMONAR_FinUser_Esc</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Retail_EMEA_Finance_User_upon_Budget_Escalation_Approval</fullName>
-        <description>Notify Retail EMEA Finance User upon Budget Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Retail_EMEA_FinUser_Esc_Grp</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Core_MDF_Notify_Retail_PRC_Finance_User_upon_Budget_Escalation_Approval</fullName>
-        <description>Notify Retail PRC Finance User upon Budget Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Retail_PRC_FinUser_Esc_Grp</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_SPCF_Finance_User_upon_Budget_Escalation_Approval</fullName>
@@ -128,9 +56,9 @@
             <recipient>Core_MDF_CCP_SPCF_Finance_User</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Budget_Escl_Approval_Template</template>
+        <template>unfiled$public/Core_MDF_Budget_Escl_Approval_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_the_Escalation_Submitter_when_Approved</fullName>
@@ -142,9 +70,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Escalation_Approval_Email_Template</template>
+        <template>unfiled$public/Core_MDF_Escalation_Approval_Email_Template</template>
     </alerts>
     <alerts>
         <fullName>Core_MDF_Notify_the_Escalation_Submitter_when_Denied</fullName>
@@ -156,21 +84,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_Escalation_Approval_Email_Template</template>
-    </alerts>
-    <alerts>
-        <fullName>Notify_Claim_Case_Reviewer_Manager_upon_Claim_Case_Review_Result_Escalation_Appr</fullName>
-        <description>Notify Claim Case Reviewer/Manager upon Claim Case Review Result Escalation Approval</description>
-        <protected>false</protected>
-        <recipients>
-            <recipient>Core_MDF_CCP_Claim_Case_Reviewer_Mgr_Grp</recipient>
-            <type>group</type>
-        </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_NotifyClaimRwrMgr_on_EscAproval</template>
+        <template>unfiled$public/Core_MDF_Escalation_Approval_Email_Template</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_MDF_Cancel_Status</fullName>
@@ -181,36 +97,6 @@
         <operation>Literal</operation>
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Change_Status_to_Expired</fullName>
-        <field>Core_MDF_Escalation_Status_nm__c</field>
-        <literalValue>Expired</literalValue>
-        <name>Change Status to Expired</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Set_Approval_Flag</fullName>
-        <field>Core_MDF_Approval_Flag_ind__c</field>
-        <literalValue>1</literalValue>
-        <name>Set Approval Flag</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_MDF_Set_Approval_Flag_EEF</fullName>
-        <field>Core_MDF_Approval_Flag_ind__c</field>
-        <literalValue>1</literalValue>
-        <name>Set Approval Flag</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_MDF_Status_to_Approved</fullName>
@@ -230,34 +116,6 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
-    <rules>
-        <fullName>Core_MDF_Escalation_Status_Change</fullName>
-        <active>false</active>
-        <criteriaItems>
-            <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c</field>
-            <operation>equals</operation>
-            <value>Pending Review</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Escalation__c.Core_MDF_Budget_Type_txt__c</field>
-            <operation>notEqual</operation>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Escalation__c.Core_MDF_Escalation_Type_nm__c</field>
-            <operation>equals</operation>
-            <value>Late Claim</value>
-        </criteriaItems>
-        <triggerType>onCreateOrTriggeringUpdate</triggerType>
-        <workflowTimeTriggers>
-            <actions>
-                <name>Core_MDF_Change_Status_to_Expired</name>
-                <type>FieldUpdate</type>
-            </actions>
-            <offsetFromField>Core_MDF_Escalation__c.Core_MDF_Esc_Submission_End_Date_dtm__c</offsetFromField>
-            <timeLength>1</timeLength>
-            <workflowTimeTriggerUnit>Days</workflowTimeTriggerUnit>
-        </workflowTimeTriggers>
-    </rules>
 </Workflow>

@@ -9,7 +9,7 @@ Modification Log :
 * Dave Hood           Jun 24, 2015       Initial version
 * Dave Hood           Jan 25, 2016       Changes for Spring 16 and shortening of the questionnaire
 *************************************************************************************/
-public without sharing class Core_MAGQuestionnaireController {
+public class Core_MAGQuestionnaireController {
     
     private ApexPages.StandardController stdController;
     
@@ -72,7 +72,7 @@ public without sharing class Core_MAGQuestionnaireController {
                 Id qstId;
                 
                 List<Core_MAG_Questionnaire__c> existingQuestionnaire =
-                    [select Id from Core_MAG_Questionnaire__c where Core_Opportunity__c =: ApexPages.currentPage().getParameters().get('OpportunityId') limit 1];
+                    [select Id from Core_MAG_Questionnaire__c where Core_Opportunity__c = :oppId limit 1];
                     
                 if ((existingQuestionnaire != null) && (existingQuestionnaire.size() > 0)) {
                     qstId = existingQuestionnaire[0].Id;
@@ -82,7 +82,7 @@ public without sharing class Core_MAGQuestionnaireController {
                     insert existingQuestionnaire;
                     qstId = existingQuestionnaire[0].Id;
                     
-                    Opportunity opp = [select Core_MAG_Questionnaire_ID__c from Opportunity where Id =: ApexPages.currentPage().getParameters().get('OpportunityId')];
+                    Opportunity opp = [select Core_MAG_Questionnaire_ID__c from Opportunity where Id = :oppId];
                     opp.Core_MAG_Questionnaire_ID__c = qstId;
                     update opp;
                 }

@@ -255,6 +255,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_CIM_Search_Score_New_Nbr__c</fullName>
+        <externalId>false</externalId>
+        <label>CIM Search Score New</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_City_Nm__c</fullName>
         <description>It stores the City of the Account returned from CIM system</description>
         <externalId>false</externalId>

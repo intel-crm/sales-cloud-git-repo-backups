@@ -50,10 +50,6 @@
         <field>TOTAL_PRICE</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>SERVICE_DATE</field>
     </columns>
     <columns>
@@ -64,18 +60,18 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,jonas astrom,david clarke,marcus ward,phil milner,matti tommiska,graham copperwheat,Nisha Ruhomutally,Mark Brant,Patrick Barry,Daniel Stackenas,Francois Pequillat,Lena Engdahl,DJ Gianduso,Bettina Smithson</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Sub_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>NEUR</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>PSG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -102,8 +98,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>CREATED_DATE</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2022-12-31</endDate>

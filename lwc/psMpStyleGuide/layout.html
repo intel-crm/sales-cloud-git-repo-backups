@@ -1,0 +1,166 @@
+<template>
+    <div class="slds-p-around_large" style="min-height: 100%;">
+
+        <h2 class="intel-clear">Layout</h2>
+        <h4 class="slds-p-vertical_large">Responsive Screens</h4>
+
+        <p class="slds-p-bottom_large color-pink">
+            The responsive design is mobile first, with three main screen sizes:
+        </p>
+      
+          <lightning-layout class="images slds-m-top_x-large" multiple-rows data-mobile={breakpoint.isMobile}>
+            <lightning-layout-item class="slds-text-align_center" size="3" padding="around-small">
+              <img src={breakpointImages.mobile} data-border={breakpoint.isMobile} />
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-text-align_center" size="3" padding="around-small">
+              <img src={breakpointImages.tablet} data-border={breakpoint.isTablet} />
+            </lightning-layout-item>
+      
+            <lightning-layout-item class="slds-text-align_center" size="6" padding="around-small">
+              <img src={breakpointImages.desktop} data-border={breakpoint.isDesktop} />
+            </lightning-layout-item>
+
+            <lightning-layout-item size="9" medium-device-size="3" padding="around-small" data-bold={breakpoint.isMobile}>
+              <h3 class="color-pink slds-text-align_center">Mobile</h3>
+              <div class="slds-p-around_large slds-text-align_center">
+                <span class="color-pink">0 - 767px</span>
+              </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="9" medium-device-size="3" padding="around-small" data-bold={breakpoint.isTablet}>
+              <h3 class="color-pink slds-text-align_center">Tablet</h3>
+              <div class="slds-p-around_large slds-text-align_center">
+                <span class="color-pink">768px - 1023px</span>
+              </div>
+            </lightning-layout-item>
+      
+            <lightning-layout-item size="6" medium-device-size="6" padding="around-small" data-bold={breakpoint.isDesktop}>
+              <h3 class="color-pink slds-text-align_center">Desktop</h3>
+              <div class="slds-p-around_large slds-text-align_center">
+                <span class="color-pink" >&gt; 1024px</span>
+              </div>
+            </lightning-layout-item>
+      
+          </lightning-layout>
+
+          <div class="responsiveProgress" data-breakpoint={breakpoint.name}></div>
+
+          <hr>
+
+          <h4 class="slds-p-vertical_large">Breakpoints</h4>
+
+          <p class="slds-p-bottom_large color-pink">
+            The breakpoint system used part of the <a href="https://www.lightningdesignsystem.com/utilities/visibility/#Responsive">Salesforce Lightning Design System</a>.
+          </p>
+
+          <lightning-layout class="color-pink slds-p-horizontal_x-large slds-text-align_center" multiple-rows>
+            <lightning-layout-item size="4" padding="around-small">
+              <h3 class="color-pink">Name</h3>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <h3 class="color-pink">Width</h3>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <h3 class="color-pink">Screen Size</h3>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>XS</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink">&lt; 479px</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>mobile</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>SM</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink">480px - 767px</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>mobile</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>MD</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink">768px - 1023px</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>tablet</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>LG</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink">1024px - 1279px</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>desktop</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>XL</b></p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink">&gt; 1280px</p>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" padding="around-small">
+              <p class="color-pink"><b>desktop</b></p>
+            </lightning-layout-item>
+          </lightning-layout>
+
+        <hr></hr>
+        
+        <h4 class="slds-p-vertical_large">Grid Layout</h4>
+
+        <p class="slds-p-bottom_large color-pink">
+            This site uses Salesforce Lightning's <code>lightning-layout</code> 12-column grid system.
+            <br></br>
+            <a href="https://developer.salesforce.com/docs/component-library/bundle/lightning-layout/example" target="_blank">
+               Salesforce Documentation
+              </a>          
+        </p>
+    
+        <lightning-layout class="gridboxes" multiple-rows style="border: 2px solid var(--veryLightGray);">
+            <template for:each={layoutGridIteration.s12} for:item="k">
+                <lightning-layout-item key={k} size="1" padding="around-small">
+                  <div class="grid-block"></div>
+                </lightning-layout-item>
+            </template>
+        
+            <template for:each={layoutGridIteration.s6} for:item="k">
+                <lightning-layout-item key={k} size="2" padding="around-small">
+                  <div class="grid-block"></div>
+                </lightning-layout-item>
+            </template>
+        
+            <template for:each={layoutGridIteration.s4} for:item="k">
+                <lightning-layout-item key={k} size="3" padding="around-small">
+                  <div class="grid-block"></div>
+                </lightning-layout-item>
+            </template>
+
+            <template for:each={layoutGridIteration.s3} for:item="k">
+                <lightning-layout-item key={k} size="4" padding="around-small">
+                  <div class="grid-block"></div>
+                </lightning-layout-item>
+            </template>
+
+            <template for:each={layoutGridIteration.s2} for:item="k">
+                <lightning-layout-item key={k} size="6" padding="around-small">
+                  <div class="grid-block"></div>
+                </lightning-layout-item>
+            </template>
+
+            <lightning-layout-item size="12" padding="around-small">
+                <div class="grid-block"></div>
+            </lightning-layout-item>
+
+        </lightning-layout>
+    </div>
+    <div class="slds-p-around_small slds-align_absolute-center text-upcase text-bold color-white h5"
+    style="position: fixed; bottom: 1rem; left: 1rem; border-radius: 4px; background: var(--digitalBlue); z-index: 100000;">
+    {breakpoint.abbr}
+  </div>
+</template>

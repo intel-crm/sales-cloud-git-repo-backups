@@ -33,6 +33,18 @@
         <name>PRM_Title_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type_Nm__c</name>
+        <picklistValues>
+            <masterLabel>Adhoc</masterLabel>
+            <translation><!-- Adhoc --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation><!-- Event --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- UI Display Area --></label>
         <name>PRM_UI_Display_Area_Nm__c</name>
         <picklistValues>
@@ -160,6 +172,13 @@
             <translation><!-- Visual Display Solutions Specialty --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Message Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Adhoc --></label>
         <name>PRM_Adhoc</name>

@@ -219,5 +219,11 @@
     <pluralLabel>Marketing Profile Attributes Mappings</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Testing</fullName>
+        <active>false</active>
+        <errorConditionFormula>$Profile.Name = &apos;System Administrator&apos; &amp;&amp; ISCHANGED(PMP_Partner_Tier__c)</errorConditionFormula>
+        <errorMessage>test exception</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -88,5 +88,12 @@
         <label><!-- Submitted Date Time --></label>
         <name>Submitted_Date_Time__c</name>
     </fields>
+    <layouts>
+        <layout>Error Logger Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -162,25 +162,37 @@
     <description>RT: Opportunities</description>
     <filter>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>alex garea,jaroslaw tomala,korcan erguder,galin dimov,katarzyna bielak,gosia dzul,yulia smelkova,eran gal,mariusz jadwiszczok</value>
+            <value>EMEA Sales Territory</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Pipeline_Heath__c</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <operator>contains</operator>
+            <value>EMP of Alexis Garea,EMP of Eran Gal,EMP of Jaroslaw Tomala,EMP of Krzysztof Janicki,EMP of Mariusz Jadwiszczok,EMP of Yulia Smelkova</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OWNER_MANAGER</field>
+        <field>BucketField_95655541</field>
+        <sortOrder>Desc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

@@ -1,4 +1,4 @@
-/*********************************************************************************************************************
+/********************************************************************************************************************
 Apex Class Name  : IPABenefitUtilityHandler
 Version       : 1.0
 Created Date  : June 2020
@@ -82,7 +82,7 @@ public with sharing class IPABenefitUtilityHandler {
             IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link();
               if (ctaMetaMap.containsKey(ctaPrior)) {
                         Map<String, Object> meta = ctaMetaMap.get(ctaPrior);
-                    if(String.valueOf(meta.get('type'))=='getMDF' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getMDF' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                             mlink.label = String.valueOf(System.label.get('',(String)meta.get('label'),lang));
                             mlink.externalUrl = String.valueOf(System.label.get('',(String)meta.get('externalUrl'),lang));
                             metric.link=mlink;
@@ -121,7 +121,7 @@ public with sharing class IPABenefitUtilityHandler {
                 IPABenefitWrapper.Link link1=new IPABenefitWrapper.Link();
                  if (ctaMetaMap.containsKey(cta)) {
                     Map<String, Object> meta = ctaMetaMap.get(cta);
-                    if(String.valueOf(meta.get('type'))=='getMDF' &&Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getMDF' /*&&Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                             link1.label = String.valueOf(System.label.get('',(String)meta.get('label'),lang));
                             link1.externalUrl = String.valueOf(System.label.get('',(String)meta.get('externalUrl'),lang));
                             linkList.add(link1); 
@@ -215,7 +215,7 @@ public with sharing class IPABenefitUtilityHandler {
                 IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link();
                if (ctaMetaMap.containsKey(ctaPrior)) {
                         Map<String, Object> meta = ctaMetaMap.get(ctaPrior);
-                    if(String.valueOf(meta.get('type'))=='getLeads' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getLeads' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                             mlink.label = String.valueOf(System.label.get('',(String)meta.get('label'),lang));
                             mlink.externalUrl = String.valueOf(System.label.get('',(String)meta.get('externalUrl'),lang));
                              if(leadsMetric.size()>0){
@@ -282,7 +282,7 @@ public with sharing class IPABenefitUtilityHandler {
                 IPABenefitWrapper.Link link1=new IPABenefitWrapper.Link();
                  if (ctaMetaMap.containsKey(cta)) {
                     Map<String, Object> meta = ctaMetaMap.get(cta);
-                    if(String.valueOf(meta.get('type'))=='getLeads' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getLeads' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                             link1.label = String.valueOf(System.label.get('',(String)meta.get('label'),lang));
                             link1.externalUrl = String.valueOf(System.label.get('',(String)meta.get('externalUrl'),lang));
                     }
@@ -389,7 +389,7 @@ ctaPriorities.add(links[1]);
                  IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link();
                 if (ctaMetaMap.containsKey(ctaPrior)) {
                         Map<String, Object> meta = ctaMetaMap.get(ctaPrior);
-                    if(String.valueOf(meta.get('type'))=='getMarketPlace' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getMarketPlace' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                         // if(!showManagerStorefront && ctaPrior=='Manage Storefront'){
                         //     continue;
                         // }else{    
@@ -491,7 +491,7 @@ ctaPriorities.add(links[1]);
                 IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link(); 
                 if (ctaMetaMap.containsKey(ctaPrior)) {
                         Map<String, Object> meta = ctaMetaMap.get(ctaPrior);
-                    if(String.valueOf(meta.get('type'))=='getMarketPlace' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getMarketPlace' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                         // if(!showManagerStorefront && ctaPrior=='Manage Storefront'){
                         //     continue;
                         // } else{  
@@ -605,7 +605,7 @@ ctaPriorities.add(links[1]);
               IPABenefitWrapper.Link link1=new IPABenefitWrapper.Link();
              if (ctaMetaMap.containsKey(cta)) {
                         Map<String, Object> meta = ctaMetaMap.get(cta);
-                    if(String.valueOf(meta.get('type'))=='getMarketPlace' && Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())){
+                    if(String.valueOf(meta.get('type'))=='getMarketPlace' /*&& Boolean.valueOf(String.valueOf(meta.get('IPARefreshSwitch')).toLowerCase())*/){
                         // if(!showManagerStorefront && cta=='Manage Storefront'){
                         //     continue;
                         // }else{

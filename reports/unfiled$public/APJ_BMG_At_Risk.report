@@ -4,7 +4,7 @@
         <field>Opportunity.Core_At_Risk_Created_Date__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Risk_Priority__c</field>
@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>Pricing,Pricing - MeetComp,Supply</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Risk_Reason2__c</column>

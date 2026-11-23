@@ -146,7 +146,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
@@ -161,6 +161,7 @@
         <referenceTo>User</referenceTo>
         <relationshipName>Partner_Community_Enrollment_Requests</relationshipName>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -170,6 +171,7 @@
         <label>Community Change Agent</label>
         <length>60</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -182,6 +184,7 @@
         <relationshipName>Partner_Community_Enrollment_Requests</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -190,6 +193,7 @@
         <fullName>PRM_End_Date_Dt__c</fullName>
         <label>End Date</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -197,6 +201,7 @@
         <fullName>PRM_InActive_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Inactive Ind</label>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -204,6 +209,7 @@
         <fullName>PRM_Partner_Community_Nm__c</fullName>
         <label>Partner Community</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -245,12 +251,6 @@
                     <default>false</default>
                     <label>Intel® Network Builders Partner</label>
                 </value>
-                <value>
-                    <fullName>Intel® Network Partner Community</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel® Network Partner Community</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -258,6 +258,7 @@
         <fullName>PRM_Start_Date_Dt__c</fullName>
         <label>Start Date</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -265,6 +266,7 @@
         <fullName>PRM_Status_Change_Dt__c</fullName>
         <label>Status Change Date</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -272,6 +274,7 @@
         <fullName>PRM_Status_Nm__c</fullName>
         <label>Status</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -302,9 +305,22 @@
         </valueSet>
     </fields>
     <label>Partner Community Enrollment Request</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Contact_Id__c</columns>
+        <columns>PRM_Partner_Community_Nm__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>PRM_Status_Nm__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>PRM_Community_Change_Agent__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>PCER-{0000}</displayFormat>
-        <label>Partner Community Enrollment Request Nam</label>
+        <label>Partner Community Enrollment Request Name</label>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Partner Community Enrollment Requests</pluralLabel>

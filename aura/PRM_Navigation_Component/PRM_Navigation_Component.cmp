@@ -2,7 +2,7 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:attribute name="accountId" type="string"></aura:attribute>
     <aura:attribute name="recordId" type="String" />
-   <!-- <button  class="slds-button" onclick="{! c.redirect }"  >
+    <button  class="slds-button" onclick="{! c.redirect }"  >
         <span class="slds-badge"><lightning:Icon iconName="utility:back" size="xx-small"/>&nbsp;&nbsp;Go Back</span>
-    </button> -->
+    </button>
 </aura:component>

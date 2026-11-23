@@ -1,0 +1,110 @@
+<template>
+<div class="slds-theme_default">
+    <div class="slds-p-around_medium">
+        <lightning-progress-indicator type="path" current-step={selectedStep}>
+            <lightning-progress-step label="Account/Contact Info" onstepfocus={selectStep1} value="Step1">   
+
+            </lightning-progress-step>
+            <lightning-progress-step label="Duplicate Information" onstepfocus={selectStep2} value="Step2">
+            
+            </lightning-progress-step>
+            <lightning-progress-step label="Confirmation" onstepfocus={selectStep3} value="Step3">
+        
+            </lightning-progress-step>
+            <lightning-progress-step label="Final Submission" onstepfocus={selectStep4} value="Step4">
+
+            </lightning-progress-step>
+        </lightning-progress-indicator>
+            
+        <div class="slds-m-vertical_medium">
+            <template if:true={isSelectStep1}>
+                <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                    <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                        Contact Information
+                    </span> 
+                </div>
+                <lightning-layout>
+                        <lightning-layout-item size="5">                  
+                            <lightning-input label="Contact First Name" value={firstname}></lightning-input>                                  
+                        </lightning-layout-item>  
+                            <lightning-layout-item size="1"></lightning-layout-item>
+                        <lightning-layout-item size="6">                                              
+                            <lightning-input label="Contact Last Name" value={Con.lastname}></lightning-input>                                  
+                        </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>                          
+                        <lightning-layout-item size="5">  
+                        <lightning-input label="Contact Email" value={Con.email}></lightning-input>                                    
+                        </lightning-layout-item>
+                        <lightning-layout-item size="1"></lightning-layout-item>
+                        <lightning-layout-item size="6">  
+                        <lightning-combobox label="Preferred Language" placeholder="Select" options={optionsLanguage} value={languageSelected}></lightning-combobox>         
+                        </lightning-layout-item>
+                </lightning-layout>
+                <lightning-layout>
+                        <lightning-layout-item size="5">  
+                            <div style="padding-bottom: 20px;">
+                        <lightning-combobox  name="conCountry" label="Contact Country" placeholder="Select" options={optionsCountry} value={countrySelected} required="true"></lightning-combobox>                            
+                    </div>
+                    </lightning-layout-item>
+                        <lightning-layout-item size="1"></lightning-layout-item>
+                        <lightning-layout-item size="6">
+                            <div style="padding: 25px 0px 0px 0px ;">
+                        <lightning-input type="checkbox" label="Suppress Email" value={Con.surmail}></lightning-input>
+                    </div>  
+                    </lightning-layout-item>
+                </lightning-layout>
+
+                    <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                                Account Address Information
+                            </span> 
+                    </div>
+                        <lightning-layout>  
+                            <lightning-layout-item size="5">  
+                                        <lightning-input label="Account Name" value={Con.account}></lightning-input>
+                            </lightning-layout-item>      
+                            <lightning-layout-item size="1"></lightning-layout-item>
+                            <lightning-layout-item size="6"> 
+                                        <lightning-input label="Address 1" value={Con.add1}></lightning-input>
+                            </lightning-layout-item> 
+                        </lightning-layout>
+                        <lightning-layout>   
+                            <lightning-layout-item size="5">             
+                                        <lightning-input label="Address 2" value={Con.add2}></lightning-input>
+                            </lightning-layout-item>   
+                            <lightning-layout-item size="1"></lightning-layout-item> 
+                            <lightning-layout-item size="6"> 
+                                        <lightning-combobox  name="country" label="Country" placeholder="Select" options={optionsCountry} value={countrySelected} required="true"></lightning-combobox>
+                            </lightning-layout-item>  
+                        </lightning-layout>
+                        <lightning-layout>  
+                            <lightning-layout-item size="5"> 
+                                        <lightning-combobox  name="state" label="State" placeholder="Select" options={optionsState} value={stateSelected} required="true"></lightning-combobox>
+                            </lightning-layout-item>     
+                            <lightning-layout-item size="1"></lightning-layout-item>
+                            <lightning-layout-item size="6"> 
+                                        <lightning-input label="City" value={Con.city}></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <lightning-layout>
+                            <lightning-layout-item size="5"> 
+                                        <lightning-input label="Zip/Postal Code" value={Con.zip}></lightning-input>
+                            </lightning-layout-item>
+                        </lightning-layout> 
+            </template>
+        </div>
+          
+            
+            <template if:false={isSelectStep4}>
+            <lightning-button label="Back" class="slds-m-left_x-small" onclick={handlePrev}></lightning-button>
+            </template>
+            <template if:false={isSelectStep4}>
+                <lightning-button variant="brand" class="slds-m-left_x-small" label="Next" onclick={handleNext}></lightning-button>
+            </template>
+            <template if:true={isSelectStep4}>
+                <lightning-button variant="brand" class="slds-m-left_x-small" label="Finish" onclick={handleFinish}></lightning-button>
+            </template>
+        </div>
+    </div>
+</template>

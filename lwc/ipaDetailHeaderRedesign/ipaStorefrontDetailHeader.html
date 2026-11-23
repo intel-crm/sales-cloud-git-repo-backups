@@ -1,0 +1,81 @@
+<template>
+  <c-ipa-sticky full-width start="bottom">
+    <div slot="sticky">
+      <!-- Sticky outline -->
+      <div class="sticky-container detail-marquee">
+        <div class="slds-m-right_medium slds-m-vertical_x-small sticky-logo-container">
+          <img src={logoUrl} alt={logoAlt} class="sticky-logo"></img>
+        </div>
+        <template if:true={contactPartnerVisible}>
+          <div class="sticky-contact-button slds-p-top_small slds-p-bottom_small slds-m-right_medium">
+            <c-ipa-contact-partner-button
+              analytics-details={contactPartnerAnalyticsDetails}
+              button-class="button-inverse text-bold"
+              modal-data={contactPartnerModalData}>
+            </c-ipa-contact-partner-button>
+          </div>
+        </template>
+        <h1 class="sticky-headline slds-m-right_medium truncate-1 h3">
+          {headline}
+        </h1>
+        <div class="sticky-social-button">
+          <div class="slds-show_x-large">
+            <c-ipa-share show-label email-body={headline} button-classes="color-white inverse"></c-ipa-share>
+          </div>
+          <div class="slds-hide_x-large">
+            <c-ipa-share email-body={headline} button-classes="inverse"></c-ipa-share>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div slot="content" class="detail-marquee detail-marquee-content slds-p-top_large">
+      <div class="slds-grid slds-wrap container">
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_3-of-12 slds-p-right_xx-large slds-p-bottom_medium slds-p-top_large">
+            <div class="img-col">
+              <div class="img-container slds-p-around_x-small">
+                <img src={logoUrl} alt={logoAlt} class="logo"></img>
+              </div>
+              <template if:true={contactPartnerVisible}>
+                <div class="slds-m-top_medium">
+                  <c-ipa-contact-partner-button
+                    analytics-details={contactPartnerAnalyticsDetails}
+                    button-class="button-inverse text-bold"
+                    modal-data={contactPartnerModalData}>
+                  </c-ipa-contact-partner-button>
+                  <template if:true={partnerStatusLabel}>
+                    <div class="badge-container partner-status slds-p-top_medium">
+                      <span class={badgeClass}></span>
+                      <div class="badge-name">{partnerStatusLabel}</div>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+          </div>
+          <div class="slds-col slds-size_1-of-1 slds-medium-size_8-of-12 slds-large-size_9-of-12 slds-p-vertical_medium">
+            <h1 class="h1">{headline}</h1>
+            <div class="slds-text-heading_small tagline">{tagline}</div>
+            <c-ipa-link external-url={companyInfo.websiteUrl} label={companyWebsiteLabel} analytics-page={pageName} class-name="color-white inverse" class="slds-p-bottom_small slds-p-top_xx-large"></c-ipa-link>
+            <div class="slds-p-top_large storefront-description">
+              <c-core-intc-text-block button-classes="color-white inverse" described-by={companyDescriptionLabel} no-more-line="true" size="small">
+                <p>{companyInfo.description}</p>
+              </c-core-intc-text-block>
+            </div>
+          </div>
+      </div>
+      <div class="slds-grid slds-wrap slds-grid_vertical-align-end container">
+        <div class="slds-col slds-size_8-of-12 slds-large-size_9-of-12 slds-p-top_large">
+          <c-core-intc-tabset name="marqueeTabs" ontabchange={handleTabChange}>
+            <template for:each={tabs} for:item='tab'>
+              <c-core-intc-tab key={tab.value} heading={tab.value}></c-core-intc-tab>
+            </template>
+          </c-core-intc-tabset>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12 slds-p-top_large social-share-container color-white">
+          <c-ipa-share show-label email-body={headline} button-classes="color-white inverse"></c-ipa-share>
+        </div>
+      </div>
+    </div>
+  </c-ipa-sticky>
+</template>

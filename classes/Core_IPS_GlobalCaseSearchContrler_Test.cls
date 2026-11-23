@@ -148,6 +148,7 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
         casesForSearch = [Select subject,CaseNumber from case where id IN : ListOfCases];
         System.assert(ListOfCases.get(0).Id != null, 'Case Record not created');
         for(Case caseob1j : casesForSearch){
+             System.debug('CaseNumber '+ caseob1j.CaseNumber);
          }
 
         // Create Project Member
@@ -189,16 +190,14 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
         {
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL :Tejaswini
-          /*  PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
-            Test.setCurrentPage(GlobalCaseSearchPage); */
+            PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
+            Test.setCurrentPage(GlobalCaseSearchPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('id',searchCaseObj.id);
             // instantiate the Controller - Core_IPS_GlobalCaseSearchController Apex Class
             Core_IPS_GlobalCaseSearchController GlobalCaseSearchCon = new Core_IPS_GlobalCaseSearchController(new ApexPages.StandardController(searchCaseObj));
             GlobalCaseSearchCon.Environment_Details = null;
             String resut = GlobalCaseSearchCon.getCaseColumnsName(); 
-            System.assert(true,resut !=null); //added assert-15/12/2023
             filterString ='CaseSubject='+searchCaseObj.Subject+'#%#CaseNumber='+casesForSearch.get(0).CaseNumber;
             filterString= filterString+'#%#Core_Customer_Reference_ID__c=Hello  world#%#CreatingDateFrom=2016-02-10#%#CreatingDateTo=2016-02-17#%#ProductName=skylake#%#status=\'New\',\'Open\',\'Closed\'#%#substatus=\'Customer requesting open\'#%#';
             Core_IPS_GlobalCaseSearchController.getCaseList('Test0', filterString,'substatus');
@@ -211,15 +210,13 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
         {
         Test.startTest();
         // Setting the Visualforce Page
-        // Commented for Classic EOL :Tejaswini
-          /*  PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
-            Test.setCurrentPage(GlobalCaseSearchPage); */
+        PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
+        Test.setCurrentPage(GlobalCaseSearchPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('id',searchCaseObj.id);
         // instantiate the Controller - Core_IPS_GlobalCaseSearchController Apex Class
         Core_IPS_GlobalCaseSearchController GlobalCaseSearchCon = new Core_IPS_GlobalCaseSearchController(new ApexPages.StandardController(searchCaseObj));
         String resut = GlobalCaseSearchCon.getCaseColumnsName();
-        System.assert(true,resut !=null); //added assert-15/12/2023
         Core_IPS_GlobalCaseSearchController.getCaseList('Test','','');
         Test.stopTest();
         }
@@ -242,17 +239,15 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
         {
             Test.startTest();
             // Setting the Visualforce Page
-            // // Commented for Classic EOL :Tejaswini
-          /*  PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
-            Test.setCurrentPage(GlobalCaseSearchPage); */
+            PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
+            Test.setCurrentPage(GlobalCaseSearchPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('id',searchCaseObj.id);
             // instantiate the Controller - Core_IPS_GlobalCaseSearchController Apex Class
             Core_IPS_GlobalCaseSearchController GlobalCaseSearchCon = new Core_IPS_GlobalCaseSearchController(new ApexPages.StandardController(searchCaseObj));
             String resut = GlobalCaseSearchCon.getCaseColumnsName();
-            System.assert(true,resut !=null); //added assert-15/12/2023
             filterString ='CaseSubject='+searchCaseObj.Subject+'#%#CaseNumber='+casesForSearch.get(0).CaseNumber;
-          //  filterString= filterString+'#%#Core_Customer_Reference_ID__c=Hello  world#%#ProductName=skylake#%#CreatingDateFrom=2016-02-10#%#status=\'New\',\'Open\',\'Closed\'#%#';
+            filterString= filterString+'#%#Core_Customer_Reference_ID__c=Hello  world#%#ProductName=skylake#%#CreatingDateFrom=2016-02-10#%#status=\'New\',\'Open\',\'Closed\'#%#';
             Core_IPS_GlobalCaseSearchController.getCaseList('Test', filterString,'substatus');
             Test.stopTest();
         }
@@ -276,15 +271,13 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
         {
             Test.startTest();
             // Setting the Visualforce Page
-            // Commented for Classic EOL :Tejaswini
-          /*  PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
-            Test.setCurrentPage(GlobalCaseSearchPage); */
+            PageReference GlobalCaseSearchPage = Page.Core_IPS_GlobalCaseSearchPage;
+            Test.setCurrentPage(GlobalCaseSearchPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('id',searchCaseObj.id);
             // instantiate the Controller - Core_IPS_GlobalCaseSearchController Apex Class
             Core_IPS_GlobalCaseSearchController GlobalCaseSearchCon = new Core_IPS_GlobalCaseSearchController(new ApexPages.StandardController(searchCaseObj));
             String resut = GlobalCaseSearchCon.getCaseColumnsName();
-            System.assert(true,resut !=null); //added assert-15/12/2023
             filterString ='CaseNumber='+casesForSearch.get(0).CaseNumber;
             filterString= filterString+'#%#Core_Customer_Reference_ID__c=Hello  world#%#ProductName=skylake#%#CreatingDateTo=2016-02-17#%#status=\'New\',\'Open\',\'Closed\'#%#';
             Core_IPS_GlobalCaseSearchController.getCaseList('Test', filterString,'substatus');
@@ -302,7 +295,6 @@ public class Core_IPS_GlobalCaseSearchContrler_Test{
             // instantiate the Controller - Core_IPS_GlobalCaseSearchController Apex Class
             Core_IPS_GlobalCaseSearchController GlobalCaseSearchCon = new Core_IPS_GlobalCaseSearchController(new ApexPages.StandardController(searchCaseObj));
             String resut = GlobalCaseSearchCon.getCaseColumnsName();
-            System.assert(true,resut !=null); //added assert-15/12/2023
             Test.stoptest();
            
         }

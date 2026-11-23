@@ -10,7 +10,7 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -48,13 +48,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_KPI_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

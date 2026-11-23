@@ -76,9 +76,6 @@
     <columns>
         <field>FK_$Account.Core_IPA_Partner_Role__c</field>
     </columns>
-    <columns>
-        <field>FK_$Account.Core_MDF_Channel_Program__c</field>
-    </columns>
     <description>Accounts and Benefit and Specialty for IOTG</description>
     <filter>
         <criteriaItems>

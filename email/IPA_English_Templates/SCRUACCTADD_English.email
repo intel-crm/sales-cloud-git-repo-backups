@@ -1,9 +1,37 @@
 <!DOCTYPE html>
-<html xmlns=http://www.w3.org/1999/xhtml lang="en" xml:lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width">
-    <link rel="icon" type="image/png" sizes="32x32" href=https://images.plan.intel.com/EloquaImages/clients/IntelCorporation/{cbee19c7-84da-4759-aac0-9d3ea9f86b7f}_TemplateFavicon-32x32.png>
-    
+    <link rel="icon" type="image/png" sizes="32x32" href="https://images.plan.intel.com/EloquaImages/clients/IntelCorporation/{cbee19c7-84da-4759-aac0-9d3ea9f86b7f}_TemplateFavicon-32x32.png">
+    <title>Your company admin has added you to their Intel® Partner Alliance account.</title>
+    <style>
+      :root {color-scheme: light}
+      @media only screen {
+        html { min-height: 100%;}
+      }
+      /*Eloqua footer overrides*/
+      .footer_elq {height:auto!important;}
+      .center {background-color:#efefef !important;-webkit-text-size-adjust: 100%;border: 0px solid #efefef !important;padding-top:10px !important;padding-bottom: 10px !important;}
+      .center p, .center span {color: #262626 !important}
+      .center a, .center strong {color: #0054AE!important}
+      .spacer {visibility:hidden;mso-hide:all;display:none;}
+      @media only screen and (max-width:695px) {
+        .top {display : table-header-group !important ;width : 100% !important ;}
+        .bottom {display : table-footer-group !important ;width : 100% !important ;}
+        .pad-top-24 {padding-top:24px!important}
+        .pad-bottom-24 {padding-bottom:24px!important}
+        .no-mobile-border {border:0!important}
+        .small-text-center {text-align: center!important}
+        .small-text-left {text-align: left!important}
+        .small-text-right {text-align: right!important}
+        .small-float-center {margin: 0 auto!important;float: none!important; text-align: center!important}
+        .mobile-logo {margin: 30px auto!important;}
+        .mobile-logo-left {margin-top: 30px!important; margin-bottom: 30px!important;}
+        table.body center {min-width: 0!important} table.body .container {width: 100%!important}table.body .columns {height: auto!important;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;padding-left: 25px!important;padding-right: 25px!important} table.body .collapse .columns { padding-left: 0!important;padding-right: 0!important} th.small-1 {display: inline-block!important;width: 8.33333%!important}th.small-2 {display: inline-block!important;width: 16.66667%!important}th.small-3 {display: inline-block!important; width: 25%!important}th.small-4 {display: inline-block!important;width: 33.33334%!important} th.small-5 {display: inline-block!important;width: 41.66667%!important}th.small-6 {display: inline-block!important;width: 50%!important}th.small-9 {display: inline-block!important;width: 75%!important}th.small-10 {display: inline-block!important;width:
+          83.33333%!important}th.small-11 {display: inline-block!important;width: 91.66667%!important}th.small-12 {display: inline-block!important;width: 100%!important} .responsive {width: 100%!important;height:auto!important;display: block} .show-for-small {display: block!important;mso-hide: none!important;width: 100%!important} table.show-for-small {display: table!important;width: 100%!important} .show-for-large {display: none!important;width: 0; mso-hide: all;overflow: hidden } table.body .columns.no-padding-mobile {padding-left: 0!important;padding-right: 0!important} th.callout-inner {padding-top: 25px!important;padding-bottom: 25px!important} th.callout-inner-sides {padding-left: 0!important;padding-right: 0!important}}
+      /* Device Styles */
+      a[x-apple-data-detectors] {color: inherit!important;text-decoration: none!important;font-size: inherit!important;font-family: inherit!important;font-weight: inherit!important;line-height: inherit!important;text-decoration: none!important} span.MsoHyperlink { mso-style-priority: 99; color: inherit;text-decoration: none!important } span.MsoHyperlinkFollowed { mso-style-priority: 99; color: inherit;text-decoration: none!important } #MessageViewBody a { color: inherit; text-decoration: none; font-size: inherit; font-family: inherit; font-weight: inherit; line-height: inherit}
+    </style>
     <!--[if gte mso 9]>
       <xml>
         <o:OfficeDocumentSettings>
@@ -27,23 +55,28 @@
     </head>
     <body style="background:#efefef;-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-text-size-adjust:100%;box-sizing:border-box;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;line-height:24px;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
   
+      <!--START HIDDEN PREHEADER-->
+      <span style="visibility:hidden;mso-hide:all;display:none;">
+        Get access to advanced training, developer resources, marketing and sales tools and support.
+      </span>
+      <!--END PREHEADER-->
       <table role="presentation" bgcolor="#efefef" border="0" cellspacing="0" cellpadding="0" class="body" valign="top" width="100%">
         <tbody>
           <tr>
             <th align="center" valign="top" style="padding-top:24px;width:670px;">
   
               <center style="min-width:0!important;width:100%">
-                
-                <table role="presentation" align="center" style = "background-color:#262626;" border="0" class="container" cellspacing="0" cellpadding="0" width="670">
+                <!-- BEGIN EMAIL BODY -->
+                <table role="presentation" align="center" bgcolor="#262626" border="0" class="container" cellspacing="0" cellpadding="0" width="670">
                   <tbody>
                     <tr>
                       <th>
-                       
+                        <!-- START HEADER -->
                         <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                           <tbody>
                             <tr>
-                              <th class="show-for-large" style="padding:0px;width:32px;" valign="top">
-                                <img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLir&oid=00Do0000000aRcf&lastMod=1687177102000" alt="" height="32" valign="top" width="32" style="-ms-interpolation-mode:bicubic;display:block;outline:0;vertical-align:top;height:32px;width:32px;">
+                              <th class="show-for-large" style="padding:0;padding-left:48px;width:32px;" valign="top">
+                                <img src="{!$Label.Core_MDF_PFRDetailLink}/servlet/servlet.ImageServer?id=0158A000001B4dC&amp;oid=00D8A0000005uU8&amp;lastMod=1686832559000" alt="" height="32" valign="top" width="32" style="-ms-interpolation-mode:bicubic;display:block;outline:0;vertical-align:top;height:32px;width:32px;">
                               </th>
                               <th align="left" class="pad-top-24 small-12 columns" style="vertical-align:top;width:590px" valign="top">
                                 <!-- START SPACER -->
@@ -56,12 +89,12 @@
                                     </tr>
                                   </tbody>
                                 </table>
-                                
+                                <!-- END SPACER -->
                                 <table align="left" role="presentation" border="0" cellspacing="0" cellpadding="0" class="collapse" valign="bottom" width="100%">
                                   <tbody>
                                     <tr>
                                       <th class="small-12 columns" style="width:590px" valign="top">
-                                        
+                                        <!-- START SPACER -->
                                         <table role="presentation" align="left" cellspacing="0" cellpadding="0" valign="top" width="100%">
                                           <tbody>
                                             <tr>
@@ -83,7 +116,7 @@
                                             </tr>
                                           </tbody>
                                         </table>
-                                        
+                                        <!-- END SPACER -->
   
                                         <table role="presentation" align="center" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%" class="collapse" style="">
                                           <tbody>
@@ -92,7 +125,7 @@
                                                 <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%" class="collapse no-mobile-border" style="border-left:3px solid #00C7FD;border-bottom:3px solid #00C7FD;">
                                                   <tbody><tr>
                                                     <th align="left" class="small-12 columns" style="padding:0 32px;width:290px" valign="top">
-                                                      <img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLj1&oid=00Do0000000aRcf&lastMod=1687177298000" alt="" style="display:block;height:54px;width:174px;" height="54" valign="top" width="174">
+                                                      <img src="{!$Label.Core_MDF_PFRDetailLink}/servlet/servlet.ImageServer?id=0158A000001B4cT&amp;oid=00D8A0000005uU8&amp;lastMod=1686721695000" alt="" style="display:block;height:54px;width:174px;" height="54" valign="top" width="174">
                                                       <h1 style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;mso-hyphenate:none;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:25px;font-weight:400;hyphens:none;line-height:32px;margin:0;margin-bottom:24px;margin-top:24px;padding:0;text-align:left;word-break:keep-all;word-wrap:none">
                                                         Get Started Today</h1>
                                                       <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" valign="top" width="100%">
@@ -103,13 +136,13 @@
                                                               <table role="presentation" align="left" border="0" cellspacing="0" cellpadding="0" valign="top" width="auto">
                                                                 <tbody>
                                                                   <tr>
-                                                                    <td style="background-color:#00C7FD;padding:10px 24px 10px 24px;">
+                                                                    <td style="background:#00C7FD;padding:10px 24px 10px 24px;">
                                                                       <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;mso-hyphenate:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;hyphens:none;line-height:24px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Click to join¹→
                                                                     </td>
                                                                   </tr>
                                                                 </tbody>
                                                               </table>
-                                                              
+                                                              <!-- END BUTTON -->
                                                                                                               
                                                             </th>
                                                           </tr>
@@ -124,8 +157,8 @@
   
                                               </th>
                                               <th class="pad-top-24 small-12 columns" style="width:300px;">
-                                                <img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLiw&oid=00Do0000000aRcf&lastMod=1687177231000" alt="" class="responsive" style="display:block;height:300px;vertical-align:bottom;width:300px;" height="300" valign="bottom" width="300">
-                                                
+                                                <img src="{!$Label.Core_MDF_PFRDetailLink}/servlet/servlet.ImageServer?id=0158A000001B4dM&amp;oid=00D8A0000005uU8&amp;lastMod=1686832767000" alt="" class="responsive" style="display:block;height:300px;vertical-align:bottom;width:300px;" height="300" valign="bottom" width="300">
+                                                <!-- START SPACER -->
                                                 <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" class="show-for-small" style="display:none;mso-hide:all" width="100%">
                                                   <tbody>
                                                     <tr>
@@ -135,7 +168,7 @@
                                                     </tr>
                                                   </tbody>
                                                 </table>
-                                                
+                                                <!-- END SPACER -->
                                                 
                                               </th>
                                             </tr>
@@ -150,9 +183,9 @@
                             </tr>
                           </tbody>
                         </table>
-                        
+                        <!-- END HEADER -->
   
-                        
+                        <!-- START LEFT ALIGNED CONTENT -->
                         <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                           <tbody>
                             <tr>
@@ -181,17 +214,17 @@
                                 <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                                     <tbody><tr>
                                         <th style="min-width:200px;">
-                                            
+                                            <!-- START BUTTON -->
                                             <table role="presentation" align="left" border="0" cellspacing="0" cellpadding="0" valign="top" width="auto">
                                             <tbody>
                                                 <tr>
-                                                <td style="background-color:#00C7FD;padding:10px 24px 10px 24px;">
+                                                <td style="background:#00C7FD;padding:10px 24px 10px 24px;">
                                                     <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;mso-hyphenate:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;hyphens:none;line-height:24px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Click to join¹→ 
                                                 </td>
                                                 </tr>
                                             </tbody>
                                             </table>
-                                            
+                                            <!-- END BUTTON -->
                                         </th>
                                     </tr>
                                 </tbody>
@@ -202,20 +235,21 @@
                             </tr>
                           </tbody>
                         </table>
-                        
+                        <!-- END LEFT ALIGNED CONTENT -->
+                        <!-- START POINTS INFO -->
                         <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                           <tbody><tr>
                             <th class="small-12 columns" style="padding-left:80px;padding-right:80px;padding-bottom:48px;">
                               <table role="presentation" align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
                                 <tbody>
                                   <tr>
-                                    <th class="small-12 columns" style="background-color:#0054AE;padding:32px;">
+                                    <th class="small-12 columns" style="background:#0054AE;padding:32px;">
                                         
                                         <p style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;hyphens:none;line-height:24px;margin:0;margin-bottom:32px;padding:0;text-align:center;word-break:keep-all;word-wrap:none">
-                                          Please click <a href=https://www.intel.com/content/www/us/en/support/topics/azure-sign-in.html target="_blank" style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;text-decoration:underline;">here</a> to read about Intel's new login process.</p>
+                                          Please click <a href="https://www.intel.com/content/www/us/en/support/topics/azure-sign-in.html" target="_blank" style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;text-decoration:underline;">here</a> to read about Intel's new login process.</p>
 
                                         <p style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:24px;margin:0;margin-top:32px;padding:0;text-align:center;word-break:keep-all;word-wrap:none">
-                                            Need help signing up to be a partner?<br><a href=https://supporttickets.intel.com/s/supportrequest?language=en_US target="_blank" style="color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;"><span style="text-decoration:underline;">Contact support</span></a>
+                                            Need help signing up to be a partner?<br><a href="https://supporttickets.intel.com/s/supportrequest?language=en_US" target="_blank" style="color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;"><span style="text-decoration:underline;">Contact support</span></a>
                                         </p>
                                     </th>
                                   </tr>
@@ -224,20 +258,22 @@
                             </th>
                           </tr>
                         </tbody></table>
-                        
-                        <table role="presentation" align="center" style="background-color:#0054AE;" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
+                        <!-- END POINTS INFO -->
+
+                        <!-- START SIGNOFF BLADE - UPDATE THE BACKGROUND COLOR ON THE BLADE BY CHANGING THIS TABLE BACKGROUND -->
+                        <table role="presentation" align="center" bgcolor="#0054AE" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                           <tbody>
                             <tr>
                               <th>
                             
                                 <center>
-                                    <img align="middle" alt="Connect. Innovate. Grow." class="responsive" height="80" src="https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLiX&oid=00Do0000000aRcf&lastMod=1687176760000" style="-ms-interpolation-mode:bicubic;display:block;outline:0;width:670px;height:80px;" width="670">
+                                    <img align="middle" alt="Connect. Innovate. Grow." class="responsive" height="80" src="{!$Label.Core_MDF_PFRDetailLink}/servlet/servlet.ImageServer?id=0153b000005vLiX&amp;oid=00Do0000000aRcf&amp;lastMod=1687176760000" style="-ms-interpolation-mode:bicubic;display:block;outline:0;width:670px;height:80px;" width="670">
                                 </center>
                               </th>
                             </tr>
                           </tbody>
                         </table>
-                        
+                        <!-- END SIGNOFF BLADE -->
                       </th>
                     </tr>
   
@@ -259,11 +295,11 @@
                           <th class="small-12 large-12 columns" style="padding:0;padding-bottom:20px;padding-top:20px;padding-left:0;padding-right:0;width:670px">
                           
 
-                          <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">© {!$Label.PRM_CurrentYear} Intel Corporation<br>
-                          Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. <a href=http://www.intel.com/content/www/us/en/homepage.html style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">www.intel.com</a></p>
+                          <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">© 2022 Intel Corporation<br>
+                          Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. <a href="http://www.intel.com/content/www/us/en/homepage.html" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">www.intel.com</a></p>
 
                           <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">
-                              <a href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Privacy</a> | <a href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Cookies</a> | <a href=http://www.intel.com/content/www/us/en/legal/trademarks.html style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">*Trademarks</a> | <a href=https://plan.seek.intel.com/Eloqua-Global-Unsub-Privacy style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none" target="_blank">Unsubscribe</a>
+                              <a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Privacy</a> | <a href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Cookies</a> | <a href="http://www.intel.com/content/www/us/en/legal/trademarks.html" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">*Trademarks</a> | <a href="https://plan.seek.intel.com/Eloqua-Global-Unsub-Privacy" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none" target="_blank">Unsubscribe</a>
                           </p>
 
                           </th>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>ER_Customer_Master_File_Group__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$Id</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_CMF_Name__c</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Sales_Org_Code__c</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Sales_Org_Name__c</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Sales_Disti_Chnl_Name__c</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Account_Group__c</field>
+        </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_CMF_Address__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_End_Date__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value></value>
+            </criteriaItems>
+        </filter>
+        <format>Tabular</format>
+        <name>search by CMF block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>ER_CMF_Group_To_CMF__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>ER_Customer_Master_File_Group__c$CreatedDate</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>ER_Customer_Master_File_Group__c</joinTable>
+        </blockInfo>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.ContactGroupAssociations__r$Name</field>
+        </columns>
+        <format>Tabular</format>
+        <name>search by contact email or enter block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>ER_CMF_Group_To_Contact_Association__c</reportType>
+        <scope>user</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>ER_Customer_Master_File_Group__c$CreatedDate</dateColumn>
+            <endDate>2024-02-21</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2024-02-21</startDate>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>ER_Customer_Master_File_Group__c</joinTable>
+    </blockInfo>
+    <description>All active cmf and CMF groups are visible on search of Contact&apos;s Email</description>
+    <format>MultiBlock</format>
+    <name>Search by Email</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>ER_CMF_Group_To_CMF__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

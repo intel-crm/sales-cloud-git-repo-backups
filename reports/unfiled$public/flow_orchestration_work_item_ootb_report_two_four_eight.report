@@ -52,6 +52,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>FlowOrchestrationStepInstance.FlowOrchestrationWorkItems$CreatedDate</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2024-01-05</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2024-01-05</startDate>
     </timeFrameFilter>
 </Report>

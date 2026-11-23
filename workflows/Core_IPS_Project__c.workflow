@@ -17,7 +17,7 @@
             <name>Core_IPS_Update_IPS_Project_Record_Type</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>AND( ISPICKVAL(PRIORVALUE(Core_Status__c),&apos;Inactive&apos;), ISPICKVAL(Core_Status__c,&apos;Active&apos;) )</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>

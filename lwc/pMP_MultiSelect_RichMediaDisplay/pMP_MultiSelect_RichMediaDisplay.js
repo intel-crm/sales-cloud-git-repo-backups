@@ -29,7 +29,6 @@ export default class PMP_MutliSelect_RichMediaDisplay extends LightningElement {
         args.map(element=>{
             this.values.push(element.value);
         });
-
         this.isItemExists = (args.length>0);
         this.selectedItemsToDisplay = this.values.join(', ');
     }

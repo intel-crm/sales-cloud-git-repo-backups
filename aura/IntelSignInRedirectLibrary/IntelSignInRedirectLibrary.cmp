@@ -16,6 +16,6 @@
  	<aura:method name="getCookieSetupInfo" action="{!c.getCookieSetupInfo}">
         <aura:attribute name="siteName" type="String" />
         <aura:attribute name="siteAttribute" type="String" />
-    </aura:method>
+  </aura:method>
   <c:coreIntcSso aura:id="ssoLibrary" />
 </aura:component>

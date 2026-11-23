@@ -89,20 +89,21 @@
     <columns>
         <field>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c</field>
     </columns>
-    <columns>
-        <field>Case.Core_External_Issue_Category__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_End_Customer__c</field>
-    </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND (((5 OR 6) AND 7 and 11) or ((8 or 9) AND 10 AND 12))))</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 7)</booleanFilter>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Survey_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Customer</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Case.Core_IPS_Product_Org1__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Org-025</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Question__c</column>
@@ -139,48 +140,6 @@
             <operator>contains</operator>
             <value>swarm,megh,cast,accenture,algo,arrive,affirmed,netcope,benu,redhat,hcl,-abra,manjeera,corerain,mrytle,enyx</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>CLOSED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>10/1/2020 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>altiostar,Mavenir,samsung,nokia,hcl,radisys,redhat,silicom,f5,wnc,parallel wireless,comscope,fujitsu,nec</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_End_Customer__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>altiostar,Mavenir,samsung,nokia,hcl,radisys,redhat,silicom,f5,wnc,parallel wireless,comscope,fujitsu,nec</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>10/1/2020 12:00 AM</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_End_Customer__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>comcast</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_External_Issue_Category__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>acceleration</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -189,7 +148,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obso - Customer Survey NPS - PSG Eco</name>
+    <name>Customer Survey NPS - PSG Ecosystem</name>
     <params>
         <name>units</name>
         <value>d</value>

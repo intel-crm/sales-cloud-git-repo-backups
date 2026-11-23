@@ -14,8 +14,22 @@
     font-weight: 500;
 }
 
+.fileSizeText{
+    font-size: small;
+    color: black;
+}
 
 .optionText{
     text-align:center ;
     color: rgb(27, 26, 26);
+}
+
+.filename{
+    font-size:medium;
+    color: black;
+    font-weight: 400;
+} 
+
+.disc{
+    font-weight: 2000;
 }

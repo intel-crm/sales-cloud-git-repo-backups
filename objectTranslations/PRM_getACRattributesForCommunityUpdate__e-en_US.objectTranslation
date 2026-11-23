@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_getACRattributesForCommunityUpdate</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_getACRattributesForCommunityUpdates</value>
+    </caseValues>
+    <fields>
+        <label><!-- PRM_AccountContRel_Id --></label>
+        <name>PRM_AccountContRel_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Account_Id --></label>
+        <name>PRM_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Contact_Id --></label>
+        <name>PRM_Contact_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Partner_Role --></label>
+        <name>PRM_Partner_Role__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_Status --></label>
+        <name>PRM_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- PRM_inactiveIndicator --></label>
+        <name>PRM_inactiveIndicator__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

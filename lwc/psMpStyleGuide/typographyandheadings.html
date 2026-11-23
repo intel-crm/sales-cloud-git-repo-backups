@@ -1,0 +1,59 @@
+<template>
+    <div class="slds-p-around_large" style="margin-bottom: 50px;">
+        <h2>Typography and Headings</h2>
+
+        <h4 class="slds-p-vertical_large">Typography</h4>
+        <p>Throughout the site the use of bold typography creates stronger hierarchies and adds visual impact across the site;</p>
+        <p>Intel Clear is used to give an ample palette for design iterations.</p>
+        <hr></hr>
+        <h4 class="slds-p-vertical_large">Font - Intel Clear</h4>
+        <p class="color-pink">The standard font, Intel® Clear, remains the primary font for body copy and subheads.</p>
+        <lightning-layout>
+            <lightning-layout-item size="12">
+            <div class="slds-p-around_large h2">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z<br/>1 2 3 4 5 6 7 8 9 0 ! @ $ % ^ &#38; * ( ) _ +</div>
+            </lightning-layout-item>
+        </lightning-layout>
+
+        <hr></hr>
+
+        <h4 class="slds-p-vertical_large">Headings</h4>
+        <lightning-layout multiple-rows>
+            <lightning-layout-item size="6" class="slds-m-bottom_large"><h1>H1 Intel Clear</h1></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><h2>H2 Intel Clear</h2></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><h3>H3 Intel Clear</h3></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><h4>h4 Intel Clear</h4></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><h5>h5 Intel Clear</h5></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><p>Body Copy</p></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><p>Form Text</p></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><p>Dropdown Text</p></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><a href="#">Text Link</a></lightning-layout-item>
+            <br/><br/>
+            <lightning-layout-item size="12" class="slds-m-bottom_large"><p class="utility-type">Utility Type</p></lightning-layout-item>
+      
+          </lightning-layout>
+
+          <hr></hr>
+
+
+          <lightning-layout>
+            <lightning-layout-item size="7">
+            <h4 class="slds-p-vertical_large">Body Copy</h4>
+            <p><strong>Commodo sed quae autem singularis</strong> Melior roto jugis pagus qui wisi pecus vel mara sed. Saepius ideo consectetuer bis interdico minim ibidem erat ibidem interdico consequat defui. Quibus vel <a class="text-underline" href='#'>abdo gilvus</a> macto nimis vel premo ventosus.</p>
+
+            <blockquote>"Tego occuro nisl fere os gemino. Ex verto illum adsum loquor capio blandit."</blockquote>     <cite>-Titus Andronicus</cite>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    <div class="slds-p-around_small slds-align_absolute-center text-upcase text-bold color-white h5"
+      style="position: fixed; bottom: 1rem; left: 1rem; border-radius: 4px; background: var(--digitalBlue); z-index: 100000;">
+      {breakpoint.abbr}
+    </div>
+</template>

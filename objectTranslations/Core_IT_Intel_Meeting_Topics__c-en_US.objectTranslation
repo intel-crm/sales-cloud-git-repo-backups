@@ -590,5 +590,16 @@
         <name>Core_Sales_Support_Request__c</name>
         <relationshipLabel><!-- Request Topics --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Meeting Topics Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Meeting Topic --></label>
+            <section>Meeting Topic</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

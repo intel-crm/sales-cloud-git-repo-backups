@@ -36,7 +36,7 @@
 <th style="margin: 0px; padding: 0px 0px 10px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400;">
 <h1 style="margin: 0px 0px 17.39px;padding-top: 25px;text-align: left;color: #fefefe;line-height: 1.3;font-family: Arial,Helvetica,sans-serif;font-size: 18px;font-weight: 400;border-collapse: collapse !important;-ms-word-break: keep-all;-ms-word-wrap: normal;-ms-hyphens: none;-moz-hyphens: none;-webkit-hyphens: none;hyphens: none;">Pengguna Dihapus</h1>
 </th>
-<th class="callout-inner" style="padding:15px;"><img src="https://quoterequest.intel.com/--c.documentforce.com/servlet/servlet.ImageServer?id=0153b000005OXH2&oid=00Do0000000aRcf&lastMod=1609662404000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
+<th class="callout-inner" style="padding:15px;"><img src="https://intel--crmdevipa--c.cs45.content.force.com/servlet/servlet.ImageServer?id=0158A00000028LJ&oid=00D8A0000005uU8&lastMod=1600939268000" alt="Intel" title="Intel" align="right" class="float-center" style="height:100%;width:auto"></th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
 </tbody>
@@ -72,7 +72,7 @@
 <br>
 <br>Perubahan telah dilakukan untuk akun Intel&reg; Partner Alliance Anda. {!ContactEmail} telah dihapus dari akun perusahaan Anda.<br>
 <br>Nama Perusahaan: {!Account.Name}<br>ID Bisnis: {!Account.AccountNumber}<br>Kontak yang Dihapus: Email {!ContactEmail}<br>Hubungan (Peran): {!AcrRoles}<br>
-<br>Jika perubahan ini tanpa izin, silakan <a href="https://partner.intel.com/s/manage-personnel" style="color:red">login</a> untuk memperbarui akun Anda.<tr><td style="word-break:break-all;line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400;color: #555554; ">Jika ada pertanyaan, silakan hubungi kami di <a href="https://signin.intel.com/ContactUs?Culture=id-id" style="color:#FF0000;">https://signin.intel.com/ContactUs?Culture=id-id</a>.</td></tr>
+<br>Jika perubahan ini tanpa izin, silakan <a href="https://crmqa3-intelcloudcrm.cs37.force.com/ipa/s/manage-personnel" style="color:red">login</a> untuk memperbarui akun Anda.<tr><td style="word-break:break-all;line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400;color: #555554; ">Jika ada pertanyaan, silakan hubungi kami di <a href="https://signin.intel.com/ContactUs?Culture=id-id" style="color:#FF0000;">https://signin.intel.com/ContactUs?Culture=id-id</a>.</td></tr>
 </p>
 </tr>
 </tbody>
@@ -117,13 +117,13 @@
 <table align="center" class="cq-rte-forcedborder" style="border: 1px dotted #d3d3d3; background-color: #003c71; border-collapse: collapse; margin: 0px auto; min-width: 670px; width: 700px;" border="0" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
-<td style="font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0071c5;">
+<td style="font-size: 12px; border: #d3d3d3; padding-left: 10px; padding-right: 30px; padding-bottom: 20px; background-color: #0168B5;">
 <table width="100%" class="cq-rte-forcedborder" style="border: #d3d3d3; border-collapse: collapse;" border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: center;">Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel&reg; Partner Alliance.</td>
 </tr>
 <tr>
-<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!$Label.PRM_CurrentYear} Intel Corporation<span class="Apple-converted-space"> </span></td>
+<td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">&copy; {!Contact.Core_Current_Year__c} Intel Corporation<span class="Apple-converted-space"> </span></td>
 </tr>
 <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a style="color: #ffffff; text-decoration: none;" href="https://www.intel.co.id/content/www/id/id/homepage.html" target="_blank" _rte_href="https://www.intel.com/content/www/us/en/homepage.html">www.intel.com</a></td>
@@ -137,6 +137,7 @@
 </tr>
 </tbody>
 </table>
+<p style="color: #000000; font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; background-color: #ffffff; text-decoration-style: initial; text-decoration-color: initial;"></p>
 </th>
 </tr>
 </tbody>

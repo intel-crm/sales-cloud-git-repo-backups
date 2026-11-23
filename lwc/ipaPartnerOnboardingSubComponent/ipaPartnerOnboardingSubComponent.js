@@ -1,3 +1,20 @@
+/** Documentation for ipaPartnerOnboardingSubComponent  Component
+ * <br>
+ * <h2>Partner Onboarding</h2>
+ * <p>This component processes the {@link ipaPartnerOnboardingService.BoardingStep} Object passed in and renders the 3 different types of modal or the 1 linkout link. The Welcome Tile slot passed in the slot is passed to the other modals or rendered directly here.</p>
+ *
+ * <h4>Modal Types</h4>
+ * <ul>
+ * <li>{@link ipaPartnerModalCommunities ipaPartnerModalCommunities}</li>
+ * <li>{@link ipaPartnerModalTermsAndConditions ipaPartnerModalTermsAndConditions}</li>
+ * <li><{@link ipaPartnerViewConfirmation ipaPartnerViewConfirmation}</li>
+ * <br>
+ * @namespace ipaPartnerOnboardingSubComponent
+ * @property {ipaPartnerOnboardingService.BoardingStep} step BoardingSteps data to be rendered
+ * @property {Slot} tile slot for the tile to be rendered usually it is an ipaPartnerWelcometile
+
+ * @author Joshua Gonzalez
+*/
 import { LightningElement, api, track } from 'lwc';
 
 export default class IpaPartnerOnboardingSubComponent extends LightningElement {
@@ -17,7 +34,7 @@ export default class IpaPartnerOnboardingSubComponent extends LightningElement {
     }
 
     markStepComplete({detail}){
-        // console.log('ipapartnerOnboardinsubcomponent.markStepComplete', detail);
+        console.log('in T&C');
          this.dispatchEvent(new CustomEvent('markstepcomplete', { detail: detail}));
     }
 

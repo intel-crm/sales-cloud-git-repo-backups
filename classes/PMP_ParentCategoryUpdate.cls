@@ -47,8 +47,6 @@ public with sharing class PMP_ParentCategoryUpdate
                         cat.PMP_Parent_Category_Id__c = null;
                         updateCatList.add(cat); //Setting the parent category to null for all the inactive categories 
                         }
-                    
-          
                 }
                 
             }   

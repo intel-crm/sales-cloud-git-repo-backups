@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM Warranty Benefits Configuration</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM Warranty Benefits Configurations</value>
+    </caseValues>
+    <fields>
+        <label><!-- BenefitCode --></label>
+        <name>BenefitCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- BenefitCommonName --></label>
+        <name>BenefitCommonName__c</name>
+    </fields>
+    <fields>
+        <label><!-- OperationCode --></label>
+        <name>OperationCode__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -191,6 +191,17 @@
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
+    <fields>
+        <fullName>PRM_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(PRM_Message_Id__r.PRM_Type_Nm__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Message log</label>
     <listViews>
         <fullName>All</fullName>
@@ -199,7 +210,6 @@
         <columns>PRM_Contact_Id__c</columns>
         <columns>PRM_Inactive_Ind__c</columns>
         <columns>PRM_Message_Viewed_Ind__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>

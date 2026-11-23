@@ -68,6 +68,7 @@ private class PRM_ServiceNowUtilityTest {
         // Create test data
         PRM_Integration__mdt intreq = new PRM_Integration__mdt();
         intreq = [Select Id, API_Key__c,scope__c, EndPointURL__c, Password__c, Username__c from PRM_Integration__mdt where MasterLabel='ServiceNow' limit 1];  
+          system.debug(intreq);
         // Call the method under test
         Test.startTest();
         PRM_Token_Model token = PRM_ServiceNowUtility.getToken(intreq);

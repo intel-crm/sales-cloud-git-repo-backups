@@ -28,7 +28,9 @@ public without sharing class PRM_ACMUpdateBatchUtility implements Database.Batch
                 PRM_IPAR_ACMUpdateUtility utility = new PRM_IPAR_ACMUpdateUtility(); //calling constructor of utility class and passing the scope.
                 PRM_IPAR_ACMUpdateUtility.contactEntilementResponse cersp = utility.assignBenefits(scope);   
                 SObjectLst.addAll(cersp.entitlementsTOUpsert);
+                system.debug('here'+cersp.entitlementsTOUpsert);
                 SObjectLst.addAll(cersp.updateAccountandContact);      
+                system.debug('here1+'+cersp.updateAccountandContact);
                 
                 sobjectoUpsert.addAll(SObjectLst);
                 Map<Id, PRM_IPA_Membership__c> ipaMemMap = new Map<Id,PRM_IPA_Membership__c>();

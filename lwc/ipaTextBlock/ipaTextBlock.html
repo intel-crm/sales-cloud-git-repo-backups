@@ -1,0 +1,36 @@
+<template>
+    <div class={classes.host} >
+        <template if:true={ifs.notHeightLimited}>
+            <template if:false={ifs.showMore}>
+                <lightning-formatted-rich-text value={introSection}></lightning-formatted-rich-text>
+            </template>
+            <template if:true={ifs.notEmptyMoreSection}>
+                <div>
+                    <template if:false={ifs.showMore}>
+                        <a onclick={handleMoreClick} href="" class="control">{label.more}<lightning-icon icon-name="utility:chevrondown" class="shiftUp icon-white slds-m-left_x-small" size="x-small"></lightning-icon></a>
+                    </template>
+                    <template if:true={ifs.showMore}>
+                        <lightning-formatted-rich-text value={moreSection}></lightning-formatted-rich-text>
+                        <a onclick={handleMoreClick} href="" class="control">{label.less}<lightning-icon icon-name="utility:chevronup" class="shiftUp icon-white slds-m-left_x-small" size="x-small"></lightning-icon></a>
+                    </template>
+                </div>
+            </template>
+        </template>
+        <template if:false={ifs.notHeightLimited}>
+            <div class={classes.heightLimited} data-id="wrapper">
+                <div class="innerContent" data-id="innerContent">
+                    <lightning-formatted-rich-text value={heightLimited}></lightning-formatted-rich-text>
+                </div>
+            </div>
+            <template if:true={ifs.exceedsHeight}>
+                <template if:false={ifs.showMore}>
+                        <a onclick={handleMoreClick} href="" class="control">{label.more}<lightning-icon icon-name="utility:chevrondown" class="shiftUp icon-white slds-m-left_x-small" size="x-small"></lightning-icon></a>
+                </template>
+                <template if:true={ifs.showMore}>
+                    <lightning-formatted-rich-text value={moreSection}></lightning-formatted-rich-text>
+                    <a onclick={handleMoreClick} href="" class="control">{label.less}<lightning-icon icon-name="utility:chevronup" class="shiftUp icon-white slds-m-left_x-small" size="x-small"></lightning-icon></a>
+                </template>
+            </template>
+        </template>
+    </div>
+</template>

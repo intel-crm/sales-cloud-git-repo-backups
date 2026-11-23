@@ -39,6 +39,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Group</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Flag_for_Deletion__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -57,21 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Americas</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -86,7 +79,7 @@
         <field>FULL_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strategic Acct Past Due Opptys</name>
+    <name>US ACCTS Opty Past Due by Mgr</name>
     <params>
         <name>terr</name>
         <value>all</value>

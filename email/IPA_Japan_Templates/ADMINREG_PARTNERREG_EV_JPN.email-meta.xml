@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_JPN</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>インテル® パートナー・アライアンスの登録完了に必要なアクション
+
+
+
+
+{!Contact.FirstName} 様、
+
+おめでとうございます。管理者またはインテルの担当者により、インテル® パートナー・アライアンスのアカウントへ追加されました。わずか数ステップで、登録が完了します。
+
+お客様向けに、以下のプロファイル情報が作成されました。
+
+ユーザー名: {!Contact.Core_Login_Id__c}
+電子メールアドレス: {!Contact.Email}
+会社名: {{ACCOUNTNAME}}
+インテル® パートナー・アライアンス・ビジネス ID: {{ACCOUNTNUMBER}}
+
+
+次のリンクをクリックして、登録を完了してください
+
+
+メールを確認し、パスワードを設定してください
+
+
+このリンクは 24 時間後に期限切れになりますのでご注意ください上のリンクにアクセスできない場合
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=ja&amp;target=https://www.intel.com/content/www/ja/jp/secure/partner/forms/ipa-account-search.html
+ご質問がある場合は https://signin.intel.com/ContactUs?Culture=ja-jp (英語) までお問い合わせください。
+プログラムにご参加いただけることを楽しみにしております。
+よろしくお願い申し上げます。
+インテル® パートナー・アライアンス
+
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!Contact.Core_Current_Year__c} Intel Corporation
+インテル株式会社 〒 100-0005 東京都千代田区丸の内 3-1-1 www.intel.com
+プライバシー | Cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

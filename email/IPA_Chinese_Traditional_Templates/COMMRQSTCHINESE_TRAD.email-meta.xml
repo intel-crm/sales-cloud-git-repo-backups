@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template will be send to Community Admin when the new partner joins community</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Community Request Chinese Traditional</name>
+    <style>none</style>
+    <subject>新夥伴的社群要求</subject>
+    <textOnly>社群要求
+
+
+{!PRM_Partner_Community_Enrollment_Request__c.PRM_Approver_Id__c} 您好，
+
+聯絡人姓名： {!Contact.Name}
+聯絡電子郵件 ： {!Contact.Email}
+帳戶名稱： {!Account.Name}
+Salesforce ID： {!Account.Id}
+
+
+
+請登入 Salesforce 以提供聯絡人權限。
+
+謝謝您，
+您的 Intel® 夥伴聯盟團隊
+
+此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
+©{!Contact.Core_Current_Year__c} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
+隱私權 | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

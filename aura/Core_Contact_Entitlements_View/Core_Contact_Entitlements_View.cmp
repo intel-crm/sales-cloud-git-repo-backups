@@ -22,9 +22,9 @@
         <div class="placeHolderDiv1">{!v.errorMessageStr}</div>
         <div class="entitlementTable slds-hide" aura:id="entitlementTableDiv">
             <div class="slds-grid slds-wrap">
-                <div class="slds-col slds-size_8-of-12"> <b>{!$Label.c.Core_MDF_Entitlement_Name}</b> </div>
-                <div class="slds-col slds-size_2-of-12"> <b>{!$Label.c.Core_MDF_Status}</b>  </div>
-                <div class="slds-col slds-size_2-of-12"> <b>{!$Label.c.Core_MDF_Selected}</b>  </div>
+                <div class="slds-col slds-size_8-of-12"> <b>Entitlement Name</b> </div>
+                <div class="slds-col slds-size_2-of-12"> <b>Status</b>  </div>
+                <div class="slds-col slds-size_2-of-12"> <b>Selected</b>  </div>
             </div>
             <aura:iteration items="{!v.contactEntitlementList}" var="contactEntitlement" indexVar="index">
                 <div class="{!index%2 == 0 ? 'slds-grid slds-wrap even': 'slds-grid slds-wrap odd'}" id="{!contactEntitlement.idEntitlement}">
@@ -34,7 +34,7 @@
                     <div class="slds-col slds-size_2-of-12"> 
                         <!--Id value = {!contactEntitlement.status}-->
                         <div class="{!(contactEntitlement.status == 'Processing')? 'slds-show': 'slds-hide'}">
-                            {!$Label.c.Core_MDF_Processing}
+                            Processing
                         </div>
                     </div>
                     <div class="slds-col slds-size_2-of-12">
@@ -43,7 +43,7 @@
                 </div> 
             </aura:iteration>
         </div>
-        <lightning:button label="{!$Label.c.Core_MDF_Save_Entitlements}" 
+        <lightning:button label="Save Entitlements" 
                               class="slds-m-top--medium saveEntlButton"
                               variant="brand"
                               onclick="{!c.saveEntitlementChanges}"

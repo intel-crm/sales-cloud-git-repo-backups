@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Partner Group Domain Mappings</value>
+        <value>Partner Group Domain Mapping</value>
     </caseValues>
     <fields>
         <label><!-- Active --></label>
@@ -14,19 +14,8 @@
     </fields>
     <fields>
         <label><!-- Partner Group Mapping --></label>
-        <lookupFilter>
-            <errorMessage><!-- Domain name cannot be created --></errorMessage>
-        </lookupFilter>
         <name>Core_MDF_Partner_Group_Mapping_Id__c</name>
-        <relationshipLabel><!-- Partner Group Domain Mappings --></relationshipLabel>
+        <relationshipLabel><!-- Partner Group Domain Mapping --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Domain name cannot be edited at this time --></errorMessage>
-        <name>Core_MDF_DomainCannotBeEdited</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Incorrect domain name entered --></errorMessage>
-        <name>Core_MDF_InvalidDomainName</name>
-    </validationRules>
 </CustomObjectTranslation>

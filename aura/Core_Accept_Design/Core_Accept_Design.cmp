@@ -10,7 +10,7 @@
         <aura:if isTrue="{!(v.alertMessage != null)}">
         <div class="slds-text-heading_small">{!v.alertMessage}</div>
         <div style="float: right;padding-top: 2%;">
-            <lightning:button label="Close" variant="brand" onclick="{!c.cancelPopup}"/>
+            <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}"/>
         </div>
     </aura:if>
 </aura:component>

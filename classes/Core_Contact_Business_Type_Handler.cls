@@ -16,16 +16,15 @@ public with Sharing class Core_Contact_Business_Type_Handler {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'Core_Contact_Business_Type_Handler';
-    public static Boolean skipsCEProcess = false;
-    
     
     //Validation to check if ABT status is approved befor inserting/updating CBT
-  /*  public static void ABTApprovedCheck(List<Contact_Business_Types__c> newList) {
+    public static void ABTApprovedCheck(List<Contact_Business_Types__c> newList) {
         Set<Id> cbtIds = new Set<Id>();
         Map<Id, Id> conAccountMap = new Map<Id, Id>();
         Set<Id> contactIds = new Set<Id>();
         List<String> acctIdBtIdList = new List<String>();
         String params = '';
+        String log = '';
         try {
             for(Contact_Business_Types__c conBT : newList){                       
                 cbtIds.add(conBT.Business_Types__c);
@@ -37,24 +36,27 @@ public with Sharing class Core_Contact_Business_Type_Handler {
                     conAccountMap.put(con.Id,con.AccountId);  
                 }
             }
-            //Retreive combination of AccountId-BusinessTypeID for particular accounts in Approved status from ABTs to list
             if(Schema.sObjectType.Account_Business_Types__c.isAccessible()){
-            for (Account_Business_Types__c abts : [SELECT id, Account__c, Business_Types__c, Business_Types__r.Name, Status__c 
-                                                   FROM Account_Business_Types__c 
-                                                   WHERE Account__c IN: conAccountMap.values() AND Status__c =: System.Label.ER_Approved WITH SECURITY_ENFORCED]) {
-                                                       if(!acctIdBtIdList.contains(abts.Account__c+'-'+abts.Business_Types__c)){
-                                                           acctIdBtIdList.add(abts.Account__c+'-'+abts.Business_Types__c);
+                //Retreive combination of AccountId-BusinessTypeID for particular accounts in Approved status from ABTs to list
+                for (Account_Business_Types__c abts : [SELECT id, Account__c, Business_Types__c, Business_Types__r.Name, Status__c 
+                                                       FROM Account_Business_Types__c 
+                                                       WHERE Account__c IN: conAccountMap.values() AND Status__c =: System.Label.ER_Approved WITH SECURITY_ENFORCED]) {
+                                                           if(!acctIdBtIdList.contains(abts.Account__c+'-'+abts.Business_Types__c)){
+                                                               acctIdBtIdList.add(abts.Account__c+'-'+abts.Business_Types__c);
+                                                               log = log + ' Account Id : '+abts.Account__c+'-'+' Business Type Id : '+abts.Business_Types__c+'-'+' Status : '+abts.Status__c;
+                                                           }
                                                        }
             }
-}
             //Loop through CBTs and check if CBT has Approved Account Business Type. 
             //Validation applies only id Status is getting chanhed to Approval - Pending
             for(Contact_Business_Types__c conBT : newList) {
                 params = params + 'Contact Id-'+ conBT.Contact__c + '-Business Type Id-'+conBT.Business_Types__c +';';
+                log = log + ' Contact Id : '+ conBT.Contact__c +' CBT Status :' + conBT.Status__c;
                 if(!acctIdBtIdList.contains(conAccountMap.get(conBT.Contact__c) +'-'+conBT.Business_Types__c) &&
                    (conBT.Status__c == System.Label.ER_Approval_Pending || conBT.Status__c == System.Label.ER_Approved)) //Approved status added for TWC722-178
                 {
                     if(!Test.isRunningTest()){
+                        ER_ErrorUtility.createLogEntry('Method ABTApprovedCheck : '+log, null, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
                         conBT.addError('Account Business Type is not Approved');
                     }
                     else {
@@ -72,7 +74,7 @@ public with Sharing class Core_Contact_Business_Type_Handler {
             custEx.TypeName = ex.getTypeName();            
             ER_ErrorUtility.createLogEntry('Error in ABTApprovedCheck', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
-    }  */
+    }
     
     /*  public static void CBTContactEngNameCheck(List<Contact_Business_Types__c> newList) {
 Map<Id, Contact> contactsMap = new Map<Id, Contact>();
@@ -111,7 +113,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
 }*/
     
     //Method inserts new entitlement based on business type and triggers AGS role request
-    public static void insertContactEntitlement(List<Contact_Business_Types__c> listrecords) {
+    public static void insertContactEntitlement(List<Contact_Business_Types__c> listrecords) {     
         Set<Id> cbtIds = new Set<Id>();
         Set<Id> contIds = new Set<Id>();
         boolean EntAvailable = false;
@@ -154,7 +156,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             //Insert new entitlement only if status is Approval - Pending   
             for(Contact_Business_Types__c conBT : listrecords) {
                 params = params + 'Contact Id-'+ conBT.Contact__c + '-Business Type Id-'+conBT.Business_Types__c +'-Enttl Id- '+cbtEnttlMap.get(conBT.Business_Types__c) +';';                   
-                if(conBT.Status__c == System.Label.ER_Approval_Pending && EntAvailable == false && skipsCEProcess == false) {
+                if(conBT.Status__c == System.Label.ER_Approval_Pending && EntAvailable == false) {
                     
                     Core_Contact_Entitlement__c cEnti = new  Core_Contact_Entitlement__c();
                     cEnti.Core_Entitlement_Id__c = cbtEnttlMap.get(conBT.Business_Types__c);
@@ -176,26 +178,24 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             //Insert new entitlements
             if(lstConEnt.size() > 0){
                 if(Schema.sObjectType.Core_Contact_Entitlement__c.isCreateable()){
-                    Core_Contact_Ent_BT_Handler.skipsCBTProcess = true;
-                    insert lstConEnt; 
+                    insert lstConEnt;
                 }
                 
             }
         }
         catch(Exception ex) {
-            execptionLogMethod(ex, 'insertContactEntitlement',params);
-           /* ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
+            ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
             custEx.Message = ex.getMessage();
             custEx.Cause = ex.getCause();
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();            
-            ER_ErrorUtility.createLogEntry('Error in insertContactEntitlement', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params); */
+            ER_ErrorUtility.createLogEntry('Error in insertContactEntitlement', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
     }
     //Update contact entitlements based on update on CBTs
     //Once role is assigned in AGS mark CBT status as Approved anf if removed mark CBT status as Rejected
-   public static void updateContactEntitlement(List<Contact_Business_Types__c> listrecords, Map<Id, Contact_Business_Types__c> oldMap) {
+    public static void updateContactEntitlement(List<Contact_Business_Types__c> listrecords, Map<Id, Contact_Business_Types__c> oldMap) {
         Set<Id> cbtIds = new Set<Id>();
         Set<Id> contactIds = new Set<Id>();
         List<Core_Contact_Entitlement__c> lstConEnt = new  List<Core_Contact_Entitlement__c>(); //for Collecting Contact entitlement records
@@ -246,7 +246,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 params = params + 'Contact Id-'+ conBT.Contact__c + '-Business Type Id-'+conBT.Business_Types__c +'-Enttl Id- '+cbtEnttlMap.get(conBT.Business_Types__c) +';';
                 Contact_Business_Types__c oldBT = oldMap.get(conBT.Id);
                 if(oldBT != null && cbtEnttlMap != null && lstConEntMap != null && lstConEntMap.containsKey(conBT.Contact__c) &&
-                   cbtEnttlMap.ContainsKey(conBT.Business_Types__c)&&skipsCEProcess == false) 
+                   cbtEnttlMap.ContainsKey(conBT.Business_Types__c)) 
                 {
                        Id busTypeEnttId = cbtEnttlMap.get(conBT.Business_Types__c);
                        List<Core_Contact_Entitlement__c> conEnttls = lstConEntMap.get(conBT.Contact__c);
@@ -280,7 +280,6 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             //Update entitlements
             if(conEnttlToUpdate.size() > 0 && (Schema.sObjectType.Core_Contact_Entitlement__c.isUpdateable()))
             {
-                Core_Contact_Ent_BT_Handler.skipsCBTProcess = true;
                 update conEnttlToUpdate;
             }
         }
@@ -293,7 +292,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             custEx.TypeName = ex.getTypeName();            
             ER_ErrorUtility.createLogEntry('Error in updateContactEntitlement', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
-    } 
+    }
     
     //Upsert Subscription for related contact when CBT added
     public static void upsertSubscription(List<Contact_Business_Types__c> conBusiness)
@@ -337,14 +336,14 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 }
             }
             if(Schema.sObjectType.Business_Types__c.isAccessible()){
-                for(Business_Types__c bT :  [Select id, Name, Business_Type_Code__c from Business_Types__c where id =: cbtype /* AND Name =: System.Label.ER_CBT_DZP */ WITH SECURITY_ENFORCED]){
+                for(Business_Types__c bT :  [Select id, Name, Business_Type_Code__c from Business_Types__c where id =: cbtype AND Name =: System.Label.ER_CBT_DZP WITH SECURITY_ENFORCED]){
                     cbName.add(bT.Name);
                     
                     cbtName = cbName[0];
                 }
             }
             
-            //if(cbtName.contains(System.Label.ER_CBT_DZP)){
+            if(cbtName.contains(System.Label.ER_CBT_DZP)){
                 if(Schema.sObjectType.Contact.isAccessible()){
                     //Retrive contact email in CBT to check if registration record is available
                     for(Contact con : [Select id, Email, AccountId from Contact where id =: conIds]){
@@ -354,37 +353,39 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                        
                     }
                 }
-            if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible()){ 
-                List<PRM_Registration_Request__c> regRequestList = [Select Id, PRM_Email_ID__c, PRM_Subscriptions__c, Entitlement_Details__r.Name From PRM_Registration_Request__c Where PRM_Email_ID__c =: email and Entitlement_Details__r.Name != NULL WITH SECURITY_ENFORCED order by lastmodifieddate desc limit 1];
-                if(regRequestList != null && regRequestList.size() > 0){ 
-                    PRM_Registration_Request__c regRequest = regRequestList[0];
+                if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible()){    
+                PRM_Registration_Request__c regRequest = [Select Id, PRM_Email_ID__c, PRM_Subscriptions__c, Entitlement_Details__r.Name From PRM_Registration_Request__c Where PRM_Email_ID__c =: email and Entitlement_Details__r.Name != NULL WITH SECURITY_ENFORCED order by lastmodifieddate desc limit 1];
+               
+                
+                lst_str_entName.add(regRequest.Entitlement_Details__r.name);
+               
+                
+                if(String.isNotBlank(regRequest.PRM_Subscriptions__c))
+                {
+                    subscriptionValues.addall(regRequest.PRM_Subscriptions__c.split(';'));
+                   
+                }
+                
+               /* for(PRM_Registration_Request__c regRequest : [Select Id, PRM_Email_ID__c, PRM_Subscriptions__c, Entitlement_Details__r.Name  From PRM_Registration_Request__c Where PRM_Email_ID__c =: email  order by lastmodifieddate desc])
+                {
+                   
+                    
                     lst_str_entName.add(regRequest.Entitlement_Details__r.name);
-                    if(String.isNotBlank(regRequest.PRM_Subscriptions__c))
-                    {
-                        subscriptionValues.addall(regRequest.PRM_Subscriptions__c.split(';'));
-                        
-                    }
-                    /* for(PRM_Registration_Request__c regRequest : [Select Id, PRM_Email_ID__c, PRM_Subscriptions__c, Entitlement_Details__r.Name  From PRM_Registration_Request__c Where PRM_Email_ID__c =: email  order by lastmodifieddate desc])
-					{
-
-
-					lst_str_entName.add(regRequest.Entitlement_Details__r.name);
-                    /*
+                                       /*
                     if(regRequest.Entitlement_Details__r.name !=null)
                     {
-                    
-                    str_entName = lst_str_entName[0];
+                        
+                        str_entName = lst_str_entName[0];
                     }
                     */
-                                        /*
+                /*
                     if(String.isNotBlank(regRequest.PRM_Subscriptions__c)){
-                    subscriptionValues.addall(regRequest.PRM_Subscriptions__c.split(';'));
-                    
+                        subscriptionValues.addall(regRequest.PRM_Subscriptions__c.split(';'));
+                       
                     }
                     
-                    }  */
+                }  */
                 }
-            }
                 if(subscriptionValues != null && (Schema.sObjectType.PRM_Partner_Subscription__c.isAccessible()))
                 {
                     for(PRM_Partner_Subscription__c sub : [Select Id,PRM_Subscription_Cd__c,Name from PRM_Partner_Subscription__c where PRM_Subscription_Cd__c IN : subscriptionValues]){
@@ -396,7 +397,7 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 
                 //check for duplicate records:
                 if(Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isAccessible()){
-                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c,PRM_Contact_Id__c from PRM_ContactSubscriptionAssociation__c where PRM_Partner_Subscription_Id__c in : subscriptionIds and PRM_Contact_Id__c =: contactIds WITH SECURITY_ENFORCED])
+                    for(PRM_ContactSubscriptionAssociation__c csa : [Select id,PRM_Partner_Subscription_Id__c,PRM_Status_Nm__c,PRM_Contact_Id__c from PRM_ContactSubscriptionAssociation__c where PRM_Partner_Subscription_Id__c in : subscriptionIds and PRM_Contact_Id__c =: contactIds WITH SECURITY_ENFORCED])
                     {
                         existingCSAMap.put(String.valueOf(csa.PRM_Partner_Subscription_Id__c)+String.valueOf(csa.PRM_Contact_Id__c),csa);
                     }
@@ -415,7 +416,6 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                                  
                                 if(existingCSAMap != null && existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) != null) { cntSubscrAssoc = existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) ; }
                                 cntSubscrAssoc.PRM_Status_Nm__c = 'Active';
-                                cntSubscrAssoc.PRM_Status_Reason_Txt__c ='Activated as contact is eligible for Subscription';//TWC729-8089 : Adding reason text 
                                 contactSubscriptionUpsertList.add(cntSubscrAssoc);
                             }
                             else if(cbtStatus == System.Label.ER_Rejected)
@@ -426,7 +426,6 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                                     
                                     if(existingCSAMap != null && existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) != null) { cntSubscrAssoc = existingCSAMap.get(String.valueOf(subscriptionMap.get(value).Id)+String.valueOf(contactIds)) ; }
                                     cntSubscrAssoc.PRM_Status_Nm__c = 'Inactive';
-                                    cntSubscrAssoc.PRM_Status_Reason_Txt__c ='Inactivated as contact is not eligible for Subscription';//TWC729-8089 : Adding reason text 
                                     contactSubscriptionUpsertList.add(cntSubscrAssoc);                  
                                 
                             }
@@ -437,7 +436,8 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 if(contactSubscriptionUpsertList!= null && contactSubscriptionUpsertList.size()>0 ) 
                 {
                     
-                    if(Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isUpdateable() || Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isCreateable())
+                    if(Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isUpdateable()||
+                      Schema.sObjectType.PRM_ContactSubscriptionAssociation__c.isCreateable())
                     {
                         upsert contactSubscriptionUpsertList;  
                     }
@@ -449,19 +449,19 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 }
                 
                             
-            //}   //End of if checking label
+            }   //End of if checking label
             
             
         }
         catch(Exception ex) {
-            execptionLogMethod(ex, 'updateContactEntitlement', params);
-           /* ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
+            
+            ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
             custEx.Message = ex.getMessage();
             custEx.Cause = ex.getCause();
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();            
-            ER_ErrorUtility.createLogEntry('Error in updateContactEntitlement', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params); */
+            ER_ErrorUtility.createLogEntry('Error in updateContactEntitlement', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
     }
     public class CBTException extends Exception {}
@@ -474,7 +474,8 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
                 params = params + 'ContactId-'+ cbt.Contact__c + '-Business Type Id-'+cbt.Business_Types__c+';';
                 Contact_Business_Types__c oldCBT = (Contact_Business_Types__c)Trigger.oldMap.get(cbt.Id);
                 if((oldCBT.Status__c == System.Label.ER_Approval_Pending && cbt.Status__c == System.Label.ER_Approved) ||
-                  (oldCBT.Status__c == System.Label.ER_Rejection_Pending && cbt.Status__c == System.Label.ER_Rejected)) {
+                  (oldCBT.Status__c == System.Label.ER_Rejection_Pending && cbt.Status__c == System.Label.ER_Rejected) ||
+                  (oldCBT.Status__c == System.Label.ER_Approved && cbt.Status__c == System.Label.ER_Rejected)) {
                     isUpdated = true;
                 }                
             }
@@ -484,68 +485,13 @@ ER_ErrorUtility.createLogEntry('Error in CBTContactEngNameCheck', custEx, LOG_EN
             }
         }
         catch(Exception ex) {
-            execptionLogMethod(ex, 'eRPMIntegrationCBTApproveReject',params);
-          /*  ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
+            ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
             custEx.Message = ex.getMessage();
             custEx.Cause = ex.getCause();
             custEx.StackTraceString = ex.getStackTraceString();
             custEx.LineNumber = ex.getLineNumber();                
             custEx.TypeName = ex.getTypeName();            
-            ER_ErrorUtility.createLogEntry('Error in eRPMIntegrationCBTApproveReject', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params); */
+            ER_ErrorUtility.createLogEntry('Error in eRPMIntegrationCBTApproveReject', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
-    }
-    //This logic of removing ABT upon removal of last CBT is migrated to apex from flow as flow is throwing cpu limit exception
-    //in case an account has large number of contacts
-    @InvocableMethod(label='aBTRemovalValidationOnCBTRemoval' description='Removes ABT on the removal of last CBT of the Account')
-    public static void aBTRemovalValidationOnCBTRemoval(List<String> cbtIdssList){
-        Set<Id> accIdSet = New Set<Id>();
-        Set<Id> busiTypeSet = New Set<Id>();
-        Map<Id,Id> businessTypeABTMap = New Map<Id,Id>();
-        List<Account_Business_Types__c> abtUpdList = New List<Account_Business_Types__c>();
-        try{
-            for(Contact_Business_Types__c cbt : [Select Id,Contact__c,Contact__r.AccountId,Business_Types__c FROM Contact_Business_Types__c WHERE Id IN: cbtIdssList]){
-                accIdSet.add(cbt.Contact__r.AccountId); 
-                busiTypeSet.add(cbt.Business_Types__c);
-            }
-            for(Contact_Business_Types__c existingCBT : [Select Id,Contact__c,Contact__r.AccountId,Business_Types__c,Status__c FROM 
-                                                         Contact_Business_Types__c WHERE Contact__r.AccountId IN: accIdSet
-                                                         AND Business_Types__c IN: busiTypeSet AND Status__c = 'Approved'
-                                                         AND Id NOT IN: cbtIdssList]){ 
-                                                             accIdSet.Remove(existingCBT.Contact__r.AccountId);
-                                                             businessTypeABTMap.put(existingCBT.Contact__r.AccountId,existingCBT.Business_Types__c);
-                                                             
-                                                         }
-            if(accIdSet != null && accIdSet.size() > 0){
-                for(Account_Business_Types__c	abt : [SELECT Id,Account__c,Business_Types__c,Status__c FROM Account_Business_Types__c
-                                                       WHERE Account__c IN: accIdSet AND Business_Types__c IN: busiTypeSet
-                                                       AND Status__c != 'Rejected']){
-                                                           if(!businessTypeABTMap.containsKey(abt.Account__c)){
-                                                               abt.status__c = 'Rejected';
-                                                               abtUpdList.add(abt);
-                                                           }
-                                                       }
-                if(abtUpdList != null && abtUpdList.size() > 0){
-                    database.update(abtUpdList,false);
-                }
-            }
-        }catch(exception ex){
-            execptionLogMethod(ex, 'aBTRemovalValidationOnCBTRemoval',null);
-           /* ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
-            custEx.Message = ex.getMessage();
-            custEx.Cause = ex.getCause();
-            custEx.StackTraceString = ex.getStackTraceString();
-            custEx.LineNumber = ex.getLineNumber();                
-            custEx.TypeName = ex.getTypeName();            
-            ER_ErrorUtility.createLogEntry('Error in aBTRemovalValidationOnCBTRemoval', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, null); */
-        }
-    }
-    public static void execptionLogMethod(exception ex, string methodName, string params){
-        ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
-        custEx.Message = ex.getMessage();
-        custEx.Cause = ex.getCause();
-        custEx.StackTraceString = ex.getStackTraceString();
-        custEx.LineNumber = ex.getLineNumber();                
-        custEx.TypeName = ex.getTypeName();            
-        ER_ErrorUtility.createLogEntry('Error in '+methodName, custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
     }
 }

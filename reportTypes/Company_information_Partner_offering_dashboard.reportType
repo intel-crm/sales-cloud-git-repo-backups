@@ -242,6 +242,46 @@
             <field>Name</field>
             <table>PMP_Company__c.Offerings__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Is_Not_Available_On_MP_Ind__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Reason_for_Retired_Txt__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Partner_Offering_LifecycleStatus_Txt__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Clear_Cache__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DataCleanupflag__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_View_Offering__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Edit_Clone_Offering__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Topic_Count__c</field>
+            <table>PMP_Company__c.Offerings__r</table>
+        </columns>
         <masterLabel>Partner Offerings</masterLabel>
     </sections>
     <sections>
@@ -347,62 +387,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Biz_Org_Type_Value_Txt__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Disti_Country_Coverage_Txt__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Disti_Sys_Solutions_Nm__c</field>
-            <table>PMP_Company__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_CP_Ask_A_Question_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_CP_Open_Click_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_CP_Submit__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_CP_Combined_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_CP_Request_A_Quote_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Valuable_Assert_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Offering_ID__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Partner_Website_Count__c</field>
-            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Year__c</field>
+            <field>PMP_Rpt_Partner_Offering_Category__c</field>
             <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
         </columns>
         <columns>
@@ -412,9 +397,92 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PMP_Rpt_Partner_Offering_Category__c</field>
+            <field>PMP_Rpt_Valuable_Assert_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_Partner_Website_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_CP_Open_Click_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_CP_Ask_A_Question_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_CP_Request_A_Quote_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_CP_Combined_Count__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_CP_Submit__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Rpt_Year__c</field>
+            <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_External_ID__c</field>
             <table>PMP_Company__c.Offerings__r.Marketplace_Dashboards__r</table>
         </columns>
         <masterLabel>Marketplace Dashboards</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Biz_Org_Type_Value_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Ref_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Active_OPID_Cnt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Topic_Count__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Storefront_SiteUrl__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Autofill_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_ScrapStatusComment_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
     </sections>
 </ReportType>

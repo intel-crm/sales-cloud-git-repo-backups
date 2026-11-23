@@ -79,5 +79,12 @@
         <name>User__c</name>
         <relationshipLabel><!-- Opportunity Team Access --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Opportunity Team Access Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

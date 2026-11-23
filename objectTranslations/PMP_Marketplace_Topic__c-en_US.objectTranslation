@@ -123,6 +123,17 @@
             <translation><!-- Featured Topic --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Marketplace Topic Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Upload Image --></label>
+        <name>PMP_Topics_Upload_Image</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- End Date cannot be before Start Date --></errorMessage>

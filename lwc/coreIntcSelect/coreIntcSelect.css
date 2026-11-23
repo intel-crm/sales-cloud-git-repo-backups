@@ -11,3 +11,11 @@ label[data-is-required='true'] abbr {
 .slds-has-error .slds-form-element__help {
   display: block;
 }
+
+:host(.active) {
+  left: 30%;
+  width: 250px;
+  overflow-y: auto;
+  max-height: 250px;
+  
+}

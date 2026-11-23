@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_ZHO</name>
     <style>none</style>
-    <subject>请完整填写您的英特尔® 合作伙伴联盟申请</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>您已经接近完成！
 
 
@@ -23,8 +23,7 @@
 
 无法访问上面的链接？
 
-https://www.intel.com/content/www/cn/zh/secure/partner/forms/ipa-account-search.html。
-
+https://wcm-ciqa.intel.com/content/www/cn/zh/secure/partner/forms/ipa-account-search.html。
 如有疑问，请发送邮件至 programs@intel.com 与我们联系。
 
 谢谢！
@@ -33,7 +32,7 @@ https://www.intel.com/content/www/cn/zh/secure/partner/forms/ipa-account-search.
 
 
 发送给您的此邮件，是有关您与英特尔® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
 隐私 | Cookies</textOnly>
     <type>custom</type>

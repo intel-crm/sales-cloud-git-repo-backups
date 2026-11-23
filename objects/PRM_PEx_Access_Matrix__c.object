@@ -195,6 +195,11 @@
                     <label>Device as a Service Specialty</label>
                 </value>
                 <value>
+                    <fullName>Docebo</fullName>
+                    <default>false</default>
+                    <label>Docebo</label>
+                </value>
+                <value>
                     <fullName>Enablement Zones</fullName>
                     <default>false</default>
                     <label>Enablement Zones</label>
@@ -351,6 +356,18 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_CTA_Priorities__c</fullName>
+        <externalId>false</externalId>
+        <label>Click To Action Priorities</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_CTA_Priority__c</fullName>
         <externalId>false</externalId>
         <label>Click To Action Priority</label>
@@ -498,6 +515,11 @@
                     <default>false</default>
                     <label>https://www.intelinvitemembers.com</label>
                 </value>
+                <value>
+                    <fullName>manage_personnel__c</fullName>
+                    <default>false</default>
+                    <label>manage_personnel__c</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -506,6 +528,17 @@
         <externalId>false</externalId>
         <label>IPA URL</label>
         <length>100</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Logo_Icon_Class__c</fullName>
+        <externalId>false</externalId>
+        <label>Logo Icon Class</label>
+        <length>50</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -576,6 +609,7 @@
         <columns>PRM_Partner_Specialty_Select_Benefit__c</columns>
         <columns>PRM_IPA_Partner_Role__c</columns>
         <columns>PRM_Entitlements__c</columns>
+        <columns>PRM_CTA_Priorities__c</columns>
         <columns>PRM_Click_To_Action__c</columns>
         <columns>PRM_CTA_Priority__c</columns>
         <columns>PRM_Speciality_Select_Benefit_Priority__c</columns>
@@ -585,6 +619,25 @@
         <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Speciality</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Benefit_Blade__c</columns>
+        <columns>PRM_Click_To_Action__c</columns>
+        <columns>RECORDTYPE</columns>
+        <columns>PRM_Speciality_Select_Benefit_Priority__c</columns>
+        <columns>PRM_CTA_Priority__c</columns>
+        <columns>PRM_Partner_Specialty_Select_Benefit__c</columns>
+        <columns>PRM_IPA_Partner_Role__c</columns>
+        <columns>PRM_Benefit_Priority__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>PRM_PEx_Access_Matrix__c.Specialty_Select_Benefit_Access_Rule</value>
+        </filters>
+        <label>Speciality</label>
     </listViews>
     <nameField>
         <displayFormat>AMS-{0000}</displayFormat>
@@ -735,7 +788,23 @@
         <picklistValues>
             <picklist>PRM_Benefit_Blade__c</picklist>
             <values>
+                <fullName>Design Enablement Services%2CDIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Enablement Services%2CIDDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Enablement Zones</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Tools and Resources</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Developer Zone - Premier</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -763,7 +832,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Partner Lookup Tool</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource %26 Documentation Center - Premier Access</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -824,6 +901,10 @@
                 <fullName>https%3A%2F%2Fwww%2Eintelmanagepersonnel%2Ecom</fullName>
                 <default>false</default>
             </values>
+            <values>
+                <fullName>manage_personnel%5F%5Fc</fullName>
+                <default>false</default>
+            </values>
         </picklistValues>
     </recordTypes>
     <recordTypes>
@@ -841,6 +922,14 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Design Enablement Services%2CDIT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Design Enablement Services%2CIDDS</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Device as a Service Specialty</fullName>
                 <default>false</default>
             </values>
@@ -853,11 +942,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>FPGA Tools and Resources</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>High Performance Computing Data Center Specialty</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Industrial Solutions Builder Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Developer Zone - Premier</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -897,7 +994,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Partner Lookup Tool</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Points</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Resource %26 Documentation Center - Premier Access</fullName>
                 <default>false</default>
             </values>
             <values>

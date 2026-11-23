@@ -27,6 +27,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Deal: Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -92,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

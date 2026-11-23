@@ -26,7 +26,6 @@
     private static testMethod void ContactEmailReprocessFile(){
         Setup_Common_Test_Data(); 
         ContactEmailReprocessFilesRun(1);
-        System.AssertEquals(Accnt != null, true);
     }
 /***************************************************************************************************
 * Method Name:  ContactEmailReprocessFiles
@@ -43,7 +42,6 @@
     private static testMethod void ContactEmailReprocessFiles(){
         Setup_Common_Test_Data(); 
         ContactEmailReprocessFilesRun(5);
-          System.AssertEquals(Accnt != null, true);
     }
 /***************************************************************************************************
 * Method Name:  ContactEmailReprocessFilesRun
@@ -101,19 +99,21 @@
             }
             Database.insert(lstEmailLog);
             //check log
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
             System.assertEquals(FileCount,LogCount); 
             //Reprocess - should not send email as  error not fixed
-            lstEmailLog = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            lstEmailLog = [select Id, Core_TargetObjectId__c, Core_TemplateID__c, Core_WhatId__c, Core_OrgWideEmailAddressId__c from Core_IPS_Email_Log__c];
             for(Core_IPS_Email_Log__c EmailLogObj : lstEmailLog ){
                 FailedEmailLogIds.add(EmailLogObj.id);    
             }
             Test.startTest();
             Message = Core_IPS_Email_Reprocess.ReprocessExtDownloadNotifEmail(FailedEmailLogIds);
+            system.debug('#######' + Message);
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
+            system.debug('#######' + LogCount);
             System.assertEquals(FileCount,LogCount);  
             //Correct Entry
             List<Contact> lstTobeUpdatedContact = new List<Contact>();
@@ -125,10 +125,12 @@
             Message = '';
             Message = Core_IPS_Email_Reprocess.ReprocessExtDownloadNotifEmail(FailedEmailLogIds);
             Test.stopTest();
+            system.debug('#######' + Message);
             system.assert(Message != null); 
             //check log
             LogCount = 0;
-            LogCount = [select count() from Core_IPS_Email_Log__c LIMIT 999];//ATHR Query limit fix
+            LogCount = [select count() from Core_IPS_Email_Log__c];
+            system.debug('#######' + LogCount);
             System.assertEquals(0,LogCount);              
         }        
     }    

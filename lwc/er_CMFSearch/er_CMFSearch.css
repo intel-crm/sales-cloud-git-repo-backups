@@ -1,26 +1,21 @@
 .datatable-full-size {
     width: 100% !important;
-    overflow-x: auto; /* Enable horizontal scrolling */
-}
-
-.wrapped-header-datatable .slds-table .slds-th__action .slds-truncate {
+  }
+  .wrapped-header-datatable .slds-table .slds-th__action .slds-truncate{
     max-width: 75%;
     overflow: hidden;
-    text-overflow: ellipsis; /* Show "..." when text overflows */
-    white-space: nowrap; /* Prevent text from wrapping */
-}
+    text-overflow: unset;
+    white-space: pre-line;
+    /*  uncomment this if you want break the words further */
+    /* word-wrap: break-word;*/
 
-.wrapped-header-datatable .slds-table {
-    display: block;
-    overflow-x: auto; /* Enable horizontal scrolling for table */
-    white-space: nowrap;
 }
 
 .wrapped-header-datatable .slds-table .slds-th__action {
     height: 5rem;
-    border-bottom: 1px solid rgb(206, 206, 206);
+    border-bottom: 1px solid rgb(206 206 206);
 }
 
-.wrapped-header-datatable .slds-table .slds-line-height_reset {
+.wrapped-header-datatable .slds-table .slds-line-height_reset{
     height: 3rem;
 }

@@ -156,43 +156,13 @@
     <fields>
         <fullName>Core_CIM_Id__c</fullName>
         <description>Store the Account CIM Id</description>
-        <externalId>true</externalId>
+        <externalId>false</externalId>
         <label>CIM Id</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Error_Description_Txt__c</fullName>
-        <label>Error Description</label>
-        <length>131072</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>50</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_Processed_Time_DteTime__c</fullName>
-        <label>Processed Time</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
-    </fields>
-    <fields>
-        <fullName>Core_Retry_Counter__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <label>Retry Counter</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
         <unique>false</unique>
     </fields>
     <fields>
@@ -209,47 +179,6 @@
         <externalId>false</externalId>
         <inlineHelpText>Stores the Sales Assist Value from AI Sales for the related Account</inlineHelpText>
         <label>Sales Assist Value</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Status_Pkt__c</fullName>
-        <label>Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>New</fullName>
-                    <default>false</default>
-                    <label>New</label>
-                </value>
-                <value>
-                    <fullName>Success</fullName>
-                    <default>false</default>
-                    <label>Success</label>
-                </value>
-                <value>
-                    <fullName>Failure</fullName>
-                    <default>false</default>
-                    <label>Failure</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_Unified_Id__c</fullName>
-        <description>Store the Account Unified Id</description>
-        <externalId>true</externalId>
-        <label>Unified Id</label>
         <length>255</length>
         <required>false</required>
         <trackHistory>false</trackHistory>

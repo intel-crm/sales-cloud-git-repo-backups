@@ -9,24 +9,36 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -37,12 +49,12 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
+            <column>AMOUNT</column>
         </chartSummaries>
         <chartType>HorizontalBarStacked</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Product_Segment_Old__c</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Product_Segment__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <secondaryGroupingColumn>Account.Core_Geo__c</secondaryGroupingColumn>
@@ -63,6 +75,10 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
@@ -80,28 +96,12 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
-    <columns>
-        <field>AMOUNT</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Application__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>Win Approved,Production Win,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
@@ -116,7 +116,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
-            <value>Edge Controls for Industrial</value>
+            <value>Industrial Edge Control Software</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
@@ -149,7 +149,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>2020 IOTG YTD IECS DWs by Seg_Geo</name>

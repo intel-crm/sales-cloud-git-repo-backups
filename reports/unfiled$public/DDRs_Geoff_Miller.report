@@ -16,7 +16,7 @@
         <field>Core_Design_Registration__c.Core_End_Customer_Postal_Cd__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
+        <field>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</field>
     </columns>
     <columns>
         <field>Core_Design_Registration__c.Core_Opportunity_Id__c</field>
@@ -96,7 +96,7 @@
     <description>Geoff Miller DDRs</description>
     <filter>
         <criteriaItems>
-            <column>Core_Design_Registration__c.PCC_End_Customer_Country__c</column>
+            <column>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

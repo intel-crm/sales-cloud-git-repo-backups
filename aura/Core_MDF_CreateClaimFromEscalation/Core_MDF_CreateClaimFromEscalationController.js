@@ -1,7 +1,5 @@
 ({
     doInit : function(component, event, helper) {
-            helper.checkCreateClaim(component, helper);
-            helper.checkUserAccess(component,event,helper);
-         
-        }, 
+        helper.checkPermissionToCreateClaim(component, event, helper);
+    },
 })

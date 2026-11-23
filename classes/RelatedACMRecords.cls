@@ -14,6 +14,6 @@ global class RelatedACMRecords{
      public String ipaBadge;
      public RelatedACMRecords(List<PRM_AccountChannelMembership__c> acms, String badge){
          listOfACM = acms;
-         ipaBadge = badge;
+         ipaBadge = badge; 
      }        
 }

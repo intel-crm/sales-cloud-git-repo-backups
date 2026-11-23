@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>SENTRONICS METROLOGY GMBH Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SENTRONICSMETROLOGYGMBHCustomerManager</parentRole>
 </Role>

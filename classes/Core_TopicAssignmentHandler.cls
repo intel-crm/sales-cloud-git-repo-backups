@@ -10,9 +10,6 @@ Description : Trigger handler for TopicAssignment
 *************************************************************************************/
 
 public class Core_TopicAssignmentHandler extends TriggerHandler{
-    public static Boolean isWorking() {
-        return true;
-    }
     //IPA2.0:TWC729-8114 Topics Removal/Event Removal
     /*Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
     

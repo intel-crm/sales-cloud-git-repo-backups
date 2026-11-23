@@ -7,9 +7,9 @@
         var action = component.get("c.fetchUserAndTemplateDetails");
         console.log(component.get("v.recordTypeMap"));
         action.setParams
-        ({
-            programName: component.get("v.recordTypeMap")[recTypeDevloperName]
-        })//selected recordtype value 
+            ({
+                programName: component.get("v.recordTypeMap")[recTypeDevloperName]
+            })//selected recordtype value 
         action.setCallback(this, function (response) {
             var downloadTemplateLink = component.find("downloadTemplate");
             var templateNotAvailable = component.find("noTemplateAvailable");
@@ -21,7 +21,6 @@
                 console.log('userAndTemplateDataList = '+ userAndTemplateDataList);
                 if (userAndTemplateDataList != null && userAndTemplateDataList.length > 1) { 
                     component.set("v.fileId", userAndTemplateDataList[0]);
-                    console.log('field---'+userAndTemplateDataList[0]);
                     if (userAndTemplateDataList[1] == $A.get("$Label.c.Core_MDF_Partner_User_Type")) {
                         component.set("v.isPortal", true);
                     }
@@ -39,12 +38,12 @@
                 }
             } else if (state === "ERROR") {
                 this.toggleSpinner(component, event);
-                this.showToast(component,event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+                this.showToast(component, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
             }
         });
         $A.enqueueAction(action);
     },
-    
+
     /* This method validates the file uploaded by the User
        stores the content and the file details  
     */
@@ -61,13 +60,12 @@
                     var content = dataURL.match(/,(.*)$/)[1];
                     component.set("v.content", content);
                     helper.toggleSpinner(component, event);
-                    //helper.showToast(component, event, 'Info', $A.get("$Label.c.Core_MDF_BulkClaimUploadFileSuccessMsg"));
-                    helper.showToast(component, event,'Info', $A.get("$Label.c.Core_MDF_Info"), $A.get("$Label.c.Core_MDF_File")+' "'+component.get("v.file").name +'" '+$A.get("$Label.c.Core_MDF_BulkClaimUploadFileSuccessMsg"));
+                    helper.showToast(component, event, 'Info', $A.get("$Label.c.Core_MDF_BulkClaimUploadFileSuccessMsg"));
                 }
                 reader.readAsDataURL(file);
             } else {
                 this.toggleSpinner(component, event);
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+                this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
             }
         }
     },
@@ -89,7 +87,7 @@
                 if (response.getState() == "SUCCESS" && response.getReturnValue() != null && !response.getReturnValue().startsWith('Exception')
                     && !response.getReturnValue().startsWith('UIException')) {
                     this.toggleSpinner(component, event);
-                    this.showToast(component, event,'Success', $A.get("$Label.c.Core_MDF_Success"), $A.get("$Label.c.Core_MDF_Bulk_claim_success_msg"));
+                    this.showToast(component, event, 'Success', $A.get("$Label.c.Core_MDF_Bulk_claim_success_msg"));
                     var navEvt = $A.get("e.force:navigateToSObject");
                     navEvt.setParams({
                         "recordId": response.getReturnValue()
@@ -101,24 +99,21 @@
                     var returnMsg = response.getReturnValue().replace('UIException', '');
                     var validationMessages = returnMsg.split('\n');
                     var errorMessageLength = validationMessages.length - 1;
-                    var errorMsg = '';
                     if (errorMessageLength > $A.get("$Label.c.Core_MDF_Error_Message_Count")) {
                         errorMsg = $A.get("$Label.c.Core_MDF_bulk_claim_generic_error_message");
-                        this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), errorMsg);
+                        this.showToast(component, event, 'Error', errorMsg);
                     } else {
-                        errorMsg = '';
+                        var errorMsg = '';
                         var eachLine;
                         for (eachLine in validationMessages) {
-                            if(eachLine != null){
                             errorMsg = errorMsg + validationMessages[eachLine] + '\n';
-                            }
                         }
                         console.log('errorMsg', errorMsg);
-                        this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), errorMsg);
+                        this.showToast(component, event, 'Error', errorMsg);
                     }
                 } else {
                     this.toggleSpinner(component, event);
-                    this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
+                    this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage"));
                 }
             });
             $A.enqueueAction(action);
@@ -161,11 +156,11 @@
             var fileExtension = fileName.substr(fileName.lastIndexOf('.') + 1).toLowerCase();
             if (fileExtension != 'csv') {
                 validationError = false;
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_Please_Upload_CSV_File"));
+                this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_Please_Upload_CSV_File"));
             }
             if (file.size >= 1000000) {
                 validationError = false;
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_Bulk_Claim_File_Size_Big"));
+                this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_Bulk_Claim_File_Size_Big"));
             }
         }
         return validationError;
@@ -173,11 +168,11 @@
     /* This method is used to show the Error / Success toast message
         based on the type and the message passed in it
     */
-    showToast: function (component, event, type, title, message) {
+    showToast: function (component, event, type, message) {
         var resultsToast = $A.get("e.force:showToast");
         resultsToast.setParams({
             "type": type,
-            "title": title,
+            "title": type,
             "message": message,
             "duration": 6000,
             "mode": 'sticky'
@@ -192,91 +187,11 @@
         action.setCallback(this, function (response) {
             if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
                 var recTypeMap = response.getReturnValue();
-                component.set('v.recordTypeMap', recTypeMap);                               
-            }            
-            else { this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
-        });
-        $A.enqueueAction(action);
-    },
-    /* This method is used to show the active available Activity Sub type values
-        based on the record types
-    */
-    fetchAvailActSubTypeValues: function (component, event, helper) {
-        var action = component.get("c.fetchAvailActSubTypeValues");
-        action.setParams
-        ({
-            programName: component.get("v.programLabel")
-        })
-        action.setCallback(this, function (response) {
-            if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
-                var picklistval = response.getReturnValue();
-                component.set('v.activitySubTypes', picklistval);
-            }            
-            else {component.set('v.loadSpinner',false);
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
-        });
-        $A.enqueueAction(action);
-    },
-    
-    /* This method is used to show the country values*/
-    fetchAvailCountries: function (component, event, helper) {
-        var action = component.get("c.fetchAvailCountries");        
-        action.setCallback(this, function (response) {
-            if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
-                var picklistval = response.getReturnValue();
-                component.set('v.countryList', picklistval);
-            }            
-            else {component.set('v.loadSpinner',false);
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
-        });
-        $A.enqueueAction(action);
-    },
-    
-    /* This method is used to show the currency values*/
-    fetchAvailCurrencies: function (component, event, helper) {
-        var action = component.get("c.fetchAvailCurrencies"); 
-        var picklistResult = [];
-        action.setCallback(this, function (response) {
-            if (response.getState() === "SUCCESS" && response.getReturnValue() != null) {
-                component.set('v.currencyColumns', [
-                    {label: $A.get("$Label.c.Core_MDF_BulkClaimCurrencyName"), fieldName: 'currencyName', type: 'text'},
-                    {label: $A.get("$Label.c.Core_MDF_BulkClaimSuppCurrencyCode"), fieldName: 'currencyCode', type: 'text'}]);
-                component.set('v.currencyData',response.getReturnValue());
-                component.set('v.loadSpinner',false);
-            }            
-            else {component.set('v.loadSpinner',false);
-                this.showToast(component, event,'Error', $A.get("$Label.c.Core_MDF_Error"), $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
-        });
-        $A.enqueueAction(action);
-    },
-
-    /*This method is to decide the mandatory fields and guidelines to be displayed conditionally based on program */
-    displayMandatoryFieldsBasedOnProgram: function(component, programName) {
-        if(programName.toLowerCase() == $A.get("$Label.c.Core_MDF_Retail_Program_Name").toLowerCase()) {
-            component.set("v.showMetricsGuideline", true);
-            component.set("v.showVatOptinAsMandatoryField", true);
-            component.set("v.vatOptInMandatory", $A.get("$Label.c.Core_MDF_RMF_Vat_Required"));
-            component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_RMF_Bank_Required_Message"));
-        } else if(programName.toLowerCase() == $A.get("$Label.c.Core_MDF_CCF_Program_Name").toLowerCase()) {
-            component.set("v.showTaxAsMandatoryField", true);
-            component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_CCF_Bank_Required_Message"));
-            component.set("v.taxMandatory", $A.get("$Label.c.Core_MDF_CCF_Tax_Required_Message"));
-        } else if (programName.toLowerCase() == $A.get("$Label.c.Core_MDF_Non_Localized_DCF_Program_Name").toLowerCase()) {
-            component.set("v.showTaxAsMandatoryField", true);
-            component.set("v.bankMandatory", $A.get("$Label.c.Core_MDF_DCF_Bank_Required_Message"));
-            component.set("v.taxMandatory", $A.get("$Label.c.Core_MDF_DCF_Tax_Required_Message"));
-        }
-    },
-
-    //display the info message 
-    displayInfoMessage: function(component,event,helper) {
-        var action =component.get("c.displayInfoMessage");
-        action.setCallback(this, function(response) {
-            if (response.getState() === "SUCCESS") {
-                component.set("v.infoMessageInd",response.getReturnValue());
+                component.set('v.recordTypeMap', recTypeMap);
             }
-            console.log('v.infoMessageInd',v.infoMessageInd);
+            else { this.showToast(component, event, 'Error', $A.get("$Label.c.Core_MDF_ApplicationErrorMessage")); }
         });
         $A.enqueueAction(action);
     }
+
 })

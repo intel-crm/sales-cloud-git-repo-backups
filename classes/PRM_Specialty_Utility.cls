@@ -30,9 +30,9 @@ public without sharing class PRM_Specialty_Utility {
                                                             activespecSet.add(asa.PRM_Specialty_Id__c);  //adding specalities to final set if any active Account specialty Associations are identified to throw an error                                                             
                                                         }
                                                     }*/ // IPA Refresh - switch removal
-        /*if(activespecSet != null && activespecSet.size()>0){
+        if(activespecSet != null && activespecSet.size()>0){
             for(PRM_Specialty__c spec: specialtyNewList){
-                System.debug('specialtyNewList=======>'+spec);
+                //System.debug('specialtyNewList=======>'+spec);
                 PRM_Specialty__c specOld ;
                 if(oldMap!=null && oldMap.size()>0){ specOld = (PRM_Specialty__c) oldMap.get(spec.id) ;}
                 if(activespecSet.contains(spec.id)&&(specOld.Name!=spec.Name)){
@@ -42,7 +42,7 @@ public without sharing class PRM_Specialty_Utility {
                     spec.PRM_Inactive_Ind__c.addError(System.label.PRM_Specialty_Inactive);
                 }
             } 
-        }*/
+        }
         
     }
     

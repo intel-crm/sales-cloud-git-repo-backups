@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Maintains List of Warranty benefits and each benefit&apos;s behaviour to pick higher or lower values.</description>
+    <fields>
+        <fullName>BenefitCode__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BenefitCode</label>
+        <length>20</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>BenefitCommonName__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>BenefitCommonName</label>
+        <length>20</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OperationCode__c</fullName>
+        <description>Decide whether to pick higher or lower values</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>OperationCode</label>
+        <length>20</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PRM Warranty Benefits Configuration</label>
+    <pluralLabel>PRM Warranty Benefits Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

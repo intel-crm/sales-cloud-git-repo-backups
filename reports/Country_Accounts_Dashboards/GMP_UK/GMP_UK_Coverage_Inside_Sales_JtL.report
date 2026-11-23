@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>

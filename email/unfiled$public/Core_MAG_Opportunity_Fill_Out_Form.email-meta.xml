@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Email to the opportunity owner if the opportunity is MAG and they haven&apos;t yet filled out the form</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>MAG Opportunity Fill Out Form</name>
+    <style>none</style>
+    <subject>MAG Questionnaire required for your SFDC {!Opportunity.Id}, {!Opportunity.Name}, {!Opportunity.Account}</subject>
+    <textOnly>Dear {!Opportunity.OwnerFirstName},
+
+Please complete the MAG Questionnaire for below opportunity to initiate the Global Export Compliance (GEC) review and enable this opportunity to move forward in the cycle.
+
+· Opportunity ID: {!Opportunity.Id}
+· Opportunity name: {!Opportunity.Name}
+· Account name: {!Opportunity.Account}
+
+This opportunity needs to be reviewed by GEC because of potential MAG (Military Aerospace Government) implications.  The opportunity may not be submitted for approval until the review is complete and the GEC Team is able to determine whether the hold may be removed.
+
+Best Regards,
+
+Export Customer
+
+Confidentiality Notice:
+This message may contain information that is confidential and is provided solely for the use of the intended recipient(s). If you are not the intended recipient, you are hereby notified that any use, disclosure, dissemination, distribution, or copying of this message, or any attachments, is strictly prohibited. If you have received this message in error, please advise the sender by reply e-mail, and delete the message and any attachments. Thank you.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

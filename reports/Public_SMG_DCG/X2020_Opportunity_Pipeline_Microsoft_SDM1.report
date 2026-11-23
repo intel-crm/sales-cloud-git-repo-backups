@@ -102,7 +102,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Serih Cook,Guixiang Wang,Philip Van De Mortel,Yutaka Suzuki,Gwen Wang</value>
+            <value>Serih Cook,Guixiang Wang,Philip Van De Mortel,Yutaka Suzuki</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>

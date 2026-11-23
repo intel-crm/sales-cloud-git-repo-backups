@@ -30,10 +30,6 @@
         <name>Core_IPS_Owner_Group_3__c</name>
     </fields>
     <fields>
-        <label><!-- Owner Group Comment --></label>
-        <name>Core_IPS_Owner_Group_Comment__c</name>
-    </fields>
-    <fields>
         <label><!-- Owner Team 1 --></label>
         <name>Core_IPS_Owner_Team_1__c</name>
     </fields>
@@ -54,6 +50,13 @@
         <label><!-- Unique Owner Group --></label>
         <name>Core_IPS_Unique_Owner_Group__c</name>
     </fields>
+    <layouts>
+        <layout>Case Owner Group Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Atleast one Owner Group should be selected --></errorMessage>

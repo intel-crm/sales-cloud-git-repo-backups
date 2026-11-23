@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UserState</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UserStates</value>
+    </caseValues>
+    <fields>
+        <label><!-- ATMHierarchyLabel --></label>
+        <name>Xvoyant__ATMHierarchyLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- ATMOppField --></label>
+        <name>Xvoyant__ATMOppField__c</name>
+    </fields>
+    <fields>
+        <label><!-- ATMUserField --></label>
+        <name>Xvoyant__ATMUserField__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption0 --></label>
+        <name>Xvoyant__ActivityOption0__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption1 --></label>
+        <name>Xvoyant__ActivityOption1__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption2 --></label>
+        <name>Xvoyant__ActivityOption2__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption3 --></label>
+        <name>Xvoyant__ActivityOption3__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption4 --></label>
+        <name>Xvoyant__ActivityOption4__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption5 --></label>
+        <name>Xvoyant__ActivityOption5__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption6 --></label>
+        <name>Xvoyant__ActivityOption6__c</name>
+    </fields>
+    <fields>
+        <label><!-- ActivityOption7 --></label>
+        <name>Xvoyant__ActivityOption7__c</name>
+    </fields>
+    <fields>
+        <label><!-- App Size --></label>
+        <name>Xvoyant__App_Size__c</name>
+        <picklistValues>
+            <masterLabel>framed</masterLabel>
+            <translation><!-- framed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>fullscreen</masterLabel>
+            <translation><!-- fullscreen --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Coaching Frequency --></label>
+        <name>Xvoyant__Coaching_Frequency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Creation Date Limit --></label>
+        <name>Xvoyant__Creation_Date_Limit__c</name>
+    </fields>
+    <fields>
+        <label><!-- Custom Created Date Field --></label>
+        <name>Xvoyant__CustomCreatedDateField__c</name>
+    </fields>
+    <fields>
+        <label><!-- EventTrackingLabel --></label>
+        <name>Xvoyant__EventTrackingLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- HoldingStage --></label>
+        <name>Xvoyant__HoldingStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit Section 0 --></label>
+        <name>Xvoyant__Limit_Section_0__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit Section 1 --></label>
+        <name>Xvoyant__Limit_Section_1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit Section 2 --></label>
+        <name>Xvoyant__Limit_Section_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit Section 3 --></label>
+        <name>Xvoyant__Limit_Section_3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Limit Section 4 --></label>
+        <name>Xvoyant__Limit_Section_4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mini Curve Section Type --></label>
+        <name>Xvoyant__Mini_Curve_Section_Type__c</name>
+        <picklistValues>
+            <masterLabel>#</masterLabel>
+            <translation><!-- # --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>$</masterLabel>
+            <translation><!-- $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>%</masterLabel>
+            <translation><!-- % --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- OrgImportDate --></label>
+        <name>Xvoyant__OrgImportDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage0 --></label>
+        <name>Xvoyant__Stage0__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage1 --></label>
+        <name>Xvoyant__Stage1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage2 --></label>
+        <name>Xvoyant__Stage2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage3 --></label>
+        <name>Xvoyant__Stage3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage4 --></label>
+        <name>Xvoyant__Stage4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage5 --></label>
+        <name>Xvoyant__Stage5__c</name>
+    </fields>
+    <fields>
+        <label><!-- StandardHierarchyLabel --></label>
+        <name>Xvoyant__StandardHierarchyLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sweet Spot --></label>
+        <name>Xvoyant__Sweet_Spot__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Field --></label>
+        <name>Xvoyant__Team_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- UseOppHistory --></label>
+        <name>Xvoyant__UseOppHistory__c</name>
+    </fields>
+    <fields>
+        <label><!-- Activities Custom Type --></label>
+        <name>Xvoyant__activities_customType__c</name>
+    </fields>
+    <fields>
+        <label><!-- actuals_goalAmountLabel__c --></label>
+        <name>Xvoyant__actuals_goalAmountLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- actuals_label__c --></label>
+        <name>Xvoyant__actuals_label__c</name>
+    </fields>
+    <fields>
+        <label><!-- actuals_useSeparateGoalAmount__c --></label>
+        <name>Xvoyant__actuals_useSeparateGoalAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Daily Goal Check Logs --></label>
+        <name>Xvoyant__disableDailyGoalCheckDevLogs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Development Logs --></label>
+        <name>Xvoyant__disableDevLogs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Disable Exception Logs --></label>
+        <name>Xvoyant__disableExceptionDevLogs__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Diagnostic Logs --></label>
+        <name>Xvoyant__enableDiagLogs__c</name>
+    </fields>
+    <fields>
+        <label><!-- useActuals__c --></label>
+        <name>Xvoyant__useActuals__c</name>
+    </fields>
+    <layouts>
+        <layout>UserState Layout</layout>
+        <sections>
+            <label><!-- Activities --></label>
+            <section>Activities</section>
+        </sections>
+        <sections>
+            <label><!-- Actuals --></label>
+            <section>Actuals</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Hierarchy --></label>
+            <section>Hierarchy</section>
+        </sections>
+        <sections>
+            <label><!-- Sales Distribution --></label>
+            <section>Sales Distribution</section>
+        </sections>
+        <sections>
+            <label><!-- Stages --></label>
+            <section>Stages</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- There are invalid characters in UserState.ATMOppField__c --></errorMessage>
+        <name>Xvoyant__Validate_ATMOppField</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- There are invalid characters in UserState.ATMUserField__c --></errorMessage>
+        <name>Xvoyant__Validate_ATMUserField</name>
+    </validationRules>
+</CustomObjectTranslation>

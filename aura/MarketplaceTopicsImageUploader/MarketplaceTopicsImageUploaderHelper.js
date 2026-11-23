@@ -1,5 +1,4 @@
 ({
-    //ipa 2.0 priyas change for topic event
 	/*getPromotionLanguageOptions: function(component,event,helper){
         return new Promise($A.getCallback(function(resolve,reject){
             var action = component.get("c.getPromotionLanguageOptions");
@@ -27,7 +26,7 @@
             });
             $A.enqueueAction(action);
         }));
-    },*///ipa 2.0 priyas change for topic event
+    },
 
     getCloneImages: function(component,event, helper){
         
@@ -82,5 +81,5 @@
             });
             $A.enqueueAction(action);
         }));
-    },
+    }, */
 })

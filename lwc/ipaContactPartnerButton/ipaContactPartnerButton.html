@@ -12,8 +12,8 @@
 
     <template if:false={isMenu}>
         <lightning-button
-            class="button-full-width"
-            variant="brand"
+            class={buttonCssClass}
+            variant={variant}
             label={contactPartnerLabel}
             onclick={handleContactPartnerButton}
             ontoggle={handleContactToggle}>

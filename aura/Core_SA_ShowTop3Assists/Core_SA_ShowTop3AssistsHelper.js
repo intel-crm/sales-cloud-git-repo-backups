@@ -75,8 +75,6 @@
         
         //set action - No function param required
         var action = component.get("c.getTop3Assists");
-        console.log('Updated getTop3AssistsStatic method with getTop3Assists');
-        
         
         //set function param
         action.setParams({

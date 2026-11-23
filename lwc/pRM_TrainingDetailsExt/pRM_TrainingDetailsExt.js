@@ -28,6 +28,7 @@ import ofLabel from '@salesforce/label/c.PRM_Of';
 import page from '@salesforce/label/c.PRM_Page';
 import noTrainingRecords from '@salesforce/label/c.PRM_No_Training_Data';
 import MeasurementPeriod from '@salesforce/label/c.PRM_Measurement_Period';
+import {NavigationMixin} from 'lightning/navigation';
 const columns = [{
   label: AccountNo,
   fieldName: 'account_number',// account_number
@@ -71,7 +72,7 @@ const columns = [{
     // initialWidth: 200
     }];
 
-export default class RecorPRM_TrainingDetailsExt extends LightningElement {
+export default class RecorPRM_TrainingDetailsExt extends NavigationMixin(LightningElement) {
   totalRecords = noOfRecords;
   ofLbl = ofLabel;
   pageLbl = page;
@@ -110,9 +111,52 @@ export default class RecorPRM_TrainingDetailsExt extends LightningElement {
   @track exprtData;
   dataSetName = dataSetNameLbl;
   @track isDataAvailable;
+  @track isFilterOn = false;
   handleExport() {
-    exportAsCSV(this.dataSetName, this.currentpage, this.exprtData);
+    //exportAsCSV(this.dataSetName, this.currentpage, this.exprtData);
+    if (this.isFilterOn) {
+      exportAsCSV(
+          this.dataSetName,
+          this.currentpage,
+          this.exprtData
+      );
+      console.log("isFilterOn" + this.isFilterOn);
+  } else {
+    console.log('pageSize '+this.pagesize);
+    TrainingDetails({
+      pagenumber: this.currentpage, 
+      numberOfRecords: 0, 
+      pageSize: this.pagesize, 
+      searchString: "", 
+      startDate: "", 
+      endDate: "", 
+      isDownload: true 
+  })
+      .then((result) => {
+          console.log('>>>>result.limitBreachedTraining : '+JSON.stringify(result.limitBreachedTraining));
+          if (
+              result != null &&
+              result != undefined &&
+              !result.limitBreachedTraining
+          ) {
+              exportAsCSV(this.dataSetName, this.currentpage, result.wrapTraining);
+          } else {
+              this[NavigationMixin.GenerateUrl]({
+                  type: 'standard__webPage',
+                  attributes: {
+                      url: "/apex/prm_downloadVF?startDate"+this.startDate+"&endDate="+this.endDate+"&dataType=trainingsData",
+                  }
+              }).then(generatedUrl => {
+                  window.open(generatedUrl, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=200,left=200,width=800,height=400");
+              });
+          }
+      })
+      .catch((error) => {
+          console.log("Error :" + JSON.stringify(error));
+      });
+ // console.log("isFilterOnelse" + this.isFilterOn);
   }
+}
   getStringDate(dt) {
     let year;
     let month;
@@ -143,6 +187,7 @@ export default class RecorPRM_TrainingDetailsExt extends LightningElement {
   }
 
   criteriaSearch() {
+    this.isFilterOn = true;
     if ((this.startDate.length > 0 && this.endDate.length > 0) || (this.startDate.length > 0 && this.endDate.length === 0) || (this.startDate.length < 1 && this.endDate.length > 0)) {
       if (this.startDate.length > 0 && this.endDate.length === 0) {
         //     console.log('Selected start date only');
@@ -215,9 +260,9 @@ export default class RecorPRM_TrainingDetailsExt extends LightningElement {
           if (recordsCount !== 0 && !isNaN(recordsCount)) {
             this.totalpages = Math.ceil(recordsCount / this.pagesize);
             //        console.log('no of records ' + recordsCount)
-            TrainingDetails({ pagenumber: this.currentpage, numberOfRecords: recordsCount, pageSize: this.pagesize, searchString: this.searchKey, startDate: this.startDate, endDate: this.endDate })//
+            TrainingDetails({ pagenumber: this.currentpage, numberOfRecords: recordsCount, pageSize: this.pagesize, searchString: this.searchKey, startDate: this.startDate, endDate: this.endDate, isDownload: false })//
               .then(result => {
-                this.records = result;
+                this.records = result.wrapTraining;
                 this.exprtData = this.records;
                 this.isDataAvailable = this.records.length < 1 ? true : false;
                 this.error = undefined;
@@ -273,4 +318,5 @@ export default class RecorPRM_TrainingDetailsExt extends LightningElement {
 
     }
   }
+  
 }

@@ -19,6 +19,7 @@ import emailSubject from '@salesforce/label/c.PMP_Share_Email_Subject';
  * @property {string} [emailBody] the topic of the email being sent, otherwise blank
  * @property {string} [emailLink] url that email subject should link to, otherwise will link to current page
  * @property {boolean} [previewMode] preview mode (disable functionality)
+ * @property {string} [buttonClasses=''] Additional CSS classes to add to the button.
  * @augments LightningElement
  */
 class IpaShare extends LightningElement {
@@ -29,6 +30,8 @@ class IpaShare extends LightningElement {
     @api emailLink;
 
     @api previewMode;
+
+    @api buttonClasses = '';
 
     /**
      * Custom labels
@@ -66,6 +69,16 @@ class IpaShare extends LightningElement {
       link = link.replace('&', '%26');
       const body = this.emailBody ? `${this.emailBody}%0A` : '';
       return `mailto:?subject=${this.labels.emailSubject}&body=${body}${link}`;
+    }
+
+    /**
+     * Returns the CSS classes to use for the button.
+     *
+     * @returns {string} CSS classes for the button.
+     * @private
+     */
+    get fullButtonClasses() {
+      return `link-text link-no-underline ${this.buttonClasses}`;
     }
 
     /**

@@ -24,6 +24,7 @@ public without sharing class EPUM_ContactEntitlement_Wrapper {
 		@AuraEnabled public String entitlementNameStr;
     	@AuraEnabled public String strEntName;
         @TestVisible private String strCategory = '';
+       // @AuraEnabled public String contactStatus = '';//subhadeep
         public String category { 
             get {
                 if (String.isBlank(strCategory)){

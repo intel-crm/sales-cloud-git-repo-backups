@@ -22,10 +22,10 @@ export default class Prm_RegReq_Rejection extends LightningElement {
     @track comments = '';
     showRejectReason =false;
     @track formMessage;
+    approvalInstanceId;
     displayOtherReasonField = false;
     status;
     callFetchApproval = true;
-    @track resultdata;
 
     renderedCallback(){
         if(this.callFetchApproval){
@@ -35,8 +35,8 @@ export default class Prm_RegReq_Rejection extends LightningElement {
 
     async fetchApprovalRecordJS(){
         if(this.recordId){
-            this.resultdata = await fetchApprovalRecord({regReqId :this.recordId});
-           if(!this.resultdata.workItemId && this.callFetchApproval){
+            this.approvalInstanceId = await fetchApprovalRecord({regReqId :this.recordId});
+           if(!this.approvalInstanceId && this.callFetchApproval){
                 const evt = new ShowToastEvent({
                     title: 'Error',
                     message: 'You Dont have access to Reject this record.',
@@ -82,7 +82,8 @@ export default class Prm_RegReq_Rejection extends LightningElement {
                if(this.status === NEW || this.status == 'Pending'){
                     this.showSave = true;
                     this.showRejectReason = true;
-                }else if(this.status === APPROVED){
+
+                } else if(this.status === APPROVED){
                     this.formMessage = REG_REQ_APPROVED;
                     //this.rrApproved = true;
                 }else if(this.status === REJECTED){
@@ -115,7 +116,7 @@ export default class Prm_RegReq_Rejection extends LightningElement {
                 this.isSpinner = false;
 
             }else if(this.comments.length > 0){
-                regreqApproveRejectNew({regReqId : this.recordId, approvalInstanceId : this.resultdata.workItemId, aprovalType : 'Rejected', reason : this.comments})
+                regreqApproveRejectNew({regReqId : this.recordId, approvalInstanceId : this.approvalInstanceId, aprovalType : 'Rejected', reason : this.comments})
             .then(result => {
                 var temp = result;
                 console.log('>>>>>result2'+JSON.stringify(temp));
@@ -142,7 +143,7 @@ export default class Prm_RegReq_Rejection extends LightningElement {
             })
             .catch(error => { 
                 this.isSpinner = false;
-                console.log('error while processing'+ JSON.stringify(error));
+                console.log('error while processing'+error);
             });
         }
             }

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>IPS Intel Employee Customer Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>IPSIntelEmployeeCustomerPartnerManager</parentRole>
 </Role>

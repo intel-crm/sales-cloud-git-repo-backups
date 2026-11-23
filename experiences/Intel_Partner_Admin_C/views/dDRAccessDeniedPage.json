@@ -1,110 +1,128 @@
 {
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
-  "componentName" : "siteforce:sldsOneColLayout",
+  "componentName" : "siteforce:dynamicLayout",
   "dataProviders" : [ ],
-  "id" : "d6b77f75-045b-4399-bf7c-5e0acd8e745b",
+  "id" : "a7f4fb19-d6c0-441b-8b29-4842ebdee275",
   "label" : "DDR_AccessDeniedPage",
   "regions" : [ {
-    "id" : "ca0ec896-77ea-4228-b128-0263d100dc3c",
-    "regionName" : "marquee",
-    "type" : "region"
-  }, {
-    "id" : "d9d742f5-8add-4b27-a51b-f958a4145575",
-    "regionName" : "navigationMenu",
-    "type" : "region"
-  }, {
-    "id" : "6e94de6f-6e70-4e31-a560-5b9e9b248ac2",
-    "regionName" : "mainFullWidth",
-    "type" : "region"
-  }, {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"background-color: rgb(255, 255, 255);\">You don't have access to this portal. Please contact System Administrator</strong></p>"
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "d2d3f3e6-93bd-4e5b-ab6d-abf83122b49d",
+          "columns" : [ {
+            "UUID" : "b765d8dd-8077-4e95-a4e7-38b874708a14",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 32
       },
-      "componentName" : "forceCommunity:richTextInline",
-      "id" : "a5ec701a-71f6-4840-a3b8-610a317f70cf",
+      "componentName" : "forceCommunity:section",
+      "id" : "d2d3f3e6-93bd-4e5b-ab6d-abf83122b49d",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "richTextValue" : "<p> </p>"
+          },
+          "componentName" : "forceCommunity:richTextInline",
+          "id" : "f449138c-8c26-4a97-a67d-563598e49c92",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "b765d8dd-8077-4e95-a4e7-38b874708a14",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "b6bfca76-d3b2-45c3-a441-ce382b3fa6cd",
+          "columns" : [ {
+            "UUID" : "a8471372-88ac-4831-b976-104bedcfeda5",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "b6bfca76-d3b2-45c3-a441-ce382b3fa6cd",
+      "regions" : [ {
+        "id" : "a8471372-88ac-4831-b976-104bedcfeda5",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "476667b9-2a1d-4b3f-aeff-275c9c6fb6bb",
+          "columns" : [ {
+            "UUID" : "92f87bb1-3986-4930-a6af-1ee8c0d7bc78",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "476667b9-2a1d-4b3f-aeff-275c9c6fb6bb",
+      "regions" : [ {
+        "id" : "92f87bb1-3986-4930-a6af-1ee8c0d7bc78",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "6a79fa5e-f806-4bd3-abb2-b510e99fb72d",
-    "regionName" : "main",
-    "type" : "region"
-  }, {
-    "id" : "55b5fd5f-6337-4161-b9f8-02760abdc316",
-    "regionName" : "leftSection",
-    "type" : "region"
-  }, {
-    "id" : "a9ef187a-9743-433f-b011-e169ec262920",
-    "regionName" : "rightSection",
-    "type" : "region"
-  }, {
-    "id" : "eef3f57b-5359-4f0b-96b7-aea9280c1108",
-    "regionName" : "tab3",
-    "type" : "region"
-  }, {
-    "id" : "cff8eee3-f287-41d2-8004-af33ebd7d92a",
-    "regionName" : "blade1",
-    "type" : "region"
-  }, {
-    "id" : "bc2c733a-274a-409e-a921-f8cd0202453f",
-    "regionName" : "blade1white",
-    "type" : "region"
-  }, {
-    "id" : "a0a5cd19-b5c1-4c9c-8035-af8c666678d0",
-    "regionName" : "blade2",
-    "type" : "region"
-  }, {
-    "id" : "80977df5-2f64-4902-814b-ea1a2ba5cb47",
-    "regionName" : "blade3",
-    "type" : "region"
-  }, {
-    "id" : "985420f9-692e-498e-81ad-f761a238458a",
-    "regionName" : "blade4",
-    "type" : "region"
-  }, {
-    "id" : "81f72441-4d22-4ba8-b899-bcc8c8042505",
-    "regionName" : "blade5",
+    "id" : "5f326111-e84f-4c08-99a0-479f819f1bb2",
+    "regionName" : "content",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
         "customHeadTags" : "",
         "description" : "",
-        "title" : "Design Registration"
+        "title" : "DDR"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "cdbc8cce-5684-4cd7-9748-5de75b336754",
+      "id" : "f3ecb8c3-f3ce-447e-892e-ac5a0f64ff84",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "d2f7b062-1ab8-4283-9581-5232ce605e98",
+    "id" : "5e144e18-aef0-4852-9fb5-f8a191ad4be0",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
-  }, {
-    "id" : "ca6347d8-0b6c-45f8-ae8d-0c2121da8a34",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : {
-        "richTextValue" : "<p><center><h1>You do not have the necessary permissions to view this page. Please contact support.</h1></center></p>\n<center><h4 style=\"color: red;\">If you are looking to access the Altera portal, please be aware that the website has moved. Use\n    <a href=\"https://distributorportal.altera.com\" style=\"color: blue;\">distributorportal.altera.com</a> going forward and follow login instructions.</h4></center>"
-      },
-      "componentName" : "forceCommunity:htmlBlock",
-      "id" : "ae4a0080-8820-4114-b6eb-8a26a142abe0",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "83bbfa65-d0cb-4d5f-b304-708adc7ea275",
-    "regionName" : "content",
-    "type" : "region"
-  }, {
-    "id" : "9e8af3a0-3a9d-4d9a-9e41-e2383364b315",
-    "regionName" : "footer",
-    "type" : "region"
   } ],
-  "themeLayoutType" : "3RmkFScuTx2q32KzwAZXqhky02Upjq",
+  "themeLayoutType" : "Inner",
   "type" : "view",
-  "viewType" : "custom-ddr"
+  "viewType" : "custom-ddr2"
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Network Builder Offering</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Network Builder Offerings</value>
+    </caseValues>
+    <fields>
+        <label><!-- NetWork builder --></label>
+        <name>NetWork_builder__c</name>
+        <relationshipLabel><!-- Network Builder Offerings --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Offering --></label>
+        <name>Partner_Offering__c</name>
+        <relationshipLabel><!-- Network Builder Offerings --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

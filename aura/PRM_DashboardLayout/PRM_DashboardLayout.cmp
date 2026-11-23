@@ -74,11 +74,6 @@
         </div>
         
         <div class="container">
-            <b>
-                <p style="{!$Label.c.IPA_Alert_Message_Portal_Color}">
-                    {!$Label.c.IPA_Alert_Message_Portal}
-            </p>
-            </b>
             <aura:if isTrue="{!v.showTabs}">
                 <c:MarketplaceTabset aura:id="isgtabs" class="lightestGrayBg slds-m-vertical_xx-large">
                     <!-- IPA2.0 TWC727-3135 -->

@@ -9,9 +9,6 @@
         <sourceColumnName>FK_$Core_Design_Registration__c.Core_Product_Group_Nm__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
-            <sourceValues>
-                <sourceValue>FPGA/Power</sourceValue>
-            </sourceValues>
             <value>PSG</value>
         </values>
         <values>

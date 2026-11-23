@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>IPG AUTOMOTIVE ENGINEERING Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>IPGAUTOMOTIVEENGINEERINGCustomerManager</parentRole>
 </Role>

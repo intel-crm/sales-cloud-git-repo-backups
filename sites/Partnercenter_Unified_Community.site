@@ -12,10 +12,9 @@
     <bandwidthExceededPage>BandwidthExceeded</bandwidthExceededPage>
     <browserXssProtection>true</browserXssProtection>
     <cachePublicVisualforcePagesInProxyServers>true</cachePublicVisualforcePagesInProxyServers>
-    <clickjackProtectionLevel>AllowAllFraming</clickjackProtectionLevel>
+    <clickjackProtectionLevel>SameOriginOnly</clickjackProtectionLevel>
     <contentSniffingProtection>true</contentSniffingProtection>
     <customWebAddresses>
-        <certificate>partnercenter_intel_com12</certificate>
         <domainName>partnercenter.intel.com</domainName>
         <primary>false</primary>
     </customWebAddresses>
@@ -28,16 +27,8 @@
     <redirectToCustomDomain>false</redirectToCustomDomain>
     <referrerPolicyOriginWhenCrossOrigin>true</referrerPolicyOriginWhenCrossOrigin>
     <selfRegPage>CommunitiesSelfReg</selfRegPage>
-    <serverIsDown>SNA_Partnercenter_Unified_Community_C_sf_edge_xRRom</serverIsDown>
     <siteAdmin>11034919@intel.com.crm</siteAdmin>
-    <siteGuestRecordDefaultOwner>11034919@intel.com.crm</siteGuestRecordDefaultOwner>
-    <siteRedirectMappings>
-        <action>Permanent</action>
-        <isActive>false</isActive>
-        <isDynamic>false</isDynamic>
-        <source>/</source>
-        <target>/Core_MDF_CustomerDisclaimer</target>
-    </siteRedirectMappings>
+    <siteGuestRecordDefaultOwner>10652681@intel.com.crm</siteGuestRecordDefaultOwner>
     <siteType>ChatterNetwork</siteType>
     <subdomain>intelcloudcrm</subdomain>
     <urlPathPrefix>Partnercenter</urlPathPrefix>

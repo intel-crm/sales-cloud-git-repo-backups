@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Product_Access_Line_Item_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -251,17 +245,6 @@ Indicates if the PAR line item requires approval or will automatically be approv
 	&quot;ERROR&quot;)))</formula>
         <inlineHelpText>Status (if available) of the Asset referred to by the current Product Access Line Item</inlineHelpText>
         <label>Asset Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_IPS_ProfileBasedRecordLink__c</fullName>
-        <externalId>false</externalId>
-        <formula>IF( CreatedBy.Profile.Name  = &quot;IPS Support Org Admin&quot;,  &quot;https://intel.my.salesforce.com//&quot;&amp;Id , &quot;https://intel.lightning.force.com/lightning/r/Core_IPS_Map_Par_Line_Item__c/&quot;&amp;Id&amp;&quot;/view&quot;)</formula>
-        <label>ProfileBasedRecordLink</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -468,18 +451,6 @@ Boolean used by MAP/PAR VF page logic to determine if an asset should be created
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
-    <fields>
-        <fullName>Map_Item_internal_Subject__c</fullName>
-        <externalId>false</externalId>
-        <formula>&quot;(&quot;&amp;Core_Account__r.Name&amp;&quot; / &quot;&amp;Core_Account_Geo__c&amp;&quot; / &quot;&amp;Core_Supported_Product_Name__c&amp;&quot;)&quot;</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Map Item Internal Assigned Subject</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
     <label>Product Access Line Item</label>
     <nameField>
         <displayFormat>IAL-{0000000000}</displayFormat>
@@ -604,7 +575,7 @@ PLEASE NOTE:  You cannot manually create new Product Access Line Items through t
         <masterLabel>Inactivate Line Item</masterLabel>
         <openType>onClickJavaScript</openType>
         <protected>false</protected>
-        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/50.0/connection.js&quot;)} 
+        <url>{!REQUIRESCRIPT(&quot;/soap/ajax/19.0/connection.js&quot;)} 
 
 // Get the record
 var LI = new sforce.SObject(&quot;Core_IPS_Map_Par_Line_Item__c&quot;); 

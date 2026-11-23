@@ -46,25 +46,11 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
+            <column>OPPORTUNITY_ID</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design,Design Win,Production Win</value>
+            <value>006o000000O0xwE</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -147,16 +147,6 @@
         <unique>true</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Project_Platform__c</fullName>
-        <externalId>false</externalId>
-        <label>Project/Platform</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Technical_Program_Name__c</fullName>
         <label>Technical Program Name</label>
         <required>false</required>
@@ -233,11 +223,8 @@
         <description>To prevent distinct values on Name and Technical Program Name</description>
         <errorConditionFormula>AND(
 NOT(ISBLANK(TEXT(Core_MDF_Technical_Program_Name__c))),
-
-NOT(ISBLANK(Name)),IF(TEXT(Core_MDF_Technical_Program_Name__c) = &apos;Client CoMarketing Fund&apos;,IF(Name &lt;&gt; &apos;Client&apos;,TRUE,FALSE),
-
-IF(TEXT(Core_MDF_Technical_Program_Name__c) = &apos;Data Center CoMarketing Fund&apos;,IF(Name &lt;&gt; &apos;Datacenter&apos;,TRUE,FALSE),TEXT(Core_MDF_Technical_Program_Name__c) &lt;&gt; SUBSTITUTE(Name,&apos;-&apos;,&apos;&apos;))))</errorConditionFormula>
-        <errorDisplayField>IsActive</errorDisplayField>
+NOT(ISBLANK(Name)),
+TEXT(Core_MDF_Technical_Program_Name__c) &lt;&gt; SUBSTITUTE(Name,&apos;-&apos;,&apos;&apos;))</errorConditionFormula>
         <errorMessage>Channel Program Name and Technical Program Name should not be distinct</errorMessage>
     </validationRules>
 </CustomObject>

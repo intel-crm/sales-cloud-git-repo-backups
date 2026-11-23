@@ -74,7 +74,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Rohit Chawla,Ro Chawla,Ming Han Niam,Erica Tor,Sae Wah Tor,Faisal Qamar</value>
+            <value>Rohit Chawla,Simon Wm Chan,Ro Chawla,Ming Han Niam,Erica Tor,Sae Wah Tor,Faisal Qamar</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -115,6 +115,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

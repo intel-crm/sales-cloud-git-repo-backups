@@ -15,7 +15,7 @@ public class PRM_Specialty_Benefit_Group_Asso_Handler extends TriggerHandler{
         
         public override void beforeInsert() {
         if(isActive('PRM_Specialty_Benefit_Group_Asso_switch')) {     //Retrieved from Custom Metadata  
-           PRM_Specialty_Benefit_Group_Asso_Utility.specialtyDuplicateCheck(Trigger.new,null);
+            PRM_Specialty_Benefit_Group_Asso_Utility.specialtyDuplicateCheck(Trigger.new,null);
             PRM_Specialty_Benefit_Group_Asso_Utility.newBGspecialtyCheck(Trigger.new,null);
         }   
     }

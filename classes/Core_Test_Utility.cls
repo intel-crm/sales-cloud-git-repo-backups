@@ -460,23 +460,43 @@ public class Core_Test_Utility {
         return lstMembership;
     }
 
+
+    /*
+     * Method name  : createAccount
+     * Description  : Method to create and return an account instance.
+     * Return Type  : Account
+     * Parameter    : None
+     */
+
     public static List <Account> createAccount(Integer size) {
+        Account__c customSetting = new Account__c();
+        customSetting.PRM_Max_Account_Number__c = '63628892297';
+        customSetting.Name ='AccountNumber';
+        insert customSetting;
+        
         List <Account> accountList = new List <Account> ();
         For(integer i = 0; i <size; i++) {
             Account accountInstance = new Account();
-            accountInstance.name = 'Test ' + (Math.random() * 1000);
-            accountInstance.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+            accountInstance.name = 'Test ' + i;
             accountInstance.BillingCountryCode = 'USA';
             accountInstance.BIllingStateCode = 'AL';
             accountInstance.BillingCity = 'Alabama';
-            accountInstance.BillingStreet = 'test ' + (Math.random() * 1000);
-            accountInstance.Core_Sales_Groups__c = 'Americas US Sales Group';
+            accountInstance.BillingStreet = 'test';
+            accountInstance.Core_Sales_Groups__c = 'PRC Sales Group';
             accountInstance.Industry = 'Agriculture';
-            accountInstance.Core_Sub_Industry__c = 'Crop Production';
+            accountInstance.Core_Sub_Industry__c = 'Animal Production';
             accountList.add(accountInstance);
         }
         return accountList;
     }
+
+
+    /*
+     * Method name  : createChangeRequest
+     * Description  : Method to create and return an Change Request instance.
+     * Return Type  : List of Change Request records
+     * Parameter    : List of Account records
+     */
 
     public static List <Core_Change_Request__c> createChangeRequest(List <Account> accountList) {
         List <Core_Change_Request__c> changeRequestList = new List <Core_Change_Request__c> ();
@@ -495,6 +515,14 @@ public class Core_Test_Utility {
         }
         return changeRequestList;
     }
+
+
+    /*
+     * Method name  : createAccount
+     * Description  : Method to create and return an account instance.
+     * Return Type  : Account
+     * Parameter    : None
+     */
 
     public static List <Lead> createLead(Integer size) {
         List <Lead> leadList = new List <Lead> ();
@@ -516,7 +544,15 @@ public class Core_Test_Utility {
         }
         return leadList;
     }
- 
+
+
+    /*
+     * Method name  : createTask
+     * Description  : Method to create and return a task instance.
+     * Return Type  : Account
+     * Parameter    : None
+     */
+
     public static List <Task> createTask(Integer size) {
         List <Task> taskList = new List <Task> ();
         for (integer i = 0; i <size; i++) {
@@ -531,6 +567,14 @@ public class Core_Test_Utility {
         return taskList;
     }
 
+
+    /*
+     * Method name  : createEvent
+     * Description  : Method to create and return an event instance.
+     * Return Type  : Account
+     * Parameter    : None
+     */
+
     public static List <Event> createEvent(Integer size) {
         List <Event> eventList = new List <Event> ();
         for (integer i = 0; i <size; i++) {
@@ -544,12 +588,19 @@ public class Core_Test_Utility {
         return eventList;
     }
 
+    /*
+     * Method name  : createOpportunity
+     * Description  : Method to create and return an opportunity instance.
+     * Return Type  : List<Opportunity>
+     * Parameter    : None
+     */
+
     public static List <Opportunity> createOpportunity(Integer size) {
         List <Opportunity> opportunityList = new List <Opportunity> ();
         for (integer i = 0; i <size; i++) {
             Opportunity opportunityInstance = new Opportunity();
             opportunityInstance.CloseDate = System.Today().addDays(24);
-            opportunityInstance.StageName = 'Qualify';
+            opportunityInstance.StageName = 'Prospecting';
             opportunityInstance.Name = 'Test' + i;
             opportunityList.add(opportunityInstance);
 
@@ -557,6 +608,13 @@ public class Core_Test_Utility {
         return opportunityList;
     }
 
+
+    /*
+     * Method name  : createProduct
+     * Description  : Method to create and return a product list.
+     * Return Type  : List<Product2>
+     * Parameter    : None
+     */
 
     public static List <Product2> createProduct(Integer size) {
         List <Product2> lstProducts = new List <Product2> ();
@@ -573,6 +631,14 @@ public class Core_Test_Utility {
         return lstProducts;
     }
 
+
+    /*
+     * Method name  : createPriceBookEntry
+     * Description  : Method to create and return a product list.
+     * Return Type  : List<Product2>
+     * Parameter    : None
+     */
+
     public static List <PricebookEntry> createPriceBookEntry(Integer size, List <Product2> lstProducts, Id priceBookInstanceId) {
         List <PricebookEntry> lstPriceBookEntry = new List <PricebookEntry> ();
         PricebookEntry priceBookEntryInstance;
@@ -588,6 +654,12 @@ public class Core_Test_Utility {
         return lstPriceBookEntry;
     }
 
+    /*
+     * Method name  : createOpportunityLineItems
+     * Description  : Method to create and return a OpportunityLineItem list.
+     * Return Type  : List<OpportunityLineItem>
+     * Parameter    : None
+     */
     public static List <OpportunityLineItem> createOpportunityLineItems(Integer size, List <PricebookEntry> lstPriceBookEntry, Opportunity opportunityInstance) {
         List <OpportunityLineItem> lstOpportunityLineItem = new List <OpportunityLineItem> ();
         OpportunityLineItem OpportunityLineItemInstance;
@@ -608,6 +680,14 @@ public class Core_Test_Utility {
         return lstOpportunityLineItem;
     }
 
+
+    /*
+     * Method name  : createPriceBook
+     * Description  : Method to create and return a PriceBook list.
+     * Return Type  : List<OpportunityLineItem>
+     * Parameter    : None
+     */
+
     public static List <PriceBook2> createPriceBook(Integer size) {
 
         List <PriceBook2> lstPriceBook = new List <PriceBook2> ();
@@ -623,6 +703,12 @@ public class Core_Test_Utility {
         return lstPriceBook;
     }
 
+    /*
+     * Method name  : createContacts
+     * Description  : Method to create and return a contact list.
+     * Return Type  : List<OpportunityLineItem>
+     * Parameter    : None
+     */
 
     public static List <Contact> createContacts(Integer size) {
 
@@ -640,6 +726,12 @@ public class Core_Test_Utility {
         return lstContacts;
     }
 
+    /*
+     * Method name  : Core_Account
+     * Description  : method to return the instances of Account
+     * Return Type  : List<Account>
+     * Parameter    : Size of records
+     */
     public static List <Account> Core_Account(Integer iNoOfRecords) {
         List <Account> lstAccount = new List <Account> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -648,12 +740,17 @@ public class Core_Test_Utility {
             sobjAcc.BillingStreet = '123 Fake St';
             sobjAcc.BillingCity = 'Springfield';
             sobjAcc.BillingCountry = 'USA';
-            sobjAcc.Core_Sales_Groups__c = 'Americas US Sales Group';
             lstAccount.add(sobjAcc);
         }
         return lstAccount;
     }
 
+    /*
+     * Method name  : Core_Lead
+     * Description  : method to return the instances of Lead
+     * Return Type  : List<Lead>
+     * Parameter    : Size of records
+     */
     public static List <Lead> Core_Lead(Integer iNoOfRecords) {
         List <Lead> lstLead = new List <Lead> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -665,6 +762,13 @@ public class Core_Test_Utility {
         return lstLead;
     }
 
+
+    /*
+     * Method name  : Core_User
+     * Description  : method to return the instances of User
+     * Return Type  : List<User>
+     * Parameter    : Size of records
+     */
     public static List <User> Core_User(Integer iNoOfRecords) {
         List <User> lstUser = new List <User> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -686,6 +790,12 @@ public class Core_Test_Utility {
         return lstUser;
     }
 
+    /*
+     * Method name  : Core_CountryStateReference
+     * Description  : method to return the instances of Core_Country_State_Reference__c
+     * Return Type  : List<Core_Country_State_Reference__c>
+     * Parameter    : Size of records
+     */
     public static List <Core_Country_Reference__c> Core_CountryState(Integer iNoOfRecords) {
         List <Core_Country_Reference__c> lstCS = new List <Core_Country_Reference__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -696,6 +806,12 @@ public class Core_Test_Utility {
         return lstCS;
     }
 
+    /*
+     * Method name  : Core_TriggerExecution
+     * Description  : method to return the instances of Core_Trigger_Executions__c
+     * Return Type  : List<Core_Trigger_Executions__c>
+     * Parameter    : Size of records
+     */
     public static List <Core_Trigger_Executions__c> Core_TriggerExecution(Integer iNoOfRecords) {
         List <Core_Trigger_Executions__c> lstTrigExecution = new List <Core_Trigger_Executions__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -711,6 +827,12 @@ public class Core_Test_Utility {
         return lstTrigExecution;
     }
 
+    /*
+     * Method name  : Core_Opportunity
+     * Description  : method to return the instances of Opportunity
+     * Return Type  : List<Opportunity>
+     * Parameter    : Size of records
+     */
     public static List <Opportunity> Core_Opportunity(Integer iNoOfRecords) {
         List <Opportunity> lstOpportunity = new List <Opportunity> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -718,13 +840,18 @@ public class Core_Test_Utility {
             sobjOppRec.CloseDate = system.today();
             sobjOppRec.Name = 'Opportunity' + iRecNo;
             sobjOppRec.StageName = 'Qualify';
-            sobjOppRec.Core_Intel_Platform__c = 'GRIZZLY LAKE';
-            sobjOppRec.Core_Sales_Group__c = 'Global Accounts';
+            sobjOppRec.Core_Intel_Platform__c = 'Type';
             lstOpportunity.add(sobjOppRec);
         }
         return lstOpportunity;
     }
 
+    /*
+     * Method name  : CreateFeature
+     * Description  : method to return the instances of Core_Feature__c
+     * Return Type  : List<Core_Feature__c>
+     * Parameter    : Size of records
+     */
     public static List <Core_Feature__c> CreateFeature(Integer iNoOfRecords) {
         List <Core_Feature__c> lstFeature = new List <Core_Feature__c> {};
         for (integer iRecNo = 0; iRecNo <iNoOfRecords; iRecNo++) {
@@ -816,15 +943,4 @@ public class Core_Test_Utility {
         }
         return campaignList;
     }
-    
-    @future
-    public static void createEmailTemplate(){      
-        List<EmailTemplate> listEmailTemp = new List<EmailTemplate>();
-        EmailTemplate eml1 = new EmailTemplate (developerName = 'DWG_No_Longer_Achieved_Need_to_be_Recalled', FolderId = UserInfo.getUserId() , TemplateType= 'Text', Name = 'DWG_No_Longer_Achieved_Need_to_be_Recalled');
-        listEmailTemp.add(eml1);
-        EmailTemplate eml2 = new EmailTemplate (developerName = 'DWG_Ready_to_Submit_Notification', FolderId = UserInfo.getUserId(), TemplateType= 'Text', Name = 'DWG_Ready_to_Submit_Notification'); 
-        listEmailTemp.add(eml2);
-        insert listEmailTemp;
-    }
-   
 }

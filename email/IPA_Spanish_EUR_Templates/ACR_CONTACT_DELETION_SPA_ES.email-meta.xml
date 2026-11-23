@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_SPA_ES</name>
     <style>none</style>
-    <subject>Actualización de la cuenta de la Alianza Intel® para socios</subject>
+    <subject>Usuario eliminado</subject>
     <textOnly>Usuario eliminado
 
 {!UserName}:
@@ -18,7 +18,7 @@ Contacto eliminado: correo electrónico {!ContactEmail}
 Relación (función): {!AcrRoles}
 
 Si este cambio no estaba autorizado, inicie la sesión para actualizar su cuenta.
-Si tiene alguna duda, póngase en contacto con nosotros a través de https://signin.intel.com/ContactUs?Culture={!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}-{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}.
+Si tiene alguna duda, póngase en contacto con nosotros a través de  https://signin.intel.com/ContactUs?Culture=es-es.
 
 
 
@@ -26,7 +26,7 @@ Gracias,
 su equipo de la Alianza Intel® para socios
 
 Este mensaje se le ha enviado como una comunicación empresarial importante relacionada con su vinculación actual con la Alianza Intel® para socios.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 (EE. UU.). www.intel.es
 Privacidad | Cookies</textOnly>
     <type>custom</type>

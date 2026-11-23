@@ -9,28 +9,30 @@ global class PRM_ErrorMonitor_Batch implements Database.Batchable<sObject> {
      public static String CimPrimeEol=System.label.PRM_CIM_PRIME_Switch;// TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
      global static Database.QueryLocator start(Database.BatchableContext context){
          //TWC729-6800 EOL activities--Start
-         if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+         /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
          Id opidRecommendationRecordType = Schema.SObjectType.PRM_Value_Exchange_Recommendation__c.getRecordTypeInfosByName().get(System.Label.PRM_RecordType_OPID).getRecordTypeId();
          String query = 'SELECT Id, Name, PRM_Account_Id__c, PRM_Account_Number__c, PRM_Grouping_Method_Nm__c, PRM_Recommendation_Status_Nm__c,'+ 
              'PRM_Recommendation_Type_Nm__c, PRM_One_Partner_Id__c,Error_Description__c, CreatedDate FROM PRM_Value_Exchange_Recommendation__c '+
              'WHERE (PRM_Recommendation_Status_Nm__c = \'OPID In Process\' OR PRM_Recommendation_Status_Nm__c = \'Waiting for CIM response\')'+
-            'AND PRM_Recommendation_Type_Nm__c = \'OPID\' AND RecordTypeId =: opidRecommendationRecordType AND CreatedDate <= YESTERDAY ';    
+             'AND PRM_Recommendation_Type_Nm__c = \'OPID\' AND RecordTypeId =: opidRecommendationRecordType AND CreatedDate <= TODAY ';    
          return Database.getQueryLocator(query);
          }//TWC729-6800 EOL activities--End
-         else {String query ='SELECT Id FROM PRM_Value_Exchange_Recommendation__c where Id = null';
-             return Database.getQueryLocator(query); //added for TWC729-6800 EOL activities
-              }
+         else {*/String query ='SELECT Id FROM PRM_Value_Exchange_Recommendation__c where Id = null';
+               return Database.getQueryLocator(query); //added for TWC729-6800 EOL activities
+              //}
      } 
      
      global void execute(Database.BatchableContext context, List<PRM_Value_Exchange_Recommendation__c> scope){
-         if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+         
+         
+         /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
          PRM_ErrorMonitor_Utility.checkInboundRecord(scope); //TWC729-6800 EOL activitie
-         }
+         }*/
      }    
      
      global void finish(Database.BatchableContext BC){
          //TWC729-6800 EOL activities--Start
-         if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+         /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
          Map<Id,Monitor_Log__c> updateLogs = new Map<Id,Monitor_Log__c>();
          
          List<Monitor_Log__c> logRec = [SELECT id,Account_ID__c, Error_Message__c, Integration_Type__c, OPID_Recommendation__c,One_Partner_Inbound_Message__c,Status__c,CreatedDate from Monitor_Log__c where Status__c ='Failed' and (Integration_Type__c ='Opid Not Received' or Integration_Type__c ='Opid Inbound Failure') ];
@@ -68,14 +70,14 @@ global class PRM_ErrorMonitor_Batch implements Database.Batchable<sObject> {
                      }      
                  }                          
              }
-        
+         //System.debug('UPDATE -->'+updateLogs);
          try{
              if(updateLogs != NULL && updateLogs.size()>0){
                  update updateLogs.values();
              }    
          }catch(DmlException e) {
-            System.debug('Exception: ' + e.getMessage());
+             //System.debug('Exception: ' + e.getMessage());
          }
-         }//TWC729-6800 EOL activities--End
+         }*///TWC729-6800 EOL activities--End
      }
  }

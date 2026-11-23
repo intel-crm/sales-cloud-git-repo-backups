@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_Industrial_Solution_Builder_Specialty_KOR</name>
     <style>none</style>
@@ -24,14 +24,14 @@
 
 인텔 파트너는 오랜 기간 혁신을 주도해왔으며, 인텔® 파트너 얼라이언스를 통해 데이터 중심 경제를 위한 솔루션 구축 속도를 높이는 데 더 나은 지원을 제공할 것입니다. 우리는 함께 연결하고 혁신하며 성장하여 특별한 기회를 실현할 수 있습니다.
 
-멤버십 최적화에 대한 도움 및 지침은 https://www.intel.com/content/www/kr/ko/partner-alliance/help/overview.html을 참조하십시오.
+멤버십 최적화에 대한 도움 및 지침은 intel.com/partnerhelp을 참조하십시오.
 
 
 감사합니다.
 인텔® 파트너 얼라이언스 팀
 
 이 메시지는 현재 인텔® 파트너 얼라이언스 관계와 관련된 중요한 비즈니스 커뮤니케이션으로 발송되었습니다.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} 인텔사
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 개인정보 처리방침 | 쿠키</textOnly>
     <type>custom</type>

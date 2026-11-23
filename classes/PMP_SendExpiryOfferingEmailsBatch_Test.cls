@@ -1,9 +1,9 @@
 @isTest
 public class PMP_SendExpiryOfferingEmailsBatch_Test {
-    
-    @isTest
+     @isTest
     static void testIsWorking() {
     }
+   
 //IPA2.0 - As part of TWC729-7977 commented the entire class 
 /*
      static testMethod void testMethod1() {

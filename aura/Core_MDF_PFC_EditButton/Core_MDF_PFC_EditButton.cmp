@@ -1,7 +1,7 @@
 <!-- Component Used to Show the Edit Button on the Community for Partner Fund Claim-->
 <aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:actionOverride"
                 access="global"
-                controller="Core_MDF_PartnerFundClaim_Edit">
+                controller="Core_MDF_checkSObjectCRUDPermission">
     <!-- Handler function for fetching value on the load of the component -->
     <aura:handler name="init" value="{!this}" action="{!c.checkObjectPermission}"/>
     

@@ -254,8 +254,8 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                                         detachmentrecsSet.add(ids); //= locationSFAccMap.get(str);
                                     }   
                                 }
-                        	} 
-                       } 	
+                          } 
+                       }   
                         //Getting the CIM records for Insert
                         for(String str: CIMRecordsMap.keyset()){
                             for(Id ids: CIMRecordsMap.get(str)){
@@ -263,14 +263,14 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                                     //Checking CIM records having a match of SF records
                                     if(locationSFAccMap.get(str).contains(ids) == false){
                                         idsToInsertSet.add(ids);// = CIMRecordsMap.get(str);
-                                	}
-                                	if(!locationSFAccMap.containsKey(str)){
+                                  }
+                                  if(!locationSFAccMap.containsKey(str)){
                                         idsToInsertSet.add(ids);// = CIMRecordsMap.get(str);
-	                                }
+                                  }
                                 }//End of Location Map has values if
                                 else{//If CIM have records but SF is not having assiciated records
-                                	idsToInsertSet.add(ids);
-                            	}
+                                  idsToInsertSet.add(ids);
+                              }
                             }
                         }
                         
@@ -283,13 +283,13 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                    // for(Core_OnePartner_Inbound_Message__c cimRecs: cimRecordDetailsMap.values()){
                         
                          for(Core_Account_Group_Member__c cagSFRecs: existingCAGMap.values()){
-                           	//Checking the Name Difference from CIM and SF
+                             //Checking the Name Difference from CIM and SF
                              List<Core_OnePartner_Inbound_Message__c> cimRecsList  = cimRecordDetailsMap.get(cagSFRecs.Core_Partner_Account_Id__r.Core_OnePartnerID__c);
                              for(Core_OnePartner_Inbound_Message__c cimRecs :cimRecsList){  
                              if(cagSFRecs.Core_Partner_Account_Id__c != null && ((cimRecs.Core_Prime_Account_Name__c != null && cimRecs.Core_Prime_Account_Name__c != cagSFRecs.Core_Partner_Account_Id__r.Core_Prime_Account_Name__c) || (cimRecs.Core_PAG_Grouping_Method__c != null && cimRecs.Core_PAG_Grouping_Method__c != cagSFRecs.Core_Partner_Account_Id__r.Core_PAG_Grouping_Method__c)|| (cimRecs.Core_OnePartner_Account_Name__c != null && cimRecs.Core_OnePartner_Account_Name__c != cagSFRecs.Core_Partner_Account_Id__r.Name)) || (cimRecs.Core_Status_Effective_End_Date_Time__c != null && (acc.Core_Deactivated__c == false))){
                                       Account updateAcc = new Account();
                                       updateAcc.id = cagSFRecs.Core_Partner_Account_Id__c; 
-                                  	  updateAcc.Name = cimRecs.Core_OnePartner_Account_Name__c;
+                                      updateAcc.Name = cimRecs.Core_OnePartner_Account_Name__c;
                                       updateAcc.Core_Prime_Account_Name__c = cimRecs.Core_Prime_Account_Name__c;
                                       updateAcc.Core_PAG_Grouping_Method__c = cimRecs.Core_PAG_Grouping_Method__c;
                                       if(cimRecs.Core_Status_Effective_End_Date_Time__c != null && (acc.Core_Deactivated__c == false))
@@ -324,7 +324,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                         opSyncRecUpdate.Id = syncObjRecId; 
                         opSyncRecUpdate.Status__c = 'Success';
                         update opSyncRecUpdate;
-                	}
+                  }
                 }
                 
                 if(idsToInsertSet != null){
@@ -354,7 +354,7 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                             inboundRecord.Core_Effective_End_Date_Time__c = DateTime.now().addDays(-1);
                             inboundRecord.Core_OnePartnerID__c = Integer.valueOf(cagRecords.Core_Partner_Account_Id__r.Core_OnePartnerID__c);
                             inboundRecord.Core_CIM_ID__c = Integer.valueOf(cagRecords.Core_Intel_Account_Id__r.Core_CIM_ID__c);
-							inboundRecord.OPID_Sync_Request__c = syncObjRecId;
+              inboundRecord.OPID_Sync_Request__c = syncObjRecId;
                             inboundrecsInsertList.add(inboundRecord);
                         }
                     }
@@ -370,13 +370,13 @@ public with sharing class PRM_OPID_OnDemandsyncRequest {
                     update opSyncRecUpdate;
                 }
             }else{
-				if(syncObjRecId != null){
+        if(syncObjRecId != null){
                     OPID_Sync_Request__c opSyncRecUpdate= new OPID_Sync_Request__c();
                     opSyncRecUpdate.Id = syncObjRecId; 
                     opSyncRecUpdate.Status__c = 'Failed';
                     update opSyncRecUpdate;
-				}
-			}
+        }
+      }
         }catch(Exception e){
             Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'' ,'' , '', '', '',e);
         }

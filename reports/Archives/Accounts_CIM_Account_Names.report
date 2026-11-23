@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Account.Core_CIM_ID__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_ID__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT.NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Legal_Name__c</field>
+    </columns>
+    <columns>
+        <field>USERS.NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Account.Core_CIM_ID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>,11148525,11314858,11546552,11427049,13139350,#N/A #N/A #N/A 11781473,12290324,11045603,11292025,11098790,11074527,11817670,11247386,11217994,12365212,11555330,99029383,11820663,11180792,13116310,11205107,11314921,12786240,11617223,11240088,11010257,11077910,#N/A 11097004,11272795,11108647,11392195,13286816,13281051,13288084,11366422,13161725,11041727,11198334,11466421,11513128,11544442,11314085,11872749,11629645,11118318,13137303,11811805,13114015,11789486,11264400,#N/A 12725510,11141974,11238522,11057550,13124144,11581232,11391868,11534453,11386597,11505174,11523280,12922613,11639968,13264768</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Accounts-CIM-Account Names</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>AccountList</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

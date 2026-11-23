@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_Video_Specialty_FRA</name>
     <style>none</style>
@@ -24,15 +24,15 @@ Accéder aux avantages
 
 Les partenaires d&apos;Intel ont un long passé d&apos;innovation. Avec le programme Alliance partenaire Intel®, nous vous aiderons à accélérer la création de solutions pour l&apos;économie centrée sur les données. Ensemble, connectons, innovons et développons, afin de concrétiser des opportunités exceptionnelles.
 
-Visitez le site https://www.intel.com/content/www/fr/fr/partner-alliance/help/overview.html pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
+Visitez le site intel.com/partnerhelp pour obtenir de l&apos;aide et des conseils sur l&apos;optimisation de votre adhésion.
 
 
 Cordialement,
 Votre équipe Alliance partenaire Intel®
 
 Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
 Confidentialité | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

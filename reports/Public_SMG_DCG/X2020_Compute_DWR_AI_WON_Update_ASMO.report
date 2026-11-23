@@ -146,7 +146,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Idaville,Spring Hill,Habana,Goya,Gaudi</value>
+            <value>Idaville,Spring Hill,Habana</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
@@ -170,7 +170,7 @@
             <value>Win,Won,Production Win,Approved,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

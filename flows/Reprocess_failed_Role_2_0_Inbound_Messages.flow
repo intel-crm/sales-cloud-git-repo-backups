@@ -4,7 +4,7 @@
         <name>Reprocess_Apex_Method</name>
         <label>Reprocess Apex Method</label>
         <locationX>670</locationX>
-        <locationY>475</locationY>
+        <locationY>517</locationY>
         <actionName>Core_IntegrationInboundMessageAGS</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -18,8 +18,8 @@
     <decisions>
         <name>IsStartedToday</name>
         <label>IsStartedToday</label>
-        <locationX>910</locationX>
-        <locationY>480</locationY>
+        <locationX>905</locationX>
+        <locationY>521</locationY>
         <defaultConnector>
             <targetReference>CreateBatchEndLogEntry</targetReference>
         </defaultConnector>
@@ -43,8 +43,8 @@
     <decisions>
         <name>Reprocess_IsActive_Check</name>
         <label>Reprocess IsActive Check</label>
-        <locationX>659</locationX>
-        <locationY>808</locationY>
+        <locationX>664</locationX>
+        <locationY>937</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>IsActive</name>
@@ -108,8 +108,8 @@
     <recordCreates>
         <name>CreateBatchEndLogEntry</name>
         <label>CreateBatchEndLogEntry</label>
-        <locationX>1139</locationX>
-        <locationY>476</locationY>
+        <locationX>1180</locationX>
+        <locationY>518</locationY>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -164,8 +164,8 @@
     <recordCreates>
         <name>CreateBatchLogEntry</name>
         <label>CreateBatchLogEntry</label>
-        <locationX>668</locationX>
-        <locationY>649</locationY>
+        <locationX>670</locationX>
+        <locationY>735</locationY>
         <connector>
             <targetReference>Reprocess_IsActive_Check</targetReference>
         </connector>
@@ -223,8 +223,8 @@
     <recordCreates>
         <name>CreateBatchStartLogEntry</name>
         <label>CreateBatchStartLogEntry</label>
-        <locationX>670</locationX>
-        <locationY>303</locationY>
+        <locationX>669</locationX>
+        <locationY>324</locationY>
         <connector>
             <targetReference>Reprocess_Apex_Method</targetReference>
         </connector>
@@ -280,15 +280,15 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <start>
-        <locationX>544</locationX>
-        <locationY>50</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>CreateBatchStartLogEntry</targetReference>
         </connector>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2022-08-10</startDate>
-            <startTime>00:15:00.000Z</startTime>
+            <startDate>2022-08-09</startDate>
+            <startTime>00:30:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
@@ -299,6 +299,16 @@
         <text>Flow Interview Started on: {!$Flow.InterviewStartTime}
 Current Date/Time: {!$Flow.CurrentDateTime}</text>
     </textTemplates>
+    <variables>
+        <name>FlowStartDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>FlowStartDateOnly</elementReference>
+        </value>
+    </variables>
     <variables>
         <name>FlowStartDateTime</name>
         <dataType>DateTime</dataType>
@@ -312,8 +322,8 @@ Current Date/Time: {!$Flow.CurrentDateTime}</text>
     <waits>
         <name>Reprocess_Pause_Element</name>
         <label>Reprocess Pause Element</label>
-        <locationX>923</locationX>
-        <locationY>805</locationY>
+        <locationX>909</locationX>
+        <locationY>929</locationY>
         <defaultConnectorLabel>Default Path</defaultConnectorLabel>
         <waitEvents>
             <name>Pause_Path</name>

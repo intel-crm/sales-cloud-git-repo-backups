@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Algeria,Egypt,Jordan,Lebanon,Libya,Morocco,Tunisia,Qatar,Oman,Kuwait,Bahrain,Iraq,Yemen,Utd.Arab Emir.,Saudi Arabia,Burundi,Cameroon,Cote d&apos;Ivoire,Ghana,Kenya,Nigeria,Rwanda,Senegal,South Africa,Tanzania,Uganda,Liberia,Ethiopia,Somalia,South Sudan,Turkey</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Algeria,Egypt,Jordan,Lebanon,Libya,Morocco,Tunisia,Qatar,Oman,Kuwait,Bahrain,Iraq,Yemen,Utd.Arab Emir.,Saudi Arabia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Algeria,Egypt,Jordan,Lebanon,Libya,Morocco,Tunisia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Qatar,Oman,Kuwait,Bahrain,Iraq,Yemen,Utd.Arab Emir.</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Saudi Arabia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Burundi,Cameroon,Cote d&apos;Ivoire,Ghana,Kenya,Nigeria,Rwanda,Senegal,South Africa,Tanzania,Uganda,Liberia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Cameroon,Cote d&apos;Ivoire,Ghana,Senegal,Liberia</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Burundi,Kenya,Rwanda,Tanzania,Uganda</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Nigeria</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>South Africa</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Turkey</values>
+        </dashboardFilterOptions>
+        <name>Opportunity Country</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>AHMAD ALABDULJABBAR</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>ahmed elgabalawi</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Aissatou Sow</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Avi Mistry</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Cuneyt Yucel</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Eyad M Halawani</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Folake O Oyekanmi</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Gary A Martin</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Goker Ozturk</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Hadi Mitri</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Hannes Steyn</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Hisam Advan</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Iyad C Malaeb</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>KARIM BIBI TRIKI</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Koray Candir</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Majed Alelaiwi</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>mohammed elgammal</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Nemer Yousef</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Olufemi A A Babajide</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Ozge Kastan</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Said El Mouden</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Sameh Elmallah</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>contains</operator>
+            <values>Zaid Ghattas</values>
+        </dashboardFilterOptions>
+        <name>Opportunity Owner</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Pending</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Win Submitted</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Win Approved</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>On Hold</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Cancelled,Deleted</values>
+        </dashboardFilterOptions>
+        <name>Status</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <description>This is the current status of Pipeline in SF.com for META in 2016</description>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <gaugeMax>3.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <indicatorBreakpoint1>1.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>2.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <report>EMEA_ISG_META/Gov_pipeline_2016</report>
+            <showPercentage>false</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>2016 YTD</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Table</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <groupingSortProperties/>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <maxValuesDisplayed>10</maxValuesDisplayed>
+            <report>EMEA_ISG_META/X2016_Top_Gov</report>
+            <showPicturesOnTables>true</showPicturesOnTables>
+            <sortBy>RowValueDescending</sortBy>
+            <title>Top Opportunities</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>TOTAL_PRICE</column>
+            </chartSummary>
+            <componentType>Pie</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>BucketField_95616230</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META/Gov_pipeline_2016</report>
+            <showPercentage>true</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Product Type</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>TOTAL_PRICE</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Millions</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>BucketField_70949855</groupingColumn>
+            <groupingColumn>BucketField_95616230</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META/Gov_pipeline_2016</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Product Type Country</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11581663@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>TOTAL_PRICE</column>
+            </chartSummary>
+            <componentType>Pie</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>BucketField_86183444</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META/Gov_pipeline_2016</report>
+            <showPercentage>true</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>% Opportunity Type</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>TOTAL_PRICE</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Country__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>Opportunity.Core_Opportunity_Owner__c</column>
+            </dashboardFilterColumns>
+            <dashboardFilterColumns>
+                <column>OpportunityLineItem.Core_Status__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>false</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>BucketField_70949855</groupingColumn>
+            <groupingColumn>BucketField_86183444</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>EMEA_ISG_META/Gov_pipeline_2016</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Opportunity type Country</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11581663@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>Gov 2016 Pipeline</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

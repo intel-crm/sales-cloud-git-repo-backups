@@ -190,7 +190,7 @@
     }, {
       "components" : [ {
         "componentAttributes" : {
-          "NavigationMenuEditorRefresh" : "",
+          "NavigationMenuEditorRefresh" : "Default_Navigation6",
           "hideAppLauncher" : true,
           "hideHomeText" : false
         },
@@ -216,7 +216,7 @@
     "componentAttributes" : {
       "fixedPageWidth" : 1170,
       "headerBgColor" : "rgba(0, 0, 0, 0)",
-      "isHeaderPinned" : true,
+      "isHeaderPinned" : false,
       "isHeroUnderHeader" : false,
       "isPageWidthFixed" : true,
       "showHeader" : true,
@@ -226,15 +226,6 @@
     "id" : "ffdbfed4-91b2-43d4-b841-5d1270525d9d",
     "label" : "ServiceNotAvailable",
     "regions" : [ {
-      "components" : [ {
-        "componentAttributes" : {
-          "richTextValue" : "<p><img class=\"sfdcCbImage\" alt=\"\" src=\"{!contentAsset.Maintenance_Logo.1}\"></p>"
-        },
-        "componentName" : "forceCommunity:richTextInline",
-        "id" : "ae143327-b9f7-4ead-b8e5-6835535b5f0a",
-        "renditionMap" : { },
-        "type" : "component"
-      } ],
       "id" : "4147f60c-a1f4-495e-9ddb-892c8e806816",
       "regionName" : "themeHeader",
       "type" : "region"

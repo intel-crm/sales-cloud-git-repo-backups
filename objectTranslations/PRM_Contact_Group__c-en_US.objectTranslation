@@ -16,5 +16,12 @@
         <label><!-- Inactive Indicator --></label>
         <name>PRM_InActive_Ind__c</name>
     </fields>
+    <layouts>
+        <layout>Contact Group Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

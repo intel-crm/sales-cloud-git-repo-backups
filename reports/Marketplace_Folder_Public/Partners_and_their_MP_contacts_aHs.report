@@ -17,6 +17,18 @@
         <columns>
             <field>Account.Company_Informations__r$PMP_Benefit_Update_Ind__c</field>
         </columns>
+        <columns>
+            <field>Account.Company_Informations__r$PMP_Marketing_Profile_Id__c</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Account.Company_Informations__r$PMP_Marketing_Profile_Id__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notEqual</operator>
+                <value></value>
+            </criteriaItems>
+        </filter>
         <format>Summary</format>
         <name>Partner Information</name>
         <params>
@@ -53,10 +65,10 @@
             <field>Account$CreatedDate</field>
         </columns>
         <columns>
-            <field>Account$Core_Business_ID__c</field>
+            <field>Account$Core_IPA_Partner_Role__c</field>
         </columns>
         <filter>
-            <booleanFilter>(1 OR 2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
+            <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5) AND 6 AND 7</booleanFilter>
             <criteriaItems>
                 <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
                 <columnToColumn>false</columnToColumn>
@@ -86,18 +98,25 @@
                 <value>Marketing specialist</value>
             </criteriaItems>
             <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Status__c</column>
+                <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>Complete</value>
+                <operator>contains</operator>
+                <value>Offering Editor</value>
             </criteriaItems>
             <criteriaItems>
-                <column>Account.Contacts.Contact_Entitlements__r$Core_Selected__c</column>
+                <column>Account$Core_IPA_Partner_Role__c</column>
                 <columnToColumn>false</columnToColumn>
                 <isUnlocked>true</isUnlocked>
-                <operator>equals</operator>
-                <value>1</value>
+                <operator>includes</operator>
+                <value>Manufacturer</value>
+            </criteriaItems>
+            <criteriaItems>
+                <column>Account$Core_IPA_Partner_Role__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>notEqual</operator>
+                <value></value>
             </criteriaItems>
         </filter>
         <format>Summary</format>
@@ -112,102 +131,6 @@
         <showSubTotals>true</showSubTotals>
         <timeFrameFilter>
             <dateColumn>Account$CreatedDate</dateColumn>
-            <interval>INTERVAL_CUSTOM</interval>
-        </timeFrameFilter>
-    </block>
-    <block>
-        <blockInfo>
-            <blockId>B2</blockId>
-            <joinTable>Account</joinTable>
-        </blockInfo>
-        <columns>
-            <field>Account.AccountBenefitAssociations__r$PRM_Partner_Benefit_Id__c.Name</field>
-        </columns>
-        <columns>
-            <field>Account.AccountBenefitAssociations__r$CreatedDate</field>
-        </columns>
-        <filter>
-            <booleanFilter>1 AND 2</booleanFilter>
-            <criteriaItems>
-                <column>Account.AccountBenefitAssociations__r$PRM_Partner_Benefit_Id__c.Name</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>contains</operator>
-                <value>Solution Marketplace Basic Profile</value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>Account.AccountBenefitAssociations__r$PRM_Partner_Benefit_Id__c.Name</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>true</isUnlocked>
-                <operator>notEqual</operator>
-                <value></value>
-            </criteriaItems>
-        </filter>
-        <format>Summary</format>
-        <name>Benefit Information</name>
-        <params>
-            <name>co</name>
-            <value>1</value>
-        </params>
-        <reportType>Account_with_Benefit__c</reportType>
-        <scope>organization</scope>
-        <showGrandTotal>true</showGrandTotal>
-        <showSubTotals>true</showSubTotals>
-        <timeFrameFilter>
-            <dateColumn>Account$CreatedDate</dateColumn>
-            <interval>INTERVAL_CUSTOM</interval>
-        </timeFrameFilter>
-    </block>
-    <block>
-        <blockInfo>
-            <blockId>B3</blockId>
-            <joinTable>a</joinTable>
-        </blockInfo>
-        <columns>
-            <field>FIRST_NAME</field>
-        </columns>
-        <columns>
-            <field>LAST_NAME</field>
-        </columns>
-        <columns>
-            <field>LAST_LOGIN</field>
-        </columns>
-        <columns>
-            <field>CREATED_DATE</field>
-        </columns>
-        <filter>
-            <criteriaItems>
-                <column>ACCOUNT.NAME</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>false</isUnlocked>
-                <operator>notEqual</operator>
-                <value></value>
-            </criteriaItems>
-            <criteriaItems>
-                <column>ROLE</column>
-                <columnToColumn>false</columnToColumn>
-                <isUnlocked>false</isUnlocked>
-                <operator>contains</operator>
-                <value>Partner</value>
-            </criteriaItems>
-        </filter>
-        <format>Summary</format>
-        <name>User Login Information</name>
-        <params>
-            <name>active</name>
-            <value>active</value>
-        </params>
-        <params>
-            <name>co</name>
-            <value>1</value>
-        </params>
-        <reportType>User</reportType>
-        <showGrandTotal>true</showGrandTotal>
-        <showSubTotals>true</showSubTotals>
-        <sortColumn>LAST_LOGIN</sortColumn>
-        <sortOrder>Desc</sortOrder>
-        <timeFrameFilter>
-            <dateColumn>CREATED_DATE</dateColumn>
             <interval>INTERVAL_CUSTOM</interval>
         </timeFrameFilter>
     </block>

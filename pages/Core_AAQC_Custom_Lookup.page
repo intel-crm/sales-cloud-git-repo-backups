@@ -54,7 +54,7 @@
         <apex:pageBlockSection columns="1">
             <apex:pageBlockTable value="{!lstOfProfileUsesr}" var="userAndProfile">
                 <apex:column headerValue="User Name">
-                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(userAndProfile.Name)}', '{!JSENCODE(userAndProfile.id)}')">{!JSENCODE(userAndProfile.Name)}</apex:outputLink>       
+                    <apex:outputLink value="#" onclick="fillIn('{!userAndProfile.Name}', '{!userAndProfile.id}')">{!userAndProfile.Name}</apex:outputLink>       
                 </apex:column>
                 <apex:column headerValue="Profile Name">
                     <apex:outputText value="{!userAndProfile.Profile.Name}"></apex:outputText>
@@ -66,7 +66,7 @@
         <apex:pageBlockSection columns="1">
             <apex:pageBlockTable value="{!lstOfMngerAndUser}" var="userAndManager">
                 <apex:column headerValue="User Name">
-                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(userAndManager.Name)}', '{!JSENCODE(userAndManager.id)}')">{!JSENCODE(userAndManager.Name)}</apex:outputLink>       
+                    <apex:outputLink value="#" onclick="fillIn('{!userAndManager.Name}', '{!userAndManager.id}')">{!userAndManager.Name}</apex:outputLink>       
                 </apex:column>
                 <apex:column headerValue="Manager Name">
                     <apex:outputText value="{!userAndManager.Manager.Name}"></apex:outputText>

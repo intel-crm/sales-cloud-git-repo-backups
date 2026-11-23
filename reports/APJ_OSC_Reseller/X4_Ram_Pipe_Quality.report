@@ -64,7 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Ee Lin Tan</value>
+            <value>Ram S Lakshminarayanan</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,6 +100,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

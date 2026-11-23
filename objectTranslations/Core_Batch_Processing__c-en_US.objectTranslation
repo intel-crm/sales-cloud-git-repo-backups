@@ -73,5 +73,12 @@
         <label><!-- Total Number of Records Created --></label>
         <name>Total_Number_of_Records_Created__c</name>
     </fields>
+    <layouts>
+        <layout>Batch Processing Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

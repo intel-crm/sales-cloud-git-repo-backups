@@ -11,7 +11,7 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><strong style=\"font-size: 48px; color: rgb(102, 163, 224);\">ACCESS DENIED</strong></p><p><br></p><p><strong style=\"font-size: 18px;\">Reason</strong><span style=\"font-size: 18px;\">: </span>Your account does not have appropriate access rights to https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"color: rgb(102, 163, 224); font-size: 36px;\">Suggestions</span></p><p style=\"text-align: center;\"><br></p><p><strong style=\"font-size: 18px;\">External Users:</strong></p><ul><li>Please contact your Account Manager or Sales Rep to get access</li></ul><p><br></p><p><br></p><p><strong style=\"font-size: 18px;\">Internal Users:</strong></p><ul><li>Please use <a href=\"http://goto/partnercenter\" rel=\"noopener noreferrer\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
+        "richTextValue" : "<p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><b style=\"color: rgb(102, 163, 224); font-size: 48px;\">ACCESS DENIED</b></p><p><br></p><p><b style=\"font-size: 18px;\">Reason</b><span style=\"font-size: 18px;\">: </span>Your account does not have appropriate access rights to https://partnercenter.intel.com</p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><br></p><p style=\"text-align: center;\"><span style=\"font-size: 36px; color: rgb(102, 163, 224);\">Suggestions</span></p><p style=\"text-align: center;\"><br></p><p><b style=\"font-size: 18px;\">External Users:</b></p><ul><li>Please contact your Account Manager or Sales Rep to get access</li></ul><p><br></p><p><br></p><p><b style=\"font-size: 18px;\">Internal Users:</b></p><ul><li>Please use <a href=\"http://goto/partnercenter\" target=\"_self\">goto/partnercenter</a></li></ul><p>&nbsp;</p>"
       },
       "componentName" : "forceCommunity:richTextInline",
       "id" : "c99c064b-3aad-4cb9-b342-cfc59e558163",
@@ -274,6 +274,7 @@
         "id" : "83f80552-9633-4a0d-8688-d59185f742b4",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -283,6 +284,7 @@
         "id" : "5fdb0600-d2ec-46fb-8dc0-cba272d05787",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -292,6 +294,7 @@
         "id" : "ccd174d4-fccf-4ac4-8fe5-432f96926ece",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -301,6 +304,7 @@
         "id" : "6a04fff7-7ab5-4ef5-acaa-87db6855f575",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -310,6 +314,7 @@
         "id" : "7cfad2c3-b2d9-4d51-be74-6e2c425c4b50",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -319,6 +324,7 @@
         "id" : "9d8f2f90-c3e8-4f66-9f83-c08c4dc49053",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -328,6 +334,7 @@
         "id" : "208e51d8-705a-47f9-a460-de47e75e144a",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -337,6 +344,7 @@
         "id" : "0a2dbf55-40b8-4f0f-9985-7555e7dd96e5",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -346,6 +354,7 @@
         "id" : "118fe06e-eedd-4206-8286-3b12d5a57562",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -355,6 +364,7 @@
         "id" : "85b853f2-38d7-4a44-bf70-6c8207bfa981",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -364,6 +374,7 @@
         "id" : "f9cc4ab5-afd6-429c-97e5-c1b9e23ec5e9",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }
@@ -373,6 +384,7 @@
         "id" : "32f8449b-910f-4d2d-9fe3-1cf2faf42351",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccessDenied",
             "title" : "AccessDenied"
           }

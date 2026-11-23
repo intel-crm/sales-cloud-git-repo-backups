@@ -129,18 +129,21 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>OPID_Recommendation_Record_Page1</content>
+        <content>OPID_Recommendation_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>OPID_Recommendation_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -175,6 +178,14 @@
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Account_Coverage_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Account Coverage Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_Account_Coverage_Nm__c</fullName>
@@ -213,7 +224,7 @@
         <relationshipLabel>OPID Recommendation (Account)</relationshipLabel>
         <relationshipName>Value_Exchange_Recommendation</relationshipName>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -248,6 +259,14 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>PRM_CNDA_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>CNDA Indicator</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_CNDA_Indicator_Nm__c</fullName>
         <label>CNDA Indicator</label>
         <required>false</required>
@@ -275,6 +294,17 @@
                 </value>
             </valueSetDefinition>
         </valueSet>
+    </fields>
+    <fields>
+        <fullName>PRM_Competency_Achieved_Txt__c</fullName>
+        <externalId>false</externalId>
+        <label>Training Competency</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Design_Registration_Count_Nbr__c</fullName>
@@ -314,7 +344,7 @@
         <fullName>PRM_Grouping_Method_Nm__c</fullName>
         <label>Grouping Method</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -326,7 +356,7 @@
         <fullName>PRM_Market_Type_Nm__c</fullName>
         <label>Market Type</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -350,7 +380,7 @@
         <fullName>PRM_Notes__c</fullName>
         <label>Notes</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -390,7 +420,7 @@
         <fullName>PRM_Partner_Role_Nm__c</fullName>
         <label>Partner Role</label>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -400,13 +430,12 @@
     </fields>
     <fields>
         <fullName>PRM_Rank_Nbr__c</fullName>
-        <description>This will hold the rank for which all the criteria are satisfied and this will be populated by batch.</description>
         <externalId>false</externalId>
         <label>Rank</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -450,27 +479,27 @@
                 <value>
                     <fullName>CRE_PRIM_HIER_WIP</fullName>
                     <default>false</default>
-                    <label>Prime- In Progress</label>
+                    <label>Prime - In Progress</label>
                 </value>
                 <value>
                     <fullName>CRE_PRIM_HIER_COMPLETED</fullName>
                     <default>false</default>
-                    <label>Prime- Completed</label>
+                    <label>Prime - Completed</label>
                 </value>
                 <value>
                     <fullName>CRE_PRIM_HIER_FAILED</fullName>
                     <default>false</default>
-                    <label>Prime- Failed</label>
+                    <label>Prime - Failed</label>
                 </value>
                 <value>
                     <fullName>CRE_CUST_AGRGT_HIER_WIP</fullName>
                     <default>false</default>
-                    <label>OPID association- WIP in CIM</label>
+                    <label>OPID association - WIP in CIM</label>
                 </value>
                 <value>
                     <fullName>CRE_CUST_AGRGT_HIER_FAILED</fullName>
                     <default>false</default>
-                    <label>OPID association- Failed in CIM</label>
+                    <label>OPID association - Failed in CIM</label>
                 </value>
                 <value>
                     <fullName>OPID Created</fullName>
@@ -499,40 +528,16 @@
                     <label>Approved</label>
                 </value>
                 <value>
-                    <fullName>CIM - In Progress</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>CIM - In Progress</label>
-                </value>
-                <value>
                     <fullName>Completed Processing</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Completed Processing</label>
                 </value>
                 <value>
-                    <fullName>Prime - Completed</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Prime - Completed</label>
-                </value>
-                <value>
-                    <fullName>Prime - In Progress</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Prime - In Progress</label>
-                </value>
-                <value>
                     <fullName>Rejected</fullName>
                     <default>false</default>
                     <isActive>false</isActive>
                     <label>Rejected</label>
-                </value>
-                <value>
-                    <fullName>request captured at CIM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>request captured at CIM</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -541,7 +546,7 @@
         <fullName>PRM_Recommendation_Type_Nm__c</fullName>
         <label>Recommendation Type</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -584,7 +589,7 @@
         <label>Revenue Source</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -596,7 +601,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -607,7 +612,7 @@
         <label>Sales Calculation Group</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -622,6 +627,14 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Specialty_Present_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Specialty Present</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>PRM_Specialty_Present_Nm__c</fullName>
@@ -667,7 +680,7 @@
         <referenceTo>ChannelProgramLevel</referenceTo>
         <relationshipName>Value_Exchange_Recommendation_Tier</relationshipName>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
@@ -699,7 +712,7 @@
         <fullName>PRM_Type_Of_Solutions_Txt__c</fullName>
         <label>Type Of Solutions</label>
         <length>131072</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>5</visibleLines>
@@ -746,39 +759,44 @@
         <columns>PRM_Select_Benefit_Txt__c</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operation>contains</operation>
-            <value>Comservice</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
         <fullName>PRM_Accounts_Meeting_OPID_Criteria</fullName>
+        <booleanFilter>(1 AND 4) OR ((3 OR 5) AND 2)</booleanFilter>
         <columns>PRM_Account_Id__c</columns>
         <columns>PRM_Account_Number__c</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
         <columns>PRM_Tier_Id__c</columns>
+        <columns>PRM_Sales_Amount_Nbr__c</columns>
         <columns>PRM_Grouping_Method_Nm__c</columns>
-        <columns>PRM_Recommendation_Status_Nm__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
         <columns>PRM_Record_Link__c</columns>
+        <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>greaterThan</operation>
+            <value>1/1/2022 12:00 AM</value>
+        </filters>
+        <filters>
+            <field>PRM_Recommendation_Status_Nm__c</field>
+            <operation>contains</operation>
+            <value>OPID Created,Processed</value>
+        </filters>
+        <filters>
+            <field>CREATED_DATE</field>
+            <operation>equals</operation>
+            <value>LAST_N_MONTHS:2</value>
+        </filters>
         <filters>
             <field>PRM_Recommendation_Status_Nm__c</field>
             <operation>notContain</operation>
             <value>OPID Created,Processed</value>
         </filters>
         <filters>
-            <field>RECORDTYPE</field>
-            <operation>equals</operation>
-            <value>PRM_Value_Exchange_Recommendation__c.PRM_OPID_Recommendation</value>
-        </filters>
-        <filters>
             <field>CREATED_DATE</field>
             <operation>equals</operation>
-            <value>LAST_N_MONTHS:3</value>
+            <value>THIS_MONTH</value>
         </filters>
         <label>One Partner Id Request Status</label>
     </listViews>
@@ -788,17 +806,14 @@
         <columns>PRM_Account_Number__c</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
         <columns>PRM_Tier_Id__c</columns>
-        <columns>PRM_Sales_Amount_Nbr__c</columns>
         <columns>PRM_Recommendation_Status_Nm__c</columns>
-        <columns>PRM_Grouping_Method_Nm__c</columns>
         <columns>PRM_Record_Link__c</columns>
         <columns>LAST_UPDATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>PRM_Account_Name__c</field>
+            <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>Viettel Group</value>
+            <value>PRM_Value_Exchange_Recommendation__c.PRM_OPID_Recommendation</value>
         </filters>
         <label>OPID Account Status</label>
     </listViews>
@@ -809,7 +824,7 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>OPID Recommendation</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>PRM_OPID_Recommendation</fullName>
         <active>true</active>
@@ -881,11 +896,15 @@
         <picklistValues>
             <picklist>PRM_Partner_Role_Nm__c</picklist>
             <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Distributor</fullName>
                 <default>false</default>
             </values>
             <values>
-                <fullName>Guest</fullName>
+                <fullName>FPGA Designer</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -955,15 +974,7 @@
         <picklistValues>
             <picklist>PRM_Recommendation_Type_Nm__c</picklist>
             <values>
-                <fullName>Downgrade</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>OPID</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Upgrade</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -1042,7 +1053,15 @@
         <picklistValues>
             <picklist>PRM_Partner_Role_Nm__c</picklist>
             <values>
+                <fullName>Builder</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Distributor</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Designer</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1077,10 +1096,6 @@
             <picklist>PRM_Recommendation_Type_Nm__c</picklist>
             <values>
                 <fullName>Downgrade</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OPID</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1132,6 +1147,34 @@ NOT(ISNEW())
            ISCHANGED( PRM_Market_Type_Nm__c )) 
 )</errorConditionFormula>
         <errorMessage>You can not edit any other field except Grouping Method</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PRM_Restrict_Grouping_Method</fullName>
+        <active>false</active>
+        <description>This rule is used to restrict user from editing the OPID Recommendation record without Grouping Method value</description>
+        <errorConditionFormula>AND(
+      NOT( ISNEW() ),   
+NOT($Setup.PRM_Execution_Controls__c.PRM_Skip_Validation_Rule_Ind__c),
+      ISPICKVAL( PRM_Grouping_Method_Nm__c , &quot;&quot;),
+      RecordType.DeveloperName = &apos;PRM_OPID_Recommendation&apos; 
+)</errorConditionFormula>
+        <errorMessage>Please specify the Grouping Method for the record/s</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>PRM_Restrict_Status_Field</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(!ISNEW(),
+NOT(CONTAINS($Profile.Name,&apos;Integration&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;Integration-IAH&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;System Administrator&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;IPA System Profile&apos;)),
+
+TEXT(PRIORVALUE(PRM_Recommendation_Status_Nm__c))=&apos;New&apos;,
+OR(ISPICKVAL(PRM_Recommendation_Status_Nm__c ,&quot;OPID In Process&quot;),ISPICKVAL(PRM_Recommendation_Status_Nm__c ,&quot;Rejected&quot;))
+
+)</errorConditionFormula>
+        <errorDisplayField>PRM_Recommendation_Status_Nm__c</errorDisplayField>
+        <errorMessage>This is a status the system automatically sets, not to be selected by user.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>PRM_Restrict_UpgradeORDowngrade_Records</fullName>

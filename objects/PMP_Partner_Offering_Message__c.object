@@ -259,8 +259,13 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PMP_Partner_Offering_Status_Nm__c</columns>
+        <columns>PMP_Internal_Message_Txt__c</columns>
+        <columns>PMP_Message_Txt__c</columns>
+        <columns>PMP_Message_By_Id__c</columns>
+        <columns>PMP_Message_By_User_Nm__c</columns>
         <columns>PMP_Message_Dtm__c</columns>
+        <columns>PMP_Message_Type__c</columns>
+        <columns>PMP_Partner_Offering_Id__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

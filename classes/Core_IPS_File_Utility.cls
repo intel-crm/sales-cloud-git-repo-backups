@@ -35,14 +35,17 @@ public with sharing class Core_IPS_File_Utility {
             ProfileId = u.ProfileId;            
             //Bypass Processing
             if (system.label.Core_IPS_File_Auth_Pass.contains(sUserProfileName)){
+                system.debug('###### Bypass Processing Start');
                 return GetUnrestrictedFileIDs(FileGUID);
             }
             //FAE processing
             if (system.label.Core_IPS_FAE_ProfileName.contains(sUserProfileName))
             {
+                system.debug('###### FAE Processing Start');
                 return GetFAEFileIDs(u, FileGUID);
             }
             //Normal Processing
+            system.debug('###### Normal Processing Start');
             return GetRestrictedFileIDs(u, FileGUID);
             
         } catch (Exception e){
@@ -75,14 +78,17 @@ public with sharing class Core_IPS_File_Utility {
             ProfileId = u.ProfileId;            
             //Bypass Processing
             if (system.label.Core_IPS_File_Auth_Pass.contains(sUserProfileName)){
+                system.debug('###### Auth Bypass Processing Start');
                 return GetUnrestrictedFileIDs(FileGUID);
             }
             //FAE processing
             if (system.label.Core_IPS_FAE_ProfileName.contains(sUserProfileName))
             {
+                system.debug('###### Auth FAE Processing Start');
                 return GetFAEFileIDs(u, FileGUID);
             }
             //Normal Processing
+            system.debug('###### Auth Normal Processing Start');
             return GetRestrictedFileIDs(u, FileGUID);
             
         } catch (Exception e){
@@ -99,11 +105,9 @@ public with sharing class Core_IPS_File_Utility {
 * Malhotra, Abhimanyu S     09/23/2015              Created
 ****************************************************************************************************/
     public static Boolean CheckUserRecordAccess( Id Userid, Id RecordId){
-        List<UserRecordAccess> lstUserRecordAccess;
         Boolean HasAccess = false;
-            lstUserRecordAccess = [Select u.RecordId, u.HasReadAccess From UserRecordAccess u
-                                   where UserId =:Userid and RecordId =:RecordId limit 1];
-        
+        List<UserRecordAccess> lstUserRecordAccess = [Select u.RecordId, u.HasReadAccess From UserRecordAccess u
+                                                      where UserId =:Userid and RecordId =:RecordId limit 1];
         if(lstUserRecordAccess != null && lstUserRecordAccess.size() > 0){
             for (UserRecordAccess UserRecordAccessObj : lstUserRecordAccess){
                 HasAccess = UserRecordAccessObj.HasReadAccess;    
@@ -127,6 +131,7 @@ public with sharing class Core_IPS_File_Utility {
         
         //Get File Master no restrictions   
         sFileUploadMasterAllIds = GetFileUploadMasterDetails(sFileUploadMasterIds, false, FileGUID);        
+        system.debug('###### Bypass sFileUploadMasterAllIds All:' + sFileUploadMasterAllIds.size() );         
         return sFileUploadMasterAllIds;                
     }
 /***************************************************************************************************
@@ -147,29 +152,25 @@ public with sharing class Core_IPS_File_Utility {
         List<Core_IPS_File_Assignment__c> lstFileAssignments = new List<Core_IPS_File_Assignment__c>();
         List<AccountShare> lstAccountShare = new List<AccountShare>();
         List<String> lstShareRowCause = new List<String>();
-        Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj;
         
         //Get Labels Team and Owner Row Cause
         lstShareRowCause.add(Core_IPS_Helper_Utility.getIPSLabel('RowCause_Team'));
         lstShareRowCause.add(Core_IPS_Helper_Utility.getIPSLabel('Rowcause_Owner'));
+        system.debug('###### labels:' + lstShareRowCause );
         //Get Account Access
-        //FLS Check Added - Madhuri
-        if(AccountShare.SObjectType.getDescribe().isAccessible()){
-            lstAccountShare = [SELECT Id, AccountId, AccountAccessLevel, RowCause from AccountShare  
-                               where RowCause IN :lstShareRowCause and UserOrGroupId =:u.Id];
-        }
+        lstAccountShare = [SELECT Id, AccountId, AccountAccessLevel, RowCause from AccountShare  
+                           where RowCause IN :lstShareRowCause and UserOrGroupId =:u.Id];
         //Transfer to Set
         for(AccountShare AccountShareObj : lstAccountShare){
             sAccountIds.add(AccountShareObj.AccountId); 
         }
+        system.debug('###### sAccountIds:' + sAccountIds.size() );
         //Get File Assignments with Account Id's   
         if (FileGUID == null) {
-            //FLS Check Added - Madhuri
-            if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-                mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
-                    [select id, Core_IPS_File_Upload_Master__c, Core_Product_Name__c
-                     from Core_IPS_File_Assignment__c where ( Core_Account__c in :sAccountIds or Core_Account__c = '' )]);
-            }
+            Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
+                [select id, Core_IPS_File_Upload_Master__c, Core_Product_Name__c
+                 from Core_IPS_File_Assignment__c where ( Core_Account__c in :sAccountIds or Core_Account__c = '' )]);
+            
             if (!mFileAssignmentsIdObj.isEmpty()) {
                 sFileAssignmentIds = mFileAssignmentsIdObj.keySet();
                 lstFileAssignments = mFileAssignmentsIdObj.values();
@@ -177,29 +178,29 @@ public with sharing class Core_IPS_File_Utility {
         }
         //Authorization check with FileGUID
         if (FileGUID != null) {
-            //FLS Check Added - Madhuri
-            if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-              mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
+            Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
                 [select id, Core_IPS_File_Upload_Master__c, Core_Product_Name__c
                  from Core_IPS_File_Assignment__c where ( Core_Account__c in :sAccountIds or Core_Account__c = '' ) 
                  and core_ips_file_upload_master__r.core_file_guid__c = :FileGUID]);
-                                                                                    }
             
             if (!mFileAssignmentsIdObj.isEmpty()) {
                 sFileAssignmentIds = mFileAssignmentsIdObj.keySet();
                 lstFileAssignments = mFileAssignmentsIdObj.values();
             }
         }        
+        system.debug('###### sFileAssignmentIds AccountShare:' + sFileAssignmentIds.size() );
         
         //Transfer File Upload Master Ids
         for(Core_IPS_File_Assignment__c FileAssignmentObj : lstFileAssignments)
         {
             sFileUploadMasterIds.add(FileAssignmentObj.Core_IPS_File_Upload_Master__c);  
         }
+        system.debug('###### sFileUploadMasterIds for File Assignments' + sFileUploadMasterIds.size() );
         //Get Master details
         if(sFileUploadMasterIds.size() > 0) {
             sFileUploadMasterAllIds = GetFileUploadMasterDetails(sFileUploadMasterIds, true, FileGUID);
         }
+        system.debug('###### FAE sFileUploadMasterAllIds All:' + sFileUploadMasterAllIds.size());         
         return sFileUploadMasterAllIds;       
     }
 /***************************************************************************************************
@@ -224,16 +225,16 @@ public with sharing class Core_IPS_File_Utility {
         Set<Id> sFileUploadMasterIds = new Set<ID>();
         Set<Id> sFileUploadMasterAccIds = new Set<ID>();
         Set<Id> sFileUploadMasterAllIds = new Set<ID>();
-        Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj;
+        
         //Get User Contacts and RoleId
         if (u.UserRoleId != null) {
             //Get GroupIds based on RoleId
             lstUserRoleGroups = [SELECT Id, RelatedId FROM Group where RelatedId = :u.UserRoleId];
+            system.debug('###### lstUserRoleGroups' + lstUserRoleGroups );
         }
         //Get Direct GroupIds 
-        
-            lstGroupMember = [SELECT GroupId,UserOrGroupId FROM GroupMember where userorgroupid = :u.Id];
-        
+        lstGroupMember = [SELECT GroupId,UserOrGroupId FROM GroupMember where userorgroupid = :u.Id];
+        system.debug('###### lstGroupMember' + lstGroupMember );
         
         //Collect User Role based Groups
         for(Group GroupObj : lstUserRoleGroups)
@@ -247,14 +248,13 @@ public with sharing class Core_IPS_File_Utility {
         }
         //Add User
         sUserorGroupIds.add(u.Id);
+        system.debug('###### sUserorGroupIds' + sUserorGroupIds );
         //User Groups found -> lookup AssetShare
         if (sUserorGroupIds != null && sUserorGroupIds.size() > 0 ) {
-            //FLS Check Added - Madhuri
-            if(assetshare.SObjectType.getDescribe().isAccessible()){
-                lstAssetShare = [select assetid, asset.Core_Supported_Product__c, userorgroupid 
-                                 from assetshare where UserorGroupId in :sUserorGroupIds and
-                                 asset.RecordtypeId =:System.label.Core_IPS_Asset_Recordtype_Id];
-            }
+            lstAssetShare = [select assetid, asset.Core_Supported_Product__c, userorgroupid 
+                             from assetshare where UserorGroupId in :sUserorGroupIds and
+                             asset.RecordtypeId =:System.label.Core_IPS_Asset_Recordtype_Id];
+            system.debug('###### lstAssetShare:' + lstAssetShare.size() );
         }
         //Get Supported Product Id's
         if (lstAssetShare != null && lstAssetShare.size() > 0 ) {
@@ -267,29 +267,25 @@ public with sharing class Core_IPS_File_Utility {
         }
         //If any Supported Products Found
         if (sSuppProductIds != null && sSuppProductIds.size() > 0 ) {
+            system.debug('###### sSuppProductIds:' + sSuppProductIds );
             //Get File Assignments with Supported Products   
             if (FileGUID == null) {
-                //FLS Check Added - Madhuri
-                if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-                    mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
-                        [select id, Core_IPS_File_Upload_Master__c
-                         from Core_IPS_File_Assignment__c where Core_Supported_Product__c in :sSuppProductIds
-                         and ( Core_Account__c = :u.Contact.AccountId or Core_Account__c = '' )]);
-                }
+                Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
+                    [select id, Core_IPS_File_Upload_Master__c
+                     from Core_IPS_File_Assignment__c where Core_Supported_Product__c in :sSuppProductIds
+                     and ( Core_Account__c = :u.Contact.AccountId or Core_Account__c = '' )]);
+                
                 if (!mFileAssignmentsIdObj.isEmpty()) {
                     sFileAssignmentIds = mFileAssignmentsIdObj.keySet();
                     lstFileAssignments = mFileAssignmentsIdObj.values();
                 }
             }
             if (FileGUID != null) {
-                //FLS Check Added - Madhuri
-                if(Core_IPS_File_Assignment__c.SObjectType.getDescribe().isAccessible()){
-                    mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
-                        [select id, Core_IPS_File_Upload_Master__c
-                         from Core_IPS_File_Assignment__c where Core_Supported_Product__c in :sSuppProductIds
-                         and ( Core_Account__c = :u.Contact.AccountId or Core_Account__c = '' ) 
-                         and core_ips_file_upload_master__r.core_file_guid__c = :FileGUID]);
-                }
+                Map<id, Core_IPS_File_Assignment__c> mFileAssignmentsIdObj = new Map<Id, Core_IPS_File_Assignment__c>(
+                    [select id, Core_IPS_File_Upload_Master__c
+                     from Core_IPS_File_Assignment__c where Core_Supported_Product__c in :sSuppProductIds
+                     and ( Core_Account__c = :u.Contact.AccountId or Core_Account__c = '' ) 
+                     and core_ips_file_upload_master__r.core_file_guid__c = :FileGUID]);
                 
                 if (!mFileAssignmentsIdObj.isEmpty()) {
                     sFileAssignmentIds = mFileAssignmentsIdObj.keySet();
@@ -297,18 +293,21 @@ public with sharing class Core_IPS_File_Utility {
                 }
             }
             
+            system.debug('###### sFileAssignmentIds Supported Products:' + sFileAssignmentIds.size() );
             
             //Transfer File Upload Master Ids
             for(Core_IPS_File_Assignment__c FileAssignmentObj : lstFileAssignments)
             {
                 sFileUploadMasterIds.add(FileAssignmentObj.Core_IPS_File_Upload_Master__c);  
             }
+            system.debug('###### sFileUploadMasterIds Assign for SP' + sFileUploadMasterIds.size() );
             
             //Get Master details
             if(sFileUploadMasterIds.size() > 0) {
                 sFileUploadMasterAllIds = GetFileUploadMasterDetails(sFileUploadMasterIds, true, FileGUID);
             }
         }        
+        system.debug('###### Restricted sFileUploadMasterAllIds All:' + sFileUploadMasterAllIds );        
         return sFileUploadMasterAllIds;
     }    
 /***************************************************************************************************    
@@ -322,43 +321,34 @@ public with sharing class Core_IPS_File_Utility {
 ****************************************************************************************************/
     private static Set<Id> GetFileUploadMasterDetails(Set<Id> sFileUploadMasterIds, Boolean FilteredById, String FileGUID){
         Set<Id> sFileUploadMasterAllIds = new Set<ID>();
-        Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObjFilt;
-        Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObjNoFilt;
         Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObj = new Map<Id, Core_IPS_File_Upload_Master__c>();
+        system.debug('###### sFileUploadMasterIds Size:' + sFileUploadMasterIds.size());
         if (FilteredById) {
-            //FLS Check Added - Madhuri
-            if(Core_IPS_File_Upload_Master__c.SObjectType.getDescribe().isAccessible()){
-                mFileUploadMasterIdObjFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
-                    [select id, Core_File_GUID__c 
-                     from Core_IPS_File_Upload_Master__c where id in :sFileUploadMasterIds 
-                     and Core_Upload_Status__c = 'Complete'
-                     and Core_Expiration_Date__c >= today]);
-            }
+            Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObjFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
+                [select id, Core_File_GUID__c 
+                 from Core_IPS_File_Upload_Master__c where id in :sFileUploadMasterIds 
+                 and Core_Upload_Status__c = 'Complete'
+                 and Core_Expiration_Date__c >= today]);
             mFileUploadMasterIdObj = mFileUploadMasterIdObjFilt; 
         } else if (FileGUID == null && !FilteredById) {
-            //FLS Check Added - Madhuri
-            if(Core_IPS_File_Upload_Master__c.SObjectType.getDescribe().isAccessible()){
-                mFileUploadMasterIdObjNoFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
-                    [select id, Core_File_GUID__c 
-                     from Core_IPS_File_Upload_Master__c where Core_Upload_Status__c = 'Complete'
-                     and Core_Expiration_Date__c >= today]);
-            }
+            Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObjNoFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
+                [select id, Core_File_GUID__c 
+                 from Core_IPS_File_Upload_Master__c where Core_Upload_Status__c = 'Complete'
+                 and Core_Expiration_Date__c >= today]);
             mFileUploadMasterIdObj = mFileUploadMasterIdObjNoFilt;    
         }
         else if (FileGUID != null && !FilteredById) {
-            //FLS Check Added - Madhuri
-            if(Core_IPS_File_Upload_Master__c.SObjectType.getDescribe().isAccessible()){
-             mFileUploadMasterIdObjNoFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
+            Map<id, Core_IPS_File_Upload_Master__c> mFileUploadMasterIdObjNoFilt = new Map<Id, Core_IPS_File_Upload_Master__c>(
                 [select id, Core_File_GUID__c 
                  from Core_IPS_File_Upload_Master__c where Core_Upload_Status__c = 'Complete' and
                  core_file_guid__c = :FileGUID]);
-            }
             mFileUploadMasterIdObj = mFileUploadMasterIdObjNoFilt;    
         }         
         //Move to Set
         for (Id FileId: mFileUploadMasterIdObj.keySet()) {
             sFileUploadMasterAllIds.add(FileId);
         }
+        system.debug('###### GetFileUploadMasterDetails size:' + sFileUploadMasterAllIds.size() );
         return sFileUploadMasterAllIds;
         
     }    

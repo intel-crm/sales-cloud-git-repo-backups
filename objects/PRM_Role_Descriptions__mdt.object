@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>PRM_Description__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Description</label>
+        <length>131072</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_Language_Code__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Language Code</label>
+        <length>4</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_ShortDescription__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Short Description</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_Support_URL__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Support URL</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Partner_Role__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Partner Role</label>
+        <required>true</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>true</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Designer</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Seller</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Solution Integrator</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>PRM Role Description</label>
+    <pluralLabel>PRM Role Descriptions</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

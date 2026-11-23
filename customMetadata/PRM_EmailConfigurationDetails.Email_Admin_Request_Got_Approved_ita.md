@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">SCRREQTOAPVDNEW</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVDNEW_ITA</value>
     </values>
 </CustomMetadata>

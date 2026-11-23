@@ -17,10 +17,6 @@
         <name>Core_Message__c</name>
     </fields>
     <fields>
-        <label><!-- Next Scheduled Run --></label>
-        <name>Core_Next_Scheduled_Run__c</name>
-    </fields>
-    <fields>
         <label><!-- Object Link --></label>
         <name>Core_Object_Link__c</name>
     </fields>
@@ -73,8 +69,8 @@
         <name>Core_sObjectType__c</name>
     </fields>
     <fields>
-        <label><!-- File Name --></label>
-        <name>File_Name__c</name>
+        <label><!-- PRM_Auto_Approve --></label>
+        <name>PRM_Auto_Approve__c</name>
     </fields>
     <fields>
         <label><!-- Review Status --></label>
@@ -96,6 +92,13 @@
             <translation><!-- Reviewed --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Log Entry Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_IPS_Reprocess_Failed_CasePromotes --></label>

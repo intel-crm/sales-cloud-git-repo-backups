@@ -332,7 +332,7 @@ public without sharing class IPABenefitUtility {
             
         }
         
-        List<PRM_Account_Contact_Relationship__c>  accContRel = [select id,PRM_Contact_Id__r.Core_IPA_PartnerRole__c,PRM_Relationship_Id__r.name,PRM_Account_Id__c  from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c ='Complete' and  PRM_InActive_Ind__c = false and PRM_Contact_Id__c = :userData.contactId ];  //  
+        List<PRM_Account_Contact_Relationship__c>  accContRel = [select id,PRM_Contact_Id__r.Core_IPA_PartnerRole__c /*,PRM_Relationship_Id__r.name,PRM_Account_Id__c*/  from PRM_Account_Contact_Relationship__c where PRM_Status_Nm__c ='Complete' and  PRM_InActive_Ind__c = false and PRM_Contact_Id__c = :userData.contactId ];  //ATHR Fix - TWC729-9556 - JB
         if(accContRel.size()>0){
             if(accContRel[0].PRM_Contact_Id__r.Core_IPA_PartnerRole__c != null && userData != null ){
                 //to get the label of the picklist based on the api name
@@ -543,6 +543,10 @@ public without sharing class IPABenefitUtility {
               
                 userBenefits.add(userBenefit);
             }
+            //DOCEBO WW44
+            else if(ben == 'Docebo'){userBenefit = getDoceboBlade();
+                userBenefits.add(userBenefit);
+            }
             else if(ben=='MDF'  && mdfLinks.size()>0)
             {
                 if(alertBlades.containsKey('MDF'))
@@ -693,7 +697,7 @@ public without sharing class IPABenefitUtility {
         Datetime lastLoginTime;
         Map<String,List<String>> alertBladeInfo=new Map<String,List<String>>();
         Id messageRT = getRecordTypeId('PRM_Message__c','PRM_Event'); //IPA2.0-TWC727-2896
-        List<LoginHistory> loginRec = [SELECT Id,LoginTime,LoginType,LoginUrl,Status,UserId FROM LoginHistory where UserId = :userInfo.userId and (LoginType = 'Chatter Communities External User' or LoginType = 'SAML Chatter Communities External User SSO') order by id desc limit 3 ]; //userInfo.userId 0058A000004ttVtQAI
+        List<LoginHistory> loginRec = [SELECT Id,LoginTime /*,LoginType,LoginUrl,Status,UserId*/ FROM LoginHistory where UserId = :userInfo.userId and (LoginType = 'Chatter Communities External User' or LoginType = 'SAML Chatter Communities External User SSO') order by id desc limit 3 ]; //userInfo.userId 0058A000004ttVtQAI && ATHR Fix - TWC729-9556 - JB
         if(loginRec.size()>1)
         {
             lastLoginTime =loginRec[1].LoginTime;
@@ -770,10 +774,12 @@ public without sharing class IPABenefitUtility {
              
         String countryCode=getCountryCode(userInfo.userLanguage);
         List<PRM_Message__c> listMsgs=[SELECT id, PRM_UI_Display_Area_Nm__c, PRM_Title_Txt__c, PRM_Description_Txt__c,PRM_Start_Date_Dt__c,PRM_End_Date_Dt__c, PRM_InActive_Ind__c,LastModifiedDate  from PRM_Message__c where RecordTypeId=:messageRT and PRM_InActive_Ind__c = false ];      
-        Map<Id,PRM_Message__c> msgLogDetls = new Map<Id,PRM_Message__c>();
+        Map<Id,PRM_Message__c> msgLogDetls = new Map<Id,PRM_Message__c>(listMsgs);
+        /*Map<Id,PRM_Message__c> msgLogDetls = new Map<Id,PRM_Message__c>();
         for(PRM_Message__c m: listMsgs){
             msgLogDetls.put(m.id,m);
-        }
+        }*///JB
+        
         List<PRM_Message__c> translatedList=[SELECT Id, PRM_Title_Txt__c,PRM_Description_Txt__c,Name, PRM_UI_Display_Area_Nm__c,PRM_Start_Date_Dt__c,PRM_End_Date_Dt__c,PRM_Inactive_Ind__c,lastmodifieddate,(SELECT PRM_Title_Txt__c,PRM_Description_Txt__c,lastmodifieddate,PRM_InActive_Ind__c FROM Message_Translations__r where PRM_Language_Nm__c=:countryCode  ) FROM PRM_Message__c WHERE  Id IN:msgLogDetls.keyset() and RecordTypeId=:messageRT and PRM_Inactive_Ind__c=FALSE ];//and PRM_InActive_Ind__c=false
        
         if(translatedList.size()>0){
@@ -1309,7 +1315,9 @@ public without sharing class IPABenefitUtility {
         
         // Step 2: Fetch all CMDT records as Map<String, Map<String, Object>> where key = DeveloperName
         Map<String, Map<String, Object>> ctaMetaMap = ctaController.getAll();
-
+		if(ctaMetaMap.containsKey('Spend Points')){
+            System.debug('Spend Points Metadata: ' + JSON.serializePretty(ctaMetaMap.get('Spend Points')));
+        }
         for (String cta : ctaPriorities) {
             IPABenefitWrapper.Link mlink=new IPABenefitWrapper.Link();
             if (ctaMetaMap.containsKey(cta)) {
@@ -2111,10 +2119,13 @@ public without sharing class IPABenefitUtility {
         boolean awrVisibility = false;
         if(userInfo.onePartnerId!= null)
         {
-            List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
+            //ATHR Fix - TWC729-9556 - JB - start
+            /*List<PRM_AccountBenefitAssociation__c> abaList = new List<PRM_AccountBenefitAssociation__c>();
             for(PRM_AccountBenefitAssociation__c pba : [Select id, name, PRM_Partner_Benefit_Id__r.Name from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c= :userInfo.onePartnerId and PRM_Status_Nm__c = 'Active' and PRM_Partner_Benefit_Id__r.Name =: Label.PRM_Advanced_Warranty_Replacement ]){
                 abaList.add(pba);
-            }
+            }*/
+            List<PRM_AccountBenefitAssociation__c> abaList =[Select id, name, PRM_Partner_Benefit_Id__r.Name from PRM_AccountBenefitAssociation__c where PRM_Account_Id__c= :userInfo.onePartnerId and PRM_Status_Nm__c = 'Active' and PRM_Partner_Benefit_Id__r.Name =: Label.PRM_Advanced_Warranty_Replacement ];
+            //ATHR Fix - TWC729-9556 - JB - end
             if(abaList.size() > 0 && !abaList.isempty()){
                 try{AggregateResult aggregateSum = [Select Sum(PRM_Number_Of_AWR_Remaining_Nbr__c) awrMetric from PRM_Warranty_Data__c where PRM_One_Partner_Id__c =:userInfo.onePartnerId];
                     awrMetric=Integer.valueOf(aggregateSum.get('awrMetric'));
@@ -2286,5 +2297,12 @@ public without sharing class IPABenefitUtility {
             }
         }
         return isRedirectToAccessDenied;
+    }
+    public static IPABenefitWrapper.UserBenefitInfo getDoceboBlade()
+    {
+        IPABenefitWrapper.UserBenefitInfo benefit = new IPABenefitWrapper.UserBenefitInfo();
+        benefit.title = 'Recommended Learning';
+        benefit.description = '';
+        return benefit;
     }
 }

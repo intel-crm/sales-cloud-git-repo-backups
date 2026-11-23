@@ -24,7 +24,7 @@ public without sharing class PRM_DashboardTabVisibilityController {
     public static Final String PROJECT  = 'IPA';   
     public static final String LOG_ENTRY_SCOPE    = 'PRM_DashboardTabVisibilityController';       
     public static final String LOG_ENTRY_SEVERITY = 'Error';   
-    //public static boolean ipaRefresh = Boolean.valueOf(label.PRM_IPARefresh); //IPA2.0-TWC727-2923 Dashboard changes for role/tier
+    public static boolean ipaRefresh = Boolean.valueOf(label.PRM_IPARefresh); //IPA2.0-TWC727-2923 Dashboard changes for role/tier
     
     public static list<PRM_AccountChannelMembership__c> acmTierCheck =new list<PRM_AccountChannelMembership__c>();
     public class responseWrapper {
@@ -182,11 +182,11 @@ public without sharing class PRM_DashboardTabVisibilityController {
             if(acr!=null && loggedInUser.profile.Name=='Partner') {
                 if(Label.PRM_Points_view_Partner_Roles_visibility.split(';').contains(acr.PRM_Contact_Id__r.Core_IPA_PartnerRole__c)|| Test.isRunningTest()){
                     
-                    //if(ipaRefresh){
-                    ptWrapper = PRM_DashboardTabVisibilityController.showPointsTabhelper(accountIds,opids);//}
-                    /*else{
+                    if(ipaRefresh){
+                    ptWrapper = PRM_DashboardTabVisibilityController.showPointsTabhelper(accountIds,opids);}
+                    else{
                     ptWrapper = PRM_DashboardTabVisibilityController.showPointsTabHelper(accountIds,null);
-                    }*/
+                    }
                         
                         // for( PRM_AccountBenefitAssociation__c aba : [select id,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c from PRM_AccountBenefitAssociation__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :Label.PRM_benefits_for_point_not_eligible_flag.split(';') and PRM_Account_Id__c =:accountIds and PRM_Status_Nm__c ='Active']){
                             
@@ -249,11 +249,11 @@ public without sharing class PRM_DashboardTabVisibilityController {
         List <PRM_AccountBenefitAssociation__c> abalist ;
         ptWrapper = new PointsWrapper();
         
-        //if(ipaRefresh){
+        if(ipaRefresh){
             abalist =[select id,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c from PRM_AccountBenefitAssociation__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :Label.PRM_benefits_for_point_not_eligible_flag.split(';') and PRM_Account_Id__c =:opids and PRM_Status_Nm__c ='Active'];
-        /*}else{
-            abalist =[select id,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c from PRM_AccountBenefitAssociation__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :Label.PRM_benefits_for_point_not_eligible_flag.split(';') and PRM_Account_Id__c =:opids and PRM_Status_Nm__c ='Active'];
-        }*/
+        }else{
+            abalist =[select id,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c from PRM_AccountBenefitAssociation__c where PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c in :Label.PRM_benefits_for_point_not_eligible_flag.split(';') and PRM_Account_Id__c =:accountIds and PRM_Status_Nm__c ='Active'];
+        }
 
                         for( PRM_AccountBenefitAssociation__c aba : abalist){
                             

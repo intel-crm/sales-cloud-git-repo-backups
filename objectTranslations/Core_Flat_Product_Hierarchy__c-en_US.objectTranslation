@@ -64,5 +64,12 @@
         <label><!-- Core_iPaaS_Load_ID --></label>
         <name>Core_iPaaS_Load_ID__c</name>
     </fields>
+    <layouts>
+        <layout>Flat Product Hierarchy Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SkillResource</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SkillResources</value>
+    </caseValues>
+    <fields>
+        <label><!-- RasrComponent --></label>
+        <name>Xvoyant__RasrComponent__c</name>
+        <relationshipLabel><!-- SkillResources --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Resource Link --></label>
+        <name>Xvoyant__ResourceLink__c</name>
+        <relationshipLabel><!-- SkillResources --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- sortOrder --></label>
+        <name>Xvoyant__sortOrder__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

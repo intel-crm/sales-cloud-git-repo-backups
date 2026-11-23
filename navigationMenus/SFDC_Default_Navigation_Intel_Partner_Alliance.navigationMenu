@@ -4,10 +4,32 @@
     <containerType>Network</containerType>
     <label>Default Navigation</label>
     <navigationMenuItem>
-        <label>Topics</label>
+        <label>Prelaunch</label>
         <position>1</position>
-        <publiclyAvailable>true</publiclyAvailable>
-        <target>ShowMoreTopics</target>
-        <type>NavigationalTopic</type>
+        <publiclyAvailable>false</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Post - Non Primary</label>
+                <position>0</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/post-launch-non-primary</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Post - Primary</label>
+                <position>1</position>
+                <publiclyAvailable>false</publiclyAvailable>
+                <target>/post-launch-primary</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Pre - Natural Grouping</label>
+                <position>3</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/natural-grouping</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
     </navigationMenuItem>
 </NavigationMenu>

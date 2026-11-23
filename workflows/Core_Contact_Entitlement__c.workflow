@@ -2,30 +2,39 @@
 <Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
     <alerts>
         <fullName>Core_Entitlement_RDC_Added_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Added E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Added_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Added_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Removed_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Removed E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Removed_E_Moss_Role</template>
     </alerts>
     <alerts>
         <fullName>Core_Entitlement_RDC_Updated_E_Moss_EA</fullName>
-        <ccEmails>rdcentitlement@fusionmedia.com</ccEmails>
         <description>Entitlement RDC Updated E Moss EA</description>
         <protected>false</protected>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
+        <template>unfiled$public/Core_Entitlement_RDC_Updated_E_Moss_Role</template>
+    </alerts>
+    <alerts>
+        <fullName>Pricing_Send_Welcome_Email_to_IQR_New_User</fullName>
+        <description>Send Welcome Email to IQR New User</description>
+        <protected>false</protected>
+        <recipients>
+            <field>Core_Contact_Id__c</field>
+            <type>contactLookup</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>IPA_English_Templates/SCRREQTOAPVDNEWPRICING</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_Capture_Status_Change_DateTime</fullName>
@@ -75,7 +84,7 @@
             <name>Core_Capture_Status_Change_DateTime</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>This workflow rule will capture the date/time whenever there is an update for the status field.</description>
         <formula>ISCHANGED(Core_Status__c )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -86,7 +95,7 @@
             <name>Core_Contact_Entitlement_Unique_ID</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>1=1</formula>
         <triggerType>onCreateOnly</triggerType>
     </rules>
@@ -96,7 +105,7 @@
             <name>Core_Reset_DontNotify</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1</booleanFilter>
         <criteriaItems>
             <field>Core_Contact_Entitlement__c.Core_DontNotify__c</field>
@@ -112,7 +121,7 @@
             <name>Core_Reset_Is_Data_Loaded</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Contact_Entitlement__c.Core_Data_Loaded__c</field>
             <operation>equals</operation>

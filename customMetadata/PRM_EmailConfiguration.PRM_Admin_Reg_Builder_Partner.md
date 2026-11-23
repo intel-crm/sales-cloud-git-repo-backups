@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">Employee</value>
+        <value xsi:type="xsd:string">Points View,Employee</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>
@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_PartnerRole__c</field>
-        <value xsi:type="xsd:string">Builder</value>
+        <value xsi:type="xsd:string">Solution Integrator</value>
     </values>
     <values>
         <field>PRM_Priority__c</field>

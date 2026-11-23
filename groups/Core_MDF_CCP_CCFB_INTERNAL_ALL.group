@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Group xmlns="http://soap.sforce.com/2006/04/metadata">
-    <doesIncludeBosses>false</doesIncludeBosses>
-    <name>AGS_CCP CCF Boost INTERNAL ALL</name>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <name>CCP CCF Boost INTERNAL ALL</name>
 </Group>

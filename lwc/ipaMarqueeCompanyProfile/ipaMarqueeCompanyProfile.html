@@ -1,0 +1,36 @@
+<template>
+    <c-core-intc-marquee title={title}>
+        <div slot="subtitle">
+            <div class="marquee-subtitle text-bold">{subtitle}</div>
+            <div class="marquee-description">{description}</div>
+        </div>
+        <div slot="right">
+            <div class="right-content">
+                <div class="mobile-column">
+                    <template if:true={ifs.buttonCtaValid}>
+                        <c-ipa-link class-name="color-white text-underline-hover"
+                            community-page={buttonLinkData.communityPage} external-url={buttonLinkData.externalUrl}
+                            object-page={buttonLinkData.objectPage} record-id={cta1LinkData.recordId} hide-icon="true">
+                            <lightning-button label={buttonLinkData.label} variant="brand" class="dark-theme">
+                            </lightning-button>
+                        </c-ipa-link>
+                    </template>
+                </div>
+                <div class="mobile-column">
+                    <template if:true={ifs.rightCta1Valid}>
+                        <c-ipa-link class-name="color-white text-underline-hover" label={cta1LinkData.label}
+                            community-page={cta1LinkData.communityPage} object-page={cta1LinkData.objectPage}
+                            record-id={cta1LinkData.recordId} external-url={cta1LinkData.externalUrl} caret="true">
+                        </c-ipa-link>
+                    </template>
+                    <template if:true={ifs.rightCta2Valid}>
+                        <c-ipa-link class-name="color-white text-underline-hover" label={cta2LinkData.label}
+                            community-page={cta2LinkData.communityPage} object-page={cta1LinkData.objectPage}
+                            record-id={cta1LinkData.recordId} external-url={cta2LinkData.externalUrl} caret="true">
+                        </c-ipa-link>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </c-core-intc-marquee>
+</template>

@@ -159,6 +159,10 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Reason_for_Retired_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Topic_Count__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

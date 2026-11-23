@@ -1,0 +1,89 @@
+/*
+.slds-table .slds-row-number:after {
+    content: counter(none) !important ;
+    display: none !important ;
+}
+
+.picklistcss {
+    max-width: 100%;
+    overflow: visible !important ;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+td, th {
+    padding: 5px 20px;
+    width: 100px;
+}
+
+th:first-child {
+    position: fixed;
+    left: 5px
+}
+th:second-child {
+    position: fixed;
+    left: 5px
+}
+
+.table-wrapper { 
+    overflow-x:scroll;
+    overflow-y:visible;
+    width:250px;
+    margin-left: 120px;
+} */
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+ 
+.lgc-bg-inverse {
+    background-color: rgb(22, 50, 92);
+}
+ 
+.label-hidden > label {
+    display: none !important;
+}
+ 
+.icon_custom_class{
+    margin-top: 5px;
+}
+ 
+.current_filter {
+    /* @sldsValidatorIgnore */
+    color: rgb(8, 7, 7);
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 2;
+    display: block;
+    cursor: pointer;
+}
+ 
+.current_filter:hover {
+    text-decoration: underline;
+}
+ 
+.custom_list_view {
+    max-width: max-content;
+}
+ 
+.button_class {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+ 
+.list_view_container {
+    max-width: max-content;
+}
+ 
+.list_view_and_table_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.place_right {
+    position: right;
+    right: 10px;
+    margin-right: 10px;
+}

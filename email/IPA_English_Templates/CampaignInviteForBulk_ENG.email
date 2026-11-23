@@ -25,8 +25,6 @@
     <body style="background:#efefef;-moz-box-sizing:border-box;-ms-text-size-adjust:100%;-webkit-box-sizing:border-box;-webkit-text-size-adjust:100%;box-sizing:border-box;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:400;line-height:24px;margin:0;min-width:100%;padding:0;text-align:left;width:100%!important">
 
 
-
-
   <table role="presentation" bgcolor="#efefef" border="0" cellspacing="0" cellpadding="0" class="body" valign="top" width="100%">
       <tbody>
           <tr>
@@ -42,7 +40,7 @@
                                         <table role="presentation" border="0" cellspacing="0" cellpadding="0" valign="top" width="100%">
                                             <tbody><tr>
                                                 <th class="small-12 columns" style="padding:0;vertical-align:top;width:80px;" valign="top">
-                                           <img src=https://intel.file.force.com/servlet/servlet.ImageServer?id=015Ho000003gp0I&oid=00Do0000000aRcf alt="Intel" class="mobile-logo" height="80" valign="top" width="80" style="-ms-interpolation-mode:bicubic;display:block;outline:0;vertical-align:top;">
+                                           <img src="https://intel--crmdevipa.sandbox.my.salesforce.com/servlet/servlet.ImageServer?id=015KR000000D9Ts&oid=00D8A0000005uU8&lastMod=1716524093000" alt="Intel" class="mobile-logo" height="80" valign="top" width="80" style="-ms-interpolation-mode:bicubic;display:block;outline:0;vertical-align:top;">
                                                 </th>
                                                 <th class="show-for-large" style="width:590px;"></th>
                                             </tr>
@@ -72,7 +70,7 @@
             
                                                                                     <tbody><tr>
                                                                                         <th style=" background-color:#00C7FD;padding:10px 24px 10px 24px;">
-                                                                                            <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:20px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Join Intel<sup>&reg;</sup>   Partner Alliance now<img src=https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLic&oid=00DD4000000I0gl valign="middle" alt=""></a>
+                                                                                            <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:20px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Join Intel Partner Alliance now<img src="https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLic&oid=00DD4000000I0gl" valign="middle" alt=""></a>
                                                                                         </th>
                                                                                     </tr>
             
@@ -96,7 +94,7 @@
                                                                                 </tbody>
                                                                             </table>
                                                                             <!-- END SPACER -->
-                                                                            <img src=https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLiw&oid=00Do0000000aRcf&lastMod=1687177231000 alt="" class="responsive" style="display:block;height:255px;vertical-align:bottom;width:255px;" height="255" valign="bottom" width="255">
+                                                                            <img src="https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLiw&oid=00DD4000000I0gl&lastMod=1687177231000" alt="" class="responsive" style="display:block;height:255px;vertical-align:bottom;width:255px;" height="255" valign="bottom" width="255">
                                                                         </th>
                                                                     </tr>
                                                                 </tbody></table>
@@ -111,7 +109,7 @@
                                             <tbody>
                                                 <tr>
                                                     <th style="text-align:left;vertical-align:top;width:80px">
-                                                        <img src=https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLir&oid=00Do0000000aRcf&lastMod=1687177102000 alt="" class="show-for-large" style="display:block;height:48px;width:48px;" valign="top" height="48" width="48">
+                                                        <img src="https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLir&oid=00DD4000000I0gl" alt="" class="show-for-large" style="display:block;height:48px;width:48px;" valign="top" height="48" width="48">
                                                     </th>
                                                 </tr>
                                             </tbody>
@@ -157,7 +155,7 @@
 
                                                                         <tbody><tr>
                                                                             <th style="background-color:#00C7FD;padding:10px 24px 10px 24px;">
-                                                                                <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:20px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Click to join<img src=https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLic&oid=00DD4000000I0gl valign="middle" alt=""></a>
+                                                                                <a href="{{EVLINK}}" target="_blank" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#262626;display:block;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:20px;margin:0;text-align:center;text-decoration:none;word-break:keep-all;word-wrap:none">Click to join<img src="https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLic&oid=00DD4000000I0gl" valign="middle" alt=""></a>
                                                                             </th>
                                                                         </tr>
 
@@ -169,8 +167,8 @@
                                                    
                                                     <p style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:24px;margin:0;margin-top:32px;padding:0;text-align:left;word-break:keep-all;word-wrap:none">
 *Azure Multi-Factor Authentication (MFA) Help page - 
-<a href=https://www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=azure%20mfa%20help  style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">https://www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=azure%20mfa%20help </a>
-  
+<a href="https://www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=azure%20mfa%20help " style="color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">https://www.intel.com/content/www/us/en/support/articles/000092340/programs/access-entitlement-for-myintel-users.html?wapkw=azure%20mfa%20help </a>
+   
 
                                                     </p>
                                                 </th>
@@ -179,7 +177,7 @@
                                         <!-- END CONTENT -->
                                         <!-- START POINTS -->
                                                                  <p style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;color:#ffffff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;hyphens:none;line-height:24px;margin:24px;margin-top:24px;padding:0;text-align:center;word-break:keep-all;word-wrap:none">
-                                                                                                            Need help signing up to be a partner?<br><a href=https://supporttickets.intel.com/s/supportrequest?language=en_US target="_blank" style="color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;"><span style="text-decoration:underline;">Contact support</span></a>
+                                                                                                            Need help signing up to be a partner?<br><a href="https://supporttickets.intel.com/s/supportrequest?language=en_US" target="_blank" style="color:#fff;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:400;"><span style="text-decoration:underline;">Contact support</span></a>
                                                                                                         
                                                                                                             
                                                                                                         </p>                             
@@ -193,7 +191,7 @@
                                                 <tr>
                                                     <th>
                                                         <center>
-                                                        <div style="display:block;"><img align="middle" alt="Connect. Innovate. Grow." src=https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005vLiX&oid=00Do0000000aRcf&lastMod=1687176760000></div>
+                                                        <div style="display:block;"><img align="middle" alt="Connect. Innovate. Grow." src="https://intel--crmqa7.sandbox.lightning.force.com/servlet/servlet.ImageServer?id=0153b000005vLiX&oid=00DD4000000I0gl&lastMod=1687176760000"></div>
                                                         </center>
                                                     </th>
                                                 </tr>
@@ -211,63 +209,63 @@
       </tbody>
   </table>
   <table class="body footer_elq" style="Margin:0;background-color:transparent;border-collapse:collapse;border-spacing:0;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;height:100%;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;width:100%">
-              <tbody>
-                             <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                           <td align="center" class="center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word" valign="top">
-                                           <div><!--[if !mso]><!-->
-                                           <table align="center" cellpadding="0" cellspacing="0" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;max-width:600px!important;padding:0;text-align:center;vertical-align:top;width:100%"><!--<![endif]--><!--[if gte mso 9]><table  align="center" cellpadding="0" cellspacing="0" width="670" ><![endif]-->
-                                                          <tbody>
-                                                                        <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                                                                      <td style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">
-                                                                                      <table class="row collapse mobile-padding" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;position:relative;text-align:center;vertical-align:top;width:100%">
-                                                                                                     <tbody>
-                                                                                                                   <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                                                                                                                 <th class="small-12 large-12 columns first last" style="Margin:0 auto;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0 auto;padding:0;padding-bottom:20px;padding-left:0;padding-right:0;text-align:center;width:680px">
-                                                                                                                                 <table style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
-                                                                                                                                                <tbody>
-                                                                                                                                                               <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                                                                                                                                                             <th style="Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0;padding:0;text-align:center">
-                                                                                                                                                                             <table class="spacer" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
-                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                          <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                                                                                                                                                                                                        <td height="20px" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">&nbsp;</td>
-                                                                                                                                                                                                          </tr>
-                                                                                                                                                                                            </tbody>
-                                                                                                                                                                             </table>
+	<tbody>
+		<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+			<td align="center" class="center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word" valign="top">
+			<div><!--[if !mso]><!-->
+			<table align="center" cellpadding="0" cellspacing="0" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;max-width:600px!important;padding:0;text-align:center;vertical-align:top;width:100%"><!--<![endif]--><!--[if gte mso 9]><table  align="center" cellpadding="0" cellspacing="0" width="670" ><![endif]-->
+				<tbody>
+					<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+						<td style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">
+						<table class="row collapse mobile-padding" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;position:relative;text-align:center;vertical-align:top;width:100%">
+							<tbody>
+								<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+									<th class="small-12 large-12 columns first last" style="Margin:0 auto;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0 auto;padding:0;padding-bottom:20px;padding-left:0;padding-right:0;text-align:center;width:680px">
+									<table style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
+										<tbody>
+											<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+												<th style="Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0;padding:0;text-align:center">
+												<table class="spacer" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
+													<tbody>
+														<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+															<td height="20px" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:400;hyphens:none;line-height:20px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
                                                 <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;Margin-bottom:10px;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">&sup1;Must be Points eligible to qualify. See eligibility requirements.</p>
 
 
-                                                                                                                                                                             
+												
 
-                                                                                                                                                                             <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;Margin-bottom:10px;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">© {!$Label.PRM_CurrentYear} Intel Corporation<br>
-                                                                                                                                                                             Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. <a href=http://www.intel.com/content/www/us/en/homepage.html style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">www.intel.com</a></p>
+												<p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;Margin-bottom:10px;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all">© {!$Label.PRM_CurrentYear} Intel Corporation<br>
+												Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. <a href="http://www.intel.com/content/www/us/en/homepage.html" style="color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-decoration:none" target="_blank">www.intel.com</a></p>
 
-                                                                                                                                                                             <p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;Margin-bottom:10px;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all"><a href=https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Privacy</a> | <a href=https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Cookies</a> | <a href=http://www.intel.com/content/www/us/en/legal/trademarks.html style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">*Trademarks</a> | <a href=https://plan.seek.intel.com/Eloqua-Global-Unsub-Privacy style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none" target="_blank">Unsubscribe</a></p>
+												<p class="text-center" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;Margin-bottom:10px;border-collapse:collapse!important;color:#262626;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;hyphens:none;line-height:18px;margin:0;margin-bottom:10px;padding:0;text-align:center;word-break:keep-all"><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Privacy</a> | <a href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html" style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">Cookies</a> | <a href="http://www.intel.com/content/www/us/en/legal/trademarks.html" style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:center;text-decoration:none" target="_blank">*Trademarks</a> | <a href="https://plan.seek.intel.com/Eloqua-Global-Unsub-Privacy" style="Margin:0;color:#0068B5;font-family:Arial,Helvetica,sans-serif;font-weight:400;line-height:1.3;margin:0;padding:0;text-align:left;text-decoration:none" target="_blank">Unsubscribe</a></p>
 
-                                                                                                                                                                             <table class="spacer" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
-                                                                                                                                                                                            <tbody>
-                                                                                                                                                                                                          <tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
-                                                                                                                                                                                                                        <td height="10px" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;hyphens:none;line-height:10px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">&nbsp;</td>
-                                                                                                                                                                                                          </tr>
-                                                                                                                                                                                            </tbody>
-                                                                                                                                                                             </table>
-                                                                                                                                                                             </th>
-                                                                                                                                                                             <th class="expander" style="Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0;padding:0!important;text-align:center;visibility:hidden;width:0">&nbsp;</th>
-                                                                                                                                                               </tr>
-                                                                                                                                                </tbody>
-                                                                                                                                 </table>
-                                                                                                                                 </th>
-                                                                                                                   </tr>
-                                                                                                     </tbody>
-                                                                                      </table>
-                                                                                      </td>
-                                                                        </tr>
-                                                          </tbody>
-                                           </table>
-                                           </div>
-                                           </td>
-                             </tr>
-              </tbody>
+												<table class="spacer" style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;border-spacing:0;padding:0;text-align:center;vertical-align:top;width:100%">
+													<tbody>
+														<tr style="background-color:transparent;border:0 solid transparent;border-collapse:collapse;padding:0;text-align:center;vertical-align:top">
+															<td height="10px" style="-moz-hyphens:none;-ms-hyphens:none;-webkit-hyphens:none;Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse!important;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:10px;font-weight:400;hyphens:none;line-height:10px;margin:0;padding:0;text-align:center;vertical-align:top;word-break:keep-all;word-wrap:break-word">&nbsp;</td>
+														</tr>
+													</tbody>
+												</table>
+												</th>
+												<th class="expander" style="Margin:0;background-color:transparent;border:0 solid transparent;border-collapse:collapse;color:#555554;font-family:Arial,Helvetica,sans-serif;font-size:12px;font-weight:400;line-height:20px;margin:0;padding:0!important;text-align:center;visibility:hidden;width:0">&nbsp;</th>
+											</tr>
+										</tbody>
+									</table>
+									</th>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</td>
+		</tr>
+	</tbody>
 </table>
   <!-- Gmail on iOS font size manipulation -->
   <div style="display:none;white-space:nowrap;font:15px courier;line-height:0"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;

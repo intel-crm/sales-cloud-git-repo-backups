@@ -5,10 +5,6 @@
         <value>Core Bypass Validation Rule</value>
     </caseValues>
     <fields>
-        <label><!-- Bypass SOAR DW Check --></label>
-        <name>Bypass_SOAR_DW_Check__c</name>
-    </fields>
-    <fields>
         <label><!-- Bypass --></label>
         <name>Bypass__c</name>
     </fields>

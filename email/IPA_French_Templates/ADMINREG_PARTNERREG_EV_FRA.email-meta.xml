@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_FRA</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Action nécessaire pour terminer l&apos;inscription à l&apos;Alliance partenaire Intel®
+
+
+
+
+{!Contact.FirstName},
+
+Félicitations, l&apos;administrateur de votre entreprise ou un représentant Intel vous a ajouté à un compte Alliance partenaire Intel® ! Il ne vous reste plus que quelques étapes pour terminer votre inscription.
+
+Les informations de profil ci-dessous ont été créées pour vous :
+
+Nom d&apos;utilisateur : {!Contact.Core_Login_Id__c}
+Adresse e-mail : {!Contact.Email}
+Nom de la société : {{ACCOUNTNAME}}
+ID d&apos;entreprise de l&apos;Alliance partenaire Intel® : {{ACCOUNTNUMBER}}
+
+
+Veuillez cliquer sur le lien ci-dessous pour terminer votre inscription
+
+
+Vérifiez votre messagerie et définissez votre mot de passe.
+
+
+Veuillez noter que ce lien expirera dans 24 heures.Vous ne parvenez pas à accéder au lien ci-dessus ?
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=fr&amp;target=https://www.intel.com/content/www/fr/fr/secure/partner/forms/ipa-account-search.html
+Si vous avez des questions, veuillez nous contacter via https://signin.intel.com/ContactUs?Culture=fr-fr.
+Nous avons hâte de vous accueillir au sein du programme !
+Cordialement,
+Votre équipe Alliance partenaire Intel®
+
+
+Ce message vous a été envoyé dans le cadre d&apos;une communication commerciale importante liée à votre relation actuelle avec le programme Alliance partenaire Intel®.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054, États-Unis. www.intel.com
+Confidentialité | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

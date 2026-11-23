@@ -342,15 +342,6 @@
             <sourceValues>
                 <sourceValue>Stratix 10 DX</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 DX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 NX FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Stratix® 10 TX FPGA</sourceValue>
-            </sourceValues>
             <value>Stratix 10</value>
         </values>
         <values>
@@ -384,31 +375,13 @@
             <sourceValues>
                 <sourceValue>Intel® PAC With Stratix® 10 SX FPGA</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC D5005</sourceValue>
-            </sourceValues>
             <value>Darby Creek</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® FPGA PAC N3000</sourceValue>
-            </sourceValues>
             <value>Vista Creek</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex</value>
         </values>
     </buckets>
     <chart>
@@ -507,14 +480,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>intel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Case_Closure__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>manufacturing,regression,fix,missing,updated,customized,optimization,deferred</value>
+            <value>fix</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -545,6 +511,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2017-01-01</startDate>
     </timeFrameFilter>

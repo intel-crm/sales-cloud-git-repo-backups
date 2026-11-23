@@ -4,10 +4,9 @@
  @CreatedDate: 21-Sept-2021
  @Description: Utility class for by passing the unwanted SOQL queries execution in Test Classes
 **********************************************/
-public Without Sharing class Core_MDF_Utility{
+public class Core_MDF_Utility{
     public class CustomException extends Exception {}
     public static Boolean byPassFeature(String functionalityKey){
-        
         Boolean isByPass = false;
 		//Fetch Custom Setting record associated with functionalityKey  
         if(functionalityKey!= null) {   
@@ -30,7 +29,7 @@ Modified By:        Date:       Changes:
 public static period getPeriodforDate(Date qtrDate){
 		List<Period> periods = [Select number,startdate,enddate From Period Where type = 'Quarter' and StartDate<=:qtrDate AND enddate>=:qtrDate Limit 1];
 		if(!periods.isEmpty()){
-            
+            system.debug('perioddata'+periods[0]);
 			return periods[0];
             
 		}

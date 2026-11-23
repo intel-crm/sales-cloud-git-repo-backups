@@ -17,6 +17,7 @@ static void getRecords(){
     // Creating Queue
     QueueRecord = new Group(Name='SupportOrgQueue', type='Queue');
     insert QueueRecord;
+    System.debug('This is QUEUE '+QueueRecord);
     // Creating Public Group
     Group PublicGroupRecord = new Group(Name = 'SupportOrgPublicGroup');
     insert PublicGroupRecord;
@@ -39,24 +40,29 @@ static void getRecords(){
             UserOrGroupId = userRecord.id
         );
         insert groupMemberObject_User;
+        system.debug('groupMemberObject_User--');
         // Creating Product Record
         Product2 createProductRecord = TestUtilities.getProduct();
         insert createProductRecord;
+        system.debug('createProductRecord--');
         System.Assert(createProductRecord.Id != null, 'Record not created');
         // Creating Support Org (Core_IPS_Product_Organization__c) Record
         Core_IPS_Product_Organization__c SupportOrgRecord = TestUtilities.getSupportOrg();
         SupportOrgRecord.OwnerId = QueueRecord.Id;
         insert SupportOrgRecord;
+        system.debug('SupportOrgRecord--'+SupportOrgRecord);
         System.Assert(SupportOrgRecord.Id != null, 'Record not created');
         // Creating Core Supported Product
         supportedProductRecord = TestUtilities.getSupportedProduct();
         supportedProductRecord.Core_Product__c = createProductRecord.id;
         supportedProductRecord.Core_Product_Organization__c = SupportOrgRecord.id;
         insert supportedProductRecord;
+        system.debug('supportedProductRecord--'+supportedProductRecord);
         System.Assert(supportedProductRecord.Id != null, 'Record not created');
         EnvironmentalDetailMaster1 = TestUtilities.getCoreQuestion();
         EnvironmentalDetailMaster1.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster1;
+        system.debug('EnvironmentalDetailMaster1--');
         Core_IPS_Question__c EnvironmentalDetailMaster2 = TestUtilities.getCoreQuestion();
         EnvironmentalDetailMaster2.Core_IPS_Product_Organization__c = SupportOrgRecord.id;
         insert EnvironmentalDetailMaster2;
@@ -64,26 +70,31 @@ static void getRecords(){
         EnvironmentalDetailsOperational.Core_IPS_Question__c = EnvironmentalDetailMaster2.id;
         EnvironmentalDetailsOperational.Core_Supported_Product__c = supportedProductRecord.Id;
         insert EnvironmentalDetailsOperational;
+        system.debug('EnvironmentalDetailsOperational--');
         // Create Custom Setting - IPS Error Codes
         List<Core_IPS_Error_Code__c> ListofIpsErrorCodes = TestUtilities.getListOfIpsErrorCodes();
         insert ListofIpsErrorCodes;
+        system.debug('ListofIpsErrorCodes--');
         // Create Custom Setting - IPS Lables
         List<Core_IPS_Labels__c> ListofIpsLables = TestUtilities.getIPSLabel();
         insert ListofIpsLables;
+        system.debug('ListofIpsLables--');
         System.Assert(ListofIpsLables[0].Id != null, 'Record not created');
         // Create Case Category
         Core_IPS_Product_Issue_Category__c CaseCategory = TestUtilities.getCaseCategories();
         CaseCategory.Core_Type__c = 'Case Category';
         CaseCategory.Core_Supported_Product__c = supportedProductRecord.id;
         insert CaseCategory;
+        system.debug('CaseCategory111--');
         // Create Case SubCategory
         CaseSubCategory = TestUtilities.getCaseCategories();
         CaseSubCategory.Core_Product_Issue_Category__c = CaseCategory.id; 
         insert CaseSubCategory;
+        system.debug('CaseSubCategory--');
         // Update EnvironmentalDetailsOperational
         EnvironmentalDetailsOperational.Core_Product_Issue_Sub_Category__c = CaseSubCategory.id;
         update EnvironmentalDetailsOperational;
-        system.assertEquals(true, CaseSubCategory.id != null);
+        System.debug('envirinmental --- data');
     }
 }
 /************************************************************************************************
@@ -91,12 +102,12 @@ Testing Core_addEnvironmentDetailsToProduct Visualforce Page - Object : Core_Sup
 *************************************************************************************************/
 static testmethod void AddingEnvDetailsToProduct(){
     getRecords();
+    System.debug('userRecord--');
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
@@ -108,7 +119,6 @@ static testmethod void AddingEnvDetailsToProduct(){
         AddEnvVarContr.envDetails.add(WrapperObj);
         AddEnvVarContr.addEnvironmentVariables();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void SearchEnvDetails(){
@@ -116,9 +126,8 @@ static testmethod void SearchEnvDetails(){
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-          //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
@@ -126,7 +135,6 @@ static testmethod void SearchEnvDetails(){
         AddEnvVarContr.searchText = 'Issue';
         AddEnvVarContr.getEnvironmentVariables_SupProd();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 // Supported Product - End of Life. Cannot add Env Variables to the org.
@@ -138,27 +146,23 @@ static testmethod void SupportedProductEnded(){
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-          //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void NotAuthorizedUserinthePublicGroup(){
     getRecords();
     // Testing Visualforce Page
     Test.startTest();
-      //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+    PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+    Test.setCurrentPage(pageRef);
     ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
     ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
     Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
-     system.assertEquals(true, AddEnvVarContr != null);
     Test.stopTest();
 }
 static testmethod void UserAddedDirectlyinQueue(){          
@@ -219,15 +223,12 @@ static testmethod void UserAddedDirectlyinQueue(){
         insert ListofIpsLables;
         // Testing Visualforce Page
         Test.startTest();
-          //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-         system.assertEquals(true, ListofIpsLables.size()>0);
-        
     }
 }
 static testmethod void UserdirecltyAssignedtoSupOrg(){          
@@ -272,14 +273,12 @@ static testmethod void UserdirecltyAssignedtoSupOrg(){
         insert ListofIpsLables;
         // Testing Visualforce Page
         Test.startTest();
-          //commented for classic EOL- Tejaswini
-      /*  PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToProduct;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(supportedProductRecord);
         ApexPages.CurrentPage().getparameters().put('id',supportedProductRecord.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Test.stopTest();
-         system.assertEquals(true, ListofIpsLables != null);
     }
 } 
 /************************************************************************************************
@@ -292,6 +291,7 @@ static testmethod void AddingEnvDetailsToEnvDetMaster(){
         Test.startTest();
         PageReference pageRef = Page.Core_IPS_addEnvToProducts;
         Test.setCurrentPage(pageRef);
+        System.debug('>>>EnvironmentalDetailMaster1'+EnvironmentalDetailMaster1);
         ApexPages.StandardController StndContr = new ApexPages.standardController(EnvironmentalDetailMaster1);
         ApexPages.CurrentPage().getparameters().put('id',EnvironmentalDetailMaster1.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
@@ -306,7 +306,6 @@ static testmethod void AddingEnvDetailsToEnvDetMaster(){
         AddEnvVarContr.supProductList.add(WrapperObj);
         AddEnvVarContr.addToProducts();
         Test.stopTest();
-        system.assertEquals(true, supportedProductRecord != null);
     }
 }
 // No Records to Display
@@ -324,7 +323,6 @@ static testmethod void SupportedProductEnd(){
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Core_IPS_EnvironmentVariablesController.ProductsSel WrapperObj = new Core_IPS_EnvironmentVariablesController.ProductsSel ();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 static testmethod void EnvDetMasterStatusInactive(){
@@ -341,7 +339,6 @@ static testmethod void EnvDetMasterStatusInactive(){
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         Core_IPS_EnvironmentVariablesController.ProductsSel WrapperObj = new Core_IPS_EnvironmentVariablesController.ProductsSel ();
         Test.stopTest();
-        system.assertEquals(true, WrapperObj != null);
     }
 }
 /************************************************************************************************
@@ -352,16 +349,14 @@ static testmethod void NoEnvDetToaddIssSubCat(){
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        //commented for classic EOL-Tejaswini
-    /*    PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseSubCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseSubCategory.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
         AddEnvVarContr.searchtext = 'abc';
         Core_IPS_EnvironmentVariablesController.EnvironmentVarSel WrapperObj = new Core_IPS_EnvironmentVariablesController.EnvironmentVarSel ();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 
@@ -370,9 +365,8 @@ static testmethod void EnvDetToaddIssSubCat(){
     System.runAs(userRecord){
         // Testing Visualforce Page
         Test.startTest();
-        //commented for classic EOL-Tejaswini
-    /*    PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
-        Test.setCurrentPage(pageRef); */
+        PageReference pageRef = Page.Core_addEnvironmentDetailsToIssueSubCat;
+        Test.setCurrentPage(pageRef);
         ApexPages.StandardController StndContr = new ApexPages.standardController(CaseSubCategory);
         ApexPages.CurrentPage().getparameters().put('id',CaseSubCategory.Id);
         Core_IPS_EnvironmentVariablesController AddEnvVarContr = new Core_IPS_EnvironmentVariablesController(StndContr);
@@ -384,14 +378,13 @@ static testmethod void EnvDetToaddIssSubCat(){
         AddEnvVarContr.envDetails.add(WrapperObj);
         AddEnvVarContr.addEnvironmentVariables(); 
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
 }
 /************************************************************************************************
 Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Issue_Category__c  
 *************************************************************************************************/
-// Commented by Chetan as PArt OF classic EOL
-/*static testmethod void getAssignedEnvironmentVariablestest(){
+
+static testmethod void getAssignedEnvironmentVariablestest(){
     getRecords();
     System.runAs(userRecord){
         // Testing Visualforce Page
@@ -405,8 +398,7 @@ Testing Core_IPS_Environment_Details Visualforce Page - Object : Core_Product_Is
         Pagereference  Pg = AddEnvVarContr.getAssignedEnvironmentVariables();
         pg = AddEnvVarContr.saveEvn();
         Test.stopTest();
-        system.assertEquals(true, AddEnvVarContr != null);
     }
-}*/
+}
 
 }

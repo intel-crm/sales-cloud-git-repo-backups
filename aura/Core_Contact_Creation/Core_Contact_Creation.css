@@ -1,18 +1,3 @@
-/*
-
-.THIS .ContFields{
-    margin-top:-35px;
-}
-.THIS .Contphone{
-    margin-top:-7px;
-}
-.THIS .ContAcc{
-   margin-top:10px; 
-}
-.THIS .ContName{
-    margin-top:10px;
-}
-*/
 .THIS .radioBox{
     margin-bottom:5px;
 }
@@ -27,7 +12,7 @@
     border-bottom-width :inherit;
 }
 .THIS .divLine{
-    /*border-bottom-color:lightgray;*/
+    border-bottom-color:lightgray;
     border-bottom-width :inherit;
      margin-top:15px;
 }
@@ -35,23 +20,26 @@
     float : left;
     /*color: red;*/
 }
+
+.THIS .slds-required{
+    float : left;
+}
 .THIS #errorMessageDiv{
-    color: red;
+    color: Black;
+    background-color: red;
+    font-weight: bold;
     float : left;
     text-align: left;
+}
+
+.THIS .slds-grid slds-show slds-col slds-size_12-of-12 ErrorMszBackgroundClr{
+    
 }
 
 .THIS .ContAcc label.slds-form-element__label abbr.slds-required{
    float : left;
 }
 
-.THIS .CountryCon label.slds-form-element__label abbr.slds-required{
-    float : left;
- }
-/*.THIS .slds-form-element__label{
-    margin-right:200px;
-}*/
-
-/*.THIS .slds-form-element__label slds-no-flex{
-        margin-right: 178px;
-}*/
+.THIS Body.Blocked {
+    overflow : hidden;
+}

@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>UNIVERSITY OF WEST BOHEMIA Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>UNIVERSITYOFWESTBOHEMIACustomerManager</parentRole>
 </Role>

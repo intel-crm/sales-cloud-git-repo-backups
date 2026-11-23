@@ -8,40 +8,13 @@
 * Amritesh                  12/28/2017                    Created - US8534
 ------------------------------------------------------------------------------->
 <apex:page standardController="Case" showHeader="false" applyHtmlTag="false">
-    <apex:includeLightning />
-    <div id="surveyFeedbackId"></div>
-    <script>
-    var uiTheme = "{!$User.UIThemeDisplayed}";
-    console.log('response theme' + uiTheme);
-     if(uiTheme == 'Theme4d'){       
-        $Lightning.use("c:core_IPS", function() {
-            $Lightning.createComponent("c:core_IPS_InlineSurveyFeedbackPage",
-                                       {   
-                                         recordId : "{!$CurrentPage.parameters.id}"  
-                                       },
-                                       "surveyFeedbackId",
-                                       function(component) {
-                                       });
-        }); 
-    }
-    if({!$User.UITheme} == 'Theme4d' || uiTheme == 'Theme3'){
-    window.onload = resizeWindow(); 
-    function resizeWindow(){
-    
-      top.document.getElementById("0661J000002s65l").height = "0px";
-    }
-        }
-    </script>
     <style>
         .norecords{display:none;}
         .pbHeader table{ padding:0 !important; border-bottom-width:0 !important;}
         .pbHeader{border-bottom-width:0 !important;}
-        .slds-scope .slds-card{border:none!important;}
     </style>
-    <div class="bRelatedList">       
-        <apex:variable var="lightningDesktop" value="{!$User.UIThemeDisplayed == 'Theme4d'}" />
-        <apex:actionRegion rendered="{! !lightningDesktop}">
-        <apex:pageBlock title="Survey Feedback" mode="detail"  >        
+    <div class="bRelatedList">        
+        <apex:pageBlock title="Survey Feedback" mode="detail">        
             <apex:variable value="{!0}" var="surveyResponseCount"/>
             <table cellpadding="0" cellspacing="0" class="list surveyResponseTable">
                 <tr class="headerRow">
@@ -72,6 +45,5 @@
                 </style>
             </apex:outputPanel>
         </apex:pageBlock>
-        </apex:actionRegion>
     </div>
 </apex:page>

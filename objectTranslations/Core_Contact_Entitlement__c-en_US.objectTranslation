@@ -54,10 +54,6 @@
         <name>Core_EntitlementDuration__c</name>
     </fields>
     <fields>
-        <label><!-- Entitlement B2B / B2C Indicator --></label>
-        <name>Core_Entitlement_B2B_B2C_Indicator__c</name>
-    </fields>
-    <fields>
         <help><!-- Help text from the Entitlement Detail record. --></help>
         <label><!-- Entitlement Description --></label>
         <name>Core_Entitlement_Help_Txt__c</name>
@@ -72,7 +68,7 @@
         <name>Core_Entitlement_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Entitlement RequesterId --></label>
+        <label><!-- Entitlement Requester Id --></label>
         <name>Core_Entitlement_Requester_Id__c</name>
         <relationshipLabel><!-- Contact Entitlements --></relationshipLabel>
     </fields>
@@ -89,9 +85,12 @@
         <name>Core_Ops_Status__c</name>
     </fields>
     <fields>
-        <help><!-- The number of retrigger attempts made to make the assignment successful --></help>
         <label><!-- Retrigger Attempt --></label>
         <name>Core_Retrigger_Attempt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role Operation --></label>
+        <name>Core_Role_Operation__c</name>
     </fields>
     <fields>
         <label><!-- Selected --></label>
@@ -138,13 +137,39 @@
         <name>Core_Update_Reason__c</name>
     </fields>
     <fields>
+        <help><!-- This field control the visibility of CE record on contact UI --></help>
+        <label><!-- Visibility Indicator --></label>
+        <name>Core_Visibility_Indicator__c</name>
+    </fields>
+    <fields>
         <label><!-- Account Id --></label>
         <name>ER_Account_Id__c</name>
     </fields>
     <fields>
-        <help><!-- Checked if entitlement is removed as part of partner license reclaim --></help>
-        <label><!-- Removal as part of License Reclaim? --></label>
-        <name>Removal_as_part_of_License_Reclaim__c</name>
+        <label><!-- Entitlement B2B / B2C Indicator --></label>
+        <name>Entitlement_B2B_B2C_Indicator__c</name>
     </fields>
+    <fields>
+        <label><!-- Parent Entitlement Category --></label>
+        <name>Parent_Entitlement_Category__c</name>
+    </fields>
+    <layouts>
+        <layout>Contact Entitlement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Entitlement Layout for Admins</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Retrigger attempt cannot be more than 3 attempts --></errorMessage>
+        <name>Retrigger_Attempt_Count</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -89,7 +89,7 @@ global without sharing class UCD_ACM_BusinessOrganizationModel {
         public Address Address {set;get;}
         public String SimplifiedLocalLanguageName {set;get;}
         public String UnifiedHierarchy {set;get;}
-
+ 
     }
     
     public class AccountComplianceDetails{

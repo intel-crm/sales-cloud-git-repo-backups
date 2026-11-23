@@ -154,40 +154,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_MDF_Activity_Reverse_Transfer_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Activity Reverse Transfer Indicator</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Budget_Type_Txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_MDF_Partner_Marketing_Budget__r.Core_MDF_Budget_Type_Txt__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Co_Marketing_Activity__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Co-Marketing Activity</label>
-        <referenceTo>PartnerFundRequest</referenceTo>
-        <relationshipLabel>Account Transfer Logs</relationshipLabel>
-        <relationshipName>Account_Transfer_Logs</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_CreatedBy_Nm__c</fullName>
         <description>Shows the name for external user if created by is external otherwise Intel System User</description>
         <externalId>false</externalId>
@@ -342,11 +308,6 @@ $Label.Core_MDF_Intel_System_User
                     <label>Auto</label>
                 </value>
                 <value>
-                    <fullName>Auto-Activity</fullName>
-                    <default>false</default>
-                    <label>Auto-Activity</label>
-                </value>
-                <value>
                     <fullName>Manual</fullName>
                     <default>false</default>
                     <label>Manual</label>
@@ -385,7 +346,6 @@ $Label.Core_MDF_Intel_System_User
     <listViews>
         <fullName>All</fullName>
         <columns>Core_MDF_Partner_Marketing_Budget__c</columns>
-        <columns>Core_MDF_Budget_Type_Txt__c</columns>
         <columns>Core_MDF_Source_Account__c</columns>
         <columns>Core_MDF_Target_Account__c</columns>
         <columns>CREATED_DATE</columns>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>PRM_Partner_Role__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Role</label>
+        <length>50</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Partner_Tier__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Tier</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Member</fullName>
+                    <default>true</default>
+                    <label>Member</label>
+                </value>
+                <value>
+                    <fullName>Gold</fullName>
+                    <default>false</default>
+                    <label>Gold</label>
+                </value>
+                <value>
+                    <fullName>Titanium</fullName>
+                    <default>false</default>
+                    <label>Titanium</label>
+                </value>
+                <value>
+                    <fullName>Platinum</fullName>
+                    <default>false</default>
+                    <label>Platinum</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>PRM SalesCloud Warranty</label>
+    <pluralLabel>PRM SalesCloud Warranty</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -1,0 +1,240 @@
+<!------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_Create_MAP
+*Description:  Product Access Screen For MAP
+*Modification Log :
+* Developer                   Date                        Description
+* ------------------------------------------------------------------------------------------------                 
+* Sugandha                    03/04/2018                  Modified(UserStory US83354 Iteration 9)
+----------------------------------------------------------------------------------------------------->
+<apex:page controller="Core_IPS_MapCreationController" sidebar="false" tabStyle="Core_IPS_MAP_PAR__c" >
+    <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.js')}"/>
+    <script type="text/javascript">
+        function selectAllCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");
+            for(var i=0; i<inputCheckBox.length; i++){
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+        function loadMessage(){
+            confirmed = window.confirm("Click OK to continue, Click Cancel to stop");
+            if (confirmed){
+                
+                refreshPageSize();
+            } 
+            else{
+              return null;
+            }
+        } 
+        
+        function loadMessage1(){
+            confirmed = window.confirm("Click OK to continue, Click Cancel to stop");
+            if (confirmed){
+
+                refreshPageSize1();
+            } 
+            else{
+              window.alert("You clicked Cancel- No Changes occur");
+            }
+        }
+        function noenter(ev)  {
+            if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+                doSearchAccounts();
+                return false;
+             } else {
+                  return true;
+             }
+         }
+         function noenterproduct(ev)  {
+            if (window.event && window.event.keyCode == 13 || ev.which == 13) {
+                doSearchProducts();
+                return false;
+             } else {
+                  return true;
+             }
+         }        
+    </script>
+    <div class="splashStatus" id="splashDiv">
+        <div class="circle"><img src="{!URLFOR($Resource.Core_IPS_Page_Loading_Animation, 'spinner.gif')}"/></div>
+        <div class="txt">{!$Label.Core_IPS_Load_gif_Text}</div>
+    </div>
+    <apex:form >
+        <apex:outputPanel rendered="{!!Userpresent}">            
+            <apex:pageBlock >
+                <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >
+                    <apex:outputLabel style="font-weight:bold; font-style: Italic; font-size:20px" value="{!$Label.Core_IPS_Insufficient_Privileges_MAP}" />                         
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            </apex:pageBlock>  
+        </apex:outputPanel>
+        <apex:actionStatus id="splashStatus" onstart="startSplash();" onstop="endSplash(); "/>         
+        <apex:outputPanel id="totalPanel" rendered="{!Userpresent}">            
+        <apex:actionFunction name="refreshPageSize" action="{!refreshPageSize}" status="fetchStatus" rerender="pg1"  />
+        <apex:actionFunction name="doSearchAccounts" action="{!searchAccounts}" status="splashStatus"  rerender="pg1" />
+            <apex:pageBlock id="pg1" rendered="{!showAccountFlag}">
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Go to Products" action="{!productspage}" disabled="{!disablebutton}" />   
+                </apex:pageBlockButtons>  
+                                
+                <apex:pageBlockSection title=" Product Access Details" >
+                    <apex:pageBlockSectionItem >                                                                                                
+                            <apex:outputlabel value="MAP Name:"  style="font-weight:bold" /> 
+                            <apex:outputPanel styleClass="requiredInput" layout="block">
+                            <apex:outputPanel styleClass="requiredBlock" layout="block"/>                                                
+                            <apex:inputText value="{!MapNameText}" required="true" style="text-align:left"/>
+                            </apex:outputPanel>                                                                                                        
+                    </apex:pageBlockSectionItem>                    
+                </apex:pageBlockSection>
+             
+                <apex:outputLabel style="font-weight:bold">Search Account:</apex:outputLabel>&nbsp;&nbsp;
+                <apex:inputText value="{!searchText}" onkeypress="return noenter(event);"/>
+                <apex:commandButton value="Search" action="{!searchAccounts}" rerender="pg1" status="splashStatus" /><br/>
+  
+                <apex:pageblockSection title="Accounts Search results" collapsible="false" columns="2" >              
+                    <apex:pageBlockTable value="{!paginated}" var="accWrap" id="table" title="All Accounts">
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                            </apex:facet>
+                            <apex:inputCheckbox value="{!accWrap.selected}" id="inputId">
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:repeat value="{!$ObjectType.Account.fieldsets.Core_Mapacc_Field_Set}" var="fieldValue">
+                            <apex:column value="{!accWrap.acc[fieldValue]}">
+                            </apex:column>
+                        </apex:repeat>
+                    </apex:pageBlockTable><br/>
+                    <apex:pageBlockSectionItem >
+                        <apex:outputLabel value="No Search Results found" style="font-weight:bold;" rendered="{!!accountsList}"/><br/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+                    
+                    </apex:pageBlockSectionItem>                    
+                <apex:panelGrid columns="8">                  
+                <apex:selectList value="{!size}" multiselect="false" size="1" onchange="loadMessage();" disabled="{!IF(paginated==null,true,false)}">
+                    <apex:selectOptions value="{!paginationSizeOptions}"/>
+                </apex:selectList>  
+                <apex:commandButton reRender="pg1" value="First" action="{!accFirstPage}" rendered="{!standardsetcon.hasprevious}"  title="FirstPage"/> 
+                <apex:commandButton reRender="pg1" value="Previous" action="{!accPrevPage}" rendered="{!standardsetcon.hasprevious}"  title="PreviousPage"/>  
+                <apex:commandButton reRender="pg1" value="Next" action="{!accNextPage}" rendered="{!standardsetcon.hasNext}"  title="NextPage"/> 
+                <apex:commandButton reRender="pg1" value="Last" action="{!accLastPage}" rendered="{!standardsetcon.hasNext}"  title="LastPage"/>
+                  &nbsp;&nbsp; 
+                <apex:outputText >
+                    {!(standardsetcon.pageNumber * size)+1-size} - {!IF(standardsetcon.pageNumber * size!=null && standardsetcon.pageNumber * size > noOfRecords, noOfRecords, (standardsetcon.pageNumber * size))} of {!noOfRecords}
+                </apex:outputText>
+            </apex:panelGrid>
+                </apex:pageblockSection>
+            </apex:pageBlock>
+           
+           <apex:actionFunction name="refreshPageSize1" action="{!refreshPageSize1}" status="fetchStatus" reRender="pg3" />
+           <apex:actionFunction name="doSearchProducts" action="{!searchProducts}" status="splashStatus"  rerender="pg3" />
+            <apex:pageBlock id="pg3" rendered="{!showProductFlag}">
+                <apex:pageBlockButtons >
+                <apex:commandButton value="Back to Accounts" action="{!backToAccountScreen}" reRender="totalPanel" />
+                    <apex:commandButton value="Review Selections" action="{!showLineItemPage}" reRender="totalPanel"  disabled="{!disablebutton}" />                    
+                </apex:pageBlockButtons>
+                <apex:outputLabel >Search Product</apex:outputLabel>
+                <apex:inputText value="{!searchTextProd}" onkeypress="return noenterproduct(event);"/>
+                <apex:commandButton value="Search" action="{!searchProducts}" reRender="pg3" status="splashStatus"/>
+                <apex:pageBlockSection title=" Product Access Details"> 
+                    <apex:pageBlockSectionItem >
+                        <apex:outputPanel >
+                            <apex:outputlabel value="MAP Name: " style="font-weight:bold" />
+                            &nbsp;&nbsp;
+                            <apex:outputText value="{!MapNameText}" style="font-style:italic"/>
+                        </apex:outputPanel>
+                    </apex:pageBlockSectionItem>
+                </apex:pageBlockSection>
+                <apex:pageBlockSection title="Products List">
+                    <apex:pageBlockTable value="{!productList}" var="prod"> 
+                        <apex:column >
+                            <apex:facet name="header">
+                                <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+                            </apex:facet>
+                            <apex:inputcheckbox value="{!prod.selected}" id="inputId2">
+                            </apex:inputCheckbox>
+                        </apex:column>
+                        <apex:column headerValue="Supported Product Name" value="{!prod.relatedSupProduct}"/>
+                        <apex:repeat value="{!$ObjectType.Product2.fieldsets.Map_Prod_FieldSet}" var="prodField">
+                            <apex:column value="{!prod.prod[prodField]}"/>
+                        </apex:repeat>
+                        <apex:column headerValue="Product Organization" rendered="{!IF(engagementType=='Par',true,false)}">
+                            <apex:selectList value="{!prod.selectedProductOrganization}" size="1">
+                                <apex:selectOptions value="{!prod.prodOrgs}"/>
+                            </apex:selectList>
+                        </apex:column>
+                    </apex:pageBlockTable><br/>
+                    <!--{!productlistvisible}
+                    {!prodsearchstart}
+                    {!disablebutton}-->
+                    <apex:pageBlockSectionItem >                        
+                        <apex:outputLabel value="No Search Results found" style="font-weight:bold;" rendered="{!!productlistvisible}" /><br/>
+                    </apex:pageBlockSectionItem>
+                    <apex:pageBlockSectionItem >
+
+                    </apex:pageBlockSectionItem>                   
+                    <apex:panelGrid columns="8">                  
+                        <apex:selectList value="{!size}" multiselect="false" size="1" onchange="loadMessage1();" disabled="{!disablebutton}"> 
+                            <apex:selectOptions value="{!paginationpSizeOptions}"/>
+                        </apex:selectList>  
+                        <apex:commandButton reRender="pg3" value="First Page" action="{!prodFirstPage}" rendered="{!standardSetproduct.hasprevious}"  title="FirstPage"/>    
+                        <apex:commandButton reRender="pg3" value="Previous Page" action="{!prodPrevPage}" rendered="{!standardSetproduct.hasprevious}"  title="PreviousPage"/>  
+                        <apex:commandButton reRender="pg3" value="Next Page" action="{!prodNextPage}" rendered="{!standardSetproduct.hasNext}"  title="NextPage"/> 
+                        <apex:commandButton reRender="pg3" value="Last Page" action="{!prodLastPage}" rendered="{!standardSetproduct.hasNext}"  title="lASTPage"/>
+                        <apex:outputText >
+                            {!(standardSetproduct.pageNumber * size)+1-size} - {!IF(standardSetproduct.pageNumber * size!=null && standardSetproduct.pageNumber * size > noOfpRecords, noOfpRecords, (standardSetproduct.pageNumber * size))} of {!noOfpRecords}
+                        </apex:outputText>                      
+                    </apex:panelGrid>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            
+            <apex:pageBlock id="pg4" rendered="{!showLineItemFlag}">
+                <apex:pageBlockButtons >
+                    <apex:commandButton value="Back to Accounts" action="{!backToAccountScreen}" />
+                    <apex:commandButton value="Submit Product Access" action="{!createMapNew}"   disabled="{!IF(!lineItemvalue,true,false)}" />
+                </apex:pageBlockButtons>
+                <apex:pageBlockSection title=" Product Access Details" >
+                    <apex:pageBlockSectionItem >
+                    <apex:outputPanel >
+                        <apex:outputlabel value="MAP Name:" style="font-weight:bold"/>
+                        &nbsp;&nbsp;
+                        <apex:outputText value="{!MapNameText}" style="font-style:italic"/><br/><br/><br/>
+                        <apex:outputlabel value="Note: Below highlighted line items indicate existing product access" style="font-weight:bold;background-color: Yellow"/>
+                        </apex:outputPanel>
+                        </apex:pageBlockSectionItem>
+                    </apex:pageBlockSection>
+                <apex:pageBlockSection title="LineItems" rendered="{!lineItemvalue}" columns="1">
+                   <!-- Modified by Sugandha for US83354 --> 
+                   <!-- <apex:pageBlockTable value="{!LineItemlist}" var="prod1"> -->
+                    <apex:pageBlockTable value="{!ListReqLineItem}" var="prod1">
+                        <apex:column headerValue="Supported Product Name" value="{!prod1.SupProduct.Core_Supported_Product_Name__c}" style="{!prod1.color}"/>
+                        <apex:column headerValue="Account Name" value="{!prod1.acc.name}" style="{!prod1.color}"/> 
+                        <apex:column headerValue="{!$ObjectType.Core_IPS_Product_Organization__c.fields.Core_IPS_Support_Org_Name__c.label}" value="{!prod1.prodOrgName}" style="{!prod1.color}" />
+                        <apex:column headerValue="Approval Type" value="{!prod1.FlagStatus}" style="{!prod1.color}" />
+                    </apex:pageBlockTable>
+                </apex:pageBlockSection>
+                <!-- added by Sugandha for US83354-->
+                <apex:panelGrid columns="8">
+                        <apex:commandButton reRender="pg4" action="{!lineItemFirst}" value="First"  title="LastPage" rendered="{!ShowFirst && !NOT(lineItemvalue)}"/>
+                        <apex:commandButton reRender="pg4" action="{!lineItemPrev}" value="Previous" title="PreviousPage" rendered="{!ShowPrevious && !NOT(lineItemvalue)}"/> 
+                        <apex:commandButton reRender="pg4" action="{!getlineItemNext}" value="Next"  title="NextPage" rendered="{!ShowNext && !NOT(lineItemvalue)}"/>  
+                        <apex:commandButton reRender="pg4" action="{!lineItemLast}" value="Last" title="LastPage" rendered="{!ShowLast && !NOT(lineItemvalue)}"/>
+                        <apex:outputText rendered="{!!NOT(lineItemvalue)}">
+                            {!(pageNo * list_size)+1-list_size} - {!IF(pageNo * list_size!=null && pageNo * list_size > total_size, total_size, (pageNo * list_size))} of {!total_size}
+                        </apex:outputText>
+                </apex:panelGrid>
+                <!-- end-->
+                <apex:pageBlockSection Title="LineItems" rendered="{!NOT(lineItemvalue)}" columns="1">
+                  <apex:pageBlockSectionItem >
+                      <apex:outputLabel value="No Results to Display"/>
+                  </apex:pageBlockSectionItem>
+              </apex:pageBlockSection>
+            </apex:pageBlock>            
+        </apex:outputPanel>        
+    </apex:form>
+    <div class="lightbox"></div>
+</apex:page>

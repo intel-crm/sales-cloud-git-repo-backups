@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Your {!relatedTo.Name} Offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingAllAdminsReviewing offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

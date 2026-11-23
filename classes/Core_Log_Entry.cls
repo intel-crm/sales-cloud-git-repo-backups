@@ -4,22 +4,22 @@ Version     : 1.0 (copied from Service Cloud)
 Created Date: 10 JAN 2017
 Function    : Application error and information logging.
 
-   Parameters:
-       strOrigin: Origin of the log entry - "ipaas" or "SFDC".
-       strProject: Project generating the log entry - "Entitlement", "Sales", "IPS"
-       strScope: Identifies high level feature.  Values that match ICS App Logging Tracked Scopes custom label will be logged.
-                 If null is passed, this parameter is ignored and a log record will be created.
-       strSeverity: Values are info, warn, error, baddata, processed.
-       strMessage: Short message
-       strDetails: Detailed information to be logged.
-       strObjectId: SFDC ID of the record that generated the log entry
-       strObjectType: sObject type that generated the log entry
-       ex: Exception object.  The debug info will be stored in Details.
+Parameters:
+strOrigin: Origin of the log entry - "ipaas" or "SFDC".
+strProject: Project generating the log entry - "Entitlement", "Sales", "IPS"
+strScope: Identifies high level feature.  Values that match ICS App Logging Tracked Scopes custom label will be logged.
+If null is passed, this parameter is ignored and a log record will be created.
+strSeverity: Values are info, warn, error, baddata, processed.
+strMessage: Short message
+strDetails: Detailed information to be logged.
+strObjectId: SFDC ID of the record that generated the log entry
+strObjectType: sObject type that generated the log entry
+ex: Exception object.  The debug info will be stored in Details.
 
-  * An exception anywhere in the execution thread could rollback
-    the insert into the Log Entry entry.
-  * This may interfere with Web Callouts.
-    See https://help.salesforce.com/apex/HTViewSolution?id=000003701
+* An exception anywhere in the execution thread could rollback
+the insert into the Log Entry entry.
+* This may interfere with Web Callouts.
+See https://help.salesforce.com/apex/HTViewSolution?id=000003701
 
 Modification Log :
 * Developer                 Date                    Description
@@ -63,9 +63,11 @@ public class Core_Log_Entry {
             /* Custom label to enable/disable tracking of specific Severities. */
             String strSeverityTracked = Label.Core_App_Logging_Tracked_Severities;
             strSeverity = !String.IsBlank(strSeverity) ? strSeverity : '';
+            system.debug('**** strSeverityTracked: ' + strSeverityTracked);
       
             String strScopeTracked = Label.Core_App_Logging_Tracked_Scopes;
             strScope = !String.IsBlank(strScope) ? strScope : '';
+            system.debug('**** strScopeTracked: ' + strScopeTracked);
 
             if(strScopeTracked == '0') return '';
             
@@ -90,11 +92,13 @@ public class Core_Log_Entry {
                                      'DML Stmts Remaining: ' + intDMLStmtsRemaining + ', ' +
                                      'DML Rows Buffer: ' + intDMLRowsBuffer + ', ' +
                                      'DML Rows Remaining: ' + intDMLRowsRemaining;
+                system.debug('**** strDMLStats: ' + strDMLStats);
                 
                 //Check the limits.  Subtracting 2 because the buffer amount is what should be left behind and allow
                 //for the limits error record.
                 if(((intDMLStmtsRemaining - 2)< intDMLStmtBuffer) || ((intDMLRowsRemaining - 2) < intDMLRowsBuffer)) {
                     blGovernorLimitHit = true;
+                    system.debug('**** blGovernorLimitHit: ' + blGovernorLimitHit);
 
                     // Replace log entry values with limits error
                     //strLogEntryName = 'App Logging Hit Limits';
@@ -139,7 +143,7 @@ public class Core_Log_Entry {
                 strTags = String.isNotBlank(strTags) ? strTags.Left(255) : '';
                 
                 Core_Log_Entry__c objCLE = new Core_Log_Entry__c(
-                	//Name = strLogEntryName, // From Service Cloud
+                    //Name = strLogEntryName, // From Service Cloud
                     Core_Origin__c = strOrigin,
                     Core_Project__c = strProject,
                     Core_Scope__c = strScope,
@@ -153,16 +157,27 @@ public class Core_Log_Entry {
                     Core_sObjectType__c = strObjectType,
                     Core_Tags__c = strTags
                 );
+                system.debug('***** Core_Log_Entry__c: ' + objCLE);
 
-                insert objCLE;
-
+                if(Core_Log_Entry__c.sObjectType.getDescribe().isCreateable()){ //TWC729-5289 medium severity - Shraddha
+                    insert objCLE;
+                }
+                
                 if(blGovernorLimitHit) {
                     blStopLogging = true;
+                    system.debug('***** blStopLogging: ' + blStopLogging);
                 }
 
-                return objCLE.Id;
+                //return objCLE.Id;
+
+                Id objCLEId; //TWC729-5289 medium severity - Shraddha
+                if(objCLE != null){
+                    objCLEId = objCLE.Id;
+                }
+                return objCLEId;
             }            
         } catch(Exception e) {
+            System.debug('*** App Logging Failed ' + e.getMessage());
             //Do not rethrow and cause error to propagate.
         }
         return null;
@@ -205,10 +220,13 @@ public class Core_Log_Entry {
             //return core_Log_Entry('Log Limits', strScope, strOrigin, 'Info',  strMessage, strDetails, null);
             return core_Log_Entry(strOrigin, strProject, strScope, 'Info',  strMessage, strDetails, null, null, null);
         } catch (Exception e) {
+            System.debug('*** logEntryWithLimits failed ' + e.getMessage());
             //Do not rethrow and cause error to propagate.           
         }
         return null;
     }*/
+    
+    
     /****************************************************************************************
 *  Discription: Creates log entry for failed records
 * Parameter: List of log entry records

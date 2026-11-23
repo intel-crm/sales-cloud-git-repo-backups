@@ -4,17 +4,17 @@
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_POR</name>
     <style>none</style>
-    <subject>Bem-vindo à Intel® Partner Alliance Prestige</subject>
-    <textOnly>Intel® Partner Alliance Prestige
+    <subject>Bem-vindo à Intel® Partner Alliance Titanium</subject>
+    <textOnly>Intel® Partner Alliance Titanium
 
 
 {!Contact.FirstName},
 
-Parabéns! Sua empresa foi promovida para a Intel® Partner Alliance Prestige. Aproveite os seguintes benefícios da parceria:
+Parabéns! Sua empresa foi promovida para a Intel® Partner Alliance Titanium. Aproveite os seguintes benefícios da parceria:
 
 Acumule mais pontos em componentes e sistemas
 Convite para o principal evento do ano para parceiros da Intel: Intel® Partner Connect
-Carta de referência do status Prestige, emitida pela diretoria da Intel para seus clientes em potencial
+Carta de referência do status Titanium, emitida pela diretoria da Intel para seus clientes em potencial
 
 Faça login para acessar ferramentas e recursos.
 
@@ -30,7 +30,7 @@ Obrigado,
 Sua equipe Intel® Partner Alliance
 
 Esta mensagem foi enviada a você como uma importante comunicação comercial relacionada ao seu relacionamento atual com a Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacidade | Cookies</textOnly>
     <type>custom</type>

@@ -11,6 +11,8 @@ global without sharing class ER_SearchBeforeCreate {
         SearchResults(List<ER_SBCAccountSearchResponse> listOfAccountSearch){
             if(listOfAccountSearch != null){
                 SearchResults = listOfAccountSearch;
+                System.debug('ER_SearchResults : '+SearchResults);
+                
             }
         }
     }
@@ -30,6 +32,7 @@ global without sharing class ER_SearchBeforeCreate {
     //global static void doPost(String AccountName,Address AccountAddress, String AccountURL, String EmailAddress, String SearchLimit, String MinimumSearchScore,String AccountType) {		
     global static void doPost(ER_SearchBeforeCreate.CIMSearchBeforeCreate SearchAccount){
         RestResponse res = RestContext.response;
+        
       //  Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         try{
             List<ER_SearchAccounts> lstSearchAccountObj = new List<ER_SearchAccounts>();
@@ -42,7 +45,9 @@ global without sharing class ER_SearchBeforeCreate {
             for(Core_Country_Code_Mapping__c allCountries : Core_Country_Code_Mapping__c.getAll().values()) {                    
                 countryMap.put(allCountries.ISO_Code__c,allCountries.Country_Code__c);
             }
-           
+            
+            System.debug('Country Map : '+countryMap);
+            
             //Getting all the Billing Countries from teh country code map
             string billingCountryForAPI;
             if(SearchAccount.AccountAddress.CountryCode2!=null && SearchAccount.AccountAddress.CountryCode2.toUpperCase().length() == 3 && countryMap!=null && countryMap.containsKey(SearchAccount.AccountAddress.CountryCode2.toUpperCase())){
@@ -52,12 +57,17 @@ global without sharing class ER_SearchBeforeCreate {
                     billingCountryForAPI= SearchAccount.AccountAddress.CountryCode2;
                 }
             }
+            System.debug('billingCountryForAPI --> '+billingCountryForAPI);
+            
             //Checking for invalid Country code
             if(SearchAccount.AccountAddress != null){
                 if(String.isBlank(SearchAccount.AccountAddress.CountryCode2) && String.isBlank(billingCountryForAPI)){ 
                     throw new CustomException('INVALID_COUNTRYCODE');
                 }
             }
+            
+            system.debug('Country Code ==>'+SearchAccount.AccountAddress.CountryCode2);
+            system.debug('Account Ids ==>'+setOfAccountId+' ;; SearchLimit ==>'+SearchAccount.SearchLimit);
             
             if(String.isNotBlank(SearchAccount.EntitlementName))
             {
@@ -89,11 +99,13 @@ global without sharing class ER_SearchBeforeCreate {
                 
                 //Calling CIM API to get Matching Account Score Results                
                 listOfCimResult = new ER_SearchCIMAccounts().getCimResults(SearchAccount.AccountName, SearchAccount.AccountAddress.AddressLine1, SearchAccount.AccountAddress.PostalCode,SearchAccount.AccountAddress.City,billingCountryForAPI,SearchAccount.AccountAddress.StateCode2,SearchAccount.SearchLimit,SearchAccount.MinimumSearchScore,SearchAccount.AccountURL,SearchAccount.EmailAddress,AccountType, true);
-               
+                System.debug('listOfCimResult size : '+listOfCimResult.size());
+                
             }
             
             // Sorting the Accounts based on Priority Logic
             lstSearchAccountObj = ER_SearchSalesCloudAccounts.getSortedAccountsCim(listOfCimResult,setOfAccountId,AccountType,SearchAccount.SearchLimit);
+            System.debug('lstSearchAccountObj size : '+lstSearchAccountObj.size());
             
             List<ER_SBCAccountSearchResponse> cimAccountsList = new List<ER_SBCAccountSearchResponse>();
             if(lstSearchAccountObj != null){
@@ -107,6 +119,7 @@ global without sharing class ER_SearchBeforeCreate {
         }catch(CustomException ce){
             res.statusCode = 400;
             SalesforceError[] errs = null;
+            System.debug('error '+ce.getMessage());
             
             if(ce.getMessage()=='INVALID_COUNTRYCODE'){
                 errs = new SalesforceError[]{new SalesforceError('0001', 'Invalid Country Code')};
@@ -135,6 +148,7 @@ global without sharing class ER_SearchBeforeCreate {
     
     //Response Formatting
     private static List<ER_SBCAccountSearchResponse> getResponseJSON(List<ER_SearchAccounts> lstSrcAccount, Map<String,String> countryMap){
+        System.debug('getResponseJSON call...');
         List<ER_SBCAccountSearchResponse> cimAccountsList = new List<ER_SBCAccountSearchResponse>();
         for(ER_SearchAccounts prmSrcAcc : lstSrcAccount){
             
@@ -165,6 +179,7 @@ global without sharing class ER_SearchBeforeCreate {
         public Address AccountAddress { get; set; }
         public String AccountURL { get; set; }
         public String EmailAddress { get; set; }
+        public String BizOrgType{ get; set;}
         public String SearchLimit { get; set; }
         public String MinimumSearchScore { get; set; }
         public String EntitlementName { get; set; }

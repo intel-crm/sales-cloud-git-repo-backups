@@ -1,0 +1,6 @@
+You have created Opportunity ‘{!Opportunity.Name}’ against Account '{!Account.Name}'.
+
+This is not a covered Account - it is owned by the "Uncovered Account" system user. Please review this and move the Opportunity to a covered Account if needed.
+
+Opportunity Link: {!Opportunity.Link}
+Account Link: {!Account.Link}

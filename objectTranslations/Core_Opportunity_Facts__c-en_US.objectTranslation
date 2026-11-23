@@ -9,10 +9,6 @@
         <value>Opportunity Facts</value>
     </caseValues>
     <fields>
-        <label><!-- AI Content in System --></label>
-        <name>Core_AI_Content_in_System__c</name>
-    </fields>
-    <fields>
         <label><!-- Ambient Temp Req --></label>
         <name>Core_Ambient_Temp_Req__c</name>
     </fields>
@@ -59,14 +55,6 @@
     <fields>
         <label><!-- Consumer Factor Login --></label>
         <name>Core_Consumer_Factor_Login__c</name>
-    </fields>
-    <fields>
-        <label><!-- Consumer Sales Category --></label>
-        <name>Core_Consumer_Sales_Category__c</name>
-    </fields>
-    <fields>
-        <label><!-- Consumer Sales System --></label>
-        <name>Core_Consumer_Sales_System__c</name>
     </fields>
     <fields>
         <label><!-- Contains 2:1 --></label>
@@ -253,10 +241,6 @@
         <name>Core_Modern_Standby__c</name>
     </fields>
     <fields>
-        <label><!-- Multi boarded --></label>
-        <name>Core_Multi_boarded__c</name>
-    </fields>
-    <fields>
         <label><!-- New ID? --></label>
         <name>Core_New_ID__c</name>
     </fields>
@@ -407,10 +391,6 @@
     <fields>
         <label><!-- Stylus --></label>
         <name>Core_Stylus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sustainability Compliance --></label>
-        <name>Core_Sustainability_Compliance__c</name>
     </fields>
     <fields>
         <label><!-- System Integrator --></label>

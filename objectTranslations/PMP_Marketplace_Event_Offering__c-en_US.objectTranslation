@@ -20,5 +20,12 @@
         <name>PMP_Offering_Id__c</name>
         <relationshipLabel><!-- Marketplace Event Offerings --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Marketplace Event Company Offering Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

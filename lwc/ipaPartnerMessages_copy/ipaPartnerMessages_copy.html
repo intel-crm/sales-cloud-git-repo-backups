@@ -1,0 +1,22 @@
+<template>
+    <h2 class="slds-m-bottom_medium">{title}</h2>
+    <div class="message-list">
+        <div class="message-header">
+            <div class="subject">{label.subject}</div>
+            <div class="type mobile-hide">{label.type}</div>
+            <div class="date mobile-hide">{label.date}</div>
+            <div class="toggle"></div>
+        </div>
+        <template for:each={messages} for:item="message">
+            <c-ipa-partner-message message={message} key={message.messageId}></c-ipa-partner-message>
+        </template>
+    </div>
+    <div class="footer-actions">
+        <template if:true={ifs.isViewAllLinkValid}>
+            <c-ipa-link external-url={viewAllLink.externalUrl} community-page={viewAllLink.communityPage}
+                object-page={viewAllLink.objectPage} record-id={viewAllLink.recordId} hide-icon="true">
+                <button type="button" class="slds-button slds-button_brand view-all-button">{viewAllLink.label}</button>
+            </c-ipa-link>
+        </template>
+    </div>
+</template>

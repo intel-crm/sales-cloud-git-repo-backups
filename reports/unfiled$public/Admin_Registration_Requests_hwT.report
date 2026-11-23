@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_38057701</developerName>
+        <masterLabel>EV Complete vs Pending</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>PRM_Registration_Request__c.Email_Verification_Status__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>SUCCESS</sourceValue>
+            </sourceValues>
+            <value>EV Success</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>EXPIRED _IM1_/resource/EVExpiredStatusExclamationMark_IM2_alert_IM3__30_IM4_30_IM5_</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>PENDING</sourceValue>
+            </sourceValues>
+            <value>EV Pending/Expired</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Approve_Reject_Link__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_EmailVerifiedDateTime__c</field>
+    </columns>
+    <columns>
+        <field>PRM_Registration_Request__c.PRM_Status__c</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;Approved&quot;),&quot;Request Approved&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Account Create Request&quot; &amp;&amp; Ispickval(PRM_Registration_Request__c.PRM_Status__c,&quot;New&quot;),&quot;Step 2 completed&quot;,
+IF(PRM_Registration_Request__c.PRM_Record_Type_Name_rpt_txt__c == &quot;Email Verification Request&quot; &amp;&amp; !ISBLANK(PRM_Registration_Request__c.PRM_EmailVerifiedDateTime__c),&quot;Step 1 with EV Completed&quot;,&quot;Step 1 New Request&quot;)))</calculatedFormula>
+        <dataType>Text</dataType>
+        <description>Record Type for Report purpose</description>
+        <developerName>CDF1</developerName>
+        <label>Record Type</label>
+        <scale>2</scale>
+    </customDetailFormulas>
+    <filter>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c.PRM_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>PRM_Registration_Request__c.Admin_Registration</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>Admin Registration Requests Approved</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$PRM_Registration_Request__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

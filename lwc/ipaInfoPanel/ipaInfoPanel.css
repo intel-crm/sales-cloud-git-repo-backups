@@ -1,0 +1,28 @@
+:host {
+  --slds-c-button-brand-color-background: #407288;
+  --slds-c-button-radius-border: 0;
+  --slds-c-card-radius-border: 0;
+}
+
+.mainbackground {
+  background-color: #407288;
+}
+
+.img1 {
+  height: auto;
+  width: 10rem;
+}
+
+.bg {
+  background-color: #407288;
+  padding: .5rem;
+}
+
+.heading {
+  color: white;
+  font-size: 2em;
+}
+
+.textsize {
+  max-width: 20em;
+}

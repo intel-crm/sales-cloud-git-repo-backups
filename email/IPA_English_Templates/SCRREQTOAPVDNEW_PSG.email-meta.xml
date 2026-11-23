@@ -11,16 +11,17 @@
 {!Contact.FirstName},
 
 Welcome to the Intel® FPGA Self Service Licensing Center (SSLC). You can now view, manage and, where necessary, activate your license entitlements for Intel PSG Software and IP.
-The SSLC uses a guided approach to help you perform the basic license entitlement functions. There are also documentation provided for reference.
+The SSLC uses a guided approach to help you perform the basic license entitlement functions. There are also videos and documentation provided for reference.
 
 Please save your log-in information for future reference:
 
+Username: {!Contact.Core_Login_Id__c}
 Email Address: {!Contact.Email}
 
 Your password should be protected as confidential. The use of this password on Intel&apos;s websites is governed by Intel&apos;s Terms and Conditions of Use linked from the bottom of each respective site&apos;s web pages.
 
 
-Log in to  licensing.intel.com  to view and manage your Intel® PSG Software and IP License Entitlements.
+Log in to intel.com/sslc to view and manage your Intel® PSG Software and IP License Entitlements.
 
 
 Thank you,
@@ -28,7 +29,7 @@ Your Intel® PSG SSLC Team
 
 
 This message was sent to you as an important business communication related to your FPGA Software and/or IP licensing entitlements with Intel® Programmable Solutions Group.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

@@ -26,7 +26,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPALeads/PMP_Lead_Created_Report</report>
+                <report>Marketplace_Folder_Public/PMP_Lead_Created_Report</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -50,7 +50,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPALeads/PMP_Lead_Pending_Report</report>
+                <report>Marketplace_Folder_Public/PMP_Lead_Pending_Report</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -74,7 +74,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPALeads/PMP_Lead_Accepted_Report</report>
+                <report>Marketplace_Folder_Public/PMP_Lead_Accepted_Report</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -137,7 +137,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPALeads/Leads_Report_IM9</report>
+                <report>Marketplace_Folder_Public/Leads_Report_IM9</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>4</rowIndex>
@@ -161,7 +161,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPALeads/Leads_Terminated_Report_uEy</report>
+                <report>Marketplace_Folder_Public/Leads_Terminated_Report_uEy</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>4</rowIndex>
@@ -252,7 +252,7 @@
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Leads by Status Details Report</header>
-                <report>IPALeads/PMP_Lead_Status_Details_Report</report>
+                <report>Marketplace_Folder_Public/PMP_Lead_Status_Details_Report</report>
             </dashboardComponent>
             <rowIndex>8</rowIndex>
             <rowSpan>8</rowSpan>
@@ -299,8 +299,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>10675369@intel.com.crm</runningUser>
+    <owner>11863410@intel.com.crm</owner>
+    <runningUser>11875885@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Leads</title>
     <titleColor>#000000</titleColor>

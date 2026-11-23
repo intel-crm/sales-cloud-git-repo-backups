@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Jacqueline McInally Jones</description>
+    <description>EMP of Christin Eisenschmid</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11369499_Stefan_Vogt</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11481168_Jacqueline_McInally_Jones</parentRole>
+    <parentRole>EMP_11370286_Christin_Eisenschmid</parentRole>
 </Role>

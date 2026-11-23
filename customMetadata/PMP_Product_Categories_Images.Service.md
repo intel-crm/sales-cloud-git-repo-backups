@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000004Pg4m</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.FileDownload?file=0158A0000001wpA</value>
     </values>
 </CustomMetadata>

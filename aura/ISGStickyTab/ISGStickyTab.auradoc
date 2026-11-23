@@ -1,0 +1,23 @@
+<aura:documentation>
+  <aura:description>
+    <p>ISG Sticky Tab Component</p>
+
+    <!-- LAST UPDATED DATE / VERSION -->
+    <p>Last Updated: 3/12/2019</p>
+    <p>CurrentVersion: 1.0</p>
+    <hr />
+    <!-- UPDATE DATE / VERSION WITH ANY UPDATES -->
+    <p>Sticky Tab Component is nested within an ISGStickyTabSet. The title must be filled up in this component as
+      well as the body with the desired content.
+      The ISGStickyTabset will then calculate the correct offset and selection of the floating navigation
+    </p>
+
+    <!-- CHANGELOG ADD ANY UPDATES HERE -->
+    <hr />
+    <p>Change Log</p>
+    <!-- <p>Last Updated: 2/6/2019</p> -->
+    <!-- <p>CurrentVersion: 1.0</p> -->
+
+    <!-- CHANGELOG -->
+  </aura:description>
+</aura:documentation>

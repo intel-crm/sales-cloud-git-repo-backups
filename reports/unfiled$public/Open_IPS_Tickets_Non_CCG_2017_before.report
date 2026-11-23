@@ -55,16 +55,13 @@
         <field>Case.Core_Sub_Status__c</field>
     </columns>
     <columns>
+        <field>LAST_UPDATE_BY</field>
+    </columns>
+    <columns>
         <field>FK_$Core_IPS_Product_Organization__c.Core_IPS_Support_Org_Name__c</field>
     </columns>
     <columns>
         <field>Case.core_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Project_Case__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Product_name__c</field>
     </columns>
     <columns>
         <field>CONTACT.NAME</field>
@@ -85,7 +82,7 @@
         <field>Case.Core_Product_Type__c</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE_BY</field>
+        <field>Case.Core_IPS_Product_name__c</field>
     </columns>
     <columns>
         <field>AGE</field>
@@ -142,8 +139,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OWNER</sortColumn>
-    <sortOrder>Asc</sortOrder>
+    <sortColumn>Case.Core_IPS_Last_Update__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

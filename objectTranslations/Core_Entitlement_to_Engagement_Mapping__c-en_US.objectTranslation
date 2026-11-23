@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core Entitlement to Engagement Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core Entitlement to Engagement Mapping</value>
+    </caseValues>
+    <fields>
+        <help><!-- Engagement will be sent as Approved if value is &apos;ENGSTSAPRD&apos; and will be sent as Rejected if value is &apos;ENGSTSRJTD&apos; --></help>
+        <label><!-- Engagement Approved Rejected --></label>
+        <name>Engagement_Approved_Rejected__c</name>
+    </fields>
+    <fields>
+        <help><!-- Technical name of the child engagement which should get added upon adding the parent entitlement --></help>
+        <label><!-- Engagement Technical Name --></label>
+        <name>Engagement_Technical_Name__c</name>
+    </fields>
+    <fields>
+        <help><!-- The display name of the parent entitlement --></help>
+        <label><!-- Entitlement Display Name --></label>
+        <name>Entitlement_Display_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

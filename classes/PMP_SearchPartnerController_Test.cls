@@ -82,7 +82,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         
         PMP_Company__c testPartner1 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner1',accId , false);
         
-        testPartner1.PMP_Account_Specialty__c = 'None';       
+        testPartner1.PMP_Account_Specialty__c = 'Video Specialty';       
         testPartner1.PMP_Partner_Program_nm__c = 'Cloud & Comms Service Provider';
         testPartner1.PMP_Account_Dsc__c = 'test';
         testPartner1.PMP_Company_Information_Language_Nm__c = 'English';
@@ -104,7 +104,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         
         PMP_Company__c testPartner3 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner3',accId2 , false);
         
-        testPartner3.PMP_Account_Specialty__c = 'None';       
+        testPartner3.PMP_Account_Specialty__c = 'Video Specialty';       
         testPartner3.PMP_Partner_Program_nm__c = 'Cloud & Comms Service Provider';
         testPartner3.PMP_Account_Dsc__c = 'test';
         testPartner3.PMP_Company_Information_Language_Nm__c = 'English';
@@ -127,7 +127,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
          
         PMP_Company__c testPartnerDisti =  PMP_SearchTestDataFactory.createCompanyInformation('testPartnerDisti',accId , false);
         
-        testPartnerDisti.PMP_Account_Specialty__c = 'None';       
+        testPartnerDisti.PMP_Account_Specialty__c = 'Video Specialty';       
         testPartnerDisti.PMP_Partner_Program_nm__c = 'Distributor';
         testPartnerDisti.PMP_Account_Dsc__c = 'test';
         testPartnerDisti.PMP_Company_Information_Language_Nm__c = 'English';
@@ -163,7 +163,7 @@ private class PMP_SearchPartnerController_Test extends PMP_SearchWrapperStore {
         insert ptnrApp;
         
         PMP_Company__c testPartner2 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner2',accId , false);       
-        testPartner2.PMP_Account_Specialty__c = 'None';        
+        testPartner2.PMP_Account_Specialty__c = 'Video Specialty';        
         testPartner2.PMP_Partner_Program_nm__c = 'Cloud & Comms Service Provider';
         testPartner2.PMP_Account_Dsc__c = 'test';
         testPartner2.PMP_Company_Information_Language_Nm__c = 'English';

@@ -278,14 +278,14 @@ private static Core_Platform_Event_Log__c buildPlatformEventLog(String emailLogI
     
     //Send Email of Failure Record Id's to Support Team 
     public static void sendEmailOnFailure(List<Id> failedRecordIds, List<String> toEmailAddressList){   
-		
-		List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
+        
+        List<OrgWideEmailAddress> owea = new List<OrgWideEmailAddress>();
         owea = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
-		
-		
+        
+        
         Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
         message.toAddresses = toEmailAddressList;
-		message.setOrgWideEmailAddressId(owea.get(0).Id);
+        message.setOrgWideEmailAddressId(owea.get(0).Id);
         message.optOutPolicy = 'FILTER';
         message.subject = 'SF to iPaaS Failure Record Notification';
         message.plainTextBody = 'Hi Everyone,';

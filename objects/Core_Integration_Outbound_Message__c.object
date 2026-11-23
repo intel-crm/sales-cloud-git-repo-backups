@@ -147,7 +147,7 @@
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
-    <enableHistory>false</enableHistory>
+    <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
     <enableSearch>true</enableSearch>
@@ -161,6 +161,16 @@
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Created Date/Time</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>Core_Last_Retried_Date__c</fullName>
+        <description>Holds the Last retried Date/Time</description>
+        <label>Last Retried Date</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -170,6 +180,7 @@
         <label>Message Type</label>
         <length>80</length>
         <required>true</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -178,6 +189,7 @@
         <fullName>Core_Payload__c</fullName>
         <label>Payload</label>
         <length>131072</length>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>2</visibleLines>
@@ -189,6 +201,7 @@
         <precision>2</precision>
         <required>false</required>
         <scale>0</scale>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -197,6 +210,7 @@
         <fullName>Core_Status_Message__c</fullName>
         <label>Status Message</label>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
     </fields>
@@ -204,6 +218,7 @@
         <fullName>Core_Status__c</fullName>
         <label>Status</label>
         <required>false</required>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -212,7 +227,7 @@
                 <sorted>false</sorted>
                 <value>
                     <fullName>Pending</fullName>
-                    <default>true</default>
+                    <default>false</default>
                     <label>Pending</label>
                 </value>
                 <value>
@@ -239,6 +254,7 @@
         <label>Tags</label>
         <length>255</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -247,8 +263,57 @@
         <fullName>PRM_Account_ID__c</fullName>
         <externalId>false</externalId>
         <label>Account ID</label>
-        <length>20</length>
+        <length>100</length>
         <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_OPID_AWR__c</fullName>
+        <externalId>false</externalId>
+        <label>OPID AWR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_OPID_SLA__c</fullName>
+        <externalId>false</externalId>
+        <label>OPID SLA</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_OPID_SWR__c</fullName>
+        <externalId>false</externalId>
+        <label>OPID SWR</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Record_Link__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(&quot;/&quot; &amp; Id, Name, &quot;_self&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Record Link</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -265,9 +330,10 @@
         <filters>
             <field>Core_MessageType__c</field>
             <operation>equals</operation>
-            <value>AGS Contact Entitlement</value>
+            <value>AGS Contact Entitlement 2.0</value>
         </filters>
         <label>AGS Contact Entitlement Messages</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>AGS_Contact_Entitlement_Messages_Today</fullName>
@@ -312,29 +378,17 @@
         <columns>Core_Payload__c</columns>
         <columns>Core_Created_Date_Time__c</columns>
         <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>All1</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_Payload__c</columns>
-        <filterScope>Everything</filterScope>
+        <filterScope>Mine</filterScope>
         <filters>
             <field>Core_MessageType__c</field>
             <operation>equals</operation>
             <value>Account Integration</value>
         </filters>
-        <filters>
-            <field>NAME</field>
-            <operation>equals</operation>
-            <value>IOM-16465570</value>
-        </filters>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>All1</fullName>
+        <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
@@ -346,14 +400,9 @@
         <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>CREATED_DATE</field>
+            <field>LAST_UPDATE</field>
             <operation>equals</operation>
             <value>TODAY</value>
-        </filters>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>Account Integration</value>
         </filters>
         <label>All Messages Today</label>
     </listViews>
@@ -537,42 +586,6 @@
         <label>My Messages</label>
     </listViews>
     <listViews>
-        <fullName>OPID_Payloads</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Status__c</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>Core_Payload__c</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>equals</operation>
-            <value>OPID Request</value>
-        </filters>
-        <label>OPID Payloads</label>
-    </listViews>
-    <listViews>
-        <fullName>PRM_Service_Cloud_Integrations</fullName>
-        <columns>NAME</columns>
-        <columns>Core_MessageType__c</columns>
-        <columns>Core_Payload__c</columns>
-        <columns>Core_Created_Date_Time__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MessageType__c</field>
-            <operation>contains</operation>
-            <value>Account Integration,Contact Integration</value>
-        </filters>
-        <filters>
-            <field>Core_Created_Date_Time__c</field>
-            <operation>greaterOrEqual</operation>
-            <value>1/1/2026 12:00 AM</value>
-        </filters>
-        <label>PRM Service Cloud Integrations</label>
-    </listViews>
-    <listViews>
         <fullName>Siebel_Quote_Messages</fullName>
         <columns>NAME</columns>
         <columns>Core_MessageType__c</columns>
@@ -590,6 +603,7 @@
     <nameField>
         <displayFormat>IOM-{0}</displayFormat>
         <label>Auto Sequence</label>
+        <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Integration Outbound Messages</pluralLabel>

@@ -5,19 +5,18 @@
   "id" : "c0460ff6-f1ee-4245-adab-e15060e2e3dd",
   "label" : "Grant Access",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:Core_ContactLookup",
-      "id" : "0f333f4d-19b1-431c-b3f0-702ba9c97666",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "715e84f4-28ac-453c-820b-f790f2977c14",
     "regionName" : "header",
     "type" : "region"
   }, {
     "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_ContactLookup",
+      "id" : "21f25eb1-8ecb-45d0-b2f6-e8e75fb549c6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : { },
       "componentName" : "c:Core_Contact_Entitlements_View",
       "id" : "6a057017-7e89-48dc-a98f-d7c30e60ec16",

@@ -6,7 +6,7 @@
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Core Platform Event Attempt</value>
+        <value>Core Platform Event Attributes</value>
     </caseValues>
     <fields>
         <label><!-- Batch Size --></label>
@@ -25,7 +25,6 @@
         <name>Core_Number_Of_Attempts__c</name>
     </fields>
     <fields>
-        <help><!-- In case of more than one email address enter using comma separated --></help>
         <label><!-- Support Email Address --></label>
         <name>Core_Support_Email_Address__c</name>
     </fields>

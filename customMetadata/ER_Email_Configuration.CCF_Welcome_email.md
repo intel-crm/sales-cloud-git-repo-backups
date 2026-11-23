@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Entitlements__c</field>
-        <value xsi:type="xsd:string">Client User</value>
+        <value xsi:type="xsd:string">CCF User</value>
     </values>
     <values>
         <field>Folder_Name__c</field>

@@ -1,0 +1,93 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" controller="EPUM_ContactEntitlementUtility" >
+    <aura:attribute name="isModalOpen" type="Boolean" default="false"/>
+    <aura:attribute name="data" type="sObject"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="tierType" type="String"/>
+    <aura:attribute name="tierDetail" type="String"/>
+    <aura:attribute name="intialMessage" type="String" default="Should any information seem incorrect please request a change in your "/>
+    <aura:attribute name="classObj" type="EPUM_ContactEntitlementUtility"/>
+    <aura:attribute name="totalRecords" type="Integer"/>
+    
+    <!-- Calling init handler -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <c:EPUM_RolesAndResponsibilityUtility aura:id="child" />
+
+    
+    <div class="slds-m-around_xx-large">
+        <!--Use aura:if tag to display/hide popup based on isModalOpen value-->  
+        <aura:if isTrue="{!v.isModalOpen}">
+            
+            <!-- Modal/Popup Box starts here-->
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-02" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="spinnerHolder slds-hide" aura:id="mySpinner" >
+                        <lightning:spinner alternativeText="Loading" size="small" />
+                    </div>
+                    <!-- Modal/Popup Box Header Starts here-->
+                    <header class="slds-modal__header">
+                        <lightning:buttonIcon iconName="utility:close"
+                                              onclick="{!c.closeModel}"
+                                              alternativeText="close"
+                                              variant="bare-inverse"
+                                              class="slds-modal__close"/>
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Roles &amp; Responsibilities</h2>
+                    </header>
+                    <!--Modal/Popup Box Body Starts here-->
+                    <div class="slds-modal__content slds-p-around--medium slds-text-body_small" id="modal-content-id-1">
+                        <p>{!v.intialMessage} <span style="color:blue">company settings</span>.
+                        </p>
+                        <div>
+                            <br/>
+                            <div style="font-weight:bold">{!v.tierType}</div>
+                            <p>{!v.tierDetail}</p>
+                        </div>
+                        <div  class="first-row-bold" style="height: 40% !important">
+                            <lightning:datatable
+                                                 keyField="id"
+                                                 data="{! v.data }"
+                                                 columns="{! v.columns }"
+                                                 hideCheckboxColumn="true"/>                          
+                        </div>
+                        <div class="slds-float_right slds-text-body_small">
+                            {!v.data.length} of {!v.totalRecords}
+							<aura:if isTrue="{!v.totalRecords > 5}">
+                                <lightning:button variant="base"
+                                              label="View All"
+                                              title="View All"
+                                              onclick="{!c.gotoURL}"/>
+                            </aura:if>                         
+                            
+                                                                    
+                        </div><br/>
+                        
+                        <div>
+                            <div style="slds-text-heading_medium"><b>Responsibility Description:</b></div>
+                            <p>Get information from Amit/Satish on the type of responsiblity and description for the same.</p>
+                        </div>
+                        <br/>
+                        <div class="slds-align_absolute-center"><!-- need change in url-->
+                            <lightning:button class="font-weight:6px" variant="base"
+                                              label="Manage Roles and Responsibilities"
+                                              title="Manage Roles and Responsibilities"
+                                              onclick="{!c.gotoURL}"/>
+                        </div>
+                        
+                    </div>
+                    
+                    <!--Modal/Popup Box Footer Starts here-->
+                    <!-- on click of close, it should navigate to homepage of mp Need to update logic-->
+                    <footer class="slds-modal__footer">
+                         <div class="slds-form-element">
+                        <lightning:button variant="brand"
+                                          label="Close"
+                                          title="Close"
+                                          onclick="{! c.closeModel }"/>
+                        </div>
+                    </footer>
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </aura:if>
+    </div>
+    
+</aura:component>

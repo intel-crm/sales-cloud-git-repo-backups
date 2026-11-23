@@ -1,36 +1,11 @@
-<apex:page controller="Core_HomePage_Messages" action="{!getkpiTextMsg}" >
-    <apex:includeLightning />
-    <apex:slds />
-    <div style="font-family: Calibri,sans-serif ;margin-left: -10px;" >
-        <apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme3'}">
-            
-            <table style="border: 1px solid black;">
+<apex:page controller="Core_HomePage_KPIMsg_Controller" action="{!getPSTformattedKPITime}" >
+    <table border="1" cellpadding="10">
         <tr>
-            <td style="font-family: Calibri,sans-serif;font-size:12.0pt">
-                <apex:outputText escape="false" value="{!IF(kpiheadermsg != NULL, kpiheadermsg ,'')}" ></apex:outputText>
-                <p>
-                <!--US710609: KPI Banner : Spelling change from PST to PT Added by Gopala Krishna Ch on 21/07/2020-->
-                <!--<b><u>{!$Label.Core_KPI_Updated}</u> &nbsp;</b> <apex:outputText style="font-weight:800" value="{!IF(lastRunPSTTimeString != NULL,lastRunPSTTimeString+' PT'+' (24-hour clock)','') } "></apex:outputText>  -->
-                <!--<b><u>KPI Last Update:</u> &nbsp;</b> <apex:outputText style="font-weight:800" value="{!IF(lastRunPSTTimeString != NULL,lastRunPSTTimeString+' PT'+' (24-hour clock)','') } "></apex:outputText>-->  
+            <td><p>
+                <b><u>KPI Last Update:</u> &nbsp;</b> <apex:outputText style="font-weight:800" value="{!lastRunPSTTimeString} PST"></apex:outputText>  
+       
                 </p>
-                <apex:outputText escape="false" value="{!IF(kpibodymsg != NULL, kpibodymsg ,'')}"></apex:outputText>
-</td>
+                <apex:outputText escape="false" value="{!$Label.Core_KPI_Message}"></apex:outputText></td>
         </tr>
     </table>
-           
-        </apex:outputPanel>
-         </div>
-        <apex:outputPanel rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
-            <div style="font-family: Salesforce Sans,Arial, sans-serif;align:" >
-            
-            <apex:outputText escape="false" value="{!IF(kpiheadermsg != NULL, kpiheadermsg ,'')}"></apex:outputText>
-            <p>
-                <!--US710609: KPI Banner : Spelling change from PST to PT Added by Gopala Krishna Ch on 21/07/2020-->
-                <!--<b><u>{!$Label.Core_KPI_Updated}</u> &nbsp;</b> <apex:outputText style="font-weight:800" value="{!IF(lastRunPSTTimeString != NULL,lastRunPSTTimeString+' PT'+' (24-hour clock)','') } "></apex:outputText>  -->
-                
-            </p>
-            <apex:outputText escape="false" value="{!IF(kpibodymsg != NULL, kpibodymsg ,'')}"></apex:outputText>
-            </div>
-        </apex:outputPanel>        
-  
 </apex:page>

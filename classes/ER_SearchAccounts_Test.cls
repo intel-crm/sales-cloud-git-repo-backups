@@ -39,7 +39,7 @@ private class ER_SearchAccounts_Test {
         insert acc;
        
         ER_SearchAccounts s_acc = new ER_SearchAccounts (acc.id,acc.Core_CIM_ID__c, acc, 5);
-        
+        System.assertEquals(acc != null, true, 'account detail is null');
         Test.startTest();
         //ER_SearchAccounts searchAccount = ER_SearchAccounts(s_acc);
         s_acc.compareTo(s_acc);

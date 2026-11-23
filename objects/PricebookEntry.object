@@ -127,22 +127,6 @@
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
-        <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PSG_Price_Book_Entry_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>createDerivedPriceAttributes</actionName>
         <type>Default</type>
     </actionOverrides>
@@ -171,7 +155,7 @@
     </fields>
     <fields>
         <fullName>IsActive</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>Pricebook2Id</fullName>
@@ -185,98 +169,22 @@
         <fullName>ProductCode</fullName>
     </fields>
     <fields>
-        <fullName>ProductSellingModelId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>StandardPrice</fullName>
     </fields>
     <fields>
         <fullName>UnitPrice</fullName>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>UseStandardPrice</fullName>
-        <trackHistory>true</trackHistory>
-    </fields>
-    <fields>
-        <fullName>core_cpq_minimum_order_qty__c</fullName>
-        <externalId>false</externalId>
-        <label>Minimum Order Qty</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>core_cpq_multiple_order_quantity__c</fullName>
-        <externalId>false</externalId>
-        <label>Multiple Order Qty</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>core_cpq_opn_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>OPN</label>
-        <length>50</length>
-        <required>false</required>
         <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>core_cpq_speed_nbr__c</fullName>
-        <externalId>false</externalId>
-        <label>Speed</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>true</trackHistory>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>core_cpq_unique_id__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <externalId>true</externalId>
-        <label>Unique Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>price_disty_cost__c</fullName>
-        <defaultValue>0</defaultValue>
-        <description>Represents the distributors cost that will be referred in quote lines.</description>
-        <label>Disty Cost</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>2</scale>
-        <trackHistory>true</trackHistory>
-        <type>Currency</type>
-    </fields>
-    <profileSearchLayouts>
-        <fields>PRODUCT.NAME</fields>
-        <fields>PRODUCT2.ACTIVE</fields>
-        <profileName>Partner</profileName>
-    </profileSearchLayouts>
     <searchLayouts>
         <searchResultsAdditionalFields>PRODUCT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT.CUSTOMER_PRODUCT_ID</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PRODUCT.DEFAULT_PRICE</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.DESCRIPTION</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRODUCT2.FAMILY_ENUM</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Product2.Core_Avail_for_New_Designs__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Product2.Core_Intel_vPro_Platform_Eligibility__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Product2.Core_OPN__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>PRODUCT2.ACTIVE</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Product2.Core_Sales_Visible_Flag__c</searchResultsAdditionalFields>
     </searchLayouts>
 </CustomObject>

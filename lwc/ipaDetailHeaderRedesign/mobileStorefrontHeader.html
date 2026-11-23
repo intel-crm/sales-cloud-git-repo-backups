@@ -1,0 +1,55 @@
+<template>
+	<div class="slds-grid slds-wrap detail-marquee detail-marquee-content slds-p-horizontal_large slds-p-top_large">
+		<div class="slds-col slds-size_1-of-1">
+			<div class="img-container">
+				<img src={logoUrl} alt="[Logo]" class="logo"></img>
+			</div>
+			<div class="mobile-header-title slds-p-top_large">
+				<h1 class="h2">{headline}</h1>
+				<div class="social-share-container">
+					<c-ipa-share email-body={headline} button-classes="inverse"></c-ipa-share>
+				</div>
+			</div>
+			<div class="slds-p-top_xxx-small">{tagline}</div>
+			<c-ipa-link external-url={companyInfo.websiteUrl} label={companyWebsiteLabel} analytics-page={pageName} class-name="color-white inverse" class="slds-p-top_x-large"></c-ipa-link>
+			<template if:true={partnerStatusLabel}>
+				<div class="badge-container partner-status slds-p-top_medium">
+					<span class={badgeClass}></span>
+					<div class="badge-name">{partnerStatusLabel}</div>
+				</div>
+			</template>
+			<div class="slds-p-top_x-large slds-p-bottom_xx-large">
+				<c-core-intc-text-block button-classes="color-white inverse" described-by={companyDescriptionLabel} no-more-line="true" size="x-small">
+					<p>{companyInfo.description}</p>
+				</c-core-intc-text-block>
+			</div>
+			<c-ipa-contact-partner-button
+        analytics-details={contactPartnerAnalyticsDetails}
+        button-class="button-inverse text-bold"
+        modal-data={contactPartnerModalData}>
+			</c-ipa-contact-partner-button>
+		</div>
+		<div class="slds-col slds-size_1-of-1 slds-p-top_large">
+			<c-core-intc-tabset name="marqueeTabs" ontabchange={handleTabChange}>
+        <template for:each={tabs} for:item='tab'>
+          <c-core-intc-tab key={tab.value} heading={tab.value}></c-core-intc-tab>
+        </template>
+      </c-core-intc-tabset>
+		</div>
+	</div>
+	<template if:true={contactPartnerVisible}>
+		<c-ipa-sticky full-width>
+			<div slot="sticky">
+				<div class="sticky-container detail-marquee">
+					<div class="sticky-contact-button slds-p-vertical_medium slds-m-horizontal_medium">
+						<c-ipa-contact-partner-button 
+              analytics-details={contactPartnerAnalyticsDetails}
+							button-class="button-inverse text-bold"
+              modal-data={contactPartnerModalData}>
+						</c-ipa-contact-partner-button>
+					</div>
+				</div>
+			</div>
+		</c-ipa-sticky>
+	</template>
+</template>

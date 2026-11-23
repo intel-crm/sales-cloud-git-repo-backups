@@ -16,17 +16,52 @@
         <field>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</field>
     </columns>
     <crossFilters>
+        <criteriaItems>
+            <column>PRM_Partner_Benefit_Id__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Enhanced</value>
+        </criteriaItems>
         <operation>with</operation>
         <primaryTableColumn>Account$Id</primaryTableColumn>
-        <relatedTable>Core_Account_Group_Member__c</relatedTable>
-        <relatedTableJoinColumn>Core_Intel_Account_Id__c</relatedTableJoinColumn>
+        <relatedTable>PRM_AccountBenefitAssociation__c</relatedTable>
+        <relatedTableJoinColumn>PRM_Account_Id__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>PMP_Is_Published_Ind__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PMP_Company_Lifecycle_Status_Nm__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Draft</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Account$Id</primaryTableColumn>
+        <relatedTable>PMP_Company__c</relatedTable>
+        <relatedTableJoinColumn>PMP_Account_Id__c</relatedTableJoinColumn>
+    </crossFilters>
+    <crossFilters>
+        <criteriaItems>
+            <column>Contact.Core_Primary_Contact__c</column>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <operation>with</operation>
+        <primaryTableColumn>Account$Id</primaryTableColumn>
+        <relatedTable>AccountContactRelation-Contact</relatedTable>
+        <relatedTableJoinColumn>Account</relatedTableJoinColumn>
     </crossFilters>
     <description>Accounts and contacts with cross filters:
 Partner Admin
 Contains Marketplace Enhanced 
 Without IPATEST on accounts names</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4) AND 5 AND 6</booleanFilter>
         <criteriaItems>
             <column>Account$Name</column>
             <columnToColumn>false</columnToColumn>
@@ -40,34 +75,6 @@ Without IPATEST on accounts names</description>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Partner Admin</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Offering Editor</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Marketing Specialist</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account$Core_Intel_Partner_Alliance_PartnerGroup__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Contacts.Contact_Entitlements__r$Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Complete</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

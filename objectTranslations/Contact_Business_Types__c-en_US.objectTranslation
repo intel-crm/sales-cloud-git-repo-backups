@@ -38,14 +38,21 @@
             <translation><!-- Approved --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Removal - Pending</masterLabel>
-            <translation><!-- Removal - Pending --></translation>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Removed</masterLabel>
-            <translation><!-- Removed --></translation>
+            <masterLabel>Rejection - Pending</masterLabel>
+            <translation><!-- Rejection - Pending --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Contact Business Types Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- CBT cannot be approved due one or more validations errors.
@@ -54,7 +61,7 @@
         <name>CBT_Validations</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- DZP Registration Request for the given email ID is in Open/Pending/Rejected status. --></errorMessage>
+        <errorMessage><!-- Registration record is still Pending --></errorMessage>
         <name>Registration_Record_is_still_Pending</name>
     </validationRules>
 </CustomObjectTranslation>

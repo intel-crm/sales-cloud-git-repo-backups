@@ -5,8 +5,8 @@
     <decisions>
         <name>Verify_Existing_ACM_Queue_Records</name>
         <label>Verify Existing ACM Queue Records</label>
-        <locationX>446</locationX>
-        <locationY>539</locationY>
+        <locationX>270</locationX>
+        <locationY>431</locationY>
         <defaultConnector>
             <targetReference>Create_ACM_Integration_Message_Queue</targetReference>
         </defaultConnector>
@@ -53,70 +53,6 @@
             <label>Record with New Status</label>
         </rules>
     </decisions>
-    <decisions>
-        <name>VerifyInsertUpdateConditions</name>
-        <label>VerifyInsertUpdateConditions</label>
-        <locationX>908</locationX>
-        <locationY>323</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>InsertUpdateCondition</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>$Record__Prior</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.Name</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.ER_Active__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.ER_Count_of_Customer_Master_Files__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.ER_Count_of_Contacts__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.ER_Inactive_Customer_Master_Files__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>$Record.ER_Inactive_Contacts__c</leftValueReference>
-                <operator>IsChanged</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Existing_ACM_Integration_Message_Queue_Records</targetReference>
-            </connector>
-            <label>InsertUpdateCondition</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
     <interviewLabel>CMFG field updates {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CMFG field updates</label>
@@ -142,16 +78,12 @@
     <recordCreates>
         <name>Create_ACM_Integration_Message_Queue</name>
         <label>Create ACM Integration Message Queue</label>
-        <locationX>842</locationX>
-        <locationY>647</locationY>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_Core_log_Entry_Rec_for_ACM_Integration</targetReference>
-        </connector>
+        <locationX>490</locationX>
+        <locationY>539</locationY>
         <inputAssignments>
             <field>Content_Type__c</field>
             <value>
-                <elementReference>$Label.ER_ACM_Content_CMFG</elementReference>
+                <stringValue>A&amp;E CMF Group Integration</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -175,7 +107,7 @@
         <inputAssignments>
             <field>Module_Name__c</field>
             <value>
-                <elementReference>$Label.ER_ACM_Module_Name</elementReference>
+                <stringValue>BAG</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -187,63 +119,21 @@
         <object>ACM_Integration_Message_Queue__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
-    <recordCreates>
-        <name>Create_Core_log_Entry_Rec_for_ACM_Integration</name>
-        <label>Create Core log Entry Rec for ACM Integration</label>
-        <locationX>314</locationX>
-        <locationY>755</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>CMFG field updates</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Medium</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_sObjectType__c</field>
-            <value>
-                <stringValue>ACM_Integration_Message_Queue__c</stringValue>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
     <recordLookups>
         <name>Get_Existing_ACM_Integration_Message_Queue_Records</name>
         <label>Get Existing ACM Integration Message Queue Records</label>
-        <locationX>446</locationX>
-        <locationY>431</locationY>
+        <locationX>270</locationX>
+        <locationY>323</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Verify_Existing_ACM_Queue_Records</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_Core_log_Entry_Rec_for_ACM_Integration</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Content_Type__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Label.ER_ACM_Content_CMFG</elementReference>
+                <stringValue>A&amp;E CMF Group Integration</stringValue>
             </value>
         </filters>
         <filters>
@@ -257,7 +147,7 @@
             <field>Module_Name__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>$Label.ER_ACM_Module_Name</elementReference>
+                <stringValue>BAG</stringValue>
             </value>
         </filters>
         <filters>
@@ -275,10 +165,7 @@
         <name>Update_Existing_Record_to_New</name>
         <label>Update Existing Record to New</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
-        <faultConnector>
-            <targetReference>Create_Core_log_Entry_Rec_for_ACM_Integration</targetReference>
-        </faultConnector>
+        <locationY>539</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -296,11 +183,54 @@
         <object>ACM_Integration_Message_Queue__c</object>
     </recordUpdates>
     <start>
-        <locationX>782</locationX>
+        <locationX>144</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>VerifyInsertUpdateConditions</targetReference>
+            <targetReference>Get_Existing_ACM_Integration_Message_Queue_Records</targetReference>
         </connector>
+        <filterLogic>or</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ER_Active__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ER_Count_of_Customer_Master_Files__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ER_Inactive_Customer_Master_Files__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ER_Count_of_Contacts__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>ER_Inactive_Contacts__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
         <object>ER_Customer_Master_File_Group__c</object>
         <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Contains the information about the sub-categories of the Solution category to be shown in MP as featured solutions.</description>
+    <fields>
+        <fullName>Category_Id__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Category Id</label>
+        <length>30</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PIM_Category_Id__c</fullName>
+        <description>Pim category Id of desired category shown as featured category</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PIM Category Id</label>
+        <length>80</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Active_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>check for featured to be shown on the homepage</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>PMP_SearchFeaturedCategory_Config</label>
+    <pluralLabel>PMP_Featured_Category_Configs</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

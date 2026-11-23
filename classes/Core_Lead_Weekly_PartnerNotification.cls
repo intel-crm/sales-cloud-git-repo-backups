@@ -14,6 +14,6 @@ Aran Wongsaprome          12/06/2016              Initial Version
 global without sharing class Core_Lead_Weekly_PartnerNotification implements schedulable{
     // Main method that gets called by the scheduler and is required
     global void execute(SchedulableContext sc){
-        Database.executeBatch(new Core_PartnerLead_ReminderEmail(), Integer.valueOf(Label.Core_Reminder_Email_Batch_Size));
+        Database.executeBatch(new Core_PartnerLead_ReminderEmail(), 100);
     }
 }

@@ -11,24 +11,57 @@ Modification Log :
 
 public without sharing class ER_DuplicationUtility {
     
-    /*commented as part of EBR framework and implemented this logic with flows
     // Checks if there is duplicate regisrtation request and rejects duplicate
     public static void rejectDuplicates(List<PRM_Registration_Request__c> regReqList,Map<Id, PRM_Registration_Request__c> oldRequestMap){
         List<PRM_Registration_Request__c> duplicateRequest = new List<PRM_Registration_Request__c>();
+        Map<String,PRM_Registration_Request__c> duplicateRequestMap = New Map<String,PRM_Registration_Request__c>();
         Boolean isDuplicate;
         Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
         Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
         Id adminRegistrationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId();
         
         if(regReqList.size()>0){
-            for(PRM_Registration_Request__c reg_Request : regReqList) {
+            Set<String> conLoginIdsList = New Set<String>();
+            Set<String> accountNamesList = New Set<String>();
+            Set<String> emailIdsList = New Set<String>();
+            Set<String> recordTypeIdsList = New Set<String>();
+            for(PRM_Registration_Request__c reg_Request1 : regReqList) {
+                // For admin and 2nd step of registration
+                if((oldRequestMap == null && (reg_Request1.RecordTypeId == adminRegistrationRT || reg_Request1.RecordTypeId == accCreateRequestId) && reg_Request1.PRM_Status__c == 'New') || 
+                   (reg_Request1.RecordTypeId == accCreateRequestId && oldRequestMap != null && oldRequestMap.containsKey(reg_Request1.Id) && 
+                    oldRequestMap.get(reg_Request1.Id).RecordTypeId == emailVerificationRT && reg_Request1.PRM_Status__c == 'New')){
+                        
+                        // Handle null, empty and without passing attribute
+                        if(reg_Request1.PRM_Account_Name__c != null && String.isNotBlank(reg_Request1.PRM_Account_Name__c)  
+                           && reg_Request1.PRM_Contact_Login_ID__c != null && String.isNotBlank(reg_Request1.PRM_Contact_Login_ID__c) 
+                           && reg_Request1.PRM_Email_ID__c != null && String.isNotBlank(reg_Request1.PRM_Email_ID__c)
+                           && reg_Request1.PRM_Status__c != null && String.isNotBlank(reg_Request1.PRM_Status__c)){                              
+                               conLoginIdsList.add(reg_Request1.PRM_Contact_Login_ID__c);
+                               accountNamesList.add(reg_Request1.PRM_Account_Name__c);
+                               emailIdsList.add(reg_Request1.PRM_Email_ID__c);
+                               recordTypeIdsList.add(reg_Request1.RecordTypeId);
+                           }                       
+                    }
+            }
+            if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible()){              
+                for(PRM_Registration_Request__c  dupReq : [Select Id,Name,RecordTypeId,PRM_Account_Name__c,PRM_Contact_Login_ID__c,PRM_Email_ID__c,PRM_Partner_Type__c,PRM_Status__c,PRM_Contact_Salesforce_ID__c
+                                                           from PRM_Registration_Request__c where PRM_Account_Name__c IN: accountNamesList AND 
+                                                           PRM_Contact_Login_ID__c IN: conLoginIdsList AND PRM_Email_ID__c IN: emailIdsList
+                                                           AND (((PRM_Status__c != :Label.PRM_Status_Rejected) OR (RecordTypeId =:adminRegistrationRT)) AND CreatedDate = LAST_N_DAYS:1) AND
+                                                           RecordTypeId IN: recordTypeIdsList]){
+                                                               if(!duplicateRequestMap.containsKey(dupReq.PRM_Account_Name__c+''+dupReq.PRM_Contact_Login_ID__c+''+dupReq.PRM_Email_ID__c+''+dupReq.RecordTypeId)){
+                                                                   duplicateRequestMap.put(dupReq.PRM_Account_Name__c+''+dupReq.PRM_Contact_Login_ID__c+''+dupReq.PRM_Email_ID__c+''+dupReq.RecordTypeId,dupReq);
+                                                               }
+                                                           }
+            }
+			for(PRM_Registration_Request__c reg_Request : regReqList) {
                 // For admin and 2nd step of registration
                 if((oldRequestMap == null && (reg_Request.RecordTypeId == adminRegistrationRT || reg_Request.RecordTypeId == accCreateRequestId) && reg_Request.PRM_Status__c == 'New') || 
                    (reg_Request.RecordTypeId == accCreateRequestId && oldRequestMap != null && oldRequestMap.containsKey(reg_Request.Id) && 
                     oldRequestMap.get(reg_Request.Id).RecordTypeId == emailVerificationRT && reg_Request.PRM_Status__c == 'New')){
                         
                         // Handle null, empty and without passing attribute
-                        if(reg_Request.PRM_Account_Name__c != null && String.isNotBlank(reg_Request.PRM_Account_Name__c)  
+                      /*  if(reg_Request.PRM_Account_Name__c != null && String.isNotBlank(reg_Request.PRM_Account_Name__c)  
                            && reg_Request.PRM_Contact_Login_ID__c != null && String.isNotBlank(reg_Request.PRM_Contact_Login_ID__c) 
                            && reg_Request.PRM_Email_ID__c != null && String.isNotBlank(reg_Request.PRM_Email_ID__c)
                            && reg_Request.PRM_Status__c != null && String.isNotBlank(reg_Request.PRM_Status__c)){
@@ -36,21 +69,20 @@ public without sharing class ER_DuplicationUtility {
                                duplicateRequest = [Select Id,Name,RecordTypeId,PRM_Account_Name__c,PRM_Contact_Login_ID__c,PRM_Email_ID__c,PRM_Partner_Type__c,PRM_Status__c,PRM_Contact_Salesforce_ID__c
                                                    from PRM_Registration_Request__c where PRM_Account_Name__c =: reg_Request.PRM_Account_Name__c AND 
                                                    PRM_Contact_Login_ID__c =: reg_Request.PRM_Contact_Login_ID__c AND PRM_Email_ID__c =: reg_Request.PRM_Email_ID__c
-                                                   AND Entitlement_Details__c =: reg_Request.Entitlement_Details__c
                                                    AND (((PRM_Status__c != :Label.PRM_Status_Rejected) OR (RecordTypeId =:adminRegistrationRT)) AND CreatedDate = LAST_N_DAYS:1) AND
                                                    RecordTypeId =: reg_Request.RecordTypeId];
                                  }
-                           }
+                           }  */
                         
-                        if(duplicateRequest.size()>0){
+                        if(duplicateRequestMap.get(reg_Request.PRM_Account_Name__c+''+reg_Request.PRM_Contact_Login_ID__c+''+reg_Request.PRM_Email_ID__c+''+reg_Request.RecordTypeId) != null){
                             isDuplicate = false;
                             if(String.IsNotBlank(reg_Request.PRM_Contact_Salesforce_ID__c)){
-                                for(PRM_Registration_Request__c dupRegReq: duplicateRequest){
-                                    if(dupRegReq.PRM_Contact_Salesforce_ID__c == reg_Request.PRM_Contact_Salesforce_ID__c){
+                                //for(PRM_Registration_Request__c dupRegReq: duplicateRequest){
+                                    if(duplicateRequestMap.get(reg_Request.PRM_Account_Name__c+''+reg_Request.PRM_Contact_Login_ID__c+''+reg_Request.PRM_Email_ID__c+''+reg_Request.RecordTypeId).PRM_Contact_Salesforce_ID__c == reg_Request.PRM_Contact_Salesforce_ID__c){
                                         isDuplicate = true;
-                                        break;
+                                        //break;
                                     }
-                                }
+                                //}
                             }else{
                                 isDuplicate = true;
                             }
@@ -66,7 +98,7 @@ public without sharing class ER_DuplicationUtility {
                     }
             }                      
         }        
-    }*/
+    }
     
     // Checks with CIM system and sets dup status to either No dup, full dup or part dup
     /*public static void DupCheckOld(List<PRM_Registration_Request__c> regReqList,Map<Id,PRM_Registration_Request__c> oldRegReqMap){

@@ -9,8 +9,8 @@
 *******************************************************************************************************/
 
 public without sharing class Core_MDF_InactivateAccount {
-    
-    /****************************************************************************************************** 
+
+/****************************************************************************************************** 
 Class Name:         AccountInactivationWrapper
 @parameters:        N/A
 Description:        Wrapper which will hold return values of all the validation check to inactivate account
@@ -38,13 +38,8 @@ Modified By:        Date:      Changes:
         public Integer activityCount=0;
         @AuraEnabled
         public Boolean hasOpenEscalationRecords=false;
-        @AuraEnabled
-        public Boolean hasCampaigns=false;
-        @AuraEnabled
-        public Integer campaignCount=0;
-      
     }
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        isAccountEligibileForInactivation
 @return  :          Wrapper which will hold the values of all the variables.
 @parameters:        Account Id
@@ -58,7 +53,6 @@ Modified By:        Date:      Changes:
         AccountInactivationWrapper acctWrap  = new AccountInactivationWrapper();
         AccountInactivationWrapper claimAcctWrap = new AccountInactivationWrapper();
         AccountInactivationWrapper activitiesAcctWrap = new AccountInactivationWrapper();
-        AccountInactivationWrapper campAcctWrap = new AccountInactivationWrapper();
         
         try{
             //Created Account instance to update account fields.
@@ -73,34 +67,29 @@ Modified By:        Date:      Changes:
                         acctWrap.isAutoTransferAccount = isAutoTransAcct(accVar);
                         acctWrap.hasAllocation = isAllocationAvailable(accVar);
                         acctWrap.hasBankmappings = hasAccntBankMappings(accVar);
-                        
+
                         activitiesAcctWrap = isActivitiesAssociated(accVar);
                         acctWrap.hasActivities = activitiesAcctWrap.hasActivities;
                         acctWrap.activityCount = activitiesAcctWrap.activityCount;
-                        
+
                         claimAcctWrap = isClaimsAssociated(accVar);
                         acctWrap.hasActiveClaims = claimAcctWrap.hasActiveClaims;
                         acctWrap.claimCount = claimAcctWrap.claimCount;                        
                         //For open Escalations
                         acctWrap.hasOpenEscalationRecords = hasOpenEscalations(accVar);
-
-                        campAcctWrap = isCampaignsAssociated(accVar);
-                        acctWrap.hasCampaigns = campAcctWrap.hasCampaigns;
-                        acctWrap.campaignCount = campAcctWrap.campaignCount;  
                     }
                 } 
             }
             //When account is valid for Inactivation, Account Active field will be updated
-            if((!acctWrap.isTopVirtualNode) && (!acctWrap.isDeactivated) && (!acctWrap.isAutoTransferAccount) && (!acctWrap.hasAllocation) && (!acctWrap.hasActiveClaims) && (!acctWrap.hasActivities) && (!acctWrap.hasBankmappings) && (!acctWrap.hasOpenEscalationRecords) && (!acctWrap.hasCampaigns)){
+            if((!acctWrap.isTopVirtualNode) && (!acctWrap.isDeactivated) && (!acctWrap.isAutoTransferAccount) && (!acctWrap.hasAllocation) && (!acctWrap.hasActiveClaims) && (!acctWrap.hasActivities) && (!acctWrap.hasBankmappings) && (!acctWrap.hasOpenEscalationRecords)){
                 accVar.Core_MDF_Active_Ind__c = false;
                 Database.update (accVar);
             }
             return acctWrap;  
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
-    /****************************************************************************************************** 
+  /****************************************************************************************************** 
 Method Name:        isUserEligibiletoInactivate
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        N/A
@@ -115,10 +104,9 @@ Modified By:        Date:      Changes:
             Boolean hasCustomPermission = FeatureManagement.checkPermission(Label.Core_MDF_Account_Inactivation_Deletion_Access);
             return hasCustomPermission;
         } 
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     } 
-    /****************************************************************************************************** 
+ /****************************************************************************************************** 
 Method Name:        isTopVirtualNode
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -135,10 +123,9 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
-    /****************************************************************************************************** 
+ /****************************************************************************************************** 
 Method Name:        isDeactivatedAccount
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -155,10 +142,9 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        isAutoTransAcct 
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -176,10 +162,9 @@ Modified By:        Date:      Changes:
             }
             return FALSE;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-            return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        isAllocationAvailable
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -190,42 +175,16 @@ Modified By:        Date:      Changes:
     @AuraEnabled 
     Public static Boolean isAllocationAvailable (Account acntVar){
         try{
-            //List to Check if the account has any allocations
-            List<PartnerFundAllocation> pfaList = [SELECT Id,Budget.Core_MDF_Program_Nm__c,Core_MDF_Budget_Type__c,Core_MDF_Available_Allocation_Amount__c,Core_MDF_Available_Activity_Alloc_Amt__c FROM PartnerFundAllocation WHERE channelpartnerid =:acntVar.Id];             
-            list<String> progBudLst=new List<String>();
-            Map<String,Boolean> isActivityAvailAmountBased = new Map<String,Boolean>();
-            Boolean result=false;
-            if ( pfaList !=Null &&  pfaList.size()>0 ){
-                for(PartnerFundAllocation alloc:pfaList){
-                    String prgBudTypeKey = alloc.Budget.Core_MDF_Program_Nm__c+':'+alloc.Core_MDF_Budget_Type__c;
-                    if(prgBudTypeKey!=Null){
-                        progBudLst.add(prgBudTypeKey);
-                    }  
-                }
+             //List to Check if the account has any allocations
+            List<PartnerFundAllocation> pfaList = [SELECT Id FROM PartnerFundAllocation WHERE channelpartnerid =:acntVar.Id AND Core_MDF_Available_Allocation_Amount__c > 0 ];
+            if ( pfaList !=Null &&  pfaList.size()>0 ){                                         
+                return TRUE;                    
             }
-            if (progBudLst !=Null && progBudLst.size()>0){
-                isActivityAvailAmountBased = Core_MDF_PMBServiceHandler.isActAvailAmtValidationReq(progBudLst);
-            }
-            if (pfaList !=Null && pfaList.size()>0){ 
-                for(PartnerFundAllocation pfa:pfaList){
-                    String uniqueKey = pfa.Budget.Core_MDF_Program_Nm__c+':'+pfa.Core_MDF_Budget_Type__c;
-                    if((isActivityAvailAmountBased.containsKey(uniqueKey) && isActivityAvailAmountBased.get(uniqueKey) && pfa.Core_MDF_Available_Activity_Alloc_Amt__c > 0) ||
-                       ((!isActivityAvailAmountBased.containsKey(uniqueKey)||(isActivityAvailAmountBased.containsKey(uniqueKey)&& !isActivityAvailAmountBased.get(uniqueKey))) && 
-                        pfa.Core_MDF_Available_Allocation_Amount__c > 0)){
-                           result=true;
-                            break;
-                        } 
-                    else{
-                        result=false;
-                    }
-                } 
-            }
-            return result;           
+            return FALSE; 
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        isClaimsAssociated
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -237,7 +196,7 @@ Modified By:        Date:      Changes:
     Public static AccountInactivationWrapper isClaimsAssociated (Account accontVar){
         try{
             AccountInactivationWrapper claimWrapper = new AccountInactivationWrapper ();
-            
+
             //Fetch claim status from custom label
             Set<String> claimStatusSet = new Set<String>();
             String claimStatusList = System.label.Core_MDF_Claim_Status_For_Account_Inactive;
@@ -254,10 +213,9 @@ Modified By:        Date:      Changes:
             }
             return claimWrapper;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}  
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}  
     } 
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        isActivitiesAssociated
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -269,7 +227,7 @@ Modified By:        Date:      Changes:
     Public static AccountInactivationWrapper isActivitiesAssociated(Account acountVar){
         try{
             AccountInactivationWrapper activitiesWrap = new AccountInactivationWrapper();
-            
+
             //Fetch partnerfundrequest status from custom label
             Set<String> pfrStatusSet = new Set<String>();
             String pfrStatusList = System.label.Core_MDF_Activity_Status_Check_for_Inactive_Account;
@@ -286,10 +244,9 @@ Modified By:        Date:      Changes:
             }
             return activitiesWrap;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;} 
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;} 
     }    
-    /****************************************************************************************************** 
+/****************************************************************************************************** 
 Method Name:        hasAccntBankMappings
 @return  :          wrapper which will hold the values of all the validation checks.
 @parameters:        Account record
@@ -297,7 +254,7 @@ Description:        This method is used to check account bank mapping record
 Added By: VD        Accenture - 01/04/2019
 Modified By:        Date:      Changes: 
 *******************************************************************************************************/
-    @AuraEnabled
+     @AuraEnabled
     Public static Boolean hasAccntBankMappings(Account accountVar){
         Boolean hasBankMappingRecord = FALSE;
         try{
@@ -316,8 +273,7 @@ Modified By:        Date:      Changes:
             }
             return hasBankMappingRecord;
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-        return null;}
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
     
     /****************************************************************************************************** 
@@ -337,6 +293,7 @@ Modified By:        Date:      Changes:
                 where ((RecordType.DeveloperName =: Label.Core_MDF_LateClaim_RecordType and Core_MDF_Co_Marketing_Activity_id__c != null and Core_MDF_Co_Marketing_Activity_id__r.ChannelPartnerId =: accountVar.Id) OR
                        (RecordType.DeveloperName =: Label.Core_MDF_ClaimCaseReviewResult_RecordType  and Core_MDF_Case_ID_Number_id__c != null and Core_MDF_Case_ID_Number_id__r.AccountId =: accountVar.Id)) AND Core_MDF_Claim_Number_id__c = NULL AND Core_MDF_Escalation_Status_nm__c != : Label.Core_MDF_Exception_Cancelled_Status AND Core_MDF_Escalation_Status_nm__c != : Label.Core_MDF_Exception_Denied_Status
             ]);
+            System.debug('mapOfOpenEsclations :::'+mapOfOpenEsclations);
             if(mapOfOpenEsclations!=null && mapOfOpenEsclations.size()>0){
                 //open escalation
                 return hasOpenEscalationRecord = TRUE;
@@ -347,36 +304,4 @@ Modified By:        Date:      Changes:
             return null;
         }
     }
-        /****************************************************************************************************** 
-Method Name:        isCampaignsAssociated
-@return  :          wrapper which will hold the values of all the validation checks.
-@parameters:        Account record
-Description:        This method is used to check Campaign associated with this account whose status are in Planned/In-Progress
-Added By: VD        Accenture - 01/04/2019
-Modified By:        Date:      Changes: 
-*******************************************************************************************************/
-@AuraEnabled
-Public static AccountInactivationWrapper isCampaignsAssociated(Account acountVar){
-    try{
-        AccountInactivationWrapper campaignsWrap = new AccountInactivationWrapper();
-        
-        //Fetch campaign status from custom label
-        Set<String> campStatusSet = new Set<String>();
-        String campStatusList = System.label.Core_MDF_Campaign_Status_Check_for_Inactive_Account;
-        if(!String.IsBlank(campStatusList)){
-            for(String campStatus : campStatusList.split(';')){
-                campStatusSet.add(campStatus);
-            }
-        }
-        //List to store campaigns which are not in Completed,Cancelled status
-        List<Campaign> cmpList = [SELECT Id FROM Campaign WHERE Status NOT  IN:campStatusSet AND Core_MDF_Account__c =:acountVar.Id];
-        if (cmpList != Null && cmpList.size()>0 ){
-            campaignsWrap.hasCampaigns = TRUE;
-            campaignsWrap.campaignCount = cmpList.size();
-        }
-        return campaignsWrap;
-    }
-    catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);
-     return null;} 
-}  
 }

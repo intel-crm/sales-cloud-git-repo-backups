@@ -56,6 +56,10 @@
         <label><!-- Recipient --></label>
         <name>PRM_Recipient__c</name>
         <picklistValues>
+            <masterLabel>Contact Relationship: Partner Admin</masterLabel>
+            <translation><!-- Contact Relationship: Partner Admin --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Contact Relationship: Primary Contact</masterLabel>
             <translation><!-- Contact Relationship: Primary Contact --></translation>
         </picklistValues>
@@ -100,18 +104,6 @@
             <translation><!-- Public Group: AGS_IPA Registration Approvers --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Public Group: CIMPRIME Support and admin group</masterLabel>
-            <translation><!-- Public Group: CIMPRIME Support and admin group --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Public Group: IPA - All Intel Admin Users</masterLabel>
-            <translation><!-- Public Group: IPA - All Intel Admin Users --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Public Group: L2 IPA Support</masterLabel>
-            <translation><!-- Public Group: L2 IPA Support --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Public Group: PMP - All Intel Admin Users</masterLabel>
             <translation><!-- Public Group: PMP - All Intel Admin Users --></translation>
         </picklistValues>
@@ -120,8 +112,8 @@
             <translation><!-- Public Group: PRM - MP Admin Temp --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Public Group: PRM Tech Email Recipient</masterLabel>
-            <translation><!-- Public Group: PRM Tech Email Recipient --></translation>
+            <masterLabel>Public Group: PRM_IPAAZURECommunication</masterLabel>
+            <translation><!-- Public Group: PRM_IPAAZURECommunication --></translation>
         </picklistValues>
     </fields>
     <fields>

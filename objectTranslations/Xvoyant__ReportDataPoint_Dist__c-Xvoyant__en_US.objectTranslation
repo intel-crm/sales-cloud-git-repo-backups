@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ReportDataPoint_Dist</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ReportDataPoint_Dist</value>
+    </caseValues>
+    <fields>
+        <label><!-- date --></label>
+        <name>Xvoyant__date__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal progress --></label>
+        <name>Xvoyant__goalProgress__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2g Goal --></label>
+        <name>Xvoyant__goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- jobId --></label>
+        <name>Xvoyant__jobId__c</name>
+    </fields>
+    <fields>
+        <label><!-- p2r --></label>
+        <name>Xvoyant__p2r__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Goal Period Revenue --></label>
+        <name>Xvoyant__revenueGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- Revenue --></label>
+        <name>Xvoyant__revenue__c</name>
+    </fields>
+    <fields>
+        <label><!-- userId --></label>
+        <name>Xvoyant__userId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

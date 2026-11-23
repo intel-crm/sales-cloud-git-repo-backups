@@ -227,8 +227,8 @@
     <fields>
         <fullName>Core_MDF_Program_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
-        <description>The program, the rule should apply to.</description>
-        <inlineHelpText>The program, the rule should apply to.</inlineHelpText>
+        <description>The program, the rule should apply to. (CCF/DCF/SPCF)</description>
+        <inlineHelpText>The program, the rule should apply to. (CCF/DCF/SPCF)</inlineHelpText>
         <label>Program</label>
         <referenceTo>ChannelProgram</referenceTo>
         <relationshipLabel>Hold Criteria List</relationshipLabel>
@@ -334,14 +334,8 @@
             <value>TODAY</value>
         </filters>
         <label>Active Hold Criteria List</label>
-        <language>en_US</language>
         <sharedTo>
-            <group>CORE_MDF_CCP_CCFB_All</group>
-            <group>CORE_MDF_CCP_CCF_ALL</group>
-            <group>CORE_MDF_CCP_DCF_ALL</group>
-            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
-            <group>Core_MDF_CCP_Internal_Retail_Geo_Groups</group>
-            <group>Core_MDF_CCP_SPCF_All</group>
+            <group>Core_All_Users_CCP_Internal</group>
         </sharedTo>
     </listViews>
     <nameField>

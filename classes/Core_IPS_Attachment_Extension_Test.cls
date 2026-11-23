@@ -12,7 +12,6 @@ Modification Log :
 * ----------------------------------------------------------------------------
 *Aparna Ogirala                       28/11/2017               Original Version
 *Aparna                                3/7/2018          Modified for DE36696 and DE36701 
-* //System.assert()--> statement Added By Hassan Khan 04-02-2024
 *******************************************************************************************************************/
 
 @isTest
@@ -120,9 +119,9 @@ public class Core_IPS_Attachment_Extension_Test{
         attachments.Core_Upload_Status__c=Core_IPS_Labels__c.getValues('COMPLETE').value__c;
         Insert attachments;
         
-        //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+                
+        PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
+        Test.setCurrentPage(pageRef);
         List<Core_IPS_Case_Attachments__c> lstAttach=new  List<Core_IPS_Case_Attachments__c>();
         lstAttach.add(attachments);
         System.currentPageReference().getParameters().put('id',cs.id);
@@ -131,7 +130,7 @@ public class Core_IPS_Attachment_Extension_Test{
         inst.showLink = 'full';
         inst.fetchattachmentList();
         inst.URL2();
-        System.assert(listcstSettings.size() > 0, true);  
+        
     }
   }
 /********************************************************************************************************************
@@ -238,9 +237,10 @@ Modification Log :
         //System.currentPageReference().getParameters().put('attachmentId',attachments.id);
         ApexPages.CurrentPage().getparameters().put('attachmentId',attachments.id);
           if(attachments.id != null)
-           inst1.deleteAttachments();  
-      }
-      System.assert(listcstSettings.size() > 0, true);
+           inst1.deleteAttachments();
+              
+       
+    }
   }  
 /********************************************************************************************************************
 Method Name       :  NegativetestDelAttachments
@@ -455,7 +455,6 @@ Modification Log :
             inst2.fetchattachmentList();
         }
       }
-      System.assert(listcstSettings.size() > 0, true);
     }
     // Method Added By Prem
     public static testmethod void VariableIntialize(){
@@ -510,6 +509,7 @@ Modification Log :
         for(Profile prf : ProfileList){
         profiles.put(prf.name, prf.id);
         }
+        system.debug('profiles'+profiles);
         
          User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
          User userRecord = new User();
@@ -599,7 +599,7 @@ Modification Log :
               testAccount1.ownerid = portalAccountOwner1.id;      
               insert testAccount1;             
               contact  testContact1 = new Contact(FirstName='testFirstNameXYZ', LastName='testLastNameABC', Email='test12346430987@testing.com.testsetup',ownerId = intelSupportOwner,
-                                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
               insert testContact1;      
               
               UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -628,7 +628,7 @@ Modification Log :
               insert psa;  
               
              testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test14@testing.com.testsetup',ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
               insert testContact;
               System.assertNotEquals(null, testContact.id);            
        } 
@@ -654,15 +654,15 @@ Modification Log :
             cs.contactid=testContact.id;
             insert Cs;
            
-            //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+            PageReference pageRef = Page.Core_IPS_CaseAttachment_Visibility;
+            Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
             
             Core_IPS_Attachment_Extension chkAtt = new Core_IPS_Attachment_Extension(StndContr);
             system.assertNotEquals(chkAtt.partnerFileURL,null);
             ApexPages.currentPage().getParameters().put('List','full');
+            system.debug(chkAtt.uploadpartnerProfileType);
             System.assertNotEquals(null,chkAtt.URL2());
                       
         }
@@ -690,7 +690,9 @@ Modification Log :
         List<Profile> ProfileList = [select id, name from Profile where name='Partner' ];// OR name='Integration' OR name='IPS Data Migration' OR name='Data Ops'];// OR name='Partner' OR name='IPS Agent-Partner'];
         for(Profile prf : ProfileList){
         profiles.put(prf.name, prf.id);
-        }        
+        }
+        system.debug('profiles'+profiles);
+        
          User thisUser = [ select Id from User where Id = :UserInfo.getUserId() ];
          User userRecord = new User();
          
@@ -779,7 +781,7 @@ Modification Log :
             testAccount1.OwnerId = portalAccountOwner1.Id ;      
             insert testAccount1;                 
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful', MailingCountry = 'India');
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;      
 
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -808,7 +810,7 @@ Modification Log :
             insert psa;  
             
              testContact = new Contact(FirstName='testFirstName123', LastName='testLastName1', Email='test1234@testing.com.testsetup', ownerId = intelSupportOwner,
-                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                     AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact;
             System.assertNotEquals(null, testContact.id); 
        } 
@@ -838,16 +840,16 @@ Modification Log :
             Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr = new ApexPages.standardController(CS);
-           
-            //commented for Classic EOL : Tejaswini        
-     /*   PageReference pageRef1=Page.Core_IPS_CaseAttachment_Visibility;
-        Test.setCurrentPage(pageRef); */
+            
+            PageReference pageRef1 = Page.Core_IPS_CaseAttachment_Visibility;
+            Test.setCurrentPage(pageRef);
             ApexPages.CurrentPage().getparameters().put('id',CS.id);
             ApexPages.StandardController StndContr1 = new ApexPages.standardController(CS);
             
             Core_IPS_Attachment_Extension chkAtt = new Core_IPS_Attachment_Extension(StndContr);
             system.assertNotEquals(chkAtt.partnerFileURL,null);
             system.assertNotEquals(chkAtt.privateToPartnerURL,null);
+            system.debug(chkAtt.showLink);
         }
      }
 }

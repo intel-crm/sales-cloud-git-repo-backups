@@ -248,9 +248,9 @@ public without sharing class PMP_SearchMarqueeDetailController {
                  }catch(Exception e){
                      //System.debug('Error while fetching record of company information :'+ e);
                  }
-             //system.debug('partner data111--'+partner);
-             //system.debug(partner.PMP_Is_Working_Copy_Ind__c);
-             //system.debug(partner.PMP_Is_Published_Ind__c);
+             system.debug('partner data111--'+partner);
+             system.debug(partner.PMP_Is_Working_Copy_Ind__c);
+             system.debug(partner.PMP_Is_Published_Ind__c);
                  if (partner.PMP_Is_Working_Copy_Ind__c == true){
                      try{
                          if(Schema.sObjectType.PMP_Company__c.isAccessible()){ //PMD Fix
@@ -263,9 +263,9 @@ public without sharing class PMP_SearchMarqueeDetailController {
                          //System.debug('Error while fetching record of company information :'+ e);
                      }
                  }
-             //system.debug('partner data--'+partner);
-             //system.debug(partner.PMP_Is_Working_Copy_Ind__c);
-             //system.debug(partner.PMP_Is_Published_Ind__c);
+             system.debug('partner data--'+partner);
+             system.debug(partner.PMP_Is_Working_Copy_Ind__c);
+             system.debug(partner.PMP_Is_Published_Ind__c);
            //workingcopy data changes
              if (partner.PMP_Is_Published_Ind__c == true){
                      try{

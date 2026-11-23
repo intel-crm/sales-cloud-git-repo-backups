@@ -2,13 +2,8 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11644885@intel.com.crm</sharedTo>
+        <sharedTo>11645946@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>ags_internal_users</sharedTo>
-        <sharedToType>Group</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>

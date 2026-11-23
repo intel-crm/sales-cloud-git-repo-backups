@@ -130,8 +130,7 @@ global class PMP_CompanyAutofillStagingBatch implements Database.Batchable<SObje
             && String.isBlank(caf.PMP_Description__c)
             && String.isBlank(caf.PMP_Applications__c)
             && String.isBlank(caf.PMP_Industries__c)
-            && String.isBlank(caf.PMP_Regions__c)
-            && String.isBlank(caf.PMP_Resources_JSON__c);
+            && String.isBlank(caf.PMP_Regions__c);
     }
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
@@ -206,7 +205,7 @@ global class PMP_CompanyAutofillStagingBatch implements Database.Batchable<SObje
                    PMP_Description__c,
                    PMP_Applications__c,
                    PMP_Industries__c,
-                   PMP_Regions__c, PMP_Resources_JSON__c
+                   PMP_Regions__c
             FROM PMP_CompanyAutoFill__c
             WHERE PMP_Partner_Id__c IN :companyToWebsite.keySet()
         ]) {

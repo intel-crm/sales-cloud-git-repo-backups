@@ -24,14 +24,12 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
         Account account = new Account();
         account.Name = accountRecord.Name;
         account.Core_Customer_Aggregation_Type__c = accountRecord.CustomerAggregationTypeCode;
-        account.Core_Intel_Requester_Email__c =   String.isNotBlank(accountRecord.RequesterEmail) ? accountRecord.RequesterEmail : NULL;
-        account.Core_Intel_Requester_Name__c = String.isNotBlank(accountRecord.RequesterName) ? accountRecord.RequesterName : NULL;
-        account.Core_Intel_Requester_WWID__c = String.isNotBlank(accountRecord.RequesterWWID) ? accountRecord.RequesterWWID : NULL;
-        account.Website =  String.isNotBlank(accountRecord.CustomerURL) ? accountRecord.CustomerURL : NULL;
-        account.Core_Requested_Parent_BP_ID__c = String.isNotBlank(accountRecord.ParentBusinessPartyIdentifierReference) ? accountRecord.ParentBusinessPartyIdentifierReference : NULL;
+        account.Core_Intel_Requester_Email__c = accountRecord.RequesterEmail != null ? accountRecord.RequesterEmail : NULL;
+        account.Core_Intel_Requester_Name__c = accountRecord.RequesterName != null ? accountRecord.RequesterName : NULL;
+        account.Core_Intel_Requester_WWID__c = accountRecord.RequesterWWID != null ? accountRecord.RequesterWWID : NULL;
+        account.Core_Requested_Parent_BP_ID__c = accountRecord.ParentBusinessPartyIdentifierReference != null ? accountRecord.ParentBusinessPartyIdentifierReference : NULL;
         account.RecordTypeId = accountRecord.RecordTypeId;
         account.OwnerId = System.Label.Core_Uncovered_Account_ID;
-
 
         for( UCD_ACM_Models.AccountAddress  accountAddress : accountRecord.Addresses){
                 account.ShippingCountryCode	= accountAddress.CountryCode;
@@ -99,6 +97,7 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
             }
            
        }catch(Exception ex){
+           System.debug('Exception3==>>'+ex.getStackTraceString());
         UCD_ACM_Logger.error('UCD_ACM_AccountMutationSelector','createAccount','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
     }
         return AccountByAccountId;
@@ -123,7 +122,11 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
                     integrationMessageQueueByAccountId.put(integrationMessageQueue.Content__c,integrationMessageQueue);
                 }
             }
+            system.debug('accountIds--> '+ accountIds);
             For(Id accountId : accountIds){
+                system.debug('integrationMessageQueueByAccountId--> '+integrationMessageQueueByAccountId);
+                system.debug('integrationMessageQueueByAccountId.get(accountId)--> '+integrationMessageQueueByAccountId.get(accountId));
+
                 if(integrationMessageQueueByAccountId != null && integrationMessageQueueByAccountId.size() > 0 && integrationMessageQueueByAccountId.containsKey(accountId)){
                     if(integrationMessageQueueByAccountId.get(accountId).Message_Status__c == 'Success' ){
                         ACM_Integration_Message_Queue__c integrationMessage = integrationMessageQueueByAccountId.get(accountId);
@@ -145,22 +148,10 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
         }
 
         if(insertIntegrationMessages.size() > 0){
-            //System.debug('insertIntegrationMessages-->'+insertIntegrationMessages);
-            if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Content__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Custom_Filter__c.isCreateable()  &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Content_Type__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isCreateable()  &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Module_Name__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Queue_Type__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isCreateable() &&
-            Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Source_System__c.isCreateable()){
-                insert insertIntegrationMessages;
-            }
+            insert insertIntegrationMessages;
         }
         if(updateIntegrationMessages.size() > 0){
-            if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable()){
-                update updateIntegrationMessages;
-            }
+            update updateIntegrationMessages;
         }
 
         }catch(Exception ex){
@@ -191,10 +182,7 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
             }
 
             if(integrationMsgsToUpdate.size() > 0){
-                if(Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable() &&
-                Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isUpdateable()){
-                    update integrationMsgsToUpdate;
-                }
+                update integrationMsgsToUpdate;
             }
         }catch(Exception ex){
             UCD_ACM_Logger.error('UCD_ACM_AccountMutationSelector','updateIntegrationMsgQueueStatus','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+accountIds.toString());
@@ -202,34 +190,118 @@ public without sharing class UCD_ACM_AccountMutationSelector implements UCD_ACM_
     }
 
     /** 
-    * description : Update ACM_Integration_Message_Queue__c with Status Error
-    * params : Set<Id>, String
-    * return : void
-    * author and date : ajayx.gat@intel.com 09/01/2024.
+    * description : Mapping Of Account
+    * params : Account_Create_Request__c accountCreateReq 
+    * return : Account
+    * author and date : ankit1x.sharma@intel.com 23/06/2022
     */
-    public void updateIntegrationMsgQueueStatusForARQ(Set<Id> arqIds, String statusType) {
-        List<ACM_Integration_Message_Queue__c> integrationMsgsToUpdate = new List<ACM_Integration_Message_Queue__c>();
-        Map<Id, ACM_Integration_Message_Queue__c> integrationMessageQueueRecordsById = accountQuerySelectorInstance.getIntegrationMessageQueueByArqId(arqIds);
-        try{
-            if(integrationMessageQueueRecordsById != null) {
-                for(ACM_Integration_Message_Queue__c integrationMessage : integrationMessageQueueRecordsById.values()) {
-                    integrationMessage.Message_Status__c = statusType;
-                        if(statusType == 'Error') {
-                            integrationMessage.Retry_Count__c += 1;
-                        }
-                    integrationMsgsToUpdate.add(integrationMessage);
-                }
+    /**private Account mappingCreateAccount(Account_Create_Request__c accountCreateReq ){
+        Account account = new Account();
+
+        account.Name =  String.isNotBlank(accountCreateReq.Account_Name__c)  ? accountCreateReq.Account_Name__c : NULL ;
+        account.BillingCity = String.isNotBlank(accountCreateReq.City__c)? accountCreateReq.City__c : NULL ;
+        account.BillingCountry = String.isNotBlank(accountCreateReq.Country__c)  ? accountCreateReq.Country__c : NULL ;
+        //account.Core_Customer_Process_Engg__c = String.isNotBlank(accountCreateReq.Customer_Process_Engagement__c)  ? accountCreateReq.Customer_Process_Engagement__c : NULL ;
+        account.BillingState = String.isNotBlank(accountCreateReq.State__c)  ? accountCreateReq.State__c : NULL ;
+        account.BillingStreet = String.isNotBlank(accountCreateReq.Street__c) ? accountCreateReq.Street__c : NULL ;
+        account.RecordTypeId =  Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
+        account.OwnerId = System.Label.Core_Uncovered_Account_ID;
+        return account ;
+    }**/
+
+
+    /** 
+    * description : Account creation
+    * params : List<Account_Create_Request__c> AccountCreateRequests,Map<Account_Create_Request__c,Account> AccountByAccountCreateReq
+    * return : Boolean
+    * author and date : ankit1x.sharma@intel.com 23/06/2022
+    */
+    /**private Boolean createAccountForApproval(List<Account_Create_Request__c> AccountCreateRequests,Map<Account_Create_Request__c,Account> AccountByAccountCreateReq){
+            UCD_ACM_UnitOfWork unitwork = new UCD_ACM_UnitOfWork();
+            Schema.sObjectField schemaFields = Account_Business_Types__c.Account__c.getDescribe().getSObjectField();
+
+            Set<String> CustomerProcessEngagmentCodes = new Set<String>();
+            for(Account_Create_Request__c accountCreateReq :AccountCreateRequests){
+                CustomerProcessEngagmentCodes.add(accountCreateReq.Customer_Process_Engagement__c);
+            }
+            Map<String,Business_Types__c> businessTypeById = accountQuerySelectorInstance.getBusinessTypeId(CustomerProcessEngagmentCodes); 
+
+
+            for(Account_Create_Request__c accountCreateReq : AccountCreateRequests){
+                Account account = mappingCreateAccount(accountCreateReq) ;
+                Account_Business_Types__c accountBusinessType = mappingCreateAccountBusinessType(accountCreateReq.Customer_Process_Engagement__c, businessTypeById) ;
+                unitwork.registerNew(account);
+                unitwork.registerNew(accountBusinessType,schemaFields,account);
+                AccountByAccountCreateReq.put(accountCreateReq, account);
             }
 
-            if(!integrationMsgsToUpdate.isEmpty()) {
-                if( Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Message_Status__c.isUpdateable() &&
-                    Schema.sObjectType.ACM_Integration_Message_Queue__c.fields.Retry_Count__c.isUpdateable()) {
-                    update integrationMsgsToUpdate;
-                }
-            }
-        } catch(Exception ex) {
-            UCD_ACM_Logger.error('UCD_ACM_AccountMutationSelector','updateIntegrationMsgQueueStatusForARQ','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'arqIds: '+arqIds.toString());
+            return unitwork.commitWork();
+           
+    }*/
+
+    /** 
+    * description : Update Account create Request 
+    * params : Map<Account_Create_Request__c,Account> AccountByAccountCreateReq
+    * return : Boolean
+    * author and date : ankit1x.sharma@intel.com 23/06/2022
+    */
+
+    /**private Boolean updateAccountCreateRequest(Map<Account_Create_Request__c,Account> AccountByAccountCreateReq){
+        UCD_ACM_UnitOfWork unitwork = new UCD_ACM_UnitOfWork();
+      
+        for(Account_Create_Request__c accountCreateRequestRecord :  AccountByAccountCreateReq.keySet()){
+            accountCreateRequestRecord.Requested_Account__c = AccountByAccountCreateReq.get(accountCreateRequestRecord).Id ;
+            accountCreateRequestRecord.Status__c = 'Approved';
+            unitwork.registerModified(accountCreateRequestRecord);
         }
-    }
+
+       return unitwork.commitWork();
+
+
+    }*/
+
+    /** 
+    * description : This method call from Approval Button
+    * params : List<Account_Create_Request__c> AccountCreateRequests
+    * return : Boolean
+    * author and date : ankit1x.sharma@intel.com 23/06/2022
+    */
+
+    /**public  Map<Id,Account_Create_Request__c>  approveAccountRequest (List<Account_Create_Request__c> AccountCreateRequests){
+        List <Account> Accounts = new List <Account>();
+        Map<Account_Create_Request__c,Account> AccountByAccountCreateReq = new Map<Account_Create_Request__c,Account>();
+
+        
+            boolean resultCreateAccount = createAccountForApproval(AccountCreateRequests, AccountByAccountCreateReq);
+            boolean resultUpdateCreateAccountReq =  updateAccountCreateRequest(AccountByAccountCreateReq);
+            if(resultCreateAccount && resultUpdateCreateAccountReq){
+                Map<Id,Account_Create_Request__c> AccountCreateReqById = new Map<Id,Account_Create_Request__c>(new List<Account_Create_Request__c>(AccountByAccountCreateReq.keySet()));
+                return AccountCreateReqById;
                 
+            }
+            return null;
+            
+
+
+    }*/
+
+
+     /** 
+    * description : This method call from Reject Button
+    * params : List<Account_Create_Request__c> AccountCreateRequests
+    * return : Boolean
+    * author and date : ankit1x.sharma@intel.com 23/06/2022
+    */
+    /**public Boolean  rejectAccountRequest (List<Account_Create_Request__c> AccountCreateRequests){
+        List <Account> Accounts = new List <Account>();
+        UCD_ACM_UnitOfWork unitwork = new UCD_ACM_UnitOfWork();
+
+            for(Account_Create_Request__c accountCreateReq : AccountCreateRequests){
+                accountCreateReq.Status__c = 'Rejected';
+                unitwork.registerModified(accountCreateReq);
+            }
+                boolean resultRejectAccount = unitwork.commitWork(); 
+                return resultRejectAccount ;
+
+    }*/
 }

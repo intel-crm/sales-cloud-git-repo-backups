@@ -125,6 +125,21 @@ such as:
         <label><!-- Subject --></label>
         <name>Core_AAQC_Subject__c</name>
     </fields>
+    <layouts>
+        <layout>Commissions Case Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Miscellaneous Information --></label>
+            <section>Miscellaneous Information</section>
+        </sections>
+        <sections>
+            <label><!-- Requestor&apos;s Information --></label>
+            <section>Requestor&apos;s Information</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_AAQC_Back_To_Commissions_Home_Page --></label>

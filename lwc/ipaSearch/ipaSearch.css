@@ -1,4 +1,4 @@
-/*div[data-is-loading="true"] .filters-main-container .filter-grouping-container {
+div[data-is-loading="true"] .filters-main-container .filter-grouping-container {
   border-bottom: none;
 }
 
@@ -24,9 +24,9 @@ input.search-keyword::placeholder {
   color: var(--gray);
 }
 
-input.search-keyword::-ms-input-placeholder {*/
+input.search-keyword::-ms-input-placeholder {
   /* Microsoft Edge */
- /* color: var(--gray);
+  color: var(--gray);
 }
 
 input:focus {
@@ -44,8 +44,8 @@ input:focus + .search-icon::before {
 .filter-grouping-icon {
   font-size: 1.5rem;
   line-height: 1rem;
-  margin-right: -.5rem;*/ /* pull to edge */
- /* padding-left: 1rem;
+  margin-right: -.5rem; /* pull to edge */
+  padding-left: 1rem;
 }
 
 .grouping-categories {
@@ -124,4 +124,4 @@ c-core-intc-modal[data-id="country-warning"] label {
   .recommended-results-container h2 {
     padding: 0;
   }
-}*/
+}

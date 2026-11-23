@@ -11,14 +11,14 @@
 
 
 Thank you for submitting your application. Please allow us three business days to process your request.
-If you have any questions, please contact us at https://signin.intel.com/ContactUs?Culture=uk-en.
+If you have any questions, please contact us at https://signin.intel.com/ContactUs?Culture={!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}-{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}.
 
 
 Thank you,
 Your Intel® Partner Alliance team
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

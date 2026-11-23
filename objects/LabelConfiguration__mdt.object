@@ -15,7 +15,7 @@
         <fullName>Value__c</fullName>
         <description>Stores the value of custom label</description>
         <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
+        <fieldManageability>SubscriberControlled</fieldManageability>
         <label>Value</label>
         <length>255</length>
         <required>false</required>

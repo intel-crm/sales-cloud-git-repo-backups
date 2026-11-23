@@ -5,7 +5,7 @@
         <description>Send Product Cancel Notification</description>
         <protected>false</protected>
         <recipients>
-            <field>Core_Opportunity_Owner_Email__c</field>
+            <field>Core_Technical_Owner_Email_Txt__c</field>
             <type>email</type>
         </recipients>
         <senderAddress>salescrm_sb@intel.com</senderAddress>
@@ -436,7 +436,7 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Set_BU_Product_Segment</fullName>
-        <field>Core_BU_Product_Segment_Old__c</field>
+        <field>Core_BU_Product_Segment__c</field>
         <formula>Core_BU_ProductSegment__c</formula>
         <name>Set BU Product Segment</name>
         <notifyAssignee>false</notifyAssignee>
@@ -446,19 +446,9 @@
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_Set_BU_Shortname</fullName>
-        <field>Core_BU_Short_Name_Old__c</field>
+        <field>Core_BU_Short_Name__c</field>
         <formula>Core_BU_ShortName__c</formula>
         <name>Set BU Shortname</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Set_Owning_BU_Short_Name</fullName>
-        <field>Core_Owning_BU_ShortName__c</field>
-        <formula>Core_BU_Mapping_record__r.Core_Owning_BU_Short_Name__c</formula>
-        <name>Set Owning BU Short Name</name>
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
@@ -489,32 +479,6 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Support_Not_Granted_EntryDate</fullName>
-        <description>Populates Entry Date-Time when Core_At_Risk_Status is changed to &quot;Support Not Granted By HQ&quot;</description>
-        <field>Core_Support_Not_Granted_Date__c</field>
-        <formula>IF( 
- ISPICKVAL( Core_At_Risk_Status__c , &quot;Support Not Granted By HQ&quot;), NOW(),
- Core_Support_Not_Granted_Date__c)</formula>
-        <name>Core_Support_Not_Granted_EntryDate</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Core_Support_Not_Provided_EntryDate</fullName>
-        <description>Populates Entry Date-Time when Core_At_Risk_Status is changed to &quot;Support Not Provided&quot;</description>
-        <field>Core_Support_Not_Provided_Date__c</field>
-        <formula>IF( 
- ISPICKVAL( Core_At_Risk_Status__c , &quot;Support Not Provided&quot;), NOW(),
- Core_Support_Not_Provided_Date__c)</formula>
-        <name>Core_Support_Not_Provided_EntryDate</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Formula</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
     <rules>
         <fullName>Core BU ShortName Update</fullName>
         <actions>
@@ -525,11 +489,7 @@
             <name>Core_Set_BU_Shortname</name>
             <type>FieldUpdate</type>
         </actions>
-        <actions>
-            <name>Core_Set_Owning_BU_Short_Name</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>((1 AND 2) OR (3 AND 4) OR 5 )</booleanFilter>
         <criteriaItems>
             <field>OpportunityLineItem.Core_BU_ShortName__c</field>
@@ -568,7 +528,7 @@
             <name>Core_DDR_Get_Technical_Owner_Email</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
             <operation>equals</operation>
@@ -592,7 +552,7 @@
             <name>Core_Approved_BU_Short_Name</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
             <operation>contains</operation>
@@ -607,7 +567,7 @@
             <name>Core_OppProd_Clear_Claim_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
@@ -628,7 +588,7 @@
             <name>Core_OppProd_Clear_Claim_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Clears the Claim Date if it has a value when the Opportunity Product is created</description>
         <formula>ISNULL( Core_Claim_Date__c ) = False</formula>
         <triggerType>onCreateOnly</triggerType>
@@ -639,7 +599,7 @@
             <name>Core_OppProd_Claim_Date_Population</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Populates the Claim Date with the date/time the Status is changed to Win Submitted, Lost, or Cancelled</description>
         <formula>AND(  ISCHANGED(Core_Status__c) = True,  OR( Text(Core_Status__c) = &quot;Win Submitted&quot;, Text(Core_Status__c) = &quot;Lost&quot;, Text(Core_Status__c) = &quot;Cancelled&quot; )  )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -686,7 +646,7 @@
             <name>Core_OppProd_Clear_Mgr_Apprvd_Date</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Clears the approval fields in two situations:
 1) Products are created in a won status. This will prevent someone from cloning a product in won status
 2) Changing a product status from won to another status that isn&apos;t won</description>
@@ -703,7 +663,7 @@
             <name>Core_Approved_BU_Short_Name_Clear</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Clears the approval fields in two situations:
 1) Products are created in a won status. This will prevent someone from cloning a product in won status
 2) Changing a product status from won to another status that is prior to won</description>
@@ -716,7 +676,7 @@
             <name>Core_OppProd_Sales_Price_as_Lost_Price</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updates the Sales Price to Lost Sales Price if:
 - an Opportunity is moved from Lost, Cancelled, or Deleted Status to a status that isn&apos;t Lost/Cancelled/Deleted
 - a user didn&apos;t manually type in a value in the Sales price</description>
@@ -729,7 +689,7 @@
             <name>Core_OppProd_Check_Lost_to_Open_Flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Checks the Lost to Open flag</description>
         <formula>AND(  OR( ISPICKVAL(PRIORVALUE (Core_Status__c), &quot;Lost&quot;) = True,  ISPICKVAL(PRIORVALUE (Core_Status__c), &quot;Cancelled&quot;) = True,  ISPICKVAL(PRIORVALUE (Core_Status__c), &quot;Deleted&quot;) = True ),  ISPICKVAL(Core_Status__c, &quot;Lost&quot;) = False, ISPICKVAL(Core_Status__c, &quot;Cancelled&quot;) = False, ISPICKVAL(Core_Status__c, &quot;Deleted&quot;) = False )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -744,7 +704,7 @@
             <name>Core_OppProd_Uncheck_Lost_to_Open_Flag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Lost_to_Open_Flag__c</field>
             <operation>equals</operation>
@@ -759,7 +719,7 @@
             <name>Core_OppProd_Lost_Price_as_Sales_Price</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updates Lost Sales Price to the Sales Price if an Opportunity is set to Lost, Cancelled, or Deleted Status</description>
         <formula>IF(ISNEW() = True, OR( ISPICKVAL(Core_Status__c, &quot;Lost&quot;), ISPICKVAL(Core_Status__c, &quot;Cancelled&quot;), ISPICKVAL(Core_Status__c, &quot;Deleted&quot;) ),  AND( ISPICKVAL(PRIORVALUE (Core_Status__c),  &quot;Lost&quot;) = False,  ISPICKVAL(PRIORVALUE (Core_Status__c),  &quot;Cancelled&quot;) = False,  ISPICKVAL(PRIORVALUE (Core_Status__c),  &quot;Deleted&quot;) = False,  OR( ISPICKVAL(Core_Status__c, &quot;Lost&quot;), ISPICKVAL(Core_Status__c, &quot;Cancelled&quot;), ISPICKVAL(Core_Status__c, &quot;Deleted&quot;) )))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -770,7 +730,7 @@
             <name>Core_OppProd_Sales_Price_to_0</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Updates the Sales Price to $0 if the Lost Amount field gets updated</description>
         <formula>IF(ISNEW() = True,  Core_Lost_Sales_Price__c &lt;&gt; 0, ISCHANGED(Core_Lost_Sales_Price__c) = True )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -781,7 +741,7 @@
             <name>Core_OppProd_Production_Claim_Date_Clear</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Clear the claim date when changing status from Production Win, Production Lost, or Production Cancelled to another.</description>
         <formula>OR(AND(ISNEW(), NOT(ISNULL(Core_Production_Claim_Date__c))), AND(ISCHANGED(Core_Status__c),   OR(     ISPICKVAL(PRIORVALUE(Core_Status__c), &apos;Production Win&apos;), ISPICKVAL(PRIORVALUE(Core_Status__c), &apos;Production Lost&apos;), ISPICKVAL(PRIORVALUE(Core_Status__c), &apos;Production Cancelled&apos;)   ),   NOT(OR(     ISPICKVAL(Core_Status__c, &apos;Production Win&apos;), ISPICKVAL(Core_Status__c, &apos;Production Lost&apos;), ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;)   )) ))</formula>
         <triggerType>onAllChanges</triggerType>
@@ -792,7 +752,7 @@
             <name>Core_OppProd_Production_Claim_Date_Popul</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Stamp the Production Claim Date when the status is changed to Production Win, Production Lost, or Production Cancelled.</description>
         <formula>AND( 	ISCHANGED(Core_Status__c),   OR(     ISPICKVAL(Core_Status__c, &apos;Production Win&apos;), ISPICKVAL(Core_Status__c, &apos;Production Lost&apos;), ISPICKVAL(Core_Status__c, &apos;Production Cancelled&apos;)   ) )</formula>
         <triggerType>onAllChanges</triggerType>
@@ -839,7 +799,7 @@
             <name>Core_OppProd_Snapshot_Total_Price</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
             <operation>contains</operation>
@@ -854,7 +814,7 @@
             <name>Core_OppProd_Set_Status_to_Pending</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
             <operation>notEqual</operation>
@@ -873,17 +833,9 @@
             <name>Core_SupportProvide_Not_EntryDt_Populate</name>
             <type>FieldUpdate</type>
         </actions>
-        <actions>
-            <name>Core_Support_Not_Granted_EntryDate</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <actions>
-            <name>Core_Support_Not_Provided_EntryDate</name>
-            <type>FieldUpdate</type>
-        </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Populated the Date/Time when Opp Prod Status(Core_At_Risk_Status__c) is either selected as &quot;Support Granted By HQ&quot; or &quot;Support Requested&quot;</description>
-        <formula>AND(  ISCHANGED( Core_At_Risk_Status__c ) = True,  OR(    ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Granted By HQ&quot;) ,   ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Provided&quot;) ,   ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Not Provided&quot;) ,   ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Not Granted By HQ&quot;)  ))</formula>
+        <formula>AND(  ISCHANGED( Core_At_Risk_Status__c ) = True,  OR(    ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Granted By HQ&quot;) ,   ISPICKVAL(Core_At_Risk_Status__c, &quot;Support Provided&quot;)  ))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
     <rules>
@@ -892,7 +844,7 @@
             <name>Core_OppProd_Approved_User_Id</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Status__c</field>
             <operation>contains</operation>
@@ -907,19 +859,47 @@
             <name>Core_OppProd_WriteInProductFlag</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Product2.Name</field>
             <operation>equals</operation>
             <value>Write In Product</value>
         </criteriaItems>
         <description>Update WriteInProduct checkbox to true if Product Name is &apos;Write In Product&apos; ( UStory: 14406 )</description>
-        <failedMigrationToolVersion>240.5.6</failedMigrationToolVersion>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
-        <fullName>KPI CPU Update</fullName>
+        <fullName>Core_Update_BU Information</fullName>
+        <actions>
+            <name>Core_BU_Product_Segment_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>Core_BU_Short_Name_Update</name>
+            <type>FieldUpdate</type>
+        </actions>
         <active>false</active>
+        <booleanFilter>1 OR 2 OR 3</booleanFilter>
+        <criteriaItems>
+            <field>OpportunityLineItem.Core_BU_ShortName__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>OpportunityLineItem.Core_BU_ProductSegment__c</field>
+            <operation>notEqual</operation>
+            <value>null</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Product2.Name</field>
+            <operation>contains</operation>
+            <value>Write In Product</value>
+        </criteriaItems>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+    <rules>
+        <fullName>KPI CPU Update</fullName>
+        <active>true</active>
         <criteriaItems>
             <field>OpportunityLineItem.Core_Product_Type__c</field>
             <operation>equals</operation>

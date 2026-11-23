@@ -243,7 +243,7 @@ private class TriggerHandler_Test {
         //TriggerHandler.sObjectsToInsert.add();
         //TriggerHandler.sObjectsToUpdate.put();
         //TriggerHandler.sObjectsToDelete.put();
-        handler.run();
+       handler.run();
     }
     /************* /INTEL CODE *************/
     

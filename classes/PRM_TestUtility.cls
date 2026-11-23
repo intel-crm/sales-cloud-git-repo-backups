@@ -68,6 +68,8 @@ public class PRM_TestUtility{
     
     /*Method to get 'Account' object */
      public static Account getAccount(){
+         
+         
         Account a = new Account();
         a.Name='Intel';
         a.Core_Account_Type__c ='Distributor';
@@ -106,7 +108,7 @@ public class PRM_TestUtility{
         con.LastName='Smith';
         con.Email='testrequest@mailinator.com';
         con.Phone='9999779791';
-        con.Core_IPA_PartnerRole__c = 'Distributor';
+        con.Core_IPA_PartnerRole__c = 'Seller';
         con.MailingCountry = 'India';
      //   con.Core_IPA_PartnerRole__c = null;
         return con;

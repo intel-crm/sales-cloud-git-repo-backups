@@ -62,6 +62,20 @@
             <translation><!-- NA --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Environmental Detail Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Environmental Detail Master Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Once set to Inactive, the Status cannot be reset to Active. This is to prevent inconsistencies in Case usage of the Environment Detail Question. --></errorMessage>
@@ -74,6 +88,10 @@
     <validationRules>
         <errorMessage><!-- Enter at least 1 row of text when Datatype is &apos;Picklist&apos; or &apos;Multiselect Picklist&apos;. --></errorMessage>
         <name>Core_IPS_Env_Dtls_Master_Ans_No_Blanks</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Datatype must be specified. --></errorMessage>
+        <name>Core_IPS_Env_Dtls_Master_Choose_DataType</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_IPS_Add_To_Products --></label>

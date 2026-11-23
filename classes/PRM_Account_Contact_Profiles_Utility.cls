@@ -252,12 +252,11 @@ FROM PRM_Registration_Request__c WHERE Id= :param OR PRM_Enterprise_ID__c= :para
         }
     }
     private static PRM_Account_Contact_Profiles_Model.AccountRequestWrapper getAccountRequestDetailsObj(String param){
-        system.debug('getAccountRequestDetailsObj 1 param');
+
         
         String query = '';
-            query = 'SELECT PRM_CIM_ID__c,PRM_Salesforce_ID__c,PRM_Address_Line_1__c,PRM_Address_Line_2__c,PRM_Alt_CompanyNameLang__c,PRM_Tax_Number__c ,PRM_Partner_Type__c,PRM_CIMStatusDetails__c,PRM_City__c,PRM_Email_ID__c,PRM_Company_Email_Domain__c,PRM_Account_Name__c,PRM_Company_National_ID__c,PRM_Enterprise_ID__c,PRM_EV_flag__c,PRM_First_Name__c,PRM_Profession__c,PRM_Last_Name__c,PRM_Person_Phone_Number__c,PRM_Country__c, PRM_Contact_Country__c, PRM_DeDup_Criteria__c,PRM_Dup_Status__c,PRM_Matching_Contact__c,PRM_Email_Domain_Check__c,PRM_Email_Log__c,PRM_EV_Expired_vs_Pending__c,PRM_isLocked__c,PRM_isSubmitted__c,PRM_Legal_Agreement_Criteria__c,PRM_Legal_Agreements__c,PRM_manualRecordCheck__c,PRM_Channel_Program__c,PRM_Channel_Program__r.Name,PRM_Channel_Program__r.PRM_programCode__c,PRM_Partner_Role__c,PRM_Partner_Segment__c,PRM_Channel_Program_Level__c,PRM_Phy_Address_Line_2__c,PRM_Phy_City__c,PRM_Phy_Country__c,PRM_Phy_State_Province__c,PRM_Phy_Zip_Postal_Code__c,PRM_Preferred_Language__c,PRM_Profile_Response__c,PRM_State_Province__c,PRM_Status__c,PRM_Status_Reason__c,PRM_Subscriptions__c,PRM_Tax_ID_Registration__c,PRM_Company_Size__c,PRM_Account_Phone__c,PRM_Account_URL__c,PRM_Zip_Postal_Code__c,PRM_Wechat_Union_Id__c,Entitlement_Details__r.Name,Job_Title__c,PRM_Channel_Program_Level__r.Name,PRM_Channel_Program_Level__r.PRM_Partner_Tier_Name__c,PRM_Company_Nm_Eng__c FROM PRM_Registration_Request__c WHERE '+param+ 'ORDER BY CreatedDate DESC';
+            query = 'SELECT PRM_CIM_ID__c,PRM_Salesforce_ID__c,PRM_Address_Line_1__c,PRM_Address_Line_2__c,PRM_Alt_CompanyNameLang__c,PRM_Partner_Type__c,PRM_CIMStatusDetails__c,PRM_City__c,PRM_Email_ID__c,PRM_Company_Email_Domain__c,PRM_Account_Name__c,PRM_Company_National_ID__c,PRM_Enterprise_ID__c,PRM_EV_flag__c,PRM_First_Name__c,PRM_Profession__c,PRM_Last_Name__c,PRM_Person_Phone_Number__c,PRM_Country__c, PRM_Contact_Country__c, PRM_DeDup_Criteria__c,PRM_Dup_Status__c,PRM_Matching_Contact__c,PRM_Email_Domain_Check__c,PRM_Email_Log__c,PRM_EV_Expired_vs_Pending__c,PRM_isLocked__c,PRM_isSubmitted__c,PRM_Legal_Agreement_Criteria__c,PRM_Legal_Agreements__c,PRM_manualRecordCheck__c,PRM_Channel_Program__c,PRM_Channel_Program__r.Name,PRM_Channel_Program__r.PRM_programCode__c,PRM_Partner_Role__c,PRM_Partner_Segment__c,PRM_Channel_Program_Level__c,PRM_Phy_Address_Line_2__c,PRM_Phy_City__c,PRM_Phy_Country__c,PRM_Phy_State_Province__c,PRM_Phy_Zip_Postal_Code__c,PRM_Preferred_Language__c,PRM_Profile_Response__c,PRM_State_Province__c,PRM_Status__c,PRM_Status_Reason__c,PRM_Subscriptions__c,PRM_Tax_ID_Registration__c,PRM_Company_Size__c,PRM_Account_Phone__c,PRM_Account_URL__c,PRM_Zip_Postal_Code__c,PRM_Wechat_Union_Id__c,Entitlement_Details__r.Name,Job_Title__c,PRM_Channel_Program_Level__r.Name,PRM_Channel_Program_Level__r.PRM_Partner_Tier_Name__c,PRM_Company_Nm_Eng__c FROM PRM_Registration_Request__c WHERE '+param+ 'ORDER BY CreatedDate DESC';
         
-        System.debug('query : '+query);
         List<PRM_Registration_Request__c> newRegs = Database.query(query);
         
         PRM_Account_Contact_Profiles_Model.AccountRequestWrapper acctReqWrapper = new  PRM_Account_Contact_Profiles_Model.AccountRequestWrapper();
@@ -278,7 +277,6 @@ FROM PRM_Registration_Request__c WHERE Id= :param OR PRM_Enterprise_ID__c= :para
         PRM_Account_Contact_Profiles_Model.AccountRequestWrapper acctReqWrapper = new  PRM_Account_Contact_Profiles_Model.AccountRequestWrapper();
         PRM_Account_Contact_Profiles_Model.AccountRequest acctReq = new PRM_Account_Contact_Profiles_Model.AccountRequest();
         //String status = (getPending) ? 'New':'Approved';
-        system.debug('getAccountRequestDetailsObj 2 params');
         List<String> status = (getPending) ? new List<String> {'New','Rejected'}:new List<String> {'Approved'};
              List<PRM_Registration_Request__c> newRegs = [SELECT PRM_CIM_ID__c,PRM_Salesforce_ID__c,PRM_Address_Line_1__c,PRM_Address_Line_2__c,
                                                          PRM_Partner_Type__c,PRM_CIMStatusDetails__c,PRM_City__c,PRM_Email_ID__c,PRM_Company_Email_Domain__c,
@@ -299,9 +297,6 @@ FROM PRM_Registration_Request__c WHERE Id= :param OR PRM_Enterprise_ID__c= :para
                                                          //(SELECT PRM_Account_Nm__c,PRM_AddressLine1_Txt__c,PRM_AddressLoc_Nm__c,PRM_AddressType_Nm__c,PRM_CIM_Id__c,Name,PRM_SearchScore_Nbr__c,PRM_City_Nm__c,PRM_Country_Cd__c,PRM_Country_Nm__c,PRM_Subdiv_Cd__c,PRM_Subdiv_Nm__c,PRM_Postal_Cd__c,PRM_Account_Id__c FROM CIM_Search_Results__r)
                                                          FROM PRM_Registration_Request__c WHERE PRM_Status__c IN :status AND (Id= :param OR PRM_Enterprise_ID__c= :param OR PRM_Contact_Login_ID__c= :param OR PRM_Email_ID__c= :param OR PRM_Wechat_Union_Id__c= :param )];
        
-
-        
-        system.debug('newRegs.size() ==>'+newRegs.size());
         if(newRegs.size()>0){            
             //acctReq.AccountRequest = new PRM_Account_Contact_Profiles_Model.AccountRequestWrapper();
             acctReqWrapper.AccountRequestInformation = getAccountRequestInformation(newRegs[0]);
@@ -389,7 +384,6 @@ return acctReqSubs;
         acctReqInfo.PartnerProgram = newReg.PRM_Channel_Program__c;
         acctReqInfo.PartnerProgramCode = newReg.PRM_Channel_Program__r.PRM_programCode__c;
         acctReqInfo.PartnerRole = newReg.PRM_Partner_Role__c;
-        acctReqInfo.TaxNumber = newReg.PRM_Tax_Number__c;
         //acctReqInfo.PartnerRoleLabel = 
         if(!String.isEmpty(newReg.PRM_Partner_Role__c) /*&& (ipaRefresh||Test.isRunningTest())*/){
             List<Schema.PicklistEntry> pickListValues = PRM_Registration_Request__c.PRM_Partner_Role__c.getDescribe().getPicklistValues();
@@ -442,15 +436,12 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         PRM_Account_Contact_Profiles_Model.AccountRequest acctReq = new PRM_Account_Contact_Profiles_Model.AccountRequest();
         
         PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper acctReqInfo = new PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper();
-        System.debug('EmailID--> '+ emailID + ' inpVal : ' +inpVal);
-        System.debug(Label.Email_domain_account_mapping.split(','));
         if(Label.Email_domain_account_mapping.split(',').contains(inpVal) && String.isNotBlank(emailID))
         {        
             String domain = emailID.right(emailID.length()-emailID.indexOf('@')-1).toLowerCase();
             List<Core_Account_Whitelisted_Domains__c> accountDomainMapping =  [SELECT id,Name, Account__r.Id, Account__r.Name,Account__r.Core_User_Defined_Website__c FROM Core_Account_Whitelisted_Domains__c 
                                                                                WHERE Partner_Program__r.PRM_programCode__c =: inpVal
                                                                                AND Name =: domain ORDER BY CreatedDate ASC limit 1];
-        System.debug('accountDomainMapping.size()--> ' + accountDomainMapping.size());
             if(accountDomainMapping.size() > 0)
             {
                 acctReqInfo.AccountSalesforceID = accountDomainMapping[0].Account__r.Id;
@@ -466,7 +457,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         }
         return acctReqWrapper;
     }
-  
+    
     private static PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper getAcctIdBasedOnEmailDomain(PRM_Registration_Request__c newReg){
         PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper acctReqInfo = new PRM_Account_Contact_Profiles_Model.AccountRequestInformationWrapper();
         if(Label.Email_domain_account_mapping.split(',').contains(newReg.PRM_Channel_Program__r.Name) &&
@@ -498,13 +489,11 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
     public static PRM_Account_Contact_Profiles_Model.Profiles GetAccountProfile(String inputfield, String inputvalue, String addtlInputValue){
         
         String AcctSFID = '';
-        //system.debug('inside GetAccountProfile ===>'+inputfield);
         if( inputfield == UNIFIEDID){            
             AcctSFID = getMatchingAccountSFID(inputvalue, addtlInputValue);  // TWC729-6955 : CIM Prime EOL –  Get Profile API - CIM EOL Activities        
         }else{
             AcctSFID = inputvalue; 
         }
-        System.debug('Listttttstring'+AcctSFID);
         if(!String.isEmpty(AcctSFID)){
             //Core_Alt_Address_1__c,Core_Alt_Address_2__c,Core_Alt_Language_City__c,Core_Alt_Language_State_Province__c,Core_Alt_Language_country__c,Core_Alt_Language_Postal_Code__c,
             List<Account> accounts = [SELECT name,Parent.Name,Core_Alternate_Language_Name__c,Core_Account_Type__c,Core_Geo__c,Core_Sub_Geo__c,
@@ -517,7 +506,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                                       Core_Partner_Alliance_Program__c, Core_IPA_Partner_Segment__c, Core_English_Only_Name__c,
                                       Core_Deactivated__c,Core_Deactivation_Reason__c,Core_B2B_Entitlement__c,Core_B2B_ERPM_Account_Number__c,RecordType.Name,
                                       Core_Business_Party_Id__c,core_data_simplified_account_nm__c,core_data_simplified_local_language_nm__c,core_customer_aggregation_type__c,Unified_Hierarchy_View__c,core_data_country_nm__c,Core_Account_Record_Type__c,Core_IPA_One_Partner_Id__c,
-                                      Owner.Name,Core_Account_Owner_Email__c,   
                                       //Core_IPA_Partner_Prog_Application__c, (SELECT id,Name,Email From Contacts),
                                       (SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Status_Nm__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false),
                                       (SELECT Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Engagement_Code__c,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c FROM Account_ERPM_Engagements__r),
@@ -531,7 +519,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                                       (SELECT Name,PRM_Agreement_Sign_Dt__c,PRM_Signed_By_Email__c,PRM_Signed_By_Name__c,PRM_Partner_Agreement_Id__r.Name,PRM_Partner_Agreement_Id__r.PRM_InActive_Ind__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Category_Nm__c,PRM_Partner_Agreement_Id__r.PRM_Agreement_Cd__c,PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name FROM AccountLegalAgreementAssociations__r),
                                       (SELECT Name,Core_Type__c,Core_Effective_Start_Date__c,Core_Effective_End_Date__c FROM Core_Account_Id__r)
                                       FROM Account WHERE Id= :AcctSFID];
-            System.debug('Listtttt'+accounts);
             list<PRM_AccountBenefitAssociation__c> opidbenefits = new list<PRM_AccountBenefitAssociation__c>();
             if (!accounts.isEmpty() && accounts[0].Core_Account_Record_Type__c == 'Intel Account'  && accounts[0].Core_IPA_One_Partner_Id__c!=null/*&& (ipaRefresh||Test.isRunningTest())*/){
                 opidbenefits = [SELECT PRM_Account_Id__c,PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM PRM_AccountBenefitAssociation__c WHERE PRM_Account_Id__c =: accounts[0].Core_IPA_One_Partner_Id__c and PRM_Status_Nm__c='Active'];
@@ -604,7 +591,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
             //end add for TWC722-186
             accBTs.add(accBT);  
         }
-        System.debug('Acclist'+accBTs);
         return accBTs;
         
     }
@@ -649,7 +635,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
     
     private static List<PRM_Account_Contact_Profiles_Model.OnePartnerIDGroupMember> getOnePartnerIDGroupMembers(Account acct){
         List<PRM_Account_Contact_Profiles_Model.OnePartnerIDGroupMember> opidms = new List<PRM_Account_Contact_Profiles_Model.OnePartnerIDGroupMember>();
-        //system.debug('OnePartnerIDGroupMembers ==>'+ acct.Partner_Account_Group_Members1__r);
         for(Core_Account_Group_Member__c onePartnerGM: acct.Partner_Account_Group_Members1__r){
             PRM_Account_Contact_Profiles_Model.OnePartnerIDGroupMember opidm = new PRM_Account_Contact_Profiles_Model.OnePartnerIDGroupMember();
             opidm.OnePartnerGroupMemberName = onePartnerGM.Name;
@@ -664,8 +649,8 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         return opidms;
     }
     //this method below can be removed as part of IPA 2.0
-    @testvisible
-    private static List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> getAccountSpecialityAssociations(Account acct){
+    //ATHR Fix - TWC729-9556 - JB
+   /* private static List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> getAccountSpecialityAssociations(Account acct){
         List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> asas = new List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation>();
         for(PRM_Account_Specialty_Association__c acctSpecialityAssoc : acct.Account_Specialty_Associations__r){
             PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation asa = new PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation();
@@ -692,7 +677,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
             asas.add(asa);
         }
         return asas;
-    }
+    }*/
     @TestVisible
     private static List<PRM_Account_Contact_Profiles_Model.AccoutBenefitAssociation> getAccoutBenefitAssociations( List<PRM_AccountBenefitAssociation__c> abarecords){
         //(SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM AccountBenefitAssociations__r)
@@ -844,7 +829,6 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
         List<Core_Entitlement__c> entitlementDetail = new List<Core_Entitlement__c>();
         List<String> status =  new List<String> {'New','Rejected'};
         string output = '';
-        System.debug('key : '+key+' value: '+value+' isRegReq :'+isRegReq);
         if(isRegReq)
         {
             
@@ -855,7 +839,7 @@ acctReqInfo.RegistrationSource = newReg.PRM_Registration_Source_txt__c;
                     //output = isProgBased ? ' PRM_Channel_Program__r.Name ='+'\''+Inpvalue+'\'' : ' Entitlement_Details__r.Name ='+'\''+Inpvalue+'\'';
                     //Added for TWC722-325
                     output = isProgBased ? ' PRM_Channel_Program__r.PRM_programCode__c ='+'\''+Inpvalue+'\'' : ' Entitlement_Details__r.Name ='+'\''+Inpvalue+'\'';
-                    output=output+' AND '+ 'PRM_Status__c IN ('+'\'New'+'\','+'\'Rejected'+'\','+'\'Pending'+'\','+'\'Approved'+'\','+'\'PendingwithPartner'+'\')';
+                    output=output+' AND '+ 'PRM_Status__c IN ('+'\'New'+'\','+'\'Rejected'+'\','+'\'Pending'+'\','+'\'Approved'+'\')';
                 }
         }
         else
@@ -915,7 +899,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                           'Core_Partner_Alliance_Program__c,Core_IPA_Partner_Segment__c, Core_English_Only_Name__c,'+
                           'Core_Deactivated__c,Core_Deactivation_Reason__c,Core_B2B_Entitlement__c,Core_B2B_ERPM_Account_Number__c,RecordType.Name,'+
                           'Core_Business_Party_Id__c,core_data_simplified_account_nm__c,core_data_simplified_local_language_nm__c,core_customer_aggregation_type__c,Unified_Hierarchy_View__c,core_data_country_nm__c,'+
-                          'Owner.Name,'+ 'Core_Account_Owner_Email__c,'+      
                           '(SELECT PRM_Channel_Program_Id__r.Name,PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Channel_Program_Level_Id__r.Name,PRM_Partner_Role__c,PRM_Status_Nm__c,CreatedDate,PRM_Channel_Program_Level_Id__r.PRM_Partner_Tier_Name__c FROM Channel_Memberships1__r WHERE PRM_Status_Nm__c!=\'Inactive\'),'+
                           '(SELECT PRM_Partner_Benefit_Id__r.Name,PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c,PRM_Partner_Benefit_Id__r.PRM_Benefit_Type_Nm__c,PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.Name, PRM_Partner_Benefit_Id__r.PRM_Channel_Program_Id__r.PRM_programCode__c,PRM_Status_Nm__c FROM AccountBenefitAssociations__r WHERE PRM_Status_Nm__c=\'Active\'),'+
                           '(SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_Status_Nm__c,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_InActive_Ind__c=false AND PRM_Contact_Id__c= :ConId),'+
@@ -954,7 +937,7 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                 ContAcct.ContactBasicProfile.ContactSubscriptions = getPersonSubscriptions(conts[0]);
                 ContAcct.ContactBasicProfile.ContactBusinessTypes = getContactBusinessType(conts[0]);
                 ContAcct.ContactBasicProfile.ContactEntitlements = getPersonEntitlements(conts[0]);
-                ContAcct.RegReqConsolidated = getRegistrationRequestDetails(accounts[0],conts[0]);//new method for consolidated regrequestpayload
+                ContAcct.RegReqConsolidated = getRegistrationRequestDetails(accounts[0],conts[0]);//@NJ new method for consolidated regrequestpayload
                 //ContAcct.AccountInformation.ComplianceWatchLists = getAccountComplianceWatchLists(accounts[0]);  //Commenting as part of TWC729-8872
                 return ContAcct;
             }else{
@@ -975,14 +958,13 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
         regReqPayload.EnterpriseId = con.Core_Enterprise_Id__c;
         regReqPayload.AddressLine1 = acc.BillingStreet;
         regReqPayload.City = acc.BillingCity;
-        regReqPayload.Country = acc.BillingCountry;
         regReqPayload.StateProvince = acc.BillingState;
         regReqPayload.ZipPostalCode = acc.BillingPostalCode;
         regReqPayload.AccountName = acc.Name;
-        regReqPayload.AccountUrl = acc.Core_User_Defined_Website__c;
+        regReqPayload.AccountUrl = acc.Website;
         regReqPayload.PreferredLanguage = con.Core_Preferred_Language__c;
         regReqPayload.Profession = con.Core_Profession__c;
-        regReqPayload.AccountPhone = acc.Core_User_Defined_Phone_Number__c;
+        regReqPayload.AccountPhone = acc.Phone;
         regReqPayload.ContactCountry = con.MailingCountry;
         regReqPayload.LoginStatus = con.Core_Login_Status__c;
         regReqPayload.SalesforceId = acc.id;
@@ -1181,8 +1163,6 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         accountInfo.UnifiedCountryCode=null;
             //ContAcct.ContactAccount = new ContactAccountWrapper();
         //ContAcct.ContactAccount.AccountInformation = accountInfo;
-        accountInfo.OwnerName = acct.Owner.Name; //TWC729-9198
-        accountInfo.OwnerEmail = acct.Core_Account_Owner_Email__c;//TWC729-9198
         return accountInfo;
     }
     private Static PRM_Account_Contact_Profiles_Model.Address getAccountPrimaryAddress(Account acct){
@@ -1262,7 +1242,6 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
     }
     private static List<PRM_Account_Contact_Profiles_Model.AccountERPMEngagement> getAccountERPMEngagements(Account acct){
         // (Select Core_Account_Id__r.Name,Core_ERPM_Engagement_Id__r.Name,Core_ERPM_Engagement_Id__r.Core_Technical_Tier_Code__c From Account_ERPM_Engagements__r)
-        //system.debug('Engagements===>'+acct.Account_ERPM_Engagements__r);
         List<PRM_Account_Contact_Profiles_Model.AccountERPMEngagement> aes = new List<PRM_Account_Contact_Profiles_Model.AccountERPMEngagement>();
         for(Core_Account_ERPM_Engagement__c ae: acct.Account_ERPM_Engagements__r){
             PRM_Account_Contact_Profiles_Model.AccountERPMEngagement accEngagement = new PRM_Account_Contact_Profiles_Model.AccountERPMEngagement();
@@ -1274,8 +1253,8 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         }
         return aes;      
     }
-    @testvisible
-    private static List<PRM_Account_Contact_Profiles_Model.ProfileResponse> getProfileResponses(Id recordId){
+    //ATHR Fix - TWC729-9556 - JB
+    /*private static List<PRM_Account_Contact_Profiles_Model.ProfileResponse> getProfileResponses(Id recordId){
         
         String channelProg = 'Intel Partner Alliance';
         String objectName = 'Account';
@@ -1298,8 +1277,6 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         if(!channelProgId.isEmpty()){
             QuestionIdMap = new Map<Id,PRM_Profile_Questions__c>([SELECT Id,PRM_Question_Display_Txt__c, PRM_Question_Cd__c  FROM PRM_Profile_Questions__c WHERE PRM_Question_Display_Txt__c!=null AND PRM_Channel_Program_Id__c in : channelProgId order by PRM_Display_Order_Nbr__c ASC]);
         }
-        //system.debug('QuestionIdMap ==>'+QuestionIdMap);
-        //system.debug('AccountID ==>'+recordId);
         if(!QuestionIdMap.isEmpty() && recordId != null){ 
             for(PRM_Profile_Responses__c objResp : [SELECT PRM_Profile_Questions_Id__c,PRM_Response_Txt__c,PRM_Profile_Answer_Id__r.PRM_Answer_Cd__c FROM PRM_Profile_Responses__c WHERE PRM_InActive_Ind__c=false AND PRM_Account_Id__c =:recordId AND PRM_Profile_Questions_Id__c in :QuestionIdMap.keySet()] ){
                 if(mapQuesToResp.containsKey(objResp.PRM_Profile_Questions_Id__c)) {   
@@ -1332,27 +1309,23 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
         }
         //profileRespsWrapper.ProfileResponses = responses;
         return ProfileResponses;
-    }
-    
-
-   
+    }*/
     
     public static List<PRM_Account_Contact_Profiles_Model.ProfileResponse> getProfileResponseFromMembership(Id acct) {
-        system.debug('Inside membership get profile');
         Map<string,Core_CustomMetadata_Object__c> qstnCodeRecMap = new Map<String,Core_CustomMetadata_Object__c>();
         Set<String> mdtAPISet = new Set<String>();
         //collect all required metadata for Get Profile API
-    	List<Core_CustomMetadata_Object__c> selectedFields = [
-        SELECT Field_1__c,Field_2__c,Field_3__c,Field_4__c,Field_6__c, Field_7__c
-        FROM Core_CustomMetadata_Object__c
-        WHERE Field_7__c = 'TRUE' and Metadata_Name__c='PRM_IPAMembership_Mapping__mdt'
-    ];
-       
-         //Build key - Unique key - APIName|Answer
+        List<Core_CustomMetadata_Object__c> selectedFields = [
+            SELECT Field_1__c,Field_2__c,Field_3__c,Field_4__c,Field_6__c, Field_7__c
+            FROM Core_CustomMetadata_Object__c
+            WHERE Field_7__c = 'TRUE' and Metadata_Name__c='PRM_IPAMembership_Mapping__mdt'
+        ];
+        
+        //Build key - Unique key - APIName|Answer
         for (Core_CustomMetadata_Object__c record : selectedFields) {
             String key = record.Field_6__c + '|' + record.Field_3__c;
             qstnCodeRecMap.put(key, record);
-          
+            
         }
         //Get Membership record
         List<PRM_IPAMembership_Attributes__c> membershipRecords = new List<PRM_IPAMembership_Attributes__c>();
@@ -1363,72 +1336,52 @@ accountInfo.PartnerApplication = acct.Core_IPA_Partner_Prog_Application__c;*/
             SELECT PRM_Points_Opt_in_Ind__c, PRM_Points_Not_Eligible_Ind__c,PRM_Points_Opt_in_Dt__c,PRM_Points_Not_Eligible_Dt__c, PRM_Point_Status_Txt__c,PRM_Point_Status_Reason_Txt__c, PRM_Point_Status_Dt__c
             FROM PRM_IPAMembership_Attributes__c
             //WHERE PRM_Account_Id__c =:acct
-            WHERE PRM_Account_Id__c =:accOPID AND PRM_Inactive_ind__c = false
+            WHERE PRM_Account_Id__c =:accOPID
         ];
         
-        system.debug('membershipRecords---'+membershipRecords);
         List<PRM_Account_Contact_Profiles_Model.ProfileResponse> profileResponses = new List<PRM_Account_Contact_Profiles_Model.ProfileResponse>();
         if (membershipRecords.size()>0) {
             PRM_IPAMembership_Attributes__c record = membershipRecords[0];
-            
             for (String key : qstnCodeRecMap.keySet()) {
                 Core_CustomMetadata_Object__c metadata = qstnCodeRecMap.get(key);
-                system.debug('response--1436--'+metadata.Field_6__c);
                 PRM_Account_Contact_Profiles_Model.ProfileResponse response = new PRM_Account_Contact_Profiles_Model.ProfileResponse();
                 response.QuestionText = metadata.Field_1__c;
                 response.QuestionCode = metadata.Field_2__c; 
                 response.Responses = new List<PRM_Account_Contact_Profiles_Model.Response>();
-    			system.debug('response--1441--'+response);
                 // Create response object
                 PRM_Account_Contact_Profiles_Model.Response resp = new PRM_Account_Contact_Profiles_Model.Response();
                 String answerVal='';
                 String recordVal='';
                 if(record.get(metadata.Field_6__c)!=null){
-                    system.debug('1447---'+metadata.Field_6__c);
-                	system.debug('1448---'+record.get(metadata.Field_6__c));
-                     recordVal = string.valueOf(record.get(metadata.Field_6__c)).toUpperCase();
+                    recordVal = string.valueOf(record.get(metadata.Field_6__c)).toUpperCase();
                 }
-               
+                
                 if(metadata.Field_3__c!=null){
-                   answerVal = metadata.Field_3__c.toUpperCase();
-                    system.debug('answerVal----'+answerVal);
+                    answerVal = metadata.Field_3__c.toUpperCase();
                 }
                 //metadata gives values two times for boolean - TRUE/FALSE in a loop
                 if((answerVal=='TRUE' || answerVal=='FALSE' || answerVal=='Eligible' || answerVal=='Not Eligible' || answerVal=='Active')&& (recordVal!=answerVal)){
-                    system.debug('Inside if--');
                     continue;
                 }else{
-                    system.debug('Inside else--');
                     if(string.valueOf(record.get(metadata.Field_6__c))!=null && string.valueOf(record.get(metadata.Field_6__c)).contains('00:00:00')){
                         resp.ResponseText=string.valueOf(record.get(metadata.Field_6__c)).removeEnd(' 00:00:00');
                     }else{
-                    	resp.ResponseText =string.valueOf(record.get(metadata.Field_6__c));
+                        resp.ResponseText =string.valueOf(record.get(metadata.Field_6__c));
                     }
-                	resp.ResponseCode = null;
-                	response.Responses.add(resp);
+                    resp.ResponseCode = null;
+                    response.Responses.add(resp);
                 }
                 // Add to profile responses list
-            	profileResponses.add(response);
-            	
-                System.debug('ResponseText: ' + resp.ResponseText);
-                System.debug('ResponseCode: ' + resp.ResponseCode);
-                System.debug('QuestionText: ' + response.QuestionText);
-                System.debug('QuestionCode: ' + response.QuestionCode);
+                profileResponses.add(response);
+            }
         }
-            
-        }
-        system.debug('profileResponses---'+profileResponses);
         return profileResponses;
     }
 
-    
     public static PRM_Account_Contact_Profiles_Model.Profiles GetPersonBasicProfile(String key, String param){
-        system.debug('<===== GetPersonBasicProfile ====>');
         //String query = 'SELECT id,AccountId,Account.Name,Account.Core_Account_Type__c,FirstName, LastName, Title,Name,Core_Local_First_Name__c,Core_Local_Last_Name__c, Core_English_Only_First_Name__c,Core_English_Only_Last_Name__c,Core_Job_Function__c,Core_IPA_Email_Verification_Date__c, Core_Job_Function_Code__c,phone,MobilePhone,email,Core_Preferred_Communication__c,Core_Preferred_Language__c, Core_IPA_PartnerRole__c,Core_IPA_Contact_Segment__c,Core_Login_Status__c,Core_Login_Id__c,Core_eRPM_Person_Id__c,Core_Enterprise_Id__c, MailingStreet,MailingCity,MailingState,MailingStateCode,MailingCountry,MailingCountryCode,MailingPostalCode,PRM_Wechat_Union_Id__c,Core_IPA_Partner_Community__c,(SELECT PRM_Partner_Subscription_Id__r.Name,PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c, PRM_Status_Nm__c FROM Contact_Subscription_Associations__r ),(SELECT Core_Entitlement_Id__r.Name,Core_Type__c,Core_Status__c,Core_Ops_Status__c,Core_Selected__c FROM Contact_Entitlements__r) FROM Contact WHERE '+buildCriteria(key,param,false)+' LIMIT 1';
         String query = '';  
-        
         query = 'SELECT id,AccountId,Account.Name,Account.Core_Account_Type__c,FirstName, LastName, Title,Name,Core_Local_First_Name__c,Core_Local_Last_Name__c, Core_English_Only_First_Name__c,Core_English_Only_Last_Name__c,Core_Profession__c, Core_Job_Function_Code__c,phone,MobilePhone,email,Core_Preferred_Communication__c,Core_Preferred_Language__c, Core_IPA_PartnerRole__c,Core_IPA_Contact_Segment__c,Core_Login_Status__c,Core_eRPM_Person_Id__c,Core_Enterprise_Id__c, MailingStreet,MailingCity,MailingState,MailingStateCode,MailingCountry,MailingCountryCode,MailingPostalCode,PRM_Wechat_Union_Id__c,Core_IPA_Partner_Community__c,External_User_State__c,External_User_State_Change_Date_Times__c,Account.Core_Geo__c,Account.Core_Sub_Geo__c,(SELECT PRM_Partner_Subscription_Id__r.Name,PRM_Partner_Subscription_Id__r.PRM_Subscription_Cd__c, PRM_Status_Nm__c FROM Contact_Subscription_Associations__r ),(SELECT Core_Entitlement_Id__r.Name,Core_Type__c,Core_Status__c,Core_Ops_Status__c,Core_Selected__c FROM Contact_Entitlements__r) FROM Contact WHERE '+buildCriteria(key,param,false)+' ORDER BY CreatedDate LIMIT 1';
-        
         List<Contact> conts = Database.query(query);
         /*List<Contact> conts = [SELECT id,AccountId,Account.Name,Account.Core_Account_Type__c,FirstName, LastName, Title,Name,Core_Local_First_Name__c,Core_Local_Last_Name__c,
 Core_English_Only_First_Name__c,Core_English_Only_Last_Name__c,Core_Job_Function__c,Core_IPA_Email_Verification_Date__c,
@@ -1443,7 +1396,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
         //  (SELECT PRM_Account_Id__r.Name,PRM_Partner_Role__c,PRM_Relationship_Id__r.Name,PRM_InActive_Ind__c FROM Account_Contact_Relationships__r), 
         
         if(conts.size()>0){  
-            System.debug('inside conts if');
             PRM_Account_Contact_Profiles_Model.Profiles profiles = new PRM_Account_Contact_Profiles_Model.Profiles();
             profiles.ContactBasicProfile = new PRM_Account_Contact_Profiles_Model.ContactBasicProfileDetailsWrapper();
             profiles.ContactBasicProfile.ContactBasicInformation = getContactBasicDetails(conts[0],conts[0].Account.Core_Account_Type__c);            
@@ -1475,7 +1427,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
     
    
     private static List<PRM_Account_Contact_Profiles_Model.ContactSubscription> getPersonSubscriptions(Contact cont){
-        system.debug(cont);
         List<PRM_Account_Contact_Profiles_Model.ContactSubscription> subscriptions = new List<PRM_Account_Contact_Profiles_Model.ContactSubscription>();
         for(PRM_ContactSubscriptionAssociation__c pcsa: cont.Contact_Subscription_Associations__r){
             PRM_Account_Contact_Profiles_Model.ContactSubscription cs = new PRM_Account_Contact_Profiles_Model.ContactSubscription();
@@ -1487,7 +1438,6 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
         return subscriptions;
     }    
     private static PRM_Account_Contact_Profiles_Model.ContactBasicInformationWrapper getContactBasicDetails(Contact cont, String acctBizOrgTypes){
-        System.debug('getContactBasicDetails');
         PRM_Account_Contact_Profiles_Model.ContactBasicInformationWrapper ContactDetails = new PRM_Account_Contact_Profiles_Model.ContactBasicInformationWrapper();
         ContactDetails.ContactId = cont.Id;
         ContactDetails.AccountId = cont.AccountId;
@@ -1520,9 +1470,7 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
         
     //For Guest redemption
        ContactDetails.ExternalUserState=cont.External_User_State__c;
-       ContactDetails.ExternalUserStateDtm= cont.External_User_State_Change_Date_Times__c;
-
-        System.debug('getContactBasicDetails 2');     
+       ContactDetails.ExternalUserStateDtm= cont.External_User_State_Change_Date_Times__c;  
         //This BizOrgType attribute is used by AEM forms to identify the BizOrg Type of teh contact in Overlap scenarios
         ContactDetails.BizOrgType = String.isEmpty(cont.Core_IPA_PartnerRole__c)?null:getBizOrgTypeForPartnerRole(cont.Core_IPA_PartnerRole__c, acctBizOrgTypes);
         ContactDetails.WeChatUnionId = cont.PRM_Wechat_Union_Id__c != null ? EncryptDecryptHelper.EncryptData(cont.PRM_Wechat_Union_Id__c) : '';
@@ -1536,8 +1484,7 @@ FROM Contact WHERE id= :param OR Email= :param OR Core_Enterprise_Id__c= :param 
                 }
             }
         } 
-        
-        
+
         //-----------------------------We chat-----------------------------
         /*
 ContactDetails.WechatOpenId = cont.PRM_Wechat_Open_Id__c;
@@ -1545,11 +1492,9 @@ ContactDetails.WechatUnionId = cont.PRM_Wechat_Union_Id__c;
 ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
 */
         //-----------------------------We chat-----------------------------
-        System.debug('getContactBasicDetails 3'+ContactDetails);
         return ContactDetails;
     }
     private static String getBizOrgTypeForPartnerRole(String partnerRole, String acctBizOrgTypes){
-        system.debug('getBizOrgTypeForPartnerRole ==>'+acctBizOrgTypes);
        // List<String> bizOrgTypes = acctBizOrgTypes.split(';');
        List<String> bizOrgTypes = acctBizOrgTypes != null ? acctBizOrgTypes.split(';') : new List<String>();
         String defaultBizOrgType = null;
@@ -1614,13 +1559,13 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
     }
     @TestVisible
     private static String getCountryCodeMapping(String country){      
-        List<Core_Country_Code_Mapping__c> configCountryCodes = [SELECT ISO_Code__c,Country_Code__c FROM Core_Country_Code_Mapping__c WHERE Name= :country OR ISO_Code__c= :country];
+        List<Core_Country_Code_Mapping__c> configCountryCodes = [SELECT /*ISO_Code__c,*/Country_Code__c FROM Core_Country_Code_Mapping__c WHERE Name= :country OR ISO_Code__c= :country];//ATHR Fix - TWC729-9556 - JB
         return (configCountryCodes.size() > 0 ? configCountryCodes[0].Country_Code__c : null );      
     }
     
     @TestVisible
     private static String getCountryCodeNameMapping(String country){      
-        List<Core_Country_Code_Mapping__c> configCountryCodes = [SELECT Name, ISO_Code__c,Country_Code__c FROM Core_Country_Code_Mapping__c WHERE ISO_Code__c= :country OR Country_Code__c = :country];
+        List<Core_Country_Code_Mapping__c> configCountryCodes = [SELECT Name/*, ISO_Code__c,Country_Code__c*/ FROM Core_Country_Code_Mapping__c WHERE ISO_Code__c= :country OR Country_Code__c = :country];//ATHR Fix - TWC729-9556 - JB
         return (configCountryCodes.size() > 0 ? configCountryCodes[0].Name : null );      
     }
     
@@ -1631,7 +1576,6 @@ ContactDetails.RegistrationSource = cont.PRM_Registration_Source_txt__c;
         List<Account> accts = [SELECT Id,Core_CIM_ID__c,AccountNumber,core_business_party_id__c,
                                (SELECT Core_ERPM_Account_Number__c FROM Account_ERPM_Engagements__r)
                                FROM Account WHERE core_business_party_id__c= :cimid ];
-        //system.debug('accts.size() ===>'+accts.size());
         if(accts.size()>0){
             if(accts.size() == 1){
                 AcctSFID = accts[0].Id;

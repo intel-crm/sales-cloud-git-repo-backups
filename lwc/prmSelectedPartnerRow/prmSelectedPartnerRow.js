@@ -11,7 +11,7 @@ export default class PrmSelectedPartnerRow extends LightningElement {
     @track comments;
     @api index = [];
     @api checked = false;
-    @api supChecked = false;
+    @track supChecked = false;
     @api singleRecChecked = false;
     @api showcheckbox = false;
     @api isSelect = false;

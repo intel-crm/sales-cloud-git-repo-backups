@@ -1,46 +1,132 @@
 {
   "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
-  "componentName" : "siteforce:sldsTwoCol66Layout",
+  "componentName" : "siteforce:sldsOneColLayout",
   "dataProviders" : [ ],
   "id" : "5c326cfb-25b4-4e62-bf5d-02e8f4fad81e",
   "label" : "Record Detail",
   "regions" : [ {
+    "id" : "f1ac874d-d46b-4ba0-8f00-1c62176e2b2d",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
     "components" : [ {
       "componentAttributes" : {
         "recordId" : "{!recordId}"
       },
       "componentName" : "forceCommunity:recordHeadline",
-      "id" : "597c7fff-3b1b-49a1-a54f-211e1e9bf3e3",
+      "id" : "2876b30c-b135-4adb-8721-3d292c5dc736",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "de" : "a175ae20-468e-4166-88f6-3f218a507ea9",
+        "es" : "b17e820b-1b00-4572-83f7-86831e5e5880",
+        "es_mx" : "64e80d8e-fc6a-42ce-a41a-41a68980e834",
+        "fr" : "98bf16f9-5a17-40f4-b05b-4ec83625233a",
+        "it" : "f7d0a875-81d3-4335-b5ad-f9128a410a54",
+        "ja" : "b6c8520e-1c8a-499e-b7fe-00e3b0c45e84",
+        "ko" : "bd2a2198-f3b5-4503-9685-8d1cc7acd2b6",
+        "pt_br" : "774ac8ed-abb9-49b5-8a20-1f6c2cf0357a",
+        "pt_pt" : "5d36f6b8-570c-4c6c-8028-7e485297902b",
+        "ru" : "6d6f694c-91af-49e5-a651-ad4b5f4fe9d3",
+        "zh_cn" : "d6bc363b-4f8c-4a37-8ddf-048aa322986d",
+        "zh_tw" : "8c66244b-d0a9-400c-86c7-c8efd3cbbc6e"
+      },
+      "renditions" : [ {
+        "id" : "d6bc363b-4f8c-4a37-8ddf-048aa322986d",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6d6f694c-91af-49e5-a651-ad4b5f4fe9d3",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5d36f6b8-570c-4c6c-8028-7e485297902b",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b6c8520e-1c8a-499e-b7fe-00e3b0c45e84",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "f7d0a875-81d3-4335-b5ad-f9128a410a54",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "98bf16f9-5a17-40f4-b05b-4ec83625233a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "64e80d8e-fc6a-42ce-a41a-41a68980e834",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a175ae20-468e-4166-88f6-3f218a507ea9",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bd2a2198-f3b5-4503-9685-8d1cc7acd2b6",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b17e820b-1b00-4572-83f7-86831e5e5880",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "774ac8ed-abb9-49b5-8a20-1f6c2cf0357a",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8c66244b-d0a9-400c-86c7-c8efd3cbbc6e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
-    }, {
+    } ],
+    "id" : "d863e9ff-0561-46cd-ab7a-eb4c166eef0e",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
       "componentAttributes" : {
         "detailsTabLabel" : "Details",
         "discussionsTabLabel" : "Feed",
         "recordId" : "{!recordId}",
         "relatedTabLabel" : "Related",
-        "showLegacyActivityComposer" : true,
         "tab1Type" : "details",
-        "tab2Type" : "none",
-        "tab3Type" : "none",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
         "tab4Type" : "none",
         "timelineTabLabel" : "Activity"
       },
       "componentName" : "forceCommunity:recordHomeTabs",
-      "id" : "de5201a6-7cfb-4972-8bac-c5eefdfd88d5",
+      "id" : "83c251e6-bce9-4bc8-a7c0-0d5ce538037a",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "f1ac874d-d46b-4ba0-8f00-1c62176e2b2d",
-    "regionName" : "header",
-    "type" : "region"
-  }, {
-    "id" : "d863e9ff-0561-46cd-ab7a-eb4c166eef0e",
-    "regionName" : "content",
-    "type" : "region"
-  }, {
     "id" : "c5273794-bef9-4eac-bbc5-c739ea605b2b",
     "regionName" : "footer",
     "type" : "region"
@@ -71,6 +157,7 @@
         "id" : "5546cff1-bd2d-44d1-b535-c692eba6e494",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -80,6 +167,7 @@
         "id" : "14c1692f-cc2a-4313-8995-1af11308d2ab",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -89,6 +177,7 @@
         "id" : "28b9c680-be6e-45f4-b5e3-fd395a23c6e2",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -98,6 +187,7 @@
         "id" : "0ee8dec0-c68a-4132-af05-e11a4a8a2573",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -107,6 +197,7 @@
         "id" : "ad5be156-d6e0-4a06-b369-f6bf78b7a913",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -116,6 +207,7 @@
         "id" : "0a3dc589-ad85-4247-873d-d95e84b57341",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -125,6 +217,7 @@
         "id" : "e1fcbe1f-b1a5-4e00-bb37-1d779b9f0a95",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -134,6 +227,7 @@
         "id" : "5b3b3dd2-74f3-4ef8-b22e-04a36f9a1623",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -143,6 +237,7 @@
         "id" : "3f4b8a1a-af67-460e-bdc4-8409c688c0f0",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -152,6 +247,7 @@
         "id" : "14ecc621-3af2-4b40-88b7-27fbd2295a32",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -161,6 +257,7 @@
         "id" : "9b7fbada-b6b0-4b28-8719-6e1a6ba315e8",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -170,6 +267,7 @@
         "id" : "4f62c73c-555c-40e7-af03-7b6d5bc9ba34",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -180,18 +278,6 @@
     } ],
     "id" : "bd1c9c99-2bd5-4aa9-bff0-abef8f431b74",
     "regionName" : "sfdcHiddenRegion",
-    "type" : "region"
-  }, {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:picReviewScreen",
-      "id" : "f2a7b41b-5809-4bdc-9829-e306b1b59207",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
-    "id" : "9dc9d7d9-7561-440a-a56a-82ca2ef9bcb1",
-    "regionName" : "sidebar",
     "type" : "region"
   } ],
   "themeLayoutType" : "Inner",

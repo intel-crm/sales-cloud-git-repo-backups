@@ -79,7 +79,7 @@
                                 </apex:outputPanel>
                                 <apex:outputPanel rendered="{!!q0.isQuantity}">
                                     <apex:outputText value="{0, number, currency}">
-                                        <apex:param value="{!q0.value}"/>   
+                                        <apex:param value="{!q0.value}"/>
                                     </apex:outputText><br/>
                                 </apex:outputPanel>
                             </apex:repeat>
@@ -253,7 +253,7 @@
                 <apex:outputPanel id="addPanel" >
                     <apex:actionStatus id="mySaveStatus2"> 
                         <apex:facet name="stop">
-                            <apex:commandbutton value="Add Quarter" id="addQtrButton" onclick="redirectForAddQuarter();" rendered="{!IF($Profile.Name == $Label.Core_BU_Acc_Collaborator_Profile || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,pm2,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
+                            <apex:commandbutton value="Add Quarter" id="addQtrButton" onclick="redirectForAddQuarter();" rendered="{!IF($Profile.Name == $Label.Core_BU_Acc_Collaborator_Profile,FALSE,NOT(editAll))}" status="mySaveStatus2" rerender="table1,savePanel,addPanel,pm2,errMsg" title="{!$Label.Core_FC_AddQuarterMsg}" alt="{!$Label.Core_FC_AddQuarterMsg}" oncomplete="setTotals();"/>
                         </apex:facet>
                         <apex:facet name="start">
                             <apex:outputPanel id="pm2">
@@ -265,7 +265,7 @@
                     
                     <apex:actionStatus id="mySaveStatus3"> 
                         <apex:facet name="stop"> 
-                            <apex:commandButton value="{!$Label.Core_FC_EditAllScheduledQty}" id="editButton" action="{!editAllMethod}" oncomplete="redirectEditPage()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,pm3,errMsg"/>
+                            <apex:commandButton value="{!$Label.Core_FC_EditAllScheduledQty}" id="editButton" action="{!editAllMethod}" oncomplete="redirectEditPage()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" status="mySaveStatus3" rerender="table1,savePanel,addPanel,pm3,errMsg"/>
                         </apex:facet> 
                         <apex:facet name="start">
                             <apex:outputPanel id="pm3">
@@ -287,18 +287,18 @@
                                 </apex:facet>
                             </apex:actionstatus>
                         </apex:outputPanel>
-                        <apex:commandButton value="{!$Label.Core_FC_SubmitForecast}" id="submitBtn" action="{!submitForApproval}" oncomplete="redirect()" onclick="if(!confirm('{!qtrSubmitMsg[0]}')){return false;}" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" status="status1" rerender="out,errMsg" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!isSubmitChk || isAllZero}" />
+                        <apex:commandButton value="{!$Label.Core_FC_SubmitForecast}" id="submitBtn" action="{!submitForApproval}" oncomplete="redirect()" onclick="if(!confirm('{!qtrSubmitMsg[0]}')){return false;}" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" status="status1" rerender="out,errMsg" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!isSubmitChk || isAllZero}" />
                     </apex:outputPanel>
                     
-                    <apex:outputPanel id="render2" rendered="{!(isManager)}">
-                        <apex:commandButton value="{!$Label.Core_FC_Approve}" id="apprvBtn" action="{!approvalMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
+                    <apex:outputPanel id="render2" rendered="{!isManager}">
+                        <apex:commandButton value="{!$Label.Core_FC_Approve}" id="apprvBtn" action="{!approvalMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
                         
-                        <apex:commandButton value="{!$Label.Core_FC_Reject}" id="rejectBtn" action="{!rejectionMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
+                        <apex:commandButton value="{!$Label.Core_FC_Reject}" id="rejectBtn" action="{!rejectionMethod}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" disabled="{!!isSubmitChk}" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && !isSubmitChk, 'slds-button slds-button_neutral', '')}"/>
                     </apex:outputPanel>
                     <apex:outputPanel id="render3" rendered="{!(isManager) || (isAdmin)}">
                         <apex:actionStatus id="myRecallStatus"> 
                             <apex:facet name="stop"> 
-                                <apex:commandbutton value="{!$Label.Core_Recall_Last_Approval}" id="recallBtn" action="{!recallLastApprovedFC}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator' || $Profile.Name == $Label.Core_Commissions_Office_Inquiries_Admin_User_Profile,FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,rc,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!!isRecall}"/>
+                                <apex:commandbutton value="{!$Label.Core_Recall_Last_Approval}" id="recallBtn" action="{!recallLastApprovedFC}" oncomplete="redirect()" rendered="{!IF($Profile.Name == 'BU Account Collaborator',FALSE,NOT(editAll))}" rerender="fcPage,table1,savePanel,addPanel,rc,errMsg" status="myRecallStatus" styleclass="{!if($User.UIThemeDisplayed =='Theme4d' && (isSubmitChk || isAllZero), 'slds-button slds-button_neutral', '')}" disabled="{!!isRecall}"/>
                             </apex:facet> 
                             <apex:facet name="start">
                                 <apex:outputPanel id="rc">

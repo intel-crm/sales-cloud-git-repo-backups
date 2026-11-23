@@ -1,5 +1,5 @@
 public without sharing class ER_ENT_PRG_SearchCIMAccount {
-    ER_CIM_Request__mdt cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from ER_CIM_Request__mdt where MasterLabel =: System.Label.PRM_Dupe_Scores];
+    PRM_CIM_Request__mdt cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: System.Label.PRM_Dupe_Scores];
     public map<id,contact> acctCont = new map<id,contact>();
     public string accCountry;
     
@@ -7,16 +7,20 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
     //Use Object(Data contract) Instead of so many parameters
     public list<PRM_CIMSearchResults__c> getCimResults(String accName,String accAddr,String accPostalCode,String accCity,String accCountry,String accStateProvince,String rcdLimit,String searchScore,String companyWebsite,String regEmail,String AccountType, Boolean fetchEmailDomainBasedAccts,set<id> accountsSfdc,String partnerRole,Boolean isProgramBased)
     {
+        system.debug('accCountry ==>'+accCountry);
         
         if(!isProgramBased)
         {
             ER_SearchSalesCloudAccounts.strCountryCode = accCountry;
+            system.debug('accCountry strCountryCode ==>'+ER_SearchSalesCloudAccounts.strCountryCode);
         }
         else
         {
             //Added by Naresh as part of US637998
             if(!String.isEmpty(regEmail) && (accountsSfdc==null || (accountsSfdc!=null && accountsSfdc.size() == 0))){
-                PRM_searchSfdcAccounts.strCountryCode = accCountry;            }
+                PRM_searchSfdcAccounts.strCountryCode = accCountry;
+                system.debug('accCountry strCountryCode ==>'+PRM_searchSfdcAccounts.strCountryCode);
+            }
         }
         
         //Response from CIM system is stored in cimResults
@@ -35,10 +39,13 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         physicalAdd.PhysicalStreetAddressTxt = accAddr;
         physicalAdd.Country2Cd = accCountry;
         physicalAdd.CountrySubdivisionCd = accStateProvince;
+        System.debug('@@@Physical Address'+physicalAdd);
         
         ER_ENT_PRG_SearchCIMAccount.BusinessOrganization busOrg = new ER_ENT_PRG_SearchCIMAccount.BusinessOrganization();
         busOrg.BusinessOrganizationNm = accName;
         busOrg.PhysicalAddress = physicalAdd;
+        System.debug('@@@Business Org'+busOrg);
+        
         
         list<ER_ENT_PRG_SearchCIMAccount.ElectronicAddress> elecAddrList= new list<ER_ENT_PRG_SearchCIMAccount.ElectronicAddress>();
         if(companyWebsite!=null){
@@ -51,17 +58,20 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         }
         requestDetail.BusinessOrganization = busOrg;
         if (rcdLimit==null){
-            rcdLimit= cimMdt.PRM_Max_Records__c;
+            rcdLimit=cimMdt.PRM_Max_Records__c;
         }
         if(searchScore==null){
             searchScore=string.valueof(cimMdt.PRM_Min_Score__c);   
         }
-		requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
+        requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
         requestDetail.CallingSourceSystem = cimMdt.PRM_Calling_System__c;
         requestDetail.MandatoryFieldRestrictionLevel = Integer.valueOf(cimMdt.PRM_Restriction_Level__c);
         requestDetail.MinimumSearchScore = Integer.valueOf(searchScore);
         requestDetail.IncludeDefaultAttributesForSourceTypes = False;
         requestDetail.AsynchronousRequestId = cimMdt.PRM_Async_Id__c;
+        
+        system.debug('@@Request Details: '+requestDetail);
+        
         
         //Building http Request for CIM Callout
         HttpRequest req = new HttpRequest();
@@ -69,6 +79,8 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         req.setEndpoint('callout:PRM_CIM_Callout_Credentials');        
         req.setMethod('POST');
         req.setTimeout(Integer.valueOf(System.Label.PRM_Timeout)); //60000
+        System.debug('@@@HTTP Request'+req); 
+        system.debug('@@ After Serializing Request Details: '+JSON.serialize(requestDetail));        
         req.setBody(JSON.serialize(requestDetail));
         
         try
@@ -77,16 +89,22 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
             {
                 if(regEmail != null)
                 {
-                    acctCont = ER_SearchSalesCloudAccounts.getAccounts(regEmail);
+                    acctCont = ER_SearchSalesCloudAccounts.getAccounts(regEmail); 
+                    system.debug('acctContSIZE -->'+acctCont.size());
                 }
             } 
             if (!isProgramBased || (accountsSfdc!=null && accountsSfdc.size() < Integer.valueOf(rcdLimit) || (acctCont!=null && (acctCont.size() < Integer.valueOf(rcdLimit)))))
             {
                 HttpResponse response = new Http().send(req);
                 
+                System.debug('@@@Response'+response);
+                system.debug('http Resp status::'+response.getStatusCode());
+                system.debug('http Resp body::'+response.getBody());
+                
                 if(response.getStatusCode() == 200 && String.isNotBlank(response.getBody()))
                 {
                     PRM_CIMWrapper respWrap = (PRM_CIMWrapper)JSON.deserialize(response.getBody(),PRM_CIMWrapper.class);
+                    system.debug('respWrap::'+respWrap);
                     if(Test.isRunningTest() && ER_SearchBeforeCreate_Test.IsEmailTest)
                     {
                         respWrap=null;
@@ -94,6 +112,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     if(respWrap != null){
                         //respWrap,accountsSfdc,regEmail,partnerRole,isProgramBased
                         cimResults=handleResponse(respWrap,accountsSfdc,regEmail,partnerRole,isProgramBased);
+                        System.debug('Cim results formatted : '+cimResults);
                     }
                 }else{
                     cimResults = null;
@@ -105,6 +124,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         catch(Exception e){
             
             PRM_ErrorUtilityClass.logError(e);
+            system.debug('exc::'+e.getMessage());
             cimResults = null;
         }
         
@@ -154,6 +174,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                         listOfSortedObj=PRM_searchSfdcAccounts.getSortedAccountsCim(cimResultsDomain,accIdsSet,partnerRole);
                         cimResultsDomain.clear();
                         for(PRM_SearchAccounts objAccId : listOfSortedObj){
+                            //system.debug('objAccId.AccountId --> '+objAccId.AccountId);
                             if(accCimDetails.containskey(objAccId.AccountId)){
                                 cimResultsDomain.add(accCimDetails.get(objAccId.AccountId));
                                 
@@ -166,13 +187,17 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                 else{
                     cimResults=null;
                 }
+                System.debug('accIdsSet size : '+accIdsSet.size());
             }
         }
         catch(Exception excep){
             
             PRM_ErrorUtilityClass.logError(excep);
+            system.debug('excep::'+excep.getMessage());
             cimResults = null;
         }
+        //system.debug('cimresultsRETURNSIZE--> '+cimResults.size());
+        system.debug('cimresultsRETURN--> '+cimResults);
         return cimResults;
     }
     
@@ -204,6 +229,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         map<string,string> cimPhysicalAddrLocType = new map<string,string>();
         //List<PRM_Registration_Request__c> updateReg = [Select Id, PRM_Dup_Status__c, PRM_DeDup_Criteria__c from PRM_Registration_Request__c where Id =: regRequest.Id];
         if(respWrap.organization != null && respWrap.ErrorDetailsTxt == null){
+            system.debug('@@ Inside main if');
             //Integer maxVal = respWrap.organization[0].searchScore;
             Integer maxVal = 0;
             Integer counterMax = 0;
@@ -233,11 +259,15 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     }
                 }
             }
+            system.debug('validSfidSet -- > '+validSfidSet);
+            system.debug('validCimSet---> '+validCimSet);
+            system.debug('intelaccountRT --> '+intelaccountRT);
             for(Account a : [Select Id,Name,Core_CIM_ID__c from Account where RecordTypeId =:intelaccountRT and (Core_CIM_ID__c IN: validCimSet or id in:validSfidSet)]){
                 validCimAccountMap.put(String.valueof(a.Id),a.Core_CIM_ID__c);
                 //validCimAccountMap.put(a.id,a.Id);
             }
             
+            system.debug('MAP VALUES --> '+validCimAccountMap);
             // Code for adding the source records
             map<string,list<PRM_CIMWrapper.SourceRecord>> cimAccountSourceMap = new map<string,list<PRM_CIMWrapper.SourceRecord>>();
             for (string accountId: validCimAccountMap.keyset()){
@@ -280,14 +310,16 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     respWrap.organization[i].sourceRecords.SourceRecord.addall(cimAccountSourceMap.get(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId));
                 }
                 for(integer j=0;j<respWrap.organization[i].sourceRecords.SourceRecord.size();j++){
+                    //system.debug('ID VALUES --> '+(id)respWrap.organization[i].sourceRecords.SourceRecord[j].SourceBusinessOrganization.BusinessOrganizationPartyId);
                     if(validCimAccountMap.containsKey(respWrap.organization[i].sourceRecords.SourceRecord[j].SourceBusinessOrganization.BusinessOrganizationPartyId) || validCimAccountMap.values().contains(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId)){
-                       
+                        system.debug('Search Score '+respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd);
                         //if(respWrap.organization[i].searchScore > maxVal && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
                         if(respWrap.organization[i].searchScore >= Integer.valueOf(cimMdt.PRM_Max_Score__c) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
                             maxVal = respWrap.organization[i].searchScore;
                             counterMax = counterMax + 1;
                             // Get the map for the organization searchscore and source records
                             //if (counterMax >= 1) {
+                            system.debug('CIM ID----> '+respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId);
                             cimSearchScoreMap.put(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId,respWrap.organization[i].searchScore);
                             cimSourceRecordsMap.put(respWrap.organization[i].sourceRecords.SourceRecord[j],respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId);
                             cimOrganizationMap.put(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId,respWrap.organization[i]);
@@ -326,6 +358,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     usgPhyAddrDet = cimUsagePhyMap.get(cimIDs);
                     for (list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation> listusg: usgPhyAddrDet.keyset()){
                         usgCimMap.put(listusg,cimIDs);
+                        //system.debug('FOUND VALUES--> ' +usgDet.AddressUsageTypeCd+' '+usgDet.AddressLocationTypeCd) ;
                     }
                 }}
             if(usgCimMap != null && !usgCimMap.isEmpty()){
@@ -336,6 +369,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                         if (usgDet.AddressUsageTypeCd == System.Label.PRM_ADDRUSGTYPE && usgDet.AddressLocationTypeCd== System.Label.PRM_ADDRLOCTYPE){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('PHY VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             //addressUsageTypeCd = System.Label.PRM_ADDRUSGTYPE;
                             //addressLocationTypeCd = System.Label.PRM_ADDRLOCTYPE;
@@ -345,6 +379,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                         else if (usgDet.AddressUsageTypeCd == System.Label.PRM_ADDRUSGTYPE_MAIL && usgDet.AddressLocationTypeCd== System.Label.PRM_ADDRLOCTYPE){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('MAIL VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             //addressUsageTypeCd = 'MAIL';
                             //addressLocationTypeCd = 'BUS';
@@ -353,6 +388,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                         else if (!cimPhysicalAddrUsageMap.containsKey(usgCimMap.get(usgDetList))){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('OTHR VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             //addressUsageTypeCd = usgDet.AddressUsageTypeCd;
                             //addressLocationTypeCd = usgDet.AddressLocationTypeCd; 
@@ -361,6 +397,10 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                         
                     }
                 }}
+            system.debug('cimSourceRecordsMap '+cimSourceRecordsMap.size());
+            system.debug('cimSourceRecordsMapVAL '+cimSourceRecordsMap);
+            system.debug('cimSearchScoreMapVAL '+cimSearchScoreMap);
+            system.debug('maxval  '+ maxval);
             
             ER_cimDataWrap cimDataWrap = new ER_cimDataWrap();
             cimDataWrap.cimSourceRecordsMap=cimSourceRecordsMap;
@@ -376,13 +416,14 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
             
         }
         else if(respWrap.organization == null && respWrap.ErrorDetailsTxt!=null && respWrap.ErrorDetailsTxt.contains(System.Label.PRM_ErrorDetails)){
-           
+            system.debug('@@ Inside else if');
             cimResultsList= null;
         }
         // Code added to store the CIM error details in the the registration object
         else if(respWrap.organization == null && respWrap.ErrorDetailsTxt!=null && respWrap.ErrorDsc!=null){
             cimResultsList= null;
         }
+        System.debug('cimResultsList : '+cimResultsList);
         return cimResultsList;
     }
     
@@ -401,12 +442,18 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         map<string,PRM_CIMWrapper.PhysicalAddress> cimPhysicalAddrUsageMap=cimDataWrap.cimPhysicalAddrUsageMap;
         string dupStatus=cimDataWrap.dupStatus;
         try{
+            //system.debug('Inside method Search Results');
             for (PRM_CIMWrapper.SourceRecord sourceRecord : cimSourceRecordsMap.keySet()){
                 PRM_CIMSearchResults__c searchResults = new PRM_CIMSearchResults__c();
                 PRM_CIMWrapper.organization orgValue = new PRM_CIMWrapper.organization();
                 string cimId = cimSourceRecordsMap.get(sourceRecord);
+                system.debug('insertCimSearchResults CIM ID--> '+cimId);
                 orgValue = cimOrganizationMap.get(cimId);
                 integer searchScore = cimSearchScoreMap.get(cimId);
+                system.debug('insertCimSearchResults searchScore--> '+searchScore);
+                
+                system.debug('Inside method Search Results');
+                
                 ER_cimInstWrap cimInstWrap = new ER_cimInstWrap();
                 if(isProgramBased)
                 {
@@ -424,10 +471,15 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                 searchResultsList.add(searchResults);
                 
             }
+            system.debug('searchResultsList '+searchResultsList.size());
+            //system.debug('searchResultsList1 '+searchResultsList1.size());
+            system.debug('searchResultsList '+searchResultsList);
+            //system.debug('searchResultsList1 '+searchResultsList1);
             //insert searchResultsList;
             
             if(!isProgramBased)
             {
+                System.debug('searchResultsList : '+searchResultsList);
                 return searchResultsList; 
             }
             else
@@ -445,6 +497,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     // Code for getting the email domain from admin registration page
                     if(regEmail!=null){
                         map<id,contact> acctCont=PRM_searchSfdcAccounts.getAccounts(regEmail);
+                        system.debug('acctCont --> '+acctCont.size());
                         for (Id accIdsSrchd : acctCont.keyset()){
                             accountIdsSearched.add(accIdsSrchd);
                             PRM_CIMSearchResults__c srchResultInst = new PRM_CIMSearchResults__c();
@@ -459,8 +512,10 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                     accountCimMapUnSorted.put(mapaccountIdCim.PRM_Account_Id__c,mapaccountIdCim);
                 }
                 List<PRM_SearchAccounts> listOfSortedObj = new List<PRM_SearchAccounts>();
+                system.debug('ROLE ----'+ partnerRole);
                 listOfSortedObj=PRM_searchSfdcAccounts.getSortedAccountsCim(searchResultsList,accountIdsSearched,partnerRole);
                 for(PRM_SearchAccounts objAccId : listOfSortedObj){
+                    system.debug('objAccId.AccountId --> '+objAccId.AccountId);
                     if(accountCimMapUnSorted.containskey(objAccId.AccountId)){
                         if(!sortedSearchResultsList.contains(accountCimMapUnSorted.get(objAccId.AccountId))){
                             sortedSearchResultsList.add(accountCimMapUnSorted.get(objAccId.AccountId));
@@ -469,19 +524,23 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
                 }
                 // Check the result list
                 for (PRM_CIMSearchResults__c sorted : sortedSearchResultsList){
+                    system.debug('sorted --> '+sorted.PRM_Account_Id__c);
                 }                
             }
         }
         catch(Exception errCimResults){
+            system.debug('Error Insert CIM Results :: '+errCimResults.getMessage());
             PRM_ErrorUtilityClass.logError(errCimResults);
             searchResultsList = null;
         }
         
+        System.debug('sortedSearchResultsList : '+sortedSearchResultsList);
         return sortedSearchResultsList;
     }
     
     private PRM_CIMSearchResults__c instantiateCimSearchResultsObj(ER_cimInstWrap cimInstWrap){
         PRM_CIMSearchResults__c searchResultsInst = new PRM_CIMSearchResults__c();
+        system.debug('regReqId '+ cimInstWrap.regReqId);
         PRM_CIMWrapper.PhysicalAddress phyAddrUsageDet=new PRM_CIMWrapper.PhysicalAddress();
         searchResultsInst.PRM_RegReq_Id__c = cimInstWrap.regReqId;
         searchResultsInst.PRM_CIM_Id__c = cimInstWrap.cimId;
@@ -498,6 +557,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         }
         if(cimPhysicalAddrUsageMap != null && !cimPhysicalAddrUsageMap.isEmpty()){
             phyAddrUsageDet=cimPhysicalAddrUsageMap.get(cimID);
+            system.debug('PHY ADDR -->'+phyAddrUsageDet);
             
             String addrdetails = cimInstWrap.cimPhyAddLocType.get(cimID);
             if(addrdetails !=null){
@@ -542,6 +602,7 @@ public without sharing class ER_ENT_PRG_SearchCIMAccount {
         if(orgValue.Snapshot.BusinessOrganizationTrustedReferenceProcessStatusAssociation.TrustedProcessStatusCd!=null){searchResultsInst.PRM_Gold_Trusted_Source_Nm__c = orgValue.Snapshot.BusinessOrganizationTrustedReferenceProcessStatusAssociation.TrustedProcessStatusCd;}
         if(orgValue.Snapshot.BusinessOrganization.DUNSNumber != null){
             searchResultsInst.PRM_DUNS_Nbr__c = integer.valueof(orgValue.Snapshot.BusinessOrganization.DUNSNumber);}
+        System.debug('searchResultsInst : '+searchResultsInst);
         return searchResultsInst;
         
     } 

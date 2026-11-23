@@ -185,7 +185,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key</value>
+            <value>altima,arrow,macnica,digi-key</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_87973423</column>
@@ -207,7 +207,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MIPS Customer Survey RAEs - Obsolete</name>
+    <name>MIPS Customer Survey RAEs</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -225,6 +225,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

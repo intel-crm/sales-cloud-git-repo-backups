@@ -11,6 +11,16 @@ Modification Log :
                                         for Member Tier OPID Accounts
 *************************************************************************************************************************************************/
 global class PRM_PointsRedeemBenAssignBatch implements Database.Batchable<sObject>,Database.Stateful{
+    
+    //IPA2.0 - TWC727-2862 - Start
+    public static final String LOG_ENTRY_ORIGIN   = 'PRM_PointsRedeemBenAssignBatch';
+    public static final String LOG_ENTRY_PROJECT  = 'IPA';
+    public static final String LOG_ENTRY_SCOPE    = 'Batch class failures - IPA';
+    public static final String LOG_ENTRY_SEVERITY = 'Exception';
+    public String strTags;
+    String logEntryMsgString='';
+    //IPA2.0 - TWC727-2862 - End
+    
     global static PRM_BatchCustomSetting__c batchCustomSetting = [Select Id, Name, PRM_NoOfRecords__c, PRM_SchedulingHour__c,PRM_LastExecutedTime__c,PRM_PartnerType__c,PRM_ChannelProgramLevel__c From PRM_BatchCustomSetting__c Where Name =:System.Label.PRM_BatchValues];
     global static Database.QueryLocator start(Database.BatchableContext context){
         String nameIPA = System.label.PRM_Intel_Partner_Alliance;
@@ -44,10 +54,19 @@ global class PRM_PointsRedeemBenAssignBatch implements Database.Batchable<sObjec
         return Database.getQueryLocator(acmList);
     }
     global void execute(Database.BatchableContext context, List<PRM_AccountChannelMembership__c> scope){
-        PRM_PointsRedeemBenAssignUtility.pointsBenefitEligibility(scope);
+        
+        //IPA2.0 - TWC727-2862 - Added try catch block for creating log entry in case of failures
+        try{
+            PRM_PointsRedeemBenAssignUtility.pointsBenefitEligibility(scope);
+        }
+        catch(Exception ex){
+            logEntryMsgString+='\n\nException occurred:'+ex.getMessage() + '-' + ex.getStackTraceString();
+            PRM_IPA_Utility.createLogEntry(logEntryMsgString, LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT ,LOG_ENTRY_SCOPE , LOG_ENTRY_SEVERITY , strTags); 
+        }
+        //IPA2.0 - TWC727-2862 - End
     }
     global void finish(Database.BatchableContext context){
-        String body = 'Points Redemption Benefit Assignment for Member Tier OPID Accounts is successful';
+        String body = 'Points Redemption Benefit Assignment for Partner Tier OPID Accounts is successful';
         if(String.isNotBlank(body)){
             sendMail('BATCH_JOB_NOTIFICATION', body ,'Points Redemption Benefit Assignment Completed Successfully'); //Calling Send Email Method to send batch completion email 
         }

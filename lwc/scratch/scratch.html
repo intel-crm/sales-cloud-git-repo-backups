@@ -1,0 +1,19 @@
+<template>
+
+    <c-core-intc-modal is-open has-header has-body>
+        <h1 slot="header" class="color-white">Submit a Solution</h1>
+        <div slot="body" style="height: 500px; overflow: hidden;">
+            <template if:false={loaded}>
+                <div class="slds-p-around_large slds-text-align_center">
+                    IFrame is loading ...
+                </div>
+            </template>
+            <!-- <div class="slds-p-around_medium"><span class="color-red">*</span> Required</div> -->
+            <iframe height="500" width="100%"
+                src="/imp/apex/PSS_SolutionSubmit"
+                style="border: 0;"
+                onload={handleLoaded}>
+            </iframe>
+        </div>
+    </c-core-intc-modal>
+</template>

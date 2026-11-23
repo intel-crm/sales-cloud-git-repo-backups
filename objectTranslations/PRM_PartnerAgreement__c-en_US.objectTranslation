@@ -12,6 +12,14 @@
         <label><!-- Legal Agreement Category --></label>
         <name>PRM_Agreement_Category_Nm__c</name>
         <picklistValues>
+            <masterLabel>EDC_TNC</masterLabel>
+            <translation><!-- EDC_TNC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General Registration Terms and Conditions</masterLabel>
+            <translation><!-- General Registration Terms and Conditions --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Intel Insider Cloud All Agreements</masterLabel>
             <translation><!-- Intel Insider Cloud All Agreements --></translation>
         </picklistValues>
@@ -85,6 +93,17 @@
             <translation><!-- Sponsor --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Partner Agreement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

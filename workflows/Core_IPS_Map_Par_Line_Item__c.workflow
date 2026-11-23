@@ -7,20 +7,9 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>IPS_Email_Templates/Core_IPS_PAR_Item_Internal_Closed</template>
-    </alerts>
-    <alerts>
-        <fullName>Notify_email_requestor_that_line_item_status_has_changed</fullName>
-        <description>Notify email requestor that MAP line item status has changed</description>
-        <protected>false</protected>
-        <recipients>
-            <type>creator</type>
-        </recipients>
-        <senderAddress>ips_do_not_reply@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
-        <template>IPS_Email_Templates/Core_IPS_MAP_Item_Internal_Closed</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_IPS_Line_Item_Update_Is_ParRequest</fullName>
@@ -133,7 +122,7 @@
             <name>Core_IPS_Status_field_update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_IPS_MAP_PAR__c.RecordTypeId</field>
             <operation>equals</operation>
@@ -150,5 +139,19 @@
             <value>False</value>
         </criteriaItems>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+    <rules>
+        <fullName>Core_LineItem_Update_isParRequest</fullName>
+        <actions>
+            <name>Core_IPS_Line_Item_Update_Is_ParRequest</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>false</active>
+        <criteriaItems>
+            <field>Core_IPS_Map_Par_Line_Item__c.Core_Approval_Type__c</field>
+            <operation>equals</operation>
+            <value>Auto Approve</value>
+        </criteriaItems>
+        <triggerType>onCreateOnly</triggerType>
     </rules>
 </Workflow>

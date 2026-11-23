@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Group xmlns="http://soap.sforce.com/2006/04/metadata">
-    <doesIncludeBosses>false</doesIncludeBosses>
-    <name>AGS_CCP CCFB Prog Admin Escltns L3 Grp</name>
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <name>CCP CCF Boost Prog Admin Escltns L3 Grp</name>
 </Group>

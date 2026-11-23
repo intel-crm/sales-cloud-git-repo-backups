@@ -18,7 +18,6 @@ global class PRM_DeleteTestRegistrationRequestsBatch implements Database.Batchab
     global Database.QueryLocator start(Database.BatchableContext bc) {
         List<String> conditions = new List<String>();
         List<PRM_Test_Registration_Domain__mdt> domainConfigs = [SELECT PRM_Domain__c,PRM_Active__c FROM PRM_Test_Registration_Domain__mdt WHERE PRM_Active__c = TRUE AND PRM_Domain__c != NULL];
-        Datetime dt = Datetime.valueOfGmt(Label.PRM_EntitlementDQBatchPickupDate.replace('T', ' ').replace('Z', ''));
 
         if (domainConfigs.isEmpty()) {
             return Database.getQueryLocator('SELECT Id,PRM_Email_ID__c,PRM_Channel_Program_Level_txt__c FROM PRM_Registration_Request__c WHERE Id = NULL');
@@ -40,8 +39,7 @@ global class PRM_DeleteTestRegistrationRequestsBatch implements Database.Batchab
         'SELECT Id, PRM_Email_ID__c, PRM_Channel_Program_Level_txt__c ' +
         'FROM PRM_Registration_Request__c ' +
         'WHERE (' + String.join(conditions, ' OR ') + ') ' +
-        'AND PRM_Channel_Program_Level_txt__c = \'Intel Partner Alliance\''+
-        'AND CreatedDate >:dt';
+        'AND PRM_Channel_Program_Level_txt__c = \'Intel Partner Alliance\'';
         logEntryMsgString+='Inside start method '+query;
         return Database.getQueryLocator(query);
     }

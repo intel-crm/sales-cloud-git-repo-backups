@@ -124,7 +124,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Duplicate</value>
+            <value>Cancelled - Duplicate,Cancelled - Entered in Error</value>
         </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
@@ -184,6 +184,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

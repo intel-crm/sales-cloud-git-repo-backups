@@ -172,7 +172,7 @@
         <label>Email Template ID</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -267,7 +267,7 @@
         <fullName>PRM_Email_API_Response__c</fullName>
         <label>Email API Response</label>
         <length>131072</length>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>4</visibleLines>
@@ -405,56 +405,14 @@
         <columns>PRM_ToEmailID__c</columns>
         <columns>PRM_Email_API_Response__c</columns>
         <columns>PRM_Timestamp__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>expire</value>
-        </filters>
-        <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>Lead_Email</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Subject__c</columns>
-        <columns>PRM_User__c</columns>
-        <columns>PRM_EmailDeliverabilityStatus__c</columns>
-        <columns>PRM_Email_API_Response__c</columns>
-        <columns>PRM_Timestamp__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Subject__c</field>
-            <operation>contains</operation>
-            <value>lead</value>
-        </filters>
-        <label>Lead Email</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>PCC_Deal_Reg_Email_Logs</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <columns>NAME</columns>
-        <columns>PRM_Subject__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_ToEmailID__c</columns>
-        <columns>PRM_Email_API_Response__c</columns>
-        <columns>PRM_Timestamp__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
         <columns>Email_Template_Name__c</columns>
+        <columns>PRM_Contact__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Email_Template_Name__c</field>
-            <operation>contains</operation>
-            <value>deal</value>
-        </filters>
-        <filters>
-            <field>Email_Template_Name__c</field>
-            <operation>contains</operation>
-            <value>Pricing_FI</value>
-        </filters>
-        <label>Deal Reg Email Logs</label>
-        <sharedTo>
-            <group>PCC_Deal_Internal_Users</group>
-        </sharedTo>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>EL-{0000}</displayFormat>

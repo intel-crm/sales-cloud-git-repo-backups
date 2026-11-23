@@ -11,27 +11,35 @@ Modification Log    :
 global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>, Database.Stateful {
 
     public String logEntryMsgString='';
-    public List<PRM_IPA_DQ_Logs__c> dqLogList = new List<PRM_IPA_DQ_Logs__c>();
     global boolean assignEntitlement = false;
     global Set<String> onePartnerIds = new Set<String>();
     global String currentTimePeriod = System.Label.PRM_Current_measurement_period;
-    global Set<Id> successfulBenefitAssignments = new Set<Id>();
-    global Decimal totalSales = Decimal.valueOf(System.Label.PRM_Total_Sales_Out_Threshold);
+    //global Set<Id> successfulBenefitAssignments = new Set<Id>();
+    global Decimal totalSales = 50000;
     
-    global Iterable<AggregateResult> start(Database.BatchableContext bc) {
-        return [SELECT PRM_One_Partner_Id__c accountId,SUM(PRM_Sales_Amount_Nbr__c) totalSales FROM PRM_Value_Exchange_Data__c WHERE PRM_TimePeriod_Nm__c =:currentTimePeriod GROUP BY PRM_One_Partner_Id__c HAVING SUM(PRM_Sales_Amount_Nbr__c) >:totalSales
-        ];
+    //public List<PRM_IPA_DQ_Logs__c> dqLogList = new List<PRM_IPA_DQ_Logs__c>();
+    
+    global Database.QueryLocator start(Database.BatchableContext bc) {
+
+        return Database.getQueryLocator([
+            SELECT Id,
+               PRM_One_Partner_Id__c,
+               PRM_One_Partner_Id__r.Core_IPA_Badge_Tier__c,
+               PRM_Time_Period__c,
+               PRM_Sales_Amount__c,
+               PRM_Training_Credit_Points_Count_Nbr__c
+            FROM PRM_Value_Exchange_Calculation__c
+            WHERE PRM_Sales_Amount__c >:totalSales and PRM_Time_Period__c =:currentTimePeriod
+        ]);
     }
 
-    global void execute(Database.BatchableContext bc,List<AggregateResult> scope)  {
+    global void execute(Database.BatchableContext bc,List<PRM_Value_Exchange_Calculation__c> scope) {
         logEntryMsgString+='Inside execute method, scope: '+scope;
         PRM_BatchCustomSetting__c batchCustomSetting;
-        List<Id> opidList = new List<Id>();
         List<String> benefits = new List<String>();
         Set<String> partnerIdsWithActiveBenefit = new Set<String>();
         List<PRM_AccountBenefitAssociation__c> abaRecordsToUpsert = new List<PRM_AccountBenefitAssociation__c>();
         List<String> benefitIds = new List<String>();
-        List<PRM_Value_Exchange_Data__c> VxDataList = new List<PRM_Value_Exchange_Data__c>();
         Map<Id, PRM_AccountBenefitAssociation__c> existingABAByAccount = new Map<Id, PRM_AccountBenefitAssociation__c>();
         
         //Query on BatchCustomSetting to fetch batch size, Partner type, scheduling hour, channel program level
@@ -39,26 +47,19 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
         benefits = batchCustomSetting.PRM_Manual_Benefits__c.split(';');
         
         //System.debug('benefits :'+benefits);
+        
+        
         try{
             //Get One partner id list.
-            for (AggregateResult ar : scope) {
-                opidList.add((Id) ar.get('accountId'));
-            }
-            if(opidList != null && !opidList.isEmpty()){
-                VxDataList = [SELECT Id,PRM_Account_Id__c,PRM_Change_Date_Dt__c,PRM_Country_Market_Type_Nm__c,PRM_From_Dt__c,PRM_IsChanged_Ind__c,PRM_One_Partner_Id__c,PRM_Processed_Date_Time_Dt__c,PRM_Sales_Amount_Nbr__c,PRM_Sales_Amount_Report_Nbr__c,PRM_Total_Sales_Out_Units_Nbr__c,PRM_Total_Sales_Out_Units_Report_Nbr__c,PRM_Value_Exchange_ext_id__c,PRM_TimePeriod_Nm__c,PRM_One_Partner_Id__r.Core_IPA_Badge_Tier__c,PRM_Sum_of_Training_Credits__c
-                FROM PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c IN :opidList];
-            }
-            if(VxDataList != null && !VxDataList.isEmpty()){
-                for (PRM_Value_Exchange_Data__c rec : VxDataList) {
-                    if (String.isNotBlank(rec.PRM_One_Partner_Id__c) && String.isNotBlank(rec.PRM_One_Partner_Id__r.Core_IPA_Badge_Tier__c)) {
-                        onePartnerIds.add(rec.PRM_One_Partner_Id__c);
-                    }
+            for (PRM_Value_Exchange_Calculation__c rec : scope) {
+                if (String.isNotBlank(rec.PRM_One_Partner_Id__c) && String.isNotBlank(rec.PRM_One_Partner_Id__r.Core_IPA_Badge_Tier__c)) {
+                    onePartnerIds.add(rec.PRM_One_Partner_Id__c);
                 }
             }
             //System.debug('onePartnerIds :'+onePartnerIds);
             //Get partner benefit id list.
             if(benefits != null && !benefits.isEmpty()){
-                for (PRM_PartnerBenefit__c bnft : [select Id,Name,PRM_Benefit_Dsc__c,PRM_Benefit_Type_Nm__c,PRM_Benefit_Cd__c from PRM_PartnerBenefit__c where Name IN :benefits]) {
+                for (PRM_PartnerBenefit__c bnft : [select Id/*,Name,PRM_Benefit_Dsc__c,PRM_Benefit_Type_Nm__c,PRM_Benefit_Cd__c*/ from PRM_PartnerBenefit__c where Name IN :benefits]) {//ATHR Fix - TWC729-9556 - JB
                     benefitIds.add(bnft.Id);
                 }
                 //System.debug('benefitIds :'+benefitIds);
@@ -79,7 +80,7 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
                     if (existingABA.PRM_Status_Nm__c == 'Inactive') {
                         existingABA.PRM_Status_Nm__c = 'Active';
                         existingABA.PRM_Source__c = 'Tier';
-                        existingABA.PRM_Status_Reason_Txt__c = System.Label.PRM_AWR_Assignment_Reason;
+                        existingABA.PRM_Status_Reason_Txt__c = 'IPA Refresh Data Update through batch.';
                         abaRecordsToUpsert.add(existingABA);
                     }
 
@@ -88,12 +89,15 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
                     newABA.PRM_Partner_Benefit_Id__c = benefitIds[0];
                     newABA.PRM_Source__c = 'Tier';
                     newABA.PRM_Status_Nm__c = 'Active';
-                    newABA.PRM_Status_Reason_Txt__c = System.Label.PRM_AWR_Assignment_Reason;
+                    newABA.PRM_Status_Reason_Txt__c = 'IPA Refresh Data Update through batch.';
                     abaRecordsToUpsert.add(newABA);
                 }
             }
             /*Utkarsh - TWC729-9308 - END*/
             //System.debug('abaRecordsToUpsert :'+abaRecordsToUpsert);
+            
+            Set<Id>successfulBenefitAssignments=new Set<Id>();
+            
             Database.UpsertResult[] results = Database.upsert(abaRecordsToUpsert, false);
             for(Integer i = 0; i < results.size(); i++) {
                 if(results[i].isSuccess()) {
@@ -106,6 +110,9 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
                 assignEntitlement = true;
                 PRM_accBenefitAssociationUtility.onManualBenefitInsert(abaRecordsToUpsert,null,assignEntitlement);
             }
+            
+            List<PRM_IPA_DQ_Logs__c> dqLogList=new List<PRM_IPA_DQ_Logs__c>();
+            
             if(successfulBenefitAssignments != null && !successfulBenefitAssignments.isEmpty()){
                 for(Id partner :successfulBenefitAssignments){
                     PRM_IPA_DQ_Logs__c dqLog = new PRM_IPA_DQ_Logs__c();
@@ -113,6 +120,22 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
                     dqLog.PRM_Message__c = 'Records will be inserted/updated as part of PRM_BatchToAssignAWRBenefits processing.';
                     dqLog.PRM_Apex_Class_Name__c = 'PRM_BatchToAssignAWRBenefits';
                     dqLogList.add(dqLog);
+                }
+            }
+            
+            Database.SaveResult[] logResults=new List<Database.SaveResult>();
+            if(!dqLogList.isEmpty())
+            {
+                logResults=Database.insert(dqLogList,false);
+            }
+            
+            for(Database.SaveResult sr:logResults)
+            {
+                if(!sr.isSuccess())
+                {
+                    for(Database.Error err:sr.getErrors())
+                    { logEntryMsgString+='\nDQ Log Error: '+err.getMessage();
+                    }
                 }
             }
             
@@ -125,7 +148,7 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
     }
 
     global void finish(Database.BatchableContext bc) {
-        try{
+        /*try{
             List<Database.SaveResult> dqResultList = Database.insert(dqLogList,false);
             for(Database.SaveResult dqResult: dqResultList){
                 if(!dqResult.isSuccess()){
@@ -135,9 +158,9 @@ global class PRM_BatchToAssignAWRBenefits implements Database.Batchable<SObject>
                 }
             }
         }
-        catch(Exception ex){
+        catch(Exception ex){ 
             logEntryMsgString='\n errors:'+ex;
-        }
+        }*/
         string jobInitiatedDateTime = System.Now().format('MM/dd/YYYY HH:MM:SS','PST');
         if(logEntryMsgString!=''){// this block will create Log Entry records on the basis of length of logEntryMsg and Field limit.
             PRM_ProcessInboundOPIDLogEntriesUtility logEntryUtility=new PRM_ProcessInboundOPIDLogEntriesUtility();

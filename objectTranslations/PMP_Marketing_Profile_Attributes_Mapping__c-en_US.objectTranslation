@@ -34,4 +34,8 @@
         <relationshipLabel><!-- Marketing Profile Attributes Mappings --></relationshipLabel>
     </fields>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- test exception --></errorMessage>
+        <name>Testing</name>
+    </validationRules>
 </CustomObjectTranslation>

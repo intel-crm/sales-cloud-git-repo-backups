@@ -35,8 +35,7 @@ private class Core_AAQC_Inquiry_Details_CTRL_Test{
             system.debug('afda'+com);
             insert com;
            
-        //commented for classic EOL-Tejaswini
-         //   PageReference pageRef = Page.Core_IPS_ViewCase;
+            PageReference pageRef = Page.Core_IPS_ViewCase;
             ApexPages.currentPage().getParameters().put('message','ClosedYes');
             ApexPages.currentPage().getParameters().put('id', String.valueOf(c.Id));
             ApexPages.currentPage().getParameters().put('referer','CaseCloseOnEmail');
@@ -57,8 +56,7 @@ private class Core_AAQC_Inquiry_Details_CTRL_Test{
             system.debug('afda'+com);
             insert com;
            
-        //commented for classic EOL-Tejaswini
-         //   PageReference pageRef = Page.Core_IPS_ViewCase;
+            PageReference pageRef = Page.Core_IPS_ViewCase;
             ApexPages.currentPage().getParameters().put('message','ClosedNo');
             ApexPages.currentPage().getParameters().put('id', String.valueOf(c.Id));
             ApexPages.currentPage().getParameters().put('referer','CaseCloseOnEmail');

@@ -12,16 +12,12 @@ private class Core_MDF_CCP_Multicurrency_Test
     {
         
        @isTest static void testCallHttp()
-           {   
-              // Highlight: Unused Local Variable 
-             //  Core_MDF_CCP_Multicurrency.errorHandling test = new Core_MDF_CCP_Multicurrency.errorHandling();
-              /*  string response = */ Core_MDF_CCP_Multicurrency.callHttp();
-               Core_MDF_CCP_Multicurrency.scheduleMulticurrencyRetryBatch();
-               System.assert(true,Core_MDF_CCP_Multicurrency.isError);
-              
+           {            
+               Core_MDF_CCP_Multicurrency.errorHandling test = new Core_MDF_CCP_Multicurrency.errorHandling();
+               Core_MDF_CCP_Multicurrency.callHttp();
            }
         
-      @isTest static void testAppendDigitsToInputValue()
+       @isTest static void testAppendDigitsToInputValue()
            {
               string result = Core_MDF_CCP_Multicurrency.appendDigitsToInputValue('1',4); 
               system.assertEquals('0001', result);
@@ -38,9 +34,6 @@ private class Core_MDF_CCP_Multicurrency_Test
                 Core_MDF_CCP_Multicurrency.parseJSONoutput(res1);
                 Core_MDF_CCP_Multicurrency.parseJSONoutput(res2);
                 Core_MDF_CCP_Multicurrency.parseJSONoutput(res3);
-                System.assert(true, Core_MDF_CCP_Multicurrency.parseJSONoutput(res1));
-                System.assert(true, Core_MDF_CCP_Multicurrency.parseJSONoutput(res2));
-                System.assert(true, Core_MDF_CCP_Multicurrency.parseJSONoutput(res3));
             }
         
        @isTest static void testGetUSDExchangeRateBasedOnDate()
@@ -85,7 +78,7 @@ private class Core_MDF_CCP_Multicurrency_Test
                         system.assertEquals(null,bObj.conversionRate);
                         system.assertEquals(1,cObj.conversionRate);
                         system.assertEquals(null,dObj.conversionRate);                                               
-                      
+                        //system.debug('listvar' + listvar);
                     }          
             }
         
@@ -98,32 +91,37 @@ private class Core_MDF_CCP_Multicurrency_Test
                 Database.insert(usr);
                 
                 System.runAs(usr)
-                    {
-                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount record1 = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
-                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount record2 = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
-                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount record3 = new Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount();
-                        List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount> inputList = new List<Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount>();
-                        
-                        record1.inputCurrency ='ZMK';record1.inputAmount = 7500.23;
-                        record1.outputCurrency = 'INR';record1.inputDate= date.newInstance(2019,06,04);
-                        record2.inputCurrency ='ZMK';record2.inputAmount = 0;
-                        record2.outputCurrency = 'INR';record2.inputDate= date.newInstance(2019,06,02);
-                        record3.inputCurrency ='';record3.inputAmount = 0;
-                        record3.outputCurrency = '';record3.inputDate= date.newInstance(2019,06,02);
-                        
-                        inputList.add(record1);inputList.add(record2);inputList.add(record3);
-						Core_MDF_CCP_Multicurrency.getExchangeRateForAnyInputAndOutputCurrency(inputList);
-                        // Unit Test Method should include System.Assert
-                        system.assertEquals(0.0062064838, record1.conversionRate);
-                        system.assertEquals(0.0062064838, record2.conversionRate);
-                        system.assertEquals(null, record3.conversionRate);  
-                        
-                        //system.assertEquals(0.0062064838, result1.conversionRate);
-                        //system.assertEquals(0.0062064838, result2.conversionRate);
-                        //system.assertEquals(null, result3.conversionRate);
+                    {		
+                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount result1 = Core_MDF_CCP_Multicurrency.getExchangeRateForAnyInputAndOutputCurrency(date.newInstance(2019,06,04),'ZMK', 7500.23, 'INR');    
+                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount result2 = Core_MDF_CCP_Multicurrency.getExchangeRateForAnyInputAndOutputCurrency(date.newInstance(2019,06,02),'ZMK', 0, 'INR');
+                        Core_MDF_CCP_Multicurrency.getExchangeRateAndAmount result3 = Core_MDF_CCP_Multicurrency.getExchangeRateForAnyInputAndOutputCurrency(date.newInstance(2019,06,02),'', 0, '');
+                        system.debug('result1' + result1 + 'result2' + result2 + 'result3' + result3);
+                        system.assertEquals(0.0062064838, result1.conversionRate);
+                        system.assertEquals(0.0062064838, result2.conversionRate);
+                        system.assertEquals(null, result3.conversionRate);
                         
                     }
             }
+        
+        @isTest static void testExchangeRateBasedOnDate()
+            {	
+                List<Core_MDF_Currency_Exchange_Rates__c> inputList1 = [SELECT Core_MDF_Exchange_Rate__c, Core_MDF_Market_Date__c, Core_MDF_End_Date__c, Name FROM Core_MDF_Currency_Exchange_Rates__c where Name = 'ZMK'];
+                List<Core_MDF_Currency_Exchange_Rates__c> inputList2 = [SELECT Core_MDF_Exchange_Rate__c, Core_MDF_Market_Date__c, Core_MDF_End_Date__c, Name FROM Core_MDF_Currency_Exchange_Rates__c where Name = 'ABC'];
+                
+                decimal result1 = Core_MDF_CCP_Multicurrency.exchangeRateBasedOnDate(inputList1,'ZMK',date.newInstance(2019,06,06)); 
+                decimal result2 = Core_MDF_CCP_Multicurrency.exchangeRateBasedOnDate(inputList1,'ZMK',date.newInstance(2019,08,04));
+                decimal result3 = Core_MDF_CCP_Multicurrency.exchangeRateBasedOnDate(inputList2,'',date.newInstance(2019,06,06));
+                decimal result4 = Core_MDF_CCP_Multicurrency.exchangeRateBasedOnDate(null,null,null);
+                
+                system.debug('result1' + result1 + 'result2' + result2 + 'result3' + result3);
+                system.assertEquals(0.0000850159000000, result1);
+                system.assertEquals(null, result2);
+                system.assertEquals(null, result3);
+                
+            }
+        @isTest static void testScheduleMulticurrencyRetryBatch(){
+            Core_MDF_CCP_Multicurrency.scheduleMulticurrencyRetryBatch();
+        }
         
         @TestSetup static void createTestData()
             {

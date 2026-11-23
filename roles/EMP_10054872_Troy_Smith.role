@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Barry Rosenfield</description>
+    <description>EMP of Rod O&apos;Shea</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10054872_Troy_Smith</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10791906_Barry_Rosenfield</parentRole>
+    <parentRole>EMP_10102173_Rod_O_Shea</parentRole>
 </Role>

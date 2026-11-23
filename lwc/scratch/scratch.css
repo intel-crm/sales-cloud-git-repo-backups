@@ -1,0 +1,13 @@
+/* @import './glider.min.css'; */
+
+h1 {
+    color: var(--lwc-digitalBlue);
+}
+
+.c-item {
+    background-color: var(--digitalBlue);
+    color: white;
+    border: 3px solid var(--charcoal);
+    padding: 2rem;
+    min-width: 300px;
+}

@@ -1,0 +1,10 @@
+<template>
+<h4>Offerings By Topics</h4>
+    <template if:true={listTopics}>
+        <lightning-datatable data={listTopics} columns={columns} key-field="topicName">
+        </lightning-datatable>
+    </template>
+    <template if:true={error}>
+        {error}
+    </template>
+</template>

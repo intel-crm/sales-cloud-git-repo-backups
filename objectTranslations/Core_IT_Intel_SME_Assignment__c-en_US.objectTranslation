@@ -99,6 +99,17 @@
             <translation><!-- N/A --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>SME Topic Assignment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Travel Required --></label>
+            <section>Travel Required</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_Assign_SME_to_Topic --></label>

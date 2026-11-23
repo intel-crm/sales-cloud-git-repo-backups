@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Channel Program Domain Details</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Channel Program Domain Details</value>
+    </caseValues>
+    <fields>
+        <help><!-- Country values --></help>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <help><!-- Email domain name --></help>
+        <label><!-- Domain Name --></label>
+        <name>Domain_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Detail --></label>
+        <name>Entitlement_Detail__c</name>
+        <relationshipLabel><!-- Channel Program Domain Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- To check active status --></help>
+        <label><!-- IsInactive --></label>
+        <name>IsInactive__c</name>
+    </fields>
+    <fields>
+        <help><!-- Check about whitelist/blacklist domain --></help>
+        <label><!-- Iswhitelisted --></label>
+        <name>Iswhitelisted__c</name>
+    </fields>
+    <fields>
+        <help><!-- Partner Program --></help>
+        <label><!-- Partner Program --></label>
+        <name>Partner_Program__c</name>
+        <relationshipLabel><!-- Channel Program Domain Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Geo --></help>
+        <label><!-- Region --></label>
+        <name>Region__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

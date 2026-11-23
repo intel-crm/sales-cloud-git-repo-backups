@@ -670,7 +670,7 @@
 "Parent Identifier" : "TPS_900236",
 "Parent Name" : "基本功能",
 "Child Identifier" : "TPS_900241",
-"Child Name" : "时钟、PLL 和重置",
+"Child Name" : "时钟",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3",
@@ -744,7 +744,7 @@
 "Parent Identifier" : "TPS_900223",
 "Parent Name" : "接口协议",
 "Child Identifier" : "TPS_900256",
-"Child Name" : "DisplayPort*",
+"Child Name" : "DisplayPort",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3",
@@ -1632,7 +1632,7 @@
 "Parent Identifier" : "TPS_900236",
 "Parent Name" : "基本功能",
 "Child Identifier" : "TPS_900247",
-"Child Name" : "模拟、调试和验证",
+"Child Name" : "模拟",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "9",
@@ -1710,7 +1710,7 @@
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "11",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
 "Child_Mandatory_Flag" : "No",
@@ -1743,7 +1743,7 @@
 "Parent Identifier" : "TPS_900223",
 "Parent Name" : "接口协议",
 "Child Identifier" : "TPS_900265",
-"Child Name" : "HDMI*",
+"Child Name" : "HDMI",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "12",
@@ -1891,7 +1891,7 @@
 "Parent Identifier" : "TPS_900223",
 "Parent Name" : "接口协议",
 "Child Identifier" : "TPS_900269",
-"Child Name" : "PCI Express*",
+"Child Name" : "PCI Express",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "16",
@@ -2006,191 +2006,6 @@
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "19",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900282",
-"Child Name" : "音频和视频",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "20",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900283",
-"Child Name" : "JESD",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "21",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900284",
-"Child Name" : "收发器 PHY",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "22",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900285",
-"Child Name" : "收发器 PLL",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "23",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900286",
-"Child Name" : "UPI",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "24",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
@@ -2372,7 +2187,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "系统",
 "Child Identifier" : "IPA_TYPE_Sys_AIBox",
-"Child Name" : "AI BOX",
+"Child Name" : "AI 机箱",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "230",
@@ -2481,7 +2296,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "数字安全和监控",
+"Parent Name" : "安全和保障",
 "Child Identifier" : "TPS_900043",
 "Child Name" : "相机",
 "Child Description" : "",
@@ -2518,7 +2333,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "数字安全和监控",
+"Parent Name" : "安全和保障",
 "Child Identifier" : "TPS_900044",
 "Child Name" : "DVR 和 NVR",
 "Child Description" : "",
@@ -2555,7 +2370,7 @@
 },
 {
 "Parent Identifier" : "TPS_900008",
-"Parent Name" : "数字安全和监控",
+"Parent Name" : "安全和保障",
 "Child Identifier" : "TPS_900045",
 "Child Name" : "其它数字安全和监控组件",
 "Child Description" : "",
@@ -2742,7 +2557,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "系统",
 "Child Identifier" : "TPS_900008",
-"Child Name" : "数字安全和监控",
+"Child Name" : "安全和保障",
 "Child Description" : "可与识别和人工智能软件结合以监控物理位置的一种图像捕获和视频录制设备系统。",
 "Child Image URL" : "",
 "Sequence" : "330",
@@ -2783,43 +2598,6 @@
 "Child Description" : "通过屏幕或投影来投放广告或提供有用信息的数字内容显示系统。",
 "Child Image URL" : "",
 "Sequence" : "340",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_TYPE_Sys",
-"Parent Name" : "系统",
-"Child Identifier" : "IPA_TYPE_Sys_EmbeddedComputer",
-"Child Name" : "嵌入式计算机",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "345",
 "Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
@@ -3371,7 +3149,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys_Server",
 "Parent Name" : "服务器",
 "Child Identifier" : "TPS_900058",
-"Child Name" : "其他",
+"Child Name" : "其它",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "480",
@@ -3408,7 +3186,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys",
 "Parent Name" : "系统",
 "Child Identifier" : "TPS_900013",
-"Child Name" : "销售终端",
+"Child Name" : "销售点",
 "Child Description" : "用于完成零售交易的设备或自助服务机（可以是固定设备，也可以由用户携带），通常配备库存管理、财务、广告和其他功能。",
 "Child Image URL" : "",
 "Sequence" : "490",
@@ -3778,7 +3556,7 @@
 "Parent Identifier" : "TPS_900018",
 "Parent Name" : "虚拟现实",
 "Child Identifier" : "TPS_900063",
-"Child Name" : "目镜——有带",
+"Child Name" : "护目镜 - 有系带",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "580",
@@ -4259,7 +4037,7 @@
 "Parent Identifier" : "TPS_900019",
 "Parent Name" : "主板",
 "Child Identifier" : "TPS_900069",
-"Child Name" : "PCI Express*",
+"Child Name" : "PCI Express",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "660",
@@ -4399,265 +4177,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
 				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900019",
-"Parent Name" : "主板",
-"Child Identifier" : "TPS_900114",
-"Child Name" : "COM-HPC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "692",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900019",
-"Parent Name" : "主板",
-"Child Identifier" : "TPS_900115",
-"Child Name" : "SMARC",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "694",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA 主板",
-"Child Identifier" : "TPS_900116",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "695",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900214",
-"Parent Name" : "FPGA 主板",
-"Child Identifier" : "TPS_900117",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "696",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3 and level 4",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900118",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "697",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900119",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "698",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900223",
-"Parent Name" : "接口协议",
-"Child Identifier" : "TPS_900121",
-"Child Name" : "",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "699",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1, level 2, level 3, level 4 and level 5",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "No"
 				},
 				{ }
     	]
@@ -4962,7 +4481,7 @@
 "Parent Identifier" : "TPS_900019",
 "Parent Name" : "主板",
 "Child Identifier" : "TPS_900081",
-"Child Name" : "PC/104，PC/104-Plus，PC-105",
+"Child Name" : "Yes",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "780",
@@ -5517,7 +5036,7 @@
 "Parent Identifier" : "TPS_900020",
 "Parent Name" : "背板和机箱",
 "Child Identifier" : "TPS_900095",
-"Child Name" : "其他",
+"Child Name" : "其它",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "930",
@@ -5620,43 +5139,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
 				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "TPS_900002",
-"Parent Name" : "组件",
-"Child Identifier" : "TPS_900122",
-"Child Name" : "显卡",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "946",
-"Is_Active" : "True",
-"Selection Type" : "Radio button (Single select)",
-"Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Programmable_Logic", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
@@ -5776,7 +5258,7 @@
 "Parent Identifier" : "TPS_900022",
 "Parent Name" : "内存",
 "Child Identifier" : "TPS_900097",
-"Child Name" : "其他",
+"Child Name" : "其它",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "980",
@@ -6331,7 +5813,7 @@
 "Parent Identifier" : "TPS_900027",
 "Parent Name" : "操作系统",
 "Child Identifier" : "TPS_2023",
-"Child Name" : "Linux*",
+"Child Name" : "Linux",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,080",
@@ -6516,7 +5998,7 @@
 "Parent Identifier" : "IPA_TYPE_Ser",
 "Parent Name" : "服务",
 "Child Identifier" : "IPA_TYPE_Ser_AIP",
-"Child Name" : "Artificial Intelligence Platform as a Service",
+"Child Name" : "人工智能平台即服务",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,125",
@@ -7367,7 +6849,7 @@
 "Parent Identifier" : "NPP_01_TYPE",
 "Parent Name" : "类别",
 "Child Identifier" : "IPA_TYPE_Sol",
-"Child Name" : "方案",
+"Child Name" : "解决方案",
 "Child Description" : "同时将硬件系统和软件有机结合起来，解决行业需求或业务问题。",
 "Child Image URL" : "https://www.intel.com/content/dam/pim/ipa/Icon_Solutions.png",
 "Sequence" : "1,270",
@@ -7402,7 +6884,7 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900036",
 "Child Name" : "英特尔® 物联网行业整体解决方案",
 "Child Description" : "端到端物联网解决方案，已由英特尔审核，并已做好市场部署的准备",
@@ -7439,7 +6921,7 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900037",
 "Child Name" : "英特尔® 物联网 RFP 就绪套件",
 "Child Description" : "捆绑式硬件、软件和支持产品，能够加快开发速度和上市时间。  经过实地测试和部署，具有可扩展性，可以随着客户的要求成长。",
@@ -7476,13 +6958,13 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900038",
-"Child Name" : "英特尔® 专项解决方案",
+"Child Name" : "英特尔® 精选解决方案",
 "Child Description" : "通过严格的解决方案工程和基准测试优化目标工作负载。  英特尔精选解决方案由英特尔确认，独立软件厂商认证，原始设备制造商提供商验证。",
 "Child Image URL" : "",
 "Sequence" : "1,300",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
 "Child_Mandatory_Flag" : "No",
@@ -7513,13 +6995,13 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900120",
-"Child Name" : "英特尔® Scale Solution",
+"Child Name" : "英特尔® 面向数据中心的解决方案",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,305",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
 "Child_Mandatory_Flag" : "No",
@@ -7550,13 +7032,13 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900040",
 "Child Name" : "英特尔® AI: In Production",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,308",
-"Is_Active" : "False",
+"Is_Active" : "True",
 "Selection Type" : "Radio button (Single select)",
 "Remarks" : "User must single select one category among Component, System, Software, Service, and Solution. The selection must be at least made in Level 1 and level 2 (if applicable) with level 3 and 4 optional.",
 "Child_Mandatory_Flag" : "No",
@@ -7587,7 +7069,7 @@
 },
 {
 "Parent Identifier" : "IPA_TYPE_Sol",
-"Parent Name" : "方案",
+"Parent Name" : "解决方案",
 "Child Identifier" : "TPS_900039",
 "Child Name" : "合作伙伴解决方案",
 "Child Description" : "包括至少一个硬件和一个软件应用程序、一个已识别最终客户群以及一个明确支持和交付模型的解决方案",
@@ -7626,7 +7108,7 @@
 "Parent Identifier" : "TPS_900039",
 "Parent Name" : "合作伙伴解决方案",
 "Child Identifier" : "TPS_900105",
-"Child Name" : "智能自动售货",
+"Child Name" : "智能自动售货机",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,320",
@@ -7769,7 +7251,7 @@
 "Parent Identifier" : "TPS_900028",
 "Parent Name" : "云",
 "Child Identifier" : "IPA_TYPE_Ser_Cld_CDMS",
-"Child Name" : "内容交付媒体服务",
+"Child Name" : "内容交付媒体服",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,380",
@@ -8509,7 +7991,7 @@
 "Parent Identifier" : "IPA_TYPE_Sys_DtSFF",
 "Parent Name" : "台式机和小外形",
 "Child Identifier" : "TPS_34",
-"Child Name" : "微型 PC",
+"Child Name" : "Mini-PC",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "1,860",
@@ -8546,7 +8028,7 @@
 "Parent Identifier" : "Solution_Marketplace_Hierarchy",
 "Parent Name" : "",
 "Child Identifier" : "NPP_01_Industry",
-"Child Name" : "工业",
+"Child Name" : "产业",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,000",
@@ -8581,7 +8063,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Agriculture",
 "Child Name" : "农业",
 "Child Description" : "",
@@ -8618,9 +8100,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_ArtsEntertain",
-"Child Name" : "艺术与娱乐",
+"Child Name" : "艺术和娱乐",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,030",
@@ -8655,7 +8137,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Auto",
 "Child Name" : "汽车",
 "Child Description" : "",
@@ -8692,7 +8174,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_CommAviation",
 "Child Name" : "商用航空",
 "Child Description" : "",
@@ -8724,7 +8206,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_CommNw",
 "Child Name" : "通信",
 "Child Description" : "",
@@ -8761,9 +8243,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_AeroDef",
-"Child Name" : "国防与航天",
+"Child Name" : "航空航天和国防",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,070",
@@ -8798,7 +8280,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Education",
 "Child Name" : "教育",
 "Child Description" : "",
@@ -8835,7 +8317,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_EnergyUtil",
 "Child Name" : "能源和公共事业",
 "Child Description" : "",
@@ -8872,7 +8354,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Finance&Insurance",
 "Child Name" : "金融与保险",
 "Child Description" : "",
@@ -8946,7 +8428,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Gaming",
 "Child Name" : "游戏",
 "Child Description" : "",
@@ -8983,7 +8465,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_ArtsEntertain",
-"Parent Name" : "艺术与娱乐",
+"Parent Name" : "艺术和娱乐",
 "Child Identifier" : "IPA_Ind_AE_AmuseGambling",
 "Child Name" : "娱乐和赌博",
 "Child Description" : "",
@@ -9057,7 +8539,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Gov",
 "Child Name" : "政府",
 "Child Description" : "",
@@ -9094,9 +8576,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_AirTransp",
-"Child Name" : "航空运输",
+"Child Name" : "空运",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,125",
@@ -9131,7 +8613,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_HealthCare",
 "Child Name" : "医疗和生命科学",
 "Child Description" : "",
@@ -9168,7 +8650,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_TR_Fleet",
 "Child Name" : "车队管理",
 "Child Description" : "",
@@ -9205,9 +8687,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_AccomFoodServ",
-"Child Name" : "食宿服务",
+"Child Name" : "酒店和餐厅",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,135",
@@ -9242,9 +8724,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Hospitality",
-"Child Name" : "酒店服务",
+"Child Name" : "酒店",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,140",
@@ -9274,7 +8756,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_TR_Rail",
 "Child Name" : "铁路运输",
 "Child Description" : "",
@@ -9311,9 +8793,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_TR_WareStorage",
-"Child Name" : "仓储管理",
+"Child Name" : "仓储",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,145",
@@ -9348,7 +8830,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_IndAuto",
 "Child Name" : "工业自动化",
 "Child Description" : "",
@@ -9380,9 +8862,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_TR_Logistics&Store",
-"Child Name" : "物流、货运与存储",
+"Child Name" : "后勤",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,150",
@@ -9486,9 +8968,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Manufacturing",
-"Child Name" : "制造",
+"Child Name" : "生产",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,160",
@@ -9523,7 +9005,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Trans",
-"Parent Name" : "Transportation and Warehouse",
+"Parent Name" : "运输和仓储",
 "Child Identifier" : "IPA_Ind_TR_Telematics",
 "Child Name" : "远程信息处理",
 "Child Description" : "",
@@ -9556,45 +9038,8 @@
 {
 "Parent Identifier" : "IPA_Ind_CommNw",
 "Parent Name" : "通信",
-"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
-"Child Name" : "数据处理、托管及相关服务",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,170",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_CommNw",
-"Parent Name" : "通信",
 "Child Identifier" : "IPA_Ind_CNW_MediaSer",
-"Child Name" : "媒体处理，服务",
+"Child Name" : "媒体处理",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,170",
@@ -9623,8 +9068,45 @@
     	]
 },
 {
+"Parent Identifier" : "IPA_Ind_CommNw",
+"Parent Name" : "通信",
+"Child Identifier" : "IPA_Ind_Com_DataHostRelate",
+"Child Name" : "数据处理",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,170",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_NotForProfit",
 "Child Name" : "非盈利机构",
 "Child Description" : "",
@@ -9645,43 +9127,6 @@
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
 				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_Ind_CommNw",
-"Parent Name" : "通信",
-"Child Identifier" : "IPA_Ind_Com_Publish",
-"Child Name" : "Publishing (except Internet)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,180",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -9729,8 +9174,45 @@
     	]
 },
 {
+"Parent Identifier" : "IPA_Ind_CommNw",
+"Parent Name" : "通信",
+"Child Identifier" : "IPA_Ind_Com_Publish",
+"Child Name" : "出版（不包含网络出版）",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,180",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Others",
 "Child Name" : "其它",
 "Child Description" : "",
@@ -9751,6 +9233,38 @@
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
 				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "IPA_Ind_CommNw",
+"Parent Name" : "通信",
+"Child Identifier" : "IPA_Ind_CNW_SDNNFV",
+"Child Name" : "SDN / NFV",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "2,190",
+"Is_Active" : "False",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
 				},
 				{
 				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
@@ -9803,42 +9317,10 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_Ind_CommNw",
-"Parent Name" : "通信",
-"Child Identifier" : "IPA_Ind_CNW_SDNNFV",
-"Child Name" : "SDN / NFV",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,190",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one industry in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Professional&BusinessServices",
-"Child Name" : "专业和商业服务",
+"Child Name" : "专业和商务服务",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,190",
@@ -9905,9 +9387,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_RealEstateRentLeas",
-"Child Name" : "房地产与租赁",
+"Child Name" : "房地产",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,200",
@@ -9974,7 +9456,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Retail",
 "Child Name" : "零售",
 "Child Description" : "",
@@ -10023,12 +9505,32 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
 				{ }
     	]
 },
 {
 "Parent Identifier" : "IPA_Ind_AccomFoodServ",
-"Parent Name" : "食宿服务",
+"Parent Name" : "酒店和餐厅",
 "Child Identifier" : "IPA_Ind_AFS_Accommodation",
 "Child Name" : "住宿",
 "Child Description" : "",
@@ -10065,9 +9567,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Hospitality",
-"Parent Name" : "酒店服务",
+"Parent Name" : "酒店",
 "Child Identifier" : "IPA_Ind_Hos_HoMoLo",
-"Child Name" : "酒店、汽车旅馆和旅社",
+"Child Name" : "酒店",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,220",
@@ -10097,7 +9599,7 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Software",
 "Child Name" : "软件",
 "Child Description" : "",
@@ -10136,7 +9638,7 @@
 "Parent Identifier" : "IPA_Ind_HealthCare",
 "Parent Name" : "医疗和生命科学",
 "Child Identifier" : "IPA_Ind_HC_Fitness",
-"Child Name" : "运动健身",
+"Child Name" : "健身",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,230",
@@ -10171,9 +9673,9 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_AccomFoodServ",
-"Parent Name" : "食宿服务",
+"Parent Name" : "酒店和餐厅",
 "Child Identifier" : "IPA_Ind_AFS_FoodDrinkServ",
-"Child Name" : "Food and Drink Services",
+"Child Name" : "餐饮服务",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,230",
@@ -10208,7 +9710,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Hospitality",
-"Parent Name" : "酒店服务",
+"Parent Name" : "酒店",
 "Child Identifier" : "IPA_Ind_Hos_Res",
 "Child Name" : "度假村和赌场",
 "Child Description" : "",
@@ -10240,9 +9742,9 @@
 },
 {
 "Parent Identifier" : "NPP_01_Industry",
-"Parent Name" : "工业",
+"Parent Name" : "产业",
 "Child Identifier" : "IPA_Ind_Trans",
-"Child Name" : "Transportation and Warehouse",
+"Child Name" : "运输和仓储",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,230",
@@ -10289,6 +9791,26 @@
 "Child_Mandatory_Flag" : "No",
 	"Intel Segment" :
 		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
 				{ }
     	]
 },
@@ -10333,7 +9855,7 @@
 "Parent Identifier" : "IPA_Ind_HealthCare",
 "Parent Name" : "医疗和生命科学",
 "Child Identifier" : "IPA_Ind_HC_MedImg",
-"Child Name" : "医疗成像",
+"Child Name" : "医学影像",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,270",
@@ -10437,7 +9959,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Manufacturing",
-"Parent Name" : "制造",
+"Parent Name" : "生产",
 "Child Identifier" : "IPA_Ind_Manuf_Automation",
 "Child Name" : "汽车",
 "Child Description" : "",
@@ -10506,7 +10028,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Manufacturing",
-"Parent Name" : "制造",
+"Parent Name" : "生产",
 "Child Identifier" : "IPA_Ind_Manuf_IndAuto",
 "Child Name" : "工业自动化",
 "Child Description" : "",
@@ -10575,7 +10097,7 @@
 },
 {
 "Parent Identifier" : "IPA_Ind_Manufacturing",
-"Parent Name" : "制造",
+"Parent Name" : "生产",
 "Child Identifier" : "IPA_Ind_Manuf_TransEquip",
 "Child Name" : "运输设备",
 "Child Description" : "",
@@ -10614,7 +10136,7 @@
 "Parent Identifier" : "IPA_Ind_EnergyUtil",
 "Parent Name" : "能源和公共事业",
 "Child Identifier" : "IPA_Ind_EnergyUtil_ElectUtil",
-"Child Name" : "Electric Power",
+"Child Name" : "电力",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,325",
@@ -10651,7 +10173,7 @@
 "Parent Identifier" : "IPA_Ind_EnergyUtil",
 "Parent Name" : "能源和公共事业",
 "Child Identifier" : "IPA_Ind_EnergyUtil_Gasoline",
-"Child Name" : "石油和天然气",
+"Child Name" : "石油工业",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "2,335",
@@ -10836,7 +10358,7 @@
 "Parent Identifier" : "IPA_APP_CloudComp",
 "Parent Name" : "云计算",
 "Child Identifier" : "IPA_APP_CloudComp_PrivateSDI",
-"Child Name" : "Private Cloud and Software Defined Infrastructure",
+"Child Name" : "私有云和软件定义的基础架构",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,003",
@@ -10910,7 +10432,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_AlgoTradInvAdvCrypto",
-"Child Name" : "Algorithmic Trading, Investment Advisory, Crypto",
+"Child Name" : "算法交易",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,010",
@@ -10978,8 +10500,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_AssetOperationsOpt",
-"Child Name" : "资产和运营优化",
+"Child Identifier" : "IPA_APP_AMR",
+"Child Name" : "自主移动机器人 (AMR)",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,025",
@@ -11015,45 +10537,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_AMR",
-"Child Name" : "自主移动机器人 (AMR)",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,025",
-"Is_Active" : "False",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_AssistedDiagnosisPres",
-"Child Name" : "Assisted or automated diagnosis and prescription",
+"Child Name" : "辅助或自动诊断和处方",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,030",
@@ -11085,7 +10570,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_AugmentedSearch",
-"Child Name" : "搜索...",
+"Child Name" : "增强搜索",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,040",
@@ -11259,45 +10744,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_CntrlOptmizatioAutonomy",
-"Child Name" : "控制优化与自主性",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,085",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_ConverBotsCSA",
-"Child Name" : "Conversational Bots, Customer Service Assistants",
+"Child Name" : "聊天机器人",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,090",
@@ -11329,7 +10777,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_DataLabeling",
-"Child Name" : "Data Labeling",
+"Child Name" : "数据标注",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,100",
@@ -11361,7 +10809,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_DataManagMonitor",
-"Child Name" : "Data management and monitoring",
+"Child Name" : "数据管理和监控",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,110",
@@ -11391,7 +10839,7 @@
 },
 {
 "Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "数字安全监督",
+"Parent Name" : "数字安全监控",
 "Child Identifier" : "IPA_APP_DSS_EnterDSSSol",
 "Child Name" : "带有智能的企业 DSS 解决方案（1000 个以上的摄像头）",
 "Child Description" : "",
@@ -11497,7 +10945,7 @@
 },
 {
 "Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "数字安全监督",
+"Parent Name" : "数字安全监控",
 "Child Identifier" : "IPA_APP_DSS_EntryLvlSol",
 "Child Name" : "入门级解决方案（1 到 20 个摄像头）",
 "Child Description" : "",
@@ -11528,43 +10976,6 @@
 				"Spec Identifier" : "Intel_Segments_Data_Center", 		
 				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
 				"Spec Value"		: "No"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_DataScience",
-"Child Name" : "数据科学",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,125",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
 				},
 				{ }
     	]
@@ -11610,7 +11021,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_DigSecSurv",
-"Child Name" : "数字安全监督",
+"Child Name" : "数字安全监控",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,130",
@@ -11645,7 +11056,7 @@
 },
 {
 "Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "数字安全监督",
+"Parent Name" : "数字安全监控",
 "Child Identifier" : "IPA_APP_DSS_HighLvlSol",
 "Child Name" : "带有智能的高端解决方案（101 到 1000 个摄像头）",
 "Child Description" : "",
@@ -11684,7 +11095,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_conv_bots_and_agnt",
-"Child Name" : "会话机器人和语言代理",
+"Child Name" : "会话机器人和语音代理",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,140",
@@ -11719,7 +11130,7 @@
 },
 {
 "Parent Identifier" : "IPA_APP_DigSecSurv",
-"Parent Name" : "数字安全监督",
+"Parent Name" : "数字安全监控",
 "Child Identifier" : "IPA_APP_DSS_MidLvlSol",
 "Child Name" : "带有智能的中级解决方案（21 到 100 个摄像头）",
 "Child Description" : "",
@@ -11795,7 +11206,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_Data_prep_and_Mangmt",
-"Child Name" : "Data preparation and management",
+"Child Name" : "数据准备和管理",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,150",
@@ -12012,7 +11423,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_Facialdete_recong_classificn",
-"Child Name" : "Facial Detection/Recognition/Classification",
+"Child Name" : "人脸检测/识别/分类",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,180",
@@ -12081,7 +11492,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_img_objetdetect_recog_classificn",
-"Child Name" : "Image/Object Detection/ Recognition/Classification",
+"Child Name" : "图像/物体检测/识别/分类",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,190",
@@ -12118,7 +11529,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_FacialRecogDetectClass",
-"Child Name" : "Facial Recognition/Detection/Classification",
+"Child Name" : "人脸识别/检测/分类",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,190",
@@ -12224,7 +11635,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_Medicalimag_analysis_and_diagn",
-"Child Name" : "Medical imaging, Analysis and Diagnostics",
+"Child Name" : "医疗成像",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,210",
@@ -12261,7 +11672,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_FinancialAnalyticsPlatform",
-"Child Name" : "Financial Analytics Platform",
+"Child Name" : "金融分析平台",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,210",
@@ -12330,7 +11741,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_FraudThreatDetect",
-"Child Name" : "Fraud and Threat Detection",
+"Child Name" : "欺诈和威胁检测",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,220",
@@ -12359,47 +11770,10 @@
     	]
 },
 {
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_HealthLifeSciences",
-"Child Name" : "医疗和生命科学",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,225",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_RoboticProcessAuto",
-"Child Name" : "机器人流程自动化",
+"Child Name" : "机器人过程自动化",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,230",
@@ -12473,7 +11847,7 @@
 "Parent Identifier" : "IPA_APP_ArtificalIntel",
 "Parent Name" : "人工智能",
 "Child Identifier" : "IPA_APP_VideoSurveilAnalytics",
-"Child Name" : "视频监控与分析",
+"Child Name" : "视频监控和分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,240",
@@ -12510,7 +11884,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_HumanEmotionAnalysis",
-"Child Name" : "Human Emotion Analysis",
+"Child Name" : "人类情感分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,240",
@@ -12520,43 +11894,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_HumanWellnessMonitoring",
-"Child Name" : "人体健康监测",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,245",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
@@ -12611,7 +11948,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_ImageRecogDetectClass",
-"Child Name" : "Image Recognition/Detection/ Classification",
+"Child Name" : "图像识别/检测/分类",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,260",
@@ -12643,7 +11980,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_Intelgnt_vend",
-"Child Name" : "智能自动售货",
+"Child Name" : "智能自动售货机",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,270",
@@ -12749,7 +12086,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_InventorySupplyChain",
-"Child Name" : "库存和供应链管理",
+"Child Name" : "库存和供应链自动化",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,300",
@@ -12817,119 +12154,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_LogisticsTracking",
-"Child Name" : "物流跟踪",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,312",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_MachineConditionmontior",
-"Child Name" : "机器状态监测",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,314",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_MediaEntertainment",
-"Child Name" : "传媒娱乐部",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,316",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_MedicalImagAnalysis",
-"Child Name" : "Medical imaging and Analysis",
+"Child Name" : "医学成像和分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,320",
@@ -12961,7 +12187,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_ModelManageTraining",
-"Child Name" : "Model management and training",
+"Child Name" : "模型管理和培训",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,330",
@@ -13025,7 +12251,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_ObjectRecogDetectClass",
-"Child Name" : "Object Recognition/Detection/Classification",
+"Child Name" : "物体识别/检测/分类",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,350",
@@ -13057,7 +12283,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_Other",
-"Child Name" : "Other (pls specify)",
+"Child Name" : "其他（请注明）",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,360",
@@ -13126,7 +12352,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_PatientDataAnalytics",
-"Child Name" : "Patient Data Analytics",
+"Child Name" : "患者数据分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,380",
@@ -13158,7 +12384,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_PersonalMedicCare",
-"Child Name" : "Personalized medication and care",
+"Child Name" : "个性化药物治疗和护理",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,390",
@@ -13190,7 +12416,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_PredictiveDiagnosis",
-"Child Name" : "Predictive diagnosis",
+"Child Name" : "预测性诊断",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,400",
@@ -13290,45 +12516,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_ProductInspection",
-"Child Name" : "产品检查",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,425",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_QualityAssessment",
-"Child Name" : "Quality Assessment",
+"Child Name" : "质量评估",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,430",
@@ -13424,7 +12613,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_RiskManageDetect",
-"Child Name" : "Risk Management and Detection",
+"Child Name" : "风险管理和检测",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,460",
@@ -13434,43 +12623,6 @@
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_Robot",
-"Child Name" : "机器人",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,465",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
 				{
 				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
 				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
@@ -13524,45 +12676,8 @@
 {
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
-"Child Identifier" : "IPA_APP_SituationalMonitoring",
-"Child Name" : "情景监测",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,475",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "NPP_01_APP",
-"Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_SmartBuilding",
-"Child Name" : "智能建筑",
+"Child Name" : "智能楼宇",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,480",
@@ -13599,7 +12714,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_SmartCity",
-"Child Name" : "智慧城市",
+"Child Name" : "智能城市",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,490",
@@ -13636,7 +12751,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_SmCtPbSfCrAt",
-"Child Name" : "Smart City/Public Safety/Crowd Analytics",
+"Child Name" : "智能城市/公共安全/人群分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,500",
@@ -13737,7 +12852,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_SocialMediaAnalytics",
-"Child Name" : "Social Media Analytics",
+"Child Name" : "社交媒体分析",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,530",
@@ -13806,7 +12921,7 @@
 "Parent Identifier" : "NPP_01_APP",
 "Parent Name" : "使用案例",
 "Child Identifier" : "IPA_APP_Telematics",
-"Child Name" : "远程信息处理",
+"Child Name" : "车联网",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,550",
@@ -13909,10 +13024,10 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "传媒娱乐部",
-"Child Identifier" : "IPA_APP_Animatedfilms",
-"Child Name" : "动画影片",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_MachineConditionmontior",
+"Child Name" : "机器状态监测",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,600",
@@ -13946,13 +13061,272 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_MediaEntertainment",
-"Parent Name" : "传媒娱乐部",
-"Child Identifier" : "IPA_APP_GameDev",
-"Child Name" : "游戏开发",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_LogisticsTracking",
+"Child Name" : "物流跟踪",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "3,610",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_AssetOperationsOpt",
+"Child Name" : "资产和运营优化",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,620",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_SituationalMonitoring",
+"Child Name" : "情景监测",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,630",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_CntrlOptmizatioAutonomy",
+"Child Name" : "控制优化与自主性",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,640",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_HumanWellnessMonitoring",
+"Child Name" : "人体健康监测",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,650",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_ProductInspection",
+"Child Name" : "产品检查",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,660",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_HealthLifeSciences",
+"Child Name" : "医疗和生命科学",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,670",
+"Is_Active" : "True",
+"Selection Type" : "Checkbox",
+"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
+"Child_Mandatory_Flag" : "No",
+	"Intel Segment" :
+		[
+				{
+				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
+				"Spec Display Name" : "", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
+				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
+				"Spec Value"		: "No"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
+				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
+				"Spec Value"		: "Yes"
+				},
+				{
+				"Spec Identifier" : "Intel_Segments_Data_Center", 		
+				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
+				"Spec Value"		: "Yes"
+				},
+				{ }
+    	]
+},
+{
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_MediaEntertainment",
+"Child Name" : "传媒娱乐部",
+"Child Description" : "",
+"Child Image URL" : "",
+"Sequence" : "3,680",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -13989,7 +13363,7 @@
 "Child Name" : "图形设计",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,620",
+"Sequence" : "3,681",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -14026,7 +13400,7 @@
 "Child Name" : "视频编辑和视觉效果 / 电影 / 电视",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,630",
+"Sequence" : "3,682",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -14057,13 +13431,13 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_ArtR",
-"Child Name" : "关节机器人",
+"Parent Identifier" : "IPA_APP_MediaEntertainment",
+"Parent Name" : "传媒娱乐部",
+"Child Identifier" : "IPA_APP_GameDev",
+"Child Name" : "游戏开发",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,700",
+"Sequence" : "3,683",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -14094,13 +13468,13 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_AGV",
-"Child Name" : "自动导引车",
+"Parent Identifier" : "IPA_APP_MediaEntertainment",
+"Parent Name" : "传媒娱乐部",
+"Child Identifier" : "IPA_APP_Animatedfilms",
+"Child Name" : "动画影片",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,710",
+"Sequence" : "3,684",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -14131,124 +13505,13 @@
     	]
 },
 {
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_AMR",
-"Child Name" : "自主移动机器人 (AMR)",
+"Parent Identifier" : "NPP_01_APP",
+"Parent Name" : "使用案例",
+"Child Identifier" : "IPA_APP_DataScience",
+"Child Name" : "数据科学",
 "Child Description" : "",
 "Child Image URL" : "",
-"Sequence" : "3,720",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_Cobts",
-"Child Name" : "协作机器人",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,730",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_Hum",
-"Child Name" : "人型机器人",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,740",
-"Is_Active" : "True",
-"Selection Type" : "Checkbox",
-"Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
-"Child_Mandatory_Flag" : "No",
-	"Intel Segment" :
-		[
-				{
-				"Spec Identifier" : "Intel_Segments_Field_Programmable_Gate_Array", 		
-				"Spec Display Name" : "", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Client_Computing", 		
-				"Spec Display Name" : "合作伙伴计划细分_客户端计算", 
-				"Spec Value"		: "No"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Embedded_IoT", 		
-				"Spec Display Name" : "合作伙伴计划细分_嵌入式物联网", 
-				"Spec Value"		: "Yes"
-				},
-				{
-				"Spec Identifier" : "Intel_Segments_Data_Center", 		
-				"Spec Display Name" : "合作伙伴计划细分_数据中心", 
-				"Spec Value"		: "Yes"
-				},
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "IPA_APP_Robot",
-"Parent Name" : "机器人",
-"Child Identifier" : "IPA_APP_Robot_Hybrid",
-"Child Name" : "混合机器人",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "3,750",
+"Sequence" : "3,690",
 "Is_Active" : "True",
 "Selection Type" : "Checkbox",
 "Remarks" : "User must select at least one Application in level 1 and 2 (if applicable). Multi-select is allowed. Level 3 and 4 are optional.",
@@ -14336,7 +13599,7 @@
 "Parent Identifier" : "IPA_APP_HealthLifeSciences",
 "Parent Name" : "医疗和生命科学",
 "Child Identifier" : "IPA_APP_HealthIT",
-"Child Name" : "医疗卫生 IT",
+"Child Name" : "健康 IT",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "4,002",
@@ -14723,7 +13986,7 @@
 "Parent Identifier" : "IPA_APP_HealthLifeSciences",
 "Parent Name" : "医疗和生命科学",
 "Child Identifier" : "IPA_APP_Ultrasound",
-"Child Name" : "超声波",
+"Child Name" : "超音波",
 "Child Description" : "",
 "Child Image URL" : "",
 "Sequence" : "4,012",
@@ -14838,23 +14101,6 @@
 "Is_Active" : "True",
 "Selection Type" : "Auto-fill in",
 "Remarks" : "User does NOT select Partner Program Segments. It is automatically assigned by the Marketplace system based on the mapping from other category selections.",
-"Child_Mandatory_Flag" : "",
-	"Intel Segment" :
-		[
-				{ }
-    	]
-},
-{
-"Parent Identifier" : "Solution_Marketplace_Hierarchy",
-"Parent Name" : "",
-"Child Identifier" : "Intel_Segments_NPP_01_Busines_",
-"Child Name" : "合作伙伴计划细分",
-"Child Description" : "",
-"Child Image URL" : "",
-"Sequence" : "2,147,483,647",
-"Is_Active" : "False",
-"Selection Type" : "",
-"Remarks" : "",
 "Child_Mandatory_Flag" : "",
 	"Intel Segment" :
 		[

@@ -4,6 +4,9 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
+        <field>Core_IPS_Product__c.Core_IPS_Product_Case_Owner__c</field>
+    </columns>
+    <columns>
         <field>Core_IPS_Project__c.Core_Number_of_Accounts__c</field>
     </columns>
     <columns>

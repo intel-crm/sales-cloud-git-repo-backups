@@ -62,8 +62,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Eloqua</value>
+            <operator>equals</operator>
+            <value>User Eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>CONVERTED</column>
@@ -111,6 +111,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

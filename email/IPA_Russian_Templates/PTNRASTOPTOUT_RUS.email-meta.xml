@@ -8,7 +8,7 @@
     <textOnly>Обновление корпоративной учетной записи
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 Информируем вас о том, что кто-то решил прекратить делиться информацией о программе поставщиков технологий Intel® с выбранными авторизованными дистрибьюторами Intel® Authorized Distributor и/или утвержденными поставщиками Intel® Approved Supplier (поставщиками услуг).
 
@@ -27,9 +27,9 @@
 Команда Intel® Partner Alliance
 
 Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© Корпорация Intel, {!Contact.Core_Current_Year__c} г.
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Конфиденциальность | Файлы cookies</textOnly>
+Конфиденциальность | Файлы cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

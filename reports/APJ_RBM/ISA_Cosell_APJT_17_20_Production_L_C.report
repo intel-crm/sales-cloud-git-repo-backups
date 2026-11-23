@@ -86,35 +86,9 @@
             <operator>equals</operator>
             <value>ISA Co-Selling</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_Partner__c.Core_Partner_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Distributor,Intel Authorized Distributor (IAD)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_OPP_CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2020</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_OPP_CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>lessThan</operator>
-            <value>12/31/2020</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Year</dateGranularity>
-        <field>FK_OPP_CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
@@ -125,7 +99,12 @@
         <field>FK_OPP_OWNER_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>ISA Cosell APJT 2017+ (Production L/C)</name>
+    <groupingsDown>
+        <dateGranularity>FiscalYear</dateGranularity>
+        <field>FK_OPP_CLOSE_DATE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>ISA Cosell APJT 17-20 Production L/C</name>
     <params>
         <name>co</name>
         <value>0</value>

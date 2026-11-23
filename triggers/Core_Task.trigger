@@ -15,7 +15,7 @@ trigger Core_Task on Task(before insert,before update,after insert, after update
     // Fetching "Custom Setting" containing details to trigger switch on/off
     Map < String, Core_Trigger_Executions__c > mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
      
-   /*if (Trigger.isBefore ) {
+   if (Trigger.isBefore ) {
          if (Trigger.isInsert) {
                        
 
@@ -27,7 +27,7 @@ trigger Core_Task on Task(before insert,before update,after insert, after update
              Core_TaskHandler.UpdateTaskflagOnUpdate(Trigger.Old,Trigger.New);
             
               }
-         }*/
+         }
     
     if (Trigger.isAfter) {
         if (Trigger.isInsert) {

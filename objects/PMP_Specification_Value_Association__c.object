@@ -228,32 +228,11 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PMP_Category_Id__c</columns>
-        <columns>PMP_Active_Ind__c</columns>
         <columns>PMP_Specification_Id__c</columns>
         <columns>PMP_Specification_Value_Id__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>PMP_Category_Spec_Value_External_Key__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-    </listViews>
-    <listViews>
-        <fullName>my_view_usb</fullName>
-        <columns>NAME</columns>
-        <columns>PMP_Category_Id__c</columns>
-        <columns>PMP_Specification_Id__c</columns>
-        <columns>PMP_Specification_Value_Id__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PMP_Specification_Id__c</field>
-            <operation>contains</operation>
-            <value>USB</value>
-        </filters>
-        <filters>
-            <field>PMP_Specification_Value_Id__c</field>
-            <operation>contains</operation>
-            <value>USB</value>
-        </filters>
-        <label>my view usb</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Association Name</label>

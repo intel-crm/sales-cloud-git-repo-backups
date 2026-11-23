@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>NAME</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Status__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_INF_KPI_ProdClass__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Series__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Family__c</field>
+    </columns>
+    <description>A report used to validate the Inf Product Group and Product Family.</description>
+    <format>Tabular</format>
+    <name>Inf Product Family and Product Group</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>ProductList</reportType>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

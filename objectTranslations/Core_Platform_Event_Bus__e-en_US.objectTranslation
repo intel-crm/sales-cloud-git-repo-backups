@@ -9,7 +9,7 @@
         <value>Platform Event Buses</value>
     </caseValues>
     <fields>
-        <label><!-- IsActive --></label>
+        <label><!-- isActive --></label>
         <name>Core_IsActive__c</name>
     </fields>
     <fields>

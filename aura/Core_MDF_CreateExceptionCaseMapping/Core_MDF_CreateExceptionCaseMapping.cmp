@@ -4,18 +4,16 @@
     <aura:attribute name="noMatchException" type ="boolean" default = "false" description = "This will return true value when there no match in Exception"/>
     <aura:attribute name="disableSave" type ="boolean" default = "false" description = "This will disable save button in case of no match or no selection" />
     <aura:attribute name="selectedCount" type="integer" default="0"/>
-    <aura:attribute name="isEnabled" type="boolean" Default="false" description="" />
     
     <!--aura init handler , call js "loadExceptionList" function on component load, and display Exception data on table-->   
     <aura:handler name="init" value="{!this}" action="{!c.loadExceptionList}"/>    
     
     <div class="slds-m-around_xxx-large">
-        <aura:if isTrue="{!v.isEnabled}">
         <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-slide-up-saving slds-modal_large">
             <div class="slds-modal__container">
                 <!-- ###### MODAL BOX HEADER Start ######-->
                 <header class="slds-modal__header">
-                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare" class="slds-modal__close"/>
+                    <lightning:buttonIcon iconName="utility:close" onclick="{!c.closeModal}" alternativeText="close" variant="bare-inverse" class="slds-modal__close"/>
                     <h2>{!$Label.c.Core_MDF_Add_Exception}</h2>
                 </header>
                 <!--###### MODAL BOX BODY Part Start######-->
@@ -90,7 +88,6 @@
         </section>
         <div class="slds-backdrop slds-backdrop_open"></div>
         <!--###### MODAL BOX Part END Here ######-->
-        </aura:if>
     </div>
     
 </aura:component>

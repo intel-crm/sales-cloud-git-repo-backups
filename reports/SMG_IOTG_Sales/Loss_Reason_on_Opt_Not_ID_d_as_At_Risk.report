@@ -13,10 +13,10 @@
         <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -53,21 +53,14 @@
         <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Product_At_Risk__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Create_Date__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
+        <field>Opportunity.Core_Risk_Reason__c</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>contains</operator>
+            <operator>equals</operator>
             <value>IOTG</value>
         </criteriaItems>
         <criteriaItems>
@@ -85,32 +78,18 @@
             <value>Lost</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Risk_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Loss_Cancel_Reason__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_At_Risk__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Risk_Create_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_At_Risk_Created_Date__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value></value>
+            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Entered in Error,Cancelled - POP Unobtainable,Cancelled - Timing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -154,7 +133,7 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2016-01-01</startDate>
     </timeFrameFilter>

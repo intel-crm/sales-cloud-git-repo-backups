@@ -6,143 +6,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ACPC</masterLabel>
-        <translation>Always Connected PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AIO</masterLabel>
-        <translation>一体型 PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>All-in-One Desktop</masterLabel>
-        <translation><!-- All-in-One Desktop --></translation>
+        <translation><!-- ACPC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>All-in-one</masterLabel>
         <translation>オールインワン PC</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Altera®</masterLabel>
-        <translation><!-- Altera® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Appliance</masterLabel>
-        <translation>アプライアンス</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Athena</masterLabel>
-        <translation><!-- Athena --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Chromebook</masterLabel>
         <translation><!-- Chromebook --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>クライアント</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation>クラウド</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Cloud Instance Consumption</masterLabel>
-        <translation>クラウド・インスタンス・コンサンプション</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Communications</masterLabel>
         <translation>通信</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Component</masterLabel>
-        <translation>コンポーネント</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>デスクトップ PC</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Edge Gateway</masterLabel>
-        <translation>エッジ・ゲートウェイ</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation>エッジ / IOT</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>FPGA Programmable Solution</masterLabel>
-        <translation>FPGA プログラマブル・ソリューション</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC</masterLabel>
-        <translation><!-- HPC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Handheld</masterLabel>
-        <translation>ハンドヘルド機器</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Hyper Converged Solutions</masterLabel>
         <translation>ハイパーコンバージド・ソリューション</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Unite®</masterLabel>
-        <translation><!-- Intel Unite® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel vPro®</masterLabel>
-        <translation>インテル® vPro®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>インテリジェント・エッジ/IoT</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i3</masterLabel>
-        <translation>インテル® Core™ i3</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i5</masterLabel>
-        <translation>インテル® Core™ i5</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i7</masterLabel>
-        <translation>インテル® Core™ i7</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i9</masterLabel>
-        <translation>インテル® Core™ i9</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Enpirion®</masterLabel>
-        <translation>インテル® Enpirion®</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Movidius™</masterLabel>
-        <translation>インテル® Movidius™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Nervana™</masterLabel>
-        <translation>インテル® Nervana™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™</masterLabel>
-        <translation>インテル® Optane™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™ DC</masterLabel>
-        <translation>インテル® Optane™ DC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® RealSense™</masterLabel>
-        <translation>インテル® RealSense™</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon®</masterLabel>
-        <translation>インテル® Xeon®</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Laptop</masterLabel>
@@ -154,111 +42,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC w/NUC</masterLabel>
-        <translation>NUC 搭載ミニ PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mini PC/NUC</masterLabel>
-        <translation>ミニ PC / NUC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
-        <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Motherboard</masterLabel>
-        <translation>マザーボード</translation>
+        <translation><!-- Mini PC w/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NUC</masterLabel>
         <translation><!-- NUC --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>ネットワーキングと通信</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>ネットワーキング / イーサネット</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Notebook</masterLabel>
-        <translation>ノートブック PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OpenVINO™</masterLabel>
-        <translation><!-- OpenVINO™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Other</masterLabel>
-        <translation>その他</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Programmable Solution</masterLabel>
-        <translation>プログラマブル・ソリューション</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Server</masterLabel>
         <translation>サーバー</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (AI/GPU)</masterLabel>
-        <translation>サーバー (AI / GPU)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (Cloud)</masterLabel>
-        <translation>サーバー (クラウド)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (ESMB)</masterLabel>
-        <translation>サーバー (ESMB)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (HPC)</masterLabel>
-        <translation>サーバー (HPC)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (non-HPC)</masterLabel>
-        <translation>サーバー (HPC 以外)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Service</masterLabel>
-        <translation>サービス</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Software</masterLabel>
-        <translation>ソフトウェア</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Solution</masterLabel>
-        <translation>ソリューション</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Storage</masterLabel>
         <translation>ストレージ</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>通信事業者</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
-        <translation>薄型 &amp; 軽量 PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Desktop</masterLabel>
-        <translation><!-- Traditional Desktop --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Notebook</masterLabel>
-        <translation>従来のノートブック PC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation</masterLabel>
-        <translation><!-- Workstation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation - Desktop</masterLabel>
-        <translation>ワークステーション - デスクトップ</translation>
+        <translation><!-- Thin &amp; Light --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation - Fixed</masterLabel>
@@ -267,9 +67,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>ワークステーション - モバイル</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

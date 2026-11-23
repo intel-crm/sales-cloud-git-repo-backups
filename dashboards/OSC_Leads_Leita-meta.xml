@@ -5,5 +5,10 @@
         <sharedTo>AllInternalUsers</sharedTo>
         <sharedToType>Organization</sharedToType>
     </folderShares>
-    <name>Global Pipeline Mgmt DB</name>
+    <folderShares>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10655994@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>Global INSIDE Pipeline Mgmt</name>
 </DashboardFolder>

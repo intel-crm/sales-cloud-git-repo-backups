@@ -18,6 +18,10 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Partner_Tier_Name_Japanese__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Is_Biz_Org_Type_Ind__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

@@ -3,6 +3,7 @@
     <canAccessCamera>false</canAccessCamera>
     <canAccessMicrophone>false</canAccessMicrophone>
     <context>Communities</context>
+    <description>To show this icon on Recent Message Section under email message for intel icon to be visible</description>
     <endpointUrl>https://img03.en25.com</endpointUrl>
     <isActive>true</isActive>
     <isApplicableToConnectSrc>true</isApplicableToConnectSrc>

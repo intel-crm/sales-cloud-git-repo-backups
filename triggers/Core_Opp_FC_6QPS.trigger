@@ -20,10 +20,6 @@ trigger Core_Opp_FC_6QPS on Core_Opp_FC_Prod_Schedule__c (before update, after u
             if(mapFunctionalityNameTriggerExecution.containsKey('afterFCUpdate') && mapFunctionalityNameTriggerExecution.get('afterFCUpdate').Core_Active__c){
                 Core_Opp_FC_6QPSHandler.afterUpdateMethod(Trigger.New, Trigger.oldMap);
             }
-            
-            if(mapFunctionalityNameTriggerExecution.containsKey('forecastCommissionCreate') && mapFunctionalityNameTriggerExecution.get('forecastCommissionCreate').Core_Active__c){
-                //Core_Opp_FC_Handler.addCommissionableTransaction(Trigger.New, Trigger.oldMap);
-            }
         }
     }
 }

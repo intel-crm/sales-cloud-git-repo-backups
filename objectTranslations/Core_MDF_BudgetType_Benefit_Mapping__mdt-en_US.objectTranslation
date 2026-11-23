@@ -12,10 +12,6 @@
         <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type__c</name>
         <picklistValues>
-            <masterLabel>Account Plan</masterLabel>
-            <translation><!-- Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Business Client Acceleration - MDF</masterLabel>
             <translation><!-- Business Client Acceleration - MDF --></translation>
         </picklistValues>
@@ -36,16 +32,60 @@
             <translation><!-- DCG MAF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Data Center Market Accelerate</masterLabel>
-            <translation><!-- Data Center Market Accelerate --></translation>
+            <masterLabel>Data Center Specialties MDF</masterLabel>
+            <translation><!-- Data Center Specialties MDF --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Centric Acceleration - MDF</masterLabel>
             <translation><!-- Data Centric Acceleration - MDF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IPA Account Based1</masterLabel>
-            <translation><!-- IPA Account Based1 --></translation>
+            <masterLabel>Datacenter Market Accelerate</masterLabel>
+            <translation><!-- Datacenter Market Accelerate --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
+            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
+            <translation><!-- Global IBM Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
+            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
+            <translation><!-- Global Nokia Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
+            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAP Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
+            <translation><!-- Global SAS Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
+            <translation><!-- Global Suse Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
+            <translation><!-- Global VMware Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
+            <translation><!-- ISV Scale Acceleration - MDF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel MDF Account Based1</masterLabel>
+            <translation><!-- Intel MDF Account Based1 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel MDF Account Based2</masterLabel>
@@ -56,24 +96,12 @@
             <translation><!-- Intel Rise Technology Initiative --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IoT Premier - MDF</masterLabel>
-            <translation><!-- IoT Premier - MDF --></translation>
+            <masterLabel>Optane Specialties MDF</masterLabel>
+            <translation><!-- Optane Specialties MDF --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IoT Targeted - MDF</masterLabel>
-            <translation><!-- IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proposal I MDF</masterLabel>
-            <translation><!-- Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proposal II MDF</masterLabel>
-            <translation><!-- Proposal II MDF --></translation>
+            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
+            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SOEM Client MDF</masterLabel>
@@ -83,42 +111,18 @@
             <masterLabel>SOEM Data Center MDF</masterLabel>
             <translation><!-- SOEM Data Center MDF --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>VMWare Amplify - MDF</masterLabel>
+            <translation><!-- VMWare Amplify - MDF --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- IsActive --></label>
         <name>Core_MDF_IsActive__c</name>
     </fields>
     <fields>
-        <label><!-- Is IUPGM Monitor Applicable --></label>
-        <name>Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Benefit --></label>
         <name>Core_MDF_Partner_Benefit__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program_Nm__c</name>
-        <picklistValues>
-            <masterLabel>Channel MDF</masterLabel>
-            <translation><!-- Channel MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client</masterLabel>
-            <translation><!-- Client --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
-            <translation><!-- Datacenter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Partner Alliance</masterLabel>
-            <translation><!-- Intel Partner Alliance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Marketing Funds</masterLabel>
-            <translation><!-- Retail Marketing Funds --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- RecordType --></label>
@@ -131,10 +135,6 @@
             <masterLabel>Proposal Based</masterLabel>
             <translation><!-- Proposal Based --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Record Developer Name --></label>
-        <name>Core_MDF_Record_Developer_Nm__c</name>
     </fields>
     <fields>
         <label><!-- Reimbursement Rate --></label>

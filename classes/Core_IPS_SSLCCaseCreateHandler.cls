@@ -1,5 +1,5 @@
 /* Popcornapps 6/13/2018 Fixed Outlook client issue   */
-public without sharing class Core_IPS_SSLCCaseCreateHandler{
+public class Core_IPS_SSLCCaseCreateHandler{
  
     public static String createCase(String emailPlainText ){
         String message=null;
@@ -8,7 +8,8 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
         Case cs=new Case();
         // Email json parsing
         try{
-           mapCase = (Map<String, Object>)JSON.deserializeUntyped(emailPlainText);           
+           mapCase = (Map<String, Object>)JSON.deserializeUntyped(emailPlainText);
+            
         }catch(Exception ex){
             message='JSON Sent is not correct :: '+emailPlainText+'Exception:: '+ex.getMessage();
             jsonFormat=false;
@@ -16,9 +17,8 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
            // return null;
         }
         // Case Subject
-       if (Schema.sObjectType.Case.fields.subject.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
-            cs.subject=(String)mapCase.get('subject');
-       }
+        /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+        if (Schema.sObjectType.Case.fields.subject.isCreateable()) {     cs.subject=(String)mapCase.get('subject'); } 
         Object caseDesc=mapCase.get('Description');
         String jsonDescModified = JSON.serialize(caseDesc);
         jsonDescModified  = jsonDescModified.replaceall('\\",','<br/>');
@@ -29,41 +29,63 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
         jsonDescModified = jsonDescModified.replaceall('\\}','');
         jsonDescModified = jsonDescModified.replaceall('\\{','');
         // Case Description
-        cs.Core_Issue_Description__c=jsonDescModified;
-        if(cs.Core_Issue_Description__c != null)
-        {
+        if (Schema.sObjectType.Case.fields.Core_Issue_Description__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.Core_Issue_Description__c=jsonDescModified;
+        }
+        if(cs.Core_Issue_Description__c != null) {
+        
             string  strDescValue =  Core_Utility.replaceSpecialChar(cs.Core_Issue_Description__c);
             //cs.Description = Core_Utility.replaceHtmlTags(strDescValue);
-            cs.Description = jsonDescModified.replaceall('<br/>','\n');  
+            if (Schema.sObjectType.Case.fields.Description.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+                cs.Description = jsonDescModified.replaceall('<br/>','\n');
+            }  
         }   
         Map<String, Object> mapCaseDescription=(Map<String, Object>)JSON.deserializeUntyped(JSON.serialize(caseDesc));
         // Case Supplied Mail
-        cs.SuppliedEmail=(String)mapCaseDescription.get('Contact Email');
+        if (Schema.sObjectType.Case.fields.SuppliedEmail.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.SuppliedEmail=(String)mapCaseDescription.get('Contact Email');
+        }
         //Default Data Setting Up
         //Supported Product
         Core_IPS_SSLCCase_DefaultData__c ProductData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Supported_Product');
-        cs.Core_IPS_Product_name__c=ProductData.Core_IPS_Default_Data__c;
-        cs.Core_IPS_Supported_Product__c =ProductData.Core_IPS_Default_data_Id__c;
+        if (Schema.sObjectType.Case.fields.Core_IPS_Product_name__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.Core_IPS_Product_name__c=ProductData.Core_IPS_Default_Data__c;
+        }
+        if (Schema.sObjectType.Case.fields.Core_IPS_Supported_Product__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            
+        }
         // Project 
         Core_IPS_SSLCCase_DefaultData__c ProjectData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Project');
-        cs.Core_IPS_Project_Case__c=ProjectData.Core_IPS_Default_data_Id__c;
+        if (Schema.sObjectType.Case.fields.Core_IPS_Project_Case__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.Core_IPS_Project_Case__c=ProjectData.Core_IPS_Default_data_Id__c;
+        }
         // Case Type
         Core_IPS_SSLCCase_DefaultData__c CaseTypeData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Case Type');
-        cs.Core_CaseType__c=CaseTypeData.Core_IPS_Default_Data__c;
+        if (Schema.sObjectType.Case.fields.Core_CaseType__c.isCreateable()) {  cs.Core_CaseType__c=CaseTypeData.Core_IPS_Default_Data__c; }  
+           /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
         //Case Category        
         Core_IPS_SSLCCase_DefaultData__c CaseCategoryData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Case Category');
-        cs.Core_External_Issue_Category__c=CaseCategoryData.Core_IPS_Default_Data__c;
-        cs.Core_Case_Issue_Category__c=CaseCategoryData.Core_IPS_Default_data_Id__c;
+        if (Schema.sObjectType.Case.fields.Core_External_Issue_Category__c.isCreateable()) { cs.Core_External_Issue_Category__c=CaseCategoryData.Core_IPS_Default_Data__c; }
+        /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/     
+        if (Schema.sObjectType.Case.fields.Core_Case_Issue_Category__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.Core_Case_Issue_Category__c=CaseCategoryData.Core_IPS_Default_data_Id__c;
+        }
         //Case SubCategory
         Core_IPS_SSLCCase_DefaultData__c CaseSubCategoryData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Case Subcategory');
-        cs.Core_External_Issue_Subcategory__c=CaseSubCategoryData.Core_IPS_Default_Data__c;
-        cs.Core_Case_Issue_Sub_Category__c=CaseSubCategoryData.Core_IPS_Default_data_Id__c;
+        if (Schema.sObjectType.Case.fields.Core_External_Issue_Subcategory__c.isCreateable()) { cs.Core_External_Issue_Subcategory__c=CaseSubCategoryData.Core_IPS_Default_Data__c;}
+         /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+        if (Schema.sObjectType.Case.fields.Core_Case_Issue_Sub_Category__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/        
+            cs.Core_Case_Issue_Sub_Category__c=CaseSubCategoryData.Core_IPS_Default_data_Id__c;
+        }
         //Case Issue Source
         Core_IPS_SSLCCase_DefaultData__c IssueSourceData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Issue Source');
-        cs.Core_IPS_Issue_source__c=IssueSourceData.Core_IPS_Default_Data__c;
+        if (Schema.sObjectType.Case.fields.Core_IPS_Issue_source__c.isCreateable()) { cs.Core_IPS_Issue_source__c=IssueSourceData.Core_IPS_Default_Data__c; }
+        /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
         // Case Record Type
         String recordTypeNoContactCase = Schema.getGlobalDescribe().get('Case').getDescribe().getRecordTypeInfosByName().get('IPS No Assigned Contact Case').getRecordTypeId();
-        cs.recordtypeID =  recordTypeNoContactCase;
+        if (Schema.sObjectType.Case.fields.recordtypeID.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+            cs.recordtypeID =  recordTypeNoContactCase;
+        }
         if(jsonFormat){    
             try{        
                 insert cs;
@@ -76,9 +98,15 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
             //Getting New EDQ
             Core_IPS_SSLCCase_DefaultData__c EnvDetailsData=Core_IPS_SSLCCase_DefaultData__c.getInstance('Case Subcategory Detail');
             Core_IPS_Response__c lstCoreResponse = new Core_IPS_Response__c();
-            lstCoreResponse.Core_IPS_Case__c =cs.id;
-            lstCoreResponse.Core_IPS_Answer__c= EnvDetailsData.Core_IPS_Default_Data__c;
-            lstCoreResponse.Core_IPS_Question_Master__c= EnvDetailsData.Core_IPS_Default_data_Id__c;
+            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+                lstCoreResponse.Core_IPS_Case__c =cs.id;
+            }
+            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Answer__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+                lstCoreResponse.Core_IPS_Answer__c= EnvDetailsData.Core_IPS_Default_Data__c;
+            }
+            if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Question_Master__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
+                lstCoreResponse.Core_IPS_Question_Master__c= EnvDetailsData.Core_IPS_Default_data_Id__c;
+            }
             insert lstCoreResponse;
             //Old EDQ 
             /*Core_IPS_Environment_Details__c envdet=new Core_IPS_Environment_Details__c();
@@ -89,17 +117,12 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
             envdet.Core_Agent_Only__c=true;
             insert envdet;*/
             // Send Mail
-            sendMailAfterCaseCreate(cs.id);
-        }
-        return message;
+            sendMailAfterCaseCreate(cs.id);} return message;
        // return null;
     }
     
     Public static void sendMailAfterCaseCreate(Id caseId){
-        Case caseObj = new Case();
-        if(Case.SObjectType.getDescribe().isAccessible()){  //FLS check already added - Aditya
-            caseObj=[select id,subject,casenumber,Core_Issue_Description__c ,SuppliedEmail from case where id=:caseId];
-        }
+            Case caseObj=[select id,subject,casenumber,Core_Issue_Description__c ,SuppliedEmail from case where id=:caseId];
             // Step 0: Create a master list to hold the emails we'll send
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
             
@@ -121,10 +144,9 @@ public without sharing class Core_IPS_SSLCCaseCreateHandler{
             mail.setTemplateId(emailTemplate.id);
             String emailSubject= emailTemplate.Subject;
             emailSubject= emailSubject.replace('{!Case.CaseNumber}', caseObj.CaseNumber);
-            emailSubject= emailSubject.replace('{!Case.Subject}', caseObj.Subject);
-           
-            String htmlBody = emailTemplate.HtmlValue;
-            htmlBody = htmlBody.replace('{!Case.CaseNumber}', caseObj.CaseNumber);
+            emailSubject= emailSubject.replace('{!Case.Subject}', caseObj.Subject); 
+        	String htmlBody = emailTemplate.HtmlValue;
+        	htmlBody = htmlBody.replace('{!Case.CaseNumber}', caseObj.CaseNumber);	
             htmlBody = htmlBody.replace('{!Case.Subject}', caseObj.Subject);
             htmlBody = htmlBody.replace('{!Case.Description}', caseObj.Core_Issue_Description__c );
             htmlBody = htmlBody.replace('<!','&lt;!');

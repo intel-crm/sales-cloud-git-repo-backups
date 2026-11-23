@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <description>To search the records on the list view</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Advanced_Search</masterLabel>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__Tab</target>
+        <target>lightning__FlowScreen</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__Inbox</target>
+		<target>lightning__UtilityBar</target>
+		<target>lightningSnapin__ChatMessage</target>
+		<target>lightningSnapin__Minimized</target>
+		<target>lightningSnapin__PreChat</target>
+		<target>lightningSnapin__ChatHeader</target>
+		<target>lightning__RecordAction</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightning__HomePage,lightning__RecordPage,lightningCommunity__Default">
+            <!--<property name="objectName" type="String" default="" label="Enter Object API Name"/>-->
+            <property name="objectAPIName" label="Related Object API Name" type="String" default=""/>
+            <property name="fieldSetName" label="Field Set Name" type="String" default=""/>
+            <!-- IF MORE THAN A FILTER, HAVE THE VALUES AS SEMICOLON SEPARATED -->
+            <property name="criteriaFieldAPIName" label="Filter FieldAPIName" type="String" default=""
+                            description="The field on which query to be performed."/>
+            <property name="criteriaFieldOperator" label="Filter Operator" type="String" default=""
+                            description="The Operator to be used for filter condition."/>
+            <property name="criteriaValue" label="Filter Value" type="String" default=""
+                            description="Value to be filtered by on which query to be performed."/>
+            <property name="paginationSize" label="Pagination Size" type="String" default=""
+                            description="Specify the limit of records to be displayed in a page."/>
+            <property name="firstColumnAsRecordHyperLink" label="First Column As RecordHyperLink" 
+                            type="String" datasource="Yes,No" default="Yes"/>  
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

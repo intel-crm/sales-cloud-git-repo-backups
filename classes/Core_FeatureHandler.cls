@@ -10,7 +10,7 @@ Modification Log :
 * Dave Hood                 09/21/2015              After Update code added to handle single->multiselect
 * Dave Hood                 10/15/2015              Added code to handle Feature value changes and refactored
 *************************************************************************************/
-public without sharing class Core_FeatureHandler {
+public class Core_FeatureHandler {
     
     // Make sure we only execute functionality once
     public static Boolean alreadyEnsuredConsistentMultiselect = false;    

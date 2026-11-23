@@ -166,6 +166,15 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>Partner Specification</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>PMP_Specification_Id__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Name</label>
         <type>Text</type>

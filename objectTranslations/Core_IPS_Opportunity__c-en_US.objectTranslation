@@ -18,5 +18,16 @@
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Premier Support Opportunities --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Premier Support Opportunity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING!! DO NOT CHANGE PROJECT FIELD --></label>
+            <section>WARNING!! DO NOT CHANGE PROJECT FIELD</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

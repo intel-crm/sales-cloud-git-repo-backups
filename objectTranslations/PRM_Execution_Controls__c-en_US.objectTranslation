@@ -9,8 +9,8 @@
         <value>PRM Execution Controls</value>
     </caseValues>
     <fields>
-        <label><!-- BypassValidationInTransferAdmin --></label>
-        <name>BypassValidationInTransferAdmin__c</name>
+        <label><!-- Current Year --></label>
+        <name>Current_Year__c</name>
     </fields>
     <fields>
         <label><!-- Skip Process Builder --></label>
@@ -29,12 +29,8 @@
         <name>PRM_Skip_Workflow_Rule_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Skip_ValidationRule_ContractStatus --></label>
-        <name>Skip_ValidationRule_ContractStatus__c</name>
-    </fields>
-    <fields>
-        <label><!-- Skip_ValidationRule_Order_Status --></label>
-        <name>Skip_ValidationRule_Order_Status__c</name>
+        <label><!-- Present_Year --></label>
+        <name>Present_Year__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

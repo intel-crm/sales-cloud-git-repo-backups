@@ -66,13 +66,6 @@
     <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Export_Compliance_Block__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Export_Compliance_Block_Reason__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>

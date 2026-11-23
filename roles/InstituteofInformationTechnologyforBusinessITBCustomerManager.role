@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Institute of Information Technology for Business (ITB) Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Institute of Information Technology for Business (ITB) Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>InstituteofInformationTechnologyforBusinessITBCustomerExecutive</parentRole>
+</Role>

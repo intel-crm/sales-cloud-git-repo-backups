@@ -2,33 +2,43 @@ import { LightningElement, wire, track, api } from 'lwc';
 import serachContacts from '@salesforce/apex/PRM_AddContactsToGroupController.fetchContactsData';
 import insertContactGrContAssRecords from '@salesforce/apex/PRM_AddContactsToGroupController.insertContactGrContAssRecords';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import PRM_AddContToGR_ErrorMsg from '@salesforce/label/c.PRM_AddContToGR_ErrorMsg';
+import PRM_AddContToGR_SuccessMsg from '@salesforce/label/c.PRM_AddContToGR_SuccessMsg';
+import PRM_EnterContactEmail_Search from '@salesforce/label/c.PRM_EnterContactEmail_Search';
+import PRM_AddContToGrComp_NoCriteria from '@salesforce/label/c.PRM_AddContToGrComp_NoCriteria';
+import PRM_Contact_Name from '@salesforce/label/c.PRM_Contact_Name';
+import PRM_First_Name from '@salesforce/label/c.PRM_First_Name';
+import PRM_Last_Name from '@salesforce/label/c.PRM_Last_Name';
+import PRM_Partner_Role_Column from '@salesforce/label/c.PRM_Partner_Role_Column';
+import PRM_Email_Column from '@salesforce/label/c.PRM_Email_Column';
+import PRM_Phone_Column from '@salesforce/label/c.PRM_Phone_Column';
 //import PRM_EmptySearchInput_ErrMsg from '@salesforce/label/c.PRM_EmptySearchInput_ErrMsg';
 
 const columns = [
     {
-        label: 'Contact Name',
+        label: PRM_Contact_Name,
         fieldName: 'nameUrl',
         type: 'url',
         initialWidth: 270,
         typeAttributes: { label: { fieldName: 'contactName' }, target: '_blank' }
     }, {
-        label: 'First Name',
+        label: PRM_First_Name,
         fieldName: 'contactFirstName',
         type: 'text'
     }, {
-        label: 'Last Name',
+        label: PRM_Last_Name,
         fieldName: 'contactLastName',
         type: 'text'
     }, {
-        label: 'Partner Role',
+        label: PRM_Partner_Role_Column,
         fieldName: 'contactPartnerRole',
         type: 'text'
     }, {
-        label: 'Email',
+        label: PRM_Email_Column,
         fieldName: 'contactEmail',
         type: 'text'
     }, {
-        label: 'Phone',
+        label: PRM_Phone_Column,
         fieldName: 'contactPhone',
         type: 'text'
     }
@@ -69,7 +79,7 @@ export default class PRMAddContactsToGrComponent extends LightningElement {
             this.dispatchEvent(
                 new ShowToastEvent({
                     title: 'Error',
-                    message: 'Please enter contact email to search',
+                    message: PRM_EnterContactEmail_Search,
                     variant: 'error',
                 }),
             );
@@ -100,7 +110,7 @@ export default class PRMAddContactsToGrComponent extends LightningElement {
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Error',
-                            message: 'No Record found with criteria or Records are already exist.',
+                            message: PRM_AddContToGrComp_NoCriteria,
                             variant: 'error',
                         }),
                     );
@@ -120,7 +130,7 @@ export default class PRMAddContactsToGrComponent extends LightningElement {
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Success',
-                            message: 'Contacts are associated to group successfully.',
+                            message: PRM_AddContToGR_SuccessMsg,
                             variant: 'success',
                         }),
                     );
@@ -132,7 +142,7 @@ export default class PRMAddContactsToGrComponent extends LightningElement {
                     this.dispatchEvent(
                         new ShowToastEvent({
                             title: 'Error',
-                            message: 'Error While Creating Records.',
+                            message: PRM_AddContToGR_ErrorMsg,
                             variant: 'Error',
                         }),
                     );

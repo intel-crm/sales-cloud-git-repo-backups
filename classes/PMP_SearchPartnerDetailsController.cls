@@ -37,7 +37,7 @@ public with sharing class PMP_SearchPartnerDetailsController extends PMP_SearchW
             try{
                 //Modified as a part of OPID Restructure : Removing PMP_Account_Id__c from the Query                                      
                 if(Schema.sObjectType.PMP_Company__c.isAccessible()){
-                    company=[SELECT Id, Name,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,PMP_Company_Lifecycle_Status_Nm__c,
+                    company =[SELECT Id, Name,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,PMP_Company_Lifecycle_Status_Nm__c,
                              PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c, 
                              PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,
                              PMP_Account_Tag_Line__c,PMP_Working_Copy_Id__c,PMP_Working_Copy_Id__r.PMP_Company_Lifecycle_Status_Nm__c,
@@ -48,7 +48,7 @@ public with sharing class PMP_SearchPartnerDetailsController extends PMP_SearchW
                              PMP_Autofill_Txt__c
                              FROM PMP_Company__c where PMP_Working_Copy_Id__c =: partnerId LIMIT 1];
                 }
-                if(company != null){
+                 if(company != null){
                     partnerId = company.Id;
                     //TranslationEOL
                     description=company.PMP_Account_Dsc__c;
@@ -63,7 +63,7 @@ public with sharing class PMP_SearchPartnerDetailsController extends PMP_SearchW
             if(Schema.sObjectType.PMP_Company__c.isAccessible()){
                 // companyWithPublished=[select PMP_Working_Copy_Id__c from PMP_Company__c where id=:partnerId limit 1];
                 //Modified as a part of OPID Restructure : Removing PMP_Account_Id__c from the Query                                                                
-                company=[SELECT Id, Name,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,
+                List<PMP_Company__c> companyList=[SELECT Id, Name,PMP_Is_Working_Copy_Ind__c,PMP_Marketing_Profile_Id__c, PMP_Partner_Program_nm__c, PMP_Account_Dsc__c, PMP_Account_Address_Txt__c,
                          PMP_Account_Industry__c, PMP_Account_Application__c,PMP_Account_Region__c, PMP_Account_Program_Membership__c,PMP_Company_Lifecycle_Status_Nm__c, 
                          PMP_Is_Enabled_Lead_Gen_Nm__c,PMP_Is_Lead_Gen_Limited_Nm__c, PMP_Account_Specialty__c,PMP_Account_Website__c,PMP_Enhanced_Login_Users_Txt__c,
                          PMP_Account_Tag_Line__c,PMP_Published_Copy_Id__c,PMP_Is_Updated_Ind__c,PMP_Initial_Storefront_Submit_Date_Dt__c,PMP_Company_Status_Update_Dt__c,
@@ -73,7 +73,8 @@ public with sharing class PMP_SearchPartnerDetailsController extends PMP_SearchW
                          ,PMP_Autofill_Txt__c
                          FROM PMP_Company__c where PMP_Published_Copy_Id__c=:partnerId LIMIT 1];
                 //TranslationEOL
-                if(company != null){
+                if(!companyList.isEmpty()/*company != null*/){
+                    company = companyList[0];
                     partnerId= company.id;//already we got working copy here
                     description=company.PMP_Account_Dsc__c;
                     tagline=company.PMP_Account_Tag_Line__c;

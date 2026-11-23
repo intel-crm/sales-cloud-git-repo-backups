@@ -9,7 +9,7 @@ public class PMP_SearchCreatePartnerWorkCopy_Test {
         cmp.PMP_Account_Website__c = 'www.test.com';
         cmp.PMP_Account_Program_Membership__c = 'ISA - GENERAL';
         cmp.PMP_Partner_Program_nm__c = 'ISA';
-        cmp.PMP_Account_Specialty__c = 'None';        
+        cmp.PMP_Account_Specialty__c = 'Enthusiast PC Specialty';        
         insert cmp;
            
     }

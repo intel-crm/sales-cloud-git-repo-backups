@@ -7,7 +7,7 @@ public class Core_IPS_Accept_Part_Support_Contr_Test{
         insert testAccount;
          
         testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123456@testing.com.testsetup',
-                                 AccountId=testAccount.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful', MailingCountry ='India');
+                                 AccountId=testAccount.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
         insert testContact;
     }
     public static testmethod void getAssignment(){

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>NETWORK ALLIES Customer User</description>
+    <description>Network Allies LLC Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>NETWORK ALLIES Customer User</name>
+    <name>Network Allies LLC Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>emp_12341086_Kaitlyn_Soltesz</parentRole>
+    <parentRole>NETWORKALLIESCustomerManager</parentRole>
 </Role>

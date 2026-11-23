@@ -32,6 +32,7 @@ export default class PsMpSimpleContentCard extends LightningElement {
 
 
   get ifs() {
+
     return {
       showButton: this.buttonLabel && this.buttonLabel !== "",
       showImage: this.imageUrl && this.imageUrl !== "",

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_ProgramBudgetMapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_ProgramBudgetMappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- MaxBudget --></label>
+        <name>MaxBudget__c</name>
+    </fields>
+    <fields>
+        <label><!-- MinBudget --></label>
+        <name>MinBudget__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProgramName --></label>
+        <name>ProgramName__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProgramSubType --></label>
+        <name>ProgramSubType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

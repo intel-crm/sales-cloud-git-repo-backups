@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>PMP_CompanyProcessAutomation</flowApiName>
+    <label>Resubmit Non English</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;attributes&quot;:{&quot;type&quot;:&quot;PMP_Company__c&quot;},&quot;PMP_Account_Specialty__c&quot;:&quot;Video Specialty&quot;,&quot;Name&quot;:&quot;Lotus LLC&quot;,&quot;PMP_Partner_Benefit_Type__c&quot;:&quot;Solutions Marketplace Enhanced&quot;,&quot;PMP_Account_Region__c&quot;:&quot;APJ&quot;,&quot;PMP_Benefit_Update_Ind__c&quot;:false,&quot;PMP_Is_Lead_Gen_Limited_Nm__c&quot;:&quot;False&quot;,&quot;PMP_Is_Published_Ind__c&quot;:false,&quot;PMP_Intel_Admin_Id__c&quot;:&quot;0058A000007aaLqQAI&quot;,&quot;PMP_Last_Updated_Date_Dt__c&quot;:&quot;2022-07-05&quot;,&quot;PMP_Opid_Sfid_Txt__c&quot;:&quot;0018A00000iXeawQAC&quot;,&quot;PMP_Account_Dsc__c&quot;:&quot;&lt;p&gt;desc123&lt;/p&gt;&quot;,&quot;PMP_Initial_Storefront_Submit_Date_Dt__c&quot;:&quot;2022-04-11&quot;,&quot;PMP_Partner_Segment_Nm__c&quot;:&quot;Internet of Things and Embedded;Data Center;Storage and Memory&quot;,&quot;PMP_Partner_Inactive_Ind__c&quot;:false,&quot;PMP_Company_Status_Update_Dt__c&quot;:&quot;2022-07-05&quot;,&quot;PMP_Translated_Languages_Txt__c&quot;:&quot;Simplified Chinese&quot;,&quot;PMP_Partner_Zipcode_Txt__c&quot;:&quot;560001&quot;,&quot;PMP_Is_Working_Copy_Ind__c&quot;:true,&quot;PMP_Account_Sub_Region__c&quot;:&quot;SA&quot;,&quot;PMP_Account_Program_Membership__c&quot;:&quot;FPGA Design Services - Gold&quot;,&quot;PMP_Partner_Primary_Street_Txt__c&quot;:&quot;8, Union St Shivaji Nagar1&quot;,&quot;PMP_Partner_Submitter_UserId__c&quot;:&quot;0058A000008dJXUQA2&quot;,&quot;OwnerId&quot;:&quot;0058A000007aaLqQAI&quot;,&quot;PMP_Company_Status_Published_Date_Dt__c&quot;:&quot;2022-06-29&quot;,&quot;PMP_Partner_Country_Txt__c&quot;:&quot;India&quot;,&quot;PMP_Is_Enabled_Lead_Gen_Nm__c&quot;:&quot;True&quot;,&quot;PMP_Translation_Lifecycle_Status_nm__c&quot;:&quot;Pending&quot;,&quot;PMP_Account_Website__c&quot;:&quot;lotusllc.in&quot;,&quot;PMP_Company_Lifecycle_Status_Nm__c&quot;:&quot;Update Required&quot;,&quot;PMP_Company_Information_Language_Nm__c&quot;:&quot;English&quot;,&quot;PMP_Suppress_Email_Ind__c&quot;:false,&quot;PMP_Opid_Sfid_Ref_Txt__c&quot;:&quot;0018A00000iXeawQAC&quot;,&quot;PMP_Partner_State_Txt__c&quot;:&quot;Karnataka&quot;,&quot;PMP_Partner_City_Txt__c&quot;:&quot;Bangalore&quot;,&quot;PMP_Account_Tag_Line__c&quot;:&quot;tag1&quot;,&quot;PMP_Is_Updated_Ind__c&quot;:false,&quot;PMP_Partner_Program_nm__c&quot;:&quot;FPGA Design Services&quot;,&quot;PMP_IPA_Badge_Tier_Txt__c&quot;:&quot;Gold&quot;,&quot;PMP_Published_Copy_Id__c&quot;:&quot;a5S8A000000D7y0UAC&quot;}</sobjectValue>
+            </value>
+        </parameters>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordUpdated</type>
+            <value>
+                <sobjectValue>{&quot;attributes&quot;:{&quot;type&quot;:&quot;PMP_Company__c&quot;},&quot;PMP_Account_Specialty__c&quot;:&quot;Video Specialty&quot;,&quot;Name&quot;:&quot;Lotus LLC&quot;,&quot;PMP_Partner_Benefit_Type__c&quot;:&quot;Solutions Marketplace Enhanced&quot;,&quot;PMP_Account_Region__c&quot;:&quot;APJ&quot;,&quot;PMP_Benefit_Update_Ind__c&quot;:false,&quot;PMP_Is_Lead_Gen_Limited_Nm__c&quot;:&quot;False&quot;,&quot;PMP_Is_Published_Ind__c&quot;:false,&quot;PMP_Intel_Admin_Id__c&quot;:&quot;0058A000007aaLqQAI&quot;,&quot;PMP_Last_Updated_Date_Dt__c&quot;:&quot;2022-07-05&quot;,&quot;PMP_Opid_Sfid_Txt__c&quot;:&quot;0018A00000iXeawQAC&quot;,&quot;PMP_Account_Dsc__c&quot;:&quot;&lt;p&gt;desc123&lt;/p&gt;&quot;,&quot;PMP_Initial_Storefront_Submit_Date_Dt__c&quot;:&quot;2022-04-11&quot;,&quot;PMP_Partner_Segment_Nm__c&quot;:&quot;Internet of Things and Embedded;Data Center;Storage and Memory&quot;,&quot;PMP_Partner_Inactive_Ind__c&quot;:false,&quot;PMP_Company_Status_Update_Dt__c&quot;:&quot;2022-07-05&quot;,&quot;PMP_Translated_Languages_Txt__c&quot;:&quot;Simplified Chinese&quot;,&quot;PMP_Partner_Zipcode_Txt__c&quot;:&quot;560001&quot;,&quot;PMP_Is_Working_Copy_Ind__c&quot;:true,&quot;PMP_Account_Sub_Region__c&quot;:&quot;SA&quot;,&quot;PMP_Account_Program_Membership__c&quot;:&quot;FPGA Design Services - Gold&quot;,&quot;PMP_Partner_Primary_Street_Txt__c&quot;:&quot;8, Union St Shivaji Nagar1&quot;,&quot;PMP_Partner_Submitter_UserId__c&quot;:&quot;0058A000008dJXUQA2&quot;,&quot;OwnerId&quot;:&quot;0058A000007aaLqQAI&quot;,&quot;PMP_Company_Status_Published_Date_Dt__c&quot;:&quot;2022-06-29&quot;,&quot;PMP_Partner_Country_Txt__c&quot;:&quot;India&quot;,&quot;PMP_Is_Enabled_Lead_Gen_Nm__c&quot;:&quot;True&quot;,&quot;PMP_Translation_Lifecycle_Status_nm__c&quot;:&quot;Pending&quot;,&quot;PMP_Account_Website__c&quot;:&quot;lotusllc.in&quot;,&quot;PMP_Company_Lifecycle_Status_Nm__c&quot;:&quot;Admin Review&quot;,&quot;PMP_Company_Information_Language_Nm__c&quot;:&quot;Simplified Chinese&quot;,&quot;PMP_Suppress_Email_Ind__c&quot;:false,&quot;PMP_Opid_Sfid_Ref_Txt__c&quot;:&quot;0018A00000iXeawQAC&quot;,&quot;PMP_Partner_State_Txt__c&quot;:&quot;Karnataka&quot;,&quot;PMP_Partner_City_Txt__c&quot;:&quot;Bangalore&quot;,&quot;PMP_Account_Tag_Line__c&quot;:&quot;tag1&quot;,&quot;PMP_Is_Updated_Ind__c&quot;:true,&quot;PMP_Partner_Program_nm__c&quot;:&quot;FPGA Design Services&quot;,&quot;PMP_IPA_Badge_Tier_Txt__c&quot;:&quot;Gold&quot;,&quot;PMP_Published_Copy_Id__c&quot;:&quot;a5S8A000000D7y0UAC&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Is_Updated_Ind__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

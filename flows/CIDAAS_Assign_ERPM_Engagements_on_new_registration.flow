@@ -2,7 +2,7 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <description>Action for calling ERPM APIGEE api -
-https://apis.intel.com/m2r/erpm/v1/profiles/set-profiles
+https://apis-stage.intel.com/m2r/erpm/v1/profiles/set-profiles
 Dev-https://fmdverpmws.cps.intel.com/erpm-rest/v2/contact/setprofile</description>
         <name>ERPM_API_Action</name>
         <label>ERPM API Action</label>
@@ -26,7 +26,7 @@ Dev-https://fmdverpmws.cps.intel.com/erpm-rest/v2/contact/setprofile</descriptio
         <name>EntitlementBased</name>
         <dataType>String</dataType>
         <value>
-            <stringValue>Resource &amp; Design Center for Secure Content,EPS Verified Company</stringValue>
+            <stringValue>Resource &amp; Design Center for Secure Content</stringValue>
         </value>
     </constants>
     <constants>
@@ -93,7 +93,7 @@ Ex: Account_Create_Request</description>
             <name>Does_Not_Exists</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>EngagementAssignedId</leftValueReference>
+                <leftValueReference>DZSAssignedId</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -107,12 +107,6 @@ Ex: Account_Create_Request</description>
     </decisions>
     <description>Flow to assign ERPM engagements for contacts. Flow will get triggered when new registration requests are inserted. This hold good only for account create request record type. APIGEE  eRPM  api will get called inside call out method.</description>
     <environments>Default</environments>
-    <formulas>
-        <description>EngagementMapping</description>
-        <name>EngagementMapping</name>
-        <dataType>String</dataType>
-        <expression>CASE({!$Record.Entitlement_Details__r.Name}, &quot;Resource &amp; Design Center for Secure Content&quot;, &quot;Developer Zone Standard&quot;, &quot;EPS Verified Company&quot;, &quot;EPS Basic&quot;,&quot;&quot;)</expression>
-    </formulas>
     <interviewLabel>CIDAAS ERPM Callout {!$Flow.CurrentDateTime}</interviewLabel>
     <label>CIDAAS Assign ERPM Engagements on new registration</label>
     <processMetadataValues>
@@ -155,7 +149,7 @@ Ex: Account_Create_Request</description>
             <field>Core_Entitlement_Nm__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>EngagementMapping</elementReference>
+                <stringValue>Developer Zone Standard</stringValue>
             </value>
         </filters>
         <filters>
@@ -174,7 +168,7 @@ Ex: Account_Create_Request</description>
         </filters>
         <object>Core_Contact_Entitlement__c</object>
         <outputAssignments>
-            <assignToReference>EngagementAssignedId</assignToReference>
+            <assignToReference>DZSAssignedId</assignToReference>
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
@@ -205,7 +199,7 @@ Ex: Account_Create_Request</description>
     </start>
     <status>Active</status>
     <variables>
-        <name>EngagementAssignedId</name>
+        <name>DZSAssignedId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>

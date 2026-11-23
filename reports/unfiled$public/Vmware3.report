@@ -52,36 +52,8 @@
     <columns>
         <field>ACCOUNT_NAME</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_At_Risk__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Risk_Reason__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Reason1__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Reason2__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Priority__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Risk_Category__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_At_Risk_Created_Date__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
     <filter>
-        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7) AND 8 AND 9</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7) AND 8</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Combined_Solution_Detail__c</column>
             <columnToColumn>false</columnToColumn>
@@ -138,13 +110,6 @@
             <operator>equals</operator>
             <value>GMP EMEA Sales Territory,GMP France Sales Group,GMP Germany Sales Group,GMP Russia Sales Group,GMP UK Sales Group</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -155,7 +120,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>open</value>
     </params>
     <params>
         <name>probability</name>
@@ -172,6 +137,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -76,6 +76,13 @@
             <translation><!-- N/A --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Environment Details Operational Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- To prevent discrepancies in Case data, reverting from Inactive to Active has been disabled. If needed, please contact Production Support to have the flag reset to Active.

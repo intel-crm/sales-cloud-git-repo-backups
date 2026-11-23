@@ -26,18 +26,6 @@
         <relationshipLabel><!-- Account IPA Affiliations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Builder --></label>
-        <name>PRM_Builder__c</name>
-        <picklistValues>
-            <masterLabel>AI Builders</masterLabel>
-            <translation><!-- AI Builders --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Network Builders</masterLabel>
-            <translation><!-- Network Builders --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <help><!-- On update of any field, Reason Text should also be updated --></help>
         <label><!-- Reason Text --></label>
         <name>PRM_Notes__c</name>
@@ -50,6 +38,28 @@
         <label><!-- Unique Key --></label>
         <name>Unique_Key__c</name>
     </fields>
+    <layouts>
+        <layout>Intel Account Affiliation</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Partner Account Group Affiliation</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Intel Account Affiliation --></label>
         <name>Intel_Account_Affiliation</name>

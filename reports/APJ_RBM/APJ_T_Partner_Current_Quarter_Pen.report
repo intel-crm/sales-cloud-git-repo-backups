@@ -73,7 +73,7 @@
         </values>
     </buckets>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
@@ -196,7 +196,6 @@
         <field>BucketField_12541241</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND 7 AND ((8 AND 9 AND 10) OR 11)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -246,34 +245,6 @@
             <operator>contains</operator>
             <value>Ram</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Comms Infra. / Networking,Data Center Computing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Comms Infra. / Networking,Data Center Computing</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -284,7 +255,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

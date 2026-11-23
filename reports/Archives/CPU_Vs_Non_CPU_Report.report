@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_59337553</developerName>
+        <masterLabel>CPU V Non-CPU</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Product2.Core_Product_Type__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Processors</sourceValue>
+            </sourceValues>
+            <value>CPU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Boards and Kits</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cable Modems and Media Gateways</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Chipsets</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Development Kits</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Education</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Emerging Technologies</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ethernet Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Fabric Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Graphics</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Graphics Drivers</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Graphics and Memory Controller Hubs (GMCH)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>I/O Controller Hubs (ICH)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>I/O Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Innovative Devices</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Mobile Communications</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Server Boards</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Platform Controller Hub (PCH)</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Technologies</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wireless Networking</sourceValue>
+            </sourceValues>
+            <value>Non-CPU</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Server Boards</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Server Chassis</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Server Products</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Server Systems</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>SoFIA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Software</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Solid-State Drives</sourceValue>
+            </sourceValues>
+            <value>non CPU</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>TYPE</field>
+    </columns>
+    <columns>
+        <field>AMOUNT</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>BucketField_59337553</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
+    </columns>
+    <columns>
+        <field>FAMILY</field>
+    </columns>
+    <columns>
+        <field>PROBABILITY</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>QUANTITY</field>
+    </columns>
+    <columns>
+        <field>UNIT_PRICE</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>TOTAL_PRICE</field>
+    </columns>
+    <columns>
+        <field>SERVICE_DATE</field>
+    </columns>
+    <columns>
+        <field>SERVICE_MONTH</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_PRICE</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_CUSTOMER_ID</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_ACTIVE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
+    </columns>
+    <columns>
+        <field>ROLLUP_DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>ASMO</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Segments__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>includes</operator>
+            <value>Influencer</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>CPU Vs. Non CPU Report</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

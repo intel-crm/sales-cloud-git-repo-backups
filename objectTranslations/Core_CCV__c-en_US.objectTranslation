@@ -38,6 +38,13 @@
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- CCV Account Plans --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>CCV Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <webLinks>
         <label><!-- Core_Account_CCV_Help --></label>

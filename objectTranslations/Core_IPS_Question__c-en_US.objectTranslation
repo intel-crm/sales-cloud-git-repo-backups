@@ -103,6 +103,27 @@
             <translation><!-- Sales Rep --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Core Questions Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Environment Detail Question Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAG Question Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- Used in GEC Cases --></description>
         <label><!-- MAG Question --></label>
@@ -144,19 +165,11 @@
         <name>Core_IPS_Validate_Support_Org</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_To_Products_LEX_EnvDetailQuestion --></label>
-        <name>Add_To_Products_LEX_EnvDetailQuestion</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_IPS_Add_To_Products --></label>
         <name>Core_IPS_Add_To_Products</name>
     </webLinks>
     <webLinks>
         <label><!-- Manage_Dependent_Answers --></label>
         <name>Manage_Dependent_Answers</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Manage_Dependent_Answers_LEX --></label>
-        <name>Manage_Dependent_Answers_LEX</name>
     </webLinks>
 </CustomObjectTranslation>

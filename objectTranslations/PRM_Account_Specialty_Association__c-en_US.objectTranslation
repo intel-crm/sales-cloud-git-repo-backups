@@ -68,6 +68,13 @@
         <label><!-- Suppress Email --></label>
         <name>PRM_Suppress_Email__c</name>
     </fields>
+    <layouts>
+        <layout>Account Specialty Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Specialty association cannot be removed, use the inactive indicator to remove the specialty --></errorMessage>

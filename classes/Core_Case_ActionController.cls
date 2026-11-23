@@ -85,6 +85,7 @@ public with sharing class Core_Case_ActionController{
       else if(contactId!=null && contactId!=''){
         defPageReference=defPageReference+'&def_contact_id='+contactId;
       }
+           system.debug('defPageReference:: 3'+defPageReference);
       return new PageReference(defPageReference);
   }
   
@@ -97,5 +98,6 @@ public with sharing class Core_Case_ActionController{
               sCaseActionList.add(sAction);
           }
       }
+      system.debug('sCaseActionList::'+sCaseActionList);      
   }
 }

@@ -17,6 +17,36 @@
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
+            <assignedTo>CCG_Unite_EMEA_Sales_Rangers</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Marketing_Tactic_ID__c</field>
+                <operation>equals</operation>
+                <value>MKA-1821</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>EMEAUniteCPL</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CCG_Unite_US_Sales_Rangers</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 OR 2</booleanFilter>
+            <criteriaItems>
+                <field>Lead.Core_Marketing_Tactic_ID__c</field>
+                <operation>equals</operation>
+                <value>MKA-1817</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_Lead_Conversion_Point__c</field>
+                <operation>contains</operation>
+                <value>ASMOUniteCPL</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
             <assignedTo>EMEA_BNZ_UK</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
@@ -28,11 +58,6 @@
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>EMEA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -48,11 +73,6 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>EMEA_HOLD</assignedTo>
@@ -67,10 +87,47 @@
                 <operation>equals</operation>
                 <value>EMEA</value>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_ASMO_NAR</assignedTo>
+            <assignedToType>Queue</assignedToType>
             <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>ASMO</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_INSIDE_EMEA_PSG</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_PSG_Leads_APJ</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>APJ</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Lead.Core_PSG_Lead__c</field>
+                <operation>equals</operation>
+                <value>PSG</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
@@ -81,253 +138,59 @@
                 <operation>equals</operation>
                 <value>PSG</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Core_Geo__c</field>
-                <operation>equals</operation>
-                <value>PRC</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_NAR</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.Core_Sub_Geo__c</field>
-                <operation>equals</operation>
-                <value>NAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Brazil</assignedTo>
+            <assignedTo>Core_INSIDE_US_Qual</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.CountryCode</field>
                 <operation>equals</operation>
-                <value>BRA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <value>USA</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_LAR</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.Core_Sub_Geo__c</field>
-                <operation>equals</operation>
-                <value>LAR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_French</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>FRA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_French</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>BEL</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>DEU</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>AUT</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_German</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>CHE</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Russian</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>RUS</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_EMEA</assignedTo>
+            <assignedTo>Americas_TER_Lead_HOLD</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
-                <value>EMEA</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <value>ASMO</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_JAPAN</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>JPN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_South_Korea</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>KOR</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Indonesia</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>IDN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_Taiwan</assignedTo>
-            <assignedToType>Queue</assignedToType>
-            <criteriaItems>
-                <field>Lead.CountryCode</field>
-                <operation>equals</operation>
-                <value>TWN</value>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
-        </ruleEntry>
-        <ruleEntry>
-            <assignedTo>MGL_LDR_APJ</assignedTo>
+            <assignedTo>Core_INSIDE_APJ_Qual</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>APJ</value>
             </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
-            </criteriaItems>
         </ruleEntry>
         <ruleEntry>
-            <assignedTo>MGL_LDR_PRC</assignedTo>
+            <assignedTo>Core_INSIDE_PRC_Qual</assignedTo>
             <assignedToType>Queue</assignedToType>
             <criteriaItems>
                 <field>Lead.Core_Geo__c</field>
                 <operation>equals</operation>
                 <value>PRC</value>
             </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Core_INSIDE_EMEA_Qual</assignedTo>
+            <assignedToType>Queue</assignedToType>
             <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
+                <field>Lead.Core_Geo__c</field>
+                <operation>equals</operation>
+                <value>EMEA</value>
             </criteriaItems>
         </ruleEntry>
         <ruleEntry>
             <assignedTo>Core_ALL_GLOBAL_Catch_All</assignedTo>
             <assignedToType>Queue</assignedToType>
-            <booleanFilter>1 AND 2</booleanFilter>
+            <booleanFilter>1</booleanFilter>
             <criteriaItems>
                 <field>Lead.LastName</field>
                 <operation>notEqual</operation>
-            </criteriaItems>
-            <criteriaItems>
-                <field>Lead.Status</field>
-                <operation>notEqual</operation>
-                <value>Marketing Engaged Lead</value>
             </criteriaItems>
         </ruleEntry>
     </assignmentRule>

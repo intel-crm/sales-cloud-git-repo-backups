@@ -7,7 +7,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>API Key</label>
-        <length>100</length>
+        <length>35</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -18,7 +18,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>AsynchronousRequestId</label>
-        <length>255</length>
+        <length>20</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
@@ -104,22 +104,6 @@
         <unique>false</unique>
     </fields>
     <label>PRM CIM Request</label>
-    <listViews>
-        <fullName>All_Columns</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>NamespacePrefix</columns>
-        <columns>PRM_Async_Id__c</columns>
-        <columns>PRM_Calling_System__c</columns>
-        <columns>PRM_Default_Source_Attributes__c</columns>
-        <columns>PRM_Restriction_Level__c</columns>
-        <columns>PRM_Max_Records__c</columns>
-        <columns>PRM_Max_Score__c</columns>
-        <columns>PRM_Min_Score__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Columns</label>
-        <language>en_US</language>
-    </listViews>
     <pluralLabel>PRM CIM Requests</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

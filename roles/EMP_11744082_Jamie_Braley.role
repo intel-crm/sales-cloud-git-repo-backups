@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Joe Ward</description>
+    <description>EMP of Adam Prengler</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11744082_Jamie_Braley</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11911496_Joseph_Ward</parentRole>
+    <parentRole>EMP_11418733_Adam_Prengler</parentRole>
 </Role>

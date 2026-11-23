@@ -9,7 +9,7 @@
         <locationX>789</locationX>
         <locationY>591</locationY>
         <customErrorMessages>
-            <errorMessage>{!$Label.PRM_PartnerRole_Error_MSG}</errorMessage>
+            <errorMessage>Contact has an active Intel partner alliance relationship.</errorMessage>
             <fieldSelection>Core_IPA_PartnerRole__c</fieldSelection>
             <isFieldError>true</isFieldError>
         </customErrorMessages>

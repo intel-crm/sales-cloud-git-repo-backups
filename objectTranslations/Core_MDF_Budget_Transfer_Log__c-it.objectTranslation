@@ -9,19 +9,6 @@
         <value>Logo di trasferimento account</value>
     </caseValues>
     <fields>
-        <label><!-- Activity Reverse Transfer Indicator --></label>
-        <name>Core_MDF_Activity_Reverse_Transfer_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Co-Marketing Activity --></label>
-        <name>Core_MDF_Co_Marketing_Activity__c</name>
-        <relationshipLabel><!-- Account Transfer Logs --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -72,10 +59,6 @@
             <translation><!-- Auto --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Auto-Activity</masterLabel>
-            <translation><!-- Auto-Activity --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Manual</masterLabel>
             <translation><!-- Manual --></translation>
         </picklistValues>
@@ -89,6 +72,13 @@
         <name>Core_MDF_Unique_Key_txt__c</name>
     </fields>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Account Transfer Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Account Transfer Log Name --></nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <webLinks>

@@ -296,8 +296,6 @@
     <label>Partner Offering Translation</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

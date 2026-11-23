@@ -1,8 +1,9 @@
 @isTest(SeeAllData = True)
 public class PRM_BatchMonitor_Test {
+   
     @isTest
     public static void testBatchFailure(){
-        
+		
         List<Monitor_Log__c> testRec = new List<Monitor_Log__c>();
         Monitor_Log__c mLog = new Monitor_Log__c();
         mLog.Status__c = 'Queued';
@@ -18,10 +19,21 @@ public class PRM_BatchMonitor_Test {
         
         insert testRec;
         
+        
         Test.startTest();
+     	
+        
+        
         PRM_BatchMonitorScheduler batchschedule1 = new PRM_BatchMonitorScheduler();
         String cronExpression1 = '0 0 0/2 1/2 * ? *';
         system.schedule('Batch Test' , cronExpression1 , batchschedule1);
-        Test.stopTest();        
-    }   
+        
+        
+        Test.stopTest();
+        
+    } 
+    
+   
+    
+    
 }

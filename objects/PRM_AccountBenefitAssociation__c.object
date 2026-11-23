@@ -155,6 +155,23 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>IsValid__c</fullName>
+        <defaultValue>true</defaultValue>
+        <label>IsValid</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>MPI_Benefit__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Controlling Field</description>
+        <label>MPI Benefit</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PRM_Account_Id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Account</label>
@@ -184,6 +201,17 @@
         <externalId>false</externalId>
         <formula>PRM_Account_Id__r.RecordType.DeveloperName</formula>
         <label>Account RT</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_Benefit_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>PRM_Partner_Benefit_Id__r.Name</formula>
+        <label>Benefit Name</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -257,12 +285,6 @@
                     <isActive>false</isActive>
                     <label>Program Benefit</label>
                 </value>
-                <value>
-                    <fullName>Specialty</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Specialty</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -272,7 +294,7 @@
         <description>It will display the date when the status is changed</description>
         <label>Status Change Date</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
     </fields>
@@ -284,6 +306,7 @@
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
+            <controllingField>MPI_Benefit__c</controllingField>
             <restricted>true</restricted>
             <valueSetDefinition>
                 <sorted>false</sorted>
@@ -298,6 +321,14 @@
                     <label>Inactive</label>
                 </value>
             </valueSetDefinition>
+            <valueSettings>
+                <controllingFieldValue>unchecked</controllingFieldValue>
+                <valueName>Active</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>unchecked</controllingFieldValue>
+                <valueName>Inactive</valueName>
+            </valueSettings>
         </valueSet>
     </fields>
     <fields>
@@ -313,7 +344,7 @@
         <fullName>PRM_Suppress_Email__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Suppress Email</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -364,12 +395,25 @@
         </picklistValues>
     </recordTypes>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>PRM_MP_Enhanced_Benefit_Restriction</fullName>
+        <active>false</active>
+        <description>This Rule is for checking the benefit code entered manually</description>
+        <errorConditionFormula>AND( PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c ==&apos;BFTMKTPLED&apos;,
+MPI_Benefit__c=false,
+NOT(CONTAINS($Profile.Name,&apos;Integration&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;Integration-IAH&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;System Administrator&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;IT Admin&apos;)),
+NOT(CONTAINS($Profile.Name,&apos;IPA System Profile&apos;)))</errorConditionFormula>
+        <errorMessage>This Benefit cannot be assigned manually</errorMessage>
+    </validationRules>
     <validationRules>
         <fullName>PRM_Status_Reason_Removal_Mandatory</fullName>
         <active>true</active>
         <description>This is used to restrict user from keeping the Status reason field as Blank when the Status is selected as Inactive.</description>
-        <errorConditionFormula>NOT( $Permission.PCC_Bypass_Automation ) &amp;&amp; IF($Setup.PRM_Execution_Controls__c.PRM_Skip_Validation_Rule_Ind__c=TRUE,FALSE,OR(AND(ISCHANGED(PRM_Status_Nm__c),(ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c)),AND((ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c))))</errorConditionFormula>
+        <errorConditionFormula>IF($Setup.PRM_Execution_Controls__c.PRM_Skip_Validation_Rule_Ind__c=TRUE,FALSE,OR(AND(ISCHANGED(PRM_Status_Nm__c),(ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c)),AND((ISPICKVAL(PRM_Status_Nm__c, &apos;Inactive&apos;)), ISBLANK(PRM_Status_Reason_Txt__c))))</errorConditionFormula>
         <errorMessage>Please add a reason in the Status reason</errorMessage>
     </validationRules>
     <visibility>Public</visibility>

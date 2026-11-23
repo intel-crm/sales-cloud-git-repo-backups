@@ -70,10 +70,10 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Broxton,Apollo Lake D,Apollo Lake M,Bay Trail D,Bay Trail I,Bay Trail M,Bay Trail T,Braswell D,Braswell M,BROADWELL,Cherry Trail,Grantley EP,Grantley EP 4S,Haswell DT Refresh,Kaby Lake D,Kaby Lake M,Purley,Skylake D,Skylake M,SoFIA 3G,SoFIA 3G R,SoFIA IoT,SoFIA LTE,SoFIA LTE2</value>
+            <value>Broxton,Apollo Lake D,Apollo Lake M,Bay Trail D,Bay Trail I,Bay Trail M,Bay Trail T,Braswell D,Braswell M,Broadwell,Cherry Trail,Grantley EP,Grantley EP 4S,Haswell DT Refresh,Kaby Lake D,Kaby Lake M,Purley,Skylake D,Skylake M,SoFIA 3G,SoFIA 3G R,SoFIA IoT,SoFIA LTE,SoFIA LTE2</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>

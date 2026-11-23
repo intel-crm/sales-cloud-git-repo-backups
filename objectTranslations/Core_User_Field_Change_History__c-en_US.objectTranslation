@@ -25,6 +25,13 @@
         <label><!-- Previous Value --></label>
         <name>Core_Previous_Value__c</name>
     </fields>
+    <layouts>
+        <layout>Core_User_Field_Change_History Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- System will not allow to modify log details, please contact Security Team for further assistance --></errorMessage>

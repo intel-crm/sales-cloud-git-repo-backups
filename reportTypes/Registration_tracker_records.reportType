@@ -12,57 +12,27 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
+            <field>Account_ID__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
+            <field>PRM_Account_Partner_Type__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>RecordType</field>
+            <field>PRM_CIM_ID__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
+            <field>PRM_Account_ID__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Account_Name__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Account_Phone__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Account_URL__c</field>
+            <field>ActualApprover__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -77,7 +47,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>AE_ApprovedRejectedTimeStamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_PendingTimeStamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Approve_Reject_Link__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Approved_Timestamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ArchiveTest__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Original_Approver__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assigned_To__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Auto_Approve_rpt_txt__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Partner_Type__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -87,22 +107,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_CIM_ID__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Channel_Program_Level__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Channel_Program__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>PRM_City__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CNDA_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Review_Note_txt__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -112,12 +127,52 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Account_Name__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Company_National_ID__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Company_Size__c</field>
+            <field>Completed_date__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Contact_Country__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Enterprise_ID__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_flag__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_Token__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_First_Name__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_ContactId__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Last_Name__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -127,7 +182,72 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Person_Phone_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Contact_Salesforce_Id__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Country__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Country_Name__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Countries__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Country__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Created_Date_Time__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Current_Status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_AE_Pending_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Pending_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_Left_for_EV_Expiry__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_Left_for_Identity_Deletion__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -142,27 +262,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_EV_Expired_vs_Pending__c</field>
+            <field>PRM_Matching_Contact__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_EV_Token__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_EV_flag__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_EmailVerifiedDateTime__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Email_Domain_Check__c</field>
+            <field>PRM_Duration__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -172,27 +277,167 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Email_Domain_Check__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Email_Log__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Email_Verification_Criteria__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Enterprise_ID__c</field>
+            <field>Email_Verification_Status__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_First_Name__c</field>
+            <field>PRM_EmailVerifiedDateTime__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Job_Function__c</field>
+            <field>Entitlement_Details__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Last_Name__c</field>
+            <field>PRM_Errors_Logged__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EV_Expire_Check__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_Expired_vs_Pending__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_Token_Renewed_Date__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>From_Date__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo_Region__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo_Code__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_AE_Open_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Open_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Sales_Open_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Sales_Pending_status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_IPA_Approved_Time__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsArchive__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_isBulkLoadedContact__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Duplicate__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Entitlement_Record__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_is_First_EV_Reminder_Sent__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_isLocked__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_isSubmitted__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Job_Title__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadCreationDate__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Lead_ID__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadOwnerEmail__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadOwnerName__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -207,7 +452,42 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Matching_Contact__c</field>
+            <field>PRM_manualRecordCheck__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Matching_Top_Account__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Open_to_Approved_Rejected_TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Open_to_Pending_TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Channel_Program__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Channel_Program_Level_txt__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -227,12 +507,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Partner_Type__c</field>
+            <field>PRM_Channel_Program_Level__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Person_Phone_Number__c</field>
+            <field>PRM_Pending_Auto_Approval_Criteria__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_TimeStamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_to_Approved_Rejected_TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_TPT__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -272,12 +567,127 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_ProcessInstanceWorkItem_Id__c</field>
+            <field>PRM_Approve_Time__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Auto_Approve__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_PC_Approve_Reject_Flag__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_New_Account__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Job_Function__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Profession__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>PRM_Profile_Response__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Profile_Response_Sync_Result__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Description__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Size__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Timeframe__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_PSG_Entitlement_Status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Errored_Out__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Status__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>RecordType</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Type_Name_rpt_txt__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_ProcessInstanceWorkItem_Id__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Registration_Type__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Reject_Reason__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Reject_Reason_Others__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Request_Duration__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_ApprovedRejectedTimeStamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_PendingTimeStamp__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_TPT__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -292,197 +702,12 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Status_Reason__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Status__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Subscriptions__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Tax_ID_Registration__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_TriggerProcess__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Zip_Postal_Code__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_isLocked__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_isSubmitted__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_manualRecordCheck__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Email_Verification_Status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Account_Partner_Type__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Contact_Country__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Contact_Salesforce_Id__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Email_Log__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_Left_for_EV_Expiry__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_Left_for_Identity_Deletion__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>EV_Expire_Check__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Approve_Time__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Auto_Approve__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Record_Type_Name_rpt_txt__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Wechat_Union_Id__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_PC_Approve_Reject_Flag__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Auto_Approve_rpt_txt__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Review_Note_txt__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Channel_Program_Level_txt__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_EV_Token_Renewed_Date__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Entitlement_Details__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Account_ID__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CNDA_Number__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Lead_ID__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LeadCreationDate__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LeadOwnerName__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LeadOwnerEmail__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Completed_date__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Countries__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Current_Status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Profession__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Assigned_To__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Geo_Code__c</field>
+            <field>PRM_Status_Reason__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -492,22 +717,42 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_Open_status__c</field>
+            <field>PRM_Subscriptions__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pending_TimeStamp__c</field>
+            <field>PRM_Suppress_Email__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Approved_Timestamp__c</field>
+            <field>Sync_Profile_Response__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pending_TPT__c</field>
+            <field>PRM_Tax_ID_Registration__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Title__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>To_Date__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_TPT__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_TPT_AE_and_sales__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -527,117 +772,27 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Project_Description__c</field>
+            <field>PRM_TriggerProcess__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Open_to_Pending_TPT__c</field>
+            <field>PRM_Company_Size__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Pending_to_Approved_Rejected_TPT__c</field>
+            <field>PRM_Account_Phone__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Open_to_Approved_Rejected_TPT__c</field>
+            <field>PRM_Account_URL__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_Pending_status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Total_TPT__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Project_Timeframe__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Project_Size__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Job_Title__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_New_Account__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sync_Profile_Response__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Profile_Response_Sync_Result__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Created_Date_Time__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AE_PendingTimeStamp__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sales_PendingTimeStamp__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>AE_ApprovedRejectedTimeStamp__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Sales_ApprovedRejectedTimeStamp__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_AE_Open_status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_AE_Pending_status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_Sales_Open_status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Days_in_Sales_Pending_status__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Total_TPT_AE_and_sales__c</field>
-            <table>PRM_Registration_Request__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Matching_Top_Account__c</field>
+            <field>PRM_User_Loggedin_Time__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
@@ -647,12 +802,57 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Record_Status__c</field>
+            <field>PRM_Wechat_Union_Id__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Duration__c</field>
+            <field>PRM_Zip_Postal_Code__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Source__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Account_Request_Queue__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EBR_Automation_Processed__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Entitlement_Detail_Name__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Legal_Agreements_F__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Company_Nm_Eng__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Tax_Number__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status_Pending_Time__c</field>
+            <table>PRM_Registration_Request__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status_Approved_Time__c</field>
             <table>PRM_Registration_Request__c</table>
         </columns>
         <masterLabel>New Registrations</masterLabel>
@@ -660,102 +860,22 @@
     <sections>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Id</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Owner</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>true</checkedByDefault>
-            <field>Name</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedDate</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CreatedBy</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedDate</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>LastModifiedBy</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>PRM_Account__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_contact__c</field>
+            <field>PRM_Active__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Registration_Type__c</field>
+            <field>PRM_AGD_ID_Updated__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Stage__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Email__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Step_Number__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Log_Entries__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Integration_Log__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Attempted_for_IPA__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Current_Step__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Last_Milestone_DateTime__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_Time_Difference__c</field>
-            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>PRM_SBC_Callout_Time__c</field>
+            <field>PRM_AGS_ID_Creation_Retried__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <columns>
@@ -765,7 +885,138 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>PRM_AGD_ID_Updated__c</field>
+            <field>PRM_Completed__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_contact__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedBy</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CreatedDate</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Current_Step__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Email__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Error__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_Retriggered__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Attempted_for_IPA__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Integration_Log__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Last_Milestone_DateTime__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedBy</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LastModifiedDate</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Log_Entries__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Owner</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Previous_Step__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_RegCombo__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Id</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>true</checkedByDefault>
+            <field>Name</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Registration_Type__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_SBC_Callout_Time__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Stage__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Step_Number__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Time_Difference__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_User_Loggedin_Time__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Yet_to_Process__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <displayNameOverride>Account Name</displayNameOverride>
+            <field>PRM_Account__c.Name</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <columns>
@@ -776,8 +1027,17 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Account Name</displayNameOverride>
-            <field>PRM_Account__c.Name</field>
+            <field>User_Type__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_PathIdentifier__c</field>
+            <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_InactiveIndicator__c</field>
             <table>PRM_Registration_Request__c.Registration_Trackers__r</table>
         </columns>
         <masterLabel>Registration Trackers</masterLabel>

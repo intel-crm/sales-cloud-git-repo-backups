@@ -41,5 +41,12 @@
         <label><!-- Unique Identifier Key --></label>
         <name>Core_IPS_Unique_Identifier_Key__c</name>
     </fields>
+    <layouts>
+        <layout>Backend Value Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

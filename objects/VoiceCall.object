@@ -92,14 +92,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>AgentSentimentScore</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CallAcceptDateTime</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>CallConnectDateTime</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -120,51 +112,12 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>CallQueuedDateTime</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CallResolution</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-    </fields>
-    <fields>
         <fullName>CallStartDateTime</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CallSubtype</fullName>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
         <fullName>CallType</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CallerId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>CustomerHoldDuration</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>CustomerSentimentScore</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>Description</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>DisconnectReason</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>EndUserId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>FromPhoneNumber</fullName>
@@ -179,46 +132,7 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>IsRecordingOptedOut</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>IsTranscriptionOptedOut</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>LongestHoldDuration</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>NextCallId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>NumberOfHolds</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
         <fullName>OwnerId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PreviousCallId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>QualityScore</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>QueueName</fullName>
-        <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>RecipientId</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -251,24 +165,19 @@
         <lookupDialogsAdditionalFields>ToPhoneNumber</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CallDisposition</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>CallDurationInSeconds</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>QualityScore</lookupDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CallStartDateTime</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CallType</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>FromPhoneNumber</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ToPhoneNumber</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CallDisposition</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CallDurationInSeconds</lookupPhoneDialogsAdditionalFields>
-        <lookupPhoneDialogsAdditionalFields>QualityScore</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>FromPhoneNumber</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>ToPhoneNumber</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>CallType</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>FromPhoneNumber</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>CallResolution</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CallStartDateTime</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>EndUser</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Owner</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CallOrigin</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>QualityScore</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
 </CustomObject>

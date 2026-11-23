@@ -31,14 +31,14 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
 * Return Type  : VOID
 * Parameters   : List<User>, List<User>, map<Id, User>, map<Id, User>
 */
-
+    
     public static void createFeed(List<User> newUsers, List<User> oldUsers, Map<Id,User> oldUserMap, Map<Id,User> newUserMap){
         
         List<Core_User_Field_Change_History__c> ufields = new List<Core_User_Field_Change_History__c>();
         List<Core_User_Fields_For_Tracking__mdt> metaDataFields = new List<Core_User_Fields_For_Tracking__mdt>();
         
         // Querying Metadatafields fields which are active in the metadata.
-        metaDataFields = [SELECT Core_User_Field_API_Name__c,Core_Active_Ind__c fROM Core_User_Fields_For_Tracking__mdt WHERE Core_Active_Ind__c=true];
+        metaDataFields = [SELECT Core_User_Field_API_Name__c,Core_Active_Ind__c fROM Core_User_Fields_For_Tracking__mdt WHERE Core_Active_Ind__c=true WITH SECURITY_ENFORCED];
         
         String fieldName;
         List<UserRole> newUserRoleNames = new List<UserRole>();
@@ -49,6 +49,7 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
         List<User> newManagerNames = new List<User>();
         List<User> oldDelegatedApproverNames = new List<User>();
         List<User> newDelegatedApproverNames = new List<User>();
+        List<User> userMetaDataFields = new List<User>();
         
         Map<Id,String> oldUserIdToRoleIdMap = new Map<Id,String>();
         Map<Id,String> newuserIdToRoleIdMap = new Map<Id,String>();
@@ -61,22 +62,77 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
         
        // Loop through all the users who have been modified
         for (User userDetails : newUsers) { 
-            // Assigning UserId to oldUser and newUser list
+            //Assigning UserId to oldUser and newUser list
             User oldUser = oldUserMap.get(userDetails.Id);
             User newUser = newUserMap.get(userDetails.Id);
             
-            // loop through all trackable fields configured in the metadata
+            //loop through all trackable fields configured in the metadata
             for(Core_User_Fields_For_Tracking__mdt userField : metaDataFields ){
-                fieldName = userField.Core_User_Field_API_Name__c;
                 
-                // Delegate per-field processing to a helper to reduce cognitive complexity
-                processTrackedField(oldUser, newUser, fieldName, ufields,
-                                    oldUserIdToRoleIdMap, newuserIdToRoleIdMap,
-                                    oldUserIdToProfileMap, newUserIdToProfileMap,
-                                    oldManagerIdToNameMap, newManagerIdToNameMap,
-                                    oldDelegatedApproverIdToName, newDelegatedApproverIdToName);
+                fieldName = userField.Core_User_Field_API_Name__c;
+                Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
+                
+                // Comparing if the value in oldMap and newMap is not equal
+                Boolean ifFieldExists = newUser.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName.toLowercase()); //Draco Change [28-09-2021]
+				
+                if(ifFieldExists == true && (newUser.get(fieldName) != oldUser.get(fieldName) && !fieldName.equalsIgnoreCase(Last_Modified_By_Id_STR) 
+                       && !fieldName.equalsIgnoreCase(Last_Modified_Date_STR)
+                       && !fieldName.equalsIgnoreCase(System_Mod_Stamp_STR)) ){ //Draco Change [28-09-2021]
+                     
+                           //When UserRole has changed 
+                           if(fieldName.contains(USER_ROLE_ID_STR)){ 
+                               newUserRoleId = String.valueOf(newUser.get(fieldName));
+                               //Map Of UserId to newUserIdToRoleIdMap
+                               newUserIdToRoleIdMap.put((Id)newUser.get('Id') , newUserRoleId);
+                               oldUserRoleId = String.valueOf(oldUser.get(fieldName));
+                               //Map of UserId to oldUserIdToRoleIdMap
+                               oldUserIdToRoleIdMap.put((Id)oldUser.get('Id') , oldUserRoleId);
+                               
+                              //When Profile has been changed 
+                           }else if(fieldName.contains(Profile_Id_STR)){
+                               
+                               newProfileId = String.valueOf(newUser.get(fieldName));
+                               
+                               //Map of UserId to UserNewProfileId
+                               newUserIdToProfileMap.put((Id)newUser.get('Id') , newProfileId);
+                               oldProfileId = String.valueOf(oldUser.get(fieldName));
+                               
+                               //Map of UserId to UserOldProfileId
+                               oldUserIdToProfileMap.put((Id)oldUser.get('Id') , oldProfileId);
+                               
+                              //When Manager gets Changed
+                           }else if(fieldName.contains(Manager_Id_STR)){
+                                newManagerId = String.valueOf(newUser.get(fieldName));
+                               //Map of UserId to NewMangerId
+                                newManagerIdToNameMap.put((Id)newUser.get('Id') , newManagerId);
+                                oldManagerId = String.valueOf(oldUser.get(fieldName));
+                               //Map of UserId to OldManagerId
+                                oldManagerIdToNameMap.put((Id)oldUser.get('Id') , oldManagerId); 
+                               
+                               //When delegated Approver changed 
+                           }else if(fieldName.contains(Approver_Id_STR)){
+                               
+                                newDelegatedApproverId = String.valueOf(newUser.get(fieldName));
+                               //Map Of UserId To UserNewDelegatedAprroverId
+                                newDelegatedApproverIdToName.put((Id)newUser.get('Id') , newDelegatedApproverId);
+                                oldDelegatedApproverId = String.valueOf(oldUser.get(fieldName));
+                                 //Map Of UserId To UserOldDelegatedAprroverId
+                                oldDelegatedApproverIdToName.put((Id)oldUser.get('Id') , oldDelegatedApproverId); 
+                           }
+                           
+                           // When Changes made on other userfileds which are metadata 
+                           else{
+                                    userFieldTrackingFields.Core_Modified_User_Field__c = fieldName;
+                                    userFieldTrackingFields.Core_Current_Value__c = String.valueOf(newUser.get(fieldName));
+                                    userFieldTrackingFields.Core_Previous_Value__c = String.valueOf(oldUser.get(fieldName));
+                                    userFieldTrackingFields.Core_Impacted_User__c = (Id) oldUser.get('Id');
+                                    ufields.add(userFieldTrackingFields);
+                           }
+                   
+                } //Draco Change [28-09-2021]
             }
-        } // end user loop / end users iteration
+    
+        }// end of all users iteration 
         
         //Updating roles details
         ufields = updateWithRoleDetails(newUserRoleNames , oldUserRoleNames, oldUserIdToRoleIdMap, newUserIdToRoleIdMap, ufields);
@@ -96,7 +152,7 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
             createUserFeedbackRecords(serializableUfields);
         }
     }
-
+    
     //Preparing Role Details with id and name
     private static List<Core_User_Field_Change_History__c> updateWithRoleDetails(List<UserRole> newUserRoleNames , List<UserRole> oldUserRoleNames,
                                                                    Map<Id,String> oldUserIdToRoleIdMap, Map<Id,String>  newUserIdToRoleIdMap 
@@ -234,83 +290,9 @@ public without sharing class Core_UserFieldChangeHistoryTracker {
     @future()
     private static void createUserFeedbackRecords(String strJSON){
         try{
-            List<Core_User_Field_Change_History__c> userFieldsForUpdate = (List<Core_User_Field_Change_History__c>) json.deserialize(strJSON, List<Core_User_Field_Change_History__c >.class);
-            // Use Database.insert with allOrNone=false to capture per-record failures and log them
-            Database.SaveResult[] srResults = Database.insert(userFieldsForUpdate, false);
-            // Log any failures
-            for (Database.SaveResult sr : srResults) {
-                if (!sr.isSuccess()) {
-                    for (Database.Error err : sr.getErrors()) {
-                        Core_Log_Entry__c excepLog = new Core_Log_Entry__c(
-                            Core_Message__c = err.getMessage(),
-                            Core_Origin__c = 'createUserFeedbackRecords',
-                            Core_Project__c = 'Core_UserFieldChangeHistoryTracker',
-                            Core_Details__c = 'Error while creating User Feedback Records',
-                            Core_Severity__c = 'error',
-                            Core_When__c = System.Now()
-                        );     
-                        insert excepLog;
-                    }
-                }
-            }
-        }catch(Exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'createUserFeedbackRecords', Core_Project__c = 'Core_UserFieldChangeHistoryTracker', Core_Details__c = 'Error while creating User Feedback Records', Core_Severity__c = 'error', Core_When__c = System.Now());     
-            insert excepLog;
-        }
+        List<Core_User_Field_Change_History__c> userFieldsForUpdate = (List<Core_User_Field_Change_History__c>) json.deserialize(strJSON, List<Core_User_Field_Change_History__c >.class);
+        List<Database.SaveResult> dsrResults = Database.insert(userFieldsForUpdate);
+        }catch(Exception e){}
     }
     
-    // Helper to process an individual tracked field change. Extracted to reduce cognitive complexity.
-    private static void processTrackedField(User oldUser, User newUser, String fieldName,
-                                            List<Core_User_Field_Change_History__c> ufields,
-                                            Map<Id,String> oldUserIdToRoleIdMap, Map<Id,String> newuserIdToRoleIdMap,
-                                            Map<Id,String> oldUserIdToProfileMap, Map<Id,String> newUserIdToProfileMap,
-                                            Map<Id,String> oldManagerIdToNameMap, Map<Id,String> newManagerIdToNameMap,
-                                            Map<Id,String> oldDelegatedApproverIdToName, Map<Id,String> newDelegatedApproverIdToName) {
-        // Comparing if the value in oldMap and newMap is not equal and field exists
-        Boolean ifFieldExists = newUser.getSobjectType().getDescribe().fields.getMap().keySet().contains(fieldName.toLowercase());
-        if (ifFieldExists == true &&
-            (newUser.get(fieldName) != oldUser.get(fieldName)
-             && !fieldName.equalsIgnoreCase(Last_Modified_By_Id_STR)
-             && !fieldName.equalsIgnoreCase(Last_Modified_Date_STR)
-             && !fieldName.equalsIgnoreCase(System_Mod_Stamp_STR))) {
-            
-            //When UserRole has changed 
-            if(fieldName.contains(USER_ROLE_ID_STR)){ 
-                String newUserRoleIdLocal = String.valueOf(newUser.get(fieldName));
-                newuserIdToRoleIdMap.put((Id)newUser.get('Id') , newUserRoleIdLocal);
-                String oldUserRoleIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldUserIdToRoleIdMap.put((Id)oldUser.get('Id') , oldUserRoleIdLocal);
-                
-            //When Profile has been changed 
-            } else if(fieldName.contains(Profile_Id_STR)){
-                String newProfileIdLocal = String.valueOf(newUser.get(fieldName));
-                newUserIdToProfileMap.put((Id)newUser.get('Id') , newProfileIdLocal);
-                String oldProfileIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldUserIdToProfileMap.put((Id)oldUser.get('Id') , oldProfileIdLocal);
-                
-            //When Manager gets Changed
-            } else if(fieldName.contains(Manager_Id_STR)){
-                String newManagerIdLocal = String.valueOf(newUser.get(fieldName));
-                newManagerIdToNameMap.put((Id)newUser.get('Id') , newManagerIdLocal);
-                String oldManagerIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldManagerIdToNameMap.put((Id)oldUser.get('Id') , oldManagerIdLocal); 
-                
-            //When delegated Approver changed 
-            } else if(fieldName.contains(Approver_Id_STR)){
-                String newDelegatedApproverIdLocal = String.valueOf(newUser.get(fieldName));
-                newDelegatedApproverIdToName.put((Id)newUser.get('Id') , newDelegatedApproverIdLocal);
-                String oldDelegatedApproverIdLocal = String.valueOf(oldUser.get(fieldName));
-                oldDelegatedApproverIdToName.put((Id)oldUser.get('Id') , oldDelegatedApproverIdLocal); 
-                
-            // When Changes made on other userfields which are metadata 
-            } else {
-                Core_User_Field_Change_History__c userFieldTrackingFields = new Core_User_Field_Change_History__c();
-                userFieldTrackingFields.Core_Modified_User_Field__c = fieldName;
-                userFieldTrackingFields.Core_Current_Value__c = String.valueOf(newUser.get(fieldName));
-                userFieldTrackingFields.Core_Previous_Value__c = String.valueOf(oldUser.get(fieldName));
-                userFieldTrackingFields.Core_Impacted_User__c = (Id) oldUser.get('Id');
-                ufields.add(userFieldTrackingFields);
-            }
-        }
-    }
 }

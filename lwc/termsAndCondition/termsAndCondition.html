@@ -28,9 +28,9 @@
 					<div class="docHolder">
 						<ul>
 							<template for:each={docList} for:item="doc"> 
-								<li style="list-style-type: disc;" key={doc.Document_Id__c}>									  
-									<a href={openDoc} key={doc.Document_Id__c} data-name={doc.Document_Id__c} onclick={handleClick}>
-										{doc.Title__c}
+								<li style="list-style-type: disc;" key={doc.ContentDocumentId}>									  
+									<a href={doc.ContentDownloadUrl}  data-name={doc.ContentDocumentId}>
+										{doc.Name}
 									</a>
 								</li>
 							</template>

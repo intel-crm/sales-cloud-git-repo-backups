@@ -30,6 +30,28 @@
         <label><!-- Supported Product Name --></label>
         <name>Core_Supported_Product_Name__c</name>
     </fields>
+    <layouts>
+        <layout>MAP Product Layout - Read Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAP Product Layout - Support Org Admin Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** change the MAP/PAR record value! --></label>
+            <section>WARNING: Please **DO NOT** change the MAP/PAR record value!</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- You cannot change a Supported Product.  You can only add a new Supported Product or delete an existing Supported Product. --></errorMessage>

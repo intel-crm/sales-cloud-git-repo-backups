@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Email Message Notification Event</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Email Message Notification Events</value>
+    </caseValues>
+    <fields>
+        <label><!-- MessageDt --></label>
+        <name>MessageDt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageHeaderTxt --></label>
+        <name>MessageHeaderTxt__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageId --></label>
+        <name>MessageId__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageReadInd --></label>
+        <name>MessageReadInd__c</name>
+    </fields>
+    <fields>
+        <label><!-- MessageSummaryTxt --></label>
+        <name>MessageSummaryTxt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

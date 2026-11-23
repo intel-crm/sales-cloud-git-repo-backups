@@ -103,7 +103,7 @@
         </values>
     </buckets>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
@@ -229,7 +229,6 @@
         <field>BucketField_67788746</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6 AND ((7 AND 8 AND 9) OR 10)</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -243,6 +242,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Qualify,Define,Develop,Design,Design Win,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>LAST_YEAR</value>
         </criteriaItems>
         <criteriaItems>
             <column>INDUSTRY</column>
@@ -272,40 +278,12 @@
             <operator>contains</operator>
             <value>Ram</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Comms Infra. / Networking,Data Center Computing</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Product_Segment__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Comms Infra. / Networking,Data Center Computing</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -341,7 +319,7 @@
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

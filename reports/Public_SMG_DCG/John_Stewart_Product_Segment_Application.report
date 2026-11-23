@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
+            <value>Swastik Chakraborty,Konstantin Babanakov,Xiaobo Chen,Andy Green,Myles Hu,Jason Lamb,York Ma,Tony Mantione,Chris Martin,H Reddy,Xiaolei Ren,David Rhoades,Illyse Sheaffer,Volga Simsek,Merritte Stidston,Karl Vietmeier,Yuan Xu,Hai Feng Zhu,john chen,otto chow,mohamed elsaid</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Product_Segment__c</column>
@@ -119,6 +119,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>CCG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>DCG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IOTG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Automotive Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>US Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Brazil Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP France Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Germany Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP India Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Japan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Korea Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Mexico Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Russia Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Taiwan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP UK Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Americas Sales Territory</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP APJ Sales Territory</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP EMEA Sales Territory</values>
+        </dashboardFilterOptions>
+        <name>Sales Group Filter</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - AR/VR/MR - Augmen./Virtual/Mixed Reality,Embedded - ASIC Proto,Embedded - Automotive,Embedded - Autonomous Driving,Embedded - Broadcast,Embedded - Consumer Electronics,Embedded - Drones,Embedded - Energy,Embedded - eODM,Embedded - Gaming &amp; Entertainment,Embedded - Health Sector,Embedded - Industrial,Embedded - Intelligent Transportation,Embedded - Office Automation,Embedded - Public Sector,Embedded - Robotics,Embedded - Sensors,Embedded - Smart Building,Embedded - Smart City,Embedded - Smart Home,Embedded - Transactional Retail,Embedded - Video,Embedded - Visual Retail</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - Sensors,Embedded - Transactional Retail,Embedded - Visual Retail</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - Energy,Embedded - Industrial</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - Automotive</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - Autonomous Driving</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Embedded - AR/VR/MR - Augmen./Virtual/Mixed Reality,Embedded - ASIC Proto,Embedded - Broadcast,Embedded - Consumer Electronics,Embedded - Drones,Embedded - Gaming &amp; Entertainment,Embedded - Health Sector,Embedded - Intelligent Transportation,Embedded - Office Automation,Embedded - Public Sector,Embedded - Robotics,Embedded - Smart Building,Embedded - Smart City,Embedded - Smart Home,Embedded - Video</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Client Computing,Comms Infra. / Networking,Connected Home,Data Center Computing,Embedded - AR/VR/MR - Augmen./Virtual/Mixed Reality,Embedded - ASIC Proto,Embedded - Automotive,Embedded - Autonomous Driving,Embedded - Broadcast,Embedded - Consumer Electronics,Embedded - Drones,Embedded - Energy,Embedded - eODM,Embedded - Gaming &amp; Entertainment,Embedded - Health Sector,Embedded - Industrial,Embedded - Intelligent Transportation,Embedded - Office Automation,Embedded - Public Sector,Embedded - Robotics,Embedded - Sensors,Embedded - Smart Building,Embedded - Smart City,Embedded - Smart Home,Embedded - Transactional Retail,Embedded - Video,Embedded - Visual Retail,Wireless &amp; Connectivity</values>
+        </dashboardFilterOptions>
+        <name>Product Segment</name>
+    </dashboardFilters>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design: Original,Design: Secondary</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design: Original</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Design: Secondary</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Deal: Scale-enable</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Deal: Sell-through</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Deal: Sell-to</values>
+        </dashboardFilterOptions>
+        <name>Opportunity Type</name>
+    </dashboardFilters>
+    <dashboardGridLayout>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <chartSummary>
+                    <axisBinding>y</axisBinding>
+                    <column>FORMULA1</column>
+                </chartSummary>
+                <componentType>Bar</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>true</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
+                <groupingSortProperties>
+                    <groupingSorts>
+                        <groupingLevel>g1</groupingLevel>
+                        <sortColumn>FORMULA1</sortColumn>
+                        <sortOrder>d</sortOrder>
+                    </groupingSorts>
+                </groupingSortProperties>
+                <legendPosition>Bottom</legendPosition>
+                <report>Pipeline_Quality/Pipe_Quality_by_Sales_Group1</report>
+                <showPercentage>false</showPercentage>
+                <showPicturesOnCharts>false</showPicturesOnCharts>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title>Pipeline Health % by Sales Group</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Column</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header>Past Due by Sales Group</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Pipeline_Reports/Pipe_Health_Past_Due_Summary</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title># Open Oppties Past Due by &gt;30 days</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Column</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header>Low Velocity by Sales Group</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Pipeline_Reports/Pipe_Health_Low_Velocity_Summary1</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title># Open Oppties w/Slow Stage Progression</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>0</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <header>Total Pipeline Record Count</header>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel># of Open Opportunities</metricLabel>
+                <report>Pipeline_Quality/Pipe_Quality_Calc</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Column</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header>Inactive by Sales Group (no activity in &gt;180 days)</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Pipeline_Reports/Pipe_Health_Inactive_Summary</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title># Open Oppties w/no activity in 180 days</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>8</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Column</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Auto</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header># Oppties with no Products in Stage later than Define</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Pipeline_Reports/Pipe_Health_Oppties_with_no_products_Sum</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title># Open oppties (&gt;Define)with no Products</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>8</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Past Due Opportunities</metricLabel>
+                <report>Pipeline_Quality/Past_Due_Record_Count</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>12</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+                <chartSummary>
+                    <column>RowCount</column>
+                </chartSummary>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Inactive Opportunities</metricLabel>
+                <report>Pipeline_Quality/Inactive_Record_Count</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>4</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <chartAxisRange>Auto</chartAxisRange>
+                <componentType>Column</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <drillEnabled>false</drillEnabled>
+                <drillToDetailEnabled>false</drillToDetailEnabled>
+                <enableHover>true</enableHover>
+                <expandOthers>false</expandOthers>
+                <groupingSortProperties/>
+                <header>Blank Description and Status Update by Sales Group</header>
+                <legendPosition>Bottom</legendPosition>
+                <report>KPI_Pipeline_Reports/Pipe_Health_No_Desc_or_Status_Update</report>
+                <showPercentage>false</showPercentage>
+                <showValues>true</showValues>
+                <sortBy>RowValueDescending</sortBy>
+                <sortLegendValues>false</sortLegendValues>
+                <title># Open Oppties w/no Desc or Status Upd.</title>
+                <useReportChart>false</useReportChart>
+            </dashboardComponent>
+            <rowIndex>16</rowIndex>
+            <rowSpan>8</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Low Velocity Opportunities</metricLabel>
+                <report>Pipeline_Quality/Low_Velocity_Record_Count</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>20</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Oppties with No Products (Stage later than Define)</metricLabel>
+                <report>KPI_Pipeline_Reports/No_Products_Record_Count</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>24</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <dashboardGridComponents>
+            <colSpan>4</colSpan>
+            <columnIndex>0</columnIndex>
+            <dashboardComponent>
+                <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+                <componentType>Metric</componentType>
+                <dashboardFilterColumns>
+                    <column>Account.Core_Sales_Groups__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Product_Segment__c</column>
+                </dashboardFilterColumns>
+                <dashboardFilterColumns>
+                    <column>Opportunity.Core_Opportunity_Type__c</column>
+                </dashboardFilterColumns>
+                <displayUnits>Integer</displayUnits>
+                <groupingSortProperties/>
+                <indicatorHighColor>#00716B</indicatorHighColor>
+                <indicatorLowColor>#C23934</indicatorLowColor>
+                <indicatorMiddleColor>#E2CE7D</indicatorMiddleColor>
+                <metricLabel>Oppties with No Description or Status Update</metricLabel>
+                <report>KPI_Pipeline_Reports/No_Desc_or_Status_Update_Record_Count</report>
+                <showRange>false</showRange>
+            </dashboardComponent>
+            <rowIndex>28</rowIndex>
+            <rowSpan>4</rowSpan>
+        </dashboardGridComponents>
+        <numberOfColumns>12</numberOfColumns>
+        <rowHeight>36</rowHeight>
+    </dashboardGridLayout>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>true</isGridLayout>
+    <owner>10770732@intel.com.crm</owner>
+    <runningUser>10770732@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>Pipeline Health_By BU Product Segment</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

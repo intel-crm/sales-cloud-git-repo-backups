@@ -27,7 +27,7 @@ public class Core_Acct_Grp_Mbr_TriggerHandler extends TriggerHandler {
             //End of Changes - Accenture - IPA
         }
         Map<Id, Core_Account_Group_Member__c> newMap = (Map<Id, Core_Account_Group_Member__c>) Trigger.newMap;
-        PMP_Acct_Grp_Mbr_TriggerHandler.afterMethod((Map<Id, Core_Account_Group_Member__c>)Trigger.oldMap, Trigger.new);
+        //PMP_Acct_Grp_Mbr_TriggerHandler.afterMethod(Trigger.old, Trigger.new);
      // Commenting the below line since it is not used as part of WW06-2022
     PMP_Acct_Grp_Mbr_TriggerHandler.PopulateLegalAgreeOnOPID(Trigger.new,(Map<Id, Core_Account_Group_Member__c>)Trigger.oldMap);
   //  Added by Javid as part of TWC729-1172
@@ -87,7 +87,7 @@ public class Core_Acct_Grp_Mbr_TriggerHandler extends TriggerHandler {
         Map<Id, Core_Account_Group_Member__c> oldMap = (Map<Id, Core_Account_Group_Member__c>) Trigger.oldMap;
         Map<Id, Core_Account_Group_Member__c> newMap = (Map<Id, Core_Account_Group_Member__c>) Trigger.newMap;
         
-        PMP_Acct_Grp_Mbr_TriggerHandler.afterMethod(oldMap, Trigger.new);
+        //PMP_Acct_Grp_Mbr_TriggerHandler.afterMethod(Trigger.old, Trigger.new);
         if(mapFunctionalityNameTriggerExecution.containsKey('PAG_mem_handler') &&
            mapFunctionalityNameTriggerExecution.get('PAG_mem_handler').Core_Active__c){
                PMP_PAG_mem_handler.onGroupMemAfterUpdate(Trigger.new, oldMap, newMap);
@@ -140,7 +140,7 @@ PMP_Acct_Grp_Mbr_TriggerHandler.beforeMethod(Trigger.old, Trigger.new);
         //    mapFunctionalityNameTriggerExecution.get('PAG_mem_handler').Core_Active__c){
         //      //PMP_PAG_mem_handler.onGroupMemBeforeDelete(Trigger.old, oldMap);
         //}
-       // PMP_Acct_Grp_Mbr_TriggerHandler.removeOnePartIdFromIntelAccOnDeletion(Trigger.old);
+        PMP_Acct_Grp_Mbr_TriggerHandler.removeOnePartIdFromIntelAccOnDeletion(Trigger.old);
         //Added by Hanuma Pantham - US1053946
   /*IPA2.0: US-TWC729-7976*/
        /* if(mapFunctionalityNameTriggerExecution.containsKey('OPID_Mem_Handler') &&
@@ -156,7 +156,7 @@ PMP_Acct_Grp_Mbr_TriggerHandler.beforeMethod(Trigger.old, Trigger.new);
             PMP_Acct_Grp_Mbr_TriggerHandler.checkMDAIndicator(Trigger.new, (Map<Id, Core_Account_Group_Member__c>)Trigger.oldMap);
         }
         //Start of Changes by Ankit Thakur on 28th August in order to merge code for NPPDEV and DEVINT- Accenture - IPA
-      //  PMP_Acct_Grp_Mbr_TriggerHandler.beforeMethod(Trigger.old, Trigger.new);
+        //PMP_Acct_Grp_Mbr_TriggerHandler.beforeMethod(Trigger.old, Trigger.new);
         //End of Changes by Ankit Thakur on 28th August in order to merge code for NPPDEV and DEVINT- Accenture - IPA
     }
     

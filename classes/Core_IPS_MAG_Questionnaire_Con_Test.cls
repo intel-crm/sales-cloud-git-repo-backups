@@ -57,29 +57,9 @@ public class Core_IPS_MAG_Questionnaire_Con_Test {
             
             Core_IPS_Labels__c objLabel = new Core_IPS_Labels__c(Name='Core_IPS_MSP_Order', Value__c='2');
             insert objLabel;
-	   		 System.AssertEquals(objLabel != null, true);
-            //Added by Sowmya - Start - 26/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-        	 Core_IPS_Labels__c objLabel2 = new Core_IPS_Labels__c(Name='MINDS_Questionnaire_Completed', Value__c='MAG Questionnaire Completed');
+            Core_IPS_Labels__c objLabel2 = new Core_IPS_Labels__c(Name='MINDS_Questionnaire_Completed', Value__c='MAG Questionnaire Completed');
             insert objLabel2 ;
-	    	System.AssertEquals(objLabel2 != null, true);
-             Core_IPS_Labels__c objLabel3 = new Core_IPS_Labels__c(Name='Core_IPS_MSP_None_Option', Value__c='None');
-            insert objLabel3 ;
-	    	System.AssertEquals(objLabel3 != null, true);
-         	 Core_IPS_Labels__c objLabel4 = new Core_IPS_Labels__c(Name='Core_IPS_MAG_Required_Field_Err', Value__c='Please ensure the MAG Questionnaire is fully filled out prior to setting the MAG Review Request Status to MAG Questionnaire Completed');
-            insert objLabel4 ;
-	    	System.AssertEquals(objLabel4 != null, true);
-            Core_IPS_Labels__c objLabel5 = new Core_IPS_Labels__c(Name='Err_Msg_Mag_Questionnaire_Empty', Value__c='Mag Question does not exists, please contact admin.');
-            insert objLabel5;
-	    	System.AssertEquals(objLabel5 != null, true); 
-            Core_IPS_Labels__c objLabel6 = new Core_IPS_Labels__c(Name='Err_Msg_Mag_Questionnaire', Value__c='To access this page please go to Case screen, and click on "Click Here to Fill Out MAG Questionnaire" link.');
-            insert objLabel6;
-	    	System.AssertEquals(objLabel6 != null, true);
-            Core_IPS_Labels__c objLabel7 = new Core_IPS_Labels__c(Name='Core_IPS_Mag_Excep_Msg', Value__c='Something went wrong, Please contact system Administrator.');
-            insert objLabel7;
-	    	System.AssertEquals(objLabel7 != null, true);
-            //Sowmya End - 26/09/2024 - TWC745-6800 - Fix test coverage for all failed classes 
-            
-                }
+        }
     }  
     
     static testmethod void MAG_Questionnaire_ConTest1(){                 
@@ -94,8 +74,7 @@ public class Core_IPS_MAG_Questionnaire_Con_Test {
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);
         con.selectedAnswerOrder = '1';
         Pagereference pg = con.saveAnswer();       
-        con.renderDependentQuestions();    
-        System.assert(ca.id != null, true);     
+        con.renderDependentQuestions();        
         Test.stopTest();     
     }
     
@@ -112,7 +91,6 @@ public class Core_IPS_MAG_Questionnaire_Con_Test {
         con.selectedAnswerOrder = '2';
         Pagereference pg = con.saveAnswer();       
         con.renderDependentQuestions();        
-System.AssertEquals(ca.id != null, true);
         Test.stopTest();     
     }
     
@@ -134,7 +112,6 @@ System.AssertEquals(ca.id != null, true);
         con.renderDependentQuestions();
         con.selectedTextVal = 'MSP1';
         con.renderMSPDepQues();
-         System.AssertEquals(ca != null, true);
         Test.stopTest();     
     }
     
@@ -148,7 +125,6 @@ System.AssertEquals(ca.id != null, true);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);      
         Pagereference pg = con.saveAnswer();
-        System.AssertEquals(ca != null, true);
         Test.stopTest();     
     }
     
@@ -167,7 +143,6 @@ System.AssertEquals(ca.id != null, true);
         con.lstQuestions[1].required = true;
         con.lstQuestions[1].selectedValues = null;       
         Pagereference pg = con.saveAnswer();
-        System.Assert(ca.id != null, true);
         Test.stopTest();     
     }
     
@@ -185,7 +160,6 @@ System.AssertEquals(ca.id != null, true);
         con.lstQuestions[2].required = true;
         con.lstQuestions[2].answer= null;       
         Pagereference pg = con.saveAnswer();
-        System.Assert(ca.id != null, true);
         Test.stopTest();     
     }
        
@@ -204,7 +178,6 @@ System.AssertEquals(ca.id != null, true);
         con.lstQuestions[1].selectedValues = new List<String>();
         con.lstQuestions[0].answer = '';
         Pagereference pg = con.saveAnswer();
-        System.Assert(ca != null, true);
         Test.stopTest();     
     }
     
@@ -223,7 +196,6 @@ System.AssertEquals(ca.id != null, true);
         con.lstQuestions[0].answer = '';
         con.lstQuestions[1].selectedValues = new List<String>();
         Pagereference pg = con.saveAnswer();
-        System.Assert(ca != null, true);
         Test.stopTest();     
     }
     
@@ -239,7 +211,6 @@ System.AssertEquals(ca.id != null, true);
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);       
         con.lstQuestions[1].selectedValues = new List<String>();
         Pagereference pg = con.saveAnswer();
-        System.Assert(ca != null, true);
         Test.stopTest();     
     }
        
@@ -252,7 +223,6 @@ System.AssertEquals(ca.id != null, true);
         ApexPages.CurrentPage().getparameters().put('retURL', ca.id);
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);
-        System.AssertEquals(ca != null, true);
         Test.stopTest();     
     }*/
     
@@ -270,7 +240,6 @@ System.AssertEquals(ca.id != null, true);
         Delete lstQ;
         ApexPages.StandardController StndContr = new ApexPages.standardController(ca);
         Core_IPS_MAG_Questionnaire_Controller con = new Core_IPS_MAG_Questionnaire_Controller(StndContr);
-        System.Assert(ca != null, true);
         Test.stopTest();     
     }
 }

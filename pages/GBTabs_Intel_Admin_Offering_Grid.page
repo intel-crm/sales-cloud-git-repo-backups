@@ -1,0 +1,36 @@
+<apex:page standardController="PMP_Partner_Offering__c" showHeader="false" sidebar="false" title="Intel Admin Offering Grid">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Intel_Admin_Offering_Grid" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"name": "Intel Admin Offering Grid",
+	"tabs": [
+		{
+			"name": "All Offerings",
+			"content": "{!gridPage}gname=All Offerings&amp;sh=0&amp;sfname=default",
+			"id": 1638797488620
+		},
+		{
+			"name": "Admin Review Queue",
+			"content": "{!gridPage}gname=Admin Review Queue&amp;sh=0&amp;sfname=default",
+			"id": 1638797519748
+		},
+		{
+			"name": "Retired Offerings",
+			"content": "{!gridPage}gname=Retired Offerings&amp;sh=0&amp;sfname=default",
+			"id": 1638797531419
+		}
+	],
+	"id": 1638797488620,
+	"selectedCustomCSSIds": [],
+	"selectedCustomJSIds": [],
+	"description": "",
+	"globalButtons": false,
+	"object": "PMP_Partner_Offering__c",
+	"height": "750",
+	"showHeader": false,
+	"showSidebar": false
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

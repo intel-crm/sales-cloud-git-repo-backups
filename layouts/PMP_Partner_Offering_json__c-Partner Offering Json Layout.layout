@@ -18,6 +18,10 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Offering_JSON_Txt__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Test_Deployment_Error__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

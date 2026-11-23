@@ -7,7 +7,6 @@
         // Get the company from the backend controller
 		var actionFetchCompany = component.get("c.getCompany");        						
         actionFetchCompany.setCallback(this, function(response) {
-            
             var state = response.getState();
             // Check if the call worked
             if (state === "SUCCESS") {

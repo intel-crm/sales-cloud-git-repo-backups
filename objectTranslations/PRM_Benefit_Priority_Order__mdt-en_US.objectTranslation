@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Benefit Priority Order</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Benefit Priority Orders</value>
+    </caseValues>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>PRM_Entitlement_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Priority Order --></label>
+        <name>PRM_Priority_Order__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

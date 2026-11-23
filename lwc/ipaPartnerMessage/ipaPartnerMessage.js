@@ -13,6 +13,7 @@ import { markMessageAsRead } from 'c/ipaBenefitService';
 import { markMessageAsDelete} from 'c/ipaBenefitService';
 
 
+
 import markAsRead from '@salesforce/label/c.IPA_PartnerMessage_MarkAsRead';
 import markAsDelete from '@salesforce/label/c.IPA_PartnerMessage_MarkAsDelete';
 import markAsReadServiceError from '@salesforce/label/c.IPA_PartnerMessage_MarkAsReadErrorMessage';
@@ -20,6 +21,7 @@ import markAsDeleteServiceError from '@salesforce/label/c.IPA_PartnerMessage_Mar
 
 
 export default class IpaPartnerMessage extends LightningElement {
+   
     @track _message;
     @track subject;
     @track type;
@@ -31,10 +33,11 @@ export default class IpaPartnerMessage extends LightningElement {
     @track replyLink;
     @track read;
     @track del;
-
     @track markAsReadServiceError = false;
     @track markAsDeleteServiceError = false;
     @track isOpen = false;
+
+    
 
     label = {
         markAsRead,
@@ -57,28 +60,42 @@ export default class IpaPartnerMessage extends LightningElement {
         this.replyLink = message.replyLink;
         this.read = message.read;
         this.del = message.delete;
-
+        console.log('Msg'+JSON.stringify(this._message));
+        console.log('Sub'+JSON.stringify(this.subject));
+       
     }
     get message() {
         return this._message;
     }
 
     toggleOpen(){
+        console.log('--divta1');
         this.isOpen = !this.isOpen;
+        let childsLis = this.template.querySelectorAll('.slbody');
+        console.log('--divta22'+childsLis);
+        [].forEach.call(childsLis.childNodes, v => console.log(v.className));
+
+        console.log('--divta3');
+       
     }
 
     get iconClass(){
         if (this.type === 'Direct Message') {
             return 'fa-mail';
         } else if (this.iconType === 'alert') {
+            console.log('Inside Alert');
             return 'fa-alert';
         }
         return 'none';
     }
 
     get formattedDate(){
-        let date = new Date(this.msgDate + 'T00:00');
-        return date.toLocaleDateString("en-US",{ year: "numeric", month: "2-digit",day: "2-digit"});
+        if(this.msgDate!= undefined && this.msgDate!= null && this.msgDate!=''){
+        let date = new Date(this.msgDate);
+        console.log('DATE123'+date);
+        console.log('Date msg'+this.msgDate);
+        console.log('Date'+date.toLocaleDateString("en-US",{ year: "numeric", month: "2-digit",day: "2-digit"}));
+        return date.toLocaleDateString("en-US",{ year: "numeric", month: "2-digit",day: "2-digit"});}
     }
     get classes() {
         return {

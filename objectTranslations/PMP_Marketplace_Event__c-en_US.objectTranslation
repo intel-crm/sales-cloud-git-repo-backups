@@ -9,6 +9,10 @@
         <value>Marketplace Events</value>
     </caseValues>
     <fields>
+        <label><!-- Clear Cache --></label>
+        <name>PMP_Clear_Cache__c</name>
+    </fields>
+    <fields>
         <label><!-- Event Banner Language Mapping --></label>
         <name>PMP_Event_Banner_Language_Mapping__c</name>
     </fields>
@@ -64,9 +68,24 @@
         <label><!-- Marketplace Event Tagline --></label>
         <name>PMP_Marketplace_Event_Tagline__c</name>
     </fields>
+    <layouts>
+        <layout>Marketplace Event Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Upload Image --></label>
+        <name>PMP_Event_Upload_Image</name>
+    </quickActions>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- End Date cannot be before Start Date --></errorMessage>
         <name>End_Date_cannot_be_before_Start_Date</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- special characters are not allowed --></errorMessage>
+        <name>Restrict_Special_Characters</name>
     </validationRules>
 </CustomObjectTranslation>

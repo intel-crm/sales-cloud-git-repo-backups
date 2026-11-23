@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk,a2W8A000003Hsun,a2W8A000003Hsuu,a2W8A000003Hsuo,a2W8A000003Hsul,a2W8A000003Hsum,a2W8A000003Hsup,a2W8A000003Hsuq,a2W8A000003Hsur,a2W8A000003Hsus,a2W8A000003HyJN</value>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfj</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsut</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">Employee</value>
+        <value xsi:type="xsd:string">MDF Viewer</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Ciwig</value>
+        <value xsi:type="xsd:string">a2W8A000003Ht3P</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">Points View</value>
+        <value xsi:type="xsd:string">Partner Portal</value>
     </values>
 </CustomMetadata>

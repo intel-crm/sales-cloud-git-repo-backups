@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CCP Attributes Map --></value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value><!-- CCP Attributes Map --></value>
+    </caseValues>
+    <fields>
+        <help><!-- Budget Amount controls only file upload --></help>
+        <label><!-- Budget Amount --></label>
+        <name>Budget_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation>Trasmissioni</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>Media digitali</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>Evento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Management</masterLabel>
+            <translation>GESTIONE DI LEAD</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out of Home Media</masterLabel>
+            <translation>Spazi pubblicitari da esterni</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid Social Media</masterLabel>
+            <translation>Social media a pagamento</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Media</masterLabel>
+            <translation>Media a mezzo Stampa</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+            <translation>MARKETING TRAMITE MOTORI DI RICERCA</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Channel Partner --></label>
+        <name>Channel_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Channel Partner Led --></label>
+        <name>Core_MDF_Enable_Channel_Partner_Led__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable ELC Reminder --></label>
+        <name>Core_MDF_Enable_ELC_Reminder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Event Format --></label>
+        <name>Core_MDF_Enable_Event_Format_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable File Upload --></label>
+        <name>Core_MDF_Enable_File_Upload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Question --></label>
+        <name>Core_MDF_Enable_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Event Popup --></label>
+        <name>Enable_Event_Popup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event --></label>
+        <name>Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Govt. Nexus Flag --></label>
+        <name>Govt_Nexus_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Print --></label>
+        <name>Print__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Program__c</name>
+        <picklistValues>
+            <masterLabel>CCF</masterLabel>
+            <translation><!-- CCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF/DCF</masterLabel>
+            <translation><!-- CCF/DCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF</masterLabel>
+            <translation><!-- DCF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RecordType Name --></label>
+        <name>RecordType_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Picklist --></label>
+        <name>Record_Type_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_CoMarketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Billboard/Transit</masterLabel>
+            <translation><!-- Billboard/Transit --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Catalog/Brochure</masterLabel>
+            <translation>Cataloghi/Brochure</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Owned Event</masterLabel>
+            <translation>Evento del Partner del Canale</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Participation in Third-Party Event</masterLabel>
+            <translation>Partecipazione del Partner del Canale ad eventi di terze parti</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Website Online Ad</masterLabel>
+            <translation><!-- Channel Partner Website Online Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cinema</masterLabel>
+            <translation><!-- Cinema --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Other</masterLabel>
+            <translation>Materiale collaterale - Altro</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Video screen</masterLabel>
+            <translation>Schermi video digitali</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation>Mailing diretto</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation>E-mail</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graphic Ad</masterLabel>
+            <translation>Annuncio grafico</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert/Outsert/Flyer</masterLabel>
+            <translation>Inserti/Allegati/Opuscoli</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Generation</masterLabel>
+            <translation>Generazione di lead</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Nurturing</masterLabel>
+            <translation>Mantenimento di lead</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magazine/Newspaper</masterLabel>
+            <translation>Riviste/Quotidiani</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Owned Event</masterLabel>
+            <translation>Evento del Partecipante</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Participation in Third-Party Event</masterLabel>
+            <translation>Partecipazione a eventi di terze parti</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Website Online Display</masterLabel>
+            <translation>Sito Web del Partecipante - Visualizzazione online</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Display</masterLabel>
+            <translation>Visualizzazione online</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Video Spot</masterLabel>
+            <translation>Video spot online</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Podcast</masterLabel>
+            <translation><!-- Podcast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poster/Sign/Banner</masterLabel>
+            <translation>Poster/Cartellonistica/Banner</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotion</masterLabel>
+            <translation>Promozione</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation><!-- Radio --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Online Display</masterLabel>
+            <translation>Visualizzazione online sui social</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Post</masterLabel>
+            <translation>Post sui social</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Television</masterLabel>
+            <translation>Televisione</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text Ad</masterLabel>
+            <translation>Annunci di testo</translation>
+        </picklistValues>
+    </fields>
+    
+    <layouts>
+        <layout>CCP Attributes Map Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    
+</CustomObjectTranslation>

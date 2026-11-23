@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>Intel® Partner Alliance Artificial Intelligence Data Center Specialty</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_AI_DATA_CENTER_ITA</name>
@@ -24,14 +24,11 @@ Per iniziare, ti preghiamo di rispondere a ITP-AI@intel.com con le seguenti info
 
 
 Contatto principale per le comunicazioni con lo Specialista dell&apos;intelligenza artificiale
-Nome:
-E-mail:
-
+Nome:E-mail:
 
 
 Per ulteriori materiali di vendita e promozione
-Indirizzo postale:
-Telefono:
+Indirizzo postale:Telefono:
 
 Accedi ai vantaggi
 
@@ -40,7 +37,7 @@ Accedi ai vantaggi
 
 I partner di Intel hanno una lunga tradizione di innovazione e con Intel® Partner Alliance saremo in grado di aiutarti a realizzare più rapidamente soluzioni per l&apos;economia incentrata sui dati. Insieme possiamo collaborare, incentivare innovazione e sviluppo e cogliere opportunità straordinarie.
 
-Visita  https://www.intel.com/content/www/it/it/partner-alliance/help/overview.html per ottenere assistenza e orientamento sull&apos;ottimizzazione della tua iscrizione.
+Visita intel.com/partnerhelp per ottenere assistenza e orientamento sull&apos;ottimizzazione della tua iscrizione.
 
 
 Grazie.
@@ -49,9 +46,9 @@ Il tuo team Intel® Partner Alliance
 1 Prodotti del portafoglio per data center: processori Intel® Xeon®, soluzioni di infrastruttura di rete Intel®, schede madri per server e sistemi barebone, famiglia di SSD Intel® Data Center, sistema operativo Wind River, famiglia di prodotti Intel® FPGA, gestione delle API, software HPC Intel®, Intel® HPC Orchestrator, Intel® Omni-Path Architecture, soluzioni Intel® per software Lustre.
 
 Questo messaggio ti è stato inviato come un&apos;importante comunicazione aziendale relativa al tuo rapporto attuale con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookie</textOnly>
+Privacy | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

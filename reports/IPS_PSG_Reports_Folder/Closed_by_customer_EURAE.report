@@ -1330,6 +1330,12 @@
         <field>Contact.Core_LinkedIN__c</field>
     </columns>
     <columns>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_Local_First_Name__c</field>
     </columns>
     <columns>
@@ -1349,6 +1355,9 @@
     </columns>
     <columns>
         <field>Contact.Core_Other_Social_Information__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_IPA_Partner_Role__c</field>
     </columns>
     <columns>
         <field>Contact.Core_Personal_Email_Indicator__c</field>
@@ -1615,6 +1624,9 @@
         <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
     </columns>
     <columns>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+    </columns>
+    <columns>
         <field>Account.Core_MAG_Value__c</field>
     </columns>
     <columns>
@@ -1760,9 +1772,6 @@
     </columns>
     <columns>
         <field>BucketField_9253579</field>
-    </columns>
-    <columns>
-        <field>Contact.Core_IPA_PartnerRole__c</field>
     </columns>
     <filter>
         <criteriaItems>

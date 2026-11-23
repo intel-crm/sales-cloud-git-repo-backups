@@ -31,7 +31,7 @@
         <name>PRM_ContactEmail__c</name>
     </fields>
     <fields>
-        <label><!-- Contact Email Old --></label>
+        <label><!-- Contact Email --></label>
         <name>PRM_Contact_Email__c</name>
     </fields>
     <fields>
@@ -67,6 +67,10 @@
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -75,8 +79,8 @@
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -138,10 +142,6 @@
             <masterLabel>Partner Admin</masterLabel>
             <translation><!-- Partner Admin --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Admin Delegate</masterLabel>
-            <translation><!-- Partner Admin Delegate --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Preferred Language --></label>
@@ -169,6 +169,10 @@
         <picklistValues>
             <masterLabel>English</masterLabel>
             <translation><!-- English --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>English(UK)</masterLabel>
+            <translation><!-- English(UK) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>French</masterLabel>
@@ -231,6 +235,10 @@
             <translation><!-- Spanish --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Spanish(EMEA)</masterLabel>
+            <translation><!-- Spanish(EMEA) --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Swedish</masterLabel>
             <translation><!-- Swedish --></translation>
         </picklistValues>
@@ -252,6 +260,22 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Registration Type --></label>
+        <name>PRM_RegistrationType__c</name>
+        <picklistValues>
+            <masterLabel>Admin Invite</masterLabel>
+            <translation><!-- Admin Invite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Invite</masterLabel>
+            <translation><!-- Partner Invite --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Send Reminders --></label>
+        <name>PRM_Send_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- Stack Trace --></label>
         <name>PRM_Stack_Trace__c</name>
     </fields>
@@ -267,10 +291,6 @@
             <translation><!-- Completed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Discarded</masterLabel>
-            <translation><!-- Discarded --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Failed</masterLabel>
             <translation><!-- Failed --></translation>
         </picklistValues>
@@ -284,12 +304,12 @@
         <name>PRM_Suppress_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Suppress Reminders --></label>
+        <name>PRM_Suppress_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- Upload Type --></label>
         <name>PRM_Upload_Type__c</name>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
             <translation><!-- Bulk Add --></translation>
@@ -299,6 +319,17 @@
             <translation><!-- Bulk Invite --></translation>
         </picklistValues>
     </fields>
+    <fields>
+        <label><!-- isRetrying --></label>
+        <name>PRM_isRetrying__c</name>
+    </fields>
+    <layouts>
+        <layout>Bulk Data Upload Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Required fields are missing for IPA Contact --></errorMessage>

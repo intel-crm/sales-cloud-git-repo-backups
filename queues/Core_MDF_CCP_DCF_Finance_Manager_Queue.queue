@@ -2,8 +2,7 @@
 <Queue xmlns="http://soap.sforce.com/2006/04/metadata">
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>false</doesSendEmailToMembers>
-    <email>wsm-postmaster@intel.com.invalid</email>
-    <name>CCP Datacenter Finance Manager</name>
+    <name>CCP DCF Finance Manager Queue</name>
     <queueMembers>
         <publicGroups>
             <publicGroup>Core_MDF_CCP_DCF_Fin_Mgr_Queue_Group</publicGroup>

@@ -21,6 +21,13 @@
     <columns>
         <field>CREATED</field>
     </columns>
+    <customDetailFormulas>
+        <calculatedFormula>CREATED_DATE - CUST_CREATED_DATE</calculatedFormula>
+        <dataType>Double</dataType>
+        <developerName>CDF1</developerName>
+        <label>No. of Days</label>
+        <scale>0</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>field_key</column>

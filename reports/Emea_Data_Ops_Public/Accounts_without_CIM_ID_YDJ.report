@@ -4,9 +4,6 @@
         <field>RECORDTYPE</field>
     </columns>
     <columns>
-        <field>CREATED_DATE</field>
-    </columns>
-    <columns>
         <field>User.Core_User_Coverage__c</field>
     </columns>
     <columns>
@@ -49,6 +46,9 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Account.Core_Account_Cnt__c</field>
     </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_CIM_ID__c</column>
@@ -77,13 +77,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Account.Core_Partner_Account_Group,Account.Mastered_Account</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CREATED_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_YEAR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

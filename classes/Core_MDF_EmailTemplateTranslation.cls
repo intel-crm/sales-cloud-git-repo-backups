@@ -62,7 +62,6 @@ public without sharing class Core_MDF_EmailTemplateTranslation {
         if(activityId != NULL){
             List<PartnerFundRequest> actPriorStatusList = [SELECT toLabel(Core_MDF_PriorValueStatusForExternalUser__c)  from PartnerFundRequest
                                                            where Id =: activityId];
-            System.debug('Priorstatus->> '+actPriorStatusList[0].Core_MDF_PriorValueStatusForExternalUser__c);
             return(actPriorStatusList[0].Core_MDF_PriorValueStatusForExternalUser__c );
         }
         else

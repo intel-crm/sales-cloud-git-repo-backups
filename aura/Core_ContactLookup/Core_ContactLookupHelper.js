@@ -1,22 +1,16 @@
 ({
      SearchHelper: function(component, event , userId) {
-         console.log('Inside searchHelper method');
      var action = component.get("c.fetchContactbyEmail");
      var searchKeyWord = (component.get("v.searchKeyword")).trim();
-         component.set("v.searchKeyword",searchKeyWord);
-         //alert(searchKeyWord);
      action.setParams({
      	'searchKeyWord': searchKeyWord,
         'userId': userId
      });
      action.setCallback(this, function(response) {
-        // debugger;
          var state = response.getState();
-         console.log('state > '+state);
-        // var state= "SUCCESS";   // remove before deployment
          if (state === "SUCCESS") {
-             console.log('Inside searchHelper method state === "SUCCESS" >');
             var storeResponse = response.getReturnValue();
+            console.log('storeResponse = '+ JSON.stringify(storeResponse));
             var cmpTargetCreateConBtn = component.find('creatContactBtn');
             var cmpTargetEntitlementBtn = component.find('entitlementLoaderBtn');
              
@@ -25,7 +19,8 @@
                  var compEvent =  $A.get("e.c:Core_Contact_Ent_Event"); 
                  //var compEvent = component.getEvent("loadEntitlementEvent");
                  var contactRecordId = component.get("v.contactRecId");
-                 compEvent.setParams({'contactId' : contactRecordId, 'isClearEntitlements': true});  //'0033D00000W6A5YDEVCCPV'
+                 console.log('contactRecordId = '+ contactRecordId);
+                 compEvent.setParams({'contactId' : contactRecordId, 'isClearEntitlements': true});  //'0033D00000W6A5YQAV'
                  console.log(compEvent);
                  compEvent.fire(); 
              }catch(error){
@@ -47,7 +42,7 @@
                 $A.util.removeClass(cmpTargetEntitlementBtn, 'displayCmp');*/
             } else {
                 component.set("v.infoMessage", false);
-                var contactIdReturned = storeResponse[0].contact.Id;
+                var contactIdReturned = storeResponse[0].Id;
                 //console.log("contactIdReturned = "+ contactIdReturned);
                 if(contactIdReturned != null){
                  	component.set("v.contactRecId", contactIdReturned);
@@ -65,11 +60,6 @@
              component.set("v.numberOfRecord", storeResponse.length);
              // set searchResult list with return value from server.
              component.set("v.searchResult", storeResponse);
-             component.set("v.isShowSpinner",false);
-             component.set("v.isNewContact",false);
-         }
-         else{
-             console.log('error');
          }
      });
      $A.enqueueAction(action);

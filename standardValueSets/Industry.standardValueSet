@@ -47,6 +47,11 @@
         <label>Energy and Utilities</label>
     </standardValue>
     <standardValue>
+        <fullName>Engineering</fullName>
+        <default>false</default>
+        <label>Engineering</label>
+    </standardValue>
+    <standardValue>
         <fullName>Finance and Insurance</fullName>
         <default>false</default>
         <label>Finance and Insurance</label>
@@ -62,9 +67,9 @@
         <label>Government</label>
     </standardValue>
     <standardValue>
-        <fullName>Health and Life Sciences</fullName>
+        <fullName>Healthcare</fullName>
         <default>false</default>
-        <label>Health and Life Sciences</label>
+        <label>Healthcare</label>
     </standardValue>
     <standardValue>
         <fullName>Manufacturing</fullName>

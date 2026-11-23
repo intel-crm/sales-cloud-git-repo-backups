@@ -96,7 +96,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         cmp1.PMP_Company_Lifecycle_Status_Nm__c = 'Published';
         cmp1.PMP_Is_Enabled_Lead_Gen_Nm__c = 'True';
         cmp1.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
-       // PMP_Company_Info_TriggerHandler.offeringSharingOpidRecursive = true;
+        //PMP_Company_Info_TriggerHandler.offeringSharingOpidRecursive = true;
         update cmp1;
         
         List<PMP_Category__c> catList = new List<PMP_Category__c>();
@@ -140,7 +140,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         PMP_Specification_Value__c specValue = new PMP_Specification_Value__c(PMP_Display_Type_Nm__c ='Checkbox',PMP_Product_Specification_Value_Cd__c = 'NPP_03_TYPE_Sys_Laptop' );
         insert specValue;
         
-        PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering1','Public Content', 
+        /*PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering1','Public Content', 
                                                                                      'TestDuplicate',cmp1.Id, true,'Draft','');
         offering1.PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published';
         offering1.PMP_Partner_Offering_Start_Dt__c = System.today();
@@ -182,7 +182,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         
         
         
-        PMP_Partner_Offering_Category__c offCategory = PMP_SearchTestDataFactory.getPMPOfferingCategory(offering1.id);
+        /*PMP_Partner_Offering_Category__c offCategory = PMP_SearchTestDataFactory.getPMPOfferingCategory(offering1.id);//IPA 2.0 Offering EOL
         offCategory.PMP_Ancestor_Category_Cd__c = 'NPP_01_TYPE|test1';
         offCategory.PMP_Offering_Category_External_Key__c = 'test1'; 
         update offCategory;
@@ -192,7 +192,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         cat.PMP_Partner_Product_Category_Cd__c = 'test1';        
         update cat;
         
-        PMP_Partner_Offering_Category__c offCategory2 = PMP_SearchTestDataFactory.getPMPOfferingCategory(offering2.id);
+        /*PMP_Partner_Offering_Category__c offCategory2 = PMP_SearchTestDataFactory.getPMPOfferingCategory(offering2.id);//IPA 2.0 Offering EOL
         offCategory2.PMP_Ancestor_Category_Cd__c = 'NPP_01_TYPE|test2';
         offCategory2.PMP_Offering_Category_External_Key__c = 'test2'; 
         update offCategory2;
@@ -476,15 +476,14 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
            company.PMP_Benefit_Update_Ind__c=False;
            company.PMP_Partner_Inactive_Ind__c = False;
            company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-           //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
            company.PMP_Is_Published_Ind__c=true;
            company.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
            insert company;
            System.assertNotEquals(company, Null);
    
            // System.debug('===>1Limits:'+Limits.getQueries());
-           PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
+           /*PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
                                                                                         'TestDuplicate',company.Id, true,'Draft','');
            offering1.PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published';
            offering1.PMP_Partner_Offering_Start_Dt__c = System.today();
@@ -501,7 +500,6 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
            acm.PRM_Channel_Program_Id__c=cpIPA.Id;
            acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
            acm.PRM_Partner_Role__c='Service Provider';
-           acm.PRM_Status_Reason_Txt__c='Test';
            insert acm;
            
           /* Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
@@ -540,7 +538,6 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
          aba.PRM_Account_Id__c = newPagAccount.Id;
          aba.PRM_Partner_Benefit_Id__c = pb.id;
          aba.PRM_Status_Nm__c = 'Active';
-         aba.PRM_Status_Reason_Txt__c='Test';
          insert aba;
          // System.debug('===>1Limits:'+Limits.getQueries());
            PMP_OPID_MPI_Rel__c jun= new PMP_OPID_MPI_Rel__c();
@@ -649,15 +646,14 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
            company.PMP_Benefit_Update_Ind__c=False;
            company.PMP_Partner_Inactive_Ind__c = False;
            company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-           //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+           company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
            company.PMP_Is_Published_Ind__c=true;
            company.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
            insert company;
            System.assertNotEquals(company, Null);
    
            // System.debug('===>1Limits:'+Limits.getQueries());
-           PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
+           /*PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
                                                                                         'TestDuplicate',company.Id, true,'Draft','');
            offering1.PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published';
            offering1.PMP_Partner_Offering_Start_Dt__c = System.today();
@@ -674,7 +670,6 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
            acm.PRM_Channel_Program_Id__c=cpIPA.Id;
            acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
            acm.PRM_Partner_Role__c='Service Provider';
-           acm.PRM_Status_Reason_Txt__c='Test';
            insert acm;
            
           /* Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
@@ -812,15 +807,14 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
         company.PMP_Is_Published_Ind__c=true;
         company.PMP_Is_Lead_Gen_Limited_Nm__c = 'True';
         insert company;
         System.assertNotEquals(company, Null);
 
         // System.debug('===>1Limits:'+Limits.getQueries());
-        PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
+        /*PMP_Partner_Offering__c offering1 = PMP_SearchTestDataFactory.createOffering('TestDuplicateOffering2','Public Content', 
                                                                                      'TestDuplicate',company.Id, true,'Draft','');
         offering1.PMP_Partner_Offering_Lifecycle_Status_Nm__c = 'Published';
         offering1.PMP_Partner_Offering_Start_Dt__c = System.today();
@@ -837,7 +831,6 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
         acm.PRM_Channel_Program_Id__c=cpIPA.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-        acm.PRM_Status_Reason_Txt__c='Test';
         insert acm;
         
        /* Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
@@ -867,7 +860,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
          Boolean result = false;
         
         result = PMP_SearchUtilityController.isContactButtonVisible(company);
-        PMP_Partner_Offering__c offering = [Select id,
+        /*PMP_Partner_Offering__c offering = [Select id,
                                             PMP_Business_Segment_Nm__c,PMP_Partner_Offering_Dsc__c,PMP_Partner_Offering_End_Dt__c,PMP_Offering_Language_Nm__c,
                                             PMP_Partner_Offering_Id__c,PMP_Partner_Offering_Start_Dt__c,PMP_Offering_Status_Update_Dt__c,PMP_Translated_Languages__c,
                                             PMP_Partner_Revision_Comment_Txt__c,PMP_Company_Id__c,PMP_Company_Id__r.Name,PMP_Working_Copy_Id__c,
@@ -891,7 +884,7 @@ private class PMP_SearchUtilityController_Test extends PMP_SearchWrapperStore{
                                             PMP_Company_Id__r.PMP_Is_Enabled_Lead_Gen_Nm__c, PMP_Company_Id__r.PMP_Is_Lead_Gen_Limited_Nm__c,PMP_Is_Notified_Ind__c,PMP_Pre_Release_Check_Nm__c,PMP_Pre_Release_Item_Count_Num__c,
                                             PMP_Category_nm__c, PMP_Sub_Category_nm__c         
                                             from PMP_Partner_Offering__c where id = :offering1.Id];
-        PMP_SearchUtilityController.isContactButtonVisible(offering2);
+        PMP_SearchUtilityController.isContactButtonVisible(offering2);*/
         System.assertEquals(result, true, 'Contact  visiblity is false');
         
         // System.debug('===>1Limits:'+Limits.getQueries());

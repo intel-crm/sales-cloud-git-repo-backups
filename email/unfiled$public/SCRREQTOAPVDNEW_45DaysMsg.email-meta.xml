@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTOAPVDNEW_45DaysMsg</name>
+    <style>none</style>
+    <subject>Action Required: Activate Your Partner Program Access Within 45 Days</subject>
+    <textOnly>Welcome to the Intel® Partner Alliance program!
+
+
+Welcome to the Intel® Partner Alliance program!
+
+We’re excited to have you join a unified ecosystem designed to enable partners to connect with the Intel ecosystem to accelerate innovative solutions that deliver business outcomes and unlock growth
+
+To ensure uninterrupted access to your account,please log in within 45 days of receiving this email. Logging in will keep your profile active and tied to your company.
+
+With benefits tailored to your business, you’ll be able to:
+
+Drive new business opportunities with the latest tools, training, and resources
+Earn and redeem points on eligible purchases and activities
+Accelerate marketing and sales success with Market Development Funds
+Learn, prototype, and test workloads on the latest Intel® software
+Expand knowledge with world-class training in Intel® Partner University
+Create innovative products using NDA content, roadmaps, and developer tools
+Launch campaigns quickly with co-marketing assets on Intel® Marketing Studio
+Gain qualified leads with your partner storefront on Intel® Partner Showcase
+
+Log In &amp; Get Started
+
+Please click  here if you need help with Intel’s login process.
+
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© 2025 Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

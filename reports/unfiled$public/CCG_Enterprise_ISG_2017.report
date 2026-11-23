@@ -49,7 +49,7 @@
         <field>OpportunityLineItem.Core_Product_Segment__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Operating_System__c</field>
@@ -136,7 +136,7 @@
             <value>Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

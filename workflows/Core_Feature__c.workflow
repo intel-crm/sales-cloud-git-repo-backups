@@ -17,7 +17,7 @@
             <name>Core_Feature_Unique_Field_Update</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Workflow rule to avoid duplication of combination of Type and Value for Feature records</description>
         <formula>TRUE</formula>
         <triggerType>onAllChanges</triggerType>

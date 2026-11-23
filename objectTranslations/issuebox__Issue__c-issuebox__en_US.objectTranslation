@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Issue</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Issues</value>
+    </caseValues>
+    <fields>
+        <help><!-- What is the actual result that caused this issue request? --></help>
+        <label><!-- Actual Result --></label>
+        <name>issuebox__Actual_Result__c</name>
+    </fields>
+    <fields>
+        <help><!-- Who is this issue assigned to? --></help>
+        <label><!-- Assigned To --></label>
+        <name>issuebox__Assigned_To__c</name>
+        <relationshipLabel><!-- Issues --></relationshipLabel>
+    </fields>
+    <fields>
+        <help><!-- Add summary details for the issue. For example: Copy/paste error, or feature request etc --></help>
+        <label><!-- Details --></label>
+        <name>issuebox__Details__c</name>
+    </fields>
+    <fields>
+        <help><!-- What was the outcome that you expected? Or expect if a feature request? --></help>
+        <label><!-- Expected Result --></label>
+        <name>issuebox__Expected_Result__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the priority for this issue? This will help admin respond appropriately. --></help>
+        <label><!-- Priority --></label>
+        <name>issuebox__Priority__c</name>
+        <picklistValues>
+            <masterLabel>Critical</masterLabel>
+            <translation><!-- Critical --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High</masterLabel>
+            <translation><!-- High --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low</masterLabel>
+            <translation><!-- Low --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Medium</masterLabel>
+            <translation><!-- Medium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Which object is this issue related to? --></help>
+        <label><!-- Reported Object --></label>
+        <name>issuebox__Reported_Object__c</name>
+    </fields>
+    <fields>
+        <help><!-- What record is this issue related to? --></help>
+        <label><!-- Reported Record --></label>
+        <name>issuebox__Reported_Record__c</name>
+    </fields>
+    <fields>
+        <help><!-- Steps for admin to reproduce the issue --></help>
+        <label><!-- Repro Steps --></label>
+        <name>issuebox__Repro_Steps__c</name>
+    </fields>
+    <fields>
+        <help><!-- What is the status of this issue? --></help>
+        <label><!-- Status --></label>
+        <name>issuebox__Status__c</name>
+        <picklistValues>
+            <masterLabel>Closed</masterLabel>
+            <translation><!-- Closed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Working</masterLabel>
+            <translation><!-- Working --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- What is the type of this issue? --></help>
+        <label><!-- Type --></label>
+        <name>issuebox__Type__c</name>
+        <picklistValues>
+            <masterLabel>Bug</masterLabel>
+            <translation><!-- Bug --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Error</masterLabel>
+            <translation><!-- Error --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Feature Request</masterLabel>
+            <translation><!-- Feature Request --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- URL Display --></label>
+        <name>issuebox__URL_Display__c</name>
+    </fields>
+    <fields>
+        <help><!-- Page URL where error was reported --></help>
+        <label><!-- URL --></label>
+        <name>issuebox__URL__c</name>
+    </fields>
+    <layouts>
+        <layout>Issue Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Vowel</startsWith>
+</CustomObjectTranslation>

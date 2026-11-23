@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>Settings for LinkForce.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Base_URL__c</fullName>
+        <inlineHelpText>The base URL for shortened URLs.</inlineHelpText>
+        <label>Base URL</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Default_URL__c</fullName>
+        <inlineHelpText>The default URL to redirect to if a URL is not found in the system.</inlineHelpText>
+        <label>Default URL</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <label>LinkForce Settings</label>
+    <visibility>Public</visibility>
+</CustomObject>

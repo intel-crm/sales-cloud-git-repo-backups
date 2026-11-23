@@ -29,6 +29,7 @@ global with sharing class PRM_Contact_AGS_CallbackHandler {
             Map<String, Object> params = (Map<String, Object>)JSON.deserializeUntyped(
                 RestContext.request.requestBody.toString()
             );
+            System.debug('params: '+params);
             List<Core_Log_Entry__c> logEntryList = new List<Core_Log_Entry__c>();
             // Check the AGS response
             if(params.containskey('cidaas'))            

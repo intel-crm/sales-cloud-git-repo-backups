@@ -36,15 +36,6 @@
     <columns>
         <field>CLOSED_DATEONLY</field>
     </columns>
-    <columns>
-        <field>Case.Core_IPS_Assigned_Queue__c</field>
-    </columns>
-    <columns>
-        <field>OWNER</field>
-    </columns>
-    <columns>
-        <field>Case.Core_Case_Resolution_Reason__c</field>
-    </columns>
     <description>All EHL IPS</description>
     <filter>
         <criteriaItems>
@@ -57,7 +48,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Aging Issue 2021</name>
+    <name>Aging Issue WW14</name>
     <params>
         <name>units</name>
         <value>h</value>

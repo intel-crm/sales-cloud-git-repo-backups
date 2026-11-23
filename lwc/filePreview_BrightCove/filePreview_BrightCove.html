@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="File Preview In Lightning Web Component">
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <tbody>
+                            <th scope="col">    
+                                <!-- Using Dataset Property to get ContentDocumentId -->
+                                <lightning-button 
+                                                  label="Preview" 
+                                                  variant="brand" 
+                                                  value="file preview" 
+                                                  onclick={filePreview}></lightning-button>
+                            </th>
+                </tbody>
+        </table>
+    </lightning-card>
+</template>

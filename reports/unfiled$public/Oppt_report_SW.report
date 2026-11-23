@@ -41,7 +41,7 @@
             <axisBinding>y</axisBinding>
             <column>AMOUNT</column>
         </chartSummaries>
-        <chartType>VerticalColumn</chartType>
+        <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
         <groupingColumn>ACCOUNT_NAME</groupingColumn>
@@ -69,13 +69,13 @@
         <field>EXP_AMOUNT</field>
     </columns>
     <columns>
-        <field>FULL_NAME</field>
-    </columns>
-    <columns>
         <field>PROBABILITY</field>
     </columns>
     <columns>
         <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>FULL_NAME</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>

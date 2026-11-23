@@ -1,0 +1,88 @@
+<apex:page controller="PRM_Custom_ReportController" sidebar="false" lightningStylesheets="true">
+<style type="text/css">
+        .myClass{
+        color:white !important;
+        background:#0071c5 ! important;
+        }
+    </style>
+  <apex:form > 
+  <apex:pageBlock >
+ <apex:pageBlockSection title="Report Filters" collapsible="false" columns="2">
+<apex:pageBlockSectionItem labelTitle="Registration Type" >Registration Type
+            <apex:selectList value="{!selectedCountry1}" multiselect="false" size="1">
+<apex:selectOption itemValue="--None--" itemLabel="--None--"/>
+                <apex:selectOption itemValue="Self Registration" itemLabel="Self Registration"/>
+
+                <apex:selectOption itemValue="Admin Invite" itemLabel="Admin Invite"/>
+
+                <apex:selectOption itemValue="Partner Invite" itemLabel="Partner Invite"/>
+                <apex:selectOption itemValue="External Partner Invite" itemLabel="External Partner Invite"/>
+                <apex:selectOption itemValue="Bulk Invite" itemLabel="Bulk Invite"/>
+
+            </apex:selectList>
+            
+  </apex:pageBlockSectionItem>
+     <apex:pageBlockSectionItem >
+Status
+            <apex:selectList title="Staus" label="Stage" value="{!selectedCountry1}" multiselect="false" size="1">
+
+               <apex:selectOption itemValue="--None--" itemLabel="--None--"/>
+                <apex:selectOption itemValue="EV Pending" itemLabel="EV Pending"/>
+
+                <apex:selectOption itemValue="Step2 Yet to Complete" itemLabel="Step2 Yet to Complete"/>
+
+                <apex:selectOption itemValue="Dup Check Failure" itemLabel="Dup Check Failure"/>
+                <apex:selectOption itemValue="Waiting for Approval" itemLabel="Waiting for Approval"/>
+                <apex:selectOption itemValue="ACR Not Assigned" itemLabel="ACR Not Assigned"/>
+                <apex:selectOption itemValue="Subcription Not Added" itemLabel="Subcription Not Added"/>
+                <apex:selectOption itemValue="Entitlment Not Assigned" itemLabel="Entitlment Not Assigned"/>
+                <apex:selectOption itemValue="Benefit Not Assigned" itemLabel="Benefit Not Assigned"/>
+                <apex:selectOption itemValue="Welcome Not Assigned" itemLabel="Welcome Not Assigned"/>
+                <apex:selectOption itemValue="User Not Logged into Portal" itemLabel="User Not Logged into Portal"/>
+                
+            </apex:selectList> 
+             </apex:pageBlockSectionItem>
+   <apex:pageBlockSectionItem >
+Country
+            <apex:selectList title="Region" label="Country" value="{!selectedCountry1}" multiselect="false" size="1">
+<apex:selectOption itemValue="--None--" itemLabel="--None--"/>
+                <apex:selectOption itemValue="INDIA" itemLabel="India"/>
+
+                <apex:selectOption itemValue="USA" itemLabel="USA"/>
+
+                <apex:selectOption itemValue="United Kingdom" itemLabel="UK"/>
+            
+            </apex:selectList> 
+             </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem >
+Period
+            <apex:selectList title="Region" label="Period" value="{!selectedCountry1}" multiselect="false" size="1">
+<apex:selectOption itemValue="--None--" itemLabel="--None--"/>
+                <apex:selectOption itemValue="OCT-DEC2022" itemLabel="OCT-DEC2022"/>
+
+                <apex:selectOption itemValue="Jul-AUG 2022" itemLabel="Jul-AUG 2022"/>
+
+                <apex:selectOption itemValue="APR-JUN 2022" itemLabel="APR-JUN 2022"/>
+            
+            </apex:selectList> 
+             </apex:pageBlockSectionItem>
+             
+        </apex:pageBlockSection>
+           </apex:pageBlock>
+           <div align="center" draggable="false" >
+
+<apex:commandButton value="Get Report" styleClass="myClass"  action="{!search}"/> 
+<apex:commandButton value="Clear" action="{!clear}" styleClass="myClass" /> 
+</div>
+<br/><br/><br/>
+<apex:pageBlock title="Report Result"> 
+<div align="center" draggable="false" >
+<apex:commandButton value="Send Email" action="{!search}" disabled="{!sendmail}"  /> </div>
+<apex:pageblockTable value="{!acc}" var="a"> 
+<apex:column value="{!a.name}"/> 
+<apex:column value="{!a.id}"/> 
+</apex:pageBlockTable> 
+ 
+</apex:pageBlock> 
+</apex:form> 
+</apex:page>

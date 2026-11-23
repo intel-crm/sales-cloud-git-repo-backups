@@ -8,9 +8,21 @@
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Submit_Template_for_Admin</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_Company_Approved_And_Published_Alert_To_Owner</fullName>
+        <ccEmails>meghax.manu@intel.com</ccEmails>
+        <description>PMP Company Approved And Published Alert To Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Approved_Template_for_Owner</template>
     </alerts>
     <alerts>
         <fullName>PMP_Company_Edit_Required_Alert_To_Owner</fullName>
@@ -59,7 +71,19 @@
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Reject_Template_for_Owner</template>
     </alerts>
     <alerts>
+        <fullName>PMP_Company_Resubmit_Alert_To_NonEnglish_Owner</fullName>
+        <description>PMP Company Resubmit Alert To Non-English Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_NonEnglish_Owner</template>
+    </alerts>
+    <alerts>
         <fullName>PMP_Company_Resubmit_Alert_To_Owner</fullName>
+        <ccEmails>meghax.manu@intel.com</ccEmails>
         <description>PMP Company Resubmit Alert To Owner</description>
         <protected>false</protected>
         <recipients>
@@ -77,7 +101,7 @@
             <field>PMP_Intel_Admin_Id__c</field>
             <type>userLookup</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_Template_for_Admin</template>
     </alerts>
@@ -89,9 +113,20 @@
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Resubmit_Template_for_Admin</template>
+    </alerts>
+    <alerts>
+        <fullName>PMP_Company_Submitted_Alert_To_NonEnglish_Owner</fullName>
+        <description>PMP Company Submitted Alert To Non-English Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Submit_NonEnglish_Owner</template>
     </alerts>
     <alerts>
         <fullName>PMP_Company_Submitted_Alert_To_Owner</fullName>
@@ -100,19 +135,39 @@
         <recipients>
             <type>owner</type>
         </recipients>
+        <recipients>
+            <recipient>11871080@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
         <senderAddress>wsm-postmaster@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Submit_Template_for_Owner</template>
     </alerts>
     <alerts>
+        <fullName>PMP_Company_Translated_And_Published_Alert_To_Owner</fullName>
+        <description>PMP Company Translated And Published Alert To Owner</description>
+        <protected>false</protected>
+        <recipients>
+            <type>owner</type>
+        </recipients>
+        <recipients>
+            <recipient>11871080@intel.com.crm</recipient>
+            <type>user</type>
+        </recipients>
+        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderType>OrgWideEmailAddress</senderType>
+        <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Translated_Template</template>
+    </alerts>
+    <alerts>
         <fullName>PMP_Company_Under_Review_Alert_To_Admin</fullName>
+        <ccEmails>meghax.manu@intel.com</ccEmails>
         <description>PMP_Company_Under_Review_Alert_To_Admin</description>
         <protected>false</protected>
         <recipients>
             <recipient>PMP_All_Intel_Admin_Users</recipient>
             <type>group</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>Core_PMP_Partner_MarketPlace_Templates/PMP_Company_Under_Review_Template_for_Admin</template>
     </alerts>
@@ -125,7 +180,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Formula</operation>
         <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
+        <reevaluateOnChange>true</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>PMP_LastStatusUpdate</fullName>
@@ -164,7 +219,10 @@
         <fullName>PMP_CompanyUpdateRequiredReminder_WF</fullName>
         <active>false</active>
         <description>Trigger an Email Alert to Partner, if there is no action taken even after 3 days and even after 10 days</description>
-        <formula>AND(ISPICKVAL(PMP_Company_Lifecycle_Status_Nm__c,&apos;Update Required&apos;), NOT(ISBLANK(PMP_Workflow_Three_Day_Trigger_Dt__c)), NOT(ISBLANK(PMP_Workflow_One_Week_Trigger_Dt__c)), IF ( PMP_Partner_Submitter_UserId__c !=NULL,   IF(PMP_Partner_Submitter_UserId__r.ContactId != NULL , Not(PMP_Partner_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true),  false) )</formula>
+        <formula>AND(ISPICKVAL(PMP_Company_Lifecycle_Status_Nm__c,&apos;Update Required&apos;), NOT(ISBLANK(PMP_Workflow_Three_Day_Trigger_Dt__c)), NOT(ISBLANK(PMP_Workflow_One_Week_Trigger_Dt__c)),
+IF ( PMP_Partner_Submitter_UserId__c !=NULL,  
+IF(PMP_Partner_Submitter_UserId__r.ContactId != NULL , Not(PMP_Partner_Submitter_UserId__r.Contact.Core_Do_Not_Contact__c), true), 
+false) )</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>
             <actions>

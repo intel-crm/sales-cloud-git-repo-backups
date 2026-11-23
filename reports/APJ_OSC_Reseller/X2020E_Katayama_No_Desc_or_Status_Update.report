@@ -73,8 +73,8 @@
             <column>FULL_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Amy Yee Peng Yip,Richard Khoo,Emily Thay,Mee Chee Wong,Wei Boon Khoo,Emily Khong Yun Thay</value>
+            <operator>equals</operator>
+            <value>Takahiro Katayama,Emily Thay,Wei Boon Khoo,Chee Chee Thee,Richard Khoo,Amy Yee Peng Yip</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

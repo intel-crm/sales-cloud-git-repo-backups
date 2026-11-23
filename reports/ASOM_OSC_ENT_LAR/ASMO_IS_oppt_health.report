@@ -36,6 +36,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Deal: Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -123,11 +126,11 @@
             <value>GMP Americas Sales Territory,GMP Mexico Sales Group,GMP Brazil Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Hain,Villamil,Napolitano,Vitores</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

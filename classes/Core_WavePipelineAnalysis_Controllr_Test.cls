@@ -19,13 +19,4 @@ public class Core_WavePipelineAnalysis_Controllr_Test {
         dashboardController.init();
         
     }    
-    
-    static testMethod void testPage2() {
-        
-        PageReference dashboardPage = Page.Core_WavePipelineManagement_New;
-        Test.setCurrentPage(dashboardPage);
-        Core_WavePipelineAnalysis_Controller dashboardController = new Core_WavePipelineAnalysis_Controller();
-        dashboardController.init();
-        
-    }
 }

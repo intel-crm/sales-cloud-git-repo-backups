@@ -35,19 +35,24 @@ class IpaMarqueeDefault extends LightningElement {
         return;
       case 'mosaic-l0':
         bgUrl = `${IpaResources}/images/background-marquee-l0.svg`;
+        console.log("BackgroungImage10=>>>>>>>>");
         break;
       case 'mosaic-l1':
         bgUrl = `${IpaResources}/images/background-marquee-l1.svg`;
+        console.log("BackgroungImage11=>>>>>>>>");
         break;
       case 'mosaic-l2':
         bgUrl = `${IpaResources}/images/background-marquee-l2.svg`;
+        console.log("BackgroungImage12=>>>>>>>>");
         break;
       default:
+        console.log("BackgroungImagedefault=>>>>>>>>");
         return;
     }
     const el = this.template.querySelector('.marquee-outer-container');
     if (el && bgUrl) {
       el.style.backgroundColor = 'var(--blue-steel-shade2)';
+      console.log("intel image=>>>>>"+bgUrl);
       el.style.backgroundImage = `url(${bgUrl})`;
       el.style.backgroundPosition = 'center';
     }

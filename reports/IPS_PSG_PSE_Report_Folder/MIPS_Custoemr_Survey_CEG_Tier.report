@@ -250,7 +250,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key</value>
+            <value>altima,arrow,macnica,digi-key</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_5799852</column>
@@ -272,7 +272,7 @@
         <field>Case.Core_IPS_Support_Level__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MIPS Custoemr Survey CEG Tier - Obsolete</name>
+    <name>MIPS Custoemr Survey CEG Tier</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -288,6 +288,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -79,7 +79,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -172,7 +172,7 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((((1 AND 2 AND 3 AND 4 AND 5 and 7 and (6 or 11 or (8 and 9))) and 10)) AND (12 or (13 and 14))))</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5 and 7 and (6 or 11 or (8 and 9))) and 10)</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -195,7 +195,7 @@
             <value>consulting,technology,telecommunications,communications,media</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -250,27 +250,6 @@
             <operator>contains</operator>
             <value>processor</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-E&amp;G</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>dell,hp,hewl,lenovo,oracle,huawei,cisco</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Consumption_Market__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>communications,service pro</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -313,6 +292,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

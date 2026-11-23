@@ -1,5 +1,5 @@
 ({
-    helperMethod : function(component, event, helper) {
+   /* helperMethod : function(component, event, helper) {
 
         var marketplaceHomePage = $A.get("$Label.c.PMP_PageName_Home");
         var marketplaceHomeTitle = $A.get("$Label.c.PMP_Title_Home");     	
@@ -136,5 +136,5 @@
       component.set('v.helpUrl', helpUrl);
       component.set('v.helpLabel', helpLabel);
     }
-    
+    */
 })

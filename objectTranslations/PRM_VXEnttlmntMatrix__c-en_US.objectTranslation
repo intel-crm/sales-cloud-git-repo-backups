@@ -71,8 +71,8 @@
         <relationshipLabel><!-- Entitlement Matrix --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- IPA Refresh --></label>
-        <name>PRM_IPARefreshCheck__c</name>
+        <label><!-- IPA Refresh Check --></label>
+        <name>PRM_IPARefreshChecK__c</name>
     </fields>
     <fields>
         <label><!-- Partner Role --></label>
@@ -90,6 +90,10 @@
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -101,6 +105,10 @@
             <masterLabel>Solution Integrator</masterLabel>
             <translation><!-- Solution Integrator --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- IPA Refresh --></label>
+        <name>PRM_IPA_Refresh__c</name>
     </fields>
     <fields>
         <label><!-- IsActive --></label>
@@ -155,6 +163,52 @@
             <translation><!-- Sponsor --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Community Entitlements Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>EBR Entitlements</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Entitlement Matrix Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>IQR Entitlements</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PRM_Entitlements_With_Benefits</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PRM_Entitlements_Without_Benefits</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Community Entitlements --></label>
         <name>Community_Entitlements</name>
@@ -163,11 +217,6 @@
         <description><!-- To configure entitlements for Entitlements based programs based on business types and accounts --></description>
         <label><!-- EBR Entitlements --></label>
         <name>EBR_Entitlements</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- To configure entitlements for IQR program based on email domains and accounts --></description>
-        <label><!-- IQR Entitlements --></label>
-        <name>IQR_Entitlements</name>
     </recordTypes>
     <recordTypes>
         <label><!-- EntitlementWithBenefits --></label>

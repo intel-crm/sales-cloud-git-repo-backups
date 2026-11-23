@@ -37,9 +37,7 @@ public with sharing class PMP_SendEmailAlertsForCompanyInfo {
                  //To get the type of benefit assigned. (To differentiate from storefront and Profile)
                  if(!comInfoList.isEmpty()){
                      companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Enhanced'? 'Storefront': 'Profile';
-                  //   companyInfoType = comInfoList[0].PMP_Partner_Benefit_Type__c == 'Solutions Marketplace Basic Profile'? 'Storefront': 'Profile';
-                 }                  
-                 
+                 }
                  sendEmail(comInfoList,apexEmailRecName,companyInfoType);
                  
              }  

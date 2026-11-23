@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Details__c</fullName>
         <label>Details</label>
@@ -170,13 +170,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Next_Scheduled_Run__c</fullName>
-        <label>Next Scheduled Run</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>DateTime</type>
     </fields>
     <fields>
         <fullName>Core_Object_Link__c</fullName>
@@ -307,20 +300,11 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>File_Name__c</fullName>
-        <description>This Formula filed calculates the Created date as string with MMDDYYYY</description>
-        <externalId>false</externalId>
-        <formula>IF(MONTH(DATEVALUE(CreatedDate)) &lt; 10, &apos;0&apos;+TEXT(MONTH(DATEVALUE(CreatedDate))), TEXT(MONTH(DATEVALUE(CreatedDate))) )
-&amp;&quot;&quot;&amp;
-IF(DAY(DATEVALUE(CreatedDate)) &lt; 10, &apos;0&apos;+TEXT(DAY(DATEVALUE(CreatedDate))), TEXT(DAY(DATEVALUE(CreatedDate))) )
-&amp;&quot;&quot;&amp;
-TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>File Name</label>
-        <required>false</required>
+        <fullName>PRM_Auto_Approve__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>PRM_Auto_Approve</label>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Review_Status__c</fullName>
@@ -356,70 +340,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
     </fields>
     <label>Log Entry</label>
     <listViews>
-        <fullName>Access_Entitlement</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_Project__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>Core_When__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>equals</operation>
-            <value>A&amp;E</value>
-        </filters>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operation>equals</operation>
-            <value>A&amp;E Batch to Disable External Users</value>
-        </filters>
-        <label>Access &amp; Entitlement</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>All_Marketplace_Logs</fullName>
-        <columns>NAME</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_Details__c</columns>
-        <columns>File_Name__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operation>startsWith</operation>
-            <value>PMP</value>
-        </filters>
-        <label>All Marketplace Logs</label>
-    </listViews>
-    <listViews>
-        <fullName>Delta_Load</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operation>contains</operation>
-            <value>Delta</value>
-        </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
-        </filters>
-        <label>Delta Load</label>
-    </listViews>
-    <listViews>
         <fullName>Design_Registration</fullName>
         <columns>NAME</columns>
         <columns>Core_Severity__c</columns>
@@ -435,7 +355,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
             <value>DDR</value>
         </filters>
         <label>Design Registration</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Design_Registration_Failures</fullName>
@@ -456,11 +375,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
             <field>Core_Message__c</field>
             <operation>notEqual</operation>
             <value>Successfully Inserted</value>
-        </filters>
-        <filters>
-            <field>CREATEDBY_USER</field>
-            <operation>contains</operation>
-            <value>Stolley</value>
         </filters>
         <label>Design Registration - Failures</label>
     </listViews>
@@ -484,32 +398,25 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <label>Design Win Issues</label>
     </listViews>
     <listViews>
-        <fullName>IPA_Registrations</fullName>
+        <fullName>IPA_Log_Entries</fullName>
         <columns>NAME</columns>
-        <columns>Core_Support_Email__c</columns>
-        <columns>Core_Project__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>Core_Message__c</columns>
+        <columns>Core_Details__c</columns>
         <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectType__c</columns>
         <columns>Core_Origin__c</columns>
-        <columns>CREATED_DATE</columns>
+        <columns>Core_Project__c</columns>
+        <columns>Core_Severity__c</columns>
+        <columns>Core_When__c</columns>
+        <columns>OWNER.FIRST_NAME</columns>
+        <columns>OWNER.LAST_NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_Project__c</field>
-            <operation>contains</operation>
-            <value>IPA Registrations</value>
-        </filters>
-        <filters>
-            <field>Core_Scope__c</field>
-            <operation>contains</operation>
-            <value>CreateAccountAndRelatedRecords</value>
-        </filters>
-        <filters>
-            <field>OWNER.FIRST_NAME</field>
             <operation>equals</operation>
-            <value>IPA Registration</value>
+            <value>IPA</value>
         </filters>
-        <label>IPA Registrations</label>
+        <label>IPA Log Entries</label>
     </listViews>
     <listViews>
         <fullName>IPS_Backend_Bi_Direction_Update_Log_view</fullName>
@@ -614,111 +521,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <label>IPS Backend Case Update Log view</label>
     </listViews>
     <listViews>
-        <fullName>IPS_Errors</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>contains</operation>
-            <value>IPS</value>
-        </filters>
-        <label>IPS Errors</label>
-    </listViews>
-    <listViews>
-        <fullName>License_File_Details</fullName>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operation>equals</operation>
-            <value>Sales_SFDCLicenseManagement</value>
-        </filters>
-        <label>License File Details</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
-        <fullName>License_File_Generation</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Details__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectId__c</columns>
-        <columns>Core_sObjectType__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>startsWith</operation>
-            <value>Generate License File</value>
-        </filters>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>contains</operation>
-            <value>LR-271045</value>
-        </filters>
-        <label>License File Generation Details</label>
-    </listViews>
-    <listViews>
-        <fullName>License_File_Generation_Details</fullName>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Origin__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>startsWith</operation>
-            <value>Generate License File</value>
-        </filters>
-        <label>License File Generation Details</label>
-    </listViews>
-    <listViews>
-        <fullName>License_Generation_file_Payload</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Project__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectId__c</columns>
-        <columns>Core_sObjectType__c</columns>
-        <columns>Core_When__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>startsWith</operation>
-            <value>Generate License File</value>
-        </filters>
-        <label>License Generation file Payload</label>
-    </listViews>
-    <listViews>
-        <fullName>Marketplace_Dashboard</fullName>
-        <columns>NAME</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>NAME</field>
-            <operation>contains</operation>
-            <value>dashboard</value>
-        </filters>
-        <label>Marketplace Dashboard Log</label>
-    </listViews>
-    <listViews>
         <fullName>OPID_Inbound_batch</fullName>
         <columns>NAME</columns>
         <columns>Core_Message__c</columns>
@@ -727,7 +529,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <columns>Core_Severity__c</columns>
         <columns>Core_Scope__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_Origin__c</field>
@@ -774,95 +575,23 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <label>OPID Trigger Batch- Value Exchange Stage</label>
     </listViews>
     <listViews>
-        <fullName>PIR_SF_Staging</fullName>
+        <fullName>PMP_View</fullName>
         <columns>NAME</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_When__c</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>equals</operation>
-            <value>PIR</value>
-        </filters>
-        <label>PIR SF Staging</label>
-    </listViews>
-    <listViews>
-        <fullName>PSG_Quoting</fullName>
-        <columns>NAME</columns>
+        <columns>OBJECT_ID</columns>
         <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
         <columns>Core_Origin__c</columns>
-        <columns>Core_When__c</columns>
-        <columns>Core_Project__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>equals</operation>
-            <value>Intel Quote Request (PSG)</value>
-        </filters>
-        <label>PSG Quoting</label>
-    </listViews>
-    <listViews>
-        <fullName>PSG_SAP_Integration</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectId__c</columns>
-        <columns>Core_sObjectType__c</columns>
-        <columns>Core_When__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>PSG SAP Integration</label>
-    </listViews>
-    <listViews>
-        <fullName>SAP_Order_Integration_log</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Project__c</columns>
         <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectId__c</columns>
-        <columns>Core_sObjectType__c</columns>
-        <columns>Core_When__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>contains</operation>
-            <value>00096859</value>
-        </filters>
-        <label>SAP Order Integration log</label>
-    </listViews>
-    <listViews>
-        <fullName>SAP_integration_Sales</fullName>
-        <columns>NAME</columns>
+        <columns>Core_Message__c</columns>
+        <columns>Review_Status__c</columns>
         <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>Core_Details__c</columns>
-        <columns>Core_Object_Link__c</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Project__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>Core_Origin__c</field>
-            <operation>equals</operation>
-            <value>Sales_SAP_Subs_Dets_Service</value>
+            <operation>contains</operation>
+            <value>PMP</value>
         </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>equals</operation>
-            <value>12/15/2021 12:00 AM</value>
-        </filters>
-        <label>SAP integration</label>
+        <label>PMP View</label>
+        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>SFDC_to_ERPM_Log</fullName>
@@ -903,33 +632,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <label>Siebel Integration</label>
     </listViews>
     <listViews>
-        <fullName>Survey_Fail_notification</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
-        <columns>NAME</columns>
-        <columns>OBJECT_ID</columns>
-        <columns>Core_Origin__c</columns>
-        <columns>Core_Project__c</columns>
-        <columns>Core_Scope__c</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_sObjectId__c</columns>
-        <columns>Core_sObjectType__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>contains</operation>
-            <value>Survey</value>
-        </filters>
-        <filters>
-            <field>Core_sObjectId__c</field>
-            <operation>contains</operation>
-            <value>survey</value>
-        </filters>
-        <label>Survey Fail notification</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>Today</fullName>
         <columns>NAME</columns>
         <columns>Core_Details__c</columns>
@@ -942,7 +644,7 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
         <columns>Core_sObjectId__c</columns>
         <columns>Core_sObjectType__c</columns>
         <columns>Core_When__c</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>OWNER.FIRST_NAME</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>CREATED_DATE</field>
@@ -950,42 +652,6 @@ TEXT(YEAR(DATEVALUE(CreatedDate)))</formula>
             <value>TODAY</value>
         </filters>
         <label>Today</label>
-    </listViews>
-    <listViews>
-        <fullName>UCD_ACM_Logs</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Message__c</columns>
-        <columns>Core_Details__c</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>Core_Severity__c</columns>
-        <columns>Core_Tags__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Origin__c</field>
-            <operation>startsWith</operation>
-            <value>UCD_ACM</value>
-        </filters>
-        <filters>
-            <field>Core_Severity__c</field>
-            <operation>equals</operation>
-            <value>Information</value>
-        </filters>
-        <filters>
-            <field>Core_Message__c</field>
-            <operation>notEqual</operation>
-            <value>publishAccountChangeEvent</value>
-        </filters>
-        <filters>
-            <field>CREATED_DATE</field>
-            <operation>greaterThan</operation>
-            <value>LAST_WEEK</value>
-        </filters>
-        <filters>
-            <field>Core_Project__c</field>
-            <operation>equals</operation>
-            <value>ACM</value>
-        </filters>
-        <label>UCD ACM Logs</label>
     </listViews>
     <nameField>
         <displayFormat>{000000000}</displayFormat>

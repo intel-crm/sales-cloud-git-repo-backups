@@ -197,7 +197,7 @@ public without sharing class PRM_ExternalAPIController {
        reqGetEmbedToken.setHeader('Content-Type', 'application/json');
         reqGetEmbedToken.setBody('{"accessLevel": "View", "datasetId": "' + powerBiReport.datasetId + '"}');
      
-	   
+     
         HttpResponse responseEmbedToken = http.send(reqGetEmbedToken);
         
         // Check response for success

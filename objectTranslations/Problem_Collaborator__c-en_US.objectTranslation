@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Problem Collaborator</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Problem Collaborators</value>
+    </caseValues>
+    <fields>
+        <label><!-- Collaborator Email --></label>
+        <name>Collaborator_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Comments --></label>
+        <name>Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Name --></label>
+        <name>Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Problem Request --></label>
+        <name>Problem_Request__c</name>
+        <relationshipLabel><!-- Problem Collaborators --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Problem Collaborator Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

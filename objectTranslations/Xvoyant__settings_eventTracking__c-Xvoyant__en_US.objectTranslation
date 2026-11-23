@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_eventTracking</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_eventTracking</value>
+    </caseValues>
+    <fields>
+        <label><!-- EventTrackingLabel --></label>
+        <name>Xvoyant__EventTrackingLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- event0 --></label>
+        <name>Xvoyant__event0__c</name>
+    </fields>
+    <fields>
+        <label><!-- event1 --></label>
+        <name>Xvoyant__event1__c</name>
+    </fields>
+    <fields>
+        <label><!-- event2 --></label>
+        <name>Xvoyant__event2__c</name>
+    </fields>
+    <fields>
+        <label><!-- event3 --></label>
+        <name>Xvoyant__event3__c</name>
+    </fields>
+    <fields>
+        <label><!-- event4 --></label>
+        <name>Xvoyant__event4__c</name>
+    </fields>
+    <fields>
+        <label><!-- event5 --></label>
+        <name>Xvoyant__event5__c</name>
+    </fields>
+    <fields>
+        <label><!-- event6 --></label>
+        <name>Xvoyant__event6__c</name>
+    </fields>
+    <fields>
+        <label><!-- event7 --></label>
+        <name>Xvoyant__event7__c</name>
+    </fields>
+    <fields>
+        <label><!-- events_customType --></label>
+        <name>Xvoyant__events_customType__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Gold_Upgrade_Chinese_ZHO</name>
     <style>none</style>
@@ -50,7 +50,7 @@
 
 
 本邮件是有关您与英﻿特﻿尔﻿® 合作伙伴联盟当前合作关系的重要业务邮件。
-© {!$Label.PRM_CurrentYear} 英特尔公司
+© 2023 英特尔公司
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.com
 隐私条款 &amp;verbar; Cookie</textOnly>
     <type>custom</type>

@@ -2,6 +2,6 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>remote settings for Insight tech article integration</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
-    <isActive>true</isActive>
+    <isActive>false</isActive>
     <url>https://www.insight.tech</url>
 </RemoteSiteSetting>

@@ -34,8 +34,10 @@ global Database.QueryLocator start(Database.BatchableContext BC){
 } 
 
 global void execute(Database.BatchableContext BC, List<Core_Log_Entry__c> scope){ 
+    System.debug('***Date calculated '+d);
     
     try{
+        System.debug('*** Scope entries: '+ scope.size());
         for(Core_Log_Entry__c logEntry : scope){
             /** Ist Condition: Filtering out records that are eligible to be deleted (say, 60days old)**/
             if(logEntry.CreatedDate <= d){
@@ -48,6 +50,8 @@ global void execute(Database.BatchableContext BC, List<Core_Log_Entry__c> scope)
                 }
             }
         }
+        System.debug('***oldLogEntriesToBeDeleted'+ oldLogEntriesToBeDeleted.size());
+        System.debug('***logEntriesToBeUpdated '+ logEntriesToBeUpdated.size());
     
         if(!oldLogEntriesToBeDeleted.isEmpty()){
             Database.delete(oldLogEntriesToBeDeleted);
@@ -69,9 +73,12 @@ global void execute(Database.BatchableContext BC, List<Core_Log_Entry__c> scope)
                 caseIds.add(logEntry.Core_sObjectId__c);
                 finalLogListToUpdate.add(logEntry); 
             }
+            System.debug('***Set of CaseIds' +caseIds.size() +  caseIds);
+            System.debug('***final log list to be updated '+finalLogListToUpdate.size());
         
         if(caseIds.size()>0){
             Map<Id,Case> updateCaseMapIds = new Map<Id, Case>();   
+            System.debug('Update Case Promote Status');
             // Check all the case that are in 'InProgress and Failed' Status and backend system ID is not null and Backend ID is null
             List<Case> csIds= [SELECT id, CaseNumber, Core_Promote_Status__c from Case WHERE id IN :caseIDs AND Core_IPS_Backend_System__c <> null AND Core_IPS_Backend_ID__c = null];  
             
@@ -80,18 +87,23 @@ global void execute(Database.BatchableContext BC, List<Core_Log_Entry__c> scope)
                 listOfCaseRecords.add(cs.CaseNumber);
                 updateCaseMapIds.put(cs.id, cs);
             }
-            
+            System.debug('***updateCaseMapIds '+ updateCaseMapIds.values());
+            System.debug('***listOfCaseRecords processed'+ listOfCaseRecords);
             if(!updateCaseMapIDs.isEmpty()){
+                System.debug('Last Case list to update' + updateCaseMapIDs.size());
                 update updateCaseMapIds.values();
             }
         }
+        System.debug('Log Entries:' + finalLogListToUpdate.size());
         Database.update(finalLogListToUpdate);  
       }
      }catch(Exception ex){
+        System.debug('***Exception occurred while ReProcessing' + ex.getmessage()); 
      }        
  }     
 
 global void finish (Database.BatchableContext BC){
+    System.debug('*** List of case numbers: '+ listOfCaseRecords);
     // making a single string with comma seprated from above list
     String commaSeperatedCaseList='';
     for(String str: listOfCaseRecords){
@@ -100,6 +112,7 @@ global void finish (Database.BatchableContext BC){
     // remove last additional comma from string
     if(commaSeperatedCaseList.length() >0){
         commaSeperatedCaseList = commaSeperatedCaseList.subString(0, commaSeperatedCaseList.length()-1);
+        System.debug('***Final String of Case Number processed' + commaSeperatedCaseList);
     }
     AsyncApexJob a = [SELECT Id, Status, NumberOfErrors, JobItemsProcessed, TotalJobItems, CreatedBy.Email FROM AsyncApexJob WHERE Id = :BC.getJobId()];
     String message = 'The batch Apex job processed ' + a.TotalJobItems + ' batches with '+ a.JobItemsProcessed + ' number of records and ' + a.NumberOfErrors + ' failures.';

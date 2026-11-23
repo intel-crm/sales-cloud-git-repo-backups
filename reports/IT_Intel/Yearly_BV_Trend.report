@@ -82,6 +82,6 @@
     <timeFrameFilter>
         <dateColumn>FK_OPP_CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2016-01-01</startDate>
     </timeFrameFilter>
 </Report>

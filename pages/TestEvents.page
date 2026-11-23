@@ -1,0 +1,36 @@
+<apex:page >
+    <apex:pageMessages />
+    <apex:includeLightning />
+    <div id="auraComponentId" />
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+            <apex:pageBlockSectionItem >
+                <apex:outputLabel value="Message" />
+                <apex:outputText styleClass="msgCls" />
+            </apex:pageBlockSectionItem>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <script>
+    $Lightning.use( "c:VisualforceApp", function () {
+        $Lightning.createComponent(
+            "c:VisualforceAuraComponent", {},
+            "auraComponentId",
+            function ( component ) {
+                $A.eventService.addHandler({ 
+                    "event": "c:VisualforceEvent", 
+                    "handler": retriveEventData 
+                });
+            });
+    });
+    function retriveEventData( event ) {
+        
+        let msgVal = event.getParam( "messageValue" );
+        console.log(
+            'msgVal is',
+            msgVal
+        );
+        document.getElementsByClassName( "msgCls" )[ 0 ].innerHTML = msgVal;
+        
+    }
+    </script>
+</apex:page>

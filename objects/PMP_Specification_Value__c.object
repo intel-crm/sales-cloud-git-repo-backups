@@ -213,6 +213,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PMP_Name__c</fullName>
+        <description>This field appends Pre-Release to the Name if it is a pre-release specification value, if not it will take just the name.</description>
+        <externalId>false</externalId>
+        <formula>IF(  PMP_Spec_Pre_Release_Ind__c = true &amp;&amp; NOT(ISBLANK(PMP_Specification_Value_Nm__c)),  PMP_Specification_Value_Nm__c&amp;&quot; &quot;&amp;&apos;(Pre-Release)&apos;, PMP_Specification_Value_Nm__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PMP_Partner_Off_Roadmap_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Partner Off-Roadmap Indicator</label>
@@ -430,14 +443,23 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PMP_Product_Specification_Value_Cd__c</columns>
-        <columns>PMP_Specification_Value_Cd__c</columns>
         <columns>PMP_Display_Type_Nm__c</columns>
+        <columns>PMP_Image_URL__c</columns>
+        <columns>PMP_Product_Status__c</columns>
+        <columns>PMP_Product_URL__c</columns>
+        <columns>PMP_Partner_Off_Roadmap_Ind__c</columns>
+        <columns>PMP_Product_Specification_Value_Cd__c</columns>
+        <columns>PMP_Product_Specification_Value_Key__c</columns>
+        <columns>PMP_Spec_Value_Type_Nm__c</columns>
+        <columns>PMP_Specification_Value_Cd__c</columns>
+        <columns>PMP_Spec_Pre_Release_Ind__c</columns>
+        <columns>PMP_Specification_Value_Nm__c</columns>
+        <columns>PMP_Specification_Value_Sequence_Nbr__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>PMP_Partner_Off_Roadmap_Ind__c</field>
+            <field>PMP_Display_Type_Nm__c</field>
             <operation>equals</operation>
-            <value>1</value>
+            <value>Checkbox</value>
         </filters>
         <label>All</label>
     </listViews>

@@ -1,0 +1,5 @@
+<messaging:emailTemplate subject="The {!relatedTo.PMP_Partner_Offering_Nm__c} Showcase offering which was Approved by you is Published now!" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+    <messaging:htmlEmailBody >
+        <c:PMP_OfferingFuturePublishedToAdmin offeringRecordId="{!relatedTo.Id}"/>
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

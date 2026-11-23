@@ -16,7 +16,6 @@ public class Pricing_UCD_ResponseWrapper {
         public List<CustomerProcessEngagement> CustomerProcessEngagement {set;get;}
         public Pricing_UCD_ResponseWrapper.ResponseData ParentAccount {set;get;}
         public List<ComplianceWatchList> ComplianceWatchList {set;get;} 
-        public string ComplianceStatus {set;get;}
     }
 
     public class AccountAddress{

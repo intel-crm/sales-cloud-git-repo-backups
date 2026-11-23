@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Email_Reminder_Mtdt</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Email_Reminder_Mtdts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Interval btwn reminders --></label>
+        <name>Interval_btwn_reminders__c</name>
+    </fields>
+    <fields>
+        <label><!-- No of reminders --></label>
+        <name>No_of_reminders__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

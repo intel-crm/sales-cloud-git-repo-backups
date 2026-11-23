@@ -1,121 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <excludeButtons>AccountHierarchy</excludeButtons>
-    <excludeButtons>ChangeOwnerOne</excludeButtons>
-    <excludeButtons>ChangeRecordType</excludeButtons>
-    <excludeButtons>CreateCallList</excludeButtons>
-    <excludeButtons>CreateSurveyInvitation</excludeButtons>
-    <excludeButtons>DataDotComAccountInsights</excludeButtons>
-    <excludeButtons>DataDotComClean</excludeButtons>
-    <excludeButtons>DataDotComCompanyHierarchy</excludeButtons>
-    <excludeButtons>Delete</excludeButtons>
-    <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
-    <excludeButtons>DisablePartnerPortalAccount</excludeButtons>
-    <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>IncludeOffline</excludeButtons>
-    <excludeButtons>IsotopeSubscription</excludeButtons>
-    <excludeButtons>PartnerScorecard</excludeButtons>
-    <excludeButtons>PrintableView</excludeButtons>
-    <excludeButtons>RecordShareHierarchy</excludeButtons>
-    <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
-    <excludeButtons>XClean</excludeButtons>
-    <headers>PersonalTagging</headers>
     <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>true</detailHeading>
+        <customLabel>true</customLabel>
+        <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
-        <label>Account Information</label>
+        <label>Fields</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Name</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>ParentId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Incoterm_Dsc__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Sales_Organization_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Ship_To_End_Customer_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Payment_Term_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Account_Name_Txt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Account_Active_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Account_OPID__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Account_OPID_Dummy__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Data_Simplified_Local_Language_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Core_UnifiedHierarchy__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Prime_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Parent_Business_Party_Id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Business_Party_Idd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_IPAMembership_Attributes__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Account_Owner__c</field>
+                <behavior>Edit</behavior>
+                <field>OwnerId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Account_Id__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Nielsen_ID__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Account_Type_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Distributor_Channel_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Shipping_Condition_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Direct_Shipping_Instruction_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Direct_Parent_Account_Tier_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Is_Pricing_Parent_ChkBox__c</field>
             </layoutItems>
         </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
+        <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
         <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
+        <editHeading>true</editHeading>
         <label>Address Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>BillingAddress</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Geo__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>Core_Sub_Geo__c</field>
             </layoutItems>
         </layoutColumns>
@@ -123,86 +131,98 @@
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
     <layoutSections>
-        <customLabel>false</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>false</editHeading>
-        <label>System Information</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>CreatedById</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Account_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Account_Record_Type__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>LastModifiedById</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsTopToBottom</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>false</customLabel>
+        <customLabel>true</customLabel>
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Custom Links</label>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>Maps</customLink>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>GoogleSearch</customLink>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <customLink>Core_Dun_Bradstreet_Financials</customLink>
-            </layoutItems>
-        </layoutColumns>
+        <layoutColumns/>
+        <layoutColumns/>
+        <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
     <relatedLists>
         <fields>NAME</fields>
-        <relatedList>Core_Account_SoldTo_ShipTo_Rel__c.Core_Sold_To_Account__c</relatedList>
+        <relatedList>PRM_Registration_Tracker__c.PRM_Account__c</relatedList>
     </relatedLists>
     <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
+        <fields>NAME</fields>
+        <relatedList>PRM_Documents__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>PRM_Builder_Strategy__c</fields>
+        <fields>PRM_Active__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>LAST_UPDATE</fields>
+        <fields>Record_Link__c</fields>
+        <relatedList>PRM_IPA_Affiliation__c.PRM_Account__c</relatedList>
+        <sortField>CREATED_DATE</sortField>
+        <sortOrder>Desc</sortOrder>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Owner__c</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Sales_Assist_Count__c</fields>
+        <fields>Core_CIM_ID__c</fields>
+        <fields>Core_Partner_Alliance_Program__c</fields>
+        <fields>Core_Account_Type__c</fields>
+        <fields>Core_Account_ID__c</fields>
+        <relatedList>Account.Account_OPID__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>ACCOUNT.NAME</fields>
+        <fields>Core_Sales_Groups__c</fields>
+        <fields>Core_Account_Owner__c</fields>
+        <fields>Core_Prime_Account_Name__c</fields>
+        <fields>Core_Account_Country__c</fields>
+        <fields>Core_Sales_Assist_Count__c</fields>
+        <fields>Core_CIM_ID__c</fields>
+        <fields>Core_Partner_Alliance_Program__c</fields>
+        <fields>Core_Account_Type__c</fields>
+        <fields>Core_Account_ID__c</fields>
+        <relatedList>Account.Account_OPID_Dummy__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Report_Matrix__c.PRM_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Partner_Report_Matrix__c.PRM_One_Partner_Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>Customer_Master_File_Grouping__c</fields>
+        <relatedList>Account_CMF_Groups__c.Account__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <fields>PRM_Points_Opt_in_Ind__c</fields>
+        <fields>PRM_Points_Opt_in_Dt__c</fields>
+        <fields>PRM_Points_Not_Eligible_Ind__c</fields>
+        <fields>PRM_Points_Not_Eligible_Dt__c</fields>
+        <fields>PRM_Point_Status_Txt__c</fields>
+        <fields>PRM_Point_Status_Dt__c</fields>
+        <fields>PRM_Record_Link__c</fields>
+        <relatedList>PRM_IPAMembership_Attributes__c.PRM_Account_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>ER_Account_Business_Partner__c.Account__c</relatedList>
     </relatedLists>
     <relatedObjects>ParentId</relatedObjects>
     <showEmailCheckbox>false</showEmailCheckbox>
-    <showHighlightsPanel>true</showHighlightsPanel>
-    <showInteractionLogPanel>true</showInteractionLogPanel>
+    <showHighlightsPanel>false</showHighlightsPanel>
+    <showInteractionLogPanel>false</showInteractionLogPanel>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h2D0000025FD0</masterLabel>
+        <masterLabel>00h8A00000355dj</masterLabel>
         <sizeX>4</sizeX>
-        <sizeY>2</sizeY>
-        <summaryLayoutItems>
-            <field>Name</field>
-            <posX>0</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>Core_Account_Owner__c</field>
-            <posX>3</posX>
-            <posY>0</posY>
-        </summaryLayoutItems>
-        <summaryLayoutItems>
-            <field>BillingAddress</field>
-            <posX>3</posX>
-            <posY>1</posY>
-        </summaryLayoutItems>
+        <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
     </summaryLayout>
 </Layout>

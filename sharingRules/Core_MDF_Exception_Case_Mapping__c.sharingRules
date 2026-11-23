@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Exception_Case_Mapping_All_Internal</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This Sharing rules shares all Exception Case Mapping records with Internal users</description>
+        <label>Exception Case Mapping All Internal</label>
+        <sharedTo>
+            <group>Core_All_Users_CCP_Internal</group>
+        </sharedTo>
+        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Client_CoMarketing_Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Data_Center_CoMarketing_Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Service_Provider_CoMarketing_Fund</value>
+        </criteriaItems>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Client_CoMarketing_Fund_Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Exception_Case_Mapping_CCF</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This sharing rule shares the records with CCF members.</description>
+        <label>Exception Case Mapping CCF</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Client_CoMarketing_Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Exception_Case_Mapping_CCFB</fullName>
+        <accessLevel>Read</accessLevel>
+        <label>Exception Case Mapping CCFB</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_CCFB_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Client_CoMarketing_Fund_Boost</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Exception_Case_Mapping_DCF</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This sharing rule shares the records with DCF members.</description>
+        <label>Exception Case Mapping DCF</label>
+        <sharedTo>
+            <group>CORE_MDF_CCP_DCF_ALL</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Data_Center_CoMarketing_Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>Core_MDF_Exception_Case_Mapping_SPCF</fullName>
+        <accessLevel>Read</accessLevel>
+        <description>This sharing rule shares the record with SPCF members.</description>
+        <label>Exception Case Mapping SPCF</label>
+        <sharedTo>
+            <group>Core_MDF_CCP_SPCF_All</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Core_MDF_Program_txt__c</field>
+            <operation>equals</operation>
+            <value>Core_MDF_Service_Provider_CoMarketing_Fund</value>
+        </criteriaItems>
+        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
+    </sharingCriteriaRules>
+</SharingRules>

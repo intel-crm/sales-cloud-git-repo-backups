@@ -21,14 +21,15 @@ public class ER_Lead_Request_to_Eloqua_Test {
        		acc.BillingCity = 'Jaipur';
         	acc.BillingCountry = 'India';
         	acc.BillingStreet = 'Test';
-        	insert acc;
+        	
+           insert acc;
             
             Contact con = new Contact();
         	con.FirstName = 'Test';
             con.LastName = 'Test';
             con.Email = 'testing@gmail.com';
             con.AccountId = acc.Id;
-        	con.MailingCountry='India';
+        	
             insert con;
            
  			PRM_Registration_Request__c regUser = new PRM_Registration_Request__c ();

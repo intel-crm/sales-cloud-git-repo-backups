@@ -39,19 +39,14 @@
     <columns>
         <field>CREATED</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
-    </columns>
     <description>RT: Leads</description>
     <filter>
-        <booleanFilter>(1 AND 2) OR 3</booleanFilter>
         <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -60,18 +55,11 @@
             <operator>notEqual</operator>
             <value>Lead.Partner_Lead</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Lead.SWS_Software_Lead__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Week</dateGranularity>
+        <dateGranularity>FiscalWeek</dateGranularity>
         <field>CREATED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -85,7 +73,7 @@
         <field>Lead.Core_Lead_State__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MAQLs Created CFY 2PCY</name>
+    <name>MAQLs Created CFY 2PFY</name>
     <params>
         <name>co</name>
         <value>1</value>
@@ -97,6 +85,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

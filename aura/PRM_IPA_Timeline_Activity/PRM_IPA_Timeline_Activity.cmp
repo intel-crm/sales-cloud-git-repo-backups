@@ -1,0 +1,230 @@
+<aura:component >
+    <aura:attribute name="activity" type="string[]" description="to store single activity (task/event) record data"/> 
+    <ul class="slds-timeline">
+        <aura:iteration items="{!v.activity.accHist}" var="arc">
+            
+            <li>
+                
+                <aura:if isTrue="{!arc.objectname == 'AccountContactRelationship'}">
+                    <div class="slds-timeline__item_expandable slds-timeline__item_call">
+                        <span class="slds-assistive-text">log_a_call</span>
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                    <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg>   ,or(v.activity.newvalue == 'Primary Contact',v.activity.newvalue == 'Works for') -->
+                                    <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                    <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                </button>
+                                <div class="slds-icon_container slds-icon-standard-log-a-call slds-timeline__icon" title="call">
+                                    <!-- <svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#log_a_call"></use>
+        </svg> -->
+                                    <lightning:icon iconName="utility:adduser" alternativeText="down" size="small" variant="border-filled"/>
+                                </div>
+                                
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                        <h3 class="slds-truncate" title="{!arc.title }">
+                                            <!--<a href="javascript:void(0);"> v.activity.objectname == 'Contact' ||-->
+                                            
+                                            
+                                            <strong>{!arc.linkDescriptionStart} <a href="{!arc.link}" target="_blank">{!arc.linkLabel}</a> {!arc.linkDescription}  </strong>
+                                            <!-- </a> -->
+                                        </h3>
+                                    </div>
+                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                        <p class="slds-timeline__date">
+                                            <lightning:formattedDateTime value="{!arc.createddate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/>
+                                        </p>
+                                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                            <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                            <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                            <span class="slds-assistive-text">More Options for this item</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!arc.objectname == 'AccountBenefitAssociation'}">
+                    <div class="slds-timeline__item_expandable slds-timeline__item_email">
+                        <span class="slds-assistive-text">log_a_call</span>
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                    <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg>   ,or(v.activity.newvalue == 'Primary Contact',v.activity.newvalue == 'Works for') -->
+                                    <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                    <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                </button>
+                                
+                                <div class="slds-icon_container slds-icon-standard-email slds-timeline__icon" title="email">
+                                    <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#email"></use>
+        </svg> -->
+                                    <lightning:buttonicon iconName="utility:jump_to_top" alternativeText="Mail" size="small" variant="border-filled"/>
+                                </div>
+                                
+                                
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                        <h3 class="slds-truncate" title="{!arc.title }">
+                                            <!--<a href="javascript:void(0);"> v.activity.objectname == 'Contact' ||-->
+                                            
+                                            
+                                            <strong>{!arc.linkDescriptionStart} <a href="{!arc.link}" target="_blank">{!arc.linkLabel}</a> {!arc.linkDescription}  </strong>
+                                            <!-- </a> -->
+                                        </h3>
+                                    </div>
+                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                        <p class="slds-timeline__date">
+                                            <lightning:formattedDateTime value="{!arc.createddate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/>
+                                        </p>
+                                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                            <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                            <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                            <span class="slds-assistive-text">More Options for this item</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!arc.objectname == 'AccountChannelMembership'}">
+                    <div class="slds-timeline__item_expandable slds-timeline__item_event">
+                        <span class="slds-assistive-text">log_a_call</span>
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                    <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg>   ,or(v.activity.newvalue == 'Primary Contact',v.activity.newvalue == 'Works for') -->
+                                    <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                    <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                </button>
+                                
+                                <div class="slds-icon_container slds-icon-standard-event slds-timeline__icon" title="event">
+                                    <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#event"></use>
+        </svg> -->
+                                    <lightning:icon iconName="utility:ribbon" alternativeText="down" size="small" variant="border-filled"/>
+                                </div> 
+                                
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                        <h3 class="slds-truncate" title="{!arc.title }">
+                                            <!--<a href="javascript:void(0);"> v.activity.objectname == 'Contact' ||-->
+                                            
+                                            
+                                            <strong>{!arc.linkDescriptionStart} <a href="{!arc.link}" target="_blank">{!arc.linkLabel}</a> {!arc.linkDescription}  </strong>
+                                            <!-- </a> -->
+                                        </h3>
+                                    </div>
+                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                        <p class="slds-timeline__date">
+                                            <lightning:formattedDateTime value="{!arc.createddate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/>
+                                        </p>
+                                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                            <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                            <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                            <span class="slds-assistive-text">More Options for this item</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>
+                
+                <aura:if isTrue="{!arc.objectname == 'Account'}">
+                <div class="slds-timeline__item_expandable slds-timeline__item_task">
+                        <span class="slds-assistive-text">log_a_call</span>
+                        <div class="slds-media">
+                            <div class="slds-media__figure">
+                                <button class="slds-button slds-button_icon" title="Toggle details for Mobile conversation on Monday" aria-controls="call-item-base">
+                                    <!-- <svg class="slds-button__icon slds-timeline__details-action-icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#switch"></use>
+        </svg>   ,or(v.activity.newvalue == 'Primary Contact',v.activity.newvalue == 'Works for') -->
+                                    <lightning:buttonicon iconName="utility:switch" alternativeText="down" size="small" variant="border-filled"/>
+                                    <span class="slds-assistive-text">Toggle details for Mobile conversation on Monday</span>
+                                </button>
+                                
+                                <div class="slds-icon_container slds-icon-standard-task slds-timeline__icon" title="task">
+                                <!--<svg class="slds-icon slds-icon_small" aria-hidden="true">
+        <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#task"></use>
+        </svg> -->
+                                <lightning:icon iconName="utility:record_create" alternativeText="down" size="small" variant="border-filled"/>
+                            </div> 
+                                
+                            </div>
+                            <div class="slds-media__body">
+                                <div class="slds-grid slds-grid_align-spread slds-timeline__trigger">
+                                    <div class="slds-grid slds-grid_vertical-align-center slds-truncate_container_75 slds-no-space">
+                                        <h3 class="slds-truncate" title="{!arc.title }">
+                                            <!--<a href="javascript:void(0);"> v.activity.objectname == 'Contact' ||-->
+                                            
+                                            
+                                            <strong>{!arc.linkDescriptionStart} <a href="{!arc.link}" target="_blank">{!arc.linkLabel}</a> {!arc.linkDescription}  </strong>
+                                            <!-- </a> -->
+                                        </h3>
+                                    </div>
+                                    <div class="slds-timeline__actions slds-timeline__actions_inline">
+                                        <p class="slds-timeline__date">
+                                            <lightning:formattedDateTime value="{!arc.createddate}" year="2-digit" month="short" day="2-digit" hour="numeric"  weekday="long"/>
+                                        </p>
+                                        <button class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small" aria-haspopup="true" title="More Options for this item">
+                                            <!--<svg class="slds-button__icon" aria-hidden="true">
+        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        </svg> -->
+                                            <lightning:buttonicon iconName="utility:down" alternativeText="down" size="small" variant="border-filled"/>
+                                            <span class="slds-assistive-text">More Options for this item</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--<p class="slds-m-horizontal_xx-small">
+        <a href="javascript:void(0);">You</a> logged a call with
+        <a href="javascript:void(0);">Adam Chan</a>
+        </p> -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                </aura:if>  
+                     
+            </li>
+        </aura:iteration>   
+    </ul>
+    
+</aura:component>

@@ -12,7 +12,7 @@
     * Sumukh                        11/08/2017              MODIFIED as part of - US67444,US67633,US83446
     ****************************************************************************************************/ 
    
-public with sharing class Core_IPS_CommentScreenController{
+public class Core_IPS_CommentScreenController{
     
     public Static Case newcase = new Case();
     public Static List<Core_IPS_Case_Comments__c> commentRecords;
@@ -51,10 +51,7 @@ public with sharing class Core_IPS_CommentScreenController{
             }
             return commentRecords;
         }
-        catch(exception ex){ 
-        Core_IPS_ExceptionHandling.logEntryWithException(ex,'Core_IPS_CommentScreenController.getcaseComments','Case');
-        return null;
-        }
+        catch(exception ex){ Core_IPS_ExceptionHandling.logEntryWithException(ex,'Core_IPS_CommentScreenController.getcaseComments','Case');   return null;}
    }   
        
 }

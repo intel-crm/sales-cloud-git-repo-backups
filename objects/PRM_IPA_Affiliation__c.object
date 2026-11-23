@@ -195,30 +195,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>PRM_Builder__c</fullName>
-        <label>Builder</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>AI Builders</fullName>
-                    <default>false</default>
-                    <label>AI Builders</label>
-                </value>
-                <value>
-                    <fullName>Network Builders</fullName>
-                    <default>false</default>
-                    <label>Network Builders</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>PRM_Notes__c</fullName>
         <inlineHelpText>On update of any field, Reason Text should also be updated</inlineHelpText>
         <label>Reason Text</label>
@@ -252,9 +228,20 @@
         <unique>false</unique>
     </fields>
     <label>Account IPA Affiliation</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Active__c</columns>
+        <columns>PRM_Builder_Strategy__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>RECORDTYPE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>IA-{000000000}</displayFormat>
-        <label>IPA Affiliation Association Name</label>
+        <label>Account IPA Affiliation Name</label>
         <trackHistory>false</trackHistory>
         <type>AutoNumber</type>
     </nameField>
@@ -264,33 +251,11 @@
         <fullName>Intel_Account_Affiliation</fullName>
         <active>true</active>
         <label>Intel Account Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <recordTypes>
         <fullName>Partner_Account_Group_Affiliation</fullName>
         <active>true</active>
         <label>Partner Account Group Affiliation</label>
-        <picklistValues>
-            <picklist>PRM_Builder__c</picklist>
-            <values>
-                <fullName>AI Builders</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Network Builders</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
     </recordTypes>
     <searchLayouts>
         <excludedStandardButtons>New</excludedStandardButtons>
@@ -300,7 +265,7 @@
         <fullName>prevention_of_Duplicate_Comb_logic</fullName>
         <active>true</active>
         <description>to prevent duplicate combination of account and affiliation</description>
-        <errorConditionFormula>AND(  NOT( $Permission.PCC_Bypass_Automation ),
+        <errorConditionFormula>AND(  
     OR(
     ISCHANGED(PRM_Account__c)
    ,

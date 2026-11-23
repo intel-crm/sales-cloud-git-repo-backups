@@ -15,8 +15,7 @@ public class Core_Draco_EntitlementCleanup_Batch_Test {
     static void setup() {
         //Prepare the list of Accounts
         List<Account> accList = new List<Account>();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account intelAccount1 = new Account(Name ='IntelAccount34',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',RecordTypeId=intelAccRecTypeId,
+        Account intelAccount1 = new Account(Name ='IntelAccount34',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',
                                             Industry='Agriculture', BillingCity='Pune',BillingCountry='Ind',BillingStreet='abc chowk delhi', Core_IPA_Partner_Role__c = 'Distributor');
         
         accList.add(intelAccount1);
@@ -27,12 +26,12 @@ public class Core_Draco_EntitlementCleanup_Batch_Test {
         List<Contact> allContacts = new List<Contact>();
         Contact conTest;
         for(Integer i = 1; i<=2; i++){
-            conTest = new Contact(firstname='TestIntel',lastname='Contact'+string.valueof(i), accountId=intelAccount1.id, Core_Enterprise_Id__c='30000270166'+string.valueof(i), Email='dellco123'+string.valueof(i)+'@dell.com',MailingCountry='India',
+            conTest = new Contact(firstname='TestIntel',lastname='Contact'+string.valueof(i), accountId=intelAccount1.id, Core_Enterprise_Id__c='30000270166'+string.valueof(i), Email='dellco123'+string.valueof(i)+'@dell.com',
                                  Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'Some random AGS Error containing Operation taking too long to complete from AGS and already has a pending add role request'); 
             allContacts.add(conTest);
         }
         for(Integer i = 3; i<=10; i++){
-            conTest = new Contact(firstname='TestIntel',lastname='Contact'+string.valueof(i), accountId=intelAccount1.id, Core_Enterprise_Id__c='30000270166'+string.valueof(i), Email='dellco123'+string.valueof(i)+'@dell.com',MailingCountry='India',
+            conTest = new Contact(firstname='TestIntel',lastname='Contact'+string.valueof(i), accountId=intelAccount1.id, Core_Enterprise_Id__c='30000270166'+string.valueof(i), Email='dellco123'+string.valueof(i)+'@dell.com',
                                  Core_AGS_Integration_Status__c = 'Failed', Core_AGS_Integration_Message__c = 'Some AGS Error containing AGS getrole api flow failed'); 
             allContacts.add(conTest);
         }

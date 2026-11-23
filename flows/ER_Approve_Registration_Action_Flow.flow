@@ -1,97 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <actionCalls>
-        <name>Approve_Message</name>
-        <label>Approve Message</label>
-        <locationX>1909</locationX>
-        <locationY>3338</locationY>
-        <actionName>c:ToastMessage</actionName>
-        <actionType>component</actionType>
-        <connector>
-            <targetReference>Redirect</targetReference>
-        </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>messageText</name>
-            <value>
-                <stringValue>Registration record has been Approved</stringValue>
-            </value>
-        </inputParameters>
-        <nameSegment>c:ToastMessage</nameSegment>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </actionCalls>
-    <actionCalls>
-        <name>Redirect</name>
-        <label>Redirect</label>
-        <locationX>2041</locationX>
-        <locationY>3530</locationY>
-        <actionName>c:navigateToUrl</actionName>
-        <actionType>component</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>redirectURL</name>
-            <value>
-                <stringValue>/{!recordId}</stringValue>
-            </value>
-        </inputParameters>
-        <nameSegment>c:navigateToUrl</nameSegment>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </actionCalls>
     <apiVersion>60.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <assignments>
-        <name>Assign_Status_reason_to_Existing_User</name>
-        <label>Assign Status reason to Existing User</label>
-        <locationX>842</locationX>
-        <locationY>2654</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.PRM_Status_Reason__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Access granted to Existing User</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Status_reason_to_New_User</name>
-        <label>Assign Status reason to New User</label>
-        <locationX>1106</locationX>
-        <locationY>2654</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.PRM_Status_Reason__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>New Contact Creation</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Status_to_A_E_Approved</name>
-        <label>Assign Status to A&amp;E Approved</label>
-        <locationX>974</locationX>
-        <locationY>2438</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.Current_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>A&amp;E Approved</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Verify_contact_exist_or_not</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>Assign_Status_to_Approved</name>
         <label>Assign Status to Approved</label>
-        <locationX>2041</locationX>
-        <locationY>3014</locationY>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Get_Valid_Registration_Record.PRM_Status__c</assignToReference>
             <operator>Assign</operator>
@@ -99,262 +14,37 @@
                 <stringValue>Approved</stringValue>
             </value>
         </assignmentItems>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.ActualApprover__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Approver</elementReference>
-            </value>
-        </assignmentItems>
         <connector>
-            <targetReference>Update_Registration_Record</targetReference>
+            <targetReference>Approve_Registration_Record</targetReference>
         </connector>
     </assignments>
     <assignments>
-        <name>Assign_Status_to_IPA_Admin_Pending</name>
-        <label>Assign Status to IPA Admin Pending</label>
-        <locationX>1370</locationX>
-        <locationY>2438</locationY>
+        <name>Assign_Status_to_Pending</name>
+        <label>Assign Status to Pending</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
         <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.Current_Status__c</assignToReference>
+            <assignToReference>Get_Valid_Registration_Record.PRM_Status__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>IPA Admin Approved</stringValue>
+                <stringValue>Pending</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Valid_Registration_Record.PRM_Account_Request_Queue__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Create_Account_Request_Queue</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
+            <targetReference>Approve_Registration_Record</targetReference>
         </connector>
     </assignments>
-    <assignments>
-        <name>Assign_Status_to_RPM_Admin_Pending</name>
-        <label>Assign Status to RPM Admin Pending</label>
-        <locationX>1634</locationX>
-        <locationY>2438</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.Current_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>RPM Admin Approved</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
-        <name>Assign_Status_to_Sales_Approved</name>
-        <label>Assign Status to Sales Approved</label>
-        <locationX>1898</locationX>
-        <locationY>2438</locationY>
-        <assignmentItems>
-            <assignToReference>Get_Valid_Registration_Record.Current_Status__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Insides Sales Approved</stringValue>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
-        </connector>
-    </assignments>
-    <decisions>
-        <name>Assign_Different_DZP_Status</name>
-        <label>Assign Different DZP Status</label>
-        <locationX>1568</locationX>
-        <locationY>2330</locationY>
-        <defaultConnector>
-            <targetReference>Assign_Status_to_Approved</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>A_E_Pending</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.Current_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>A&amp;E Pending</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_to_A_E_Approved</targetReference>
-            </connector>
-            <label>A&amp;E Pending</label>
-        </rules>
-        <rules>
-            <name>IPA_Admin_Pending</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.Current_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IPA Admin Pending</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_to_IPA_Admin_Pending</targetReference>
-            </connector>
-            <label>IPA Admin Pending</label>
-        </rules>
-        <rules>
-            <name>RPM_Admin_Pending</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.Current_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>RPM Admin Pending</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_to_RPM_Admin_Pending</targetReference>
-            </connector>
-            <label>RPM Admin Pending</label>
-        </rules>
-        <rules>
-            <name>Sales_Pending_status</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.Current_Status__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>Insides Sales Pending</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_to_Sales_Approved</targetReference>
-            </connector>
-            <label>Sales Pending</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_for_employee_entl_and_IPA_T_C_s</name>
-        <label>Check for employee entl and IPA T&amp;C&apos;s</label>
-        <locationX>1700</locationX>
-        <locationY>1838</locationY>
-        <defaultConnector>
-            <targetReference>CNDA_for_DZP_Warning_Screen</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>employee_entl_and_IPA_T_C_s_present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Contact_with_Employee_Entitlement</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.PRM_Count_IPA_Terms_And_Conditions__c</leftValueReference>
-                <operator>GreaterThan</operator>
-                <rightValue>
-                    <numberValue>0.0</numberValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Different_DZP_Status</targetReference>
-            </connector>
-            <label>employee entl and IPA T&amp;C&apos;s present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Check_IF_DZP_And_IPA</name>
-        <label>Check IF DZP And IPA</label>
-        <locationX>2041</locationX>
-        <locationY>1214</locationY>
-        <defaultConnector>
-            <targetReference>Copy_1_of_Registration_record_Approve_Warning_Message</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>DZP_And_IPA</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Account_Details</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>DZP</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Contact_Entitlement_Existing_IPA</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Registration_record_Approve_Warning_Message</targetReference>
-            </connector>
-            <label>DZP And IPA</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <description>Check if registration record is DZP</description>
-        <name>CheckDZPRecord</name>
-        <label>CheckDZPRecord</label>
-        <locationX>2041</locationX>
-        <locationY>1514</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>RecordEqualsDZP</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>DZP</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Source__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>IPA - Portal</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Verify_CNDA_number_for_DZP</targetReference>
-            </connector>
-            <label>RecordEqualsDZP</label>
-        </rules>
-        <rules>
-            <name>RecordNotEqualsDZP</name>
-            <conditionLogic>or</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Source__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>DZP</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Source__c</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue>IPA - Portal</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_to_Approved</targetReference>
-            </connector>
-            <label>RecordNotEqualsDZP</label>
-        </rules>
-    </decisions>
     <decisions>
         <name>Valid_Registration_Check</name>
         <label>Valid Registration Check</label>
-        <locationX>2091</locationX>
+        <locationX>380</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Error_Display_Screen</targetReference>
@@ -371,148 +61,41 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Get_Intel_Account_RT</targetReference>
+                <targetReference>Get_Account</targetReference>
             </connector>
             <label>Valid Registration</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Verify_Account_Details</name>
-        <label>Verify Account Details</label>
-        <locationX>1177</locationX>
-        <locationY>674</locationY>
-        <defaultConnector>
-            <targetReference>Get_Channelmembership_for_IPA_check</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>CIM_ID_UCD_ID</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.Core_CIM_ID__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.Core_Business_Party_Id__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.RecordTypeId</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>Get_Intel_Account_RT.Id</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Warning_Display</targetReference>
-            </connector>
-            <label>CIM ID &amp; UCD ID</label>
-        </rules>
-        <rules>
-            <name>Account_Record_Type</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.RecordTypeId</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <elementReference>Get_Intel_Account_RT.Id</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Not_valid_Account</targetReference>
-            </connector>
-            <label>Account Record Type</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_CNDA_number_for_DZP</name>
-        <label>Verify CNDA number for DZP</label>
-        <locationX>1568</locationX>
-        <locationY>1622</locationY>
-        <defaultConnector>
-            <targetReference>Get_Contact_with_Employee_Entitlement</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>CNDA_Present</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.Core_CNDA_Number__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Different_DZP_Status</targetReference>
-            </connector>
-            <label>CNDA Present</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_contact_exist_or_not</name>
-        <label>Verify contact exist or not</label>
-        <locationX>974</locationX>
-        <locationY>2546</locationY>
-        <defaultConnector>
-            <targetReference>Assign_Status_reason_to_New_User</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>contact_already_exist</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Contact_Salesforce_Id__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Assign_Status_reason_to_Existing_User</targetReference>
-            </connector>
-            <label>contact already exist</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Verify_reqType</name>
         <label>Verify reqType</label>
-        <locationX>613</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>458</locationY>
         <defaultConnector>
-            <targetReference>Verify_Account_Details</targetReference>
+            <targetReference>Assign_Status_to_Approved</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
-            <name>Account_Not_exist</name>
+            <name>New_Account</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__c</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>reqType</leftValueReference>
+                <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>New Account Creation</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Account_Warning</targetReference>
+                <targetReference>Create_Account_Request_Queue</targetReference>
             </connector>
-            <label>Account Not exist</label>
+            <label>New Account</label>
         </rules>
     </decisions>
     <decisions>
         <name>Verify_Status</name>
         <label>Verify Status</label>
-        <locationX>2041</locationX>
-        <locationY>3230</locationY>
-        <defaultConnector>
-            <targetReference>Redirect</targetReference>
-        </defaultConnector>
+        <locationX>182</locationX>
+        <locationY>974</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Approved</name>
@@ -525,7 +108,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Approve_Message</targetReference>
+                <targetReference>Success_Screen</targetReference>
             </connector>
             <label>Approved</label>
         </rules>
@@ -538,29 +121,9 @@
         <expression>if({!Get_Valid_Registration_Record.PRM_Account_Name__c} !=null,{!Get_Valid_Registration_Record.PRM_Account_Name__c},null)</expression>
     </formulas>
     <formulas>
-        <name>addressCity</name>
-        <dataType>String</dataType>
-        <expression>if( {!Get_Valid_Registration_Record.PRM_City__c} != null, {!Get_Valid_Registration_Record.PRM_City__c} , null )</expression>
-    </formulas>
-    <formulas>
-        <name>addressStreet</name>
-        <dataType>String</dataType>
-        <expression>if( {!Get_Valid_Registration_Record.PRM_Address_Line_1__c} != null, {!Get_Valid_Registration_Record.PRM_Address_Line_1__c} , null )</expression>
-    </formulas>
-    <formulas>
-        <name>Approver</name>
-        <dataType>String</dataType>
-        <expression>{!$User.FirstName}&amp;&apos; &apos;&amp;{!$User.LastName}</expression>
-    </formulas>
-    <formulas>
         <name>globalAccount</name>
         <dataType>String</dataType>
         <expression>if({!Get_Valid_Registration_Record.PRM_Review_Note_txt__c} !=null,{!Get_Valid_Registration_Record.PRM_Review_Note_txt__c},null)</expression>
-    </formulas>
-    <formulas>
-        <name>postalCode</name>
-        <dataType>String</dataType>
-        <expression>if( {!Get_Valid_Registration_Record.PRM_Zip_Postal_Code__c} != null, {!Get_Valid_Registration_Record.PRM_Zip_Postal_Code__c}, null )</expression>
     </formulas>
     <formulas>
         <name>reqType</name>
@@ -575,12 +138,7 @@
     <formulas>
         <name>RequestorName</name>
         <dataType>String</dataType>
-        <expression>if({!$User.FirstName} !=null,{!$User.FirstName}&amp;&apos; &apos;&amp;{!$User.LastName},null)</expression>
-    </formulas>
-    <formulas>
-        <name>stateCountryCode</name>
-        <dataType>String</dataType>
-        <expression>if( {!Get_Valid_Registration_Record.PRM_State_Province__c} != null, {!Get_Valid_Registration_Record.PRM_State_Province__c} , null )</expression>
+        <expression>if({!$User.FirstName} !=null,{!$User.FirstName},null)</expression>
     </formulas>
     <interviewLabel>ER Approve Registration Action Flow {!$Flow.CurrentDateTime}</interviewLabel>
     <label>ER Approve Registration Action Flow</label>
@@ -604,176 +162,85 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
-        <name>Create_Log_Entry_Record</name>
-        <label>Create Log Entry Record</label>
-        <locationX>2778</locationX>
-        <locationY>3230</locationY>
+        <name>Create_Account_Request_Queue</name>
+        <label>Create Account Request Queue</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <connector>
+            <targetReference>Assign_Status_to_Pending</targetReference>
+        </connector>
         <inputAssignments>
-            <field>Core_Details__c</field>
+            <field>Account_Name__c</field>
             <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
+                <elementReference>accountName</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_Origin__c</field>
+            <field>Core_Sales_Groups__c</field>
             <value>
-                <stringValue>ER Approve Registration Action Flow</stringValue>
+                <stringValue>Undefined</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_Severity__c</field>
+            <field>Core_Sub_Industry__c</field>
             <value>
-                <stringValue>Medium</stringValue>
+                <stringValue>To Be Defined</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_Tags__c</field>
+            <field>Digital_Identifier_Type__c</field>
             <value>
-                <elementReference>recordId</elementReference>
+                <stringValue>Website/URL</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_When__c</field>
+            <field>Digital_Identifier_Value__c</field>
             <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
+                <elementReference>Get_Valid_Registration_Record.PRM_Account_URL__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Core_sObjectType__c</field>
+            <field>Global_Account__c</field>
             <value>
-                <stringValue>New Registration</stringValue>
+                <elementReference>globalAccount</elementReference>
             </value>
         </inputAssignments>
-        <object>Core_Log_Entry__c</object>
+        <inputAssignments>
+            <field>Industry__c</field>
+            <value>
+                <stringValue>To Be Defined</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Process_Type__c</field>
+            <value>
+                <stringValue>DZP</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Requestor_Email__c</field>
+            <value>
+                <elementReference>requestorEmail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Requestor_Name__c</field>
+            <value>
+                <elementReference>RequestorName</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account_Create_Request__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
-    <recordCreates>
-        <name>Create_LogEntry_Record</name>
-        <label>Create LogEntry Record</label>
-        <locationX>3306</locationX>
-        <locationY>458</locationY>
-        <inputAssignments>
-            <field>Core_Details__c</field>
-            <value>
-                <elementReference>$Flow.FaultMessage</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Origin__c</field>
-            <value>
-                <stringValue>ER Approve Registration Action Flow</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Severity__c</field>
-            <value>
-                <stringValue>Medium</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_Tags__c</field>
-            <value>
-                <elementReference>recordId</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_When__c</field>
-            <value>
-                <elementReference>$Flow.CurrentDateTime</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Core_sObjectType__c</field>
-            <value>
-                <stringValue>Account</stringValue>
-            </value>
-        </inputAssignments>
-        <object>Core_Log_Entry__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordCreates>
-    <recordLookups>
-        <name>Contact_Entitlement_Existing_IPA</name>
-        <label>Contact Entitlement Existing IPA</label>
-        <locationX>2041</locationX>
-        <locationY>1106</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_IF_DZP_And_IPA</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Contact_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Valid_Registration_Record.PRM_Contact_Salesforce_Id__r.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Entitlement_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Employee_Entitlement.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Selected__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Complete</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Core_Contact_Entitlement__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Employee_Entitlement</name>
-        <label>Employee Entitlement</label>
-        <locationX>2041</locationX>
-        <locationY>998</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Contact_Entitlement_Existing_IPA</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Display_Name__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Employee</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_IsActive__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Core_Entitlement__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordLookups>
         <name>Get_Account</name>
-        <label>Get AccountCreateRequest RecordType</label>
-        <locationX>613</locationX>
-        <locationY>458</locationY>
+        <label>Get AccountCreateRequest RT</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Verify_reqType</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_Log_Entry_Record</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>DeveloperName</field>
@@ -794,161 +261,15 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_Account_Details</name>
-        <label>Get Account Details</label>
-        <locationX>2041</locationX>
-        <locationY>890</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Employee_Entitlement</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Valid_Registration_Record.PRM_Salesforce_ID__r.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Channel_Program_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Channelmembership_for_IPA_check.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Status_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Approved</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>PRM_AccountChannelMembership__c</object>
-        <sortField>CreatedDate</sortField>
-        <sortOrder>Asc</sortOrder>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Channelmembership_for_IPA_check</name>
-        <label>Get Channelmembership for IPA check</label>
-        <locationX>2041</locationX>
-        <locationY>782</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Account_Details</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Intel Partner Alliance</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>IsActive</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>ChannelProgram</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Contact_with_Employee_Entitlement</name>
-        <label>Get Contact with Employee Entitlement</label>
-        <locationX>1700</locationX>
-        <locationY>1730</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Check_for_employee_entl_and_IPA_T_C_s</targetReference>
-        </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_LogEntry_Record</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Core_Entitlement_Nm__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Employee</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Status__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Complete</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Selected__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>Core_Contact_Id__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Valid_Registration_Record.PRM_Contact_Salesforce_Id__c</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Core_Contact_Entitlement__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Get_Intel_Account_RT</name>
-        <label>Get Intel Account RT</label>
-        <locationX>613</locationX>
-        <locationY>350</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Get_Account</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Create_LogEntry_Record</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Mastered_Account</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>SobjectType</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>Account</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_Valid_Registration_Record</name>
         <label>Get Valid Registration Record</label>
-        <locationX>2091</locationX>
+        <locationX>380</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Valid_Registration_Check</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Create_Log_Entry_Record</targetReference>
-        </faultConnector>
-        <filterLogic>(1 OR 4) AND 2 AND 3 AND 5</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>PRM_Status__c</field>
             <operator>EqualTo</operator>
@@ -971,17 +292,10 @@
             </value>
         </filters>
         <filters>
-            <field>PRM_Status__c</field>
+            <field>PRM_Source__c</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Pending</stringValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Source__c</field>
-            <operator>IsNull</operator>
-            <value>
-                <booleanValue>false</booleanValue>
+                <stringValue>DZP</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -989,101 +303,19 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
-        <name>Update_Registration_Record</name>
-        <label>Update Registration Record</label>
-        <locationX>2041</locationX>
-        <locationY>3122</locationY>
+        <name>Approve_Registration_Record</name>
+        <label>Approve Registration Record</label>
+        <locationX>182</locationX>
+        <locationY>866</locationY>
         <connector>
             <targetReference>Verify_Status</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Create_Log_Entry_Record</targetReference>
-        </faultConnector>
         <inputReference>Get_Valid_Registration_Record</inputReference>
     </recordUpdates>
-    <runInMode>DefaultMode</runInMode>
-    <screens>
-        <name>Account_Warning</name>
-        <label>Account_Warning</label>
-        <locationX>50</locationX>
-        <locationY>674</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Account_warning_message</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(221, 19, 19);&quot;&gt;Registration record must have account for approval.&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>CNDA_for_DZP_Warning_Screen</name>
-        <label>CNDA for DZP Warning Screen</label>
-        <locationX>1788</locationX>
-        <locationY>1946</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>CNDA_for_DZP_Warning_Message</name>
-            <fieldText>&lt;p&gt;CNDA can&apos;t be blank on related Account Record. Please make sure Account has a valid CNDA number before Approving the registration.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>Copy_1_of_Registration_record_Approve_Warning_Message</name>
-        <label>Registration record Approve Warning Message</label>
-        <locationX>2173</locationX>
-        <locationY>1322</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>CheckDZPRecord</targetReference>
-        </connector>
-        <fields>
-            <name>Copy_1_of_Display_Message</name>
-            <fieldText>&lt;p&gt;You are about to Approve this New Registration record.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If you want to continue please click &quot;Proceed&quot; . Otherwise, close the window.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Proceed</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
     <screens>
         <name>Error_Display_Screen</name>
         <label>Error Display Screen</label>
-        <locationX>3570</locationX>
+        <locationX>578</locationX>
         <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -1101,21 +333,20 @@
                 </width>
             </styleProperties>
         </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>Not_valid_Account</name>
-        <label>Not_valid_Account</label>
-        <locationX>578</locationX>
-        <locationY>782</locationY>
+        <name>Success_Screen</name>
+        <label>Success Screen</label>
+        <locationX>50</locationX>
+        <locationY>1082</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
-            <name>Account_RecordType</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(237, 15, 15);&quot;&gt;Registration record should have account with Intel account record type.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <name>successDisplayText</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(3, 250, 7);&quot;&gt;Registration record approval successful!!&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -1126,65 +357,11 @@
                 </width>
             </styleProperties>
         </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Registration_record_Approve_Warning_Message</name>
-        <label>Registration record Approve Warning MessageIPA+DZP</label>
-        <locationX>1909</locationX>
-        <locationY>1322</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>CheckDZPRecord</targetReference>
-        </connector>
-        <fields>
-            <name>DZP_IPA_Warning_Message</name>
-            <fieldText>&lt;p&gt;This contact is eligible for IPA access based on the account’s active IPA membership. Approving DZP access will automatically provision IPA access.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;If you want to continue please click &quot;Proceed&quot; or close this window.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Proceed</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Warning_Display</name>
-        <label>Warning Display</label>
-        <locationX>314</locationX>
-        <locationY>782</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>Display_Screen</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(231, 42, 17);&quot;&gt;Account should have UCD Id or CIM Id for this registration to be approved.&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Close</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>1965</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Valid_Registration_Record</targetReference>

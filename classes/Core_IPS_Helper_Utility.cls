@@ -13,7 +13,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Jayaprakash T              10/14/2015              Created
 ****************************************************************************************************/   
-public without sharing class Core_IPS_Helper_Utility { 
+public  class Core_IPS_Helper_Utility { 
     
     public static boolean stopCaseSharingTrigger=false;
     /***************************************************************************************************
@@ -39,7 +39,6 @@ public without sharing class Core_IPS_Helper_Utility {
         Map<Id,Set<Id>> faesByAccount = new Map<Id,Set<Id>>();
         try{
             List<String> rowCauseList = new List<String>();
-            List<AccountShare> acctShare = new List<AccountShare>();
             //Remove Hardcoded values and move to IPS Labels
             rowCauseList.add(getIPSLabel('RowCause_Team'));
             rowCauseList.add(getIPSLabel('Rowcause_Owner'));
@@ -48,16 +47,18 @@ public without sharing class Core_IPS_Helper_Utility {
             caseAccessLevel.add(getIPSLabel('AccessLevel_Edit'));
             Set<Id> userIdSet = new Set<id>();
             Set<id> accountIdSet = new Set<Id>();
-            if(accountshare.SObjectType.getDescribe().isAccessible()){ // FLS check already added - aditya
-            	acctShare = [select accountId, caseaccesslevel, userOrGroupId, rowcause from accountshare where rowcause in :rowCauseList and caseAccessLevel IN: caseAccessLevel and  accountId in :acctIdSet];
-            }
-            for(AccountShare share: acctShare){
+            
+         
+            List<AccountShare> acctShare = [select accountId, caseaccesslevel, userOrGroupId, rowcause from accountshare where rowcause in :rowCauseList and caseAccessLevel IN: caseAccessLevel and  accountId in :acctIdSet];
+             
+           for(AccountShare share: acctShare){
                 String userId = share.userOrGroupId;
                 if(userId.startsWith('005')){
                     userIdSet.add(share.userOrGroupId);
                     accountIdSet.add(share.accountId);
                 }
             }
+       
             List<AccountShare> faeSharedAccounts = new List<AccountShare>();
             //Move profile as a comma separated list of profiles to custom label (names)
             //List of FAE profiles
@@ -81,6 +82,7 @@ public without sharing class Core_IPS_Helper_Utility {
                 }
                 faesByAccount.put(acctId,faeIdSet);
             }
+        
         }catch(Exception e){
             
         }
@@ -172,7 +174,6 @@ public without sharing class Core_IPS_Helper_Utility {
     * JRK                        11/16/2015              Added null checks to prevent errors
     ****************************************************************************************************/     
     public static Map<id,Set<Id>> getFAEsByProject(set<id> projIdSet){
-        List<core_ips_account__c> ipsAccountList = new List<core_ips_account__c>();
         //Map<Id,Set<Id>> assetsByProj = new Map<Id,Set<Id>>();
         /*set<id> projIdSet = new Set<Id>();
         //Project should be active
@@ -180,9 +181,8 @@ public without sharing class Core_IPS_Helper_Utility {
             projIdSet.add(ast.Core_IPS_Project__c);
         }*/
         //assetsByProj = getAssetsByProject(assetList);
-        if(core_ips_account__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-        ipsAccountList = [select id, core_account__c,core_ips_project__c from core_ips_account__c where core_ips_project__c in :projIdset];
-        }
+        system.debug('coming in here !!!');
+        List<core_ips_account__c> ipsAccountList = [select id, core_account__c,core_ips_project__c from core_ips_account__c where core_ips_project__c in :projIdset];
         Map<Id, Set<id>> accountsByProject = new Map<Id,Set<id>>();
         Set<id> acctIdSet = new Set<Id>();
         for(core_ips_account__c ipsA:ipsAccountList){
@@ -278,9 +278,10 @@ public without sharing class Core_IPS_Helper_Utility {
     //Remove this method
     public static List<Asset> getAssets(List<String> idList){
             List<Asset> assetList;
-            if(idList!=null && idList.get(0)!=null && idList.get(0).startsWith('001') && asset.SObjectType.getDescribe().isAccessible()){ //FLS Check Added -Aditya
+            if(idList!=null && idList.get(0)!=null && idList.get(0).startsWith('001')){
                 assetList = [SELECT ID, accountId, contactId, product2Id,Core_Supported_Product__c , Core_Product_Organization__c,Core_Map_List__c from asset where accountid in :idList]; 
             }
+            System.debug('asset list ***'+assetList);
             return assetList;
     }
 
@@ -318,6 +319,7 @@ public without sharing class Core_IPS_Helper_Utility {
             }
             
         }
+        system.debug('assetsByAccount=============      '+assetsByAccount);
         return assetsByAccount;
     }
 
@@ -417,6 +419,7 @@ public without sharing class Core_IPS_Helper_Utility {
                 }
             }
         }
+        System.debug('ValueReturned***********'+ValueReturned);
         return ValueReturned;
     }
     
@@ -447,9 +450,10 @@ public without sharing class Core_IPS_Helper_Utility {
         }
 
         List<Id> QueueMemberIds = listOwnerIdQueueMembers(POrgOwnerId);
+        
         List<User> QueueUsers = [Select id,Profile.Name from User where id IN: QueueMemberIds];
         List<String> profileNameList = new List<String>();
-        profileNameList = System.Label.Core_MAP_Validation_Profile_Names.split(';');    
+        profileNameList = System.Label.Core_MAP_Validation_Profile_Names.split(';');        
         User Usr = [Select id,Profile.Name from User where id =: UserInfo.getUserid()]; 
         List<Profile> Prfl =  [Select id,Name from Profile where Name IN:profileNameList];
         if(Usr != null ){       
@@ -548,12 +552,12 @@ public without sharing class Core_IPS_Helper_Utility {
     ****************************************************************************************************/   
     public static boolean isGECAccount(Id contId){
         List<Contact> contList = new List<Contact>();
-        if(Contact.SObjectType.getDescribe().isAccessible()){ // FLS Check added by - aditya
         contList = [select accountId, account.Core_Military_Aerospace_and_Government__c from Contact where id = :contId limit 1];
-        }
+       
         if(contList != null && contList.size() > 0 && contList[0].accountId != null && contList[0].account.Core_Military_Aerospace_and_Government__c <> null && contList[0].account.Core_Military_Aerospace_and_Government__c){
             return true;
         }
+        system.debug('*****false*****');
         return false;
     }
     
@@ -579,31 +583,19 @@ public without sharing class Core_IPS_Helper_Utility {
     public static List<String> getIntelSupportOwnerByContact_oldContIdList = new List<String>();
     public static List<String> getIntelSupportOwnerByContact_newContIdList = new List<String>();
     public static Map<id,id> getIntelSupportOwnerByContact(Set<String> contIdSet){
-    
         Map<Id,Id> isoByContact = new Map<Id,Id>();
-        Map<Id,Contact> ContactRecords = new Map<Id,Contact>();
-        List<Id> contactIdslist = new List<Id>(); //Added logic as part of Code Refactor TWC745-6459
         if(contIdSet <> null && contIdSet.size() > 0){
             getIntelSupportOwnerByContact_newContIdList.clear();
             getIntelSupportOwnerByContact_newContIdList.addAll(contIdSet);
-            //START - Added logic as part of Code Refactor TWC745-6459
-            for(String c:contIdSet){
-                contactIdslist.add(c);
-            }
-            //END
+            system.debug(getIntelSupportOwnerByContact_newContIdList);
             if(getIntelSupportOwnerByContact_ResultList == null || Core_Utility.executeQuery(getIntelSupportOwnerByContact_newContIdList,getIntelSupportOwnerByContact_oldContIdList))
             {
-                //added Alternate ISO and support org in query by Sugandha 
-                //FLS check already added - Aditya
-                //Added logic as part of Code Refactor TWC745-6459
-                if(Core_IPS_CaseTriggerHandler.GlobalContactRecords!=null && Core_IPS_CaseTriggerHandler.GlobalContactRecords.size()>0 && !Core_IPS_CaseTriggerHandler.isQueryRequired(contactIdslist,Core_IPS_CaseTriggerHandler.GlobalContactRecords,null) ){
-                    getIntelSupportOwnerByContact_ResultList = Core_IPS_CaseTriggerHandler.GlobalContactRecords.Values();
-                }    
-                else if(Contact.SObjectType.getDescribe().isAccessible()){
-                    getIntelSupportOwnerByContact_ResultList = [select Id,Core_IPS_Intel_Support_Owner__c,Core_IPS_Alternate_Support_Owner__c,Core_IPS_Alternate_Support_Org__c from Contact where id in :contIdSet];
-                }
+                system.debug(getIntelSupportOwnerByContact_newContIdList);
+                //added Alternate ISO and support org in query by Sugandha
+                getIntelSupportOwnerByContact_ResultList = [select Id,Core_IPS_Intel_Support_Owner__c,Core_IPS_Alternate_Support_Owner__c,Core_IPS_Alternate_Support_Org__c from Contact where id in :contIdSet];
                 getIntelSupportOwnerByContact_oldContIdList.clear();
                 getIntelSupportOwnerByContact_oldContIdList.addAll(contIdSet);
+                system.debug(getIntelSupportOwnerByContact_oldContIdList);                    
             }
         }
         if(getIntelSupportOwnerByContact_ResultList <> null && getIntelSupportOwnerByContact_ResultList.size() > 0){            
@@ -652,11 +644,7 @@ public without sharing class Core_IPS_Helper_Utility {
     ****************************************************************************************************/   
     //remove this also
     public static Id getIntelSupportOwner(Id contId){
-        Contact cont;
-        //FLS check added-Venugopal
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-        	cont = [select Core_IPS_Intel_Support_Owner__c from Contact where id = :contId limit 1];
-        }
+        Contact cont = [select Core_IPS_Intel_Support_Owner__c from Contact where id = :contId limit 1];
         //contList = [select accountId, account.Core_Military_Aerospace_and_Government__c from Contact where id = :contId limit 1];
         if(cont != null && cont.Core_IPS_Intel_Support_Owner__c != null ){
             return cont.Core_IPS_Intel_Support_Owner__c;
@@ -667,6 +655,7 @@ public without sharing class Core_IPS_Helper_Utility {
     //methodName
     public static boolean isHandlerMethodExecutionEnabled(String methodName){
         Core_Trigger_Executions__c triggerExecRecord = Core_Trigger_Executions__c.getValues(methodName);
+        
         if(triggerExecRecord!=null && triggerExecRecord.Core_Active__c){
             return true;
         }else{
@@ -675,11 +664,8 @@ public without sharing class Core_IPS_Helper_Utility {
     }
     
     public static String getIPSLabel(String name){
-        Core_IPS_Labels__c ipsLabel;
-        //Added 
-      // if(Core_IPS_Labels__c.SObjectType.getDescribe().isAccessible()){   
-         ipsLabel = Core_IPS_Labels__c.getValues(name);
-        // }
+        Core_IPS_Labels__c ipsLabel = Core_IPS_Labels__c.getValues(name);
+        
         if(ipsLabel!=null){
             return ipsLabel.Value__c;
         }else{
@@ -700,15 +686,13 @@ public without sharing class Core_IPS_Helper_Utility {
     * ----------------------------------------------------------------------------                 
     * Abhishek Arya              10/29/2015              Created
     ****************************************************************************************************/
-    
     public static Map<Id,Set<Id>> getIPSCustomerUsersByProject(Set<Id> projIdSet){
-    Map<id,Core_IPS_Project__c> IPS_Projects = new Map<id,Core_IPS_Project__c>();
         if(projIdSet <> null && projIdSet.size() > 0){
+            system.debug('@@@@@@@@@'+projIdSet);
             Map<Id,Set<Id>> projIdUserIdsMap = new Map<Id,Set<Id>>();
-            if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-            	IPS_Projects = new Map<id,Core_IPS_Project__c>([select id,(select id,Core_IPS_Contact__c,Core_User__c,core_status__c from Project_Members__r) from Core_IPS_Project__c where id IN:projIdSet]);
-            }
-                if(IPS_Projects <> null && IPS_Projects.size() > 0){
+            Map<id,Core_IPS_Project__c> IPS_Projects = new Map<id,Core_IPS_Project__c>([select id,(select id,Core_IPS_Contact__c,Core_User__c,core_status__c from Project_Members__r) from Core_IPS_Project__c where id IN:projIdSet]);
+            system.debug('@@@@@@@@@'+IPS_Projects);
+            if(IPS_Projects <> null && IPS_Projects.size() > 0){
                 for(Core_IPS_Project__c project: IPS_Projects.values()){
                     Set<id> userIds = new Set<id>();
                     for(Core_IPS_Project_Member__c recIPSmember :project.Project_Members__r){    
@@ -798,9 +782,7 @@ public without sharing class Core_IPS_Helper_Utility {
         List<Case> casesList;
         if(accIdList <> null && accIdList.size() > 0){
             casesList = new List<Case>();
-            if(Case.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-            	casesList = [select Id,AccountId from Case where AccountId in:accIdList];
-            }
+            casesList = [select Id,AccountId from Case where AccountId in:accIdList];
             return casesList;
         }   
         return null;
@@ -809,7 +791,7 @@ public without sharing class Core_IPS_Helper_Utility {
     
     public static List<Case> getNonProjectCasesByAccount(List<Id> accIdList){
         List<Case> casesList;
-        if(accIdList <> null && accIdList.size() > 0 && Case.SObjectType.getDescribe().isAccessible()){ //FLS Check added - Aditya
+        if(accIdList <> null && accIdList.size() > 0){
             casesList = new List<Case>();
             casesList = [select Id,AccountId from Case where AccountId in:accIdList and Core_IPS_Project_Case__c=null];
             return casesList;
@@ -837,9 +819,7 @@ public without sharing class Core_IPS_Helper_Utility {
         List<Case> casesList;
         if(projIdList <> null && projIdList.size() > 0){
             casesList = new List<Case>();
-            if(Case.SObjectType.getDescribe().isAccessible()){
-            	casesList = [select Id,Core_IPS_Project_Case__c from Case where Core_IPS_Project_Case__c in:projIdList];
-            }
+            casesList = [select Id,Core_IPS_Project_Case__c from Case where Core_IPS_Project_Case__c in:projIdList];
             return casesList;
         }   
         return null;
@@ -917,11 +897,7 @@ public without sharing class Core_IPS_Helper_Utility {
 
     public static Map<Id,Set<Id>> shareProjectIdsUserMap(Map<Id,Id> userIdAccountIdMap){        
         Map<id,Set<Id>> projIdUserSetMap;
-        List<Core_IPS_Project_Member__c> cpmList = new List<Core_IPS_Project_Member__c>();
-        //FLS check added-Venugopal
-        if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-        	cpmList = [select id,Core_IPS_Project__c,Core_User__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keyset()];                        
-        }
+        List<Core_IPS_Project_Member__c> cpmList = [select id,Core_IPS_Project__c,Core_User__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keyset()];                        
         if(cpmList <> null && cpmList.size() > 0){            
             projIdUserSetMap = new Map<Id,Set<Id>>();
             for(Core_IPS_Project_Member__c cpmObj:cpmList){
@@ -930,6 +906,7 @@ public without sharing class Core_IPS_Helper_Utility {
                 }
             }
         }                                   
+        system.debug('@@@@!!@@@@@@'+projIdUserSetMap); 
         return projIdUserSetMap;
     }            
     
@@ -950,11 +927,8 @@ public without sharing class Core_IPS_Helper_Utility {
 
     public static Map<Id,Set<Id>> getShareAssetMapByUser(Set<Id> userIdSet){
         List<AssetShare> astShareList = new List<AssetShare>();
-        if(userIdSet <> null && userIdSet.size() > 0){
-            if(AssetShare.SObjectType.getDescribe().isAccessible()){ //FLS Check already added 
-            	astShareList = [Select Id,AssetId,UserOrGroupId from AssetShare where UserOrGroupId in:userIdSet];
-            }
-        }
+        if(userIdSet <> null && userIdSet.size() > 0)
+            astShareList = [Select Id,AssetId,UserOrGroupId from AssetShare where UserOrGroupId in:userIdSet];
         Map<Id,Set<Id>> assetShareMap = new Map<Id,Set<Id>>();
         Set<Id> usrSet;
         if(astShareList <> null && astShareList.size() > 0){            
@@ -990,11 +964,8 @@ public without sharing class Core_IPS_Helper_Utility {
         rowCauseList.add(getIPSLabel('RowCause_Team'));
         rowCauseList.add(getIPSLabel('Rowcause_Owner'));
         List<CaseShare> csShareList = new List<CaseShare>();
-        if(userIdSet <> null && userIdSet.size() > 0){
-            if(CaseShare.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-            	csShareList = [Select Id,CaseId,UserOrGroupId from CaseShare where RowCause NOT IN: rowCauseList AND UserOrGroupId in:userIdSet];
-            }
-        }
+        if(userIdSet <> null && userIdSet.size() > 0)
+            csShareList = [Select Id,CaseId,UserOrGroupId from CaseShare where RowCause NOT IN: rowCauseList AND UserOrGroupId in:userIdSet];
         Map<Id,Set<Id>> caseShareMap = new Map<Id,Set<Id>>();
         Set<Id> usrSet;
         if(csShareList <> null && csShareList.size() > 0){            
@@ -1025,18 +996,13 @@ public without sharing class Core_IPS_Helper_Utility {
     * JRK                        11/19/2015              Created
     ****************************************************************************************************/
     public static List<Id> listOwnerIdQueueMembers(List<Id> POrgOwnerId){
-        List<GroupMember> publicGroupIds = new List<GroupMember>();
-        List<GroupMember> QueueMemberIds = new List<GroupMember>();
-        //if(GroupMember.SObjectType.getDescribe().isAccessible()){ //FLS check Commented
-       		publicGroupIds = [SELECT userOrGroupId FROM GroupMember WHERE groupId IN: POrgOwnerId];
-           // }
+    
+        List<GroupMember> publicGroupIds = [SELECT userOrGroupId FROM groupmember WHERE groupId IN: POrgOwnerId];
         List<Id> groupMemIds = new List<Id>();
         for(GroupMember gm : publicGroupIds){
             groupMemIds.add(gm.userOrGroupId);
         }
-        //if(GroupMember.SObjectType.getDescribe().isAccessible()){ FLS Check Commented - Aditya
-            QueueMemberIds = [SELECT userOrGroupId FROM GroupMember WHERE groupId In: groupMemIds];
-        //}
+        List<groupmember> QueueMemberIds = [SELECT userOrGroupId FROM groupmember WHERE groupId In: groupMemIds];
         List<Id> actQueueMemIds = new List<ID>();
         for(groupmember  gm : queueMemberIds){
             actQueueMemIds.add(gm.userOrGroupId);
@@ -1061,23 +1027,17 @@ public without sharing class Core_IPS_Helper_Utility {
 
     public static Map<Id,Set<Id>> shareAssetMapByProjectMember(Map<Id,Id> userIdAccountIdMap){       
         Map<Id,Set<Id>> assetShareMap = new Map<Id,Set<Id>>();
-        Set<Id> projIdSet;  
-        List<Asset> astList = new List<Asset>();
-        List<Core_IPS_Project_Member__c> cpmList = new List<Core_IPS_Project_Member__c>();
+        Set<Id> projIdSet;        
         if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0){
             projIdSet = new Set<Id>();
-            if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){ //FLS Check already added - Aditya
-               cpmList = [select id,Core_IPS_Project__c,Core_User__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keySet()];                        
-            }
-                if(cpmList <> null && cpmList.size() > 0){
+            List<Core_IPS_Project_Member__c> cpmList = [select id,Core_IPS_Project__c,Core_User__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keySet()];                        
+            if(cpmList <> null && cpmList.size() > 0){
                 for(Core_IPS_Project_Member__c cpmObj:cpmList){                    
                     projIdSet.add(cpmObj.Core_IPS_Project__c);
                 }
             }            
             if(projIdSet <> null && projIdSet.size() > 0){
-                if(Asset.SObjectType.getDescribe().isAccessible()){
-                astList = [Select Id,Core_IPS_Project__c from Asset where Core_IPS_Project__c in:projIdSet];                
-                }
+                List<Asset> astList = [Select Id,Core_IPS_Project__c from Asset where Core_IPS_Project__c in:projIdSet];                
                 if(astList <> null && astList.size() > 0){
                     for(Asset astObj:astList){
                         assetShareMap.put(astObj.Id,userIdAccountIdMap.keyset());
@@ -1108,10 +1068,8 @@ public without sharing class Core_IPS_Helper_Utility {
         List<Asset> astList = new List<Asset>();
         if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0){
             Set<id> userSet;
-            List<Id> assetIdList;
-            if(Asset.SObjectType.getDescribe().isAccessible()){
-                astList = [Select Id,AccountId from Asset where AccountId in:userIdAccountIdMap.values()];  
-            }
+            List<Id> assetIdList;                        
+            astList = [Select Id,AccountId from Asset where AccountId in:userIdAccountIdMap.values()];                
             if(astList <> null && astList.size() > 0){
                 for(Asset astObj:astList){                    
                     assetShareMap.put(astObj.Id,userIdAccountIdMap.keyset());
@@ -1139,16 +1097,11 @@ public without sharing class Core_IPS_Helper_Utility {
     public static void deleteProjectMembers(Map<Id,Id> userIdAccountIdMap){        
         List<Core_IPS_Project_Member__c> cpmList = new List<Core_IPS_Project_Member__c>();
         List<Core_IPS_Project_Member__c> cpmListToUpdate = new List<Core_IPS_Project_Member__c>();
-        if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0 && userIdAccountIdMap.keyset() <> null){
+        if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0 && userIdAccountIdMap.keyset() <> null)
             cpmList = [select id,Core_IPS_Project__c,Core_User__c,Core_Status__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keyset()];                        
-        }
         if(cpmList <> null && cpmList.size() > 0){            
             Core_IPS_Project_Member_Dispatcher.preventDelete = false; 
-            /*US1038641 - 06/23/2021 - Yamini - CRUD Delete Check for security vulnerability --*/
-            if (Core_IPS_Project_Member__c.sObjectType.getDescribe().isDeletable()) {    
-              delete cpmList; 
-            }
-                       
+            delete cpmList;            
         }                                                   
     }
     
@@ -1170,25 +1123,16 @@ public without sharing class Core_IPS_Helper_Utility {
     public static void deactivateProjectMembers(Map<Id,Id> userIdAccountIdMap){        
         List<Core_IPS_Project_Member__c> cpmList = new List<Core_IPS_Project_Member__c>();
         List<Core_IPS_Project_Member__c> cpmListToUpdate = new List<Core_IPS_Project_Member__c>();
-        if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0 && userIdAccountIdMap.keyset() <> null){
-            //FLS-check added -Venugopal
-            if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-            	cpmList = [select id,Core_IPS_Project__c,Core_User__c,Core_Status__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keyset()];                        
-        	}
-        }
+        if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0 && userIdAccountIdMap.keyset() <> null)
+            cpmList = [select id,Core_IPS_Project__c,Core_User__c,Core_Status__c from Core_IPS_Project_Member__c where Core_User__c in:userIdAccountIdMap.keyset()];                        
         if(cpmList <> null && cpmList.size() > 0){                        
             for(Core_IPS_Project_Member__c cpm : cpmList){
-                /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
-               // if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Status__c.isUpdateable()) {
-                    cpm.Core_Status__c = 'Inactive';
-               // }
+                cpm.Core_Status__c = 'Inactive';
                 cpmListToUpdate.add(cpm);
             }
         }
-        //FLS Added as Part of code refactor
-        if(Schema.sObjectType.Core_IPS_Project_Member__c.isUpdateable() && cpmListToUpdate <> null && cpmListToUpdate.size() > 0){
+        if(cpmListToUpdate <> null && cpmListToUpdate.size() > 0){
             update cpmListToUpdate;
-            
         }                                           
     }
     
@@ -1208,22 +1152,22 @@ public without sharing class Core_IPS_Helper_Utility {
     ****************************************************************************************************/    
 
     public static void createProjectMembers(Map<Id,Id> userIdAccountIdMap){        
-            List<Core_IPS_Account__c> projAccounts = new List<Core_IPS_Account__c>();
+            
         if(userIdAccountIdMap <> null && userIdAccountIdMap.size() > 0){
             List<Core_IPS_Project_Member__c> cpmListToCreate = new List<Core_IPS_Project_Member__c>();        
             Map<Id,Id> userIdConIdMap = new Map<Id,Id>();
             Map<Id,Set<Id>> projectsandAccountMap = new Map<Id,Set<Id>>();
+            
             List<User> userList = [select ContactId,Id,AccountId from User where Id in:userIdAccountIdMap.keyset()];            
             if(userList <> null && userList.size() > 0){
                 for(User usrObj:userList){
                     if(usrObj.ContactId <> null)
                         userIdConIdMap.put(usrObj.Id,usrObj.ContactId);
                 }
-            }  
-            if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-                 projAccounts = [Select id, Core_Account__c, Core_IPS_Project__c, Core_Status__c from Core_IPS_Account__c where Core_Account__c IN: userIdAccountIdMap.values() and Core_Members__c ='All'];
-            }
-                if(projAccounts <> null && projAccounts.size()>0){
+            }            
+            
+            List<Core_IPS_Account__c> projAccounts = [Select id, Core_Account__c, Core_IPS_Project__c, Core_Status__c from Core_IPS_Account__c where Core_Account__c IN: userIdAccountIdMap.values() and Core_Members__c ='All'];
+            if(projAccounts <> null && projAccounts.size()>0){
                 Set<Id> projIdSet;
                 Set<Id> accountIdSet = new Set<Id>();
                 for(Core_IPS_Account__c projAcc: projAccounts){                   
@@ -1243,31 +1187,18 @@ public without sharing class Core_IPS_Helper_Utility {
                 if(userIdAccountIdMap.get(userId) <> null && projectsandAccountMap.get(userIdAccountIdMap.get(userId)) <> null){
                     for(Id projId : projectsandAccountMap.get(userIdAccountIdMap.get(userId))){
                         Core_IPS_Project_Member__c prjMem = new Core_IPS_Project_Member__c();
-                       /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
-                        //if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_User__c.isCreateable()) {
-                            prjMem.Core_User__c= userId;
-                        //}
-                        //if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Selective_Member__c.isCreateable()) {
-                            prjMem.Core_Selective_Member__c= false;
-                        //}
-                        //if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Contact__c.isCreateable()) {
-                            prjMem.Core_IPS_Contact__c = userIdConIdMap.get(userId);
-                        //}
-                        
-                       // if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Status__c.isCreateable()) {
-                            prjMem.Core_Status__c= 'Active';
-                      //  }
-                        if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Project__c.isCreateable()) {
-                            prjMem.Core_IPS_Project__c = projId;
-                        }
+                        prjMem.Core_User__c= userId;
+                        prjMem.Core_Selective_Member__c= false;
+                        prjMem.Core_IPS_Contact__c = userIdConIdMap.get(userId);
+                        prjMem.Core_Status__c= 'Active';
+                        prjMem.Core_IPS_Project__c = projId;
                         cpmListToCreate.add(prjMem);
                     }
                 }
             }
             if(cpmListToCreate <> null && cpmListToCreate.size() > 0){
-                if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isCreateable()) {
-                     insert cpmListToCreate;
-                }
+                system.debug('@@@@@create new Project Members@@@@@'+cpmListToCreate);
+                insert cpmListToCreate;
             }
         }                                                                       
     }
@@ -1333,13 +1264,10 @@ public without sharing class Core_IPS_Helper_Utility {
     }
     
     public static Map<Id,Set<id>> getProjectsByAccountId(Set<Id> acctIdSet){
-        List<Core_IPS_Account__c> projAccountList = new List<Core_IPS_Account__c>();
         if(acctIdSet!=null){
             Map<Id,Set<Id>> projectsByAccountId = new Map<Id,Set<Id>>();
-            //FLS-check added -Venugopal
-            if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-            	projAccountList = [select id,Core_Account__c,Core_IPS_Project__c,Core_Status__c from Core_IPS_Account__c where Core_Account__c in :acctIdSet];
-            }
+            
+            List<Core_IPS_Account__c> projAccountList = [select id,Core_Account__c,Core_IPS_Project__c,Core_Status__c from Core_IPS_Account__c where Core_Account__c in :acctIdSet];
             if(projAccountList!=null){
                 for(Id accId:acctIdSet){
                     Set<Id> projIdSet = new Set<Id>();
@@ -1360,13 +1288,9 @@ public without sharing class Core_IPS_Helper_Utility {
     }
     
     public static Map<Id,Set<Id>> getAssetsByAccountId(Set<Id> acctIdSet){
-         List<asset> assetList = new List<asset>();
         if(acctIdSet!=null && acctIdSet.size()>0){
             Map<Id,Set<Id>> assetsByAccount = new Map<Id,Set<Id>>();
-            //FLS check added - Venugopal
-            if(Asset.SObjectType.getDescribe().isAccessible()){
-            assetList = [select id,accountid from Asset where accountId in :acctIdSet];
-            }
+            List<asset> assetList = [select id,accountid from Asset where accountId in :acctIdSet];
             if(assetList!=null && assetList.size()>0){
                 for(Id acctId: acctIdSet){
                     Set<id> assetIdSet = new Set<Id>();
@@ -1387,13 +1311,9 @@ public without sharing class Core_IPS_Helper_Utility {
     }
     
     public static Map<Id,Set<Id>> getAssetsByProjectId(Set<Id> projectIdSet){
-        List<asset> assetList = new List<asset>();
         if(projectIdSet!=null && projectIdSet.size()>0){
             Map<Id,Set<Id>> assetsByProject = new Map<Id,Set<Id>>();
-            //FLS check added - Venugopal
-            if(Asset.SObjectType.getDescribe().isAccessible()){
-            	assetList = [select id,Core_IPS_Project__c from Asset where Core_IPS_Project__c in:projectIdSet];
-            }
+            List<asset> assetList = [select id,Core_IPS_Project__c from Asset where Core_IPS_Project__c in:projectIdSet];
             if(assetList!=null && assetList.size()>0){
                 for(Id projId: projectIdSet){
                     Set<id> assetIdSet = new Set<Id>();
@@ -1414,13 +1334,9 @@ public without sharing class Core_IPS_Helper_Utility {
     }
     
     public static Map<Id,Set<Id>> getPARsByAccountId(Set<Id> accountIdSet){
-        List<Core_IPS_MAP_Account__c> parAccountList = new List<Core_IPS_MAP_Account__c>();
         if(accountIdSet!=null && accountIdSet.size()>0){
             Map<Id,Set<Id>> parsByAccountId = new Map<Id,Set<Id>>();
-            //FLS check added-Venugopal
-            if(Core_IPS_MAP_Account__c.SObjectType.getDescribe().isAccessible()){
-            	parAccountList= [select Core_Account__c,Core_MAP_PAR__c,Core_MAP_PAR__r.RecordTypeId from Core_IPS_MAP_Account__c where Core_Account__c in :accountIdSet];            
-            }
+            List<Core_IPS_MAP_Account__c> parAccountList= [select Core_Account__c,Core_MAP_PAR__c,Core_MAP_PAR__r.RecordTypeId from Core_IPS_MAP_Account__c where Core_Account__c in :accountIdSet];            
             //Map<ID,Schema.RecordTypeInfo> rt_Map = Core_IPS_MAP_PAR__c.sObjectType.getDescribe().getRecordTypeInfosByName();
             if(parAccountList!=null && parAccountList.size()>0){
                 for(Id acctId: accountIdSet){
@@ -1448,11 +1364,8 @@ public without sharing class Core_IPS_Helper_Utility {
     public static Map<Id,Set<Id>> getAccountIdsbyProjectId(Set<Id> projectIdSet){
         if(projectIdSet !=null && projectIdSet.size()>0){
             Map<Id,Set<Id>> accountIdsbyProjectId = new Map<Id,Set<Id>>();
-            List<Core_IPS_Account__c> projAccountList = new List<Core_IPS_Account__c>();
-            if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-                projAccountList = [select Core_Account__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c in :projectIdSet];
-            }
-                if(projAccountList!=null && projAccountList.size()>0){
+            List<Core_IPS_Account__c> projAccountList = [select Core_Account__c,Core_IPS_Project__c from Core_IPS_Account__c where Core_IPS_Project__c in :projectIdSet];
+            if(projAccountList!=null && projAccountList.size()>0){
                 for(Id projId: projectIdSet){
                     Set<id> accountIdSet = new Set<Id>();
                     for(Core_IPS_Account__c acc:projAccountList){
@@ -1495,18 +1408,13 @@ public without sharing class Core_IPS_Helper_Utility {
             //[To get all RecordTypeIds on Case.]
             Map<ID,Schema.RecordTypeInfo> rt_Map = Schema.getGlobalDescribe().get(sObjectName).getDescribe().getRecordTypeInfosById();
             ipsRecords = new List<SObject>();
-            Set<String> recordTypeNameSet = new Set<String>();
-            recordTypeNameSet.addAll(System.Label.Core_IPS_RecordType_Names.split(';'));
             for(SObject rec:records){
-                
-                /*for(String recTypeName:System.Label.Core_IPS_RecordType_Names.split(';')){
+                for(String recTypeName:System.Label.Core_IPS_RecordType_Names.split(';')){
+                   //system.debug('***********'+json.serialize(rec)+rec.get('RecordTypeId')); 
                    if(rt_Map <> null && rec.get('RecordTypeId')<> null && rt_Map.get((ID)rec.get('RecordTypeId'))<>null && rt_Map.get((ID)rec.get('RecordTypeId')).getName() == recTypeName){
                        ipsRecords.add(rec);
                    } 
-                }    */      
-                if(rt_Map <> null && rec.get('RecordTypeId')<> null && rt_Map.get((ID)rec.get('RecordTypeId'))<>null && recordTypeNameSet.contains(rt_Map.get((ID)rec.get('RecordTypeId')).getName())){
-                       ipsRecords.add(rec);
-                   }
+                }                
             }
         }
         

@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>PRM_CommunityAdminEmail__c</field>
-        <value xsi:type="xsd:string">Iot.community@intel.com</value>
+        <value xsi:type="xsd:string">Drew.Poole@intel.com</value>
     </values>
 </CustomMetadata>

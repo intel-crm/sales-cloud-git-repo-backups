@@ -1,9 +1,6 @@
 ({
     //Do Init is called each time the lightning component loads
     doInit: function(component, event, helper) {
-        var width = component.get('v.width');
-        var size = width === 'LARGE' ? 4 : (width === 'MEDIUM' ? 4 : 12);
-        component.set('v._cellSize', size);
     	//this helper method gathers all the required information and formulates the URL parameters
     	helper.getTop3Assists(component, event, helper);
     },

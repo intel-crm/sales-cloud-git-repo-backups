@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>CCD - Thunderbolt</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_003_Thunderbolt</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

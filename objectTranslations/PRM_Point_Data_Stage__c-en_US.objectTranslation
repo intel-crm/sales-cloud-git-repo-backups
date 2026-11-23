@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Point Data Stage</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Points Data Stage</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>PRM_Account_Id_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Available Points --></label>
+        <name>PRM_Available_Points_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Change_Ts --></label>
+        <name>PRM_Change_Ts_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>PRM_End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Expired Points --></label>
+        <name>PRM_Expired_Points_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner ID --></label>
+        <name>PRM_One_Partner_ID_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Earned --></label>
+        <name>PRM_Points_Earned_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Exp. In Current Quarter --></label>
+        <name>PRM_Points_Exp_In_Current_Quarter_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Redeemed --></label>
+        <name>PRM_Points_Redeemed_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Process Date/Time --></label>
+        <name>PRM_Process_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>PRM_Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Hash Id --></label>
+        <name>PRM_hash_id_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- record level hash Id --></label>
+        <name>PRM_record_level_hash_Id_nbr__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

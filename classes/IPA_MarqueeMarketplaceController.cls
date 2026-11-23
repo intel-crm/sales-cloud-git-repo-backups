@@ -8,9 +8,8 @@
 * Raj Yadav                            07/18/2019               Controller for ipaMarqueeMarketplace component.
 ******************************************************************************************************************************************************************************************************/
 public with sharing class IPA_MarqueeMarketplaceController{
- public static void dummyMethod() {}
 
-   /* @AuraEnabled
+    @AuraEnabled
     public static String getBaseUrlForLaunguageCode(String cookieLangCode, String urlLangCode){
 
         List<PMP_Coveo_Intel_Lang_Code_to_URL_Mapping__mdt> baseUrlRecords = new List<PMP_Coveo_Intel_Lang_Code_to_URL_Mapping__mdt>();
@@ -54,9 +53,9 @@ public with sharing class IPA_MarqueeMarketplaceController{
         }
 
         return JSON.serialize(baseUrlRecords);
-    }*/
-//IPA 2.0-US-TWC729-7981 
- /*   @AuraEnabled(cacheable=true)
+    }
+//IPA 2.0- US-TWC729-7981
+   /* @AuraEnabled(cacheable=true)
     public static list<PMP_CallOut_Details__mdt> getCallOutDetails() {
         list<PMP_CallOut_Details__mdt> callOutList = new List<PMP_CallOut_Details__mdt>();
         callOutList = [SELECT DeveloperName, MasterLabel,PMP_CallOut_BearerKey_Txt__c,

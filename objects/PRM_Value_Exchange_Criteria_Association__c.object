@@ -225,7 +225,39 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>value__c</fullName>
+        <externalId>false</externalId>
+        <formula>SUBSTITUTE( PRM_Value_Txt__c , &apos;,&apos;, &apos;&apos;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>value</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Value Exchange Criteria Association</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Value_Exchange_Id__c</columns>
+        <columns>PRM_Value_Txt__c</columns>
+        <columns>PRM_Specialty_Criteria_Id__c</columns>
+        <columns>PRM_Rank_Nbr__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Sales_Criteria</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Value_Txt__c</columns>
+        <columns>PRM_Value_Exchange_Id__c</columns>
+        <columns>PRM_InActive_Ind__c</columns>
+        <columns>PRM_Specialty_Criteria_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Sales Criteria</label>
+    </listViews>
     <nameField>
         <displayFormat>VEC-{000}</displayFormat>
         <label>Value Exchange Criteria Association Name</label>

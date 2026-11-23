@@ -375,7 +375,7 @@ public with sharing class PRM_searchSfdcAccounts {
                         obj3.nonipaPartnerRoleAccsWithCover=att.nonipaPartnerRoleAccsWithCover;
                         obj3.nonIpaAccounts=att.nonIpaAccounts;
                         sortedCIMIDMinScrMap=sortIdBasedOnSortingCriteria(obj3);
-                    	//sortedCIMIDMinScrMap = sortIdBasedOnSortingCriteria(prmAccObj,att.acmMapObj,att.ipaPartnerRoleAccsWithCover,att.ipaPartnerRoleAccs,att.ipaAccounts,att.ipaPartnerRoleAccsWithOutCover,sortedCIMIDMinScrMap,att.nonipaPartnerRoleAccsWithCover,att.nonIpaAccounts);
+                      //sortedCIMIDMinScrMap = sortIdBasedOnSortingCriteria(prmAccObj,att.acmMapObj,att.ipaPartnerRoleAccsWithCover,att.ipaPartnerRoleAccs,att.ipaAccounts,att.ipaPartnerRoleAccsWithOutCover,sortedCIMIDMinScrMap,att.nonipaPartnerRoleAccsWithCover,att.nonIpaAccounts);
                     }
                 }  
             }
@@ -427,8 +427,8 @@ public with sharing class PRM_searchSfdcAccounts {
     
     public static PRM_CIM_Request__mdt cimMdt;
     public static Integer targetLimit(){
-		cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, Score_Bar__c,PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: Label.PRM_Dupe_Scores];
-			return  integer.valueof(cimMdt.PRM_Max_Records__c);
+    cimMdt = [Select Id, MasterLabel,API_Key__c, PRM_Async_Id__c, PRM_Calling_System__c, Score_Bar__c,PRM_Restriction_Level__c, PRM_Max_Records__c, PRM_Max_Score__c, PRM_Min_Score__c from PRM_CIM_Request__mdt where MasterLabel =: Label.PRM_Dupe_Scores];
+      return  integer.valueof(cimMdt.PRM_Max_Records__c);
     }
               
     private static List<PRM_SearchAccounts> getResponseList(Map<Integer,List<PRM_SearchAccounts>> mapObject, Integer criteria){
@@ -555,11 +555,11 @@ public with sharing class PRM_searchSfdcAccounts {
         
         
         //For Empty ACMrecord scenario to put as nonIPA record
- 		map<id, Account> accMap=new Map<id, account>([select Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Covered_Account__c, id from account where id in: setOfAccId]);
+     map<id, Account> accMap=new Map<id, account>([select Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Covered_Account__c, id from account where id in: setOfAccId]);
             Account acc=new Account();
         for(id accId : setOfAccId){
                 if(accMap.containsKey(accId)){
-				 acc = accMap.get(accId);
+         acc = accMap.get(accId);
                 }
             if(!relatedACMMapObj.containsKey(accId)){
                     if(acc!=null){
@@ -570,7 +570,7 @@ public with sharing class PRM_searchSfdcAccounts {
                     }
                 relatedACMMapObj.put(accId, null);
             }
-        	}       
+          }       
          }       
         sortBasedOnIPAandPartnerRoleWrapper obj=new sortBasedOnIPAandPartnerRoleWrapper();
         obj.lstSrcAccount=lstSearchAccountObj;

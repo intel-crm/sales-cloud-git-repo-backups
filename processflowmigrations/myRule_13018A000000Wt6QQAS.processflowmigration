@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_Auto_Approval_Partner_Type_1</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_Auto_Approval_Partner_Type_1-1</destinationFlowVersion>
+    <developerName>myRule_13018A000000Wt6QQAS</developerName>
+    <masterLabel>PRM_Auto_Approval_Partner_Type_1</masterLabel>
+    <migratedCriteriaLabel>Is Record Type Changed ?</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_Auto_Approval_Partner_Type-13</processVersion>
+</ProcessFlowMigration>

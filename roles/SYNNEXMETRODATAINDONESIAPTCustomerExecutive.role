@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>SYNNEX METRODATA INDONESIA, PT Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>SYNNEX METRODATA INDONESIA, PT Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11487672_Aldrian_Susantio</parentRole>
+</Role>

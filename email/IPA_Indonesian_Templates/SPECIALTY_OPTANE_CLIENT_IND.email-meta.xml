@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>Intel® Partner Alliance Intel® Optane™ Technology Client Specialty</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_OPTANE_CLIENT_IND</name>
@@ -24,13 +24,11 @@ Untuk memulai, silakan balas ke ITP-Optane@intel.com dengan informasi berikut:
 
 
 Kontak utama untuk komunikasi Spesialis Teknologi Intel® Optane™
-Nama:
-Email:
+Nama:Email:
 
 
 Untuk materi penjualan dan promosi tambahan
-Alamat Pos Fisik:
-Telepon:
+Alamat Pos Fisik:Telepon:
 
 Manfaat akses
 
@@ -39,14 +37,14 @@ Manfaat akses
 
 Mitra Intel memiliki sejarah inovasi yang panjang, dan bersama Intel® Partner Alliance, kami akan membantu Anda mengakselerasi pengembangan solusi untuk ekonomi yang berpusat pada data. Bersama, kita dapat terhubung, berinovasi, dan berkembang untuk mewujudkan berbagai peluang luar biasa.
 
-Kunjungi https://www.intel.com/content/www/id/id/partner-alliance/help/overview.html untuk mendapat bantuan dan panduan tentang cara mengoptimalkan keanggotaan Anda.
+Kunjungi intel.com/partnerhelp untuk mendapat bantuan dan panduan tentang cara mengoptimalkan keanggotaan Anda.
 
 
 Terima kasih,
 Tim Intel® Partner Alliance Anda
 
 Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privasi | Cookie</textOnly>
     <type>custom</type>

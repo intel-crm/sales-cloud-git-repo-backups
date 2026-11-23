@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>CareerPath</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>CareerPath</value>
+    </caseValues>
+    <fields>
+        <label><!-- destination --></label>
+        <name>Xvoyant__destination__c</name>
+    </fields>
+    <fields>
+        <label><!-- endDate --></label>
+        <name>Xvoyant__endDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- isActive --></label>
+        <name>Xvoyant__isActive__c</name>
+    </fields>
+    <fields>
+        <label><!-- startDate --></label>
+        <name>Xvoyant__startDate__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -5,7 +5,7 @@
     <decisions>
         <name>Core_MDF_Check_if_Allocation_Record_Type_is_NOT_NULL</name>
         <label>Check if Allocation Record Type is NOT NULL</label>
-        <locationX>810</locationX>
+        <locationX>706</locationX>
         <locationY>773</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
@@ -27,7 +27,7 @@
     <decisions>
         <name>Core_MDF_Check_if_vAllocationRTDeveloperName_is_NOT_NULL</name>
         <label>Check if vAllocationRTDeveloperName is NOT NULL</label>
-        <locationX>632</locationX>
+        <locationX>529</locationX>
         <locationY>549</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
@@ -49,7 +49,7 @@
     <decisions>
         <name>Core_MDF_Decrease_Budget</name>
         <label>Decrease  Budget</label>
-        <locationX>1074</locationX>
+        <locationX>971</locationX>
         <locationY>778</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -108,7 +108,7 @@
         <description>To identify whether we are  updated Allocation budget or decrease the Allocation budget</description>
         <name>Core_MDF_Distinguish_between_Increased_budget_or_Decreased_budget</name>
         <label>Distinguish between Increased budget or Decreased budget</label>
-        <locationX>576</locationX>
+        <locationX>473</locationX>
         <locationY>193</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -173,7 +173,7 @@
     <decisions>
         <name>Core_MDF_If_Allocation_Record_present</name>
         <label>If Allocation Record present</label>
-        <locationX>330</locationX>
+        <locationX>227</locationX>
         <locationY>410</locationY>
         <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
         <rules>
@@ -220,14 +220,14 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
         <description>Decreasing allocation amount at the virtual corporation node</description>
         <name>vReduceAllocationAmount</name>
         <dataType>Currency</dataType>
-        <expression>IF(AND(NOT(ISNULL({!vDecreasedBudgetAmount})),{!vDecreasedBudgetAmount}&gt;0,{!sPFARecord.Amount}&gt;={!vDecreasedBudgetAmount}), {!sPFARecord.Amount}-{!vDecreasedBudgetAmount}, {!sPFARecord.Amount})</expression>
+        <expression>{!sPFARecord.Amount}-{!vDecreasedBudgetAmount}</expression>
         <scale>2</scale>
     </formulas>
     <formulas>
         <description>To decrease the budget Amount with specifies a decresed budget Amount</description>
         <name>vReduceBudgetAmount</name>
         <dataType>Currency</dataType>
-        <expression>IF(AND(NOT(ISNULL({!vDecreasedBudgetAmount})),{!vDecreasedBudgetAmount}&gt;0,{!vBudgetAmount}&gt;={!vDecreasedBudgetAmount}), {!vBudgetAmount}-{!vDecreasedBudgetAmount}, {!vBudgetAmount})</expression>
+        <expression>{!vBudgetAmount}-{!vDecreasedBudgetAmount}</expression>
         <scale>2</scale>
     </formulas>
     <interviewLabel>Core_MDF_CreateOrUpdateAllocationRecordWhenBudgetIsReleased {!$Flow.CurrentDateTime}</interviewLabel>
@@ -235,8 +235,8 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
     <loops>
         <name>Core_MDF_LoopThroughPFAList</name>
         <label>LoopThroughPFAList</label>
-        <locationX>334</locationX>
-        <locationY>187</locationY>
+        <locationX>230</locationX>
+        <locationY>186</locationY>
         <assignNextValueToReference>sPFARecord</assignNextValueToReference>
         <collectionReference>sColl_PFAList</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -254,7 +254,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
     <recordCreates>
         <name>Core_MDF_Create_Allocation</name>
         <label>Create Allocation</label>
-        <locationX>980</locationX>
+        <locationX>877</locationX>
         <locationY>601</locationY>
         <assignRecordIdToReference>vAllocationRecordId</assignRecordIdToReference>
         <inputAssignments>
@@ -292,7 +292,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
     <recordCreates>
         <name>Core_MDF_Create_Allocation_with_Decreased_Budget_Amount</name>
         <label>Create Allocation with Decreased Budget Amount</label>
-        <locationX>1192</locationX>
+        <locationX>1089</locationX>
         <locationY>598</locationY>
         <assignRecordIdToReference>vAllocationRecordId</assignRecordIdToReference>
         <connector>
@@ -333,7 +333,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
     <recordLookups>
         <name>Core_MDF_Fetch_RecordType_Id</name>
         <label>Fetch RecordType Id</label>
-        <locationX>642</locationX>
+        <locationX>539</locationX>
         <locationY>771</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -363,7 +363,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
     <recordLookups>
         <name>Core_MDF_Fetch_the_Allocation_RT_Developer_Name</name>
         <label>Fetch the Allocation RT Developer Name</label>
-        <locationX>640</locationX>
+        <locationX>537</locationX>
         <locationY>409</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -371,23 +371,23 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
-            <field>Core_MDF_Channel_Program_txt__c</field>
+            <field>Label</field>
             <operator>EqualTo</operator>
             <value>
                 <elementReference>vProgramName</elementReference>
             </value>
         </filters>
-        <object>Core_MDF_ClaimActAllocRecTypeMapping__mdt</object>
+        <object>Core_MDF_CCP_Record_Types__mdt</object>
         <outputAssignments>
             <assignToReference>vAllocationRTDeveloperName</assignToReference>
-            <field>Core_MDF_Allocation_RecordType_txt__c</field>
+            <field>Core_MDF_Allocation_RT_DeveloperName__c</field>
         </outputAssignments>
     </recordLookups>
     <recordLookups>
         <name>Core_MDF_FetchAllAllocationRecords</name>
         <label>FetchAllAllocationRecords</label>
-        <locationX>156</locationX>
-        <locationY>409</locationY>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Core_MDF_If_Allocation_Record_present</targetReference>
@@ -420,7 +420,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
         <description>Re-Calculating the Budget Amount with a Decreased budget amount  and updating the Allocation amount first</description>
         <name>Core_MDF_DescreaseFirstPFARecordBudget</name>
         <label>DescreaseFirstPFARecordBudget</label>
-        <locationX>813</locationX>
+        <locationX>710</locationX>
         <locationY>258</locationY>
         <connector>
             <targetReference>Core_MDF_Update_Budget_Amount</targetReference>
@@ -445,7 +445,7 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
         <description>Updating Budget &quot;Amount&quot; and making Decreased budget amount value to &quot;0&quot;</description>
         <name>Core_MDF_Update_Budget_Amount</name>
         <label>Update Budget Amount</label>
-        <locationX>1193</locationX>
+        <locationX>1090</locationX>
         <locationY>258</locationY>
         <filterLogic>and</filterLogic>
         <filters>
@@ -473,8 +473,8 @@ vTotalAllocationAmount: Sum of all allocation budget amount</description>
         <description>Increased Allocation &quot;Amount&quot; and Budget &quot;Amount&quot;</description>
         <name>Core_MDF_UpdateFirstPFARecord</name>
         <label>UpdateFirstPFARecord</label>
-        <locationX>829</locationX>
-        <locationY>112</locationY>
+        <locationX>718</locationX>
+        <locationY>126</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>

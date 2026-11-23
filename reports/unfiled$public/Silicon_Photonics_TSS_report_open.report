@@ -66,7 +66,7 @@
     </columns>
     <description>Bengt Nissars report to find open Silicon Photonics opportunities</description>
     <filter>
-        <booleanFilter>(1 OR 2 OR 6 OR 7) AND 3 AND 4 AND 5 AND 8</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 6 OR 7) AND 3 AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -85,8 +85,8 @@
             <column>ACCOUNT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Hamamatsu Photonics</value>
+            <operator>notEqual</operator>
+            <value>HAMAMATSU PHOTONICS</value>
         </criteriaItems>
         <criteriaItems>
             <column>WON</column>
@@ -116,13 +116,6 @@
             <operator>contains</operator>
             <value>SiPh</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>CTT 6QPS</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
@@ -148,7 +141,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>ACCOUNT_NAME</sortColumn>
+    <sortColumn>CLOSE_DATE</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>

@@ -2,11 +2,11 @@
 <CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseValues>
         <plural>false</plural>
-        <value>Deal Win Goal EOLd</value>
+        <value>Deal Win Goal</value>
     </caseValues>
     <caseValues>
         <plural>true</plural>
-        <value>Deal Win Goals EOLd</value>
+        <value>Deal Win Goals</value>
     </caseValues>
     <fields>
         <label><!-- Approved KPI Revenue --></label>
@@ -19,18 +19,6 @@
     <fields>
         <label><!-- Deal Win Goal Id --></label>
         <name>Core_Deal_Win_Goal_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Win Goal Owner Email --></label>
-        <name>Core_Deal_Win_Goal_Owner_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Win Goal Owner Manager Email --></label>
-        <name>Core_Deal_Win_Goal_Owner_Manager_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- Deal Win Goal Owner Manager --></label>
-        <name>Core_Deal_Win_Goal_Owner_Manager__c</name>
     </fields>
     <fields>
         <help><!-- Date the goal was last &apos;Accepted&apos; by the Owner. --></help>
@@ -50,39 +38,51 @@
     <fields>
         <label><!-- Approver --></label>
         <name>Core_Goal_Approver__c</name>
-        <relationshipLabel><!-- Deal Win Goals EOLd (Approver) --></relationshipLabel>
+        <relationshipLabel><!-- Deal Win Goals (Approver) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Select the Tier 1 BU KPI with which the goal is aligned. --></help>
         <label><!-- KPI Name --></label>
         <name>Core_Goal_BU_Focus_Area__c</name>
         <picklistValues>
-            <masterLabel>CCG Commercial Deal Revenue $</masterLabel>
-            <translation><!-- CCG Commercial Deal Revenue $ --></translation>
+            <masterLabel>CCG Public Sector Deal $</masterLabel>
+            <translation><!-- CCG Public Sector Deal $ --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG Strategic Next Gen Design #</masterLabel>
-            <translation><!-- CCG Strategic Next Gen Design # --></translation>
+            <masterLabel>CCG Tiger Lake + Rocket Lake-S Design #</masterLabel>
+            <translation><!-- CCG Tiger Lake + Rocket Lake-S Design # --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CCG vPro Platform Deal Revenue $</masterLabel>
-            <translation><!-- CCG vPro Platform Deal Revenue $ --></translation>
+            <masterLabel>CCG vPro Deal $</masterLabel>
+            <translation><!-- CCG vPro Deal $ --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DC Growth Deal $</masterLabel>
-            <translation><!-- DC Growth Deal $ --></translation>
+            <masterLabel>DCG Adjacencies Deal $</masterLabel>
+            <translation><!-- DCG Adjacencies Deal $ --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DC Strategic Next Gen Design #</masterLabel>
-            <translation><!-- DC Strategic Next Gen Design # --></translation>
+            <masterLabel>DCG Compute Deal $</masterLabel>
+            <translation><!-- DCG Compute Deal $ --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DCAI Compute Deal $</masterLabel>
-            <translation><!-- DCAI Compute Deal $ --></translation>
+            <masterLabel>DCG Strategic Next Gen Design #</masterLabel>
+            <translation><!-- DCG Strategic Next Gen Design # --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NEX Deal (Sell-To) $</masterLabel>
-            <translation><!-- NEX Deal (Sell-To) $ --></translation>
+            <masterLabel>IOTG All Deal $</masterLabel>
+            <translation><!-- IOTG All Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG NAND Datacenter Cloud Deal $</masterLabel>
+            <translation><!-- NSG NAND Datacenter Cloud Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NSG Optane Datacenter Deal $</masterLabel>
+            <translation><!-- NSG Optane Datacenter Deal $ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PSG All Deal $</masterLabel>
+            <translation><!-- PSG All Deal $ --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -116,8 +116,72 @@
         <label><!-- Criteria --></label>
         <name>Core_Goal_Criteria__c</name>
         <picklistValues>
-            <masterLabel>Please refer to https://saleskpi.intel.com/</masterLabel>
-            <translation><!-- Please refer to https://saleskpi.intel.com/ --></translation>
+            <masterLabel>Deal Win # to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</masterLabel>
+            <translation><!-- Deal Win # to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Win $ at end user accounts to ramp and grow Data Center Adjancency Products</masterLabel>
+            <translation><!-- Deal Win $ at end user accounts to ramp and grow Data Center Adjancency Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Win $ to ramp Intel® NAND SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s LRP</masterLabel>
+            <translation><!-- Deal Win $ to ramp Intel® NAND SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s LRP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Win $ to ramp Intel® Optane™ SSD for Client Platform adoption with End Users in support of Intel’s Optane ramp in ’20+. Intel Optane™ memory with SSD is eligible.</masterLabel>
+            <translation><!-- Deal Win $ to ramp Intel® Optane™ SSD for Client Platform adoption with End Users in support of Intel’s Optane ramp in ’20+. Intel Optane™ memory with SSD is eligible. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deal Win $ to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</masterLabel>
+            <translation><!-- Deal Win $ to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive Data Center compute technology with priority workloads and solutions into end user markets.</masterLabel>
+            <translation><!-- Drive Data Center compute technology with priority workloads and solutions into end user markets. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive Deal Wins focused on Application Acceleration.</masterLabel>
+            <translation><!-- Drive Deal Wins focused on Application Acceleration. --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive Public Sector revenue w/wins, win-back, sell-up, refresh.Gov: Ci5+ (vPro under vPro KPI).Edu Big Core: Mature Markets: Ci3+ on Student devices, Ci5+ in Teacher/Computer/eSports labs, Emerging Markets: Ci3+.Edu Small Core: Competitive wins on ICP/IPP</masterLabel>
+            <translation><!-- Drive Public Sector revenue w/wins, win-back, sell-up, refresh.Gov: Ci5+ (vPro under vPro KPI).Edu Big Core: Mature Markets: Ci3+ on Student devices, Ci5+ in Teacher/Computer/eSports labs, Emerging Markets: Ci3+.Edu Small Core: Competitive wins on ICP/IPP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive focused effort within the OXM/CSP account community to ensure a solid portfolio of system/solutions Designs using key products to support future revenue growth.  Includes DCG Platforms and Adjacency products</masterLabel>
+            <translation><!-- Drive focused effort within the OXM/CSP account community to ensure a solid portfolio of system/solutions Designs using key products to support future revenue growth.  Includes DCG Platforms and Adjacency products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive vPro branded revenue w/win-back on vPro, sell-up to vPro, sell-up to Xeon Wkstn, or vPro refresh (i.e. non-vPro to vPro, vPro ci5 to vPro ci7, core to vPro Xeon Wkstn, vPro refresh). Alignment w/SMG BU Segment Director</masterLabel>
+            <translation><!-- Drive vPro branded revenue w/win-back on vPro, sell-up to vPro, sell-up to Xeon Wkstn, or vPro refresh (i.e. non-vPro to vPro, vPro ci5 to vPro ci7, core to vPro Xeon Wkstn, vPro refresh). Alignment w/SMG BU Segment Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Drive vPro differentiation/sell-up/TAM expansion w/vPro Manageability/Security and Unite. Deal size Mins: AMT  500, Unite and Security 50u,  (US/UK/,GER)  30u (ROW).Defer to vPro Manageability/Security &amp; Unite Criteria. Alignment w/SMG BU Segment Director</masterLabel>
+            <translation><!-- Drive vPro differentiation/sell-up/TAM expansion w/vPro Manageability/Security and Unite. Deal size Mins: AMT  500, Unite and Security 50u,  (US/UK/,GER)  30u (ROW).Defer to vPro Manageability/Security &amp; Unite Criteria. Alignment w/SMG BU Segment Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inclusive of all Connected Home products. Must contain &quot;CCG-CHD BU product segment&quot; products</masterLabel>
+            <translation><!-- Inclusive of all Connected Home products. Must contain &quot;CCG-CHD BU product segment&quot; products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Opportunities for TGL UP3/UP4/H notebook design wins or RKL-S desktop design wins</masterLabel>
+            <translation><!-- Opportunities for TGL UP3/UP4/H notebook design wins or RKL-S desktop design wins --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Scale w/defined GTM programs yielding pipeline/sales out/products as a standard offering.Incl. integrated marketing plan/collaterals/training. See criteria for vPro Manageability/Security/Unite/Optane/SMB/Public Sector. Alignment w/SMG BU Segment Director</masterLabel>
+            <translation><!-- Scale w/defined GTM programs yielding pipeline/sales out/products as a standard offering.Incl. integrated marketing plan/collaterals/training. See criteria for vPro Manageability/Security/Unite/Optane/SMB/Public Sector. Alignment w/SMG BU Segment Director --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Test Goal</masterLabel>
+            <translation><!-- Test Goal --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>This is an aggregate of all IOTG Deal Revenue $.  No $ Thresholds per Deal - &quot;a $ is a $&quot;</masterLabel>
+            <translation><!-- This is an aggregate of all IOTG Deal Revenue $.  No $ Thresholds per Deal - &quot;a $ is a $&quot; --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Win claimed at critical steps in a multi-year journey – Step 1) Intel influenced commercial RFP/MOU/LOI (specifying IA), Step 2) Trial Completion. Can claim TW at EACH step.</masterLabel>
+            <translation><!-- Win claimed at critical steps in a multi-year journey – Step 1) Intel influenced commercial RFP/MOU/LOI (specifying IA), Step 2) Trial Completion. Can claim TW at EACH step. --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -208,7 +272,7 @@
         <help><!-- Individual responsible for achieving and receiving credit for the Deal Win Goal (DWG), typically the user who created the DWG. --></help>
         <label><!-- Owner --></label>
         <name>Core_Goal_Owner__c</name>
-        <relationshipLabel><!-- Deal Win Goals EOLd (Owner) --></relationshipLabel>
+        <relationshipLabel><!-- Deal Win Goals (Owner) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- FIELD KEY:  DRAFT: new (can&apos;t submit); ACCEPTED: Manager accepts DWG (can&apos;t submit); APPROVED: Manager has approved DWG (can submit ONLY if Oppty is approved); CANCELLED: DWG has been cancelled (can be put back to Draft status); more at goto/dealwingoals --></help>
@@ -240,30 +304,29 @@
         <name>Core_KPI_Revenue__c</name>
     </fields>
     <fields>
-        <label><!-- Core_MatchOppKPI_2ndPrev_Backend --></label>
-        <name>Core_MatchOppKPI_2ndPrev_Backend__c</name>
-    </fields>
-    <fields>
-        <label><!-- Core_MatchOppKPI_Backend --></label>
-        <name>Core_MatchOppKPI_Backend__c</name>
-    </fields>
-    <fields>
-        <label><!-- Core_MatchOppKPI_Prev_Backend --></label>
-        <name>Core_MatchOppKPI_Prev_Backend__c</name>
-    </fields>
-    <fields>
         <label><!-- Opportunity Name --></label>
         <name>Core_Opportunity__c</name>
-        <relationshipLabel><!-- Deal Win Goals EOLd --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Recall Comments --></label>
-        <name>Core_Recall_Reason__c</name>
+        <relationshipLabel><!-- Deal Win Goals --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Validate KPI Flag --></label>
         <name>Core_Validate_KPI_Flag__c</name>
     </fields>
+    <layouts>
+        <layout>Goal Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunity Information --></label>
+            <section>Opportunity Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Clone --></label>
+        <name>Core_Clone_Lex</name>
+    </quickActions>
     <sharingReasons>
         <label><!-- Core_Deal_Win_Goal --></label>
         <name>Core_Deal_Win_Goal</name>
@@ -280,6 +343,10 @@
     <webLinks>
         <label><!-- Core_Goal_Credit --></label>
         <name>Core_Goal_Credit</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Goal_Recall_Approval --></label>
+        <name>Core_Goal_Recall_Approval</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_Lex_DWG_Sharing --></label>

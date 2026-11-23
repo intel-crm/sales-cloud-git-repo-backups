@@ -24,6 +24,10 @@
                 <field>PRM_Profile_Questions_Id__c</field>
             </layoutItems>
             <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PRM_Question_Display_Text__c</field>
+            </layoutItems>
+            <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_Profile_Answer_Id__c</field>
             </layoutItems>
@@ -32,8 +36,16 @@
                 <field>PRM_InActive_Ind__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Response_Txt__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_Reason_Text__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_ResponseDate__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -77,9 +89,14 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6C000000FGZu</masterLabel>
+        <masterLabel>00h3b00000eyf5L</masterLabel>
         <sizeX>4</sizeX>
-        <sizeY>0</sizeY>
+        <sizeY>1</sizeY>
+        <summaryLayoutItems>
+            <field>PRM_Question_Display_Text__c</field>
+            <posX>1</posX>
+            <posY>0</posY>
+        </summaryLayoutItems>
         <summaryLayoutStyle>Default</summaryLayoutStyle>
     </summaryLayout>
 </Layout>

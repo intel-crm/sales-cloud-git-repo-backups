@@ -4,7 +4,7 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>User.Core_Account_Owner__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -16,9 +16,6 @@
         <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Exclude_From_KPIs__c</field>
     </columns>
@@ -28,6 +25,12 @@
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Architecture_Conversion__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Area__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Type__c</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>
@@ -45,7 +48,7 @@
         <field>CREATED_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
+        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -115,57 +118,40 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Coverage__c</field>
     </columns>
-    <columns>
-        <field>RECORDTYPE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
-        <field>STAGE_NAME</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_CPU_Price__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Quantity__c</field>
-    </columns>
-    <description>capture all design oppty in 2023 and 2024 for CTE PRC</description>
+    <description>capture all design oppty in 2019 for PRC</description>
     <filter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PRC Hosted Sales Group,PRC Partner Led,PRC Sales Group</value>
+            <value>PRC Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>lessOrEqual</operator>
+            <value>12/31/2019</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_KPI_Date__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>1/1/2019</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary,Design: Software-enable</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1/1/2023</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Owner_Manager_Email__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>hong1.zhao@intel.com</value>
+            <value>Design: Original,Design: Secondary</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>CTE design Oppty 2023-2024</name>
+    <name>2019 PRC design Oppty all</name>
     <params>
         <name>terr</name>
         <value>all</value>

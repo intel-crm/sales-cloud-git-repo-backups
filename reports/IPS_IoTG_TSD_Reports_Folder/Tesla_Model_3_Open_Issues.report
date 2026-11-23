@@ -31,13 +31,12 @@
         <field>Case.Core_IPS_Age__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 OR 3 OR 4) AND 2)</booleanFilter>
         <criteriaItems>
             <column>FK_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Model 3</value>
+            <operator>contains</operator>
+            <value>Model</value>
         </criteriaItems>
         <criteriaItems>
             <column>STATUS</column>
@@ -46,24 +45,10 @@
             <operator>notEqual</operator>
             <value>Closed</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>FK_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Model S/X</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Model Y</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Tesla Model 3/S/X/Y Open Issues</name>
+    <name>Tesla Model 3/S/X Open Issues</name>
     <params>
         <name>units</name>
         <value>h</value>

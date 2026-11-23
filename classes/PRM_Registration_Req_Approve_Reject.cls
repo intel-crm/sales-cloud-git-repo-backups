@@ -119,29 +119,19 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
     @AuraEnabled
     public static String validateData(Id regReqId) {
         String responseMessage = 'Success';
-        List<UCD_GenericAcctSearch_SBR.DuplicateRecordWrapper> dupAqrList=new List<UCD_GenericAcctSearch_SBR.DuplicateRecordWrapper>();
         Map<String,Boolean> systemaccountcheck = new Map<String,Boolean>();
-        string countryCode='';
         try {
-            for (PRM_Registration_Request__c regreq : [SELECT Id,PRM_Email_ID__c,PRM_Company_Nm_Eng__c,PRM_Alt_CompanyNameLang__c,
-                                                       PRM_Country__c,PRM_City__c,PRM_State_Province__c, PRM_Address_Line_1__c 
-                                                       from PRM_Registration_Request__c WHERE id = :regReqId]
-            ) {
+            //ATHR Fix - TWC729-9556 - JB
+            /*for (PRM_Registration_Request__c regreq : [SELECT Id,PRM_Email_ID__c from PRM_Registration_Request__c WHERE id = :regReqId])*/
+                PRM_Registration_Request__c regreq = [SELECT Id, PRM_Email_ID__c FROM PRM_Registration_Request__c WHERE Id = :regReqId LIMIT 1];
+            //{
                 systemaccountcheck = PRM_IPA_Utility.systemAccountDetails(new List<String>{regreq.PRM_Email_ID__c});
-                if (systemaccountcheck.containsKey(regreq.PRM_Email_ID__c) && systemaccountcheck.get(regreq.PRM_Email_ID__c)) {
+                //if (systemaccountcheck.containsKey(regreq.PRM_Email_ID__c) && systemaccountcheck.get(regreq.PRM_Email_ID__c)) {
+                    if ( systemaccountcheck.get(regreq.PRM_Email_ID__c)==true) {
                     responseMessage = 'This request cannot be approved as it is associated with a system account';
-                    break;
+                   // break;
                 }
-                countryCode= Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c)!= null ? Core_Country_Code_Mapping__c.getInstance(regreq.PRM_Country__c).ISO_Code__c : null;
-              	system.debug('countryCode');
-                dupAqrList=UCD_GenericAcctSearch_SBR.checkForDuplicates(
-                   		   regreq.PRM_Company_Nm_Eng__c,regreq.PRM_Alt_CompanyNameLang__c,countryCode,
-						   regreq.PRM_Address_Line_1__c,regreq.PRM_City__c,regreq.PRM_State_Province__c);
-				if(!dupAqrList.isEmpty() && dupAqrList.size()>0){
-				responseMessage='Error! An account matching the customer name & address you entered has been found. You can’t submit this new request as it is a duplicate.';
-				break;
-                }
-            }
+            //}
         }catch(exception ex) { throw new AuraHandledException('exceptionText-> ' + ex );
         }
         return responseMessage;
@@ -166,9 +156,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
 
         try {
             Id AccountCreateRT = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByDeveloperName().get('Account_Create_Request').getRecordTypeId();
-
-            workItems = [ SELECT Id, ProcessInstanceId,ActorId FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
-            
+			//ATHR Fix - TWC729-9556 - JB
+            workItems = [ SELECT Id /* ProcessInstanceId,ActorId*/ FROM ProcessInstanceWorkitem WHERE ProcessInstance.TargetObjectId = :regReqId];
             apWrp.workItemId = workItems.isEmpty()? null : workItems[0].Id;
             PRM_Registration_Request__c regRec = [SELECT Id, PRM_Company_Nm_Eng__c, PRM_Alt_CompanyNameLang__c, PRM_Salesforce_ID__c, PRM_Email_ID__c, Geo_Code__c, PRM_Country__c,
             PRM_Matching_Contact__c,PRM_Matching_Contact__r.email,PRM_Matching_Contact__r.AccountId,RecordTypeId, PRM_Channel_Program_Level_txt__c
@@ -192,7 +181,7 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
                 emailDomain = regRec.PRM_Email_ID__c.split('@')[1];
             }
             
-            //@NJ
+            //TWC729-9166: india Registration
              // Retrieve country-level domain bypass configuration from Custom Metadata
             Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
             Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
@@ -382,15 +371,15 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         acr.Core_Alternate_Language_Name__c = regReq.PRM_Account_Name__c;
         acr.Core_Alternate_Name_Language__c = regReq.PRM_Alt_CompanyNameLang__c;
         acr.Requestor_Email__c = loggedInUser.Email;
-        acr.Address__City__s = regReq.PRM_City__c;
+        acr.Standardized_Address_City__c = regReq.PRM_City__c;
         if(country!= null){
-            acr.Address__CountryCode__s = country;
-            acr.Address__StateCode__s = regReq.PRM_State_Province__c;
+            acr.Standardized_Address_Country_Code__c = country;
+            acr.Standardized_Address_State_Code__c = regReq.PRM_State_Province__c;
         }
-        acr.Address__PostalCode__s = regReq.PRM_Zip_Postal_Code__c;
+        acr.Standardized_Address_Postal_Code__c = regReq.PRM_Zip_Postal_Code__c;
         acr.Process_Type__c = 'Partner';
         acr.Requestor_Name__c = loggedInUser.Name;
-        acr.Address__Street__s = regReq.PRM_Address_Line_1__c != null ? regReq.PRM_Address_Line_1__c + (regReq.PRM_Address_Line_2__c!=null ? regReq.PRM_Address_Line_2__c : '') : null;
+        acr.Standardized_Address_Street__c = regReq.PRM_Address_Line_1__c != null ? regReq.PRM_Address_Line_1__c + (regReq.PRM_Address_Line_2__c!=null ? regReq.PRM_Address_Line_2__c : '') : null;
         acr.Global_Account__c = regReq.PRM_Review_Note_txt__c;
         acr.Digital_Identifier_Type__c = 'Website/URL';
         acr.Digital_Identifier_Value__c = regReq.PRM_Account_URL__c;
@@ -491,7 +480,8 @@ public with sharing class PRM_Registration_Req_Approve_Reject{
         CompanyValidationWrap compValidWrap = new CompanyValidationWrap();
         try{
             if (regReqId!=null){
-                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id,PRM_Status__c from PRM_Registration_AI_Agent_Info__c 
+                //ATHR Fix - TWC729-9556 - JB
+                for (PRM_Registration_AI_Agent_Info__c agentInfoRec : [Select id/*PRM_Status__c*/ from PRM_Registration_AI_Agent_Info__c 
                                        where PRM_Registration_Request__c =: regReqId and
                                        PRM_Status__c ='In Progress' limit 1]) {
                     isValidationInProgress = true;

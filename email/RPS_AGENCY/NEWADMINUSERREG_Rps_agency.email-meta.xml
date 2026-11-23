@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>Welcome to Intel Retail Partner Solutions</description>
     <encodingKey>UTF-8</encodingKey>
-    <name>NEWADMINUSERREG_Rps_agency</name>
+    <name>NEWADMINUSERREG</name>
     <style>none</style>
     <subject>Welcome to Intel Retail Partner Solutions</subject>
     <textOnly>Welcome to Intel® Partner Marketing Studio
@@ -12,7 +11,7 @@
 Action Required
 
 
-This notice is to inform you that you have been registered as a representative of  {!Account.Name}  by an Intel Representative.
+This notice is to inform you that you have been registered as a representative of PRM_Registration_Request__c.PRM_Account_Name__c by an Intel Representative.
 
 An account has been generated that will allow you to access the Intel® Partner Marketing Studio web portal at https://marketingstudio.intel.com. Please follow the instructions below to get started.
 
@@ -20,7 +19,7 @@ An account has been generated that will allow you to access the Intel® Partner 
 Please retain this e-mail for future reference.
 
 
-E-mail Address: {!Contact.Email}
+E-mail Address: {!PRM_Registration_Request__c.PRM_Email_ID__c}
 
 Your use of the Intel® Partner Marketing Studio is subject to the terms of your company’s Trademark Licensing Agreement with Intel.
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>This template will be send to Community Admin when the new partner joins community</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Community Request German</name>
+    <style>none</style>
+    <subject>Community-Anfrage von neuen Partnern</subject>
+    <textOnly>Community-Anfrage
+
+
+Sehr geehrte/r {!PRM_Partner_Community_Enrollment_Request__c.PRM_Approver_Id__c},
+
+Name d. Ansprechpartners: {!Contact.Name}
+Kontakt-E-Mail: {!Contact.Email}
+Account-Bezeichnung: {!Account.Name}
+Salesforce-ID: {!Account.Id}
+
+
+
+Melden Sie sich bei Salesforce an, um den Kontakten Zugriff zu gewähren.
+
+Vielen Dank
+Ihr Intel® Partner Alliance Team
+
+Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
+© {!Contact.Core_Current_Year__c} Intel Corporation.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Datenschutz | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -79,7 +79,7 @@ public without sharing class PSS_CustomLabelsForLWC {
         cusLabels.put('activationCallStatusLabel',  System.Label.PSS_Activation_Status);
 		cusLabels.put('activationCallDateLabel',  System.Label.PSS_Activation_Call_Date);
 		cusLabels.put('activationCallDetails',  System.Label.PSS_Activation_Call_Details);
-		//cusLabels.put('activationCallComments',  System.Label.PSS_Activation_Call_Comments);
+		cusLabels.put('activationCallComments',  System.Label.PSS_Activation_Call_Comments);
 		cusLabels.put('ActivationToastTitle',  System.Label.PSS_ActivationToastTitle);
 		cusLabels.put('ActivationToastMessage',  System.Label.PSS_ActivationToastMessage);
         

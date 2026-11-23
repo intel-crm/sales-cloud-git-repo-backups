@@ -26,6 +26,11 @@
         <name>Business_Types_Code__c</name>
     </fields>
     <fields>
+        <help><!-- Filling this field will Automatically create Business Types --></help>
+        <label><!-- Business Types Name --></label>
+        <name>Business_Types_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- AGS Role --></label>
         <name>Core_AGS_Role_Id__c</name>
         <relationshipLabel><!-- Entitlement Details --></relationshipLabel>
@@ -34,52 +39,20 @@
         <label><!-- Category --></label>
         <name>Core_Category__c</name>
         <picklistValues>
-            <masterLabel>CDM (Consumption Data Management)</masterLabel>
-            <translation><!-- CDM (Consumption Data Management) --></translation>
+            <masterLabel>Configure To Order &amp; Configure Price Quote Portals</masterLabel>
+            <translation><!-- Configure To Order &amp; Configure Price Quote Portals --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>CIM-PRIME EOL - New Programs</masterLabel>
-            <translation><!-- CIM-PRIME EOL - New Programs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Configure To Order</masterLabel>
-            <translation><!-- Configure To Order --></translation>
+            <masterLabel>Consolidated Co-marketing Platform</masterLabel>
+            <translation><!-- Consolidated Co-marketing Platform --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Data Center Blocks Configurator</masterLabel>
             <translation><!-- Data Center Blocks Configurator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Design and Technology Content (Resource &amp; Design Center)</masterLabel>
-            <translation><!-- Design and Technology Content (Resource &amp; Design Center) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EPS Verified</masterLabel>
-            <translation><!-- EPS Verified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Developer Cloud Enterprise</masterLabel>
-            <translation><!-- Intel Developer Cloud Enterprise --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel On Demand</masterLabel>
-            <translation><!-- Intel On Demand --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel Partner Alliance (IPA)</masterLabel>
             <translation><!-- Intel Partner Alliance (IPA) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Quote Request</masterLabel>
-            <translation><!-- Intel Quote Request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Partner Investment Center</masterLabel>
-            <translation><!-- Intel® Partner Investment Center --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OLO (Online Label Ordering)</masterLabel>
-            <translation><!-- OLO (Online Label Ordering) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Order Management</masterLabel>
@@ -98,28 +71,12 @@
             <translation><!-- Programmable Solutions Group --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Partner Systems (RPS)</masterLabel>
-            <translation><!-- Retail Partner Systems (RPS) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail partners</masterLabel>
-            <translation><!-- Retail partners --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Return for Credit</masterLabel>
-            <translation><!-- Return for Credit --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Support</masterLabel>
             <translation><!-- Support --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Technical Content &amp; Tools (Intel Developer Zone &amp; Others)</masterLabel>
-            <translation><!-- Technical Content &amp; Tools (Intel Developer Zone &amp; Others) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Test Entitlements - Access and Entitlements</masterLabel>
-            <translation><!-- Test Entitlements - Access and Entitlements --></translation>
+            <masterLabel>Technical Content &amp; Tools (Resource &amp; Design Center and others)</masterLabel>
+            <translation><!-- Technical Content &amp; Tools (Resource &amp; Design Center and others) --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -133,6 +90,11 @@
     <fields>
         <label><!-- ERPM Engagement --></label>
         <name>Core_ERPM_Engagement_Id__c</name>
+        <relationshipLabel><!-- Entitlement Details --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Detail Request --></label>
+        <name>Core_Entitlement_Detail_Request__c</name>
         <relationshipLabel><!-- Entitlement Details --></relationshipLabel>
     </fields>
     <fields>
@@ -156,25 +118,35 @@
         <name>Core_IsActive__c</name>
     </fields>
     <fields>
-        <help><!-- This Permission Set is assigned to the user that gets this Entitlement. Multiple Entitlements can give the same Permission Set. This Permission Set is removed from the user, if the user no longer has any Entitlements tied to this Permission Set. --></help>
         <label><!-- Permission Set API Name --></label>
         <name>Core_Permission_Set_API_Nm__c</name>
     </fields>
     <fields>
-        <help><!-- The User who gets this Entitlement is added to the Public Group. Multiple Entitlements can give membership to the same Public Group. The User is removed from the Public Group, if the user no longer has any Entitlements tied to this Public Group. --></help>
         <label><!-- Public Group API Name --></label>
         <name>Core_Public_Group_API_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Role Operation --></label>
+        <name>Core_Role_Operation__c</name>
+        <picklistValues>
+            <masterLabel>AssignRole</masterLabel>
+            <translation><!-- AssignRole --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RemoveRole</masterLabel>
+            <translation><!-- RemoveRole --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Sub Category --></label>
         <name>Core_Sub_Category__c</name>
         <picklistValues>
-            <masterLabel>Channel MDF</masterLabel>
-            <translation><!-- Channel MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client</masterLabel>
-            <translation><!-- Client --></translation>
+            <masterLabel>Client Co-Marketing Fund (CCF)</masterLabel>
+            <translation><!-- Client Co-Marketing Fund (CCF) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Client Co-Marketing Fund Boost (CCF Boost)</masterLabel>
@@ -185,32 +157,16 @@
             <translation><!-- Cloud Service Provider Benefits --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-GTM</masterLabel>
-            <translation><!-- Co-GTM --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Communities</masterLabel>
             <translation><!-- Communities --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
-            <translation><!-- Datacenter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ecosystem Extension Fund (EEF)</masterLabel>
-            <translation><!-- Ecosystem Extension Fund (EEF) --></translation>
+            <masterLabel>Data Center Co-Marketing Fund (DCF)</masterLabel>
+            <translation><!-- Data Center Co-Marketing Fund (DCF) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>File Transfer</masterLabel>
             <translation><!-- File Transfer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Marketing Development Fund (MDF)</masterLabel>
-            <translation><!-- IPA Marketing Development Fund (MDF) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel On Demand</masterLabel>
-            <translation><!-- Intel On Demand --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partner Portal</masterLabel>
@@ -221,12 +177,12 @@
             <translation><!-- Resource and Design Center with Secure Content Sub2 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Retail Marketing Funds (RMF)</masterLabel>
-            <translation><!-- Retail Marketing Funds (RMF) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Service Provider Co-Marketing Fund (SPCF)</masterLabel>
             <translation><!-- Service Provider Co-Marketing Fund (SPCF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Silicon as a Service (SiaaS)</masterLabel>
+            <translation><!-- Silicon as a Service (SiaaS) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solutions Marketplace</masterLabel>
@@ -250,87 +206,43 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Engagement Code --></label>
+        <label><!-- Visible on Contact UI --></label>
+        <name>Core_Visible_on_Contact_UI__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
         <name>ER_Program__c</name>
         <picklistValues>
             <masterLabel>DZP</masterLabel>
             <translation><!-- DZP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Dev_Cloud_Ent</masterLabel>
-            <translation><!-- Dev_Cloud_Ent --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EPS_Verified_C</masterLabel>
-            <translation><!-- EPS_Verified_C --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ESR</masterLabel>
-            <translation><!-- ESR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBR</masterLabel>
-            <translation><!-- IBR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IIPAM</masterLabel>
-            <translation><!-- IIPAM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPS</masterLabel>
-            <translation><!-- IPS --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IQR</masterLabel>
             <translation><!-- IQR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ISvC_Auth_Cntct</masterLabel>
-            <translation><!-- ISvC_Auth_Cntct --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OnDemand_Rev</masterLabel>
-            <translation><!-- OnDemand_Rev --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PFT</masterLabel>
-            <translation><!-- PFT --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>PSG</masterLabel>
             <translation><!-- PSG --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Registration Automation Features --></label>
+        <name>ER_Registration_Automation_Features__c</name>
         <picklistValues>
-            <masterLabel>PSG_SEP</masterLabel>
-            <translation><!-- PSG_SEP --></translation>
+            <masterLabel>Auto Approval</masterLabel>
+            <translation><!-- Auto Approval --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>QDMS</masterLabel>
-            <translation><!-- QDMS --></translation>
+            <masterLabel>Entitlement Assignment</masterLabel>
+            <translation><!-- Entitlement Assignment --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RPS_Agency</masterLabel>
-            <translation><!-- RPS_Agency --></translation>
+            <masterLabel>Legal Agreements Check</masterLabel>
+            <translation><!-- Legal Agreements Check --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RPS_Retailer</masterLabel>
-            <translation><!-- RPS_Retailer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Siaas_Service</masterLabel>
-            <translation><!-- Siaas_Service --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tend_Mgmt</masterLabel>
-            <translation><!-- Tend_Mgmt --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WOM</masterLabel>
-            <translation><!-- WOM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WebQuote</masterLabel>
-            <translation><!-- WebQuote --></translation>
+            <masterLabel>Profile Responses</masterLabel>
+            <translation><!-- Profile Responses --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -349,5 +261,27 @@
         <label><!-- Entitlement ID (18) --></label>
         <name>Entitlement_ID_18__c</name>
     </fields>
+    <fields>
+        <label><!-- Parent Entitlement Category --></label>
+        <name>Parent_Entitlement_Category__c</name>
+    </fields>
+    <layouts>
+        <layout>Entitlement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>test layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Business Type Name and Business Type Code should not be empty --></errorMessage>
+        <name>Validation_for_BT_Name_and_BT_Code</name>
+    </validationRules>
 </CustomObjectTranslation>

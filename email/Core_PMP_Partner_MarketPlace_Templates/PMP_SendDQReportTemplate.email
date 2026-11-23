@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="DQ Report Generated" recipientType="User" >
+<messaging:htmlEmailBody >
+    
+        <c:PMP_DQReportGenerated />
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

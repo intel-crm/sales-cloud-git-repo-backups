@@ -84,7 +84,7 @@
                         Please use the link and follow the instructions below to complete and submit your {!partnerType} for Intel review and to get it published.<br/><br/>
                         <b>INSTRUCTIONS</b><br/>
                         <ol>
-                         <li>Go to the Showcase&nbsp;<apex:outputLink value="https://www.intel.com/content/www/us/en/partner/showcase/overview.html" styleClass="intelBlue">Home Page</apex:outputLink>.</li>
+                         <li>Go to the Showcase&nbsp;<apex:outputLink value="https://wcm-stg.intel.com/content/www/us/en/partner/showcase/overview.html" styleClass="intelBlue">Home Page</apex:outputLink>.</li>
                          <li>Click on the User Icon to login.</li>
                          <li>Enter email and complete MFA to successfully login.</li>
                          <li>Click on Manage Storefront button.</li>

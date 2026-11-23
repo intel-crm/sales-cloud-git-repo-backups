@@ -1,5 +1,5 @@
 <template>
-    <c-ipa-partner-welcome-mat eyebrow={eyebrow} title={title} description={description}>
+    <c-ipa-partner-welcome-mat eyebrow={eyebrow} title={title} description={description} >
         <div slot="tiles">
             <template for:each={steps} for:item="step">
                 <c-ipa-partner-onboarding-step step={step} key={step.stepKey} onmarkstepcomplete={markStepComplete}></c-ipa-partner-onboarding-step>

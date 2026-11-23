@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Label__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Label</label>
+        <length>200</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Partner_Experience_Localization__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Partner Experience Localization</label>
+        <referenceTo>Partner_Experience_Localization__mdt</referenceTo>
+        <relationshipLabel>Partner Experience Benefit Links</relationshipLabel>
+        <relationshipName>Partner_Experience_Benefit_Links</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>URL</label>
+        <required>false</required>
+        <type>Url</type>
+    </fields>
+    <label>Partner Experience Benefit Link</label>
+    <pluralLabel>Partner Experience Benefit Links</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -20,7 +20,8 @@ public with sharing class PRM_PAGAccountTriggerRollUp {
         Map<String,Set<String>> act3 = new Map<String,Set<String>>();
         Map<String,Set<String>> act4 = new Map<String,Set<String>>();
         Set<Id> ipaAcnts = new Set<Id>();
-        Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
+        //Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
+        Id intelaccountRT = Account.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         List<Account> newAccountsList = new List<Account>();
         newAccountsList = newAccounts != null? newAccounts:newAccountsList;
         Set<String> setOfPagIds = new Set<String>();
@@ -501,8 +502,9 @@ public with sharing class PRM_PAGAccountTriggerRollUp {
         
         if(finalUpdateAccount.size() > 0){
             if(!System.isBatch() && !System.isQueueable() && !System.isFuture()){
-                Schema.SObjectType acc = Schema.Account.getSObjectType();
-                System.enqueueJob(new ContactERPMIntegrationStatusHandler(finalUpdateAccount,acc));
+                //Schema.SObjectType acc = Schema.Account.getSObjectType();
+                //System.enqueueJob(new ContactERPMIntegrationStatusHandler(finalUpdateAccount,acc));
+                System.enqueueJob(new ContactERPMIntegrationStatusHandler(finalUpdateAccount,Account.SobjectType));
             }
             else {
                 update finalUpdateAccount;

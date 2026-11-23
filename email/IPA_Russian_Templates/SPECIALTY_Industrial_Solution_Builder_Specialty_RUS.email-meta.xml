@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_Industrial_Solution_Builder_Specialty_RUS</name>
     <style>none</style>
@@ -24,16 +24,16 @@
 
 Партнеры Intel разрабатывают инновации на протяжении долгого времени. Благодаря Intel® Partner Alliance мы поможем вам ускорить создание решений для экономики, ориентированной на данные. Вместе мы можем сотрудничать, разрабатывать инновации и развиваться, создавая невероятные возможности.
 
-Посетите сайт https://www.intel.com/content/www/ru/ru/partner-alliance/help/overview.html для получения помощи и рекомендаций по оптимизации вашего участия в программе.
+Посетите сайт intel.com/partnerhelp для получения помощи и рекомендаций по оптимизации вашего участия в программе.
 
 
 С уважением,
 Команда Intel® Partner Alliance
 
 Это сообщение было отправлено в качестве важной деловой коммуникации и связано с вашими текущими отношениями с Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© Корпорация Intel, {!Contact.Core_Current_Year__c} г.
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Конфиденциальность | Файлы cookies</textOnly>
+Конфиденциальность | Файлы cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

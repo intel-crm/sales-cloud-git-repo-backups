@@ -88,18 +88,18 @@ public class PRM_OPIDTriggerBatch_Test {
         //Test Data for Tier
         List<ChannelProgramLevel> cplList =new List<ChannelProgramLevel>();
         ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
-        cpl.Name='Member';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         cplList.add(cpl);
         
         ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
-        cpl2.Name='Gold';
+        cpl2.Name='Partner';
         cpl2.ProgramId=cp.Id;
         cplList.add(cpl2);
         
         
         ChannelProgramLevel cpl3=new ChannelProgramLevel(); //Channel Program Level
-        cpl3.Name='Titanium';
+        cpl3.Name='Prestige';
         cpl3.ProgramId=cp.Id;
         cplList.add(cpl3);
         
@@ -112,7 +112,7 @@ public class PRM_OPIDTriggerBatch_Test {
         selectBenefit1.PRM_Access_Level_Nm__c = 'public';
         selectBenefit1.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
         selectBenefit1.PRM_Role_Nm__c = 'Guest';
-        selectBenefit1.PRM_Tier_Nm__c = 'Gold';
+        selectBenefit1.PRM_Tier_Nm__c = 'Partner';
         selectBenefit1.PRM_Start_Date_Dt__c = system.today();
         insert selectBenefit1;
         
@@ -124,7 +124,7 @@ public class PRM_OPIDTriggerBatch_Test {
         specialty1.PRM_Access_Level_Nm__c = 'public';
         specialty1.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
         specialty1.PRM_Role_Nm__c = 'Guest';
-        specialty1.PRM_Tier_Nm__c = 'Gold';
+        specialty1.PRM_Tier_Nm__c = 'Partner';
         specialty1.PRM_Start_Date_Dt__c = system.today();
         insert specialty1;
         PRM_Account_Specialty_Association__c selectBenefitAsa = new PRM_Account_Specialty_Association__c();//asa for select benefit
@@ -797,7 +797,7 @@ public class PRM_OPIDTriggerBatch_Test {
         PRM_OPIDTriggerBatch c = new PRM_OPIDTriggerBatch();
         Database.executeBatch(c);
         Test.stopTest();
-        List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Member' AND PRM_Partner_Role_Nm__c='Solution Integrator' AND PRM_Market_Type_Nm__c='Mature' AND PRM_Recommendation_Type_Nm__c=:PRM_OPIDTriggerBatchUtility.OPID_RECOMMENDATION_TYPE];
+        List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Partner' AND PRM_Partner_Role_Nm__c='Solution Integrator' AND PRM_Market_Type_Nm__c='Mature' AND PRM_Recommendation_Type_Nm__c=:PRM_OPIDTriggerBatchUtility.OPID_RECOMMENDATION_TYPE];
         System.assertEquals(0, vxRecommendationList.size());
         
     }
@@ -807,7 +807,7 @@ public class PRM_OPIDTriggerBatch_Test {
         PRM_OPIDTriggerBatch c = new PRM_OPIDTriggerBatch();
         Database.executeBatch(c);
         Test.stopTest();
-        PRM_Value_Exchange_Recommendation__c vxRecommendation = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Member' AND PRM_Partner_Role_Nm__c='Distributor' AND PRM_Market_Type_Nm__c = 'Emerging' LIMIT 1];
+        PRM_Value_Exchange_Recommendation__c vxRecommendation = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Partner' AND PRM_Partner_Role_Nm__c='Distributor' AND PRM_Market_Type_Nm__c = 'Emerging' LIMIT 1];
         System.assertEquals(null, vxRecommendation.PRM_Recommendation_Type_Nm__c);
         
     }
@@ -826,7 +826,7 @@ public class PRM_OPIDTriggerBatch_Test {
         List<Core_Log_Entry__c> logs = [SELECT Id, Core_Origin__c FROM Core_Log_Entry__c LIMIT 1];
         if (logs.isEmpty()) {
             System.debug('No Core_Log_Entry__c found');
-    } else {
+		} else {
             Core_Log_Entry__c logEntry = logs[0];
         System.assertEquals(PRM_OPIDTriggerBatchUtility.ORIGIN, logEntry.Core_Origin__c);
     }
@@ -839,7 +839,7 @@ public class PRM_OPIDTriggerBatch_Test {
         
         Test.stopTest();
         
-        PRM_Value_Exchange_Recommendation__c vxRecommendation = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Member' And PRM_Partner_Role_Nm__c='Independent Software Vendor' And PRM_Market_Type_Nm__c='NA' LIMIT 1];
+        PRM_Value_Exchange_Recommendation__c vxRecommendation = [Select Id,Name,PRM_Account_Id__c,PRM_Tier_Id__r.Name,PRM_Partner_Role_Nm__c,PRM_Market_Type_Nm__c,PRM_Recommendation_Type_Nm__c FROM PRM_Value_Exchange_Recommendation__c where PRM_Tier_Id__r.Name =:'Partner' And PRM_Partner_Role_Nm__c='Independent Software Vendor' And PRM_Market_Type_Nm__c='NA' LIMIT 1];
         System.assertEquals(null, vxRecommendation.PRM_Recommendation_Type_Nm__c);
         
     }

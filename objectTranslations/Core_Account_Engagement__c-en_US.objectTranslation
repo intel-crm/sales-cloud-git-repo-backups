@@ -29,5 +29,12 @@
         <label><!-- eRPM Id --></label>
         <name>Core_eRPM_Id__c</name>
     </fields>
+    <layouts>
+        <layout>Account Engagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

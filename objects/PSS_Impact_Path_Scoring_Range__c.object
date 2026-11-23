@@ -161,7 +161,7 @@
         <relationshipName>Impact_Path_Scoring_Ranges</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
@@ -170,7 +170,7 @@
         <fullName>PSS_Logical_Operator__c</fullName>
         <label>Logical Operator</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -217,7 +217,7 @@
         <label>Response</label>
         <length>255</length>
         <required>true</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -229,7 +229,7 @@
         <precision>18</precision>
         <required>true</required>
         <scale>0</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -249,7 +249,7 @@
     <nameField>
         <displayFormat>IPS-{0000}</displayFormat>
         <label>Impact Path Scoring Range Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Impact Path Scoring Ranges</pluralLabel>

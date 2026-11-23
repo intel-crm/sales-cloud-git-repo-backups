@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
     </columns>
@@ -49,7 +46,9 @@
     <columns>
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
-    <description>commissionable DWR KPI combined report</description>
+    <columns>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
+    </columns>
     <filter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -93,27 +92,6 @@
             <operator>equals</operator>
             <value>Approved</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>Comm Service Provider (CoSP),Telco/Service Provider,Service Provider</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>excludes</operator>
-            <value>Solution Integration (SI/ITO/bVAR),Independent Software Vendor (ISV),Telco Equipment Manufacturer (TEM)</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Achieved__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -124,7 +102,7 @@
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
+        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -132,7 +110,7 @@
         <field>CUST_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>DCG-Comms-Combo-DWR</name>
+    <name>DCG-Comms-Combo-DWR-proto</name>
     <params>
         <name>terr</name>
         <value>all</value>

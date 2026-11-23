@@ -1,15 +1,14 @@
 <template>
-    <div class="textAlignDesign">
+    <div>
         <a class="IPA_DZS_RDC" onclick={handleDZPClick}>{label.DZPBladeCustomLink}</a>
-        <div class="custom-tooltip" onmouseover={showTooltip} onmouseout={hideTooltip}>
-            <lightning-icon 
-                class="custom-info-icon"
-                icon-name="utility:info" 
-                size="x-small"
-                variant="error">
-            </lightning-icon>
-            <div class={tooltipClass} role="tooltip">{label.DZPCstlinkToolTip}</div>
-        </div>
+        <lightning-icon 
+            class="custom-info-icon"
+            icon-name="utility:info" 
+            size="x-small"
+            variant="error"
+            alternative-text={label.DZPCstlinkToolTip}
+            title={label.DZPCstlinkToolTip}>
+        </lightning-icon>
         <div class="IPA_DZS_RDC_Min">{label.DZPPopUpShortMsg}</div>
     </div>
     <template if:true={showDZPPopup}>

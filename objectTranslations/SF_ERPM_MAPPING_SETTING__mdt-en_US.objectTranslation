@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>SF_ERPM_MAPPING_SETTING</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>SF_ERPM_MAPPING_SETTINGS</value>
+    </caseValues>
+    <fields>
+        <label><!-- Mapping_Type --></label>
+        <name>Mapping_Type__c</name>
+        <picklistValues>
+            <masterLabel>CompanySize</masterLabel>
+            <translation><!-- CompanySize --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Relationships</masterLabel>
+            <translation><!-- Relationships --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- SF-KeyValue --></label>
+        <name>SF_KeyValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- eRPMEngagementCode --></label>
+        <name>eRPMEngagementCode__c</name>
+        <picklistValues>
+            <masterLabel>CSPx2</masterLabel>
+            <translation><!-- CSPx2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA</masterLabel>
+            <translation><!-- ISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP</masterLabel>
+            <translation><!-- ITP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- eRPM-KeyValue --></label>
+        <name>eRPM_KeyValue__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

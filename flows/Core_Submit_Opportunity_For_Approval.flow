@@ -25,7 +25,6 @@
         <locationY>200</locationY>
         <actionName>submit</actionName>
         <actionType>submit</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>objectId</name>
             <value>
@@ -50,13 +49,29 @@
         <inputParameters>
             <name>submitterId</name>
             <value>
-                <elementReference>myVariable_current.Owner.Id</elementReference>
+                <elementReference>myVariable_current.Core_Technical_Owner__r.Id</elementReference>
             </value>
         </inputParameters>
         <nameSegment>submit</nameSegment>
     </actionCalls>
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>myVariable_waitStartTimeAssignment</name>
+        <label>myVariable_waitStartTimeAssignment</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>myVariable_waitStartTimeVariable</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>myDecision</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <processMetadataValues>
             <name>index</name>
@@ -101,7 +116,7 @@
 &amp;&amp;
 {!myVariable_current.Core_Submit_For_Approval__c} = TRUE</expression>
     </formulas>
-    <interviewLabel>Core_Submit_Opportunity_For_Approval-8_InterviewLabel</interviewLabel>
+    <interviewLabel>Core_Submit_Opportunity_For_Approval-7_InterviewLabel</interviewLabel>
     <label>Submit Opportunity For Approval</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -128,8 +143,8 @@
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
-    <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>
@@ -145,5 +160,15 @@
         <isInput>true</isInput>
         <isOutput>false</isOutput>
         <objectType>Opportunity</objectType>
+    </variables>
+    <variables>
+        <name>myVariable_waitStartTimeVariable</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDateTime</elementReference>
+        </value>
     </variables>
 </Flow>

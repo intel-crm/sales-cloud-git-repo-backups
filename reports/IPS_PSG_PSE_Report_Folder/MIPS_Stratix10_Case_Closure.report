@@ -412,6 +412,9 @@
         <field>Case.Core_IPS_Date_Time_Close_Pending__c</field>
     </columns>
     <columns>
+        <field>CLOSED_DATE</field>
+    </columns>
+    <columns>
         <field>Case.Core_IPS_Case_Escalated_Date__c</field>
     </columns>
     <columns>
@@ -481,7 +484,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Month</dateGranularity>
-        <field>CLOSED_DATE</field>
+        <field>CREATED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

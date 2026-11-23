@@ -9,9 +9,15 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Automotive - Other</sourceValue>
+            </sourceValues>
             <value>Auto</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
@@ -30,9 +36,18 @@
             <value>MAG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Building</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home/Bldg</value>
         </values>
     </buckets>
@@ -146,8 +161,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

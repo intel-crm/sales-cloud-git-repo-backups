@@ -26,5 +26,16 @@
         <label><!-- Message Viewed --></label>
         <name>PRM_Message_Viewed_Ind__c</name>
     </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+    </fields>
+    <layouts>
+        <layout>Message log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -17,6 +17,7 @@ export const getMarketplaceBreadcrumbs = async() => {
   
   let response = {};
   let url = window.location.href;
+  console.log('::url1-->' + url);
   url = (url.indexOf("?") !== -1) ? url.split("?")[0] : url;
   console.log('::url::' + url);
 
@@ -24,5 +25,6 @@ export const getMarketplaceBreadcrumbs = async() => {
     response.breadcrumb = result;
     console.log(':::response:::', response);
     return Promise.resolve(response);
+    //return null;
   })
 }

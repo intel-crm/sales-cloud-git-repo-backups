@@ -283,8 +283,8 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>Contact_Email__c</columns>
+        <columns>Email_Domain__c</columns>
+        <columns>Country__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -293,9 +293,8 @@
         <columns>NAME</columns>
         <columns>Account__c</columns>
         <columns>PRM_Contact__c</columns>
-        <columns>PRM_Type__c</columns>
         <columns>PRM_isActive__c</columns>
-        <columns>PRM_Comments__c</columns>
+        <columns>PRM_Type__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
@@ -303,21 +302,25 @@
             <value>PRM_SBC_Account_Search_Configuration__c.PRM_BlockedAccountContacts</value>
         </filters>
         <label>BlockedAccountContacts</label>
+        <sharedTo>
+            <allInternalUsers></allInternalUsers>
+            <group>A_E_Admins</group>
+        </sharedTo>
     </listViews>
     <listViews>
         <fullName>SBC_Accounts</fullName>
         <columns>NAME</columns>
         <columns>Account__c</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>Country__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>Email_Domain__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
             <operation>equals</operation>
-            <value>PRM_SBC_Account_Search_Configuration__c.PRM_SBC_Top_Accounts</value>
+            <value>,PRM_SBC_Account_Search_Configuration__c.PRM_SBC_Top_Accounts</value>
         </filters>
-        <label>SBC_Accounts</label>
+        <label>SBC Account Search Configurations</label>
     </listViews>
     <nameField>
         <displayFormat>ABC-{0000000}</displayFormat>
@@ -567,10 +570,6 @@
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1586,10 +1585,6 @@
             </values>
             <values>
                 <fullName>Cyprus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Czech Republic</fullName>
                 <default>false</default>
             </values>
             <values>

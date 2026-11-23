@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event passes Solution Record ID">
+     <aura:attribute name="solutionID" type="String"/>
+</aura:event>

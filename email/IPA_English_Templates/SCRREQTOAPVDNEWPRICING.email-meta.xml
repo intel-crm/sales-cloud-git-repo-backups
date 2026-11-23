@@ -1,36 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>Intel Quote Request</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEWPRICING</name>
     <style>none</style>
     <subject>Welcome to Intel® Quote Request</subject>
-    <textOnly>Welcome to Intel Quote Request (IQR)
+    <textOnly>Welcome to Intel® Quote Request
 
-A profile has been created for you to use the Intel Quote Request tool to submit
-tender requests to Intel Corporation. Please bookmark
-https://quoterequest.intel.com/
 
+Welcome {!Contact.Core_Login_Id__c}
+
+This notice is to inform you that a profile has been created for you on the Intel Quote Request (IQR) Tool to submit price quote requests to Intel Corporation. You are able to access IQR at {{IQRTOOLLINK}}. Please bookmark this URL.
+
+Please retain this e-mail for future reference.
+
+Login Id: {!Contact.Core_Login_Id__c}
 E-mail Address: {!Contact.Email}
+Intel Business Account Name: {{ACCOUNTNAME}}
 
-Please follow this link to complete your set up.
-
-If you have any questions, refer to the   IQR Help Page. If you feel you have received
-this e-mail in error, please contact us here.
-
+Your password should be protected as confidential. Your use of the password and Intel’s website are governed by Intel’s Terms of Use linked from the bottom of each respective site’s web pages.
 
 Please DO NOT reply to this e-mail message. This is an automated response.
-To ensure that you continue receiving our e-mails, please add us to your address book.
+To ensure that you continue receiving your e-mails, please add us to your address book.
 
-Thank you,
-Your Intel Quote Request team
+Kind Regards,
+Intel® Quote Request Team
 
-Intel is committed to protecting your privacy. For more information,
-please see the Intel Privacy Notice.
-Legal Information | Trademarks © Intel Corporation. All rights reserved.
-*Other names and brands may be claimed as the property of others.
-**Intel is not responsible for content of sites outside our intranet.</textOnly>
+This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

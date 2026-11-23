@@ -11,41 +11,40 @@
                                        });
         });
     }
-   
     </script>
     
     <apex:outputPanel rendered="{!$User.UITheme != 'Theme3'}">
         <apex:slds />
     </apex:outputPanel>
     <apex:form >
-        <apex:sectionHeader title="Descriptive Features Edit" subtitle="{!sOppName}" rendered="{!showPage}"/>
-        <apex:pageMessages id="PageMessageBlock"></apex:pageMessages>
-        <apex:pageBlock rendered="{!showPage}">
-            <br/>
-            <apex:pageBlockSection title="Header" columns="2" collapsible="false" >
-                <apex:repeat value="{!lstPlatformSelectListWrapper}" var="wrap">
-                    <apex:pageblocksectionItem helptext="{!$Label.Core_Intel_Platform_HelpText}" >
-                        {!wrap.sSelectedValue} 
-                        <div id="lightning" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
-                            <script type="text/javascript">
-                            new function() { showHelpText("{!$Label.Core_Intel_Platform_HelpText}","lightning"); };
-                            </script>
-                        </div>
-                        <apex:selectList disabled="true" value="{!wrap.sSelectedValue}" size="1" id="values" >
-                            <apex:selectOptions value="{!wrap.lstPlatformOptions}" />
-                            <apex:actionSupport event="onchange" action="{!Core_GetFeature}" reRender="thePageBlock" status="counterStatus"/>
-                            <apex:actionstatus id="counterStatus">
-                                <apex:facet name="start">
-                                    <img src="/img/loading32.gif" style="position:relative;left:52%;top:3px;height:20px;width:20px;"/>
-                                </apex:facet>
-                            </apex:actionstatus>
-                            
-                        </apex:selectList>
-                    </apex:pageblocksectionItem>
-                </apex:repeat>
-                <!-- START - US103701 User Story:US103701, Added below pageblocksectionitem and selectoption to filter the features based on platform BU Dt:05/07/2018  --> 
-                <apex:pageblocksectionItem helptext="{!$Label.Core_Platform_BU_HelpText}">
-                    {!$Label.Core_Platform_BU}
+    <apex:sectionHeader title="Descriptive Features Edit" subtitle="{!sOppName}"/>
+    <apex:pageMessages id="PageMessageBlock"></apex:pageMessages>
+    <apex:pageBlock >
+    <br/>
+    <apex:pageBlockSection title="Header" columns="2" collapsible="false" >
+        <apex:repeat value="{!lstPlatformSelectListWrapper}" var="wrap">
+            <apex:pageblocksectionItem helptext="{!$Label.Core_Intel_Platform_HelpText}" >
+            {!wrap.sSelectedValue} 
+                <div id="lightning" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
+                    <script type="text/javascript">
+                    new function() { showHelpText("{!$Label.Core_Intel_Platform_HelpText}","lightning"); };
+                    </script>
+                </div>
+                <apex:selectList disabled="true" value="{!wrap.sSelectedValue}" size="1" id="values" >
+                    <apex:selectOptions value="{!wrap.lstPlatformOptions}" />
+                        <apex:actionSupport event="onchange" action="{!Core_GetFeature}" reRender="thePageBlock" status="counterStatus"/>
+                        <apex:actionstatus id="counterStatus">
+            <apex:facet name="start">
+                <img src="/img/loading32.gif" style="position:relative;left:52%;top:3px;height:20px;width:20px;"/>
+            </apex:facet>
+        </apex:actionstatus>
+
+                </apex:selectList>
+            </apex:pageblocksectionItem>
+        </apex:repeat>
+        <!-- START - US103701 User Story:US103701, Added below pageblocksectionitem and selectoption to filter the features based on platform BU Dt:05/07/2018  --> 
+        <apex:pageblocksectionItem helptext="{!$Label.Core_Platform_BU_HelpText}">
+                  {!$Label.Core_Platform_BU}
                     <div id="lightning1" style="{!IF($User.UITheme != 'Theme3', 'display:inline', 'display:none')}">
                         <script type="text/javascript">
                         new function() { showHelpText("{!$Label.Core_Platform_BU_HelpText}","lightning1"); };
@@ -72,13 +71,13 @@
     <apex:pageBlockSection title="Features" id="thePageBlock" collapsible="false" columns="2">
            <apex:repeat value="{!lstSelectListWrapper}" var="wrap">
                     <apex:pageblocksectionItem rendered="{!!wrap.bIsMultiSelect}">
-                        {!wrap.sSelectedValue} 
+                        {!wrap.sSelectedValue}
                         <apex:selectList value="{!wrap.sSelectedValue}" size="1" id="valuess" multiselect="false">
                               <apex:selectOptions value="{!wrap.lstPlatformOptions}" />
                         </apex:selectList>
                       </apex:pageblocksectionItem>
                       <apex:pageblocksectionItem rendered="{!wrap.bIsMultiSelect}">
-                        {!wrap.sSelectedValue} 
+                        {!wrap.sSelectedValue}
                         <c:Core_MultiselectController leftLabel="Available Values"
                             leftOptions="{!wrap.lstPlatformOptions}"
                             rightLabel="Selected Values"
@@ -86,12 +85,8 @@
                             size="4"
                             width="230px"
                             isLightning="{!$User.UITheme != 'Theme3'}" />
-                    </apex:pageblocksectionItem>       	            
+                    </apex:pageblocksectionItem>
                 </apex:repeat>
-        		<apex:pageblocksectionItem rendered="{!selectedPlatformBU='CCG'}"> 
-            		Consumer Sales system <apex:inputText value="{!consumerSales1}" html-autocomplete="off" />
-            	</apex:pageblocksectionItem>  
-
     </apex:pageBlockSection>
     <br/>
     <apex:pageBlockButtons location="Bottom">

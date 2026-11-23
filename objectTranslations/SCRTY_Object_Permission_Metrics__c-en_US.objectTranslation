@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Object Permission Metrics</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Object Permission Metrics</value>
+    </caseValues>
+    <fields>
+        <label><!-- No. Of Users With Create Permission --></label>
+        <name>SCRTY_No_Of_Users_With_Create_Permission__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. Of Users With Delete Perms --></label>
+        <name>SCRTY_No_Of_Users_With_Delete_Perms__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. Of Users With Edit Permission --></label>
+        <name>SCRTY_No_Of_Users_With_Edit_Permission__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. Of Users With ModifyAll Perms --></label>
+        <name>SCRTY_No_Of_Users_With_ModifyAll_Perms__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. Of Users With Read Permission --></label>
+        <name>SCRTY_No_Of_Users_With_Read_Permission__c</name>
+    </fields>
+    <fields>
+        <label><!-- No. Of Users With ViewAll Perms --></label>
+        <name>SCRTY_No_Of_Users_With_ViewAll_Perms__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Xvoyant__daysBetweenStageWRRecalc__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label>Days between Stage Win Rate recalc</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__groupsPerCoachingReportBatch__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of groups per coaching report batch</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__taskLoggingCheckInterval__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of secs for task count checks (0=off)</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__usersPerCoachingReportData__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of users per coaching report data</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__usersPerGroupFrontEnd__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of users in front end sendRequest</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__usersPerReportBatch__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of users per batch in report batches</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Xvoyant__usersPerTaskLogNotificationBatch__c</fullName>
+        <deprecated>false</deprecated>
+        <externalId>false</externalId>
+        <label># of users per batch in task log emails</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>settings_performance</label>
+    <visibility>Public</visibility>
+</CustomObject>

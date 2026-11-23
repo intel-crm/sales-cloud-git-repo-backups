@@ -96,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>eASIC,diamond mesa</value>
+            <value>eASIC</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>

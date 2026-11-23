@@ -829,7 +829,8 @@ false - if profile response is getting created
                     allAccountIds.put(ipaMemAtt.PRM_Account_Id__c,ipaMemAtt);
                 }
                 if(allAccountIds!=null){
-                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c 
+                    //ATHR Fix - TWC729-9556 - JB
+                    for(PRM_AccountChannelMembership__c acmrecord : [SELECT PRM_Account_Id__c/*,PRM_Status_Nm__c ,PRM_Channel_Program_Level_Id__r.name,PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c,PRM_Account_Id__r.Core_IPA_One_Partner_Id__c*/ 
                                                                  from PRM_AccountChannelMembership__c 
                                                                  where PRM_Account_Id__c in:allAccountIds.keySet() and PRM_Status_Nm__c='Approved' and PRM_Account_Id__r.RecordType.DeveloperName ='Core_Partner_Account_Group'
                                                                 ]){
@@ -1014,12 +1015,16 @@ false - if profile response is getting created
         //      Map<id,set<string>> allreponsesLocationLevelMap2 = new Map<id,set<string>>();      
         Set<ID> locAccountIdsOnCag = new Set<ID>();
         
-        String responseQuestions = System.Label.PRM_Response_Questions;
-        Set<String> responseQuestionsIdSet = new Set<String>();
+        //ATHR Fix - TWC729-9556 - JB - start
+        //String responseQuestions = System.Label.PRM_Response_Questions;
+        //Set<String> responseQuestionsIdSet = new Set<String>();
+        Set<String> responseQuestionsIdSet = new Set<String>(System.Label.PRM_Response_Questions.split(';'));
         
-        for(String str: responseQuestions.split(';')){
+        /*for(String str: responseQuestions.split(';')){
             responseQuestionsIdSet.add(str);
-        }
+        }*/
+        //ATHR Fix - TWC729-9556 - JB - end
+        
         for(PRM_Profile_Responses__c newPrRes :  OPIDProfileReponseUpdate )  {
             PRM_Profile_Responses__c oldPrRes ;
             if(oldMap!=null && oldMap.size()>0){

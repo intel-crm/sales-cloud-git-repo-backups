@@ -9,4 +9,27 @@
     <tabs>standard-Workspace</tabs>
     <tabs>standard-ContentSearch</tabs>
     <tabs>standard-ContentSubscriptions</tabs>
+    <tabs>Core_Log_Failed_Callout_Entry__c</tabs>
+    <tabs>Bulk_Data_Upload_Summary__c</tabs>
+    <tabs>Attachment__c</tabs>
+    <tabs>PRM_Notification_Event_Log__c</tabs>
+    <tabs>Core_GA_Banner__c</tabs>
+    <tabs>PRM_Registration_Tracker__c</tabs>
+    <tabs>PRM_IPA_Affiliation__c</tabs>
+    <tabs>PRM_Builder_Strategy__c</tabs>
+    <tabs>PMP_Partner_Tier__c</tabs>
+    <tabs>Problem_Request__c</tabs>
+    <tabs>Problem_Collaborator__c</tabs>
+    <tabs>PRM_Security_Test__c</tabs>
+    <tabs>PRM_Child_Security_Testing__c</tabs>
+    <tabs>PRM_Partner_Report_Matrix__c</tabs>
+    <tabs>Account_Create_Request__c</tabs>
+    <tabs>ER_Customer_Master_File__c</tabs>
+    <tabs>ER_Customer_Master_File_Group__c</tabs>
+    <tabs>ER_CMFGroupAssociation__c</tabs>
+    <tabs>ER_ContactGroupAssociation__c</tabs>
+    <tabs>Core_CustomMetadata_Object__c</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

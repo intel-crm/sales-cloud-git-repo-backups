@@ -1,0 +1,18 @@
+.addbackground {
+  background-color: var(--white);
+  border-color: var(--carbon);
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
+  display: block;
+  border: .01rem solid;
+  position: absolute;
+  z-index: 999;
+}
+
+.relativeposition {
+  position: relative;
+}
+
+.border-radius {
+  border-radius: 0 !important
+}

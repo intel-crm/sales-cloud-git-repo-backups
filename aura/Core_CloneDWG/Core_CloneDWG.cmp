@@ -1,0 +1,6 @@
+<aura:component controller="Core_CloneDWGCtrl" implements="flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="global" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler event="aura:waiting" action="{!c.waiting}"/>
+    
+    <span id="Accspinner" style="display:none;height:250px;width:auto;"><lightning:spinner alternativeText="Loading" size="large"/></span>
+</aura:component>

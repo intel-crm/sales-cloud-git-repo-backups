@@ -1,0 +1,46 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "4ff11706-2c23-4aba-9e0c-9b573649e5a4",
+  "label" : "IPA File Upload",
+  "regions" : [ {
+    "id" : "6fd8a6f4-ab08-481b-85d8-72e13fbcbcc5",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaFileUpload",
+      "id" : "1a02f6d1-3ade-4afb-9c2d-5f6b7d2cec10",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6292d8b5-4c79-4e83-9343-8b15cb445b3b",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "da8db5ba-e180-48cc-af97-649b01aa0379",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "IPA File Upload"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "d78c9291-acc4-4535-bc58-30162244b863",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "496e35e5-ffa2-406e-92d9-19d251b07ff6",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-ipa-file-upload"
+}

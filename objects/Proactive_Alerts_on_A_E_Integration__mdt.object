@@ -32,11 +32,6 @@
                     <default>false</default>
                     <label>ERPM</label>
                 </value>
-                <value>
-                    <fullName>Salesforce</fullName>
-                    <default>false</default>
-                    <label>Salesforce</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

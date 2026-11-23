@@ -487,6 +487,134 @@ Low – regarding a routine issue --></help>
         <name>Core_Support_Owner__c</name>
         <relationshipLabel><!-- Ask a Question (Do Not Use - EOL) --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Core_Support Request Layout (Agent)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Do not include information classified higher than Intel Confidential in request. --></label>
+            <section>Do not include information classified higher than Intel Confidential in request.</section>
+        </sections>
+        <sections>
+            <label><!-- On Hold Information --></label>
+            <section>On Hold Information</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Information --></label>
+            <section>Resolution Information</section>
+        </sections>
+        <sections>
+            <label><!-- Submitter&apos;s Information --></label>
+            <section>Submitter&apos;s Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Agent Information --></label>
+            <section>Support Request Agent Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Information --></label>
+            <section>Support Request Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Support Request Layout (Submitter)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Do not include information classified higher than Intel Confidential in request. --></label>
+            <section>Do not include information classified higher than Intel Confidential in request.</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Information --></label>
+            <section>Resolution Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Information --></label>
+            <section>Support Request Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Support_Request_Layout (IPS Admin)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Do not include information classified higher than Intel Confidential in request. --></label>
+            <section>Do not include information classified higher than Intel Confidential in request.</section>
+        </sections>
+        <sections>
+            <label><!-- On Hold Information --></label>
+            <section>On Hold Information</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Information --></label>
+            <section>Resolution Information</section>
+        </sections>
+        <sections>
+            <label><!-- Submitter&apos;s Information --></label>
+            <section>Submitter&apos;s Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Agent Information --></label>
+            <section>Support Request Agent Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Information --></label>
+            <section>Support Request Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Support_Request_Layout (IPS)</layout>
+        <sections>
+            <label><!-- Admin --></label>
+            <section>Admin</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Do not include information classified higher than Intel Confidential in request. --></label>
+            <section>Do not include information classified higher than Intel Confidential in request.</section>
+        </sections>
+        <sections>
+            <label><!-- On Hold Information --></label>
+            <section>On Hold Information</section>
+        </sections>
+        <sections>
+            <label><!-- Resolution Information --></label>
+            <section>Resolution Information</section>
+        </sections>
+        <sections>
+            <label><!-- Submitter&apos;s Information --></label>
+            <section>Submitter&apos;s Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Agent Information --></label>
+            <section>Support Request Agent Information</section>
+        </sections>
+        <sections>
+            <label><!-- Support Request Information --></label>
+            <section>Support Request Information</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- This is for the IPS functionality used by Agents, Support Org Admins and Field Application Engineers working on Intel Premier Support case management --></description>
         <label><!-- Ask A Question Intel Premier Support --></label>

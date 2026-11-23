@@ -57,7 +57,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>50</value>
+            <value>50.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

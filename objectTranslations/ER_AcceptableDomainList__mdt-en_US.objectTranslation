@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ER_AcceptableDomainList</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ER_AcceptableDomainLists</value>
+    </caseValues>
+    <fields>
+        <label><!-- Country --></label>
+        <name>Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- EmailDomain --></label>
+        <name>EmailDomain__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsInactive --></label>
+        <name>IsInactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsWhitelist --></label>
+        <name>IsWhitelist__c</name>
+    </fields>
+    <fields>
+        <label><!-- ProgramCode --></label>
+        <name>ProgramCode__c</name>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Account</masterLabel>
+            <translation><!-- Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -9,32 +9,12 @@
         <translation>Chiuso</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Declined</masterLabel>
-        <translation>Rifiutata</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Draft</masterLabel>
-        <translation>Bozza</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>In-Progress</masterLabel>
         <translation>In corso</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>In-Progress Pending Approval</masterLabel>
-        <translation>In corso, in attesa di approvazione</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Pending Review</masterLabel>
-        <translation>In corso, revisione in attesa</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>In-Progress Revision Required</masterLabel>
-        <translation>In corso, revisione richiesta</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Pending Approval</masterLabel>
-        <translation>In attesa di approvazione</translation>
+        <translation><!-- Pending Approval --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Pending Review</masterLabel>
@@ -43,6 +23,10 @@
     <valueTranslation>
         <masterLabel>Planned</masterLabel>
         <translation>Pianificato</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Rejected</masterLabel>
+        <translation><!-- Rejected --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Revision Required</masterLabel>

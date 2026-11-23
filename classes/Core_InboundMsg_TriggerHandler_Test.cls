@@ -14,18 +14,10 @@ Modification Log :
 public class Core_InboundMsg_TriggerHandler_Test {
     @testSetup
     public static void setUpData() {
-         Account intelAccount = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_CIM_ID__c='12345',
+         Account intelAccount = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'CCG Sales Group',Core_CIM_ID__c='12345',
                                            Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi',Core_OnePartnerID__c ='12345678',
                                            ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True);
         insert intelAccount;
-        Core_Trigger_Executions__c retryBypass = new Core_Trigger_Executions__c();
-        retryBypass.name='PRM_InboundRetryMechanism';
-        retryBypass.Core_Active__c =true;
-        retryBypass.Core_Class_Name__c='Core_OnePartner_Inbound_Message';
-        retryBypass.Core_Description__c='on inbound trigger for retry mechanism';
-        retryBypass.Core_Object__c='Core_OnePartner_Inbound_Message';
-        retryBypass.Core_Trigger_Events__c='After Update';
-        insert retryBypass;
     }
     @isTest static void testMehod1(){
         

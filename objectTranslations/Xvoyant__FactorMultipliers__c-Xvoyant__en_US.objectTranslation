@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>FactorMultiplier</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>FactorMultipliers</value>
+    </caseValues>
+    <fields>
+        <label><!-- BucketNum --></label>
+        <name>Xvoyant__BucketNum__c</name>
+    </fields>
+    <fields>
+        <label><!-- DateCalculated --></label>
+        <name>Xvoyant__DateCalculated__c</name>
+    </fields>
+    <fields>
+        <label><!-- FactorName --></label>
+        <name>Xvoyant__FactorName__c</name>
+    </fields>
+    <fields>
+        <label><!-- MaxValue --></label>
+        <name>Xvoyant__MaxValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- MinValue --></label>
+        <name>Xvoyant__MinValue__c</name>
+    </fields>
+    <fields>
+        <label><!-- Multiplier --></label>
+        <name>Xvoyant__Multiplier__c</name>
+    </fields>
+    <fields>
+        <label><!-- StageName --></label>
+        <name>Xvoyant__StageName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Weight --></label>
+        <name>Xvoyant__Weight__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

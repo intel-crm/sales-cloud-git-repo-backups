@@ -14,7 +14,7 @@ public class Core_Claim_Lead_Ctrl_Test {
     
     static testMethod void verifyOwnerTest(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'IT Admin'];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -24,10 +24,8 @@ public class Core_Claim_Lead_Ctrl_Test {
         lstLead = Core_Test_Utility.createLead(2);
         for (Lead sobjLead: lstLead) {
             sobjLead.recordtypeId = leadRecType;
-            sobjLead.Status = 'Sales Generated Lead';
+            sobjLead.Status = 'Tele Accepted Lead';
             sobjLead.Core_Lead_Status__c = 'Accepted';
-            sobjLead.Core_Lead_Sub_Status__c = 'Attempting Contact';
-            sobjLead.Core_Lead_State__c = 'In Pursuit';
             sobjLead.Core_Geo__c = '';
             sobjLead.Core_Sub_Geo__c = '';
             sobjLead.Phone = '(555) 555-5555';
@@ -46,15 +44,14 @@ public class Core_Claim_Lead_Ctrl_Test {
             // Insert the intialized Lead
             lstLead[0].OwnerId = lstUser[0].Id;
             insert lstLead[0];
-            lstLead[0].Core_Lead_Sub_Status__c='In Contact';
-            update lstLead[0];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
-            
             lstLead[1].OwnerId = UserInfo.getUserId();
             insert lstLead[1];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
             System.assertEquals('Accepted', lstLead[1].Core_Lead_Status__c);
-
+            User usr = [select Id from User limit 1];
+            lstLead[1].OwnerId = usr.Id;
+            update lstLead[1];
             Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
         }
         
@@ -62,58 +59,7 @@ public class Core_Claim_Lead_Ctrl_Test {
     
     static testMethod void verifyOwnerTest1(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
-        lstUser = Core_Test_Utility.Core_User(1);
-        lstUser[0].Profileid = p1.id;
-        insert lstUser;
-        
-        String leadRecType = Schema.getGlobalDescribe().get('Lead').getDescribe().getRecordTypeInfosByDeveloperName().get('Lead').getRecordTypeId();
-        List<Lead> lstLead = new List<Lead>();
-        lstLead = Core_Test_Utility.createLead(2);
-        for (Lead sobjLead: lstLead) {
-            sobjLead.recordtypeId = leadRecType;
-            sobjLead.Status = 'Marketing Qualified Lead';
-            sobjLead.Core_Lead_Status__c = 'New';
-            sobjLead.Core_Lead_Sub_Status__c = 'Waiting to be Claimed';
-            sobjLead.Core_Lead_State__c = 'Unclaimed';
-            sobjLead.Core_Geo__c = '';
-            sobjLead.Core_Sub_Geo__c = '';
-            sobjLead.Phone = '(555) 555-5555';
-            sobjLead.Title = '(555) 555-5555';
-            sobjLead.Core_Current_Architecture__c = '(555) 555-5555';
-            sobjLead.Core_Job_Function__c = '(555) 555-5555';
-            sobjLead.Core_Product_Interest__c = '(555) 555-5555';
-            sobjLead.Core_Project_Phase__c = '(555) 555-5555';
-            sobjLead.Core_Project_Size__c = '555';
-            sobjLead.Core_Project_Timeframe__c = '555';
-            sobjLead.Core_Sales_Segment__c = '555';
-            sobjLead.PostalCode = '560035';
-        }
-        
-        System.runAs(lstUser[0]) {
-            // Insert the intialized Lead
-            lstLead[0].OwnerId = lstUser[0].Id;
-            insert lstLead[0];
-            Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
-            lstLead[0].Core_Lead_Status__c = 'Qualified';
-            lstLead[0].Core_Lead_Sub_Status__c = 'In Contact';
-            update lstLead[0];
-            Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
-            
-            lstLead[1].OwnerId = UserInfo.getUserId();
-            insert lstLead[1];
-            Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
-            System.assertEquals('New', lstLead[1].Core_Lead_Status__c);
-
-            Core_Claim_Lead_Ctrl.verifyOwner(lstLead[1].Id);
-        }
-        
-    }
-    
-    
-    static testMethod void verifyOwnerTest2(){
-        List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'IT Admin'];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -178,9 +124,9 @@ public class Core_Claim_Lead_Ctrl_Test {
         //update lstLead[0];
         //Core_Claim_Lead_Ctrl.verifyOwner(lstLead[0].Id);
     }
-    static testMethod void verifyOwnerTest3(){
+    static testMethod void verifyOwnerTest2(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'IT Admin'];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -244,9 +190,9 @@ public class Core_Claim_Lead_Ctrl_Test {
         
     }
     
-    static testMethod void verifyOwnerTest4(){
+    static testMethod void verifyOwnerTest3(){
         List<User> lstUser = new List<User>();
-        Profile p1 = [SELECT Id FROM Profile WHERE Name = : 'System Administrator'];
+        Profile p1 = [SELECT Id FROM Profile WHERE Name = : System.label.Core_StandardUser];
         lstUser = Core_Test_Utility.Core_User(1);
         lstUser[0].Profileid = p1.id;
         insert lstUser;
@@ -279,7 +225,7 @@ public class Core_Claim_Lead_Ctrl_Test {
         sobjLead.recordtypeId = leadRecType;
         sobjLead.Status = 'PRL';
         sobjLead.Core_Lead_Status__c = 'New';
-        //sobjLead.Core_Lead_State__c = 'Unclaimed';
+        sobjLead.Core_Lead_State__c = 'Unclaimed';
         sobjLead.Core_Geo__c = '';
         sobjLead.Core_Sub_Geo__c = '';
         sobjLead.Phone = '(555) 555-5555';
@@ -314,5 +260,4 @@ public class Core_Claim_Lead_Ctrl_Test {
         
         
     }
-    
 }

@@ -8,18 +8,18 @@
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H0UR</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsun</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">DCF User</value>
+        <value xsi:type="xsd:string">Partner Admin</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3fh</value>
+        <value xsi:type="xsd:string">a2W8A000003HqWc</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">DCF Special Reports Viewer</value>
+        <value xsi:type="xsd:string">Points View</value>
     </values>
 </CustomMetadata>

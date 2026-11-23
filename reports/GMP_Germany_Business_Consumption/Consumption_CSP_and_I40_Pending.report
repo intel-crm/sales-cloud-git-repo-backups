@@ -33,7 +33,7 @@
         <field>PRODUCT_PRICE</field>
     </columns>
     <filter>
-        <booleanFilter>(1 AND (2 OR 3) AND 4) AND 5</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3) AND 4 AND 5</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -63,11 +63,11 @@
             <value>Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
+            <column>WON</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Pending,On Hold,Win Submitted</value>
+            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

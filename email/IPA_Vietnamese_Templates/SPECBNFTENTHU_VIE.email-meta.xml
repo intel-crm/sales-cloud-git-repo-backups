@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECBNFTENTHU_VIE</name>
     <style>none</style>
@@ -23,17 +23,15 @@ Các hội thảo kĩ thuật qua web với Chuyên gia Intel
 Các gói phần mềm và chơi game đẳng cấp thế giới
 Nhận vé tham dự sự kiện thể thao điện tử tại địa phương
 
-Để bắt đầu, vui lòng gửi các thông tin sau đến enthusiast-pc@intel.com:
+Để bắt đầu, vui lòng gửi các thông tin sau đến ITP-Cloud@intel.com:
 
 
 Người liên hệ chính nhận thông tin về Chuyên gia Máy tính chuyên dụng
-Tên:
-Email:
+Tên:Email:
 
 
 Để nhận thêm các tài liệu bán hàng và khuyến mãi
-Địa chỉ nhận thư:
-Điện thoại:
+Địa chỉ nhận thư:Điện thoại:
 
 Lợi ích tiếp cận
 
@@ -42,14 +40,14 @@ Lợi ích tiếp cận
 
 Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
 
-Truy cập https://www.intel.com/content/www/vn/vi/partner-alliance/help/overview.html để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
+Truy cập intel.com/partnerhelp để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
 
 
 Xin cám ơn bạn!
 Nhóm Liên minh Đối tác Intel® của bạn
 
 Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Quyền riêng tư | Cookies</textOnly>
     <type>custom</type>

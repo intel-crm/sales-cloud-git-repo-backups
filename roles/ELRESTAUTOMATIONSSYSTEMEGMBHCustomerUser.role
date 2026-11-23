@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>ELREST AUTOMATIONSSYSTEME GMBH Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>ELRESTAUTOMATIONSSYSTEMEGMBHCustomerManager</parentRole>
 </Role>

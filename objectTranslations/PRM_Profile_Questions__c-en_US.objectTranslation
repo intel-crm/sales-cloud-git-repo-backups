@@ -166,6 +166,13 @@
             <translation><!-- Textarea --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Profile Questions Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

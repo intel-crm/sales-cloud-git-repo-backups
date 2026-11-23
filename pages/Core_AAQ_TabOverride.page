@@ -24,7 +24,7 @@
             <tr><td>
                 <a href="{!profiles.Core_Profile_Url__c}" target="_blank" id="{!profiles.Name}">
                     <!-- Image size previously  220 X 150 <H1>{!profiles.Name}</H1><br/>-->
-                    <apex:image url="{!URLFOR($Resource.Core_AAQImage, profiles.Core_Profile_Image__c)}" width="195 " height="45" /></a> </td><td style="vertical-align: middle;padding-left:30px;padding-top:15px;font-size:15px;text-align: justify;"><apex:outputText value="{!JSENCODE(profiles.Core_Description__c)}{!JSENCODE(profiles.Core_Description2__c)}" escape="false"/></td></tr>
+                    <apex:image url="{!URLFOR($Resource.Core_AAQImage, profiles.Core_Profile_Image__c)}" width="195 " height="45" /></a> </td><td style="vertical-align: middle;padding-left:30px;padding-top:15px;font-size:15px;text-align: justify;"><apex:outputText value="{!profiles.Core_Description__c}{!profiles.Core_Description2__c}" escape="false"/></td></tr>
         </apex:repeat>
     </table> 
          <script type="text/javascript">

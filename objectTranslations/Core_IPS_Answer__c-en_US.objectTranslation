@@ -42,6 +42,13 @@
             <translation><!-- Inactive --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Core Answer Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Environment Detail Questions that are Text can only have 1 Answer defined. --></errorMessage>
@@ -54,9 +61,5 @@
     <webLinks>
         <label><!-- Manage_Dependent_Answers --></label>
         <name>Manage_Dependent_Answers</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Manage_Dependent_Answers_LEX --></label>
-        <name>Manage_Dependent_Answers_LEX</name>
     </webLinks>
 </CustomObjectTranslation>

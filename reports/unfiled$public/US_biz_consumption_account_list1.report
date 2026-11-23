@@ -38,6 +38,13 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Allison Gordon,Aaron Cook,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker,Mushahwar,Christopher Haynes,Tim Wood</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -54,7 +61,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>US Sales Account List</name>
+    <name>US biz consumption account list</name>
     <params>
         <name>co</name>
         <value>1</value>

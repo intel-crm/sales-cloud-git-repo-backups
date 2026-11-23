@@ -166,78 +166,14 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_ClaimBatch_Status_Nm__c</fullName>
-        <defaultValue>&quot;Submitted&quot;</defaultValue>
-        <description>This will show the status of claim batch based on the claim batch record status.</description>
-        <label>Claim Batch Status</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Submitted</fullName>
-                    <default>false</default>
-                    <label>Submitted</label>
-                </value>
-                <value>
-                    <fullName>Successful</fullName>
-                    <default>false</default>
-                    <label>Successful</label>
-                </value>
-                <value>
-                    <fullName>Failed</fullName>
-                    <default>false</default>
-                    <label>Failed</label>
-                </value>
-                <value>
-                    <fullName>Pending Documents</fullName>
-                    <default>false</default>
-                    <label>Pending Documents</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Claim_Batch_Status_Nm__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(Core_MDF_Claim_Count_InProgress_Cnt__c &gt; 0, $Label.Core_MDF_In_Progress_Status, 
-IF(AND(Core_MDF_Claim_Fail_Cnt__c==0, Core_MDF_Claim_Total_Cnt__c &gt; 0),
-$Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</formula>
+        <formula>IF(Core_MDF_Claim_Fail_Cnt__c==0,$Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed)</formula>
         <label>Claim Batch Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Claim_Count_InProgress_Cnt__c</fullName>
-        <description>Roll up summary field to hold the number of claim that are Submitted</description>
-        <label>Claim Count (Submitted)</label>
-        <summaryFilterItems>
-            <field>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Processing_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Submitted</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Claim_Count_Pending_Document__c</fullName>
-        <label>Claim Count (Pending Documents)</label>
-        <summaryFilterItems>
-            <field>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Processing_Status_Nm__c</field>
-            <operation>equals</operation>
-            <value>Pending Documents</value>
-        </summaryFilterItems>
-        <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
-        <summaryOperation>count</summaryOperation>
-        <trackTrending>false</trackTrending>
-        <type>Summary</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Claim_Fail_Cnt__c</fullName>
@@ -267,79 +203,16 @@ $Label.Core_MDF_Claim_Batch_Successful,$Label.Core_MDF_Claim_Batch_Failed))</for
     </fields>
     <fields>
         <fullName>Core_MDF_Claim_Total_Cnt__c</fullName>
-        <description>It will show the total number of claim batch records associated with claim batch.</description>
         <label>Claim Count (Total)</label>
         <summaryFilterItems>
             <field>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Processing_Status_Nm__c</field>
             <operation>contains</operation>
-            <value>Successful, Failed, Submitted, Pending Documents</value>
+            <value>Successful, Failed</value>
         </summaryFilterItems>
         <summaryForeignKey>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Batch_ID__c</summaryForeignKey>
         <summaryOperation>count</summaryOperation>
         <trackTrending>false</trackTrending>
         <type>Summary</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_CreatedBy_Nm__c</fullName>
-        <description>Shows the name for external user if created by is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF (
-ISPICKVAL(CreatedBy.Profile.UserType,&apos;PowerPartner&apos;),
-
-IF( ISPICKVAL($Profile.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; &apos;s/profile/&apos; &amp; CreatedById ,CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName , &apos;_blank&apos;),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; CreatedById ,CreatedBy.FirstName &amp; &apos; &apos; &amp; CreatedBy.LastName , &apos;_blank&apos;)),
-
-$Label.Core_MDF_Intel_System_User
-
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Created By</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Last_ModifiedBy_Nm__c</fullName>
-        <description>Shows the name for external user if last modified by is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF (
-ISPICKVAL(LastModifiedBy.Profile.UserType,&apos;PowerPartner&apos;),
-
-IF( ISPICKVAL($Profile.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; &apos;s/profile/&apos; &amp; LastModifiedById ,LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName , &apos;_blank&apos;),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; LastModifiedById ,LastModifiedBy.FirstName &amp; &apos; &apos; &amp; LastModifiedBy.LastName , &apos;_blank&apos;)),
-
-$Label.Core_MDF_Intel_System_User
-
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Last Modified By</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Owner_Nm__c</fullName>
-        <description>Shows the name for external user if Owner is external otherwise Intel System User</description>
-        <externalId>false</externalId>
-        <formula>IF (
-ISPICKVAL( Owner:User.Profile.UserType ,&apos;PowerPartner&apos;),
-
-IF( ISPICKVAL($Profile.UserType,&apos;PowerPartner&apos;),
-HYPERLINK($Label.Core_MDF_PFRCommunityLink &amp; &apos;s/profile/&apos; &amp; OwnerId , Owner:User.FirstName &amp; &apos; &apos; &amp; Owner:User.LastName , &apos;_blank&apos;),
-HYPERLINK($Label.Core_MDF_PFRDetailLink &amp; OwnerId, Owner:User.FirstName &amp; &apos; &apos; &amp; Owner:User.LastName , &apos;_blank&apos;)),
-
-$Label.Core_MDF_Intel_System_User
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Owner</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Program_Id__c</fullName>
@@ -352,20 +225,13 @@ $Label.Core_MDF_Intel_System_User
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Core_MDF_Send_Email__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Send Email</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <label>Claim Batch</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Program_Id__c</columns>
-        <columns>Core_MDF_ClaimBatch_Status_Nm__c</columns>
-        <columns>Core_MDF_CreatedBy_Nm__c</columns>
+        <columns>Core_MDF_Claim_Batch_Status_Nm__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
@@ -375,14 +241,14 @@ $Label.Core_MDF_Intel_System_User
         <fullName>Core_MDF_Claim_Batches_Failed</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Program_Id__c</columns>
-        <columns>Core_MDF_ClaimBatch_Status_Nm__c</columns>
+        <columns>Core_MDF_Claim_Batch_Status_Nm__c</columns>
         <columns>Core_MDF_Claim_Total_Cnt__c</columns>
         <columns>Core_MDF_Claim_Fail_Cnt__c</columns>
-        <columns>Core_MDF_CreatedBy_Nm__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_ClaimBatch_Status_Nm__c</field>
+            <field>Core_MDF_Claim_Batch_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Failed</value>
         </filters>
@@ -392,14 +258,14 @@ $Label.Core_MDF_Intel_System_User
         <fullName>Core_MDF_Claim_Batches_Successful</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Program_Id__c</columns>
-        <columns>Core_MDF_ClaimBatch_Status_Nm__c</columns>
+        <columns>Core_MDF_Claim_Batch_Status_Nm__c</columns>
         <columns>Core_MDF_Claim_Total_Cnt__c</columns>
         <columns>Core_MDF_Claim_Pass_Cnt__c</columns>
-        <columns>Core_MDF_CreatedBy_Nm__c</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>CREATED_DATE</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_ClaimBatch_Status_Nm__c</field>
+            <field>Core_MDF_Claim_Batch_Status_Nm__c</field>
             <operation>equals</operation>
             <value>Successful</value>
         </filters>
@@ -426,7 +292,7 @@ $Label.Core_MDF_Intel_System_User
         <lookupPhoneDialogsAdditionalFields>CREATEDBY_USER</lookupPhoneDialogsAdditionalFields>
         <lookupPhoneDialogsAdditionalFields>CREATED_DATE</lookupPhoneDialogsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Program_Id__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_ClaimBatch_Status_Nm__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Claim_Batch_Status_Nm__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATEDBY_USER</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>CREATED_DATE</searchResultsAdditionalFields>
     </searchLayouts>

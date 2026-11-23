@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
-        <field>COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>Lead.Core_Lead_Conversion_Point__c</field>
     </columns>
     <columns>
@@ -19,6 +13,10 @@
         <field>Lead.Core_Exit_Date_SAL__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Age_of_Lead__c</field>
+    </columns>
+    <columns>
         <field>Lead.Core_Lead_Status__c</field>
     </columns>
     <columns>
@@ -28,28 +26,31 @@
         <field>Lead.Core_Lead_State__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>Lead.Core_Lead_Time_MQL_to_SAL__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>Lead.Core_Lead_Time_SAL_to_SQL__c</field>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Lead.Core_SQL_Count__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>CONVERTED</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.Core_SQL_Count__c</field>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Days_in_MAQL__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Lead.SWS_Software_Lead__c</field>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Days_in_TAL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Days_in_TQL__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Average</aggregateTypes>
+        <field>Lead.Core_Days_in_SAL__c</field>
     </columns>
     <description>RT: Leads</description>
     <filter>
-        <booleanFilter>(2 OR 5) AND 1 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -61,25 +62,11 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Eloqua</value>
+            <operator>equals</operator>
+            <value>User Eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>CONVERTED</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.Core_SQL_Count__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>greaterOrEqual</operator>
-            <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Lead.SWS_Software_Lead__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -90,7 +77,17 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
+        <field>STATUS</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
         <field>LEAD_SOURCE</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>COUNTRY_CODE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Conversion of Leads Days by Stage</name>
@@ -103,6 +100,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Lead.Core_Days_in_SAL__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_PREVCUR2Y</interval>

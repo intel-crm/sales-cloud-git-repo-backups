@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <!-- Configuring the design attributes --><targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="dynamicMarquee" type="Boolean" default="false" label="Set marquee dynamically?"/>
+            <property name="marqueeDataSource" type="String" default="Design Attributes" label="Set marquee dynamically?" datasource="Design Attributes, Application State,  Benefit Service"/>
+            <property name="title" type="String" default="Lorem Ipsum Title" label="Title"/>
+            <property name="subtitle" type="String" default="Lorem Ipsum Subtitle" label="Subtitle"/>
+            <property name="description" type="String" default="" label="Description"/>
+            <property name="ctaLabel" type="String" default="Intel Home" label="CTA Label"/>
+            <property name="ctaExternalUrl" type="String" default="www.intel.com" label="CTA External Url"/>
+            <property name="showCaret" type="Boolean" default="false" label="Show Caret Icon?"/>
+            <property name="ctaCommPage" type="String" default="" label="CTA Community Page (API name)"/>
+            <property name="showSignIn" type="Boolean" default="false" label="Show sign in details?"/>
+            <property name="showSearch" type="Boolean" default="false" label="Show search?"/>
+            <property name="alignment" type="String" label="Select content alignment" datasource="Left, Center"/>
+            <property name="layout" type="String" label="Select Layout" default="Single" datasource="Single, RightPanelLinks"/>
+            <property name="rightButtonLabel" type="String" default="" label="Right Panel Button Label"/>
+            <property name="rightButtonExternalUrl" type="String" default="" label="Right Panel Button External Url"/>
+            <property name="rightButtonCommPage" type="String" default="" label="Right Panel Button Community Page (API name)"/>
+            <property name="rightCta1Label" type="String" default="" label="Right Panel CTA1 Label"/>
+            <property name="rightCta1ExternalUrl" type="String" default="" label="Right Panel CTA1 External Url"/>
+            <property name="rightCta1CommPage" type="String" default="" label="Right Panel CTA1 Community Page (API name)"/>
+            <property name="rightCta2Label" type="String" default="" label="Right Panel CTA2 Label"/>
+            <property name="rightCta2ExternalUrl" type="String" default="" label="Right Panel CTA2 External Url"/>
+            <property name="rightCta2CommPage" type="String" default="" label="Right Panel CTA2 Community Page (API name)"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

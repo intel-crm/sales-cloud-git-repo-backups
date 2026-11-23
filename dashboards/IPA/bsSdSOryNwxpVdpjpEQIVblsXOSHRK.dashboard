@@ -27,7 +27,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPACommunityDashboardReports/Warranty_Data_Overview_m2O</report>
+                <report>IPAReports/Warranty_Data_Overview_m2O</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -52,7 +52,7 @@
                 <indicatorHighColor>#00716B</indicatorHighColor>
                 <indicatorLowColor>#C23934</indicatorLowColor>
                 <indicatorMiddleColor>#FFB75D</indicatorMiddleColor>
-                <report>IPACommunityDashboardReports/Warranty_Data_Overview_m2O</report>
+                <report>IPAReports/Warranty_Data_Overview_m2O</report>
                 <showRange>false</showRange>
             </dashboardComponent>
             <rowIndex>0</rowIndex>
@@ -63,8 +63,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>11855969@intel.com.crm</runningUser>
+    <owner>11996761@intel.com.crm</owner>
+    <runningUser>11996761@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Warranty Data Metrics</title>
     <titleColor>#000000</titleColor>

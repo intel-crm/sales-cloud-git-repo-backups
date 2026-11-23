@@ -13,6 +13,10 @@
         <name>Core_Created_Date_Time__c</name>
     </fields>
     <fields>
+        <label><!-- Last Retried Date --></label>
+        <name>Core_Last_Retried_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Message Type --></label>
         <name>Core_MessageType__c</name>
     </fields>
@@ -56,5 +60,28 @@
         <label><!-- Account ID --></label>
         <name>PRM_Account_ID__c</name>
     </fields>
+    <fields>
+        <label><!-- OPID AWR --></label>
+        <name>PRM_OPID_AWR__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID SLA --></label>
+        <name>PRM_OPID_SLA__c</name>
+    </fields>
+    <fields>
+        <label><!-- OPID SWR --></label>
+        <name>PRM_OPID_SWR__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Link --></label>
+        <name>PRM_Record_Link__c</name>
+    </fields>
+    <layouts>
+        <layout>Integration Outbound Message Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

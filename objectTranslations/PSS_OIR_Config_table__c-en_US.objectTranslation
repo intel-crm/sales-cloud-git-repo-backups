@@ -433,5 +433,12 @@
         <label><!-- Target Application On --></label>
         <name>PSS_Target_Application_On_Txt__c</name>
     </fields>
+    <layouts>
+        <layout>OIR Config table Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

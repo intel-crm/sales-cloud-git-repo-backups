@@ -56,10 +56,6 @@
             <translation><!-- DCG/NPG Front End Process Resource --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DPGS Labs</masterLabel>
-            <translation><!-- DPGS Labs --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>DesignInTools.Intel.com</masterLabel>
             <translation><!-- DesignInTools.Intel.com --></translation>
         </picklistValues>
@@ -153,10 +149,17 @@
             <translation><!-- In Progress --></translation>
         </picklistValues>
     </fields>
-    <fields>
-        <label><!-- Expert Engagement Country/Region --></label>
-        <name>Expert_Engagement_Country__c</name>
-    </fields>
+    <layouts>
+        <layout>Expert Engagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Feedback --></label>
+            <section>Feedback</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- Expert Engagement Region field is required for Engagement Type &quot;IoT Lab&quot; --></errorMessage>

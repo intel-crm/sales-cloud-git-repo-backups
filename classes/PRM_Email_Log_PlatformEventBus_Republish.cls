@@ -64,7 +64,7 @@ global class PRM_Email_Log_PlatformEventBus_Republish implements  Database.Batch
         }        
         catch(Exception e)
         {            
-            //system.debug('#ex:Message:'+e.getMessage());
+            system.debug('#ex:Message:'+e.getMessage());
             system.debug('#ex:LineNumber:'+e.getLineNumber());
         }
         

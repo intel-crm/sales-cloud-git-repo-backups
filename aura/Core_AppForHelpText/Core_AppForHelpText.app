@@ -1,3 +1,3 @@
-<aura:application extends="ltng:outApp" >
+<aura:application extends="ltng:outApp" access="GLOBAL" >
     <aura:dependency resource="lightning:helptext"/>
 </aura:application>

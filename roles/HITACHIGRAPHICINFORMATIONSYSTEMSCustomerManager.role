@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>HITACHI GRAPHIC INFORMATION SYSTEMS Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>HITACHI GRAPHIC INFORMATION SYSTEMS Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>HITACHIGRAPHICINFORMATIONSYSTEMSCustomerExecutive</parentRole>
+</Role>

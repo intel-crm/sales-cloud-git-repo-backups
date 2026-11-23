@@ -18,9 +18,6 @@
     <columns>
         <field>EMAIL</field>
     </columns>
-    <columns>
-        <field>ACCOUNT.ADDRESS1_COUNTRY_CODE</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>

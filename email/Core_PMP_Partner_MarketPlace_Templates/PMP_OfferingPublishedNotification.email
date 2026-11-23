@@ -1,0 +1,7 @@
+<messaging:emailTemplate renderUsingSystemContextWithoutSharing="True" subject="Approved & Preparing to Publish : Your {!relatedTo.PMP_Partner_Offering_Nm__c} Offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingPublished offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

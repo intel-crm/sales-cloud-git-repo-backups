@@ -13,6 +13,7 @@
         <locationY>200</locationY>
         <actionName>PRM_ACRNotificationMessage</actionName>
         <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -94,7 +95,7 @@
             </processMetadataValues>
             <name>msgCd</name>
             <value>
-                <elementReference>formula_2_myRule_1_A1_1739696066</elementReference>
+                <elementReference>formula_2_myRule_1_A1_8671723060</elementReference>
             </value>
         </inputParameters>
         <nameSegment>PRM_ACRNotificationMessage</nameSegment>
@@ -174,7 +175,7 @@
                 <stringValue>$Label.PRM_Msgcd_NewContact </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_1739696066</name>
+        <name>formula_2_myRule_1_A1_8671723060</name>
         <dataType>String</dataType>
         <expression>{!$Label.PRM_Msgcd_NewContact}</expression>
     </formulas>
@@ -216,7 +217,7 @@ NOT(ISBLANK({!myVariable_old.PRM_Contact_Id__c} )),
 NOT(ISBLANK({!myVariable_old.PRM_Account_Id__c} ))
 )</expression>
     </formulas>
-    <interviewLabel>PRM_ACR_Notification_Message-6_InterviewLabel</interviewLabel>
+    <interviewLabel>PRM_ACR_Notification_Message-8_InterviewLabel</interviewLabel>
     <label>PRM_ACR_Notification_Message</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -250,7 +251,7 @@ NOT(ISBLANK({!myVariable_old.PRM_Account_Id__c} ))
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Draft</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

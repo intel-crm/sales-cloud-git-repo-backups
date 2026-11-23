@@ -5,7 +5,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_IND</name>
     <style>none</style>
-    <subject>Selesaikan permohonan Intel® Partner Alliance Anda</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>Anda Hampir Selesai!
 
 
@@ -23,8 +23,7 @@ Selesaikan sekarang
 
 Tidak dapat mengakses link di atas?
 
-https://www.intel.com/content/www/id/id/secure/partner/forms/ipa-account-search.html.
-
+https://wcm-ciqa.intel.com/content/www/id/id/secure/partner/forms/ipa-account-search.html.
 Jika ada pertanyaan, silakan hubungi kami di programs@intel.com.
 
 Terima kasih,
@@ -33,7 +32,7 @@ Tim Intel® Partner Alliance Anda
 
 
 Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privasi | Cookie</textOnly>
     <type>custom</type>

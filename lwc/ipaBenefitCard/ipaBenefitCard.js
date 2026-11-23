@@ -1,4 +1,4 @@
-/* eslint-disable @lwc/lwc/no-api-reassignments */
+/** eslint-disable @lwc/lwc/no-api-reassignments */
 /** Documentation for ipaBenefitCardList  Component
  * <br>
  * <p>Ipa Benefit Card gets the object {@link ipaBenefitService.Benefit } and renders the related data from it.</p>
@@ -14,15 +14,68 @@ import { LightningElement, api , track} from 'lwc';
 import sendEmail from '@salesforce/label/c.IPA_Benefits_SendEmail';
 import { makeIpaAnalyticsCall } from 'c/ipaAnalyticsService';
 import IPA_DZS_RDC_Benefit from '@salesforce/label/c.IPA_DZS_RDC_Title';
-
+//import getChannelAssets from '@salesforce/apex/DoceboController.getChannelAssets';
 export default class ipaBenefitCard extends LightningElement {
 
     isIPA_DZS_RDC_Benefit = false;
-    
+  @api doceboData;  
+/*hasCourses = false;
+doceboLoaded = false;
+doceboData = null;
+doceboRequestStarted = false;
+
+pageReady = false;
+*/
+/*async loadDoceboCourses() {
+    this.doceboLoaded = false;
+    this.hasCourses = false;
+this.pageReady = false;
+    try {
+        const result = await getChannelAssets();
+ console.log('Docebo Apex response:', result);
+        this.doceboData = result;
+ console.log('Docebo Apex response:', JSON.stringify(result));
+        this.hasCourses =
+            result?.userExists === true &&
+            Array.isArray(result?.courses) &&
+            result.courses.length > 0;
+    } catch (error) {
+        this.doceboData = null;
+        this.hasCourses = false;
+        console.error('Docebo loading error:', error);
+    } finally {
+        this.doceboLoaded = true;
+          this.pageReady = true;
+    }
+    console.log('pageReady:', this.pageReady);
+}*/
+
+get isRecommendedLearning() {
+    return this.title === 'Recommended Learning';
+}
+
+/*get showBenefitCard() {
+    if (!this.isRecommendedLearning) {
+        return true;
+    }
+
+    return this.doceboLoaded && this.hasCourses;
+}
+get showBenefitCard() {
+    // Keep every other benefit card unchanged.
+    if (this.title !== 'Recommended Learning') {
+        return true;
+    }
+
+    // Show Recommended Learning only when courses exist.
+    return this.doceboLoaded && this.hasCourses;
+}*/
+
     @api set benefit(benefit) {
         this._benefit = benefit;
         // separate out the logic
         this.title = this._benefit.title;
+        
         this.description = this._benefit.description;
         this.faIcon = this._benefit.faIcon;
         this.alerts = this.addIds(this._benefit.alerts, 'alerts');
@@ -36,6 +89,16 @@ export default class ipaBenefitCard extends LightningElement {
         if(this.title == IPA_DZS_RDC_Benefit){
             this.isIPA_DZS_RDC_Benefit = true;
         }
+        // DOCEBO: Load courses only for Recommended Learning
+   /* if (
+        this.title === 'Recommended Learning'
+        // && !this.doceboRequestStarted
+    ) {
+        //this.doceboRequestStarted = true;
+        this.loadDoceboCourses();
+    }*/
+        
+        
         // check if shared link on metric then add a cta button else make cta button empty
         // if there is only 1 metric dont even combine it
         if (this.metrics && this.metrics.length > 0) {
@@ -152,10 +215,8 @@ export default class ipaBenefitCard extends LightningElement {
     get isMetricsEmpty() { //Utkarsh - 904 - Made changes to render matrics dyanamically.
         return Array.isArray(this.metrics) && this.metrics.length === 0;
     }
-   
     
-
-    /**
+ /**
      * Creates a data object based on the coreIntcSimpleCard link properties and sends that
      * to the analytics library to be logged.
      *

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_SPA</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Debe realizar una acción para finalizar su inscripción en Intel® Partner Alliance
+
+
+
+
+{!Contact.FirstName}:
+
+¡Felicitaciones! Su administrador de empresas o un representante de Intel lo agregó a una cuenta Intel® Partner Alliance. Está tan solo a unos pasos de finalizar su inscripción.
+
+La siguiente información de perfil se creó para usted:
+
+Nombre de usuario: {!Contact.Core_Login_Id__c}
+Dirección de correo electrónico: {!Contact.Email}
+Nombre de empresa: {{ACCOUNTNAME}}
+ID empresarial de Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+Haga clic en el siguiente enlace para completar su inscripción
+
+
+Verifique su correo electrónico y establezca su contraseña
+
+
+Tenga en cuenta que este enlace caducará en 24 horas.¿No puede acceder al enlace anterior?
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=es-XL&amp;target=https://www.intel.com/content/www/es/xl/secure/partner/forms/ipa-account-search.html
+Si tiene alguna pregunta, comuníquese con nosotros a https://signin.intel.com/ContactUs?Culture=es-xl.
+¡Esperamos contar con usted en el programa!
+Atentamente,
+Su equipo de Intel® Partner Alliance
+
+
+Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 Estados Unidos. www.intel.com
+Privacidad | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

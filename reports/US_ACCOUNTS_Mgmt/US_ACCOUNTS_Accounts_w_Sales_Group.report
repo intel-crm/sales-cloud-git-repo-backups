@@ -7,6 +7,9 @@
         <field>Account.Core_Prime_Account_Name__c</field>
     </columns>
     <columns>
+        <field>PARENT.NAME</field>
+    </columns>
+    <columns>
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
@@ -25,6 +28,13 @@
         <field>DUE_DATE</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Account.Core_Opportunity_Revenue_for_Account__c</field>
+    </columns>
+    <columns>
+        <field>User.Core_WWID__c</field>
+    </columns>
+    <columns>
         <field>INDUSTRY</field>
     </columns>
     <columns>
@@ -38,15 +48,15 @@
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>US Sales Group,americas named</value>
+            <operator>notEqual</operator>
+            <value>US Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>User.Core_Manager__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
@@ -73,7 +83,7 @@
         <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strategic Acct w-Sales Group</name>
+    <name>US ACCOUNTS Accounts w-Sales Group</name>
     <params>
         <name>co</name>
         <value>1</value>

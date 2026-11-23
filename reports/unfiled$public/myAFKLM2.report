@@ -33,27 +33,19 @@
         </values>
     </buckets>
     <columns>
+        <field>Opportunity.Core_Approval_Status__c</field>
+    </columns>
+    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>HASOPPLINEITEM</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OPP_QUANTITY</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Approval_Status__c</field>
-    </columns>
-    <columns>
         <field>CLOSE_DATE2</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -75,24 +67,17 @@
             <operator>contains</operator>
             <value>KLM</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Approval_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Not Submitted,Submitted,Rejected</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Segment__c</field>
+        <dateGranularity>Quarter</dateGranularity>
+        <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CLOSE_DATE</field>
+        <dateGranularity>Day</dateGranularity>
+        <field>Opportunity.Core_Product_Segment__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>myAFKLM</name>
@@ -120,7 +105,7 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2022-12-31</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
         <startDate>2018-01-01</startDate>
     </timeFrameFilter>

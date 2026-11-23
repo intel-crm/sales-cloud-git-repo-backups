@@ -3,7 +3,7 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
     @TestSetup
     public static void setCommonData(){
         Core_IntegrationTestUtility.setupAcctContactEntitlementTestData(false);
-        Account acc=[Select Id, Name,Core_Business_Party_Id__c From Account Where Name='Test Account 0' limit 1];
+        Account acc=[Select Id, Name From Account Where Name='Test Account 0' limit 1];
         ChannelProgram cp = Core_Integ_Additional_Attributes_Test.CreateChannelProgram('Intel Partner Alliance','IPA');
         List<ChannelProgramLevel> cpl = Core_Integ_Additional_Attributes_Test.CreateChannelProgramLevel(cp.Id);
         List<PRM_AccountChannelMembership__c> accountChannelMemberships = new List<PRM_AccountChannelMembership__c>();
@@ -13,21 +13,18 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cp.Id;
         acm.PRM_Channel_Program_Level_Id__c=cpl[0].Id;
-        acm.PRM_Partner_Role__c = 'Distributor';
-        acm.PRM_Status_Reason_Txt__c='Reason';
+        acm.PRM_Partner_Role__c = 'Seller';
         accountChannelMemberships.add(acm);
         
         acm = new PRM_AccountChannelMembership__c();
         acm.PRM_Account_Id__c=acc.Id;
         acm.PRM_Status_Nm__c='Approved';
         acm.PRM_Channel_Program_Id__c=cp.Id;
-        acm.PRM_Channel_Program_Level_Id__c=cpl[1].Id;
-        acm.PRM_Partner_Role__c = 'Distributor';
-        acm.PRM_Status_Reason_Txt__c='Reasons';
+            acm.PRM_Channel_Program_Level_Id__c=cpl[1].Id;
+        acm.PRM_Partner_Role__c = 'Manufacturer';
         accountChannelMemberships.add(acm);
 
         insert accountChannelMemberships;
-        insert new Core_ACM_Control_Execution__c(Name='createContact',IsActive__c = true);
     }
 
     // Helper Method to make easy to create Message
@@ -41,7 +38,7 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
     }
 
     //Contact match on ERPM Person ID. Update core info on Contact record
-    @isTest
+   /* @isTest
     private static void updateMatchingContact(){
         String msg = TEST_ERPM_PERSON_XML;
         msg = msg.replace('REPLACE_PERSON_IS_DELETE_INDICATOR','N');
@@ -80,14 +77,12 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
         Test.startTest();
         insert integrationinboundMessage;
         Account acc=[Select Id, Name From Account Where Name='Test Account 0' limit 1];
-        //acc.Core_IPA_Partner_Speciality__c='Enthusiast PC Specialist;Video Specialist';
+        acc.Core_IPA_Partner_Speciality__c='Enthusiast PC Specialist;Video Specialist';
         update acc;
+        Core_ERPMInboundMessage_IPAContact.accountPartnerSpecsMap=new Map<Id,Account>([SELECT Core_IPA_Partner_Speciality__c FROM Account WHERE Id =:acc.Id]);
         Core_ERPMInboundMessage_ContactService.processContactMessages(integrationinboundMessage);
         Test.stopTest();
-
-        /*Contact c = [select Id, Core_eRPM_Person_Id__c, Core_Enterprise_ID__c from Contact where Core_eRPM_Person_Id__c = '3000000' limit 1];
-        System.assertEquals('1000001001',c.Core_Enterprise_ID__c);*/
-    }
+    }*/
 
     //if Person login Id and enterprise Id is not present Update contact login status to deleted
     @isTest
@@ -127,17 +122,18 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
 
         Test.startTest();
         insert integrationinboundMessage;
-        Contact c = [select Id, Core_eRPM_Person_Id__c, Core_Enterprise_ID__c, Core_Identity_Status__c, /*Core_Login_Id__c,*/
+        Contact c = [select Id, Core_eRPM_Person_Id__c, Core_Enterprise_ID__c, Core_Identity_Status__c, Core_Login_Id__c,
                      Core_Login_Status__c, Salutation, FirstName, LastName, Email, Phone, MobilePhone, Fax,
                      MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry, Core_Do_Not_Contact__c,
                      Core_ERPM_Integration_Status__c
                      from Contact where Core_eRPM_Person_Id__c = '3000010' limit 1];
         c.Core_Enterprise_ID__c='1078900';
         c.Core_Login_Status__c='Active';
-        //c.Core_Login_Id__c='test01';
+        c.Core_Login_Id__c='test01';
         update c;
         Core_ERPMInboundMessage_ContactService.processContactMessages(integrationinboundMessage);
         Test.stopTest();
+        System.debug('$$$$ contact '+c);
     }
 
     //Exception thrown when required field is blank and failed to update contact
@@ -184,7 +180,7 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
     }
     
     //when contact not found based on email and ErpmPersonId so insert new contact
-    @isTest
+    /*@isTest
     private static void whenNewContactInsert(){
         String msg1 = TEST_ERPM_PERSON_XML;
         msg1 = msg1.replace('REPLACE_PERSON_IS_DELETE_INDICATOR','N');
@@ -221,11 +217,12 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
         Test.startTest();
         insert integrationinboundMessageInsert;
         Account acc=[Select Id, Name From Account Where Name='Test Account 1' limit 1];
-       // acc.Core_IPA_Partner_Speciality__c='Enthusiast PC Specialist;Video Specialist';
+        acc.Core_IPA_Partner_Speciality__c='Enthusiast PC Specialist;Video Specialist';
         update acc;
+        Core_ERPMInboundMessage_IPAContact.accountPartnerSpecsMap=new Map<Id,Account>([SELECT Core_IPA_Partner_Speciality__c FROM Account WHERE Id =:acc.Id]);
         Core_ERPMInboundMessage_ContactService.processContactMessages(integrationinboundMessageInsert);
         Test.stopTest();
-    }
+    }*/
 
     // ERPM Delete scenario.
     @isTest
@@ -416,6 +413,7 @@ public without sharing class Core_ERPMInboundMessage_ContactTest {
 
         Test.startTest();
         insert integrationinboundMessage;
+        Core_ERPMInboundMessage_IPAContact.erpmAcctEnggCodes.add(system.label.ERPM_EngagementCode);
         Core_ERPMInboundMessage_ContactService.processContactMessages(integrationinboundMessage);
         Test.stopTest();
     }

@@ -24,23 +24,23 @@
             <sourceValues>
                 <sourceValue>Production Win</sourceValue>
             </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Lost</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Production Cancelled</sourceValue>
-            </sourceValues>
             <value>WON</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Lost</sourceValue>
             </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Lost</sourceValue>
+            </sourceValues>
             <value>LOST</value>
         </values>
         <values>
             <sourceValues>
                 <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Production Cancelled</sourceValue>
             </sourceValues>
             <value>CANCELLED</value>
         </values>
@@ -107,9 +107,7 @@
     <columns>
         <field>OWNER_MANAGER</field>
     </columns>
-    <description>Pipeline Dashboard</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -122,14 +120,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Wood,Covey,Stiles,Thomson</value>
+            <value>Halversen,Wood,Swyers,Oldfield,Covey,Merjanian</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
+            <column>CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>US Sales Group,Global Accounts Sales Group</value>
+            <operator>lessThan</operator>
+            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -145,7 +143,7 @@
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
+        <dateGranularity>FiscalQuarter</dateGranularity>
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
@@ -175,8 +173,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2024-12-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2022-01-01</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

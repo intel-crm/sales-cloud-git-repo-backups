@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>AccountType__c</field>
-        <value xsi:type="xsd:string">Developer Zone Premier</value>
+        <value xsi:type="xsd:string">RDC</value>
     </values>
     <values>
         <field>PriorityField__c</field>
-        <value xsi:type="xsd:string">Core_Business_Party_Id__c</value>
+        <value xsi:type="xsd:string">searchScore</value>
     </values>
     <values>
         <field>PriorityNumber__c</field>
@@ -16,14 +16,14 @@
     </values>
     <values>
         <field>PriorityValue__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">55</value>
     </values>
     <values>
         <field>isObjectField__c</field>
-        <value xsi:type="xsd:boolean">true</value>
+        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>isSearchScore__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
 </CustomMetadata>

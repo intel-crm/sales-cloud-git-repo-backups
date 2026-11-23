@@ -42,6 +42,20 @@
             <translation><!-- Case Subcategory --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Master Case Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Master Issue Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Subcategory must be linked to a Master Case Category. --></errorMessage>

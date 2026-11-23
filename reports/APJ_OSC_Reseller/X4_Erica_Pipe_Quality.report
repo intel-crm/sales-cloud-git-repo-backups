@@ -25,16 +25,10 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>ACCOUNT_OWNER</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>CLOSE_DATE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Past_Due__c</field>
@@ -46,25 +40,18 @@
         <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>AGE</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
-    <columns>
-        <field>Account.Core_Account_Country__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Opportunity_Type__c</field>
-    </columns>
-    <columns>
-        <field>OWNER_MANAGER</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
@@ -77,21 +64,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>erica tor,sae wae tor</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Owner_Manager_Email__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>josephine.lim@intel.com</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Hussain Fakrudeen</value>
+            <value>Sae Wah Tor,Erica Tor</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -99,16 +72,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>4_Erica_Pipe Quality</name>
@@ -137,6 +100,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-10-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -23,5 +23,7 @@
     <tabs>standard-CollaborationGroup</tabs>
     <tabs>standard-File</tabs>
     <tabs>standard-ContentNote</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

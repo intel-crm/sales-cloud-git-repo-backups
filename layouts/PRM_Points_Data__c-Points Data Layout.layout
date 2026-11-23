@@ -58,6 +58,10 @@
                 <behavior>Edit</behavior>
                 <field>DQ_Flag__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_SalescloudAccountId__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

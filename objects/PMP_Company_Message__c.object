@@ -258,6 +258,13 @@
     <label>Marketing Profile Message</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Message_Txt__c</columns>
+        <columns>PMP_Message_By_User_Nm__c</columns>
+        <columns>PMP_Message_By_Id__c</columns>
+        <columns>PMP_Company_Id__c</columns>
+        <columns>PMP_Company_Lifecycle_Status_Nm__c</columns>
+        <columns>PMP_Message_Type__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

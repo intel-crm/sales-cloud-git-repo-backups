@@ -40,6 +40,10 @@
             <translation><!-- Partner Role --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Profession</masterLabel>
+            <translation><!-- Profession --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Relationship_Entitlement</masterLabel>
             <translation><!-- Relationship_Entitlement --></translation>
         </picklistValues>
@@ -76,5 +80,12 @@
         <label><!-- eRPM-KeyValue --></label>
         <name>eRPM_KeyValue__c</name>
     </fields>
+    <layouts>
+        <layout>ERPM-SF-MAPPING SETTING Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>ENG__c</field>
-        <value xsi:type="xsd:string">Verify Your Email &amp; Set Your Password</value>
+        <value xsi:type="xsd:string">Complete Now</value>
     </values>
     <values>
         <field>ENU__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>FRC__c</field>
-        <value xsi:type="xsd:string">Verify Your Email &amp; Set Your Password</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>IND__c</field>

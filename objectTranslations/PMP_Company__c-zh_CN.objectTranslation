@@ -205,6 +205,10 @@
             <translation><!-- Additional Partners --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>ISA - GENERAL</masterLabel>
             <translation><!-- ISA - GENERAL --></translation>
         </picklistValues>
@@ -233,8 +237,112 @@
         <label><!-- Specialty --></label>
         <name>PMP_Account_Specialty__c</name>
         <picklistValues>
+            <masterLabel>Artificial Intelligence Specialist</masterLabel>
+            <translation>人工智能专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Artificial Intelligence Specialty</masterLabel>
+            <translation>人工智能特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialist</masterLabel>
+            <translation>云数据中心专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cloud Data Center Specialty</masterLabel>
+            <translation>云数据中心特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Device as a Service Specialist</masterLabel>
+            <translation>设备即服务专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialist</masterLabel>
+            <translation>发烧友级电脑专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Enthusiast PC Specialty</masterLabel>
+            <translation>发烧友级电脑特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Data Center Specialty</masterLabel>
+            <translation>高性能计算数据中心特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>High Performance Computing Specialist</masterLabel>
+            <translation>高性能计算专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialist</masterLabel>
+            <translation>行业解决方案生成器专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Industrial Solutions Builder Specialty</masterLabel>
+            <translation>行业解决方案生成器特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Specialist</masterLabel>
+            <translation>英特尔® 傲腾™ 客户专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Client Speciality</masterLabel>
+            <translation><!-- Intel® Optane™ Client Speciality --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialist</masterLabel>
+            <translation>英特尔® 傲腾™ 数据中心专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Data Center Specialty</masterLabel>
+            <translation><!-- Intel® Optane™ Data Center Specialty --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialist</masterLabel>
+            <translation><!-- Intel® Optane™ Technology Specialist --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel® Optane™ Technology Specialty</masterLabel>
+            <translation>英特尔傲腾技术特性</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LOEM-ODM Partner Program</masterLabel>
+            <translation><!-- LOEM-ODM Partner Program --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Managed Services Specialist</masterLabel>
+            <translation>托管服务专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Networking Specialist</masterLabel>
+            <translation>网络专家</translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>None</masterLabel>
             <translation><!-- None --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Benefits</masterLabel>
+            <translation>专属权益</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Specialty Partner</masterLabel>
+            <translation>特色合作伙伴</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Specialist</masterLabel>
+            <translation>视频专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Video Specialty</masterLabel>
+            <translation>视频特色</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialist</masterLabel>
+            <translation>视觉显示解决方案专家</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Visual Display Solutions Specialty</masterLabel>
+            <translation><!-- Visual Display Solutions Specialty --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -255,6 +363,10 @@
         <picklistValues>
             <masterLabel>IJKK</masterLabel>
             <translation><!-- IJKK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>INDIA</masterLabel>
+            <translation><!-- INDIA --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>KOREA</masterLabel>
@@ -332,6 +444,10 @@
         <picklistValues>
             <masterLabel>Mixed</masterLabel>
             <translation><!-- Mixed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Processed</masterLabel>
+            <translation><!-- Not Processed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Scraped</masterLabel>
@@ -500,8 +616,12 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Internet of Things</masterLabel>
-            <translation><!-- Internet of Things --></translation>
+            <translation>物联网和嵌入式产品</translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Do Not Contact Enabled ? --></label>
+        <name>PMP_Do_Not_Contact_Enabled__c</name>
     </fields>
     <fields>
         <label><!-- Enhanced Login Users --></label>
@@ -648,6 +768,10 @@
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>ISA</masterLabel>
@@ -809,5 +933,20 @@
         <name>PMP_Working_Copy_Id__c</name>
         <relationshipLabel><!-- Marketing Profile Information (Working Copy Id) --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Company Information Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>营销帐户名称</nameFieldLabel>
+    <quickActions>
+        <label><!-- Admin Review --></label>
+        <name>PMP_Company_Changes_Review</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Update Marketing Profile Information --></label>
+        <name>PMP_Update_Benefit_Action</name>
+    </quickActions>
 </CustomObjectTranslation>

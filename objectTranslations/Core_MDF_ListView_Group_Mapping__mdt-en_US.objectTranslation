@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>ListView Group Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>ListView Group Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Active --></label>
+        <name>Core_MDF_Active_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Group Name --></label>
+        <name>Core_MDF_Group_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- ListView Name --></label>
+        <name>Core_MDF_ListView_Name_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- SObject --></label>
+        <name>Core_MDF_SObject_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Visible to all users --></label>
+        <name>Core_MDF_Visible_to_all_users_ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Whitelisted Object --></label>
+        <name>Core_MDF_Whitelisted_Object__c</name>
+    </fields>
+    <layouts>
+        <layout>ListView Group Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- ListView and Group Details --></label>
+            <section>ListView and Group Details</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,3 @@
+trigger PRM_vxData_Notification_Message_Test on PRM_Value_Exchange_Criteria_Association__ChangeEvent (after insert) {
+
+}

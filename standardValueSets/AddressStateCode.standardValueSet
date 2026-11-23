@@ -17,11 +17,6 @@
         <label>Aargau</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
-        <default>false</default>
-        <label>Abay</label>
-    </standardValue>
-    <standardValue>
         <fullName>AB</fullName>
         <default>false</default>
         <label>Abia</label>
@@ -30,6 +25,11 @@
         <fullName>AB</fullName>
         <default>false</default>
         <label>Abidjan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>314</fullName>
+        <default>false</default>
+        <label>Abim</label>
     </standardValue>
     <standardValue>
         <fullName>AB</fullName>
@@ -157,11 +157,6 @@
         <label>Adygeya</label>
     </standardValue>
     <standardValue>
-        <fullName>801</fullName>
-        <default>false</default>
-        <label>Aerodrom</label>
-    </standardValue>
-    <standardValue>
         <fullName>AF</fullName>
         <default>false</default>
         <label>Afar</label>
@@ -175,6 +170,11 @@
         <fullName>1</fullName>
         <default>false</default>
         <label>Agadez</label>
+    </standardValue>
+    <standardValue>
+        <fullName>322</fullName>
+        <default>false</default>
+        <label>Agago</label>
     </standardValue>
     <standardValue>
         <fullName>AG</fullName>
@@ -197,14 +197,14 @@
         <label>Agdas</label>
     </standardValue>
     <standardValue>
-        <fullName>42</fullName>
-        <default>false</default>
-        <label>Agder</label>
-    </standardValue>
-    <standardValue>
         <fullName>69</fullName>
         <default>false</default>
         <label>Agion Oros</label>
+    </standardValue>
+    <standardValue>
+        <fullName>001</fullName>
+        <default>false</default>
+        <label>Aglona novads</label>
     </standardValue>
     <standardValue>
         <fullName>04</fullName>
@@ -225,11 +225,6 @@
         <fullName>AGU</fullName>
         <default>false</default>
         <label>Agsu</label>
-    </standardValue>
-    <standardValue>
-        <fullName>01</fullName>
-        <default>false</default>
-        <label>Agua Grande</label>
     </standardValue>
     <standardValue>
         <fullName>AGU</fullName>
@@ -317,6 +312,11 @@
         <label>Aizkraukle novads</label>
     </standardValue>
     <standardValue>
+        <fullName>003</fullName>
+        <default>false</default>
+        <label>Aizpute novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>AJ</fullName>
         <default>false</default>
         <label>Ajaria</label>
@@ -337,6 +337,11 @@
         <label>Ajman</label>
     </standardValue>
     <standardValue>
+        <fullName>02</fullName>
+        <default>false</default>
+        <label>Akershus</label>
+    </standardValue>
+    <standardValue>
         <fullName>05</fullName>
         <default>false</default>
         <label>Akita</label>
@@ -345,6 +350,11 @@
         <fullName>AKL</fullName>
         <default>false</default>
         <label>Aklan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>004</fullName>
+        <default>false</default>
+        <label>Akniste novads</label>
     </standardValue>
     <standardValue>
         <fullName>68</fullName>
@@ -385,11 +395,6 @@
         <fullName>01</fullName>
         <default>false</default>
         <label>Aland</label>
-    </standardValue>
-    <standardValue>
-        <fullName>AX</fullName>
-        <default>false</default>
-        <label>Aland Islands</label>
     </standardValue>
     <standardValue>
         <fullName>AQ</fullName>
@@ -452,7 +457,7 @@
         <label>Alberta</label>
     </standardValue>
     <standardValue>
-        <fullName>30</fullName>
+        <fullName>32</fullName>
         <default>false</default>
         <label>Alborz</label>
     </standardValue>
@@ -470,6 +475,11 @@
         <fullName>BU</fullName>
         <default>false</default>
         <label>Al Butnan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>323</fullName>
+        <default>false</default>
+        <label>Alebtong</label>
     </standardValue>
     <standardValue>
         <fullName>AL</fullName>
@@ -500,6 +510,11 @@
         <fullName>GH</fullName>
         <default>false</default>
         <label>Al Gharbiyah</label>
+    </standardValue>
+    <standardValue>
+        <fullName>11</fullName>
+        <default>false</default>
+        <label>Al Haouz</label>
     </standardValue>
     <standardValue>
         <fullName>HA</fullName>
@@ -642,12 +657,12 @@
         <label>Al Marqab</label>
     </standardValue>
     <standardValue>
-        <fullName>75</fullName>
+        <fullName>ALA</fullName>
         <default>false</default>
         <label>Almaty</label>
     </standardValue>
     <standardValue>
-        <fullName>19</fullName>
+        <fullName>ALM</fullName>
         <default>false</default>
         <label>Almaty Oblysy</label>
     </standardValue>
@@ -677,6 +692,11 @@
         <label>Alo</label>
     </standardValue>
     <standardValue>
+        <fullName>005</fullName>
+        <default>false</default>
+        <label>Aloja novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>QA</fullName>
         <default>false</default>
         <label>Al Qadisiyah</label>
@@ -702,12 +722,22 @@
         <label>Al Qunaytirah</label>
     </standardValue>
     <standardValue>
+        <fullName>A</fullName>
+        <default>false</default>
+        <label>Alsace</label>
+    </standardValue>
+    <standardValue>
+        <fullName>006</fullName>
+        <default>false</default>
+        <label>Alsunga novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>AT</fullName>
         <default>false</default>
         <label>Altantida</label>
     </standardValue>
     <standardValue>
-        <fullName>16</fullName>
+        <fullName>AV</fullName>
         <default>false</default>
         <label>Alta Verapaz</label>
     </standardValue>
@@ -792,6 +822,11 @@
         <label>Amasya</label>
     </standardValue>
     <standardValue>
+        <fullName>008</fullName>
+        <default>false</default>
+        <label>Amata novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>AM</fullName>
         <default>false</default>
         <label>Amazonas</label>
@@ -812,11 +847,6 @@
         <label>Amazonas</label>
     </standardValue>
     <standardValue>
-        <fullName>AS</fullName>
-        <default>false</default>
-        <label>American Samoa</label>
-    </standardValue>
-    <standardValue>
         <fullName>04</fullName>
         <default>false</default>
         <label>Ammochostos</label>
@@ -824,7 +854,12 @@
     <standardValue>
         <fullName>37</fullName>
         <default>false</default>
-        <label>Amnat Charoen</label>
+        <label>Amnat Chareon</label>
+    </standardValue>
+    <standardValue>
+        <fullName>315</fullName>
+        <default>false</default>
+        <label>Amolatar</label>
     </standardValue>
     <standardValue>
         <fullName>AM</fullName>
@@ -832,9 +867,19 @@
         <label>Amran</label>
     </standardValue>
     <standardValue>
+        <fullName>324</fullName>
+        <default>false</default>
+        <label>Amudat</label>
+    </standardValue>
+    <standardValue>
         <fullName>AMU</fullName>
         <default>false</default>
         <label>Amur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>316</fullName>
+        <default>false</default>
+        <label>Amuru</label>
     </standardValue>
     <standardValue>
         <fullName>02</fullName>
@@ -912,9 +957,9 @@
         <label>Ang Thong</label>
     </standardValue>
     <standardValue>
-        <fullName>AI</fullName>
+        <fullName>34</fullName>
         <default>false</default>
-        <label>Anguilla</label>
+        <label>Anhui</label>
     </standardValue>
     <standardValue>
         <fullName>AH</fullName>
@@ -1037,6 +1082,11 @@
         <label>Aomori</label>
     </standardValue>
     <standardValue>
+        <fullName>23</fullName>
+        <default>false</default>
+        <label>Aosta Valley</label>
+    </standardValue>
+    <standardValue>
         <fullName>195</fullName>
         <default>false</default>
         <label>Apace</label>
@@ -1045,6 +1095,11 @@
         <fullName>APA</fullName>
         <default>false</default>
         <label>Apayao</label>
+    </standardValue>
+    <standardValue>
+        <fullName>009</fullName>
+        <default>false</default>
+        <label>Ape novads</label>
     </standardValue>
     <standardValue>
         <fullName>AR</fullName>
@@ -1067,17 +1122,22 @@
         <label>Apurimac</label>
     </standardValue>
     <standardValue>
-        <fullName>11</fullName>
+        <fullName>AKM</fullName>
         <default>false</default>
         <label>Aqmola</label>
     </standardValue>
     <standardValue>
-        <fullName>15</fullName>
+        <fullName>AKT</fullName>
         <default>false</default>
         <label>Aqtobe</label>
     </standardValue>
     <standardValue>
-        <fullName>802</fullName>
+        <fullName>B</fullName>
+        <default>false</default>
+        <label>Aquitaine</label>
+    </standardValue>
+    <standardValue>
+        <fullName>02</fullName>
         <default>false</default>
         <label>Aracinovo</label>
     </standardValue>
@@ -1117,7 +1177,7 @@
         <label>Arbil</label>
     </standardValue>
     <standardValue>
-        <fullName>24</fullName>
+        <fullName>03</fullName>
         <default>false</default>
         <label>Ardabil</label>
     </standardValue>
@@ -1217,11 +1277,6 @@
         <label>Artvin</label>
     </standardValue>
     <standardValue>
-        <fullName>AW</fullName>
-        <default>false</default>
-        <label>Aruba</label>
-    </standardValue>
-    <standardValue>
         <fullName>AR</fullName>
         <default>false</default>
         <label>Arunachal Pradesh</label>
@@ -1312,7 +1367,7 @@
         <label>As Suways</label>
     </standardValue>
     <standardValue>
-        <fullName>71</fullName>
+        <fullName>AST</fullName>
         <default>false</default>
         <label>Astana</label>
     </standardValue>
@@ -1407,7 +1462,7 @@
         <label>Atua</label>
     </standardValue>
     <standardValue>
-        <fullName>23</fullName>
+        <fullName>ATY</fullName>
         <default>false</default>
         <label>Atyrau</label>
     </standardValue>
@@ -1417,19 +1472,24 @@
         <label>Au Cap</label>
     </standardValue>
     <standardValue>
+        <fullName>010</fullName>
+        <default>false</default>
+        <label>Auce novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>AUK</fullName>
         <default>false</default>
         <label>Auckland</label>
     </standardValue>
     <standardValue>
-        <fullName>111</fullName>
-        <default>false</default>
-        <label>Augsdaugavas novads</label>
-    </standardValue>
-    <standardValue>
         <fullName>AUR</fullName>
         <default>false</default>
         <label>Aurora</label>
+    </standardValue>
+    <standardValue>
+        <fullName>09</fullName>
+        <default>false</default>
+        <label>Aust-Agder</label>
     </standardValue>
     <standardValue>
         <fullName>ACT</fullName>
@@ -1442,9 +1502,9 @@
         <label>Austurland</label>
     </standardValue>
     <standardValue>
-        <fullName>ARA</fullName>
+        <fullName>C</fullName>
         <default>false</default>
-        <label>Auvergne-Rhone-Alpes</label>
+        <label>Auvergne</label>
     </standardValue>
     <standardValue>
         <fullName>AV</fullName>
@@ -1487,12 +1547,12 @@
         <label>Azad Jammu Kashmir</label>
     </standardValue>
     <standardValue>
-        <fullName>04</fullName>
+        <fullName>02</fullName>
         <default>false</default>
         <label>Azarbayjan-E-Gharbi</label>
     </standardValue>
     <standardValue>
-        <fullName>03</fullName>
+        <fullName>01</fullName>
         <default>false</default>
         <label>Azarbayjan-E-Sharqi</label>
     </standardValue>
@@ -1545,6 +1605,11 @@
         <fullName>BB</fullName>
         <default>false</default>
         <label>Babil</label>
+    </standardValue>
+    <standardValue>
+        <fullName>012</fullName>
+        <default>false</default>
+        <label>Babite novads</label>
     </standardValue>
     <standardValue>
         <fullName>BC</fullName>
@@ -1612,7 +1677,7 @@
         <label>Baghlan</label>
     </standardValue>
     <standardValue>
-        <fullName>P3</fullName>
+        <fullName>BA</fullName>
         <default>false</default>
         <label>Bagmati</label>
     </standardValue>
@@ -1657,7 +1722,7 @@
         <label>Baja California Sur</label>
     </standardValue>
     <standardValue>
-        <fullName>15</fullName>
+        <fullName>BV</fullName>
         <default>false</default>
         <label>Baja Verapaz</label>
     </standardValue>
@@ -1685,6 +1750,11 @@
         <fullName>BAL</fullName>
         <default>false</default>
         <label>Balakan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>013</fullName>
+        <default>false</default>
+        <label>Baldone novads</label>
     </standardValue>
     <standardValue>
         <fullName>BAL</fullName>
@@ -1720,6 +1790,11 @@
         <fullName>BA</fullName>
         <default>false</default>
         <label>Balti</label>
+    </standardValue>
+    <standardValue>
+        <fullName>014</fullName>
+        <default>false</default>
+        <label>Baltinava novads</label>
     </standardValue>
     <standardValue>
         <fullName>015</fullName>
@@ -1799,7 +1874,7 @@
     <standardValue>
         <fullName>1</fullName>
         <default>false</default>
-        <label>Banteay Mean Choay</label>
+        <label>Banteay Mean Chey</label>
     </standardValue>
     <standardValue>
         <fullName>BT</fullName>
@@ -1869,12 +1944,12 @@
     <standardValue>
         <fullName>06</fullName>
         <default>false</default>
-        <label>Barishal</label>
+        <label>Barisal</label>
     </standardValue>
     <standardValue>
         <fullName>BT</fullName>
         <default>false</default>
-        <label>Barletta-Andria-Trani</label>
+        <label>Barletta-Andria-Tran</label>
     </standardValue>
     <standardValue>
         <fullName>74</fullName>
@@ -1920,6 +1995,11 @@
         <fullName>BK</fullName>
         <default>false</default>
         <label>Basse-Kotto</label>
+    </standardValue>
+    <standardValue>
+        <fullName>P</fullName>
+        <default>false</default>
+        <label>Basse-Normandie</label>
     </standardValue>
     <standardValue>
         <fullName>BU</fullName>
@@ -2022,6 +2102,11 @@
         <label>Bazega</label>
     </standardValue>
     <standardValue>
+        <fullName>BR</fullName>
+        <default>false</default>
+        <label>BeauBassin-Rose Hill</label>
+    </standardValue>
+    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Beau Vallon</label>
@@ -2030,6 +2115,11 @@
         <fullName>08</fullName>
         <default>false</default>
         <label>Bechar</label>
+    </standardValue>
+    <standardValue>
+        <fullName>11</fullName>
+        <default>false</default>
+        <label>Beijing</label>
     </standardValue>
     <standardValue>
         <fullName>BJ</fullName>
@@ -2137,11 +2227,6 @@
         <label>Benguet</label>
     </standardValue>
     <standardValue>
-        <fullName>52</fullName>
-        <default>false</default>
-        <label>Béni Abbès</label>
-    </standardValue>
-    <standardValue>
         <fullName>05</fullName>
         <default>false</default>
         <label>Beni Mellal-Khenifra</label>
@@ -2172,7 +2257,7 @@
         <label>Berane</label>
     </standardValue>
     <standardValue>
-        <fullName>01</fullName>
+        <fullName>BR</fullName>
         <default>false</default>
         <label>Berat</label>
     </standardValue>
@@ -2192,11 +2277,6 @@
         <label>Berlin</label>
     </standardValue>
     <standardValue>
-        <fullName>BM</fullName>
-        <default>false</default>
-        <label>Bermuda</label>
-    </standardValue>
-    <standardValue>
         <fullName>BE</fullName>
         <default>false</default>
         <label>Bern</label>
@@ -2207,7 +2287,7 @@
         <label>Bernardo O&apos;Higgins</label>
     </standardValue>
     <standardValue>
-        <fullName>201</fullName>
+        <fullName>03</fullName>
         <default>false</default>
         <label>Berovo</label>
     </standardValue>
@@ -2222,9 +2302,19 @@
         <label>Bethlehem</label>
     </standardValue>
     <standardValue>
+        <fullName>017</fullName>
+        <default>false</default>
+        <label>Beverina novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>BEY</fullName>
         <default>false</default>
         <label>Beylaqan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BH</fullName>
+        <default>false</default>
+        <label>Bheri</label>
     </standardValue>
     <standardValue>
         <fullName>07</fullName>
@@ -2339,7 +2429,7 @@
     <standardValue>
         <fullName>GB</fullName>
         <default>false</default>
-        <label>Bishkek Shaary</label>
+        <label>Bishkek</label>
     </standardValue>
     <standardValue>
         <fullName>07</fullName>
@@ -2367,7 +2457,7 @@
         <label>Bitlis</label>
     </standardValue>
     <standardValue>
-        <fullName>501</fullName>
+        <fullName>04</fullName>
         <default>false</default>
         <label>Bitola</label>
     </standardValue>
@@ -2452,19 +2542,19 @@
         <label>Boe</label>
     </standardValue>
     <standardValue>
-        <fullName>401</fullName>
+        <fullName>05</fullName>
         <default>false</default>
         <label>Bogdanci</label>
     </standardValue>
     <standardValue>
-        <fullName>601</fullName>
+        <fullName>06</fullName>
         <default>false</default>
         <label>Bogovinje</label>
     </standardValue>
     <standardValue>
         <fullName>03</fullName>
         <default>false</default>
-        <label>Bogura</label>
+        <label>Bogra</label>
     </standardValue>
     <standardValue>
         <fullName>004</fullName>
@@ -2489,7 +2579,7 @@
     <standardValue>
         <fullName>BL</fullName>
         <default>false</default>
-        <label>Bolama / Bijagos</label>
+        <label>Bolama</label>
     </standardValue>
     <standardValue>
         <fullName>BL</fullName>
@@ -2520,6 +2610,11 @@
         <fullName>14</fullName>
         <default>false</default>
         <label>Bolu</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BZ</fullName>
+        <default>false</default>
+        <label>Bolzano</label>
     </standardValue>
     <standardValue>
         <fullName>02</fullName>
@@ -2555,11 +2650,6 @@
         <fullName>19</fullName>
         <default>false</default>
         <label>Boqueron</label>
-    </standardValue>
-    <standardValue>
-        <fullName>50</fullName>
-        <default>false</default>
-        <label>Bordj Badji Mokhtar</label>
     </standardValue>
     <standardValue>
         <fullName>34</fullName>
@@ -2607,7 +2697,7 @@
         <label>Borsod-Abauj-Zemplen</label>
     </standardValue>
     <standardValue>
-        <fullName>402</fullName>
+        <fullName>07</fullName>
         <default>false</default>
         <label>Bosilovo</label>
     </standardValue>
@@ -2615,11 +2705,6 @@
         <fullName>BIH</fullName>
         <default>false</default>
         <label>Bosnia &amp; Herzegovina</label>
-    </standardValue>
-    <standardValue>
-        <fullName>B</fullName>
-        <default>false</default>
-        <label>Botha-Bothe</label>
     </standardValue>
     <standardValue>
         <fullName>BT</fullName>
@@ -2662,14 +2747,9 @@
         <label>Boumerdes</label>
     </standardValue>
     <standardValue>
-        <fullName>BFC</fullName>
+        <fullName>D</fullName>
         <default>false</default>
-        <label>Bourgogne-Franche-Comte</label>
-    </standardValue>
-    <standardValue>
-        <fullName>BV</fullName>
-        <default>false</default>
-        <label>Bouvet Islands</label>
+        <label>Bourgogne</label>
     </standardValue>
     <standardValue>
         <fullName>006</fullName>
@@ -2680,11 +2760,6 @@
         <fullName>BOY</fullName>
         <default>false</default>
         <label>Boyaca</label>
-    </standardValue>
-    <standardValue>
-        <fullName>BZ</fullName>
-        <default>false</default>
-        <label>Bozen</label>
     </standardValue>
     <standardValue>
         <fullName>WBR</fullName>
@@ -2777,7 +2852,7 @@
         <label>Brestskaya</label>
     </standardValue>
     <standardValue>
-        <fullName>BRE</fullName>
+        <fullName>E</fullName>
         <default>false</default>
         <label>Bretagne</label>
     </standardValue>
@@ -2807,9 +2882,9 @@
         <label>British Columbia</label>
     </standardValue>
     <standardValue>
-        <fullName>IO</fullName>
+        <fullName>018</fullName>
         <default>false</default>
-        <label>British Indian Ocean</label>
+        <label>Broceni novads</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -2832,7 +2907,7 @@
         <label>Brussels-Capitale</label>
     </standardValue>
     <standardValue>
-        <fullName>602</fullName>
+        <fullName>08</fullName>
         <default>false</default>
         <label>Brvenica</label>
     </standardValue>
@@ -2867,19 +2942,34 @@
         <label>Budapest</label>
     </standardValue>
     <standardValue>
+        <fullName>218</fullName>
+        <default>false</default>
+        <label>Bududa</label>
+    </standardValue>
+    <standardValue>
         <fullName>05</fullName>
         <default>false</default>
         <label>Budva</label>
     </standardValue>
     <standardValue>
-        <fullName>38</fullName>
-        <default>false</default>
-        <label>Bueng Kan</label>
-    </standardValue>
-    <standardValue>
         <fullName>B</fullName>
         <default>false</default>
         <label>Buenos Aires</label>
+    </standardValue>
+    <standardValue>
+        <fullName>235</fullName>
+        <default>false</default>
+        <label>Bugweri</label>
+    </standardValue>
+    <standardValue>
+        <fullName>420</fullName>
+        <default>false</default>
+        <label>Buhweju</label>
+    </standardValue>
+    <standardValue>
+        <fullName>117</fullName>
+        <default>false</default>
+        <label>Buikwe</label>
     </standardValue>
     <standardValue>
         <fullName>BM</fullName>
@@ -2892,14 +2982,39 @@
         <label>Bujumbura Rural</label>
     </standardValue>
     <standardValue>
+        <fullName>219</fullName>
+        <default>false</default>
+        <label>Bukedea</label>
+    </standardValue>
+    <standardValue>
         <fullName>BUK</fullName>
         <default>false</default>
         <label>Bukidnon</label>
     </standardValue>
     <standardValue>
+        <fullName>118</fullName>
+        <default>false</default>
+        <label>Bukomansibi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BU</fullName>
+        <default>false</default>
+        <label>Bukoro</label>
+    </standardValue>
+    <standardValue>
+        <fullName>220</fullName>
+        <default>false</default>
+        <label>Bukwa</label>
+    </standardValue>
+    <standardValue>
         <fullName>BUL</fullName>
         <default>false</default>
         <label>Bulacan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>225</fullName>
+        <default>false</default>
+        <label>Bulambuli</label>
     </standardValue>
     <standardValue>
         <fullName>BU</fullName>
@@ -2912,6 +3027,16 @@
         <label>Bulgan</label>
     </standardValue>
     <standardValue>
+        <fullName>416</fullName>
+        <default>false</default>
+        <label>Buliisa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>BU</fullName>
+        <default>false</default>
+        <label>Bulqize</label>
+    </standardValue>
+    <standardValue>
         <fullName>33</fullName>
         <default>false</default>
         <label>Bumthang</label>
@@ -2920,6 +3045,11 @@
         <fullName>03</fullName>
         <default>false</default>
         <label>Bungoma</label>
+    </standardValue>
+    <standardValue>
+        <fullName>430</fullName>
+        <default>false</default>
+        <label>Bunyangabu</label>
     </standardValue>
     <standardValue>
         <fullName>15</fullName>
@@ -2952,6 +3082,11 @@
         <label>Bur Sa Id</label>
     </standardValue>
     <standardValue>
+        <fullName>019</fullName>
+        <default>false</default>
+        <label>Burtnieki novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>BR</fullName>
         <default>false</default>
         <label>Bururi</label>
@@ -2964,10 +3099,10 @@
     <standardValue>
         <fullName>26</fullName>
         <default>false</default>
-        <label>Busan-gwangyeoksi</label>
+        <label>Busan Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
-        <fullName>18</fullName>
+        <fullName>06</fullName>
         <default>false</default>
         <label>Bushehr</label>
     </standardValue>
@@ -2977,14 +3112,39 @@
         <label>Busia</label>
     </standardValue>
     <standardValue>
-        <fullName>803</fullName>
+        <fullName>06</fullName>
         <default>false</default>
-        <label>Butel</label>
+        <label>Buskerud</label>
     </standardValue>
     <standardValue>
-        <fullName>BU</fullName>
+        <fullName>221</fullName>
         <default>false</default>
-        <label>Buxoro</label>
+        <label>Butaleja</label>
+    </standardValue>
+    <standardValue>
+        <fullName>119</fullName>
+        <default>false</default>
+        <label>Butambala</label>
+    </standardValue>
+    <standardValue>
+        <fullName>233</fullName>
+        <default>false</default>
+        <label>Butebo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>B</fullName>
+        <default>false</default>
+        <label>Butha-Buthe</label>
+    </standardValue>
+    <standardValue>
+        <fullName>120</fullName>
+        <default>false</default>
+        <label>Buvuma</label>
+    </standardValue>
+    <standardValue>
+        <fullName>226</fullName>
+        <default>false</default>
+        <label>Buyende</label>
     </standardValue>
     <standardValue>
         <fullName>BZ</fullName>
@@ -3040,11 +3200,6 @@
         <fullName>CA</fullName>
         <default>false</default>
         <label>Cahul</label>
-    </standardValue>
-    <standardValue>
-        <fullName>815</fullName>
-        <default>false</default>
-        <label>Cair</label>
     </standardValue>
     <standardValue>
         <fullName>CAJ</fullName>
@@ -3177,11 +3332,6 @@
         <label>Cantabria</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
-        <default>false</default>
-        <label>Cantagalo</label>
-    </standardValue>
-    <standardValue>
         <fullName>CT</fullName>
         <default>false</default>
         <label>Cantemir</label>
@@ -3237,6 +3387,11 @@
         <label>Carazo</label>
     </standardValue>
     <standardValue>
+        <fullName>CI</fullName>
+        <default>false</default>
+        <label>Carbonia-Iglesias</label>
+    </standardValue>
+    <standardValue>
         <fullName>C</fullName>
         <default>false</default>
         <label>Carchi</label>
@@ -3252,14 +3407,14 @@
         <label>Carlow</label>
     </standardValue>
     <standardValue>
+        <fullName>020</fullName>
+        <default>false</default>
+        <label>Carnikava novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>C</fullName>
         <default>false</default>
         <label>Cartago</label>
-    </standardValue>
-    <standardValue>
-        <fullName>06</fullName>
-        <default>false</default>
-        <label>Casablanca-Settat</label>
     </standardValue>
     <standardValue>
         <fullName>CAS</fullName>
@@ -3277,7 +3432,7 @@
         <label>Caserta</label>
     </standardValue>
     <standardValue>
-        <fullName>109</fullName>
+        <fullName>80</fullName>
         <default>false</default>
         <label>Caska</label>
     </standardValue>
@@ -3337,11 +3492,6 @@
         <label>Cauca</label>
     </standardValue>
     <standardValue>
-        <fullName>03</fullName>
-        <default>false</default>
-        <label>Caue</label>
-    </standardValue>
-    <standardValue>
         <fullName>CS</fullName>
         <default>false</default>
         <label>Causeni</label>
@@ -3355,11 +3505,6 @@
         <fullName>CAV</fullName>
         <default>false</default>
         <label>Cavite</label>
-    </standardValue>
-    <standardValue>
-        <fullName>KY</fullName>
-        <default>false</default>
-        <label>Cayman Islands</label>
     </standardValue>
     <standardValue>
         <fullName>CY</fullName>
@@ -3382,14 +3527,14 @@
         <label>Celje</label>
     </standardValue>
     <standardValue>
-        <fullName>814</fullName>
-        <default>false</default>
-        <label>Centar</label>
-    </standardValue>
-    <standardValue>
-        <fullName>313</fullName>
+        <fullName>78</fullName>
         <default>false</default>
         <label>Centar Zupa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>1</fullName>
+        <default>false</default>
+        <label>Central</label>
     </standardValue>
     <standardValue>
         <fullName>11</fullName>
@@ -3487,14 +3632,14 @@
         <label>Centre</label>
     </standardValue>
     <standardValue>
+        <fullName>F</fullName>
+        <default>false</default>
+        <label>Centre</label>
+    </standardValue>
+    <standardValue>
         <fullName>CE</fullName>
         <default>false</default>
         <label>Centre (Haiti)</label>
-    </standardValue>
-    <standardValue>
-        <fullName>CVL</fullName>
-        <default>false</default>
-        <label>Centre-Val de Loire</label>
     </standardValue>
     <standardValue>
         <fullName>CS</fullName>
@@ -3532,7 +3677,7 @@
         <label>Cesar</label>
     </standardValue>
     <standardValue>
-        <fullName>210</fullName>
+        <fullName>81</fullName>
         <default>false</default>
         <label>Cesinovo-Oblesevo</label>
     </standardValue>
@@ -3540,6 +3685,11 @@
         <fullName>022</fullName>
         <default>false</default>
         <label>Cesis novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>021</fullName>
+        <default>false</default>
+        <label>Cesvaine novads</label>
     </standardValue>
     <standardValue>
         <fullName>06</fullName>
@@ -3572,7 +3722,7 @@
         <label>Chaguanas</label>
     </standardValue>
     <standardValue>
-        <fullName>14</fullName>
+        <fullName>08</fullName>
         <default>false</default>
         <label>Chahar Mahal va Bakh</label>
     </standardValue>
@@ -3590,6 +3740,11 @@
         <fullName>CH</fullName>
         <default>false</default>
         <label>Chalatenango</label>
+    </standardValue>
+    <standardValue>
+        <fullName>G</fullName>
+        <default>false</default>
+        <label>Champagne-Ardenne</label>
     </standardValue>
     <standardValue>
         <fullName>CH</fullName>
@@ -3617,6 +3772,11 @@
         <label>Chanthaburi</label>
     </standardValue>
     <standardValue>
+        <fullName>09</fullName>
+        <default>false</default>
+        <label>Chaouia-Ouardigha</label>
+    </standardValue>
+    <standardValue>
         <fullName>45</fullName>
         <default>false</default>
         <label>Chapai Nawabganj</label>
@@ -3635,11 +3795,6 @@
         <fullName>CIT</fullName>
         <default>false</default>
         <label>Chatham Islands</label>
-    </standardValue>
-    <standardValue>
-        <fullName>10</fullName>
-        <default>false</default>
-        <label>Chattogram</label>
     </standardValue>
     <standardValue>
         <fullName>CE</fullName>
@@ -3667,7 +3822,7 @@
         <label>Chernivtsi</label>
     </standardValue>
     <standardValue>
-        <fullName>CG</fullName>
+        <fullName>CT</fullName>
         <default>false</default>
         <label>Chhattisgarh</label>
     </standardValue>
@@ -3692,14 +3847,14 @@
         <label>Chiapas</label>
     </standardValue>
     <standardValue>
-        <fullName>CYQ</fullName>
-        <default>false</default>
-        <label>Chiayi</label>
-    </standardValue>
-    <standardValue>
         <fullName>CYI</fullName>
         <default>false</default>
         <label>Chiayi (City)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CYQ</fullName>
+        <default>false</default>
+        <label>Chiayi (District)</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -3727,7 +3882,7 @@
         <label>Chikwawa</label>
     </standardValue>
     <standardValue>
-        <fullName>04</fullName>
+        <fullName>CM</fullName>
         <default>false</default>
         <label>Chimaltenango</label>
     </standardValue>
@@ -3752,7 +3907,7 @@
         <label>Chinandega</label>
     </standardValue>
     <standardValue>
-        <fullName>20</fullName>
+        <fullName>CQ</fullName>
         <default>false</default>
         <label>Chiquimula</label>
     </standardValue>
@@ -3775,6 +3930,11 @@
         <fullName>CT</fullName>
         <default>false</default>
         <label>Chitipa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>10</fullName>
+        <default>false</default>
+        <label>Chittagong</label>
     </standardValue>
     <standardValue>
         <fullName>02</fullName>
@@ -3812,6 +3972,11 @@
         <label>Chon Buri</label>
     </standardValue>
     <standardValue>
+        <fullName>50</fullName>
+        <default>false</default>
+        <label>Chongqing</label>
+    </standardValue>
+    <standardValue>
         <fullName>CQ</fullName>
         <default>false</default>
         <label>Chongqing Shi</label>
@@ -3825,11 +3990,6 @@
         <fullName>01</fullName>
         <default>false</default>
         <label>Christ Church</label>
-    </standardValue>
-    <standardValue>
-        <fullName>CX</fullName>
-        <default>false</default>
-        <label>Christmas Island</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -3854,12 +4014,12 @@
     <standardValue>
         <fullName>43</fullName>
         <default>false</default>
-        <label>Chungcheongbuk-do</label>
+        <label>Chungcheongbugdo</label>
     </standardValue>
     <standardValue>
         <fullName>44</fullName>
         <default>false</default>
-        <label>Chungcheongnam-do</label>
+        <label>Chungcheongnamdo</label>
     </standardValue>
     <standardValue>
         <fullName>H</fullName>
@@ -3907,6 +4067,11 @@
         <label>Cibitoke</label>
     </standardValue>
     <standardValue>
+        <fullName>023</fullName>
+        <default>false</default>
+        <label>Cibla novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Ciego De Avila</label>
@@ -3925,11 +4090,6 @@
         <fullName>196</fullName>
         <default>false</default>
         <label>Cirkulane</label>
-    </standardValue>
-    <standardValue>
-        <fullName>07</fullName>
-        <default>false</default>
-        <label>Citta di San Marino</label>
     </standardValue>
     <standardValue>
         <fullName>FP</fullName>
@@ -3965,6 +4125,11 @@
         <fullName>CL</fullName>
         <default>false</default>
         <label>Clervaux</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CP</fullName>
+        <default>false</default>
+        <label>Clipperton</label>
     </standardValue>
     <standardValue>
         <fullName>CJ</fullName>
@@ -4032,6 +4197,11 @@
         <label>Comayagua</label>
     </standardValue>
     <standardValue>
+        <fullName>08</fullName>
+        <default>false</default>
+        <label>Comilla</label>
+    </standardValue>
+    <standardValue>
         <fullName>CM</fullName>
         <default>false</default>
         <label>Commewijne</label>
@@ -4050,6 +4220,11 @@
         <fullName>CM</fullName>
         <default>false</default>
         <label>Comoe</label>
+    </standardValue>
+    <standardValue>
+        <fullName>COM</fullName>
+        <default>false</default>
+        <label>Compostela Valley</label>
     </standardValue>
     <standardValue>
         <fullName>C</fullName>
@@ -4075,11 +4250,6 @@
         <fullName>25</fullName>
         <default>false</default>
         <label>Constantine</label>
-    </standardValue>
-    <standardValue>
-        <fullName>CK</fullName>
-        <default>false</default>
-        <label>Cooks Islands</label>
     </standardValue>
     <standardValue>
         <fullName>CP</fullName>
@@ -4132,7 +4302,7 @@
         <label>Corrientes</label>
     </standardValue>
     <standardValue>
-        <fullName>20R</fullName>
+        <fullName>H</fullName>
         <default>false</default>
         <label>Corse</label>
     </standardValue>
@@ -4229,25 +4399,10 @@
     <standardValue>
         <fullName>CS</fullName>
         <default>false</default>
-        <label>Csongrad-Csanad</label>
+        <label>Csongrad</label>
     </standardValue>
     <standardValue>
-        <fullName>CCU</fullName>
-        <default>false</default>
-        <label>Cuando Cubango</label>
-    </standardValue>
-    <standardValue>
-        <fullName>CNO</fullName>
-        <default>false</default>
-        <label>Cuanza-Norte</label>
-    </standardValue>
-    <standardValue>
-        <fullName>CUS</fullName>
-        <default>false</default>
-        <label>Cuanza-Sul</label>
-    </standardValue>
-    <standardValue>
-        <fullName>816</fullName>
+        <fullName>82</fullName>
         <default>false</default>
         <label>Cucer Sandevo</label>
     </standardValue>
@@ -4255,11 +4410,6 @@
         <fullName>CUL</fullName>
         <default>false</default>
         <label>Culfa</label>
-    </standardValue>
-    <standardValue>
-        <fullName>08</fullName>
-        <default>false</default>
-        <label>Cumilla</label>
     </standardValue>
     <standardValue>
         <fullName>CUN</fullName>
@@ -4277,9 +4427,9 @@
         <label>Cuneo</label>
     </standardValue>
     <standardValue>
-        <fullName>CW</fullName>
+        <fullName>CU</fullName>
         <default>false</default>
-        <label>Curacao</label>
+        <label>Curepipe</label>
     </standardValue>
     <standardValue>
         <fullName>CU</fullName>
@@ -4312,24 +4462,29 @@
         <label>Dac Lac</label>
     </standardValue>
     <standardValue>
-        <fullName>DH</fullName>
+        <fullName>DN</fullName>
         <default>false</default>
-        <label>Dadra and Nagar Haveli and Daman and Diu</label>
+        <label>Dadra &amp; Nagar Haveli</label>
     </standardValue>
     <standardValue>
         <fullName>27</fullName>
         <default>false</default>
-        <label>Daegu-gwangyeoksi</label>
+        <label>Daegu Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
         <fullName>30</fullName>
         <default>false</default>
-        <label>Daejeon-gwangyeoksi</label>
+        <label>Daejeon Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
         <fullName>22</fullName>
         <default>false</default>
         <label>Dagana</label>
+    </standardValue>
+    <standardValue>
+        <fullName>024</fullName>
+        <default>false</default>
+        <label>Dagda novads</label>
     </standardValue>
     <standardValue>
         <fullName>DA</fullName>
@@ -4345,11 +4500,6 @@
         <fullName>DK</fullName>
         <default>false</default>
         <label>Dakar</label>
-    </standardValue>
-    <standardValue>
-        <fullName>12</fullName>
-        <default>false</default>
-        <label>Dakhla-Oued Ed-Dahab (EH)</label>
     </standardValue>
     <standardValue>
         <fullName>08</fullName>
@@ -4375,6 +4525,11 @@
         <fullName>30</fullName>
         <default>false</default>
         <label>Da Madeira</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DD</fullName>
+        <default>false</default>
+        <label>Daman and Diu</label>
     </standardValue>
     <standardValue>
         <fullName>DB</fullName>
@@ -4432,6 +4587,11 @@
         <label>Daugavpils</label>
     </standardValue>
     <standardValue>
+        <fullName>025</fullName>
+        <default>false</default>
+        <label>Daugavpils novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>DAV</fullName>
         <default>false</default>
         <label>Davao</label>
@@ -4440,11 +4600,6 @@
         <fullName>DAS</fullName>
         <default>false</default>
         <label>Davao Del Sur</label>
-    </standardValue>
-    <standardValue>
-        <fullName>COM</fullName>
-        <default>false</default>
-        <label>Davao de Oro</label>
     </standardValue>
     <standardValue>
         <fullName>DVO</fullName>
@@ -4467,12 +4622,12 @@
         <label>Dayr Az Zawr</label>
     </standardValue>
     <standardValue>
-        <fullName>303</fullName>
+        <fullName>21</fullName>
         <default>false</default>
         <label>Debar</label>
     </standardValue>
     <standardValue>
-        <fullName>304</fullName>
+        <fullName>22</fullName>
         <default>false</default>
         <label>Debarca</label>
     </standardValue>
@@ -4507,7 +4662,7 @@
         <label>Delaware</label>
     </standardValue>
     <standardValue>
-        <fullName>203</fullName>
+        <fullName>23</fullName>
         <default>false</default>
         <label>Delcevo</label>
     </standardValue>
@@ -4527,17 +4682,22 @@
         <label>Delta Amacuro</label>
     </standardValue>
     <standardValue>
+        <fullName>DL</fullName>
+        <default>false</default>
+        <label>Delvine</label>
+    </standardValue>
+    <standardValue>
         <fullName>DE</fullName>
         <default>false</default>
         <label>Demerara-Mahaica</label>
     </standardValue>
     <standardValue>
-        <fullName>502</fullName>
+        <fullName>25</fullName>
         <default>false</default>
         <label>Demir Hisar</label>
     </standardValue>
     <standardValue>
-        <fullName>103</fullName>
+        <fullName>24</fullName>
         <default>false</default>
         <label>Demir Kapija</label>
     </standardValue>
@@ -4572,6 +4732,11 @@
         <label>Destrnik</label>
     </standardValue>
     <standardValue>
+        <fullName>DV</fullName>
+        <default>false</default>
+        <label>Devoll</label>
+    </standardValue>
+    <standardValue>
         <fullName>13</fullName>
         <default>false</default>
         <label>Dhaka</label>
@@ -4582,14 +4747,19 @@
         <label>Dhamar</label>
     </standardValue>
     <standardValue>
+        <fullName>DH</fullName>
+        <default>false</default>
+        <label>Dhawalagiri</label>
+    </standardValue>
+    <standardValue>
         <fullName>DQ</fullName>
         <default>false</default>
         <label>Dhi Qar</label>
     </standardValue>
     <standardValue>
-        <fullName>09</fullName>
+        <fullName>DI</fullName>
         <default>false</default>
-        <label>Dibër</label>
+        <label>Diber</label>
     </standardValue>
     <standardValue>
         <fullName>DMN</fullName>
@@ -4605,11 +4775,6 @@
         <fullName>71</fullName>
         <default>false</default>
         <label>Dien Bien</label>
-    </standardValue>
-    <standardValue>
-        <fullName>112</fullName>
-        <default>false</default>
-        <label>Dienvidkurzemes Novads</label>
     </standardValue>
     <standardValue>
         <fullName>2</fullName>
@@ -4692,19 +4857,9 @@
         <label>Diyarbakir</label>
     </standardValue>
     <standardValue>
-        <fullName>56</fullName>
-        <default>false</default>
-        <label>Djanet</label>
-    </standardValue>
-    <standardValue>
         <fullName>17</fullName>
         <default>false</default>
         <label>Djelfa</label>
-    </standardValue>
-    <standardValue>
-        <fullName>DJ</fullName>
-        <default>false</default>
-        <label>Djibloho</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -4752,9 +4907,14 @@
         <label>Dodoma</label>
     </standardValue>
     <standardValue>
-        <fullName>406</fullName>
+        <fullName>26</fullName>
         <default>false</default>
         <label>Dojran</label>
+    </standardValue>
+    <standardValue>
+        <fullName>317</fullName>
+        <default>false</default>
+        <label>Dokolo</label>
     </standardValue>
     <standardValue>
         <fullName>157</fullName>
@@ -4767,7 +4927,7 @@
         <label>Dolj</label>
     </standardValue>
     <standardValue>
-        <fullName>503</fullName>
+        <fullName>27</fullName>
         <default>false</default>
         <label>Dolneni</label>
     </standardValue>
@@ -4842,14 +5002,14 @@
         <label>Dosso</label>
     </standardValue>
     <standardValue>
+        <fullName>10</fullName>
+        <default>false</default>
+        <label>Doukkala-Abda</label>
+    </standardValue>
+    <standardValue>
         <fullName>DO</fullName>
         <default>false</default>
         <label>Dowa</label>
-    </standardValue>
-    <standardValue>
-        <fullName>08</fullName>
-        <default>false</default>
-        <label>Draa-Tafilalet</label>
     </standardValue>
     <standardValue>
         <fullName>025</fullName>
@@ -4897,6 +5057,11 @@
         <label>Dunaujvaros</label>
     </standardValue>
     <standardValue>
+        <fullName>027</fullName>
+        <default>false</default>
+        <label>Dundaga novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>059</fullName>
         <default>false</default>
         <label>Dundgovi</label>
@@ -4917,9 +5082,14 @@
         <label>Durazno</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
+        <fullName>028</fullName>
         <default>false</default>
-        <label>Durrës</label>
+        <label>Durbe novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>DR</fullName>
+        <default>false</default>
+        <label>Durres</label>
     </standardValue>
     <standardValue>
         <fullName>DU</fullName>
@@ -4963,6 +5133,11 @@
     </standardValue>
     <standardValue>
         <fullName>03</fullName>
+        <default>false</default>
+        <label>Eastern</label>
+    </standardValue>
+    <standardValue>
+        <fullName>4</fullName>
         <default>false</default>
         <label>Eastern</label>
     </standardValue>
@@ -5012,7 +5187,7 @@
         <label>East Grand Bahama</label>
     </standardValue>
     <standardValue>
-        <fullName>63</fullName>
+        <fullName>VOS</fullName>
         <default>false</default>
         <label>East Kazakhstan</label>
     </standardValue>
@@ -5077,7 +5252,7 @@
         <label>Elazig</label>
     </standardValue>
     <standardValue>
-        <fullName>03</fullName>
+        <fullName>EL</fullName>
         <default>false</default>
         <label>Elbasan</label>
     </standardValue>
@@ -5107,16 +5282,6 @@
         <label>Elgeyo Marakwet</label>
     </standardValue>
     <standardValue>
-        <fullName>57</fullName>
-        <default>false</default>
-        <label>El Meghaier</label>
-    </standardValue>
-    <standardValue>
-        <fullName>58</fullName>
-        <default>false</default>
-        <label>El Meniaa</label>
-    </standardValue>
-    <standardValue>
         <fullName>O</fullName>
         <default>false</default>
         <label>El Oro</label>
@@ -5132,7 +5297,7 @@
         <label>El Paraiso</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
+        <fullName>PR</fullName>
         <default>false</default>
         <label>El Progreso</label>
     </standardValue>
@@ -5175,6 +5340,11 @@
         <fullName>16</fullName>
         <default>false</default>
         <label>English River</label>
+    </standardValue>
+    <standardValue>
+        <fullName>029</fullName>
+        <default>false</default>
+        <label>Engure novads</label>
     </standardValue>
     <standardValue>
         <fullName>EN</fullName>
@@ -5222,6 +5392,11 @@
         <label>Erevan</label>
     </standardValue>
     <standardValue>
+        <fullName>030</fullName>
+        <default>false</default>
+        <label>Ergli novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>ER</fullName>
         <default>false</default>
         <label>Ermera</label>
@@ -5257,12 +5432,12 @@
         <label>Esch-sur-Alzette</label>
     </standardValue>
     <standardValue>
-        <fullName>05</fullName>
+        <fullName>ES</fullName>
         <default>false</default>
         <label>Escuintla</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
+        <fullName>04</fullName>
         <default>false</default>
         <label>Esfahan</label>
     </standardValue>
@@ -5285,6 +5460,11 @@
         <fullName>ES</fullName>
         <default>false</default>
         <label>Essequibo-W Demerara</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ESM</fullName>
+        <default>false</default>
+        <label>Es Smara (EH)</label>
     </standardValue>
     <standardValue>
         <fullName>ES</fullName>
@@ -5347,11 +5527,6 @@
         <label>Falesti</label>
     </standardValue>
     <standardValue>
-        <fullName>FK</fullName>
-        <default>false</default>
-        <label>Falkland Islands</label>
-    </standardValue>
-    <standardValue>
         <fullName>FRA</fullName>
         <default>false</default>
         <label>Farah</label>
@@ -5382,14 +5557,14 @@
         <label>Faro</label>
     </standardValue>
     <standardValue>
-        <fullName>FO</fullName>
-        <default>false</default>
-        <label>Faroe Islands</label>
-    </standardValue>
-    <standardValue>
-        <fullName>07</fullName>
+        <fullName>14</fullName>
         <default>false</default>
         <label>Fars</label>
+    </standardValue>
+    <standardValue>
+        <fullName>5</fullName>
+        <default>false</default>
+        <label>Far Western</label>
     </standardValue>
     <standardValue>
         <fullName>FYB</fullName>
@@ -5427,11 +5602,6 @@
         <label>Ferrara</label>
     </standardValue>
     <standardValue>
-        <fullName>03</fullName>
-        <default>false</default>
-        <label>Fes-Meknes</label>
-    </standardValue>
-    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Fgura</label>
@@ -5442,7 +5612,7 @@
         <label>Fianarantsoa</label>
     </standardValue>
     <standardValue>
-        <fullName>04</fullName>
+        <fullName>FR</fullName>
         <default>false</default>
         <label>Fier</label>
     </standardValue>
@@ -5450,6 +5620,11 @@
         <fullName>19</fullName>
         <default>false</default>
         <label>Finland Proper</label>
+    </standardValue>
+    <standardValue>
+        <fullName>20</fullName>
+        <default>false</default>
+        <label>Finnmark</label>
     </standardValue>
     <standardValue>
         <fullName>05</fullName>
@@ -5522,6 +5697,11 @@
         <label>Formosa</label>
     </standardValue>
     <standardValue>
+        <fullName>I</fullName>
+        <default>false</default>
+        <label>Franche-Comte</label>
+    </standardValue>
+    <standardValue>
         <fullName>FM</fullName>
         <default>false</default>
         <label>Francisco Morazan</label>
@@ -5537,16 +5717,6 @@
         <label>Free State</label>
     </standardValue>
     <standardValue>
-        <fullName>GF</fullName>
-        <default>false</default>
-        <label>French Guiana</label>
-    </standardValue>
-    <standardValue>
-        <fullName>PF</fullName>
-        <default>false</default>
-        <label>French Poly.</label>
-    </standardValue>
-    <standardValue>
         <fullName>FR</fullName>
         <default>false</default>
         <label>Fribourg</label>
@@ -5560,6 +5730,11 @@
         <fullName>FR</fullName>
         <default>false</default>
         <label>Frosinone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>35</fullName>
+        <default>false</default>
+        <label>Fujian</label>
     </standardValue>
     <standardValue>
         <fullName>FJ</fullName>
@@ -5687,6 +5862,11 @@
         <label>Ganca</label>
     </standardValue>
     <standardValue>
+        <fullName>GA</fullName>
+        <default>false</default>
+        <label>Gandaki</label>
+    </standardValue>
+    <standardValue>
         <fullName>P4</fullName>
         <default>false</default>
         <label>Gandaki</label>
@@ -5694,7 +5874,12 @@
     <standardValue>
         <fullName>42</fullName>
         <default>false</default>
-        <label>Gangwon-do</label>
+        <label>Gang&apos;weondo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>62</fullName>
+        <default>false</default>
+        <label>Gansu</label>
     </standardValue>
     <standardValue>
         <fullName>GS</fullName>
@@ -5717,6 +5902,11 @@
         <label>Garissa</label>
     </standardValue>
     <standardValue>
+        <fullName>031</fullName>
+        <default>false</default>
+        <label>Garkalne novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>GA</fullName>
         <default>false</default>
         <label>Gasa</label>
@@ -5727,7 +5917,7 @@
         <label>Gash-Barka</label>
     </standardValue>
     <standardValue>
-        <fullName>GP</fullName>
+        <fullName>GT</fullName>
         <default>false</default>
         <label>Gauteng</label>
     </standardValue>
@@ -5750,11 +5940,6 @@
         <fullName>27</fullName>
         <default>false</default>
         <label>Gaziantep</label>
-    </standardValue>
-    <standardValue>
-        <fullName>804</fullName>
-        <default>false</default>
-        <label>Gazi Baba</label>
     </standardValue>
     <standardValue>
         <fullName>18</fullName>
@@ -5807,7 +5992,7 @@
         <label>Georgia</label>
     </standardValue>
     <standardValue>
-        <fullName>405</fullName>
+        <fullName>18</fullName>
         <default>false</default>
         <label>Gevgelija</label>
     </standardValue>
@@ -5830,6 +6015,11 @@
         <fullName>14</fullName>
         <default>false</default>
         <label>Gharb</label>
+    </standardValue>
+    <standardValue>
+        <fullName>02</fullName>
+        <default>false</default>
+        <label>Gharb-Chrarda</label>
     </standardValue>
     <standardValue>
         <fullName>47</fullName>
@@ -5872,17 +6062,12 @@
         <label>Gia Lai</label>
     </standardValue>
     <standardValue>
-        <fullName>GI</fullName>
-        <default>false</default>
-        <label>Gibraltar</label>
-    </standardValue>
-    <standardValue>
         <fullName>21</fullName>
         <default>false</default>
         <label>Gifu</label>
     </standardValue>
     <standardValue>
-        <fullName>01</fullName>
+        <fullName>19</fullName>
         <default>false</default>
         <label>Gilan</label>
     </standardValue>
@@ -5917,14 +6102,9 @@
         <label>Giurgiu</label>
     </standardValue>
     <standardValue>
-        <fullName>05</fullName>
+        <fullName>GJ</fullName>
         <default>false</default>
-        <label>Gjirokastër</label>
-    </standardValue>
-    <standardValue>
-        <fullName>805</fullName>
-        <default>false</default>
-        <label>Gjorce Petrov</label>
+        <label>Gjirokaster</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -5965,6 +6145,11 @@
         <fullName>27</fullName>
         <default>false</default>
         <label>Golestan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>121</fullName>
+        <default>false</default>
+        <label>Gomba</label>
     </standardValue>
     <standardValue>
         <fullName>GO</fullName>
@@ -6034,10 +6219,15 @@
     <standardValue>
         <fullName>GO</fullName>
         <default>false</default>
+        <label>Gorod Osh</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GO</fullName>
+        <default>false</default>
         <label>Gorontalo</label>
     </standardValue>
     <standardValue>
-        <fullName>604</fullName>
+        <fullName>19</fullName>
         <default>false</default>
         <label>Gostivar</label>
     </standardValue>
@@ -6082,7 +6272,7 @@
         <label>Grad</label>
     </standardValue>
     <standardValue>
-        <fullName>102</fullName>
+        <fullName>20</fullName>
         <default>false</default>
         <label>Gradsko</label>
     </standardValue>
@@ -6090,6 +6280,11 @@
         <fullName>21</fullName>
         <default>false</default>
         <label>Grad Zagreb</label>
+    </standardValue>
+    <standardValue>
+        <fullName>GR</fullName>
+        <default>false</default>
+        <label>Gramsh</label>
     </standardValue>
     <standardValue>
         <fullName>GR</fullName>
@@ -6117,6 +6312,11 @@
         <label>Grand Cape Mount</label>
     </standardValue>
     <standardValue>
+        <fullName>08</fullName>
+        <default>false</default>
+        <label>Grand Casablanca</label>
+    </standardValue>
+    <standardValue>
         <fullName>GC</fullName>
         <default>false</default>
         <label>Grand Cay</label>
@@ -6130,11 +6330,6 @@
         <fullName>G</fullName>
         <default>false</default>
         <label>Grande Comore</label>
-    </standardValue>
-    <standardValue>
-        <fullName>GES</fullName>
-        <default>false</default>
-        <label>Grand-Est</label>
     </standardValue>
     <standardValue>
         <fullName>GG</fullName>
@@ -6172,11 +6367,6 @@
         <label>Greater Poland</label>
     </standardValue>
     <standardValue>
-        <fullName>WGN</fullName>
-        <default>false</default>
-        <label>Greater Wellington</label>
-    </standardValue>
-    <standardValue>
         <fullName>06</fullName>
         <default>false</default>
         <label>Grenadines</label>
@@ -6190,6 +6380,11 @@
         <fullName>KB</fullName>
         <default>false</default>
         <label>Gribingui</label>
+    </standardValue>
+    <standardValue>
+        <fullName>032</fullName>
+        <default>false</default>
+        <label>Grobina novads</label>
     </standardValue>
     <standardValue>
         <fullName>GR</fullName>
@@ -6217,11 +6412,6 @@
         <label>Guadalcanal</label>
     </standardValue>
     <standardValue>
-        <fullName>GP</fullName>
-        <default>false</default>
-        <label>Guadeloupe</label>
-    </standardValue>
-    <standardValue>
         <fullName>GUA</fullName>
         <default>false</default>
         <label>Guainia</label>
@@ -6230,11 +6420,6 @@
         <fullName>4</fullName>
         <default>false</default>
         <label>Guaira</label>
-    </standardValue>
-    <standardValue>
-        <fullName>GU</fullName>
-        <default>false</default>
-        <label>Guam</label>
     </standardValue>
     <standardValue>
         <fullName>G</fullName>
@@ -6247,9 +6432,19 @@
         <label>Guanajuato</label>
     </standardValue>
     <standardValue>
+        <fullName>44</fullName>
+        <default>false</default>
+        <label>Guangdong</label>
+    </standardValue>
+    <standardValue>
         <fullName>GD</fullName>
         <default>false</default>
         <label>Guangdong Sheng</label>
+    </standardValue>
+    <standardValue>
+        <fullName>45</fullName>
+        <default>false</default>
+        <label>Guangxi</label>
     </standardValue>
     <standardValue>
         <fullName>GX</fullName>
@@ -6272,7 +6467,7 @@
         <label>Guarico</label>
     </standardValue>
     <standardValue>
-        <fullName>01</fullName>
+        <fullName>GU</fullName>
         <default>false</default>
         <label>Guatemala</label>
     </standardValue>
@@ -6297,19 +6492,14 @@
         <label>Guelma</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
+        <fullName>14</fullName>
         <default>false</default>
-        <label>Guelmim-Oued Noun (EH-partial)</label>
+        <label>Guelmim-Es Semara</label>
     </standardValue>
     <standardValue>
         <fullName>GR</fullName>
         <default>false</default>
         <label>Guera</label>
-    </standardValue>
-    <standardValue>
-        <fullName>GG</fullName>
-        <default>false</default>
-        <label>Guernsey</label>
     </standardValue>
     <standardValue>
         <fullName>GRO</fullName>
@@ -6325,6 +6515,11 @@
         <fullName>GUI</fullName>
         <default>false</default>
         <label>Guimaras</label>
+    </standardValue>
+    <standardValue>
+        <fullName>52</fullName>
+        <default>false</default>
+        <label>Guizhou</label>
     </standardValue>
     <standardValue>
         <fullName>GZ</fullName>
@@ -6367,29 +6562,24 @@
         <label>Guria</label>
     </standardValue>
     <standardValue>
-        <fullName>22</fullName>
-        <default>false</default>
-        <label>Gusinje</label>
-    </standardValue>
-    <standardValue>
         <fullName>29</fullName>
         <default>false</default>
-        <label>Gwangju-gwangyeoksi</label>
+        <label>Gwangju Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
         <fullName>41</fullName>
         <default>false</default>
-        <label>Gyeonggi-do</label>
+        <label>Gyeonggido</label>
     </standardValue>
     <standardValue>
         <fullName>47</fullName>
         <default>false</default>
-        <label>Gyeongsangbuk-do</label>
+        <label>Gyeongsangbugdo</label>
     </standardValue>
     <standardValue>
         <fullName>48</fullName>
         <default>false</default>
-        <label>Gyeongsangnam-do</label>
+        <label>Gyeongsangnamdo</label>
     </standardValue>
     <standardValue>
         <fullName>GY</fullName>
@@ -6462,6 +6652,11 @@
         <label>Hai Duong</label>
     </standardValue>
     <standardValue>
+        <fullName>46</fullName>
+        <default>false</default>
+        <label>Hainan</label>
+    </standardValue>
+    <standardValue>
         <fullName>HI</fullName>
         <default>false</default>
         <label>Hainan Sheng</label>
@@ -6507,7 +6702,7 @@
         <label>Halland</label>
     </standardValue>
     <standardValue>
-        <fullName>13</fullName>
+        <fullName>24</fullName>
         <default>false</default>
         <label>Hamadan</label>
     </standardValue>
@@ -6592,6 +6787,11 @@
         <label>Haryana</label>
     </standardValue>
     <standardValue>
+        <fullName>HA</fullName>
+        <default>false</default>
+        <label>Has</label>
+    </standardValue>
+    <standardValue>
         <fullName>26</fullName>
         <default>false</default>
         <label>Haskovo</label>
@@ -6627,6 +6827,11 @@
         <label>Haute-Kotto</label>
     </standardValue>
     <standardValue>
+        <fullName>Q</fullName>
+        <default>false</default>
+        <label>Haute-Normandie</label>
+    </standardValue>
+    <standardValue>
         <fullName>HK</fullName>
         <default>false</default>
         <label>Haut-Katanga</label>
@@ -6645,11 +6850,6 @@
         <fullName>2</fullName>
         <default>false</default>
         <label>Haut-Ogooue</label>
-    </standardValue>
-    <standardValue>
-        <fullName>HDF</fullName>
-        <default>false</default>
-        <label>Hauts-de-France</label>
     </standardValue>
     <standardValue>
         <fullName>HU</fullName>
@@ -6672,6 +6872,11 @@
         <label>Hawke&apos;s Bay</label>
     </standardValue>
     <standardValue>
+        <fullName>13</fullName>
+        <default>false</default>
+        <label>Hebei</label>
+    </standardValue>
+    <standardValue>
         <fullName>HE</fullName>
         <default>false</default>
         <label>Hebei Sheng</label>
@@ -6682,9 +6887,19 @@
         <label>Hebron</label>
     </standardValue>
     <standardValue>
+        <fullName>04</fullName>
+        <default>false</default>
+        <label>Hedmark</label>
+    </standardValue>
+    <standardValue>
         <fullName>HA</fullName>
         <default>false</default>
         <label>Hefa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>23</fullName>
+        <default>false</default>
+        <label>Heilongjiang</label>
     </standardValue>
     <standardValue>
         <fullName>HL</fullName>
@@ -6700,6 +6915,11 @@
         <fullName>HEL</fullName>
         <default>false</default>
         <label>Helmand</label>
+    </standardValue>
+    <standardValue>
+        <fullName>41</fullName>
+        <default>false</default>
+        <label>Henan</label>
     </standardValue>
     <standardValue>
         <fullName>HA</fullName>
@@ -6842,11 +7062,6 @@
         <label>Holy Cross</label>
     </standardValue>
     <standardValue>
-        <fullName>VA</fullName>
-        <default>false</default>
-        <label>Holy See</label>
-    </standardValue>
-    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Homa Bay</label>
@@ -6855,11 +7070,6 @@
         <fullName>HO</fullName>
         <default>false</default>
         <label>Homyelskaya</label>
-    </standardValue>
-    <standardValue>
-        <fullName>HK</fullName>
-        <default>false</default>
-        <label>Hong Kong</label>
     </standardValue>
     <standardValue>
         <fullName>HT</fullName>
@@ -6872,12 +7082,17 @@
         <label>Horad Minsk</label>
     </standardValue>
     <standardValue>
+        <fullName>12</fullName>
+        <default>false</default>
+        <label>Hordaland</label>
+    </standardValue>
+    <standardValue>
         <fullName>162</fullName>
         <default>false</default>
         <label>Horjul</label>
     </standardValue>
     <standardValue>
-        <fullName>22</fullName>
+        <fullName>23</fullName>
         <default>false</default>
         <label>Hormozgan</label>
     </standardValue>
@@ -6919,7 +7134,7 @@
     <standardValue>
         <fullName>HR</fullName>
         <default>false</default>
-        <label>Hrodzyenskaya</label>
+        <label>Hrodzenskaya</label>
     </standardValue>
     <standardValue>
         <fullName>035</fullName>
@@ -6929,7 +7144,7 @@
     <standardValue>
         <fullName>HSZ</fullName>
         <default>false</default>
-        <label>Hsinchu</label>
+        <label>Hsinchu (City)</label>
     </standardValue>
     <standardValue>
         <fullName>HSQ</fullName>
@@ -6957,12 +7172,17 @@
         <label>Huanuco</label>
     </standardValue>
     <standardValue>
+        <fullName>42</fullName>
+        <default>false</default>
+        <label>Hubei</label>
+    </standardValue>
+    <standardValue>
         <fullName>HB</fullName>
         <default>false</default>
         <label>Hubei Sheng</label>
     </standardValue>
     <standardValue>
-        <fullName>13</fullName>
+        <fullName>HU</fullName>
         <default>false</default>
         <label>Huehuetenango</label>
     </standardValue>
@@ -6975,6 +7195,11 @@
         <fullName>HUI</fullName>
         <default>false</default>
         <label>Huila</label>
+    </standardValue>
+    <standardValue>
+        <fullName>43</fullName>
+        <default>false</default>
+        <label>Hunan</label>
     </standardValue>
     <standardValue>
         <fullName>HN</fullName>
@@ -7022,6 +7247,11 @@
         <label>Iasi</label>
     </standardValue>
     <standardValue>
+        <fullName>417</fullName>
+        <default>false</default>
+        <label>Ibanda</label>
+    </standardValue>
+    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Ibaraki</label>
@@ -7042,7 +7272,7 @@
         <label>Idaho</label>
     </standardValue>
     <standardValue>
-        <fullName>45</fullName>
+        <fullName>44</fullName>
         <default>false</default>
         <label>Ida-Virumaa</label>
     </standardValue>
@@ -7055,6 +7285,11 @@
         <fullName>036</fullName>
         <default>false</default>
         <label>Idrija</label>
+    </standardValue>
+    <standardValue>
+        <fullName>034</fullName>
+        <default>false</default>
+        <label>Iecava novads</label>
     </standardValue>
     <standardValue>
         <fullName>IFU</fullName>
@@ -7082,24 +7317,19 @@
         <label>Iklin</label>
     </standardValue>
     <standardValue>
-        <fullName>16</fullName>
+        <fullName>035</fullName>
+        <default>false</default>
+        <label>Ikskile novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>05</fullName>
         <default>false</default>
         <label>Ilam</label>
     </standardValue>
     <standardValue>
-        <fullName>IDF</fullName>
+        <fullName>ILA</fullName>
         <default>false</default>
-        <label>Ile-de-France</label>
-    </standardValue>
-    <standardValue>
-        <fullName>26</fullName>
-        <default>false</default>
-        <label>Ile Perseverance I</label>
-    </standardValue>
-    <standardValue>
-        <fullName>27</fullName>
-        <default>false</default>
-        <label>Ile Perseverance II</label>
+        <label>Ilan</label>
     </standardValue>
     <standardValue>
         <fullName>IF</fullName>
@@ -7107,7 +7337,7 @@
         <label>Ilfov</label>
     </standardValue>
     <standardValue>
-        <fullName>807</fullName>
+        <fullName>34</fullName>
         <default>false</default>
         <label>Ilinden</label>
     </standardValue>
@@ -7147,6 +7377,11 @@
         <label>Iloilo</label>
     </standardValue>
     <standardValue>
+        <fullName>036</fullName>
+        <default>false</default>
+        <label>Ilukste novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>I</fullName>
         <default>false</default>
         <label>Imbabura</label>
@@ -7179,7 +7414,7 @@
     <standardValue>
         <fullName>28</fullName>
         <default>false</default>
-        <label>Incheon-gwangyeoksi</label>
+        <label>Incheon Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -7187,14 +7422,14 @@
         <label>Inchiri</label>
     </standardValue>
     <standardValue>
+        <fullName>037</fullName>
+        <default>false</default>
+        <label>Incukalns novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>IN</fullName>
         <default>false</default>
         <label>Indiana</label>
-    </standardValue>
-    <standardValue>
-        <fullName>54</fullName>
-        <default>false</default>
-        <label>In Guezzam</label>
     </standardValue>
     <standardValue>
         <fullName>IN</fullName>
@@ -7205,16 +7440,6 @@
         <fullName>I</fullName>
         <default>false</default>
         <label>Inhambane</label>
-    </standardValue>
-    <standardValue>
-        <fullName>34</fullName>
-        <default>false</default>
-        <label>Innlandet</label>
-    </standardValue>
-    <standardValue>
-        <fullName>53</fullName>
-        <default>false</default>
-        <label>In Salah</label>
     </standardValue>
     <standardValue>
         <fullName>IN</fullName>
@@ -7240,11 +7465,6 @@
         <fullName>D</fullName>
         <default>false</default>
         <label>Ipeiros</label>
-    </standardValue>
-    <standardValue>
-        <fullName>KR</fullName>
-        <default>false</default>
-        <label>Iqlim Kurdistan</label>
     </standardValue>
     <standardValue>
         <fullName>IR</fullName>
@@ -7282,6 +7502,11 @@
         <label>Ishikawa</label>
     </standardValue>
     <standardValue>
+        <fullName>418</fullName>
+        <default>false</default>
+        <label>Isingiro</label>
+    </standardValue>
+    <standardValue>
         <fullName>09</fullName>
         <default>false</default>
         <label>Isiolo</label>
@@ -7305,11 +7530,6 @@
         <fullName>IB</fullName>
         <default>false</default>
         <label>Islas de la Bahia</label>
-    </standardValue>
-    <standardValue>
-        <fullName>IM</fullName>
-        <default>false</default>
-        <label>Isle of Man</label>
     </standardValue>
     <standardValue>
         <fullName>ISM</fullName>
@@ -7362,7 +7582,7 @@
         <label>Iwate</label>
     </standardValue>
     <standardValue>
-        <fullName>18</fullName>
+        <fullName>IZ</fullName>
         <default>false</default>
         <label>Izabal</label>
     </standardValue>
@@ -7397,7 +7617,7 @@
         <label>Jalal-Abad</label>
     </standardValue>
     <standardValue>
-        <fullName>21</fullName>
+        <fullName>JA</fullName>
         <default>false</default>
         <label>Jalapa</label>
     </standardValue>
@@ -7427,6 +7647,11 @@
         <label>Jamtland</label>
     </standardValue>
     <standardValue>
+        <fullName>JA</fullName>
+        <default>false</default>
+        <label>Janakpur</label>
+    </standardValue>
+    <standardValue>
         <fullName>BJ</fullName>
         <default>false</default>
         <label>Janub al Batinah</label>
@@ -7452,7 +7677,7 @@
         <label>Jardin Exotique</label>
     </standardValue>
     <standardValue>
-        <fullName>52</fullName>
+        <fullName>51</fullName>
         <default>false</default>
         <label>Jarvamaa</label>
     </standardValue>
@@ -7462,14 +7687,24 @@
         <label>Jarvis Island</label>
     </standardValue>
     <standardValue>
-        <fullName>22</fullName>
-        <default>false</default>
-        <label>Jashore</label>
-    </standardValue>
-    <standardValue>
         <fullName>JN</fullName>
         <default>false</default>
         <label>Jasz-Nagykun-Szolnok</label>
+    </standardValue>
+    <standardValue>
+        <fullName>038</fullName>
+        <default>false</default>
+        <label>Jaunjelgava novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>039</fullName>
+        <default>false</default>
+        <label>Jaunpiebalga novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>040</fullName>
+        <default>false</default>
+        <label>Jaunpils novads</label>
     </standardValue>
     <standardValue>
         <fullName>JB</fullName>
@@ -7492,14 +7727,19 @@
         <label>Jazan</label>
     </standardValue>
     <standardValue>
-        <fullName>606</fullName>
+        <fullName>35</fullName>
         <default>false</default>
         <label>Jegunovce</label>
     </standardValue>
     <standardValue>
         <fullName>49</fullName>
         <default>false</default>
-        <label>Jeju-teukbyeoljachido</label>
+        <label>Jejudo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>JKB</fullName>
+        <default>false</default>
+        <label>Jekabpils</label>
     </standardValue>
     <standardValue>
         <fullName>042</fullName>
@@ -7529,22 +7769,17 @@
     <standardValue>
         <fullName>45</fullName>
         <default>false</default>
-        <label>Jeollabuk-do</label>
+        <label>Jeonrabugdo</label>
     </standardValue>
     <standardValue>
         <fullName>46</fullName>
         <default>false</default>
-        <label>Jeollanam-do</label>
+        <label>Jeonranamdo</label>
     </standardValue>
     <standardValue>
         <fullName>JRH</fullName>
         <default>false</default>
         <label>Jericho - Al Aghwar</label>
-    </standardValue>
-    <standardValue>
-        <fullName>JE</fullName>
-        <default>false</default>
-        <label>Jersey</label>
     </standardValue>
     <standardValue>
         <fullName>JEM</fullName>
@@ -7555,6 +7790,11 @@
         <fullName>041</fullName>
         <default>false</default>
         <label>Jesenice</label>
+    </standardValue>
+    <standardValue>
+        <fullName>22</fullName>
+        <default>false</default>
+        <label>Jessore</label>
     </standardValue>
     <standardValue>
         <fullName>163</fullName>
@@ -7577,9 +7817,19 @@
         <label>Jhenaidah</label>
     </standardValue>
     <standardValue>
+        <fullName>32</fullName>
+        <default>false</default>
+        <label>Jiangsu</label>
+    </standardValue>
+    <standardValue>
         <fullName>JS</fullName>
         <default>false</default>
         <label>Jiangsu Sheng</label>
+    </standardValue>
+    <standardValue>
+        <fullName>36</fullName>
+        <default>false</default>
+        <label>Jiangxi</label>
     </standardValue>
     <standardValue>
         <fullName>JX</fullName>
@@ -7607,6 +7857,11 @@
         <label>Jijel</label>
     </standardValue>
     <standardValue>
+        <fullName>22</fullName>
+        <default>false</default>
+        <label>Jilin</label>
+    </standardValue>
+    <standardValue>
         <fullName>JL</fullName>
         <default>false</default>
         <label>Jilin Sheng</label>
@@ -7627,7 +7882,7 @@
         <label>Jizzax</label>
     </standardValue>
     <standardValue>
-        <fullName>50</fullName>
+        <fullName>49</fullName>
         <default>false</default>
         <label>Jogevamaa</label>
     </standardValue>
@@ -7697,24 +7952,19 @@
         <label>Jursinci</label>
     </standardValue>
     <standardValue>
-        <fullName>22</fullName>
+        <fullName>JU</fullName>
         <default>false</default>
         <label>Jutiapa</label>
-    </standardValue>
-    <standardValue>
-        <fullName>06</fullName>
-        <default>false</default>
-        <label>Južnobački okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>04</fullName>
-        <default>false</default>
-        <label>Južnobanatski okrug</label>
     </standardValue>
     <standardValue>
         <fullName>JW</fullName>
         <default>false</default>
         <label>Jwaneng</label>
+    </standardValue>
+    <standardValue>
+        <fullName>318</fullName>
+        <default>false</default>
+        <label>Kaabong</label>
     </standardValue>
     <standardValue>
         <fullName>KB</fullName>
@@ -7752,11 +8002,6 @@
         <label>Kaernten</label>
     </standardValue>
     <standardValue>
-        <fullName>15</fullName>
-        <default>false</default>
-        <label>Kaeseong</label>
-    </standardValue>
-    <standardValue>
         <fullName>KA</fullName>
         <default>false</default>
         <label>Kaffrine</label>
@@ -7765,6 +8010,11 @@
         <fullName>KFS</fullName>
         <default>false</default>
         <label>Kafr Ash Shaykh</label>
+    </standardValue>
+    <standardValue>
+        <fullName>427</fullName>
+        <default>false</default>
+        <label>Kagadi</label>
     </standardValue>
     <standardValue>
         <fullName>37</fullName>
@@ -7812,6 +8062,11 @@
         <label>Kakheti</label>
     </standardValue>
     <standardValue>
+        <fullName>428</fullName>
+        <default>false</default>
+        <label>Kakumiro</label>
+    </standardValue>
+    <standardValue>
         <fullName>46</fullName>
         <default>false</default>
         <label>Kalasin</label>
@@ -7857,6 +8112,11 @@
         <label>Kaliningrad</label>
     </standardValue>
     <standardValue>
+        <fullName>222</fullName>
+        <default>false</default>
+        <label>Kaliro</label>
+    </standardValue>
+    <standardValue>
         <fullName>21</fullName>
         <default>false</default>
         <label>Kalkara</label>
@@ -7875,6 +8135,11 @@
         <fullName>KLU</fullName>
         <default>false</default>
         <label>Kaluga</label>
+    </standardValue>
+    <standardValue>
+        <fullName>122</fullName>
+        <default>false</default>
+        <label>Kalungu</label>
     </standardValue>
     <standardValue>
         <fullName>KAM</fullName>
@@ -7924,7 +8189,7 @@
     <standardValue>
         <fullName>044</fullName>
         <default>false</default>
-        <label>Kanal ob Soci</label>
+        <label>Kanal</label>
     </standardValue>
     <standardValue>
         <fullName>71</fullName>
@@ -7940,6 +8205,11 @@
         <fullName>KAN</fullName>
         <default>false</default>
         <label>Kandahar</label>
+    </standardValue>
+    <standardValue>
+        <fullName>043</fullName>
+        <default>false</default>
+        <label>Kandava novads</label>
     </standardValue>
     <standardValue>
         <fullName>KA</fullName>
@@ -7979,12 +8249,22 @@
     <standardValue>
         <fullName>KHH</fullName>
         <default>false</default>
-        <label>Kaohsiung</label>
+        <label>Kaohsiung (City)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>KHQ</fullName>
+        <default>false</default>
+        <label>Kaohsiung (District)</label>
     </standardValue>
     <standardValue>
         <fullName>KL</fullName>
         <default>false</default>
         <label>Kaolack</label>
+    </standardValue>
+    <standardValue>
+        <fullName>236</fullName>
+        <default>false</default>
+        <label>Kapelebyong</label>
     </standardValue>
     <standardValue>
         <fullName>KAP</fullName>
@@ -8027,7 +8307,7 @@
         <label>Karbala</label>
     </standardValue>
     <standardValue>
-        <fullName>205</fullName>
+        <fullName>37</fullName>
         <default>false</default>
         <label>Karbinci</label>
     </standardValue>
@@ -8052,6 +8332,11 @@
         <label>Karlovarsky Kraj</label>
     </standardValue>
     <standardValue>
+        <fullName>KA</fullName>
+        <default>false</default>
+        <label>Karnali</label>
+    </standardValue>
+    <standardValue>
         <fullName>P6</fullName>
         <default>false</default>
         <label>Karnali</label>
@@ -8067,14 +8352,14 @@
         <label>Karonga</label>
     </standardValue>
     <standardValue>
-        <fullName>808</fullName>
-        <default>false</default>
-        <label>Karpos</label>
-    </standardValue>
-    <standardValue>
         <fullName>36</fullName>
         <default>false</default>
         <label>Kars</label>
+    </standardValue>
+    <standardValue>
+        <fullName>044</fullName>
+        <default>false</default>
+        <label>Karsava novads</label>
     </standardValue>
     <standardValue>
         <fullName>KR</fullName>
@@ -8095,6 +8380,11 @@
         <fullName>KE</fullName>
         <default>false</default>
         <label>Kasai Oriental</label>
+    </standardValue>
+    <standardValue>
+        <fullName>126</fullName>
+        <default>false</default>
+        <label>Kasanda</label>
     </standardValue>
     <standardValue>
         <fullName>KA</fullName>
@@ -8132,9 +8422,14 @@
         <label>Kauno</label>
     </standardValue>
     <standardValue>
-        <fullName>104</fullName>
+        <fullName>36</fullName>
         <default>false</default>
         <label>Kavadarci</label>
+    </standardValue>
+    <standardValue>
+        <fullName>KA</fullName>
+        <default>false</default>
+        <label>Kavaje</label>
     </standardValue>
     <standardValue>
         <fullName>KE</fullName>
@@ -8207,6 +8502,11 @@
         <label>Keelung</label>
     </standardValue>
     <standardValue>
+        <fullName>051</fullName>
+        <default>false</default>
+        <label>Kegums novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>052</fullName>
         <default>false</default>
         <label>Kekava novads</label>
@@ -8267,12 +8567,12 @@
         <label>Kericho</label>
     </standardValue>
     <standardValue>
-        <fullName>08</fullName>
+        <fullName>15</fullName>
         <default>false</default>
         <label>Kerman</label>
     </standardValue>
     <standardValue>
-        <fullName>05</fullName>
+        <fullName>17</fullName>
         <default>false</default>
         <label>Kermanshah</label>
     </standardValue>
@@ -8377,12 +8677,12 @@
         <label>Khorasan-e Jonubi</label>
     </standardValue>
     <standardValue>
-        <fullName>09</fullName>
+        <fullName>30</fullName>
         <default>false</default>
         <label>Khorasan-e Razavi</label>
     </standardValue>
     <standardValue>
-        <fullName>28</fullName>
+        <fullName>31</fullName>
         <default>false</default>
         <label>Khorasan-e Shomali</label>
     </standardValue>
@@ -8397,7 +8697,7 @@
         <label>Khulna</label>
     </standardValue>
     <standardValue>
-        <fullName>06</fullName>
+        <fullName>10</fullName>
         <default>false</default>
         <label>Khuzestan</label>
     </standardValue>
@@ -8412,7 +8712,12 @@
         <label>Kiambu</label>
     </standardValue>
     <standardValue>
-        <fullName>307</fullName>
+        <fullName>227</fullName>
+        <default>false</default>
+        <label>Kibuku</label>
+    </standardValue>
+    <standardValue>
+        <fullName>40</fullName>
         <default>false</default>
         <label>Kicevo</label>
     </standardValue>
@@ -8440,6 +8745,11 @@
         <fullName>08</fullName>
         <default>false</default>
         <label>Kigoma</label>
+    </standardValue>
+    <standardValue>
+        <fullName>432</fullName>
+        <default>false</default>
+        <label>Kikuube</label>
     </standardValue>
     <standardValue>
         <fullName>KE</fullName>
@@ -8480,11 +8790,6 @@
         <fullName>01</fullName>
         <default>false</default>
         <label>Kingston</label>
-    </standardValue>
-    <standardValue>
-        <fullName>KIN</fullName>
-        <default>false</default>
-        <label>Kinmen</label>
     </standardValue>
     <standardValue>
         <fullName>KN</fullName>
@@ -8532,14 +8837,19 @@
         <label>Kirsehir</label>
     </standardValue>
     <standardValue>
+        <fullName>419</fullName>
+        <default>false</default>
+        <label>Kiruhura</label>
+    </standardValue>
+    <standardValue>
         <fullName>KI</fullName>
         <default>false</default>
         <label>Kirundo</label>
     </standardValue>
     <standardValue>
-        <fullName>809</fullName>
+        <fullName>421</fullName>
         <default>false</default>
-        <label>Kisela Voda</label>
+        <label>Kiryandongo</label>
     </standardValue>
     <standardValue>
         <fullName>26</fullName>
@@ -8577,14 +8887,24 @@
         <label>Kobilje</label>
     </standardValue>
     <standardValue>
+        <fullName>319</fullName>
+        <default>false</default>
+        <label>Koboko</label>
+    </standardValue>
+    <standardValue>
         <fullName>41</fullName>
         <default>false</default>
         <label>Kocaeli</label>
     </standardValue>
     <standardValue>
-        <fullName>206</fullName>
+        <fullName>42</fullName>
         <default>false</default>
         <label>Kocani</label>
+    </standardValue>
+    <standardValue>
+        <fullName>045</fullName>
+        <default>false</default>
+        <label>Koceni novads</label>
     </standardValue>
     <standardValue>
         <fullName>048</fullName>
@@ -8602,9 +8922,14 @@
         <label>Kogi</label>
     </standardValue>
     <standardValue>
-        <fullName>17</fullName>
+        <fullName>18</fullName>
         <default>false</default>
         <label>Kohgiluyeh va Bowyer</label>
+    </standardValue>
+    <standardValue>
+        <fullName>046</fullName>
+        <default>false</default>
+        <label>Koknese novads</label>
     </standardValue>
     <standardValue>
         <fullName>09</fullName>
@@ -8617,9 +8942,19 @@
         <label>Kolda</label>
     </standardValue>
     <standardValue>
+        <fullName>325</fullName>
+        <default>false</default>
+        <label>Kole</label>
+    </standardValue>
+    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Kolhumadulu</label>
+    </standardValue>
+    <standardValue>
+        <fullName>ER</fullName>
+        <default>false</default>
+        <label>Kolonje</label>
     </standardValue>
     <standardValue>
         <fullName>09</fullName>
@@ -8657,7 +8992,7 @@
         <label>Kompienga</label>
     </standardValue>
     <standardValue>
-        <fullName>407</fullName>
+        <fullName>41</fullName>
         <default>false</default>
         <label>Konce</label>
     </standardValue>
@@ -8687,12 +9022,12 @@
         <label>Koprivnicko-Krizevac</label>
     </standardValue>
     <standardValue>
-        <fullName>06</fullName>
+        <fullName>KO</fullName>
         <default>false</default>
-        <label>Korçë</label>
+        <label>Korce</label>
     </standardValue>
     <standardValue>
-        <fullName>12</fullName>
+        <fullName>16</fullName>
         <default>false</default>
         <label>Kordestan</label>
     </standardValue>
@@ -8702,9 +9037,14 @@
         <label>Koror</label>
     </standardValue>
     <standardValue>
-        <fullName>P1</fullName>
+        <fullName>197</fullName>
         <default>false</default>
-        <label>Koshi</label>
+        <label>Kosanjevica na Krki</label>
+    </standardValue>
+    <standardValue>
+        <fullName>KO</fullName>
+        <default>false</default>
+        <label>Kosi</label>
     </standardValue>
     <standardValue>
         <fullName>KI</fullName>
@@ -8712,19 +9052,9 @@
         <label>Kosice</label>
     </standardValue>
     <standardValue>
-        <fullName>25</fullName>
+        <fullName>KM</fullName>
         <default>false</default>
-        <label>Kosovski okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>28</fullName>
-        <default>false</default>
-        <label>Kosovsko-Mitrovački okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>29</fullName>
-        <default>false</default>
-        <label>Kosovsko-Pomoravski okrug</label>
+        <label>Kosovo-Metohija</label>
     </standardValue>
     <standardValue>
         <fullName>KSA</fullName>
@@ -8735,11 +9065,6 @@
         <fullName>KOS</fullName>
         <default>false</default>
         <label>Kossi</label>
-    </standardValue>
-    <standardValue>
-        <fullName>197</fullName>
-        <default>false</default>
-        <label>Kostanjevica na Krki</label>
     </standardValue>
     <standardValue>
         <fullName>165</fullName>
@@ -8842,9 +9167,14 @@
         <label>Krasnoyarsk</label>
     </standardValue>
     <standardValue>
-        <fullName>701</fullName>
+        <fullName>43</fullName>
         <default>false</default>
         <label>Kratovo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>048</fullName>
+        <default>false</default>
+        <label>Krimulda novads</label>
     </standardValue>
     <standardValue>
         <fullName>M</fullName>
@@ -8852,12 +9182,12 @@
         <label>Kriti</label>
     </standardValue>
     <standardValue>
-        <fullName>702</fullName>
+        <fullName>44</fullName>
         <default>false</default>
         <label>Kriva Palanka</label>
     </standardValue>
     <standardValue>
-        <fullName>504</fullName>
+        <fullName>45</fullName>
         <default>false</default>
         <label>Krivogastani</label>
     </standardValue>
@@ -8877,14 +9207,24 @@
         <label>Krsko</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
+        <fullName>KR</fullName>
         <default>false</default>
-        <label>Krung Thep Maha Nakhon</label>
+        <label>Kruje</label>
     </standardValue>
     <standardValue>
-        <fullName>505</fullName>
+        <fullName>10</fullName>
+        <default>false</default>
+        <label>Krung Thep (Bangkok)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>46</fullName>
         <default>false</default>
         <label>Krusevo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>049</fullName>
+        <default>false</default>
+        <label>Krustpils novads</label>
     </standardValue>
     <standardValue>
         <fullName>14</fullName>
@@ -8892,19 +9232,24 @@
         <label>Kuala Lumpur</label>
     </standardValue>
     <standardValue>
+        <fullName>CCU</fullName>
+        <default>false</default>
+        <label>Kuando Kubango</label>
+    </standardValue>
+    <standardValue>
+        <fullName>KC</fullName>
+        <default>false</default>
+        <label>Kucove</label>
+    </standardValue>
+    <standardValue>
         <fullName>KU</fullName>
         <default>false</default>
         <label>Kujalleq</label>
     </standardValue>
     <standardValue>
-        <fullName>04</fullName>
+        <fullName>KU</fullName>
         <default>false</default>
-        <label>Kujawsko-Pomorskie</label>
-    </standardValue>
-    <standardValue>
-        <fullName>07</fullName>
-        <default>false</default>
-        <label>Kukës</label>
+        <label>Kukes</label>
     </standardValue>
     <standardValue>
         <fullName>050</fullName>
@@ -8917,7 +9262,7 @@
         <label>Kumamoto</label>
     </standardValue>
     <standardValue>
-        <fullName>703</fullName>
+        <fullName>47</fullName>
         <default>false</default>
         <label>Kumanovo</label>
     </standardValue>
@@ -8940,6 +9285,11 @@
         <fullName>055</fullName>
         <default>false</default>
         <label>Kungota</label>
+    </standardValue>
+    <standardValue>
+        <fullName>KB</fullName>
+        <default>false</default>
+        <label>Kurbin</label>
     </standardValue>
     <standardValue>
         <fullName>KUR</fullName>
@@ -8972,6 +9322,11 @@
         <label>Kutahya</label>
     </standardValue>
     <standardValue>
+        <fullName>04</fullName>
+        <default>false</default>
+        <label>Kuyavia-Pomerania</label>
+    </standardValue>
+    <standardValue>
         <fullName>056</fullName>
         <default>false</default>
         <label>Kuzma</label>
@@ -8992,14 +9347,34 @@
         <label>Kwango</label>
     </standardValue>
     <standardValue>
+        <fullName>333</fullName>
+        <default>false</default>
+        <label>Kwania</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CNO</fullName>
+        <default>false</default>
+        <label>Kwanza Norte</label>
+    </standardValue>
+    <standardValue>
+        <fullName>CUS</fullName>
+        <default>false</default>
+        <label>Kwanza Sul</label>
+    </standardValue>
+    <standardValue>
         <fullName>KW</fullName>
         <default>false</default>
         <label>Kwara</label>
     </standardValue>
     <standardValue>
-        <fullName>KZN</fullName>
+        <fullName>NL</fullName>
         <default>false</default>
-        <label>KwaZulu-Natal</label>
+        <label>Kwazulu-Natal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>228</fullName>
+        <default>false</default>
+        <label>Kween</label>
     </standardValue>
     <standardValue>
         <fullName>KW</fullName>
@@ -9010,6 +9385,16 @@
         <fullName>KL</fullName>
         <default>false</default>
         <label>Kwilu</label>
+    </standardValue>
+    <standardValue>
+        <fullName>123</fullName>
+        <default>false</default>
+        <label>Kyankwanzi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>422</fullName>
+        <default>false</default>
+        <label>Kyegegwa</label>
     </standardValue>
     <standardValue>
         <fullName>30</fullName>
@@ -9027,6 +9412,11 @@
         <label>Kymenlaakso</label>
     </standardValue>
     <standardValue>
+        <fullName>125</fullName>
+        <default>false</default>
+        <label>Kyotera</label>
+    </standardValue>
+    <standardValue>
         <fullName>26</fullName>
         <default>false</default>
         <label>Kyoto</label>
@@ -9042,22 +9432,17 @@
         <label>L&apos;Ariana</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
-        <default>false</default>
-        <label>L&apos;Oriental</label>
-    </standardValue>
-    <standardValue>
         <fullName>46</fullName>
         <default>false</default>
         <label>L&apos;vivs&apos;ka Oblast</label>
     </standardValue>
     <standardValue>
-        <fullName>56</fullName>
+        <fullName>57</fullName>
         <default>false</default>
         <label>Laanemaa</label>
     </standardValue>
     <standardValue>
-        <fullName>60</fullName>
+        <fullName>59</fullName>
         <default>false</default>
         <label>Laane-Virumaa</label>
     </standardValue>
@@ -9065,11 +9450,6 @@
         <fullName>AR</fullName>
         <default>false</default>
         <label>La Araucanía</label>
-    </standardValue>
-    <standardValue>
-        <fullName>11</fullName>
-        <default>false</default>
-        <label>Laayoune-Sakia El Hamra (EH-partial)</label>
     </standardValue>
     <standardValue>
         <fullName>L</fullName>
@@ -9109,7 +9489,7 @@
     <standardValue>
         <fullName>LA</fullName>
         <default>false</default>
-        <label>Ladakh</label>
+        <label>Ladak</label>
     </standardValue>
     <standardValue>
         <fullName>15</fullName>
@@ -9135,11 +9515,6 @@
         <fullName>LA</fullName>
         <default>false</default>
         <label>Lagos</label>
-    </standardValue>
-    <standardValue>
-        <fullName>X</fullName>
-        <default>false</default>
-        <label>La Guaira</label>
     </standardValue>
     <standardValue>
         <fullName>LAG</fullName>
@@ -9247,6 +9622,11 @@
         <label>Lamu</label>
     </standardValue>
     <standardValue>
+        <fullName>326</fullName>
+        <default>false</default>
+        <label>Lamwo</label>
+    </standardValue>
+    <standardValue>
         <fullName>LAN</fullName>
         <default>false</default>
         <label>Lanao Del Norte</label>
@@ -9260,6 +9640,11 @@
         <fullName>09</fullName>
         <default>false</default>
         <label>Lang Son</label>
+    </standardValue>
+    <standardValue>
+        <fullName>K</fullName>
+        <default>false</default>
+        <label>Languedoc-Roussillon</label>
     </standardValue>
     <standardValue>
         <fullName>LA</fullName>
@@ -9427,11 +9812,6 @@
         <label>Lekoumou</label>
     </standardValue>
     <standardValue>
-        <fullName>04</fullName>
-        <default>false</default>
-        <label>Lemba</label>
-    </standardValue>
-    <standardValue>
         <fullName>02</fullName>
         <default>false</default>
         <label>Lemesos</label>
@@ -9497,14 +9877,19 @@
         <label>Leyte</label>
     </standardValue>
     <standardValue>
-        <fullName>08</fullName>
+        <fullName>LE</fullName>
         <default>false</default>
-        <label>Lezhë</label>
+        <label>Lezhe</label>
     </standardValue>
     <standardValue>
         <fullName>44</fullName>
         <default>false</default>
         <label>Lhuentse</label>
+    </standardValue>
+    <standardValue>
+        <fullName>21</fullName>
+        <default>false</default>
+        <label>Liaoning</label>
     </standardValue>
     <standardValue>
         <fullName>LN</fullName>
@@ -9517,6 +9902,11 @@
         <label>Liberecky Kraj</label>
     </standardValue>
     <standardValue>
+        <fullName>LB</fullName>
+        <default>false</default>
+        <label>Librazhd</label>
+    </standardValue>
+    <standardValue>
         <fullName>09</fullName>
         <default>false</default>
         <label>Licko-Senjska</label>
@@ -9527,14 +9917,19 @@
         <label>Liege</label>
     </standardValue>
     <standardValue>
-        <fullName>LIE</fullName>
+        <fullName>053</fullName>
         <default>false</default>
-        <label>Lienchiang</label>
+        <label>Lielvarde novads</label>
     </standardValue>
     <standardValue>
         <fullName>LPX</fullName>
         <default>false</default>
         <label>Liepaja</label>
+    </standardValue>
+    <standardValue>
+        <fullName>055</fullName>
+        <default>false</default>
+        <label>Ligatne novads</label>
     </standardValue>
     <standardValue>
         <fullName>24</fullName>
@@ -9592,6 +9987,11 @@
         <label>Limon</label>
     </standardValue>
     <standardValue>
+        <fullName>L</fullName>
+        <default>false</default>
+        <label>Limousin</label>
+    </standardValue>
+    <standardValue>
         <fullName>LP</fullName>
         <default>false</default>
         <label>Limpopo</label>
@@ -9612,7 +10012,7 @@
         <label>Lipetsk</label>
     </standardValue>
     <standardValue>
-        <fullName>704</fullName>
+        <fullName>48</fullName>
         <default>false</default>
         <label>Lipkovo</label>
     </standardValue>
@@ -9672,9 +10072,9 @@
         <label>Ljutomer</label>
     </standardValue>
     <standardValue>
-        <fullName>05</fullName>
+        <fullName>J</fullName>
         <default>false</default>
-        <label>Lobata</label>
+        <label>Lle-de-France</label>
     </standardValue>
     <standardValue>
         <fullName>LO</fullName>
@@ -9767,7 +10167,7 @@
         <label>Lop Buri</label>
     </standardValue>
     <standardValue>
-        <fullName>15</fullName>
+        <fullName>20</fullName>
         <default>false</default>
         <label>Lorestan</label>
     </standardValue>
@@ -9777,9 +10177,19 @@
         <label>Loreto</label>
     </standardValue>
     <standardValue>
+        <fullName>04</fullName>
+        <default>false</default>
+        <label>L Oriental</label>
+    </standardValue>
+    <standardValue>
         <fullName>LOR</fullName>
         <default>false</default>
         <label>Loroum</label>
+    </standardValue>
+    <standardValue>
+        <fullName>M</fullName>
+        <default>false</default>
+        <label>Lorraine</label>
     </standardValue>
     <standardValue>
         <fullName>LO</fullName>
@@ -9862,7 +10272,7 @@
         <label>Lower Silesia</label>
     </standardValue>
     <standardValue>
-        <fullName>105</fullName>
+        <fullName>49</fullName>
         <default>false</default>
         <label>Lozovo</label>
     </standardValue>
@@ -9880,6 +10290,11 @@
         <fullName>04</fullName>
         <default>false</default>
         <label>Luapula</label>
+    </standardValue>
+    <standardValue>
+        <fullName>057</fullName>
+        <default>false</default>
+        <label>Lubana novads</label>
     </standardValue>
     <standardValue>
         <fullName>06</fullName>
@@ -9922,19 +10337,19 @@
         <label>Lukovica</label>
     </standardValue>
     <standardValue>
-        <fullName>P5</fullName>
+        <fullName>LU</fullName>
         <default>false</default>
         <label>Lumbini</label>
     </standardValue>
     <standardValue>
         <fullName>LNO</fullName>
         <default>false</default>
-        <label>Lunda-Norte</label>
+        <label>Lunda Norte</label>
     </standardValue>
     <standardValue>
         <fullName>LSU</fullName>
         <default>false</default>
-        <label>Lunda-Sul</label>
+        <label>Lunda Sul</label>
     </standardValue>
     <standardValue>
         <fullName>25</fullName>
@@ -9945,6 +10360,16 @@
         <fullName>09</fullName>
         <default>false</default>
         <label>Lusaka</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LU</fullName>
+        <default>false</default>
+        <label>Lushnje</label>
+    </standardValue>
+    <standardValue>
+        <fullName>229</fullName>
+        <default>false</default>
+        <label>Luuka</label>
     </standardValue>
     <standardValue>
         <fullName>WLX</fullName>
@@ -9962,6 +10387,16 @@
         <label>Luzern</label>
     </standardValue>
     <standardValue>
+        <fullName>124</fullName>
+        <default>false</default>
+        <label>Lwengo</label>
+    </standardValue>
+    <standardValue>
+        <fullName>114</fullName>
+        <default>false</default>
+        <label>Lyantonde</label>
+    </standardValue>
+    <standardValue>
         <fullName>MA</fullName>
         <default>false</default>
         <label>Ma&apos;rib</label>
@@ -9975,11 +10410,6 @@
         <fullName>MN</fullName>
         <default>false</default>
         <label>Maan</label>
-    </standardValue>
-    <standardValue>
-        <fullName>MO</fullName>
-        <default>false</default>
-        <label>Macao SAR China</label>
     </standardValue>
     <standardValue>
         <fullName>MC</fullName>
@@ -10020,11 +10450,6 @@
         <fullName>36</fullName>
         <default>false</default>
         <label>Madaripur</label>
-    </standardValue>
-    <standardValue>
-        <fullName>P2</fullName>
-        <default>false</default>
-        <label>Madhesh</label>
     </standardValue>
     <standardValue>
         <fullName>2</fullName>
@@ -10082,14 +10507,9 @@
         <label>Magdalena</label>
     </standardValue>
     <standardValue>
-        <fullName>MGN</fullName>
+        <fullName>MAG</fullName>
         <default>false</default>
-        <label>Maguindanao del Norte</label>
-    </standardValue>
-    <standardValue>
-        <fullName>MGS</fullName>
-        <default>false</default>
-        <label>Maguindanao del Sur</label>
+        <label>Maguindanao</label>
     </standardValue>
     <standardValue>
         <fullName>37</fullName>
@@ -10110,6 +10530,11 @@
         <fullName>M</fullName>
         <default>false</default>
         <label>Mahajanga</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MA</fullName>
+        <default>false</default>
+        <label>Mahakali</label>
     </standardValue>
     <standardValue>
         <fullName>MH</fullName>
@@ -10157,12 +10582,17 @@
         <label>Makamba</label>
     </standardValue>
     <standardValue>
-        <fullName>207</fullName>
+        <fullName>49</fullName>
+        <default>false</default>
+        <label>Makduhan</label>
+    </standardValue>
+    <standardValue>
+        <fullName>51</fullName>
         <default>false</default>
         <label>Makedonska Kamenica</label>
     </standardValue>
     <standardValue>
-        <fullName>308</fullName>
+        <fullName>52</fullName>
         <default>false</default>
         <label>Makedonski Brod</label>
     </standardValue>
@@ -10227,6 +10657,21 @@
         <label>Male Atoll</label>
     </standardValue>
     <standardValue>
+        <fullName>MM</fullName>
+        <default>false</default>
+        <label>Malesi e Madhe</label>
+    </standardValue>
+    <standardValue>
+        <fullName>MK</fullName>
+        <default>false</default>
+        <label>Mallakaster</label>
+    </standardValue>
+    <standardValue>
+        <fullName>061</fullName>
+        <default>false</default>
+        <label>Malpils novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>MA</fullName>
         <default>false</default>
         <label>Maluku</label>
@@ -10252,6 +10697,11 @@
         <label>Manabi</label>
     </standardValue>
     <standardValue>
+        <fullName>223</fullName>
+        <default>false</default>
+        <label>Manafwa</label>
+    </standardValue>
+    <standardValue>
         <fullName>MN</fullName>
         <default>false</default>
         <label>Managua</label>
@@ -10264,7 +10714,7 @@
     <standardValue>
         <fullName>MWT</fullName>
         <default>false</default>
-        <label>Manawatu-Whanganui</label>
+        <label>Manawatu-Wanganui</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -10287,7 +10737,7 @@
         <label>Mandoul</label>
     </standardValue>
     <standardValue>
-        <fullName>47</fullName>
+        <fullName>MAN</fullName>
         <default>false</default>
         <label>Mangghystau</label>
     </standardValue>
@@ -10427,7 +10877,7 @@
         <label>Mariy-El</label>
     </standardValue>
     <standardValue>
-        <fullName>00</fullName>
+        <fullName>22</fullName>
         <default>false</default>
         <label>Markazi</label>
     </standardValue>
@@ -10445,11 +10895,6 @@
         <fullName>MA</fullName>
         <default>false</default>
         <label>Marowijne</label>
-    </standardValue>
-    <standardValue>
-        <fullName>07</fullName>
-        <default>false</default>
-        <label>Marrakech-Safi</label>
     </standardValue>
     <standardValue>
         <fullName>26</fullName>
@@ -10552,6 +10997,11 @@
         <label>Masvingo</label>
     </standardValue>
     <standardValue>
+        <fullName>MT</fullName>
+        <default>false</default>
+        <label>Mat</label>
+    </standardValue>
+    <standardValue>
         <fullName>MN</fullName>
         <default>false</default>
         <label>Matabeleland North</label>
@@ -10607,7 +11057,7 @@
         <label>Mauren</label>
     </standardValue>
     <standardValue>
-        <fullName>607</fullName>
+        <fullName>50</fullName>
         <default>false</default>
         <label>Mavrovo i Rostusa</label>
     </standardValue>
@@ -10642,17 +11092,12 @@
         <label>Mayo-Kebbi-Ouest</label>
     </standardValue>
     <standardValue>
-        <fullName>YT</fullName>
-        <default>false</default>
-        <label>Mayotte</label>
-    </standardValue>
-    <standardValue>
         <fullName>MA</fullName>
         <default>false</default>
         <label>Maysan</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
+        <fullName>21</fullName>
         <default>false</default>
         <label>Mazandaran</label>
     </standardValue>
@@ -10660,6 +11105,11 @@
         <fullName>14</fullName>
         <default>false</default>
         <label>Mazovia</label>
+    </standardValue>
+    <standardValue>
+        <fullName>060</fullName>
+        <default>false</default>
+        <label>Mazsalaca novads</label>
     </standardValue>
     <standardValue>
         <fullName>14</fullName>
@@ -10687,6 +11137,11 @@
         <label>Meath</label>
     </standardValue>
     <standardValue>
+        <fullName>ME</fullName>
+        <default>false</default>
+        <label>Mechi</label>
+    </standardValue>
+    <standardValue>
         <fullName>MV</fullName>
         <default>false</default>
         <label>Mecklenburg-Vorpomm</label>
@@ -10707,6 +11162,11 @@
         <label>Medimurska</label>
     </standardValue>
     <standardValue>
+        <fullName>VS</fullName>
+        <default>false</default>
+        <label>Medio Campidano</label>
+    </standardValue>
+    <standardValue>
         <fullName>071</fullName>
         <default>false</default>
         <label>Medvode</label>
@@ -10725,6 +11185,11 @@
         <fullName>39</fullName>
         <default>false</default>
         <label>Meherpur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>06</fullName>
+        <default>false</default>
+        <label>Meknes-Tafilalet</label>
     </standardValue>
     <standardValue>
         <fullName>04</fullName>
@@ -10782,6 +11247,11 @@
         <label>Mersin</label>
     </standardValue>
     <standardValue>
+        <fullName>063</fullName>
+        <default>false</default>
+        <label>Mersrags novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>26</fullName>
         <default>false</default>
         <label>Meru</label>
@@ -10810,11 +11280,6 @@
         <fullName>074</fullName>
         <default>false</default>
         <label>Mezica</label>
-    </standardValue>
-    <standardValue>
-        <fullName>06</fullName>
-        <default>false</default>
-        <label>Me-Zochi</label>
     </standardValue>
     <standardValue>
         <fullName>31</fullName>
@@ -10847,6 +11312,11 @@
         <label>Micoud</label>
     </standardValue>
     <standardValue>
+        <fullName>N</fullName>
+        <default>false</default>
+        <label>Midi-Pyrenees</label>
+    </standardValue>
+    <standardValue>
         <fullName>MI</fullName>
         <default>false</default>
         <label>Midlands</label>
@@ -10860,6 +11330,11 @@
         <fullName>71</fullName>
         <default>false</default>
         <label>Midway Islands</label>
+    </standardValue>
+    <standardValue>
+        <fullName>2</fullName>
+        <default>false</default>
+        <label>Mid Western</label>
     </standardValue>
     <standardValue>
         <fullName>24</fullName>
@@ -10927,6 +11402,11 @@
         <label>Miranda</label>
     </standardValue>
     <standardValue>
+        <fullName>MR</fullName>
+        <default>false</default>
+        <label>Mirdite</label>
+    </standardValue>
+    <standardValue>
         <fullName>075</fullName>
         <default>false</default>
         <label>Miren-Kostanjevica</label>
@@ -10987,6 +11467,16 @@
         <label>Missouri</label>
     </standardValue>
     <standardValue>
+        <fullName>423</fullName>
+        <default>false</default>
+        <label>Mitooma</label>
+    </standardValue>
+    <standardValue>
+        <fullName>115</fullName>
+        <default>false</default>
+        <label>Mityana</label>
+    </standardValue>
+    <standardValue>
         <fullName>04</fullName>
         <default>false</default>
         <label>Miyagi</label>
@@ -11007,7 +11497,7 @@
         <label>Modena</label>
     </standardValue>
     <standardValue>
-        <fullName>506</fullName>
+        <fullName>53</fullName>
         <default>false</default>
         <label>Mogila</label>
     </standardValue>
@@ -11137,11 +11627,6 @@
         <label>Montserrado</label>
     </standardValue>
     <standardValue>
-        <fullName>MS</fullName>
-        <default>false</default>
-        <label>Montserrat</label>
-    </standardValue>
-    <standardValue>
         <fullName>MB</fullName>
         <default>false</default>
         <label>Monza e Brianza</label>
@@ -11179,7 +11664,7 @@
     <standardValue>
         <fullName>80</fullName>
         <default>false</default>
-        <label>Moravskoslezsky kraj</label>
+        <label>Moravskoslezsky</label>
     </standardValue>
     <standardValue>
         <fullName>MO</fullName>
@@ -11337,11 +11822,6 @@
         <label>Mugla</label>
     </standardValue>
     <standardValue>
-        <fullName>49</fullName>
-        <default>false</default>
-        <label>Mukdahan</label>
-    </standardValue>
-    <standardValue>
         <fullName>12</fullName>
         <default>false</default>
         <label>Mulaku Atoll</label>
@@ -11467,6 +11947,11 @@
         <label>Nabeul</label>
     </standardValue>
     <standardValue>
+        <fullName>334</fullName>
+        <default>false</default>
+        <label>Nabilatuk</label>
+    </standardValue>
+    <standardValue>
         <fullName>NBS</fullName>
         <default>false</default>
         <label>Nablus</label>
@@ -11532,6 +12017,11 @@
         <label>Najran</label>
     </standardValue>
     <standardValue>
+        <fullName>116</fullName>
+        <default>false</default>
+        <label>Nakaseke</label>
+    </standardValue>
+    <standardValue>
         <fullName>26</fullName>
         <default>false</default>
         <label>Nakhon Nayok</label>
@@ -11582,6 +12072,11 @@
         <label>Namangan</label>
     </standardValue>
     <standardValue>
+        <fullName>230</fullName>
+        <default>false</default>
+        <label>Namayingo</label>
+    </standardValue>
+    <standardValue>
         <fullName>67</fullName>
         <default>false</default>
         <label>Nam Dinh</label>
@@ -11595,6 +12090,11 @@
         <fullName>NAM</fullName>
         <default>false</default>
         <label>Namibe</label>
+    </standardValue>
+    <standardValue>
+        <fullName>234</fullName>
+        <default>false</default>
+        <label>Namisindwa</label>
     </standardValue>
     <standardValue>
         <fullName>10</fullName>
@@ -11615,6 +12115,11 @@
         <fullName>WNA</fullName>
         <default>false</default>
         <label>Namur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>224</fullName>
+        <default>false</default>
+        <label>Namutumba</label>
     </standardValue>
     <standardValue>
         <fullName>55</fullName>
@@ -11657,6 +12162,11 @@
         <label>Naogaon</label>
     </standardValue>
     <standardValue>
+        <fullName>327</fullName>
+        <default>false</default>
+        <label>Napak</label>
+    </standardValue>
+    <standardValue>
         <fullName>N</fullName>
         <default>false</default>
         <label>Napo</label>
@@ -11687,6 +12197,11 @@
         <label>Narayanganj</label>
     </standardValue>
     <standardValue>
+        <fullName>NA</fullName>
+        <default>false</default>
+        <label>Narayani</label>
+    </standardValue>
+    <standardValue>
         <fullName>NAR</fullName>
         <default>false</default>
         <label>Narino</label>
@@ -11712,11 +12227,6 @@
         <label>Nasarawa</label>
     </standardValue>
     <standardValue>
-        <fullName>NT</fullName>
-        <default>false</default>
-        <label>Naso Tjer Di</label>
-    </standardValue>
-    <standardValue>
         <fullName>NCD</fullName>
         <default>false</default>
         <label>National Capital Dis</label>
@@ -11730,6 +12240,11 @@
         <fullName>44</fullName>
         <default>false</default>
         <label>Natore</label>
+    </standardValue>
+    <standardValue>
+        <fullName>064</fullName>
+        <default>false</default>
+        <label>Naukseni novads</label>
     </standardValue>
     <standardValue>
         <fullName>NC</fullName>
@@ -11802,7 +12317,7 @@
         <label>Negeri Sembilan</label>
     </standardValue>
     <standardValue>
-        <fullName>106</fullName>
+        <fullName>54</fullName>
         <default>false</default>
         <label>Negotino</label>
     </standardValue>
@@ -11815,6 +12330,11 @@
         <fullName>NER</fullName>
         <default>false</default>
         <label>Negros Oriental</label>
+    </standardValue>
+    <standardValue>
+        <fullName>15</fullName>
+        <default>false</default>
+        <label>Nei Mongol (mn)</label>
     </standardValue>
     <standardValue>
         <fullName>NM</fullName>
@@ -11835,6 +12355,11 @@
         <fullName>NE</fullName>
         <default>false</default>
         <label>Neno</label>
+    </standardValue>
+    <standardValue>
+        <fullName>065</fullName>
+        <default>false</default>
+        <label>Nereta novads</label>
     </standardValue>
     <standardValue>
         <fullName>41</fullName>
@@ -11902,29 +12427,14 @@
         <label>New Mexico</label>
     </standardValue>
     <standardValue>
-        <fullName>NP</fullName>
-        <default>false</default>
-        <label>New Providence</label>
-    </standardValue>
-    <standardValue>
         <fullName>NSW</fullName>
         <default>false</default>
         <label>New South Wales</label>
     </standardValue>
     <standardValue>
-        <fullName>NWT</fullName>
-        <default>false</default>
-        <label>New Taipei</label>
-    </standardValue>
-    <standardValue>
         <fullName>NY</fullName>
         <default>false</default>
         <label>New York</label>
-    </standardValue>
-    <standardValue>
-        <fullName>NB</fullName>
-        <default>false</default>
-        <label>Ngabe-Bugle</label>
     </standardValue>
     <standardValue>
         <fullName>214</fullName>
@@ -11967,6 +12477,16 @@
         <label>Ngiwal</label>
     </standardValue>
     <standardValue>
+        <fullName>NB</fullName>
+        <default>false</default>
+        <label>Ngobe-Bugle</label>
+    </standardValue>
+    <standardValue>
+        <fullName>231</fullName>
+        <default>false</default>
+        <label>Ngora</label>
+    </standardValue>
+    <standardValue>
         <fullName>4</fullName>
         <default>false</default>
         <label>Ngounie</label>
@@ -11990,6 +12510,11 @@
         <fullName>12</fullName>
         <default>false</default>
         <label>Nibok</label>
+    </standardValue>
+    <standardValue>
+        <fullName>066</fullName>
+        <default>false</default>
+        <label>Nica novads</label>
     </standardValue>
     <standardValue>
         <fullName>NI</fullName>
@@ -12057,9 +12582,14 @@
         <label>Ning Thuan</label>
     </standardValue>
     <standardValue>
+        <fullName>64</fullName>
+        <default>false</default>
+        <label>Ningxia</label>
+    </standardValue>
+    <standardValue>
         <fullName>NX</fullName>
         <default>false</default>
-        <label>Ningxia Huizu Zizhiqu</label>
+        <label>Ningxia Huizi</label>
     </standardValue>
     <standardValue>
         <fullName>18</fullName>
@@ -12090,11 +12620,6 @@
         <fullName>03</fullName>
         <default>false</default>
         <label>Niuas</label>
-    </standardValue>
-    <standardValue>
-        <fullName>NU</fullName>
-        <default>false</default>
-        <label>Niue</label>
     </standardValue>
     <standardValue>
         <fullName>NIT</fullName>
@@ -12139,7 +12664,7 @@
     <standardValue>
         <fullName>39</fullName>
         <default>false</default>
-        <label>Nong Bua Lam Phu</label>
+        <label>Nong Bhu Lam Phu</label>
     </standardValue>
     <standardValue>
         <fullName>43</fullName>
@@ -12192,6 +12717,11 @@
         <label>Nord-Ouest</label>
     </standardValue>
     <standardValue>
+        <fullName>O</fullName>
+        <default>false</default>
+        <label>Nord-Pas-de-Calais</label>
+    </standardValue>
+    <standardValue>
         <fullName>NW</fullName>
         <default>false</default>
         <label>Nordrhein-Westfalen</label>
@@ -12200,16 +12730,6 @@
         <fullName>NU</fullName>
         <default>false</default>
         <label>Nord-Ubangi</label>
-    </standardValue>
-    <standardValue>
-        <fullName>NF</fullName>
-        <default>false</default>
-        <label>Norfolk Island</label>
-    </standardValue>
-    <standardValue>
-        <fullName>NOR</fullName>
-        <default>false</default>
-        <label>Normandie</label>
     </standardValue>
     <standardValue>
         <fullName>6</fullName>
@@ -12347,11 +12867,6 @@
         <label>Northern Ireland</label>
     </standardValue>
     <standardValue>
-        <fullName>MP</fullName>
-        <default>false</default>
-        <label>Northern Mariana Isl</label>
-    </standardValue>
-    <standardValue>
         <fullName>NSA</fullName>
         <default>false</default>
         <label>Northern Samar</label>
@@ -12382,7 +12897,7 @@
         <label>North Karelia</label>
     </standardValue>
     <standardValue>
-        <fullName>59</fullName>
+        <fullName>SEV</fullName>
         <default>false</default>
         <label>North Kazakhstan</label>
     </standardValue>
@@ -12400,11 +12915,6 @@
         <fullName>13</fullName>
         <default>false</default>
         <label>North Maalhosmadulu</label>
-    </standardValue>
-    <standardValue>
-        <fullName>MK</fullName>
-        <default>false</default>
-        <label>North Macedonia</label>
     </standardValue>
     <standardValue>
         <fullName>24</fullName>
@@ -12487,12 +12997,7 @@
         <label>Noumbiel</label>
     </standardValue>
     <standardValue>
-        <fullName>NAQ</fullName>
-        <default>false</default>
-        <label>Nouvelle-Aquitaine</label>
-    </standardValue>
-    <standardValue>
-        <fullName>507</fullName>
+        <fullName>55</fullName>
         <default>false</default>
         <label>Novaci</label>
     </standardValue>
@@ -12522,7 +13027,7 @@
         <label>Novo mesto</label>
     </standardValue>
     <standardValue>
-        <fullName>408</fullName>
+        <fullName>56</fullName>
         <default>false</default>
         <label>Novo Selo</label>
     </standardValue>
@@ -12550,6 +13055,11 @@
         <fullName>BN</fullName>
         <default>false</default>
         <label>Nthrn Bahr el Ghazal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>424</fullName>
+        <default>false</default>
+        <label>Ntoroko</label>
     </standardValue>
     <standardValue>
         <fullName>NB</fullName>
@@ -12582,7 +13092,7 @@
         <label>Nugaal</label>
     </standardValue>
     <standardValue>
-        <fullName>NUI</fullName>
+        <fullName>NIU</fullName>
         <default>false</default>
         <label>Nui</label>
     </standardValue>
@@ -12620,6 +13130,11 @@
         <fullName>NT</fullName>
         <default>false</default>
         <label>Nusa Tenggara Timur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>328</fullName>
+        <default>false</default>
+        <label>Nwoya</label>
     </standardValue>
     <standardValue>
         <fullName>34</fullName>
@@ -12672,11 +13187,6 @@
         <label>Obwalden</label>
     </standardValue>
     <standardValue>
-        <fullName>OCC</fullName>
-        <default>false</default>
-        <label>Occitanie</label>
-    </standardValue>
-    <standardValue>
         <fullName>OC</fullName>
         <default>false</default>
         <label>Ocnita</label>
@@ -12692,7 +13202,7 @@
         <label>Odeska Oblast</label>
     </standardValue>
     <standardValue>
-        <fullName>OD</fullName>
+        <fullName>OR</fullName>
         <default>false</default>
         <label>Odisha</label>
     </standardValue>
@@ -12710,6 +13220,11 @@
         <fullName>OY</fullName>
         <default>false</default>
         <label>Offaly</label>
+    </standardValue>
+    <standardValue>
+        <fullName>OG</fullName>
+        <default>false</default>
+        <label>Ogliastra</label>
     </standardValue>
     <standardValue>
         <fullName>6</fullName>
@@ -12752,7 +13267,7 @@
         <label>Ohio</label>
     </standardValue>
     <standardValue>
-        <fullName>310</fullName>
+        <fullName>58</fullName>
         <default>false</default>
         <label>Ohrid</label>
     </standardValue>
@@ -12792,6 +13307,11 @@
         <label>Olancho</label>
     </standardValue>
     <standardValue>
+        <fullName>OT</fullName>
+        <default>false</default>
+        <label>Olbia-Tempio</label>
+    </standardValue>
+    <standardValue>
         <fullName>71</fullName>
         <default>false</default>
         <label>Olomoucky Kraj</label>
@@ -12815,6 +13335,11 @@
         <fullName>053</fullName>
         <default>false</default>
         <label>Omonogovi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>331</fullName>
+        <default>false</default>
+        <label>Omoro</label>
     </standardValue>
     <standardValue>
         <fullName>OMS</fullName>
@@ -12850,6 +13375,11 @@
         <fullName>16</fullName>
         <default>false</default>
         <label>Opole Upper Silesia</label>
+    </standardValue>
+    <standardValue>
+        <fullName>05</fullName>
+        <default>false</default>
+        <label>Oppland</label>
     </standardValue>
     <standardValue>
         <fullName>31</fullName>
@@ -12952,11 +13482,6 @@
         <label>Oshikoto</label>
     </standardValue>
     <standardValue>
-        <fullName>GO</fullName>
-        <default>false</default>
-        <label>Osh Shaary</label>
-    </standardValue>
-    <standardValue>
         <fullName>088</fullName>
         <default>false</default>
         <label>Osilnica</label>
@@ -12980,6 +13505,11 @@
         <fullName>E</fullName>
         <default>false</default>
         <label>Ostergotland</label>
+    </standardValue>
+    <standardValue>
+        <fullName>01</fullName>
+        <default>false</default>
+        <label>Ostfold</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -13012,6 +13542,11 @@
         <label>Otjozondjupa</label>
     </standardValue>
     <standardValue>
+        <fullName>329</fullName>
+        <default>false</default>
+        <label>Otuke</label>
+    </standardValue>
+    <standardValue>
         <fullName>OD</fullName>
         <default>false</default>
         <label>Ouaddai</label>
@@ -13042,6 +13577,11 @@
         <label>Oudomxai</label>
     </standardValue>
     <standardValue>
+        <fullName>16</fullName>
+        <default>false</default>
+        <label>Oued ed Dahab</label>
+    </standardValue>
+    <standardValue>
         <fullName>OU</fullName>
         <default>false</default>
         <label>Oueme</label>
@@ -13060,11 +13600,6 @@
         <fullName>OP</fullName>
         <default>false</default>
         <label>Ouham-Pende</label>
-    </standardValue>
-    <standardValue>
-        <fullName>51</fullName>
-        <default>false</default>
-        <label>Ouled Djellal</label>
     </standardValue>
     <standardValue>
         <fullName>04</fullName>
@@ -13090,6 +13625,11 @@
         <fullName>40</fullName>
         <default>false</default>
         <label>Ozama</label>
+    </standardValue>
+    <standardValue>
+        <fullName>069</fullName>
+        <default>false</default>
+        <label>Ozolnieki novads</label>
     </standardValue>
     <standardValue>
         <fullName>49</fullName>
@@ -13135,6 +13675,11 @@
         <fullName>PKA</fullName>
         <default>false</default>
         <label>Paktika</label>
+    </standardValue>
+    <standardValue>
+        <fullName>332</fullName>
+        <default>false</default>
+        <label>Pakwach</label>
     </standardValue>
     <standardValue>
         <fullName>PA</fullName>
@@ -13217,26 +13762,6 @@
         <label>Papua Barat</label>
     </standardValue>
     <standardValue>
-        <fullName>PD</fullName>
-        <default>false</default>
-        <label>Papua Barat Daya</label>
-    </standardValue>
-    <standardValue>
-        <fullName>PE</fullName>
-        <default>false</default>
-        <label>Papua Pengunungan</label>
-    </standardValue>
-    <standardValue>
-        <fullName>PS</fullName>
-        <default>false</default>
-        <label>Papua Selatan</label>
-    </standardValue>
-    <standardValue>
-        <fullName>PT</fullName>
-        <default>false</default>
-        <label>Papua Tengah</label>
-    </standardValue>
-    <standardValue>
         <fullName>PA</fullName>
         <default>false</default>
         <label>Para</label>
@@ -13272,12 +13797,17 @@
         <label>Pardubicky Kraj</label>
     </standardValue>
     <standardValue>
+        <fullName>070</fullName>
+        <default>false</default>
+        <label>Pargauja novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>PR</fullName>
         <default>false</default>
         <label>Parma</label>
     </standardValue>
     <standardValue>
-        <fullName>68</fullName>
+        <fullName>67</fullName>
         <default>false</default>
         <label>Parnumaa</label>
     </standardValue>
@@ -13332,7 +13862,12 @@
         <label>Pavia</label>
     </standardValue>
     <standardValue>
-        <fullName>55</fullName>
+        <fullName>071</fullName>
+        <default>false</default>
+        <label>Pavilosta novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PAV</fullName>
         <default>false</default>
         <label>Pavlodar</label>
     </standardValue>
@@ -13347,19 +13882,9 @@
         <label>Pays-de-la-Loire</label>
     </standardValue>
     <standardValue>
-        <fullName>PDL</fullName>
-        <default>false</default>
-        <label>Pays-de-la-Loire</label>
-    </standardValue>
-    <standardValue>
         <fullName>13</fullName>
         <default>false</default>
         <label>Pazardzhik</label>
-    </standardValue>
-    <standardValue>
-        <fullName>26</fullName>
-        <default>false</default>
-        <label>Pećki okrug</label>
     </standardValue>
     <standardValue>
         <fullName>PS</fullName>
@@ -13367,7 +13892,7 @@
         <label>Pecs</label>
     </standardValue>
     <standardValue>
-        <fullName>208</fullName>
+        <fullName>60</fullName>
         <default>false</default>
         <label>Pehcevo</label>
     </standardValue>
@@ -13384,7 +13909,7 @@
     <standardValue>
         <fullName>43</fullName>
         <default>false</default>
-        <label>Pema Gatshel</label>
+        <label>Pemagatshel</label>
     </standardValue>
     <standardValue>
         <fullName>06</fullName>
@@ -13427,6 +13952,11 @@
         <label>Penza</label>
     </standardValue>
     <standardValue>
+        <fullName>PQ</fullName>
+        <default>false</default>
+        <label>Peqin</label>
+    </standardValue>
+    <standardValue>
         <fullName>08</fullName>
         <default>false</default>
         <label>Perak</label>
@@ -13440,6 +13970,11 @@
         <fullName>PER</fullName>
         <default>false</default>
         <label>Perm</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PR</fullName>
+        <default>false</default>
+        <label>Permet</label>
     </standardValue>
     <standardValue>
         <fullName>PE</fullName>
@@ -13477,17 +14012,12 @@
         <label>Pest</label>
     </standardValue>
     <standardValue>
-        <fullName>17</fullName>
+        <fullName>PE</fullName>
         <default>false</default>
         <label>Peten</label>
     </standardValue>
     <standardValue>
-        <fullName>23</fullName>
-        <default>false</default>
-        <label>Petnjica</label>
-    </standardValue>
-    <standardValue>
-        <fullName>810</fullName>
+        <fullName>59</fullName>
         <default>false</default>
         <label>Petrovec</label>
     </standardValue>
@@ -13559,7 +14089,7 @@
     <standardValue>
         <fullName>14</fullName>
         <default>false</default>
-        <label>Phra Nakhon Si Ayutthaya</label>
+        <label>Phra Nakhon Si Ayutt</label>
     </standardValue>
     <standardValue>
         <fullName>83</fullName>
@@ -13585,6 +14115,11 @@
         <fullName>PI</fullName>
         <default>false</default>
         <label>Piaui</label>
+    </standardValue>
+    <standardValue>
+        <fullName>S</fullName>
+        <default>false</default>
+        <label>Picardie</label>
     </standardValue>
     <standardValue>
         <fullName>P</fullName>
@@ -13637,11 +14172,6 @@
         <label>Pistoia</label>
     </standardValue>
     <standardValue>
-        <fullName>PN</fullName>
-        <default>false</default>
-        <label>Pitcairn</label>
-    </standardValue>
-    <standardValue>
         <fullName>PIU</fullName>
         <default>false</default>
         <label>Piura</label>
@@ -13667,7 +14197,7 @@
         <label>Planken</label>
     </standardValue>
     <standardValue>
-        <fullName>311</fullName>
+        <fullName>61</fullName>
         <default>false</default>
         <label>Plasnica</label>
     </standardValue>
@@ -13695,6 +14225,11 @@
         <fullName>13</fullName>
         <default>false</default>
         <label>Plav</label>
+    </standardValue>
+    <standardValue>
+        <fullName>072</fullName>
+        <default>false</default>
+        <label>Plavinas novads</label>
     </standardValue>
     <standardValue>
         <fullName>15</fullName>
@@ -13752,6 +14287,11 @@
         <label>Podvelka</label>
     </standardValue>
     <standardValue>
+        <fullName>PG</fullName>
+        <default>false</default>
+        <label>Pogradec</label>
+    </standardValue>
+    <standardValue>
         <fullName>PNI</fullName>
         <default>false</default>
         <label>Pohnpei</label>
@@ -13772,6 +14312,11 @@
         <label>Point Fortin</label>
     </standardValue>
     <standardValue>
+        <fullName>T</fullName>
+        <default>false</default>
+        <label>Poitou-Charentes</label>
+    </standardValue>
+    <standardValue>
         <fullName>200</fullName>
         <default>false</default>
         <label>Poljcane</label>
@@ -13782,7 +14327,7 @@
         <label>Poltavs&apos;ka Oblast&apos;</label>
     </standardValue>
     <standardValue>
-        <fullName>64</fullName>
+        <fullName>65</fullName>
         <default>false</default>
         <label>Polvamaa</label>
     </standardValue>
@@ -13840,6 +14385,11 @@
         <fullName>04</fullName>
         <default>false</default>
         <label>Portland</label>
+    </standardValue>
+    <standardValue>
+        <fullName>PU</fullName>
+        <default>false</default>
+        <label>Port Louis (City)</label>
     </standardValue>
     <standardValue>
         <fullName>PL</fullName>
@@ -13927,11 +14477,6 @@
         <label>Prato</label>
     </standardValue>
     <standardValue>
-        <fullName>18</fullName>
-        <default>false</default>
-        <label>Preah Sihanouk</label>
-    </standardValue>
-    <standardValue>
         <fullName>13</fullName>
         <default>false</default>
         <label>Preah Vihear</label>
@@ -13972,7 +14517,17 @@
         <label>Prey Veaeng</label>
     </standardValue>
     <standardValue>
-        <fullName>508</fullName>
+        <fullName>074</fullName>
+        <default>false</default>
+        <label>Priekule novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>075</fullName>
+        <default>false</default>
+        <label>Priekuli novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>62</fullName>
         <default>false</default>
         <label>Prilep</label>
     </standardValue>
@@ -14002,19 +14557,39 @@
         <label>Principe</label>
     </standardValue>
     <standardValue>
-        <fullName>27</fullName>
-        <default>false</default>
-        <label>Prizrenski okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>209</fullName>
+        <fullName>63</fullName>
         <default>false</default>
         <label>Probistip</label>
     </standardValue>
     <standardValue>
-        <fullName>PAC</fullName>
+        <fullName>P1</fullName>
         <default>false</default>
-        <label>Provence-Alpes-Cote-d’Azur</label>
+        <label>Province 1</label>
+    </standardValue>
+    <standardValue>
+        <fullName>P2</fullName>
+        <default>false</default>
+        <label>Province 2</label>
+    </standardValue>
+    <standardValue>
+        <fullName>P3</fullName>
+        <default>false</default>
+        <label>Province 3</label>
+    </standardValue>
+    <standardValue>
+        <fullName>P5</fullName>
+        <default>false</default>
+        <label>Province 5</label>
+    </standardValue>
+    <standardValue>
+        <fullName>P7</fullName>
+        <default>false</default>
+        <label>Province 7</label>
+    </standardValue>
+    <standardValue>
+        <fullName>U</fullName>
+        <default>false</default>
+        <label>ProvncAlpesCotedAzur</label>
     </standardValue>
     <standardValue>
         <fullName>24</fullName>
@@ -14047,9 +14622,9 @@
         <label>Puebla</label>
     </standardValue>
     <standardValue>
-        <fullName>PR</fullName>
+        <fullName>PU</fullName>
         <default>false</default>
-        <label>Puerto Rico</label>
+        <label>Puke</label>
     </standardValue>
     <standardValue>
         <fullName>07</fullName>
@@ -14127,14 +14702,9 @@
         <label>Qalqilya</label>
     </standardValue>
     <standardValue>
-        <fullName>35</fullName>
+        <fullName>KAR</fullName>
         <default>false</default>
         <label>Qaraghandy</label>
-    </standardValue>
-    <standardValue>
-        <fullName>QA</fullName>
-        <default>false</default>
-        <label>Qashqadaryo</label>
     </standardValue>
     <standardValue>
         <fullName>QAX</fullName>
@@ -14147,7 +14717,7 @@
         <label>Qazax</label>
     </standardValue>
     <standardValue>
-        <fullName>26</fullName>
+        <fullName>28</fullName>
         <default>false</default>
         <label>Qazvin</label>
     </standardValue>
@@ -14167,6 +14737,11 @@
         <label>Qina</label>
     </standardValue>
     <standardValue>
+        <fullName>63</fullName>
+        <default>false</default>
+        <label>Qinghai</label>
+    </standardValue>
+    <standardValue>
         <fullName>QH</fullName>
         <default>false</default>
         <label>Qinghai Sheng</label>
@@ -14177,7 +14752,7 @@
         <label>Qobustan</label>
     </standardValue>
     <standardValue>
-        <fullName>25</fullName>
+        <fullName>26</fullName>
         <default>false</default>
         <label>Qom</label>
     </standardValue>
@@ -14192,9 +14767,14 @@
         <label>Qormi</label>
     </standardValue>
     <standardValue>
-        <fullName>39</fullName>
+        <fullName>KUS</fullName>
         <default>false</default>
         <label>Qostanay</label>
+    </standardValue>
+    <standardValue>
+        <fullName>QA</fullName>
+        <default>false</default>
+        <label>Qqhqadaryo</label>
     </standardValue>
     <standardValue>
         <fullName>44</fullName>
@@ -14227,6 +14807,11 @@
         <label>Quang Tri</label>
     </standardValue>
     <standardValue>
+        <fullName>QB</fullName>
+        <default>false</default>
+        <label>Quatre Bornes</label>
+    </standardValue>
+    <standardValue>
         <fullName>QBA</fullName>
         <default>false</default>
         <label>Quba</label>
@@ -14252,7 +14837,7 @@
         <label>Queretaro</label>
     </standardValue>
     <standardValue>
-        <fullName>09</fullName>
+        <fullName>QZ</fullName>
         <default>false</default>
         <label>Quetzaltenango</label>
     </standardValue>
@@ -14262,7 +14847,7 @@
         <label>Quezon</label>
     </standardValue>
     <standardValue>
-        <fullName>14</fullName>
+        <fullName>QC</fullName>
         <default>false</default>
         <label>Quiche</label>
     </standardValue>
@@ -14297,7 +14882,7 @@
         <label>Quthing</label>
     </standardValue>
     <standardValue>
-        <fullName>43</fullName>
+        <fullName>KZY</fullName>
         <default>false</default>
         <label>Qyzylorda</label>
     </standardValue>
@@ -14312,6 +14897,11 @@
         <label>Ra&apos;s Al Khaymah</label>
     </standardValue>
     <standardValue>
+        <fullName>07</fullName>
+        <default>false</default>
+        <label>Rabat</label>
+    </standardValue>
+    <standardValue>
         <fullName>45</fullName>
         <default>false</default>
         <label>Rabat Gozo</label>
@@ -14320,11 +14910,6 @@
         <fullName>46</fullName>
         <default>false</default>
         <label>Rabat Malta</label>
-    </standardValue>
-    <standardValue>
-        <fullName>04</fullName>
-        <default>false</default>
-        <label>Rabat-Sale-Kenitra</label>
     </standardValue>
     <standardValue>
         <fullName>098</fullName>
@@ -14352,7 +14937,7 @@
         <label>Radlje ob Dravi</label>
     </standardValue>
     <standardValue>
-        <fullName>409</fullName>
+        <fullName>64</fullName>
         <default>false</default>
         <label>Radovis</label>
     </standardValue>
@@ -14417,7 +15002,7 @@
         <label>Rangpur</label>
     </standardValue>
     <standardValue>
-        <fullName>705</fullName>
+        <fullName>65</fullName>
         <default>false</default>
         <label>Rankovce</label>
     </standardValue>
@@ -14427,9 +15012,14 @@
         <label>Ranong</label>
     </standardValue>
     <standardValue>
-        <fullName>71</fullName>
+        <fullName>70</fullName>
         <default>false</default>
         <label>Raplamaa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>RA</fullName>
+        <default>false</default>
+        <label>Rapti</label>
     </standardValue>
     <standardValue>
         <fullName>13</fullName>
@@ -14455,6 +15045,11 @@
         <fullName>70</fullName>
         <default>false</default>
         <label>Ratchaburi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>076</fullName>
+        <default>false</default>
+        <label>Rauna novads</label>
     </standardValue>
     <standardValue>
         <fullName>RA</fullName>
@@ -14542,19 +15137,14 @@
         <label>Republika Srpska</label>
     </standardValue>
     <standardValue>
-        <fullName>509</fullName>
+        <fullName>66</fullName>
         <default>false</default>
         <label>Resen</label>
     </standardValue>
     <standardValue>
-        <fullName>11</fullName>
-        <default>false</default>
-        <label>Retalhuleu</label>
-    </standardValue>
-    <standardValue>
         <fullName>RE</fullName>
         <default>false</default>
-        <label>Reunion</label>
+        <label>Retalhuleu</label>
     </standardValue>
     <standardValue>
         <fullName>12</fullName>
@@ -14587,6 +15177,11 @@
         <label>Rhode Island</label>
     </standardValue>
     <standardValue>
+        <fullName>V</fullName>
+        <default>false</default>
+        <label>Rhone-Alpes</label>
+    </standardValue>
+    <standardValue>
         <fullName>RI</fullName>
         <default>false</default>
         <label>Riau</label>
@@ -14615,6 +15210,11 @@
         <fullName>177</fullName>
         <default>false</default>
         <label>Ribnica na Pohorju</label>
+    </standardValue>
+    <standardValue>
+        <fullName>078</fullName>
+        <default>false</default>
+        <label>Riebini novads</label>
     </standardValue>
     <standardValue>
         <fullName>RI</fullName>
@@ -14762,6 +15362,11 @@
         <label>Roi Et</label>
     </standardValue>
     <standardValue>
+        <fullName>079</fullName>
+        <default>false</default>
+        <label>Roja novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>RM</fullName>
         <default>false</default>
         <label>Roma</label>
@@ -14797,7 +15402,7 @@
         <label>Roscommon</label>
     </standardValue>
     <standardValue>
-        <fullName>107</fullName>
+        <fullName>67</fullName>
         <default>false</default>
         <label>Rosoman</label>
     </standardValue>
@@ -14827,9 +15432,39 @@
         <label>Rozaje</label>
     </standardValue>
     <standardValue>
+        <fullName>429</fullName>
+        <default>false</default>
+        <label>Rubanda</label>
+    </standardValue>
+    <standardValue>
+        <fullName>425</fullName>
+        <default>false</default>
+        <label>Rubirizi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>081</fullName>
+        <default>false</default>
+        <label>Rucava novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>082</fullName>
+        <default>false</default>
+        <label>Rugaji novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>06</fullName>
         <default>false</default>
         <label>Ruggell</label>
+    </standardValue>
+    <standardValue>
+        <fullName>084</fullName>
+        <default>false</default>
+        <label>Rujiena novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>431</fullName>
+        <default>false</default>
+        <label>Rukiga</label>
     </standardValue>
     <standardValue>
         <fullName>20</fullName>
@@ -14850,6 +15485,11 @@
         <fullName>RU</fullName>
         <default>false</default>
         <label>Rumphi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>083</fullName>
+        <default>false</default>
+        <label>Rundale novads</label>
     </standardValue>
     <standardValue>
         <fullName>108</fullName>
@@ -14942,7 +15582,7 @@
         <label>Sabran</label>
     </standardValue>
     <standardValue>
-        <fullName>03</fullName>
+        <fullName>SA</fullName>
         <default>false</default>
         <label>Sacatepequez</label>
     </standardValue>
@@ -14967,6 +15607,11 @@
         <label>Sadarak</label>
     </standardValue>
     <standardValue>
+        <fullName>27</fullName>
+        <default>false</default>
+        <label>Sae Kaeo</label>
+    </standardValue>
+    <standardValue>
         <fullName>47</fullName>
         <default>false</default>
         <label>Safi</label>
@@ -14980,6 +15625,11 @@
         <fullName>01</fullName>
         <default>false</default>
         <label>Sagaing</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SA</fullName>
+        <default>false</default>
+        <label>Sagarmatha</label>
     </standardValue>
     <standardValue>
         <fullName>SAH</fullName>
@@ -15177,11 +15827,6 @@
         <label>Saint Mark</label>
     </standardValue>
     <standardValue>
-        <fullName>MF</fullName>
-        <default>false</default>
-        <label>Saint Martin</label>
-    </standardValue>
-    <standardValue>
         <fullName>05</fullName>
         <default>false</default>
         <label>Saint Mary</label>
@@ -15252,11 +15897,6 @@
         <label>Saint Philip</label>
     </standardValue>
     <standardValue>
-        <fullName>PM</fullName>
-        <default>false</default>
-        <label>Saint Pierre</label>
-    </standardValue>
-    <standardValue>
         <fullName>SR</fullName>
         <default>false</default>
         <label>Saint-Roman</label>
@@ -15275,11 +15915,6 @@
         <fullName>11</fullName>
         <default>false</default>
         <label>Saitama</label>
-    </standardValue>
-    <standardValue>
-        <fullName>27</fullName>
-        <default>false</default>
-        <label>Sa Kaeo</label>
     </standardValue>
     <standardValue>
         <fullName>54</fullName>
@@ -15307,6 +15942,11 @@
         <label>Saki (District)</label>
     </standardValue>
     <standardValue>
+        <fullName>15</fullName>
+        <default>false</default>
+        <label>Sakia el Hamra</label>
+    </standardValue>
+    <standardValue>
         <fullName>47</fullName>
         <default>false</default>
         <label>Sakon Nakhon</label>
@@ -15315,6 +15955,11 @@
         <fullName>SL</fullName>
         <default>false</default>
         <label>SAL</label>
+    </standardValue>
+    <standardValue>
+        <fullName>085</fullName>
+        <default>false</default>
+        <label>Salacgriva novads</label>
     </standardValue>
     <standardValue>
         <fullName>SD</fullName>
@@ -15330,6 +15975,11 @@
         <fullName>SA</fullName>
         <default>false</default>
         <label>Salamat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>086</fullName>
+        <default>false</default>
+        <label>Sala novads</label>
     </standardValue>
     <standardValue>
         <fullName>087</fullName>
@@ -15567,9 +16217,14 @@
         <label>Sanma</label>
     </standardValue>
     <standardValue>
-        <fullName>12</fullName>
+        <fullName>SM</fullName>
         <default>false</default>
         <label>San Marcos</label>
+    </standardValue>
+    <standardValue>
+        <fullName>07</fullName>
+        <default>false</default>
+        <label>San Marino</label>
     </standardValue>
     <standardValue>
         <fullName>SAM</fullName>
@@ -15667,7 +16322,7 @@
         <label>Santarem</label>
     </standardValue>
     <standardValue>
-        <fullName>06</fullName>
+        <fullName>SR</fullName>
         <default>false</default>
         <label>Santa Rosa</label>
     </standardValue>
@@ -15732,6 +16387,11 @@
         <label>Sao Salvador do Mund</label>
     </standardValue>
     <standardValue>
+        <fullName>S</fullName>
+        <default>false</default>
+        <label>Sao Tome</label>
+    </standardValue>
+    <standardValue>
         <fullName>SV</fullName>
         <default>false</default>
         <label>Sao Vicente</label>
@@ -15742,14 +16402,14 @@
         <label>Saraburi</label>
     </standardValue>
     <standardValue>
-        <fullName>811</fullName>
-        <default>false</default>
-        <label>Saraj</label>
-    </standardValue>
-    <standardValue>
         <fullName>SA</fullName>
         <default>false</default>
         <label>Saramacca</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SR</fullName>
+        <default>false</default>
+        <label>Sarande</label>
     </standardValue>
     <standardValue>
         <fullName>SAR</fullName>
@@ -15907,9 +16567,9 @@
         <label>Segou</label>
     </standardValue>
     <standardValue>
-        <fullName>50</fullName>
+        <fullName>090</fullName>
         <default>false</default>
-        <label>Sejong</label>
+        <label>Seja novads</label>
     </standardValue>
     <standardValue>
         <fullName>10</fullName>
@@ -15942,7 +16602,7 @@
         <label>Semic</label>
     </standardValue>
     <standardValue>
-        <fullName>20</fullName>
+        <fullName>12</fullName>
         <default>false</default>
         <label>Semnan</label>
     </standardValue>
@@ -15989,7 +16649,12 @@
     <standardValue>
         <fullName>11</fullName>
         <default>false</default>
-        <label>Seoul-teukbyeolsi</label>
+        <label>Seoul Teugbyeolsi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>232</fullName>
+        <default>false</default>
+        <label>Serere</label>
     </standardValue>
     <standardValue>
         <fullName>SE</fullName>
@@ -16012,6 +16677,11 @@
         <label>Serua</label>
     </standardValue>
     <standardValue>
+        <fullName>SE</fullName>
+        <default>false</default>
+        <label>Seti</label>
+    </standardValue>
+    <standardValue>
         <fullName>19</fullName>
         <default>false</default>
         <label>Setif</label>
@@ -16025,16 +16695,6 @@
         <fullName>40</fullName>
         <default>false</default>
         <label>Sevastopol</label>
-    </standardValue>
-    <standardValue>
-        <fullName>01</fullName>
-        <default>false</default>
-        <label>Severnobački okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>03</fullName>
-        <default>false</default>
-        <label>Severnobanatski okrug</label>
     </standardValue>
     <standardValue>
         <fullName>110</fullName>
@@ -16052,9 +16712,9 @@
         <label>Sfax</label>
     </standardValue>
     <standardValue>
-        <fullName>GS</fullName>
+        <fullName>61</fullName>
         <default>false</default>
-        <label>S Georgia/Sandwich I</label>
+        <label>Shaanxi</label>
     </standardValue>
     <standardValue>
         <fullName>SN</fullName>
@@ -16097,14 +16757,29 @@
         <label>Shan</label>
     </standardValue>
     <standardValue>
+        <fullName>37</fullName>
+        <default>false</default>
+        <label>Shandong</label>
+    </standardValue>
+    <standardValue>
         <fullName>SD</fullName>
         <default>false</default>
         <label>Shandong Sheng</label>
     </standardValue>
     <standardValue>
+        <fullName>31</fullName>
+        <default>false</default>
+        <label>Shanghai</label>
+    </standardValue>
+    <standardValue>
         <fullName>SH</fullName>
         <default>false</default>
         <label>Shanghai Shi</label>
+    </standardValue>
+    <standardValue>
+        <fullName>14</fullName>
+        <default>false</default>
+        <label>Shanxi</label>
     </standardValue>
     <standardValue>
         <fullName>SX</fullName>
@@ -16120,6 +16795,11 @@
         <fullName>SH</fullName>
         <default>false</default>
         <label>Sharjah</label>
+    </standardValue>
+    <standardValue>
+        <fullName>426</fullName>
+        <default>false</default>
+        <label>Sheema</label>
     </standardValue>
     <standardValue>
         <fullName>SEE</fullName>
@@ -16167,9 +16847,9 @@
         <label>Shizuoka</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
+        <fullName>SH</fullName>
         <default>false</default>
-        <label>Shkodër</label>
+        <label>Shkoder</label>
     </standardValue>
     <standardValue>
         <fullName>27</fullName>
@@ -16177,7 +16857,7 @@
         <label>Shumen</label>
     </standardValue>
     <standardValue>
-        <fullName>79</fullName>
+        <fullName>SHY</fullName>
         <default>false</default>
         <label>Shymkent</label>
     </standardValue>
@@ -16202,14 +16882,14 @@
         <label>Sibiu</label>
     </standardValue>
     <standardValue>
+        <fullName>51</fullName>
+        <default>false</default>
+        <label>Sichuan</label>
+    </standardValue>
+    <standardValue>
         <fullName>SC</fullName>
         <default>false</default>
         <label>Sichuan Sheng</label>
-    </standardValue>
-    <standardValue>
-        <fullName>SI</fullName>
-        <default>false</default>
-        <label>Sidama</label>
     </standardValue>
     <standardValue>
         <fullName>22</fullName>
@@ -16245,6 +16925,11 @@
         <fullName>091</fullName>
         <default>false</default>
         <label>Sigulda novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>18</fullName>
+        <default>false</default>
+        <label>Sihanoukville</label>
     </standardValue>
     <standardValue>
         <fullName>56</fullName>
@@ -16322,11 +17007,6 @@
         <label>Sint Eustatius</label>
     </standardValue>
     <standardValue>
-        <fullName>SX</fullName>
-        <default>false</default>
-        <label>Sint Maarten</label>
-    </standardValue>
-    <standardValue>
         <fullName>SI</fullName>
         <default>false</default>
         <label>Sipaliwini</label>
@@ -16387,7 +17067,7 @@
         <label>Sissli</label>
     </standardValue>
     <standardValue>
-        <fullName>11</fullName>
+        <fullName>13</fullName>
         <default>false</default>
         <label>Sistan Va Baluchesta</label>
     </standardValue>
@@ -16430,6 +17110,26 @@
         <fullName>123</fullName>
         <default>false</default>
         <label>Skofljica</label>
+    </standardValue>
+    <standardValue>
+        <fullName>85</fullName>
+        <default>false</default>
+        <label>Skopje</label>
+    </standardValue>
+    <standardValue>
+        <fullName>SK</fullName>
+        <default>false</default>
+        <label>Skrapar</label>
+    </standardValue>
+    <standardValue>
+        <fullName>092</fullName>
+        <default>false</default>
+        <label>Skriveri novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>093</fullName>
+        <default>false</default>
+        <label>Skrunda novads</label>
     </standardValue>
     <standardValue>
         <fullName>56</fullName>
@@ -16527,6 +17227,11 @@
         <label>Sofia-Grad</label>
     </standardValue>
     <standardValue>
+        <fullName>14</fullName>
+        <default>false</default>
+        <label>Sogn Og Fjordane</label>
+    </standardValue>
+    <standardValue>
         <fullName>SO</fullName>
         <default>false</default>
         <label>Sokoto</label>
@@ -16542,7 +17247,7 @@
         <label>Soldanesti</label>
     </standardValue>
     <standardValue>
-        <fullName>07</fullName>
+        <fullName>SO</fullName>
         <default>false</default>
         <label>Solola</label>
     </standardValue>
@@ -16602,7 +17307,7 @@
         <label>Sool</label>
     </standardValue>
     <standardValue>
-        <fullName>812</fullName>
+        <fullName>70</fullName>
         <default>false</default>
         <label>Sopiste</label>
     </standardValue>
@@ -16652,14 +17357,14 @@
         <label>Sourou</label>
     </standardValue>
     <standardValue>
+        <fullName>13</fullName>
+        <default>false</default>
+        <label>Sous-Massa-Draa</label>
+    </standardValue>
+    <standardValue>
         <fullName>51</fullName>
         <default>false</default>
         <label>Sousse</label>
-    </standardValue>
-    <standardValue>
-        <fullName>09</fullName>
-        <default>false</default>
-        <label>Souss-Massa</label>
     </standardValue>
     <standardValue>
         <fullName>SU</fullName>
@@ -16812,11 +17517,6 @@
         <label>South-West</label>
     </standardValue>
     <standardValue>
-        <fullName>SW</fullName>
-        <default>false</default>
-        <label>Southwest Ethiopia Peoples</label>
-    </standardValue>
-    <standardValue>
         <fullName>ST</fullName>
         <default>false</default>
         <label>Sowa Town</label>
@@ -16842,21 +17542,6 @@
         <label>Sredisce ob Dravi</label>
     </standardValue>
     <standardValue>
-        <fullName>02</fullName>
-        <default>false</default>
-        <label>Srednjebanatski okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>07</fullName>
-        <default>false</default>
-        <label>Sremski okrug</label>
-    </standardValue>
-    <standardValue>
-        <fullName>BL</fullName>
-        <default>false</default>
-        <label>St. Barthelemy</label>
-    </standardValue>
-    <standardValue>
         <fullName>SC</fullName>
         <default>false</default>
         <label>Stann Creek</label>
@@ -16867,7 +17552,7 @@
         <label>Stara Zagora</label>
     </standardValue>
     <standardValue>
-        <fullName>706</fullName>
+        <fullName>71</fullName>
         <default>false</default>
         <label>Staro Nagoricane</label>
     </standardValue>
@@ -16902,7 +17587,7 @@
         <label>Stinga Nistrului, UT</label>
     </standardValue>
     <standardValue>
-        <fullName>211</fullName>
+        <fullName>83</fullName>
         <default>false</default>
         <label>Stip</label>
     </standardValue>
@@ -16910,6 +17595,11 @@
         <fullName>AB</fullName>
         <default>false</default>
         <label>Stockholm</label>
+    </standardValue>
+    <standardValue>
+        <fullName>095</fullName>
+        <default>false</default>
+        <label>Stopini novads</label>
     </standardValue>
     <standardValue>
         <fullName>127</fullName>
@@ -16932,17 +17622,22 @@
         <label>Stredockesky kraj</label>
     </standardValue>
     <standardValue>
-        <fullName>312</fullName>
+        <fullName>096</fullName>
+        <default>false</default>
+        <label>Strenci novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>72</fullName>
         <default>false</default>
         <label>Struga</label>
     </standardValue>
     <standardValue>
-        <fullName>410</fullName>
+        <fullName>73</fullName>
         <default>false</default>
         <label>Strumica</label>
     </standardValue>
     <standardValue>
-        <fullName>813</fullName>
+        <fullName>74</fullName>
         <default>false</default>
         <label>Studenicani</label>
     </standardValue>
@@ -16962,7 +17657,7 @@
         <label>Suceava</label>
     </standardValue>
     <standardValue>
-        <fullName>10</fullName>
+        <fullName>SU</fullName>
         <default>false</default>
         <label>Suchitepequez</label>
     </standardValue>
@@ -16999,17 +17694,7 @@
     <standardValue>
         <fullName>SU</fullName>
         <default>false</default>
-        <label>Sud Sardegna</label>
-    </standardValue>
-    <standardValue>
-        <fullName>SU</fullName>
-        <default>false</default>
         <label>Sud-Ubangi</label>
-    </standardValue>
-    <standardValue>
-        <fullName>P7</fullName>
-        <default>false</default>
-        <label>Sudurpashchim</label>
     </standardValue>
     <standardValue>
         <fullName>SU</fullName>
@@ -17137,14 +17822,14 @@
         <label>Surin</label>
     </standardValue>
     <standardValue>
+        <fullName>SU</fullName>
+        <default>false</default>
+        <label>Surkhondaryo</label>
+    </standardValue>
+    <standardValue>
         <fullName>SR</fullName>
         <default>false</default>
         <label>Surt</label>
-    </standardValue>
-    <standardValue>
-        <fullName>SU</fullName>
-        <default>false</default>
-        <label>Surxondaryo</label>
     </standardValue>
     <standardValue>
         <fullName>SUS</fullName>
@@ -17152,19 +17837,9 @@
         <label>Susa (District)</label>
     </standardValue>
     <standardValue>
-        <fullName>817</fullName>
-        <default>false</default>
-        <label>Suto Orizari</label>
-    </standardValue>
-    <standardValue>
         <fullName>20</fullName>
         <default>false</default>
         <label>Svaay Rieng</label>
-    </standardValue>
-    <standardValue>
-        <fullName>SJ</fullName>
-        <default>false</default>
-        <label>Svalbard &amp; Jan Mayen</label>
     </standardValue>
     <standardValue>
         <fullName>SVE</fullName>
@@ -17197,7 +17872,7 @@
         <label>Sveti Jurij v Sloven</label>
     </standardValue>
     <standardValue>
-        <fullName>108</fullName>
+        <fullName>69</fullName>
         <default>false</default>
         <label>Sveti Nikole</label>
     </standardValue>
@@ -17307,6 +17982,11 @@
         <label>Tadjourah</label>
     </standardValue>
     <standardValue>
+        <fullName>12</fullName>
+        <default>false</default>
+        <label>Tadla-Azilal</label>
+    </standardValue>
+    <standardValue>
         <fullName>TAE</fullName>
         <default>false</default>
         <label>Tafea</label>
@@ -17324,7 +18004,12 @@
     <standardValue>
         <fullName>TXG</fullName>
         <default>false</default>
-        <label>Taichung</label>
+        <label>Taichung (City)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TXQ</fullName>
+        <default>false</default>
+        <label>Taichung (District)</label>
     </standardValue>
     <standardValue>
         <fullName>14</fullName>
@@ -17334,12 +18019,22 @@
     <standardValue>
         <fullName>TNN</fullName>
         <default>false</default>
-        <label>Tainan</label>
+        <label>Tainan (City)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TNQ</fullName>
+        <default>false</default>
+        <label>Tainan (District)</label>
     </standardValue>
     <standardValue>
         <fullName>TPE</fullName>
         <default>false</default>
-        <label>Taipei</label>
+        <label>Taipei (City)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TPQ</fullName>
+        <default>false</default>
+        <label>Taipei (District)</label>
     </standardValue>
     <standardValue>
         <fullName>39</fullName>
@@ -17434,7 +18129,7 @@
     <standardValue>
         <fullName>01</fullName>
         <default>false</default>
-        <label>Tanger-Tetouan-Al Hoceima</label>
+        <label>Tanger-Tetouan</label>
     </standardValue>
     <standardValue>
         <fullName>05</fullName>
@@ -17445,6 +18140,11 @@
         <fullName>10</fullName>
         <default>false</default>
         <label>Taoudenit</label>
+    </standardValue>
+    <standardValue>
+        <fullName>03</fullName>
+        <default>false</default>
+        <label>Taounate</label>
     </standardValue>
     <standardValue>
         <fullName>TAO</fullName>
@@ -17517,7 +18217,7 @@
         <label>Tartar</label>
     </standardValue>
     <standardValue>
-        <fullName>79</fullName>
+        <fullName>78</fullName>
         <default>false</default>
         <label>Tartumaa</label>
     </standardValue>
@@ -17592,7 +18292,7 @@
         <label>Tbong Khmum</label>
     </standardValue>
     <standardValue>
-        <fullName>608</fullName>
+        <fullName>75</fullName>
         <default>false</default>
         <label>Tearce</label>
     </standardValue>
@@ -17602,7 +18302,7 @@
         <label>Tebessa</label>
     </standardValue>
     <standardValue>
-        <fullName>23</fullName>
+        <fullName>07</fullName>
         <default>false</default>
         <label>Tehran</label>
     </standardValue>
@@ -17612,7 +18312,7 @@
         <label>Tekirdag</label>
     </standardValue>
     <standardValue>
-        <fullName>TS</fullName>
+        <fullName>TG</fullName>
         <default>false</default>
         <label>Telangana</label>
     </standardValue>
@@ -17620,6 +18320,11 @@
         <fullName>TA</fullName>
         <default>false</default>
         <label>Tel Aviv</label>
+    </standardValue>
+    <standardValue>
+        <fullName>08</fullName>
+        <default>false</default>
+        <label>Telemark</label>
     </standardValue>
     <standardValue>
         <fullName>TE</fullName>
@@ -17654,6 +18359,11 @@
     <standardValue>
         <fullName>TE</fullName>
         <default>false</default>
+        <label>Tepelene</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TE</fullName>
+        <default>false</default>
         <label>Teramo</label>
     </standardValue>
     <standardValue>
@@ -17672,12 +18382,17 @@
         <label>Ternopil&apos;s&apos;ka Oblast</label>
     </standardValue>
     <standardValue>
+        <fullName>098</fullName>
+        <default>false</default>
+        <label>Tervete novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>T</fullName>
         <default>false</default>
         <label>Tete</label>
     </standardValue>
     <standardValue>
-        <fullName>609</fullName>
+        <fullName>76</fullName>
         <default>false</default>
         <label>Tetovo</label>
     </standardValue>
@@ -17752,6 +18467,11 @@
         <label>Thyolo</label>
     </standardValue>
     <standardValue>
+        <fullName>12</fullName>
+        <default>false</default>
+        <label>Tianjin</label>
+    </standardValue>
+    <standardValue>
         <fullName>TJ</fullName>
         <default>false</default>
         <label>Tianjin Shi</label>
@@ -17792,11 +18512,6 @@
         <label>Tillaberi</label>
     </standardValue>
     <standardValue>
-        <fullName>49</fullName>
-        <default>false</default>
-        <label>Timimoun</label>
-    </standardValue>
-    <standardValue>
         <fullName>TM</fullName>
         <default>false</default>
         <label>Timis</label>
@@ -17817,9 +18532,9 @@
         <label>Tipperary</label>
     </standardValue>
     <standardValue>
-        <fullName>11</fullName>
+        <fullName>TR</fullName>
         <default>false</default>
-        <label>Tiranë</label>
+        <label>Tirane</label>
     </standardValue>
     <standardValue>
         <fullName>11</fullName>
@@ -17892,11 +18607,6 @@
         <label>Tokat</label>
     </standardValue>
     <standardValue>
-        <fullName>TK</fullName>
-        <default>false</default>
-        <label>Tokelau</label>
-    </standardValue>
-    <standardValue>
         <fullName>36</fullName>
         <default>false</default>
         <label>Tokushima</label>
@@ -17967,17 +18677,12 @@
         <label>Torino</label>
     </standardValue>
     <standardValue>
-        <fullName>TK</fullName>
+        <fullName>TO</fullName>
         <default>false</default>
-        <label>Toshkent (City)</label>
+        <label>Toshkent</label>
     </standardValue>
     <standardValue>
         <fullName>TO</fullName>
-        <default>false</default>
-        <label>Toshkent (Region)</label>
-    </standardValue>
-    <standardValue>
-        <fullName>08</fullName>
         <default>false</default>
         <label>Totonicapan</label>
     </standardValue>
@@ -17985,11 +18690,6 @@
         <fullName>31</fullName>
         <default>false</default>
         <label>Tottori</label>
-    </standardValue>
-    <standardValue>
-        <fullName>55</fullName>
-        <default>false</default>
-        <label>Touggourt</label>
     </standardValue>
     <standardValue>
         <fullName>047</fullName>
@@ -18127,12 +18827,12 @@
         <label>Trnovska vas</label>
     </standardValue>
     <standardValue>
-        <fullName>54</fullName>
+        <fullName>19</fullName>
         <default>false</default>
-        <label>Troms og Finnmark</label>
+        <label>Troms</label>
     </standardValue>
     <standardValue>
-        <fullName>50</fullName>
+        <fullName>23</fullName>
         <default>false</default>
         <label>Trondelag</label>
     </standardValue>
@@ -18140,6 +18840,11 @@
         <fullName>32</fullName>
         <default>false</default>
         <label>Trongsa</label>
+    </standardValue>
+    <standardValue>
+        <fullName>TP</fullName>
+        <default>false</default>
+        <label>Tropoje</label>
     </standardValue>
     <standardValue>
         <fullName>T</fullName>
@@ -18237,14 +18942,9 @@
         <label>Turkana</label>
     </standardValue>
     <standardValue>
-        <fullName>61</fullName>
+        <fullName>YUZ</fullName>
         <default>false</default>
         <label>Turkistan</label>
-    </standardValue>
-    <standardValue>
-        <fullName>TC</fullName>
-        <default>false</default>
-        <label>Turks and Caicos Is</label>
     </standardValue>
     <standardValue>
         <fullName>132</fullName>
@@ -18344,17 +19044,12 @@
     <standardValue>
         <fullName>31</fullName>
         <default>false</default>
-        <label>Ulsan-gwangyeoksi</label>
+        <label>Ulsan Gwang&apos;yeogsi</label>
     </standardValue>
     <standardValue>
         <fullName>ULY</fullName>
         <default>false</default>
         <label>Ulyanovsk</label>
-    </standardValue>
-    <standardValue>
-        <fullName>62</fullName>
-        <default>false</default>
-        <label>Ulytau</label>
     </standardValue>
     <standardValue>
         <fullName>UQ</fullName>
@@ -18462,7 +19157,7 @@
         <label>Uttaradit</label>
     </standardValue>
     <standardValue>
-        <fullName>UK</fullName>
+        <fullName>UT</fullName>
         <default>false</default>
         <label>Uttarakhand</label>
     </standardValue>
@@ -18507,9 +19202,19 @@
         <label>Va&apos;a-O-Fonoti</label>
     </standardValue>
     <standardValue>
+        <fullName>VP</fullName>
+        <default>false</default>
+        <label>Vacoas-Phoenix</label>
+    </standardValue>
+    <standardValue>
         <fullName>11</fullName>
         <default>false</default>
         <label>Vaduz</label>
+    </standardValue>
+    <standardValue>
+        <fullName>100</fullName>
+        <default>false</default>
+        <label>Vainode novads</label>
     </standardValue>
     <standardValue>
         <fullName>VS</fullName>
@@ -18532,7 +19237,7 @@
         <label>Valais</label>
     </standardValue>
     <standardValue>
-        <fullName>403</fullName>
+        <fullName>10</fullName>
         <default>false</default>
         <label>Valandovo</label>
     </standardValue>
@@ -18540,11 +19245,6 @@
         <fullName>VL</fullName>
         <default>false</default>
         <label>Valcea</label>
-    </standardValue>
-    <standardValue>
-        <fullName>23</fullName>
-        <default>false</default>
-        <label>Val d&apos;Aoste</label>
     </standardValue>
     <standardValue>
         <fullName>41</fullName>
@@ -18557,7 +19257,7 @@
         <label>Valencia</label>
     </standardValue>
     <standardValue>
-        <fullName>81</fullName>
+        <fullName>82</fullName>
         <default>false</default>
         <label>Valgamaa</label>
     </standardValue>
@@ -18592,9 +19292,9 @@
         <label>Vallon de la Rousse</label>
     </standardValue>
     <standardValue>
-        <fullName>113</fullName>
+        <fullName>VMR</fullName>
         <default>false</default>
-        <label>Valmieras Novads</label>
+        <label>Valmiera</label>
     </standardValue>
     <standardValue>
         <fullName>VS</fullName>
@@ -18622,6 +19322,16 @@
         <label>Varese</label>
     </standardValue>
     <standardValue>
+        <fullName>X</fullName>
+        <default>false</default>
+        <label>Vargas</label>
+    </standardValue>
+    <standardValue>
+        <fullName>103</fullName>
+        <default>false</default>
+        <label>Varkava novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>S</fullName>
         <default>false</default>
         <label>Varmland</label>
@@ -18637,7 +19347,7 @@
         <label>Vas</label>
     </standardValue>
     <standardValue>
-        <fullName>404</fullName>
+        <fullName>11</fullName>
         <default>false</default>
         <label>Vasilevo</label>
     </standardValue>
@@ -18692,12 +19402,22 @@
         <label>Vayoc Jor</label>
     </standardValue>
     <standardValue>
+        <fullName>104</fullName>
+        <default>false</default>
+        <label>Vecpiebalga novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>105</fullName>
+        <default>false</default>
+        <label>Vecumnieki novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>133</fullName>
         <default>false</default>
         <label>Velenje</label>
     </standardValue>
     <standardValue>
-        <fullName>101</fullName>
+        <fullName>13</fullName>
         <default>false</default>
         <label>Veles</label>
     </standardValue>
@@ -18767,19 +19487,19 @@
         <label>Verzej</label>
     </standardValue>
     <standardValue>
+        <fullName>10</fullName>
+        <default>false</default>
+        <label>Vest-Agder</label>
+    </standardValue>
+    <standardValue>
         <fullName>4</fullName>
         <default>false</default>
         <label>Vestfiroir</label>
     </standardValue>
     <standardValue>
-        <fullName>38</fullName>
+        <fullName>07</fullName>
         <default>false</default>
-        <label>Vestfold og Telemark</label>
-    </standardValue>
-    <standardValue>
-        <fullName>46</fullName>
-        <default>false</default>
-        <label>Vestland</label>
+        <label>Vestfold</label>
     </standardValue>
     <standardValue>
         <fullName>3</fullName>
@@ -18797,7 +19517,7 @@
         <label>Veszprem (County)</label>
     </standardValue>
     <standardValue>
-        <fullName>301</fullName>
+        <fullName>12</fullName>
         <default>false</default>
         <label>Vevcani</label>
     </standardValue>
@@ -18852,6 +19572,11 @@
         <label>Vidin</label>
     </standardValue>
     <standardValue>
+        <fullName>107</fullName>
+        <default>false</default>
+        <label>Viesite novads</label>
+    </standardValue>
+    <standardValue>
         <fullName>11</fullName>
         <default>false</default>
         <label>Vieux Fort</label>
@@ -18862,9 +19587,14 @@
         <label>Vihiga</label>
     </standardValue>
     <standardValue>
-        <fullName>30</fullName>
+        <fullName>108</fullName>
         <default>false</default>
-        <label>Viken</label>
+        <label>Vilaka novads</label>
+    </standardValue>
+    <standardValue>
+        <fullName>109</fullName>
+        <default>false</default>
+        <label>Vilani novads</label>
     </standardValue>
     <standardValue>
         <fullName>17</fullName>
@@ -18874,7 +19604,7 @@
     <standardValue>
         <fullName>84</fullName>
         <default>false</default>
-        <label>Viljandimaa</label>
+        <label>Vilijandimaa</label>
     </standardValue>
     <standardValue>
         <fullName>05</fullName>
@@ -18902,7 +19632,7 @@
         <label>Vinh Phuc</label>
     </standardValue>
     <standardValue>
-        <fullName>202</fullName>
+        <fullName>14</fullName>
         <default>false</default>
         <label>Vinica</label>
     </standardValue>
@@ -18925,16 +19655,6 @@
         <fullName>VA</fullName>
         <default>false</default>
         <label>Virginia</label>
-    </standardValue>
-    <standardValue>
-        <fullName>VG</fullName>
-        <default>false</default>
-        <label>Virgin Islands, Brit</label>
-    </standardValue>
-    <standardValue>
-        <fullName>VI</fullName>
-        <default>false</default>
-        <label>Virgin Islands, US</label>
     </standardValue>
     <standardValue>
         <fullName>10</fullName>
@@ -18972,9 +19692,9 @@
         <label>Vladimir</label>
     </standardValue>
     <standardValue>
-        <fullName>12</fullName>
+        <fullName>VL</fullName>
         <default>false</default>
-        <label>Vlorë</label>
+        <label>Vlore</label>
     </standardValue>
     <standardValue>
         <fullName>138</fullName>
@@ -18985,6 +19705,11 @@
         <fullName>139</fullName>
         <default>false</default>
         <label>Vojnik</label>
+    </standardValue>
+    <standardValue>
+        <fullName>VO</fullName>
+        <default>false</default>
+        <label>Vojvodina</label>
     </standardValue>
     <standardValue>
         <fullName>VGG</fullName>
@@ -19022,7 +19747,7 @@
         <label>Voronezh</label>
     </standardValue>
     <standardValue>
-        <fullName>87</fullName>
+        <fullName>86</fullName>
         <default>false</default>
         <label>Vorumaa</label>
     </standardValue>
@@ -19037,7 +19762,7 @@
         <label>Vransko</label>
     </standardValue>
     <standardValue>
-        <fullName>603</fullName>
+        <fullName>16</fullName>
         <default>false</default>
         <label>Vrapciste</label>
     </standardValue>
@@ -19119,7 +19844,7 @@
     <standardValue>
         <fullName>28</fullName>
         <default>false</default>
-        <label>Warminsko-Mazurskie</label>
+        <label>Warmia-Masuria</label>
     </standardValue>
     <standardValue>
         <fullName>WR</fullName>
@@ -19147,6 +19872,11 @@
         <label>Wele-Nzas</label>
     </standardValue>
     <standardValue>
+        <fullName>WGN</fullName>
+        <default>false</default>
+        <label>Wellington</label>
+    </standardValue>
+    <standardValue>
         <fullName>OU</fullName>
         <default>false</default>
         <label>West</label>
@@ -19168,6 +19898,11 @@
     </standardValue>
     <standardValue>
         <fullName>01</fullName>
+        <default>false</default>
+        <label>Western</label>
+    </standardValue>
+    <standardValue>
+        <fullName>3</fullName>
         <default>false</default>
         <label>Western</label>
     </standardValue>
@@ -19237,11 +19972,6 @@
         <label>Western North</label>
     </standardValue>
     <standardValue>
-        <fullName>EH</fullName>
-        <default>false</default>
-        <label>Western Sahara</label>
-    </standardValue>
-    <standardValue>
         <fullName>WSA</fullName>
         <default>false</default>
         <label>Western Samar</label>
@@ -19252,7 +19982,7 @@
         <label>West Grand Bahama</label>
     </standardValue>
     <standardValue>
-        <fullName>27</fullName>
+        <fullName>ZAP</fullName>
         <default>false</default>
         <label>West Kazakhstan</label>
     </standardValue>
@@ -19367,11 +20097,6 @@
         <label>Wyoming</label>
     </standardValue>
     <standardValue>
-        <fullName>XAC</fullName>
-        <default>false</default>
-        <label>Xaçmaz</label>
-    </standardValue>
-    <standardValue>
         <fullName>61</fullName>
         <default>false</default>
         <label>Xaghra</label>
@@ -19387,9 +20112,9 @@
         <label>Xaisomboun</label>
     </standardValue>
     <standardValue>
-        <fullName>XA</fullName>
+        <fullName>XAN</fullName>
         <default>false</default>
-        <label>Xankəndi</label>
+        <label>Xanlar</label>
     </standardValue>
     <standardValue>
         <fullName>XE</fullName>
@@ -19412,9 +20137,19 @@
         <label>Xiangkhouang</label>
     </standardValue>
     <standardValue>
+        <fullName>65</fullName>
+        <default>false</default>
+        <label>Xinjiang</label>
+    </standardValue>
+    <standardValue>
         <fullName>XJ</fullName>
         <default>false</default>
         <label>Xinjiang Uygur</label>
+    </standardValue>
+    <standardValue>
+        <fullName>54</fullName>
+        <default>false</default>
+        <label>Xizang</label>
     </standardValue>
     <standardValue>
         <fullName>XZ</fullName>
@@ -19527,7 +20262,7 @@
         <label>Yatenga</label>
     </standardValue>
     <standardValue>
-        <fullName>21</fullName>
+        <fullName>25</fullName>
         <default>false</default>
         <label>Yazd</label>
     </standardValue>
@@ -19555,11 +20290,6 @@
         <fullName>YEV</fullName>
         <default>false</default>
         <label>Yevrey</label>
-    </standardValue>
-    <standardValue>
-        <fullName>ILA</fullName>
-        <default>false</default>
-        <label>Yilan</label>
     </standardValue>
     <standardValue>
         <fullName>YO</fullName>
@@ -19607,6 +20337,11 @@
         <label>Yunlin</label>
     </standardValue>
     <standardValue>
+        <fullName>53</fullName>
+        <default>false</default>
+        <label>Yunnan</label>
+    </standardValue>
+    <standardValue>
         <fullName>YN</fullName>
         <default>false</default>
         <label>Yunnan Sheng</label>
@@ -19632,7 +20367,7 @@
         <label>Zabul</label>
     </standardValue>
     <standardValue>
-        <fullName>19</fullName>
+        <fullName>ZA</fullName>
         <default>false</default>
         <label>Zacapa</label>
     </standardValue>
@@ -19737,7 +20472,7 @@
         <label>Zangilan</label>
     </standardValue>
     <standardValue>
-        <fullName>19</fullName>
+        <fullName>11</fullName>
         <default>false</default>
         <label>Zanjan</label>
     </standardValue>
@@ -19760,11 +20495,6 @@
         <fullName>15</fullName>
         <default>false</default>
         <label>Zanzibar West</label>
-    </standardValue>
-    <standardValue>
-        <fullName>05</fullName>
-        <default>false</default>
-        <label>Zapadnobački okrug</label>
     </standardValue>
     <standardValue>
         <fullName>23</fullName>
@@ -19807,7 +20537,7 @@
         <label>Zejtun</label>
     </standardValue>
     <standardValue>
-        <fullName>806</fullName>
+        <fullName>32</fullName>
         <default>false</default>
         <label>Zelenikovo</label>
     </standardValue>
@@ -19817,14 +20547,9 @@
         <label>Zelezniki</label>
     </standardValue>
     <standardValue>
-        <fullName>605</fullName>
+        <fullName>30</fullName>
         <default>false</default>
         <label>Zelino</label>
-    </standardValue>
-    <standardValue>
-        <fullName>25</fullName>
-        <default>false</default>
-        <label>Zeta</label>
     </standardValue>
     <standardValue>
         <fullName>191</fullName>
@@ -19832,9 +20557,14 @@
         <label>Zetale</label>
     </standardValue>
     <standardValue>
-        <fullName>31</fullName>
+        <fullName>ZHA</fullName>
         <default>false</default>
         <label>Zhambyl Oblysy</label>
+    </standardValue>
+    <standardValue>
+        <fullName>33</fullName>
+        <default>false</default>
+        <label>Zhejiang</label>
     </standardValue>
     <standardValue>
         <fullName>ZJ</fullName>
@@ -19845,11 +20575,6 @@
         <fullName>34</fullName>
         <default>false</default>
         <label>Zhemgang</label>
-    </standardValue>
-    <standardValue>
-        <fullName>33</fullName>
-        <default>false</default>
-        <label>Zhetisu</label>
     </standardValue>
     <standardValue>
         <fullName>18</fullName>
@@ -19865,6 +20590,11 @@
         <fullName>ZI</fullName>
         <default>false</default>
         <label>Zilina</label>
+    </standardValue>
+    <standardValue>
+        <fullName>110</fullName>
+        <default>false</default>
+        <label>Zilupe novads</label>
     </standardValue>
     <standardValue>
         <fullName>7</fullName>
@@ -19897,6 +20627,11 @@
         <label>Zomba</label>
     </standardValue>
     <standardValue>
+        <fullName>330</fullName>
+        <default>false</default>
+        <label>Zombo</label>
+    </standardValue>
+    <standardValue>
         <fullName>ZON</fullName>
         <default>false</default>
         <label>Zondoma</label>
@@ -19922,7 +20657,7 @@
         <label>Zrece</label>
     </standardValue>
     <standardValue>
-        <fullName>204</fullName>
+        <fullName>33</fullName>
         <default>false</default>
         <label>Zrnovci</label>
     </standardValue>

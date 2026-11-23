@@ -1,0 +1,8 @@
+<messaging:emailTemplate subject="AGS Identity Creation" recipientType="User" relatedToType="PRM_Account_Contact_Relationship__c"  >
+<messaging:plainTextEmailBody >
+Hello,
+
+There was a system glitch in initiating the IPA invite for user-  and invite email could not be generated due to identity creation failure. Follow the link below to re-initiate identity creation.
+{!relatedTo.PRM_Record_Link__c}
+</messaging:plainTextEmailBody>
+</messaging:emailTemplate>

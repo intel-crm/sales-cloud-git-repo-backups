@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>License_Group_Record_Page4</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -151,60 +148,28 @@
     <enableFeeds>false</enableFeeds>
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
-    <enableReports>true</enableReports>
-    <enableSearch>true</enableSearch>
+    <enableReports>false</enableReports>
+    <enableSearch>false</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ReadWrite</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Sales_Legacy_License_Group_Id__c</fullName>
-        <caseSensitive>false</caseSensitive>
-        <externalId>true</externalId>
-        <label>Legacy License Group Id</label>
-        <length>255</length>
+        <fullName>Sales_License_Contact__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Contact</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Sales_License_Groups</relationshipLabel>
+        <relationshipName>Sales_License_Groups</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
+        <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>Sales_License_Description_dsc__c</fullName>
-        <externalId>false</externalId>
-        <label>Description</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Sales_License_Parameter_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>License Parameter</label>
-        <length>100</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <label>Sales License Group</label>
-    <listViews>
-        <fullName>All</fullName>
-        <columns>OBJECT_ID</columns>
-        <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>Sales_License_Description_dsc__c</columns>
-        <columns>Sales_Legacy_License_Group_Id__c</columns>
-        <columns>Sales_License_Parameter_txt__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
+    <label>Sales_License_Group</label>
     <nameField>
-        <label>Name</label>
+        <label>Sales_License_Group Name</label>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Sales License Groups</pluralLabel>
+    <pluralLabel>Sales_License_Groups</pluralLabel>
     <searchLayouts/>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

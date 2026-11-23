@@ -31,5 +31,12 @@
         <name>PMP_Specification_Value__c</name>
         <relationshipLabel><!-- Marketing Profile Regions --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Marketing Profile Region Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

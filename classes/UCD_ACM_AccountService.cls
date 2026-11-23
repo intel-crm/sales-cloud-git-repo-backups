@@ -28,21 +28,20 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
     public List <UCD_ACM_Models.BusinessOrganizationResponseforService> createBusinessOrganizationRequest (List<UCD_ACM_Models.AccountModel> accountModel) {
         List<UCD_ACM_Models.BusinessOrganizationResponseforService> invalidResponse = new List<UCD_ACM_Models.BusinessOrganizationResponseforService>();
         List<UCD_ACM_Models.BusinessOrganizationResponseforService> validResponse = new List<UCD_ACM_Models.BusinessOrganizationResponseforService>();   
+        List<UCD_ACM_Models.AccountModel> validAccountRequests = new List<UCD_ACM_Models.AccountModel>();      
         try{
                 Map<String, List<UCD_ACM_Models.AccountModel>> accountRequestByAggregationType = new Map<String, List<UCD_ACM_Models.AccountModel>>();
                 for(UCD_ACM_Models.AccountModel request:accountModel){
-                    if(accountRequestByAggregationType.containsKey(request.CustomerAggregationTypeCode)){
-                        accountRequestByAggregationType.get(request.CustomerAggregationTypeCode).add(request);
-                    }else{
-                        accountRequestByAggregationType.put(request.CustomerAggregationTypeCode, new List<UCD_ACM_Models.AccountModel>{request});
-                    }
+                    if(accountRequestByAggregationType.containsKey(request.CustomerAggregationTypeCode))
+                    accountRequestByAggregationType.get(request.CustomerAggregationTypeCode).add(request);
+                    else
+                    accountRequestByAggregationType.put(request.CustomerAggregationTypeCode, new List<UCD_ACM_Models.AccountModel>{request});
                 }
                 for(String aggregationType: accountRequestByAggregationType.KeySet()){
                     UCD_ACM_ServiceContracts.ICustomerAggregationType customerAggregationType = getAggregationServiceInstance(aggregationType);
-                    validResponse.addall(customerAggregationType.createBusinessOrganizationRequest(accountRequestByAggregationType.get(aggregationType),  invalidResponse));
-                    if(invalidResponse.size()>0){
-                        UCD_ACM_Logger.warning('UCD_ACM_AccountService','createBusinessOrganizationRequest',invalidResponse.toString(),NULL);
-                    }
+                    validResponse.addall(customerAggregationType.createBusinessOrganizationRequest(accountRequestByAggregationType.get(aggregationType),validAccountRequests,  invalidResponse));
+                    if(invalidResponse.size()>0)
+                        UCD_ACM_Logger.error('UCD_ACM_AccountService','createBusinessOrganizationRequest',invalidResponse.toString(),NULL);
                 }
                 throwTestException();
     
@@ -82,8 +81,8 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
     */
     public static List<Account> getAccountsToPublishEvent(Set<Id> accountIds){
         try{
-            String queryFields = 'Id, Name,Core_Survivor_Account_Id__c, Core_Business_Party_Id__c, Core_Compliance_Watch_List_Type__c, Core_Customer_Aggregation_Type__c, ParentId, RecordTypeId, Core_Data_Simplified_Account_Nm__c,Core_Parent_Business_Party_Id__c,Core_Parent_Data_Simplified_Account_Nm__c, Core_Data_Country_Nm__c, BillingCountryCode, BillingCountry,ShippingCountryCode,ShippingCountry, Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Core_Data_Simplified_Local_Language_Nm__c,Unified_Hierarchy_View__c,Core_Account_Reference_Source_Name__c,Core_Unified_Global_Customer_BP_Id__c,Core_Unified_Global_Customer_Name__c,Core_Unified_Intermediate_Customer_BP_Id__c,Core_Unified_Intermediate_Customer_Name__c,Core_Unified_Intermdt_Customer_2_BP_Id__c,Core_Unified_Intermdt_Customer_2_Name__c';
-            String andClause = 'Core_Customer_Aggregation_Type__c != null and (RecordType.Name = \'End Customer Deal Account\'  OR RecordType.Name = \'Rejected Account\' OR RecordType.Name = \'Intel Account\' OR RecordType.Name = \'Inactive Account\')';
+            String queryFields = 'Id, Name,Core_Survivor_Account_Id__c, Core_Business_Party_Id__c, Core_Customer_Aggregation_Type__c, ParentId, RecordTypeId, Core_Data_Simplified_Account_Nm__c, Core_Data_Country_Nm__c, Core_Data_Country_Cd__c,BillingCountryCode, BillingCountry,ShippingCountryCode,ShippingCountry, Core_Account_Request_Rejection_Reason__c,Core_Account_Request_Rejection_Notes__c,Core_Data_Simplified_Local_Language_Nm__c,Unified_Hierarchy_View__c';
+            String andClause = 'Core_Customer_Aggregation_Type__c != null and (RecordType.Name = \'End Customer Deal Account\' OR RecordType.Name = \'Intel Account\' OR RecordType.Name = \'Rejected Account\')';
             Map<Id,Account> accountById = accountQuerySelectorInstance.getAccountsByIds(accountIds,queryFields,andClause);
             if(accountById != null){
                 return accountById.values();
@@ -96,6 +95,46 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
             UCD_ACM_Logger.setLogDetails();
         }
         return null;
+    }
+    /*
+    * description : If Business Party Id is already present in salesforce then change the recordType
+    *               to RejectedAccount otherwise it is EndCustomer.
+    * params : Account
+    * return : Account
+    * author and date : harshalx.sunil.gosavi@intel.com, 23 Nov 2021
+    */
+
+    public void updateAccRecordTypeByBpId(List<Account> accounts,Map<Id,Account> oldAccountById){
+        try{
+            Set<String> accountsBpId = new Set<String>();
+            Map<String,List<Account>> accountsByBpId = new Map<String,List<Account>>();
+            
+            For(Account acc : accounts){
+                if(acc.Core_Business_Party_Id__c != null){
+                    accountsBpId.add(acc.Core_Business_Party_Id__c);
+                }
+            }
+            if(accountsBpId.size() > 0){
+                accountsByBpId = accountQuerySelectorInstance.getAccountByBpId(accountsBpId);
+            }
+            
+            For(Account account : accounts){
+                if(accountsByBpId != null && accountsByBpId.size() > 0 && accountsByBpId.containsKey(account.Core_Business_Party_Id__c)){
+                    For(Account siblingAccount : accountsByBpId.get(account.Core_Business_Party_Id__c)){
+                        if(account.Core_Business_Party_Id__c != null && oldAccountById!= null &&  oldAccountById.get(account.Id)!= null && oldAccountById.get(account.Id).RecordTypeId == requestedAccountRecordType && account.RecordTypeId == endCustomerRecordType && siblingAccount.RecordTypeId == endCustomerRecordType){
+                            account.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
+                            account.Core_Survivor_Account_Id__c = siblingAccount.Id;
+                            account.Core_Account_Request_Rejection_Reason__c = 'DUP';
+                            break;
+                        }
+                    }
+                }					
+            }
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','updateAccRecordTypeByBpId','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+ oldAccountById != null ? oldAccountById.keySet()+'' : '');
+        }finally{
+            UCD_ACM_Logger.setLogDetails();
+        }
     }
 
     /*
@@ -117,40 +156,77 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
             for(Integer i = 0 ; i< requestModel.BusinessOrganization.AccountId.size(); i++){ 
                 AccountId.add(requestModel.BusinessOrganization.AccountId[i]);
             }
-            Map<String, UCD_Business_Organization_Attribute__c> MetaMap = UCD_Business_Organization_Attribute__c.getAll();
-            List<UCD_Business_Organization_Attribute__c> MetaList = new List<UCD_Business_Organization_Attribute__c>();
+            
+            Map<String, UCD_Business_Organization_API__mdt> MetaMap = UCD_Business_Organization_API__mdt.getAll();
+            List<UCD_Business_Organization_API__mdt> MetaList = new List<UCD_Business_Organization_API__mdt>();
             for(String Meta: MetaMap.keySet()){
                 MetaList.add(MetaMap.get(Meta));
             }   
-            String acctAttrs = '' ;
-            String cwlAttrs = '' ;
-            String cpeAttrs = '' ;
-            for(UCD_Business_Organization_Attribute__c Meta:MetaList){
+            String FieldString = '' ;
+            List<String> FieldList = new List<String>();
+            Set<String> FieldSet = new Set<String>();
+            String FieldListCompliance = '' ;
+            String FieldListEngagement = '' ;
+            for(UCD_Business_Organization_API__mdt Meta:MetaList){
                 for(UCD_ACM_BusinessOrganizationModel.AttributesData Atti:AttributeList){
-                    if(Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_API_Name__c == 'Account'){
-                        acctAttrs = String.isNotBlank(acctAttrs) ? (acctAttrs + ',' + Meta.Field_API_Name__c) : Meta.Field_API_Name__c;
+                    if(Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_Name__c == 'Account'){
+                        FieldSet.add(Meta.Field_API_Name__c);
                     }
-                    else if (Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_API_Name__c == System.Label.Object_API_Name_CPE ){
-                        cpeAttrs = String.isNotBlank(cpeAttrs) ? (cpeAttrs + ',' + Meta.Field_API_Name__c) : Meta.Field_API_Name__c;   
+                    else if (Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_Name__c == 'Compliance Watch List' ){
+                        if(FieldListCompliance == ''){
+                            FieldListCompliance = Meta.Field_API_Name__c;
+                        }
+                        else{
+                            FieldListCompliance = FieldListCompliance + ',' +Meta.Field_API_Name__c;
                         }
                     }
+                    else if (Atti.AttributeName == Meta.Account_Attributes__c && Meta.Object_Name__c == 'Account Business Types' ){
+                        if(FieldListEngagement == ''){
+                            FieldListEngagement = Meta.Field_API_Name__c;
+                        }
+                        else{
+                            FieldListEngagement = FieldListEngagement + ',' +Meta.Field_API_Name__c;
+                        }
+                    }
+                }
+            }
+            
+            FieldList.addall(FieldSet); 
+            for(Integer i=0;i<FieldList.Size();i++){
+                if(FieldString == ''){
+                    FieldString = FieldList[i];
+                }
+                else{
+                    FieldString= FieldString + ',' + FieldList[i];
+                }
             }
             Map<Id,Account> AccountMap = new Map<Id,Account>();
+            if(FieldString != ''){
+                AccountMap= accountQuerySelectorInstance.getAccountsByIds(AccountId,FieldString);
+            }
+            Map<Id,List<Core_Account_Compliance_Watch_List__c>> ComplianceMap  = new Map<Id,List<Core_Account_Compliance_Watch_List__c>>();
             Map<Id,List<Business_Types__c>> EngagementMap  = new Map<Id,List<Business_Types__c>>();
-            if(String.isNotBlank(acctAttrs)){
-                AccountMap= accountQuerySelectorInstance.getAccountsByIds(AccountId,acctAttrs);
+            if(FieldListCompliance != ''){
+            ComplianceMap = accountQuerySelectorInstance.getComplianceWatchListByAccountId(AccountId,FieldListCompliance);
             }
-            if(String.isNotBlank(cpeAttrs)){
-                EngagementMap = accountQuerySelectorInstance.getBusinessTypesByAccountId(AccountId,cpeAttrs);
+            if(FieldListEngagement!= ''){
+            EngagementMap = accountQuerySelectorInstance.getBusinessTypesByAccountId(AccountId,FieldListEngagement);
             }
+            
             for(Integer i = 0 ; i< requestModel.BusinessOrganization.AccountId.size(); i++){    
                 UCD_ACM_BusinessOrganizationModel.ResponseData  responseData = new UCD_ACM_BusinessOrganizationModel.ResponseData();
                     responseData.Id = requestModel.BusinessOrganization.AccountId[i];
+                    
                     List<UCD_ACM_BusinessOrganizationModel.AccountAddressInformation> accountAddressesInfo = new  List<UCD_ACM_BusinessOrganizationModel.AccountAddressInformation>();                   
                     List<UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails> AccountCompliancesInfo= new  List<UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails>();                     
                     List<UCD_ACM_BusinessOrganizationModel.cusProcEng> cusProcEngInfo= new  List<UCD_ACM_BusinessOrganizationModel.cusProcEng>();                     
                     if(AccountMap != null){
                     Account accInfo = AccountMap.get(requestModel.BusinessOrganization.AccountId[i]);
+                    
+                    List<Core_Account_Compliance_Watch_List__c> complist = new List<Core_Account_Compliance_Watch_List__c>();
+                    if(ComplianceMap != null && ComplianceMap.get(requestModel.BusinessOrganization.AccountId[i]) != null){
+                        complist = ComplianceMap.get(requestModel.BusinessOrganization.AccountId[i]);
+                    }
                     
                     List<Business_Types__c> Engagelist = new List<Business_Types__c>();
                     if(EngagementMap != null && EngagementMap.get(requestModel.BusinessOrganization.AccountId[i]) != null){
@@ -180,15 +256,20 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                                 
                             }
 
+                            if(attribute.AttributeName == 'AccountAddressInformation'){
+                                accountAddressesInfo.add(getAccountAddressInfo(accInfo,'Billing'));
+                                accountAddressesInfo.add(getAccountAddressInfo(accInfo,'Shipping'));
+                                responseData.AccountAddressInformation = accountAddressesInfo;
+                            }
 
                             if(attribute.AttributeName == 'ParentAccountInfomation'){
                                 UCD_ACM_BusinessOrganizationModel.ParentAccountInfomation parentAccountInfo = new UCD_ACM_BusinessOrganizationModel.ParentAccountInfomation();
-                                 parentAccountInfo.AccountName = accInfo.Parent.Name;
-                                 parentAccountInfo.AccountId = accInfo.ParentId;
-                                 parentAccountInfo.AcocuntId = accInfo.ParentId;
-                                 parentAccountInfo.BusinessPartyIdentifier = accInfo.Core_Parent_Business_Party_Id__c;
-                                 parentAccountInfo.SimplifiedAccountName = accInfo.Core_Parent_Data_Simplified_Account_Nm__c;
-                                 responseData.ParentAccountInfomation = parentAccountInfo;
+                                parentAccountInfo.AccountName = accInfo.Parent.Name;
+                                parentAccountInfo.AccountId = accInfo.ParentId;
+                                parentAccountInfo.AcocuntId = accInfo.ParentId;
+                                parentAccountInfo.BusinessPartyIdentifier = accInfo.Parent.Core_Business_Party_Id__c;
+                                parentAccountInfo.SimplifiedAccountName = accInfo.Parent.Core_Data_Simplified_Account_Nm__c;
+                                responseData.ParentAccountInfomation = parentAccountInfo;
                             }
 
                             if(attribute.AttributeName == 'AccountMasteredDetails'){
@@ -197,7 +278,7 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                                 accountMasterInfo.SimplifiedAccountName = accInfo.Core_Data_Simplified_Account_Nm__c;
                                 accountMasterInfo.BusinessPartyIdentifier = accInfo.Core_Business_Party_Id__c;
                                 UCD_ACM_BusinessOrganizationModel.Address address = new UCD_ACM_BusinessOrganizationModel.Address();
-                                address.CountryCode = null;
+                                address.CountryCode = accInfo.Core_Data_Country_Cd__c;
                                 address.CountryName = accInfo.Core_Data_Country_Nm__c;
                                 accountMasterInfo.Address = address;
                                 accountMasterInfo.SimplifiedLocalLanguageName = accInfo.Core_Data_Simplified_Local_Language_Nm__c;
@@ -207,23 +288,18 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
                             }
 
                             if(attribute.AttributeName == 'AccountComplianceDetails'){
-                                if(accInfo.Core_Compliance_Watch_List_Type__c!=null){
-                                    List<String> complianceWatchListValues=accInfo.Core_Compliance_Watch_List_Type__c.split(';');
-                                    for(String cwlValue : complianceWatchListValues){
+                                if(complist.size()>0){
+                                    for(Core_Account_Compliance_Watch_List__c comp:compList){
                                         UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails accountComplianceInfo = new UCD_ACM_BusinessOrganizationModel.AccountComplianceDetails();
-                                        accountComplianceInfo.Name=UCD_ACM_Utils.getPicklistLabel('Account','Core_Compliance_Watch_List_Type__c',cwlValue);
-                                        accountComplianceInfo.Code = cwlValue;
+                                        accountComplianceInfo.Name = UCD_ACM_Utils.getPicklistLabel('Core_Account_Compliance_Watch_List__c','Core_Type__c',comp.Core_Type__c);
+                                        accountComplianceInfo.Code = comp.Core_Type__c;
                                         accountCompliancesInfo.add(accountComplianceInfo); 
                                     }
+                                    responseData.AccountComplianceDetails = accountCompliancesInfo;
                                 }
-                                responseData.AccountComplianceDetails = accountCompliancesInfo;
+                                
                             }
-                            if(attribute.AttributeName == 'AccountAddressInformation'){
-                                accountAddressesInfo.add(getAccountAddressInfo(accInfo,'Billing'));
-                                accountAddressesInfo.add(getAccountAddressInfo(accInfo,'Shipping'));
-                                responseData.AccountAddressInformation = accountAddressesInfo;
                             }
-                        }
                     }
                     lstresponseData.add(responseData);
             }
@@ -289,18 +365,18 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
             try {
                 Map<Id, Account> parentAccountById = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent());
                 Map<Id,List<Business_Types__c>> businessTypesByAccountId = accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
+                Map<Id,List<Core_Account_Compliance_Watch_List__c>> complianceWatchListByAccountId = accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds, model.getComplianceWatchListQueryForEvent());
                 // Publish event 
                 For(Account account: accounts) {
-
                     UCD_ACM_Models.PE_HeaderResponse mappedHeaderResponse = new UCD_ACM_Models.PE_HeaderResponse();
-                    UCD_ACM_Models.AccountResponseModel mappedResponse = UCD_ACM_AccountDomain.mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId);
+                    UCD_ACM_Models.AccountResponseModel mappedResponse = UCD_ACM_AccountDomain.mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId,complianceWatchListByAccountId);
                     mappedHeaderResponse = businessTypesByAccountId != null && businessTypesByAccountId.containsKey(account.Id) && businessTypesByAccountId.get(account.Id).size() > 0?headerModel.mapAccountsToHeaders(account,businessTypesByAccountId.get(account.Id)):headerModel.mapAccountsToHeaders(account,null);
                     ACM_Account_Change_Event__e accountChangeEvent=new ACM_Account_Change_Event__e(Message__c = JSON.serialize(mappedResponse,true),Headers__c = JSON.serialize(mappedHeaderResponse,true));
                     accountChangeEvents.add(accountChangeEvent);
                     eventPayloads.add(accountChangeEvent.Message__c);
                 }
                 //call the publish event method
-
+                
                 If(accountChangeEvents.size() > 0) {    
                     eventPublishResultList = EventBus.publish(accountChangeEvents);
                 }
@@ -335,7 +411,192 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
             }
         }
     }
+    /*
+     * description : Ignore updating Name/Billing/Shipping Address/Account Owner if existing UCD SF record.
+     * params : List<Account> newValues, List<Account> oldvalues
+     * return : NA
+     * author and date : ankit1x.sharma@intel.com, 20/11/2021
+     */
+    public void restrictUpdatingSFFields(List<Account> newValues, List<Account> oldvalues){
+        try{
+            accountDomianInstance.restrictUpdatingSFFields(newValues,oldvalues);
+            throwTestException();
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','restrictUpdatingSFFields','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        }finally{
+            UCD_ACM_Logger.setLogDetails();
+        }
+    }
+    /*
+     * description : Method to update UCD hierarchy fields, this method is invoked from handler on change of ParentId/Customer aggr type.
+     * params : Account, Boolean updateChildAccounts
+     * author and date : chethan.s.kunder@intel.com, 25 Nov 2021
+     */
+    public void updateHierarchyFields(Account account, Boolean updateChildAccounts){
+      /*  try {            
+            if(account.RecordTypeId <> Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Rejected_Account').getRecordTypeId() && account.RecordTypeId <> Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Requested_Account').getRecordTypeId()) {
+                if(updateChildAccounts) {
+                    //updateHierarchyFieldsForChildAccounts(account.Id);
+                    UCD_ACM_UpdateHierarchyFieldsQueueable updateJob = new UCD_ACM_UpdateHierarchyFieldsQueueable(account.Id);
+                    ID jobID = System.enqueueJob(updateJob);
+                }
+                else {
+                    account.Core_Unified_Country_Customer__c = null;
+                    account.Core_Unified_Intermediate_Customer__c = null;
+                    account.Core_Unified_Intermediate_Customer_2__c = null;
+                    account.Core_Unified_Global_Customer__c = null;
+                    account.Core_Unified_Global_Customer_BP_Id__c = null;
+                    account.Core_Unified_Global_Customer_Name__c = null;
+                    account.Core_Unified_Intermediate_Customer_BP_Id__c = null;
+                    account.Core_Unified_Intermediate_Customer_Name__c = null;
+                    if(account.ParentId != null && account.Core_Customer_Aggregation_Type__c != 'UNFD_GLBL_CUST') {
+                        UCD_ACM_UpdateHierarchyFieldsQueueable.setHierarchyFields(account, null);
+                    }
+                    else if(account.Core_Customer_Aggregation_Type__c == 'UNFD_GLBL_CUST') {
+                        account.Core_Unified_Global_Customer_Name__c = account.Core_Data_Simplified_Account_Nm__c;
+                        account.Core_Unified_Global_Customer_BP_Id__c = account.Core_Business_Party_Id__c;
+                    }
+                    else if(account.Core_Customer_Aggregation_Type__c == 'UNFD_INTRMD_CUST') {
+                        account.Core_Unified_Intermediate_Customer_Name__c = account.Core_Data_Simplified_Account_Nm__c;
+                        account.Core_Unified_Intermediate_Customer_BP_Id__c = account.Core_Business_Party_Id__c;
+                    }
+                }
+            }               
+        }
+        catch (Exception ex) {
+            UCD_ACM_Logger.error('UCD_ACM_AccountService', 'updateHierarchyFields', 'Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+account.Id);
+        }
+        finally {
+            UCD_ACM_Logger.setLogDetails();
+        }*/
+    }
+    /*
+    /*
+     * description : Set UCD hierarchy fields for child accounts
+     * params : Id parentAccId
+     * author and date : chethan.s.kunder@intel.com, 1 Dec 2021
+     
+    @future
+    private static void updateHierarchyFieldsForChildAccounts(Id parentAccId) {  
+        Set<Id> parentAccountIds = new Set<Id>();
+        parentAccountIds.add(parentAccId);      
+        Map<Id, Account> mChildAccounts = getAllChildAccounts(parentAccountIds);
+        if(mChildAccounts <> null && mChildAccounts.Values().size() > 0) {
+            Map<Id, Account> mAccountsToUpdate = new Map<Id, Account>();
+            for (Id acctId: mChildAccounts.keySet()) {
+                Account acct = mChildAccounts.get(acctId);
+                Account parentAcct = acct.ParentId <> null ? mChildAccounts.get(acct.ParentId) : null;
+                setHierarchyFields(acct, parentAcct);            
+                mAccountsToUpdate.put(acctId, acct);
+                UCD_ACM_Logger.information('UCD_ACM_AccountService','updateHierarchyFieldsForChildAccounts','AFTER - Account Added for Update - ID:' + acctId,'AccountIds: '+acctId);
+            }            
+            if(mAccountsToUpdate <> null && mAccountsToUpdate.Values().size() > 0) {
+                try {
+                    update mAccountsToUpdate.Values();
+                } catch(DMLException e) {
+                    UCD_ACM_Logger.error('UCD_ACM_AccountService', 'updateHierarchyFieldsForChildAccounts', 'Message: '+e.getMessage()+'. StackTrace: '+e.getStackTraceString(),'ParentAccountIds: '+parentAccountIds.toString());
+                }
+                finally {
+                    UCD_ACM_Logger.setLogDetails();
+                }        
+            }
+        }
+    }*/
 
+    /*
+     * description : Get all child accounts for an account
+     * params : Id parentAccId
+     * author and date : chethan.s.kunder@intel.com, 1 Dec 2021
+     
+    public static Map<Id, Account> getAllChildAccounts(Set<Id> parentAccIds) {
+        if(parentAccIds.size() == 0) {
+            return new Map<Id, Account>();
+        }
+        UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel(); 
+        String andClause = 'Core_Customer_Aggregation_Type__c != null and (RecordType.Name = \'End Customer Deal Account\' OR RecordType.Name = \'Intel Account\')';
+        Map<Id, Account> mChildAccounts = accountQuerySelectorInstance.getAccountsByParentId(parentAccIds, model.getParentAccountQueryForEvent(), andClause);
+        if(mChildAccounts <> null && mChildAccounts.Values().size() > 0) {
+            Map<Id, Account> nestedChildAccounts = getAllChildAccounts(new Set<Id>(mChildAccounts.keySet()));
+            if(nestedChildAccounts <> null && nestedChildAccounts.Values().size() > 0) {
+                mChildAccounts.putAll(nestedChildAccounts);
+            }
+        }
+        return mChildAccounts;
+    }*/
+
+    /*
+     * description : Set UCD hierarchy fields
+     * params : Account
+     * author and date : chethan.s.kunder@intel.com, 25 Nov 2021
+     * Updated : chethan.s.kunder@intel.com, 01 Dec 2022 - New UCD hierachy attributes integration
+     
+    public static void setHierarchyFields(Account account, Account parentAcct) {
+        UCD_ACM_Logger.information('UCD_ACM_AccountService','setHierarchyFields','Account:ID: '+account.Id +' and AccountCustAggrType :' + account.Core_Customer_Aggregation_Type__c,'AccountIds: '+account.Id);
+        if(parentAcct == null) {
+            Set<Id> parentAccountIds = new Set<Id>();
+            parentAccountIds.add(account.ParentId);              
+            UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel(); 
+            parentAcct = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent()).get(account.ParentId);
+        }        
+        string parentCustAggrType = parentAcct.Core_Customer_Aggregation_Type__c;
+        Boolean hasSecondaryIntermediateParent = parentCustAggrType == 'UNFD_INTRMD_CUST' ? hasSecondaryIntermediateParent(parentAcct) : false;
+        UCD_ACM_Logger.information('UCD_ACM_AccountService','setHierarchyFields','ParentCustAggrType:' + parentCustAggrType,'AccountIds: '+account.Id);
+        account.Core_Unified_Global_Customer__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Id : parentAcct.Core_Unified_Global_Customer__c;
+        account.Core_Unified_Global_Customer_BP_Id__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Core_Business_Party_Id__c : parentAcct.Core_Unified_Global_Customer__r.Core_Business_Party_Id__c;
+        account.Core_Unified_Global_Customer_Name__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c : parentAcct.Core_Unified_Global_Customer__r.Core_Data_Simplified_Account_Nm__c;
+       
+        switch on account.Core_Customer_Aggregation_Type__c {
+            when 'UNFD_LOC_CUST' {
+                account.Core_Unified_Country_Customer__c = parentCustAggrType == 'UNFD_CTRY_CUST' ? parentAcct.Id : null;
+                account.Core_Unified_Intermediate_Customer__c = parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : parentAcct.Core_Unified_Intermediate_Customer__c;  
+                account.Core_Unified_Intermediate_Customer_2__c = hasSecondaryIntermediateParent ? parentAcct.ParentId : parentAcct.Core_Unified_Intermediate_Customer_2__c;
+            }
+            when 'UNFD_CTRY_CUST' {
+                account.Core_Unified_Intermediate_Customer__c = hasSecondaryIntermediateParent ? parentAcct.ParentId : (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : null);             
+                account.Core_Unified_Intermediate_Customer_2__c = hasSecondaryIntermediateParent ? parentAcct.Id : null;
+                account.Core_Unified_Intermediate_Customer_BP_Id__c = hasSecondaryIntermediateParent ? parentAcct.Core_Unified_Intermediate_Customer__r.Core_Business_Party_Id__c: (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Business_Party_Id__c : null);
+                account.Core_Unified_Intermediate_Customer_Name__c = hasSecondaryIntermediateParent ? parentAcct.Core_Unified_Intermediate_Customer__r.Core_Data_Simplified_Account_Nm__c: (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c : null);
+             }
+            when 'UNFD_INTRMD_CUST' {
+                account.Core_Unified_Intermediate_Customer__c = parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : null;                
+                account.Core_Unified_Intermediate_Customer_2__c = null;
+                account.Core_Unified_Intermediate_Customer_BP_Id__c = parentCustAggrType == 'UNFD_INTRMD_CUST'? parentAcct.Core_Business_Party_Id__c:account.Core_Business_Party_Id__c;
+                account.Core_Unified_Intermediate_Customer_Name__c =parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c :account.Core_Data_Simplified_Account_Nm__c;
+            }
+         }
+    }*/
+
+    /**
+     * description : To check if an intermediate account has secondary intermediate parent
+     * params : Account
+     * author and date : chethan.s.kunder@intel.com, 15 Mar 2022
+     
+    public static Boolean hasSecondaryIntermediateParent(Account parentAccount){
+        if(parentAccount.ParentId == null){
+            return false;
+        }
+        Map<Id, Account> parent2AccountById = new Map<Id,Account>();
+        Set<Id> parent2AccountIds = new Set<Id>();
+        parent2AccountIds.add(parentAccount.ParentId);              
+        UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel(); 
+        parent2AccountById = accountQuerySelectorInstance.getAccountsByIds(parent2AccountIds, model.getParentAccountQueryForEvent());
+        return parent2AccountById.get(parentAccount.ParentId).Core_Customer_Aggregation_Type__c == 'UNFD_INTRMD_CUST';
+    }*/
+    
+    public static Map<Id,Account> getAccountMap(Set<Id> accountIds, String queryFields){
+        try{
+            Map<Id,Account> accountById = accountQuerySelectorInstance.getAccountsByIds(accountIds,queryFields);
+            if(accountById != null){
+                return accountById;
+            }
+            return null;
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','getAccountMap','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),'AccountIds: '+accountIds.toString());
+        }finally{
+            UCD_ACM_Logger.setLogDetails();
+        }
+        return null;
+    }
 
     public static Map<Id,Business_Types__c> getBusinessTypeMap(Set<Id> businessTypeIds, String queryFields){
         try{
@@ -369,102 +630,115 @@ public without sharing class UCD_ACM_AccountService implements UCD_ACM_ServiceCo
         accountMutationSelectorInstance.setIntegrationMessage(accountIds);
     }
 
+    /** 
+    * description : This method sync parent attribute SF accounts with Reltio. Method is called after-update trigger
+    * params : List<Account> updatedParentAccountsInMDM, List<Account> mergedAccountsInMDM,Set<String> currentAccountsBpIds,Set<Id> parentAcountIds
+    * return : void
+    * author and date : yashvir.pathak@intel.com 15 June 2022.
+    */
+    public void onUpdatedOrMergedAccountsInMDM(List<Account> updatedParentAccountsInMDM, List<Account> mergedAccountsInMDM,Set<String> currentAccountsBpIds,Set<Id> parentAcountIds) {
+        String message = 'Enter method. updatedParentAccountsInMDM - ' + updatedParentAccountsInMDM + '' +'. mergedAccountsInMDM - '+mergedAccountsInMDM + ''+'. currentAccountsBpIds - '+currentAccountsBpIds + ''+'. parentAcountIds - '+parentAcountIds + '';
+        UCD_ACM_Logger.information('UCD_ACM_AccountService','onUpdatedOrMergedAccountsInMDM',message, 'TriggerData');
+        // change unitofwork logic
+        UCD_ACM_UnitOfWork unitwork = new UCD_ACM_UnitOfWork();
+        Set<String> parentAccountsBpIds = new Set<String>();
+        Map<Id,Account> parentAccountById = new Map<Id,Account>();
+        Map<String,List<Account> > parentAccountsByBpId = new Map<String,List<Account> >();
+        Map<String,List<Account> > accountsByBpId = new Map<String,List<Account> >();
+        try {
+            // Get the parent accounts
+            if (parentAcountIds != null && parentAcountIds.size() > 0) {
+                parentAccountById = accountQuerySelectorInstance.getAccountsByIds(parentAcountIds,'Id,Name,RecordTypeId,Core_Business_Party_Id__c');
+                // Create a set for BPIds of Parent Account
+                for (Account parentAccount : parentAccountById.values()) {
+                    if (parentAccount.Core_Business_Party_Id__c != null && parentAccount.Core_Business_Party_Id__c != '') {
+                        parentAccountsBpIds.add(parentAccount.Core_Business_Party_Id__c);
+                    }
+                }
+            }
+            // Get the Siblings of account parents based on BPIds
+            if (parentAccountsBpIds != null && parentAccountsBpIds.size() > 0)
+                parentAccountsByBpId = accountQuerySelectorInstance.getAccountByBpId(parentAccountsBpIds);
+            // Get the Siblings of current Account based on BPIds
+            if (currentAccountsBpIds != null && currentAccountsBpIds.size() > 0)
+                accountsByBpId = accountQuerySelectorInstance.getAccountByBpId(currentAccountsBpIds);
+
+            // call domain class to set parent
+            accountDomianInstance.setParentOnUpdateOrMergeInMDM(unitwork, updatedParentAccountsInMDM, mergedAccountsInMDM, parentAccountById, parentAccountsByBpId, accountsByBpId);
+            
+            // Update accounts
+            unitwork.commitWork();
+        }
+        catch (Exception ex) {
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','onUpdatedOrMergedAccountsInMDM','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        }
+        finally {
+            UCD_ACM_Logger.setLogDetails();
+        }
+    }
 
     public static Map<Id,List<Business_Types__c>> getActiveBusinessTypeForAccount(Set<Id> accountIds) {
         UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
         return accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
     }
+    
+    public Map<Id,String> getComplianceWatchListByAccountId(Set<Id> accountIds){
+        List<Schema.PicklistEntry> watchlistTypes = Core_Account_Compliance_Watch_List__c.Core_Type__c.getDescribe().getPicklistValues();
+        Map<String,String> complianceWatchListLabelByType = new Map<String,String>();
+        For(Schema.PicklistEntry watchlistType : watchlistTypes){
+            complianceWatchListLabelByType.put(watchlistType.getValue(), watchlistType.getLabel());
+        }
+        String query ='Id,Core_Account_Id__c,Core_Type__c,Core_Effective_End_Date__c';
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> mapOfCompliancesByAccountId = accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds,query);
+        Map<Id,String> complianceWatchListByAccountId = new Map<Id,String>();
+        For(Id accountId : accountIds){
+            if(mapOfCompliancesByAccountId != null && mapOfCompliancesByAccountId.containsKey(accountId)){
+                for(Core_Account_Compliance_Watch_List__c complianceWatchList : mapOfCompliancesByAccountId.get(accountId)){
+                    if(complianceWatchListByAccountId.containsKey(accountId)){
+                        String watchListType = complianceWatchListByAccountId.get(accountId);
+                        watchListType = watchListType+', '+complianceWatchListLabelByType.get(complianceWatchList.Core_Type__c);
+                        complianceWatchListByAccountId.put(accountId,watchListType);
+                    }else{
+                        complianceWatchListByAccountId.put(accountId,complianceWatchListLabelByType.get(complianceWatchList.Core_Type__c));
+                    }
+                }
+            }
+        }
+        if(complianceWatchListByAccountId != null && complianceWatchListByAccountId.size() > 0){
+            return complianceWatchListByAccountId;
+        }
+        return null;
+    }
+
 
     /*
-    * description : Publish Platform Events for Account Request Queue.
-    * params : Set<Id>
-    * return : Void
-    * author and date : yenugantix.tejasri@intel.com, ajayx.gat@intel.com 09/01/2024.
+    * description : If account approves from Reltio then recordtype should be intel
+    * params : Trigger.New
+    * return : NA
+    * author and date :ankit1x.sharma@intel.com, 10/11/2022
     */
-    public static void publishAccountRequestPlatformEvent(Set<Id> arqIds) {
-            
-        Set<Id> accountIds = new Set<Id>();
-        Set<Id> parentAccountIds = new Set<Id>();
-        List<ACM_Account_Request_Event__e> accountChangeEvents  = new List<ACM_Account_Request_Event__e>();
-        List<Database.SaveResult> eventPublishResultList = new List<Database.SaveResult>();
-        List<String> eventPayloads = new List<String>();
-        Map<Id, Account> AccountsById = new Map<Id, Account>();
-        Map<Id, Account> parentAccountById = new  Map<Id, Account>();
-        Map<Id,List<Business_Types__c>> businessTypesByAccountId = new Map<Id,List<Business_Types__c>>();
-        //Create Instance for AccountSelector and initialize models and platform event class
-        UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
-        UCD_ACM_Models.PE_HeaderResponse headerModel = new UCD_ACM_Models.PE_HeaderResponse();
-
+    public void updateRecordtype(List<Account> newAccounts, Map<Id, Account> oldAccountById){
         try{
-            String queryField = 'Id, Name, Requested_Account__c, Requested_Account__r.ParentId, Status__c, Rejected_Reason__c, Core_Account_Reference_Source_Name__c';
-            Map<Id,Account_Create_Request__c> accountRequestsById = accountQuerySelectorInstance.getAccountRequestQueueById(arqIds, queryField);
-            
-            if(accountRequestsById != null) {
-                For (Account_Create_Request__c accountRequest : accountRequestsById.values()) {
-                    if (accountRequest.Requested_Account__c != null ) {
-                        if (accountRequest.Requested_Account__r.ParentId != null) {
-                            parentAccountIds.add(accountRequest.Requested_Account__r.ParentId);
-                        }
-                        accountIds.add(accountRequest.Requested_Account__c);
-                    }
-                }
-            }
-            
-            // Fetch parent account details
-            if(!accountIds.isEmpty()) {
-                AccountsById = accountQuerySelectorInstance.getAccountsByIds(accountIds, model.getParentAccountQueryForEvent());
-
-                if(!parentAccountIds.isEmpty()) {
-                    parentAccountById = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent());
-                }
-
-                businessTypesByAccountId = accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
-            }
-
-            // Publish event
-            if(accountRequestsById != null) {
-                For (Account_Create_Request__c accountRequest: accountRequestsById.values()) {
-                    UCD_ACM_Models.PE_HeaderResponse mappedHeaderResponse = new UCD_ACM_Models.PE_HeaderResponse();
-                    UCD_ACM_Models.AccountRequestQueueModel mappedResponse = new UCD_ACM_Models.AccountRequestQueueModel();
-                    
-                    Account account = AccountsById != null && accountRequest.Requested_Account__c != null && AccountsById.get(accountRequest.Requested_Account__c ) != null ? AccountsById.get(accountRequest.Requested_Account__c ) : null;
-
-                    mappedResponse =  UCD_ACM_AccountDomain.mapAccountRequestQueueResponseModel(accountRequest, account, parentAccountById, businessTypesByAccountId);
-                    mappedHeaderResponse = accountRequest.Requested_Account__c != null ? businessTypesByAccountId != null && businessTypesByAccountId.containsKey(accountRequest.Requested_Account__c) && businessTypesByAccountId.get(accountRequest.Requested_Account__c).size() > 0  ? headerModel.mapAccountsToHeaders(account,businessTypesByAccountId.get(accountRequest.Requested_Account__c)): headerModel.mapAccountsToHeaders(account,null) : null;
-
-                    ACM_Account_Request_Event__e accountChangeEvent = new ACM_Account_Request_Event__e(Message__c = JSON.serialize(mappedResponse,true),Headers__c = JSON.serialize(mappedHeaderResponse,true));
-                    accountChangeEvents.add(accountChangeEvent);
-                    eventPayloads.add(accountChangeEvent.Message__c);
-                }
-            }                 
-            
-            //call the publish event method
-            if (!accountChangeEvents.isEmpty()) {   
-                eventPublishResultList = EventBus.publish(accountChangeEvents);
-            }
-            
-            if (!eventPublishResultList.isEmpty()) {
-                for (Database.SaveResult sr : eventPublishResultList) {
-                    if (sr.isSuccess()) {
-                        accountMutationSelectorInstance.updateIntegrationMsgQueueStatusForARQ(arqIds,'Success');
-                        UCD_ACM_Logger.information('UCD_ACM_AccountService','publishAccountRequestPlatformEvent','Account Change Event publish successfully for account request queues :'+'.Payload:'+eventPayloads,'arqIds: '+arqIds.toString());
-                        break;
-                    } else {
-                        // This method update the IntegrationMessageQueue status with error.
-                        accountMutationSelectorInstance.updateIntegrationMsgQueueStatusForARQ(arqIds,'Error');
-                        String errorMessage = '';
-                        For(Database.error error : sr.getErrors()) {
-                            errorMessage += error.getMessage();
-                        }
-                        UCD_ACM_Logger.error('UCD_ACM_AccountService','publishAccountRequestPlatformEvent',errorMessage+' Failed Account Request Queue Ids :','arqIds: '+arqIds.toString());
-                        break;
-                    }
-                }                     
-            }
-        } catch (Exception ex) {
-            UCD_ACM_Logger.error('UCD_ACM_AccountService','publishAccountRequestPlatformEvent','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString()+' UserName: '+UserInfo.getUserName(),'arqIds:'+arqIds.toString());
-        } finally {
+            accountDomianInstance.updateRecordtype( newAccounts,oldAccountById);
+            throwTestException();
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','updateRecordtype','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        }finally{
             UCD_ACM_Logger.setLogDetails();
         }
+    }
+
+    public void updateParentAccountRecordtype(List<Account> newAccounts, Map<Id, Account> oldAccountById){
+        UCD_ACM_UnitOfWork unitwork = new UCD_ACM_UnitOfWork();
+        try{
+            accountDomianInstance.updateParentAccountRecordtype(unitwork, newAccounts,oldAccountById);
+             Boolean result =  unitwork.commitWork();
+            throwTestException();
+        }catch(Exception ex){
+            UCD_ACM_Logger.error('UCD_ACM_AccountService','updateParentAccountRecordtype','Message: '+ex.getMessage()+'. StackTrace: '+ex.getStackTraceString(),NULL);
+        }finally{
+            UCD_ACM_Logger.setLogDetails();
+        }
+
     }
  }

@@ -65,5 +65,12 @@
         <label><!-- Technical Tier Code --></label>
         <name>Core_Technical_Tier_Code__c</name>
     </fields>
+    <layouts>
+        <layout>ERPM Engagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -84,8 +84,7 @@ public without sharing class PRM_DZPRegistration {
                         RegReq.PRM_Account_URL__c = ur.Account.Core_User_Defined_Website__c;
                     }
                     RegReq.PRM_City__c = ur.Account.BillingCity;
-                    //bizorgtype EOL
-                   // RegReq.PRM_Partner_Type__c = ur.Account.Core_Account_Type__c;
+                    //RegReq.PRM_Partner_Type__c = ur.Account.Core_Account_Type__c;
                     if(ur.Contact.Core_Profession__c != null){
                         RegReq.PRM_Profession__c = ur.Contact.Core_Profession__c;
                     }

@@ -57,6 +57,7 @@ export default class PsMpStartModal extends NavigationMixin(LightningElement) {
     connectedCallback() {
       //this.isProfileMarketingSpecialist = true;
       console.log(this.isProfileAdmin);
+      
     }
 
     openCreateProfileModal() {
@@ -69,6 +70,7 @@ export default class PsMpStartModal extends NavigationMixin(LightningElement) {
           this.dispatchEvent(buttonClick);
 
           this.isOpen = false;
+          console.log('Typeof isopen', typeof(this.isOpen));
           //TODO Check if EditStorefront Modal isOpen then Close the Start Modal
     }
 

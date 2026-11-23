@@ -22,7 +22,7 @@
         <field>Core_Design_Registration__c.Core_End_Customer_Country_Subdivision_Nm__c</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
+        <field>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</field>
     </columns>
     <columns>
         <field>Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</field>

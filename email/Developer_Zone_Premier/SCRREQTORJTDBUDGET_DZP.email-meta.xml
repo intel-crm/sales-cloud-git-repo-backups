@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Auto-rejection of Registration Request for Project Budget reason</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTDBUDGET_DZP</name>
+    <style>none</style>
+    <subject>Premier Access Request For Developer Zone Declined</subject>
+    <textOnly>Intel Resource and Design Center Registration Email Template
+
+Hello {!Contact.Name},
+
+Thank you for your interest in Developer Zone Premier. After reviewing your application, it was determined that your project did not meet the requirements for a Developer Zone Premier account. We regret to inform you that your request for Premier access has been denied.
+
+You may continue to use your Standard account to access public content in the Developer Zone. If you feel your request was declined in error, please use the “Need Help?” link on our Developer Zone Premier registration form.
+
+Additionally, we have several resellers that you may wish to engage with for resource help with your project.  
+
+Intel Solutions Document Library: https://builders.intel.com/solutionslibrary
+For product and pricing related questions, please contact your Motherboard OEM, Intel Authorized Distributors (IAD) or Intel Authorized Supplier (IAS). You can locate a list of IAD or IAS at: https://www.intel.com/content/www/us/en/partner/where-to-buy/overview.html
+For Intel Programs information and support:https://www.intel.com/partner-alliance
+For product information:https://ark.intel.com/
+Software &amp; Drivers download center:https://downloadcenter.intel.com/
+Intel Community:https://community.intel.com/
+Intel Solutions Marketplace catalog: https://marketplace.intel.com/
+Intel Customer Support: https://www.intel.com/support
+
+We appreciate your patience and sincerely apologize if your request may have taken longer than usual to process. 
+
+Thank you for your interest in Intel. 
+
+Kindest Regards,
+Intel Corporation
+Intel is committed to protecting your privacy. For more Information,
+please see the Intel Privacy Notice. Intel Cookie Notice.
+Legal Information | Trademarks | © Intel Corporation.
+
+!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

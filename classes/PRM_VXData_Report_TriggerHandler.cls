@@ -27,7 +27,7 @@ public Without Sharing class PRM_VXData_Report_TriggerHandler extends TriggerHan
     public override void afterInsert(){
         if(isActive('PRM_VXData_Trigger_Switch')){
             PRM_VXData_Report_Utility.trainingRecordsUpdate(Trigger.new);
-            PRM_VXData_Report_Utility.shareRecordWithPublicGroup(Trigger.new);
+            //PRM_VXData_Report_Utility.calculateAndInsertVXcalculation(Trigger.new);
         }
     }
     //This method will call utility method when record is updated for specific field .

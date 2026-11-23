@@ -152,7 +152,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_IAH_KPI_Achieved__c</fullName>
         <defaultValue>false</defaultValue>
@@ -297,19 +297,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_IAH_KPI_Retry_Counter__c</fullName>
-        <defaultValue>0</defaultValue>
-        <externalId>false</externalId>
-        <label>KPI Retry Counter</label>
-        <precision>18</precision>
-        <required>false</required>
-        <scale>0</scale>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Number</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_IAH_KPI_Threshold_Met__c</fullName>
         <label>Threshold Met?</label>
         <required>false</required>
@@ -378,21 +365,6 @@
                     <default>false</default>
                     <label>Salesforce Pipeline Units</label>
                 </value>
-                <value>
-                    <fullName>Salesforce Production Win Opp Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win Opp Count</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Production Win $</fullName>
-                    <default>false</default>
-                    <label>Salesforce Production Win $</label>
-                </value>
-                <value>
-                    <fullName>Salesforce Opp KPI Product Group Count</fullName>
-                    <default>false</default>
-                    <label>Salesforce Opp KPI Product Group Count</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -449,13 +421,7 @@
         <columns>Core_IAH_KPI_Record_ID__c</columns>
         <columns>Core_KPI_Processing_Status__c</columns>
         <columns>Core_IAH_SF_KPI_ID__c</columns>
-        <columns>Core_IAH_KPI_Error_Message__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_IAH_SF_KPI_ID__c</field>
-            <operation>equals</operation>
-            <value>2166</value>
-        </filters>
         <label>All</label>
         <language>en_US</language>
     </listViews>

@@ -4,23 +4,15 @@
 
     <!-- Check the record type of the Incoming  Record Id -->
     <aura:attribute name="simpleNewClaim" type="PartnerFundClaim"/>
-    <aura:attribute name="claimDetailsOnLoad" type="PartnerFundClaim" />
     <aura:attribute name="recordId" type="String" default=""/>   
     <aura:attribute name="activityCountriesMap" type="Map"/>
-    <aura:attribute name="activitySubTypesMap" type="Map"/>
-    <aura:attribute name="activityBudgetType" type="String" default=""/>
     <!-- Attribute to Store Clone Button value and pass to "Core_MDF_PFC_Create" to component -->
     <aura:attribute name="isClone" type="Boolean" />
-    <!-- Attribute to Store the error message when user clicks on edit on a CRR Positive claim -->
-    <aura:attribute name="accessErrorMsg" type="String" default=""/>
-    <aura:attribute name="isEdit" type="Boolean" default="true" />
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
             
     <aura:if isTrue="{!not(empty(v.simpleNewClaim.Id))}">
-        <c:Core_MDF_PFC_Create simpleNewClaim="{!v.simpleNewClaim}" isCloneClaim="{!v.isClone}"
-            activityCountriesMap="{!v.activityCountriesMap}" activitySubTypesMap="{!v.activitySubTypesMap}"
-            activityBudgetType="{!v.activityBudgetType}"
-            claimDataOnLoad="{!v.claimDetailsOnLoad}" isEdit="{!v.isEdit}"/>
+        <c:Core_MDF_PFC_Create simpleNewClaim = "{!v.simpleNewClaim}" isCloneClaim ="{!v.isClone}" activityCountriesMap="{!v.activityCountriesMap}"/>
     </aura:if>
-  
+
 </aura:component>

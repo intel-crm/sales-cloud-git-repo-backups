@@ -27,6 +27,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Deal: Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -37,6 +40,9 @@
     </buckets>
     <columns>
         <field>STAGE_NAME</field>
+    </columns>
+    <columns>
+        <field>CLOSE_MONTH</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_Entry_Stage__c</field>
@@ -79,20 +85,19 @@
         <field>Opportunity.Core_Approval_Status__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 OR 2</booleanFilter>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Americas Sales Territory</value>
+        </criteriaItems>
         <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Hain</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>hain</value>
+            <value>Vitores</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -100,11 +105,6 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CLOSE_MONTH</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>AMR EU IS #oppt health</name>

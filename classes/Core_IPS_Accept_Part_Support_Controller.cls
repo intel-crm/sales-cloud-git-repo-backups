@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_Accept_Part_Support_Controller {
+public class Core_IPS_Accept_Part_Support_Controller {
     public String caseId{get;set;}
     public Case cs{get;set;}
     Public String errorMessage{get;set;}
@@ -18,6 +18,7 @@ public with sharing class Core_IPS_Accept_Part_Support_Controller {
         //Added for testing Start
         PermissionSet  pset=[select id,label from PermissionSet where Label = 'IPS Partner FAE Permission Set']; //IPS Permission Set  //'DDR Permission Set'
          List<PermissionSetAssignment> lpermission=[select id,PermissionSetId from PermissionSetAssignment where AssigneeId =:userinfo.getuserId()  and PermissionSetId =:pset.id];//0PSo0000000JnTP  //'0PS3F0000004ENc'
+         system.debug('lpermission::'+lpermission);
          if(lpermission.size()>0){
              cs.Core_IPS_Partner_Sup_Owner__c =userinfo.getuserId();
              update cs;

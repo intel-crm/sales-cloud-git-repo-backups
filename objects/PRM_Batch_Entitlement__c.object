@@ -395,12 +395,6 @@
                     <isActive>false</isActive>
                     <label>Not Applicable</label>
                 </value>
-                <value>
-                    <fullName>OEM</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>OEM</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
         <visibleLines>4</visibleLines>
@@ -440,11 +434,6 @@
                     <fullName>In Progress</fullName>
                     <default>false</default>
                     <label>In Progress</label>
-                </value>
-                <value>
-                    <fullName>Hold</fullName>
-                    <default>false</default>
-                    <label>Hold</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -591,10 +580,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Hold</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>In Progress</fullName>
                 <default>false</default>
             </values>
@@ -611,6 +596,14 @@
             <picklist>Source__c</picklist>
             <values>
                 <fullName>Admin Invite</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Admin Invite Email</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Bulk Invite Email</fullName>
                 <default>false</default>
             </values>
             <values>

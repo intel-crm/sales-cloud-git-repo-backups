@@ -92,7 +92,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - All Survey cases - PSG CEG</name>
+    <name>All Survey cases - PSG CEG</name>
     <params>
         <name>units</name>
         <value>d</value>
@@ -110,6 +110,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSED_DATEONLY</dateColumn>
-        <interval>INTERVAL_PREVCUR2Y</interval>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

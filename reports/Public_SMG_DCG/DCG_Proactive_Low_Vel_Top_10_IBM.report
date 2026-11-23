@@ -79,7 +79,7 @@
         <field>OPPORTUNITY_ID</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND 6</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 AND 7) OR 8</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
@@ -116,11 +116,25 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Account.Core_Account_BU_Focus__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG-Cloud</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Account_DCG_Tier__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG-Tier 1</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>ACCOUNT_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>IBM Corp,redhat,IBM Software &amp; Global Services,IBM GTS,IBM Service</value>
+            <operator>equals</operator>
+            <value>IBM Corp</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

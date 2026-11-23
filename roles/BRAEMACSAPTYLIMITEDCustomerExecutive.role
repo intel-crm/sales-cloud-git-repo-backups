@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>BRAEMAC (S.A.) PTY. LIMITED Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>BRAEMAC (S.A.) PTY. LIMITED Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11529280_Chee_Mei_Gan</parentRole>
+</Role>

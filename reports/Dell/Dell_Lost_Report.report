@@ -63,6 +63,20 @@
             <operator>equals</operator>
             <value>Lost,Production Lost</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Consumption_Market__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>,Cloud Service Providers,Comms Service Providers,Consumer,Education,Enterprise,Government,Health and Life Sciences,Small Medium Business,Sports,Transportation,Undefined</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP UK Sales Group</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -88,7 +102,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>all</value>
+        <value>closed</value>
     </params>
     <params>
         <name>probability</name>
@@ -105,6 +119,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

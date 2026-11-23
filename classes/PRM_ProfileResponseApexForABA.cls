@@ -6,7 +6,7 @@ public with sharing class PRM_ProfileResponseApexForABA {
     private static final string PROJECT = 'IPA';
     private static final string ERROR_MESSAGE = 'Too many DML rows';
     static String logEntry='';
-	
+  
     public static void updateProfileResponse(Map<String, boolean> accountIdReponseMap){
         //Query on PROFILE RESPONSE FOR THESE ACCOUNTS AND GET optin response
         Map<Id,Map<String, PRM_Profile_Responses__c>> updateProfileReponseMap = new Map<Id, Map<String,PRM_Profile_Responses__c>>();
@@ -60,7 +60,7 @@ public with sharing class PRM_ProfileResponseApexForABA {
                 obj1.responseId=(updateProfileReponseMap.size() > 0 && updateProfileReponseMap.containsKey(accountId) && updateProfileReponseMap.get(accountId).containsKey('PRM_Opt_In')) ? updateProfileReponseMap.get(accountId).get('PRM_Opt_In').Id: null;
                 profileResponseUpdate.add(createProfileResponse(obj1));//JB
                 //profileResponseUpdate.add(createProfileResponse(accountId, optInQueId, String.valueOf(System.today()),(updateProfileReponseMap.size() > 0 && updateProfileReponseMap.containsKey(accountId) && updateProfileReponseMap.get(accountId).containsKey('PRM_Opt_In')) ? updateProfileReponseMap.get(accountId).get('PRM_Opt_In').Id : null));
-		        
+            
                 createProfileResponseWrapper obj2=new createProfileResponseWrapper();
                 obj2.accountId=accountId;
                 obj2.questionId=notEligibleId;
@@ -95,7 +95,7 @@ public with sharing class PRM_ProfileResponseApexForABA {
         pr = new PRM_Profile_Responses__c();
         pr.Id = responseId;
         if(responseId==null){
-            pr.PRM_Account_Id__c = accountId;    	   
+            pr.PRM_Account_Id__c = accountId;         
             pr.PRM_Profile_Questions_Id__c = questionId;
         }        
         pr.PRM_Response_Txt__c = respText;
@@ -114,7 +114,7 @@ public with sharing class PRM_ProfileResponseApexForABA {
         pr = new PRM_Profile_Responses__c();
         pr.Id = att.responseId;
         if(att.responseId==null){
-            pr.PRM_Account_Id__c = att.accountId;    	   
+            pr.PRM_Account_Id__c = att.accountId;         
             pr.PRM_Profile_Questions_Id__c = att.questionId;
         }        
         pr.PRM_Response_Txt__c = att.respText;

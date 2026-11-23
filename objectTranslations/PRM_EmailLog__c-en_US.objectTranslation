@@ -109,6 +109,17 @@
         <name>PRM_User__c</name>
         <relationshipLabel><!-- EmailLogs --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>EmailLog Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Retrigger Email --></label>
+        <name>PRM_Resend_Email</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

@@ -1,9 +1,7 @@
 @isTest
 public class ER_RetriggerEVMail_Test {
-	 @isTest
-    static void testIsWorking() {
-    }
-   /* @isTest 
+	
+    @isTest 
     public static  void  ValidateEntitlementBasedEVRetriggerTest(){
  		String reqBody = '';       
         RestRequest req = new RestRequest(); 
@@ -42,6 +40,7 @@ public class ER_RetriggerEVMail_Test {
         regreq.PRM_Email_Log__c=newlog.Id;
         insert regreq;
         ER_RetriggerEVMail.RetriggerEV(); 
+        System.assertEquals(regreq != null, true, 'user detail is null');
         Test.stopTest();
   
     }
@@ -84,6 +83,8 @@ public class ER_RetriggerEVMail_Test {
         regreq.PRM_Email_Log__c=newlog.Id;
         insert regreq;
         ER_RetriggerEVMail.RetriggerEV(); 
+        
+        System.assertEquals(regreq != null, true, 'user detail is null');
         Test.stopTest();
   
     }
@@ -132,5 +133,5 @@ public class ER_RetriggerEVMail_Test {
         RestContext.response = res; 
         ER_RetriggerEVMail.RetriggerEV(); 
         Test.stopTest(); 
-    }*/
+    }
 }

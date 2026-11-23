@@ -11,12 +11,12 @@ Modification Log    :
 ***************************************************************************************************************************************/
 
 @RestResource(urlMapping='/v1.0/design-registration/*')
-global with sharing class PCC_CreateDesignRegistration_V1{
+global class PCC_CreateDesignRegistration_V1{
     
     //To create design reg record in salesforce from the received request
     @HttpPost
     global static void createDDRRecords() { 
-        PCC_CreateDesignRegistrationUtility_V1.createDDRRecords(PCC_Constants.INSERT_DDR);
+        PCC_CreateDesignRegistrationUtility_V1.createDDRRecords('Insert Design Registration');
     }
     
     //To get design registration record details
@@ -27,7 +27,7 @@ global with sharing class PCC_CreateDesignRegistration_V1{
     
     @HttpPut
     global static void updateDDRRecords() {
-        PCC_CreateDesignRegistrationUtility_V1.createDDRRecords(PCC_Constants.UPDATE_DDR);
+        PCC_CreateDesignRegistrationUtility_V1.createDDRRecords('Update Design Registration');
     }
     
 }

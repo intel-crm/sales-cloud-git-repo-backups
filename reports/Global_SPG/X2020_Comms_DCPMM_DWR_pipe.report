@@ -64,9 +64,6 @@
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
             <column>Name</column>
@@ -136,13 +133,6 @@
             <operator>contains</operator>
             <value>DCG</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Pending</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -185,7 +175,7 @@
     </params>
     <reportType>OpportunityProduct</reportType>
     <scope>organization</scope>
-    <showDetails>true</showDetails>
+    <showDetails>false</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>

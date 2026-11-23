@@ -6,23 +6,18 @@
     <letterhead>Lead_Intel</letterhead>
     <name>MAQL SLA EXPIRED</name>
     <style>freeForm</style>
-    <subject>Please log an activity, call or email on your MQL lead.</subject>
+    <subject>Please accept or reject your pending MAQL lead</subject>
     <textOnly>Dear {!Lead.OwnerFirstName},
 
-The lead you own {!Lead.Name} from {!Lead.Company} in the MQL Stage, with priority of {!Lead.Core_Lead_Priority__c} must be contacted.
-
+The lead {!Lead.Name} from {!Lead.Company} assigned to you with a lead stage of MAQL, and the Lead Status has not been set to “Accepted” or “Rejected” within the SLA time for a {!Lead.Core_Lead_Priority__c} priority lead
 Click here to visit this lead record in SFDC
 
-As a reminder, the following SLA is expected for MQL lead assigned to you:
+As a reminder, the following SLA is expected for any MAQL lead assigned to you:
 
-(&lt;Lead Priority&gt; if Hot): Lead Status must attempt contact within 1 business day.  Initial Activity (Email or Phone Call) must be logged the following business day.
-(&lt;Lead Priority&gt; if Warm): Lead Status must attempt contact within 2 business days.  Initial Activity (Email or Phone Call) must be logged the following business day.
-(&lt;Lead Priority&gt; if Cold): Lead Status must attempt contact within 4 business days.  Initial Activity (Email or Phone Call) must be logged the following business day.
-
-Please process your lead by updating the Lead Status and Sub Status as soon as possible. Non processed Leads will be reflected in reporting for Action.
-
-Leads move to a terminated state if there is no activity for 30 days and 90 days since the creation date.
-
+(&lt;Lead Priority&gt;  if Hot): Lead Status must be set to “accepted” or “rejected” within 1 business day
+(&lt;Lead Priority&gt; if Warm): Lead Status must be set to “accepted” or “rejected” within 2 business days
+(&lt;Lead Priority&gt; if Cold): Lead Status must be set to “accepted” or “rejected” within 4 business days
+Please disposition your lead by updating the Lead Status as soon as possible. Any leads not updated will be collected and a list of stagnant leads along with lead owners will be sent to your team lead weekly.
 Thank you.</textOnly>
     <type>html</type>
     <uiType>Aloha</uiType>

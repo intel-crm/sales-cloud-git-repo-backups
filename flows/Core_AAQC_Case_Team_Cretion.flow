@@ -2,13 +2,26 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>49.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <environments>Default</environments>
     <interviewLabel>Core AAQC Case Team Creation {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core AAQC Case Team Creation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordCreates>
         <name>CreateCaseTeam</name>
         <label>CreateCaseTeam</label>
-        <locationX>319</locationX>
+        <locationX>401</locationX>
         <locationY>283</locationY>
         <inputAssignments>
             <field>MemberId</field>
@@ -33,7 +46,7 @@
     <recordLookups>
         <name>CaseTeamRole</name>
         <label>CaseTeamRole</label>
-        <locationX>308</locationX>
+        <locationX>390</locationX>
         <locationY>123</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -53,8 +66,14 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
-    <startElementReference>CaseTeamRole</startElementReference>
-    <status>Active</status>
+    <start>
+        <locationX>49</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>CaseTeamRole</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
     <variables>
         <name>CaseId</name>
         <dataType>String</dataType>

@@ -16,10 +16,9 @@ public class Core_Draco_Misc_Functionalities_Test {
     static void setup() {
         //Prepare the list of Accounts
         List<Account> accList = new List<Account>();
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',RecordTypeId=intelAccRecTypeId,
+        Account intelAccount1 = new Account(Name ='IntelAccount1',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi', Core_IPA_Partner_Role__c = 'Distributor', Core_B2B_Entitlement__c = true);
-        Account intelAccount2 = new Account(Name ='IntelAccount2',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',RecordTypeId=intelAccRecTypeId,
+        Account intelAccount2 = new Account(Name ='IntelAccount2',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',
                                             Industry='Agriculture', BillingCity='delhi',BillingCountry='Ind',BillingStreet='cbc chowk delhi', Core_IPA_Partner_Role__c = 'Distributor', Core_B2B_Entitlement__c = true);
         accList.add(intelAccount1);
         accList.add(intelAccount2);
@@ -28,9 +27,9 @@ public class Core_Draco_Misc_Functionalities_Test {
         
         //Prepare the list of Contacts
         List<Contact> allContacts = new List<Contact>();
-        Contact contact1 = new Contact(firstname='Intel', MailingCountry='India',
+        Contact contact1 = new Contact(firstname='Intel', 
                                        lastname='Contact1', accountId=intelAccount1.id,Core_Enterprise_Id__c='300002701661',Email='dellco1234c1@dell.com',Core_Contact_B2B_Indicator__c = true);
-        Contact contact2 = new Contact(firstname='Intel', MailingCountry='India',
+        Contact contact2 = new Contact(firstname='Intel', 
                                        lastname='Contact2', accountId=intelAccount2.id,Core_Enterprise_Id__c='300002701662',Email='dellco1234c2@dell.com',Core_Contact_B2B_Indicator__c = false);
         allContacts.add(contact1);
         allContacts.add(contact2);

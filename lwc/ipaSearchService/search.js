@@ -15,6 +15,8 @@ const checkContext = () => {
     context = 'pmp-partner-segment';
   } else if (window.location.href.match('pmp-partner-category')) {
     context = 'pmp-partner-category';
+  } else if (window.location.href.match('topic')){
+    context = 'topic';
   }
 
   return context;

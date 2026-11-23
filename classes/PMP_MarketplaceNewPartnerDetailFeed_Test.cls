@@ -1,12 +1,6 @@
 @isTest
-public class PMP_MarketplaceNewPartnerDetailFeed_Test{ //extends PMP_SearchWrapperStore{
-    
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_MarketplaceNewPartnerDetailFeed.isWorking();
-        System.assertEquals(true, result);
-    }
-	//IPA2.0:US-4497-1631_OfferingEOL  
+public class PMP_MarketplaceNewPartnerDetailFeed_Test extends PMP_SearchWrapperStore{
+//IPA2.0:US-4497-1631_OfferingEOL  
     
     // static testMethod void getPartnerDetailsPositiveTest(){
         

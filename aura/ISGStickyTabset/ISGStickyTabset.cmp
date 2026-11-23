@@ -1,0 +1,56 @@
+<aura:component>
+    <aura:attribute name="containerOffsetTop" type="integer" default="-1"  description="Internal component state"/>
+    <aura:attribute name="containerOffsetBottom" type="integer" default="-1"  description="Internal component state"/>
+    <aura:attribute name="headerOffset" type="integer" default="120"  description="Internal component state"/>
+    <aura:attribute name="tabsOffset" type="Object[]" default="120"  description="Internal component state"/>
+    <aura:attribute name="allTabLabels" type="string[]"  description="Internal component state"/>
+    <aura:attribute name="allTabs" type="Object[]"  description="Internal component state"/>
+    <aura:attribute name="currentTabIndex" type="integer" default="0"  description="Internal component state"/>
+
+    <aura:attribute name="pageHeight" type="integer" default="0"  description="Internal component state"/>
+	<aura:attribute name="scrollOffset" type="integer" default="0"  description="Internal component state"/>
+	<aura:attribute name="screenResizeHandler" type="boolean" default="false" description="Internal component state"/>
+
+	<aura:attribute name="paddlePrevVisible" type="boolean" default="true"  description="Internal component state"/>
+	<aura:attribute name="paddleNextVisible" type="boolean" default="true"  description="Internal component state"/>
+
+
+
+    <aura:attribute name="clickedTo" type="integer"  />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:method  name="reset" action="{!c.handleReset}"></aura:method>
+
+    <div class="tabSetWrapper" aura:id="stickyTabContainer">
+      <div class="placeHolder"></div>
+        <div class="tabNavContainer" aura:id="stickyTabSet">
+            <aura:if isTrue="{!v.paddlePrevVisible}">
+                    <div class="sliderButton slds-text-align_center" onclick="{!c.handlePaddleClick}" data-direction="prev">
+                        <lightning:icon iconName="utility:chevronleft" />
+                    </div>
+            </aura:if>
+          <div class="container">
+            <div aura:id="navigation" class="linkList">
+                <div aura:id="inner-link-list" class="innerLinkList">
+                    <aura:iteration items="{!v.allTabLabels}" var="label" indexVar="i">
+                        <button aura:id="navItem" href="{!'#StickyTab' + i}" data-index="{!i}" onclick="{!c.scrollToTabBody}"
+                            class="{! (v.currentTabIndex == i ? 'active': '') + ' linkItem pointer' }">
+                            {!label}
+                        </button>
+                    </aura:iteration>
+                </div>
+            </div>
+          </div>
+          <aura:if isTrue="{!v.paddleNextVisible}">
+                <div class="sliderButton slds-text-align_center" onclick="{!c.handlePaddleClick}" data-direction="next">
+                    <lightning:icon iconName="utility:chevronright" />
+                </div>
+            </aura:if>
+
+        </div>
+  
+        <div class="tabContent container">
+            {!v.body}
+        </div>
+    </div>
+</aura:component>

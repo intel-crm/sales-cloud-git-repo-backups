@@ -154,6 +154,19 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <description>Created this field to test IAO related functionalities</description>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Account Customer Master Files</relationshipLabel>
+        <relationshipName>Account_Customer_Master_Files</relationshipName>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>ER_Account_Group__c</fullName>
         <externalId>false</externalId>
         <formula>ER_Customer_Master_File__r.ER_Account_Group__c</formula>
@@ -242,6 +255,18 @@
         <type>Lookup</type>
     </fields>
     <fields>
+        <fullName>ER_Customer_Master_File_Formula__c</fullName>
+        <externalId>false</externalId>
+        <formula>ER_Customer_Master_File__r.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Customer Master File</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>ER_Customer_Master_File_Group__c</fullName>
         <label>Customer Master File Group</label>
         <referenceTo>ER_Customer_Master_File_Group__c</referenceTo>
@@ -252,18 +277,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>ER_Customer_Master_File_Id__c</fullName>
-        <externalId>false</externalId>
-        <formula>ER_Customer_Master_File__r.Name</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Customer Master File</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>ER_Customer_Master_File__c</fullName>
@@ -381,26 +394,24 @@
         <columns>NAME</columns>
         <columns>ER_Customer_Master_File__c</columns>
         <columns>ER_Customer_Master_File_Group__c</columns>
-        <columns>ER_Active__c</columns>
-        <columns>LAST_UPDATE</columns>
+        <columns>ER_CMFGroupAssociation_NameFormula__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>CMFG_Associations</fullName>
+        <fullName>Customer_Master_Files</fullName>
         <columns>NAME</columns>
-        <columns>ER_CMF_Name__c</columns>
+        <columns>ER_Customer_Master_File_Formula__c</columns>
         <columns>ER_Customer_Master_File_Group__c</columns>
-        <columns>ER_Customer_Master_File_backend__c</columns>
-        <columns>ER_Sales_Disti_Chnl_Code__c</columns>
-        <columns>ER_Sales_Disti_Chnl_Name__c</columns>
+        <columns>ER_CMF_Name__c</columns>
         <columns>ER_Sales_Org_Code__c</columns>
-        <columns>ER_Sales_Org_Name__c</columns>
+        <columns>ER_Account_Group__c</columns>
+        <columns>ER_SalesAreaOrderBlockCd__c</columns>
         <columns>ER_Central_Block__c</columns>
         <columns>ER_Active__c</columns>
-        <columns>ER_Account_Group__c</columns>
-        <filterScope>Everything</filterScope>
-        <label>CMFG Associations</label>
+        <columns>ER_CMF_Address__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>Customer Master Files</label>
     </listViews>
     <nameField>
         <displayFormat>CGA -{0000000}</displayFormat>
@@ -411,6 +422,7 @@
     <pluralLabel>Account Customer Master Files</pluralLabel>
     <searchLayouts>
         <searchResultsAdditionalFields>ER_Customer_Master_File__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Account__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>ER_Customer_Master_File_Group__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ControlledByParent</sharingModel>

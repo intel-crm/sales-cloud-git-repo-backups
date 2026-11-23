@@ -34,7 +34,7 @@
         <name>Core_MDF_Ineffective_Dt__c</name>
     </fields>
     <fields>
-        <help><!-- The program, the rule should apply to. --></help>
+        <help><!-- The program, the rule should apply to. (CCF/DCF/SPCF) --></help>
         <label><!-- Program --></label>
         <name>Core_MDF_Program_id__c</name>
         <relationshipLabel><!-- Hold Criteria List --></relationshipLabel>
@@ -55,6 +55,13 @@
         <name>Core_MDF_UltimateAccount_Id__c</name>
         <relationshipLabel><!-- Hold Criteria List (Company) --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Hold List Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Effective date cannot be earlier than today --></errorMessage>

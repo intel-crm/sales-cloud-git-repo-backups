@@ -1,211 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Audio</masterLabel>
-        <translation>오디오</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Audio 2025</masterLabel>
-        <translation>오디오 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Broadcast</masterLabel>
         <translation>방송</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Broadcast (Pre-2025)</masterLabel>
-        <translation>방송(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive</masterLabel>
-        <translation>구매자 인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Buyer Incentive 2025</masterLabel>
-        <translation>구매자 인센티브 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital</masterLabel>
-        <translation>디지털</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Digital 2025</masterLabel>
-        <translation>디지털 2025</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Digital Media</masterLabel>
         <translation>디지털 미디어</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Digital Media (Pre-2025)</masterLabel>
-        <translation>디지털 미디어(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Event</masterLabel>
         <translation>이벤트</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event (Pre-2025)</masterLabel>
-        <translation>이벤트(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Event 2025</masterLabel>
-        <translation>이벤트 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Incentive</masterLabel>
-        <translation>인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Innovation</masterLabel>
-        <translation><!-- Innovation --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Lead Management</masterLabel>
         <translation>리드 관리</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Lead Management (Pre-2025)</masterLabel>
-        <translation>리드 관리(2025년 이전)</translation>
+        <masterLabel>Media</masterLabel>
+        <translation><!-- Media --></translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>Online</masterLabel>
+        <translation><!-- Online --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Online Ad</masterLabel>
         <translation><!-- Online Ad --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Out of Home</masterLabel>
-        <translation>옥외</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home (Pre-2025)</masterLabel>
-        <translation>옥외(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home 2025</masterLabel>
-        <translation>옥외 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Out of Home Media</masterLabel>
         <translation>옥외 미디어</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
-        <translation>옥외 미디어(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Outcome-Based</masterLabel>
-        <translation>결과 기반</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Paid Social Media</masterLabel>
         <translation>유료 소셜미디어</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
-        <translation>유료 소셜미디어(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print</masterLabel>
-        <translation>인쇄</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print (Pre-2025)</masterLabel>
-        <translation>인쇄(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Print 2025</masterLabel>
-        <translation>인쇄 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Print Media</masterLabel>
         <translation>인쇄 미디어</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Print Media (Pre-2025)</masterLabel>
-        <translation>인쇄 미디어(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production</masterLabel>
-        <translation>프로덕션</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Production 2025</masterLabel>
-        <translation>생산 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive</masterLabel>
-        <translation>인센티브 구매</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
-        <translation>인센티브 구매(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Sales Incentive</masterLabel>
-        <translation>판매 인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
-        <translation>판매 인센티브(2025년 이전)</translation>
+        <translation><!-- Sales Incentive --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Sales Readiness</masterLabel>
-        <translation>판매 준비도</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
-        <translation>판매 준비도(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Readiness 2025</masterLabel>
-        <translation>영업 준비 2025</translation>
+        <translation><!-- Sales Readiness --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Search Engine Marketing (SEM)</masterLabel>
         <translation>검색 엔진 마케팅(SEM)</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
-        <translation>검색 엔진 마케팅(SEM)(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Search Performance</masterLabel>
         <translation><!-- Search Performance --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Seller Incentive</masterLabel>
-        <translation>판매자 인센티브</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Seller Incentive 2025</masterLabel>
-        <translation>판매자 인센티브 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration</masterLabel>
-        <translation>기술 탐색</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
-        <translation>기술 탐색(2025년 이전)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales</masterLabel>
-        <translation>기술 영업</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Sales 2025</masterLabel>
-        <translation>기술 매출 2025</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Training</masterLabel>
         <translation><!-- Training --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video</masterLabel>
-        <translation>비디오</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Video 2025</masterLabel>
-        <translation>비디오 2025</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

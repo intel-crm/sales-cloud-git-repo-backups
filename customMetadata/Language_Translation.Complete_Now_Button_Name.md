@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>FRC__c</field>
-        <value xsi:type="xsd:string">Complete Now</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>IND__c</field>

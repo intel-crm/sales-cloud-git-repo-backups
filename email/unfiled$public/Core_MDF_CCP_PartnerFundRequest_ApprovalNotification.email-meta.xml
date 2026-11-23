@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Approval Email to be sent to Approvers for Activity</description>
+    <encodingKey>UTF-8</encodingKey>
+    <letterhead>CCP_letterhead</letterhead>
+    <name>CCP_PartnerFundRequest_ApprovalNotification</name>
+    <style>freeForm</style>
+    <subject>Activity review required for {!PartnerFundRequest.Core_MDF_Activity_Types__c}</subject>
+    <textOnly>Action Required
+
+
+
+Dear Intel employee,
+
+
+
+The following activity has been submitted and requires Intel review:
+
+
+
+Member Name:{!PartnerFundRequest.Core_MDF_Ultimate_Account_Name__c}
+Activity number: {!PartnerFundRequest.Core_MDF_Activity_Number__c}
+Activity type: {!PartnerFundRequest.Core_MDF_Activity_Types__c}
+Countries/locations: {!PartnerFundRequest.Core_MDF_Country__c}
+Status History: {!PartnerFundRequest.Core_MDF_Fund_Request_Status__c}
+
+
+
+
+
+{!PartnerFundRequest.CreatedBy} has requested your approval for the following item: Click here
+
+Please click this link to approve or reject this record.
+
+
+
+Thank you,
+
+{!PartnerFundRequest.RecordType} Program Team
+
+
+
+Messages to this mailbox are not monitored. Contact customer service if you have additional questions.
+
+This message and any attachments are for the sole use of the intended recipient(s). If you are not the intended recipient, contact customer service immediately and confirm you have deleted all copies.
+
+
+
+Intel Corporation, 2111 NE 25th Avenue, Mailstop HF3-17, Hillsboro, OR 97124
+Intel Corporation | Trademarks | Privacy Policy | Cookies</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

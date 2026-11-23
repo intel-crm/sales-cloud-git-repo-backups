@@ -7,7 +7,7 @@
         <chartSummaries>
             <aggregate>Sum</aggregate>
             <axisBinding>y</axisBinding>
-            <column>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</column>
+            <column>AMOUNT</column>
         </chartSummaries>
         <chartType>HorizontalBar</chartType>
         <enableHoverLabels>false</enableHoverLabels>
@@ -49,10 +49,6 @@
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Core_Opportunity_KPI__c.Core_Opp_KPI_Total_Price__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -101,8 +97,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

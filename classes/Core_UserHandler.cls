@@ -19,10 +19,9 @@ Modification Log :
 * Nick Krisa                06/22/2017              Changed userGroupAssignment() to AddUsersToEmployeeTypeGroups()
 * Nick Krisa                06/22/2017              Added LoadEmployeeTypeToGroupMapping()
 * Nick Krisa                06/22/2017              Deleted addUseToGroup() & isUserGroupAssigned()
-* Sarah Manuel              09/04/2018              Added method to assign LanguageLocaleKey for CCF and DCF Users
-* Shraddha More             14/02/2024              Added logic to share user records with Integration user present in mapping().
+* Sarah Manuel				09/04/2018				Added method to assign LanguageLocaleKey for CCF and DCF Users
 *************************************************************************************/
-public without sharing class Core_UserHandler {
+public class Core_UserHandler {
     
     //Ensures that the trigger is running only once
     public static boolean bUserGroupAssigment = true;
@@ -31,18 +30,13 @@ public without sharing class Core_UserHandler {
     // Fetching and storing the trigger executions details for each functionalities
     public static map<String, Core_User_Group_Rule__c> mapUserGroupNameUserGroupDetails = Core_User_Group_Rule__c.getAll();
     
-    /*for log entry*/
-    public static string LOG_ENTRY_ORIGIN ='Core_UserHandler';
-    public static string LOG_ENTRY_PROJECT = 'DDR';
-    public static string LOG_ENTRY_SCOPE = 'Medium';
-    public static final String LOG_ENTRY_SEVERITY = 'Medium';
-    
     /*
-    * Method name  : AddUsersToEmployeeTypeGroups
-    * Description  : Handler method for Users to add/remove groupmembers based on Employee Type Code
-    * Return Type  : VOID
-    * Parameters   : map<Id, User>, map<Id, User>
-    */
+* Method name  : AddUsersToEmployeeTypeGroups
+* Description  : Handler method for Users to add/remove groupmembers based on Employee Type Code
+* Return Type  : VOID
+* Parameters   : map<Id, User>, map<Id, User>
+*/
+    
     public static void AddUsersToEmployeeTypeGroups(map<Id, User> mapOld, map<Id, User> mapNew) {
         
         Set<Id> setNewUserIds = new Set<Id>(); // New Users
@@ -50,39 +44,32 @@ public without sharing class Core_UserHandler {
         
         // Get the list of new users and the list of users whose employee type code got updated
         for (User user : mapNew.values()) {
-            boolean isNewUser = (mapOld == null || mapOld.get(user.Id) == null);
-            if (isNewUser) {
+            if (mapOld == null || mapOld.get(user.Id) == null)
                 setNewUserIds.add(user.Id);
-            }
             
-            boolean employeeTypeChanged = (mapOld != null && mapOld.get(user.Id).Core_Employee_Type_Code__c != user.Core_Employee_Type_Code__c);
-            if (employeeTypeChanged) {
+            if(mapOld != null && mapOld.get(user.Id).Core_Employee_Type_Code__c != user.Core_Employee_Type_Code__c)
                 setUpdatedUserIds.add(user.Id);
-            }
         }
         
         // Stop and Return if there are no users to process
-        boolean hasUsersToProcess = (setNewUserIds.size() > 0 || setUpdatedUserIds.size() > 0);
-        if (!hasUsersToProcess) {
+        if (setNewUserIds.size() == 0 && setUpdatedUserIds.size() == 0)
             return;
-        }
         
         // Load the employee type code to group mapping
         Map<String, Id> mapEmployeeTypeGroupId = LoadEmployeeTypeToGroupMapping();
-         
+        
         // Delete the users from the groups. This will delete the users from all the configured/mapped groups in Core_Employee_Type_Code_Mapping__c
-        boolean hasUpdatedUsers = (setUpdatedUserIds.size() > 0);
-        if (hasUpdatedUsers) {
+        if (setUpdatedUserIds.size() != 0) {
             
             // Get the list of group ids
             Set<Id> setValidGroupIds = new Set<Id>();
-            for (Id groupId : mapEmployeeTypeGroupId.values()) {
+            for (Id groupId : mapEmployeeTypeGroupId.values())
                 setValidGroupIds.add(groupId);
-            }
             
             List<GroupMember> lstGroupMembers = [SELECT Id, UserOrGroupId, GroupId FROM GroupMember WHERE UserOrGroupId IN :setUpdatedUserIds AND GroupId IN :setValidGroupIds];
             
             for (GroupMember grpMember :lstGroupMembers) {
+                System.debug('### AddUsersToEmployeeTypeGroups() 01 ### Group Member to be deleted: ' + grpMember);
             }
             
             // Get the group membership ids
@@ -96,37 +83,34 @@ public without sharing class Core_UserHandler {
             
             // Log any failures
             for (Database.DeleteResult result: lstResult) {
-                boolean hasErrors = !result.isSuccess();
-                if (hasErrors) {
+                if (!result.isSuccess()) {
                     for (Database.Error err: result.getErrors()) {
-                      
+                        System.debug('### AddUsersToEmployeeTypeGroups() 02 ### Group Membership deletion error: ' + err.getStatusCode() + ' - ' + err.getMessage());
+                        System.debug('### AddUsersToEmployeeTypeGroups() 02 ### Group Membership deletion error fields: ' + err.getFields());
                     }
                 }
             }
         }
-    
+        
         // Add the users to the groups
-        boolean hasUsersToAdd = (setNewUserIds.size() > 0 || setUpdatedUserIds.size() > 0);
-        if (hasUsersToAdd) {
+        if (setNewUserIds.size() != 0 || setUpdatedUserIds.size() != 0) {
             
             List<User> lstUsers = [SELECT Id, Name, Core_Employee_Type_Code__c FROM User WHERE (Id IN :setNewUserIds OR Id IN :setUpdatedUserIds)];
             
             for (User user :lstUsers) {
-                
+                System.debug('### AddUsersToEmployeeTypeGroups() 03 ### New or Updated User: ' + user);
             }
             
             // Build the list of user ids and their group ids
             Map<Id, Id> mapUserIdGroupId = new Map<Id, Id>();
             for (User user :lstUsers) {
                 Id groupId = mapEmployeeTypeGroupId.get(user.Core_Employee_Type_Code__c);
-                boolean hasMatchingGroup = (groupId != null);
-                if (hasMatchingGroup) { // User has a Core_Employee_Type_Code__c that has a matching groupId
+                if (groupId != null) // User has a Core_Employee_Type_Code__c that has a matching groupId
                     mapUserIdGroupId.put(user.Id, groupId);
-                }
             }
             
             for (Id userId :mapUserIdGroupId.keySet()) {
-                
+                System.debug('### AddUsersToEmployeeTypeGroups() 04 ### User Id - Group Id of user to be added: ' + userId + ' - ' + mapUserIdGroupId.get(userId));
             }
             
             // List to store group members which needs to be inserted
@@ -148,10 +132,10 @@ public without sharing class Core_UserHandler {
             
             // Log any failures
             for (Database.SaveResult result: lstResult) {
-                boolean hasErrors = !result.isSuccess();
-                if (hasErrors) {
+                if (!result.isSuccess()) {
                     for (Database.Error err: result.getErrors()) {
-                       
+                        System.debug('### AddUsersToEmployeeTypeGroups() 05 ### Group Membership addition error: ' + err.getStatusCode() + ' - ' + err.getMessage());
+                        System.debug('### AddUsersToEmployeeTypeGroups() 05 ### Group Membership addition error fields: ' + err.getFields());
                     }
                 }
             }
@@ -159,11 +143,12 @@ public without sharing class Core_UserHandler {
     }
     
     /*
-    * Method name  : LoadEmployeeTypeToGroupMapping
-    * Description  : Helper method to load the mappings between profiles and public groups from Core_Profile_To_Group_Mapping__c custom setting
-    * Return Type  : Map<String, Id>
-    * Parameter    : None
-    */
+* Method name  : LoadEmployeeTypeToGroupMapping
+* Description  : Helper method to load the mappings between profiles and public groups from Core_Profile_To_Group_Mapping__c custom setting
+* Return Type  : Map<String, Id>
+* Parameter    : None
+*/
+    
     public static Map<String, Id> LoadEmployeeTypeToGroupMapping() {
         
         // Get the mappings between employee type codes and public groups from the custom settings list
@@ -173,10 +158,8 @@ public without sharing class Core_UserHandler {
         Map<String, String> mapEmployeeTypeGroupName = new Map<String, String>();
         
         for (Core_Employee_Type_To_Group_Mapping__c employeeTypeToGroupMap :mapEmployeeTypeToGroup.values()) {
-            boolean isActiveMapping = (employeeTypeToGroupMap.Core_Active__c == true);
-            if (isActiveMapping) { // Use only Active mappings
+            if (employeeTypeToGroupMap.Core_Active__c == true) // Use only Active mappings
                 mapEmployeeTypeGroupName.put(employeeTypeToGroupMap.Core_Employee_Type_Code__c, employeeTypeToGroupMap.Core_Group_Name__c);
-            }
         }
         
         // Get the separate list of group names
@@ -187,7 +170,7 @@ public without sharing class Core_UserHandler {
         }
         
         for (String groupName :setGroupNames) {
-            
+            System.debug('### LoadEmployeeTypeToGroupMapping() 01 ### Group Name: ' + groupName);
         }
         
         // Get and store the groups ids using group names
@@ -199,7 +182,7 @@ public without sharing class Core_UserHandler {
         }
         
         for (String groupName :mapGroupNameGroupId.keySet()) {
-           
+            System.debug('### LoadEmployeeTypeToGroupMapping() 02 ### Group Name - Group Id: ' + groupName + ' - ' + mapGroupNameGroupId.get(groupName));
         }
         
         // Create a mapping of employee types to group ids
@@ -207,25 +190,25 @@ public without sharing class Core_UserHandler {
         for (String employeeType :mapEmployeeTypeGroupName.keySet()) {
             Id groupId = mapGroupNameGroupId.get(mapEmployeeTypeGroupName.get(employeeType));
             
-            boolean isValidMapping = (groupId != null);
-            if (isValidMapping) { // Valid mapping
+            if (groupId != null) { // Valid mapping
                 mapEmployeeTypeGroupId.put(employeeType, groupId);
             }
         }
         
         for (String employeeType :mapEmployeeTypeGroupId.keySet()) {
-           
+            System.debug('### LoadEmployeeTypeToGroupMapping() 03 ### Employee Type - Group Id: ' + employeeType + ' - ' + mapEmployeeTypeGroupId.get(employeeType));
         }
         
         return mapEmployeeTypeGroupId;
     }
     
     /*
-    * Method name  : AddUsersToProfileGroups
-    * Description  : Method to add users to public groups based on their profiles.
-    * Return Type  : void
-    * Parameter    : map<Id, User>, map<Id, User>
-    */
+* Method name  : AddUsersToProfileGroups
+* Description  : Method to add users to public groups based on their profiles.
+* Return Type  : void
+* Parameter    : map<Id, User>, map<Id, User>
+*/
+    
     public static void AddUsersToProfileGroups(map<Id, User> mapOld, map<Id, User> mapNew) {           
         
         Set<Id> setNewUserIds = new Set<Id>(); // New Users
@@ -233,40 +216,39 @@ public without sharing class Core_UserHandler {
         
         // Get the list of new users and the list of users whose profile got updated
         for (User user :mapNew.values()) {
-            boolean isNewUser = (mapOld == null || mapOld.get(user.Id) == null);
-            if (isNewUser) {
+            if (mapOld == null || mapOld.get(user.Id) == null)
                 setNewUserIds.add(user.Id);
-            }
             
-            boolean profileChanged = (mapOld != null && mapOld.get(user.Id).ProfileId != user.ProfileId);
-            if (profileChanged) {
+            if(mapOld != null && mapOld.get(user.Id).ProfileId != user.ProfileId)
                 setUpdatedUserIds.add(user.Id);
-            }
         }
         
+        System.debug('### AddUsersToProfileGroups() 01 ### New User Count: ' + setNewUserIds.size());
+        System.debug('### AddUsersToProfileGroups() 02 ### Updated User Count: ' + setUpdatedUserIds.size());
+        
         // Stop and Return if there are no users to process
-        boolean hasUsersToProcess = (setNewUserIds.size() > 0 || setUpdatedUserIds.size() > 0);
-        if (!hasUsersToProcess) {
+        if (setNewUserIds.size() == 0 && setUpdatedUserIds.size() == 0)
             return;
-        }
+        
+        
         
         // Load the profile to group mapping
         Map<Id, Id> mapProfileIdGroupId = LoadProfileToGroupMapping();
         
+        
+        
         // Delete the users from the groups. This will delete the users from all the configured/mapped groups in Core_Profile_To_Group_Mapping__c
-        boolean hasUpdatedUsers = (setUpdatedUserIds.size() > 0);
-        if (hasUpdatedUsers) {
+        if (setUpdatedUserIds.size() != 0) {
             
             // Get the list of group ids
             Set<Id> setValidGroupIds = new Set<Id>();
-            for (Id groupId :mapProfileIdGroupId.values()) {
+            for (Id groupId :mapProfileIdGroupId.values())
                 setValidGroupIds.add(groupId);
-            }
             
             List<GroupMember> lstGroupMembers = [SELECT Id, UserOrGroupId, GroupId FROM GroupMember WHERE UserOrGroupId IN :setUpdatedUserIds AND GroupId IN :setValidGroupIds];
             
             for (GroupMember grpMember :lstGroupMembers) {
-               
+                System.debug('### AddUsersToProfileGroups() 03 ### Group Member to be deleted: ' + grpMember);
             }
             
             // Get the group membership ids
@@ -280,37 +262,36 @@ public without sharing class Core_UserHandler {
             
             // Log any failures
             for (Database.DeleteResult result: lstResult) {
-                boolean hasErrors = !result.isSuccess();
-                if (hasErrors) {
+                if (!result.isSuccess()) {
                     for (Database.Error err: result.getErrors()) {
-                      
+                        System.debug('### AddUsersToProfileGroups() 04 ### Group Membership deletion error: ' + err.getStatusCode() + ' - ' + err.getMessage());
+                        System.debug('### AddUsersToProfileGroups() 04 ### Group Membership deletion error fields: ' + err.getFields());
                     }
                 }
             }
         }
         
+        
+        
         // Add the users to the groups
-        boolean hasUsersToAdd = (setNewUserIds.size() > 0 || setUpdatedUserIds.size() > 0);
-        if (hasUsersToAdd) {
+        if (setNewUserIds.size() != 0 || setUpdatedUserIds.size() != 0) {
             
             List<User> lstUsers = [SELECT Id, Name, ProfileId FROM User WHERE (Id IN :setNewUserIds OR Id IN :setUpdatedUserIds)];
             
             for (User user :lstUsers) {
-                 
+                System.debug('### AddUsersToProfileGroups() 05 ### New or Updated User: ' + user);
             }
             
             // Build the list of user ids and their group ids
             Map<Id, Id> mapUserIdGroupId = new Map<Id, Id>();
             for (User user :lstUsers) {
                 Id groupId = mapProfileIdGroupId.get(user.ProfileId);
-                boolean hasMatchingGroup = (groupId != null);
-                if (hasMatchingGroup) { // User has a ProfileId that has a matching groupId
+                if (groupId != null) // User has a ProfileId that has a matching groupId
                     mapUserIdGroupId.put(user.Id, groupId);
-                }
             }
             
             for (Id userId :mapUserIdGroupId.keySet()) {
-                 
+                System.debug('### AddUsersToProfileGroups() 06 ### User Id - Group Id of user to be added: ' + userId + ' - ' + mapUserIdGroupId.get(userId));
             }
             
             // List to store group members which needs to be inserted
@@ -332,10 +313,10 @@ public without sharing class Core_UserHandler {
             
             // Log any failures
             for (Database.SaveResult result: lstResult) {
-                boolean hasErrors = !result.isSuccess();
-                if (hasErrors) {
+                if (!result.isSuccess()) {
                     for (Database.Error err: result.getErrors()) {
-                       
+                        System.debug('### AddUsersToProfileGroups() 07 ### Group Membership addition error: ' + err.getStatusCode() + ' - ' + err.getMessage());
+                        System.debug('### AddUsersToProfileGroups() 07 ### Group Membership addition error fields: ' + err.getFields());
                     }
                 }
             }
@@ -343,11 +324,12 @@ public without sharing class Core_UserHandler {
     }
     
     /*
-    * Method name  : LoadProfileToGroupMapping
-    * Description  : Helper method to load the mappings between profiles and public groups from Core_Profile_To_Group_Mapping__c custom setting
-    * Return Type  : Map<Id, Id>
-    * Parameter    : None
-    */
+* Method name  : LoadProfileToGroupMapping
+* Description  : Helper method to load the mappings between profiles and public groups from Core_Profile_To_Group_Mapping__c custom setting
+* Return Type  : Map<Id, Id>
+* Parameter    : None
+*/
+    
     public static Map<Id, Id> LoadProfileToGroupMapping() {
         
         // Get the mappings between profiles and public groups from the custom settings list
@@ -357,10 +339,8 @@ public without sharing class Core_UserHandler {
         Map<String, String> mapProfileNameGroupName = new Map<String, String>();
         
         for (Core_Profile_To_Group_Mapping__c profileToGroupMap :mapProfileToGroup.values()) {
-            boolean isActiveMapping = (profileToGroupMap.Core_Active__c == true);
-            if (isActiveMapping) { // Use only Active mappings
+            if (profileToGroupMap.Core_Active__c == true) // Use only Active mappings
                 mapProfileNameGroupName.put(profileToGroupMap.Core_Profile_Name__c, profileToGroupMap.Core_Group_Name__c);
-            }
         }
         
         // Get the separate lists of profile names, group names
@@ -374,11 +354,11 @@ public without sharing class Core_UserHandler {
         
         // Log the list of profiles names, group names
         for (String profileName :setProfileNames) {
-           
+            System.debug('### LoadProfileToGroupMapping() 01 ### Profile Name: ' + profileName);
         }
         
         for (String groupName :setGroupNames) {
-           
+            System.debug('### LoadProfileToGroupMapping() 02 ### Group Name: ' + groupName);
         }
         
         // Get and store the profile ids using the profile names
@@ -390,7 +370,7 @@ public without sharing class Core_UserHandler {
         }
         
         for (String profileName :mapProfileNameProfileId.keySet()) {
-          
+            System.debug('### LoadProfileToGroupMapping() 03 ### Profile Name - Profile Id: ' + profileName + ' - ' + mapProfileNameProfileId.get(profileName));
         }
         
         // Get and store the groups ids using group names
@@ -402,7 +382,7 @@ public without sharing class Core_UserHandler {
         }
         
         for (String groupName :mapGroupNameGroupId.keySet()) {
-            
+            System.debug('### LoadProfileToGroupMapping() 04 ### Group Name - Group Id: ' + groupName + ' - ' + mapGroupNameGroupId.get(groupName));
         }
         
         // Create a mapping of valid profile ids to group ids
@@ -411,25 +391,25 @@ public without sharing class Core_UserHandler {
             Id profileId = mapProfileNameProfileId.get(profileName);
             Id groupId = mapGroupNameGroupId.get(mapProfileNameGroupName.get(profileName));
             
-            boolean isValidMapping = (profileId != null && groupId != null);
-            if (isValidMapping) { // Valid mapping
+            if (profileId != null && groupId != null) { // Valid mapping
                 mapProfileIdGroupId.put(profileId, groupId);
             }
         }
         
         for (Id profileId :mapProfileIdGroupId.keySet()) {
-         
+            System.debug('### LoadProfileToGroupMapping() 05 ### Profile Id - Group Id: ' + profileId + ' - ' + mapProfileIdGroupId.get(profileId));
         }
         
         return mapProfileIdGroupId;
     }
     
     /*
-    * Method name  : userGeoUpdate
-    * Description  : Populates Geo based on User Country Code
-    * Return Type  : VOID
-    * Parameters   :
-    */
+* Method name  : userGeoUpdate
+* Description  : Populates Geo based on User Country Code
+* Return Type  : VOID
+* Parameters   :
+*/
+    
     public static void userGeoUpdate(List<User> lstNewUser, Map<Id, User> mapOldUser) {
         
         List<User> lstUserToSetGeo = new List<User>();
@@ -472,189 +452,174 @@ public without sharing class Core_UserHandler {
         }
     }
     
+    
     /***************************************************************************************************
-    Version     : 1.0 
-    Created Date: 07 Nov 2015
-    Function    : This method executes to verify If The User has Contact to be linked. 
-    Input Parameters: User New List
-    Output Parameters: None
-    Transactions: before Insert
-    Description: This method executes assign Contact Rule as follows:
-    Before insertion of user                 
-    Used in     : Core_User Trigger
-    Number of Queries Within this Method: 1 
-    Number of Queries in Loop: 0
-    Number of Queries from Called methods: 0
-    Number of times called: Once for trigger execution
-    Modification Log :
-    * Developer                   Date                   Description
-    * ----------------------------------------------------------------------------                 
-    * Abhishek Arya              11/07/2015              Created    
-    ****************************************************************************************************/  
+Version     : 1.0 
+Created Date: 07 Nov 2015
+Function    : This method executes to verify If The User has Contact to be linked. 
+Input Parameters: User New List
+Output Parameters: None
+Transactions: before Insert
+Description: This method executes assign Contact Rule as follows:
+Before insertion of user                 
+Used in     : Core_User Trigger
+Number of Queries Within this Method: 1 
+Number of Queries in Loop: 0
+Number of Queries from Called methods: 0
+Number of times called: Once for trigger execution
+Modification Log :
+* Developer                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Abhishek Arya              11/07/2015              Created    
+****************************************************************************************************/  
     public static void assignContact(List<User> newList){
-        try{
-            // get list of emails from trigger
-            List<String> emailList = new List<String>();
-            for(User populateEmailList : newList) 
+        //system.debug('****assign contact****');
+        //if(Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('assignContactRule')){         
+        system.debug('****assign contact****'+newList);
+        // get list of emails from trigger
+        List<String> emailList = new List<String>();
+        for(User populateEmailList : newList) 
+        {
+            //if(populateEmailList.isPortalEnabled == true && populateEmailList.UserType == Label.Core_IPS_CustCommPlus_UserType){
+            if(populateEmailList.ProfileId == Label.Core_IPS_External_Customer_Profile_Id){
+                emailList.add(populateEmailList.Email);
+            }
+        }   
+        system.debug('****emailList****'+emailList);          
+        if(emailList <> null && !emailList.isEmpty())
+        {
+            List<Contact> contactUser = [SELECT Id, Email FROM Contact WHERE Email IN :emailList AND Core_IPS_Active__c = TRUE];
+            if(contactUser <> null && !contactUser.isEmpty()) 
             {
-                //if(populateEmailList.isPortalEnabled == true && populateEmailList.UserType == Label.Core_IPS_CustCommPlus_UserType){
-                boolean isExternalCustomer = (populateEmailList.ProfileId == Label.Core_IPS_External_Customer_Profile_Id);
-                if(isExternalCustomer){
-                    emailList.add(populateEmailList.Email);
-                }
-            }   
-            
-            boolean hasEmailsToProcess = (emailList != null && !emailList.isEmpty());
-            if(hasEmailsToProcess)
-            {
-                List<Contact> contactUser = [SELECT Id, Email FROM Contact WHERE Email IN :emailList AND Core_IPS_Active__c = TRUE];
-                boolean hasContactsFound = (contactUser != null && !contactUser.isEmpty());
-                if(hasContactsFound) 
+                // There can only be 1 contact for each user based on email
+                for(Contact matchingContact : contactUser)
                 {
-                    // There can only be 1 contact for each user based on email
-                    for(Contact matchingContact : contactUser)
+                    for(User newUser : newList)
                     {
-                        for(User newUser : newList)
+                        if(newUser.Email.equalsIgnoreCase(matchingContact.Email))
                         {
-                            boolean emailMatches = newUser.Email.equalsIgnoreCase(matchingContact.Email);
-                            if(emailMatches)
-                            {
-                                newUser.ContactId = matchingContact.Id;
-                                
-                            }
+                            newUser.ContactId = matchingContact.Id;
+                            System.debug('Current User Info : ' + UserInfo.getUserId() + ' User.ContactId is set to ' + newUser.ContactId + 'Assigned User is'+newUser);                    
                         }
                     }
                 }
             }
+        }
+        
+        //}else{
+        
+        //}
+        
+        
+        
+        // Process the Contacts that have Lead Management Engagement
+        // get list of emails from trigger
+        List<String> emailListPartner = new List<String>();
+        
+        for (User populateEmailList : newList) {
+            if (populateEmailList.ProfileId == Label.Core_Partner_Profile_Id) { 
+                emailListPartner.add(populateEmailList.Email);
+            }
+        }   
+        
+        system.debug('****emailList****' + emailListPartner);          
+        
+        if (emailListPartner <> null && !emailListPartner.isEmpty()) {
+            List<Contact> contactUser = [SELECT Id, Email FROM Contact WHERE Email IN :emailListPartner];
             
-            // Process the Contacts that have Lead Management Engagement
-            // get list of emails from trigger
-            List<String> emailListPartner = new List<String>();
-            
-            for (User populateEmailList : newList) {
-                boolean isPartnerProfile = (populateEmailList.ProfileId == Label.Core_Partner_Profile_Id);
-                if (isPartnerProfile) { 
-                    emailListPartner.add(populateEmailList.Email);
-                }
-            }   
-            
-            boolean hasPartnerEmailsToProcess = (emailListPartner != null && !emailListPartner.isEmpty());
-            if (hasPartnerEmailsToProcess) {
-                List<Contact> contactUser = [SELECT Id, Email FROM Contact WHERE Email IN :emailListPartner];
-                
-                boolean hasPartnerContactsFound = (contactUser != null && !contactUser.isEmpty());
-                if (hasPartnerContactsFound) {
-                    // There can only be 1 contact for each user based on email
-                    for (Contact matchingContact : contactUser) {
-                        for (User newUser : newList) {
-                            boolean hasValidEmail = (newUser.Email != null);
-                            boolean emailMatches = hasValidEmail && newUser.Email.equalsIgnoreCase(matchingContact.Email);
-                            if (emailMatches) {
-                                newUser.ContactId = matchingContact.Id;
-                                
-                            }
+            if (contactUser <> null && !contactUser.isEmpty()) {
+                // There can only be 1 contact for each user based on email
+                for (Contact matchingContact : contactUser) {
+                    for (User newUser : newList) {
+                        if (newUser.Email.equalsIgnoreCase(matchingContact.Email)) {
+                            newUser.ContactId = matchingContact.Id;
+                            System.debug('Current User Info : ' + UserInfo.getUserId() + ' User.ContactId is set to ' + newUser.ContactId + 'Assigned User is' + newUser);                    
                         }
                     }
                 }
             }
-        }catch(exception e){
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'assignContact', Core_Project__c = 'Core_UserHandler' , Core_Details__c = 'While assigning contact', Core_Severity__c = 'info', Core_When__c = System.Now());     
-            insert excepLog;
         }
     } 
     
+    
     /*
-    * Method name  : userFreezeUnfreeze
-    * Description  : Intercepts update statements that would normally deactivate or reactivate users with "Standard" license type,
-    *                and instead freezes/unfreezes them, so they don't lose their team access (e.g. account team, oppty team)
-    *                - Only do this for updates done by a specific user (AGS API)
-    */
+* Method name  : userFreezeUnfreeze
+* Description  : Intercepts update statements that would normally deactivate or reactivate users with "Standard" license type,
+*                and instead freezes/unfreezes them, so they don't lose their team access (e.g. account team, oppty team)
+*                - Only do this for updates done by a specific user (AGS API)
+*/
     public static void userFreezeUnfreeze(Map<Id,User> oldMap, List<User> newList, Map<Id,User> newMap) {
         
         // Only perform this logic if the current user is the "user provisioning" (AGS API) user
-        boolean isProvisioningUser = (UserInfo.getUserId().left(15) == Label.Core_User_Provisioning_User_ID.left(15));
-        if (!isProvisioningUser) {
-            return;
-        }
-        
-        // Build up a list of users that's basically newList, but only users with "Standard" license type
-        List<User> standardUsers = [select Id, Profile.UserType from User
-                                    where Id in :newMap.keySet() and Profile.UserType = 'Standard'];
-        Set<Id> standardUserIds = new Set<Id>();
-        for (User u : standardUsers) {
-            standardUserIds.add(u.Id);
-        }
-        List<User> newListStandardUsers = new List<User>();
-        for (User u : newList) {
-            boolean isStandardUser = standardUserIds.contains(u.Id);
-            if (isStandardUser) {
-                newListStandardUsers.add(u);
-            }
-        }
-        
-        // Build up a map of user ID to UserLogin record for that user ID
-        List<UserLogin> userLogins = [select Id, UserId, IsFrozen from UserLogin where UserId in :standardUserIds];
-        Map<Id,UserLogin> userToUserLoginMap = new Map<Id,UserLogin>();
-        for (UserLogin ul : userLogins) {
-            userToUserLoginMap.put(ul.UserId, ul);
-        }
-        
-        // This will be a list of UserLogin records we'll need to update at the end
-        List<UserLogin> userLoginsToUpdate = new List<UserLogin>();
-        
-        // Now run through our newList of standard users, and see if they meet the criteria for freezing or unfreezing
-        for (User u : newListStandardUsers) {
+        if (UserInfo.getUserId().left(15) == Label.Core_User_Provisioning_User_ID.left(15)) {
             
-            UserLogin ul = userToUserLoginMap.get(u.Id);
-          
-            // Updated by Manikanta(US830390)
-            // Active -> Inactive (update statement is trying to change an Active record to Inactive)
-            boolean shouldFreeze = (oldMap.get(u.Id).IsActive == true) && (u.IsActive == false) && Trigger.isBefore;
-            if (shouldFreeze) {
-                // Leave it Active, but make it Frozen
-                u.IsActive = true;
-                ul.IsFrozen = true;
-                userLoginsToUpdate.add(ul);
-                // adding into this set to make sure this userlogin wont get updated again in the afterupdate context
-                setUpdatedUsrId.add(u.Id);
+            // Build up a list of users that's basically newList, but only users with "Standard" license type
+            List<User> standardUsers = [select Id, Profile.UserType from User
+                                        where Id in :newMap.keySet() and Profile.UserType = 'Standard'];
+            Set<Id> standardUserIds = new Set<Id>();
+            for (User u : standardUsers)
+                standardUserIds.add(u.Id);
+            List<User> newListStandardUsers = new List<User>();
+            for (User u : newList)
+                if (standardUserIds.contains(u.Id)) newListStandardUsers.add(u);
+            
+            // Build up a map of user ID to UserLogin record for that user ID
+            List<UserLogin> userLogins = [select Id, UserId, IsFrozen from UserLogin where UserId in :standardUserIds];
+            Map<Id,UserLogin> userToUserLoginMap = new Map<Id,UserLogin>();
+            for (UserLogin ul : userLogins)
+                userToUserLoginMap.put(ul.UserId, ul);
+            
+            // This will be a list of UserLogin records we'll need to update at the end
+            List<UserLogin> userLoginsToUpdate = new List<UserLogin>();
+            
+            // Now run through our newList of standard users, and see if they meet the criteria for freezing or unfreezing
+            for (User u : newListStandardUsers) {
+                
+                UserLogin ul = userToUserLoginMap.get(u.Id);
+                System.debug('TContext '+Trigger.isBefore +' '+Trigger.isAfter);
+                // Updated by Manikanta(US830390)
+                // Active -> Inactive (update statement is trying to change an Active record to Inactive)
+                if ((oldMap.get(u.Id).IsActive == true) && (u.IsActive == false) && Trigger.isBefore) {
+                    // Leave it Active, but make it Frozen
+                    u.IsActive = true;
+                    ul.IsFrozen = true;
+                    userLoginsToUpdate.add(ul);
+                    // adding into this set to make sure this userlogin wont get updated again in the afterupdate context
+                    setUpdatedUsrId.add(u.Id);
+                }
+                // Inactive -> Active (update statement is trying to change a Frozen record to Active)
+                if ((userToUserLoginMap.get(u.Id).IsFrozen == true) && (u.IsActive == true) && Trigger.isAfter && !setUpdatedUsrId.contains(u.Id)) {
+                    // Ensure it's made Active (just in case it isn't for some reason), and set it to Unfrozen
+                    //u.IsActive = true;
+                    ul.IsFrozen = false;
+                    userLoginsToUpdate.add(ul);
+                }
             }
-            // Inactive -> Active (update statement is trying to change a Frozen record to Active)
-            boolean shouldUnfreeze = (userToUserLoginMap.get(u.Id).IsFrozen == true) && (u.IsActive == true) && Trigger.isAfter && !setUpdatedUsrId.contains(u.Id);
-            if (shouldUnfreeze) {
-                // Ensure it's made Active (just in case it isn't for some reason), and set it to Unfrozen
-                //u.IsActive = true;
-                ul.IsFrozen = false;
-                userLoginsToUpdate.add(ul);
-            }
-        }
-        
-        // If we have any UserLogin records to update, update them
-        boolean hasLoginsToUpdate = (userLoginsToUpdate.size() > 0);
-        if (hasLoginsToUpdate) {
-            update userLoginsToUpdate;
+            
+            // If we have any UserLogin records to update, update them
+            // (Note: User records will already get updated since this is a "before" trigger)
+            if (userLoginsToUpdate.size() > 0)
+                update userLoginsToUpdate;
         }
     }
     
     /*
-    * Method name  : updateMaskEmail
-    * Description  : This Method is to  Mask the User Emailid. it prevent the Ipass to udpate actual User Email Id.
-    *                 If custom setting Core Mask Email Field is true and Core Mask Email is true ,then trigger 
-    *                 will not be allow to update actual User EmailId.                
-    */   
+* Method name  : updateMaskEmail
+* Description  : This Method is to  Mask the User Emailid. it prevent the Ipass to udpate actual User Email Id.
+*                 If custom setting Core Mask Email Field is true and Core Mask Email is true ,then trigger 
+*                 will not be allow to update actual User EmailId.                
+*/   
     public static void updateMaskEmail(List<User> newList,Map<Id,User> oldMap){
         MaskEmail__c MasEmail= MaskEmail__c.getValues('Core Mask Email Bypass'); //custom setting object 
-        Boolean isSB = [Select isSandbox from Organization Limit 1].isSandbox ;
-        
-        boolean shouldProcessMaskEmail = (MasEmail != null && MasEmail.Name != null && MasEmail.Core_Mask_Email__c && isSB);
-        if(shouldProcessMaskEmail){  
-           
+        Boolean isSB = [Select isSandbox from Organization Limit 1].isSandbox ; 
+        if(MasEmail != null && MasEmail.Name != null){  
+            if(MasEmail.Core_Mask_Email__c && isSB){ 
                 for(User us:newList){            
-                    boolean shouldRevertEmail = (us.Core_Mask_Email_Id__c && us.Email != oldMap.get(us.Id).Email);
-                    if(shouldRevertEmail ){
+                    if(us.Core_Mask_Email_Id__c && us.Email != oldMap.get(us.Id).Email ){
                         us.Email=oldMap.get(us.Id).Email;           
                     } 
                 }
-            
+            }
         }
     }
     /***************************************************************************************************** 
@@ -668,7 +633,7 @@ Modified By:        Date:       Changes:
 ******************************************************************************************************/
     public static void assignLanguage(List<User> newList)
     {
-         
+        system.debug('****assign Language****'+newList);
         List<string> invalidEntitlementList = Label.Core_Entitlements_To_Ignore_for_Language_Update.split(';');
         List<string> profileList = Label.Core_Profiles_For_Language_Update.split(';');
         List<Core_Entitlement__c> invalidEntitlementIDList = new List<Core_Entitlement__c>();
@@ -689,19 +654,17 @@ Modified By:        Date:       Changes:
         {
             profileIDs.add(p.Id);
         }
-       
+        system.debug('profileIDs: '+profileIDs);
         //Check if there are any users who have the Partner Profile and add them to the ContactList
         for(User usr : newList)
         {
-            boolean hasPartnerProfile = profileIDs.contains(usr.ProfileId);
-            if(hasPartnerProfile)
+            if(profileIDs.contains(usr.ProfileId))
             {  
                 contactList.add(usr.ContactId);
             }
         }
         //If there are no user's with Partner Profile in the given List, then exit
-        boolean hasContactsToProcess = (contactList!=null && contactList.size()>0);
-        if(!hasContactsToProcess)
+        if(!(contactList!=null && contactList.size()>0))
         {
             return;
         } 
@@ -727,7 +690,7 @@ Modified By:        Date:       Changes:
         {
             invalidEntitlementIDs.add(ent.Id);
         }
-        
+        system.debug('invalidEntitlementIDs: '+invalidEntitlementIDs);
         //To get the List of Entitlements a contact has and store into a map.
         contactEntitlementsList = [SELECT Id, Core_Contact_Id__c, Core_Entitlement_Id__r.Name, Core_Entitlement_Id__c
                                    FROM Core_Contact_Entitlement__c where Core_Contact_Id__c IN :contactList];
@@ -735,8 +698,7 @@ Modified By:        Date:       Changes:
         for(Core_Contact_Entitlement__c cntEnt : contactEntitlementsList)
         {
             List<String> entitlementNames = contactEntitlementMap.get(cntEnt.Core_Contact_Id__c);
-            boolean isNewContact = (entitlementNames == NULL);
-            if(isNewContact)
+            if(entitlementNames == NULL)
             {
                 newEntitlementList = new List<Id>();
                 newEntitlementList.add(cntEnt.Core_Entitlement_Id__c);
@@ -754,18 +716,15 @@ Modified By:        Date:       Changes:
         List<Id> userEntitlement = new List<Id>();
         for(User u : newList)
         {
-            boolean hasPartnerProfile = profileIDs.contains(u.ProfileId);
-            if(hasPartnerProfile)
+            if(profileIDs.contains(u.ProfileId))
             {
                 updateUserLanguage = true;
                 userEntitlement = contactEntitlementMap.get(u.ContactId);
-                boolean hasEntitlements = (userEntitlement != null);
-                if(hasEntitlements)
+                if(userEntitlement != null)
                 {
                     for(ID usrEnt : userEntitlement)
-                    {       
-                        boolean isInvalidEntitlement = invalidEntitlementIDs.contains(usrEnt);
-                        if(isInvalidEntitlement)
+                    {	
+                        if(invalidEntitlementIDs.contains(usrEnt))
                         {
                             updateUserLanguage = false;
                             break;
@@ -776,8 +735,7 @@ Modified By:        Date:       Changes:
                         //Check if the Contact has a eRPM Language Code and a corresponding mapping of the LanguageLocaleKey 
                         //and LocaleSidKey is available and assign it to the user.
                         string lang = contactErpmLang.get(u.ContactId);
-                        boolean hasValidLanguageMapping = (lang != null && eRPMLangCodeRefs.containsKey(lang) && eRPMLocaleCodeRefs.containsKey(lang));
-                        if(hasValidLanguageMapping)
+                        if(lang != null && eRPMLangCodeRefs.containsKey(lang) && eRPMLocaleCodeRefs.containsKey(lang))
                         {
                             u.LanguageLocaleKey = eRPMLangCodeRefs.get(lang);  
                             u.LocaleSidKey = eRPMLocaleCodeRefs.get(lang);
@@ -793,131 +751,204 @@ Modified By:        Date:       Changes:
             }
             
         }
-    }    
-    //As part of PSG, share the License & Host object records with the partner user created
-    public static void shareLicenseAndHostRecordsForPSG(List<User> newUserList, Map<Id, User> userOldMap){
-        boolean hasUsersToProcess = (newUserList != null && !newUserList.isEmpty());
-        if(hasUsersToProcess){
-            Map<Id,id> contactIdUserMap = new Map<Id,Id>();
-            Map<String,id> emailIdUserIdMap = new Map<String,Id>();
-            for(User u: newUserList){
-                boolean isActiveUser = (u.IsActive == true);
-                boolean isNewOrReactivated = (Trigger.isInsert || (Trigger.isUpdate && userOldMap.get(u.Id).isActive == false));
-                boolean hasContact = (u.ContactId != null);
-                
-                if(isActiveUser && isNewOrReactivated && hasContact){
-                             contactIdUserMap.put(u.ContactId, u.id);
-                }
-                else {
-                    boolean noContact = (u.ContactId == null);
-                    if(isActiveUser && isNewOrReactivated && noContact){
-                             emailIdUserIdMap.put(u.Email, u.id);    
-                    }
-                }
-                            
-            }
-           //Draco Change(3 April 2024) Added check for Future and Batch context to avoid calling future method of shareLicenseAndHostRecord
-            /*boolean shouldShareRecords = (!System.isFuture() && !System.isBatch()) && (!contactIdUserMap.isEmpty() || !emailIdUserIdMap.isEmpty());
-            if(shouldShareRecords){
-                Sales_CreateLicenseContactUser_Utility.shareLicenseAndHostRecord(contactIdUserMap, emailIdUserIdMap);
-            }*/
-        }    
-    } 
-/***************************************************************************************************** 
-Method Name:        PCC_ShareUserWithM2MUsers
+    }
+    
+    /***************************************************************************************************** 
+Method Name:        scheduledUserFreeze
 @return  :          void
-@parameters:        UserList
-Description:        to share user records with Integration user present in mapping(LabelConfiguration__mdt where Category__c = 'M2M_SHARING'). 
-Added By:           Shraddha More 14/02/2024
+@parameters:        none
+Description:       This method is called from scheduled Flow that will freeze the user records that have been inactive from past 6 months (as defined in custom label: Core_UserFreezingDaysOffset)
+and belog to specific profiles (as defined in custom label: Core_ProfileForFreezingUsers)
+Added By:           Akshay [Team Draco] - 30-05-2022
+Modified By:        Date:       Changes: 
 ******************************************************************************************************/
-    public static void PCC_ShareUserWithM2MUsers(List<User> newUserList, String action, Map<Id, User> userOldMap){
+    @InvocableMethod(label='Freeze Users for Last Login' description='Freezes the userLogins based on the users last login and profile' category='User')
+    public static void scheduledUserFreeze() {
         
-        Map<String, String> roleToIntUserIdMap = new Map<String, String>();
-        pccShareWrapper pWrp = new pccShareWrapper();
+        // Build up a list of userLogins where the last login is before the specified days and profile from specified user Profiles
+        Date pastNDays = Date.Today().addDays(-Integer.valueOf(label.Core_UserFreezingDaysOffset));
+        List<string> profileList = new List<String>();
+        profileList.addAll(Label.Core_ProfileForFreezingUser1.split(';'));
+        profileList.addAll(Label.Core_ProfileForFreezingUser2.split(';'));
         
-        try{
-            //to get the M2M Integration users id with respective role
-            for(LabelConfiguration__mdt mdt: [Select id, Category__c, Value__c 
-                                              from LabelConfiguration__mdt 
-                                              where Category__c = 'M2M_SHARING']) {
-                List<String> userRoleIdList = mdt.Value__c.split(';');
-                boolean hasValidRoleList = (userRoleIdList.size() > 1);
-                if(hasValidRoleList) {
-                    roleToIntUserIdMap.put(userRoleIdList[1], userRoleIdList[0]);
-                }
-            }
-
-            // Get the sharing records 
-            pWrp = PCC_GetShareUserWithM2M(newUserList, action, userOldMap, roleToIntUserIdMap);
-
-            boolean hasRecordsToProcess = (!pWrp.userSharesToInsert.isEmpty() || !pWrp.urRoleIdToDeleteShares.isEmpty());
-            if (hasRecordsToProcess) {
-                PCC_UserHandler_Queueable uq = new PCC_UserHandler_Queueable(pWrp.userSharesToInsert, roleToIntUserIdMap, pWrp.urRoleIdToDeleteShares);
-               System.enqueueJob(uq);
-            }
-            
-            if(Test.isRunningTest()){
-                throw new System.DMLException();   
-            }   
-            
-        } catch(Exception ex) {
-            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, 
-                                                 LOG_ENTRY_PROJECT, 
-                                                 LOG_ENTRY_SCOPE, 
-                                                 LOG_ENTRY_SEVERITY,
-                                                 '', '' ,'' ,'PCC_ShareUserWithM2MUsers' 
-                                                 ,'' ,ex); 
+        //profileList.addAll(Label.Core_ProfileForFreezingUser3.split(';'));
+        //profileList.addAll(Label.Core_ProfileForFreezingUser4.split(';'));
+        //profileList.addAll(Label.Core_ProfileForFreezingUser5.split(';'));
+        
+        set<string> profileSet = new set<string>(profileList);
+        profileSet.remove(''); profileSet.remove(null);
+        profileList = new list<string>(profileSet);
+        
+        List<UserLogin> userLogins = [SELECT Id, UserId, IsFrozen FROM UserLogin WHERE IsFrozen = false AND UserId IN (SELECT Id FROM User WHERE LastLoginDate != null AND LastLoginDate < :pastNDays AND Profile.Name =: profileList)];
+        
+        List<UserLogin> userLoginsToUpdate = new List<userLogin>();
+        
+        //Loop through user logins and mark it to Froozen
+        for(userLogin uLogin : userLogins){
+            system.debug('Following user logins will be frozen: ' + uLogin);
+            uLogin.IsFrozen = true;
+            userLoginsToUpdate.add(uLogin);
         }
-    }
-
-/***************************************************************************************************** 
-Method Name:        PCC_GetShareUserWithM2M
-@return  :          pccShareWrapper
-@parameters:        UserList
-Description:        to Get the share user records with Integration user present in mapping(LabelConfiguration__mdt where Category__c = 'M2M_SHARING'). 
-Added By:           Shraddha More 25/03/2024
-******************************************************************************************************/
-    public static pccShareWrapper PCC_GetShareUserWithM2M(List<User> newUserList, String action, Map<Id, User> userOldMap, Map<String, String> roleToIntUserIdMap) {
-        pccShareWrapper pWrp = new pccShareWrapper();
-        List<UserShare> userSharesToInsert = new List<UserShare>();
-        Set<Id> urRoleIdToDeleteShares = new Set<Id>();
-
-        for (User newUser : newUserList) {
-            boolean isInsertAction = (action == 'Insert');
-            boolean isUpdateAction = (action == 'Update');
-            
-            if (isInsertAction) {
-                boolean shouldShareOnInsert = roleToIntUserIdMap.containsKey(newUser.UserRoleId) && newUser.IsActive;
-                if (shouldShareOnInsert) {
-                    userSharesToInsert.add(new UserShare(UserId = newUser.Id, UserOrGroupId = roleToIntUserIdMap.get(newUser.UserRoleId), UserAccessLevel = 'Read', RowCause = 'Manual'));
-                }
-            } else if (isUpdateAction) {
-                User oldUser = userOldMap.get(newUser.Id);
-                boolean roleChanged = (oldUser != null && newUser.UserRoleId != oldUser.UserRoleId) || Test.isRunningTest();
-                if (roleChanged) {
-                    //share with integration user if role present in mapping
-                    boolean shouldShare = roleToIntUserIdMap.containsKey(newUser.UserRoleId);
-                    if (shouldShare) {
-                        userSharesToInsert.add(new UserShare(UserId = newUser.Id, UserOrGroupId = roleToIntUserIdMap.get(newUser.UserRoleId), UserAccessLevel = 'Read', RowCause = 'Manual'));
-                    }
-                    //unshare with integration user if user's old role is present in mapping
-                    boolean shouldUnshare = roleToIntUserIdMap.containsKey(oldUser.UserRoleId);
-                    if (shouldUnshare) {
-                        urRoleIdToDeleteShares.add(oldUser.Id);
+        
+        // If we have any UserLogin records to update, update them
+        if (userLoginsToUpdate.size() > 0){
+            //update userLoginsToUpdate with database method
+            Database.SaveResult[] srList = Database.update(userLoginsToUpdate, false);
+            // Iterate through each returned result by the method
+            for (Database.SaveResult sr : srList) {
+                if (sr.isSuccess()) {
+                    // This condition will be executed for successful records and will fetch the ids of successful records
+                    System.debug('Successfully updated UserLogin with ID: ' + sr.getId());
+                } else {
+                    // This condition will be executed for failed records
+                    for(Database.Error objErr : sr.getErrors()) {
+                        System.debug('The following error has occurred.');
+                        
+                        // Printing error message in Debug log
+                        System.debug(objErr.getStatusCode() + ': ' + objErr.getMessage());
+                        System.debug('UserLogin oject field which are affected by the error:' 
+                                     + objErr.getFields());
                     }
                 }
             }
         }
-
-        pWrp.userSharesToInsert = userSharesToInsert;
-        pWrp.urRoleIdToDeleteShares = urRoleIdToDeleteShares; 
-
-        return pWrp;
+        
+        //Core_UserHandler.scheduledUserDeActivate();
     }
-
-    /*PCC Share Wrapper*/
-    public class pccShareWrapper {
-        public List<UserShare> userSharesToInsert{get;set;}
-        public Set<Id> urRoleIdToDeleteShares{get;set;}
+    
+    
+    public static void scheduledUserDeActivate() {
+        /*
+        // Build up a list of userLogins where the last login is before the specified days and profile from specified user Profiles
+        //Date pastNDays = Date.Today().addDays(-Integer.valueOf(label.Core_UserFreezingDaysOffset));
+        List<string> profileListToDeactivate = new List<String>();
+        profileListToDeactivate.addAll(Label.Core_ProfileForFreezingUser1.split(';'));
+        profileListToDeactivate.addAll(Label.Core_ProfileForFreezingUser2.split(';'));
+        
+        
+        set<string> profileSet = new set<string>(profileListToDeactivate);
+        profileSet.remove(''); 
+        profileSet.remove(null);
+        profileListToDeactivate = new list<string>(profileSet);
+        
+        //List<UserLogin> userLogins = [SELECT Id, UserId, IsFrozen FROM UserLogin WHERE IsFrozen = false AND UserId IN (SELECT Id FROM User WHERE LastLoginDate != null AND LastLoginDate < :pastNDays AND Profile.Name =: profileList)];
+        List<User> usersList = [select Id, Name,Username,Core_User_Profile_Name__c,IsActive,LastModifiedDate from user where id in ( SELECT UserId  FROM UserLogin WHERE IsFrozen = TRUE and LastModifiedDate < LAST_N_DAYS:60 ) and isactive=true];
+        
+        List<User> userListToUpdate = new List<user>();
+        
+        //Loop through user List and DeActivate it
+        for(User uList : usersList){
+            system.debug('Following user logins will be DeActivated: ' + uList);
+            uList.IsActive = False;
+            userListToUpdate.add(uList);
+        }
+        
+        // If we have any User records to update, update them
+        if (userListToUpdate.size() > 0){
+            update userListToUpdate;
+        }  */    
+        
+        //Collections to store user related data
+        Set<Id> userIds = new Set<Id>();  
+        Set<Id> prfIds = new Set<Id>();
+        List<Profile> usrProfiles = new List<Profile>();
+        Map<Id,Decimal> usrMap = new Map<Id,Decimal>();
+		Map<Id,String> prfMap = new Map<Id,String>();
+        Map<Id,String> prfToLicenseMap = new Map<Id,String>();
+        
+		//List to fetch user data to be processed in excel sheet who have not logged in > 90 days.
+        List<User> csvUsrLst = [select Name, Username,Profile.UserLicense.Name,Profile.Name, Core_User_Profile_Name__c, FederationIdentifier, Core_WWID__c, Email, Core_Employee_Type_Code__c, IsActive, LastLoginDate, Manager.name, UserRole.name, LastModifiedDate, Id from user where id in ( SELECT UserId FROM UserLogin WHERE IsFrozen = TRUE and 
+								LastModifiedDate <= LAST_N_DAYS:90 ) and isactive=true ORDER BY LastModifiedDate DESC];
+        //Condition to check if user list size > 0.
+        if(csvUsrLst.size()>0){
+            //loop over the user list to storen data into different maps.
+            for(User ul: csvUsrLst){
+                userIds.add(ul.Id);            
+                prfMap.put(ul.ProfileId,ul.Profile.Name);
+                prfToLicenseMap.put(ul.profileId,ul.profile.UserLicense.Name);                      
+                prfIds.add(ul.ProfileId);                
+                } 
+            system.debug('Profile Ids:'+prfIds.size());
+        //AggregateResult list to fetch each profiles with user count who have not logged in > 90 days.
+        List<AggregateResult> tableUsrLst = [select ProfileId,Count(Core_User_Profile_Name__c)
+            from user where Id IN : userIds and isactive=true GROUP BY Profile.Name,ProfileId];
+        //loop over the AggregateResult list to store data into map. 
+        for(AggregateResult ar : tableUsrLst){            
+            usrMap.put((String)ar.get('ProfileId'),(Decimal)ar.get('expr0'));            
+        }
+        /*string header = 'Id, Name, Core_User_Profile_Name__c, Core_WWID__c, LastLoginDate \n';
+        string finalstr = header;
+        for (User uObj :csvUsrLst){
+               string recordString = uObj.Id+','+uObj.Name+','+uObj.Core_User_Profile_Name__c+','+uObj.Core_WWID__c +','+uObj.LastLoginDate+'\n';
+               finalstr = finalstr +recordString;
+        }*/
+            
+    //Table to store user data which will be converted into excel sheet.        
+    String csvBody = '';
+    //open table..
+    csvBody = '<table border="1" style="border-collapse: collapse"><tr><th>Id</th><th>Name</th><th>Profile</th><th>WWID</th><th>LastLoginDate</th></tr>';
+	for(User uObj :csvUsrLst){            
+        csvBody += '<tr><td>' + uObj.Id + '</td><td>' + uObj.Name + '</td><td>' + uObj.Profile.Name + '</td><td>'+ uObj.Core_WWID__c   +'</td><td>'+ uObj.LastLoginDate +'</td></tr>';                                 
+    }   
+     //close table...
+    csvBody += '</table>';   
+    //Table to display org related data.            
+    /*String tableBody = '';            
+    tableBody = '<table border="0" style="border-collapse: collapse">';
+    tableBody += '<tr><td>' +'<b>'+'Org Name: '+'</b>' + '</td><td>' + UserInfo.getOrganizationName()  + '</td></tr>';
+    tableBody += '<tr><td>' +'<b>'+'Org Id: '+'<b>' + '</td><td>' + UserInfo.getOrganizationId()  + '</td></tr>';         
+    tableBody += '<tr><td>' + + '</td></tr>';
+    tableBody += '</table>';*/
+    
+    String orgName = '<p>' +'<b>'+'Org Name: '+'</b>'+ UserInfo.getOrganizationName()  +'</p>';
+    String orgId = '<p>' +'<b>'+'Org ID: '+'</b>'+ UserInfo.getOrganizationId()  +'</p>';
+    String Caption = '<p>Users not recently logged in and eligible for Inactivation are as follows.</p>';   
+    //Table to display user license, profile and user count for each profile.        
+    String htmlBody = '';
+    //open table..
+    htmlBody = '<table border="1" style="border-collapse: collapse">';    
+    htmlBody += '<tr><th>License Type</th><th>Profile</th><th>Non-logged Users</th></tr>';
+    //iterate over list and output columns/data into table rows.
+    for(Id pId : prfIds){            
+          	htmlBody += '<tr><td>' + prfToLicenseMap.get(pId) + '</td><td>' + prfMap.get(pId) + '</td><td>' + usrMap.get(pId) + '</td></tr>';                                 
+    }        
+    //close table...
+    htmlBody += '</table>';
+        //Split custom label which has email addresses to be sent to given email ids.
+        string toaddressList =label.Core_Email_Addresses_For_Internal_Users;
+		String[] toaddresssplit =toaddressList.split(',');    
+        //Email attachement to attach csvBody as excel attachment.  
+        Messaging.EmailFileAttachment csvAttachment = new Messaging.EmailFileAttachment();
+        Blob csvBlob = blob.valueOf(csvBody);
+        String csvName = 'UserList'+'.xls';
+        csvAttachment.setFileName(csvName);
+        csvAttachment.setBody(csvBlob);
+        csvAttachment.setContentType('application/vnd.ms-excel');
+        //EmailMessage to attach excel and send to given mail ids.    
+        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
+        String subject = label.Core_Email_Subject_For_Internal_Users_Not_Logged;
+        email.setSubject(subject);
+        //List<String> toAddresses = new List<String> {toaddresssplit};
+        email.setToAddresses(getEmailAddresses());
+        email.setHtmlBody(orgName+ '\n' + orgId + '\n' + Caption + htmlBody);
+        email.setFileAttachments(new Messaging.EmailFileAttachment[]{csvAttachment});
+        Messaging.SingleEmailMessage[] messages =   new List<Messaging.SingleEmailMessage> {email};
+        Messaging.SendEmailResult[] result = Messaging.sendEmail(messages); 
+            if (result[0].success) {
+                System.debug('The email was sent successfully.');
+            } else {
+                System.debug('The email failed to send: ' + result[0].errors[0].message);
+            }
+       }
+        
     }
+    //Method to fetch user email ids from public group - Core_Email_Notification_Group
+    public static List<String> getEmailAddresses() {
+        List<String> mailToAddresses = new List<String>();
+        List<User> users = [SELECT Email FROM User WHERE Id IN (SELECT UserOrGroupId FROM GroupMember WHERE Group.Name = :'Core_Email_Notification_Group')];   
+        for(User u : users)
+            mailToAddresses.add(u.email);
+    
+        return mailToAddresses;
+	}
 }

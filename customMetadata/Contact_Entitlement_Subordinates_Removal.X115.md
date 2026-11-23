@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W3b00000DaquB,a2W3b00000Daqu3,a2W3b00000Daqu2,a2W3b00000Daqu4,a2W3b00000Daqu5,a2W3b00000GlZgy</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Daqu1</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuu</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">Retail User</value>
+        <value xsi:type="xsd:string">Partner Admin Delegate</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3fi</value>
+        <value xsi:type="xsd:string">a2W8A000003Hszq</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">RMF Special Reports Viewer</value>
+        <value xsi:type="xsd:string">IPA - MP User</value>
     </values>
 </CustomMetadata>

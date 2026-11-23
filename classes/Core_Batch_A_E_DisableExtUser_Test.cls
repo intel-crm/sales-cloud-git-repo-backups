@@ -27,14 +27,13 @@ public class Core_Batch_A_E_DisableExtUser_Test {
             insert portalAccountOwner1;  
             // put test setup code in here
         }        
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Account testAccount = new Account(Name='testAccountSetup', Core_Sales_Group__c='Global Accounts',
-                                          Core_Account_Type__c='Other', Industry='Others',RecordTypeId=intelAccRecTypeId,
+                                          Core_Account_Type__c='Other', Industry='Others',
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '126545',OwnerId = portalAccountOwner1.Id);
         insert testAccount;
         
-        Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',MailingCountry='India',
+        Contact testContact = new Contact(FirstName='testFirstName123',Core_Set_ERPM_Status_Bypass__c = true,LastName='testLastName', Email='test1234@testing.com.testsetup',
                                           AccountId=testAccount.id,Core_Personal_Email_Indicator__c = false,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Success',Core_IPS_Intel_Support_Owner__c =UserInfo.getUserId(),
                                          Core_Login_Status__c ='deleted');
         

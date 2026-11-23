@@ -61,6 +61,26 @@
             <field>Core_MDA_Ind__c</field>
             <table>Core_Account_Group_Member__c</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_RelationshipStartDate__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_RelationshipEndDate__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Intel_Record_Type_Text__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>UCD_Hierarchy__c</field>
+            <table>Core_Account_Group_Member__c</table>
+        </columns>
         <masterLabel>One Partner ID Group Members</masterLabel>
     </sections>
 </ReportType>

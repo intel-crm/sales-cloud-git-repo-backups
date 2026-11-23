@@ -1,0 +1,58 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:page ></apex:page>
+<!--<apex:page standardController="01I8A000000FhO6" showHeader="false" sidebar="false" title="Partner Solution Grid">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Partner_Solution_Grid" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"name": "Partner Solution Grid",
+	"tabs": [
+		{
+			"name": "All Solutions",
+			"content": "{!gridPage}gname=All Solutions&amp;sh=0&amp;sfname=default",
+			"id": 1641465987580
+		},
+		{
+			"name": "All - IOTG",
+			"content": "{!gridPage}gname=All - IOTG&amp;sh=0&amp;sfname=default",
+			"id": 1641466083330
+		},
+		{
+			"name": "Admin Review - IOTG",
+			"content": "{!gridPage}gname=Admin Review - IOTG&amp;sh=0&amp;sfname=default",
+			"id": 1641466135706
+		},
+		{
+			"name": "All - DCG",
+			"content": "{!gridPage}gname=All - DCG&amp;sh=0&amp;sfname=default",
+			"id": 1641466156994
+		},
+		{
+			"name": "Admin Review - DCG",
+			"content": "{!gridPage}gname=Admin Review - DCG&amp;sh=0&amp;sfname=default",
+			"id": 1641466170734
+		},
+		{
+			"name": "All - Partner Solutions",
+			"content": "{!gridPage}gname=All - Partner Solutions&amp;sh=0&amp;sfname=default",
+			"id": 1641466190635
+		},
+		{
+			"name": "Admin Review - Partner Solutins",
+			"content": "{!gridPage}gname=Admin Review - Partner Solutions&amp;sh=0&amp;sfname=default",
+			"id": 1641466216450
+		}
+	],
+	"id": 1641465987580,
+	"selectedCustomCSSIds": [],
+	"selectedCustomJSIds": [],
+	"description": "",
+	"globalButtons": true,
+	"object": "ArdiraSurvey__Survey_Result__c",
+	"height": "750",
+	"showHeader": false,
+	"showSidebar": false
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>-->

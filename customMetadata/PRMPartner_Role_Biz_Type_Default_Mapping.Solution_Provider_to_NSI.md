@@ -3,6 +3,10 @@
     <label>Solution Provider to NSI</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">National Solution Integrator (NSI)</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Seller</value>
     </values>

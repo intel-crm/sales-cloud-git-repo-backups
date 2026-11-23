@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Community Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Community Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Unique Mapping Code --></label>
+        <name>Unique_Mapping_Code__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

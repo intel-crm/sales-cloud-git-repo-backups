@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Pricing_Entitlement_Nm__c</fullName>
+        <fieldManageability>SubscriberControlled</fieldManageability>
+        <label>Entitlement Names</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <label>Pricing Account Entitlements Mapping</label>
+    <pluralLabel>Pricing Account Entitlements Mapping</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

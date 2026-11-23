@@ -2887,19 +2887,6 @@
         <visibleLines>4</visibleLines>
     </fields>
     <fields>
-        <fullName>Core_MDF_AccProgInactiveInd_Txt__c</fullName>
-        <description>Combination of AccountId, Program Id and Inactive Ind to identify unique Partner Group Mapping Record</description>
-        <externalId>false</externalId>
-        <label>AccountProgramInactiveInd</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_AccountIdGroupName__c</fullName>
         <caseSensitive>false</caseSensitive>
         <description>Combination of AccountId and GroupName to identify unique Partner Group Mapping Record.</description>
@@ -2914,36 +2901,11 @@
         <unique>true</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_AccountProgramId_Txt__c</fullName>
-        <externalId>false</externalId>
-        <label>AccountProgramId</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Account_Prime_ID__c</fullName>
-        <description>Backend field to store the Account Prime ID or Unified ID.</description>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Account__r.Core_Unified_Global_Customer_BP_Id__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Account Prime/Unified ID</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Account__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <label>Account</label>
         <lookupFilter>
-            <active>false</active>
+            <active>true</active>
             <filterItems>
                 <field>Account.RecordType.DeveloperName</field>
                 <operation>equals</operation>
@@ -2961,32 +2923,8 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_All_Access_Group_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>All Access Group Id</label>
-        <length>18</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_All_Access_Group_Nm__c</fullName>
-        <externalId>false</externalId>
-        <label>All Access Group Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_BudgetType_nm__c</fullName>
-        <description>Budget type details</description>
+        <description>Budge type details</description>
         <label>Budget Type</label>
         <required>false</required>
         <trackFeedHistory>false</trackFeedHistory>
@@ -2995,7 +2933,164 @@
         <type>Picklist</type>
         <valueSet>
             <restricted>true</restricted>
-            <valueSetName>Core_MDF_Budget_Types</valueSetName>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Business Client Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Business Client Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>CCF 1.0</fullName>
+                    <default>false</default>
+                    <label>CCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>Client Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Client Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Client Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Client Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Data Center Market Accelerate</fullName>
+                    <default>false</default>
+                    <label>Data Center Market Accelerate</label>
+                </value>
+                <value>
+                    <fullName>Data Center Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Data Center Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Data Centric Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Data Centric Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>DCF 1.0</fullName>
+                    <default>false</default>
+                    <label>DCF 1.0</label>
+                </value>
+                <value>
+                    <fullName>Global Ericsson Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Ericsson Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global IBM Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global IBM Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Microsoft Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Microsoft Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Nokia Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Nokia Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Red Hat Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Red Hat Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAP Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAP Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global SAS Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global SAS Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global Suse Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global Suse Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Global VMware Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>Global VMware Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>Intel MDF Account Based2</fullName>
+                    <default>false</default>
+                    <label>Intel MDF Account Based2</label>
+                </value>
+                <value>
+                    <fullName>Intel Rise Technology Initiative</fullName>
+                    <default>false</default>
+                    <label>Intel Rise Technology Initiative</label>
+                </value>
+                <value>
+                    <fullName>ISV Scale Acceleration - MDF</fullName>
+                    <default>false</default>
+                    <label>ISV Scale Acceleration - MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF</fullName>
+                    <default>false</default>
+                    <label>MDF</label>
+                </value>
+                <value>
+                    <fullName>MDF+</fullName>
+                    <default>false</default>
+                    <label>MDF+</label>
+                </value>
+                <value>
+                    <fullName>OEM CMP</fullName>
+                    <default>false</default>
+                    <label>OEM CMP</label>
+                </value>
+                <value>
+                    <fullName>Optane Specialties MDF</fullName>
+                    <default>false</default>
+                    <label>Optane Specialties MDF</label>
+                </value>
+                <value>
+                    <fullName>Red Hat &quot;Amplify&quot; - MDF</fullName>
+                    <default>false</default>
+                    <label>Red Hat &quot;Amplify&quot; - MDF</label>
+                </value>
+                <value>
+                    <fullName>Retail MDF</fullName>
+                    <default>false</default>
+                    <label>Retail MDF</label>
+                </value>
+                <value>
+                    <fullName>RSA MD</fullName>
+                    <default>false</default>
+                    <label>RSA MD</label>
+                </value>
+                <value>
+                    <fullName>Service Provider CMP</fullName>
+                    <default>false</default>
+                    <label>Service Provider CMP</label>
+                </value>
+                <value>
+                    <fullName>SOEM Client MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Client MDF</label>
+                </value>
+                <value>
+                    <fullName>SOEM Data Center MDF</fullName>
+                    <default>false</default>
+                    <label>SOEM Data Center MDF</label>
+                </value>
+                <value>
+                    <fullName>VMWare Amplify - MDF</fullName>
+                    <default>false</default>
+                    <label>VMWare Amplify - MDF</label>
+                </value>
+            </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
@@ -3025,51 +3120,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_CoMarketingActiveAccount_Id__c</fullName>
-        <description>To store Comarketing Active Account Id</description>
-        <externalId>false</externalId>
-        <formula>IF(
-    CONTAINS($Label.Core_MDF_TechnicalProgramName,Text(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c) ),
-    Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c,
-    &apos;&apos;
- )</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Co-Marketing Active Account Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_CoMarketingActiveAccount_Nm__c</fullName>
-        <description>To Store Comarketing Active Account Name</description>
-        <externalId>false</externalId>
-        <formula>IF(
-CONTAINS($Label.Core_MDF_TechnicalProgramName,Text(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c) ),
-Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__r.Name,
-&apos;&apos;
-)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Co-Marketing Active Account Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_CoMarketingActive_Ind__c</fullName>
-        <description>Backend field to indicate whether the Account is Co-Marketing active or not.</description>
-        <formula>IF( CONTAINS($Label.Core_MDF_TechnicalProgramName,Text(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)),
-IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account__c, Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketingActive__c,false), null)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Co-Marketing Active</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Group_Id__c</fullName>
         <description>This will contain the Group Id fetched from the Group object.</description>
         <externalId>false</externalId>
@@ -3093,75 +3143,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Inactive_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field is used to inactivate the PGM records</description>
-        <label>Inactive Indicator</label>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Payment_Type_nm__c</fullName>
-        <description>Holds the payment type value</description>
-        <label>Payment Type</label>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Customer</fullName>
-                    <default>false</default>
-                    <label>Customer</label>
-                </value>
-                <value>
-                    <fullName>Customer (Pass Through)</fullName>
-                    <default>false</default>
-                    <label>Customer (Pass Through)</label>
-                </value>
-                <value>
-                    <fullName>Distributor (Cash)</fullName>
-                    <default>false</default>
-                    <label>Distributor (Cash)</label>
-                </value>
-                <value>
-                    <fullName>Distributor (Credit Memo)</fullName>
-                    <default>false</default>
-                    <label>Distributor (Credit Memo)</label>
-                </value>
-                <value>
-                    <fullName>Non-Customer</fullName>
-                    <default>false</default>
-                    <label>Non-Customer</label>
-                </value>
-                <value>
-                    <fullName>Customer (Disti)</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Customer (Disti)</label>
-                </value>
-                <value>
-                    <fullName>Distributor</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Distributor</label>
-                </value>
-                <value>
-                    <fullName>Indirect Distributor</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Indirect Distributor</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Region_cd__c</fullName>
@@ -3201,12 +3182,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                     <default>false</default>
                     <label>WW</label>
                 </value>
-                <value>
-                    <fullName>INDIA</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>INDIA</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -3237,11 +3212,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
                     <fullName>Test</fullName>
                     <default>false</default>
                     <label>Test</label>
-                </value>
-                <value>
-                    <fullName>ProcessEntitlement</fullName>
-                    <default>false</default>
-                    <label>ProcessEntitlement</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -3285,20 +3255,6 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_MDF_Virtual_Corp_nm__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>To hold virtual corp associated with the intel account of the selected program</description>
-        <label>Virtual Corp Name</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Group Mapping (Virtual Corp Name)</relationshipLabel>
-        <relationshipName>Partner_Group_Mapping1</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Works_For__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Works For</label>
@@ -3311,115 +3267,34 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
     </fields>
-    <fields>
-        <fullName>PSG_SAP_Distributor_for_ALN__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>SAP Distributor for ALN</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Invalid SAP ALN Distributor  has been selected on PGM Record. Please select a valid SAP ALN Distributor</errorMessage>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Type_Nm__c</field>
-                <operation>equals</operation>
-                <value>Sold To</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Nielsen_ID__c</field>
-                <operation>equals</operation>
-                <value>Alt Logistics</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Group Mapping (SAP Distributor for ALN)</relationshipLabel>
-        <relationshipName>Partner_Group_Mapping_ALN</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PSG_SAP_Distributor_for_DPA__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>SAP Distributor for DPA</label>
-        <lookupFilter>
-            <active>true</active>
-            <errorMessage>Invalid SAP DPA Distributor  has been selected on PGM Record. Please select a valid SAP DPA Distributor</errorMessage>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Direct Account</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Type_Nm__c</field>
-                <operation>equals</operation>
-                <value>Sold To</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Direct_Account_Active_Ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_Nielsen_ID__c</field>
-                <operation>equals</operation>
-                <value>Distributor, PD Plus</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>Partner Group Mapping (SAP Distributor for DPA)</relationshipLabel>
-        <relationshipName>Partner_Group_Mapping_DPA</relationshipName>
-        <required>false</required>
-        <trackFeedHistory>false</trackFeedHistory>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
     <label>Partner Group Mapping</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Account__c</columns>
         <columns>Core_MDF_Group_Name__c</columns>
+        <columns>Core_MDF_Group_Id__c</columns>
+        <columns>Core_MDF_Type_of_Access__c</columns>
         <columns>Core_MDF_Channel_Program__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operation>contains</operation>
-            <value>PSG</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
-        <fullName>IQR_PGM</fullName>
+        <fullName>my_view</fullName>
         <columns>NAME</columns>
         <columns>Core_MDF_Account__c</columns>
-        <columns>Core_MDF_Channel_Program__c</columns>
+        <columns>Core_Allowed_Email_Domains_txt__c</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
         <columns>Core_MDF_Type_of_Access__c</columns>
-        <columns>Core_MDF_Group_Id__c</columns>
         <columns>Core_MDF_Group_Name__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
-            <field>Core_MDF_Channel_Program__c</field>
-            <operation>equals</operation>
-            <value>Intel Quote Request</value>
+            <field>Core_MDF_Account__c</field>
+            <operation>contains</operation>
+            <value>ZTE</value>
         </filters>
-        <label>IQR PGM</label>
-        <sharedTo>
-            <group>IQR_Tech_Team</group>
-        </sharedTo>
+        <label>my view</label>
     </listViews>
     <nameField>
         <displayFormat>PGM-{000000000}</displayFormat>
@@ -3429,1124 +3304,8 @@ IF(Core_MDF_Virtual_Corp_nm__r.Core_MDF_Parent_Fund_Account__c==Core_MDF_Account
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Partner Group Mapping</pluralLabel>
-    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
-    <recordTypes>
-        <fullName>Core_MDF_Co_marketing</fullName>
-        <active>true</active>
-        <label>Co-marketing</label>
-        <picklistValues>
-            <picklist>Core_Allowed_Email_Domains_txt__c</picklist>
-            <values>
-                <fullName>99ntc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>aa%2Ejp%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>acbz%2Ecom%2Ebr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>accadis%2Enet</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>accessus%2Ebiz</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>acer%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>aceramericalatina%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>adk%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>adpeople%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>affiniti%2Ecom%2Eau</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>aj%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ak%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>alibaba-inc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>almapbbdo%2Ecom%2Ebr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>amazon%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>arise19%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>asus%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>asusid%2Eco%2Eid</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>asusph%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>au%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>au%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>baidu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bbdo%2Eco%2Ekr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bbdomexico%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bc%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bdsmktg%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bluefocus%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>br%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>bx%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ca%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ca%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>campaignsol%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>carolcreechpromotions%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>cisco%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>cn%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>cohnwolfe%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>contax%2Ecom%2Ebr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>contractindia%2Eco%2Ein</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>corp%2Eovh%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>corp%2Eovh%2Eus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>cray%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>creativebank%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>da%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dbt%2Edynabook%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dddmarcom%2Ech</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dell%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dellteam%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dentsu%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dentsu%2Ecom%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dialoggroup%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>digitalriver%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dwamedia%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dxglobal%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>dynabook%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>e-graphics%2Ecom%2Emx</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>eclerx%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>egplusww%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>emc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>enfatico%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>esg%2Eus</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>essencedigital%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>eu%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>event%2Eco%2Ekr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>example%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>fireflyeducate%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>fitch%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>force-focus%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>fujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>fullid%2Eco%2Ekr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>getitcomms%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>glb%2Etoshiba%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>gmail%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>go-yamamoto%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>gpr%2Elk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>groupm%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>gyro%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>h3c%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>haier%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hasee%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hds%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hetzner%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hitachi%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hitachivantara%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hk%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hotmail%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hp%2Eco</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hp%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>hpe%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>huawei%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ibm%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>id%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>igamesinc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>imd%2Edentsu%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>in2ideas%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ingrammicro%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>inspur%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ionos%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>it-comm%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>jd%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>joysaloon%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>jp%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>jp%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>jpik%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>kadaver%2Edk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>kd%2Ejp%2Enec%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>kingsoft%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>kr%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>lenovo%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>lge%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mailinator%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mbur%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mecglobal%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mediacom%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>medion%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>microsoft%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mirrorshow%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mraservices%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mrm-mccann%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>mrpfd%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>msi%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>my%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>navercorp%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>necp%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>nelsonbostockunlimited%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>netnow%2Ecl</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>newbetter%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>nextmarketing%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>nomura-g%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ogilvy%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>omd%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>omd%2Elk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>omnicommediagroup%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>omnicommediagroup%2Elk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>one1000%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>oracle%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>performics%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ph%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phase1world%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phd%2Eik</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phd%2Elk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phdmedia%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phdmeida%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>phdnetwork%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>position2%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>positivo%2Ecom%2Ebr</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>powerleader%2Ecom%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ppr%2Ecom%2Eau</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>public7%2Ede</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>publicismedia%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>qct%2Eio</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>qingcloud%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>qorvismsl%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>quantacn%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>quantatw%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>rackspace%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>rationalagency%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>redbaron%2Ein</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>resolutionmedia%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>samsung%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sea%2Esamsung%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sezax%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sg%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sg%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>shanghai%2Eco%2Eza</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sparkfoundryww%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>sugon%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>supermicro%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>supermicro%2Ecom%2Etw</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>tbwabenchmark%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>tencent%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>tengfei-ad%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>terracom%2Ecom%2Emy</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>th%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>theaffiniti%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>thtfpc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>timeus%2Enet</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>tmc-gmbh%2Ede</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toprankmarketing%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Eco%2Ejp</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Eco%2Euk</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Ecom%2Esg</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Ees</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba%2Enl</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba-tap%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba-teg%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>toshiba-tsf%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ts%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>tw%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ucloud%2Ecn</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>us%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>us%2Eibm%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>us%2Epanasonic%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vce%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vml%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vmlyr%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>vn%2Efujitsu%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>wavemc%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>wearesocial%2Enet</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>wunderman%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>wundermanthompson%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>xiaomi%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>yandex-team%2Eru</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>youngs-group%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>yr%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>yunify%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>zengdesign%2Ecom</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>zenithoptimedia%2Ecom%2Ecn</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_BudgetType_nm__c</picklist>
-            <values>
-                <fullName>Account Plan</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Business Client Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Client Specialties MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Cloud</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Co-Engineering</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DCF 1%2E0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Center Market Accelerate</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Data Centric Acceleration - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel MDF Account Based2</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Intel Rise Technology Initiative</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Premier - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IoT Targeted - MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDF%2B</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ODM Growth Plan - Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OEM CMP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal I MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Proposal II MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSA MD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Retail MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Client MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SOEM Data Center MDF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Service Provider CMP</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Payment_Type_nm__c</picklist>
-            <values>
-                <fullName>Customer</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Customer %28Pass Through%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor %28Cash%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Distributor %28Credit Memo%29</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Non-Customer</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Region_cd__c</picklist>
-            <values>
-                <fullName>APJ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ASMO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EMEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WW</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Source_Txt__c</picklist>
-            <values>
-                <fullName>IUPGM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Others</fullName>
-                <default>true</default>
-            </values>
-            <values>
-                <fullName>ProcessEntitlement</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Test</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Sub_Region_cd__c</picklist>
-            <values>
-                <fullName>ANZ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CEE</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CER</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IJKK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KOREA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>META</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NEUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RCIS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ROA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEA</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TAIWAN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>WEUR</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Type_of_Access__c</picklist>
-            <values>
-                <fullName>External</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Internal</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-    </recordTypes>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
-    <validationRules>
-        <fullName>Core_MDF_IPA_PaymentTypeValidation</fullName>
-        <active>true</active>
-        <description>Distributor (Cash), Distributor (Credit Memo) and Customer (Pass Through) Payment types are only applicable for IPA program</description>
-        <errorConditionFormula>AND(NOT(TEXT(Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c)==$Label.Core_MDF_IPA_Program_Name),
-OR(TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Cash)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Distributor (Credit Memo)&apos;,TEXT(Core_MDF_Payment_Type_nm__c )== &apos;Customer (Pass Through)&apos;))</errorConditionFormula>
-        <errorMessage>Selected Payment Type is only applicable for Intel Partner Alliance Program.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_PayTypeVal_ForOtherPrograms</fullName>
-        <active>true</active>
-        <description>Restrict the Payment type selection for programs which does not belong to CCP.</description>
-        <errorConditionFormula>AND(NOT(ISBLANK(TEXT(Core_MDF_Payment_Type_nm__c))),AND(
-NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCF_Program_Name),NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Non_Localized_DCF_Program_Name),
- NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_CCFB_Program_Name), 
- NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_SPCF_Program_Name), 
- NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_Retail_Program_Name), 
-NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</errorConditionFormula>
-        <errorMessage>Payment Type is not applicable for the Selected Program.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_PaymentTypeValidation</fullName>
-        <active>false</active>
-        <description>Restrict manual creation of PGM  for Agency accounts i.e when co-Marketing active is false</description>
-        <errorConditionFormula>AND((TEXT(Core_MDF_Payment_Type_nm__c) != NULL), (TEXT( Core_MDF_Type_of_Access__c ) == $Label.Core_MDF_External_label_for_PGM),  (Core_MDF_Account__r.Core_MDF_CoMarketingActive__c == FALSE))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
-        <errorMessage>Payment Type is not applicable for the Agency Account.</errorMessage>
-    </validationRules>
     <validationRules>
         <fullName>Core_MDF_RequiredAccountIdGroupName</fullName>
         <active>true</active>
@@ -4561,8 +3320,7 @@ NOT( Core_MDF_Channel_Program__r.Name = $Label.Core_MDF_IPA_Program_Name)))</err
 ISNEW(),
 ISPICKVAL(Core_MDF_Type_of_Access__c , &apos;Internal&apos;),
 ISPICKVAL(Core_MDF_Source_Txt__c,&apos;Others&apos;),
-NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName))),
-NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
+NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName)))
 )</errorConditionFormula>
         <errorMessage>Please use IUPGM for Internal PGM record creation.</errorMessage>
     </validationRules>
@@ -4572,14 +3330,6 @@ NOT(Core_MDF_Channel_Program_Name_Txt__c == $Label.Pricing_Tender_PGM_Channel)
         <description>To block update from users other than System Admin and IT Admin</description>
         <errorConditionFormula>AND(
     NOT(CONTAINS($Label.Core_MDF_UserIdAllowedToUpdatePGM, ($User.FirstName +&apos; &apos;+ $User.LastName))),
-	OR(
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_CCF_Program_Name,
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_Non_Localized_DCF_Program_Name,
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_CCFB_Program_Name,
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_SPCF_Program_Name,
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_Retail_Program_Name,
-		Core_MDF_Channel_Program_Name_Txt__c  == $Label.Core_MDF_IPA_Program_Name
-	),
 	OR(
 	   AND(
 	       ISPICKVAL(Core_MDF_Type_of_Access__c, &apos;Internal&apos;),

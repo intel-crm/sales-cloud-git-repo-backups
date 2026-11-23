@@ -62,12 +62,14 @@ global with sharing class Core_IPS_FileList {
             }         
             //Get Salesforce User Id from HTTP Request Object
             String UserId = RestContext.request.headers.get('userid'); 
+            system.debug('###### UserId:' + UserId ); 
             
             if (UserId != null && UserId != ''){                        
                 //Get User's Contact and RoleId
                 User Usr = [Select Id, UserRoleId, Profile.name, ProfileId, UserType, ContactId, Contact.AccountId From User where Id= :UserId ];                   
                 //Get User's File ID's by calling Utility method
                 sFileUploadMasterIds = Core_IPS_File_Utility.GetUserFileIDs(Usr);               
+                system.debug('###### sFileUploadMasterIds' + sFileUploadMasterIds.size() );
                 //Further Processing only if Records found
                 if (sFileUploadMasterIds.size() > 0) {
                     return ProcessRespObject(sFileUploadMasterIds);  

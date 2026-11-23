@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>creator</type>
@@ -309,7 +309,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Claim Case Review Result Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>
@@ -346,7 +346,7 @@
     </finalRejectionActions>
     <finalRejectionRecordLock>false</finalRejectionRecordLock>
     <label>Escalation Approval for Case</label>
-    <processOrder>1</processOrder>
+    <processOrder>2</processOrder>
     <recallActions>
         <action>
             <name>Core_MDF_Cancel_Status</name>

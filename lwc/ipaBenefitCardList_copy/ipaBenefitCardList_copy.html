@@ -1,0 +1,26 @@
+<template>
+    <h2>{title}</h2>
+    <p><lightning-formatted-rich-text value={_description}></lightning-formatted-rich-text></p>
+    <div class="benefits-list">
+        <template for:each={benefitsMobileShow} for:item="benefit">
+            <c-ipa-benefit-card_copy benefit={benefit} key={benefit.id}></c-ipa-benefit-card_copy>
+        </template>
+
+        <div class={classes.mobileContainerClass}>
+            <template for:each={benefitsMobileHide} for:item="benefit">
+                <c-ipa-benefit-card_copy benefit={benefit} key={benefit.id}></c-ipa-benefit-card_copy>
+                
+            </template>
+        </div>
+        <div class={classes.showMoreMobile}>
+            <div class="view-all-wrapper">
+                <div class="view-all-wrapper-container">
+                    <lightning-icon class="iconGray" icon-name="utility:chevrondown" size="xx-small"></lightning-icon>
+                    <a href="javascript:void(0);" class="view-expand-all" onclick={handleShowMore} >
+                        {showMore}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

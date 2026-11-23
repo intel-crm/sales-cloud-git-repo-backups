@@ -7,6 +7,7 @@
             var state = response.getState();            
             if (state === "SUCCESS") {
                 var listViewResult = response.getReturnValue();                
+                console.log('listViewResult:'+listViewResult);
                 if(listViewResult.length > 0){                   
                     // set listViewResult attribute with response
                     component.set("v.listViewResult",listViewResult);
@@ -44,6 +45,7 @@
             var state = response.getState();
             if (state === "SUCCESS") {                
                 var respValue = response.getReturnValue();             
+                console.log('Value ColKey '+JSON.stringify(respValue));
                 //set the column keys for the selected list view.
                 component.set('v.ColKeys', response.getReturnValue());
                 component.set("v.accessErrorMsg", '');
@@ -146,6 +148,7 @@
         //keymap will have the value of columns as map<selectedlistitem:label>
         //ex: {"Title":"Claim Name","Core_MDF_Claim_Ref_Number__c":"Claim ID"}
         var keyMap = component.get("v.ColKeys");  
+        console.log('keyMap '+JSON.stringify(keyMap));
         
         var keys= [keyMap.length];var p=0;
         //save the label in keys[]
@@ -157,6 +160,7 @@
         var keysunique= [keyMap.length];var p=0;
         //save the api name in keysunique[]
         for (var key in keyMap) {
+            console.log('printKey: '+key);
             keysunique[p] = key;
             p++;
             
@@ -242,21 +246,20 @@
                         
                         
                         //if b is not undefined set it to the next related value.
-                        var temp = Object.create(b);
-                        if(b !== undefined && b.hasOwnProperty(a[j])){
-                            b = temp[a[j]]; 
+                        if(b != undefined){
+                            b = b[a[j]]; 
                         }
-                                              
+                        counter++;                        
                     }
                     
                     //check the final value of b and set the string.
-                    if(b!=undefined && typeof b !== 'object'){
+                    if(b!=undefined){
                         csvStringResult += '"'+ b+'"';
                     }
                     else{
                         csvStringResult += '"'+''+'"';
                     }
-                   counter++;   
+                    
                 }                   
                 // inner for loop close 
                 csvStringResult += lineDivider;

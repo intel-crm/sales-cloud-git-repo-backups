@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>OPPORTUNITY_ID</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY.NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_NAME</field>
+    </columns>
+    <columns>
+        <field>MEMBER_ROLE</field>
+    </columns>
+    <filter>
+        <booleanFilter>(1 or 2) AND 3</booleanFilter>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>006o000000GMLlx,006o000000CL5Ee,006o000000B1vPP,006o000000Cr8eq,006o0000008PFdm,006o0000008rivh,006o0000009oele,006o000000IQQh7,006o000000Galp5,006o000000Galpo,006o000000Galpy,006o000000Eixoe,006o000000FCVed,006o000000CJSYm,006o0000007tVt4,006o0000008Q5c4,006o000000BPGym,006o000000IQ8uZ,006o000000AH4i0,006o000000FvZN5,006o000000F9cJb,006o000000GhysB,006o000000E9hSj,006o000000E9hUu,006o000000GhzGv,006o000000Gjg0s,006o000000GaX4r,006o000000F9dRm,006o000000Fv2kB,006o000000Gkfsk,006o0000009YMXd,006o0000008riwk,006o0000008PFjB,006o000000IDk7Y,006o000000IBul9,006o0000008PFhU,006o000000GEtxU,006o0000007swM4,006o000000DQJXx,006o000000DQJZy,006o0000008rPlz,006o0000008YIho,006o000000EgShC,006o000000Hmylq,006o000000HmUFm,006o000000F9P2n,006o000000GDolW,006o000000B48JW,006o000000FAAmJ,006o000000GhmAG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>006o000000F9OzP,006o000000EBZLN,006o0000009WU6c,006o000000IDvre,006o000000Gi1pB,006o0000009of3J,006o0000008rQES,006o000000Fv2cR,006o000000IOOoW,006o0000008PFQ4,006o000000AH3wa,006o000000HmKNl,006o000000GiAnY,006o000000GbyfX,006o0000008rtbW,006o000000HUqD9,006o0000009YMWB,006o0000009oen6,006o000000BPHyp,006o0000007tVxB,006o000000Gb7Gp,006o000000FAyqV,006o000000GFJEa,006o000000BLpr4,006o0000008ZSRe,006o000000IFOKV,006o0000008PFVY,006o000000B2xUF,006o000000IEik7,006o000000IEihw,006o0000009oemD,006o0000008tCUx,006o000000FpQy9,006o0000009oegP,006o000000DQHYE,006o000000FAAvN,006o000000GH8yd,006o000000FvOXs,006o000000EgSmo,006o0000009YMY2,006o000000BM8N8,006o000000GisNJ,006o000000CLUSH,006o0000008YHIO,006o000000B45pX,006o000000F9brg,006o000000B1vTC,006o000000HnBpi,006o000000GjsTm,006o0000009of1I,006o0000009oehX,006o0000008OVCU,006o0000009nxsi,006o0000008PSF6,006o000000F9dSp</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>MEMBER_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Bartosz Filipowicz,Dorian Witkowski,Marcin Majchrzak,Tobias Grimm,Dawid Studzinski,Marek Lesiewski</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>opportunities check NER</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>include</name>
+        <value>open</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityTeam</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

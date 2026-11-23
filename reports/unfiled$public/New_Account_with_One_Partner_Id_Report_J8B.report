@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Account</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Account.Partner_Account_Group_Members__r$Name</field>
+        </columns>
+        <columns>
+            <field>Account.Partner_Account_Group_Members__r$Core_Intel_Account_Id__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Account$Core_Is_PAG_Member_Ind__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Account with One Partner Id block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Account_with_One_Partner_Id__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Account$Core_Batch_Run_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B1</blockId>
+            <joinTable>Account</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Account.Company_Informations__r$Name</field>
+        </columns>
+        <columns>
+            <field>Account.Company_Informations__r$PMP_Partner_Benefit_Type__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Account with Marketing Profile I block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Account_with_Marketing_Profile_Information__c</reportType>
+        <scope>user</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Account$CreatedDate</dateColumn>
+            <endDate>2026-11-23</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2026-11-23</startDate>
+        </timeFrameFilter>
+    </block>
+    <block>
+        <blockInfo>
+            <blockId>B2</blockId>
+            <joinTable>Account</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Account.Contacts$FirstName</field>
+        </columns>
+        <columns>
+            <field>Account.Contacts.Contact_Entitlements__r$Core_Entitlement_Id__c</field>
+        </columns>
+        <format>Summary</format>
+        <name>Account with Contact &amp; Contact E block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Account_with_Contact_Contact_Entitlements_Custom__c</reportType>
+        <scope>user</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Account$CreatedDate</dateColumn>
+            <endDate>2026-11-23</endDate>
+            <interval>INTERVAL_CUSTOM</interval>
+            <startDate>2026-11-23</startDate>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Account</joinTable>
+    </blockInfo>
+    <description>New Account with One Partner Id Report</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Account$Name</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>New Account with One Partner Id Report</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_with_One_Partner_Id__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

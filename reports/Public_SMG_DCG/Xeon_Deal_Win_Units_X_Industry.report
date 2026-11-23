@@ -18,6 +18,9 @@
                 <sourceValue>Consulting</sourceValue>
             </sourceValues>
             <sourceValues>
+                <sourceValue>Engineering</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Manufacturing</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -143,7 +146,7 @@
             <value>lost,cancelled,deleted</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

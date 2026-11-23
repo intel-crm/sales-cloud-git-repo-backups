@@ -3,13 +3,6 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>Bypass_SOAR_DW_Check__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Bypass SOAR DW Check</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Bypass__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Bypass</label>

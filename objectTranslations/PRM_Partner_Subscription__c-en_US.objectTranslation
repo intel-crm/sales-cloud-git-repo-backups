@@ -84,6 +84,13 @@
             <translation><!-- Webinars - ITP for Intel Technology Provider --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Partner Subscription Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

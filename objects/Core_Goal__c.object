@@ -162,7 +162,7 @@
         <precision>18</precision>
         <required>false</required>
         <scale>2</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
     </fields>
@@ -181,41 +181,6 @@
         <externalId>false</externalId>
         <formula>Id</formula>
         <label>Deal Win Goal Id</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Email</formula>
-        <label>Deal Win Goal Owner Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager_Email__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Manager.Email</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Deal_Win_Goal_Owner_Manager__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_Goal_Owner__r.Core_Manager__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Deal Win Goal Owner Manager</label>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -273,41 +238,56 @@
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
-                    <fullName>CCG Commercial Deal Revenue $</fullName>
+                    <fullName>CCG Public Sector Deal $</fullName>
                     <default>false</default>
-                    <label>CCG Commercial Deal Revenue $</label>
+                    <label>CCG Public Sector Deal $</label>
                 </value>
                 <value>
-                    <fullName>CCG Strategic Next Gen Design #</fullName>
+                    <fullName>CCG Tiger Lake + Rocket Lake-S Design #</fullName>
                     <default>false</default>
-                    <label>CCG Strategic Next Gen Design #</label>
+                    <label>CCG Tiger Lake + Rocket Lake-S Design #</label>
                 </value>
                 <value>
-                    <fullName>CCG vPro Platform Deal Revenue $</fullName>
+                    <fullName>CCG vPro Deal $</fullName>
                     <default>false</default>
-                    <label>CCG vPro Platform Deal Revenue $</label>
+                    <label>CCG vPro Deal $</label>
                 </value>
                 <value>
-                    <fullName>DCAI Compute Deal $</fullName>
+                    <fullName>DCG Adjacencies Deal $</fullName>
                     <default>false</default>
-                    <label>DCAI Compute Deal $</label>
+                    <label>DCG Adjacencies Deal $</label>
                 </value>
                 <value>
-                    <fullName>DC Growth Deal $</fullName>
+                    <fullName>DCG Compute Deal $</fullName>
                     <default>false</default>
-                    <label>DC Growth Deal $</label>
+                    <label>DCG Compute Deal $</label>
                 </value>
                 <value>
-                    <fullName>DC Strategic Next Gen Design #</fullName>
+                    <fullName>DCG Strategic Next Gen Design #</fullName>
                     <default>false</default>
-                    <label>DC Strategic Next Gen Design #</label>
+                    <label>DCG Strategic Next Gen Design #</label>
                 </value>
                 <value>
-                    <fullName>NEX Deal (Sell-To) $</fullName>
+                    <fullName>IOTG All Deal $</fullName>
                     <default>false</default>
-                    <label>NEX Deal (Sell-To) $</label>
+                    <label>IOTG All Deal $</label>
+                </value>
+                <value>
+                    <fullName>NSG NAND Datacenter Cloud Deal $</fullName>
+                    <default>false</default>
+                    <label>NSG NAND Datacenter Cloud Deal $</label>
+                </value>
+                <value>
+                    <fullName>NSG Optane Datacenter Deal $</fullName>
+                    <default>false</default>
+                    <label>NSG Optane Datacenter Deal $</label>
+                </value>
+                <value>
+                    <fullName>PSG All Deal $</fullName>
+                    <default>false</default>
+                    <label>PSG All Deal $</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -377,20 +357,130 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Please refer to criteria on https://saleskpi.intel.com/</fullName>
+                    <fullName>Deal Win $ at end user accounts to ramp and grow Data Center Adjancency Products</fullName>
                     <default>false</default>
-                    <label>Please refer to https://saleskpi.intel.com/</label>
+                    <label>Deal Win $ at end user accounts to ramp and grow Data Center Adjancency Products</label>
+                </value>
+                <value>
+                    <fullName>Deal Win $ to ramp Intel® NAND SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s LRP</fullName>
+                    <default>false</default>
+                    <label>Deal Win $ to ramp Intel® NAND SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s LRP</label>
+                </value>
+                <value>
+                    <fullName>Deal Win $ to ramp Intel® Optane™ SSD for Client Platform adoption with End Users in support of Intel’s Optane ramp in ’20+. Intel Optane™ memory with SSD is eligible.</fullName>
+                    <default>false</default>
+                    <label>Deal Win $ to ramp Intel® Optane™ SSD for Client Platform adoption with End Users in support of Intel’s Optane ramp in ’20+. Intel Optane™ memory with SSD is eligible.</label>
+                </value>
+                <value>
+                    <fullName>Deal Win $ to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</fullName>
+                    <default>false</default>
+                    <label>Deal Win $ to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</label>
+                </value>
+                <value>
+                    <fullName>Deal Win # to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</fullName>
+                    <default>false</default>
+                    <label>Deal Win # to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</label>
+                </value>
+                <value>
+                    <fullName>Drive Data Center compute technology with priority workloads and solutions into end user markets.</fullName>
+                    <default>false</default>
+                    <label>Drive Data Center compute technology with priority workloads and solutions into end user markets.</label>
+                </value>
+                <value>
+                    <fullName>Drive Deal Wins focused on Application Acceleration.</fullName>
+                    <default>false</default>
+                    <label>Drive Deal Wins focused on Application Acceleration.</label>
+                </value>
+                <value>
+                    <fullName>Drive focused effort within the OXM/CSP account community to ensure a solid portfolio of system/solutions Designs using key products to support future revenue growth.  Includes DCG Platforms and Adjacency products</fullName>
+                    <default>false</default>
+                    <label>Drive focused effort within the OXM/CSP account community to ensure a solid portfolio of system/solutions Designs using key products to support future revenue growth.  Includes DCG Platforms and Adjacency products</label>
+                </value>
+                <value>
+                    <fullName>Drive Public Sector revenue w/wins, win-back, sell-up, refresh.Gov: Ci5+ (vPro under vPro KPI).Edu Big Core: Mature Markets: Ci3+ on Student devices, Ci5+ in Teacher/Computer/eSports labs, Emerging Markets: Ci3+.Edu Small Core: Competitive wins on ICP/IPP</fullName>
+                    <default>false</default>
+                    <label>Drive Public Sector revenue w/wins, win-back, sell-up, refresh.Gov: Ci5+ (vPro under vPro KPI).Edu Big Core: Mature Markets: Ci3+ on Student devices, Ci5+ in Teacher/Computer/eSports labs, Emerging Markets: Ci3+.Edu Small Core: Competitive wins on ICP/IPP</label>
+                </value>
+                <value>
+                    <fullName>Drive vPro branded revenue w/win-back on vPro, sell-up to vPro, sell-up to Xeon Wkstn, or vPro refresh (i.e. non-vPro to vPro, vPro ci5 to vPro ci7, core to vPro Xeon Wkstn, vPro refresh). Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Drive vPro branded revenue w/win-back on vPro, sell-up to vPro, sell-up to Xeon Wkstn, or vPro refresh (i.e. non-vPro to vPro, vPro ci5 to vPro ci7, core to vPro Xeon Wkstn, vPro refresh). Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Drive vPro differentiation/sell-up/TAM expansion w/vPro Manageability/Security and Unite. Deal size Mins: AMT  500, Unite and Security 50u,  (US/UK/,GER)  30u (ROW).Defer to vPro Manageability/Security &amp; Unite Criteria. Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Drive vPro differentiation/sell-up/TAM expansion w/vPro Manageability/Security and Unite. Deal size Mins: AMT  500, Unite and Security 50u,  (US/UK/,GER)  30u (ROW).Defer to vPro Manageability/Security &amp; Unite Criteria. Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>Inclusive of all Connected Home products. Must contain &quot;CCG-CHD BU product segment&quot; products</fullName>
+                    <default>false</default>
+                    <label>Inclusive of all Connected Home products. Must contain &quot;CCG-CHD BU product segment&quot; products</label>
+                </value>
+                <value>
+                    <fullName>Opportunities for TGL UP3/UP4/H notebook design wins or RKL-S desktop design wins</fullName>
+                    <default>false</default>
+                    <label>Opportunities for TGL UP3/UP4/H notebook design wins or RKL-S desktop design wins</label>
+                </value>
+                <value>
+                    <fullName>Scale w/defined GTM programs yielding pipeline/sales out/products as a standard offering.Incl. integrated marketing plan/collaterals/training. See criteria for vPro Manageability/Security/Unite/Optane/SMB/Public Sector. Alignment w/SMG BU Segment Director</fullName>
+                    <default>false</default>
+                    <label>Scale w/defined GTM programs yielding pipeline/sales out/products as a standard offering.Incl. integrated marketing plan/collaterals/training. See criteria for vPro Manageability/Security/Unite/Optane/SMB/Public Sector. Alignment w/SMG BU Segment Director</label>
+                </value>
+                <value>
+                    <fullName>This is an aggregate of all IOTG Deal Revenue $.  No $ Thresholds per Deal - &quot;a $ is a $&quot;</fullName>
+                    <default>false</default>
+                    <label>This is an aggregate of all IOTG Deal Revenue $.  No $ Thresholds per Deal - &quot;a $ is a $&quot;</label>
+                </value>
+                <value>
+                    <fullName>Win claimed at critical steps in a multi-year journey – Step 1) Intel influenced commercial RFP/MOU/LOI (specifying IA), Step 2) Trial Completion. Can claim TW at EACH step.</fullName>
+                    <default>false</default>
+                    <label>Win claimed at critical steps in a multi-year journey – Step 1) Intel influenced commercial RFP/MOU/LOI (specifying IA), Step 2) Trial Completion. Can claim TW at EACH step.</label>
+                </value>
+                <value>
+                    <fullName>Test Goal</fullName>
+                    <default>false</default>
+                    <label>Test Goal</label>
                 </value>
             </valueSetDefinition>
             <valueSettings>
-                <controllingFieldValue>CCG Commercial Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>CCG Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>CCG vPro Platform Deal Revenue $</controllingFieldValue>
-                <controllingFieldValue>DCAI Compute Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Growth Deal $</controllingFieldValue>
-                <controllingFieldValue>DC Strategic Next Gen Design #</controllingFieldValue>
-                <controllingFieldValue>NEX Deal (Sell-To) $</controllingFieldValue>
-                <valueName>Please refer to criteria on https://saleskpi.intel.com/</valueName>
+                <controllingFieldValue>CCG Public Sector Deal $</controllingFieldValue>
+                <valueName>Drive Public Sector revenue w/wins, win-back, sell-up, refresh.Gov: Ci5+ (vPro under vPro KPI).Edu Big Core: Mature Markets: Ci3+ on Student devices, Ci5+ in Teacher/Computer/eSports labs, Emerging Markets: Ci3+.Edu Small Core: Competitive wins on ICP/IPP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG Tiger Lake + Rocket Lake-S Design #</controllingFieldValue>
+                <valueName>Opportunities for TGL UP3/UP4/H notebook design wins or RKL-S desktop design wins</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>CCG vPro Deal $</controllingFieldValue>
+                <valueName>Drive vPro branded revenue w/win-back on vPro, sell-up to vPro, sell-up to Xeon Wkstn, or vPro refresh (i.e. non-vPro to vPro, vPro ci5 to vPro ci7, core to vPro Xeon Wkstn, vPro refresh). Alignment w/SMG BU Segment Director</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Adjacencies Deal $</controllingFieldValue>
+                <valueName>Deal Win $ at end user accounts to ramp and grow Data Center Adjancency Products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Compute Deal $</controllingFieldValue>
+                <valueName>Drive Data Center compute technology with priority workloads and solutions into end user markets.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>DCG Strategic Next Gen Design #</controllingFieldValue>
+                <valueName>Drive focused effort within the OXM/CSP account community to ensure a solid portfolio of system/solutions Designs using key products to support future revenue growth.  Includes DCG Platforms and Adjacency products</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>IOTG All Deal $</controllingFieldValue>
+                <valueName>This is an aggregate of all IOTG Deal Revenue $.  No $ Thresholds per Deal - &quot;a $ is a $&quot;</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG NAND Datacenter Cloud Deal $</controllingFieldValue>
+                <valueName>Deal Win $ to ramp Intel® NAND SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s LRP</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>NSG Optane Datacenter Deal $</controllingFieldValue>
+                <valueName>Deal Win $ to ramp Intel® Optane™ SSD for Datacenter technology adoption with End Users and Partners in support of Intel&apos;s  Optane ramp in ’20+.</valueName>
+            </valueSettings>
+            <valueSettings>
+                <controllingFieldValue>PSG All Deal $</controllingFieldValue>
+                <valueName>Drive Deal Wins focused on Application Acceleration.</valueName>
             </valueSettings>
         </valueSet>
     </fields>
@@ -413,7 +503,7 @@
     <fields>
         <fullName>Core_Goal_Match_Opportunity_KPI__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(Core_Opportunity__c != null, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFq&apos;,&apos;No KPI Match&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFp&apos;,&apos;KPI Not Achieved&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0151J000003lqFo&apos;,&apos;KPI Achieved&apos;), &apos;&apos;))),&apos;&apos;)</formula>
+        <formula>IF(Core_Opportunity__c != null, IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = FALSE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0152D0000009ds7&apos;,&apos;No KPI Match&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = FALSE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0152D0000005he7&apos;,&apos;KPI Not Achieved&apos;), IF(Core_Goal_KPI_Achieved_Flag__c = TRUE &amp;&amp; Core_Goal_KPI_Match_Flag__c = TRUE, IMAGE(&apos;/servlet/servlet.FileDownload?file=0152D0000005heC&apos;,&apos;KPI Achieved&apos;), &apos;&apos;))),&apos;&apos;)</formula>
         <inlineHelpText>Field Help: 1.No KPI Match: Opportunity doesn’t meet KPI criteria--&gt;CAN’T submit  2.KPI Not Achieved: Opportunity meets KPI criteria but not yet ‘win approved’--&gt;CAN’T submit  3.KPI Achieved: Opportunity meets KPI criteria &amp; ‘win approved’--&gt;CAN submit.</inlineHelpText>
         <label>Match Opportunity KPI?</label>
         <required>false</required>
@@ -684,66 +774,21 @@
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Currency</type>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_2ndPrev_Backend__c</fullName>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_2ndPrev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Backend__c</fullName>
-        <description>This is a backend field used to populate the actual value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MatchOppKPI_Prev_Backend__c</fullName>
-        <description>This is a backend field used to populate the previous value of &apos;Match Opportunity KPI&apos; field.
-Do not add it in the layout.</description>
-        <externalId>false</externalId>
-        <label>Core_MatchOppKPI_Prev_Backend</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_Opportunity__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Opportunity Name</label>
         <referenceTo>Opportunity</referenceTo>
+        <relationshipLabel>Deal Win Goals</relationshipLabel>
         <relationshipName>Deal_Win_Goals</relationshipName>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_Recall_Reason__c</fullName>
-        <label>Recall Comments</label>
-        <length>131072</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_Validate_KPI_Flag__c</fullName>
@@ -753,7 +798,7 @@ Do not add it in the layout.</description>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
-    <label>Deal Win Goal EOLd</label>
+    <label>Deal Win Goal</label>
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
@@ -798,7 +843,7 @@ Do not add it in the layout.</description>
         <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
-    <pluralLabel>Deal Win Goals EOLd</pluralLabel>
+    <pluralLabel>Deal Win Goals</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Core_Goal_Owner__c</customTabListAdditionalFields>
         <customTabListAdditionalFields>Core_Goal_Status__c</customTabListAdditionalFields>
@@ -847,6 +892,18 @@ Do not add it in the layout.</description>
         <masterLabel>Goal Credit</masterLabel>
         <openType>sidebar</openType>
         <page>Core_Deal_Win_Goal_Credit</page>
+        <protected>false</protected>
+    </webLinks>
+    <webLinks>
+        <fullName>Core_Goal_Recall_Approval</fullName>
+        <availability>online</availability>
+        <description>Used by the manager only</description>
+        <displayType>button</displayType>
+        <height>600</height>
+        <linkType>page</linkType>
+        <masterLabel>Recall Approval</masterLabel>
+        <openType>sidebar</openType>
+        <page>Core_Goal_UnclockRecord_Int</page>
         <protected>false</protected>
     </webLinks>
     <webLinks>

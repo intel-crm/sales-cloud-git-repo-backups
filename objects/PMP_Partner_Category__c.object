@@ -181,6 +181,19 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>Partner Industry Application</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PMP_Category_Id__c</columns>
+        <columns>PMP_Partner_Id__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>IA-{0000}</displayFormat>
         <label>Partner Industry Application Number</label>

@@ -150,7 +150,7 @@
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -256,11 +256,6 @@
                     <default>false</default>
                     <label>ERPM</label>
                 </value>
-                <value>
-                    <fullName>Salesforce</fullName>
-                    <default>false</default>
-                    <label>Salesforce</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -273,11 +268,6 @@
         <type>DateTime</type>
     </fields>
     <label>A&amp;E Integration Log</label>
-    <listViews>
-        <fullName>All</fullName>
-        <filterScope>Everything</filterScope>
-        <label>All</label>
-    </listViews>
     <nameField>
         <displayFormat>A&amp;E_Log-{0}</displayFormat>
         <label>A&amp;E Integration Log Name</label>

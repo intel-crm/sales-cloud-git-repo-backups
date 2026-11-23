@@ -28,6 +28,17 @@
         <label><!-- Time --></label>
         <name>Core_Account_Meeting_Items_Date_and_Time__c</name>
     </fields>
+    <layouts>
+        <layout>Meeting Agenda Item Layout</layout>
+        <sections>
+            <label><!-- Agenda Information --></label>
+            <section>Agenda Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Please format the time in ##:## AM/PM --></errorMessage>

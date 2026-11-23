@@ -7,12 +7,10 @@ Modification Log    :
 * Developer                 Date                    Description
 * ------------------------------------------------------------------------------------------------------------------------------------
 * Shraddha                May- 2023        Added a methods (getDDRPicklistValues) to fetch API values of given picklists
-* Sushmita                May- 2023        Added a method (createDDRRecords) to create DDR Records from payload and send response accordingly.
-* Shivini                 28-Oct-2024         Added WITH USER_MODE to SOQL and DML statements.
-* Aravind                 5-NOv-2024         Changes to move PCC_DDR_Integration_MasterData__mdt custom metadata to new framework
+* Sushmita				  May- 2023		   Added a method (createDDRRecords) to create DDR Records from payload and send response accordingly.
 ************************************************************************************************************************************************/
 
-global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
+global class PCC_CreateDesignRegistrationUtility_V1 {
     public static final String LOG_ENTRY_ORIGIN   = 'PCC_CreateDesignRegistration';
     public static final String LOG_ENTRY_PROJECT  = 'DDR Registration';
     public static final String LOG_ENTRY_SCOPE    = 'Create DDR Records';
@@ -20,8 +18,6 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
     public static final String LOG_ENTRY_INFO     = 'info';
-	//public static final Id cpId = [SELECT id FROM ChannelProgram where Name='Partner Covers Customer (PCC)' LIMIT 1].Id;
-    //public static final List<Id> cpList = new List<Id>{Label.PCC_ChannelProgramId};
     
     /*****************************************************************************************************************
 * Method Name:getDDRPicklistValues
@@ -32,20 +28,12 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
     
     public static void getDDRPicklistValues(){
         
-        //Map<String, String> mapOfRfrToAPINamePicklist = new Map<String, String>();
+        Map<String, String> mapOfRfrToAPINamePicklist = new Map<String, String>();
         PCC_Wrapper.PCC_MasterData_SuccessWrapper successWrp = new PCC_Wrapper.PCC_MasterData_SuccessWrapper();
         PCC_Wrapper.PCC_MasterData_ErrorWrapper errWrp = new PCC_Wrapper.PCC_MasterData_ErrorWrapper();
+        
         Boolean isSuccess = false, isError = false;
-        String requestedUrl = 'RequestedURI: '+RestContext.request.requestURI+' Params: '+RestContext.request.params;
-        DateTime reqTime = System.now();
-        String respBody;
-        String staticLabel = PCC_Constants.static_DDR_MD_Label;
-	Id cpId;      
-        try{
-            cpId = [SELECT Id, Name FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;
-        }catch(exception ex){ 
-            cpId = null;
-        }
+        
         try{
             String objectName = 'Core_Design_Registration__c';
             String tempName = RestContext.request.params.get('name');
@@ -55,19 +43,23 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
             
             Integer paramSize = RestContext.request.params.size();
             String fieldName = (name != null) ? name.toUpperCase() : null;
-
+            
+            System.debug('fieldName-->'+fieldName);
             if((paramSize == 1 && RestContext.request.params.containsKey('name'))
                || (paramSize == 2 && RestContext.request.params.containsKey('name') && RestContext.request.params.containsKey('parent'))
               ){
                   if(fieldName == 'ALL' && controllingValue == null){
-                    successWrp.ResponseBody = getPicklistValMap(objectName);
-                    isSuccess = true;
+                      for(PCC_DDR_Integration_MasterData__mdt DIM : PCC_DDR_Integration_MasterData__mdt.getAll().values()){
+                          mapOfRfrToAPINamePicklist.put(DIM.PCC_Picklist_API_Name__c, DIM.Label);
+                      }
+                      Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>> picklistValuesMap = PCC_CreateDDRUtilityHandler.getPicklistValuesMap(objectName, mapOfRfrToAPINamePicklist);
+                      successWrp.ResponseBody = picklistValuesMap;
+                      isSuccess = true;
                       
-                  }else if(fieldName != null && String.isNotBlank(fieldName)){
-                      Map<String, Map<String, Object>> integMasterDataMap = new Core_CustomMetadataObjectController('PCC_DDR_Integration_MasterData__mdt').getAll();       
-                        if(integMasterDataMap.containsKey(fieldName)){
-                          String picklistValue = String.valueOf(integMasterDataMap.get(fieldName).get('PCC_Picklist_API_Name__c')) ;
-                          String picklistLabel = String.valueOf(integMasterDataMap.get(fieldName).get('MasterLabel'));
+                  }else if(fieldName != null && String.isNotBlank(fieldName)){       
+                      if(PCC_DDR_Integration_MasterData__mdt.getAll().containsKey(fieldName)){ 
+                          String picklistValue = PCC_DDR_Integration_MasterData__mdt.getAll().get(fieldName).PCC_Picklist_API_Name__c ;
+                          String picklistLabel = PCC_DDR_Integration_MasterData__mdt.getAll().get(fieldName).Label;
                           if(controllingValue!=null){
                               Schema.sObjectField controllingField = Schema.getGlobalDescribe().get(ObjectName).getDescribe().fields.getMap().get(picklistValue).getDescribe().getController();
                               
@@ -79,43 +71,46 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
                                           successWrp.ResponseBody = mapOfDependentFields;
                                           isSuccess = true;
                                       }else{
-                                          errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_Invalid_Parent_Param_GetMethod').Value__c;
+                                          errWrp.ResponseBody = 'Invalid value for parent parameter';
                                           errWrp.ErrorCode = 9011;
                                           isError = true;
                                       }
                                   }else{
-                                      errWrp.ResponseBody =  LabelConfiguration__mdt.getInstance('PCC_No_Parent_Value_GetMethod').Value__c;
+                                      errWrp.ResponseBody = 'Invalid URL. Please provide parent value';
                                       errWrp.ErrorCode = 9002;
-                                      isError = true;
+                                      isError = true; 
                                   }   
                               }else{
-                                  errWrp.ResponseBody =  LabelConfiguration__mdt.getInstance('PCC_InvalidChildValue_GetMethod').Value__c;
+                                  errWrp.ResponseBody = 'Could not find this child picklist for the provided parent value';
                                   errWrp.ErrorCode = 9011;
                                   isError = true;
                               }
                           }else{
                               Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>> picklistValuesMap = PCC_CreateDDRUtilityHandler.getPicklistValuesMap(objectName, new map<String,String>{picklistValue => picklistLabel});
-                              Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>> staticLabelPkValuesMap = new Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>>{staticLabel => picklistValuesMap.get(picklistLabel)};
-                              successWrp.ResponseBody = staticLabelPkValuesMap;
+                              successWrp.ResponseBody = picklistValuesMap;
                               isSuccess = true;
                           }  
                       }else{
-                          errWrp.ResponseBody =  LabelConfiguration__mdt.getInstance('PCC_PicklistNameParam_GetMethod').Value__c;
+                          errWrp.ResponseBody = 'Invalid value for picklist name parameter';
                           errWrp.ErrorCode = 9011;
                           isError = true;
                       }
                   }else{
-                      errWrp.ResponseBody =  LabelConfiguration__mdt.getInstance('PCC_NoPicklistName_GetMethod').Value__c;
+                      errWrp.ResponseBody = 'Invalid URL. Please provide picklist name';
                       errWrp.ErrorCode = 9002;
                       isError = true;
                   }
               }else if(paramSize == 0){
-                    RestContext.response = getDDRwithNoParam();
-                  }else{
-                  errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_InvalidReqParam_GetMethod').Value__c;
+                  RestContext.response.addHeader('Content-Type', 'application/json');      
+                  RestContext.response.statusCode = 404;
+                  RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(404, 'FAILURE', 404, 'Invalid URL. Please provide mandatory parameters', null))); 
+              }else{
+                  errWrp.ResponseBody = 'Invalid Request Parameter';
                   errWrp.ErrorCode = 9010;
                   isError = true;
               }
+            
+            
             //send response
             if(isSuccess){
                 successWrp.StatusCode = 200;
@@ -125,27 +120,28 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
             }else if(isError){
                 errWrp.StatusCode = 400;
                 errWrp.Status = 'FAILURE';
-                RestContext.response = getErrorResponse(errWrp);
-            } 
-        }catch (Exception ex){
-            RestContext.response = getErrorForCatch(ex);
-        }
-        finally{
-            respBody = RestContext.response.responseBody.toString();
-            if (respBody.length() > PCC_Constants.MAX_CHARACTER_TO_STORE) { respBody = respBody.substring(0, PCC_Constants.MAX_CHARACTER_TO_STORE);
+                RestContext.response.addHeader('Content-Type', 'application/json');
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(errWrp));      
+                RestContext.response.statusCode = 400;
             }
-            //create integration log records to store payload and response
-            PRM_IPA_Utility.createPCCIntegrationLog('',PCC_Constants.CALLOUT_TYPE_INBOUND,PCC_Constants.MODULE_DDR_REGISTRATION,'',respBody ,
-                                                    RestContext.response.statusCode,PCC_Constants.SYSTEM_NAME_M2M,'PCC_CreateDesignRegistrationUtility_V1.getDDRPicklistValues',
-                                                    reqTime,System.now(), true, cpId, requestedUrl);
-        }        
-    }   
+            
+        }catch (Exception ex){
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDesignRegistrationUtility_V1' ,'' ,ex); 
+            RestContext.response.addHeader('Content-Type', 'application/json');
+            RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(500, 'FAILURE', 500, 'An internal server error has occurred', null))); 
+            RestContext.response.statusCode = 500;
+        }
+        
+    } 
+    
+    
     /*****************************************************************************************************************
 * Method Name:getDependencies
 * Date: 14/05/2023    
 * Owner: Shraddha
 * Description: check if is it valid controlling value
-******************************************************************************************************************/  
+******************************************************************************************************************/
+    
     private static Boolean getDependencies(Schema.SObjectField controllingField, String controllingValue){
         Boolean isDependent = false;
         try{
@@ -155,11 +151,13 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
                     isDependent = true;
                 }
             }
-        }catch (Exception ex){ Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDesignRegistrationUtility_V1.getDependencies' ,'' ,ex); 
+        }catch (Exception ex){
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDesignRegistrationUtility_V1' ,'' ,ex); 
         }
         return isDependent;
     }
- 
+    
+    
     /*****************************************************************************************************************
 * Method Name:createDDRRecords
 * Date: 04/06/2023    
@@ -173,281 +171,142 @@ global with sharing class PCC_CreateDesignRegistrationUtility_V1 {
         String jsonBody = req.requestBody.toString();
         DateTime reqTime = System.now();
         String respBody;
-        String requestedUrl = 'RequestedURI: '+req.requestURI; 
-        Id cpId;       
-        try{
-            cpId = [SELECT Id, Name FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;
-        }catch(exception ex){ 
-            cpId = null;
-        }
+        
+        Id cpId = [SELECT Id FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;     
+        
         try {
-            res = createDDRTryBlock(jsonBody, performOperation);
+            //read design registration product payload and store values in drList
+            List<Object> listOfPayloads =  (List<Object>) JSON.deserializeUntyped(jsonBody);
+            System.debug('listOfPayloads'+listOfPayloads);
+            //Checking the limit size for record processing.
+            if(Boolean.valueOf(System.Label.PCC_Enabled_Payload_Limit_Restriction) && listOfPayloads.size() > Integer.valueOf(System.Label.PCC_Max_Record_Limit)){
+                PCC_Wrapper.SalesforceResponseWrapper responseWrapper = PCC_CreateDDRUtilityHandler.setResponseBody(429, 'FAILURE', 9012, 'Our system can process a maximum of '+System.Label.PCC_Max_Record_Limit+' records at a time. Currently the number of requested records is '+listOfPayloads.size()+'. To ensure successful processing, we kindly request you to reduce the number of records and try again.', '');
+                res.statusCode = 429; 
+                res.responseBody = Blob.valueOf(JSON.serialize(responseWrapper));
+            }else{
+                if(performOperation == 'Insert Design Registration'){
+                    res = (!listOfPayloads.isEmpty()) ? PCC_CreateDDRUtilityHandler.createDesignRegistrationRec(listOfPayloads) : null;
+                }
+                else if(performOperation == 'Design Registration Product'){
+                    //create DDR product records if payloads are below limit size
+                    res = (!listOfPayloads.isEmpty()) ? PCC_CreateDRProductUtilityHandler_V1.createDDRProducts(listOfPayloads) : null; 
+                }
+                else if(performOperation == 'Update Design Registration'){
+                    res = (!listOfPayloads.isEmpty()) ? PCC_CreateDDRUtilityHandler.updateDesignRegistrationRecords(listOfPayloads) : null;
+                }
+            } 
         } catch (Exception ex) {
-            res = getErrorForCatch(ex);
+            res.statusCode = 500;
+            PCC_Wrapper.SalesforceResponseWrapper responseWrapper = PCC_CreateDDRUtilityHandler.setResponseBody(500, 'FAILURE', 500, 'An internal server error has occurred.', '');
+            res.responseBody = Blob.valueOf(JSON.serialize(responseWrapper));
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY, '', '', '', 'PCC_CreateDesignRegistrationUtility_V1', '', ex);
         }
-        finally{ 
-            if(RestContext.response.responseBody != null){
-                respBody = RestContext.response.responseBody.toString();
-                if (respBody.length() > PCC_Constants.MAX_CHARACTER_TO_STORE){ respBody = respBody.substring(0, PCC_Constants.MAX_CHARACTER_TO_STORE);
-                                                                              }
-                //create integration log records to store payload and response
-                PRM_IPA_Utility.createPCCIntegrationLog('',PCC_Constants.CALLOUT_TYPE_INBOUND,PCC_Constants.MODULE_DDR_REGISTRATION,jsonBody,respBody ,res.statusCode,PCC_Constants.SYSTEM_NAME_M2M,
-                                                        'PCC_CreateDesignRegistrationUtility_V1.createDDRRecords',reqTime,System.now(), true, cpId ,requestedUrl);
-            }
+         finally{
+            System.debug('res.responseBody'+res.responseBody);
+            //create integration log records to store payload and response
+            
+             PRM_IPA_Utility.createPCCIntegrationLogWrapper obj=new PRM_IPA_Utility.createPCCIntegrationLogWrapper();
+            obj.recordId='';
+            obj.callType=PCC_Constants.CALLOUT_TYPE_INBOUND;
+            obj.module=PCC_Constants.MODULE_DDR_REGISTRATION;
+            obj.reqPayload=jsonBody; 
+            obj.respPayload=jsonBody;
+            obj.respCode=res.statusCode;
+            obj.systemName=PCC_Constants.SYSTEM_NAME_M2M;
+            obj.className='PCC_CreateDesignRegistrationUtility_V1';
+            obj.reqTime=reqTime;
+            obj.resTime=System.now();
+            obj.insertRecord=true;
+            obj.program=cpId;
+            obj.reqUrl='';
+            PRM_IPA_Utility.createPCCIntegrationLog(obj);//Athr fixes
+            //PRM_IPA_Utility.createPCCIntegrationLog('',PCC_Constants.CALLOUT_TYPE_INBOUND,PCC_Constants.MODULE_DDR_REGISTRATION,jsonBody,jsonBody ,res.statusCode,PCC_Constants.SYSTEM_NAME_M2M,'PCC_CreateDesignRegistrationUtility_V1',reqTime,System.now(), true, cpId,'');
         }
         res.addHeader('Content-Type', 'application/json');
-        return res;     
+        return res;
     }  
     
     /*****************************************************************************************************************
 * Method Name:getDDRRecordDetails
 * Date: 23/06/2023    
 * Owner: Shraddha
-* Description: return design registration record to external system based on the record Id 
+* Description: return design registration record to external system based on the record Id or external Id
 ******************************************************************************************************************/
     public static void getDDRRecordDetails(){
         Boolean isSuccess = false;
         Boolean isError = false;
         PCC_Wrapper.restAPIDDRDetailsWrapper respWrp = new PCC_Wrapper.restAPIDDRDetailsWrapper();
-        PCC_Wrapper.restAPIDDRDetailsWrapper1 respWrp1 = new PCC_Wrapper.restAPIDDRDetailsWrapper1();
         PCC_Wrapper.PCC_MasterData_ErrorWrapper errWrp = new PCC_Wrapper.PCC_MasterData_ErrorWrapper();
         PCC_Wrapper.PCC_DesignRegDetailsWrapper ddrWrp = new PCC_Wrapper.PCC_DesignRegDetailsWrapper();
-        PCC_Wrapper.PCC_allDdrDetailsWrapper allDdrDetails = new PCC_Wrapper.PCC_allDdrDetailsWrapper();
-       // List<PCC_Wrapper.PCC_DDRDetailsWrapper> drpWrpList = new List<PCC_Wrapper.PCC_DDRDetailsWrapper>();
-        String requestedUrl = 'RequestedURI: '+RestContext.request.requestURI+' Params: '+RestContext.request.params;
-        DateTime reqTime = System.now();
-        String respBody;
-        Boolean returnOnlyDDR = false;
-        Id cpId;      
-        try{
-            cpId = [SELECT Id, Name FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;
-        }catch(exception ex){ 
-            cpId = null;
-        }
+        
         try{
             Integer paramSize  = RestContext.request.params.keySet().size();
             
-            if(paramSize == 1 && RestContext.request.params.containsKey('id') 
-               || (paramSize == 2 && RestContext.request.params.containsKey('id') && RestContext.request.params.containsKey('type'))
-              ){
+            if(paramSize == 1 && RestContext.request.params.containsKey('id')){
                 String uniqueId = RestContext.request.params.get('id');
-                String reqType = RestContext.request.params.containsKey('type') ? RestContext.request.params.get('type') : null;
                 // Decode the parameter using UTF-8 decoding
-                String decodedId = EncodingUtil.urlDecode(uniqueId, 'UTF-8');    
-                String decodedReqType = reqType!= null ? EncodingUtil.urlDecode(reqType, 'UTF-8') : null;
-                
+                String decodedId = EncodingUtil.urlDecode(uniqueId, 'UTF-8');
                 if(decodedId != null && String.isNotBlank(decodedId)){
                     try {
-                        //fetch design registration details by passing RecordID/ExternalID
-                        Core_Design_Registration__c ddrRec =  [SELECT Id, Name, Core_Product_Application_Nm__c, Core_Product_Group_Nm__c, 
+                        Core_Design_Registration__c ddrRec =  [Select Id, Name, Core_Product_Application_Nm__c, Core_Product_Group_Nm__c, 
                                                                Core_Product_Segment_Nm__c, Core_Vertical_Market_Nm__c, Core_Military_Aerospace_Gvrnmt_Use_Ind__c, 
                                                                Core_External_Id__c, Core_Partner_FAE_Nm__c, Core_End_Customer_Nm__c, Core_End_Customer_Street_Addr_Line1_Txt__c, 
-                                                               Core_End_Customer_Postal_Cd__c, Core_End_Customer_Country_Nm__c,PCC_End_Customer_Country__c,Core_End_Customer_URL__c, Core_Intel_Platform_Nm__c,
+                                                               Core_End_Customer_Postal_Cd__c, Core_End_Customer_Country_Nm__c, Core_Intel_Platform_Nm__c,
                                                                Core_Opportunity_Volume_Cnt__c,Core_Opportunity_Decision_Dt__c, Core_First_Customer_Ship_Dt__c, 
                                                                Core_Production_End_Dt__c,Core_Design_Registration_Dsc__c,Core_Partner_FSR_Nm__c,
                                                                Core_End_Customer_Street_Addr_Line2_Txt__c,Core_End_Customer_City_Nm__c,
                                                                Core_End_Customer_Country_Subdivision_Nm__c,Core_End_Customer_Contact_Title_Txt__c,Core_End_Customer_Contact_Nm__c,
-                                                               Core_End_Customer_Contact_Email_Txt__c,Core_End_Customer_Contact_Phone_Txt__c,Core_Manufacturing_Region_Cd__c,
-                                                               Core_Design_Registration_Nm__c, Core_Design_Registration_Status_Nm__c, Core_Rejection_Reason_Nm__c, 
-                                                               Core_Rejection_Comment_Txt__c, Core_Opportunity_Id__c, Core_Design_Solution_Network_Ind__c,
-                                                               Core_MINDS_Message_Txt__c, Core_FPGA_Quote_Comments_Txt__c, Core_Partner_Account_Nm__c, Core_End_Customer_Account_Nm__c, 
-                                                               Core_Intel_Technical_Owner_Id__r.name,PCC_Intel_Technical_Owner_Name__c
+                                                               Core_End_Customer_Contact_Email_Txt__c,Core_End_Customer_Contact_Phone_Txt__c,Core_Manufacturing_Region_Cd__c,Core_Design_Registration_Nm__c 
                                                                from Core_Design_Registration__c
-                                                               WHERE id =: decodedId WITH USER_MODE  limit 1];      
+                                                               WHERE (id =: decodedId OR Core_External_Id__c =: decodedId) limit 1];      
                         
-                        //set DDRwrapper
                         if(ddrRec != null){
                             ddrWrp = PCC_CreateDDRUtilityHandler.setDDRWrapper(ddrRec);
-                            
-                            if(decodedReqType != null && decodedReqType == 'DR'){
-                                //To send the response body to an external system
-                                respWrp1 = PCC_CreateDDRUtilityHandler.setDesignRegResponseBody(200, 'SUCCESS', null, ddrWrp, ddrRec.Id,ddrRec.name); 
-                                returnOnlyDDR = true;
-                            }else{              
-                                allDdrDetails = getDrpRecList(ddrRec.Id);                  
-                                allDdrDetails.DesignRegistrationDetails = ddrWrp;
-                                //To send the response body to an external system
-                                respWrp = PCC_CreateDDRUtilityHandler.setDesignRegResponseBody(200, 'SUCCESS', null, allDdrDetails, ddrRec.Id,ddrRec.name);
-                            }
                         }
-                        isSuccess =  true;                      
+                        isSuccess =  true;
+                        respWrp = PCC_CreateDDRUtilityHandler.setDesignRegResponseBody(200, 'SUCCESS', null, ddrWrp, ddrRec.Id);
+                        
                     } catch (QueryException e) {
-
-                        errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_NoDDRFound_GetDDR').Value__c+ decodedId;
+                        errWrp.ResponseBody = 'No Design Registration record found with ID: '+ decodedId;
                         errWrp.ErrorCode = 9011;
                         isError = true;
                     }
                 }else{
-                    errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_NoDDRId_GetDDR').Value__c;
+                    errWrp.ResponseBody = 'Please provide an Id to get Design Registration Details';
                     errWrp.ErrorCode = 9002;
                     isError = true;
                 }
             }else if(paramSize == 0){
-                RestContext.response = getDDRwithNoParam();
-            }else if(!RestContext.request.params.containsKey('id')){
-                errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_InvalidParamId_GetDDR').Value__c;
-                errWrp.ErrorCode = 9010;
-                isError = true;
+                RestContext.response.addHeader('Content-Type', 'application/json');      
+                RestContext.response.statusCode = 404;
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(404, 'FAILURE', 404, 'Invalid URL. Please provide mandatory parameters', null))); 
             }else{
-                errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_InvalidParamType_GetDDR').Value__c;
+                errWrp.ResponseBody = 'The parameter provided in the request is not valid. The expected parameter is `Id`';
                 errWrp.ErrorCode = 9010;
                 isError = true;
             }
             
             //send response
             if(isSuccess){
-                RestContext.response = getSuccessResponse(returnOnlyDDR, respWrp1, respWrp);    
+                RestContext.response.addHeader('Content-Type', 'application/json');
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(respWrp));      
+                RestContext.response.statusCode = 200;
             }else if(isError){
                 errWrp.StatusCode = 400;
                 errWrp.Status = 'FAILURE';
-                RestContext.response = getErrorResponse(errWrp);
+                RestContext.response.addHeader('Content-Type', 'application/json');
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(errWrp));      
+                RestContext.response.statusCode = 400;
             }
+            
         }catch (Exception ex){
-            RestContext.response = getErrorForCatch(ex);
-        }finally{
-            respBody = RestContext.response.responseBody.toString();
-            if (respBody.length() > PCC_Constants.MAX_CHARACTER_TO_STORE) { respBody = respBody.substring(0, PCC_Constants.MAX_CHARACTER_TO_STORE);
-            }
-            //create integration log records to store payload and response
-            PRM_IPA_Utility.createPCCIntegrationLog('',PCC_Constants.CALLOUT_TYPE_INBOUND,PCC_Constants.MODULE_DDR_REGISTRATION,'',respBody ,
-                                                    RestContext.response.statusCode,PCC_Constants.SYSTEM_NAME_M2M,'PCC_CreateDesignRegistrationUtility_V1.getDDRRecordDetails',
-                                                    reqTime,System.now(), true,cpId,requestedUrl);
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDesignRegistrationUtility_V1' ,'' ,ex); 
+            RestContext.response.addHeader('Content-Type', 'application/json');
+            RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(500, 'FAILURE', 500, 'An internal server error has occurred', null))); 
+            RestContext.response.statusCode = 500;
         }
-    } 
-
-/*****************************************************************************************************************
-* Method Name:createDDRTryBlock, getPayloadResponse, getErrorForCatch, getFailureResponse, getLimitationResponse
-* Date: 18/12/2023    
-* Owner: Sushmita
-* Description: returns payload response
-******************************************************************************************************************/
-    public static RestResponse createDDRTryBlock(String jsonBody, String performOperation){
         
-        RestResponse res = RestContext.response;
-        if (jsonBody != null && jsonBody.length() > 2 && jsonBody.contains('{') && jsonBody.contains('}')) {
-            List<Object> listOfPayloads =  (List<Object>) JSON.deserializeUntyped(jsonBody);
-            //Checking the limit size for record processing.
-            String limitExceedMsg = LabelConfiguration__mdt.getInstance('PCC_LimitExceededMsg_PostDDR').Value__c.replace('{1}',string.ValueOf(System.Label.PCC_Max_Record_Limit)).replace('{2}',string.valueOf(listOfPayloads.size()));
-            if((Boolean.valueOf(System.Label.PCC_Enabled_Payload_Limit_Restriction) && listOfPayloads.size() > Integer.valueOf(System.Label.PCC_Max_Record_Limit))){
-                res = getLimitationResponse(limitExceedMsg);  
-            }else{
-                res = getPayloadResponse(performOperation, listOfPayloads);
-            } 
-        }else{
-            res = getFailureResponse();    
-        }
-        return res;
     }
-
-    public static RestResponse getPayloadResponse(String performOperation, List<Object> listOfPayloads){
-
-        RestResponse res = RestContext.response;
-        if(performOperation == PCC_Constants.INSERT_DDR){
-            res = (!listOfPayloads.isEmpty()) ? PCC_CreateDDRUtilityHandler.createDesignRegistrationRec(listOfPayloads) : null;
-        }
-        else if(performOperation == PCC_Constants.INSERT_DRP){
-            //create DDR product records if payloads are below limit size
-            res = (!listOfPayloads.isEmpty()) ? PCC_CreateDRProductUtilityHandler_V1.createDDRProducts(listOfPayloads) : null; 
-        }
-        else if(performOperation == PCC_Constants.UPDATE_DDR){
-            res = (!listOfPayloads.isEmpty()) ? PCC_CreateDDRUtilityHandler.updateDesignRegistrationRecords(listOfPayloads) : null;
-        }
-        else if(performOperation == PCC_Constants.UPDATE_DRP){
-            //update DDR product records if payloads are below limit size
-            res = (!listOfPayloads.isEmpty()) ? PCC_CreateDRProductUtilityHandler_V1.updateDDRProducts(listOfPayloads) : null; 
-        }
-        return res;
-    }
-
-    public static RestResponse getErrorForCatch(Exception ex){
-        RestResponse res = RestContext.response;
-        res.statusCode = 500;
-        res.addHeader('Content-Type', 'application/json');
-        PCC_Wrapper.SalesforceResponseWrapper responseWrapper = PCC_CreateDDRUtilityHandler.setResponseBody(500, 'FAILURE', 500, LabelConfiguration__mdt.getInstance('PCC_InternalServerError_Catch').Value__c, '');
-        res.responseBody = Blob.valueOf(JSON.serialize(responseWrapper));
-        Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY, '', '', '', 'PCC_CreateDesignRegistrationUtility_V1.createDDRRecords', '', ex);
-
-        return res;      
-    }
-
-    public static RestResponse getFailureResponse(){
-        RestResponse res = RestContext.response;
-        res.statusCode = 400;
-        PCC_Wrapper.SalesforceResponseWrapper responseWrapper = PCC_CreateDDRUtilityHandler.setResponseBody(400, 'FAILURE', 9013, LabelConfiguration__mdt.getInstance('PCC_InvalidEmptyRequest_PostMethod').Value__c, '');
-        res.responseBody = Blob.valueOf(JSON.serialize(responseWrapper)); 
-
-        return res;
-    }
-
-    public static RestResponse getLimitationResponse(String limitExceedMsg){
-        RestResponse res = RestContext.response;
-        PCC_Wrapper.SalesforceResponseWrapper responseWrapper = PCC_CreateDDRUtilityHandler.setResponseBody(429, 'FAILURE', 9012, limitExceedMsg , null);
-        res.statusCode = 429; 
-        res.responseBody = Blob.valueOf(JSON.serialize(responseWrapper));
-
-        return res;
-    }
-
-    public static  PCC_Wrapper.PCC_allDdrDetailsWrapper getDrpRecList(Id drRecId){
-        
-        List<Core_Design_Registration_Product__c> drpRecList = new List<Core_Design_Registration_Product__c>();
-        List<PCC_Wrapper.PCC_DDRDetailsWrapper> drpWrpList = new List<PCC_Wrapper.PCC_DDRDetailsWrapper>();
-        PCC_Wrapper.PCC_allDdrDetailsWrapper allDdrDetails = new PCC_Wrapper.PCC_allDdrDetailsWrapper();
-        drpRecList = [SELECT Id, Name, Core_Design_Registration_Id__c, Core_Product_Id__c, Core_Full_Year_Qty__c,
-                        Core_Retired_As_Of_Dt__c, Core_External_Id__c, Core_Target_Resale_Amt__c,
-                        DDR_Target_Resale_Price_Note__c, Core_Design_Product_Status_Nm__c,
-                        Core_Comment_Txt__c, Core_Partner_Tracking_Cd__c,Core_Product_List_Price_Amt__c,    
-                        Core_Full_Year_Value_Amt__c, Core_Opportunity_Product_Id__c,
-                        (SELECT Id, PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c, PCC_Old_MM_Id__c
-                        FROM DDR_Product_Mappings__r LIMIT 1)
-                        FROM Core_Design_Registration_Product__c where Core_Design_Registration_Id__c =:drRecId WITH USER_MODE];
-
-        if(drpRecList!=null && !drpRecList.isEmpty()){
-            drpWrpList = PCC_CreateDDRUtilityHandler.setDDRProdWrapper(drpRecList);
-            allDdrDetails.AssociatedDesignRegistrationProducts = drpWrpList;
-        }
-        return allDdrDetails;
-    }
-
-    public static RestResponse getDDRwithNoParam(){
-        RestContext.response.addHeader('Content-Type', 'application/json');      
-        RestContext.response.statusCode = 404;
-        RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(404, 'FAILURE', 404, LabelConfiguration__mdt.getInstance('PCC_InvalidUrl_GetDDR').Value__c, null))); 
-
-        return RestContext.response;
-
-        }
-
-    public static RestResponse getSuccessResponse(Boolean returnOnlyDDR, PCC_Wrapper.restAPIDDRDetailsWrapper1 respWrp1,PCC_Wrapper.restAPIDDRDetailsWrapper respWrp){
-        RestContext.response.addHeader('Content-Type', 'application/json');
-        RestContext.response.statusCode = 200;
-        if(returnOnlyDDR){
-            RestContext.response.responseBody = Blob.valueOf(JSON.serialize(respWrp1));      
-        }else{
-            RestContext.response.responseBody = Blob.valueOf(JSON.serialize(respWrp));      
-        }
-        return RestContext.response;
-    }
-
-    public static RestResponse getErrorResponse(PCC_Wrapper.PCC_MasterData_ErrorWrapper errWrp){
-        RestContext.response.addHeader('Content-Type', 'application/json');
-        RestContext.response.responseBody = Blob.valueOf(JSON.serialize(errWrp));      
-        RestContext.response.statusCode = 400;
-        
-        return RestContext.response;
-    }
-
-    public static Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>> getPicklistValMap(String objectName){
-
-        Map<String, String> mapOfRfrToAPINamePicklist = new Map<String, String>();
-        List<String> picklistValuesForVersion1 = LabelConfiguration__mdt.getInstance('PCC_GetAPIPicklistValues_V1').Value__c.split(',');
-        for(Map<String,Object> DIM : new Core_CustomMetadataObjectController('PCC_DDR_Integration_MasterData__mdt').getAll().values()){
-            if(picklistValuesForVersion1.contains(String.valueOf(DIM.get('DeveloperName')))){
-                mapOfRfrToAPINamePicklist.put(String.valueOf(DIM.get('PCC_Picklist_API_Name__c')), String.valueOf(DIM.get('MasterLabel')));
-            }
-        }
-        Map<String, List<PCC_Wrapper.PCC_PicklistWrapper>> picklistValuesMap = PCC_CreateDDRUtilityHandler.getPicklistValuesMap(objectName, mapOfRfrToAPINamePicklist);
-        return picklistValuesMap;
-    }
-
+   
+    
 }

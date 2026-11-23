@@ -123,7 +123,8 @@
     },
 
     //Added by Subash for US661733
-    gotoOfferingList: function(component, event, helper) {
-        helper.updatePartnerDetails(component, component.get('v.recordId'));
-    }
+    // IPA2.0 + US TWC4497-1631
+    // gotoOfferingList: function(component, event, helper) {
+    //     helper.updatePartnerDetails(component, component.get('v.recordId'));
+    // }
 })

@@ -34,8 +34,6 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
     @track searchFilter = false;
     @track fields = [];
     @api columns;
-    @track recordPresent = true;
-    @track searchVal;
 
     connectedCallback() {
         if (this.columns !== null && this.columns !== undefined) {
@@ -49,11 +47,14 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
         getOnePartnerIds()
             .then(res => {
                 if (res !== undefined && res !== null) {
+
                     this.recordIds = res;
                     if (this.recordIds !== null && this.recordIds !== undefined && this.recordIds.length > 0) {
                         this.noOfBatches = Math.ceil(this.recordIds.length / 200);
                         this.getProfileResponses(this.recordIds.slice(this.startIndex, this.endIndex));
+
                     }
+
                 }
             })
             .catch(error => {
@@ -74,7 +75,6 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
                         let resultRecord = res[key].onePartnerResponse;
                         let onePartnerObject = {};
                         onePartnerObject.accountId = resultRecord.accountId;
-                        onePartnerObject.accountName = resultRecord.accountName;
                         onePartnerObject.recordTypeName = resultRecord.recordTypeName;
                         onePartnerObject.brandedPtsEarningExl = resultRecord.brandedPtsEarningExl;
                         onePartnerObject.cmpPtsEarningExl = resultRecord.cmpPtsEarningExl;
@@ -88,7 +88,6 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
                         res[key].locationAccountResponse.map(item => {
                             let objData = {};
                             objData.accountId = item.accountId;
-                            objData.accountName = item.accountName;
                             objData.recordTypeName = item.recordTypeName;
                             objData.brandedPtsEarningExl = item.brandedPtsEarningExl;
                             objData.cmpPtsEarningExl = item.cmpPtsEarningExl;
@@ -253,9 +252,8 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
     handleChange(event) {
         console.log('event ', event.target.value);
         if (event.target.value.length >= 3 && event.target.value.length > 0) {
-            this.searchVal = event.target.value;
             this.searchFilter = true;
-            this.search(event.target.value.trim());
+            this.search(event.target.value);
         }
         if (event.target.value.length === 0) {
             this.clearFilter();
@@ -274,12 +272,8 @@ export default class PRM_ProfileResponseMismatchLWC extends LightningElement {
             }
         });
         if (filtereResult.length > 0) {
-            this.recordPresent = true;
             this.tableData = [];
             this.tableData = filtereResult;
-        }else{
-            this.recordPresent = false;
-            this.tableData = [];
         }
         // console.log('Filtred data -->', filtereResult);
 

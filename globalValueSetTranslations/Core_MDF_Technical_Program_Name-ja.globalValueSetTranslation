@@ -1,28 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>クライアント</translation>
+        <masterLabel>Client Co-Marketing Fund</masterLabel>
+        <translation>クライアント共同マーケティング・ファンド (CCF)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
         <translation>クライアント共同マーケティング・ファンド・ブースト</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Co-GTM</masterLabel>
-        <translation><!-- Co-GTM --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Datacenter</masterLabel>
-        <translation>データセンター</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Ecosystem Extension Fund</masterLabel>
-        <translation>エコシステム拡張基金</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Partner Alliance</masterLabel>
-        <translation>インテル・パートナー・アライアンス</translation>
+        <masterLabel>Data Center Co-Marketing Fund</masterLabel>
+        <translation>データセンター共同マーケティング・ファンド (DCF)</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Retail Marketing Funds</masterLabel>

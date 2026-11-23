@@ -239,9 +239,8 @@ public class PMP_SearchPartnerTriggerHelper_Test {
         
 
         List<PMP_Company__c> pubCopy = new List<PMP_Company__c>();
-        //PMP_Company__c mpi1 = new PMP_Company__c(Name='PAG Account', PMP_Is_Published_Ind__c=true, PMP_Company_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Draft, PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced,PMP_Is_Working_Copy_Ind__c =false);
-	    PMP_Company__c mpi1 = new PMP_Company__c(Name='PAG Account', PMP_Is_Published_Ind__c=true, PMP_Company_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Draft, PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile,PMP_Is_Working_Copy_Ind__c =false);
-        //PMP_Company__c mpi2 = new PMP_Company__c(Name='Int Account', PMP_Account_Id__c=newAccount.Id, PMP_Is_Published_Ind__c=true, PMP_Company_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Published, PMP_Is_Working_Copy_Ind__c = false);
+        PMP_Company__c mpi1 = new PMP_Company__c(Name='PAG Account', PMP_Is_Published_Ind__c=true, PMP_Company_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Draft, PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced,PMP_Is_Working_Copy_Ind__c =false);
+       //PMP_Company__c mpi2 = new PMP_Company__c(Name='Int Account', PMP_Account_Id__c=newAccount.Id, PMP_Is_Published_Ind__c=true, PMP_Company_Lifecycle_Status_Nm__c = PMP_StaticConstants_Partner.Published, PMP_Is_Working_Copy_Ind__c = false);
        pubCopy.add(mpi1);
        // pubCopy.add(mpi2);
         insert pubCopy;

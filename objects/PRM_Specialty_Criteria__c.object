@@ -205,7 +205,7 @@
     <listViews>
         <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PRM_Type_Nm__c</columns>
+        <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

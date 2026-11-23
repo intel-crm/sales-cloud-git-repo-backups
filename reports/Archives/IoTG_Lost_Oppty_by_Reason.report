@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Duplicate</value>
+            <value>Cancelled - Entered in Error,Cancelled - Duplicate</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

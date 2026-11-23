@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Created_Date_Time__c</fullName>
         <description>Returns the system field CreatedDate. Shows the full date+time instead of just the date, in list views and reports, unlike the standard system field.</description>
@@ -254,9 +254,14 @@
                     <label>SSG Support Request</label>
                 </value>
                 <value>
-                    <fullName>CPQ Quote Request</fullName>
+                    <fullName>Marketplace_Translation</fullName>
                     <default>false</default>
-                    <label>CPQ Quote Request</label>
+                    <label>Marketplace_Translation</label>
+                </value>
+                <value>
+                    <fullName>Marketplace Translation - Partner</fullName>
+                    <default>false</default>
+                    <label>Marketplace Translation - Partner</label>
                 </value>
                 <value>
                     <fullName>Bank</fullName>
@@ -264,9 +269,14 @@
                     <label>Bank</label>
                 </value>
                 <value>
-                    <fullName>Tender</fullName>
+                    <fullName>Payment</fullName>
                     <default>false</default>
-                    <label>Tender</label>
+                    <label>Payment</label>
+                </value>
+                <value>
+                    <fullName>Role 2.0</fullName>
+                    <default>false</default>
+                    <label>Role 2.0</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -357,13 +367,6 @@
         <type>DateTime</type>
     </fields>
     <fields>
-        <fullName>Core_Reprocess_Message__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Reprocess Message</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_Retry_Counter__c</fullName>
         <externalId>false</externalId>
         <label>Retry Counter</label>
@@ -423,24 +426,14 @@
                     <label>SIEBEL</label>
                 </value>
                 <value>
-                    <fullName>SAP</fullName>
-                    <default>false</default>
-                    <label>SAP</label>
-                </value>
-                <value>
                     <fullName>EDW</fullName>
                     <default>false</default>
                     <label>EDW</label>
                 </value>
                 <value>
-                    <fullName>MyDeals</fullName>
+                    <fullName>GLS</fullName>
                     <default>false</default>
-                    <label>MyDeals</label>
-                </value>
-                <value>
-                    <fullName>ECA</fullName>
-                    <default>false</default>
-                    <label>ECA</label>
+                    <label>GLS</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -509,16 +502,6 @@
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Processing_Status__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Message_Type__c</field>
-            <operation>equals</operation>
-            <value>Account</value>
-        </filters>
-        <filters>
-            <field>Core_Created_Date_Time__c</field>
-            <operation>equals</operation>
-            <value>TODAY</value>
-        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -530,6 +513,7 @@
         <columns>Core_Created_Date_Time__c</columns>
         <columns>CREATEDBY_USER</columns>
         <columns>Core_Processing_Status__c</columns>
+        <columns>Core_Tags__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -553,7 +537,7 @@
         <filters>
             <field>Core_Source_System__c</field>
             <operation>equals</operation>
-            <value>SAP</value>
+            <value>GLS</value>
         </filters>
         <label>All Messages Today</label>
     </listViews>
@@ -779,38 +763,6 @@
             <value>TODAY</value>
         </filters>
         <label>ERPM Messages Today - Contact</label>
-    </listViews>
-    <listViews>
-        <fullName>IQR_Pending_Failed_Inbound_Messages</fullName>
-        <columns>NAME</columns>
-        <columns>Core_Processing_Status__c</columns>
-        <columns>Core_Source_System__c</columns>
-        <columns>Core_Message_Type__c</columns>
-        <columns>Core_Payload__c</columns>
-        <columns>Core_Error_Code__c</columns>
-        <columns>Core_Reprocess_Message__c</columns>
-        <columns>Core_Retry_Counter__c</columns>
-        <columns>CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_Processing_Status__c</field>
-            <operation>equals</operation>
-            <value>Failed,Pending</value>
-        </filters>
-        <filters>
-            <field>Core_Source_System__c</field>
-            <operation>equals</operation>
-            <value>MyDeals</value>
-        </filters>
-        <filters>
-            <field>Core_Message_Type__c</field>
-            <operation>equals</operation>
-            <value>Tender</value>
-        </filters>
-        <label>IQR Pending and Failed Inbound Messages</label>
-        <sharedTo>
-            <group>IQR_Tech_Team</group>
-        </sharedTo>
     </listViews>
     <listViews>
         <fullName>My_Messages</fullName>

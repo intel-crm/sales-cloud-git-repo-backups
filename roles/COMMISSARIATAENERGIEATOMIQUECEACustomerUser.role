@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>COMMISSARIAT A ENERGIE ATOMIQUE CEA Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>COMMISSARIATAENERGIEATOMIQUECEACustomerManager</parentRole>
 </Role>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value><!-- CCP Attributes Map --></value>
+    </caseValues>
+    <fields>
+        <help><!-- Budget Amount controls only file upload --></help>
+        <label><!-- Budget Amount --></label>
+        <name>Budget_Amount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Category --></label>
+        <name>Category__c</name>
+        <picklistValues>
+            <masterLabel>Broadcast</masterLabel>
+            <translation>廣播</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Media</masterLabel>
+            <translation>數位媒體</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event</masterLabel>
+            <translation>活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Management</masterLabel>
+            <translation>潛在客戶管理</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Out of Home Media</masterLabel>
+            <translation>戶外媒體</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Paid Social Media</masterLabel>
+            <translation>付費社群媒體</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Print Media</masterLabel>
+            <translation>平面廣告媒體</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search Engine Marketing (SEM)</masterLabel>
+            <translation>搜尋引擎行銷 (SEM)</translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Channel Partner --></label>
+        <name>Channel_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Channel Partner Led --></label>
+        <name>Core_MDF_Enable_Channel_Partner_Led__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable ELC Reminder --></label>
+        <name>Core_MDF_Enable_ELC_Reminder__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Event Format --></label>
+        <name>Core_MDF_Enable_Event_Format_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable File Upload --></label>
+        <name>Core_MDF_Enable_File_Upload__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Question --></label>
+        <name>Core_MDF_Enable_Question__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enable Event Popup --></label>
+        <name>Enable_Event_Popup__c</name>
+    </fields>
+    <fields>
+        <label><!-- Event --></label>
+        <name>Event__c</name>
+    </fields>
+    <fields>
+        <label><!-- Govt. Nexus Flag --></label>
+        <name>Govt_Nexus_Flag__c</name>
+    </fields>
+    <fields>
+        <label><!-- Print --></label>
+        <name>Print__c</name>
+    </fields>
+    <fields>
+        <label><!-- Program --></label>
+        <name>Program__c</name>
+        <picklistValues>
+            <masterLabel>CCF</masterLabel>
+            <translation><!-- CCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CCF/DCF</masterLabel>
+            <translation><!-- CCF/DCF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DCF</masterLabel>
+            <translation><!-- DCF --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- RecordType Name --></label>
+        <name>RecordType_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Record Type Picklist --></label>
+        <name>Record_Type_Picklist__c</name>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Client_CoMarketing_Fund_Boost</masterLabel>
+            <translation><!-- Core_MDF_Client_CoMarketing_Fund_Boost --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Data_Center_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Data_Center_CoMarketing_Fund --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Core_MDF_Service_Provider_CoMarketing_Fund</masterLabel>
+            <translation><!-- Core_MDF_Service_Provider_CoMarketing_Fund --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>Billboard/Transit</masterLabel>
+            <translation>看板/大眾運輸</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Catalog/Brochure</masterLabel>
+            <translation>目錄/摺頁</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Owned Event</masterLabel>
+            <translation>通路夥伴所屬活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Participation in Third-Party Event</masterLabel>
+            <translation>通路夥伴參與第三方廠商主辦的活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Channel Partner Website Online Ad</masterLabel>
+            <translation><!-- Channel Partner Website Online Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cinema</masterLabel>
+            <translation>戲院</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Other</masterLabel>
+            <translation>推廣品 - 其他</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Digital Video screen</masterLabel>
+            <translation>數位影像螢幕</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Mail</masterLabel>
+            <translation>直接郵遞廣告</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation>電子郵件</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Graphic Ad</masterLabel>
+            <translation>平面廣告</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Insert/Outsert/Flyer</masterLabel>
+            <translation>插頁/折頁/傳單</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Generation</masterLabel>
+            <translation>開發客戶</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Lead Nurturing</masterLabel>
+            <translation>培養潛在客戶</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Magazine/Newspaper</masterLabel>
+            <translation>雜誌/報紙</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Owned Event</masterLabel>
+            <translation>成員所屬活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Participation in Third-Party Event</masterLabel>
+            <translation>成員參與協力廠商主辦的活動</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member Website Online Display</masterLabel>
+            <translation>成員網站線上顯示</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Display</masterLabel>
+            <translation>線上顯示</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online Video Spot</masterLabel>
+            <translation>線上影片插播</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Podcast</masterLabel>
+            <translation>播客</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Poster/Sign/Banner</masterLabel>
+            <translation>海報/標牌/橫幅</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Promotion</masterLabel>
+            <translation>促銷</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Radio</masterLabel>
+            <translation>電台</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Online Display</masterLabel>
+            <translation>線上社群顯示</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Post</masterLabel>
+            <translation>社群媒體貼文</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Television</masterLabel>
+            <translation>電視</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Text Ad</masterLabel>
+            <translation>文字廣告</translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>CCP Attributes Map Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+</CustomObjectTranslation>

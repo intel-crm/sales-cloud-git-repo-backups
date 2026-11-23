@@ -304,6 +304,16 @@
             <field>Core_Tasks_Generated__c</field>
             <table>Campaign</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Bulk_Add_Invite_Email_Template__c</field>
+            <table>Campaign</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_Opal_Budget_Type_Txt__c</field>
+            <table>Campaign</table>
+        </columns>
         <masterLabel>Campaigns</masterLabel>
     </sections>
     <sections>

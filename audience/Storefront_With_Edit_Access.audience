@@ -16,12 +16,4 @@
     </criteria>
     <formulaFilterType>AllCriteriaMatch</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>d7aeb3f8-7416-4025-8c55-3ae1bb26d31d</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Company_Information_Detail_Company_Information_Detail_Page</targetValue>
-        </target>
-    </targets>
 </Audience>

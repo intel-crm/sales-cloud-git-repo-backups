@@ -132,6 +132,13 @@
         <label><!-- Email --></label>
         <name>MaritzCX__respondent_email__c</name>
     </fields>
+    <layouts>
+        <layout>MaritzCX Survey Response Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>CEP Response</nameFieldLabel>
     <startsWith>Consonant</startsWith>
     <webLinks>

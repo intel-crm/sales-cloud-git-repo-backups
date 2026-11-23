@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_46246027</developerName>
+        <masterLabel>Top 7 vs Other</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <otherBucketLabel>Other</otherBucketLabel>
+        <sourceColumnName>ACCOUNT_NAME</sourceColumnName>
+        <useOther>true</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>HUAWEI HQ</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Nokia Networks</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ZTE CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett Packard Enterprise</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Hewlett Packard Enterprise Company</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cisco United Arab Emirates</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Cisco Systems UK</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS, TURKEY</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS NORWAY AS</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>CISCO SYSTEMS (INDIA) PRIVATE LIMITED</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL INC.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>DELL U S A CORPORATION</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON AB</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON ESPAÑA SA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON INC</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON INDIA GLOBAL SERVICES PVT. LTD</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>ERICSSON TELECOMUNICAZIONI</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ericsson (China) Co., Ltd.</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ericsson Inc.</sourceValue>
+            </sourceValues>
+            <value>Top7</value>
+        </values>
+    </buckets>
+    <columns>
+        <field>Account.Core_Prime_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Account_Name__c</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY_NAME</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_Status__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>EXP_PRODUCT_AMOUNT</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Code_Name__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_KPI_Date__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Manufacturing_Geo__c</field>
+    </columns>
+    <columns>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Segment__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Product_Application__c</field>
+    </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>INDUSTRY</field>
+    </columns>
+    <columns>
+        <field>DESCRIPTION</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Consumption_Market__c</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Solution_Focus__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_OWNER</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdGroup__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Inf_KPI_ProdFamily__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_INF_KPI_ProdClass__c</field>
+    </columns>
+    <columns>
+        <field>Product2.Core_Product_Type__c</field>
+    </columns>
+    <columns>
+        <field>CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>User.Core_User_Geo__c</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Opportunity.Core_Opportunity_ID__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Opportunity.Core_Product_Segment__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Comms Infra</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Design: Original,Design: Secondary</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Win Approved,Win Submitted,Pending,On Hold,Production Win,Production Lost,Production Cancelled</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>DCG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Prime_Account_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Cisco,Ericsson,Huawei,Nokia,ZTE</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>TS18 NW EODM MUST WIN 2018</name>
+    <params>
+        <name>terr</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>open</name>
+        <value>all</value>
+    </params>
+    <params>
+        <name>probability</name>
+        <value>&gt;0</value>
+    </params>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>OpportunityProduct</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <sortColumn>OpportunityLineItem.Core_KPI_Total_Price__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

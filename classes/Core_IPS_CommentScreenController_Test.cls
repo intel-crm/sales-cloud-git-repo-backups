@@ -106,26 +106,6 @@ Modification Log :
 ****************************************************************************************************/
     public static testmethod void Core_IPS_CommentScreenController_Test1(){
         user u1 = TestUtilities.getCustomerUser('IPS External Customer');
-        //add by rajeswari for code coverage 20 june 22
-         //Custom Setting - Core IPS Labels
-        List<Core_IPS_Labels__c> listofIpsLables = new List<Core_IPS_Labels__c>();
-        Core_IPS_Labels__c ipsLables1 = new Core_IPS_Labels__c(Name = 'Case_RT_Name_IPS_Case_Create',Value__c = 'IPS Case Create');
-        Core_IPS_Labels__c ipsLables2 = new Core_IPS_Labels__c(Name = 'Case_RT_Name_IPS_NoAssignedContact',Value__c = 'IPS No Assigned Contact Case');
-        Core_IPS_Labels__c ipsLables3 = new Core_IPS_Labels__c(Name = 'Support_Level_Default',Value__c = 'ROW');
-        Core_IPS_Labels__c ipsLables4 = new Core_IPS_Labels__c(Name = 'Support_Level_Default_No_Assigned_Cont',Value__c = 'Tier 3');
-        listofIpsLables.add(ipsLables1);
-        listofIpsLables.add(ipsLables2);
-        listofIpsLables.add(ipsLables3);  
-        List<Core_IPS_Labels__c> ipsLabelsForGlobalAsset = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c ipl : ipsLabelsForGlobalAsset){
-            if(ipl.Name == 'Core_IPS_Global_Asset_RT'){
-                ipl.value__c = 'Core_Public_Product';
-            }
-        }
-        listofIpsLables.addAll(ipsLabelsForGlobalAsset);  
-        
-        insert listofIpsLables;
-
         Core_IPS_Labels__c labels = new Core_IPS_Labels__c ();
          labels.name= 'PUBLIC_TO_CUSTOMERS';
          labels.value__c='Public to Customers';
@@ -155,13 +135,9 @@ Modification Log :
          label5.name='Agent';
          label5.value__c='Agent';
          insert label5;
-         Core_IPS_Labels__c label6 = new Core_IPS_Labels__c();
-        label6.name='Backend Integration';
-        label6.value__c='Backend Integration';
-        insert label6;
         system.runAs(u1){
             Test.startTest();
-                Case CS =  TestUtilities.getCase();               
+                Case CS =  TestUtilities.getCase(); 
                 insert CS;
                 PageReference pageRef = Page.Core_IPS_CommentScreen;
                 Test.setCurrentPage(pageRef);
@@ -227,47 +203,7 @@ Modification Log :
          label6.name='Partner';
          label6.value__c='Partner';
          insert label6;
-        //start added by rajeswari for increasing codecoverage 21 June 22
-		  Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
-        label7.name='Backend Integration';
-        label7.value__c='Backend Integration';
-        insert label7;    
-         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
-        label8.name='Comment Source - Email';
-        label8.value__c='Comment Source - Email';
-        insert label8;
-         Core_IPS_Labels__c label9 = new Core_IPS_Labels__c();
-        label9.name='Comment Source - Backend System';
-        label9.value__c='Comment Source - Backend System';
-        insert label9;
-          Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
-        label10.name='Data Migration';
-        label10.value__c='Data Migration';
-        insert label10;
-         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
-        label11.name='Comment Source - Data Migration';
-        label11.value__c='Comment Source - Data Migration';
-        insert label11;
-        
-        Core_IPS_Labels__c label12 = new Core_IPS_Labels__c();
-        label12.name='Comment Source - Internal';
-        label12.value__c='Comment Source - Internal';
-        insert label12;
-          Core_IPS_Labels__c label13 = new Core_IPS_Labels__c();
-        label13.name='Comment Source - Customer';
-        label13.value__c='Comment Source - Customer';
-        insert label13;
-         Core_IPS_Labels__c label14 = new Core_IPS_Labels__c();
-        label14.name='Comment Source - N/A';
-        label14.value__c='Comment Source - N/A';
-        insert label14;
-        //Partner - DFAE
-         Core_IPS_Labels__c label15 = new Core_IPS_Labels__c();
-        label15.name='Partner - DFAE';
-        label15.value__c='Partner - DFAE';
-        insert label15;
-        //end added by rajeswari for increasing codecoverage 21 June 22
-        
+         
          Case Cs =  TestUtilities.getCase(); 
         insert Cs;
        
@@ -275,15 +211,11 @@ Modification Log :
         List<Core_IPS_Case_Comments__c> lstcsecomment = TestUtilities.getCaseComments(2);
             For (Core_IPS_Case_Comments__c casecomments : lstcsecomment){
             casecomments.Core_IPS_Case__c = cs.id;
-                //add by rajeswari for codecoverage 21 June 22
-             casecomments.Core_IPS_Comment_Author_Type__c='Agent';
-             casecomments.Core_IPS_Case_Comment_Source__c='Customer Portal';
-                //end by rajeswari for codecoverage 21 June 22
             }
         insert lstcsecomment;
         
       
-        //ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Cs);
+        //ApexPages.Standardcontroller sc = new ApexPages.Standardcontroller(Cs);
         ApexPages.currentPage().getParameters().put('Id',Cs.id); 
         ApexPages.StandardController StndContr = new ApexPages.standardController(cs);
       Core_IPS_CommentScreenController CommentScreen = new Core_IPS_CommentScreenController(StndContr);
@@ -332,53 +264,12 @@ Modification Log :
          label6.name='Partner';
          label6.value__c='Partner';
          insert label6;
-        //start samplecustom data added by rajeswari for increasing codecoverage  20 June 22
-          Core_IPS_Labels__c label7 = new Core_IPS_Labels__c();
-        label7.name='Backend Integration';
-        label7.value__c='Backend Integration';
-        insert label7;
-         Core_IPS_Labels__c label8 = new Core_IPS_Labels__c();
-        label8.name='Comment Source - Email';
-        label8.value__c='Comment Source - Email';
-        insert label8;
-         Core_IPS_Labels__c label9 = new Core_IPS_Labels__c();
-        label9.name='Comment Source - Backend System';
-        label9.value__c='Comment Source - Backend System';
-        insert label9;
-          Core_IPS_Labels__c label10 = new Core_IPS_Labels__c();
-        label10.name='Data Migration';
-        label10.value__c='Data Migration';
-        insert label10;
-         Core_IPS_Labels__c label11 = new Core_IPS_Labels__c();
-        label11.name='Comment Source - Data Migration';
-        label11.value__c='Comment Source - Data Migration';
-        insert label11;
-        Core_IPS_Labels__c label12 = new Core_IPS_Labels__c();
-        label12.name='Comment Source - Internal';
-        label12.value__c='Comment Source - Internal';
-        insert label12;
-          Core_IPS_Labels__c label13 = new Core_IPS_Labels__c();
-        label13.name='Comment Source - Customer';
-        label13.value__c='Comment Source - Customer';
-        insert label13;
-         Core_IPS_Labels__c label14 = new Core_IPS_Labels__c();
-        label14.name='Comment Source - N/A';
-        label14.value__c='Comment Source - N/A';
-        insert label14;
-         Core_IPS_Labels__c label15 = new Core_IPS_Labels__c();
-        label15.name='Partner - DFAE';
-        label15.value__c='Partner - DFAE';
-        insert label15;
-        //end  code added by rajeswari for increasing codecoverage 20 June 22
+         
         Case Cs =  TestUtilities.getCase(); 
         insert Cs;
         List<Core_IPS_Case_Comments__c> lstcsecomment = TestUtilities.getCaseComments(2);
             For (Core_IPS_Case_Comments__c casecomments : lstcsecomment){
             casecomments.Core_IPS_Case__c = cs.id;
-            casecomments.Core_IPS_Comment_Author_Type__c='Agent'; 
-              casecomments.Core_IPS_Case_Comment_Source__c='Customer Portal';
-               
-                
             }
         insert lstcsecomment;
         ApexPages.StandardController StndContr = new ApexPages.standardController(cs);

@@ -763,6 +763,13 @@
             <translation><!-- Utilities --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Activity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- Activity End Date cannot be earlier than Activity Start Date. --></errorMessage>

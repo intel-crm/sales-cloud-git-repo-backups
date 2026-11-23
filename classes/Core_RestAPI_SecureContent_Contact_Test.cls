@@ -91,8 +91,7 @@ public class Core_RestAPI_SecureContent_Contact_Test {
         testAccount.BillingStateCode = 'OR';
         testAccount.BillingCountryCode = 'USA';
         testAccount.BillingPostalCode = '12345';
-        testAccount.Phone = '1234567890';
-        testAccount.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();       
+        testAccount.Phone = '1234567890';       
         insert testAccount;
 
         // Create Contact
@@ -101,7 +100,6 @@ public class Core_RestAPI_SecureContent_Contact_Test {
         testContact.LastName = 'Test Contact1';
         testContact.Email = 'Test_Contact1@tester.com';
         testContact.Core_Job_Function__c = 'Information Technology';
-        testContact.MailingCountry='IND';
         testContact.Core_Contact_B2B_Indicator__c = true;
         testContact.AccountId = testAccount.Id;        
         insert testContact;

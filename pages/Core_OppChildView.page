@@ -2,6 +2,7 @@
     
     <apex:includeLightning />
     <apex:slds rendered="{!$User.UITheme != 'Theme3'}"/>
+    
     <apex:form >
         <div id="lightning"></div>
         <!-- Insert style sheet references here -->
@@ -18,62 +19,28 @@
             
            
             <apex:outputPanel rendered="{!$User.UITheme =='Theme3'}">            
-                <apex:commandButton action="{!setIsNewOppClickedTotrue}" value="New Opportunity" id="newButton"/>
-                              <!--  onclick="window.top.location.href='{!newOppUrl}'"/> -->
+                <apex:commandButton action="{!newOpp}" value="New Opportunity" id="newButton"
+                                onclick="window.top.location.href='{!newOppUrl}'"/>
             </apex:outputPanel>
             <!-- lightning -Theme4d—Modern “Lightning Experience” Salesforce theme-->
             <apex:outputPanel rendered="{!$User.UITheme !='Theme3'}">    
                     
-               <apex:commandButton action="{!setIsNewOppClickedTotrue}" value="New Opportunity" id="newButton1" styleClass="slds-button slds-button_neutral"/>
+                <apex:commandButton action="{!newOpp}" value="New Opportunity" id="newButton1" onclick="LightningPageInvoke('{!solutionGroup}','{!accId}');" styleClass="slds-button slds-button_neutral"/>
                               
             </apex:outputPanel>
-            <apex:outputPanel id="RecordTypeSelect" styleClass="customPopup" layout="block" rendered="{!isNewOppClicked}">
             
-            <apex:pageBlock title="Select a Record Type">
-            <apex:pageBlockSection columns="2">
-            <apex:selectList value="{!selectedRecordType}"  multiselect="false" size="1" styleClass="sbox ">
-                <apex:actionSupport event="onchange" action="{!setSelectedRecordType2}"/> 
-                <apex:selectOptions value="{!recordTypeOptions}"/>
-            </apex:selectList> <br/>
-           <apex:pageBlockSection columns="1"> 
-           <apex:pageblockSectionItem >
-           <apex:commandButton action="{!newOpp}" value="Ok" id="selectRecordType" onclick="LightningPageInvoke('{!solutionGroup}','{!accId}','{!selectedRecordType2}');" styleClass="slds-button slds-m-left_medium slds-button_neutral"/>
-           <apex:commandButton value="Cancel" action="{!newOpp}" styleClass="slds-button slds-button_neutral"/>
-        </apex:pageblockSectionItem>
-        </apex:pageBlockSection> 
-        <script>
-            function LightningPageInvoke(opp,acc,recTypeId){
-               if((typeof sforce != 'undefined') && sforce && (!!sforce.one)){
-                    sforce.one.createRecord('Opportunity',recTypeId,{ 
-                     AccountId : acc,
-                     Core_Solution_Group__c : opp
-                     });
-               }
-            else
-                window.top.location.href='{!newOppUrl}';
-            
+            <script type="text/javascript">
+            function LightningPageInvoke(opp,acc){
+            window.$Label = window.$Label || {};
+            $Label.customLabel= '{!($Label.Core_Opp_New_Opp_Record_Type_Id)}';
+             sforce.one.createRecord('Opportunity',$Label.customLabel,{ 
+             AccountId : acc,
+             Core_Solution_Group__c : opp
+             });
             }
+            </script>
+           
             
-        </script>
-        
-        <style>
-        .customPopup {
-        background-color: white;
-            border-width: 2px;
-            z-index: 9999;
-            padding:10px;
-            position: absolute;
-            left: 50%;
-            width: 652px;
-            margin-left: -250px;
-            top:50px;
-        }
-        
-        .sbox { max-width: 100%; }
-        </style>
-            </apex:pageBlockSection>
-            </apex:pageBlock>
-           </apex:outputPanel> 
             <!-- "Add Existing Opportunity" lookup window - this needs to bind to the Solution Group field, even though
                 it won't actually be stored there, just because we need a self-relationship lookup field on Opportunity -->
             <apex:outputLabel for="existing__opp" value="Add Existing:"
@@ -120,7 +87,7 @@
                     </apex:pageBlockTable>
                     <script>
                         if (document.getElementById('totalAmt')) {
-                            document.getElementById('totalAmt').textContent = '{!totalAmount}';
+                            document.getElementById('totalAmt').innerHTML = '{!totalAmount}';
                         }
                     </script>
                     
@@ -178,5 +145,6 @@
         </apex:tabPanel>
         
     </apex:form>
+    
     
 </apex:page>

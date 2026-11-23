@@ -201,7 +201,6 @@ IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Manufacturer&quot;)
 IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Seller&quot;),&quot;Solution Provider&quot;,null)+
 IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Service Provider&quot;),&quot;Cloud &amp; Comms Service Provider&quot;,null)+
 IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Solution Integrator&quot;),&quot;Service Integrator&quot;,null)+
-IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Sponsor&quot;),&quot;Sponsor&quot;,null)+
 IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Original Equipment Manufacturer (OEM)&quot;),&quot;Original Equipment Manufacturer (OEM)&quot;,null)+
 IF(ISPICKVAL(PRM_Contact_Id__r.Core_IPA_PartnerRole__c,&quot;Guest&quot;),&quot;Guest&quot;,null)</formula>
         <label>Partner Role</label>

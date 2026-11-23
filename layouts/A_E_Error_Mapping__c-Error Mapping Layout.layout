@@ -16,11 +16,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>A_E_Next_Steps_Txt__c</field>
+                <field>A_E_Error_Description_Txt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>A_E_Error_Description_Txt__c</field>
+                <field>A_E_Next_Steps_Txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

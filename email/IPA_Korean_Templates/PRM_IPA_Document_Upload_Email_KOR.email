@@ -46,7 +46,7 @@
                                                                                                                                     인텔&reg; 파트너 얼라이언스 프로그램 가입 신청에 감사드립니다!
     </h1>
     </th>
-    <th class="callout-inner" style="padding:15px;"><img src="https://intel.file.force.com/servlet/servlet.ImageServer?id=0153b000005OXH2&oid=00Do0000000aRcf&lastMod=1609662404000" alt="인텔" title="인텔" align="right" class="float-center" style="height:100%;width:auto"></th>
+    <th class="callout-inner" style="padding:15px;"><img src="https://intel--crmdevint3.sandbox.file.force.com/servlet/servlet.ImageServer?id=0152i0000000fuQ&oid=00D2i0000008d6j&lastMod=1691395447000" alt="인텔" title="인텔" align="right" class="float-center" style="height:100%;width:auto"></th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Malgun Gothic, Dotum, Verdana, Tahoma, Arial, Helvetica, sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
     </tr>
     </tbody>
@@ -91,7 +91,7 @@
 
 </ul>
 <p style="margin: 0px 0px 10px; padding: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 11px; font-weight: 400; border-collapse: collapse !important; -ms-word-break: keep-all; -ms-hyphens: none; -moz-hyphens: none; -webkit-hyphens: none; hyphens: none;">
-요청이 자동 거부되는 것을 방지하려면, 7일 이내에 첨부 문서와 함께 본 이메일에 회신해 주시기 바랍니다. 귀사의 답변이 접수되는 대로 당사의 관련 팀에 귀사의 신청서를 재검토하도록 안내하겠습니다.
+귀사의 답변이 접수되는 대로 당사의 관련 팀에 귀사의 신청서를 재검토하도록 안내하겠습니다.
 <br>
 <br>
 이 문제 해결을 위해 협조해 주셔서 감사합니다.
@@ -165,7 +165,8 @@
     </tr>
     <tr>
 <td class="auto-style1" valign="top" style="font-size: 10px;color: #ffffff; font-family: Malgun Gothic, Dotum, Verdana, Tahoma, Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: center;">
-                                                                                                                                                    © 2026
+                                                                                                                                                    &copy;
+                                                                                                                                                    {!$Label.PRM_CurrentYear}
                                                                                                                                                     Intel
                                                                                                                                                     Corporation
                                                                                                                                                 </td>

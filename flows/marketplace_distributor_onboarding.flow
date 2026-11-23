@@ -1,0 +1,1325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <choices>
+        <name>c_0358128f_6250_48e1_b253_8b75b8597b5c</name>
+        <choiceText>Digital Security Surveillance | Enterprise DSS Solutions with Intelligence (1000+ cameras)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Digital Security Surveillance | Enterprise DSS Solutions with Intelligence (1000+ cameras)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_065eff68_9935_4336_8996_8a6f5758d2e6</name>
+        <choiceText>Artificial Intelligence | Robotic Process Automation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Robotic Process Automation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_08c3cc63_f9a7_4793_8b99_f3d72ea9bf13</name>
+        <choiceText>Healthcare | Fitness and Wellness</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Healthcare | Fitness and Wellness</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_0aab157a_206c_4a77_a630_5af19c51f71d</name>
+        <choiceText>Others</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Others</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_0c829aea_c084_4e26_9bf2_5d3b11cd131a</name>
+        <choiceText>Accommodation and Food Services</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Accommodation and Food Services</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_0cd32378_d7bd_4a42_aede_b487970edcfc</name>
+        <choiceText>Transportation and Warehouse | Air Transportation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Transportation and Warehouse | Air Transportation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_0ff671fa_6404_4fda_99d4_f42524a52aef</name>
+        <choiceText>Artificial Intelligence</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_11160f73_dd93_497c_915d_08055694f18b</name>
+        <choiceText>Healthcare | Medical Devices</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Healthcare | Medical Devices</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_1760ffa7_7347_4589_8b89_3ef112f488f7</name>
+        <choiceText>Finance and Insurance</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Finance and Insurance</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_195e2053_64dd_4fc9_971a_6e6bbd9f3b50</name>
+        <choiceText>Advanced Analytics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Advanced Analytics</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_1b36c663_d067_465c_87e7_6eccf13bddf5</name>
+        <choiceText>Cloud Computing | Entry Level Solutions (1 to 20 cameras)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cloud Computing | Entry Level Solutions (1 to 20 cameras)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_1c0bb4c8_d2a1_4542_9f03_e972a9cb8c46</name>
+        <choiceText>Healthcare</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Healthcare</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_1cc878f0_5413_43a6_9532_8c7145eb14ce</name>
+        <choiceText>Manufacturing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Manufacturing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_1fb2420b_e7b4_41bf_b9e4_a9002c67a0ee</name>
+        <choiceText>Healthcare | Patient Infotainment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Healthcare | Patient Infotainment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_20d0df79_1617_43ed_8c4d_ab4f6b27c94b</name>
+        <choiceText>Environmental Monitoring</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Environmental Monitoring</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_21063f6a_2d7b_414c_b4c2_38678f623ae3</name>
+        <choiceText>Automotive | In Vehicle Infotainment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Automotive | In Vehicle Infotainment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_2137b745_98e5_4d79_8d18_f0dbf1170c71</name>
+        <choiceText>Others</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Others</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_257c7b54_6b2f_4b08_843d_5cbd3780498a</name>
+        <choiceText>Defense and Space</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Defense and Space</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_2b28250f_a8b3_4500_a456_0afefbeee000</name>
+        <choiceText>Healthcare | Medical Imaging</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Healthcare | Medical Imaging</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_2d3e23e9_8700_4363_a275_6fe8f51015ce</name>
+        <choiceText>Arts and Entertainment | Amusement and Gambling</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Arts and Entertainment | Amusement and Gambling</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_2e535326_3a01_4320_8838_2d02e045652b</name>
+        <choiceText>Automotive</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Automotive</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_2e971188_3b84_45a8_a175_8b982bccc31f</name>
+        <choiceText>Storage</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Storage</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_3084f87b_1c49_4187_8df4_9edfcda03e58</name>
+        <choiceText>Energy Monitoring</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Energy Monitoring</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_312cab6e_9e20_43b1_bc17_3c43a5f65c4a</name>
+        <choiceText>Digital Security Surveillance | High End Solutions with Intelligence (101 to 1000 cameras)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Digital Security Surveillance | High End Solutions with Intelligence (101 to 1000 cameras)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_35e96faa_b8d3_423a_b7d6_0a1b29e1a5fe</name>
+        <choiceText>Accommodation and Food Services | Accommodation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Accommodation and Food Services | Accommodation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_372c06b0_ff4d_4bc3_8ffe_463251f0f0f7</name>
+        <choiceText>Manufacturing | Transportation Equipment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Manufacturing | Transportation Equipment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_381e5c82_9659_4d91_a17f_9445d5a2d0cd</name>
+        <choiceText>Print Imaging and Office Automation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Print Imaging and Office Automation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_3caf39fb_0cec_4940_8a9d_ba509657b899</name>
+        <choiceText>Factory Automation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Factory Automation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_3dd5ba4e_2877_4f83_87c0_389e38d2dff6</name>
+        <choiceText>Artificial Intelligence | Predictive Maintenance and Analytics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Predictive Maintenance and Analytics</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_40887344_5822_4b43_9eb7_d10d9fc30ecf</name>
+        <choiceText>Energy and Utilities</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Energy and Utilities</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_4135c9da_d7ad_49e3_b5f9_d4cbc4836e99</name>
+        <choiceText>Gaming | eSports</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Gaming | eSports</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_41e602cf_1b99_4802_9690_566b0da1d131</name>
+        <choiceText>Cloud Computing | Private Cloud</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cloud Computing | Private Cloud</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_42c5fe24_2085_4b12_92eb_9ecf4d5f4b12</name>
+        <choiceText>English</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>English</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_454a03a5_46e6_497c_b02c_84071db5f96d</name>
+        <choiceText>Transportation and Warehouse | Fleet Management</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Transportation and Warehouse | Fleet Management</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_473e745f_5fc6_48cd_a01b_7daa012c3104</name>
+        <choiceText>Agriculture</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Agriculture</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_498b1390_7d79_47fc_aa7e_532c3583fc3a</name>
+        <choiceText>Telematics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Telematics</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_4eb0473e_f6fc_442a_a48e_6ed5b3854c41</name>
+        <choiceText>Cloud Computing | Public Cloud</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cloud Computing | Public Cloud</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_517d5433_0c0f_41ca_9926_553e0e7abcf4</name>
+        <choiceText>Artificial Intelligence | Medical imaging, Analysis and Diagnostics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Medical imaging, Analysis and Diagnostics</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_54637fd8_9669_4eb1_bdb6_7d93c26eabd5</name>
+        <choiceText>Communications  | Publishing (except Internet)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Communications  | Publishing (except Internet)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_54f348bf_655e_4a49_85c3_b1d05c03f540</name>
+        <choiceText>Cloud Computing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cloud Computing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_572769d3_9608_469d_be84_13057614666a</name>
+        <choiceText>Case Study</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Case Study</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_5c40d266_7081_4822_837f_c1029072dc9a</name>
+        <choiceText>Artificial Intelligence | Conversational Bots and Voice Agents</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Conversational Bots and Voice Agents</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_5ebdbf5a_0dde_4b44_a3f2_9c2a40b26395</name>
+        <choiceText>Artificial Intelligence | Content generation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Content generation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_69a07414_f155_4bf0_a01d_c269ec512ddb</name>
+        <choiceText>Education</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Education</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_71b44ed5_e276_41d3_bf3e_62a02d2817b2</name>
+        <choiceText>Digital Signage</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Digital Signage</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_74be0c87_8666_4c84_b12c_de8fe1fc08bf</name>
+        <choiceText>Real Estate, Rental and Leasing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Real Estate, Rental and Leasing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_75e8df13_b689_4dc5_b8b1_61a9daf4ca1f</name>
+        <choiceText>Video Management | Machine Learning</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Video Management | Machine Learning</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_78c76028_5f5b_42e8_9d02_eb4828dbfc50</name>
+        <choiceText>Artificial Intelligence | Image/Object Detection/ Recognition/Classification</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Image/Object Detection/ Recognition/Classification</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_7e2b5778_3a72_4df8_87f4_6f9e20595998</name>
+        <choiceText>Communications</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Communications </stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_80063eb4_903c_42c3_8440_0ebf564f9af4</name>
+        <choiceText>Smart City</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Smart City</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_8f82f1b6_fdd3_4933_83f0_fbd55f4cc033</name>
+        <choiceText>Energy and Utilities | Electric Power</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Energy and Utilities | Electric Power</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_8f8479ca_188f_4113_9708_6c388c880e0d</name>
+        <choiceText>Connected Worker | Hybrid Cloud</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Connected Worker | Hybrid Cloud</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_907ddda5_1087_49d1_859c_b1041d0cbfda</name>
+        <choiceText>Accommodation and Food Services | Food and Drink Services</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Accommodation and Food Services | Food and Drink Services</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_94a3eeff_a96a_46c0_8718_d1b6b7a31a82</name>
+        <choiceText>Japanese</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Japanese</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_9ee87fc0_9820_47ad_badf_ff322b51ac69</name>
+        <choiceText>Gaming | PC Gaming</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Gaming | PC Gaming</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_9f68a361_1e50_4d73_8653_ab0bedb85a2f</name>
+        <choiceText>Interactive Whiteboard</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Interactive Whiteboard</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_a05a4abc_981c_4906_a8b1_667a4ae576b0</name>
+        <choiceText>Professional and Business Services</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Professional and Business Services</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_a12fd945_af8c_4fca_bc1a_4e9c5a3e02e3</name>
+        <choiceText>Intelligent Vending</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Intelligent Vending</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_a5093d99_214e_4122_828d_74bb9f1a7400</name>
+        <choiceText>Product Brief</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Product Brief</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_aa25532b_2921_4972_9099_c449b9269efb</name>
+        <choiceText>Use Case &amp;amp; Articles</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Use Case &amp; Articles</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ab630b84_44e4_4957_ac97_cb6201a7db8b</name>
+        <choiceText>Software</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Software</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ad01404e_94e1_4bb9_a0dc_7861455620f4</name>
+        <choiceText>Transportation and Warehouse | Rail Transportation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Transportation and Warehouse | Rail Transportation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_adcde377_2f2e_4c49_bd79_c0e5b016d04b</name>
+        <choiceText>Energy and Utilities | Oil and Gas</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Energy and Utilities | Oil and Gas</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ade06448_a768_4925_8a44_c410638bdbf5</name>
+        <choiceText>Artificial Intelligence | Deep Learning</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Deep Learning</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_b0d10b3e_7f67_4e50_875e_2f4834984c9d</name>
+        <choiceText>Artificial Intelligence | Video Surveillance and Analytics</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Video Surveillance and Analytics  </stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_b26d57f8_78b1_46f1_a781_739d251d81d0</name>
+        <choiceText>Communications  | Data Processing, Hosting and Related Services</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Communications  | Data Processing, Hosting and Related Services</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_b36f3883_5bfb_402c_9607_2e9efce07097</name>
+        <choiceText>White Paper</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>White Paper</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_b8d6e96a_2101_4028_aa83_385547dc222e</name>
+        <choiceText>Simplified Chinese</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Simplified Chinese</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ba14bfce_7001_4845_a11d_51a9e934595c</name>
+        <choiceText>Connected Worker</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Connected Worker</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_bb99ced2_7ef3_4718_9dad_2fb4cd6a5089</name>
+        <choiceText>Automotive | Autonomous Driving</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Automotive | Autonomous Driving</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_c3c0999c_645d_48b3_ab83_4ac353c35072</name>
+        <choiceText>Smart Building</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Smart Building</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ccd50dc5_e214_40c2_9d44_72e036f4fbbe</name>
+        <choiceText>Smart Home</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Smart Home</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_d224acd3_1d6c_48ea_8cee_263bda3d928d</name>
+        <choiceText>Digital Security Surveillance | Mid Level Solutions with Intelligence (21 to 100 cameras)</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Digital Security Surveillance | Mid Level Solutions with Intelligence (21 to 100 cameras)</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_d29102ef_e72d_4173_a7be_fdaefb7b014c</name>
+        <choiceText>Manufacturing | Industrial Automation</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Manufacturing | Industrial Automation</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_d4cd0a9b_8fc5_46b9_b442_002439f1ec98</name>
+        <choiceText>Video Management</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Video Management</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_d832c9db_c3b3_47f5_b7e3_856b5910ebe8</name>
+        <choiceText>Gaming</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Gaming</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_db6ec5ba_7271_45bd_b726_93c52ceaa3fd</name>
+        <choiceText>Arts and Entertainment</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Arts and Entertainment</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_db9c206a_74e6_46ec_bc98_c4e6b89813b9</name>
+        <choiceText>Not For Profit</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Not For Profit</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_dcd464fc_4a8c_4dba_b316_781b8caf2fc4</name>
+        <choiceText>Transportation and Warehouse | Warehousing and Storage</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Transportation and Warehouse | Warehousing and Storage</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_dd18bc4d_2eab_4952_a5e8_09b78dc170d7</name>
+        <choiceText>Cloud Computing | Private Cloud and Software Defined Infrastructure</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Cloud Computing | Private Cloud and Software Defined Infrastructure</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_deb134c2_edda_48b3_984c_ec12d6c4e2bc</name>
+        <choiceText>Artificial Intelligence | Facial Detection/Recognition/Classification</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Facial Detection/Recognition/Classification</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_df9c710f_58c5_407a_9043_e66a5ec19975</name>
+        <choiceText>Collaboration</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Collaboration</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e08fdbb7_ae1c_4a2d_9cb0_2c50d1cc9009</name>
+        <choiceText>Digital Security Surveillance</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Digital Security Surveillance</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e1612c07_a6bd_4188_95ae_b8381ca7661f</name>
+        <choiceText>Government</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Government</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e21539e2_04f2_4777_988c_d3c57bad58f4</name>
+        <choiceText>Manufacturing | Automotive</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Manufacturing | Automotive</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e3a5c51c_f63b_4ce7_b1cf_0edbb7d122d7</name>
+        <choiceText>Communications  | Telecommunications</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Communications  | Telecommunications</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e5ac12a5_c623_4a42_ba12_8de9490cfe7a</name>
+        <choiceText>Transportation and Warehouse</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Transportation and Warehouse</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_e78242c4_046e_40e8_84d1_669ccee0eb0f</name>
+        <choiceText>Artificial Intelligence | Anomaly Detection</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Anomaly Detection</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_ef8193da_1c43_4972_a9cc_7a82c81183b7</name>
+        <choiceText>High Performance Computing</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>High Performance Computing</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_f3662a9d_2b5c_4836_aa82_21e516f0fa69</name>
+        <choiceText>Inventory Management</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Inventory Management</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_f66a71ec_b291_4936_8512_70fa1754c488</name>
+        <choiceText>Artificial Intelligence | Drug Discovery</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Drug Discovery</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_f8982e28_7c1b_47c0_8dbf_cef0f9602585</name>
+        <choiceText>Artificial Intelligence | Data preparation and management</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Artificial Intelligence | Data preparation and management</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>c_feff0562_ac28_40a9_b8f7_e2f3385eb51e</name>
+        <choiceText>Retail</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Retail</stringValue>
+        </value>
+    </choices>
+    <interviewLabel>Marketplace Distributor OnBoarding</interviewLabel>
+    <label>Marketplace Distributor OnBoarding</label>
+    <processMetadataValues>
+        <name>BrandingSet</name>
+        <value>
+            <stringValue>marketplace_distributor_onboarding_2</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>autoProgressEnabled</name>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>hasWelcomePage</name>
+        <value>
+            <booleanValue>true</booleanValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>overrideActiveVersion</name>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </processMetadataValues>
+    <processType>Survey</processType>
+    <screens>
+        <name>p_3d3bc19c_1903_4069_b6fe_37947c8b4abf</name>
+        <label>Company Resources</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_f6598dcc_b98f_4800_a3c2_6137ec52c633</name>
+            <dataType>String</dataType>
+            <extensionName>survey:runtimeShortText</extensionName>
+            <fieldText>&lt;p&gt;&lt;b&gt;Resource Name:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>ComponentInput</fieldType>
+            <helpText>Enter Resource Name</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_10549547_f048_4d25_96a5_7aaee6dac93b</name>
+            <choiceReferences>c_b36f3883_5bfb_402c_9607_2e9efce07097</choiceReferences>
+            <choiceReferences>c_572769d3_9608_469d_be84_13057614666a</choiceReferences>
+            <choiceReferences>c_a5093d99_214e_4122_828d_74bb9f1a7400</choiceReferences>
+            <choiceReferences>c_aa25532b_2921_4972_9099_c449b9269efb</choiceReferences>
+            <dataType>String</dataType>
+            <extensionName>survey:runtimeRadioButton</extensionName>
+            <fieldText>&lt;p&gt;&lt;b&gt;Resource Type:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>ComponentChoice</fieldType>
+            <helpText>Select the relevant Resource Type</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_cce8e67b_9876_426d_a467_9cac4da7f116</name>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Resource URL:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>Enter the Resource URL</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <pausedText>To pick up where you left off, refresh this page, or open the survey again.</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>p_c042eb82_504b_494d_9f1f_62f27259711a</name>
+        <label>Partner Account</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>p_f168b082_d759_4686_8495_68eb2491b973</targetReference>
+        </connector>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_14f47081_ca97_41b1_b246_ef055df41735</name>
+            <dataType>String</dataType>
+            <extensionName>survey:runtimeShortText</extensionName>
+            <fieldText>&lt;p&gt;&lt;b&gt;Partner Account Name:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>ComponentInput</fieldType>
+            <helpText>Enter Partner Account Name</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_74b7b676_96c8_4ea5_9b21_d4746883c24f</name>
+            <dataType>String</dataType>
+            <extensionName>survey:runtimeShortText</extensionName>
+            <fieldText>&lt;p&gt;&lt;b&gt;Partner Website:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>ComponentInput</fieldType>
+            <helpText>Enter Partner Website</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_005bcef7_4ffc_432e_933f_6b6413c5c2ab</name>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Partner Storefront Logo:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>Enter the Storefront Logo URL (please attach company logo URL - Image must be less than 5 MB, must be .png, .gif, .jpg, .jpeg.  Recommended size must be 600x800)</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <pausedText>To pick up where you left off, refresh this page, or open the survey again.</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>p_f168b082_d759_4686_8495_68eb2491b973</name>
+        <label>Company Description</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>p_f23c8150_60db_4efc_933f_8296249c6f36</targetReference>
+        </connector>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_2f6a7b70_c5d1_4887_95c7_86ee86d7f996</name>
+            <choiceReferences>c_42c5fe24_2085_4b12_92eb_9ecf4d5f4b12</choiceReferences>
+            <choiceReferences>c_94a3eeff_a96a_46c0_8718_d1b6b7a31a82</choiceReferences>
+            <choiceReferences>c_b8d6e96a_2101_4028_aa83_385547dc222e</choiceReferences>
+            <dataType>String</dataType>
+            <extensionName>survey:runtimeRadioButton</extensionName>
+            <fieldText>&lt;p&gt;&lt;b&gt;Input Language&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>ComponentChoice</fieldType>
+            <helpText>Please select the Input Language</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_53b53a73_67b6_433e_867c_cbafe70a8e42</name>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Company Tagine&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>Enter the company Tagline</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_72310f6f_fa9b_4820_a108_4da779d2be23</name>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Company Description&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>InputField</fieldType>
+            <helpText>Enter Company Description</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <pausedText>To pick up where you left off, refresh this page, or open the survey again.</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>p_f23c8150_60db_4efc_933f_8296249c6f36</name>
+        <label>Company Details</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>p_3d3bc19c_1903_4069_b6fe_37947c8b4abf</targetReference>
+        </connector>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_c6c14bb5_fa92_4141_8f24_e16bdf12c944</name>
+            <choiceReferences>c_0c829aea_c084_4e26_9bf2_5d3b11cd131a</choiceReferences>
+            <choiceReferences>c_473e745f_5fc6_48cd_a01b_7daa012c3104</choiceReferences>
+            <choiceReferences>c_db6ec5ba_7271_45bd_b726_93c52ceaa3fd</choiceReferences>
+            <choiceReferences>c_2e535326_3a01_4320_8838_2d02e045652b</choiceReferences>
+            <choiceReferences>c_7e2b5778_3a72_4df8_87f4_6f9e20595998</choiceReferences>
+            <choiceReferences>c_257c7b54_6b2f_4b08_843d_5cbd3780498a</choiceReferences>
+            <choiceReferences>c_69a07414_f155_4bf0_a01d_c269ec512ddb</choiceReferences>
+            <choiceReferences>c_40887344_5822_4b43_9eb7_d10d9fc30ecf</choiceReferences>
+            <choiceReferences>c_1760ffa7_7347_4589_8b89_3ef112f488f7</choiceReferences>
+            <choiceReferences>c_d832c9db_c3b3_47f5_b7e3_856b5910ebe8</choiceReferences>
+            <choiceReferences>c_e1612c07_a6bd_4188_95ae_b8381ca7661f</choiceReferences>
+            <choiceReferences>c_1c0bb4c8_d2a1_4542_9f03_e972a9cb8c46</choiceReferences>
+            <choiceReferences>c_1cc878f0_5413_43a6_9532_8c7145eb14ce</choiceReferences>
+            <choiceReferences>c_db9c206a_74e6_46ec_bc98_c4e6b89813b9</choiceReferences>
+            <choiceReferences>c_0aab157a_206c_4a77_a630_5af19c51f71d</choiceReferences>
+            <choiceReferences>c_a05a4abc_981c_4906_a8b1_667a4ae576b0</choiceReferences>
+            <choiceReferences>c_74be0c87_8666_4c84_b12c_de8fe1fc08bf</choiceReferences>
+            <choiceReferences>c_feff0562_ac28_40a9_b8f7_e2f3385eb51e</choiceReferences>
+            <choiceReferences>c_ab630b84_44e4_4957_ac97_cb6201a7db8b</choiceReferences>
+            <choiceReferences>c_e5ac12a5_c623_4a42_ba12_8de9490cfe7a</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Industry:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <helpText>Select the relevant Industries</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_474295c5_905d_48f4_8c1c_7d827faa9936</name>
+            <choiceReferences>c_2d3e23e9_8700_4363_a275_6fe8f51015ce</choiceReferences>
+            <choiceReferences>c_bb99ced2_7ef3_4718_9dad_2fb4cd6a5089</choiceReferences>
+            <choiceReferences>c_21063f6a_2d7b_414c_b4c2_38678f623ae3</choiceReferences>
+            <choiceReferences>c_0cd32378_d7bd_4a42_aede_b487970edcfc</choiceReferences>
+            <choiceReferences>c_454a03a5_46e6_497c_b02c_84071db5f96d</choiceReferences>
+            <choiceReferences>c_ad01404e_94e1_4bb9_a0dc_7861455620f4</choiceReferences>
+            <choiceReferences>c_dcd464fc_4a8c_4dba_b316_781b8caf2fc4</choiceReferences>
+            <choiceReferences>c_54637fd8_9669_4eb1_bdb6_7d93c26eabd5</choiceReferences>
+            <choiceReferences>c_b26d57f8_78b1_46f1_a781_739d251d81d0</choiceReferences>
+            <choiceReferences>c_e3a5c51c_f63b_4ce7_b1cf_0edbb7d122d7</choiceReferences>
+            <choiceReferences>c_9ee87fc0_9820_47ad_badf_ff322b51ac69</choiceReferences>
+            <choiceReferences>c_4135c9da_d7ad_49e3_b5f9_d4cbc4836e99</choiceReferences>
+            <choiceReferences>c_35e96faa_b8d3_423a_b7d6_0a1b29e1a5fe</choiceReferences>
+            <choiceReferences>c_907ddda5_1087_49d1_859c_b1041d0cbfda</choiceReferences>
+            <choiceReferences>c_11160f73_dd93_497c_915d_08055694f18b</choiceReferences>
+            <choiceReferences>c_08c3cc63_f9a7_4793_8b99_f3d72ea9bf13</choiceReferences>
+            <choiceReferences>c_2b28250f_a8b3_4500_a456_0afefbeee000</choiceReferences>
+            <choiceReferences>c_1fb2420b_e7b4_41bf_b9e4_a9002c67a0ee</choiceReferences>
+            <choiceReferences>c_d29102ef_e72d_4173_a7be_fdaefb7b014c</choiceReferences>
+            <choiceReferences>c_e21539e2_04f2_4777_988c_d3c57bad58f4</choiceReferences>
+            <choiceReferences>c_372c06b0_ff4d_4bc3_8ffe_463251f0f0f7</choiceReferences>
+            <choiceReferences>c_adcde377_2f2e_4c49_bd79_c0e5b016d04b</choiceReferences>
+            <choiceReferences>c_8f82f1b6_fdd3_4933_83f0_fbd55f4cc033</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Sub Industry:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <helpText>Select the relevant Sub-Industry</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_d2454772_63df_4e8b_8c61_80fde06de573</name>
+            <choiceReferences>c_195e2053_64dd_4fc9_971a_6e6bbd9f3b50</choiceReferences>
+            <choiceReferences>c_0ff671fa_6404_4fda_99d4_f42524a52aef</choiceReferences>
+            <choiceReferences>c_54f348bf_655e_4a49_85c3_b1d05c03f540</choiceReferences>
+            <choiceReferences>c_df9c710f_58c5_407a_9043_e66a5ec19975</choiceReferences>
+            <choiceReferences>c_ba14bfce_7001_4845_a11d_51a9e934595c</choiceReferences>
+            <choiceReferences>c_e08fdbb7_ae1c_4a2d_9cb0_2c50d1cc9009</choiceReferences>
+            <choiceReferences>c_71b44ed5_e276_41d3_bf3e_62a02d2817b2</choiceReferences>
+            <choiceReferences>c_3084f87b_1c49_4187_8df4_9edfcda03e58</choiceReferences>
+            <choiceReferences>c_20d0df79_1617_43ed_8c4d_ab4f6b27c94b</choiceReferences>
+            <choiceReferences>c_3caf39fb_0cec_4940_8a9d_ba509657b899</choiceReferences>
+            <choiceReferences>c_ef8193da_1c43_4972_a9cc_7a82c81183b7</choiceReferences>
+            <choiceReferences>c_a12fd945_af8c_4fca_bc1a_4e9c5a3e02e3</choiceReferences>
+            <choiceReferences>c_9f68a361_1e50_4d73_8653_ab0bedb85a2f</choiceReferences>
+            <choiceReferences>c_f3662a9d_2b5c_4836_aa82_21e516f0fa69</choiceReferences>
+            <choiceReferences>c_2137b745_98e5_4d79_8d18_f0dbf1170c71</choiceReferences>
+            <choiceReferences>c_381e5c82_9659_4d91_a17f_9445d5a2d0cd</choiceReferences>
+            <choiceReferences>c_c3c0999c_645d_48b3_ab83_4ac353c35072</choiceReferences>
+            <choiceReferences>c_80063eb4_903c_42c3_8440_0ebf564f9af4</choiceReferences>
+            <choiceReferences>c_ccd50dc5_e214_40c2_9d44_72e036f4fbbe</choiceReferences>
+            <choiceReferences>c_2e971188_3b84_45a8_a175_8b982bccc31f</choiceReferences>
+            <choiceReferences>c_498b1390_7d79_47fc_aa7e_532c3583fc3a</choiceReferences>
+            <choiceReferences>c_d4cd0a9b_8fc5_46b9_b442_002439f1ec98</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Application:&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <helpText>Select the relevant Application</helpText>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <processMetadataValues>
+                <name>autoProgressAction</name>
+                <value>
+                    <stringValue>NONE</stringValue>
+                </value>
+            </processMetadataValues>
+            <name>q_8f986082_a980_431d_8afb_5eee2cbf66c7</name>
+            <choiceReferences>c_e78242c4_046e_40e8_84d1_669ccee0eb0f</choiceReferences>
+            <choiceReferences>c_5ebdbf5a_0dde_4b44_a3f2_9c2a40b26395</choiceReferences>
+            <choiceReferences>c_5c40d266_7081_4822_837f_c1029072dc9a</choiceReferences>
+            <choiceReferences>c_f8982e28_7c1b_47c0_8dbf_cef0f9602585</choiceReferences>
+            <choiceReferences>c_ade06448_a768_4925_8a44_c410638bdbf5</choiceReferences>
+            <choiceReferences>c_f66a71ec_b291_4936_8512_70fa1754c488</choiceReferences>
+            <choiceReferences>c_deb134c2_edda_48b3_984c_ec12d6c4e2bc</choiceReferences>
+            <choiceReferences>c_78c76028_5f5b_42e8_9d02_eb4828dbfc50</choiceReferences>
+            <choiceReferences>c_517d5433_0c0f_41ca_9926_553e0e7abcf4</choiceReferences>
+            <choiceReferences>c_3dd5ba4e_2877_4f83_87c0_389e38d2dff6</choiceReferences>
+            <choiceReferences>c_065eff68_9935_4336_8996_8a6f5758d2e6</choiceReferences>
+            <choiceReferences>c_b0d10b3e_7f67_4e50_875e_2f4834984c9d</choiceReferences>
+            <choiceReferences>c_1b36c663_d067_465c_87e7_6eccf13bddf5</choiceReferences>
+            <choiceReferences>c_41e602cf_1b99_4802_9690_566b0da1d131</choiceReferences>
+            <choiceReferences>c_dd18bc4d_2eab_4952_a5e8_09b78dc170d7</choiceReferences>
+            <choiceReferences>c_4eb0473e_f6fc_442a_a48e_6ed5b3854c41</choiceReferences>
+            <choiceReferences>c_8f8479ca_188f_4113_9708_6c388c880e0d</choiceReferences>
+            <choiceReferences>c_0358128f_6250_48e1_b253_8b75b8597b5c</choiceReferences>
+            <choiceReferences>c_312cab6e_9e20_43b1_bc17_3c43a5f65c4a</choiceReferences>
+            <choiceReferences>c_d224acd3_1d6c_48ea_8cee_263bda3d928d</choiceReferences>
+            <choiceReferences>c_75e8df13_b689_4dc5_b8b1_61a9daf4ca1f</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>&lt;p&gt;&lt;b&gt;Sub-Application&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <helpText>Select the relevant Sub-Application</helpText>
+            <isRequired>false</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <pausedText>To pick up where you left off, refresh this page, or open the survey again.</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>welcome_page</name>
+        <label>Welcome Page</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>p_c042eb82_504b_494d_9f1f_62f27259711a</targetReference>
+        </connector>
+        <fields>
+            <name>welcome_question</name>
+            <extensionName>survey:runtimeWelcome</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>{!welcome_question_lref_tt}</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>description</name>
+                <value>
+                    <stringValue>{!welcome_question_dref_tt}</stringValue>
+                </value>
+            </inputParameters>
+            <isRequired>true</isRequired>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>welcome_page</startElementReference>
+    <status>Active</status>
+    <textTemplates>
+        <name>thankYouDescriptionTextTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text></text>
+    </textTemplates>
+    <textTemplates>
+        <name>thankYouLabelTextTemplate</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 26px;&quot;&gt;Thankyou !&lt;/b&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>welcome_question_dref_tt</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>Please fill in details of distributor to be onboarded in Intel Solution Marketplace</text>
+    </textTemplates>
+    <textTemplates>
+        <name>welcome_question_lref_tt</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;b style=&quot;font-size: 26px;&quot;&gt;Marketplace Distributor Onboarding Template&lt;/b&gt;&lt;/p&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>guestUserLang</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>invitationId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>previewMode</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <name>thankYouDescription</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>{!thankYouDescriptionTextTemplate}</stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>thankYouLabel</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <stringValue>{!thankYouLabelTextTemplate}</stringValue>
+        </value>
+    </variables>
+</Flow>

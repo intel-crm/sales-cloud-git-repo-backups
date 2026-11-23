@@ -40,6 +40,7 @@
 </th>
 <th class="expander" style="margin: 0px; padding: 0px !important; width: 0px; text-align: left; color: #555554; line-height: 20px; font-family: Arial,Helvetica,sans-serif; font-size: 12px; font-weight: 400; visibility: hidden;"></th>
 </tr>
+
 </tbody>
 </table>
 </th>
@@ -109,7 +110,7 @@
 <table border="0" cellpadding="0" cellspacing="0" class="cq-rte-forcedborder" style="border: #d3d3d3; border-collapse: collapse;" width="100%">
 <tbody>
 <tr style="height: 12px;">
-<td class="auto-style1" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: left; height: 12px;" valign="top">版权所有@ {!$Label.PRM_CurrentYear} 英特尔公司。保留所有权利。英特尔和英特尔徽标是英特尔公司在美国和/或其他国家/地区的商标。</td>
+<td class="auto-style1" style="font-size: 10px; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-top: 10px; padding-bottom: 10px; text-align: left; height: 12px;" valign="top">版权所有@ {!Contact.Core_Current_Year__c} 英特尔公司。保留所有权利。英特尔和英特尔徽标是英特尔公司在美国和/或其他国家/地区的商标。</td>
 </tr>
 <tr style="height: 13.6px;">
 <td class="auto-style1" style="font-size: 10px; border: #d3d3d3; color: #ffffff; font-family: Arial, Helvetica, sans-serif; line-height: 14px; padding-bottom: 10px; text-align: left; height: 13.6px;" valign="top">Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.<span class="Apple-converted-space"> </span><a _rte_href="https://www-ssl.intel.com/content/www/ch/zh/homepage.html" href="https://www-ssl.intel.com/content/www/cn/zh/homepage.html" style="color: #ffffff;" target="_blank">Intel.com</a></td>

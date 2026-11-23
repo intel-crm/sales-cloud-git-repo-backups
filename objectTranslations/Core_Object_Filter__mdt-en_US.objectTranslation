@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Core Object Filter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Core Object Filters</value>
+    </caseValues>
+    <fields>
+        <help><!-- Check if it is the default filter --></help>
+        <label><!-- Default Filter --></label>
+        <name>Default_Filter__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default for Partner --></label>
+        <name>Default_for_Partner__c</name>
+    </fields>
+    <fields>
+        <label><!-- Enabled for Partners --></label>
+        <name>Enabled_for_Partners__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Label --></label>
+        <name>Filter_Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Filter Value --></label>
+        <name>Filter_Value__c</name>
+    </fields>
+    <layouts>
+        <layout>Core Object Filter Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PMP Object Filter Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

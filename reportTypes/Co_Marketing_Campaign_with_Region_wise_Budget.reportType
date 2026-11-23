@@ -40,12 +40,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign Industry</displayNameOverride>
-            <field>Core_MDF_Industry_Nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Campaign Description</displayNameOverride>
             <field>Description</field>
             <table>Campaign</table>
@@ -119,100 +113,18 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Region_cd__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Region</displayNameOverride>
-            <field>Core_MDF_Account__c.Core_Geo__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <displayNameOverride>Parent Fund Account</displayNameOverride>
             <field>Core_MDF_Account__c.Core_MDF_Parent_Fund_Account__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Amount_amt__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Is_Opal__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Cap__c</field>
+            <field>PRM_Bulk_Add_Invite_Email_Template__c</field>
             <table>Campaign</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_MDF_Opal_Budget_Type_Txt__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type_txt__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Approver_Date__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Custom_Reimbursement_Rate_pct__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_ReimbursementRate_pct__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Campaign_Scoring_txt__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Account_Based_Ind__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Proposal_Based_Ind__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <displayNameOverride>Campaign Activity Category -&gt; Activity Type</displayNameOverride>
-            <field>Core_MDF_Activity_Category_Type__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_IPA_Priority_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Focus_Area_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Initiative_nm__c</field>
-            <table>Campaign</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Host_Region_cd__c</field>
             <table>Campaign</table>
         </columns>
         <masterLabel>Campaigns</masterLabel>

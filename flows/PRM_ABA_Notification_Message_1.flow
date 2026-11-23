@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Send_ABA_Notification_Messages</name>
         <label>Send ABA Notification Messages</label>
-        <locationX>668</locationX>
-        <locationY>405</locationY>
+        <locationX>891</locationX>
+        <locationY>381</locationY>
         <actionName>PRM_SendNotificationMessages</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,7 +17,7 @@
         <inputParameters>
             <name>msgCd</name>
             <value>
-                <elementReference>SendABANotificationMessages</elementReference>
+                <elementReference>To_Check_Benefit_Value</elementReference>
             </value>
         </inputParameters>
         <nameSegment>PRM_SendNotificationMessages</nameSegment>
@@ -27,11 +27,16 @@
     <description>Send Notofocation messages to contacts when Solution Marketplace Enhanced Benefit/Solution Marketplace Basic Profile Benefit is provided to the OPID Account</description>
     <environments>Default</environments>
     <formulas>
-        <name>SendABANotificationMessages</name>
+        <name>formula_1_myRule_1_A1_9767097474</name>
         <dataType>String</dataType>
-        <expression>IF({!$Record.PRM_Partner_Benefit_Id__r.Name}={!$Label.PRM_Solutions_Marketplace_Enhanced}, {!$Label.PRM_Msgcd_Store_Front} ,{!$Label.PRM_Msgcd_Market})</expression>
+        <expression>IF( {!$Record.PRM_Partner_Benefit_Id__r.Name = $Label.PRM_Solutions_Marketplace_Enhanced}, $Label.PRM_Msgcd_Store_Front, $Label.PRM_Msgcd_Market )</expression>
     </formulas>
-    <interviewLabel>PRM_ABA_Notification_Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <formulas>
+        <name>To_Check_Benefit_Value</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.PRM_Partner_Benefit_Id__r.Name} ={!$Label.PRM_Solutions_Marketplace_Enhanced},{!$Label.PRM_Msgcd_Store_Front},{!$Label.PRM_Msgcd_Market})</expression>
+    </formulas>
+    <interviewLabel>PRM_ABA_Notification_Message_1 {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_ABA_Notification_Message</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -45,16 +50,10 @@
             <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
-    <processMetadataValues>
-        <name>OriginBuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <start>
-        <locationX>544</locationX>
-        <locationY>48</locationY>
+        <locationX>451</locationX>
+        <locationY>108</locationY>
         <connector>
             <targetReference>Send_ABA_Notification_Messages</targetReference>
         </connector>

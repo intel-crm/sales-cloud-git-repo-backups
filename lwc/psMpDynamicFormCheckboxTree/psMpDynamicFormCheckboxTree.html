@@ -42,9 +42,7 @@
         <template if:true={ifs.toggleCollapse}>
           <a class="color-dark-gray toggle" onclick={handleAction} data-type="togglesection">
             <span class="toggleIcon">
-              <div class={classes.toggleClass}>
-                <lightning-icon icon-name={classes.toggleIcon} alternative-text={classes.toggleAlternativeText} title={classes.toggleTitle}></lightning-icon>
-              </div>
+              <div class={classes.toggleClass}><svg class="slds-icon slds-icon-text-default slds-icon_xx-small"><use xlink:href={classes.toggleIcon}></use></svg></div></div>
             </span>
           </a>  
         </template>

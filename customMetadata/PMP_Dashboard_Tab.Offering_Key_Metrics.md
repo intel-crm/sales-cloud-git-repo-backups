@@ -24,6 +24,6 @@
     </values>
     <values>
         <field>PRM_Profile_Txt__c</field>
-        <value xsi:type="xsd:string">System Administrator,IT Admin,IPA A&amp;E User</value>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

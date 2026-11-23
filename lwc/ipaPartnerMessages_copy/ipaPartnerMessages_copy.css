@@ -1,0 +1,77 @@
+:host{
+    display: block;
+    margin: 2.5rem 0;
+}
+
+.message-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid var(--lightGray);
+}
+
+.subject,
+.type,
+.date {
+    padding: 2rem 1rem 1rem 0;
+    font-weight: bold;
+}
+.subject {
+    padding: 2rem 1rem 1rem 1rem;
+}
+
+.toggle {
+    padding: 1rem;
+    flex: 0 0 3rem;
+}
+.footer-actions,
+.message-list {
+    background: var(--white);
+}
+
+
+@media only screen and (max-width: 767px) {
+    :host {
+        padding: 0 1rem 0;
+    }
+    .mobile-hide {
+        display: none;
+    }
+    .subject {
+        padding: 1rem;
+    }
+    .footer-actions {
+        padding: 2rem 1rem;
+    }
+    .view-all-button {
+        width: 100%;
+        justify-content: center;
+    }
+    c-ipa-link {
+        display: block;
+    }
+    .message-list {
+        padding: 0 1rem;
+    }
+}
+@media only screen and (min-width: 768px) {
+    :host {
+        padding: 0;
+    }
+    .subject {
+        flex: 4;
+    }
+    .type {
+        flex: 2;
+    }
+    .date {
+        flex: 2;
+    }
+    .footer-actions {
+        padding: 2rem 1.5rem;
+    }
+    .message-list {
+        padding: 0 1.5rem;
+    }
+    
+}

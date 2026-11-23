@@ -21,7 +21,9 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
     @AuraEnabled
     public static List<String> getAllFields(String sObjectName){
     
-    	Map<String,Schema.SObjectType> allObjectsMap = Schema.getGlobalDescribe();
+        System.debug('sObjectName:'+sObjectName);
+        
+        Map<String,Schema.SObjectType> allObjectsMap = Schema.getGlobalDescribe();
         list<String> lstFields = new list<String>();
         
         Schema.SObjectType sObj = allObjectsMap.get(sObjectName);
@@ -34,6 +36,8 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
         }
         
         lstFields.sort();
+        
+        System.debug('lstFields'+lstFields);
         
         return lstFields;
     }
@@ -51,25 +55,24 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
     public static list<String> getAllObjects(){
     
         Map<String,Schema.SObjectType> allObjectsMap = Schema.getGlobalDescribe();
+        System.debug('allObjectsMap: '+allObjectsMap);
         List<String> objList = new list<String>();
        
         
-        List<String> objApiNameLst = Core_MDF_CCP_ConstantClass.OBJECT_API_NAME_LIST;
-        // for(Core_MDF_Approval_Object_List__mdt objName : [SELECT Id, Name, Core_MDF_Object_API_Name__c 
-        //                                                   FROM Core_MDF_Approval_Object_List__mdt LIMIT 10000]){
-        //     if(allObjectsMap.containsKey(objName.Core_MDF_Object_API_Name__c)){
-        //         DescribeSObjectResult describe = allObjectsMap.get(objName.Core_MDF_Object_API_Name__c).getDescribe();
-        //         objList.add(describe.getLabel()+'#;'+describe.getName());                
-        //     }
-        // }
-        //updated the code for the change of Custom Metadata to Custom Settings - Akanksha(WW32 2024)
-        for(String objApiName : objApiNameLst){
-            if(allObjectsMap.containsKey(objApiName)){
-                DescribeSObjectResult describe = allObjectsMap.get(objApiName).getDescribe();
+        
+        for(Core_MDF_Approval_Object_List__mdt objName : [SELECT Id, DeveloperName, Core_MDF_Object_API_Name__c 
+                                                          FROM Core_MDF_Approval_Object_List__mdt LIMIT 10000]){
+            if(allObjectsMap.containsKey(objName.Core_MDF_Object_API_Name__c)){
+                DescribeSObjectResult describe = allObjectsMap.get(objName.Core_MDF_Object_API_Name__c).getDescribe();
                 objList.add(describe.getLabel()+'#;'+describe.getName());                
             }
         }
+        System.debug('objList before sort:'+objList);
         objList.sort();
+        System.debug('objList after sort:'+objList);
+
+        
+        System.debug('objectsWithAPIName:'+objList);
         return objList;
     } 
     
@@ -117,7 +120,7 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
                                         Core_MDF_Sub_Type__c, Core_MDF_Value_1__c,Core_MDF_Value_2__c,
                                         Core_MDF_Value_3__c,Core_MDF_Value_4__c, Core_MDF_Value_5__c,
                                         Core_MDF_Value_6__c, Core_MDF_Value_7__c, Core_MDF_Value_8__c,
-                                        Core_MDF_Value_9__c, Core_MDF_Value_10__c, Core_MDF_Approval_Criteria_Ref_Code_txt__c FROM Core_MDF_Criteria__c WHERE Id =:recId LIMIT 10000];
+                                        Core_MDF_Value_9__c, Core_MDF_Value_10__c FROM Core_MDF_Criteria__c WHERE Id =:recId LIMIT 10000];
        return crtAppr;
     }
 
@@ -168,12 +171,15 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
     @AuraEnabled   
     public static void updateCriteriaRule(list<Core_MDF_Criteria_Rule__c> crtRuleList, Id apprId){
                 
+        System.debug('crtRuleList:'+crtRuleList);
+        
         list<Id> availableCriteraRule = new list<Id>();
         list<Core_MDF_Criteria_Rule__c> toBeInserted = new list<Core_MDF_Criteria_Rule__c>();
         list<Core_MDF_Criteria_Rule__c> toBeUpdated = new list<Core_MDF_Criteria_Rule__c>();
         
         for(Core_MDF_Criteria_Rule__c crtRule: crtRuleList){            
             if(crtRule.Id != NULL){
+                System.debug('crtRule:'+crtRule.Id);
                 availableCriteraRule.add(crtRule.Id);
                 toBeUpdated.add(crtRule);
             }else{
@@ -181,10 +187,13 @@ public without sharing class Core_MDF_ApprovalCriteriaHelper {
             } 
         }
         
+        System.debug('availableCriteraRule:'+availableCriteraRule);
+        
         list<Core_MDF_Criteria_Rule__c> toBeDeleted = [SELECT Id, Name, Core_MDF_Approver__c, Core_MDF_Field_Name__c, Core_MDF_Operator__c,
                                                        Core_MDF_Value__c FROM Core_MDF_Criteria_Rule__c WHERE Core_MDF_Approver__c =:apprId 
                                                        AND Id NOT IN : availableCriteraRule LIMIT 10000];
-         
+        System.debug('toBeDeleted:'+toBeDeleted);
+        
         try{
             if(toBeInserted.size() > 0){
                 Database.insert(toBeInserted, true);

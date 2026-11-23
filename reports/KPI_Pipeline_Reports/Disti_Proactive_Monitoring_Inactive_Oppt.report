@@ -43,9 +43,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Past_Due__c</field>
     </columns>
     <columns>
@@ -88,7 +85,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Define,Develop,Design</value>
+            <value>Qualify,Define,Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Inactive__c</column>

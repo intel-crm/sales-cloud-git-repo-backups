@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>ACR_CONTACT_DELETION_IND</name>
     <style>none</style>
@@ -26,7 +26,7 @@ Terima kasih,
 Tim Intel® Partner Alliance Anda
 
 Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privasi | Cookie</textOnly>
     <type>custom</type>

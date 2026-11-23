@@ -1,0 +1,25 @@
+<apex:page controller="MarketplaceSsoTestController" sidebar="false" showHeader="false">
+  <script>
+    // const fullLocation = `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}`;
+    const fullLocation = `https://www.intel.com`;
+    const navigationData = {
+      entitlements: [
+        {
+          name: 'Manage Offerings',
+          url: 'https://intel--crmdevipam.sandbox.my.site.com/imp/s/pmp-partner-offering/PMP_Partner_Offering__c/',
+        },
+        {
+          name: 'Manage Partners',
+          url: 'https://intel--crmdevipam.sandbox.my.site.com/imp/s/partner/PMP_Company__c/',
+        },
+      ],
+    };
+    window.parent.postMessage(navigationData, fullLocation);
+  </script>
+
+<!-- Begin Default Content REMOVE THIS -->
+<h1>Congratulations</h1>
+This is the Marketplace Test page.
+{!$User.FirstName} - {!SSOUrl}
+<!-- End Default Content REMOVE THIS -->
+</apex:page>

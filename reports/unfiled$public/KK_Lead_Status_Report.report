@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>LEAD_SOURCE</field>
-    </columns>
-    <columns>
         <field>Lead.Core_Lead_Status__c</field>
-    </columns>
-    <columns>
-        <field>LEAD_ID</field>
     </columns>
     <columns>
         <field>COMPANY</field>
@@ -27,6 +21,9 @@
     </columns>
     <columns>
         <field>TITLE</field>
+    </columns>
+    <columns>
+        <field>LEAD_SOURCE</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -49,8 +46,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Lead.Core_Lead_Status__c</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

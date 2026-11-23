@@ -10,46 +10,17 @@
 *****************************************************************************************************************************************/
 public class Core_MDF_PFA_TriggerHandler extends TriggerHandler {
 
-    public override void beforeInsert(){
-        if (isActive('Core_MDF_PFA_BeforeInsert')) {
-            //Populate unique field on Allocation
-            if(!Core_MDF_Utility.byPassFeature('Bypass_UniqueFieldPopulationAllocation')){
-                Core_MDF_PFA_ServiceHandler.populateUniqueField((List<PartnerFundAllocation>) Trigger.new, null);
-            }
-        }
-    }
+    public Core_MDF_PFA_TriggerHandler(){
 
-    public override void beforeUpdate(){
-        if (isActive('Core_MDF_PFA_BeforeUpdate')) {
-            //Populate unique field on Allocation
-            if(!Core_MDF_Utility.byPassFeature('Bypass_UniqueFieldPopulationAllocation')){
-                Core_MDF_PFA_ServiceHandler.populateUniqueField((List<PartnerFundAllocation>) Trigger.new, (Map<Id,PartnerFundAllocation>) Trigger.oldMap);
-            }
-        }
     }
-
 
     public override void afterInsert(){
-        if (isActive('Core_MDF_PFA_AfterInsert')) {
-
-            if(!Core_MDF_Utility.byPassFeature('Bypass_SharePfaWithAccountExtGrp')){
-                Core_MDF_PFA_ServiceHandler.sharePfaWithAccountExternalGroup((Map<Id,PartnerFundAllocation>) Trigger.newMap);
-            }
-            if(!Core_MDF_Utility.byPassFeature('Bypass_GeoBased_Allocation_Sharing')){
-                Core_MDF_PFA_ServiceHandler.invokeAllocationShareRecordToGeoGroup(Trigger.new);
-            }
-        }
+        System.debug('Reached PFA Insert');
+    
+        //new Core_MDF_PFA_NodeSharing().ShareRecordsWithNode((Map<Id,PartnerFundAllocation>) Trigger.newMap);
     }
     public override void afterUpdate(){
-        if (isActive('Core_MDF_PFA_AfterUpdate')) {
-
-            
-            Core_MDF_PFA_ServiceHandler.sharePfaWithGroupsOnUpdate((Map<Id,PartnerFundAllocation>) Trigger.newMap, Trigger.old);
-            
-            //Bypass allocation reservation after update trigger 
-            if(!Core_MDF_Utility.byPassFeature('Bypass_Allocation_Reservation'))
-                Core_MDF_PFA_ServiceHandler.checkUpdatedAllocations((List<PartnerFundAllocation>) trigger.new, (Map<Id, PartnerFundAllocation>) trigger.oldMap);
-        }
+       Core_MDF_PFA_ServiceHandler.checkUpdatedAllocations((List<PartnerFundAllocation>) trigger.new, (Map<Id, PartnerFundAllocation>) trigger.oldMap);
        
     }
     

@@ -6,42 +6,36 @@
     <name>SCRUENGENRLR_DZP</name>
     <style>none</style>
     <subject>Intel Registration Confirmation - Developer Zone Premier Account</subject>
-    <textOnly>Intel Registration Confirmation - Developer Zone Premier Account
+    <textOnly>인텔 등록 확인 - Developer Zone 프리미어 계정
 
-Pending Approval
-
-Your Application is Pending Approval
+승인 대기 중
 
 
-Welcome {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},
+{!Contact.FirstName} 님, 환영합니다. {!Contact.LastName}님, 안녕하십니까?
 
-Thank you for registering for a Developer Zone Premier Account.If you don&apos;t yet have a Corporate Non-Disclosure Agreement (CNDA) signed with Intel, it may take up to ten business days to review your request. You will receive a status update within three business days.
+Developer Zone 프리미어 계정에 등록해 주셔서 감사합니다.
 
-While your application is pending, you can engage with the Developer Zone in the following ways:
+인텔과 기업 비공개 계약(CNDA)에 서명하지 않은 경우, 프리미어 계정 요청을 검토하는 데 최대 10영업일이 소요될 수 있습니다. 3영업일 내에 상태 업데이트를 받게 됩니다.
 
-Post a question or comment to our community forums
-Bookmark and follow content of interest. Access your bookmark list in MyIntel.
-Development software downloads
-Manage your Intel® software license and registration using the License and Entitlement Manager
-Access the collaboration platform where developers can share projects: Intel® DevMesh.
-Enter contests
-Sign up for events: Developer Community and Events.
-Access performance testing applications
-Access developer training at Intel Learn.
+프리미어 계정 응용 프로그램이 검토되면 즉시 표준 사용자로 인텔 Developer Zone에 액세스할 수 있습니다.
 
-Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only.Your password should be protected as confidential. Your password should be protected as confidential information. Your use of the password and Intel’s websites are governed by Intel’s Terms of Use..
+사용자 이름: {!Contact.Name}
+이메일 주소: {!Contact.Email}
 
-If you have any questions, please contact us.
+향후 참조를 위해 이 이메일을 보관하십시오.
 
-Sincerely,
-Developer Zone Registration Administrator
+비밀번호는 기밀로 보호해야 합니다. 비밀번호와 인텔 웹 사이트 사용에는 인텔의 이용 약관이 적용됩니다. 이 이용 약관에는 각 해당 사이트의 웹 페이지 하단에 있는 링크를 통해 연결할 수 있습니다.
 
-Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.
+문의 사항이 있는 경우 당사에 문의해주십시오.
+
+사용 가능한 마케팅 구독을 포함해 프로필을 관리하려면 My Intel에 방문하십시오.
+
+이 메일에 회신하지 마십시오. 이 메일은 자동 회신된 메일입니다. 이메일을 계속 수신하려면 주소록에 추가해 주십시오.
 
 
-Intel is committed to protecting your privacy. For more Information, please see the Intel Privacy Notice. Intel Cookie Notice.
+인텔은 귀하의 개인정보를 보호하기 위해 노력합니다. 자세한 내용은 인텔 개인정보 보호 공지를 참조하십시오. 인텔 쿠키 공지
 
-Legal Information | Trademarks | © Intel Corporation.</textOnly>
+법률 정보 &amp;verbar; 상표 &amp;verbar; © 인텔사!%TemplateCode%!</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -1,0 +1,75 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:IPAPartnerSearchLayout",
+  "dataProviders" : [ ],
+  "id" : "83337eb3-5385-45d8-ad60-d033391dbb66",
+  "label" : "Downloads",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "{\"pageType\": \"Downloads\",\"title\":\"Downloads\"}",
+        "marqueeDataSource" : "Benefit Service",
+        "pageType" : "Downloads",
+        "rightButtonExternalUrl" : "#",
+        "rightButtonLabel" : "Dashboard",
+        "rightCta1ExternalUrl" : "#",
+        "rightCta1Label" : "Company Profile",
+        "rightCta2ExternalUrl" : "#",
+        "rightCta2Label" : "My Intel Profile"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "9a545791-26f3-41b2-b375-4430b3eb0f19",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a9121ef5-448b-4046-b689-baee9cf885e9",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "0062ed5e-3f21-4350-b26e-12038639ad78",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_DownloadNotes",
+      "id" : "ac14c814-8225-4f0e-be31-63e79d807983",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c7b276a2-fe9f-4dd7-9be2-078351712bfa",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "11a0fccd-c965-4724-a3bb-ceed37b0240a",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "63f5642b-9367-41e4-8d3c-876e895abd3a",
+    "regionName" : "blade2white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "title" : "Downloads"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "f347ac6c-f76d-4fe8-bcbc-8d3c325cad15",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2afec31-7968-4474-a796-2fad6f5ec652",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-downloads"
+}

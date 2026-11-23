@@ -4,40 +4,21 @@ import  saveCMFData from '@salesforce/apex/ER_SearchCMFService.saveCMFData';
 import { refreshApex } from '@salesforce/apex';	
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { RefreshEvent } from 'lightning/refresh';
-import mymodalpopup from "c/er_CMFSearchPopUpModal";
 
 
 export default class Er_CMFSearch extends LightningElement {
 cmfColumns = [
-    { label: 'CMF Id', fieldName: 'DirectCustomerProfileId', initialWidth: 100, sortable: "true"},
-    { label: 'Direct Customer Role', fieldName: 'DirectCustomerRelationshipFunctionalRoleNm' ,initialWidth: 130,wrapText: true,sortable: "true"},
-    { label: 'CMF Name', fieldName: 'DirectCustomerProfileNm', initialWidth: 100,wrapText: true,sortable: "true" },
-    { label: 'Sales Disti Chnl Code', fieldName: 'DistributionChannelCd', initialWidth: 110,wrapText: true,sortable: "true"},
-   
-    { label: 'Sales Disti Chnl Name', fieldName: 'DistributionChannelNm' , initialWidth: 125,wrapText: true,sortable: "true"},
-    { label: 'Sales Org Code', fieldName: 'SalesOrganizationCd', initialWidth: 118,wrapText: true,sortable: "true"},
-    { label: 'Sales Org Code Name', fieldName: 'GeographyCd', initialWidth: 100,wrapText: true,sortable: "true"},
-   
-   
-   
-    { label: 'Central Block', fieldName: 'CentralDeleteInd' ,wrapText: true,sortable: "true"},
-    { label: 'Sales Area Order Block Code', fieldName: 'SalesAreaOrderBlockCd', /*initialWidth: 148,*/wrapText: true,sortable: "true"},
- 
-    { label: 'Account Group', fieldName: 'DirectCustomerRoleCd', /*initialWidth: 148,*/wrapText: true,sortable: "true"},
- 
+    { label: 'CMF Id', fieldName: 'DirectCustomerProfileId', /*initialWidth: 129,*/ sortable: "true"},
+    { label: 'CMF Name', fieldName: 'DirectCustomerProfileNm', /*initialWidth: 250,*/wrapText: true,sortable: "true" },
+    { label: 'Sales Org Code', fieldName: 'SalesOrganizationCd', /*initialWidth: 148,*/wrapText: true,sortable: "true"},
+    { label: 'Sales Org Code Name', fieldName: 'GeographyCd', /*initialWidth: 179,*/wrapText: true,sortable: "true"},
+    { label: 'Sales Disti Chnl Code', fieldName: 'DistributionChannelCd', /*initialWidth: 168,*/wrapText: true,sortable: "true"},
+    { label: 'Sales Disti Chnl Name', fieldName: 'DistributionChannelNm' ,/* initialWidth: 180,*/wrapText: true,sortable: "true"},
+    { label: 'Direct Customer Role', fieldName: 'directCustomerRole' ,wrapText: true,sortable: "true"},
+
    // { label: 'Central Block', fieldName: 'CentralTransactionBlockStatusInd' , initialWidth: 131},
-   /// { label: 'Account Group', fieldName: 'DirectCustomerRoleCd', /*initialWidth: 148,*/wrapText: true,sortable: "true"},
-    { label: 'Address', fieldName: 'addressString',initialWidth: 130,wrapText: true,sortable: "true"},
-    {
-        type: "button", label: 'Associated CMF Groups',initialWidth: 140, typeAttributes: {
-            label: 'View Groups',
-            name: 'View Groups',
-            title: 'View',
-            disabled: { fieldName: 'disableButton'},
-            value: 'view',
-            iconPosition: 'center',
-        }
-    },
+    { label: 'Account Group', fieldName: 'DirectCustomerRoleCd', /*initialWidth: 148,*/wrapText: true,sortable: "true"},
+    { label: 'Address', fieldName: 'addressString',/*initialWidth: 175,*/wrapText: true,sortable: "true"}
     
     
     
@@ -80,7 +61,6 @@ cmfColumns = [
 @track isInputDisabled = true;
 @track sortBy;
 @track sortDirection;
-@track hideCheckBoxColumn = false;
 
 get options() {
     return [
@@ -98,14 +78,13 @@ handleChange(event) {
 }
 
 textinputchanged(event){
-    this.searchvalue = event.detail.value;
+    this.searchvalue = event.detail.value.toUpperCase();
     if(this.searchvalue == '' || this.searchvalue ==null  || this.searchvalue ==undefined){
         this.searchButtonSwitch = true;
     }
     else{
         this.searchButtonSwitch = false;
     }
-    
 }
 
 showToast(msgTitle,msg,type){
@@ -178,10 +157,6 @@ handleSearchNew(event){
     this.pageSize = 100;
     this.pageNumRecordsMap = {};
     this.page = 1;   
-    if(this.recordId == null || this.recordId == '' || this.recordId == undefined){
-        console.log('AT 182'+this.recordId)
-        this.hideCheckBoxColumn =true;
-    }
     this.handleGetRecords(0);
     
 }
@@ -195,10 +170,10 @@ if(this.searchParameter == 'cmfid'){
     Wrapper.push({cmfId : this.searchvalue});
 }
 if(this.searchParameter == 'salesorgcode'){
-    Wrapper.push({salesOrgCode : this.searchvalue.toUpperCase()});
+    Wrapper.push({salesOrgCode : this.searchvalue});
 }
 if(this.searchParameter == 'salesdisticode'){
-    Wrapper.push({salesDistiChannelCode : this.searchvalue.toUpperCase()});
+    Wrapper.push({salesDistiChannelCode : this.searchvalue});
 }
 if(this.searchParameter == 'cmfname'){
     Wrapper.push({cmfName : this.searchvalue});
@@ -208,7 +183,6 @@ getCMF({cmfGroupId:this.recordId,input : Wrapper})
     this.showSpinner = false;
     this.areDetailsVisible=true;
     this.items = JSON.parse(result.Elements);
-    console.log('MAINDATA'+JSON.stringify(result.Elements));
     for(let i=0 ; i< this.items.length;i++){
         if(this.items[i].PhysicalStreetAddressTxt == null || (this.items[i].PhysicalStreetAddressTxt==undefined)){
             this.items[i].PhysicalStreetAddressTxt = '';
@@ -228,10 +202,10 @@ getCMF({cmfGroupId:this.recordId,input : Wrapper})
     }
     if(result.RecordCount != undefined){
         this.totalRecountCount = result.RecordCount;
-      //  console.log('Total records'+this.totalRecountCount );
+        console.log('Total records'+this.totalRecountCount );
     } 
     if(result.RecordCount <= Number(0)){
-        this.showToast('Error','No records returned from SAP ECC','error');
+        this.showToast('Error','No records found','error');
     }
     else{
     
@@ -241,7 +215,8 @@ getCMF({cmfGroupId:this.recordId,input : Wrapper})
     ...record,
    // addressString: ((record.PhysicalStreetAddressTxt !=null || record.PhysicalStreetAddressTxt !=undefined)  && (record.CityNm !=null || record.CityNm !=undefined) && (record.CountrySubDivisionNm !=null || record.CountrySubDivisionNm !=undefined) && (record.CountryNm !=null || record.CountryNm !=undefined) && (record.PostalCd !=null || record.PostalCd !=undefined)) ? (record.PhysicalStreetAddressTxt + ' ' + record.CityNm + ' ' + record.CountrySubDivisionNm + ' ' + record.CountryNm + ' ' + record.PostalCd) : '', // Concatenating address
    addressString: record.PhysicalStreetAddressTxt + ' ' + record.CityNm + ' ' + record.CountrySubDivisionNm + ' ' + record.CountryNm + ' ' + record.PostalCd , // Concatenating address
-    concatedKeyField:record.DirectCustomerProfileId+''+record.SalesOrganizationCd+''+record.DistributionChannelCd+''+record.DistributionChannelNm + ' '+ record.DirectCustomerRelationshipFunctionalRoleCd +' ' + record.DirectCustomerRelationshipFunctionalRoleNm,
+    concatedKeyField: record.DirectCustomerProfileId+''+record.SalesOrganizationCd+''+record.DistributionChannelCd+''+record.DistributionChannelNm + record.DirectCustomerRelationshipFunctionalRoleCd +' ' + record.DirectCustomerRelationshipFunctionalRoleNm,
+    directCustomerRole :((record.DirectCustomerRelationshipFunctionalRoleCd ==null ||record.DirectCustomerRelationshipFunctionalRoleCd ==undefined) || ( record.DirectCustomerRelationshipFunctionalRoleNm ==null || record.DirectCustomerRelationshipFunctionalRoleNm ==undefined)) ? '':record.DirectCustomerRelationshipFunctionalRoleCd +' ' + record.DirectCustomerRelationshipFunctionalRoleNm 
 }));
     this.disableButtons()
     this.assignPageArrayToMap(this.pageSize,this.items);
@@ -255,7 +230,7 @@ getCMF({cmfGroupId:this.recordId,input : Wrapper})
     //this.searchvalue = null;
     //this.value =null;
     console.log('error:'+ JSON.stringify(error));
-    this.showToast('Error','SAP ECC call failed. Please try after sometime','error');
+    this.showToast('Error','Server not responding, Please try after sometime.','error');
 })
 }
 
@@ -336,7 +311,7 @@ if(event.target.value && event.keyCode === 13 && event.target.value !== 0){
 }
 //Reusable function to update first and last record number of current page list
 firstLastRecordsNumbers(currentPage){
-    //console.log('Current'+ currentPage+'');
+    console.log('Current'+ currentPage+'');
     if(currentPage === 1){
     this.pageFirstRecord = 1;
     this.pageLastRecord = 100;
@@ -408,8 +383,7 @@ this.selectedRows = [...this.selectedRowsJs];
 //Called on click of 'Add' button, makes an apex call with selected rows and upsert CMF and
 handleAddNew(event){
     this.showSpinner=true;
-    this.showToast('Info','Note : CMF Group & CMF association is unique ','Informational');
-    console.log('At 389'+this.recordId+'-'+this.selectedRowsFullList);
+    this.showToast('Info','Note : Duplicate records will be excluded from this operation. ','Informational');
     saveCMFData({bagId:this.recordId,inputData:this.selectedRowsFullList})
     .then(result=>{
         if(this.page === 1){
@@ -428,11 +402,6 @@ handleAddNew(event){
         this.pageLastRecord = 100;
         
         this.showToast('Success','CMF/s added to CMF Group Successfully.','success');
-        setTimeout(() => {
-             window.location.reload();
-        }, 1000);
-       
-
     
         
 
@@ -450,10 +419,10 @@ handleAddNew(event){
     
     }
     lastPageHandler(event){
-       // console.log('In last');
+        console.log('In last');
         this.page = this.totalPage;
         this.disableButtons();
-        //console.log('Disable buttons'+this.disableFirst + this.disablePrevious+this.disableNext+this.disableLast)
+        console.log('Disable buttons'+this.disableFirst + this.disablePrevious+this.disableNext+this.disableLast)
         this.pageNumberChangeHandle(this.page);
     }
     disableButtons(){
@@ -462,28 +431,28 @@ handleAddNew(event){
             this.disableFirst =true;
             this.disableNext =false;
             this.disableLast =false;
-          //  console.log('in first'+this.page+this.totalPage);
+            console.log('in first'+this.page+this.totalPage);
         }
         else if(this.page == this.totalPage && this.totalPage!=Number(1) ){
             this.disableFirst =false;
             this.disableNext = true;
             this.disableLast =true;
             this.disablePrevious =false;
-           // console.log('in last'+this.page+this.totalPage);
+            console.log('in last'+this.page+this.totalPage);
         }
         else if(this.totalPage==Number(1) ){
             this.disableFirst =true;
             this.disableLast =true;
             this.disableNext =true;
             this.disablePrevious =true;
-           // console.log('in count'+this.page+this.totalPage);
+            console.log('in count'+this.page+this.totalPage);
         }
         else{
             this.disableFirst =false;
             this.disableLast =false;
             this.disableNext =false;
             this.disablePrevious =false;
-          //  console.log('in else'+this.page+this.totalPage);
+            console.log('in else'+this.page+this.totalPage);
         }
     }
     doSorting(event) {
@@ -510,23 +479,20 @@ handleAddNew(event){
         var cmfDataNew = parseData;
         this.cmfData = [...cmfDataNew];
         
-    
-    } 
-    handleOpenModal(event) {
-        const row = event.detail.row;
-        mymodalpopup.open({
-            
-            // `label` is not included here in this example.
-            // it is set on lightning-modal-header instead
-            size: 'large',
-            description: 'Accessible description of modal\'s purpose',
-            content: row.concatedKeyField,
-        });
-    } 
+    }    
     connectedCallback() {
-      //window.location.reload();
+        window.addEventListener('resize', this.myFunction);
     }
-    
-    
+    @track count = 0;
+    myFunction = () => {
+       /* this.count = this.count += 1;
+        console.log('resized => ', this.count);
+        const inputs = this.template.querySelector('.form-control');
+        console.log('inputs'+inputs);
+        inputs.forEach( input => {
+          console.log(input.value);
+          
+        });*/
+    };
         
 }

@@ -1,0 +1,65 @@
+.component-wrap {
+    padding: 0;
+    margin: 2.5rem 0;
+    position: relative;
+}
+.component-subheading {
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1em;
+  line-height: 1.9375;
+  margin-bottom: .5rem;
+}
+
+.comp-item {
+    padding-bottom: 0.75rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #d7d7d7;
+}
+.comp-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+h3 {
+  padding-top: 2.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #d7d7d7
+}
+.component-subheading [class^="fa-"]:before {
+  margin: 0 .5rem 0 0;
+  font-size: 1rem;
+}
+
+.link-out {
+  line-height: 1.25;
+}
+@media screen and (max-width: 767px) {
+  .component-wrap {
+    padding: 0 1rem;
+  }  
+}
+
+@media screen and (min-width: 768px) {
+  .component-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -1rem;
+  }
+  .comp-item {
+    width: 50%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-bottom: none;
+  }
+}
+@media screen and (min-width: 992px) {
+  .comp-item {
+    width: 33.33%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .comp-item {
+    width: 25%;
+  }
+}

@@ -35,5 +35,12 @@
         <name>PMP_Offering_Id__c</name>
         <relationshipLabel><!-- Partner Offering Categories --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Partner Offering Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

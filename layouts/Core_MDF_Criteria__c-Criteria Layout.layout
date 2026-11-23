@@ -31,10 +31,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Approval_Criteria_Ref_Code_txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_MDF_Sub_Type__c</field>
             </layoutItems>
             <layoutItems>

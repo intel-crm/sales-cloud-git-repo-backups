@@ -7152,7 +7152,7 @@ OR(
         <object>Case</object>
     </recordUpdates>
     <startElementReference>myPreWaitDecision_myWait_myRule_37</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

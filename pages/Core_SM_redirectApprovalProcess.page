@@ -1,0 +1,10 @@
+<apex:page standardController="Core_Solution_Milestone__c" extensions="Core_SM_redirectApprovalProcessExtension" action="{!checkSubmitterEqualOwner}">
+<apex:form >
+  <apex:pageBlock >
+      <apex:pageMessages ></apex:pageMessages>
+      <apex:pageBlockButtons location="bottom">
+          <apex:commandLink value="Click here to Return" action="{!Cancel}"/>
+      </apex:pageBlockButtons>
+  </apex:pageBlock>
+</apex:form>
+</apex:page>

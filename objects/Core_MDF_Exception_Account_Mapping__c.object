@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Exception_Account_Mapping_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Exception_Account_Mapping_Record_Page</content>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Small</formFactor>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>true</allowInChatterGroups>
@@ -161,11 +155,10 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Account_id__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <label>Account</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
             <filterItems>
                 <field>Account.RecordType.DeveloperName</field>
                 <operation>equals</operation>
@@ -176,228 +169,38 @@
                 <operation>equals</operation>
                 <value>True</value>
             </filterItems>
-            <filterItems>
-                <field>Account.RecordType.DeveloperName</field>
-                <operation>equals</operation>
-                <value>Core_MDF_Co_Marketing</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_MDF_Channel_Program__r.Name</field>
-                <operation>equals</operation>
-                <value>Retail Marketing Funds</value>
-            </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
         <referenceTo>Account</referenceTo>
         <relationshipLabel>Exception Account Mappings</relationshipLabel>
         <relationshipName>Exception_Account_Mappings</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Active_ind__c</fullName>
-        <defaultValue>true</defaultValue>
-        <label>Active</label>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Budget_Type_txt__c</fullName>
-        <description>Field to populate from exception record associated to exception account mapping</description>
-        <label>Budget Type</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Country_Region_txt__c</fullName>
-        <description>Field to store country values from exception object</description>
-        <label>Country/Region</label>
-        <length>1000</length>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>LongTextArea</type>
-        <visibleLines>3</visibleLines>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_ExceptionIdAccountId_txt__c</fullName>
-        <caseSensitive>true</caseSensitive>
-        <description>Populate unique id field to avoid duplicate records</description>
-        <externalId>false</externalId>
-        <label>ExceptionIdAccountId</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>true</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Exception_Status_txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Core_MDF_Exception_id__r.Core_MDF_Exception_Status_nm__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Exception Status</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Exception_id__c</fullName>
-        <deleteConstraint>Restrict</deleteConstraint>
+        <deleteConstraint>SetNull</deleteConstraint>
         <label>Exception</label>
-        <lookupFilter>
-            <active>false</active>
-            <errorMessage>Cannot create Exception Account Mapping on Cancelled/Denied Exception.</errorMessage>
-            <filterItems>
-                <field>Core_MDF_Exception__c.Core_MDF_Exception_Status_nm__c</field>
-                <operation>equals</operation>
-                <value>Pending Review, Approved, Draft</value>
-            </filterItems>
-            <isOptional>false</isOptional>
-        </lookupFilter>
         <referenceTo>Core_MDF_Exception__c</referenceTo>
-        <relationshipLabel>Exception Account Mappings</relationshipLabel>
+        <relationshipLabel>Accounts</relationshipLabel>
         <relationshipName>Exception_Account_Mappings</relationshipName>
-        <required>true</required>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Expose_Externally_ind__c</fullName>
-        <formula>Core_MDF_Exception_id__r.Core_MDF_Expose_Externally_ind__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Expose Externally</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_HostRegion_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Host Region</label>
-        <length>100</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_OwnerId_txt__c</fullName>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Exception_id__r.OwnerId</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Owner</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Program_nm__c</fullName>
-        <description>Program name field inherited from exception object, this is created to be used on sharing rule</description>
-        <label>Program Name</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Client</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Datacenter</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                    <default>false</default>
-                    <label>Retail Marketing Funds</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
-                    <default>false</default>
-                    <label>Intel Partner Alliance</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-                    <default>false</default>
-                    <label>Ecosystem Extension Fund</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
-                    <default>false</default>
-                    <label>Client Co-Marketing Fund Boost</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Service Provider Co-Marketing Fund</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Co_GTM</fullName>
-                    <default>false</default>
-                    <label>Co-GTM</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Program_txt__c</fullName>
         <externalId>false</externalId>
-        <formula>TEXT(Core_MDF_Exception_id__r.Core_MDF_Program_nm__c)</formula>
         <label>Program</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Region_txt__c</fullName>
-        <description>Field to store region for IPA Exception</description>
-        <externalId>false</externalId>
-        <inlineHelpText>Field to store region for IPA Exception</inlineHelpText>
-        <label>Region</label>
         <length>100</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Select_All_Accounts_ind__c</fullName>
-        <formula>Core_MDF_Exception_id__r.Core_MDF_Select_All_Accounts_ind__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Select All Accounts</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Select_All_Country_ind__c</fullName>
-        <formula>Core_MDF_Exception_id__r.Core_MDF_Select_All_Country_ind__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Select All Country</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <label>Exception Account Mapping</label>
     <nameField>
@@ -409,24 +212,5 @@
     <pluralLabel>Exception Account Mappings</pluralLabel>
     <searchLayouts/>
     <sharingModel>Private</sharingModel>
-    <sharingReasons>
-        <fullName>Core_MDF_EAM_External_Sharing__c</fullName>
-        <label>Core_MDF_EAM_External_Sharing</label>
-    </sharingReasons>
-    <validationRules>
-        <fullName>Core_MDF_Cannot_Update_Account_At_EAM</fullName>
-        <active>true</active>
-        <description>Once user creates an exception account mapping with an account, user cant update that account</description>
-        <errorConditionFormula>ISCHANGED(Core_MDF_Account_id__c)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account_id__c</errorDisplayField>
-        <errorMessage>Cannot update account</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Cannot_Update_Exception_At_EAM</fullName>
-        <active>true</active>
-        <description>Once user creates an exception account mapping with an exception, user cant update that exception</description>
-        <errorConditionFormula>ISCHANGED(Core_MDF_Exception_id__c)</errorConditionFormula>
-        <errorMessage>Cannot update exception</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

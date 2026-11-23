@@ -24,6 +24,7 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
             'UTF-8');
         
         String url = authUrl + '?response_type=code&client_id='+ key +'&redirect_uri='+ redirectUrl + '&state=' + stateToPropagate;
+        System.debug('url from initiate: ' + url);
         return new PageReference(url);
     }
 
@@ -38,14 +39,16 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
         Map<String,String> queryParams = state.queryParameters;
         String code = queryParams.get('code');
         String sfdcState = queryParams.get('state');
+        System.debug('state params: ' + queryParams);
         HttpRequest req = new HttpRequest();
         // Need to split since it's just over 900 chars, due to limits on System.debug
         String body = 'client_id=' + EncodingUtil.urlEncode(key, 'UTF-8') +
-            '&client_secret=' + EncodingUtil.urlEncode(secret, 'UTF-8') +
+            '&client_secret=' + EncodingUtil.urlEncode(secret, 'UTF-8');
              //'&grant_type=client_credentials'+
              //'&refresh_token=refresh_token full';
             //'&code=' + EncodingUtil.urlEncode('code', 'UTF-8');
-            '&code=' + EncodingUtil.urlEncode(code, 'UTF-8');
+            //'&code=' + EncodingUtil.urlEncode(code, 'UTF-8');
+		body += authProviderConfiguration.get('No_Refresh_Token__c') == 'true' ? '&grant_type=client_credentials' : '&code=' + EncodingUtil.urlEncode(code, 'UTF-8');
         req.setBody(body);
         
         String url = accessTokenUrl;
@@ -56,7 +59,9 @@ global class IPA_Apigee_Auth_Provider extends Auth.AuthProviderPluginClass {
         Http http = new Http();
         HTTPResponse res = http.send(req);
         String responseBody = res.getBody(); 
+        System.debug('Token response: ' + responseBody);
         TokenResponse tr = (TokenResponse) (JSON.deserialize(responseBody, TokenResponse.Class));
+         System.debug('token response: ' + tr);
         return new Auth.AuthProviderTokenResponse('Apigee', tr.access_token, tr.refresh_token, sfdcState);
     }
     

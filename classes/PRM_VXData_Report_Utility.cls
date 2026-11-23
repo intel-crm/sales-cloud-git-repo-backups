@@ -438,4 +438,30 @@ public without sharing class  PRM_VXData_Report_Utility {
             Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'PRM_VXData_Report_Utility', Core_Project__c = 'PRM_VXData_Report_Utility' , Core_Details__c = 'Getting exception for VX Data record sharing', Core_Severity__c = 'info', Core_When__c = System.Now());
         }
     }
+    public static void calculateAndInsertVXcalculation(List<PRM_Value_Exchange_Data__c> vxDataRecList) {
+
+        List<PRM_Value_Exchange_Calculation__c> calculationRecords = new List<PRM_Value_Exchange_Calculation__c>();
+        Set<Id> vxRecId = new Set<Id>();
+        if(vxDataRecList != null && !vxDataRecList.isEmpty()){
+            for(PRM_Value_Exchange_Data__c vxdata :vxDataRecList){
+                vxRecId.add(vxdata.Id);
+            }
+        }
+        List<AggregateResult> results = [SELECT PRM_One_Partner_Id__c,PRM_TimePeriod_Nm__c,SUM(PRM_Sales_Amount_Nbr__c) totalSales,SUM(PRM_Training_Credit_Points_Count_Nbr__c) totalTraining FROM PRM_Value_Exchange_Data__c where Id IN :vxRecId GROUP BY PRM_One_Partner_Id__c, PRM_TimePeriod_Nm__c];
+
+        for (AggregateResult ar : results) {
+
+            PRM_Value_Exchange_Calculation__c calc = new PRM_Value_Exchange_Calculation__c();
+
+            calc.PRM_One_Partner_Id__c = (Id) ar.get('PRM_One_Partner_Id__c');
+            calc.PRM_Time_Period__c = (String) ar.get('PRM_TimePeriod_Nm__c');
+            calc.PRM_Sales_Amount__c =(Decimal) ar.get('totalSales');
+            calc.PRM_Training_Credit_Points_Count_Nbr__c =(Decimal) ar.get('totalTraining');
+            calculationRecords.add(calc);
+        }
+
+        if (!calculationRecords.isEmpty()) {
+            insert calculationRecords;
+        }
+    }
 }

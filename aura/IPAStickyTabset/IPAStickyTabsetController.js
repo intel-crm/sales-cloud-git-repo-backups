@@ -70,9 +70,13 @@
 
     },
     handleReset: function(component, event, helper) {
+        //alert('Tab click : Line 73');
+        console.log('In here Line 74');
       helper.recalculateElementsOffset(component,event,helper);
     },
     scrollToTabBody: function(component, event, helper) {
+        //alert('Tab click : Line 78');
+        console.log('In here Line 79');
       event.preventDefault();
   		var index = event.currentTarget.dataset.index;
       component.set('v.clickedTo', index);
@@ -104,6 +108,8 @@
     },
     // Taken from TabsetController
     handlePaddleClick: function(component, event, helper) {
+        //alert('Tab click : Line 108');
+        console.log('In here Line 110');
       var direction = event.currentTarget.dataset.direction;
       var navigation = component.find('navigation').getElement();
       var innerNavigation = component.find('inner-link-list').getElement();

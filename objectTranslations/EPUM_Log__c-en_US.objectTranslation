@@ -56,5 +56,12 @@
         <label><!-- isContactRegistered --></label>
         <name>EPUM_isContact_Registered__c</name>
     </fields>
+    <layouts>
+        <layout>EPUM Log Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

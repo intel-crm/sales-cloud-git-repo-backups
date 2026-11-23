@@ -22,12 +22,6 @@
             if (state1 === "SUCCESS") {
                 var apprCrt = res1.getReturnValue();
                 crtObjectType = apprCrt.Core_MDF_Object_Type__c;
-
-                //Disable the Approval Criteria Automation Reference Code field if the field has some values
-                if(apprCrt != undefined && apprCrt.Core_MDF_Approval_Criteria_Ref_Code_txt__c){
-                    component.set("v.isDisabled", true);
-                }
-                
                 component.set("v.approvalCriteria", apprCrt);                
             }
         });
@@ -163,19 +157,5 @@
 			navEvt.fire();
         }
     },
-    
-   //({
-    /*callComponent : function(component,event,helper){
-        var apprRecId = component.get("v.recordId");
-        var evt = $A.get("e.force:navigateToComponent");
-        evt.setParams({
-            componentDef: "c:Core_MDF_CriteriaRule",
-            componentAttributes :{recordId: apprRecId}
-            
-        });
-       
-    evt.fire();
-    },*/
-//})
        
 })

@@ -46,7 +46,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Yaz&apos;s all opportunity 2020-2021 as owner</name>
+    <name>Yaz&apos;s all opportunity 2019-2021 as owner</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -74,6 +74,6 @@
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

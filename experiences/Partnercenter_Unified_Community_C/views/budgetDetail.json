@@ -75,13 +75,12 @@
           "type" : "component"
         }, {
           "componentAttributes" : {
-            "fieldsToMask" : "",
             "internalUserName" : "Intel System User",
             "objectApiName" : "PartnerMarketingBudget",
             "recordId" : "{!recordId}"
           },
           "componentName" : "c:core_MDF_HistoryComponent",
-          "id" : "30483f1d-3133-4fa1-8502-86b1eae8e71d",
+          "id" : "bd297753-142b-4f46-8b20-05dda8cdf317",
           "renditionMap" : { },
           "type" : "component"
         } ],

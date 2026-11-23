@@ -1,0 +1,205 @@
+<template>
+    <div class="mainCompMargin">
+        <div class="pageTitle">
+            <h3>{label.EPUM_ManagePersonnel}</h3>
+            <p>{label.EPUM_ManagePersonnel_SubTittle}</p>
+        </div>
+
+        <div class="slds-p-top_large bgWhite">
+            <div class="slds-grid slds-wrap slds-m-left_large">
+                <h3 class="icon-container">
+                    <span class="fa-users-1 icon slds-m-right_medium"></span>
+                </h3>
+                <div
+                    class="slds-size_9-of-12 slds-medium-size_10-of-12 slds-medium-size_10-of-12 slds-large-size_10-of-12 ">
+                    <h3 class="label">{label.EPUM_ContactRolesResTitle}</h3>
+                </div>
+            </div>
+            <p class="slds-m-top_xx-small  slds-m-left_large">
+                {label.EPUM_PartnerRoleTitle}/{label.EPUM_Tier} - {partnerRole}/{partnerTier}
+            </p>
+            </br>
+            <p class="slds-m-top_x-small  slds-m-left_large">
+                {label.EPUM_ContactRolesResSubTitle}
+            </p>
+
+
+            <templete class="slds-m-around--large slds-grid slds-wrap">
+                <div class="slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_4-of-12  slds-p-top--small">
+                    <input name="conEmail" placeholder={label.EPUM_SearchByEmail} onchange={searchTextChange}
+                        class="slds-input searchInput searchTextInput" value={searchKeyword}></input></div>
+                <div
+                    class="slds-size_1-of-2 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-p-top--small searchContactDiv">
+                    <button class="slds-button slds-button_brand searchContact" title={label.EPUM_SearchContact}
+                        onclick={searchContact}>{label.EPUM_SearchContact}</button>
+                </div>
+                <div
+                    class="slds-size_1-of-2 slds-medium-size_2-of-12 slds-large-size_2-of-12 slds-p-top--small clearSearchDiv">
+                    <button class="slds-button slds-button_neutral clearSearch" title={label.EPUM_ClearSearch}
+                        onclick={clearSearch}>{label.EPUM_ClearSearch}</button></div>
+            </templete>
+            <div if:true={validationmsg} class="slds-text-color_error validationmsg">
+                {validationmsg}
+            </div>
+            <div if:true={message} class="slds-m-left--large slds-grid slds-wrap slds-m-right--large">
+                <template if:true={getValidationMsg}>
+                    <div
+                        class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg slds-size_1-of-1 slds-small-size_2-of-3 slds-medium-size_6-of-12 slds-large-size_6-of-12">
+                        <lightning-formatted-rich-text value={message}>
+                        </lightning-formatted-rich-text>
+                    </div>
+                </template>
+                <template if:false={getValidationMsg}>
+                    <div
+                        class="slds-text-heading_medium slds-text-color_error slds-p-right_x-small slds-m-bottom_medium parRole validationMsg slds-order_1">
+                        <lightning-formatted-rich-text value={message}>
+                        </lightning-formatted-rich-text>
+                    </div>
+                </template>
+
+                <div if:true={createNew}
+                    class=" slds-m-bottom_medium inviteUserDiv slds-size_1-of-1 slds-small-size_1-of-3 slds-medium-size_2-of-12 slds-large-size_2-of-12">
+                    <button class="slds-button slds-button_brand inviteAUserClass" onclick={showInviteUser}>
+                        <lightning-icon size="x-small" class="slds-p-right_x-small" variant="inverse"
+                            icon-name="utility:add"></lightning-icon>
+                        {label.EPUM_InviteAUser}
+                    </button>
+                </div>
+                <div if:true={sendInvite} class="slds-m-left--large slds-m-bottom_medium">
+                    <lightning-button variant="brand" label="Send Invite" onclick={sendInviteToUser}></lightning-button>
+                </div>
+            </div>
+
+            <div if:false={message} class="slds-m-around--large">
+                <div class="overflowDataClass">
+                    <div class="dataWidthFixClass">
+                        <lightning-layout class="table-header">
+                            <lightning-layout-item class="slds-text-align_center selectRadio" size="2"
+                                padding="around-small" title={label.EPUM_Select}><b>{label.EPUM_Select}</b>
+                            </lightning-layout-item>
+                            <lightning-layout-item class="" size="3" padding="around-small" title={label.EPUM_name}>
+                                <b>{label.EPUM_name}</b>
+                            </lightning-layout-item>
+                            <lightning-layout-item class="" size="4" padding="around-small" title={label.EPUM_EmailId}>
+                                <b>{label.EPUM_EmailId}</b>
+                            </lightning-layout-item>
+                            <lightning-layout-item class="resAssignedHeader" size="3" padding="around-small"
+                                title={label.EPUM_ResponsibilitiesAssigned}>
+                                <b>{label.EPUM_ResponsibilitiesAssigned}</b>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                        <template iterator:con={paginationlistRows}>
+                            <lightning-layout class="table-body-row" key={con.value.Id}>
+                                <!--<lightning-layout  key={con.value.Id} style="width: 100%;">-->
+
+                                <lightning-layout-item class="slds-text-align_center" size="2" padding="around-small">
+                                    <div class="radio slds-text-align_center">
+
+                                        <label><input type="radio" id={con.value.Name} name="optradio"
+                                                data-myid={con.value.Id} onclick={getRowId} /></label>
+                                    </div>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-truncate" size="3" padding="around-small"
+                                    title={con.value.Name}>
+                                    {con.value.Name}
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-truncate" size="4" padding="around-small"
+                                    title={con.value.Email}>
+                                    {con.value.Email}
+                                </lightning-layout-item>
+                                <lightning-layout-item class="slds-truncate" size="3" padding="around-small"
+                                    title={con.value.Roles}>
+                                    <template for:each={con.value.Roles} for:item="crole">
+                                        <p key={crole} class={con.value.classVar}>{crole}</p>
+                                    </template>
+                                </lightning-layout-item>
+                                <!--</lightning-layout>-->
+                            </lightning-layout>
+                        </template>
+                    </div>
+                </div>
+                <lightning-layout class="slds-p-bottom_medium slds-m-top_small slds-grid_vertical-align-center">
+                    <div class="slds-grid slds-wrap" style="width: 100%;">
+                        <lightning-layout-item class="centerAlign totalNoClass" size="3" medium-device-size="3"
+                            large-device-size="3" padding="around-small">
+                            {label.EPUM_TotalUser} : {totalNoOfContacts}
+                        </lightning-layout-item>
+                        <lightning-layout-item class="slds-text-align_center  prevNextButton" size="6"
+                            medium-device-size="7" large-device-size="7">
+                            <button class="slds-button slds-button_brand slds-m-right_xx-small prevNextButtonClass"
+                                disabled={validPrevious} onclick={previousButton}>
+                                <template if:true={validPrevious}>
+                                    <lightning-icon size="x-small" class="slds-p-right_x-small"
+                                        icon-name="utility:back">
+                                    </lightning-icon><span class="disblePrevNextButton">{label.EPUM_Previous}</span>
+                                </template>
+                                <template if:false={validPrevious}>
+                                    <lightning-icon size="x-small" variant="inverse" class="slds-p-right_x-small"
+                                        icon-name="utility:back">
+                                    </lightning-icon>{label.EPUM_Previous}
+                                </template>
+                            </button>
+                            <button class="slds-button slds-button_brand slds-m-left_x-small prevNextButtonClass"
+                                disabled={validNext} onclick={nextButton}>
+                                <template if:true={validNext}><span
+                                        class="disblePrevNextButton">{label.EPUM_Next}</span>
+                                    <lightning-icon size="x-small" class="slds-p-left_x-small"
+                                        icon-name="utility:forward">
+                                    </lightning-icon>
+                                </template>
+                                <template if:false={validNext}>{label.EPUM_Next}<lightning-icon size="x-small"
+                                        class="slds-p-left_x-small" variant="inverse" icon-name="utility:forward">
+                                    </lightning-icon></template>
+                            </button>
+                        </lightning-layout-item>
+                        <lightning-layout-item class="pageNoClass centerAlign slds-text-align_right" size="3"
+                            medium-device-size="2" large-device-size="2" padding="around-small">
+                            {label.EPUM_Page} : {startPageNo}/{totalPageNo}
+                        </lightning-layout-item>
+                    </div>
+                </lightning-layout>
+
+            </div>
+        </div>
+        <div if:true={inviteUser}>
+            <c-e-p-u-m-invite-user-l-w-c_copy show-modal={inviteUser} searched-email={searchKeyword}
+                onclosemodalevent={closehandler}></c-e-p-u-m-invite-user-l-w-c_copy>
+        </div>
+
+        <div class="slds-m-bottom_large slds-m-top_medium">
+            <c-epum-contact-entitlement-view_copy scontact-id={selectedContactId} selectedconname={selectConName}
+                onunsavedcustomevent={handleunsavedevent}></c-epum-contact-entitlement-view_copy>
+        </div>
+
+    </div>
+
+
+
+    <template if:true={parentunsavedChangesModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class="slds-is-relative">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-parent" class="slds-text-heading_medium areyousure">
+                            {label.EPUM_AreYouSure}</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p>{label.EPUEPUM_DoYouWantToSave}</p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <button class="slds-button slds-button_neutral slds-p-right_small saveDiscardButton" onclick={onParentReject}>
+                            {label.EPUM_Discard}
+                        </button>
+                        <button class="slds-button slds-button_brand saveDiscardButton" onclick={onParentAccept}>
+                            {label.EPUM_Save}
+                        </button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <template if:true={isLoading}>
+        <c-epum-spinner></c-epum-spinner>
+    </template>
+</template>

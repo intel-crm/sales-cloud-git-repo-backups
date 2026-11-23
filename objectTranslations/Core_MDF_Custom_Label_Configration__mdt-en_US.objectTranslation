@@ -29,16 +29,8 @@
         <name>Core_MDF_Value4_Txt__c</name>
     </fields>
     <fields>
-        <label><!-- Value 5 --></label>
-        <name>Core_MDF_Value5_Txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Value 1 --></label>
         <name>Core_MDF_Value_Txt__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Please populate values in right sequence. Eg. Value 1 should be populated before Value 2/3/4 and likewise. --></errorMessage>
-        <name>Core_MDF_Value_Order_Validation</name>
-    </validationRules>
 </CustomObjectTranslation>

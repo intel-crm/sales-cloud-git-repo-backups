@@ -36,5 +36,12 @@
         <label><!-- isNotAutoApprove --></label>
         <name>isNotAutoApprove__c</name>
     </fields>
+    <layouts>
+        <layout>PRM PartnerRoleType Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

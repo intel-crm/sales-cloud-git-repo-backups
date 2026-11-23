@@ -7,10 +7,10 @@
   "regions" : [ {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<div class=\"storypar intelparsys\"><div class=\"introtext section\"><div  class=\"component\" data-component=\"introText\" data-component-id=\"1\">   <div  class=\"blade intro-text-component intel-ws solid white theme-light-default link-default  text-align-left ws-comp-standard-padding more-less-component\">      <div class=\"container\">         <div class=\"row\">            <div class=\"text-container col-xs-12 \">               <h2 class=\"margin-btm-1x\">Today, we are making Intel.com more amazing!</h2>               <p>&nbsp;</p>               <p>We are improving Intel.com to provide you a better experience.&nbsp; &nbsp;</p>               <p>&nbsp;</p>               <p>Maintenance begins <b>Feb 10, 2023, 5 p.m. PST</b>, and we invite you to return when we complete our new login experience <b>Feb 12, 2023, 9 a.m. PST</b>.</p>               <p>&nbsp;</p>            </div>         </div>      </div>   </div></div></div></div>"
+        "richTextValue" : "<p style=\"text-align: center;\"><strong style=\"font-size: 16px;\">Site is Under Maintainance!!</strong></p>\n<p style=\"text-align: center;\"><br></p>\n<p style=\"text-align: center;\"><img class=\"sfdcCbImage\" alt=\"\" src=\"{!contentAsset.MicrosoftTeamsimage_9.1}\"></p>"
       },
-      "componentName" : "forceCommunity:htmlBlock",
-      "id" : "fffbe8f0-4576-4d8e-8482-bc8718485cdc",
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "a850b82f-f7c9-4b04-b219-ea224618eacd",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

@@ -17,14 +17,13 @@ Modification Log :
 <apex:page sidebar="false" standardController="Case" extensions="Core_IPS_File_AttachToCase_Controller" >
  
  <script>
- <!--FLS Check Added- Madhuri -->
-     var url = {JSENCODE(location.href)};
+     var url = location.href;
      var match = url.match(/&inline=1/);
     if (match != null) { 
         var newUrl = url.replace(/&inline=1/, '');
         window.top.location=newUrl;
     }
-    </script>
+</script>
  
   
 <style>
@@ -41,9 +40,8 @@ Modification Log :
     margin-left:450px;
     font-family:times new roman;
 <!--end by aparna-->
-     }
-    .messageStyle {font-size: 90%;font-style: italic; font-weight: bold} 
-    </style>
+}   
+</style>
 
 <apex:form >
         <apex:pageBlock title="{!$Label.Core_IPS_File_CSAttachPgMsg}" mode="maindetail" >
@@ -51,26 +49,20 @@ Modification Log :
                 <div class="center">
                     <apex:commandButton value="{!$Label.Core_IPS_File_CSAttachPgRetBtnTxt}" action="{!saveAndReturn}" onclick="alert('{!$Label.Core_IPS_File_CSAttachPgRetBtnMsg}')" />
                 </div>
-            </apex:pageBlockButtons> 
-          </apex:pageBlock>
+            </apex:pageBlockButtons>               
+            </apex:pageBlock>
            
-            
             <!--start added by Orion--vamsi on 09/10/2018 for US182118 --->
             <apex:outputPanel rendered="{!IF(profileName != 'IPS External Customer',true,false)}">
                 <!--added by aparna on 22/11/2017 for US79603 : Iteration 3 and 4--->
-                <apex:outputText value="{!$Label.Core_IPS_Public_Attachment_Message}"  rendered="{!IF(AND(OR(not(externalUser),AND(profileName == 'Partner',partnerFAE)),publicFiles),true,false)}" styleClass="displayStyle"></apex:outputText>
-               <!--<apex:outputText value="{!$Label.Core_IPS_Public_Attachment_Message}"  rendered="{!publicFiles}" styleClass="displayStyle"></apex:outputText>-->
+                <apex:outputText value="{!$Label.Core_IPS_Public_Attachment_Message}"  rendered="{!publicFiles}" styleClass="displayStyle"></apex:outputText>
                 <apex:outputText value="{!$Label.Core_IPS_Private_Attachment_Message}" rendered="{!privateFiles}" styleClass="displayStyle"></apex:outputText>
                 <!--end by aparna-->
                 <!--added by Aparna on 19/4/2017 for partner changes for US104151 R4.3-->
                 <apex:outputText value="{!$Label.Core_IPS_Partner_Attachment_Message}" rendered="{!partnerFiles}" styleClass="displayStyle"></apex:outputText>
                 <!--end by Aparna for US104151-->
-           </apex:outputPanel>     
+           </apex:outputPanel>
             <!--End --- Orion--vamsi on 09/10/2018 for US182118 ---> 
-           <div align="center">
-               <apex:outputText value="<br/>{!$Label.Core_IPS_File_CSAttachPtoCMsg}" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"/>
-               <a href="mailto:export.customer@intel.com"><font color="blue"><apex:outputText value="{!$Label.Core_IPS_File_CSAttachPtoCMsg1}<br/><br/>" escape="false" rendered="{!publicFiles}" styleClass="messageStyle"></apex:outputText></font></a>
-           </div>
            
             <!-- Added by Abhishek as part of US64655 - 06/06/2017 -->
            

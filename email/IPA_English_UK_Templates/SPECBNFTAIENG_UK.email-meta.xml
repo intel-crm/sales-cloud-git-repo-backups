@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>ISO-8859-1</encodingKey>
     <name>SPECBNFTAIENG_UK</name>
     <style>none</style>
@@ -47,7 +47,7 @@ Your Intel® Partner Alliance team
 1 Data Centre Portfolio products: Intel® Xeon® Processors; Intel® Network Infrastructure Solutions; Server Boards &amp; Barebones Systems; Intel® SSD Data Centre Family; Wind River OS, Intel® FPGA Product Family; API Management; Intel® HPC Software; Intel® HPC Orchestrator; Intel® Omni-Path Architecture; Intel® Solutions for Lustre Software.
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

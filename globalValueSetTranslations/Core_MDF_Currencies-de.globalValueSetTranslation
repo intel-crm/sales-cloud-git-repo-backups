@@ -73,12 +73,24 @@
         <translation>BWP - Botswanische Pula</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>BYN - Belarussian Ruble</masterLabel>
+        <translation>BYN - Weißrussische Rubel</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BYR - Belarus Ruble</masterLabel>
+        <translation>BYR - Weißrussische Rubel</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>BZD - Belize Dollar</masterLabel>
         <translation>BZD - Belize-Dollar</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CAD - Canadian Dollar</masterLabel>
         <translation>CAD - Kanadische Dollar</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CDF - Franc Congolais</masterLabel>
+        <translation>CDF - Kongo-Franc</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CHF - Swiss Franc</masterLabel>
@@ -99,6 +111,10 @@
     <valueTranslation>
         <masterLabel>CRC - Costa Rica Colon</masterLabel>
         <translation>CRC - Costa-Rica-Colón</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CYP - Cypriot Pound</masterLabel>
+        <translation>CYP - Zypern-Pfund</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CZK - Czech Koruna</masterLabel>
@@ -133,6 +149,10 @@
         <translation>GEL - Georgische Lari</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>GHC - Ghana Cedi</masterLabel>
+        <translation>GHC - Ghanaische Cedi</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>GTQ - Guatemala Quetzal</masterLabel>
         <translation>GTQ - Guatemaltekische Quetzal</translation>
     </valueTranslation>
@@ -163,6 +183,10 @@
     <valueTranslation>
         <masterLabel>INR - Indian Rupee</masterLabel>
         <translation>INR - Indische Rupien</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IQD - Iraqi Dinar</masterLabel>
+        <translation>IQD - Irakische Dinar</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ISK - Iceland Krona</masterLabel>
@@ -217,6 +241,10 @@
         <translation>LVL - Lettische Latu</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>LYD - Libyan Dinar</masterLabel>
+        <translation>LYD - Libysche Dinar</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>MAD - Moroccan Dirham</masterLabel>
         <translation>MAD - Marokkanische Dirham</translation>
     </valueTranslation>
@@ -227,6 +255,14 @@
     <valueTranslation>
         <masterLabel>MKD - Macedonian Denar</masterLabel>
         <translation>MKD - Mazedonische Denari</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MMK - Myanmar Kyat</masterLabel>
+        <translation>MMK - Myanmarische Kyat</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MTL - Maltese Lira</masterLabel>
+        <translation>MTL - Maltesische Lira</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>MUR - Mauritius Rupee</masterLabel>
@@ -309,6 +345,10 @@
         <translation>RUB - Russische Rubel</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>RWF - Rwanda Franc</masterLabel>
+        <translation>RWF - Ruanda-Franc</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>SAR - Saudi Arabian Riyal</masterLabel>
         <translation>SAR - Saudi-Riyal</translation>
     </valueTranslation>
@@ -319,6 +359,10 @@
     <valueTranslation>
         <masterLabel>SGD - Singapore Dollar</masterLabel>
         <translation>SGD - Singapur-Dollar</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SIT - Slovenian Tolar</masterLabel>
+        <translation>SIT - Slowenische Tolar</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SVC - El Salvador Colon</masterLabel>
@@ -349,8 +393,16 @@
         <translation>TWD - Taiwan-Dollar, Neue</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>TZS - Tanzanian Shilling</masterLabel>
+        <translation>TZS - Tansania-Schilling</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>UAH - Ukraine Hryvnia</masterLabel>
         <translation>UAH - Ukrainische Griwna</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>UGX - Ugandan Shilling</masterLabel>
+        <translation>UGX - Uganda-Schilling</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>USD - U.S. Dollar</masterLabel>
@@ -365,11 +417,31 @@
         <translation>UZS - Usbekische So&apos;m</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>VES  - Venezuelan Bolivar Fuerte</masterLabel>
+        <translation>VES - Venezolanische Bolívar fuerte</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>VND - Vietnam Dong</masterLabel>
         <translation>VND - Vietnamesische Dong</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>XAF - CFA Franc (BEAC)</masterLabel>
+        <translation>XAF - CFA-Franc (BEAC)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>XOF - CFA Franc (BCEAO)</masterLabel>
+        <translation>XOF - CFA-Franc (BCEAO)</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>YUM - Yugoslav Dinar</masterLabel>
+        <translation>YUM - Jugoslawische Dinar</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>ZAR - South African Rand</masterLabel>
         <translation>ZAR - Südafrikanische Rand</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ZMK - Zambian Kwacha (New)</masterLabel>
+        <translation>ZMK - Sambische Kwacha (neu)</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

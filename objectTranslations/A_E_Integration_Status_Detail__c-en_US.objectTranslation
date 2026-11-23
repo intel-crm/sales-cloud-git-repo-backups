@@ -34,8 +34,8 @@
         <label><!-- Integration Status --></label>
         <name>A_E_Integration_Status_Txt__c</name>
         <picklistValues>
-            <masterLabel>Failed</masterLabel>
-            <translation><!-- Failed --></translation>
+            <masterLabel>Failure</masterLabel>
+            <translation><!-- Failure --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>In-Progress</masterLabel>
@@ -46,8 +46,8 @@
             <translation><!-- Pending --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Successful</masterLabel>
-            <translation><!-- Successful --></translation>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
         </picklistValues>
     </fields>
     <fields>

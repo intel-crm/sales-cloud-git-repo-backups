@@ -7,7 +7,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Team: PopcornApps         10/9/2017               Helper Class to create Premier Support Projects As IPS EXternal Customer 
 *****************************************************************************************************************************************/
-public with sharing class Core_ExternalUser_IPS_Project_Helper {
+public class Core_ExternalUser_IPS_Project_Helper {
     //Create an IPS Account 
     public static void createAccountOnProjectCreationForExternalCustomer(Map<Id,Core_IPS_Project__c> projectMap, User loggerInUser){
         
@@ -67,26 +67,21 @@ public with sharing class Core_ExternalUser_IPS_Project_Helper {
     //Get the List of Existing Members in a Project
     public static Map<Id, Id> getExistingMembers(String ipsProjectId){
         Map<Id, Id> mContId_IipsProjectrojMembId = new Map<Id, Id>();
-        if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Project_Member__c pm : [Select Id, Core_IPS_Contact__c ,Core_IPS_Project__c  FROM Core_IPS_Project_Member__c 
                                              WHERE Core_IPS_Project__c =:ipsProjectId ])
         {
             mContId_IipsProjectrojMembId.put(pm.Core_IPS_Contact__c, pm.Id);
         }
-        }
         return  mContId_IipsProjectrojMembId;
-    
     }
     
     //Query to check if there are already exising assets which are in active
     public static Map<Id, Asset> getExistingAssets(String ipsProjectId){
         Map<Id, Asset> mSuppProd_Asset = new Map<Id, Asset>();
-        if(Asset.SObjectType.getDescribe().isAccessible()){
         for( Asset asst : [Select Id, Core_Supported_Product__c, Core_Project_Asset_Status__c, UsageEndDate 
                            FROM Asset WHERE Core_Project_Asset_Status__c = 'InActive' AND Core_IPS_Project__c =: ipsProjectId])
         {
             mSuppProd_Asset.put(asst.Core_Supported_Product__c, asst);
-        }
         }
         return mSuppProd_Asset;
         
@@ -94,12 +89,10 @@ public with sharing class Core_ExternalUser_IPS_Project_Helper {
     //Get all Inactive Products
     public static Map<Id, Core_IPS_Product__c> getAllInActiveIPSProducts(String ipsProjectId){
         Map<Id, Core_IPS_Product__c> mSuppProd_IPSProduct = new Map<Id, Core_IPS_Product__c>();
-        if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Product__c prod : [Select Id, Name, Core_IPS_Project__c, Core_Supported_Product__c FROM  Core_IPS_Product__c 
                                         Where Core_IPS_Project__c =: ipsProjectId AND Core_IPS_Product_Status__c ='InActive']){
                                             mSuppProd_IPSProduct.put(prod.Core_Supported_Product__c, prod);
                                         }
-        }
         return mSuppProd_IPSProduct;
     }
     //Get User RecordID of the Contact

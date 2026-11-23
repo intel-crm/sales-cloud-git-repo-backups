@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Coaching Note</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Coaching Notes</value>
+    </caseValues>
+    <fields>
+        <label><!-- GoalId --></label>
+        <name>Xvoyant__GoalId__c</name>
+    </fields>
+    <fields>
+        <label><!-- HideFromTeam --></label>
+        <name>Xvoyant__HideFromTeam__c</name>
+    </fields>
+    <fields>
+        <label><!-- NoteText --></label>
+        <name>Xvoyant__NoteText__c</name>
+    </fields>
+    <fields>
+        <label><!-- NoteType --></label>
+        <name>Xvoyant__NoteType__c</name>
+        <picklistValues>
+            <masterLabel>Formal Session</masterLabel>
+            <translation><!-- Formal Session --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Quick Session</masterLabel>
+            <translation><!-- Quick Session --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Session</masterLabel>
+            <translation><!-- Session --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

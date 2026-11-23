@@ -64,7 +64,7 @@
         <field>Opportunity.Core_Sales_Group__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Approved_Date__c</field>
@@ -94,7 +94,7 @@
             <value>ODM</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

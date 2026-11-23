@@ -1,54 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Draft</fullName>
+        <fullName>Cancelled</fullName>
         <default>false</default>
-        <label>Draft</label>
-    </customValue>
-    <customValue>
-        <fullName>Pending Review</fullName>
-        <default>false</default>
-        <label>Pending Review</label>
-    </customValue>
-    <customValue>
-        <fullName>Pending Approval</fullName>
-        <default>false</default>
-        <label>Pending Approval</label>
-    </customValue>
-    <customValue>
-        <fullName>Revision Required</fullName>
-        <default>false</default>
-        <label>Revision Required</label>
-    </customValue>
-    <customValue>
-        <fullName>Planned</fullName>
-        <default>false</default>
-        <label>Planned</label>
-    </customValue>
-    <customValue>
-        <fullName>In-Progress</fullName>
-        <default>false</default>
-        <label>In-Progress</label>
-    </customValue>
-    <customValue>
-        <fullName>In-Progress Revision Required</fullName>
-        <default>false</default>
-        <label>In-Progress Revision Required</label>
-    </customValue>
-    <customValue>
-        <fullName>In-Progress Pending Review</fullName>
-        <default>false</default>
-        <label>In-Progress Pending Review</label>
-    </customValue>
-    <customValue>
-        <fullName>In-Progress Pending Approval</fullName>
-        <default>false</default>
-        <label>In-Progress Pending Approval</label>
-    </customValue>
-    <customValue>
-        <fullName>Declined</fullName>
-        <default>false</default>
-        <label>Declined</label>
+        <label>Cancelled</label>
     </customValue>
     <customValue>
         <fullName>Closed</fullName>
@@ -56,20 +11,33 @@
         <label>Closed</label>
     </customValue>
     <customValue>
-        <fullName>Cancelled</fullName>
+        <fullName>In-Progress</fullName>
         <default>false</default>
-        <label>Cancelled</label>
+        <label>In-Progress</label>
     </customValue>
     <customValue>
-        <fullName>Submitted</fullName>
+        <fullName>Pending Review</fullName>
         <default>false</default>
-        <isActive>false</isActive>
-        <label>Submitted</label>
+        <label>Pending Review</label>
+    </customValue>
+    <customValue>
+        <fullName>Planned</fullName>
+        <default>false</default>
+        <label>Planned</label>
+    </customValue>
+    <customValue>
+        <fullName>Revision Required</fullName>
+        <default>false</default>
+        <label>Revision Required</label>
+    </customValue>
+    <customValue>
+        <fullName>Pending Approval</fullName>
+        <default>false</default>
+        <label>Pending Approval</label>
     </customValue>
     <customValue>
         <fullName>Rejected</fullName>
         <default>false</default>
-        <isActive>false</isActive>
         <label>Rejected</label>
     </customValue>
     <customValue>
@@ -77,6 +45,12 @@
         <default>false</default>
         <isActive>false</isActive>
         <label>Pending Action</label>
+    </customValue>
+    <customValue>
+        <fullName>Draft</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Draft</label>
     </customValue>
     <customValue>
         <fullName>Executed</fullName>

@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-form-element selectbox">
+        <h4><label class="slds-form-element__label" for="combobox-id-5"></label></h4>
+        <div class="slds-form-element__control">
+            <div class="slds-combobox_container slds-size_small">
+                <div class="slds-combobox slds-is-relative slds-dropdown-trigger slds-dropdown-trigger_hover slds-dropdown-trigger_click slds-is-open"
+                    aria-expanded="true" aria-haspopup="listbox" role="combobox" onmouseleave={handleleave}>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                        <input type="text" class="slds-input_faux slds-combobox__input slds-combobox__input-value border-radius"
+                            id="combobox-id-5" aria-controls="listbox-id-5" role="textbox" placeholder={picklistlabel}
+                            readonly="" onclick={handleShowdropdown}/>
+                        <span
+                            class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                            <lightning-icon icon-name="utility:down" size="x-small" aria-hidden="true"
+                                alternative-text="drop-down" title="click to drop-down">
+                            </lightning-icon>
+                        </span>
+                    </div>
+                    <template if:true={showdropdown}>
+                        <div class="relativeposition">
+                            <div id="listbox-id-5" class="addbackground slds-dropdown_length-5 slds-dropdown_fluid"
+                                role="listbox">
+                                <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                    <template for:each={values} for:item="eachvalue">
+                                        <c-ipa-picklist-value key={eachvalue.value} label={eachvalue.value}
+                                            value={eachvalue.value} selected={eachvalue.selected} id={eachvalue.id}
+                                            objectname={eachvalue.objname}>
+                                        </c-ipa-picklist-value>
+                                    </template>
+                                </ul>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

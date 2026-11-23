@@ -24,7 +24,7 @@
                 <field>PRM_AGS_Role__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
+                <behavior>Edit</behavior>
                 <field>PRM_Contact_Relationship_Id__c</field>
             </layoutItems>
             <layoutItems>
@@ -46,6 +46,10 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>PRM_IPA_Partner_Role_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PRM_IPARefreshChecK__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

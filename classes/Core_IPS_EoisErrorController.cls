@@ -1,16 +1,14 @@
-public with sharing class Core_IPS_EoisErrorController {
+public class Core_IPS_EoisErrorController {
    public string ErrorMsg{get;set;}
    public string ErrorCode{get;set;}
    public string retURL{get;set;}
    private User CurrentUser ;
    public Core_IPS_EoisErrorController()
    {
-      if(!String.isBlank(ApexPages.currentPage().getParameters().get('ErrCode')))//pramodh
+      if(ApexPages.currentPage().getParameters().get('ErrCode') !=null)
       {
-        // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-        //ErrorCode  =String.escapeSingleQuotes( ApexPages.currentPage().getParameters().get('ErrCode'));
-        ErrorCode  =ApexPages.currentPage().getParameters().get('ErrCode')?.escapeHtml4();
-
+        ErrorCode  = ApexPages.currentPage().getParameters().get('ErrCode');
+        system.debug('########'+ErrorCode);
       }
       else
       {
@@ -21,11 +19,11 @@ public with sharing class Core_IPS_EoisErrorController {
       
       if(ApexPages.currentPage().getParameters().get('retURL') !=null && (userinfo.getusertype() == 'PowerCustomerSuccess' || userinfo.getusertype() =='PowerPartner'))
       {
-        retURL = String.escapeSingleQuotes(ApexPages.currentPage().getParameters().get('retURL').split('/')[ApexPages.currentPage().getParameters().get('retURL').split('/').size()-1]);  
+        retURL = ApexPages.currentPage().getParameters().get('retURL').split('/')[ApexPages.currentPage().getParameters().get('retURL').split('/').size()-1];  
+        system.debug('########'+retURL);  
         retURL  = '/IPS/' + retURL;
       }
       else if(ApexPages.currentPage().getParameters().get('retURL') !=null){
-            // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
         retURL  =  ApexPages.currentPage().getParameters().get('retURL');  
       }
       else
@@ -41,8 +39,10 @@ public with sharing class Core_IPS_EoisErrorController {
     public pagereference goBack()
     {
        //string CurrentUrl = Apexpages.currentPage().getUrl();
+       //system.debug('>>>>>>>>>>>>>' + CurrentUrl);
        //string strUrl = URL.getSalesforceBaseUrl().getHost();
        //string CurrentUrl = 'https://'+strUrl+ retURL;
+       system.debug('@@@@@@@@@@@@'+retURL);
        pagereference Pg = new  pagereference(retURL) ;
        pg.setredirect(true);
        return Pg;

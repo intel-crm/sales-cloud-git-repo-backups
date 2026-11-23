@@ -25,6 +25,13 @@
         <label><!-- GEC Question3 --></label>
         <name>Core_IPS_GEC_Question3__c</name>
     </fields>
+    <layouts>
+        <layout>GEC Details Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Customer’s Answers cannot be modified. --></errorMessage>

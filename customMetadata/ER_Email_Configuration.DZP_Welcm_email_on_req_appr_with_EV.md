@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>BusinessType__c</field>
-        <value xsi:type="xsd:string">Developer Zone Premier</value>
+        <value xsi:type="xsd:string">DZP</value>
     </values>
     <values>
         <field>Business_Event__c</field>
@@ -36,6 +36,6 @@
     </values>
     <values>
         <field>Template_Name__c</field>
-        <value xsi:type="xsd:string">NEWADMINUSERREG_DZP</value>
+        <value xsi:type="xsd:string">SCRREQTOAPVDNEWEV_DZP</value>
     </values>
 </CustomMetadata>

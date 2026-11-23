@@ -14,5 +14,8 @@ trigger Core_MDF_BudgetTransferLogTrigger on Core_MDF_Budget_Transfer_Log__c (be
                                                                                   after update,
                                                                                   after delete,
                                                                                   after undelete) {
-    new Core_MDF_BudgetTransferLogTriggerHandler().run();                                                                                   
+    try{                                                                              
+    new Core_MDF_BudgetTransferLogTriggerHandler().run();}catch(Exception e){
+        system.debug('exception'+e.getMessage());
+    }
 }

@@ -8,7 +8,7 @@
     <textOnly>Şirket Hesabı Güncellemesi
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 Bu bildirim, bir kişinin Intel® Teknoloji Sağlayıcısı programı bilgilerini seçilen Intel® Yetkili Distribütörleri ve/veya Intel® Approved Suppliers (Hizmet Sağlayıcıları) ile paylaşmayı durdurduğunu size bildirmek için gönderilmiştir.
 
@@ -27,7 +27,7 @@ Teşekkür ederiz,
 Intel® Ortağı İş Birliği ekibiniz
 
 Bu mesaj, Intel® Ortağı İş Birliği ile halihazırda kurduğunuz iş ilişkisiyle ilgili önemli bir iş yazışması olarak gönderildi.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Gizlilik | Çerezler</textOnly>
     <type>custom</type>

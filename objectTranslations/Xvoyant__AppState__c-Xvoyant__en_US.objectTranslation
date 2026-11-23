@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>AppState</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>AppStates</value>
+    </caseValues>
+    <fields>
+        <label><!-- MainState --></label>
+        <name>Xvoyant__MainState__c</name>
+    </fields>
+    <fields>
+        <label><!-- OrgImportDate --></label>
+        <name>Xvoyant__OrgImportDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage0 --></label>
+        <name>Xvoyant__Stage0__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage1 --></label>
+        <name>Xvoyant__Stage1__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage2 --></label>
+        <name>Xvoyant__Stage2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage3 --></label>
+        <name>Xvoyant__Stage3__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage4 --></label>
+        <name>Xvoyant__Stage4__c</name>
+    </fields>
+    <fields>
+        <label><!-- Stage5 --></label>
+        <name>Xvoyant__Stage5__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sweet Spot --></label>
+        <name>Xvoyant__Sweet_Spot__c</name>
+    </fields>
+    <fields>
+        <label><!-- Team Field --></label>
+        <name>Xvoyant__Team_Field__c</name>
+    </fields>
+    <fields>
+        <label><!-- UseOppHistory --></label>
+        <name>Xvoyant__UseOppHistory__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

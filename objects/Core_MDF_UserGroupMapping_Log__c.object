@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Account_id__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
@@ -183,46 +183,6 @@
                     <fullName>Add</fullName>
                     <default>false</default>
                     <label>Add</label>
-                </value>
-                <value>
-                    <fullName>Marketing User Update</fullName>
-                    <default>false</default>
-                    <label>Marketing User Update</label>
-                </value>
-                <value>
-                    <fullName>PGM Activate</fullName>
-                    <default>false</default>
-                    <label>PGM Activate</label>
-                </value>
-                <value>
-                    <fullName>PGM Inactivate</fullName>
-                    <default>false</default>
-                    <label>PGM Inactivate</label>
-                </value>
-                <value>
-                    <fullName>PGM Initial Log</fullName>
-                    <default>false</default>
-                    <label>PGM Initial Log</label>
-                </value>
-                <value>
-                    <fullName>PGM User Addition</fullName>
-                    <default>false</default>
-                    <label>PGM User Addition</label>
-                </value>
-                <value>
-                    <fullName>PGM User Removal</fullName>
-                    <default>false</default>
-                    <label>PGM User Removal</label>
-                </value>
-                <value>
-                    <fullName>PNUM Addition</fullName>
-                    <default>false</default>
-                    <label>PNUM Addition</label>
-                </value>
-                <value>
-                    <fullName>PNUM Deletion</fullName>
-                    <default>false</default>
-                    <label>PNUM Deletion</label>
                 </value>
                 <value>
                     <fullName>Remove</fullName>
@@ -289,11 +249,6 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
-                    <fullName>Action Required</fullName>
-                    <default>false</default>
-                    <label>Action Required</label>
-                </value>
-                <value>
                     <fullName>Completed</fullName>
                     <default>false</default>
                     <label>Completed</label>
@@ -317,17 +272,6 @@
         <label>User</label>
         <referenceTo>User</referenceTo>
         <relationshipName>Core_MDF_UserGroupMapping_Logs</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Virtual_Account_id__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>Virtual Account</label>
-        <referenceTo>Account</referenceTo>
-        <relationshipLabel>UserGroupMapping Logs (Virtual Account)</relationshipLabel>
-        <relationshipName>UserGroupMapping_Logs</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -358,11 +302,6 @@
         <columns>Core_MDF_Status_nm__c</columns>
         <columns>Core_MDF_Error_Message_txt__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Contact_id__c</field>
-            <operation>equals</operation>
-            <value>Anshika Singh</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -372,6 +311,6 @@
     </nameField>
     <pluralLabel>UserGroupMapping Logs</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

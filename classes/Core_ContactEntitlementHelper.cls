@@ -52,26 +52,23 @@ public without sharing class Core_ContactEntitlementHelper {
                 setConIds.add(ce.Core_Contact_Id__c);
             } 
         }
-    
+		
         // End of changes made by Manikanta
         Map<String, Account> mapAccsToUpdate = new Map<String, Account>();
         if(!setConIds.isEmpty()){
             for(Contact con: [Select Name, AccountId, Core_IPA_One_Partner_Id__c from Contact where Id IN :setConIds]) {
                 Id idAcc = con.Core_IPA_One_Partner_Id__c;
-                if(idAcc != null){
-                    Account accTemp = new Account();
-                	accTemp.Id = idAcc;
-                	accTemp.Core_PMP_Membership_Change_Ind__c = true;
-                	mapAccsToUpdate.put(idAcc, accTemp);
-                }
+                Account accTemp = new Account();
+                accTemp.Id = idAcc;
+                accTemp.Core_PMP_Membership_Change_Ind__c = true;
+                mapAccsToUpdate.put(idAcc, accTemp);
             }
         }
         return mapAccsToUpdate.values();
         
     }
-  public static void removeSharingForStorefronts(List<Core_Contact_Entitlement__c> newList, Map<Id,Core_Contact_Entitlement__c> oldMap, String  triggerEvent){
-    List<String> lstEntitlementIds = new List<String>();
-     list<Core_ACM_Account_Staging__c> lstAccStging=new list<Core_ACM_Account_Staging__c>();
+	/*public static void removeSharingForStorefronts(List<Core_Contact_Entitlement__c> newList, Map<Id,Core_Contact_Entitlement__c> oldMap, String  triggerEvent){
+		List<String> lstEntitlementIds = new List<String>();
         List<Core_Entitlement__c> entitlementDetails = new List<Core_Entitlement__c>();
         String strMPEntitlementIds = System.Label.PMP_External_Entitlement_Ids;
         set<Id> setConIdToRemove=new set<Id>();
@@ -85,7 +82,7 @@ public without sharing class Core_ContactEntitlementHelper {
             }
         }
          for(Core_Contact_Entitlement__c ce: newList){
-    if(triggerEvent == 'AFTER_UPDATE' && lstEntitlementIds.contains(ce.Core_Entitlement_Id__c) &&
+		if(triggerEvent == 'AFTER_UPDATE' && lstEntitlementIds.contains(ce.Core_Entitlement_Id__c) &&
             (ce.Core_Selected__c==false && ce.Core_Selected__c != oldMap.get(ce.Id).Core_Selected__c )) {
                 
                 setConIdToRemove.add(ce.Core_Contact_Id__c);
@@ -93,24 +90,11 @@ public without sharing class Core_ContactEntitlementHelper {
                 setConIdToRemove.add(ce.Core_Contact_Id__c);
         }
     }
-       
-    if(setConIdToRemove!=null && !setConIdToRemove.isEmpty()){
-    for(contact con:[Select Core_IPA_One_Partner_Id__c  from contact where id in:setConIdToRemove])
-		if(con.Core_IPA_One_Partner_Id__c!=null){
-          Core_ACM_Account_Staging__c accstg =new Core_ACM_Account_Staging__c(
-          AccountId__c= con.Id,
-		  Core_Status__c ='NEW',
-          Core_Action__c='REMOVE_MPSHARE'
-          );
-		 
-		  lstAccStging.add(accstg);
+		if(setConIdToRemove!=null && !System.isQueueable()){
+          //  System.enqueueJob(new PMP_Company_Info_TriggerHelper.RemoveStorefrontSharingQueueable(setConIdToRemove));
+			//PMP_Company_Info_TriggerHelper.removeStorefrontSharing(setConIdToRemove);
 		}
-
-    }
-    if(lstAccStging!=null && !lstAccStging.isEmpty()){
-        insert lstAccStging;
-    }
-  }
+	}*/
     
     public static List<Account> updateB2BFlagOnAccount(List<Core_Contact_Entitlement__c> newList, Map<Id,Core_Contact_Entitlement__c> oldMap, String  triggerEvent){
         set<Id> B2BEligibleContactsSet = new Set<Id>();
@@ -140,8 +124,6 @@ public without sharing class Core_ContactEntitlementHelper {
         List<Account> accToUpdate = new List<Account>();
         Map<Id, Account> membChangIndAccMap = new  Map<Id, Account>();
         Map<Id, Account> b2bFlagAccMap = new  Map<Id, Account>();
-		List<Account> validAccounts = new List<Account>();
-		List<Account> validB2BAccounts = new List<Account>();
         if(updateMembChngIndAccounts != null && !updateMembChngIndAccounts.isEmpty()){
           /*  membChangIndAccMap = new Map<Id, Account>(updateMembChngIndAccounts);
             allAccIdsSet.addAll(membChangIndAccMap.keySet());*/
@@ -150,14 +132,14 @@ public without sharing class Core_ContactEntitlementHelper {
                 allAccIdsSet.add(accId);
             }
         }*/
-        
+         List<Account> validAccounts = new List<Account>();
         for (Account acc : updateMembChngIndAccounts) {
             if (acc.Id != null) {
                 validAccounts.add(acc);
             }
         }
 
-    membChangIndAccMap = new Map<Id, Account>(validAccounts);   
+		membChangIndAccMap = new Map<Id, Account>(validAccounts);   
          allAccIdsSet.addAll(membChangIndAccMap.keySet());
         }
         if(updateB2BFlagAccounts != null && !updateB2BFlagAccounts.isEmpty()){
@@ -167,14 +149,6 @@ public without sharing class Core_ContactEntitlementHelper {
                 allAccIdsSet.add(accId1);
             }
              }*/
-		
-        for (Account acc1 : updateB2BFlagAccounts) {
-            if (acc1.Id != null) {
-                validB2BAccounts.add(acc1);
-            }
-        }
-
-    b2bFlagAccMap = new Map<Id, Account>(validB2BAccounts);
             allAccIdsSet.addAll(b2bFlagAccMap.keySet());
             
         }
@@ -441,29 +415,24 @@ public without sharing class Core_ContactEntitlementHelper {
         
         @future
         public static void updatePsPgAssignmentRemoval(String strPSAInsert, String strPSADelete, String strGMInsert, String strGMDelete) {
-            try{
-                if(updatePsPgAssignmentRemovalCheck){
-                    updatePsPgAssignmentRemovalCheck = false;
-                    List<PermissionSetAssignment> lstPSAInsert = (List<PermissionSetAssignment>)JSON.deserialize(strPSAInsert, List<PermissionSetAssignment>.class);
-                    List<PermissionSetAssignment> lstPSADelete = (List<PermissionSetAssignment>)JSON.deserialize(strPSADelete, List<PermissionSetAssignment>.class);
-                    List<GroupMember> lstGMInsert = (List<GroupMember>)JSON.deserialize(strGMInsert, List<GroupMember>.class);
-                    List<GroupMember> lstGMDelete = (List<GroupMember>)JSON.deserialize(strGMDelete, List<GroupMember>.class);
-                    if(!lstPSAInsert.isEmpty()){
-                        insert lstPSAInsert;
-                    }
-                    if(!lstPSADelete.isEmpty()){
-                        delete lstPSADelete;
-                    }
-                    if(!lstGMInsert.isEmpty()){
-                        insert lstGMInsert;
-                    }
-                    if(!lstGMDelete.isEmpty()){
-                        delete lstGMDelete;
-                    }
+            if(updatePsPgAssignmentRemovalCheck){
+                updatePsPgAssignmentRemovalCheck = false;
+                List<PermissionSetAssignment> lstPSAInsert = (List<PermissionSetAssignment>)JSON.deserialize(strPSAInsert, List<PermissionSetAssignment>.class);
+                List<PermissionSetAssignment> lstPSADelete = (List<PermissionSetAssignment>)JSON.deserialize(strPSADelete, List<PermissionSetAssignment>.class);
+                List<GroupMember> lstGMInsert = (List<GroupMember>)JSON.deserialize(strGMInsert, List<GroupMember>.class);
+                List<GroupMember> lstGMDelete = (List<GroupMember>)JSON.deserialize(strGMDelete, List<GroupMember>.class);
+                if(!lstPSAInsert.isEmpty()){
+                    insert lstPSAInsert;
                 }
-            }catch(Exception e){
-                UCD_ACM_Logger.error('Core_ContactEntitlementHelper','updatePsPgAssignmentRemoval',e.getMessage(), null);
-                UCD_ACM_Logger.setLogDetails();
+                if(!lstPSADelete.isEmpty()){
+                    delete lstPSADelete;
+                }
+                if(!lstGMInsert.isEmpty()){
+                    insert lstGMInsert;
+                }
+                if(!lstGMDelete.isEmpty()){
+                    delete lstGMDelete;
+                }
             }
         }
         

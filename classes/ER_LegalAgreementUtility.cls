@@ -12,7 +12,6 @@ Modification Log :
 
 public with Sharing  class ER_LegalAgreementUtility {
     
-    /*commented as part of EBR framework and implemented this logic with flows
     //Sets LA criteria if LA sent in request matches in SF
     public static void updateLA(List<PRM_Registration_Request__c> regRequest){
         Set<String> allPASet = new Set<String>();
@@ -36,11 +35,11 @@ public with Sharing  class ER_LegalAgreementUtility {
                                //Set status to true if input reqest LA matches with SF
                                status = allPASet.contains(laName) ? true : false;                                                          
                            }                           
-                       }
-                       rr.PRM_Legal_Agreement_Criteria__c = status ? Label.PRM_Success : Label.PRM_Fail;
-                   }                
+                       }                     
+                   }
+                rr.PRM_Legal_Agreement_Criteria__c = status ? Label.PRM_Success : Label.PRM_Fail;               
             }            
         }
-    }*/
+    }
     
 }

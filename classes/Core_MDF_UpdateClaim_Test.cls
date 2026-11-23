@@ -92,7 +92,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             Account acc1 = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, 
                                                                             false);
             acc1.Core_Account_Type__c = 'Reseller';
-            acc1.Core_Sales_Groups__c = 'Americas Hosted Sales Group';
+            acc1.Core_Sales_Groups__c = 'Automotive Sales Group';
             acc1.Industry = 'Food & Beverage';
             acc1.Core_MDF_Channel_Program__c = cp.Id;
             acc1.Core_MDF_CoMarketingAgency__c=true;
@@ -118,42 +118,19 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             usr1.ProfileId = partnerProfile.Id;
             usr1.ContactId = con.Id;
             Database.insert(usr1);
-            //adding bypass feature to bypass access validation
-                                             List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            bypassFunctionKeys.add('ByPass_BlockLegacyBudgetCreation');
-            
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            Core_MDF_Configuration__c config = new Core_MDF_Configuration__c();
-      config.name = 'ALLOWED_PRG_FOR_RUS_NOTIF';
-      config.Core_MDF_Category__c = 'Bank Document Hold Logic';
-      config.Core_MDF_Value__c = 'Retail Marketing Funds,Intel Partner Alliance';
-      insert config;            
-            
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
             
             // Creating campaigns using utility class
-            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo','Yes', 
+            Campaign camp = Core_MDF_CCP_TestDataUtility.createCampaign('TestCamp','Consumer','Intel® Corporate Logo', 
                                                                         Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF,
-                                                                        'Client CoMarketing Fund',System.today(),
+                                                                        'Client CoMarketing Fund',System.today().addDays(5) ,
                                                                         System.today().addDays(200), 2000, 'Unite',acc.Id,'2-in-1', true);
             
             // Creating Budget using utility class
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                    acc.Id,cp.Id,5000000,System.today(),System.today().addDays(110), 
-                                                                                   false);
-            pmb.Core_MDF_Budget_Type_Txt__c='CCF 1.0';
-            //added insert
-            insert pmb;
+                                                                                   true);
             
             // Creating Allocation using utility class
-           
             PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,acc,1000000.0,true);
             
             // Creating activities using utility class
@@ -168,8 +145,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfr.AllocationId = pfa.Id;
             pfr.BudgetId = pmb.Id;
             pfr.Core_MDF_Start_Date__c = system.today();
-            pfr.Core_MDF_End_Date__c = system.today().addDays(15);
-            pfr.Core_MDF_Reimbursement_Rate_txt__c = '25%';
+            pfr.Core_MDF_End_Date__c = system.today();
             Database.insert(pfr);
             test.startTest();
             // Creating Bank
@@ -198,8 +174,8 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc.Core_MDF_Status__c = 'Submitted';
             pfc.Description = 'Test PFC ';
             //pfc.Core_MDF_FlaggedForAudit__c = true;
-            pfc.Core_MDF_Ad_Run_Start_Date__c = system.today();
-            pfc.Core_MDF_Ad_Run_End_Date__c = system.today();
+            pfc.Core_MDF_Ad_Run_Start_Date__c = System.today();
+            pfc.Core_MDF_Ad_Run_End_Date__c = System.today();
             pfc.Core_MDF_Invoice_Date__c = System.today();
             pfc.Core_MDF_Invoice_Number__c = '1121';
             pfc.Core_MDF_Media_Vehicle__c = 'test';
@@ -208,9 +184,6 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc.Core_MDF_Currency__c = 'USD';
             pfc.Core_MDF_Exchange_rate__c = 1;
             pfc.Core_MDF_Bank__c = bank.Id;
-            pfc.Core_MDF_Country_Location_nm__c='INDIA';
-            //System.debug('Test::'+pfc);
-            //insert pfc;
             
             PartnerFundClaim pfc1  = new PartnerFundClaim();
             pfc1.RecordTypeId = Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF;
@@ -230,8 +203,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc1.Core_MDF_Taxes_Local__c = 0;
             pfc1.Core_MDF_Currency__c = 'USD';
             pfc1.Core_MDF_Exchange_rate__c = 1;
-            pfc1.Core_MDF_Bank__c = bank.Id;
-            pfc1.Core_MDF_Country_Location_nm__c='INDIA';
+            pfc1.Core_MDF_Bank__c = bank.Id; 
             
             
             PartnerFundClaim pfc2  = new PartnerFundClaim();
@@ -252,8 +224,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc2.Core_MDF_Taxes_Local__c = 0;
             pfc2.Core_MDF_Currency__c = 'USD';
             pfc2.Core_MDF_Exchange_rate__c = 1;
-            pfc2.Core_MDF_Bank__c = bank.Id;
-            pfc2.Core_MDF_Country_Location_nm__c='INDIA';
+            pfc2.Core_MDF_Bank__c = bank.Id;   
                      
             //Creating Claim data to handle Paid Claim scenario
             PartnerFundClaim pfc3  = new PartnerFundClaim();
@@ -274,8 +245,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc3.Core_MDF_Taxes_Local__c = 0;
             pfc3.Core_MDF_Currency__c = 'USD';
             pfc3.Core_MDF_Exchange_rate__c = 1;
-            pfc3.Core_MDF_Bank__c = bank.Id;
-            pfc3.Core_MDF_Country_Location_nm__c='INDIA';
+            pfc3.Core_MDF_Bank__c = bank.Id;    
             
             PartnerFundClaim pfc4  = new PartnerFundClaim();
             pfc4.RecordTypeId = Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF;
@@ -295,8 +265,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc4.Core_MDF_Taxes_Local__c = 0;
             pfc4.Core_MDF_Currency__c = 'USD';
             pfc4.Core_MDF_Exchange_rate__c = 1;
-            pfc4.Core_MDF_Bank__c = bank.Id; 
-            pfc4.Core_MDF_Country_Location_nm__c='INDIA';
+            pfc4.Core_MDF_Bank__c = bank.Id;    
             
             PartnerFundClaim pfc5  = new PartnerFundClaim();
             pfc5.RecordTypeId = Core_MDF_CCP_TestDataUtility.claim_RecordType_CCF;
@@ -316,8 +285,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
             pfc5.Core_MDF_Taxes_Local__c = 0;
             pfc5.Core_MDF_Currency__c = 'USD';
             pfc5.Core_MDF_Exchange_rate__c = 1;
-            pfc5.Core_MDF_Bank__c = bank.Id; 
-            pfc5.Core_MDF_Country_Location_nm__c='INDIA';
+            pfc5.Core_MDF_Bank__c = bank.Id;    
             
             toBeInsertedClaims.add(pfc);
             toBeInsertedClaims.add(pfc1);
@@ -367,8 +335,6 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
         Id compliantClaimId3;
         Id compliantClaimId4;
         Contact cnct = [Select Id from Contact limit 5];
-        cnct.MailingCountry = 'India';
-        
 
         //Setting the case status as either compliant or non compliant
         
@@ -452,7 +418,6 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
         }           
                
         Test.stopTest();
-        Id claimId;
         
         for (PartnerFundClaim pfc : [SELECT Id, Core_MDF_Status__c, Core_MDF_Audit_Hold__c, Core_MDF_Audit_Adjustment_Amount__c from PartnerFundClaim WHERE Id =: nonCompliantClaimId OR
                                      Id=: compliantClaimId1 OR Id=: compliantClaimId2]){
@@ -470,12 +435,9 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
                          
         }
         
-        /*Case cs = new Case();
+        Case cs = new Case();
         Id caseAuditRecType = Schema.SObjectType.Case.getRecordTypeInfosByDeveloperName().get('Core_MDF_Audit').getRecordTypeId();
         cs.Status = 'New';
-        cs.Origin='Manual Selection';
-        cs.Core_MDF_Claim_ID__c=nonCompliantClaimId;
-        
         cs.recordTypeId = caseAuditRecType;
         cs.ContactId = contactId;
         insert cs;
@@ -484,7 +446,7 @@ Accenture – Sai Sugathri N   04-30-2019                  Created.
         update cs;
         
         cs.Core_MDF_Status__c = 'Cancelled';
-        update cs;  */    
+        update cs;      
         
     }       
 }

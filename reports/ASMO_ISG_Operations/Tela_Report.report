@@ -196,7 +196,7 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -236,7 +236,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Haynes,cook,Gordon,mushahwar,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
+            <value>Gordon Allison,Courtney Harrison,Foote,O&apos;Donnell,Swanger,Rodman,Weston,Herrmann,Descheemaeker</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -264,10 +264,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</sortColumn>
+    <sortColumn>OpportunityLineItem.Core_BU_Short_Name__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_PREVCURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

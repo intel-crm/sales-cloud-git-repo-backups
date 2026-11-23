@@ -28,16 +28,6 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Total_Approved_Revenue_Amount__c</field>
-    </columns>
-    <columns>
-        <field>ACCOUNT_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
     <columns>
@@ -71,7 +61,7 @@
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -116,6 +106,9 @@
         <field>Product2.Core_Product_Type__c</field>
     </columns>
     <columns>
+        <field>User.Core_User_Geo__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Opportunity_Country__c</field>
     </columns>
     <columns>
@@ -156,7 +149,7 @@
             <value>deal</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -214,12 +207,17 @@
     </groupingsAcross>
     <groupingsAcross>
         <dateGranularity>Day</dateGranularity>
-        <field>User.Core_User_Geo__c</field>
+        <field>Opportunity.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>OpportunityLineItem.Core_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ACCOUNT_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Amazon SDM Sales Report</name>
@@ -246,6 +244,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

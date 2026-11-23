@@ -15,7 +15,7 @@
         <fullName>Core_IPS_CaseAttachment_Backend_OutMsg</fullName>
         <apiVersion>34.0</apiVersion>
         <description>Backend Case Attachment Outbound Message</description>
-        <endpointUrl>https://proxy_user1:7Ha8oBPw!1!c@eip-generic-proxygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
+        <endpointUrl>https://dummy_user1:7Ha8oBPw!1!c@eip-generic-dummygroup2.cloudhub.io/smit/api/ips/NewIPSCaseUpdate</endpointUrl>
         <fields>Core_Case__c</fields>
         <fields>Id</fields>
         <includeSessionId>false</includeSessionId>
@@ -30,7 +30,7 @@
             <name>Core_IPS_Attachment_Update_Case_Field_FU</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_IPS_Case_Attachments__c.Core_Upload_Status__c</field>
             <operation>equals</operation>

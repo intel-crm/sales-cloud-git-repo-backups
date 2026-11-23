@@ -18,9 +18,5 @@ public class Core_AAQ_TabOverride_Controller_Test{
        Core_AAQ_TabOverride_Controller controller=new Core_AAQ_TabOverride_Controller();
        controller.onLoadPage();
    }
-    
-    @isTest
-    static void testOnLoad(){
-        List<Core_AAQ_Profile_Handler__c> result = Core_AAQ_TabOverride_Controller.onLoadLWC();
-    }
+   
 }

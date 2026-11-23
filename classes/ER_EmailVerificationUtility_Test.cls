@@ -21,16 +21,15 @@ public class ER_EmailVerificationUtility_Test {
         em.Business_Types__c = bt.Id;
         emList.add(em);
         insert emList;
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        
         Account a = new Account();
         a.Name='Intel';
-        //a.Core_Account_Type__c ='Distributor';
+        a.Core_Account_Type__c ='Distributor';
         a.Industry='Agriculture';
         a.BillingCity='Bengaluru';
         a.BillingCountry='India';
         a.BillingStreet='4th Floor,ITPL,Brookfield';
         a.BillingPostalCode='560037';
-        a.RecordTypeId = recordTypeIdAccount;
         insert(a); 
         
         Contact con = new Contact();
@@ -41,7 +40,6 @@ public class ER_EmailVerificationUtility_Test {
         con.AccountId = a.Id;
         con.Core_Job_Function__c='Branch Manager';  
         con.Core_Login_Id__c = 'abc';
-        con.MailingCountry='India';
         insert con;
         
         ChannelProgram cprogram = new ChannelProgram();
@@ -241,6 +239,64 @@ public class ER_EmailVerificationUtility_Test {
                                                  WHERE Id =: listReq[0].Id];
         
         List<Contact> cont = [SELECT Id FROM Contact WHERE Email = 'testrequest1@mailinator.com'];
+        
+      //  System.assertEquals(req[0].PRM_Matching_Contact__c, cont[0].Id);
+        
+        Test.stopTest();
+    }
+    @isTest static void setAssignedToSuccessTest(){
+        Test.startTest();
+        List<Core_Entitlement__c> ent = [SELECT id from Core_Entitlement__c WHERE Name='Resource & Design Center for Secure Content' limit 1];
+        List<User> user  = [Select id, Name from User Where Name= 'A&E Account Owner' limit 1];
+        Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Email_Verification_Request').getRecordTypeId();
+        PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
+        regRequest.Name = 'RR1';
+        regRequest.RecordTypeId = emailVerificationRT;
+        regRequest.PRM_First_Name__c = 'Test Request1';
+        regRequest.PRM_Last_Name__c = 'New';
+        regRequest.PRM_Email_ID__c = 'testrequest1@mailinator.com';
+        regRequest.PRM_Preferred_Language__c='';
+        regRequest.PRM_Person_Phone_Number__c ='444444';
+        regRequest.PRM_EmailVerifiedDateTime__c = null;
+        regRequest.PRM_EV_Token__c = '768688';
+        regRequest.PRM_Contact_Country__c = 'IN';
+        regRequest.Entitlement_Details__c = ent[0].Id;
+        regRequest.Assigned_To__c = user[0].id;
+        
+        List<PRM_Registration_Request__c> listReq = New List<PRM_Registration_Request__c>();
+        listReq.add(regRequest);
+        
+        insert listReq;
+        
+        
+      //  System.assertEquals(req[0].PRM_Matching_Contact__c, cont[0].Id);
+        
+        Test.stopTest();
+    }
+        @isTest static void setAssignedToFailedTest(){
+        Test.startTest();
+        List<Core_Entitlement__c> ent = [SELECT id from Core_Entitlement__c WHERE Name='Resource & Design Center for Secure Content' limit 1];
+        List<User> user  = [Select id, Name from User Where Name= 'A&E Account Owner' limit 1];
+        Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Email_Verification_Request').getRecordTypeId();
+        PRM_Registration_Request__c regRequest = new PRM_Registration_Request__c();
+        regRequest.Name = 'RR1';
+        regRequest.RecordTypeId = emailVerificationRT;
+        regRequest.PRM_First_Name__c = 'exception';
+        regRequest.PRM_Last_Name__c = 'New';
+        regRequest.PRM_Email_ID__c = 'testrequest1@mailinator.com';
+        regRequest.PRM_Preferred_Language__c='';
+        regRequest.PRM_Person_Phone_Number__c ='444444';
+        regRequest.PRM_EmailVerifiedDateTime__c = null;
+        regRequest.PRM_EV_Token__c = '768688';
+        regRequest.PRM_Contact_Country__c = 'IN';
+        regRequest.Entitlement_Details__c = null;
+        regRequest.Assigned_To__c = null;
+        regRequest.PRM_Address_Line_2__c = 'exception';
+        List<PRM_Registration_Request__c> listReq = New List<PRM_Registration_Request__c>();
+        listReq.add(regRequest);
+        
+        insert listReq;
+        
         
       //  System.assertEquals(req[0].PRM_Matching_Contact__c, cont[0].Id);
         

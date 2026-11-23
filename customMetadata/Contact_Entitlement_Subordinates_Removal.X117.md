@@ -4,22 +4,22 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H0Tn,a2W1J000001H0Ts,a2W1J000001H0U7,a2W1J000001H0UC,a2W1J000001H0Tx,a2W1J000001H0U2,a2W3b00000GlZgt</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3fh</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuu</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">DCF Special Reports Viewer</value>
+        <value xsi:type="xsd:string">Partner Admin Delegate</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W1J000001H0UR</value>
+        <value xsi:type="xsd:string">a2W8A000003HqWb</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">DCF User</value>
+        <value xsi:type="xsd:string">Partner Marketing Studio</value>
     </values>
 </CustomMetadata>

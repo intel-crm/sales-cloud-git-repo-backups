@@ -10,13 +10,13 @@ global with sharing class CIDAAS_ERPM_Callout {
         
         //Custom metadata to store entitlement/program to engagement mapping
         if(Schema.sObjectType.ERPMSFEngagementSetting__mdt.isAccessible()){
-            for(ERPMSFEngagementSetting__mdt mdt : [SELECT EntitlementProgName__c, Code__c, Notify__c FROM ERPMSFEngagementSetting__mdt WHERE Core_Source__c IN ('ERPM','Both') WITH SECURITY_ENFORCED]) {
+            for(ERPMSFEngagementSetting__mdt mdt : [SELECT EntitlementProgName__c, Code__c, Notify__c FROM ERPMSFEngagementSetting__mdt WITH SECURITY_ENFORCED]) {
                 erpmSFSettingMap.put(mdt.EntitlementProgName__c,mdt);
             }
         }
         //Get regitration request details using request Ids
         if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible()){
-            for(PRM_Registration_Request__c request : [SELECT PRM_First_Name__c, PRM_Last_Name__c, PRM_Email_ID__c,Name,
+            for(PRM_Registration_Request__c request : [SELECT PRM_First_Name__c, PRM_Last_Name__c, PRM_Email_ID__c,
                                                        PRM_Job_Function__c, PRM_Preferred_Language__c,PRM_Profession__c,PRM_Country__c,
                                                        PRM_Address_Line_1__c,PRM_City__c, PRM_State_Province__c, PRM_Zip_Postal_Code__c,
                                                        PRM_Person_Phone_Number__c,Entitlement_Details__r.Name,PRM_Channel_Program__r.Name,

@@ -71,6 +71,46 @@
     "id" : "661f0bbf-caa9-46ad-b364-c6a446cb88e7",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "analyticsPageType" : "",
+        "description" : "",
+        "marqueeDataSource" : "Design Attributes",
+        "pageType" : "BenefitService",
+        "rightButtonCommPage" : "",
+        "rightButtonExternalUrl" : "",
+        "rightButtonLabel" : "",
+        "rightCta1CommPage" : "",
+        "rightCta1ExternalUrl" : "",
+        "rightCta1Label" : "",
+        "rightCta2CommPage" : "",
+        "rightCta2ExternalUrl" : "",
+        "rightCta2Label" : "",
+        "subtitle" : "Lorem Ipsum Subtitle",
+        "title" : "Lorem Ipsum Title"
+      },
+      "componentName" : "c:ipaMarqueePartner",
+      "id" : "5f2c4c5a-59f4-4964-a692-7c13b2c53422",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "38dccaf8-6c3f-46a9-b61a-c8fba00c997b",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "d9e589ad-bdc0-4df6-9a1d-561c9d5f5fa8",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "a70ada94-ccb9-4a95-be59-a4d755ccb1bb",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "66d2263e-5a71-44bf-b221-3b44d2253944",
+    "regionName" : "blade2white",
+    "type" : "region"
   } ],
   "themeLayoutType" : "Inner",
   "type" : "view",

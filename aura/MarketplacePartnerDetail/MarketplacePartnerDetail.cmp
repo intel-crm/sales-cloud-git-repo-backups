@@ -1,12 +1,8 @@
 <aura:component controller="PMP_SearchMarketplaceController" extends="c:MarketplaceRedux" implements="forceCommunity:availableForAllPageTypes,force:hasRecordId,flexipage:availableForRecordHome"><!-- Controller added by Nikhil -->
     <aura:attribute name="storeName" type="string" default="Settings" /> 
     <aura:attribute name="loading" type="boolean" default="true" />
-    <aura:attribute name="isPartnerHasValue" type="Boolean" default="false" />
-     <aura:attribute name="companyResourceHasValue" type="Boolean" default="false" />
-    <aura:attribute name="partnerDetailsHasValue" type="Boolean" default="false" />
+    
     <aura:attribute name="partner" type="object" />
-     <aura:attribute name="companyInformation" type="object" />
-      <aura:attribute name="companyResources" type="object[]" />
     <aura:attribute name="leadSettings" type="object" />
     <aura:attribute name="tagline" type="string" />
     <aura:attribute name="introSection" type="string" required="true" default=""/>
@@ -70,15 +66,7 @@
     <!-- End -->
     
     <aura:attribute name="isLdrOeEmployee" type="boolean" default="true"/>
-    <aura:attribute name="showScrapeBanner" type="Boolean" default="false"/>
-    <!--AI Scrape Banner-->
-    <aura:if isTrue="{!v.showScrapeBanner}">
-    <div class="slds-notify slds-text-align_center slds-m-top_medium">
-     <span class="slds-text-heading_small" style="font-weight: bold; color: #080707;">
-         {!$Label.c.PMP_StorefrontAIBanner}                                                        
-    </span>
-        </div>
-         </aura:if>
+    
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
     <aura:if isTrue="{!v.loading}">
@@ -91,30 +79,15 @@
     
     <!--Storefront Notifications for different status -->
     <aura:if isTrue="{!v.hasAccess}">
-        <aura:if isTrue="{!v.currentStatus == 'Admin Review'}"> 
-            <!-- after update required edit -->
-            <aura:if isTrue="{!not(v.isUpdateRequired)}">    
-            <span><c:MarketplaceStorefrontNotificationsBanner type="lock"    
+        <aura:if isTrue="{!and(v.publishedStatus == 'Draft', v.currentStatus == 'Admin Review')}">             
+        <span><c:MarketplaceStorefrontNotificationsBanner type="lock"    
                                                           message="{!$Label.c.PMP_Edit_Storefront_Notification_Profile_Submission}"    
                                                           openEditStorefront="true"         
                                                           editStorefrontStep="0" 
                                                           textLinkLabel="{!$Label.c.PMP_Edit_Storefront_your_more_submission}">         
             <c:IntelLink class="notificationLink" url="javascript:void(0)"></c:IntelLink>              
             </c:MarketplaceStorefrontNotificationsBanner></span>  
-        </aura:if>
-        <aura:if isTrue="{!v.isUpdateRequired}">
-            <!--<span><c:MarketplaceStorefrontNotificationsBanner type="save"
-                                                              message="{! v.dynSave+' ' +  v.initialUpdateDate+'.'}"/></span>-->
-            <span><c:MarketplaceStorefrontNotificationsBanner type="lock"
-                                                              message="{!$Label.c.PMP_Edit_Storefront_Notification_Lock}"
-                                                              openEditStorefront="true"         
-                                                              editStorefrontStep="0" 
-                                                              textLinkLabel="{!$Label.c.PMP_Edit_Storefront_your_more_submission}">
-            <c:IntelLink class="notificationLink" url="javascript:void(0)"></c:IntelLink>              
-            </c:MarketplaceStorefrontNotificationsBanner>
-            </span>
-        </aura:if>
-    </aura:if> 
+    </aura:if>
         <aura:if isTrue="{!and(v.publishedStatus == 'Draft', v.currentStatus == 'Update Required')}">       
         <span><c:MarketplaceStorefrontNotificationsBanner type="redo"
                                                               message="{!$Label.c.PMP_Edit_Storefront_Notification_Redo}"
@@ -124,33 +97,44 @@
             <c:IntelLink class="notificationLink" url="javascript:void(0)"></c:IntelLink>              
             </c:MarketplaceStorefrontNotificationsBanner></span>  
         </aura:if>
-       <!--  <aura:if isTrue="{!not(v.currentStatus == 'Draft')}"> -->
-       
+        <aura:if isTrue="{!v.publishedStatus == 'Published'}">
+        <aura:if isTrue="{!and(!v.isUpdateRequired,v.currentStatus == 'Admin Review')}">
+            <span><c:MarketplaceStorefrontNotificationsBanner type="save"
+                                                              message="{! v.dynSave+' ' +  v.initialUpdateDate+'.'}"/></span>
+            <span><c:MarketplaceStorefrontNotificationsBanner type="lock"
+                                                              message="{!$Label.c.PMP_Edit_Storefront_Notification_Lock}"
+                                                              openEditStorefront="true"         
+                                                              editStorefrontStep="0" 
+                                                              textLinkLabel="{!$Label.c.PMP_Edit_Storefront_your_more_submission}">
+            <c:IntelLink class="notificationLink" url="javascript:void(0)"></c:IntelLink>              
+            </c:MarketplaceStorefrontNotificationsBanner>
+            </span>
+        </aura:if>
         
-        <!--<aura:if isTrue="{!and(v.partner,v.currentStatus == 'Update Required')}">
+        <aura:if isTrue="{!and(v.partner,v.currentStatus == 'Update Required')}">
          
-          <span><c:MarketplaceStorefrontNotificationsBanner type="save"
+            <span><c:MarketplaceStorefrontNotificationsBanner type="save"
                                                               message="{!v.dynSave+' ' +  v.initialUpdateDate+'.'}" /></span>
-           <span><c:MarketplaceStorefrontNotificationsBanner type="lock"
+            <span><c:MarketplaceStorefrontNotificationsBanner type="lock"
                                                               message="{!$Label.c.PMP_Edit_Storefront_Notification_Lock}" /></span>
             <span><c:MarketplaceStorefrontNotificationsBanner type="redo"
                                                               message="{!$Label.c.PMP_Edit_Storefront_Notification_Redo}"
                                                               openEditStorefront="true"
                                                               editStorefrontStep="0"
                                                               textLinkLabel="{!$Label.c.PMP_Edit_Storefront_Update_Now}"/></span>
-        </aura:if>-->
+        </aura:if>
         
-        <!--<aura:if isTrue="{!and(v.isUpdateRequired,v.currentStatus == 'Admin Review')}">
+        <aura:if isTrue="{!and(v.isUpdateRequired,v.currentStatus == 'Admin Review')}">
 		    <span><c:MarketplaceStorefrontNotificationsBanner type="save"
                                                               message="{!v.dynSave+' ' +  v.initialUpdateDate+'.'}" /></span>
             <span><c:MarketplaceStorefrontNotificationsBanner type="lock"
                                                               message="{!$Label.c.PMP_Edit_Storefront_Notification_Lock}" />               
             </span>
-           <span><c:MarketplaceStorefrontNotificationsBanner type="redo"
-                                                          message="{!$Label.c.PMP_Edit_Storefront_Notification_Redo}"/></span>            
+            <span><c:MarketplaceStorefrontNotificationsBanner type="redo"
+                                                              message="{!$Label.c.PMP_Edit_Storefront_Notification_Redo}"/></span>            
             <span><c:MarketplaceStorefrontNotificationsBanner type="save" 
                                                 message="{!v.dynUpdate+' '+ v.statusUpdateDate+'.'}" /> </span>
-        </aura:if>-->
+        </aura:if>
          <!--New Notifications- Approved & Rejected-->
          <aura:if isTrue="{!v.currentStatus == 'Approved'}">
             <span><c:MarketplaceStorefrontNotificationsBanner type="save"
@@ -161,12 +145,8 @@
                                                               message="{!v.dynRejected+' ' +  v.statusUpdateDate+'.'}" /></span>
          </aura:if>
         <!--End of New Notifications-->
-       </aura:if>
-         <aura:if isTrue="{!v.currentStatus == 'Draft'}">
-            <span><c:MarketplaceStorefrontNotificationsBanner type="save"
-                                                              message="Your storefront is in draft state" /></span>
-         </aura:if>
-    <!-- </aura:if> -->
+        </aura:if>
+    </aura:if>
     <!--Storefront Notifications for different status End -->
      <!--Storefront Event Banner -->
     <aura:if isTrue="{!v.showEventBanner}">
@@ -221,10 +201,8 @@
      <!-- </aura:if> -->
       </aura:if> 
         <!-- If Section when the status is published -->
-       <!--<aura:if isTrue="{!v.publishedStatus == 'Published'}">--> <!--need to comment this line for showing overview for all sections or close this if before lightning layout-->
-       <!--<aura:if isTrue="{!not(v.currentStatus == 'Draft')}">   -->
-       <aura:if isTrue="{!or(v.currentStatus != 'Draft', v.showScrapeBanner == true)}">
-       <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'mobile'}">
+        <aura:if isTrue="{!v.publishedStatus == 'Published'}">
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'mobile'}">
                 
                 <aura:if isTrue="{!v.showContactPartner}">
                     <div class="slds-p-around_medium bg-charcoal slds-m-top_medium">
@@ -233,22 +211,21 @@
                 </aura:if>
                 
             </aura:if> 
-           <!--</aura:if>--> 
             <!--<div class="padding-desktop-top-large"> 
           <c:MarketplacePromotionCarousel class="padding-desktop-top-large padding-mobile-top-large" promotionData="{!v.partner.promotion}"/>
           Commented By Prabuddh, Since Promotion Carousel is not MVP       
       </div> -->
             <!-- below line is updated as part of the story US788273-->
-            <lightning:layout class="{! v.showEventBanner ? 'slds-p-bottom_medium padding-top-small x-large' : 'slds-p-bottom_medium padding-top x-large'}" multipleRows="true">
+            <lightning:layout class="{! v.showEventBanner ? 'slds-p-bottom_medium padding-top-small' : 'slds-p-bottom_medium padding-top'}" multipleRows="true">
                 <lightning:layoutItem class="padding-mobile-around-small padding-desktop-right-small padding-desktop-vertical-small"
                                       size="12" mediumDeviceSize="9">
                     <!--<aura:if isTrue="{!or(v.loading, !v.partner)}">                                                  
                         <lightning:spinner class="mainSpinner" alternativeText="Loading..."/>                                                   
                     </aura:if> -->
-                    <aura:if isTrue="{!v.isPartnerHasValue}"> 
+                    <aura:if isTrue="{!v.partner}"> 
                         <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                            
                             <c:IntelStickyTabSet aura:id="isgtabs">
-                               
                                 <c:IntelStickyTab label="{!$Label.c.PMP_L3_Partner_Detail_Overview}" aura:id="StickyTab0">
                                     <h2 class="heading-28 slds-p-top_x-large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}
                                         <c:MarketplaceEditPencilCmp currentStep="1" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
@@ -267,25 +244,25 @@
                                 <!--Added Company Resource-->
                                 <aura:if isTrue="{!v.showCompanyResourceAndArticle}">
                                     <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
-                                       <aura:if isTrue="{!v.companyResourceHasValue}">
+                                        <aura:if isTrue="{! !empty(v.partner.companyResources)}">
                                             <div class="whiteBg slds-m-bottom_large">
                                                 <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Edit_Storefront_Company_Resources}
                                                     <c:MarketplaceEditPencilCmp currentStep="3" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
                                                 </h3>
                                                 
-                                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.companyResources}" mdaId="{!v.mdaId}"/>
+                                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
                                                 
                                             </div>
                                         </aura:if>    
                                         <aura:set attribute="else">
-                                            <aura:if isTrue="{!v.companyResourceHasValue}">
+                                            <aura:if isTrue="{!not(empty(v.partner.companyResources))}">
                                                 <c:IntelHubSpoke
                                                                  headline="{!$Label.c.PMP_Edit_Storefront_Company_Resources}"
                                                                  class="slds-m-bottom_medium"
                                                                  >
                                                     <div class="slds-p-around_medium">
                                                         
-                                                        <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.companyResources}" mdaId="{!v.mdaId}"/>
+                                                        <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
                                                         
                                                     </div>
                                                 </c:IntelHubSpoke>
@@ -325,7 +302,6 @@
                             </c:IntelStickyTabSet>
                             
                             <aura:set attribute="else">
-                                 <p>overview332</p>
                                 <h2 class="heading-28 slds-p-top_x-large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}
                                     <c:MarketplaceEditPencilCmp currentStep="1" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
                                 </h2>
@@ -355,58 +331,13 @@
                 </lightning:layoutItem>
                 
                 <lightning:layoutItem class="padding-desktop-right-none" padding="around-small" size="12" mediumDeviceSize="3"><!--Merge Changes[11/13]-->
-                    <aura:if isTrue="{! !empty(v.partner.partnerDetails)}">
-                               <!-- Updated the padding from slds-m-bottom_small to slds-m-bottom_large as part of the US-US788273-->
-                            <div class="slds-m-bottom_large">
-                                <div class="whiteBg card-heading-padding">
-                                    <h3 class="heading-16">{!$Label.c.PMP_CompanyInformation}</h3>
-                                </div>
-                                <!--Added title as false to not show in storefront by Nikhil -->
-                              <c:MarketplacePartnerCard
-                                                              minHeight="0"
-                                                              id="{! v.recordId}"
-                                                              displayType="card"
-                                                              imageUrl="{! v.partner.partnerDetails.imageUrl}"
-                                                              title="false"   
-                                                              description="{! v.partner.partnerDetails.description}"
-                                                              attributes="{! v.partner.partnerDetails.attributes}"
-                                                              dataObj="{! v.partner.partnerDetails}"
-                                                              displayContactPartner="false"                                                             
-                                                              displayAttributes="true"
-                                                              editEnabled="{!v.showEditPencil}"
-                                                              mdaId="{!v.mdaId}"
-                                                              enableAttributeCountLimit="false"
-                                                              
-                                                              />
-                              
-                             <!--  <c:MarketplacePartnerCard
-                                                          minHeight="0"
-                                                          id="{!v.recordId}"
-                                                          displayType="card"
-                                                          imageUrl="{!v.dataObj.imageUrl}"
-                                                          title="false"   
-                                                          description="{!v.dataObj.description}"
-                                                          attributes="{!v.dataObj.attributes}"
-                                                          dataObj="{!v.dataObj}"
-                                                          displayContactPartner="false"
-                                                          displayAttributes="true"
-                                                          editEnabled="{!v.showEditPencil}"
-                                                          mdaId="{!v.mdaId}"
-                                                          enableAttributeCountLimit="false"
-                                                          />-->
-                                
-
-
-                            </div>
-                        </aura:if>
-                      <!--  <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
+                    <aura:if isTrue="{!v.partner}">
+                        <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
                             <aura:if isTrue="{!v.isSamePartnerUser}">
                                 <c:MarketplaceLeadGenSettings partnerId="{!v.recordId}" hasAccess="{!v.hasLeadGenAccess}" />                                           
                             </aura:if>                                            
-                        </aura:if>   --> 
-
-						
-                        <aura:if isTrue="{!v.partner}">
+                        </aura:if>              
+                        
                         <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
                             
                             <!--US519720 - Prabuddh , button implemented in the below block --> 
@@ -418,7 +349,33 @@
                             
                         </aura:if>
                         
-                        
+                        <aura:if isTrue="{! !empty(v.partner.partnerDetails)}">
+                               <!-- Updated the padding from slds-m-bottom_small to slds-m-bottom_large as part of the US-US788273-->
+                            <div class="slds-m-bottom_large">
+                                <div class="whiteBg card-heading-padding">
+                                    <h3 class="heading-16">{!$Label.c.PMP_CompanyInformation}</h3>
+                                </div>
+                                <!--Added title as false to not show in storefront by Nikhil -->
+                                <c:MarketplacePartnerCard
+                                                          minHeight="0"
+                                                          id="{! v.recordId}"
+                                                          displayType="card"
+                                                          imageUrl="{! v.partner.partnerDetails.imageUrl}"
+                                                          title="false"   
+                                                          description="{! v.partner.partnerDetails.description}"
+                                                          attributes="{! v.partner.partnerDetails.attributes}"
+                                                          dataObj="{! v.partner.partnerDetails}"
+                                                          displayContactPartner="false"
+                                                          displayAttributes="true"
+                                                          editEnabled="{!v.showEditPencil}"
+                                                          mdaId="{!v.mdaId}"
+                                                          enableAttributeCountLimit="false"
+                                                          
+                                                          />
+                                                           <!-- IPA2.0 + US TWC4497-1631 -->
+                                                          <!-- displayAllCompanyOffering="false" -->
+                            </div>
+                        </aura:if>
                         
                         <aura:if isTrue="{!v.showCompanyResourceAndArticleforEnhanced}">
                             <!--Added for Company Resource-->
@@ -488,7 +445,6 @@
             </lightning:layout>
             <!--Else section when the status is draft -->
             <aura:set attribute="else">
-                
                 <!--Create Profile Type Desktop-->
                 <lightning:layout class="slds-p-bottom_medium  padding-desktop-top-small " multipleRows="true">
                     <lightning:layoutItem class="padding-mobile-around-small padding-desktop-vertical-small padding-desktop-right-small mainContainer"
@@ -501,7 +457,7 @@
                             <h2 class="heading-28 slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}</h2>
                             <div class="whiteBg slds-m-bottom_large">
                                <!--<aura:if isTrue="{!or(v.currentStatus == 'submitted-under-review', v.publishedStatus == 'submitted-needs-edits')}">-->
-                               <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
+                                   <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
                                        <aura:if isTrue="{!v.isLdrOeEmployee==true}">
                                             <c:psMpSimpleContentCard  heading="" 
                                                                  imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}" 
@@ -523,9 +479,12 @@
 
                                        
                                     <aura:set attribute="else">
+                                      
                                             <c:psMpSimpleContentCard  heading="" 
                                                                  imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
                                                                      tagline="{!$Label.c.PMP_ProfileBeingReviewed}" />
+                                                                
+                                          
                                     </aura:set>
                                 </aura:if>
                             </div>
@@ -560,13 +519,10 @@
                                </aura:if>
                             </div>
                             <aura:set attribute="else">
-                                 <p>overview573</p>
                                 <h2 class="heading-28 slds-p-top_large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}</h2>
                                 <div class="whiteBg slds-m-bottom_large">
                                    <!-- <aura:if isTrue="{!or(v.publishedStatus == 'submitted-under-review', v.publishedStatus == 'submitted-needs-edits')}">-->
-                                   <p>line 573{!v.publishedStatus}{!v.isLdrOeEmployee}</p>                
-                                   <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
-                                                        <p>line 574{!v.publishedStatus}{!v.isLdrOeEmployee}</p>
+                                                    <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
                                          <aura:if isTrue="{!v.isLdrOeEmployee==true}">
                                               <c:psMpSimpleContentCard  heading="" 
                                                                      imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
@@ -601,11 +557,11 @@
                     </lightning:layoutItem>
                     <lightning:layoutItem class="padding-desktop-right-none padding-desktop-bottom-none" padding="around-small" size="12" mediumDeviceSize="3">
                         
-                      <!--  <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
+                        <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
                             <aura:if isTrue="{!v.isSamePartnerUser}">
                                 <c:MarketplaceLeadGenSettings partnerId="{!v.recordId}" hasAccess="{!v.hasLeadGenAccess}" />                                           
                             </aura:if>                                            
-                        </aura:if> -->
+                        </aura:if> 
                         
                         <!-- removed contact partner (create) -->
                         
@@ -625,7 +581,7 @@
                                                               description="{! v.partner.partnerDetails.description}"
                                                               attributes="{! v.partner.partnerDetails.attributes}"
                                                               dataObj="{! v.partner.partnerDetails}"
-                                                              displayContactPartner="false"                                                             
+                                                              displayContactPartner="false"
                                                               displayAttributes="true"
                                                               editEnabled="{!v.showEditPencil}"
                                                               mdaId="{!v.mdaId}"
@@ -673,10 +629,449 @@
                     </lightning:layoutItem>
                 </lightning:layout>
             </aura:set>
-      </aura:if> 
+        </aura:if>
     </aura:if>
     <!-- Basic profile section ends -->
       <!-- Enhanced storefront section starts -->
-  
+    <aura:if isTrue="{!v.partnerType == 'BFTMKTPLED'}">
+        <aura:if isTrue="{!v.publishedStatus == 'Published'}">
+            <!-- Create Storefront STARTMODAL Type -->
+            <!--<aura:if isTrue="{!or(v.hasAccess == true, v.isOfferingEditor)}"> -->
+            <aura:if isTrue="{!v.isSamePartnerUser == true}"> 
+               <aura:if isTrue="{!and(v.showEnhancedPopup, v.isEnhancedUser)}"> <!--Shahrukh added isPartner attribute to show welcome page messages--> 
+                <!-- IPA2.0 + US TWC4497-1631 -->
+                    <!-- <c:psMpStartModal isUpgradedPartnerAdmin="{!true}" isPartner="{!v.isPartnerAdmin}" isOpen="{!true}" onclickbutton="{!c.gotoOfferingList}"></c:psMpStartModal>  -->
+                    <c:psMpStartModal isUpgradedPartnerAdmin="{!true}" isPartner="{!v.isPartnerAdmin}" isOpen="{!true}"></c:psMpStartModal>
+                 </aura:if> 
+             </aura:if>  
+            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'mobile'}">
+                
+                <aura:if isTrue="{!v.showContactPartner}">
+                    <div class="slds-p-around_medium bg-charcoal slds-m-top_medium">
+                        <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" isLoggedIn="{!!v.isGuest}"  dataObj="{!v.dataObj}" languagePreference="{!v.languageLabel}"   theme="mobile"/>                
+                    </div>
+                </aura:if>
+                
+            </aura:if> 
+            <!--<div class="padding-desktop-top-large"> 
+          <c:MarketplacePromotionCarousel class="padding-desktop-top-large padding-mobile-top-large" promotionData="{!v.partner.promotion}"/>
+          Commented By Prabuddh, Since Promotion Carousel is not MVP       
+      </div> -->
+            <!-- below line updated as part of the US- US788273 to add more padding if event banner is not present -->
+             <lightning:layout class="{! v.showEventBanner ? 'slds-p-bottom_medium padding-top-small' : 'slds-p-bottom_medium padding-top'}" multipleRows="true">     
+                <lightning:layoutItem class="padding-mobile-around-small padding-desktop-right-small padding-desktop-vertical-small"
+                                      size="12" mediumDeviceSize="9">
+                    <!--<aura:if isTrue="{!or(v.loading, !v.partner)}">                                                  
+                        <lightning:spinner class="mainSpinner" alternativeText="Loading..."/>                                                   
+                    </aura:if> -->
+                    <aura:if isTrue="{!v.partner}"> 
+                        <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                            
+                            <c:IntelStickyTabSet aura:id="isgtabs">
+                                <c:IntelStickyTab label="{!$Label.c.PMP_L3_Partner_Detail_Overview}" aura:id="StickyTab0">
+                                    <h2 class="heading-28 slds-p-top_x-large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}
+                                        <c:MarketplaceEditPencilCmp currentStep="1" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
+                                    </h2>  
+                                    
+                                    <c:IntelTextBlock
+                                                      class="slds-p-around_medium slds-m-bottom_large bg-white"
+                                                      tagline="{!v.tagline}"
+                                                      introSection="{!v.introSection}"
+                                                      moreSection="{!v.moreSection}"
+                                                      showMoreSection="{!v.showMoreSection}"
+                                                      />
+                                </c:IntelStickyTab>
+                                
+                                
+                                <!--Added Company Resource-->
+                                <aura:if isTrue="{!v.showCompanyResourceAndArticle}">
+                                    <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                                        <aura:if isTrue="{! !empty(v.partner.companyResources)}">
+                                            <div class="whiteBg slds-m-bottom_large">
+                                                <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Edit_Storefront_Company_Resources}
+                                                    <c:MarketplaceEditPencilCmp currentStep="3" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
+                                                </h3>
+                                                
+                                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
+                                                
+                                            </div>
+                                        </aura:if>    
+                                        <aura:set attribute="else">
+                                            <aura:if isTrue="{!not(empty(v.partner.companyResources))}">
+                                                <c:IntelHubSpoke
+                                                                 headline="{!$Label.c.PMP_Edit_Storefront_Company_Resources}"
+                                                                 class="slds-m-bottom_medium"
+                                                                 >
+                                                    <div class="slds-p-around_medium">
+                                                        
+                                                        <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
+                                                        
+                                                    </div>
+                                                </c:IntelHubSpoke>
+                                            </aura:if>    
+                                        </aura:set>
+                                        
+                                    </aura:if>
+                                    
+                                    
+                                </aura:if>
+                                
+                                <aura:iteration items="{!v.partner.categories}" var="category" indexVar="i" >
+                                    <c:IntelStickyTab label="{!category.label}" aura:id="StickyTab1">
+                                        <h2 class="heading-28 slds-p-top_x-large slds-p-bottom_medium">{!category.label}
+                                            <!-- IPA2.0 + US TWC4497-1631 -->
+                                            <!-- <aura:if isTrue="{!v.showManageOffering}">
+                                                <c:IntelLink class="manageOfferingLink" objectApiName="PMP_Partner_Offering__c">
+                                                    <c:IntelButton class="inline">{!$Label.c.PMP_Manage_Offerings}</c:IntelButton>
+                                                </c:IntelLink>
+                                            </aura:if> -->
+                                        </h2>
+                                        
+                                        <div class="">
+                                            <c:MarketplaceCardList results="{!category.entries}"  displayByPartner="false" displayAttributes="true" showAddToCompare="true" displayType="list" cardType="product" displayCardDescription="true"/>
+                                        </div>
+                                        <div class="sectionFooter slds-text-align_right">
+                                            <!--<a href="{!category.viewAllLinkUrl}">{!category.viewAllLabel + '&nbsp;('+category.count+')'}<lightning:icon iconName="utility:chevronright"
+                                                                                                                                                class="cursor icon-xx-small slds-m-left_xx-small link-caret"
+                                                                                                                                                size="x-small"/></a> -->
+                                            <c:IntelLink objectApiName="PMP_Category__c" recordId="{!category.searchParams.cat}" isFilterApplied = "true" filterName="PartnerA-Z" filterId = "{!v.recordId}">{!format($Label.c.PMP_All_Category_Results,category.viewAllLabel,category.label,category.count)}<lightning:icon iconName="utility:chevronright"
+                                                                                                                                                                                                                                class="cursor icon-xx-small slds-m-left_xx-small link-caret"
+                                                                                                                                                                                                                                size="x-small"/></c:IntelLink>
+                                        </div>
+                                    </c:IntelStickyTab>
+                                </aura:iteration>
+                                
+                            </c:IntelStickyTabSet>
+                            
+                            <aura:set attribute="else">
+                                <h2 class="heading-28 slds-p-top_x-large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}
+                                    <c:MarketplaceEditPencilCmp currentStep="1" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
+                                </h2>
+                                
+                                <c:IntelTextBlock
+                                                  class="slds-p-around_medium slds-m-bottom_large bg-white"
+                                                  tagline="{!v.tagline}"
+                                                  introSection="{!v.introSection}"
+                                                  moreSection="{!v.moreSection}"
+                                                  showMoreSection="{!v.showMoreSection}"
+                                                  />
+                                <div class="slds-p-top_x-small slds-p-bottom_large">
+                                    <!-- IPA2.0 + US TWC4497-1631 -->
+                                    <!-- <aura:if isTrue="{!v.showManageOffering}">
+                                        <c:IntelLink class="manageOfferingFullWidth" objectApiName="PMP_Partner_Offering__c">
+                                            <c:IntelButton class="fullWidth">{!$Label.c.PMP_Manage_Offerings}</c:IntelButton>
+                                        </c:IntelLink>
+                                    </aura:if> -->
+                                </div>
+                                <c:MarketplaceSimpleCardList  data="{!v.mobileListing}" />
+                            </aura:set>
+                            
+                        </aura:if>
+                        
+                    </aura:if>
+                    
+                </lightning:layoutItem>
+                
+                <lightning:layoutItem class="padding-desktop-right-none" padding="around-small" size="12" mediumDeviceSize="3"><!--Merge Changes[11/13]-->
+                    <aura:if isTrue="{!v.partner}">
+                        <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
+                            <aura:if isTrue="{!v.isSamePartnerUser}">
+                                <c:MarketplaceLeadGenSettings partnerId="{!v.recordId}" hasAccess="{!v.hasLeadGenAccess}" />                                           
+                            </aura:if>                                            
+                        </aura:if>              
+                        
+                        <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                            
+                            <!--US519720 - Prabuddh , button implemented in the below block --> 
+                            <aura:if isTrue="{!v.showContactPartner}">
+                                <div class="slds-m-bottom_large">
+                                    <c:MarketplaceContactPartner label="{!$Label.c.PMP_Contact_Partner}" isLoggedIn="{!!v.isGuest}"  dataObj="{!v.dataObj}" languagePreference="{!v.languageLabel}"   theme="large"/>                                  
+                                </div>
+                            </aura:if>
+                            
+                        </aura:if>
+                        
+                        <aura:if isTrue="{! !empty(v.partner.partnerDetails)}">
+                            <!-- Updated the padding from slds-m-bottom_small to slds-m-bottom_large as part of the US-US788273-->
+                            <div class="slds-m-bottom_large">
+                                <div class="whiteBg slds-p-around_medium">
+                                    <h3 class="heading-16">{!$Label.c.PMP_CompanyInformation}</h3>
+                                </div>
+                                <!--Added title as false to not show in storefront by Nikhil -->
+                                <c:MarketplacePartnerCard
+                                                          minHeight="0"
+                                                          id="{! v.recordId}"
+                                                          displayType="card"
+                                                          imageUrl="{! v.partner.partnerDetails.imageUrl}"
+                                                          title="false"   
+                                                          description="{! v.partner.partnerDetails.description}"
+                                                          attributes="{! v.partner.partnerDetails.attributes}"
+                                                          dataObj="{! v.partner.partnerDetails}"
+                                                          displayContactPartner="false"
+                                                          displayAttributes="true"
+                                                          editEnabled="{!v.showEditPencil}"
+                                                          mdaId="{!v.mdaId}"
+                                                          enableAttributeCountLimit="false"
+                                                          
+                                                          />
+                                                           <!-- IPA2.0 + US TWC4497-1631 -->
+                                                          <!-- displayAllCompanyOffering="false" -->
+                            </div>
+                        </aura:if>
+                        
+                        <aura:if isTrue="{!v.showCompanyResourceAndArticleforEnhanced}">
+                            <!--Added for Company Resource-->
+                            <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                                <aura:if isTrue="{! !empty(v.partner.companyResources)}">
+                                    <div class="whiteBg slds-m-bottom_large">
+                                        <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Edit_Storefront_Company_Resources}
+                                            <c:MarketplaceEditPencilCmp currentStep="3" visible="{!v.showEditPencil}" partnerId = "{!v.recordId}" isLocked = "{!v.isLocked}"/>
+                                        </h3>
+                                        
+                                        <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
+                                        
+                                    </div>
+                                </aura:if>    
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!not(empty(v.partner.companyResources))}">
+                                        <c:IntelHubSpoke
+                                                         headline="{!$Label.c.PMP_Edit_Storefront_Company_Resources}"
+                                                         class="slds-m-bottom_medium"
+                                                         >
+                                            <div class="slds-p-around_medium">
+                                                
+                                                <c:MarketplaceResourceList Header="{!$Label.c.PMP_Company_Resources}" resouceList="{!v.partner.companyResources}" mdaId="{!v.mdaId}"/>
+                                                
+                                            </div>
+                                        </c:IntelHubSpoke>
+                                    </aura:if>    
+                                </aura:set>
+                                
+                            </aura:if>
+                        </aura:if>
+                        <!-- Added for Company Articles : Prabuddh (US365271) -->      
+                        <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                            <aura:if isTrue="{!not(empty(v.companyArticles))}">
+                                <div class="slds-m-bottom_large">
+                                    <div class="whiteBg">
+                                        <h3 class="heading-16 slds-p-vertical_medium slds-p-horizontal_medium">{!$Label.c.PMP_Company_Articles}</h3>                        
+                                        <c:MarketplaceArticleList articleList="{!v.companyArticles}" mdaId="{!v.mdaId}" Header="{!$Label.c.PMP_Company_Articles}"/>
+                                    </div>    
+                                    <div class="sectionFooter slds-text-align_right">
+                                        <a href="{!v.viewalllabel}" target="_blank">View All<lightning:icon iconName="utility:chevronright"
+                                                                                                            class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a>
+                                    </div>
+                                </div>
+                            </aura:if>    
+                            <aura:set attribute="else">
+                                <aura:if isTrue="{!not(empty(v.companyArticles))}">
+                                    <c:IntelHubSpoke
+                                                     headline="{!$Label.c.PMP_Company_Articles}"
+                                                     class="slds-m-bottom_medium"
+                                                     >
+                                        <div class="slds-p-around_medium">
+                                            <c:MarketplaceArticleList articleList="{!v.companyArticles}" mdaId="{!v.mdaId}" Header="{!$Label.c.PMP_Company_Articles}"/>
+                                        </div>
+                                        <div class="slds-p-around_medium grayBg">
+                                            <a href="{!$Label.c.PMP_ViewAll}">{!$Label.c.PMP_ViewAll}<lightning:icon iconName="utility:chevronright"
+                                                                                                                     class="cursor icon-xx-small slds-m-left_xxx-small link-caret" size="x-small" /></a>
+                                        </div>
+                                    </c:IntelHubSpoke>
+                                </aura:if>
+                            </aura:set>
+                            
+                        </aura:if>
+                        
+                    </aura:if>    
+                </lightning:layoutItem>
+            </lightning:layout>
+            <!-- Else sections when status is draft -->
+             <aura:set attribute="else">
+                <!--Create Profile Type Desktop-->
+                <lightning:layout class="slds-p-bottom_medium  padding-desktop-top-small " multipleRows="true">
+                    <lightning:layoutItem class="padding-mobile-around-small padding-desktop-vertical-small padding-desktop-right-small mainContainer"
+                                          size="12" mediumDeviceSize="9">
+                        <aura:if isTrue="{!v.appState.Settings.currentScreenSize == 'desktop'}">
+                            <!--<aura:if isTrue="{!v.loading}">
+                                <lightning:spinner class="mainSpinner" alternativeText="..." />
+                            </aura:if>-->
+                            
+                            <h2 class="heading-28 slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}</h2>
+                            <div class="whiteBg slds-m-bottom_large">
+                               <!--<aura:if isTrue="{!or(v.currentStatus == 'submitted-under-review', v.publishedStatus == 'submitted-needs-edits')}">-->
+                                   <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
+                                       <aura:if isTrue="{!v.isLdrOeEmployee==true}">
+                                            <c:psMpSimpleContentCard  heading="" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}" 
+                                                                 tagline="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                 buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_DescribeYourCompany}">
+                                           </c:psMpSimpleContentCard>
+                                       
+                                        <aura:set attribute="else">
+                                   <c:psMpSimpleContentCard  heading="" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}" 
+                                                                 tagline="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                 buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                 buttonLabel="{!$Label.c.PMP_StartNow}" 
+                                                                 buttonEventParams="1"
+                     
+                                                                 onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                           </aura:set>
+                                       </aura:if>
+
+                                       
+                                    <aura:set attribute="else">
+                                      
+                                            <c:psMpSimpleContentCard  heading="" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                     tagline="{!$Label.c.PMP_ProfileBeingReviewed}" />
+                                                                
+                                          
+                                    </aura:set>
+                                </aura:if>
+                            </div>
+                            <div class="whiteBg slds-m-bottom_large">
+                                               <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
+                                    <aura:if isTrue="{!v.isLdrOeEmployee==true}">
+                                         <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                 tagline="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}" 
+                                                                 buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"
+                                                                  ></c:psMpSimpleContentCard>
+                                   <aura:set attribute="else">
+                                         <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                 tagline="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}" 
+                                                                 buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"
+                                                                 buttonLabel="{!$Label.c.PMP_StartNow}" 
+                                                                 buttonEventParams="3" 
+                                                                 onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                        </aura:set>
+                                   </aura:if>
+                                    <aura:set attribute="else">
+                                      
+                                          <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                             imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                             tagline="{!$Label.c.PMP_CompanyResourcesBeingReviewed}" 
+                                                             onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                                                        
+                                    </aura:set>
+                 
+                                
+                               </aura:if>
+                            </div>
+                            <aura:set attribute="else">
+                                <h2 class="heading-28 slds-p-top_large slds-p-bottom_medium">{!$Label.c.PMP_L3_Partner_Detail_Overview}</h2>
+                                <div class="whiteBg slds-m-bottom_large">
+                                   <!-- <aura:if isTrue="{!or(v.publishedStatus == 'submitted-under-review', v.publishedStatus == 'submitted-needs-edits')}">-->
+                                                    <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
+                                         <aura:if isTrue="{!v.isLdrOeEmployee==true}">
+                                              <c:psMpSimpleContentCard  heading="" 
+                                                                     imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                     tagline="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                     buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                       ></c:psMpSimpleContentCard>
+                                        
+                                        <aura:set attribute="else">
+                                           <c:psMpSimpleContentCard  heading="" 
+                                                                     imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                     tagline="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                     buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_DescribeYourCompany}"
+                                                                     buttonLabel="{!$Label.c.PMP_StartNow}" 
+                                                                     buttonEventParams="1" 
+                                                                     onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                             </aura:set>
+                                        </aura:if>
+
+                                        <aura:set attribute="else">
+                                           <c:psMpSimpleContentCard  heading="" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                 tagline="{!$Label.c.PMP_ProfileBeingReviewed}" 
+                                                                 onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                          
+                                          
+                                        </aura:set>
+                                    </aura:if>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                        
+                    </lightning:layoutItem>
+                    <lightning:layoutItem class="padding-desktop-right-none padding-desktop-bottom-none" padding="around-small" size="12" mediumDeviceSize="3">
+                        
+                        <aura:if isTrue="{! or(v.showLeadGeneration, v.isIntelAdmin)}">                                                            
+                            <aura:if isTrue="{!v.isSamePartnerUser}">
+                                <c:MarketplaceLeadGenSettings partnerId="{!v.recordId}" hasAccess="{!v.hasLeadGenAccess}" />                                           
+                            </aura:if>                                            
+                        </aura:if> 
+                        
+                        <!-- removed contact partner (create) -->
+                        
+                        <aura:if isTrue="{! !empty(v.partner.partnerDetails)}">
+                            <div>
+                                <div class="whiteBg card-heading-padding">
+                                    <h3 class="heading-16">{!$Label.c.PMP_CompanyInformation}</h3>
+                                </div>
+                                 <!-- Updated the padding from slds-p-bottom_small to slds-p-bottom_large as part of the US-US788273-->
+                                <div class="slds-p-bottom_large">
+                                    <c:MarketplacePartnerCard
+                                                              minHeight="0"
+                                                              id="{! v.recordId}"
+                                                              displayType="card"
+                                                              imageUrl="{! v.partner.partnerDetails.imageUrl}"
+                                                              title="false"   
+                                                              description="{! v.partner.partnerDetails.description}"
+                                                              attributes="{! v.partner.partnerDetails.attributes}"
+                                                              dataObj="{! v.partner.partnerDetails}"
+                                                              displayContactPartner="false"                                                              displayAttributes="true"
+                                                              editEnabled="{!v.showEditPencil}"
+                                                              mdaId="{!v.mdaId}"
+                                                              enableAttributeCountLimit="false"
+                                                              
+                                                              />
+                                                               <!-- IPA2.0 + US TWC4497-1631 -->
+                                                          <!-- displayAllCompanyOffering="false" -->
+                                </div>
+                            </div>
+                        </aura:if>
+                        
+                         
+                        <!-- Create Profile Type Mobile-->
+                        <aura:if isTrue="{!v.appState.Settings.currentScreenSize != 'desktop'}">
+                            <div class="whiteBg slds-m-top_large">
+                                <c:IntelHubSpoke headline="{!$Label.c.PMP_Edit_Storefront_Company_Resources}">
+                                    <!--<aura:if isTrue="{!v.publishedStatus == 'submitted-under-review'}">-->
+                                                    <aura:if isTrue="{!v.publishedStatus == 'Draft'}">
+                                       <aura:if isTrue="{!v.isLdrOeEmployee==true}">
+                                            <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                                     imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                     tagline="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"
+                                                                     buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"></c:psMpSimpleContentCard>
+                                         <aura:set attribute="else">
+                                       <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                                     imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                     tagline="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"
+                                                                     buttonAccessibilityLabel="{!$Label.c.PMP_Storefront_Add_Your_Company_Resources}"
+                                                                     buttonLabel="{!$Label.c.PMP_StartNow}"
+                                                                     buttonEventParams="3" 
+                                                                     onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                           </aura:set>
+                                        </aura:if>
+                                        <aura:set attribute="else">
+                                               <c:psMpSimpleContentCard  heading="{!$Label.c.PMP_Edit_Storefront_Company_Resources}" 
+                                                                 imageUrl="{!$Resource.ISG_EmptyChipGraphic_Large_SVG}"  
+                                                                 tagline="{!$Label.c.PMP_CompanyResourcesBeingReviewed}" 
+                                                                 onclickbutton="{!c.handleOpenStorefrontForm1}"></c:psMpSimpleContentCard>
+                                           
+                                        </aura:set>
+                                    </aura:if>
+                                </c:IntelHubSpoke>
+                            </div>
+                        </aura:if>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </aura:set>
+        </aura:if>       
+    </aura:if>
     <!-- Enhanced storefront section ends -->
   </aura:component>

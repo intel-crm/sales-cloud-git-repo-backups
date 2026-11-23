@@ -36,8 +36,8 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
         }
         
         /********Getting The list of failed Contact Entitlements in Past N days**********/
-        String queryFailedCE = Test.isRunningTest()? 'SELECT Id, Core_Entitlement_Nm__c, Core_Contact_Id__c, Core_Status_of_Assignment_Failure__c,Core_Retrigger_Attempt__c, Core_Selected__c, Core_Status__c,Core_Update_Reason__c,Core_Contact_Id__r.Account.Core_Deactivated__c FROM Core_Contact_Entitlement__c WHERE Core_Status_of_Assignment_Failure__c IN (\'Failed Removal\', \'Failed Assignment\') AND (Core_Retrigger_Attempt__c = null OR Core_Retrigger_Attempt__c  <: max_entitlementLevel_retry)'
-            : 'SELECT Id, Core_Entitlement_Nm__c, Core_Contact_Id__c, Core_Status_of_Assignment_Failure__c,Core_Retrigger_Attempt__c, Core_Selected__c, Core_Status__c,Core_Update_Reason__c,Core_Contact_Id__r.Account.Core_Deactivated__c FROM Core_Contact_Entitlement__c WHERE LastModifiedDate = LAST_N_DAYS:2 AND Core_Status_of_Assignment_Failure__c IN (\'Failed Removal\', \'Failed Assignment\') AND (Core_Retrigger_Attempt__c = null OR Core_Retrigger_Attempt__c  <: max_entitlementLevel_retry)';                 
+        String queryFailedCE = Test.isRunningTest()? 'SELECT Id, Core_Entitlement_Nm__c, Core_Contact_Id__c, Core_Status_of_Assignment_Failure__c,Core_Retrigger_Attempt__c, Core_Selected__c, Core_Status__c,Core_Update_Reason__c FROM Core_Contact_Entitlement__c WHERE Core_Status_of_Assignment_Failure__c IN (\'Failed Removal\', \'Failed Assignment\') AND (Core_Retrigger_Attempt__c = null OR Core_Retrigger_Attempt__c  <: max_entitlementLevel_retry)'
+            : 'SELECT Id, Core_Entitlement_Nm__c, Core_Contact_Id__c, Core_Status_of_Assignment_Failure__c,Core_Retrigger_Attempt__c, Core_Selected__c, Core_Status__c,Core_Update_Reason__c FROM Core_Contact_Entitlement__c WHERE LastModifiedDate = LAST_N_DAYS:2 AND Core_Status_of_Assignment_Failure__c IN (\'Failed Removal\', \'Failed Assignment\') AND (Core_Retrigger_Attempt__c = null OR Core_Retrigger_Attempt__c  <: max_entitlementLevel_retry)';                 
         return Database.getQueryLocator(queryFailedCE);
     }
     
@@ -55,13 +55,14 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
           
         /*****************[START] - Update CE records and Republish Contacts for Entitlement Level Failures **************/
         Map<Id, Id> CERecordContactMap = new Map<Id, Id>();
+        Integer queuableBatchNumber = 0;
         List<Core_Contact_Entitlement__c> EntitlementToUpdate = new List<Core_Contact_Entitlement__c>();
         List<String> EntLevel_ErrorList = string.isNotBlank(error_entitlementLevel) ? error_entitlementLevel.split(';') : null;
         
         //Iterate across failed CE records and update their Selected-Status if eligible
         for(Core_Contact_Entitlement__c contEnt : lstAllFailedCERecords){
             for(String ErrString : EntLevel_ErrorList){
-                if(contEnt.Core_Update_Reason__c != NULL && contEnt.Core_Update_Reason__c != '' && contEnt.Core_Update_Reason__c.contains(ErrString) && contEnt.Core_Contact_Id__r.Account.Core_Deactivated__c==false){
+                if(contEnt.Core_Update_Reason__c != NULL && contEnt.Core_Update_Reason__c != '' && contEnt.Core_Update_Reason__c.contains(ErrString)){
                     if(contEnt.Core_Status_of_Assignment_Failure__c == 'Failed Assignment'){
                         contEnt.Core_Selected__c = True;
                         contEnt.Core_Status__c = 'Pending';
@@ -113,18 +114,17 @@ global class Core_Draco_EntitlementCleanup_Batch implements Database.Batchable<s
         
         /*****************[START] - Update Retry counter and directly Republish Contacts for Contact Level Failures **************/
         List<String> ConLevel_ErrorList = string.isNotBlank(error_contactLevel) ? error_contactLevel.split(';') : null;
-        List<Contact> conLevelFailures = !Test.isRunningTest() ? [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c,Account.Core_Deactivated__c  FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed' AND LastModifiedDate = LAST_N_DAYS:2]
-        : [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c,Account.Core_Deactivated__c  FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed'];
+        List<Contact> conLevelFailures = !Test.isRunningTest() ? [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed' AND LastModifiedDate = LAST_N_DAYS:2]
+        : [SELECT Id, Core_AGS_Retry_Count__c, Core_AGS_Integration_Message__c FROM Contact WHERE (Core_AGS_Retry_Count__c = NULL OR Core_AGS_Retry_Count__c <: max_contactLevel_retry) AND Core_AGS_Integration_Status__c = 'Failed'];
         for(Contact failedCon : conLevelFailures){
             for(String ErrString : ConLevel_ErrorList){
-                if(failedCon.Core_AGS_Integration_Message__c.contains(ErrString)&& failedCon.Account.Core_Deactivated__c==false){
+                if(failedCon.Core_AGS_Integration_Message__c.contains(ErrString)){
                     failedCon.Core_AGS_Retry_Count__c = failedCon.Core_AGS_Retry_Count__c == null ? 0 : failedCon.Core_AGS_Retry_Count__c + 1;
                     failedCon.Core_Republish_OBM_s__c = true;
                     conSet.add(failedCon);
                 }
             }
         }
-       
         /*****************[END] - Update Retry counter and directly Republish Contacts for Contact Level Failures **************/
      
         

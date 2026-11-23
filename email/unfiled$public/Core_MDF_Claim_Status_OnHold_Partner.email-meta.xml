@@ -6,7 +6,7 @@
     <encodingKey>UTF-8</encodingKey>
     <name>Core_MDF_Claim_Status_OnHold_Partner</name>
     <style>none</style>
-    <subject>Claim #  has been put on hold</subject>
+    <subject>Claim Status on Hold</subject>
     <type>visualforce</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

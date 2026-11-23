@@ -1349,6 +1349,73 @@
         <label><!-- Zip/Postal Code --></label>
         <name>Core_Zip_Code__c</name>
     </fields>
+    <layouts>
+        <layout>Account Team Request</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Change Requests Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Address Details --></label>
+            <section>Address Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- New Address Details --></label>
+            <section>New Address Details</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core Attributes</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- D&amp;B Core Attributes --></label>
+            <section>D&amp;B Core Attributes</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Manage Hierarchy</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Request Territory Membership</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- Request to be part of an account team --></description>
         <label><!-- Account Team Request --></label>

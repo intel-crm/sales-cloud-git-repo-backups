@@ -36,11 +36,11 @@
     </values>
     <values>
         <field>PMP_Is_Create_Offering_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>PMP_Is_Search_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
+        <value xsi:type="xsd:boolean">true</value>
     </values>
     <values>
         <field>PMP_Search_Filter_Group_Txt__c</field>
@@ -56,7 +56,7 @@
     </values>
     <values>
         <field>Tab__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Tab3</value>
     </values>
     <values>
         <field>is_Inline_Radio__c</field>

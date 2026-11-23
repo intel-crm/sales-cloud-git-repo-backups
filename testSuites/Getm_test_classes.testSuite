@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>PSS_AdminDetailsController_Test</testClassName>
+    <testClassName>PSS_BenefitAssignmentTriggerHelper_Test</testClassName>
+    <testClassName>PSS_ContactsShare_Test</testClassName>
+    <testClassName>PSS_EmailTemplateController_Test</testClassName>
+    <testClassName>PSS_FileMigrationFromIOTGBatchTest</testClassName>
+    <testClassName>PSS_ForecasetedRevenueInterface_Test</testClassName>
+    <testClassName>PSS_ImpactPathScoring_UtilityTest</testClassName>
+    <testClassName>PSS_IOTGDataMigrationAPI_Test</testClassName>
+    <testClassName>PSS_SendEmailAlertsForSolutions_Test</testClassName>
+    <testClassName>PSS_SendEmailToContactsOnAddOrRem_Test</testClassName>
+    <testClassName>PSS_SolutionCatResultTriggerHandler_Test</testClassName>
+    <testClassName>PSS_SolutionContact_TriggerHelper_Test</testClassName>
+    <testClassName>PSS_SolutionConversionHelperTest</testClassName>
+    <testClassName>PSS_SolutionDuplicateNameCheckTest</testClassName>
+    <testClassName>PSS_SolutionOPIDRollup_Test</testClassName>
+    <testClassName>PSS_SolutionResponse_TriggerHandler_Test</testClassName>
+    <testClassName>PSS_SolutionResponseTriggerHelperTest</testClassName>
+    <testClassName>PSS_SolutionSubmitCtrlTest</testClassName>
+    <testClassName>PSS_SolutionToOfferingConverterTest</testClassName>
+    <testClassName>PSS_SolutionToOfferingRetrigger_Test</testClassName>
+    <testClassName>PSS_SurveyCategoryResultUtilityTest</testClassName>
+    <testClassName>PSS_SurveyResultScoringInterface_Test</testClassName>
+    <testClassName>PSS_UtilityTest</testClassName>
+</ApexTestSuite>

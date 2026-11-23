@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_EnvironmentVariablesController{  
+public class Core_IPS_EnvironmentVariablesController{ 
     private id recordId;
     private string objectApi;
     private id currentLoggedInUser;
@@ -40,6 +40,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             recordId = controller.getId();
             objectApi = controller.getRecord().getSObjectType().getDescribe().getName();
             //this.Controller = controller;
+            system.debug('ObjectAPIFromPage:'+objectApi+ 'objectAPI From Setting:'+Core_IPS_Labels__c.getValues('SupportedProductObjectApi').value__c);
             if(objectApi != null){
                 if(objectApi == Core_IPS_Labels__c.getValues('SupportedProductObjectApi').value__c){
                     // Visualforce Page : Core_addEnvironmentDetailsToProduct
@@ -92,10 +93,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     public pagereference getEnvironmentVariables_CaseCat(){
         try{
                 //Added By Yogesh Sharma
-                //FLS check added - Madhuri
-            if(Core_IPS_Product_Issue_Category__c.SObjectType.getDescribe().isAccessible()){
                 CaseCategoryRecord = [Select id,Name,Core_Issue_Sub_Category_Name__c,Core_Status__c,Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c, Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID, Core_Product_Issue_Category__c, ( select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where Core_Product_Issue_Sub_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where (id =: recordId)];
-            }
             //CaseCategoryRecord = [Select id,Name,Core_Issue_Sub_Category_Name__c,Core_Status__c,Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c, Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID, Core_Product_Issue_Category__c, ( select id, Core_Agent_Only__c,Core_Environment_Variable__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where Core_Product_Issue_Sub_Category__c =: recordId) from Core_IPS_Product_Issue_Category__c where (id =: recordId)];
             set<id> existingIds = new set<id>();
             if(CaseCategoryRecord.Core_Status__c == 'Active')
@@ -115,19 +113,13 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                 if(searchText != null && searchText.trim() != ''){
                     String srchString = '%'+searchText+'%';
                     //Added Core_IPS_Parent_Question__r.Core_IPS_Question__c in SOQL by Aparna for US108518-R4.3
-                    //FLS Check added - Madhuri
-                    if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
                     masterEnvList= [select id,name,Core_IPS_Parent_Question__r.Core_IPS_Question__c,Core_IPS_Question__c from Core_IPS_Question__c where (id not in :existingIds and Core_IPS_Product_Organization__c =: CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c and Core_IPS_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_IPS_Question__c like : srchString ) ORDER BY name];
-                    }
                     //masterEnvList= [select id,name from Core_IPS_Environment_Variables__c where (id not in :existingIds and Core_Product_Organization__c =: CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c and Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and name like : srchString ) ORDER BY name];
                 }
                 else{
                         //Added By Yogesh Sharma
                         //Added Parent Question in SOQL on 21/6/2018 for US108518-Aparna
-                        //FLS Check added - Madhuri
-                        if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
                         masterEnvList= [select id,name,Core_IPS_Question__c,Core_IPS_Parent_Question__r.Core_IPS_Question__c from Core_IPS_Question__c where (id not in :existingIds and Core_IPS_Product_Organization__c =: CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c and Core_IPS_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c) ORDER BY name];
-                        }                    
                     //masterEnvList= [select id,name from Core_IPS_Environment_Variables__c where (id not in :existingIds and Core_Product_Organization__c =: CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__c and Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c) ORDER BY name];
                 }
                 envDetails = new List<EnvironmentVarSel>();
@@ -149,8 +141,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             else { ErrorMessage = Core_IPS_Error_Code__c.getValues('I113').Core_Error_Message__c; }
             return null;
         }
-        catch(Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; 
-        return null;}
+        catch(Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; return null;}
     }
     /***************************************************************************************************
     Method Name:  getEnvironmentVariables_SupProd
@@ -178,10 +169,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     public pagereference getEnvironmentVariables_SupProd(){
         try{
                 //Added By Yogesh Sharma
-                //FLS Check added - Madhuri
-            if(Core_IPS_Supported_product__c.SObjectType.getDescribe().isAccessible()){   
-                SupportedProductRecord = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where (Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_Supported_Product__c=: recordId)) from Core_IPS_Supported_product__c where id =: recordId];
-            }
+               SupportedProductRecord = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Agent_Only__c,Core_IPS_Question__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where (Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_Supported_Product__c=: recordId)) from Core_IPS_Supported_product__c where id =: recordId];
             //SupportedProductRecord = [Select id,Core_Product_Organization__c, Core_Product_Organization__r.OwnerId, Core_EOIS__c, (select id, Core_Agent_Only__c,Core_Environment_Variable__c,Core_Required__c,Core_Supported_Product__c,Core_Type__c,Core_Status__c from Environment_Detail_Operationals__r where (Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_Supported_Product__c=: recordId)) from Core_IPS_Supported_product__c where id =: recordId];
             set<id> existingIds = new set<id>();
             
@@ -194,6 +182,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                
                //existingIds.add(env.Core_Environment_Variable__c);
             }
+            System.debug('Existing Ids:'+existingIds);
             //Added By Yogesh Sharma
             List<Core_IPS_Question__c> masterEnvList;
             //List<Core_IPS_Environment_Variables__c> masterEnvList;
@@ -201,21 +190,16 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                 String srchString = '%'+searchText+'%';
                 //Added By Yogesh Sharma
                 //Added Core_IPS_Parent_Question__r.Core_IPS_Question__c in SOQL by Aparna for US108518-R4.3 
-                //FLS Check added - Madhuri
-                if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
                 masterEnvList= [select id,name,Core_IPS_Question__c,Core_IPS_Parent_Question__r.Core_IPS_Question__c from Core_IPS_Question__c where (id not in :existingIds and Core_IPS_Product_Organization__c =: SupportedProductRecord.Core_Product_Organization__c and Core_IPS_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and Core_IPS_Question__c like : srchString ) ORDER BY name];
-                }
                 //masterEnvList= [select id,name from Core_IPS_Environment_Variables__c where (id not in :existingIds and Core_Product_Organization__c =: SupportedProductRecord.Core_Product_Organization__c and Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c and name like : srchString ) ORDER BY name];
             }
             else{
                 //Added By Yogesh Sharma
                 //Added Core_IPS_Parent_Question__c in SOQL for US108518-R4.3
-                //FLS Check added - Madhuri
-                if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
                 masterEnvList= [select id,name,Core_IPS_Question__c,Core_IPS_Parent_Question__r.Core_IPS_Question__c from Core_IPS_Question__c where (id not in :existingIds and Core_IPS_Product_Organization__c =: SupportedProductRecord.Core_Product_Organization__c and Core_IPS_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c) ORDER BY name];
-                    }
                 //masterEnvList= [select id,name from Core_IPS_Environment_Variables__c where (id not in :existingIds and Core_Product_Organization__c =: SupportedProductRecord.Core_Product_Organization__c and Core_Status__c !=: Core_IPS_Labels__c.getValues('CoreStatus_Inactive').value__c) ORDER BY name];
             }
+            System.debug('masterEnvList:'+masterEnvList);
             envDetails = new List<EnvironmentVarSel>();
             //Added By Yogesh Sharma
             if(masterEnvList != Null){
@@ -233,8 +217,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             checkBusinessRules();
             return null;
         }
-        catch(Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; 
-        return null;}
+        catch(Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; return null;}
     }
     /***************************************************************************************************
     Method Name: addEnvironmentVariables
@@ -258,9 +241,13 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     ****************************************************************************************************/
     public pagereference addEnvironmentVariables(){
         List<Core_IPS_Assigned_Environment_Variables__c> envTempList = new List<Core_IPS_Assigned_Environment_Variables__c>();
+        System.debug('>>>envDetails'+envDetails);
         for(EnvironmentVarSel env:envDetails){
+        System.debug('Required:'+env.required+'Agent Only:'+env.agentOnly);
             if(env.selected){
                 Core_IPS_Assigned_Environment_Variables__c aEnv = new Core_IPS_Assigned_Environment_Variables__c();
+                system.debug('>>>>>>>>>>' + env.required);
+                    system.debug('>>>>>>>>>>' + env.agentOnly);
                 aEnv.Core_Required__c= env.required;
                 aEnv.Core_Agent_Only__c= env.agentOnly;
                 aEnv.Core_Status__c = Core_IPS_Labels__c.getValues('CoreStatus_Active').value__c;
@@ -292,7 +279,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
         if(envDetails.size()>0) { return null; }
         else
         {
-            PageReference pr = new PageReference('/' + recordId);      
+            PageReference pr = new PageReference('/' + recordId);    
             pr.setRedirect(true);
             return pr;
         } 
@@ -318,7 +305,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     ****************************************************************************************************/
     public PageReference getAssignedEnvironmentVariables(){
        
-        PageReference  pg ;    
+        PageReference  Pg ;    
         checkBusinessRules();
         
          return null;
@@ -326,8 +313,8 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     }
     public PageReference saveEvn() {
         
-        string retUrl = ApexPages.currentPage().getParameters().get('retURL').escapeHtml4();
-        PageReference  pg =null ;  
+        string retUrl = ApexPages.currentPage().getParameters().get('retURL');
+        PageReference  Pg =null ;  
         try
         {
           update aev;
@@ -335,8 +322,8 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
         {
            retUrl = '/' + aev.id ;
         }
-        /*TWC745-112 - 13/08/2021 - Vishal - Security vulnerability --*/
-         Pg =  new PageReference('/'+retUrl);
+        
+         Pg =  new PageReference(retUrl);
          Pg.setredirect(true);
          return Pg;
         }
@@ -365,11 +352,8 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     ****************************************************************************************************/
     public void getSupportedProducts(){
         //Added By Yogesh Sharma
-        //FLS Check added - Madhuri
-        if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-            EnvVariableRecord = [select id, name, Core_IPS_Question__c, Core_IPS_Status__c, Core_IPS_Product_Organization__c, Core_IPS_Product_Organization__r.ownerId, (select id,Core_Supported_Product__c, Core_supported_product__r.name, Core_Required__c, Core_Agent_Only__c, Core_Status__c from Environment_Details_Operational__r where Core_IPS_Question__c =: recordId AND Core_Supported_Product__c != null) from Core_IPS_Question__c where id =: recordId];
-        }
-            //EnvVariableRecord = [select id, name, Core_Status__c, Core_Product_Organization__c, Core_Product_Organization__r.ownerId, (select id,Core_Supported_Product__c, Core_supported_product__r.name, Core_Required__c, Core_Agent_Only__c, Core_Status__c from Environment_Detail_Operationals__r where Core_Environment_Variable__c =: recordId AND Core_Supported_Product__c != null) from Core_IPS_Environment_Variables__c where id =: recordId];
+        EnvVariableRecord = [select id, name, Core_IPS_Question__c, Core_IPS_Status__c, Core_IPS_Product_Organization__c, Core_IPS_Product_Organization__r.ownerId, (select id,Core_Supported_Product__c, Core_supported_product__r.name, Core_Required__c, Core_Agent_Only__c, Core_Status__c from Environment_Details_Operational__r where Core_IPS_Question__c =: recordId AND Core_Supported_Product__c != null) from Core_IPS_Question__c where id =: recordId];
+        //EnvVariableRecord = [select id, name, Core_Status__c, Core_Product_Organization__c, Core_Product_Organization__r.ownerId, (select id,Core_Supported_Product__c, Core_supported_product__r.name, Core_Required__c, Core_Agent_Only__c, Core_Status__c from Environment_Detail_Operationals__r where Core_Environment_Variable__c =: recordId AND Core_Supported_Product__c != null) from Core_IPS_Environment_Variables__c where id =: recordId];
         set<id> existingIds = new set<id>();
         //Added By Yogesh Sharma
         for(Core_IPS_Assigned_Environment_Variables__c envT: EnvVariableRecord.Environment_Details_Operational__r){
@@ -378,8 +362,6 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
         }
         supProductList = new List<ProductsSel>(); 
         //Added By Yogesh Sharma
-        //FLS Check added - Madhuri
-        if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Supported_Product__c sp: [select id,name,Core_Supported_Product_Name__c from Core_IPS_Supported_Product__c where Core_Product_Organization__c =: EnvVariableRecord.Core_IPS_Product_Organization__c and id not in: existingIds and Core_EOIS__c = false ORDER BY Core_Supported_Product_Name__c]){
         //for(Core_IPS_Supported_Product__c sp: [select id,name,Core_Supported_Product_Name__c from Core_IPS_Supported_Product__c where Core_Product_Organization__c =: EnvVariableRecord.Core_IPS_Product_Organization__c and id not in: existingIds and Core_EOIS__c = false ORDER BY Core_Supported_Product_Name__c]){
             ProductsSel prodSel = new ProductsSel();
@@ -389,7 +371,6 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             prodSel.agentOnly=false; 
             prodSel.existingref=false;
             supProductList.add(prodSel);
-        }
         }
         ErrorMessage = null;
         checkBusinessRules(); 
@@ -420,6 +401,8 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             for(ProductsSel prodSel : supProductList){
                 if(prodSel.selected){
                     Core_IPS_Assigned_Environment_Variables__c aEnv = new Core_IPS_Assigned_Environment_Variables__c();
+                    system.debug('>>>>>>>>>>' + prodSel.required);
+                    system.debug('>>>>>>>>>>' + prodSel.required);
                     
                     aEnv.Core_Required__c= prodSel.required;
                     aEnv.Core_Agent_Only__c= prodSel.agentOnly;
@@ -439,8 +422,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             upsert envTempList;
             return new PageReference('/'+EnvVariableRecord.id);
         } 
-        catch (Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; 
-        return null;}
+        catch (Exception Ex){ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; return null;}
     }
     /***************************************************************************************************
     Version     : 1.1
@@ -475,7 +457,8 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
     public PageReference checkBusinessRules(){
         try{
             if(EnvVariableRecord != null){
-                Set<id> setOfUserId = new Set<id> ();
+            system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>Ex' );
+                Set<id> SetOfUserId = new Set<id> ();
                 //Added By Yogesh Sharma
                 SetOfUserId = Core_IPS_Helper_Utility.GetSetOfUsersbyQueueID(EnvVariableRecord.Core_IPS_Product_Organization__r.OwnerId);
                 //SetOfUserId = Core_IPS_Helper_Utility.GetSetOfUsersbyQueueID(EnvVariableRecord.Core_Product_Organization__r.OwnerId);
@@ -485,8 +468,7 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                 { 
                     if(!SetOfUserId.contains(currentLoggedInUser)){
                         // Current Logged In user not authorized to access the page.
-                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c; 
-                        return null;
+                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c; return null;
                     }    
                 }
                 //Added By Yogesh Sharma
@@ -501,15 +483,14 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                 }
             } 
             else if(SupportedProductRecord != null){
-                Set<id> setOfUserId = new Set<id> ();
+                Set<id> SetOfUserId = new Set<id> ();
                 SetOfUserId = Core_IPS_Helper_Utility.GetSetOfUsersbyQueueID(SupportedProductRecord.Core_Product_Organization__r.OwnerId);
                 List<User> lstUser = [select profile.name from User where id=:UserInfo.getUserid()];
                 if((System.Label.Core_IPS_Button_Override_ITAdmins).contains(lstUser[0].profile.name) == False)
                 {
                     if(!SetOfUserId.contains(currentLoggedInUser)){
                         // Current Logged In user not authorized to access the page.
-                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c; 
-                        return null;
+                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c; return null;
                     }    
                 }
                 if(SupportedProductRecord.Core_EOIS__c == true){
@@ -525,15 +506,14 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
             else if(CaseCategoryRecord != null){
                 if(CaseCategoryRecord.Core_Product_Issue_Category__c != null){
                     if(CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__c  != null){
-                        Set<id> setOfUserId = new Set<id> ();
+                        Set<id> SetOfUserId = new Set<id> ();
                         SetOfUserId = Core_IPS_Helper_Utility.GetSetOfUsersbyQueueID(CaseCategoryRecord.Core_Product_Issue_Category__r.Core_Supported_Product__r.Core_Product_Organization__r.OwnerID);
                         List<User> lstUser = [select profile.name from User where id=:UserInfo.getUserid()];
                         if((System.Label.Core_IPS_Button_Override_ITAdmins).contains(lstUser[0].profile.name) == False)
                         {
                             if(!SetOfUserId.contains(currentLoggedInUser)){
                                 // Current Logged In user not authorized to access the page.
-                                ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c;
-                                return null;
+                                ErrorMessage = Core_IPS_Error_Code__c.getValues('I105').Core_Error_Message__c; return null;
                             }   
                         }
                         if(envDetails.isEmpty()){
@@ -543,20 +523,17 @@ public with sharing class Core_IPS_EnvironmentVariablesController{
                     }
                     else{ 
                         // Case Category Record not associated with Supported Product           
-                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I109').Core_Error_Message__c; 
-                        return null;
+                        ErrorMessage = Core_IPS_Error_Code__c.getValues('I109').Core_Error_Message__c; return null;
                     }
                 }
                 else{
                     // Case Sub Category Record not associated with Case Category Record    
-                    ErrorMessage = Core_IPS_Error_Code__c.getValues('I110').Core_Error_Message__c; 
-                    return null;
+                    ErrorMessage = Core_IPS_Error_Code__c.getValues('I110').Core_Error_Message__c; return null;
                 }
             }
             return null;
         }
-        catch(Exception Ex){ ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; 
-        return null; }
+        catch(Exception Ex){ ErrorMessage = Core_IPS_Error_Code__c.getValues('G108').Core_Error_Message__c+' '+Ex; return null; }
         return null;
     }
     /***************************************************************************************************

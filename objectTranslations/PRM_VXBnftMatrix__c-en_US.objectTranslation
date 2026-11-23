@@ -63,6 +63,10 @@
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -84,6 +88,13 @@
         <label><!-- Total Quantity --></label>
         <name>PRM_Total_Quantity_Nbr__c</name>
     </fields>
+    <layouts>
+        <layout>Benefit Matrix Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

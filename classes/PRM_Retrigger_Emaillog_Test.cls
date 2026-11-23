@@ -239,7 +239,8 @@ public class PRM_Retrigger_Emaillog_Test{
         
         PRM_EmailLog__c emaillog = new PRM_EmailLog__c();
         emaillog.PRM_Subject__c='Congratulations on Your New Intel® Cloud Insider Status';
-        emaillog.PRM_ToEmailID__c='ebert123@mailinator.com';
+        //emaillog.PRM_ToEmailID__c='ebert123@mailinator.com';
+        emaillog.PRM_ToEmailID__c=null;
         emaillog.PRM_EmailContent__c='htmlbodyvar=EVVV256012UjVvhkwf826270target=wcm-ciqa.com';
         emaillog.PRM_Contact__c=cont.id;
         emaillog.Language__c='ENG';

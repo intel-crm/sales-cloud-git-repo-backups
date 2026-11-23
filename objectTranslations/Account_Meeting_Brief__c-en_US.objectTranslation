@@ -14,12 +14,12 @@
         <relationshipLabel><!-- Account Meeting Briefs --></relationshipLabel>
     </fields>
     <fields>
-        <help><!-- Select the appropriate event. If no match,  select Other and provide details in the Other Event field --></help>
+        <help><!-- List of events for typed to the account brief --></help>
         <label><!-- Event --></label>
         <name>Core_Account_Brief_Event__c</name>
         <picklistValues>
-            <masterLabel>Board of Advisors</masterLabel>
-            <translation><!-- Board of Advisors --></translation>
+            <masterLabel>Account Transition</masterLabel>
+            <translation><!-- Account Transition --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Computex</masterLabel>
@@ -30,16 +30,28 @@
             <translation><!-- Consumer Electronics Show (CES) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Executive Business Review</masterLabel>
-            <translation><!-- Executive Business Review --></translation>
+            <masterLabel>Intel 360 (Keynotes/Showcase/ISMC)</masterLabel>
+            <translation><!-- Intel 360 (Keynotes/Showcase/ISMC) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel 360</masterLabel>
-            <translation><!-- Intel 360 --></translation>
+            <masterLabel>Intel Developer Forum (IDF)</masterLabel>
+            <translation><!-- Intel Developer Forum (IDF) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Event Express</masterLabel>
+            <translation><!-- Intel Event Express --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel Extreme Masters (IEM)</masterLabel>
             <translation><!-- Intel Extreme Masters (IEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Solutions Summit (ISS)</masterLabel>
+            <translation><!-- Intel Solutions Summit (ISS) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Intel Vertical Summit (IVS)</masterLabel>
+            <translation><!-- Intel Vertical Summit (IVS) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>International Science &amp; Engineering Fair (ISEF)</masterLabel>
@@ -54,12 +66,8 @@
             <translation><!-- National Retail Federation (NRF) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other (describe in Other Event Field)</masterLabel>
-            <translation><!-- Other (describe in Other Event Field) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Connect</masterLabel>
-            <translation><!-- Partner Connect --></translation>
+            <masterLabel>None</masterLabel>
+            <translation><!-- None --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Retail Executive Conference (REC)</masterLabel>
@@ -79,7 +87,7 @@
         <name>Core_Account_Brief_Word_GridAction__c</name>
     </fields>
     <fields>
-        <help><!-- Recent history of customer’s business  in relation to the meeting (e.g. cultural points, initiatives, info and products). --></help>
+        <help><!-- Brief Account Background  &amp; Recent meeting history --></help>
         <label><!-- Background &amp; Recent Meeting History --></label>
         <name>Core_Account_Meeting_Background_Meeting__c</name>
     </fields>
@@ -90,38 +98,29 @@
     </fields>
     <fields>
         <help><!-- Customer contact for the account meeting --></help>
-        <label><!-- Main Customer Contact --></label>
+        <label><!-- Customer Contact --></label>
         <name>Core_Account_Meeting_Customer_Contact__c</name>
     </fields>
     <fields>
-        <help><!-- The date of the event --></help>
-        <label><!-- Meeting Date --></label>
+        <help><!-- When the account meeting is happening --></help>
+        <label><!-- Date --></label>
         <name>Core_Account_Meeting_Date__c</name>
     </fields>
     <fields>
-        <help><!-- Suggested dress code for the event --></help>
-        <label><!-- Dress Code --></label>
+        <help><!-- Dress Type for the account meeting --></help>
+        <label><!-- Dress --></label>
         <name>Core_Account_Meeting_Dress__c</name>
-        <picklistValues>
-            <masterLabel>Business Attire</masterLabel>
-            <translation><!-- Business Attire --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Business Casual</masterLabel>
             <translation><!-- Business Casual --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other attire ( include details in &apos;Other Event&apos; field)</masterLabel>
-            <translation><!-- Other attire ( include details in &apos;Other Event&apos; field) --></translation>
+            <masterLabel>Professional</masterLabel>
+            <translation><!-- Professional --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- The end time of the event --></help>
-        <label><!-- End Time --></label>
-        <name>Core_Account_Meeting_End_Time__c</name>
-    </fields>
-    <fields>
-        <help><!-- High-level overview of current engagement (e.g what&apos;s happening, what we are going to focus on) --></help>
+        <help><!-- High-level overview of current engagement, what’s happening, what we are going to focus on etc.) --></help>
         <label><!-- Executive Summary --></label>
         <name>Core_Account_Meeting_Exec_Summary__c</name>
     </fields>
@@ -141,57 +140,33 @@
         <name>Core_Account_Meeting_Hot_Button_Issue_3__c</name>
     </fields>
     <fields>
-        <help><!-- The main Intel employee that is chairing/organzing the meeting. --></help>
-        <label><!-- Intel Main Contact/Meeting Chair --></label>
+        <help><!-- Intel contact for the account brief meeting --></help>
+        <label><!-- Intel Contact --></label>
         <name>Core_Account_Meeting_Intel_Contact__c</name>
     </fields>
     <fields>
-        <help><!-- Select the primary language that will be used during the event --></help>
+        <help><!-- Language the meeting will be held for the meeting --></help>
         <label><!-- Language --></label>
         <name>Core_Account_Meeting_Language__c</name>
         <picklistValues>
-            <masterLabel>Chinese Simplified</masterLabel>
-            <translation><!-- Chinese Simplified --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chinese Traditional</masterLabel>
-            <translation><!-- Chinese Traditional --></translation>
+            <masterLabel>Arabic</masterLabel>
+            <translation><!-- Arabic --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>English</masterLabel>
             <translation><!-- English --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>English (Canada)</masterLabel>
-            <translation><!-- English (Canada) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>English (Great Britain)</masterLabel>
-            <translation><!-- English (Great Britain) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>English (Ireland)</masterLabel>
-            <translation><!-- English (Ireland) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>French</masterLabel>
             <translation><!-- French --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>French (Canada)</masterLabel>
-            <translation><!-- French (Canada) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>German</masterLabel>
             <translation><!-- German --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Hebrew</masterLabel>
-            <translation><!-- Hebrew --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Indonesian</masterLabel>
-            <translation><!-- Indonesian --></translation>
+            <masterLabel>Hindi</masterLabel>
+            <translation><!-- Hindi --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Italian</masterLabel>
@@ -206,8 +181,8 @@
             <translation><!-- Korean --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Polish</masterLabel>
-            <translation><!-- Polish --></translation>
+            <masterLabel>Mandarin</masterLabel>
+            <translation><!-- Mandarin --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Portuguese</masterLabel>
@@ -222,28 +197,12 @@
             <translation><!-- Spanish --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Spanish (LAR)</masterLabel>
-            <translation><!-- Spanish (LAR) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Spanish (Spain)</masterLabel>
-            <translation><!-- Spanish (Spain) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Thai</masterLabel>
-            <translation><!-- Thai --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Turkish</masterLabel>
-            <translation><!-- Turkish --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Vietnamese</masterLabel>
             <translation><!-- Vietnamese --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Provide as much detail as necessary to find the location:  e.g. Address, City, State/Province Postal Code, Country and/or building/conference room number. --></help>
+        <help><!-- Location of the meeting --></help>
         <label><!-- Location --></label>
         <name>Core_Account_Meeting_Location__c</name>
     </fields>
@@ -260,44 +219,52 @@
         <name>Core_Account_Meeting_Response_3__c</name>
     </fields>
     <fields>
-        <help><!-- The start time of the event --></help>
-        <label><!-- Start Time --></label>
+        <help><!-- When is the meeting happening --></help>
+        <label><!-- Time --></label>
         <name>Core_Account_Meeting_Time__c</name>
     </fields>
     <fields>
-        <help><!-- Tone of the meeting (e.g. bridge building, hostile, friendly, exploratory, etc.) --></help>
+        <help><!-- Tone for the Account Meeting --></help>
         <label><!-- Tone --></label>
         <name>Core_Account_Meeting_Tone__c</name>
+        <picklistValues>
+            <masterLabel>Casual</masterLabel>
+            <translation><!-- Casual --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Formal</masterLabel>
+            <translation><!-- Formal --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <help><!-- Allows user to link to existing opportunities --></help>
-        <label><!-- Opportunity 1 --></label>
+        <label><!-- Existing Opportunity 1 --></label>
         <name>Core_Brief_Existing_Opportunity_1__c</name>
         <relationshipLabel><!-- Account Meeting Briefs --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Opportunity 2 --></label>
+        <label><!-- Existing Opportunity 2 --></label>
         <name>Core_Brief_Existing_Opportunity_2__c</name>
         <relationshipLabel><!-- Account Meeting Briefs (Existing Opportunity 2) --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Opportunity 3 --></label>
+        <label><!-- Existing Opportunity 3 --></label>
         <name>Core_Brief_Existing_Opportunity_3__c</name>
         <relationshipLabel><!-- Account Meeting Briefs (Existing Opportunity 3) --></relationshipLabel>
     </fields>
     <fields>
         <help><!-- Used for notes on the opportunity --></help>
-        <label><!-- Opportunity 1 - Notes --></label>
+        <label><!-- Existing Opportunity Note 1 --></label>
         <name>Core_Brief_Existing_Opportunity_Note_1__c</name>
     </fields>
     <fields>
         <help><!-- Notes for existing opportunity --></help>
-        <label><!-- Opportunity 2 - Notes --></label>
+        <label><!-- Existing Opportunity Note 2 --></label>
         <name>Core_Brief_Existing_Opportunity_Note_2__c</name>
     </fields>
     <fields>
         <help><!-- Notes for existing opportunities --></help>
-        <label><!-- Opportunity 3 - Notes --></label>
+        <label><!-- Existing Opportunity 3 --></label>
         <name>Core_Brief_Existing_Opportunity_Note_3__c</name>
     </fields>
     <fields>
@@ -305,8 +272,8 @@
         <name>Core_Brief_Geo__c</name>
     </fields>
     <fields>
-        <help><!-- An identifiable and unique name containing the date of the meeting and the account name. Do not include confidential information. --></help>
-        <label><!-- Account Meeting Brief Name --></label>
+        <help><!-- Input a title for the brief --></help>
+        <label><!-- Executive Brief Title --></label>
         <name>Core_Executive_Brief_Title__c</name>
     </fields>
     <fields>
@@ -490,8 +457,8 @@
         <name>Core_Executive_Other__c</name>
     </fields>
     <fields>
-        <help><!-- Number of Intel Main Contact --></help>
-        <label><!-- Intel Main Contact Mobile Number --></label>
+        <help><!-- Intel Contact Mobile Phone number --></help>
+        <label><!-- Intel Contact Mobile Number --></label>
         <name>Core_Intel_Contact_Mobile_Number__c</name>
     </fields>
     <fields>
@@ -500,316 +467,740 @@
         <name>Core_New_Opportunities_Notes__c</name>
     </fields>
     <fields>
-        <help><!-- Select the time zone for this event --></help>
+        <help><!-- Enter the timezone for this meeting --></help>
         <label><!-- Time Zone --></label>
         <name>Core_Time_Zone__c</name>
         <picklistValues>
-            <masterLabel>(GMT) GMT</masterLabel>
-            <translation><!-- (GMT) GMT --></translation>
+            <masterLabel>ACDT</masterLabel>
+            <translation><!-- ACDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+01:00) Africa West Central</masterLabel>
-            <translation><!-- (GMT+01:00) Africa West Central --></translation>
+            <masterLabel>ACST</masterLabel>
+            <translation><!-- ACST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+01:00) Europe Central</masterLabel>
-            <translation><!-- (GMT+01:00) Europe Central --></translation>
+            <masterLabel>ACT</masterLabel>
+            <translation><!-- ACT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+01:00) Europe Western</masterLabel>
-            <translation><!-- (GMT+01:00) Europe Western --></translation>
+            <masterLabel>ADT</masterLabel>
+            <translation><!-- ADT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+01:00) Greenwich (London)</masterLabel>
-            <translation><!-- (GMT+01:00) Greenwich (London) --></translation>
+            <masterLabel>AEDT</masterLabel>
+            <translation><!-- AEDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+01:00) Romance</masterLabel>
-            <translation><!-- (GMT+01:00) Romance --></translation>
+            <masterLabel>AEST</masterLabel>
+            <translation><!-- AEST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) Africa South</masterLabel>
-            <translation><!-- (GMT+02:00) Africa South --></translation>
+            <masterLabel>AFT</masterLabel>
+            <translation><!-- AFT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) Egypt</masterLabel>
-            <translation><!-- (GMT+02:00) Egypt --></translation>
+            <masterLabel>AKDT</masterLabel>
+            <translation><!-- AKDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) Europe Eastern</masterLabel>
-            <translation><!-- (GMT+02:00) Europe Eastern --></translation>
+            <masterLabel>AKST</masterLabel>
+            <translation><!-- AKST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) FLE</masterLabel>
-            <translation><!-- (GMT+02:00) FLE --></translation>
+            <masterLabel>AMST</masterLabel>
+            <translation><!-- AMST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) GTB</masterLabel>
-            <translation><!-- (GMT+02:00) GTB --></translation>
+            <masterLabel>AMT</masterLabel>
+            <translation><!-- AMT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+02:00) Israel</masterLabel>
-            <translation><!-- (GMT+02:00) Israel --></translation>
+            <masterLabel>ART</masterLabel>
+            <translation><!-- ART --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+03:00) Africa Eastern</masterLabel>
-            <translation><!-- (GMT+03:00) Africa Eastern --></translation>
+            <masterLabel>AST</masterLabel>
+            <translation><!-- AST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+03:00) Arab</masterLabel>
-            <translation><!-- (GMT+03:00) Arab --></translation>
+            <masterLabel>AWDT</masterLabel>
+            <translation><!-- AWDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+03:00) Arabic</masterLabel>
-            <translation><!-- (GMT+03:00) Arabic --></translation>
+            <masterLabel>AWST</masterLabel>
+            <translation><!-- AWST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+03:00) Russian</masterLabel>
-            <translation><!-- (GMT+03:00) Russian --></translation>
+            <masterLabel>AZOST</masterLabel>
+            <translation><!-- AZOST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+03:30) Iran</masterLabel>
-            <translation><!-- (GMT+03:30) Iran --></translation>
+            <masterLabel>AZT</masterLabel>
+            <translation><!-- AZT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+04:00) Arabian</masterLabel>
-            <translation><!-- (GMT+04:00) Arabian --></translation>
+            <masterLabel>BDT</masterLabel>
+            <translation><!-- BDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+04:00) Caucasus</masterLabel>
-            <translation><!-- (GMT+04:00) Caucasus --></translation>
+            <masterLabel>BIOT</masterLabel>
+            <translation><!-- BIOT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+04:30) Afghanistan</masterLabel>
-            <translation><!-- (GMT+04:30) Afghanistan --></translation>
+            <masterLabel>BIT</masterLabel>
+            <translation><!-- BIT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+05:00) Asia Western</masterLabel>
-            <translation><!-- (GMT+05:00) Asia Western --></translation>
+            <masterLabel>BOT</masterLabel>
+            <translation><!-- BOT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+05:00) Ekaterinburg</masterLabel>
-            <translation><!-- (GMT+05:00) Ekaterinburg --></translation>
+            <masterLabel>BRST</masterLabel>
+            <translation><!-- BRST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+05:30) India</masterLabel>
-            <translation><!-- (GMT+05:30) India --></translation>
+            <masterLabel>BRT</masterLabel>
+            <translation><!-- BRT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+05:30) Sri Lanka</masterLabel>
-            <translation><!-- (GMT+05:30) Sri Lanka --></translation>
+            <masterLabel>BST</masterLabel>
+            <translation><!-- BST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+05:45) Nepal</masterLabel>
-            <translation><!-- (GMT+05:45) Nepal --></translation>
+            <masterLabel>BTT</masterLabel>
+            <translation><!-- BTT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+06:00) Asia Central</masterLabel>
-            <translation><!-- (GMT+06:00) Asia Central --></translation>
+            <masterLabel>CAT</masterLabel>
+            <translation><!-- CAT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+06:00) Asia North Central</masterLabel>
-            <translation><!-- (GMT+06:00) Asia North Central --></translation>
+            <masterLabel>CCT</masterLabel>
+            <translation><!-- CCT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+06:30) Myanmar</masterLabel>
-            <translation><!-- (GMT+06:30) Myanmar --></translation>
+            <masterLabel>CDT</masterLabel>
+            <translation><!-- CDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+07:00) Asia North</masterLabel>
-            <translation><!-- (GMT+07:00) Asia North --></translation>
+            <masterLabel>CEDT</masterLabel>
+            <translation><!-- CEDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+07:00) Asia South East</masterLabel>
-            <translation><!-- (GMT+07:00) Asia South East --></translation>
+            <masterLabel>CEST</masterLabel>
+            <translation><!-- CEST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+08:00) AUS Western</masterLabel>
-            <translation><!-- (GMT+08:00) AUS Western --></translation>
+            <masterLabel>CET</masterLabel>
+            <translation><!-- CET --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+08:00) Asia North East</masterLabel>
-            <translation><!-- (GMT+08:00) Asia North East --></translation>
+            <masterLabel>CHADT</masterLabel>
+            <translation><!-- CHADT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+08:00) China</masterLabel>
-            <translation><!-- (GMT+08:00) China --></translation>
+            <masterLabel>CHAST</masterLabel>
+            <translation><!-- CHAST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+08:00) Malay Peninsula</masterLabel>
-            <translation><!-- (GMT+08:00) Malay Peninsula --></translation>
+            <masterLabel>CHOT</masterLabel>
+            <translation><!-- CHOT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+08:00) Taipei</masterLabel>
-            <translation><!-- (GMT+08:00) Taipei --></translation>
+            <masterLabel>CHUT</masterLabel>
+            <translation><!-- CHUT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+09:00) Korea</masterLabel>
-            <translation><!-- (GMT+09:00) Korea --></translation>
+            <masterLabel>CIST</masterLabel>
+            <translation><!-- CIST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+09:00) Tokyo</masterLabel>
-            <translation><!-- (GMT+09:00) Tokyo --></translation>
+            <masterLabel>CIT</masterLabel>
+            <translation><!-- CIT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+09:00) Yakutsk</masterLabel>
-            <translation><!-- (GMT+09:00) Yakutsk --></translation>
+            <masterLabel>CKT</masterLabel>
+            <translation><!-- CKT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+09:30) AUS Central [Adelaide]</masterLabel>
-            <translation><!-- (GMT+09:30) AUS Central [Adelaide] --></translation>
+            <masterLabel>CLST</masterLabel>
+            <translation><!-- CLST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+09:30) AUS Central [Darwin]</masterLabel>
-            <translation><!-- (GMT+09:30) AUS Central [Darwin] --></translation>
+            <masterLabel>CLT</masterLabel>
+            <translation><!-- CLT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+10:00) AUS Eastern [Brisbane]</masterLabel>
-            <translation><!-- (GMT+10:00) AUS Eastern [Brisbane] --></translation>
+            <masterLabel>COST</masterLabel>
+            <translation><!-- COST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+10:00) AUS Eastern [Sydney]</masterLabel>
-            <translation><!-- (GMT+10:00) AUS Eastern [Sydney] --></translation>
+            <masterLabel>COT</masterLabel>
+            <translation><!-- COT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+10:00) Tasmania</masterLabel>
-            <translation><!-- (GMT+10:00) Tasmania --></translation>
+            <masterLabel>CST</masterLabel>
+            <translation><!-- CST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+10:00) Vladivostok</masterLabel>
-            <translation><!-- (GMT+10:00) Vladivostok --></translation>
+            <masterLabel>CT</masterLabel>
+            <translation><!-- CT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+10:00) West Pacific</masterLabel>
-            <translation><!-- (GMT+10:00) West Pacific --></translation>
+            <masterLabel>CVT</masterLabel>
+            <translation><!-- CVT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+11:00) Central Pacific</masterLabel>
-            <translation><!-- (GMT+11:00) Central Pacific --></translation>
+            <masterLabel>CWST</masterLabel>
+            <translation><!-- CWST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+12:00) Fiji</masterLabel>
-            <translation><!-- (GMT+12:00) Fiji --></translation>
+            <masterLabel>CXT</masterLabel>
+            <translation><!-- CXT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+12:00) New Zealand</masterLabel>
-            <translation><!-- (GMT+12:00) New Zealand --></translation>
+            <masterLabel>ChST</masterLabel>
+            <translation><!-- ChST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT+13:00) Tonga</masterLabel>
-            <translation><!-- (GMT+13:00) Tonga --></translation>
+            <masterLabel>DAVT</masterLabel>
+            <translation><!-- DAVT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-01:00) Azores</masterLabel>
-            <translation><!-- (GMT-01:00) Azores --></translation>
+            <masterLabel>DDUT</masterLabel>
+            <translation><!-- DDUT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-01:00) Cape Verde</masterLabel>
-            <translation><!-- (GMT-01:00) Cape Verde --></translation>
+            <masterLabel>DFT</masterLabel>
+            <translation><!-- DFT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-02:00) Mid-Atlantic</masterLabel>
-            <translation><!-- (GMT-02:00) Mid-Atlantic --></translation>
+            <masterLabel>EASST</masterLabel>
+            <translation><!-- EASST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-03:00) Brasilia</masterLabel>
-            <translation><!-- (GMT-03:00) Brasilia --></translation>
+            <masterLabel>EAST</masterLabel>
+            <translation><!-- EAST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-03:00) Eastern SA</masterLabel>
-            <translation><!-- (GMT-03:00) Eastern SA --></translation>
+            <masterLabel>EAT</masterLabel>
+            <translation><!-- EAT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-03:00) Greenland</masterLabel>
-            <translation><!-- (GMT-03:00) Greenland --></translation>
+            <masterLabel>ECT</masterLabel>
+            <translation><!-- ECT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-03:30) Newfoundland</masterLabel>
-            <translation><!-- (GMT-03:30) Newfoundland --></translation>
+            <masterLabel>EDT</masterLabel>
+            <translation><!-- EDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-04:00) Atlantic [Canada]</masterLabel>
-            <translation><!-- (GMT-04:00) Atlantic [Canada] --></translation>
+            <masterLabel>EEDT</masterLabel>
+            <translation><!-- EEDT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-04:00) Pacific SA</masterLabel>
-            <translation><!-- (GMT-04:00) Pacific SA --></translation>
+            <masterLabel>EEST</masterLabel>
+            <translation><!-- EEST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-04:00) Venezuela</masterLabel>
-            <translation><!-- (GMT-04:00) Venezuela --></translation>
+            <masterLabel>EET</masterLabel>
+            <translation><!-- EET --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-04:00) Western SA</masterLabel>
-            <translation><!-- (GMT-04:00) Western SA --></translation>
+            <masterLabel>EGST</masterLabel>
+            <translation><!-- EGST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-05:00) Eastern [US &amp; Canada]</masterLabel>
-            <translation><!-- (GMT-05:00) Eastern [US &amp; Canada] --></translation>
+            <masterLabel>EGT</masterLabel>
+            <translation><!-- EGT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-05:00) Indiana [East]</masterLabel>
-            <translation><!-- (GMT-05:00) Indiana [East] --></translation>
+            <masterLabel>EIT</masterLabel>
+            <translation><!-- EIT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-05:00) SA Pacific</masterLabel>
-            <translation><!-- (GMT-05:00) SA Pacific --></translation>
+            <masterLabel>EST</masterLabel>
+            <translation><!-- EST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-06:00) Central America</masterLabel>
-            <translation><!-- (GMT-06:00) Central America --></translation>
+            <masterLabel>FET</masterLabel>
+            <translation><!-- FET --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-06:00) Central [US &amp; Canada]</masterLabel>
-            <translation><!-- (GMT-06:00) Central [US &amp; Canada] --></translation>
+            <masterLabel>FJT</masterLabel>
+            <translation><!-- FJT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-06:00) Mexico</masterLabel>
-            <translation><!-- (GMT-06:00) Mexico --></translation>
+            <masterLabel>FKST</masterLabel>
+            <translation><!-- FKST --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-06:00) Saskatchewan</masterLabel>
-            <translation><!-- (GMT-06:00) Saskatchewan --></translation>
+            <masterLabel>FKT</masterLabel>
+            <translation><!-- FKT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-07:00) Arizona</masterLabel>
-            <translation><!-- (GMT-07:00) Arizona --></translation>
+            <masterLabel>FNT</masterLabel>
+            <translation><!-- FNT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-07:00) Mountain [Mexico]</masterLabel>
-            <translation><!-- (GMT-07:00) Mountain [Mexico] --></translation>
+            <masterLabel>GALT</masterLabel>
+            <translation><!-- GALT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-07:00) Mountain [US &amp; Canada]</masterLabel>
-            <translation><!-- (GMT-07:00) Mountain [US &amp; Canada] --></translation>
+            <masterLabel>GAMT</masterLabel>
+            <translation><!-- GAMT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-08:00) Pacific [US &amp; Canada]</masterLabel>
-            <translation><!-- (GMT-08:00) Pacific [US &amp; Canada] --></translation>
+            <masterLabel>GET</masterLabel>
+            <translation><!-- GET --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-09:00) Alaska</masterLabel>
-            <translation><!-- (GMT-09:00) Alaska --></translation>
+            <masterLabel>GFT</masterLabel>
+            <translation><!-- GFT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-10:00) Hawaii</masterLabel>
-            <translation><!-- (GMT-10:00) Hawaii --></translation>
+            <masterLabel>GILT</masterLabel>
+            <translation><!-- GILT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-11:00) Samoa</masterLabel>
-            <translation><!-- (GMT-11:00) Samoa --></translation>
+            <masterLabel>GIT</masterLabel>
+            <translation><!-- GIT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>(GMT-12:00) Dateline</masterLabel>
-            <translation><!-- (GMT-12:00) Dateline --></translation>
+            <masterLabel>GMT</masterLabel>
+            <translation><!-- GMT --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Coordinated Universal Time (UTC)</masterLabel>
-            <translation><!-- Coordinated Universal Time (UTC) --></translation>
+            <masterLabel>GST</masterLabel>
+            <translation><!-- GST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GYT</masterLabel>
+            <translation><!-- GYT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HADT</masterLabel>
+            <translation><!-- HADT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HAEC</masterLabel>
+            <translation><!-- HAEC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HAST</masterLabel>
+            <translation><!-- HAST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HKT</masterLabel>
+            <translation><!-- HKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HMT</masterLabel>
+            <translation><!-- HMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HOVT</masterLabel>
+            <translation><!-- HOVT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HST</masterLabel>
+            <translation><!-- HST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IBST</masterLabel>
+            <translation><!-- IBST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ICT</masterLabel>
+            <translation><!-- ICT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IDT</masterLabel>
+            <translation><!-- IDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IOT</masterLabel>
+            <translation><!-- IOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IRDT</masterLabel>
+            <translation><!-- IRDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IRKT</masterLabel>
+            <translation><!-- IRKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IRST</masterLabel>
+            <translation><!-- IRST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IST</masterLabel>
+            <translation><!-- IST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JST</masterLabel>
+            <translation><!-- JST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KGT</masterLabel>
+            <translation><!-- KGT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KOST</masterLabel>
+            <translation><!-- KOST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KRAT</masterLabel>
+            <translation><!-- KRAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KST</masterLabel>
+            <translation><!-- KST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LHST</masterLabel>
+            <translation><!-- LHST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LINT</masterLabel>
+            <translation><!-- LINT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAGT</masterLabel>
+            <translation><!-- MAGT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MART</masterLabel>
+            <translation><!-- MART --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MAWT</masterLabel>
+            <translation><!-- MAWT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MDT</masterLabel>
+            <translation><!-- MDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MEST</masterLabel>
+            <translation><!-- MEST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MET</masterLabel>
+            <translation><!-- MET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MHT</masterLabel>
+            <translation><!-- MHT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIST</masterLabel>
+            <translation><!-- MIST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MIT</masterLabel>
+            <translation><!-- MIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MMT</masterLabel>
+            <translation><!-- MMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MSK</masterLabel>
+            <translation><!-- MSK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MST</masterLabel>
+            <translation><!-- MST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MUT</masterLabel>
+            <translation><!-- MUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MVT</masterLabel>
+            <translation><!-- MVT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MYT</masterLabel>
+            <translation><!-- MYT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NCT</masterLabel>
+            <translation><!-- NCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NDT</masterLabel>
+            <translation><!-- NDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NFT</masterLabel>
+            <translation><!-- NFT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NPT</masterLabel>
+            <translation><!-- NPT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NST</masterLabel>
+            <translation><!-- NST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NT</masterLabel>
+            <translation><!-- NT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NUT</masterLabel>
+            <translation><!-- NUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NZDT</masterLabel>
+            <translation><!-- NZDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NZST</masterLabel>
+            <translation><!-- NZST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OMST</masterLabel>
+            <translation><!-- OMST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ORAT</masterLabel>
+            <translation><!-- ORAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PDT</masterLabel>
+            <translation><!-- PDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PET</masterLabel>
+            <translation><!-- PET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PETT</masterLabel>
+            <translation><!-- PETT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PGT</masterLabel>
+            <translation><!-- PGT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PHOT</masterLabel>
+            <translation><!-- PHOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PKT</masterLabel>
+            <translation><!-- PKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PMDT</masterLabel>
+            <translation><!-- PMDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PMST</masterLabel>
+            <translation><!-- PMST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PONT</masterLabel>
+            <translation><!-- PONT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PST</masterLabel>
+            <translation><!-- PST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PYST</masterLabel>
+            <translation><!-- PYST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PYT</masterLabel>
+            <translation><!-- PYT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RET</masterLabel>
+            <translation><!-- RET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ROTT</masterLabel>
+            <translation><!-- ROTT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAKT</masterLabel>
+            <translation><!-- SAKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAMT</masterLabel>
+            <translation><!-- SAMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SAST</masterLabel>
+            <translation><!-- SAST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SBT</masterLabel>
+            <translation><!-- SBT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SCT</masterLabel>
+            <translation><!-- SCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SGT</masterLabel>
+            <translation><!-- SGT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SLST</masterLabel>
+            <translation><!-- SLST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SRET</masterLabel>
+            <translation><!-- SRET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SRT</masterLabel>
+            <translation><!-- SRT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SST</masterLabel>
+            <translation><!-- SST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SYOT</masterLabel>
+            <translation><!-- SYOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TAHT</masterLabel>
+            <translation><!-- TAHT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TFT</masterLabel>
+            <translation><!-- TFT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>THA</masterLabel>
+            <translation><!-- THA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TJT</masterLabel>
+            <translation><!-- TJT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TKT</masterLabel>
+            <translation><!-- TKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TLT</masterLabel>
+            <translation><!-- TLT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TMT</masterLabel>
+            <translation><!-- TMT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TOT</masterLabel>
+            <translation><!-- TOT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TVT</masterLabel>
+            <translation><!-- TVT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UCT</masterLabel>
+            <translation><!-- UCT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ULAT</masterLabel>
+            <translation><!-- ULAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>USZ1</masterLabel>
+            <translation><!-- USZ1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UTC</masterLabel>
+            <translation><!-- UTC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UYST</masterLabel>
+            <translation><!-- UYST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UYT</masterLabel>
+            <translation><!-- UYT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UZT</masterLabel>
+            <translation><!-- UZT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VET</masterLabel>
+            <translation><!-- VET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VLAT</masterLabel>
+            <translation><!-- VLAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VOLT</masterLabel>
+            <translation><!-- VOLT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VOST</masterLabel>
+            <translation><!-- VOST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VUT</masterLabel>
+            <translation><!-- VUT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAKT</masterLabel>
+            <translation><!-- WAKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAST</masterLabel>
+            <translation><!-- WAST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WAT</masterLabel>
+            <translation><!-- WAT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WEDT</masterLabel>
+            <translation><!-- WEDT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WEST</masterLabel>
+            <translation><!-- WEST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WET</masterLabel>
+            <translation><!-- WET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WIT</masterLabel>
+            <translation><!-- WIT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WST</masterLabel>
+            <translation><!-- WST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YAKT</masterLabel>
+            <translation><!-- YAKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YEKT</masterLabel>
+            <translation><!-- YEKT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Z</masterLabel>
+            <translation><!-- Z --></translation>
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- Brief company description (e.g.  revenue, key partners, latest news, press releases) --></help>
+        <help><!-- Brief company description, revenue, key partners, latest news, press releases etc.) --></help>
         <label><!-- Customer Overview --></label>
         <name>Customer_Overview__c</name>
     </fields>
@@ -863,31 +1254,54 @@
         <name>Existing_Opportunity_3_Support_Requested__c</name>
     </fields>
     <fields>
-        <help><!-- If you select &apos;Other&apos; for Event, please provide event details in this field, including dress code. --></help>
+        <help><!-- if the given event is not listed under Events Dropdown then this text box can be used to enter the Event details. --></help>
         <label><!-- Other Event --></label>
         <name>Other_Event__c</name>
     </fields>
+    <layouts>
+        <layout>Account Meeting Brief Layout</layout>
+        <sections>
+            <label><!-- Account Background --></label>
+            <section>Account Background</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Customer Hot Button Issues --></label>
+            <section>Customer Hot Button Issues</section>
+        </sections>
+        <sections>
+            <label><!-- Meeting Information --></label>
+            <section>Meeting Information</section>
+        </sections>
+        <sections>
+            <label><!-- Opportunties --></label>
+            <section>Opportunties</section>
+        </sections>
+    </layouts>
     <sharingReasons>
         <label><!-- Account Team Member --></label>
         <name>Account_Team_Member</name>
     </sharingReasons>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- Time format need to be HH:MM AM/PM. --></errorMessage>
+        <errorMessage><!-- Time format need to be ##:## am/pm. --></errorMessage>
         <name>Check_Time_format</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Please fill in the location for this meeting. --></errorMessage>
         <name>Check_if_event_is_empty</name>
     </validationRules>
-    <validationRules>
-        <errorMessage><!-- Time format need to be HH:MM AM/PM. --></errorMessage>
-        <name>Core_Check_time</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Only Intel Account is permitted on this field. Please select Intel Account and retry again. --></errorMessage>
-        <name>Core_Prevent_Account_AMB</name>
-    </validationRules>
+    <webLinks>
+        <label><!-- Core_Account_Brief_PPT --></label>
+        <name>Core_Account_Brief_PPT</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_Account_Brief_Word --></label>
+        <name>Core_Account_Brief_Word</name>
+    </webLinks>
     <webLinks>
         <label><!-- Core_Lex_AccMeetingBrief_Share --></label>
         <name>Core_Lex_AccMeetingBrief_Share</name>

@@ -20,5 +20,12 @@
         <label><!-- Header Type --></label>
         <name>Core_Header_Type__c</name>
     </fields>
+    <layouts>
+        <layout>Feature Header Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

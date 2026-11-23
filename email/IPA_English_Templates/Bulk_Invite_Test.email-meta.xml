@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Bulk Invite Test</name>
+    <style>none</style>
+    <subject>Complete Your Registration Now</subject>
+    <textOnly>We invite you to join our Intel Partner Alliance Program!
+
+Get access to training, technical and sales resources, a global ecosystem, support, and more.
+
+Take the Next Step: Complete Your Registration Now
+
+Register now
+
+Get the support you need to accelerate innovation and grow your business when you join the Intel® Partner Alliance Program. Your membership provides instant access to an exclusive network of ecosystem partners, as well as exclusive benefits, such as go-to-market resources, advanced training, business and technology solutions, and more.
+
+Take a few moments to complete your registration and get started today.
+
+Complete registration
+
+Need help signing up to be a partner?
+Contact support
+
+This message was sent to {!Contact.Email} and is an important business communication related to your current relationship with Intel.
+
+To view and manage your marketing-related email preferences with Intel, please click here.
+
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+
+Privacy | Cookies | *Trademarks | Manage Preferences</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

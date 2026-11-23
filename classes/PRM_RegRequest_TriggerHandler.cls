@@ -153,7 +153,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, null);         
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/ // commenting PSG related code
                 //LA check needs to be implemented for admin reg req at time of insertion (for AccountCreateReq--> in before update)
                 if(isActive('Legal_Agreement_Check')){
                     //String recordTypeId == Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()
@@ -174,7 +174,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('Update_Submitted_Date')){
                     PRM_RegistrationRequestUtility.updateSubmittedDate((List<PRM_Registration_Request__c>)Trigger.new);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/
                 if(isActive('Auto_Approve_User_Registration') && PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun==false){            
                     PRM_RegistrationRequestUtility.isautoApproveEndUserRegistrationFirstRun=true;
                     PRM_RegistrationRequestUtility.autoApproveEndUserRegistration((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap, isSysAccMap, mapAccIdToListContact , mapAccount, acmList);
@@ -236,6 +236,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 List<PRM_Registration_Request__c> updatedRegistrations = new List<PRM_Registration_Request__c>();
                 Map<Id, PRM_Registration_Request__c> oldMap = (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap;
                 list<PRM_AccountChannelMembership__c> acmNewList=new list<PRM_AccountChannelMembership__c>();
+                
                 if(isActive('Validate_IPA_Request_Status_Change')){
                     PRM_RegistrationRequestUtility.validateStatusChange((List<PRM_Registration_Request__c>)Trigger.new,(Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
                 }
@@ -398,7 +399,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 /*if(isActive('PSG_Approval_Check')){
                     PRM_PSG_RegistrationReqUtility.checkEVAndContactExistance((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
-                }*/ //TWC729-8986 - PSG removal from PRM classes
+                }*/ //commenting PSG related code
                 
                 
                 if(isActive('Legal_Agreement_Check')){
@@ -473,7 +474,9 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
             }
             else {
                 //Moved code from after update to after insert as part of CidaaS requirments - atb
-                Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                //ATHR Fix - TWC729-9556 - JB
+                //Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
+                Id accCreateRequestId = PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();
                 List<PRM_Registration_Request__c> listREgReqForIQR= new List<PRM_Registration_Request__c>();
                 for (PRM_Registration_Request__c regReq : (List<PRM_Registration_Request__c>)Trigger.new) {
                     if(regReq.PRM_Channel_Program_Level_txt__c == 'Intel Quote Request'
@@ -512,7 +515,8 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                     PRM_RegistrationRequestUtility.sendAcknowledgementEmail((List<PRM_Registration_Request__c>)Trigger.new, (Map<Id, PRM_Registration_Request__c>)Trigger.oldMap);
                 }
                 
-                if(trackereRun  && System.Label.PRM_Tracker_Enabled=='true'){               
+                if(trackereRun  && System.Label.PRM_Tracker_Enabled=='true'){   
+                    system.debug('trackereRun508'+trackereRun);            
                     //System.enqueueJob(new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable ((List<PRM_Registration_Request__c>) Trigger.new,null,false,false));
                     regReqListForEnqueue.addAll((List<PRM_Registration_Request__c>) Trigger.new);
                     }
@@ -524,8 +528,11 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 // Agate - TWC729-2483 - End 
                 
             }  
+	
         }
         if(regReqListForEnqueue.size() >0 && !regReqListForEnqueue.isempty()){
+            system.debug('regReqListForEnqueue'+regReqListForEnqueue);
+            system.debug('trackereRun523'+trackereRun);
             System.enqueueJob(new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable (regReqListForEnqueue,null,false,false));
             trackereRun =false;
         }
@@ -616,6 +623,7 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
                 }
                 
                 if(listREgReqForTracker.size()>0 && trackereRun && System.Label.PRM_Tracker_Enabled=='true'){
+                    system.debug('trackereRun600'+trackereRun);
                     if(System.isBatch() || System.isQueueable() || System.isFuture()){
                        //PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable regTrackerUtility = new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable (listREgReqForTracker,null,false,false);
                        PRM_RegistrationTrackerUtility.executeMethod(listREgReqForTracker,null,false,false);
@@ -628,6 +636,8 @@ public without sharing class PRM_RegRequest_TriggerHandler extends TriggerHandle
         }
     }
     if(regReqListForEnqueue.size() > 0 && !regReqListForEnqueue.isempty()){
+        system.debug('regReqListForEnqueue'+regReqListForEnqueue);
+        system.debug('trackereRun614'+trackereRun);
         System.enqueueJob(new PRM_RegistrationTrackerUtility.createRegistrationTrackerQueuable (regReqListForEnqueue,null,false,false));
         trackereRun = false;
     }

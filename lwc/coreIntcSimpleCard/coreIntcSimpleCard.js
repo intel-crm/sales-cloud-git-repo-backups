@@ -1,16 +1,11 @@
 import { LightningElement, api } from 'lwc';
 
-// Static Resources
-import svgResource from '@salesforce/resourceUrl/IpaResources';
-
 // Templates
 import simpleCardNoIcon from './coreIntcSimpleCard.html';
 import simpleCardWithIconVertical from './coreIntcSimpleCardWithIconVertical.html';
 import simpleCardWithIconHorizontal from './coreIntcSimpleCardWithIconHorizontal.html';
 import simpleCardWithBody from './coreIntcSimpleCardWithBody.html';
 
-
-const BASE_SVG_URL = `${svgResource}/icons`;
 
 
 /**
@@ -223,18 +218,6 @@ class CoreIntcSimpleCard extends LightningElement {
    */
   get iconFaClass() {
     return `intel-icon ${this.card.icon}`;
-  }
-
-
-
-  /**
-   * Gets the URL for the SVG in ipaResources.
-   *
-   * @returns {string} The URL for the SVG.
-   * @private
-   */
-  get svgIconUrl() {
-    return `${BASE_SVG_URL}/${this.card.svgIcon}.svg`;
   }
 
 

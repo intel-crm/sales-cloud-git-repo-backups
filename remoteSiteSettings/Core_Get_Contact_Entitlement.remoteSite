@@ -2,6 +2,6 @@
 <RemoteSiteSetting xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>iPass end point to get entitlements in AGS</description>
     <disableProtocolSecurity>false</disableProtocolSecurity>
-    <isActive>true</isActive>
+    <isActive>false</isActive>
     <url>https://crdx-async-prod.ipaas.intel.com</url>
 </RemoteSiteSetting>

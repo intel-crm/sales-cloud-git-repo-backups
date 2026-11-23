@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>A&amp;E Republish All Roles</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Republish All Roles</value>
+    </caseValues>
+    <fields>
+        <label><!-- Republish All Roles --></label>
+        <name>Republish_All_Roles__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

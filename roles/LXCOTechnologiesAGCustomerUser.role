@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>TRITEC Electronic GmbH Customer User</description>
+    <description>LXCO Technologies AG Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>TRITEC Electronic GmbH Customer User</name>
+    <name>LXCO Technologies AG Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>LXCOTechnologiesAGCustomerManager</parentRole>
 </Role>

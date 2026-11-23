@@ -7,13 +7,13 @@
     },
     
     // Function Called on the load of the component
-    checkObjectPermission: function (component, event, helper) {
-        console.log('rec id in Edit--' + component.get("v.recordId"));
-        var action = component.get("c.hasAccessToEditClaim");
+    checkObjectPermission: function(component, event, helper) {
+      console.log('rec id in Edit--'+component.get("v.recordId"));
+      var action = component.get("c.checkSObjectEditPermission");
         //pass the object name here for which you want
         //to fetch check the permission
         action.setParams({
-            "recordId": component.get("v.recordId")
+            "objectName" : "PartnerFundClaim"
         });
         action.setCallback(this, function(response) {
             var permission = response.getReturnValue();

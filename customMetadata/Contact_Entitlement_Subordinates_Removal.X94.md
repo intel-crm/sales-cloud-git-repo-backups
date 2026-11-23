@@ -8,18 +8,18 @@
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfj</value>
+        <value xsi:type="xsd:string">a2W8A000003HqWZ</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">Employee</value>
+        <value xsi:type="xsd:string">Points Manager</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfk</value>
+        <value xsi:type="xsd:string">a2W8A000003HqWc</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">Primary Lead Designated Rep</value>
+        <value xsi:type="xsd:string">Points View</value>
     </values>
 </CustomMetadata>

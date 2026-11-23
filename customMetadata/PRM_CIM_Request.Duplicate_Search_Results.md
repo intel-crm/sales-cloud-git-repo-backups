@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>PRM_Calling_System__c</field>
-        <value xsi:type="xsd:string">SLSCLD</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>PRM_Default_Source_Attributes__c</field>

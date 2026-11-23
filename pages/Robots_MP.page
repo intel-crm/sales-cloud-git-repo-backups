@@ -1,0 +1,5 @@
+<apex:page contentType="text/plain">
+    User-agent: *
+    Disallow: /   
+    Sitemap: https://crmdevipa-intelcloudcrm.cs45.force.com/imp/s/sitemap.xml
+</apex:page>

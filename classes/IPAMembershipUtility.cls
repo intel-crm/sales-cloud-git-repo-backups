@@ -3,7 +3,7 @@ Apex Class Name     : IPAMembershipUtility
 Version             : 1.0
 Created Date        : May 2021
 Developer           : Dinesh Mengade
-Function 			: checkIfAlreadyExists - restrict user to add membership record if any pending membership
+Function       : checkIfAlreadyExists - restrict user to add membership record if any pending membership
 approved membership/ACM is there
 ****************************************************************************************************************************/
 
@@ -47,7 +47,7 @@ public with sharing class IPAMembershipUtility {
                     memMap.put(MembershipRecord.PRM_Account_Channel_Membership__c, new List<PRM_IPA_Membership__c>{MembershipRecord});
                 }
                 
-            }		        
+            }            
             
             for(PRM_AccountChannelMembership__c acmRecord : [select id, PRM_Account_Id__c, PRM_Partner_Role__c,PRM_Channel_Program_Level_Id__c, PRM_Status_Nm__c, (select id, PRM_Partner_Tier__c, PRM_Partner_Role__c,PRM_Status__c from PRM_IPA_Membership__r )  from PRM_AccountChannelMembership__c where PRM_Account_Id__c in :actId and PRM_Status_Nm__c!='inactive']){
                 String key = acmRecord.PRM_Partner_Role__c+acmRecord.PRM_Channel_Program_Level_Id__c;
@@ -55,7 +55,7 @@ public with sharing class IPAMembershipUtility {
                     newMemkeyRecord.get(key).addError(System.Label.PRM_Membership_exist_at_Account_Level);
                 }else{
                     for(PRM_IPA_Membership__c childRecord : acmRecord.PRM_IPA_Membership__r){
-                        if(childRecord.PRM_Status__c==label.PRM_ACM_Change_Request_Label || childRecord.PRM_Status__c==label.PRM_Status_Pending	 || childRecord.PRM_Status__c==label.Core_MDF_Status_Submitted	 || childRecord.PRM_Status__c==label.Core_MDF_Status_Approved){
+                        if(childRecord.PRM_Status__c==label.PRM_ACM_Change_Request_Label || childRecord.PRM_Status__c==label.PRM_Status_Pending   || childRecord.PRM_Status__c==label.Core_MDF_Status_Submitted   || childRecord.PRM_Status__c==label.Core_MDF_Status_Approved){
                             if(memMap!=null && !memMap.isEmpty() && memMap.containsKey(acmRecord.id)){
                                 memMap.get(acmRecord.id)[0].addError('There is already incomplete request in queue');
                             }

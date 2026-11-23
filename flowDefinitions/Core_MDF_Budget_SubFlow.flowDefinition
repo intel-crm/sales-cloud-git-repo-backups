@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionNumber>9</activeVersionNumber>
     <description>This SubFlow is used to create PartnerMarketingBudgetShare records when a PartnerMarketingBudget record is created.</description>
     <masterLabel>Core_MDF_PMB_CreateShareRecords</masterLabel>
 </FlowDefinition>

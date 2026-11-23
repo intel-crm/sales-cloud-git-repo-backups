@@ -158,7 +158,7 @@
         <fullName>PSS_Is_Active__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Is Active</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -168,7 +168,7 @@
         <label>Question Unique Key</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -177,7 +177,7 @@
         <fullName>PSS_Solution_Category__c</fullName>
         <label>Solution Category</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -203,7 +203,7 @@
         <label>Survey Result Field Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -215,7 +215,7 @@
         <precision>18</precision>
         <required>true</required>
         <scale>2</scale>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -232,9 +232,39 @@
         <label>All</label>
         <language>en_US</language>
     </listViews>
+    <listViews>
+        <fullName>DCG</fullName>
+        <columns>NAME</columns>
+        <columns>PSS_Question_Unique_Key__c</columns>
+        <columns>PSS_Survey_Result_Field_Name__c</columns>
+        <columns>PSS_Weightage__c</columns>
+        <columns>PSS_Is_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PSS_Solution_Category__c</field>
+            <operation>equals</operation>
+            <value>DCG</value>
+        </filters>
+        <label>DCG</label>
+    </listViews>
+    <listViews>
+        <fullName>IOTG</fullName>
+        <columns>NAME</columns>
+        <columns>PSS_Question_Unique_Key__c</columns>
+        <columns>PSS_Survey_Result_Field_Name__c</columns>
+        <columns>PSS_Weightage__c</columns>
+        <columns>PSS_Is_Active__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>PSS_Solution_Category__c</field>
+            <operation>equals</operation>
+            <value>IOTG</value>
+        </filters>
+        <label>IOTG</label>
+    </listViews>
     <nameField>
         <label>Impact Path Scoring Criteria Name</label>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <type>Text</type>
     </nameField>
     <pluralLabel>Impact Path Scoring Criterias</pluralLabel>

@@ -17,6 +17,14 @@
         <name>DeveloperName__c</name>
     </fields>
     <fields>
+        <label><!-- Entitlement Category --></label>
+        <name>Entitlement_Category__c</name>
+    </fields>
+    <fields>
+        <label><!-- Entitlement Name --></label>
+        <name>Entitlement_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Field 1 (Text Area Long) --></label>
         <name>Field_1_Text_Area_Long__c</name>
     </fields>
@@ -86,8 +94,12 @@
         <name>Metadata_Name__c</name>
     </fields>
     <fields>
-        <label><!-- IPA Affiliation --></label>
+        <label><!-- IPA  Affiliation --></label>
         <name>PRM_IPA_Affiliation__c</name>
+    </fields>
+    <fields>
+        <label><!-- Permission Set API Name --></label>
+        <name>Permission_Set_API_Name__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>
@@ -121,5 +133,24 @@
             <translation><!-- Sales Pipeline --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>CustomMetadata Object Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Text / Number / Date / DateTime / Checkbox --></label>
+            <section>Text / Number / Date / DateTime / Checkbox</section>
+        </sections>
+        <sections>
+            <label><!-- Text Area Long --></label>
+            <section>Text Area Long</section>
+        </sections>
+        <sections>
+            <label><!-- text Area --></label>
+            <section>text Area</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

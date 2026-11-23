@@ -7,8 +7,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>CurrentUser</senderType>
         <template>IPS_Email_Templates/Core_IPS_Project_Item_Internal_Item_Updated</template>
     </alerts>
     <alerts>
@@ -18,8 +17,7 @@
         <recipients>
             <type>creator</type>
         </recipients>
-        <senderAddress>intel.premier.support@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>CurrentUser</senderType>
         <template>IPS_Email_Templates/Core_IPS_Project_Item_Internal_Item_Updated</template>
     </alerts>
     <fieldUpdates>
@@ -89,7 +87,7 @@
             <name>Core_IPS_Update_Project_Status_to_Active</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <booleanFilter>1 AND 2</booleanFilter>
         <criteriaItems>
             <field>Core_IPS_Product__c.Status__c</field>

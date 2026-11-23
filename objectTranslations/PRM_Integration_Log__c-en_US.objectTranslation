@@ -118,7 +118,8 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Transaction time(in seconds) --></label>
+        <help><!-- Milliseconds are ignored in the calculations --></help>
+        <label><!-- Transaction time(in milliseconds) --></label>
         <name>PRM_Transaction_time__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

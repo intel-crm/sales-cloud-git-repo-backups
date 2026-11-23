@@ -8,7 +8,7 @@
     <textOnly>Aktualisierung des Geschäftskontos
 
 
-!%UserFirstName%!,,
+!%UserFirstName%!,
 
 Mit dieser Benachrichtigung möchten wir Sie darauf hinweisen, dass eine Person die Optionen zum Teilen von Informationen aus dem Intel® Partner Alliance Programm mit autorisierten Distributoren (Intel® Authorized Distributors) und / oder von Intel zugelassenen Dienstleistungsunternehmen (Intel® Approved Suppliers) geändert hat.
 
@@ -27,7 +27,7 @@ Vielen Dank
 Ihr Intel® Partner Alliance Team
 
 Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
-© {!$Label.PRM_CurrentYear} Intel Corporation.
+© {!Contact.Core_Current_Year__c} Intel Corporation.
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Datenschutz | Cookies</textOnly>
     <type>custom</type>

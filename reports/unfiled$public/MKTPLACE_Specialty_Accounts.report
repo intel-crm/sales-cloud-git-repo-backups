@@ -11,7 +11,7 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>FK_$Account.Core_IPA_Partner_Speciality__c</groupingColumn>
+        <groupingColumn>PRM_AccountBenefitAssociation__c.PRM_Partner_Benefit_Id__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
@@ -53,9 +53,6 @@
         <field>FK_$Account.Core_Sub_Geo__c</field>
     </columns>
     <columns>
-        <field>PRM_AccountBenefitAssociation__c.PRM_Partner_Benefit_Id__c</field>
-    </columns>
-    <columns>
         <field>FK_ACC_ADDR1_STREET</field>
     </columns>
     <columns>
@@ -85,6 +82,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FK_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notContain</operator>
+            <value>ipatest</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_$Account.Core_IPA_Partner_Speciality__c</column>
@@ -123,7 +127,12 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
+    <format>Matrix</format>
+    <groupingsAcross>
+        <dateGranularity>Day</dateGranularity>
+        <field>PRM_AccountBenefitAssociation__c.PRM_Partner_Benefit_Id__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsAcross>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FK_$Account.Core_IPA_Partner_Speciality__c</field>

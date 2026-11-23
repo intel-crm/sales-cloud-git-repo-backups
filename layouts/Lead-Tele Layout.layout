@@ -38,6 +38,7 @@
     </customConsoleComponents>
     <excludeButtons>Clone</excludeButtons>
     <excludeButtons>Convert</excludeButtons>
+    <excludeButtons>DataDotComClean</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
@@ -66,6 +67,10 @@
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Company</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>Core_Partner_Offering__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -104,6 +109,10 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
+                <field>Core_Job_Function__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
                 <field>Core_Profession__c</field>
             </layoutItems>
             <layoutItems>
@@ -125,14 +134,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_Sub_Geo__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Do_not_call__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_Do_Not_Contact_Dtm__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -170,15 +171,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Customer_Consent_for_Marketing__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_Marketing_Do_Not_Contact_Ind__c</field>
+                <field>Core_Do_not_call__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_Marketing_Do_Not_Contact_Dtm__c</field>
+                <field>Core_Customer_Consent_for_Marketing__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -422,10 +419,15 @@
     <relatedLists>
         <relatedList>RelatedContentNoteList</relatedList>
     </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PRM_Registration_Request__c.Lead_ID__c</relatedList>
+    </relatedLists>
+    <runAssignmentRulesDefault>false</runAssignmentRulesDefault>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>true</showHighlightsPanel>
     <showInteractionLogPanel>true</showInteractionLogPanel>
-    <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
+    <showRunAssignmentRulesCheckbox>true</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
         <masterLabel>00ho000000ATtVn</masterLabel>
@@ -440,6 +442,11 @@
             <field>Title</field>
             <posX>0</posX>
             <posY>1</posY>
+        </summaryLayoutItems>
+        <summaryLayoutItems>
+            <field>Core_Job_Function__c</field>
+            <posX>1</posX>
+            <posY>0</posY>
         </summaryLayoutItems>
         <summaryLayoutItems>
             <field>Email</field>

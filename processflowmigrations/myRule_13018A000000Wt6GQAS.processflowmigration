@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_ABA_Notification_Message_1</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_ABA_Notification_Message_1-4</destinationFlowVersion>
+    <developerName>myRule_13018A000000Wt6GQAS</developerName>
+    <masterLabel>PRM_ABA_Notification_Message_1</masterLabel>
+    <migratedCriteriaLabel>When Benefit equals to Solution MP Enhanced/Basic Profile</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_ABA_Notification_Message-5</processVersion>
+</ProcessFlowMigration>

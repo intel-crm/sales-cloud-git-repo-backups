@@ -10,6 +10,6 @@ public class PMP_StaticConstants_Partner_Test {
         PMP_StaticConstants_Partner testClass = new PMP_StaticConstants_Partner();
         System.AssertEquals('product',PMP_StaticConstants_Partner.product);
         Test.StopTest();
-    }
+    } 
 
 }

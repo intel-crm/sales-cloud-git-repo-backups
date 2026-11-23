@@ -114,7 +114,7 @@ public class PMP_MarketplaceNewPartnerDetail_Test {
         partner1.PMP_Partner_Primary_Street_Txt__c = 'Acc Address';
         partner1.PMP_Disti_Country_Coverage_Txt__c = 'India';
         insert partner1;
-        
+        //IPA2.0:US-4497-1631_OfferingEOL
         /*PMP_Partner_Offering__c off = new PMP_Partner_Offering__c();
         off.Name = 'Test_Off';
         off.PMP_Company_Id__c = cmp1.Id;

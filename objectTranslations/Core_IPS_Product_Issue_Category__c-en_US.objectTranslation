@@ -61,6 +61,31 @@
             <translation><!-- Case Subcategory --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Case Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product Issue Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Product IssueSub Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Case Category --></label>
         <name>Core_Product_Issue_Category</name>
@@ -76,15 +101,15 @@ Press Cancel to exit. --></errorMessage>
         <name>Core_IPS_Prevent_Reverting_2_Active</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_Environment_Details --></label>
-        <name>Add_Environment_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_Sub_Categories --></label>
-        <name>Add_Sub_Categories</name>
-    </webLinks>
-    <webLinks>
         <label><!-- Core_Add_Sub_Categories --></label>
         <name>Core_Add_Sub_Categories</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Add_Environment_Variables --></label>
+        <name>Core_IPS_Add_Environment_Variables</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- New_Core_IPS_Add_Environment_Variables --></label>
+        <name>New_Core_IPS_Add_Environment_Variables</name>
     </webLinks>
 </CustomObjectTranslation>

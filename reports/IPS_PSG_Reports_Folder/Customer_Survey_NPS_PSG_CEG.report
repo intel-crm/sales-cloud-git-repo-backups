@@ -55,6 +55,9 @@
         <field>OWNER</field>
     </columns>
     <columns>
+        <field>Case.Core_IPS_Assigned_Queue__c</field>
+    </columns>
+    <columns>
         <field>CREATED</field>
     </columns>
     <columns>
@@ -120,36 +123,24 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>Admin,PRISM,CSTOOLS,Enpirion,CQE,Deflected,IR,ZBB,CAT2,eASIC,DTC,DCG</value>
+            <value>PSG-IR,Admin,CQE,Enpirion,CSTOOLS,Deflected,ZBB,PRISM,CAT2</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT.NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION,IPS Intel</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Case.Core_IPS_Assigned_Queue__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
         <dateGranularity>Month</dateGranularity>
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete - Customer Survey NPS - PSG CEG</name>
+    <name>Customer Survey NPS - PSG CEG</name>
     <params>
         <name>units</name>
         <value>d</value>

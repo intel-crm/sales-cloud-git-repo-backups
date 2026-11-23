@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>JABIL DEFENSE AND AEROSPACE SERVICES Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>JABIL DEFENSE AND AEROSPACE SERVICES Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>JABILDEFENSEANDAEROSPACESERVICESCustomerManager</parentRole>
+</Role>

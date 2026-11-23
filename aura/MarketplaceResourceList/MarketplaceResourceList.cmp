@@ -18,7 +18,7 @@
                 fileType="{! item.fileType}"
                 fileSize="{! item.fileSize}"
                 downloadUrl="{!item.downloadUrl}"/> 
-                
+               
          </li>   
 	</aura:iteration>
 	</ul>

@@ -1,0 +1,184 @@
+{
+  "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
+  "componentName" : "c:PCC_DDRLayout",
+  "dataProviders" : [ ],
+  "id" : "75855f60-278c-4be5-8c11-d61ceff5887f",
+  "label" : "DDR2",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "disableManageEvents" : false,
+        "disableManageLeads" : true,
+        "disableManageOfferings" : false,
+        "disableManageStorefront" : false,
+        "disableManagedMPPartners" : false,
+        "disableViewDashboard" : false,
+        "fullWidth" : true,
+        "portal" : "Partner Admin"
+      },
+      "componentName" : "c:MarketplaceNavigationBar",
+      "id" : "68c5d738-682a-4c5e-8caf-2af41982dad2",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "alignment" : "center",
+        "backgroundVariant" : "mosaic-l0",
+        "recordId" : "{!recordId}",
+        "subtitle" : "",
+        "title" : "Intel Design Registration"
+      },
+      "componentName" : "c:ipaMarqueeLeads",
+      "id" : "18bb0d9c-9eca-4dcc-a6a6-9c1010f9373b",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "89fa36e2-3ebb-4e28-ae71-d21ab282b95d",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "b6f0ae1f-1b66-4a9b-b894-38ee81177e08",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "ad1d5b4d-1e7b-4fc2-abe2-407da579ed5a",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "tabsetConfig" : {
+          "UUID" : "211bda33-b4d6-40ca-8a46-43e39858b644",
+          "activeTab" : "",
+          "tabs" : [ {
+            "UUID" : "7071e7e4-b718-4c1c-9d3a-71fe1c54e5cc",
+            "allowGuestUser" : false,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "1",
+            "tabName" : "Dashboard"
+          }, {
+            "UUID" : "ec8ff58b-71cc-48db-b1d2-260fac8174c8",
+            "allowGuestUser" : true,
+            "locked" : false,
+            "seedComponents" : [ ],
+            "tabKey" : "4cff0",
+            "tabName" : "Report"
+          } ],
+          "useOverflowMenu" : false
+        }
+      },
+      "componentName" : "forceCommunity:tabset",
+      "id" : "211bda33-b4d6-40ca-8a46-43e39858b644",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : {
+            "height" : "485",
+            "recordId" : "Core_DDR_External_Design_Opportunity_Dashboard"
+          },
+          "componentName" : "forceCommunity:dashboard",
+          "id" : "bdd1308b-0277-4321-8619-2cee2431273d",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "7071e7e4-b718-4c1c-9d3a-71fe1c54e5cc",
+        "regionLabel" : "Dashboard",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      }, {
+        "id" : "ec8ff58b-71cc-48db-b1d2-260fac8174c8",
+        "regionLabel" : "Report",
+        "regionName" : "4cff0",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "3a752238-7a2f-4019-8b96-edc903ec4323",
+    "regionName" : "leftSection",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_DownloadBulkInviteTemplate",
+      "id" : "d5fb5303-1cbd-42a3-9d1e-3acc1bbe5ead",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "ee7969a9-185c-4113-b4e0-400e423a95e5",
+    "regionName" : "rightSection",
+    "type" : "region"
+  }, {
+    "id" : "57e03ac9-cce5-41bd-9077-598f22b6408c",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "2084956f-cb30-4d67-a4d7-2027ef326687",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "a57018fb-7087-48b9-8e9e-b621ad010c24",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "6d345b25-c33d-436b-ab97-04c647c8f4a1",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "54f61505-118a-492b-b3a4-341950e8ce84",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "3bdde327-a78f-4eb6-934a-53b3aa9dfeec",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "ea05b452-0cb3-402c-9f8a-29e89ca036ce",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "32e6ab49-c8f0-47aa-88db-bcc133a0631f",
+    "regionName" : "blade5",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "DDR"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "4c64182d-9f60-4964-bf44-469e0c856e1d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "72d69a07-f7f2-432b-9880-2aba1c81f570",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_NavigationCompPCC",
+      "id" : "f9903fc1-cee3-4a6f-b1d9-8c524ceb4c7c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2a4282b-e420-482a-8cfa-4b29f08efdad",
+    "regionName" : "navigationMenu",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "rTbKBc85xAcrvy12aDVrVfqW6epwlw",
+  "type" : "view",
+  "viewType" : "custom-ddr2"
+}

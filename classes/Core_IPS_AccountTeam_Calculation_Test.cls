@@ -70,10 +70,9 @@ private class Core_IPS_AccountTeam_Calculation_Test {
         insert aShare;
         }*/
         
-        // Pass the case id to page  
-        // commented for Classic EOL :Tejaswini      
-     /*   PageReference pageRef = Page.Core_IPS_Manage_Account_Team;
-        Test.setCurrentPage(pageRef); */
+        // Pass the case id to page        
+        PageReference pageRef = Page.Core_IPS_Manage_Account_Team;
+        Test.setCurrentPage(pageRef);
         ApexPages.currentPage().getParameters().put('id', ListOfAccounts[0].Id);
         Core_IPS_AccountTeam_Calculation accTeamObj = new Core_IPS_AccountTeam_Calculation(new ApexPages.StandardController(ListOfAccounts[0]));
         Core_IPS_AccountTeam_Calculation accTeamObj1 = new Core_IPS_AccountTeam_Calculation();

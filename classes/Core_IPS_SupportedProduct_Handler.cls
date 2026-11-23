@@ -1,4 +1,4 @@
-Public without sharing class Core_IPS_SupportedProduct_Handler{
+Public class Core_IPS_SupportedProduct_Handler{
     
     
     /***************************************************************************************************
@@ -22,8 +22,6 @@ Modification Log :
 * Sugandha                   09/11/2017              Modified Iteration#-2 User story#-US72182
 ****************************************************************************************************/
     public static void updatedEOIStrue(List<Core_IPS_Supported_Product__c> newList, Map<Id,Core_IPS_Supported_Product__c> oldMap){
-    Map<Id,Core_IPS_Supported_Product__c> SupProdMap;
-    List<Core_IPS_Product__c> ProjProductList = new List<Core_IPS_Product__c>();
         //Iteration#-2 User story#-US72182 DeveloperName-Sugandha Description- added functionality for public product
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updatedEOIStrue'))
           return;
@@ -35,6 +33,10 @@ Modification Log :
             List<Asset> GlobalAssetLst = new List<Asset>();
             //End
             for(Core_IPS_Supported_Product__c SupProduct: newList){
+                /*system.debug('t1(((((((((((((('+SupProduct);
+                system.debug('t2(((((((((((((('+SupProduct.Core_EOIS__c);
+                system.debug('t3))))))))))))))'+oldMap.get(SupProduct.id).Core_EOIS__c);
+                system.debug('t4))))))))))))))'+oldMap.values());*/
                 if(oldMap.get(SupProduct.id).Core_EOIS__c <> SupProduct.Core_EOIS__c && SupProduct.Core_EOIS__c <> false){
                     SupProducts.add(SupProduct);
                     SupProductIds.add(SupProduct.id);
@@ -48,25 +50,18 @@ Modification Log :
             
             //Iteration#-2 User story#-US72182 DeveloperName-Sugandha Description- added functionality for public product 
             if(!setPublicSupProdIds.isEmpty())
-	    if(Asset.SObjectType.getDescribe().isAccessible()){   // FLS check already added - Adity
             for(Asset assetRec: [Select id,Status,Core_IPS_Global_Assets__c from Asset where Core_Supported_Product__r.Id IN:setPublicSupProdIds]){
                 Asset assetObj = new Asset(Id = assetRec.Id, Status = 'Inactive', UsageEndDate = Date.Today());
                 GlobalAssetLst.add(assetObj);
-		
             }
-	}
             if(!GlobalAssetLst.isEmpty()){   
                 Update GlobalAssetLst;
             }               
             //End
             
             if(SupProductIds <> null && SupProductIds.size()>0 /*&& SupProducts <> null && SupProducts.size()>0*/){
-                if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-                SupProdMap = new Map<Id,Core_IPS_Supported_Product__c>([Select id,Core_EOIS__c,(Select id,Core_MAP_PAR__c from Map_Par_Line_Items__r where Core_Status__c = 'ACTIVE'),(Select id,Status,UsageEndDate from Assets__r where Core_IPS_Project__c <> null) from Core_IPS_Supported_Product__c where id IN: SupProductIds]);
-                }
-		if(Core_IPS_Product__c.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
-                	ProjProductList = [Select id,Status__c from Core_IPS_Product__c where Core_Supported_Product__c IN: SupProducts];
-		}
+                Map<Id,Core_IPS_Supported_Product__c> SupProdMap = new Map<Id,Core_IPS_Supported_Product__c>([Select id,Core_EOIS__c,(Select id,Core_MAP_PAR__c from Map_Par_Line_Items__r where Core_Status__c = 'ACTIVE'),(Select id,Status,UsageEndDate from Assets__r where Core_IPS_Project__c <> null) from Core_IPS_Supported_Product__c where id IN: SupProductIds]);
+                List<Core_IPS_Product__c> ProjProductList = [Select id,Status__c from Core_IPS_Product__c where Core_Supported_Product__c IN: SupProducts];
                 List<Core_IPS_Product__c> ProjProducts = new List<Core_IPS_Product__c>();
                 List<Core_IPS_Map_Par_Line_Item__c> ProdAccessLineItems = new List<Core_IPS_Map_Par_Line_Item__c>();
                 
@@ -112,15 +107,12 @@ Modification Log :
 * Jayaprakash T              10/09/2015              Created
 ****************************************************************************************************/  
     public static void updatePlatformName(List<core_IPS_supported_product__c> newList){
-        List<core_IPS_supported_product__c> spList = new List<core_IPS_supported_product__c>();
         List<Id> supportedProductIdList = new List<Id>();
         for(core_IPS_supported_product__c sp:newList){
             supportedProductIdList.add(sp.id);
         }
-        if(core_IPS_supported_product__c.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-             spList = [select id, Core_Platform_Name__c from core_IPS_supported_product__c where id in:supportedProductIdList];
-        }
-            if(supportedProductIdList.size()>0){
+        List<core_IPS_supported_product__c> spList = [select id, Core_Platform_Name__c from core_IPS_supported_product__c where id in:supportedProductIdList];
+        if(supportedProductIdList.size()>0){
             Map<String,Set<String>> platformByProduct=Core_IPS_Caseutility.getPlatform(supportedProductIdList);
             String platform;
             if(platformByProduct!=null && platformByProduct.size()>0){
@@ -158,10 +150,9 @@ Modification Log :
 * Developer                   Date                   Description
 * ----------------------------------------------------------------------------                 
 * Kishore Chandolu              05/05/2016              Created
-* Yogesh Sharma                 19/03/2018              Added code for updating Search/Reporting tag Field on Asset from Supported Product.
+* Yogesh Sharma					19/03/2018				Added code for updating Search/Reporting tag Field on Asset from Supported Product.
 ****************************************************************************************************/  
     public static void updateAliasName(List<core_IPS_supported_product__c> newList) {
-        List<asset> asList = new List<asset>();
         List<asset> updateAssetList=new List<asset> ();
         List<id> supportedProductIdList = new List<id>();
         for(core_IPS_supported_product__c sp:newList){
@@ -169,10 +160,8 @@ Modification Log :
             //supportedProductIdList.add(sp.Core_Supported_Product_Alias__c);   
             
         }  
-        if(Asset.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
-            asList=[SELECT Core_IPS_Project_Name__c,Core_Alias__c,Core_IPS_Project__c,Core_Supported_Product__c,
+        List<asset> asList=[SELECT Core_IPS_Project_Name__c,Core_Alias__c,Core_IPS_Project__c,Core_Supported_Product__c,
                             Core_Support_Org_Name__c,Id,Core_Supported_Product__r.Core_Supported_Product_Alias__c,Core_IPS_Search_Reporting_Tag__c,Core_Supported_Product__r.Core_Supported_Product_Tag__c FROM Asset where Core_Supported_Product__c in:supportedProductIdList];
-        }
         Set<Id> dupecheck = new Set<Id>();
         if(asList.size()>0){
             for(asset a:asList){
@@ -254,7 +243,7 @@ Modification Log :
                 } 
             }
         }
-        catch(Exception e){ }
+        catch(Exception e){ System.debug('Core_IPS_AgentCaseClosureController-->RequestCaseClosure-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber());}
         
     }
    
@@ -290,78 +279,18 @@ Modification Log :
             }
             //adding all eligible asset in asset update list      
             if(!suppProdIds.isEmpty())
-                if(Asset.SObjectType.getDescribe().isAccessible()){ //FLS check already added - Aditya
             for(Asset assetRec : [Select id, Status from Asset where AccountId != NULL and Core_Supported_Product__r.Id IN :suppProdIds]){
                 Asset assetObj   = new Asset(Status = 'Inactive',Id = assetRec.Id);
                 assetUpdateLst.add(assetObj);
-            }
             }
             
             if(!assetUpdateLst.isEmpty()){
                 database.update(assetUpdateLst);
             }
         }
-        catch(Exception e){}
+        catch(Exception e){ System.debug('Core_IPS_AgentCaseClosureController-->RequestCaseClosure-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber());}
         
         
     }    
-    
-/***************************************************************************************************
-Version     : 1.0 
-Created Date: 25 Sept 2020
-Function    : This method executes when a supported product is Inserted
-Input Parameters: New List
-Output Parameters: None
-Transactions: After Insert
-Description: This method executes When supported product is Inserted:
-After Update: Creates a new MAP record when a new supported product is created/Inserted.
-Used in    : Core_IPS_SupportedProduct_Dispatcher
-Number of Queries Within this Method: 1(one per transaction)
-Number of Queries in Loop: 0
-Number of Queries from Called methods:0
-Number of times called: Once for trigger execution
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Sumukh                   25/09/2020           Created for User US747410 
-****************************************************************************************************/  
-public static void createNewMapRecord(List<core_IPS_supported_product__c> newList){
-    List<core_IPS_supported_product__c> spList = new List<core_IPS_supported_product__c>();
-    List<Id> supportedProductIdList = new List<Id>();
-    String supOrgName;
-    String supProdName;
-    Boolean isMapInserted = false;
-    for(core_IPS_supported_product__c sp:newList){
-      supportedProductIdList.add(sp.id);
-    }
-    if(core_IPS_supported_product__c.SObjectType.getDescribe().isAccessible()){ //FLS check added - Aditya
-         spList = [select id, Core_Platform_Name__c,Core_Product_Organization__c,Core_Flag_Status__c,Core_Supported_Product_Name__c,Core_Support_Org_Name__c, Core_Product__c, Core_Product__r.name from core_IPS_supported_product__c where id in:supportedProductIdList];
-    }
-        if(spList.size() > 0){
-        supOrgName = spList[0].Core_Support_Org_Name__c;
-        supProdName = spList[0].Core_Product__r.name;
-        if(supportedProductIdList.size()>0){    
-            Core_IPS_MAP_PAR__c map1  = new Core_IPS_MAP_PAR__c();
-            List<Core_IPS_Map_Par_Line_Item__c> mapLineItems = new List<Core_IPS_Map_Par_Line_Item__c>();        
-            List<Core_IPS_MAP_Product__c> coreMapPrdToInsert = new List<Core_IPS_MAP_Product__c>();       
-            map1.Core_Product_Organization__c = spList[0].Core_Product_Organization__c;       
-            map1.core_name__c = supProdName + '  [  ' + supOrgName + '  ]  ';
-            map1.RecordTypeId = schema.sobjecttype.Core_IPS_MAP_PAR__c.getrecordtypeinfosbyname().get('MAP').getRecordTypeId();
-            map1.Core_Submitter_Comments__c = 'test MAP';
-            
-            if(spList[0].Core_Flag_Status__c == 'Par Hidden' || spList[0].Core_Flag_Status__c == 'Approval Required' || spList[0].Core_Flag_Status__c == 'Auto Approve'){
-                insert map1;
-                isMapInserted = true;            
-            }        
-            if(isMapInserted == true){
-                Core_IPS_MAP_Product__c corePrd = new Core_IPS_MAP_Product__c();
-                corePrd.Core_MAP_PAR__c = map1.id;
-                corePrd.Core_MAP_Supported_Product__c = spList[0].id;            
-                insert corePrd;            
-            }
-         }
-     }
- }
-
     
 }

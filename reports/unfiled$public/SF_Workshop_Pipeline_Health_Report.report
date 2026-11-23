@@ -32,20 +32,12 @@
     </columns>
     <description>This report provides you information about the current status of your Pipeline Health.</description>
     <filter>
-        <booleanFilter>1 OR 2</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>TODAY</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

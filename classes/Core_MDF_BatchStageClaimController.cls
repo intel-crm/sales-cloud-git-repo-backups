@@ -49,9 +49,8 @@ Modified By:        Date:      Changes:
     @AuraEnabled
     public static Map<String,String> fetchRecordTypeMetaData(){
         Map<String,String> mapOfRecordTypes = new Map<String,String>();
-        //TWC3117-18333
-        for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt recTypeMetaData:[Select Id,Core_MDF_Activity_RecordType_txt__c,Core_MDF_Allocation_RecordType_txt__c,Core_MDF_Claim_RecordType_txt__c,Core_MDF_Enable_Fund_Reservation_chk__c 
-                                                                       from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt LIMIT 1000]){
+        for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Id,Core_MDF_Activity_RecordType_txt__c,Core_MDF_Allocation_RecordType_txt__c,Core_MDF_Claim_RecordType_txt__c,Core_MDF_Enable_Fund_Reservation_chk__c 
+                                                                       from Core_MDF_ClaimActAllocRecTypeMapping__mdt]){
                                                                            mapOfRecordTypes.put(recTypeMetaData.Core_MDF_Activity_RecordType_txt__c,recTypeMetaData.Core_MDF_Claim_RecordType_txt__c);  
                                                                        }
         return mapOfRecordTypes;   

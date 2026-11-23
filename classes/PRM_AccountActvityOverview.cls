@@ -37,9 +37,20 @@ public without sharing class PRM_AccountActvityOverview {
         String whereClause;
         //oldTrainingAmt = 0;
         //oldTrainingAmtpre = 0;
-    Decimal sumCurrent=0,sumPrevious=0;
+        Decimal sumCurrent=0,sumPrevious=0;
+        Decimal totalSalesCurrent;
+        Decimal totalSalesPrev;
     
         if(acc.RecordType.DeveloperName=='Core_Partner_Account_Group'){
+            for(PRM_Value_Exchange_Calculation__c rec : [SELECT Id,PRM_One_Partner_Id__c,PRM_Sales_Calculation_Group_Txt__c,PRM_Time_Period__c,PRM_Sales_Amount__c,PRM_Training_Credit_Points_Count_Nbr__c FROM PRM_Value_Exchange_Calculation__c WHERE PRM_One_Partner_Id__c  =:accID]){
+                if(rec.PRM_Time_Period__c == system.Label.PRM_Current_measurement_period){
+                    totalSalesCurrent = rec.PRM_Sales_Amount__c;
+                }
+                else if(rec.PRM_Time_Period__c == system.Label.PRM_Previous_Measurement_Period){
+                    totalSalesPrev = rec.PRM_Sales_Amount__c;
+                }
+            }
+            
             whereClause = 'where PRM_One_Partner_Id__c =:accID group by PRM_One_Partner_Id__c';
             for(PRM_Value_Exchange_Data__c vxData: [SELECT Id,PRM_Account_Id__c,PRM_TimePeriod_Nm__c,PRM_Training_Credit_Points_Report_Nbr__c,PRM_To_Dt__c, PRM_Sales_Amount_Nbr__c,PRM_Sales_Calculation_Group_Txt__c,PRM_From_Dt__c, PRM_Training_Credit_Points_Count_Nbr__c,PRM_Number_Of_Employees_Nbr__c from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID order by PRM_Training_Credit_Points_Count_Nbr__c ]){
                 
@@ -70,58 +81,17 @@ public without sharing class PRM_AccountActvityOverview {
                     }
                 }
                 if(str==system.Label.PRM_Current_measurement_period ){
-                   /* if(!trainingNewMap.containsKey(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c)){
-                        sumOfTrainingAmt = trainingNewMap.get(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c);
-                        oldTrainingAmt= oldTrainingAmt + trainingOldMap.get(vxData.PRM_TimePeriod_Nm__c+','+vxData.PRM_Account_Id__c);
-                        if (sumOfTrainingAmt == null && oldTrainingAmt != null) {
-                            totalAmt = oldTrainingAmt;
-                        }
-                        else if(oldTrainingAmt == null && sumOfTrainingAmt != null){
-                            totalAmt = sumOfTrainingAmt;
-                        }
-                        else if(oldTrainingAmt == null && sumOfTrainingAmt == null){
-                            totalAmt = 0;
-                        }
-                        else{
-                            totalAmt = sumOfTrainingAmt + oldTrainingAmt;
-                        }
-                        trainingNewMap.put(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c,totalAmt);
-                        totalTrainingCurrent= (decimal)trainingNewMap.get(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c);
-                        //Adding the logic in where condition to pick all the vx data where it is equal to accID instead of Uniquerecidset.
-                        //PRB10049494 Problem Ticket fix
-                      //  trainingCurrentList = [SELECT max(PRM_Training_Credit_Points_Count_Nbr__c) trainingDashCredi from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:system.Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
-                    }*/
                     trainingCurMap.put(vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);                                                       
                 }
                 if(str==system.Label.PRM_Previous_Measurement_Period){
-                   /* if(!trainingNewMap.containsKey(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c)){
-                        sumOfTrainingAmtpre = trainingNewMap.get(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c);
-                        oldTrainingAmtpre= oldTrainingAmtpre+trainingOldMap.get(vxData.PRM_TimePeriod_Nm__c+','+vxData.PRM_Account_Id__c);// key
-                        if (sumOfTrainingAmtpre == null && oldTrainingAmtpre != null) {
-                            totalAmtpre = oldTrainingAmtpre;
-                        }
-                        else if(oldTrainingAmtpre == null && sumOfTrainingAmtpre != null){
-                            totalAmtpre = sumOfTrainingAmtpre;
-                        }
-                        else if(oldTrainingAmtpre == null && sumOfTrainingAmtpre == null){
-                            totalAmtpre = 0;
-                        }
-                        else{
-                            totalAmtpre = sumOfTrainingAmtpre + oldTrainingAmtpre;
-                        }
-                        trainingNewMap.put(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c,totalAmtpre);
-                       // totalTrainingPrev= (decimal)trainingNewMap.get(vxData.PRM_TimePeriod_Nm__c+vxData.PRM_Account_Id__c);  
-                        
-                    }*/
                     trainingPrevMap.put(vxData.PRM_Account_Id__c,vxData.PRM_Training_Credit_Points_Count_Nbr__c);                                                       
                 }
             }
             //system.debug('uniqueRecIdsSetcuu-->'+uniqueRecIdsSet);
+            //dataList = totalSalesCurrent;
             dataList = [SELECT sum(PRM_Sales_Amount_Nbr__c) sales from PRM_Value_Exchange_Data__c WHERE Id IN:uniqueRecIdsSet and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
+            //dataListPrev = totalSalesPrev;
             dataListPrev = [SELECT sum(PRM_Sales_Amount_Nbr__c) salesprev from PRM_Value_Exchange_Data__c WHERE Id IN:uniqueRecIdsSet and PRM_TimePeriod_Nm__c=:Label.PRM_Previous_Measurement_Period group by PRM_One_Partner_Id__c];
-            //Adding the logic in where condition to pick all the vx data where it is equal to accID instead of Uniquerecidset.
-            //PRB10049494 Problem Ticket fix
-            //dataListTrained = [SELECT sum(PRM_Number_Of_Employees_Nbr__c) totalTrained,max(PRM_Number_Of_Employees_Nbr__c) totalTrainedMax from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Current_measurement_period group by PRM_One_Partner_Id__c];
             dataListTrainedSum = [SELECT max(PRM_Number_Of_Employees_Nbr__c) totalTrained,PRM_Account_Id__c from PRM_Value_Exchange_Data__c WHERE PRM_One_Partner_Id__c =:accID and PRM_TimePeriod_Nm__c=:Label.PRM_Previous_Measurement_Period group by PRM_One_Partner_Id__c,PRM_Account_Id__c]; //TWC727-571 - Utkarsh - Updated where condition in the query for field PRM_TimePeriod_Nm__c. Earlier we were fetching 'Total no of employee' data based on current time period but as part of the story we have to show it for previous time period.
             //totalApprovedOfferingList = getTotalApprovedOfferings(accID);//IPA2.0 TWC727-3228 
             //isPublishedStorefront = getPublishedStorefront(accId,acc.Core_IPA_One_Partner_Id__c);  //IPA2.0 TWC727-3228          
@@ -191,7 +161,7 @@ public without sharing class PRM_AccountActvityOverview {
         Decimal totalSalesDataPrevPeriod;
         //Decimal totalApprovedOffering;//IPA2.0 TWC727-3228
         Decimal totalTrainingDataDash;
-	    //Decimal	totalApprovedSolutions;//IPA2.0: US-TWC729-7976
+      //Decimal  totalApprovedSolutions;//IPA2.0: US-TWC729-7976
         List<Account> accounts = new List<Account>();
         HttpRequest httpReq = new HttpRequest();
         HttpResponse response = new HttpResponse();
@@ -299,13 +269,15 @@ public without sharing class PRM_AccountActvityOverview {
         }
         
         //Sales Calculation
-        for(AggregateResult vx: dataList){
+        totalSalesData = totalSalesCurrent;
+        totalSalesDataPrevPeriod = totalSalesPrev;
+        /*for(AggregateResult vx: dataList){
             totalSalesData =(Decimal)vx.get('sales');
         }
         
         for(AggregateResult vx: dataListPrev){
             totalSalesDataPrevPeriod =(Decimal)vx.get('salesprev');
-        }
+        }*/
         
         //Training Calculation
         for(AggregateResult vx: trainingValdataList){
@@ -619,58 +591,4 @@ public without sharing class PRM_AccountActvityOverview {
         public String stackTraceString {set;get;}
         public String typeName {set;get;}
     }
-    
-    //US TWC729-3538
-    /* public static List<AggregateResult> getTotalApprovedOfferings(Id accID){
-        String startDate = System.Label.PRM_Start_Date_for_AppOfferings;
-        String endDate = System.Label.PRM_EndDate_For_AppOfferings;
-        //Date startDateApp = Date.valueOf(startDate);
-        //Date endDateApp = Date.valueOf(endDate);
-        Account acc = [select id, name, Core_IPA_One_Partner_Id__c from Account where id=: accID];
-        List<AggregateResult> ApprovedOfferingList = new List<AggregateResult>();
-        List<PMP_OPID_MPI_Rel__c> mpirecords = new  List<PMP_OPID_MPI_Rel__c>();
-        if(acc.Core_IPA_One_Partner_Id__c != null){
-            mpirecords = [select id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,Is_Active__c from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c =:acc.Core_IPA_One_Partner_Id__c and Is_Active__c = true limit 1];
-        }
-        else{
-            mpirecords = [select id,PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,Is_Active__c from PMP_OPID_MPI_Rel__c where PMP_One_Partner_ID__c =:accId and Is_Active__c = true limit 1];
-        }
-
-
-            if(mpirecords!=null && !mpirecords.isEmpty()){
-                //List<PMP_Company__c> companyrecords = [SELECT id, Name, PMP_Partner_Inactive_Ind__c, PMP_Company_Lifecycle_Status_Nm__c, PMP_Partner_Benefit_Type__c from PMP_Company__c where id =: mpirecords[0].PMP_Marketing_Profile_Id__c and PMP_Is_Published_Ind__c=true];
-                if(mpirecords[0].PMP_Marketing_Profile_Id__c != null){
-                    ApprovedOfferingList = [Select Count(PMP_Company_Id__c) approvedOffer from PMP_Partner_Offering__c where  PMP_Partner_Offering_Lifecycle_Status_Nm__c =:'Approved' 
-                                            and PMP_Company_Id__c =:mpirecords[0].PMP_Marketing_Profile_Id__c
-                                            and PMP_Partner_Offering_Start_Dt__c <= TODAY 
-                                            and PMP_Partner_Offering_End_Dt__c >= TODAY];
-                }
-            }  
-        return ApprovedOfferingList;
-    }*/
-    //IPA2.0 TWC727-3228
-    //IPA2.0: US-TWC729-7976
-   /*public static List<AggregateResult> getTotalApprovedSolutions(Id accID){
-     List<AggregateResult> approvedSolutionsList = new List<AggregateResult>();
-     approvedSolutionsList=[select  count(PSS_Partner_Account_Id__c) approvedSolution from ArdiraSurvey__Survey_Result__c where PSS_Partner_Account_Id__c=: accID 
-                and PSS_Partner_Solution_Lifecycle_Status_Nm__c in ('Converted To MP Offerings', 'Approved') ];
-     return approvedSolutionsList;
-   }*/
-    /*public static boolean getPublishedStorefront(Id accId,id opidAcnt){
-       // Account acc = [select id, name, Core_IPA_One_Partner_Id__c from Account where id=: accID];
-        Boolean isPublished= false;
-        List<PMP_OPID_MPI_Rel__c> mpirecords = new  List<PMP_OPID_MPI_Rel__c>();
-        if(opidAcnt != null){ 
-            mpirecords=[select id,Name,PMP_Marketing_Profile_Id__r.name,PMP_Marketing_Profile_Id__c, Is_Active__c,PMP_Marketing_Profile_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Marketing_Profile_Id__r.PMP_Is_Published_Ind__c,  PMP_Storefront_Published_Copy__c, PMP_Storefront_Working_Copy__c, PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c, PMP_Marketing_Profile_Id__r.PMP_Benefit_Update_Ind__c, PMP_One_Partner_ID__c, PMP_One_Partner_ID__r.name  from PMP_OPID_MPI_Rel__c where Is_Active__c = true and PMP_Marketing_Profile_Id__r.PMP_Company_Lifecycle_Status_Nm__c ='Published' and PMP_Marketing_Profile_Id__r.PMP_Benefit_Update_Ind__c =false and (PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Enhanced' or PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Basic Profile') and PMP_One_Partner_ID__c =:opidAcnt];
-        }
-        else{
-            mpirecords=[select id,Name,PMP_Marketing_Profile_Id__r.name,PMP_Marketing_Profile_Id__c, Is_Active__c,PMP_Marketing_Profile_Id__r.PMP_Company_Lifecycle_Status_Nm__c,PMP_Marketing_Profile_Id__r.PMP_Is_Published_Ind__c,  PMP_Storefront_Published_Copy__c, PMP_Storefront_Working_Copy__c, PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c, PMP_Marketing_Profile_Id__r.PMP_Benefit_Update_Ind__c, PMP_One_Partner_ID__c, PMP_One_Partner_ID__r.name  from PMP_OPID_MPI_Rel__c where Is_Active__c = true and PMP_Marketing_Profile_Id__r.PMP_Company_Lifecycle_Status_Nm__c ='Published' and PMP_Marketing_Profile_Id__r.PMP_Benefit_Update_Ind__c =false and (PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Enhanced' or PMP_Marketing_Profile_Id__r.PMP_Partner_Benefit_Type__c = 'Solutions Marketplace Basic Profile') and PMP_One_Partner_ID__c =:accId];
-        }
-
-        if(mpirecords.size()>0){
-            isPublished=true; 
-        }
-        return isPublished;
-    }*/
-    //IPA2.0 TWC727-3228
 }

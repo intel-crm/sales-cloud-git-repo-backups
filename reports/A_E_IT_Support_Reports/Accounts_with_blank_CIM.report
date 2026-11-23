@@ -4,19 +4,13 @@
         <field>USERS.NAME</field>
     </columns>
     <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
-    <columns>
-        <field>Account.Core_CIM_ID__c</field>
-    </columns>
-    <columns>
         <field>ACCOUNT.NAME</field>
     </columns>
     <columns>
-        <field>CREATED</field>
+        <field>LAST_UPDATE</field>
     </columns>
     <columns>
-        <field>LAST_UPDATE</field>
+        <field>ACCOUNT_ID</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -38,7 +32,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Account.Core_MDF_Co_Marketing,Account.Core_Partner_Account_Group,Account.Inactive_Account,Account.Core_Direct_Account,Account.Rejected_Account,Account.Requested_Account,Account.End_Customer_Deal_Account</value>
+            <value>Account.Core_MDF_Co_Marketing,Account.Inactive_Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

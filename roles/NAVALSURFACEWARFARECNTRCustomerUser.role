@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>NAVAL SURFACE WARFARE CNTR Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>NAVALSURFACEWARFARECNTRCustomerManager</parentRole>
 </Role>

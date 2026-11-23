@@ -11,11 +11,7 @@ trigger Core_Opp_KPI on Core_Opportunity_KPI__c (after insert, after update,afte
     if(trigger.isDelete && trigger.isAfter && fullRefreshSetting.IsFullRefresh__c == false){
         handler.createKpiHistory(trigger.old, 'Delete');
     }
-    if(trigger.isUpdate && trigger.isAfter && fullRefreshSetting.IsFullRefresh__c == false){
-        handler.createKpiHistory(trigger.new, 'Update');
-    }
-  	/*
-  	 * Commented as per this story [TWC4767-2118]
+  
     if(trigger.isAfter){
         if(trigger.isInsert){
         if(mapFunctionalityNameTriggerExecution.containsKey('UpdateKPIRevenueOnDWG') && mapFunctionalityNameTriggerExecution.get('UpdateKPIRevenueOnDWG').Core_Active__c){
@@ -37,5 +33,5 @@ trigger Core_Opp_KPI on Core_Opportunity_KPI__c (after insert, after update,afte
             }
         }
         
-    }*/
+    }
 }

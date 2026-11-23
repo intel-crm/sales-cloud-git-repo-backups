@@ -68,13 +68,13 @@
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Team Tencent weekly update</name>
+    <name>Copy of Team weekly update</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -96,12 +96,12 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STAGE_NAME</sortColumn>
+    <sortColumn>OPPORTUNITY_NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-31</endDate>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

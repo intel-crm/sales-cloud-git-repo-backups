@@ -180,18 +180,6 @@
                     <default>false</default>
                     <label>Both</label>
                 </value>
-                <value>
-                    <fullName>Intel Account</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Intel Account</label>
-                </value>
-                <value>
-                    <fullName>Partner Account Group</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Partner Account Group</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -295,12 +283,12 @@
         <columns>NAME</columns>
         <columns>PRM_Benefit_Cd__c</columns>
         <columns>PRM_Channel_Program_Id__c</columns>
+        <columns>PRM_Account_Type_Nm__c</columns>
         <columns>PRM_Benefit_Type_Nm__c</columns>
         <columns>PRM_Benefit_Dsc__c</columns>
         <columns>UPDATEDBY_USER</columns>
         <columns>OWNER.LAST_NAME</columns>
         <columns>RECORDTYPE</columns>
-        <columns>PRM_Quantitative_Ind__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -355,6 +343,6 @@
         </picklistValues>
     </recordTypes>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

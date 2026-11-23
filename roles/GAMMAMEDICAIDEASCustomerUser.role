@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>GAMMA MEDICA - IDEAS Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>GAMMA MEDICA - IDEAS Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>GAMMAMEDICAIDEASCustomerManager</parentRole>
+</Role>

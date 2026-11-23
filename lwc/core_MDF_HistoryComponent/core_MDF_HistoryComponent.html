@@ -2,11 +2,7 @@
   <template if:true={haserror} >
     <div>{label.Core_MDF_ApplicationErrorMessage}</div>
   </template>
-  <template if:true={data}>
-
-      
-    <!-- <c-core_MDF_HistoryComponent permset={permSetNames}></c-core_MDF_HistoryComponent> -->
-
+  <template if:true={historyData}>
   <article
     class="slds-card slds-card_boundary related_list_card_border_top forceRelatedListCardDesktop"
   >
@@ -27,21 +23,7 @@
         <div class="actionsContainer"></div>
       </div>
     </div>
-
-
-    <div style="height: 300px;">
-      <lightning-datatable
-              key-field="id"
-              data={data}
-              columns={columns}
-              hide-checkbox-column>
-      </lightning-datatable>
-  </div>  
-
-
-
-
-    <!--<div if:true={historyData} class="slds-card__body">
+    <div if:true={historyData} class="slds-card__body">
       <div class="slds-table--header-fixed_container forceBaseListView forceRelatedListPreviewGrid tableHeaderTopBorder">
         <div class="slds-scrollable--y scrollbarHeight">
           <table
@@ -159,7 +141,7 @@
           </table>
         </div>
       </div>
-    </div>-->
+    </div>
   </article>
 </template>
     </template>

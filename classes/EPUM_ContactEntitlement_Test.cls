@@ -20,7 +20,7 @@ public class EPUM_ContactEntitlement_Test {
             newAccount.Name='Walmart';
             newAccount.BillingCity='City2';
             newAccount.BillingStreet='Street2';
-            newAccount.BillingCountry='USA';
+            newAccount.BillingCountry='India';
             newAccount.BillingPostalCode='Postal code';
             newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
             acc.add(newAccount);
@@ -30,7 +30,7 @@ public class EPUM_ContactEntitlement_Test {
             newAccount1.Name='Tesco';
             newAccount1.BillingCity='City1';
             newAccount1.BillingStreet='Street1';
-            newAccount1.BillingCountry='USA';
+            newAccount1.BillingCountry='India';
             newAccount1.BillingPostalCode='Postal code';
             newAccount1.Core_Account_Type__c='Cloud Service Provider (CSP)';
             acc.add(newAccount1);
@@ -48,12 +48,10 @@ public class EPUM_ContactEntitlement_Test {
             cont.Core_eRPM_Language_Code__c='Eng';
             cont.Core_IPA_PartnerRole__c = 'Service Provider';
             cont.Core_Login_Id__c = 'xyz';
-            cont.Mailing_Country_Region__c = 'USA';
-            cont.MailingCountry='India';
             con.add(cont);
             
             Contact cont1 = new Contact();  //Contact
-            cont1.RecordTypeId = recordTypeIdContact;
+            cont.RecordTypeId = recordTypeIdContact;
             cont1.AccountId=newAccount1.Id;
             cont1.lastName='jack';
             cont1.FirstName='william';
@@ -62,26 +60,10 @@ public class EPUM_ContactEntitlement_Test {
             cont1.Core_eRPM_Language_Code__c='Eng';
             cont1.Core_IPA_PartnerRole__c = 'Service Provider';
             cont1.Core_Login_Id__c = 'abc';
-            cont1.Mailing_Country_Region__c = 'USA';
-            cont1.MailingCountry='India';
             con.add(cont1);
-
-            Contact cont11 = new Contact();  //Contact
-            cont11.RecordTypeId = recordTypeIdContact;
-            cont11.AccountId=newAccount1.Id;
-            cont11.lastName='jack';
-            cont11.FirstName='williams';
-            cont11.email='jackwilliams@mailnator.com';
-            cont11.Core_Job_Function__c='Branch Manager';
-            cont11.Core_eRPM_Language_Code__c='Eng';
-            cont11.Core_IPA_PartnerRole__c = 'Service Provider';
-            cont11.Core_Login_Id__c = 'abc';
-            cont11.Mailing_Country_Region__c = 'USA';
-            cont11.MailingCountry='India';
-            con.add(cont11);
             
             Contact cont2 = new Contact();  //Contact
-            cont2.RecordTypeId = recordTypeIdContact;
+            cont.RecordTypeId = recordTypeIdContact;
             cont2.AccountId=acc[1].Id;
             cont2.lastName='Hill';
             cont2.FirstName='Tom';
@@ -90,12 +72,10 @@ public class EPUM_ContactEntitlement_Test {
             cont2.Core_eRPM_Language_Code__c='Eng';
             cont2.Core_IPA_PartnerRole__c = 'Service Provider';
             cont2.Core_Login_Id__c = 'efg';
-            cont2.Mailing_Country_Region__c = 'USA';
-            cont2.MailingCountry='India';
             con.add(cont2);
             
             Contact cont3 = new Contact();  //Contact
-            cont3.RecordTypeId = recordTypeIdContact;
+            cont.RecordTypeId = recordTypeIdContact;
             cont3.AccountId=acc[1].Id;
             cont3.lastName='Snow';
             cont3.FirstName='White';
@@ -104,12 +84,10 @@ public class EPUM_ContactEntitlement_Test {
             cont3.Core_eRPM_Language_Code__c='Eng';
             cont3.Core_IPA_PartnerRole__c = 'Service Provider';
             cont3.Core_Login_Id__c = 'def';
-            cont3.Mailing_Country_Region__c = 'USA';
-            cont3.MailingCountry='India';
             //con.add(cont3);
             
-            Contact cont4 = new Contact();  //Contact
-            cont4.RecordTypeId = recordTypeIdContact;
+       	    Contact cont4 = new Contact();  //Contact
+            cont.RecordTypeId = recordTypeIdContact;
             cont4.AccountId=acc[1].Id;
             cont4.lastName='Saul';
             cont4.FirstName='Goodman';
@@ -118,13 +96,11 @@ public class EPUM_ContactEntitlement_Test {
             cont4.Core_eRPM_Language_Code__c='Eng';
             cont4.Core_IPA_PartnerRole__c = 'Service Provider';
             cont4.Core_Login_Id__c = 'def';
-            cont4.Mailing_Country_Region__c = 'USA';
-            cont4.MailingCountry='India';
             con.add(cont4);
             
             insert con;
             
-            System.debug('Con::'+con);
+            
             
             
             ChannelProgram cp = new ChannelProgram(); //Channel Program
@@ -144,7 +120,6 @@ public class EPUM_ContactEntitlement_Test {
             acm1.PRM_Channel_Program_Id__c=cp.Id;
             acm1.PRM_Channel_Program_Level_Id__c=cpl.Id;
             acm1.PRM_Partner_Role__c='Service Provider';
-            acm1.PRM_Status_Reason_Txt__c='Test';
             insert acm1;
             System.debug('ACM Account ID'+acm1.PRM_Account_Id__c);
             
@@ -165,16 +140,6 @@ public class EPUM_ContactEntitlement_Test {
             cr2.PRM_InActive_Ind__c = false;
             cr2.PRM_Channel_Program_Id__c=cp.Id;
             crList.add(cr2);
-            
-            PRM_ContactRelationships__c cr3=new PRM_ContactRelationships__c();
-            cr3.Name=System.Label.PRM_Partner_Admin_Delegate;
-            cr3.PRM_Contact_Relationship_Cd__c='PRIMCONTDEL';
-            cr3.PRM_Default_Relationship_Ind__c = true;
-            cr3.PRM_Mandatory_Relationship_Ind__c = false;
-            cr3.PRM_InActive_Ind__c = false;
-            cr3.PRM_Channel_Program_Id__c=cp.Id;
-            crList.add(cr3);
-            
             insert crList;
             
             List<PRM_Account_Contact_Relationship__c> acrList = new List<PRM_Account_Contact_Relationship__c>();
@@ -185,7 +150,6 @@ public class EPUM_ContactEntitlement_Test {
             acctContRel.PRM_InActive_Ind__c=true;
             acctContRel.PRM_execute_trigger__c=true;
             acctContRel.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
-            acctContRel.PRM_Status_Reason_Txt__c = 'Test';
             acrList.add(acctContRel);
             
             PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
@@ -195,21 +159,7 @@ public class EPUM_ContactEntitlement_Test {
             acctContRel1.PRM_InActive_Ind__c=false;
             acctContRel1.PRM_execute_trigger__c=true;
             acctContRel1.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
-            acctContRel1.PRM_Status_Reason_Txt__c = 'Test';
             acrList.add(acctContRel1);
-
-             PRM_Account_Contact_Relationship__c acctContRel2=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-            acctContRel2.PRM_Account_Id__c=newAccount1.Id;
-            acctContRel2.PRM_Contact_Id__c=cont4.Id;
-            acctContRel2.PRM_Relationship_Id__c=crList[2].Id;
-            acctContRel2.PRM_InActive_Ind__c=false;
-            acctContRel2.PRM_execute_trigger__c=true;
-            acctContRel2.PRM_Status_Nm__c = System.Label.PRM_ACR_Status;
-            acctContRel2.PRM_Status_Reason_Txt__c = 'Test';
-            acrList.add(acctContRel2);
-            
- 
-            
             /*
 PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
 acctContRel1.PRM_Account_Id__c=acc[0].Id;
@@ -273,12 +223,11 @@ acrList.add(acctContRel3);*/
             //insert aba;
             
             Core_ERPM_Engagement__c ee = new Core_ERPM_Engagement__c();//ERPM Engagement
-            ee.Name = 'Partner File Transfer';
-            ee.Core_Technical_Engagement_Code__c = 'PFT';
+            ee.Name = 'Intel Partner Alliance';
+            ee.Core_Technical_Engagement_Code__c = 'Intel_Partner_Alliance';
             ee.Core_Engagement_Type__c = 'SEC';
-            ee.Core_IsActive__c=true;
             insert ee;
-
+            
             List<Core_Entitlement__c> entList = new List<Core_Entitlement__c>();
             Core_Entitlement__c ed=new Core_Entitlement__c(); //Entitlement
             ed.Name='Employee';
@@ -287,7 +236,6 @@ acrList.add(acctContRel3);*/
             ed.Core_Category__c='Intel Partner Alliance (IPA)';
             ed.Core_Sub_Category__c='Value Exchange';
             ed.Core_Help_Text__c='Basic access';
-            ed.Core_IsActive__c=true;
             
             entList.add(ed);
             
@@ -296,18 +244,12 @@ acrList.add(acctContRel3);*/
             ed1.Core_Display_Name__c='Partner Admin Delegate';
             ed1.Core_ERPM_Engagement_Id__c=ee.id;
             ed1.Core_Help_Text__c = 'This is example Help Text';
-            ed1.Core_Category__c='Intel Partner Alliance (IPA)';
-            ed1.Core_IsActive__c=true;
-            ed1.Core_Help_Text__c='Basic access';
             entList.add(ed1);
             
             Core_Entitlement__c ed2=new Core_Entitlement__c(); //Entitlement
             ed2.Name='Partner Admin';
             ed2.Core_Display_Name__c='Partner Admin';
             ed2.Core_ERPM_Engagement_Id__c=ee.id;
-            ed2.Core_Category__c='Intel Partner Alliance (IPA)';
-            ed2.Core_IsActive__c=true;
-            ed2.Core_Help_Text__c='Basic access';
             entList.add(ed2);
             
             
@@ -315,9 +257,6 @@ acrList.add(acctContRel3);*/
             ed3.Name='Points View';
             ed3.Core_Display_Name__c='Points View';
             ed3.Core_ERPM_Engagement_Id__c=ee.id;
-            ed3.Core_Category__c='Intel Partner Alliance (IPA)';
-            ed3.Core_IsActive__c=true;
-            ed3.Core_Help_Text__c='Basic access';
             entList.add(ed3);
             insert entList;
             
@@ -340,8 +279,57 @@ acrList.add(acctContRel3);*/
             em1.PRM_IPA_Partner_Role_Nm__c='Service Provider';
             emList.add(em1);
             insert emList;
+            
+            List<Core_Contact_Entitlement__c> insertCEList = new List<Core_Contact_Entitlement__c>();
+            Core_Contact_Entitlement__c cce=new Core_Contact_Entitlement__c(); // Contact Entitlement
+            cce.Core_Contact_Id__c=cont1.Id;
+            cce.Core_Entitlement_Id__c = ed.Id;
+            cce.Core_Status__c='Complete';
+            cce.Core_Selected__c = false;
+            //cce.Core_Source__c = 'Entitlement';
+            insertCEList.add(cce);
+            
+            Core_Contact_Entitlement__c cce1=new Core_Contact_Entitlement__c(); // Contact Entitlement
+            cce1.Core_Contact_Id__c=cont1.Id;
+            cce1.Core_Entitlement_Id__c = ed1.Id;
+            cce1.Core_Selected__c = true;
+            cce1.Core_Status__c='Complete';
+            insertCEList.add(cce1);
+            
+            Core_Contact_Entitlement__c cce2=new Core_Contact_Entitlement__c(); // Contact Entitlement
+            cce2.Core_Contact_Id__c=cont1.Id;
+            cce2.Core_Entitlement_Id__c = ed2.Id;
+            cce2.Core_Selected__c = false;
+            cce2.Core_Status__c='Complete';
+            insertCEList.add(cce2);
+            
+            Core_Contact_Entitlement__c cce33=new Core_Contact_Entitlement__c(); // Contact Entitlement
+            cce33.Core_Contact_Id__c=cont4.Id;
+            cce33.Core_Entitlement_Id__c = ed.Id;
+            cce33.Core_Selected__c = true;
+            cce33.Core_Status__c='Complete';
+            insertCEList.add(cce33);
+            
+            Core_Contact_Entitlement__c cce11=new Core_Contact_Entitlement__c(); // Contact Entitlement
+            cce11.Core_Contact_Id__c=cont4.Id;
+            cce11.Core_Entitlement_Id__c = ed3.Id;
+            cce11.Core_Selected__c = true;
+            cce11.Core_Status__c='Complete';
+            insertCEList.add(cce11);
+            
+            
+            insert insertCEList;
+            System.debug('insertCEList-->'+insertCEList);
+            Core_Entitlement_SubCategory_HelpText__c cate = new Core_Entitlement_SubCategory_HelpText__c();
+            cate.Name ='Test1';
+            cate.Core_Help_Text__c = 'Test help';
+            cate.Core_SubCategory_Name__c = 'Test';
+            insert cate;
+            
             Profile partnerProfile = [SELECT Id FROM Profile WHERE Name='Partner' and userType='PowerPartner' LIMIT 1];
-             User user = new User(Alias = 'part', 
+            
+            System.assertEquals(partnerProfile !=  null,true);
+            User user = new User(Alias = 'part', 
                                  Email='partnerTest@mailnator.com', 
                                  EmailEncodingKey='UTF-8',
                                  LastName='UnitTestItAdmin',
@@ -369,64 +357,13 @@ acrList.add(acctContRel3);*/
                                  TimeZoneSidKey='America/Los_Angeles',
                                  portalRole ='manager',
                                  UserName='adminTest'+Crypto.getRandomLong()+'@intel.com',
-                                 ContactId = cont.Id
+                                 ContactId = cont2.Id
                                  
                                  //Core_IPA_One_Partner_Id__c=testIntelAccount1.id
                                  
                                  
                                 );
             insert user1;
-            
-            
-            List<Core_Contact_Entitlement__c> insertCEList = new List<Core_Contact_Entitlement__c>();
-            Core_Contact_Entitlement__c cce=new Core_Contact_Entitlement__c(); // Contact Entitlement
-            cce.Core_Contact_Id__c=cont1.Id;
-            cce.Core_Entitlement_Id__c = ed.Id;
-            cce.Core_Status__c='Complete';
-            cce.Core_Selected__c = false;
-            //cce.Core_Source__c = 'Entitlement';
-            insertCEList.add(cce);
-            
-            Core_Contact_Entitlement__c cce1=new Core_Contact_Entitlement__c(); // Contact Entitlement
-            cce1.Core_Contact_Id__c=cont1.Id;
-            cce1.Core_Entitlement_Id__c = ed1.Id;
-            cce1.Core_Selected__c = true;
-            cce1.Core_Status__c='Complete';
-            insertCEList.add(cce1);
-            
-            Core_Contact_Entitlement__c cce2=new Core_Contact_Entitlement__c(); // Contact Entitlement
-            cce2.Core_Contact_Id__c=cont1.Id;
-            cce2.Core_Entitlement_Id__c = ed2.Id;
-            cce2.Core_Selected__c = false;
-            cce2.Core_Status__c='Complete';
-            insertCEList.add(cce2);
-            
-            Core_Contact_Entitlement__c cce33=new Core_Contact_Entitlement__c(); // Contact Entitlement
-            cce33.Core_Contact_Id__c=cont1.Id;
-            cce33.Core_Entitlement_Id__c = ed.Id;
-            cce33.Core_Selected__c = true;
-            cce33.Core_Status__c='Complete';
-            insertCEList.add(cce33);
-            
-            Core_Contact_Entitlement__c cce11=new Core_Contact_Entitlement__c(); // Contact Entitlement
-            cce11.Core_Contact_Id__c=cont1.Id;
-            cce11.Core_Entitlement_Id__c = ed3.Id;
-            cce11.Core_Selected__c = true;
-            cce11.Core_Status__c='Pending';
-            insertCEList.add(cce11);
-            
-            
-            insert insertCEList;
-            System.debug('insertCEList-->'+insertCEList);
-            Core_Entitlement_SubCategory_HelpText__c cate = new Core_Entitlement_SubCategory_HelpText__c();
-            cate.Name ='Test1';
-            cate.Core_Help_Text__c = 'Test help';
-            cate.Core_SubCategory_Name__c = 'Test';
-            insert cate;
-            
-            
-            System.assertEquals(partnerProfile !=  null,true);
-           
             Test.stopTest();
             user u= [Select accountID,Core_IPA_One_Partner_Id__c from user where id=:user.id];
             system.debug('User Data'+ u );
@@ -434,13 +371,13 @@ acrList.add(acctContRel3);*/
             System.assertEquals(u.accountID !=  null,true);
         }
         catch(Exception e){
-            System.debug('Exception '+e.getMessage());
+            
         }
     }
     private static testmethod void testfetchContactEntitlements(){
         
         contact testCont = [Select Id from Contact where email='jackwilliam@mailnator.com' limit 1];
-        user usr = [Select Id from user where ContactID =:testCont.Id limit 1];
+        user usr = [Select Id from user where ContactId=:testCont.ID limit 1];
         String sContactIdStr = testCont.Id;
         
         System.runAs(usr){
@@ -554,7 +491,7 @@ acrList.add(acctContRel3);*/
     }
     private static testmethod void testgetRoles(){
         contact testCont = [Select Id from Contact where email='jackwilliam@mailnator.com' limit 1];
-        user usr = [Select Id,Core_IPA_One_Partner_Id__c,AccountId from user where ContactID =:testCont.Id limit 1];
+        user usr = [Select Id,Core_IPA_One_Partner_Id__c,AccountId from user where ContactId=:testCont.ID limit 1];
         System.Debug('One Partner ID'+ usr);
         String sContactIdStr = testCont.Id;
         Test.startTest();
@@ -613,51 +550,5 @@ acrList.add(acctContRel3);*/
         }
         
     }
-    
-    private static void test_updateACR_coverage() {
-    // Arrange - locate existing Contact and related ACR (created by test setup)
-    Contact testCont = [SELECT Id, AccountId FROM Contact WHERE Email = 'jackwilliams@mailnator.com' LIMIT 1];
-        
-    
-    // Ensure there is at least one PRM_Account_Contact_Relationship__c (ACR) referencing this contact (created in setup)
-    PRM_Account_Contact_Relationship__c acr = [SELECT Id, PRM_Account_Id__c, PRM_Contact_Id__c, PRM_InActive_Ind__c, PRM_execute_trigger__c
-                                               FROM PRM_Account_Contact_Relationship__c
-                                               WHERE PRM_Contact_Id__c = :testCont.Id
-                                               LIMIT 1];
-    // Sanity asserts to ensure test data exists
-    System.assertNotEquals(null, acr, 'ACR should exist for test contact');
- 
-    // Act - Call the method under test
-    Test.startTest();
-        // If the method is instance or requires certain context, adapt the call accordingly.
-        // This call assumes updateACR is a public static method on EPUM_ContactEntitlement_Util that accepts (Id contactId, Boolean inactivateFlag) or similar.
-        // If signature differs, adjust the parameters to match.
-        try {
-            // Common signatures to try — uncomment the one that matches your implementation:
-            // EPUM_ContactEntitlement_Util.updateACR(acr.Id); // if method accepts ACR Id
-            EPUM_ContactEntitlement_Util.updateACR(testCont); // if method accepts Contact Id
-            // EPUM_ContactEntitlement_Util.updateACR(acr, true); // if method accepts an sObject + flag
-            // Replace the next line with the correct signature:
-            //EPUM_ContactEntitlement_Util.updateACR(acr.Id);
-        } catch (Exception e) {
-            // If updateACR throws in some flows, fail the test with the exception details
-            System.debug('updateACR threw: ' + e.getMessage());
-            System.assert(false, 'updateACR should not throw: ' + e.getMessage());
-        }
-    Test.stopTest();
- 
-    // Assert - verify expected side-effects. Example: ACR status changed or Account fields updated.
-    // Adjust assertions to match the actual behavior of updateACR.
-    PRM_Account_Contact_Relationship__c acrAfter = [SELECT Id, PRM_InActive_Ind__c, PRM_Status_Nm__c FROM PRM_Account_Contact_Relationship__c WHERE Id = :acr.Id LIMIT 1];
-    // Example assertions (adapt to actual expected changes):
-    // System.assertEquals(true, acrAfter.PRM_InActive_Ind__c, 'ACR should be marked inactive after updateACR');
-    // Or if updateACR sets status:
-    // System.assertEquals('ACR Inactivated', acrAfter.PRM_Status_Nm__c);
- 
-    // If updateACR updates Account fields, validate those as well:
-    // Account acc = [SELECT Id, Core_PMP_Membership_Change_Ind__c, Core_B2B_Entitlement__c FROM Account WHERE Id = :acrAfter.PRM_Account_Id__c LIMIT 1];
-    // System.assertEquals(true, acc.Core_PMP_Membership_Change_Ind__c);
-}
-
     
 }

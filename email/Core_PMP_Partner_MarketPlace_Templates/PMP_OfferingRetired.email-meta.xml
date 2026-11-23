@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Email sent when offering is retired</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_OfferingRetired</name>
+    <style>none</style>
+    <subject>Approved &amp; Due to Publish: Your  offering</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

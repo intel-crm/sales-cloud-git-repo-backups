@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Thales Global Services Sas Partner User</description>
+    <description>THALES GROUP Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Thales Global Services Sas Partner User</name>
+    <name>THALES GROUP Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12077628_Kamila_Ghersi</parentRole>
+    <parentRole>THALESGROUPPartnerManager</parentRole>
 </Role>

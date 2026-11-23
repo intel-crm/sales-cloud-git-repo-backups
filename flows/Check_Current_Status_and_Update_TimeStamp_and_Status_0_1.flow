@@ -154,43 +154,6 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Check_if_current_status_rejected_by_AE_or_Sales</name>
-        <label>Check if current status rejected by AE or Sales</label>
-        <locationX>1709</locationX>
-        <locationY>672</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>IF_Current_Status_is_AE_Rejected</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>c_AE_RejectedStatus</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record.Current_Status__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Updated_AE_Rejected_TimeStamp</targetReference>
-            </connector>
-            <label>IF Current Status is AE Rejected</label>
-        </rules>
-        <rules>
-            <name>IF_Current_Status_is_Sales_Rejected</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>c_InsidesSalesRejected</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record.Current_Status__c</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Updated_Sales_Rejected_TimeStamp</targetReference>
-            </connector>
-            <label>IF Current Status is Sales Rejected</label>
-        </rules>
-    </decisions>
-    <decisions>
         <name>Check_the_current_status_value_is_changed</name>
         <label>Check the current status value is changed?</label>
         <locationX>751</locationX>
@@ -350,8 +313,8 @@
             <label>Check if current status changed from pending to approved</label>
         </rules>
         <rules>
-            <name>If_CurrentStatus_changed_from_AE_Pending_to_Sales_Pending_or_Sales_Pending_to_AE</name>
-            <conditionLogic>(1 AND 2) OR (3 AND 4)</conditionLogic>
+            <name>If_CurrentStatus_changed_from_AE_Pending_to_Sales_Pending</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
                 <leftValueReference>c_AE_PendingStatus</leftValueReference>
                 <operator>EqualTo</operator>
@@ -361,20 +324,6 @@
             </conditions>
             <conditions>
                 <leftValueReference>c_InsideSalesPendingStatus</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record.Current_Status__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>c_InsideSalesPendingStatus</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Record__Prior.Current_Status__c</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>c_AE_PendingStatus</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>$Record.Current_Status__c</elementReference>
@@ -384,7 +333,7 @@
                 <targetReference>check_who_has_updated_AE_or_Sales</targetReference>
             </connector>
             <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-            <label>If CurrentStatus changed from AE_Pending to Sales Pending or Sales Pending to AE Pending</label>
+            <label>If CurrentStatus changed from AE_Pending to Sales Pending</label>
         </rules>
         <rules>
             <name>Check_if_current_status_changed_from_pending_to_rejected</name>
@@ -680,6 +629,12 @@
                 <stringValue>Approved</stringValue>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>Pending_TimeStamp__c</field>
+            <value>
+                <elementReference>CurrentTimeStamp</elementReference>
+            </value>
+        </inputAssignments>
         <inputReference>$Record</inputReference>
     </recordUpdates>
     <recordUpdates>
@@ -713,11 +668,8 @@
     <recordUpdates>
         <name>Update_on_Current_Status_is_Rejected</name>
         <label>Update on Current Status is Rejected</label>
-        <locationX>1443</locationX>
-        <locationY>531</locationY>
-        <connector>
-            <targetReference>Check_if_current_status_rejected_by_AE_or_Sales</targetReference>
-        </connector>
+        <locationX>1510</locationX>
+        <locationY>538</locationY>
         <inputAssignments>
             <field>ActualApprover__c</field>
             <value>
@@ -756,15 +708,6 @@
         <label>Update only the status field to Rejected</label>
         <locationX>1645</locationX>
         <locationY>395</locationY>
-        <connector>
-            <targetReference>Check_if_current_status_rejected_by_AE_or_Sales</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>Approved_Timestamp__c</field>
-            <value>
-                <elementReference>CurrentTimeStamp</elementReference>
-            </value>
-        </inputAssignments>
         <inputAssignments>
             <field>PRM_Status__c</field>
             <value>
@@ -776,7 +719,7 @@
     <recordUpdates>
         <name>Update_pending_timestamp</name>
         <label>Update pending timestamp</label>
-        <locationX>663</locationX>
+        <locationX>665</locationX>
         <locationY>618</locationY>
         <connector>
             <targetReference>check_who_has_updated_AE_or_Sales</targetReference>
@@ -838,35 +781,9 @@
         <name>Updated_AE_Approved_Or_Rejected_TimeStamp</name>
         <label>Updated AE Approved Or Rejected TimeStamp</label>
         <locationX>168</locationX>
-        <locationY>820</locationY>
+        <locationY>821</locationY>
         <inputAssignments>
             <field>AE_ApprovedRejectedTimeStamp__c</field>
-            <value>
-                <elementReference>CurrentTimeStamp</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Updated_AE_Rejected_TimeStamp</name>
-        <label>Updated AE Rejected TimeStamp</label>
-        <locationX>1513</locationX>
-        <locationY>943</locationY>
-        <inputAssignments>
-            <field>AE_ApprovedRejectedTimeStamp__c</field>
-            <value>
-                <elementReference>CurrentTimeStamp</elementReference>
-            </value>
-        </inputAssignments>
-        <inputReference>$Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Updated_Sales_Rejected_TimeStamp</name>
-        <label>Updated Sales Rejected TimeStamp</label>
-        <locationX>1916</locationX>
-        <locationY>932</locationY>
-        <inputAssignments>
-            <field>Sales_ApprovedRejectedTimeStamp__c</field>
             <value>
                 <elementReference>CurrentTimeStamp</elementReference>
             </value>

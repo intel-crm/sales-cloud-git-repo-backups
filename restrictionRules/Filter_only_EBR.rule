@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RestrictionRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <enforcementType>Restrict</enforcementType>
+    <masterLabel>Filter only EBR</masterLabel>
+    <recordFilter>Is_Entitlement_Record__c=false</recordFilter>
+    <targetEntity>PRM_Registration_Request__c</targetEntity>
+    <userCriteria>$User.UserRoleId=$User.Username</userCriteria>
+    <version>1</version>
+</RestrictionRule>

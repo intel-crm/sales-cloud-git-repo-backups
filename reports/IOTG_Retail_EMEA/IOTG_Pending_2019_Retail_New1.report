@@ -36,7 +36,7 @@
     </columns>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Short_Name_Old__c</column>
+            <column>Core_BU_Short_Name__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
             <value>IOTG</value>
@@ -48,7 +48,7 @@
     </crossFilters>
     <crossFilters>
         <criteriaItems>
-            <column>Core_BU_Product_Segment_Old__c</column>
+            <column>Core_BU_Product_Segment__c</column>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>
             <value>IoT-RBHE</value>
@@ -117,6 +117,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

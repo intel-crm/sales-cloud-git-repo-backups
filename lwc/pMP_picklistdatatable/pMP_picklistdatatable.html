@@ -1,0 +1,37 @@
+<template>
+    <template if:true={showEditForm}>
+        <lightning-record-edit-form class="DatatablePicklist" object-api-name={targetObjectApiName} record-id={context}>
+            <div class="slds-grid slds-nowrap slds-m-around_large edit_hover_class_parent">
+                <div class="slds-col slds-size_11-of-12">  
+                    <lightning-input-field field-name={targetFieldApiName} class="picklistField" variant="label-hidden" onchange={handleChange}></lightning-input-field>
+                </div> 
+                <template if:true={enableInlineEdit}>
+                    <div class="slds-col slds-size_1-of-12 edit_hover_class"> 
+                        <lightning-button variant="base" onclick={handleUndoClick} icon-name="utility:undo" class="slds-m-left_x-small"></lightning-button>
+                    </div> 
+                </template>       
+            </div>
+            
+        </lightning-record-edit-form>
+    </template>
+
+    <template if:true={showViewForm}>
+        <lightning-record-view-form class="DatatablePicklist" object-api-name={targetObjectApiName} record-id={context}>
+            <div class="slds-grid slds-nowrap slds-m-around_large edit_hover_class_parent">
+                <div class="slds-col slds-size_11-of-12">  
+                  <lightning-output-field field-name={targetFieldApiName} class="picklistField" variant="label-hidden"></lightning-output-field>
+                  
+                </div> 
+                <template if:true={enableInlineEdit}>
+                    <div class="slds-col slds-size_1-of-12 edit_hover_class">                       
+                      <lightning-button-icon
+                        icon-name="utility:edit"
+                        variant="bare"
+                        onclick={handleClick}>
+                    </lightning-button-icon>
+                    </div>  
+                </template> 
+            </div>
+        </lightning-record-view-form>
+    </template> 
+</template>

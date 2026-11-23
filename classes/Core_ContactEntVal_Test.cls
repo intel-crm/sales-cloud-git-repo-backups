@@ -35,7 +35,7 @@ public class Core_ContactEntVal_Test {
         insert testAccount;
         System.assert(true,testAccount.Core_CNDA_Number__c != null);
         
-        Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234@testing.com.testsetup',MailingCountry='India',
+        Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234@testing.com.testsetup',
                                           AccountId=testAccount.id,Core_Set_ERPM_Status_Bypass__c=true,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
         insert testContact;
         Account testAccount2 = new Account(Name='testAccountSetup1', Core_Sales_Group__c='Global Accounts',
@@ -45,7 +45,7 @@ public class Core_ContactEntVal_Test {
         insert testAccount2;
         System.assert(true,testAccount2.Core_CNDA_Number__c != null);
         
-        Contact testContact2 = new Contact(FirstName='John', LastName='Petrick', Email='johnpetrick@testing.com.testsetup2',MailingCountry='India',
+        Contact testContact2 = new Contact(FirstName='John', LastName='Petrick', Email='johnpetrick@testing.com.testsetup2',
                                            AccountId=testAccount.id,Core_Set_ERPM_Status_Bypass__c=true,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
         insert testContact2;
         System.assert(true,testContact.Core_Personal_Email_Indicator__c != null);
@@ -180,14 +180,14 @@ public class Core_ContactEntVal_Test {
             
             
             
-            Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                               AccountId=testAccount.Id,Core_Local_First_Name__c='david',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
             
             //insert testContact;
             lsttestContact.add(testContact);
             system.assertequals(testContact.LastName,'testLastName','Last name not matching as testLastName');
             
-            Contact testContact1 = new Contact(FirstName='阿昌', LastName='testLastName', Email='test14x3@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+            Contact testContact1 = new Contact(FirstName='阿昌', LastName='testLastName', Email='test14x3@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                                AccountId=testAccount1.Id,Core_Local_First_Name__c='',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
             
             lsttestContact.add(testContact1);
@@ -388,15 +388,15 @@ public class Core_ContactEntVal_Test {
                                            BillingStreet='1234 tester St', BillingCity='testCity', BillingState='OR',Core_Alternate_Language_Name__c='test',
                                            BillingCountry='USA', BillingPostalCode='123457',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_B2B_Entitlement__c=true);
         insert testAccount2;
-        Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='f',Core_English_Only_Last_Name__c='f',MailingCountry='India',
+        Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='f',Core_English_Only_Last_Name__c='f',
                                           AccountId=testAccount.Id,Core_Local_First_Name__c='david',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
         
         lsttestContact.add(testContact);
-        Contact testContact1 = new Contact(FirstName='阿昌', LastName='testLastName', Email='test14x3@testing.com.test',Core_English_Only_First_Name__c='f',Core_English_Only_Last_Name__c='f',MailingCountry='India',
+        Contact testContact1 = new Contact(FirstName='阿昌', LastName='testLastName', Email='test14x3@testing.com.test',Core_English_Only_First_Name__c='f',Core_English_Only_Last_Name__c='f',
                                            AccountId=testAccount1.Id,Core_Local_First_Name__c='',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
         
         lsttestContact.add(testContact1);
-        Contact testContact2 = new Contact(FirstName='阿昌', LastName='testLastName2', Email='test12334@testing.com.test',Core_English_Only_First_Name__c='TestLastName',Core_English_Only_Last_Name__c='TestFirstName',MailingCountry='India',
+        Contact testContact2 = new Contact(FirstName='阿昌', LastName='testLastName2', Email='test12334@testing.com.test',Core_English_Only_First_Name__c='TestLastName',Core_English_Only_Last_Name__c='TestFirstName',
                                            AccountId=testAccount.Id,Core_Local_First_Name__c='david',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
         
         lsttestContact.add(testContact2);
@@ -422,7 +422,7 @@ cev1.Core_Account_Owner_Role__c=true;
 cev1.Core_CIM_ID__c=true;
 cev1.Core_CNDA__c=false;
 cev1.Core_Contact_English_Only_Name__c=true;
-cev1.Core_Entitlement_Id__c='{!Environment.Sales Enablement Portal}';
+cev1.Core_Entitlement_Id__c='a2W1J0000019iVFUAY';
 cev1.Core_Entitlement_Name__c='Sales Enablement Portal';
 cev1.Core_ODM_Checked__c=false;
 cev1.Core_ODM_Unchecked__c=false;
@@ -625,7 +625,7 @@ Database.insert(contEntValidation);*/
             Core_Trigger_Executions__c executions1 = new Core_Trigger_Executions__c(Name='UpdateJobFunctionAndCode',Core_Active__c=true,Core_Class_Name__c='Core_ContactHandler',Core_Description__c='testcase',Core_Object__c='Contact',Core_Trigger_Events__c='Before Insert Before Update');
             insert executions1;
             
-            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_English_Only_First_Name__c='test',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test123@testing.com.test',Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_English_Only_First_Name__c='test',
                                               AccountId=testAccount.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_IPS_Active__c =false,Core_Local_First_Name__c='test123',Core_Contact_B2B_Indicator__c=true);
             
             insert testContact;
@@ -755,7 +755,7 @@ Database.insert(contEntValidation);*/
             
             Core_Trigger_Executions__c executions01 = new Core_Trigger_Executions__c(Name='UpdateJobFunctionAndCode',Core_Active__c=true,Core_Class_Name__c='Core_ContactHandler',Core_Description__c='testcase',Core_Object__c='Contact',Core_Trigger_Events__c='Before Insert Before Update');
             insert executions01;
-            Contact testContact = new Contact(FirstName='test', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='test', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                               AccountId=testAccount.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_IPS_Active__c =false,Core_Contact_B2B_Indicator__c=false,Core_Local_First_Name__c='',Core_Personal_Email_Indicator__c=true);
             insert testContact;
             system.assertequals(testContact.LastName,'testLastName','Last name not matching as testLastname');
@@ -868,11 +868,11 @@ Database.insert(contEntValidation);*/
             acc.add(testAccount1); 
             
             insert acc;
-            Contact testContact = new Contact(FirstName='阿昌', LastName='阿昌', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+            Contact testContact = new Contact(FirstName='阿昌', LastName='阿昌', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                               AccountId=testAccount.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_Local_First_Name__c='david',Core_Local_Last_Name__c='geetha',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false);
             
             lsttestContact.add(testContact);
-            Contact testContactA = new Contact(FirstName='阿昌', LastName='阿昌', Email='test1238@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+            Contact testContactA = new Contact(FirstName='阿昌', LastName='阿昌', Email='test1238@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                               AccountId=testAccount1.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_Local_First_Name__c='david',Core_Local_Last_Name__c='geetha',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false);
             
             lsttestContact.add(testContactA);
@@ -1058,21 +1058,21 @@ system.assertequals(testAccount3.Name,'testAccount123');*/
         insert testAccountList;
         
         List<Contact> testContactList = new List<Contact>();
-        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test123@testing.com.test',MailingCountry='India',
+        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test123@testing.com.test',
                                         AccountId=testAccountList[0].Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true));
         /*Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='爱', Email='test123@testing.com.test',
 AccountId=testAccount.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true);
 insert testContact1;
 System.assert(true,testContact1.Core_Personal_Email_Indicator__c!= null);*/
         
-        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test1234@testing.com.test',MailingCountry='India',
+        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test1234@testing.com.test',
                                         AccountId=testAccountList[1].Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true));
         /*Contact testContact2 = new Contact(FirstName='testFirstName123', LastName='爱', Email='test1234@testing.com.test',
 AccountId=testAccount2.Id,Core_Personal_Email_Indicator__c=true,Core_Set_ERPM_Status_Bypass__c=true);
 insert testContact2;
 system.assertequals(testContact2.FirstName,'testFirstName123');*/
         
-        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test12345@testing.com.test',MailingCountry='India',
+        testContactList.add(new Contact(FirstName='testFirstName123', LastName='爱', Email='test12345@testing.com.test',
                                         AccountId=testAccountList[2].Id,Core_Personal_Email_Indicator__c=true,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Set_ERPM_Status_Bypass__c=true));
         /*Contact testContact3 = new Contact(FirstName='testFirstName123', LastName='爱', Email='test12345@testing.com.test',
 AccountId=testAccount3.Id,Core_Personal_Email_Indicator__c=true,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Set_ERPM_Status_Bypass__c=true);
@@ -1880,7 +1880,7 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
                                             BillingCountry='USA', BillingPostalCode='12345',Core_IPS_Active__c = false, Core_CIM_ID__c ='123124',Core_PSG_Account__c=true);
         insert testAccount11;
         
-        Contact testContact = new Contact(FirstName='Cont11', LastName='阿昌', Email='testCont11@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+        Contact testContact = new Contact(FirstName='Cont11', LastName='阿昌', Email='testCont11@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                           AccountId=testAccount11.Id,Core_Set_ERPM_Status_Bypass__c=true,Core_Local_First_Name__c='david',Core_Local_Last_Name__c='geetha',Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false);
         
         insert testContact;
@@ -1958,7 +1958,7 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
                                           BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
                                           BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '');
         insert testAccount;  
-        Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
+        Contact testContact = new Contact(FirstName='阿昌', LastName='testLastName', Email='test123@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',
                                           AccountId=testAccount.Id,Core_Local_First_Name__c='david',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_IPS_Intel_Support_Owner__c= itAdminUser.Id,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
         
         insert testContact;
@@ -2048,8 +2048,8 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
         Core_ContactEntitlementValidation.validateUniqueMPEntitlement(partnerAdminId,testContact,'Partner Admin1');
         Core_ContactEntitlementValidation.validateUniqueEntitlement(iPSEntId,testContact,'IPS');     
         Core_ContactEntitlementValidation.addContactEntitlementSubordinates(newlstentitle);
-        Core_ContactEntitlementValidation.validateConflictPolicy(resellerId,testContact,'Reseller');//Sonali
-        Core_ContactEntitlementValidation.validateConflictPolicy(distributorId,testContact,'Distributor');//Sonali
+        Core_ContactEntitlementValidation.validateDCBCUniqueEntitlement(resellerId,testContact,'Reseller');//Sonali
+        Core_ContactEntitlementValidation.validateDCBCUniqueEntitlement(distributorId,testContact,'Distributor');//Sonali
         
         
         
@@ -2075,66 +2075,4 @@ Core_ContactEntitlementValidation.validateUniqueEntitlement(entitle2.id,testCont
             
         }
     
-    
-    public static testmethod void testValidateConflictPolicy() {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account testAccConflictPolicy = new Account(Name='test1AccConflictPolicy', Core_Sales_Group__c='Global Accounts',
-                                                     Core_Account_Type__c='Other', Industry='Others',RecordTypeId=intelAccRecTypeId,
-                                                     BillingStreet='1234 testAccountSetup', BillingCity='testCity1', BillingState='OR',
-                                                     BillingCountry='USA', BillingPostalCode='12345',Core_CNDA_Number__c = '');
-        insert testAccConflictPolicy;
-        
-        Contact testConConflictPolicy= new Contact(FirstName='testConConflictPolicy', LastName='testLastName', Email='testconconflictpolicy@testing.com.test',Core_English_Only_First_Name__c='',Core_English_Only_Last_Name__c='',MailingCountry='India',
-                                                   AccountId=testAccConflictPolicy.Id,Core_Local_First_Name__c='david',Core_Set_ERPM_Status_Bypass__c=false,Core_IPS_Active__c =false,Core_Contact_B2B_Indicator__c=false,Core_Personal_Email_Indicator__c=false,Core_ERPM_Integration_Status__c='Pending');
-        
-        insert testConConflictPolicy;
-        
-        Core_AGS_Role__c testAGSRole1 = new Core_AGS_Role__c();
-        testAGSRole1.Name = 'Test IQR Customer Full Access';
-        testAGSRole1.Core_IsActive__c = true;
-        testAGSRole1.Core_Technical_Name__c = 'Test IQR Customer Full Access';
-        insert testAGSRole1;
-        
-        Core_AGS_Role__c testAGSRole2 = new Core_AGS_Role__c();
-        testAGSRole2.Name = 'Test IQR Customer Standard Access';
-        testAGSRole2.Core_IsActive__c = true;
-        testAGSRole2.Core_Technical_Name__c = 'Test IQR Customer Standard Access';
-        insert testAGSRole2;
-        
-        Core_Entitlement__c entitlement1 = new Core_Entitlement__c (Name ='Quote Request Customer Full Access', Core_Category__c='Intel Quote Request',Core_Display_Name__c='Customer Full Access',Core_AGS_Role_Id__c=testAGSRole1.Id,Core_IsActive__c=true);
-        insert entitlement1;
-        
-        Core_Entitlement__c entitlement2 = new Core_Entitlement__c (Name ='Quote Request Customer Standard Access', Core_Category__c='Intel Quote Request',Core_Display_Name__c='Customer Standard Access',Core_AGS_Role_Id__c=testAGSRole2.Id,Core_IsActive__c=true);
-        insert entitlement2;
-        
-        Core_Contact_Entitlement__c contactEntitlement1 = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c = testConConflictPolicy.Id,
-            Core_Entitlement_Id__c = entitlement1.Id,
-            Core_Selected__c = true
-        );
-        insert contactEntitlement1;
-        
-        Core_Contact_Entitlement__c contactEntitlement2 = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c = testConConflictPolicy.Id,
-            Core_Entitlement_Id__c = entitlement2.Id,
-            Core_Selected__c = true
-        );
-        insert contactEntitlement2;
-        
-        testConConflictPolicy = [SELECT Id, (SELECT Id, Core_Entitlement_Id__c,Core_Entitlement_Id__r.Core_AGS_Role_Id__c, Core_Selected__c FROM Contact_Entitlements__r) 
-                                 FROM Contact WHERE Id = :testConConflictPolicy.Id];
-        
-        
-        Core_Contact_Entitlement_Conflict_Policy__c conflictPolicy = new Core_Contact_Entitlement_Conflict_Policy__c(
-            Name = 'IQR Standard and Full Access',
-            Entitlement_Id__c = entitlement1.Id +';'+ entitlement2.Id, 
-            Validation_Message__c = 'Quote Request Customer Standard Access and Quote Request Customer Full Access entitlements cannot be assigned together to a Contact.',
-            IsActive__c = true
-        );
-        insert conflictPolicy;
-        
-        Test.startTest();
-        Core_ContactEntitlementValidation.validateConflictPolicy(entitlement1.Id, testConConflictPolicy, 'Quote Request Customer Full Access');
-        Test.stopTest();
-    }  
 }

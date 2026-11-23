@@ -57,11 +57,12 @@
     
             }
         },
-    handleAdminEvent: function(component, event, helper) {
+    //IPA2.0: US-TWC729-7976
+    /*handleAdminEvent: function(component, event, helper) {
         
         var isAdmin = event.getParam("isAdmin");
         
         component.set("v.showFullWidth", !isAdmin);
         
-    }    
+    }*/
 })

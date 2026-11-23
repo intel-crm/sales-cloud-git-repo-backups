@@ -1,0 +1,32 @@
+<apex:page standardController="PMP_Partner_Offering__c" showHeader="false" sidebar="false" title="Partner Offering Grid">
+	<GBLite:TabbedPageComponent pageAPIName="GBTabs_Partner_Offering_Grid" customJsIds="" customCssIds="">
+	<GBLite:EmbedComponent baseGridUrl="{!$Page.GBLite__Grid}" />
+		<script>
+			var pageDefinition = {
+	"pageAPIName": "GBTabs_Partner_Offering_Grid",
+	"showSidebar": false,
+	"showHeader": false,
+	"height": "750",
+	"object": "PMP_Partner_Offering__c",
+	"globalButtons": false,
+	"description": "",
+	"selectedCustomJSIds": [],
+	"selectedCustomCSSIds": [],
+	"id": 1638796881024,
+	"tabs": [
+		{
+			"id": 1638796881025,
+			"content": "{!gridPage}gname=All Offerings&amp;sh=0&amp;sfname=default",
+			"name": "All Offerings"
+		},
+		{
+			"name": "Retired Offerings",
+			"content": "{!gridPage}gname=Retired Offerings&amp;sh=0&amp;sfname=default",
+			"id": 1638797564752
+		}
+	],
+	"name": "Partner Offering Grid"
+};
+		</script>
+	</GBLite:TabbedPageComponent>
+</apex:page>

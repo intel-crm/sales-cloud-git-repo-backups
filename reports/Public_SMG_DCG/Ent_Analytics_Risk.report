@@ -61,7 +61,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -168,7 +168,7 @@
             <value>consulting,technology,telecommunications,communications</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -179,7 +179,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Enterprise Analytics &amp; AI,enterprise</value>
+            <value>Enterprise Analytics &amp; AI</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>

@@ -100,7 +100,6 @@ public without sharing class  Core_UtilityController {
                 List<Id> listMpiIds = PMP_Utility.getListMpiIds(junctionObjects);
                 locCompanyList = [SELECT id, PMP_Partner_Benefit_Type__c,PMP_Benefit_Update_Ind__c,PMP_Partner_Inactive_Ind__c
                 from PMP_Company__c where PMP_Is_Published_Ind__c =true and id in: listMpiIds];    
-
                 }
                 catch(System.QueryException qe) {
                     System.debug(qe.getMessage());

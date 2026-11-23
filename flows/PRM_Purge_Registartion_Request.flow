@@ -145,13 +145,13 @@
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -163,50 +163,50 @@
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.PRM_Status__c</leftValueReference>
+                <leftValueReference>myVariable_current.PRM_Record_Type_Name_rpt_txt__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>New</stringValue>
+                    <stringValue>Email Verification Request</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>DateTime</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>DateTime</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.PRM_Channel_Program__r.PRM_programCode__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>myVariable_current.PRM_EmailVerifiedDateTime__c</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <stringValue>IPA</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
                 <targetReference>myWait_myRule_1</targetReference>
             </connector>
-            <label>Check Status EV Criteria</label>
+            <label>Check EV Status and Record Type</label>
         </rules>
     </decisions>
     <decisions>
@@ -281,13 +281,13 @@
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
@@ -299,44 +299,44 @@
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>Picklist</stringValue>
+                        <stringValue>String</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.PRM_Status__c</leftValueReference>
+                <leftValueReference>myVariable_current.PRM_Record_Type_Name_rpt_txt__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>New</stringValue>
+                    <stringValue>Email Verification Request</stringValue>
                 </rightValue>
             </conditions>
             <conditions>
                 <processMetadataValues>
                     <name>inputDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>leftHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>DateTime</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>operatorDataType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>DateTime</stringValue>
                     </value>
                 </processMetadataValues>
                 <processMetadataValues>
                     <name>rightHandSideType</name>
                     <value>
-                        <stringValue>String</stringValue>
+                        <stringValue>Boolean</stringValue>
                     </value>
                 </processMetadataValues>
-                <leftValueReference>myVariable_current.PRM_Channel_Program__r.PRM_programCode__c</leftValueReference>
-                <operator>EqualTo</operator>
+                <leftValueReference>myVariable_current.PRM_EmailVerifiedDateTime__c</leftValueReference>
+                <operator>IsNull</operator>
                 <rightValue>
-                    <stringValue>IPA</stringValue>
+                    <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -345,8 +345,8 @@
             <label>myPreWaitRule_myWait_myRule_1</label>
         </rules>
     </decisions>
-    <description>Deleting the Registration request if its pending more than 45 days</description>
-    <interviewLabel>PRM_Purge_Registartion_Request-2_InterviewLabel</interviewLabel>
+    <description>Deleting the Registration request if EV is pending more than 50 days</description>
+    <interviewLabel>PRM_Purge_Registartion_Request-1_InterviewLabel</interviewLabel>
     <label>PRM_Purge_Registartion_Request</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -455,7 +455,7 @@
             <inputParameters>
                 <name>TimeOffset</name>
                 <value>
-                    <numberValue>45.0</numberValue>
+                    <numberValue>0.0</numberValue>
                 </value>
             </inputParameters>
             <inputParameters>

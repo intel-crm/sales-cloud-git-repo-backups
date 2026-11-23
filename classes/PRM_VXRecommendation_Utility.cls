@@ -23,15 +23,16 @@ public without sharing class PRM_VXRecommendation_Utility {
     public static String logEntryMsg='';
     //Method will check the condition for validation on vx recommendation record while updting and display error if Grouping Method is null. 
     //TWC729-6800 EOL activities--Start
-    public static void vxRecommnedationUpdateCheck(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Id recordTypeOPID)
+    /*public static void vxRecommnedationUpdateCheck(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Id recordTypeOPID)
     {
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
         for(PRM_Value_Exchange_Recommendation__c vsRecommendation: vxRecommendationList){
             if((vsRecommendation.PRM_Grouping_Method_Nm__c =='' || vsRecommendation.PRM_Grouping_Method_Nm__c==null) && vsRecommendation.RecordTypeId==recordTypeOPID ){
                 vsRecommendation.addError(System.Label.PRM_VXRecommendation_ValidationError);
             }
         }
-        } }//TWC729-6800 EOL activities--End
+        } }*///TWC729-6800 EOL activities--End
     
     /* --------------------------------------------------------------------------------------------------------------------------
 * Teja Munagala        18-Mar-2020                 Added a new method duplicateRecommendationcheck to restrict insert and update on vsRecommendation
@@ -39,8 +40,9 @@ records if a duplicate record already exists or if the account already have OPID
 
 ****************************************************************************************************************************/
     //TWC729-6800 EOL activities--Start
-    public static void duplicateRecommendationcheck(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap, Id recordTypeOPID){
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*public static void duplicateRecommendationcheck(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap, Id recordTypeOPID){
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
         list<PRM_Value_Exchange_Recommendation__c> vxRecommendationNewList = new list<PRM_Value_Exchange_Recommendation__c>();
         Map<String,string> uniqueMap = new Map<String,string>();
         set<string> accountIDSet = new set<string>();
@@ -76,7 +78,7 @@ records if a duplicate record already exists or if the account already have OPID
                 }
             }
         }
-    }}//TWC729-6800 EOL activities--End
+    }}*///TWC729-6800 EOL activities--End
     
     /*****************************************************************************************************************************************************************
 * author:      Utkarsh/Vijay   
@@ -86,7 +88,7 @@ records if a duplicate record already exists or if the account already have OPID
 * User Story : US632855
 *************************************************************************************************************************************************************** */
    //TWC729-6800 EOL activities--Start
-    public Static  void updateOrCreateACM(List<PRM_Value_Exchange_Recommendation__c> opidInputList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){
+   /* public Static  void updateOrCreateACM(List<PRM_Value_Exchange_Recommendation__c> opidInputList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){
         List<Id> opidAccountList = new List<Id>();
         //Map<Id,Id> accntTierMap = new Map<Id,Id>();
         Map<Id,String> mapOPIDPartnerrole = new Map<Id,String>();
@@ -94,10 +96,12 @@ records if a duplicate record already exists or if the account already have OPID
         Map<Id,PRM_AccountChannelMembership__c> mapAccountIdACM = new Map<Id,PRM_AccountChannelMembership__c>();
         List<PRM_AccountChannelMembership__c> upsertACMList = new List<PRM_AccountChannelMembership__c>();
         boolean vxRecordtoProcess = false;
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
         // Fetching the old VxRecemendations records and checking the Status, If the Status is 'In Process', storing in a Map 
         if(opidInputList != null && !opidInputList.IsEmpty()){
-            for(PRM_Value_Exchange_Recommendation__c vxRec : [Select Id,PRM_Account_Id__c,PRM_One_Partner_Id__c, PRM_Partner_Role_Nm__c, PRM_Tier_Id__c,PRM_Eligibility_Tier__c,PRM_Eligibility_Tier__r.Name,PRM_Recommendation_Status_Nm__c From PRM_Value_Exchange_Recommendation__c Where Id IN :opidInputList AND PRM_One_Partner_Id__c != null]){
+            Map<Id, PRM_Value_Exchange_Recommendation__c> opidInputListMap = new Map<Id, PRM_Value_Exchange_Recommendation__c>(opidInputList);//ApexGuru
+            for(PRM_Value_Exchange_Recommendation__c vxRec : [Select Id,PRM_Account_Id__c,PRM_One_Partner_Id__c, PRM_Partner_Role_Nm__c, PRM_Tier_Id__c,PRM_Eligibility_Tier__c,PRM_Eligibility_Tier__r.Name,PRM_Recommendation_Status_Nm__c From PRM_Value_Exchange_Recommendation__c Where Id IN :opidInputListMap.keySet() AND PRM_One_Partner_Id__c != null]){
                 vxRecordtoProcess = true;
                 if(oldMap!=null && oldMap.size()>0) {
                     opidOld = (PRM_Value_Exchange_Recommendation__c) oldMap.get(vxRec.id);
@@ -113,7 +117,7 @@ records if a duplicate record already exists or if the account already have OPID
         
         if(vxRecordtoProcess){
             //ChannelProgram cp = [Select Id, Name From ChannelProgram Where Name =:System.Label.PRM_Intel_Partner_Alliance LIMIT 1];
-            /* Fetching all the ACM records for the OPID Account and fecthing all the ACM's if the Partner Role matches with VxRecemendation */
+            //Fetching all the ACM records for the OPID Account and fecthing all the ACM's if the Partner Role matches with VxRecemendation 
             if((opidAccountList != null && !opidAccountList.IsEmpty()) && (mapOPIDPartnerrole != null && !mapOPIDPartnerrole.IsEmpty())){
                 for(PRM_AccountChannelMembership__c acm :[Select Id,Name, PRM_Account_Id__c,PRM_Partner_Role__c, PRM_Channel_Program_Level_Id__c,PRM_Channel_Program_Level_Id__r.Name from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN :opidAccountList AND PRM_Status_Nm__c =:System.Label.PRM_Status]){
                     if(acm.PRM_Partner_Role__c == mapOPIDPartnerrole.get(acm.PRM_Account_Id__c)){
@@ -123,7 +127,7 @@ records if a duplicate record already exists or if the account already have OPID
             }
           
             
-            /* If the Partner Role of ACM matches with Partner Role of VxRecemendation, then updating the ACM Tier to the Eligiblity Tier of VxRecemendation */
+            // If the Partner Role of ACM matches with Partner Role of VxRecemendation, then updating the ACM Tier to the Eligiblity Tier of VxRecemendation 
             if(opidInputList != null && !opidInputList.IsEmpty()){
                 for(PRM_Value_Exchange_Recommendation__c vxr :opidInputList){
                     if(mapAccountIdACM.get(vxr.PRM_One_Partner_Id__c) != null){
@@ -138,13 +142,13 @@ records if a duplicate record already exists or if the account already have OPID
                     }
                     // This Part is commented because ACM will be created already by Agate Team.
                     else{
-                        /* PRM_AccountChannelMembership__c insertacm = new PRM_AccountChannelMembership__c();
+                        // PRM_AccountChannelMembership__c insertacm = new PRM_AccountChannelMembership__c();
 insertacm.PRM_Account_Id__c = vxr.PRM_One_Partner_Id__c;
 insertacm.PRM_Channel_Program_Id__c = cp.Id;
 insertacm.PRM_Channel_Program_Level_Id__c = vxr.PRM_Eligibility_Tier__c;
 insertacm.PRM_Partner_Role__c = vxr.PRM_Partner_Role_Nm__c;
 insertacm.PRM_Status_Nm__c = System.Label.PRM_Status;
-upsertACMList.add(insertacm); */
+upsertACMList.add(insertacm); //
                     } 
                 }
             }
@@ -158,7 +162,7 @@ upsertACMList.add(insertacm); */
                
             }
         }
-        }} //TWC729-6800 EOL activities--Start
+        }}*/ //TWC729-6800 EOL activities--Start
     
     /*****************************************************************************************************************************************************************
 * author     : Sheetal Bhargava  
@@ -168,8 +172,8 @@ upsertACMList.add(insertacm); */
 * User Story : US688055
 *************************************************************************************************************************************************************** **/
     //TWC729-6800 EOL activities--Start
-    public Static  void opidOutboundMssg(List<PRM_Value_Exchange_Recommendation__c> opidInputList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*public Static  void opidOutboundMssg(List<PRM_Value_Exchange_Recommendation__c> opidInputList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         logEntryMsg+='\nopidOutboundMssg Method Invoked at:'+System.Now().format('MM/dd/YYYY HH:MM:SS','PST')+' PST dt@@@';
         logEntryMsg+='\nNew Map'+opidInputList;
         logEntryMsg+='\nOld Map'+oldMap;
@@ -232,7 +236,7 @@ upsertACMList.add(insertacm); */
         }
         //set<String> setOfOutboundMssgResult = new set<String>(lstOfOutboundMssgResult); 
         logEntryMsg+='\nInboundsProceesed'+lstOfOutboundMssgResult;
-        }}  //TWC729-6800 EOL activities--End
+        }}*/  //TWC729-6800 EOL activities--End
     
     /*****************************************************************************************************************************************************************
 * author     : Lata Dudam/ Rohit Narnaware
@@ -241,7 +245,7 @@ upsertACMList.add(insertacm); */
 * Description: This method is use Change status of OPID
 *************************************************************************************************************************************************************** */
     
-    Public static void statusCheck(Set<Id> tagIds){
+    /*Public static void statusCheck(Set<Id> tagIds){
         map<Id,boolean> recomIdCheckMap=new map<Id,boolean>();
         Map<Id,PRM_Value_Exchange_Recommendation__c> finalMapRec = new Map<Id,PRM_Value_Exchange_Recommendation__c>(); 
         List<PRM_Value_Exchange_Recommendation__c> listForTracker = new List<PRM_Value_Exchange_Recommendation__c>();  
@@ -252,7 +256,7 @@ upsertACMList.add(insertacm); */
         List<PRM_Tracker__c> trackerList = new List<PRM_Tracker__c>();
         Map<Id,Id> mapOfRecOutboundOne = new Map<Id,Id>();
         Map<Id,Id> mapOfRecOutboundTwo = new Map<Id,Id>();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
                 //Getting instance of PRM_Tracker_steps__mdt for inprogress status, Submitted for OPID and Mulesoft Acknowledge
             PRM_Tracker_steps__mdt trackerMdt = PRM_Tracker_steps__mdt.getInstance('IN_PRGS');
             PRM_Tracker_steps__mdt opidSubTrackMdt = PRM_Tracker_steps__mdt.getInstance('OPID_SUBMITTED');
@@ -395,7 +399,7 @@ upsertACMList.add(insertacm); */
             }
             PRM_CreateAccountAndRelatedRecords.createLogEntry(logEntryMsg);
         }
-    }
+    }*/
     /*****************************************************************************************************************************************************************
 * author     : Tejasree 
 * Date       : 21/08/2020
@@ -404,7 +408,7 @@ upsertACMList.add(insertacm); */
 * User Story : US762869
 *************************************************************************************************************************************************************** */
     //TWC729-6800 EOL activities--Start
-    public Static  void updateTierOnVxData(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){    
+    /*public Static  void updateTierOnVxData(List<PRM_Value_Exchange_Recommendation__c> vxRecommendationList, Map<Id,PRM_Value_Exchange_Recommendation__c> oldMap){    
         Map<String,String> mapOfUpgradeRec=new Map<String,String>();
         PRM_Value_Exchange_Recommendation__c vxrOld; 
         //Map<String,String> uniqueMapOfVxData=new Map<String,String>();
@@ -416,12 +420,11 @@ upsertACMList.add(insertacm); */
         List<String> tierList=new List<String>();
         List<String> marketTypes=new List<String>();
         Id recordTypeUpgrade = Schema.SObjectType.PRM_Value_Exchange_Recommendation__c.getRecordTypeInfosByName().get(System.Label.PRM_RecordType_Upgrade_Downgrade).getRecordTypeId();         
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing        
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal        
         
-        
-        /* Fetching the old VxRecomendations records and checking the Status, If the Status is 'Processed' and recordType is of Upgrade, storing them in a Map */
+        // Fetching the old VxRecomendations records and checking the Status, If the Status is 'Processed' and recordType is of Upgrade, storing them in a Map 
         if(vxRecommendationList!=Null && vxRecommendationList.size()>0){
-            
+            Map<Id, PRM_Value_Exchange_Recommendation__c> vxRecommendationListMap = new Map<Id, PRM_Value_Exchange_Recommendation__c>(vxRecommendationList);//ApexGuru
             for(PRM_Value_Exchange_Recommendation__c vxRec:[Select 
                                                             Id,
                                                             PRM_Account_Id__c,
@@ -433,7 +436,7 @@ upsertACMList.add(insertacm); */
                                                             PRM_Eligibility_Tier__r.Name,
                                                             PRM_Recommendation_Status_Nm__c 
                                                             From PRM_Value_Exchange_Recommendation__c 
-                                                            Where Id IN :vxRecommendationList 
+                                                            Where Id IN :vxRecommendationListMap.keySet() 
                                                             AND RecordTypeId=:recordTypeUpgrade 
                                                             AND PRM_Eligibility_Tier__c!=Null 
                                                             AND PRM_Recommendation_Status_Nm__c!=Null 
@@ -476,7 +479,7 @@ upsertACMList.add(insertacm); */
             update updateVxDataList; //update vxData records
         }
         
-        }}  //TWC729-6800 EOL activities--End
+        }}*/  //TWC729-6800 EOL activities--End
     
     /*****************************************************************************************************************************************************************
 * author     : Rohit Narnaware  
@@ -486,7 +489,7 @@ upsertACMList.add(insertacm); */
 * User Story : US TWC729-3674
 *************************************************************************************************************************************************************** */
     //TWC729-6800 EOL activities--Start
-    @AuraEnabled
+    /*@AuraEnabled
     public static integer getOPID_Ids(string recId){
         
         List<PRM_Tracker__c> trackerList = new List<PRM_Tracker__c>();
@@ -495,7 +498,8 @@ upsertACMList.add(insertacm); */
         List<Core_Integration_Outbound_Message__c> lstOfOBMSWithPendingStatus = new List<Core_Integration_Outbound_Message__c>();
         PRM_Value_Exchange_Recommendation__c opidRec = new PRM_Value_Exchange_Recommendation__c();
         List<Core_OnePartner_Inbound_Message__c> listOfInbound = new List<Core_OnePartner_Inbound_Message__c>();
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
             PRM_Tracker_steps__mdt opidCreatedMdt = PRM_Tracker_steps__mdt.getInstance('OPID_REQ_PROCESSED');
         Try{
             opidRec = [SELECT Id,Name, PRM_Recommendation_Status_Nm__c, RecordTypeId, PRM_Account_Id__c,
@@ -601,7 +605,7 @@ upsertACMList.add(insertacm); */
             }             
         }   
         }return null;
-    }//TWC729-6800 EOL activities--End
+    }*///TWC729-6800 EOL activities--End
     
     /*****************************************************************************************************************************************************************
 * author     : Rohit Narnaware  
@@ -611,8 +615,9 @@ upsertACMList.add(insertacm); */
 * User Story : US TWC729-4115
 *************************************************************************************************************************************************************** */
     //TWC729-6800 EOL activities--Start 
-     public static void updateDuration(List<PRM_Value_Exchange_Recommendation__c> recList, Map<Id, PRM_Value_Exchange_Recommendation__c> recMap, Boolean isUpdate){
-       if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+     /*public static void updateDuration(List<PRM_Value_Exchange_Recommendation__c> recList, Map<Id, PRM_Value_Exchange_Recommendation__c> recMap, Boolean isUpdate){
+       /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
        DateTime updatedDateAndTime = System.now();
         
         if (isUpdate == false){
@@ -627,5 +632,5 @@ upsertACMList.add(insertacm); */
                 }
             }                        
         }        
-       }} //TWC729-6800 EOL activities--End
+       }}*/ //TWC729-6800 EOL activities--End
 }

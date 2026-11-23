@@ -2612,7 +2612,7 @@ IF(ISBLANK({!myVariable_old.Core_IPS_Partner_Sup_Owner__c}  ), FALSE,{!myVariabl
         <object>Case</object>
     </recordUpdates>
     <startElementReference>myVariable_waitStartTimeAssignment</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>cancelWaits</name>
         <dataType>String</dataType>

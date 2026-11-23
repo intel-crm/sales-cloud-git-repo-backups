@@ -6,7 +6,7 @@
  */
 
 import getBenefits from './getBenefits';
-import { getPartnerMessages, markMessageAsRead, markMessageAsDelete } from './partnerMessage';
+import { getPartnerMessages, markMessageAsRead,markMessageAsDelete } from './partnerMessage';
 import getPartnerQuickLinks from './getPartnerQuicklinks';
 import getBenefitProfile from './getBenefitProfile';
 import getSupportFooter from './getSupportFooter';

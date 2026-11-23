@@ -8,7 +8,6 @@ public without sharing class UCD_ACM_UnitOfWork implements UCD_ACM_SelectorContr
     private Map<String, Map<Id, SObject> > mapUpdateListByType = new Map<String, Map<Id, SObject> >();
     private Map<String, Map<Id, SObject> > mapDeleteListByType = new Map<String, Map<Id, SObject> >();
     private Map<String, Relationships> mapRelationshipsByType = new Map<String, Relationships>();
-    private String dmlStatementCheck;
     
     /**
      * Method to register single SObject for Insert Operation 
@@ -86,7 +85,7 @@ public without sharing class UCD_ACM_UnitOfWork implements UCD_ACM_SelectorContr
 
         // Register the record for update operation
         String sObjectType = record.getSObjectType().getDescribe().getName();
-        if(mapUpdateListByType == null || mapUpdateListByType.isEmpty() || mapUpdateListByType.get(sObjectType) == null){
+        if(mapUpdateListByType == null || mapUpdateListByType.isEmpty()){
             mapUpdateListByType.put(sObjectType, new Map<Id , SObject>{record.Id=> record});
         }
         else if ( !mapUpdateListByType.get(sObjectType).containsKey(record.Id) && fieldsToUpdate.isEmpty()) {            
@@ -95,9 +94,9 @@ public without sharing class UCD_ACM_UnitOfWork implements UCD_ACM_SelectorContr
             // Update the registered record's fields
             SObject registeredRecord = mapUpdateListByType.get(sObjectType).get(record.Id);
             for (Schema.SObjectField field : fieldsToUpdate) {
-                //System.debug('field@@@'+field + '@@@record'+record);
+                System.debug('field@@@'+field + '@@@record'+record);
                 if(record.get(field) != null){
-                    //System.debug('record.get(field)@@@'+record.get(field));
+                    System.debug('record.get(field)@@@'+record.get(field));
                     registeredRecord.put(field, record.get(field));
                 }
             }
@@ -134,20 +133,18 @@ public without sharing class UCD_ACM_UnitOfWork implements UCD_ACM_SelectorContr
         Savepoint sp = Database.setSavepoint();
         try {
             insertDmlByType();
-            dmlStatementCheck='Insert Completed';
             updateDmlByType();
-            dmlStatementCheck=dmlStatementCheck+' Update Completed';
             deleteDmlByType();
-            dmlStatementCheck=dmlStatementCheck+' Deletion Completed';
             // return true if all operations are successful
             return true;
         }
         catch (Exception e) {
             // Log exception
             // rollback changes
-            //System.debug('Exception2==>'+e.getStackTraceString());
-            //System.debug('Exception21==>'+e.getMessage());
-            UCD_ACM_Logger.error('UCD_ACM_UnitOfWork','commitWork','Message: '+e.getMessage()+'. StackTrace: '+e.getStackTraceString()+dmlStatementCheck,NULL);
+            System.debug('Exception2==>'+e.getStackTraceString());
+            System.debug('Exception2==>'+e.getMessage());
+
+            UCD_ACM_Logger.error('UCD_ACM_UnitOfWork','commitWork','Message: '+e.getMessage()+'. StackTrace: '+e.getStackTraceString(),NULL);
             Database.rollback(sp);
             return false;
         }

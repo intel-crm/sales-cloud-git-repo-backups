@@ -11,7 +11,7 @@ global class PRM_Account_Contact_Profiles {
     global static PRM_Account_Contact_Profiles_Model.Profiles GetProfiles(){
         PRM_Account_Contact_Profiles_Model.Profiles response;
         DateTime reqTime = System.now();
-        String inputvalue;
+        String inputvalue; 
         try{            
             PRM_Account_Contact_Profiles_Utility.startTime = system.now().getTime();
             String PERSONBASICPROFILE = 'PERSONBASICPROFILE';
@@ -232,6 +232,7 @@ global class PRM_Account_Contact_Profiles {
                           error = error + 'Input value is not a valid EMAILID/ENTERPRISEID/LOGINID\n';  
                          //return PRM_Account_Contact_Profiles_Utility.generateError(error);                                         
                     }else{
+                        system.debug(inputfield+' '+' '+inputvalue+' '+addtlInputField+' '+addtlInputValue);
                          responseList.add(PRM_Account_Contact_Profiles_Utility.GetRegRequestAccountProfile(inputfield,inputValue));
                          createLogEntry('GetProfile API response log '+inputfield+': '+inputvalue+' Attribute: '+' AdditionalAttribute: '+addtlInputField+': '+addtlInputValue+ ' Response Time in MS: '/*+response.ResponseTimeMS*/, null, LOG_ENTRY_INFO,inputvalue );
                        // return response;    

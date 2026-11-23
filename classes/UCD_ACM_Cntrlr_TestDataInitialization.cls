@@ -4,15 +4,15 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         account.Name = accountName;
         account.Core_Customer_Aggregation_Type__c = CustAggrType;
         account.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get(recordType).getRecordTypeId();
-        account.BillingCountryCode	= 'IND';
+        account.BillingCountryCode	= 'IN';
         account.BillingCity = 'TestCity';
         account.BillingStreet = 'TestStreet';
         account.Core_Business_Party_Id__c = '1234';
-        account.ShippingCountryCode = 'IND';
+        account.ShippingCountryCode = 'IN';
         return account;
     }
     public static Business_Types__c createBusinessType(String typeName,String typeCode){
-        Business_Types__c businessType = new Business_Types__c(Name=typeName,Is_Active__c=true,Business_Type_Code__c=typeCode,Business_Types_Category__c = 'CPE');
+        Business_Types__c businessType = new Business_Types__c(Name=typeName,Is_Active__c=true,Business_Type_Code__c=typeCode);
         return businessType;
 
     }
@@ -24,6 +24,15 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         accountBusinessType.Effective_Start_Date__c = system.today()-5;
         //accountBusinessType.Effective_End_Date__c = system.today()+5;
         return accountBusinessType;
+    }
+
+    public static Core_Account_Compliance_Watch_List__c createComplianceWatchList(Id accountId,String typeCode){
+        Core_Account_Compliance_Watch_List__c complianceWatchList =  new Core_Account_Compliance_Watch_List__c();
+        complianceWatchList.Core_Account_Id__c = accountId;
+        complianceWatchList.Core_Type__c = typeCode;
+        complianceWatchList.Core_Effective_Start_Date__c = system.today()-5;
+        //complianceWatchList.Core_Effective_End_Date__c = system.today()+5;
+        return complianceWatchList;
     }
 
     public static User createUser(String profileId){
@@ -51,43 +60,29 @@ public class UCD_ACM_Cntrlr_TestDataInitialization {
         integrationMessage.Queue_Type__c = 'Outbound';
         integrationMessage.Retry_Count__c = 0;
         integrationMessage.Source_System__c = 'Reltio';
-        integrationMessage.Retry_Count__c = 0;
         return integrationMessage;
     }
 
-    public static Account_Create_Request__c createApproveAccountRequest( Account account){
+    /**public static Account_Create_Request__c createApproveAccountRequest(String accountRequestName, String accountRequestCountry){
         Account_Create_Request__c accountCreateRequest=new Account_Create_Request__c();
-        accountCreateRequest.Account_Name__c = 'Test';
-      //  accountCreateRequest.Country__c = 'India';
-        accountCreateRequest.Customer_Process_Engagement__c='DIR_PRC_EXCPT';
-        accountCreateRequest.Rejected_Reason__c = 'Test Rejected';
-        accountCreateRequest.Request_Flow_Status__c = 'Pending';
-        accountCreateRequest.Process_Type__c = 'Opportunity Management';
-        accountCreateRequest.Requestor_Name__c = UserInfo.getName();
-        accountCreateRequest.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
-     //   accountCreateRequest.State__c = 'New';
-        accountCreateRequest.Requested_Account__c = account.Id;
-        return accountCreateRequest;
-    }
-
-    public static Account_Create_Request__c createAccountRequest(String accountRequestName, String Status, Account account){
-        Account_Create_Request__c accountCreateRequest=new Account_Create_Request__c();
+        accountCreateRequest.Name = accountRequestName;
         accountCreateRequest.Account_Name__c = accountRequestName;
-     //   accountCreateRequest.Customer_Process_Engagement__c='DIR_PRC_EXCPT';
-        accountCreateRequest.Rejected_Reason__c='Test Rejected';
-        accountCreateRequest.Address__City__s = 'Kolkata';
-        accountCreateRequest.Address__CountryCode__s= 'IND';
-        accountCreateRequest.Address__Street__s = 'Demon Street';
-        accountCreateRequest.Process_Type__c = 'Opportunity Management';
-        if(account != null){
-            accountCreateRequest.Requested_Account__c = account.Id;
-        }
-        if(Status == 'Approved'){
-            accountCreateRequest.Requested_Account__c = account.Id;
-            accountCreateRequest.Status__c = 'Approved';
-        }else{
-            accountCreateRequest.Status__c= Status;
-        }
+        accountCreateRequest.City__c='Delhi';
+        accountCreateRequest.Country__c=accountRequestCountry;
+        accountCreateRequest.Customer_Process_Engagement__c='DIR_PRC_EXCPT';
+        accountCreateRequest.Street__c='G.T road';
         return accountCreateRequest;
-    }
+    }*/
+
+    /**public static Account_Create_Request__c createRejectAccountRequest(String accountRequestName, String accountRequestCountry){
+        Account_Create_Request__c accountCreateRequest=new Account_Create_Request__c();
+        accountCreateRequest.Name = accountRequestName;
+        accountCreateRequest.Account_Name__c = accountRequestName;
+        accountCreateRequest.City__c='Kolkata';
+        accountCreateRequest.Country__c=accountRequestCountry;
+        accountCreateRequest.Customer_Process_Engagement__c='DIR_PRC_EXCPT';
+        accountCreateRequest.Street__c='Test street';
+        return accountCreateRequest;
+    }*/
+
 }

@@ -89,16 +89,4 @@ export default class PRM_DzpRegistration extends LightningElement {
             }),
         );
     }
-
-    //tool tip CSS
-    @track tooltipClass = 'tooltip-hidden';
-
-    showTooltip() {
-        this.tooltipClass = 'tooltip-visible';
-    }
-
-    hideTooltip() {
-        this.tooltipClass = 'tooltip-hidden';
-    }
-
 }

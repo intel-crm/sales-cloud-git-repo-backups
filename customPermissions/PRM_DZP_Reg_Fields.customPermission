@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This permission is used to show DZP registration fields on IPA reg page layout</description>
+    <isLicensed>false</isLicensed>
+    <label>PRM_DZP_Reg_Fields</label>
+</CustomPermission>

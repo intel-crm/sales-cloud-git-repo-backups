@@ -1,5 +1,5 @@
 public with sharing class PRM_ServiceNowUtility {
-    
+
     public static Final String ORIGIN  = 'PRM_ServiceNowUtility';
     public static Final String SEVERITY  = 'Info';
     public static Final String PROJECT  = 'IPA';   
@@ -120,7 +120,7 @@ public static PRM_Token_Model getToken(PRM_Integration__mdt agsAPIDetails) {
         } 
         catch(Exception ex)
         {
-      Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', ex.getMessage() ,'' ,'PRM_ServiceNowUtility' ,'' ,ex);    
+			Core_Log_Entry.logEntryWithException(ORIGIN, PROJECT, LOG_ENTRY_SCOPE, LOG_ENTRY_SEVERITY,'', ex.getMessage() ,'' ,'PRM_ServiceNowUtility' ,'' ,ex);    
         }
         return token;
         }   

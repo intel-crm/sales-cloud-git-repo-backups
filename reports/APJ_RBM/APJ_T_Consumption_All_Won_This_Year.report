@@ -48,6 +48,9 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Production Lost</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -73,6 +76,9 @@
         <values>
             <sourceValues>
                 <sourceValue>Cancelled</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Deleted</sourceValue>
             </sourceValues>
             <value>Cancelled/Deleted</value>
         </values>
@@ -219,7 +225,7 @@
         <field>Opportunity.Core_Loss_Cancel_Details__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 9) AND 7 AND 8 AND 10 AND 11 AND (12 OR 13)</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND 4 AND 5 AND (6 OR 9) AND 7 AND 8 AND 10 AND 11 AND 12</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -260,7 +266,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang,Albert WANG</value>
+            <value>Alastair Duncan,Jodie Frew,Elise Stanberg,Andrew Ridley,Nileshni Santiago,Siew May Cheow,HC Hwang,Vineet Giri,Sachin Anand,Swee Hoon Chan,Fransiskus Leonardus,Paul Haines,Jovern Lim,Patricia Lee,Duc Dang,Hung Choong Hwang</value>
         </criteriaItems>
         <criteriaItems>
             <column>BucketField_72264943</column>
@@ -281,7 +287,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Jason Kay Siah Ang,Faisal Qamar,I&apos;ng Chin Tan</value>
+            <value>Jason Kay Siah Ang,Faisal Qamar</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Risk_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_KPI_Date__c</column>
@@ -297,20 +310,6 @@
             <operator>equals</operator>
             <value>Pending</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Risk_Reason1__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Risk_Reason2__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -321,7 +320,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>APJ T Consumption - All - @Risk</name>

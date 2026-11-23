@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>List</customSettingsType>
+    <description>This custom setting will hold the list of entitlements and their corresponding ERPM Engagements. Upon assigning those entitlements (2.0 Entitlements), an ERPM Engagement will also be assigned to that contact maintaining 2.0 flow.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>Engagement_Approved_Rejected__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Engagement will be sent as Approved if value is &apos;ENGSTSAPRD&apos; and will be sent as Rejected if value is &apos;ENGSTSRJTD&apos;</inlineHelpText>
+        <label>Engagement Approved Rejected</label>
+        <length>15</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Engagement_Technical_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Technical name of the child engagement which should get added upon adding the parent entitlement</inlineHelpText>
+        <label>Engagement Technical Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Entitlement_Display_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>The display name of the parent entitlement</inlineHelpText>
+        <label>Entitlement Display Name</label>
+        <length>100</length>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Core Entitlement to Engagement Mapping</label>
+    <visibility>Public</visibility>
+</CustomObject>

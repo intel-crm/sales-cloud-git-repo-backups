@@ -118,6 +118,20 @@
         <label><!-- Support Email --></label>
         <name>Core_Support_Email__c</name>
     </fields>
+    <layouts>
+        <layout>Backend System Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>IPS External Page Layout- Backend System</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Duplicate Backend System Definition. Please choose another name. --></errorMessage>

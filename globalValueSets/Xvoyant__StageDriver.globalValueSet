@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName># Opportunities</fullName>
+        <default>false</default>
+        <label># Opportunities</label>
+    </customValue>
+    <customValue>
+        <fullName>Opportunity Size $</fullName>
+        <default>false</default>
+        <label>Opportunity Size $</label>
+    </customValue>
+    <customValue>
+        <fullName>Win Rate</fullName>
+        <default>false</default>
+        <label>Win Rate</label>
+    </customValue>
+    <customValue>
+        <fullName>Velocity</fullName>
+        <default>false</default>
+        <label>Velocity</label>
+    </customValue>
+    <customValue>
+        <fullName>Qualify</fullName>
+        <default>false</default>
+        <label>Qualify</label>
+    </customValue>
+    <customValue>
+        <fullName>Define</fullName>
+        <default>false</default>
+        <label>Define</label>
+    </customValue>
+    <customValue>
+        <fullName>Develop</fullName>
+        <default>false</default>
+        <label>Develop</label>
+    </customValue>
+    <customValue>
+        <fullName>Design</fullName>
+        <default>false</default>
+        <label>Design</label>
+    </customValue>
+    <description>Sales stages and drivers for coaching goals</description>
+    <masterLabel>StageDriver</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

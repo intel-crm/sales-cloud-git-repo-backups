@@ -41,5 +41,12 @@
         <name>PMP_Marketplace_Event_Id__c</name>
         <relationshipLabel><!-- Marketplace Event Translations --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Marketplace Event Translation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

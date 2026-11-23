@@ -21,9 +21,10 @@
         <div class="marquee">
           {!v.marquee}
       </div>
-      <div class="bg-blade-even">
-        <c:IPAStickyTabset aura:id="partnertabs">
-            <c:IPAStickyTab label="{!$Label.c.PMP_Benefits_Manage_Benefits}">
+      <div class="bg-blade-even" role="tablist">
+        <c:IPAStickyTabset aura:id="partnertabs" >
+            
+            <c:IPAStickyTab label="{!$Label.c.PMP_Benefits_Manage_Benefits}"  >
                 {!v.tab1}
             </c:IPAStickyTab>
             <c:IPAStickyTab label="{!$Label.c.PMP_Benefits_Partner_Messages}">

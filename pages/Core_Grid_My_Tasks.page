@@ -7,26 +7,22 @@
     "tabs": [
         {
             "name": "All Tasks",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0",
+            "content": "{!gridPage}gname=My Tasks&sh=0&ro=0",
             "id": 1528116363424
         },
         {
             "name": "Past Due",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks Past Due&sh=0&ro=0",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks Past Due&sh=0&ro=0",
+            "content": "{!gridPage}gname=My Tasks Past Due&sh=0&ro=0",
             "id": 1528116396209
         },
         {
             "name": "This Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH",
+            "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=THIS_MONTH",
             "id": 1528116404168
         },
         {
             "name": "Next Month",
-            //Commented and add the below line by Ankita Roy on 12-05-2020 for US664678 - Security Scan Fix 3 "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH",
-            "content": "{!JSENCODE(HTMLENCODE(gridPage))}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH",
+            "content": "{!gridPage}gname=My Tasks&sh=0&ro=0&fpf=ActivityDate&fpv=NEXT_MONTH",
             "id": 1528116413024
         }
     ],

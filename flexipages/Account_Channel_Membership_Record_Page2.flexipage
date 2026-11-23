@@ -9,7 +9,7 @@
                         <valueListItems>
                             <value>PRM_AccountChannelMembership__c.Membership</value>
                             <visibilityRule>
-                                <booleanFilter>(((4 OR 5 OR 6 OR 8 OR 9) AND 7)) AND ((1 AND 2 ) OR 3)</booleanFilter>
+                                <booleanFilter>(((4 OR 5 ) AND 6)) AND ((1 AND 2 )  OR 3)</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -27,32 +27,17 @@
                                 <criteria>
                                     <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
                                     <operator>EQUAL</operator>
-                                    <rightValue>Member</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Gold</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Titanium</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Status_Nm__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Approved</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
-                                    <operator>EQUAL</operator>
                                     <rightValue>Partner</rightValue>
                                 </criteria>
                                 <criteria>
                                     <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>Prestige</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.PRM_Status_Nm__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Approved</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -95,21 +80,9 @@
                 </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Client.formFactor}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Large</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Client.formFactor}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Small</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -118,7 +91,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
-                    <value>ADVGRID</value>
+                    <value>NONE</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>rowsToDisplay</name>
@@ -132,6 +105,7 @@
                 <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>relatedTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -167,7 +141,7 @@
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer</identifier>
                 <visibilityRule>
-                    <booleanFilter>(((4 OR 5 ) AND 6)) AND ((1 AND 2 )  OR 3)</booleanFilter>
+                    <booleanFilter>(((4 OR 5 OR 6) AND 7)) AND ((1 AND 2 )  OR 3)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -185,12 +159,17 @@
                     <criteria>
                         <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Prestige</rightValue>
+                        <rightValue>Member</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Partner</rightValue>
+                        <rightValue>Gold</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PRM_Tier_Name_txt__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Titanium</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!Record.PRM_Status_Nm__c}</leftValue>
@@ -200,6 +179,7 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -236,18 +216,17 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>PRM_Navigation_Component</componentName>
-                <identifier>PRM_Navigation_Component</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>
@@ -256,13 +235,20 @@
                 <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
+    <flexiPageRegions>
+        <mode>Replace</mode>
+        <name>sidebar</name>
+        <type>Region</type>
+    </flexiPageRegions>
     <masterLabel>Account Channel Membership Record Page</masterLabel>
+    <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>PRM_AccountChannelMembership__c</sobjectType>
     <template>
-        <name>flexipage:recordHomeSimpleViewTemplate</name>
+        <name>flexipage:recordHomeTemplateDesktop</name>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>Intel® Partner Alliance Artificial Intelligence Data Center Specialty</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_AI_DATA_CENTER_VIE</name>
@@ -24,13 +24,11 @@ Truy cập Dịch vụ Kiểm tra Nền tảng Intel®
 
 
 Người liên hệ chính nhận thông tin về Chuyên gia Trí tuệ nhân tạo
-Tên:
-Email:
+Tên:Email:
 
 
 Để nhận thêm các tài liệu bán hàng và khuyến mãi
-Địa chỉ nhận thư:
-Điện thoại:
+Địa chỉ nhận thư:Điện thoại:
 
 Lợi ích tiếp cận
 
@@ -39,7 +37,7 @@ Lợi ích tiếp cận
 
 Các đối tác của Intel đã có một lịch sử đổi mới lâu dài. Nay với Liên minh Đối tác Intel®, chúng tôi sẽ giúp bạn tăng tốc xây dựng các giải pháp cho nền kinh tế tập trung vào dữ liệu. Cùng nhau, chúng ta có thể kết nối, đổi mới và phát triển, tạo ra những cơ hội có tính khả thi cao.
 
-Truy cập https://www.intel.com/content/www/vn/vi/partner-alliance/help/overview.html để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
+Truy cập intel.com/partnerhelp để được giúp đỡ và hướng dẫn cách tối ưu hóa tư cách thành viên của bạn.
 
 
 Xin cám ơn bạn!
@@ -48,7 +46,7 @@ Nhóm Liên minh Đối tác Intel® của bạn
 1 Các sản phẩm trong danh mục Trung tâm dữ liệu: Bộ xử lý Intel® Xeon®; Giải pháp cơ sở hạ tầng mạng Intel®; Bo mạch máy chủ &amp; Hệ thống thiết yếu; Dòng trung tâm dữ liệu Ổ đĩa Thể Rắn Intel®; HĐH Wind River, Dòng sản phẩm Intel® FPGA; Quản lý API; Phần mềm Intel® HPC; Intel® HPC Orchestrator; Intel® Omni-Path Architecture; Giải pháp Intel® cho Phần mềm Lustre.
 
 Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Quyền riêng tư | Cookies</textOnly>
     <type>custom</type>

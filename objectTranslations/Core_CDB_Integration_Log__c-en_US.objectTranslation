@@ -9,15 +9,15 @@
         <value>CDB Integration Logs</value>
     </caseValues>
     <fields>
-        <label><!-- Integration Direction --></label>
-        <name>Core_Integration_Direction_Nm__c</name>
+        <label><!-- Inbound Status --></label>
+        <name>Core_Inbound_Status__c</name>
         <picklistValues>
-            <masterLabel>Inbound</masterLabel>
-            <translation><!-- Inbound --></translation>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Outbound</masterLabel>
-            <translation><!-- Outbound --></translation>
+            <masterLabel>Successful</masterLabel>
+            <translation><!-- Successful --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -41,12 +41,16 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Program Name --></label>
+        <name>Core_Program_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Record Id --></label>
         <name>Core_Record_Id__c</name>
     </fields>
     <fields>
         <label><!-- Retry Number --></label>
-        <name>Core_Retry_Number_Nbr__c</name>
+        <name>Core_Retry_Number__c</name>
     </fields>
     <fields>
         <label><!-- Status Code --></label>

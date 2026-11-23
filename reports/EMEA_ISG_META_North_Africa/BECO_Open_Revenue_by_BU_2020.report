@@ -20,9 +20,6 @@
         <field>TOTAL_PRICE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_Status__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
     <filter>
@@ -44,18 +41,18 @@
     </filter>
     <format>Summary</format>
     <groupingsDown>
-        <dateGranularity>FiscalYear</dateGranularity>
-        <field>CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_Status__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>FULL_NAME</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>BECO (Open) Revenue by BU 2020</name>
@@ -82,6 +79,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

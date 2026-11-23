@@ -56,6 +56,7 @@
   selectTab: function(component, helper, index) {
     component.set("v.currentTabIndex", index);
 
+
     // if (typeof onActive === 'function' && index > -1) {
     // 	onActive(component, index);
     // }

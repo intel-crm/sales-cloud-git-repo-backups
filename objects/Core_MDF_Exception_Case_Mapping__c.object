@@ -153,7 +153,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_MDF_Case_Id_id__c</fullName>
         <description>This field stores the value of Case Id.</description>
@@ -286,17 +286,16 @@
     </fields>
     <fields>
         <fullName>Core_MDF_Exception_id__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <description>A look Up field, to store and refer the exception</description>
         <label>Exception</label>
         <referenceTo>Core_MDF_Exception__c</referenceTo>
         <relationshipLabel>Cases</relationshipLabel>
         <relationshipName>Exception_Case_Mappings</relationshipName>
-        <relationshipOrder>0</relationshipOrder>
-        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>MasterDetail</type>
-        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+        <type>Lookup</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Exception_status_nm__c</fullName>
@@ -332,7 +331,7 @@
     </nameField>
     <pluralLabel>Exception Case Mappings</pluralLabel>
     <searchLayouts/>
-    <sharingModel>ControlledByParent</sharingModel>
+    <sharingModel>Private</sharingModel>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <fullName>Core_MDF_Cannot_UpdateECM_IF_Case_Closed</fullName>

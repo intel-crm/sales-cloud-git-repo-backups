@@ -25,7 +25,7 @@ public class Core_UpdateExternalUserLanguage implements Queueable {
             Map<Id,List<String>> mapContactEntitlements = new Map<Id, List<String>>();
             
             //To get the ID's of the Profiles for which Language Update should be updated
-            for(Profile p : [SELECT Id FROM Profile WHERE Name IN :lstProfiles])
+            for(Schema.Profile p : [SELECT Id FROM Profile WHERE Name IN :lstProfiles])
             {
                 lstProfileIDs.add(p.Id);
             }

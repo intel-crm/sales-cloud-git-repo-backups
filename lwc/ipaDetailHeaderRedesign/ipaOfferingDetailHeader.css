@@ -1,0 +1,23 @@
+/* @import "./detailHeader.css";
+
+.contact-partner-container {
+  max-width: 20rem;
+}
+
+.offering-content {
+  --detail-marquee-background: var(--blue-steel-shade1);
+  --intc-carousel-bgcolor: var(--blue-steel-shade1);
+  --intc-carousel-indicator-bgcolor: var(--blue-steel-shade1);
+  --intc-carousel-indicator-height: 2.7rem;
+  --intc-carousel-indicator-width: 4.8rem;
+  --intc-gallery-image-align-items: start;
+  --intc-gallery-image-border: none;
+}
+
+.gallery-offset {
+  margin-top: -1.25rem;
+}
+
+.img-container {
+  max-width: 14rem;
+} */

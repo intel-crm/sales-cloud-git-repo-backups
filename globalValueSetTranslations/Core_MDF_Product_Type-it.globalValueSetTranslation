@@ -6,143 +6,31 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ACPC</masterLabel>
-        <translation>PC sempre connessi</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>AIO</masterLabel>
-        <translation>PC all-in-one</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>All-in-One Desktop</masterLabel>
-        <translation><!-- All-in-One Desktop --></translation>
+        <translation><!-- ACPC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>All-in-one</masterLabel>
         <translation><!-- All-in-one --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Altera®</masterLabel>
-        <translation><!-- Altera® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Appliance</masterLabel>
-        <translation>di rete</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Athena</masterLabel>
-        <translation><!-- Athena --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Chromebook</masterLabel>
         <translation><!-- Chromebook --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Client</masterLabel>
-        <translation>Cliente</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Cloud</masterLabel>
         <translation><!-- Cloud --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Cloud Instance Consumption</masterLabel>
-        <translation>Utilizzo delle istanze cloud</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Communications</masterLabel>
         <translation>Comunicazioni</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Component</masterLabel>
-        <translation>Componente</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Data Center DGPU</masterLabel>
-        <translation><!-- Data Center DGPU --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Desktop</masterLabel>
         <translation>PC-Desktop</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Edge Gateway</masterLabel>
-        <translation>Gateway edge</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge/IOT</masterLabel>
-        <translation><!-- Edge/IOT --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>FPGA Programmable Solution</masterLabel>
-        <translation>Soluzione programmabile FPGA</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>HPC</masterLabel>
-        <translation><!-- HPC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Handheld</masterLabel>
-        <translation>Palmari</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Hyper Converged Solutions</masterLabel>
         <translation>Soluzioni iperconvergenti</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel Unite®</masterLabel>
-        <translation><!-- Intel Unite® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel vPro®</masterLabel>
-        <translation><!-- Intel vPro® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intelligent Edge/IoT</masterLabel>
-        <translation>Edge Intelligente/IoT</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i3</masterLabel>
-        <translation><!-- Intel® Core™ i3 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i5</masterLabel>
-        <translation><!-- Intel® Core™ i5 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i7</masterLabel>
-        <translation><!-- Intel® Core™ i7 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Core™ i9</masterLabel>
-        <translation><!-- Intel® Core™ i9 --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Enpirion®</masterLabel>
-        <translation><!-- Intel® Enpirion® --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Movidius™</masterLabel>
-        <translation><!-- Intel® Movidius™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Nervana™</masterLabel>
-        <translation><!-- Intel® Nervana™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™</masterLabel>
-        <translation><!-- Intel® Optane™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Optane™ DC</masterLabel>
-        <translation><!-- Intel® Optane™ DC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® RealSense™</masterLabel>
-        <translation><!-- Intel® RealSense™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Intel® Xeon®</masterLabel>
-        <translation><!-- Intel® Xeon® --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Laptop</masterLabel>
@@ -154,111 +42,23 @@
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mini PC w/NUC</masterLabel>
-        <translation>Mini PC con NUC</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mini PC/NUC</masterLabel>
-        <translation><!-- Mini PC/NUC --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
-        <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Motherboard</masterLabel>
-        <translation>Scheda madre</translation>
+        <translation><!-- Mini PC w/NUC --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>NUC</masterLabel>
         <translation><!-- NUC --></translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Networking &amp; Telecommunications</masterLabel>
-        <translation>Reti e Telecomunicazioni</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Networking/Ethernet</masterLabel>
-        <translation>Rete/Ethernet</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Notebook</masterLabel>
-        <translation><!-- Notebook --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>OpenVINO™</masterLabel>
-        <translation><!-- OpenVINO™ --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Other</masterLabel>
-        <translation>Altro</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Programmable Solution</masterLabel>
-        <translation>Soluzione programmabile</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Server</masterLabel>
         <translation><!-- Server --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (AI/GPU)</masterLabel>
-        <translation><!-- Server (AI/GPU) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (Cloud)</masterLabel>
-        <translation>Server (cloud)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (ESMB)</masterLabel>
-        <translation><!-- Server (ESMB) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (HPC)</masterLabel>
-        <translation><!-- Server (HPC) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Server (non-HPC)</masterLabel>
-        <translation>Server (non HPC)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Service</masterLabel>
-        <translation>Servizio</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Software</masterLabel>
-        <translation><!-- Software --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Solution</masterLabel>
-        <translation>Soluzione</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Storage</masterLabel>
         <translation>Archiviazione</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Telco</masterLabel>
-        <translation>Telecomunicazioni</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Thin &amp; Light</masterLabel>
-        <translation>Sottile e leggero</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Desktop</masterLabel>
-        <translation><!-- Traditional Desktop --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Traditional Notebook</masterLabel>
-        <translation>Notebook tradizionale</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation</masterLabel>
-        <translation><!-- Workstation --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Workstation - Desktop</masterLabel>
-        <translation>Workstation - PC Desktop</translation>
+        <translation><!-- Thin &amp; Light --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Workstation - Fixed</masterLabel>
@@ -267,9 +67,5 @@
     <valueTranslation>
         <masterLabel>Workstation - Mobile</masterLabel>
         <translation>Workstation - portatile</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Xeon</masterLabel>
-        <translation><!-- Xeon --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

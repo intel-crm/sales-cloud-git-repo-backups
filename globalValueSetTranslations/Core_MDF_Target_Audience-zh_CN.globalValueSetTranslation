@@ -1,96 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>All</masterLabel>
-        <translation><!-- All --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business</masterLabel>
-        <translation><!-- Business --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business owners</masterLabel>
-        <translation>企业主</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
         <translation>高管</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Channel Partner</masterLabel>
-        <translation>渠道合作伙伴</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
         <translation>商业</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Consultant/Influencer</masterLabel>
-        <translation>顾问/影响力人物</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Consumer</masterLabel>
         <translation>家用</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Mainstream</masterLabel>
-        <translation>消费者 - 主流</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>消费者 - 高级</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Creator</masterLabel>
         <translation>创作者</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>DIY</masterLabel>
-        <translation><!-- DIY --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Developer</masterLabel>
         <translation>开发人员</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Distributors</masterLabel>
-        <translation>分销商</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge Customers (edge computing)</masterLabel>
-        <translation>边缘客户（边缘计算）</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Education</masterLabel>
-        <translation>教育</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Education Professionals</masterLabel>
-        <translation>教育专业人士</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Employees</masterLabel>
-        <translation>员工</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise</masterLabel>
-        <translation>企业</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enthusiast Gaming</masterLabel>
-        <translation><!-- Enthusiast Gaming --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Entry Gaming</masterLabel>
-        <translation>入门级游戏</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamer</masterLabel>
-        <translation>游戏玩家</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
@@ -101,24 +29,8 @@
         <translation>政府机关</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Government agency heads</masterLabel>
-        <translation>政府机构负责人</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Government/Public Sector</masterLabel>
-        <translation>政府/公共事业</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Healthcare</masterLabel>
-        <translation>医疗</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>IT Decision Maker</masterLabel>
         <translation>IT 决策者</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IT Manager</masterLabel>
-        <translation><!-- IT Manager --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Large Business</masterLabel>
@@ -129,103 +41,35 @@
         <translation>业务类型</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Mainstream Consumer (Overwhelmed)</masterLabel>
-        <translation><!-- Mainstream Consumer (Overwhelmed) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-        <translation>主流消费者 - 知识</translation>
+        <translation><!-- Mainstream Consumer - Knowledge --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-        <translation>主流消费者 – 选择困难</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-        <translation>主流消费者 – 技术知识</translation>
+        <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Managed Business</masterLabel>
-        <translation>托管业务</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Manufacturer/OEM</masterLabel>
-        <translation>制造商/原始设备制造商</translation>
+        <translation><!-- Managed Business --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mid Market</masterLabel>
         <translation>中间市场</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Mobile Go Getter</masterLabel>
-        <translation>移动达人</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
-        <translation><!-- Modern Consumer (Knowledgeable) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Other</masterLabel>
-        <translation>其它</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner Sales Force</masterLabel>
-        <translation>合作伙伴销售团队</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner </masterLabel>
-        <translation>合作伙伴 </translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Project / program managers</masterLabel>
-        <translation>项目/计划经理</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchasing</masterLabel>
-        <translation>采购</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Reseller</masterLabel>
         <translation>经销商</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Leaders</masterLabel>
-        <translation>销售负责人</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Security managers</masterLabel>
-        <translation>安全经理</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Senior Business Decision Maker</masterLabel>
-        <translation>企业资深决策者</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
         <translation>小型企业</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Small and Medium Business</masterLabel>
-        <translation>中小型企业</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
         <translation>解决方案建筑师</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation>企业资深决策者</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>System Integrators</masterLabel>
-        <translation>系统集成商</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Influencer</masterLabel>
-        <translation>技术影响力人物</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>
-        <translation>非托管小业务</translation>
+        <translation><!-- Unmanaged Small Business --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

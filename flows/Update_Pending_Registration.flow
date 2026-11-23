@@ -5,8 +5,8 @@
     <assignments>
         <name>update_contact_field_to_False</name>
         <label>update contact field to False</label>
-        <locationX>750</locationX>
-        <locationY>60</locationY>
+        <locationX>790</locationX>
+        <locationY>71</locationY>
         <assignmentItems>
             <assignToReference>$Record.Pending_Registration__c</assignToReference>
             <operator>Assign</operator>
@@ -25,8 +25,8 @@
     <assignments>
         <name>update_contact_field_to_True</name>
         <label>update contact field to True</label>
-        <locationX>758</locationX>
-        <locationY>419</locationY>
+        <locationX>740</locationX>
+        <locationY>377</locationY>
         <assignmentItems>
             <assignToReference>$Record.Pending_Registration__c</assignToReference>
             <operator>Assign</operator>
@@ -45,8 +45,8 @@
     <decisions>
         <name>If_Contact_is_Not_null</name>
         <label>If Contact is Not null</label>
-        <locationX>98</locationX>
-        <locationY>327</locationY>
+        <locationX>88</locationX>
+        <locationY>322</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Present</name>
@@ -75,7 +75,7 @@
         <name>Is_there_Pending_Registration</name>
         <label>Is there Pending Registration</label>
         <locationX>585</locationX>
-        <locationY>139</locationY>
+        <locationY>136</locationY>
         <defaultConnector>
             <targetReference>update_contact_field_to_False</targetReference>
         </defaultConnector>
@@ -135,8 +135,8 @@
     <recordLookups>
         <name>Get_Contact</name>
         <label>Get Contact</label>
-        <locationX>267</locationX>
-        <locationY>445</locationY>
+        <locationX>271</locationX>
+        <locationY>414</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>get_Registration_Record</targetReference>
@@ -186,26 +186,24 @@
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>PRM_Registration_Request__c</object>
-        <sortField>LastModifiedDate</sortField>
-        <sortOrder>Desc</sortOrder>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>110</locationX>
-        <locationY>13</locationY>
+        <locationX>64</locationX>
+        <locationY>20</locationY>
         <connector>
             <targetReference>If_Contact_is_Not_null</targetReference>
         </connector>
         <filterLogic>or</filterLogic>
         <filters>
             <field>Status__c</field>
-            <operator>IsNull</operator>
+            <operator>IsChanged</operator>
             <value>
-                <booleanValue>false</booleanValue>
+                <booleanValue>true</booleanValue>
             </value>
         </filters>
         <object>Contact_Business_Types__c</object>
-        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
     <status>Active</status>

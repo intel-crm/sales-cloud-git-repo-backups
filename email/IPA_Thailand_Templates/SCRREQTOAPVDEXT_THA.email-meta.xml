@@ -16,16 +16,19 @@ ID ธุรกิจ: {!Account.AccountNumber}
 
 ล็อกอินเพื่อดูรายละเอียดโปรไฟล์ Intel® Partner Alliance ของคุณ
 
+ล็อกอินเข้า https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/post-launch-primary เพื่อดูบทบาทของคุณ
+
+
 พาร์ทเนอร์ Intel มีประวัติการพัฒนานวัตกรรมมายาวนาน และด้วย Intel® Partner Alliance เราจะช่วยคุณเร่งสร้างโซลูชันสำหรับเศรษฐกิจแบบรวมศูนย์ข้อมูล เมื่อร่วมมือกัน เราจะสามารถเชื่อมต่อ สร้างสรรค์ และเติบโต ซึ่งสร้างโอกาสพิเศษให้เป็นไปได้
 
-เข้าไปที่ https://www.intel.com/content/www/th/th/partner-alliance/help/overview.html เพื่อขอความช่วยเหลือเพิ่มเติมเกี่ยวกับวิธีการเริ่มต้น
+เข้าไปที่ https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html เพื่อขอความช่วยเหลือเพิ่มเติมเกี่ยวกับวิธีการเริ่มต้น
 
 ขอขอบคุณ
 ทีม Intel® Partner Alliance ของคุณ
 
 ข้อความนี้ถูกส่งถึงคุณเพื่อใช้เป็นการสื่อสารทางธุรกิจที่สำคัญที่เกี่ยวข้องกับความสัมพันธ์ในปัจจุบันของคุณกับ Intel® Partner Alliance
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
 ความเป็นส่วนตัว | คุ้กกี้</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

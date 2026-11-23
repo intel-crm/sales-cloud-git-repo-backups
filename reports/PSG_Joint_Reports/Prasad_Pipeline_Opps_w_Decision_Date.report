@@ -121,7 +121,7 @@
         <field>CLOSE_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Bay Area - Pipeline Opps w Decision Date</name>
+    <name>ABAS - Pipeline Opps w Decision Date</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -147,6 +147,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

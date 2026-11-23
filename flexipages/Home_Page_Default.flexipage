@@ -33,6 +33,18 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>doceboAssets</componentName>
+                <identifier>c_doceboAssets</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>doceboEmbed</componentName>
+                <identifier>c_doceboEmbed</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>enableInlineEdit</name>
                     <value>true</value>
@@ -73,7 +85,33 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filterName</name>
-                    <value>Active_1PIDs</value>
+                    <value>All_One_Partner_IDs_created_this_month</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideActionBar</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSearchBar</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:filterListCard</componentName>
+                <identifier>flexipage_filterListCard2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>enableInlineEdit</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>entityName</name>
+                    <value>Account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterName</name>
+                    <value>PRM_Accounts_without_Partner_Accounts</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideActionBar</name>
@@ -85,10 +123,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>pageSize</name>
-                    <value>5</value>
+                    <value>3</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:filterListCard</componentName>
-                <identifier>flexipage_filterListCard2</identifier>
+                <identifier>flexipage_filterListCard4</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -110,6 +148,12 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>pRM_tempLink</componentName>
+                <identifier>c_pRM_tempLink</identifier>
+            </componentInstance>
+        </itemInstances>
         <mode>Replace</mode>
         <name>bottomLeft</name>
         <type>Region</type>
@@ -138,7 +182,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/sObject/00O3b000007QxSEEA0/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Archived Data&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/sObject/00O3b000007RX0lEAG/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Request Pending Approvals&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/sObject/00O3b000007RX0kEAG/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Self Registration Requests Status&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00Ocv00000cuRxNEAU/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Pending Outbound Message&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1PID DQ Reports:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000063hYVMAY/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;1PID Accounts Created This Month&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000063hYRMAY/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID with No Intel Account Association&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000063hYSMAY/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID Association with Inactive Intel Account&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000063hYWMAY/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;1PID with Inactive UCD Primary Account&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000063hYTMAY/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Intel Accounts without 1PID Association&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000067DUPMA2/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID without UCD Primary&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.lightning.force.com/lightning/r/Report/00O8A000000UjkIUAS/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Archived Data&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.lightning.force.com/lightning/r/sObject/00O8A000000UkgYUAS/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;background-color: rgb(243, 243, 243);&quot;&gt;CIM Duplicates Check&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00O8A000001IXJGUA4/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Request Pending Approvals&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00O8A000001IXReUAO/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Request Pending Completion&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00O8A000001IXRjUAO/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Self Registration Requests Status&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText2</identifier>
@@ -152,7 +196,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;h2&gt;DQ Report for IPA Membership Attributes&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000067DUNMA2/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Opt-In True, Point Status: Not Eligible&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000067DUOMA2/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Point Status: Blank&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00OHo0000067DUMMA2/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Point Status: Active, Point Not Eligible True&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;h2&gt;DQ Report for IPA Membership Attributes&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OWA000000uxzt2AA/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Opt-In True, Point Status: Not Eligible&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OWA000000uy1V2AQ/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Point Status: Blank&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OWA000000uy372AA/view?queryScope=userFolders&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;IPA Membership Attribute - Point Status: Active, Point Not Eligible True&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText3</identifier>
@@ -166,7 +210,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;p&gt;&lt;strong style=&quot;font-size: inherit;&quot;&gt;Deal Reg DQ Reports:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00Ocv0000160eHfEAI/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: inherit;&quot;&gt;Accounts With Deal Affiliations- NO PRM Sync&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel.lightning.force.com/lightning/r/Report/00Ocv0000160eHeEAI/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot; style=&quot;font-size: inherit;&quot;&gt;Contacts With Deal Entitlements- NO PRM Sync&lt;/a&gt;&lt;/p&gt;</value>
+                    <value>&lt;p&gt;&lt;strong&gt;1PID DQ Reports:&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OKR000000OHIg2AO/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;1PID Accounts Created This Month&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OKR000000OHIb2AO/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;1PID with Non IPA Account as UCD Primary Account&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OKR000000OGqP2AW/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID Accounts with Inactive ACM&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OKR000000OHIW2A4/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID Accounts without Intel Account Association&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://intel--crmdevipa.sandbox.lightning.force.com/lightning/r/Report/00OKR000000OHIl2AO/view&quot; rel=&quot;noopener noreferrer&quot; target=&quot;_blank&quot;&gt;Active 1PID Association with Inactive Intel Account&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -226,6 +270,18 @@
             <componentInstance>
                 <componentName>runtime_sales_activities:todayTaskContainer</componentName>
                 <identifier>runtime_sales_activities_todayTaskContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>prmObjectListView</componentName>
+                <identifier>c_prmObjectListView</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>prm_salesAndTrainingCmp</componentName>
+                <identifier>c_prm_salesAndTrainingCmp1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

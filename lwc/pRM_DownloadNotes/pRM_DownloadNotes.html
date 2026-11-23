@@ -1,0 +1,13 @@
+<template>
+    <template if:true={showData}>
+       <lightning-datatable 
+        data={allNotes}
+        columns={columnsTable}
+        key-field="Id"
+        onsort={handleSort}
+        sorted-by={sortBy}
+        sorted-direction={sortDirection}>
+       </lightning-datatable> 
+
+    </template>
+</template>

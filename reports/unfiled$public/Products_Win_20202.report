@@ -12,7 +12,7 @@
         <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>ACCOUNT_NAME</groupingColumn>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
@@ -111,6 +111,9 @@
         <field>ADDRESS1_COUNTRY_CODE</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <filter>
@@ -120,6 +123,13 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>,Qualify,Define,Develop,Design,Design Win,Production Win,Lost,Cancelled,Group,Production Lost,Production Cancelled,Group Open,Group Cancelled,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP France Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>FULL_NAME</column>
@@ -142,19 +152,12 @@
             <operator>equals</operator>
             <value>Submitted,Approved</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PRODUCT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>vpro</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -180,6 +183,7 @@
         <value>1</value>
     </params>
     <reportType>OpportunityProduct</reportType>
+    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
@@ -187,9 +191,9 @@
     <sortColumn>OpportunityLineItem.Core_Approved_KPI_Product_Group__c</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <endDate>2023-12-31</endDate>
+        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <endDate>2020-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2023-06-01</startDate>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

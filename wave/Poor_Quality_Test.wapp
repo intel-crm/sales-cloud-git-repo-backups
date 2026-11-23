@@ -2,4 +2,9 @@
 <WaveApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <folder>Poor_Quality_Test</folder>
     <masterLabel>Poor Quality Test</masterLabel>
+    <shares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10676116@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </shares>
 </WaveApplication>

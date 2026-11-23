@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Access to NDA Content</fullName>
+        <default>false</default>
+        <label>Access to NDA Content</label>
+    </customValue>
+    <customValue>
+        <fullName>Account Coverage</fullName>
+        <default>false</default>
+        <label>Account Coverage</label>
+    </customValue>
+    <customValue>
+        <fullName>Advanced Warranty Replacement</fullName>
+        <default>false</default>
+        <label>Advanced Warranty Replacement</label>
+    </customValue>
+    <customValue>
+        <fullName>Compass Document</fullName>
+        <default>false</default>
+        <label>Compass Document</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Support- 24Hr SLA</fullName>
+        <default>false</default>
+        <label>Customer Support- 24Hr SLA</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Support- 48Hr SLA</fullName>
+        <default>false</default>
+        <label>Customer Support- 48Hr SLA</label>
+    </customValue>
+    <customValue>
+        <fullName>Customer Support- 4Hr SLA</fullName>
+        <default>false</default>
+        <label>Customer Support- 4Hr SLA</label>
+    </customValue>
+    <customValue>
+        <fullName>Developer Zone Standard Entitlement</fullName>
+        <default>false</default>
+        <label>Developer Zone Standard Entitlement</label>
+    </customValue>
+    <customValue>
+        <fullName>FPGA Design Services Customer Project Registration</fullName>
+        <default>false</default>
+        <label>FPGA Design Services Customer Project Registration</label>
+    </customValue>
+    <customValue>
+        <fullName>FPGA Software and IP License Request</fullName>
+        <default>false</default>
+        <label>FPGA Software and IP License Request</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Data Center Innovation Fund (DCIF)</fullName>
+        <default>false</default>
+        <label>Intel Data Center Innovation Fund (DCIF)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel-Led Co-Marketing Program</fullName>
+        <default>false</default>
+        <label>Intel-Led Co-Marketing Program</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Partner Connect Invitation</fullName>
+        <default>false</default>
+        <label>Intel Partner Connect Invitation</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Service Provider Co-Marketing Fund (Intel SPCF)</fullName>
+        <default>false</default>
+        <label>Intel Service Provider Co-Marketing Fund (Intel SPCF)</label>
+    </customValue>
+    <customValue>
+        <fullName>Intel Solution Library</fullName>
+        <default>false</default>
+        <label>Intel Solution Library</label>
+    </customValue>
+    <customValue>
+        <fullName>IOT MDF $20K One Time</fullName>
+        <default>false</default>
+        <label>IOT MDF $20K One Time</label>
+    </customValue>
+    <customValue>
+        <fullName>IOT MDF $50K One Time</fullName>
+        <default>false</default>
+        <label>IOT MDF $50K One Time</label>
+    </customValue>
+    <customValue>
+        <fullName>IOT MDF $75K One Time</fullName>
+        <default>false</default>
+        <label>IOT MDF $75K One Time</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Development Funds (Account MDF)-CCP</fullName>
+        <default>false</default>
+        <label>Market Development Funds (Account MDF)-CCP</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Development Funds (MDF)-CCP</fullName>
+        <default>false</default>
+        <label>Market Development Funds (MDF)-CCP</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Development Funds (MDF)-CCPPilot</fullName>
+        <default>false</default>
+        <label>Market Development Funds (MDF)-CCPPilot</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Development Funds (MDF)-IMX</fullName>
+        <default>false</default>
+        <label>Market Development Funds (MDF)-IMX</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Development Funds (Proposal MDF)-CCP</fullName>
+        <default>false</default>
+        <label>Market Development Funds (Proposal MDF)-CCP</label>
+    </customValue>
+    <customValue>
+        <fullName>Marketplace Storefront</fullName>
+        <default>false</default>
+        <label>Marketplace Storefront</label>
+    </customValue>
+    <customValue>
+        <fullName>MRS Brand</fullName>
+        <default>false</default>
+        <label>MRS Brand</label>
+    </customValue>
+    <customValue>
+        <fullName>P2P &amp; Proposal Insight.tech</fullName>
+        <default>false</default>
+        <label>P2P &amp; Proposal Insight.tech</label>
+    </customValue>
+    <customValue>
+        <fullName>P2P Insight.tech</fullName>
+        <default>false</default>
+        <label>P2P Insight.tech</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner Marketing Studio</fullName>
+        <default>false</default>
+        <label>Partner Marketing Studio</label>
+    </customValue>
+    <customValue>
+        <fullName>Partner University</fullName>
+        <default>false</default>
+        <label>Partner University</label>
+    </customValue>
+    <customValue>
+        <fullName>Platform Verification Program (PVP)</fullName>
+        <default>false</default>
+        <label>Platform Verification Program (PVP)</label>
+    </customValue>
+    <customValue>
+        <fullName>Playbook</fullName>
+        <default>false</default>
+        <label>Playbook</label>
+    </customValue>
+    <customValue>
+        <fullName>Points Accruals View</fullName>
+        <default>false</default>
+        <label>Points Accruals View</label>
+    </customValue>
+    <customValue>
+        <fullName>Points Redemption</fullName>
+        <default>false</default>
+        <label>Points Redemption</label>
+    </customValue>
+    <customValue>
+        <fullName>Proposal Based MDF</fullName>
+        <default>false</default>
+        <label>Proposal Based MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>RRK Brand</fullName>
+        <default>false</default>
+        <label>RRK Brand</label>
+    </customValue>
+    <customValue>
+        <fullName>SB Points</fullName>
+        <default>false</default>
+        <label>SB Points</label>
+    </customValue>
+    <customValue>
+        <fullName>Secure Content Library</fullName>
+        <default>false</default>
+        <label>Secure Content Library</label>
+    </customValue>
+    <customValue>
+        <fullName>Selector Tool</fullName>
+        <default>false</default>
+        <label>Selector Tool</label>
+    </customValue>
+    <customValue>
+        <fullName>SMG Grow Call</fullName>
+        <default>false</default>
+        <label>SMG Grow Call</label>
+    </customValue>
+    <customValue>
+        <fullName>Solutions Marketplace Basic Access</fullName>
+        <default>false</default>
+        <label>Solutions Marketplace Basic Access</label>
+    </customValue>
+    <customValue>
+        <fullName>Solutions Marketplace Basic Profile</fullName>
+        <default>false</default>
+        <label>Solutions Marketplace Basic Profile</label>
+    </customValue>
+    <customValue>
+        <fullName>Solutions Marketplace Enhanced</fullName>
+        <default>false</default>
+        <label>Solutions Marketplace Enhanced</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Badge</fullName>
+        <default>false</default>
+        <label>SP AI Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Event Invitation</fullName>
+        <default>false</default>
+        <label>SP AI Event Invitation</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP AI Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI MDF</fullName>
+        <default>false</default>
+        <label>SP AI MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Points</fullName>
+        <default>false</default>
+        <label>SP AI Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Public Relations Support</fullName>
+        <default>false</default>
+        <label>SP AI Public Relations Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Support</fullName>
+        <default>false</default>
+        <label>SP AI Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP AI Training</fullName>
+        <default>false</default>
+        <label>SP AI Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud Accelerator Initiatives</fullName>
+        <default>false</default>
+        <label>SP Cloud Accelerator Initiatives</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud Badge</fullName>
+        <default>false</default>
+        <label>SP Cloud Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP Cloud Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud MDF</fullName>
+        <default>false</default>
+        <label>SP Cloud MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud Points</fullName>
+        <default>false</default>
+        <label>SP Cloud Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud SOEM Opportunity</fullName>
+        <default>false</default>
+        <label>SP Cloud SOEM Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud technical support</fullName>
+        <default>false</default>
+        <label>SP Cloud technical support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Cloud Training</fullName>
+        <default>false</default>
+        <label>SP Cloud Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS Badge</fullName>
+        <default>false</default>
+        <label>SP DaaS Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS Event Invitation</fullName>
+        <default>false</default>
+        <label>SP DaaS Event Invitation</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP DaaS Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS MDF</fullName>
+        <default>false</default>
+        <label>SP DaaS MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS Points</fullName>
+        <default>false</default>
+        <label>SP DaaS Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP DaaS Training</fullName>
+        <default>false</default>
+        <label>SP DaaS Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking Badge</fullName>
+        <default>false</default>
+        <label>Spec Networking Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking Event Invitation</fullName>
+        <default>false</default>
+        <label>Spec Networking Event Invitation</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking Marketplace Promo</fullName>
+        <default>false</default>
+        <label>Spec Networking Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking MDF</fullName>
+        <default>false</default>
+        <label>Spec Networking MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking Points</fullName>
+        <default>false</default>
+        <label>Spec Networking Points</label>
+    </customValue>
+    <customValue>
+        <fullName>Spec Networking Training</fullName>
+        <default>false</default>
+        <label>Spec Networking Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Badge</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Gaming packs</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Gaming packs</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast MDF</fullName>
+        <default>false</default>
+        <label>SP Enthusiast MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Merchandise</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Merchandise</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Order Samples</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Order Samples</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Points</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Research Reports</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Research Reports</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Testing Services</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Testing Services</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Enthusiast Webinars</fullName>
+        <default>false</default>
+        <label>SP Enthusiast Webinars</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Accelerator Initiatives</fullName>
+        <default>false</default>
+        <label>SP HPC Accelerator Initiatives</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC badge</fullName>
+        <default>false</default>
+        <label>SP HPC badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP HPC Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC MDF</fullName>
+        <default>false</default>
+        <label>SP HPC MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Points</fullName>
+        <default>false</default>
+        <label>SP HPC Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC SOEM Opportunity</fullName>
+        <default>false</default>
+        <label>SP HPC SOEM Opportunity</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Special Pricing</fullName>
+        <default>false</default>
+        <label>SP HPC Special Pricing</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Technical Support</fullName>
+        <default>false</default>
+        <label>SP HPC Technical Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP HPC Training</fullName>
+        <default>false</default>
+        <label>SP HPC Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Industry Analyst Studies</fullName>
+        <default>false</default>
+        <label>SP Industry Analyst Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Industry SB Events</fullName>
+        <default>false</default>
+        <label>SP Industry SB Events</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Industry SB Insight.Tech</fullName>
+        <default>false</default>
+        <label>SP Industry SB Insight.Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Industry SB  MDF</fullName>
+        <default>false</default>
+        <label>SP Industry SB  MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Industry SB Training</fullName>
+        <default>false</default>
+        <label>SP Industry SB Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS Badge</fullName>
+        <default>false</default>
+        <label>SP MS Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS Event Invitation</fullName>
+        <default>false</default>
+        <label>SP MS Event Invitation</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP MS Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS MDF</fullName>
+        <default>false</default>
+        <label>SP MS MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS Points</fullName>
+        <default>false</default>
+        <label>SP MS Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP MS Training</fullName>
+        <default>false</default>
+        <label>SP MS Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Badge</fullName>
+        <default>false</default>
+        <label>SP Optane Client Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Events</fullName>
+        <default>false</default>
+        <label>SP Optane Client Events</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP Optane Client Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client MDF</fullName>
+        <default>false</default>
+        <label>SP Optane Client MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Order Samples</fullName>
+        <default>false</default>
+        <label>SP Optane Client Order Samples</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Points</fullName>
+        <default>false</default>
+        <label>SP Optane Client Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Public Relations Support</fullName>
+        <default>false</default>
+        <label>SP Optane Client Public Relations Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Rebates</fullName>
+        <default>false</default>
+        <label>SP Optane Client Rebates</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Support</fullName>
+        <default>false</default>
+        <label>SP Optane Client Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane Client Training</fullName>
+        <default>false</default>
+        <label>SP Optane Client Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Badge</fullName>
+        <default>false</default>
+        <label>SP Optane DC Badge</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Events</fullName>
+        <default>false</default>
+        <label>SP Optane DC Events</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Marketplace Promo</fullName>
+        <default>false</default>
+        <label>SP Optane DC Marketplace Promo</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC MDF</fullName>
+        <default>false</default>
+        <label>SP Optane DC MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Order Samples</fullName>
+        <default>false</default>
+        <label>SP Optane DC Order Samples</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Points</fullName>
+        <default>false</default>
+        <label>SP Optane DC Points</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Public Relations Support</fullName>
+        <default>false</default>
+        <label>SP Optane DC Public Relations Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Rebates</fullName>
+        <default>false</default>
+        <label>SP Optane DC Rebates</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Support</fullName>
+        <default>false</default>
+        <label>SP Optane DC Support</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Optane DC Training</fullName>
+        <default>false</default>
+        <label>SP Optane DC Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video Analyst Studies</fullName>
+        <default>false</default>
+        <label>SP Video Analyst Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video Branding</fullName>
+        <default>false</default>
+        <label>SP Video Branding</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video Events</fullName>
+        <default>false</default>
+        <label>SP Video Events</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video Insight.Tech</fullName>
+        <default>false</default>
+        <label>SP Video Insight.Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video MDF</fullName>
+        <default>false</default>
+        <label>SP Video MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Video Training</fullName>
+        <default>false</default>
+        <label>SP Video Training</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Visual Retail Analyst Studies</fullName>
+        <default>false</default>
+        <label>SP Visual Retail Analyst Studies</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Visual Retail Events</fullName>
+        <default>false</default>
+        <label>SP Visual Retail Events</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Visual Retail Insight.Tech</fullName>
+        <default>false</default>
+        <label>SP Visual Retail Insight.Tech</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Visual Retail MDF</fullName>
+        <default>false</default>
+        <label>SP Visual Retail MDF</label>
+    </customValue>
+    <customValue>
+        <fullName>SP Visual Retail Training</fullName>
+        <default>false</default>
+        <label>SP Visual Retail Training</label>
+    </customValue>
+    <customValue>
+        <fullName>Standard Warranty Replacement</fullName>
+        <default>false</default>
+        <label>Standard Warranty Replacement</label>
+    </customValue>
+    <customValue>
+        <fullName>Technology Sandbox</fullName>
+        <default>false</default>
+        <label>Technology Sandbox</label>
+    </customValue>
+    <customValue>
+        <fullName>Virtual Learning</fullName>
+        <default>false</default>
+        <label>Virtual Learning</label>
+    </customValue>
+    <customValue>
+        <fullName>Placeholder DZS benefit</fullName>
+        <default>false</default>
+        <label>Placeholder DZS benefit</label>
+    </customValue>
+    <customValue>
+        <fullName>Placeholder DZP benefit</fullName>
+        <default>false</default>
+        <label>Placeholder DZP benefit</label>
+    </customValue>
+    <masterLabel>Partner Benefit</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Secure Org Engagement Request for new user (with EV link) - Admin Reg</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>NEWADMINUSERREG_SPA</name>
+    <style>none</style>
+    <subject>Confirmación de registro de Intel</subject>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

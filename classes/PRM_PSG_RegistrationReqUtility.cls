@@ -268,5 +268,5 @@ public class PRM_PSG_RegistrationReqUtility {
             System.debug('Exception'+exp.getMessage());
         }        
     }
-*/    //TWC729-8986 - PSG removal from PRM classes
+*/    
 }

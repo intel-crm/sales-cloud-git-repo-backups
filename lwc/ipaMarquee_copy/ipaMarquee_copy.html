@@ -1,0 +1,51 @@
+<template>
+    <div class="marquee-container" data-marquee-height-no-search={showSearch}>
+        <template if:true={showSignIn}>
+            <div class="slds-show_large slds-text-align_right signIn utility-type">
+                    {label.PartnerProgramMember}<br/>
+                    <a class="color-white utility-type text-underline">{label.SignIn}</a> | <a class="color-white utility-type text-underline">{label.LearnMore}</a>
+            </div>
+        </template>
+        
+        <div class="container" data-align={classes.alignment} data-layout={layout}>
+            <div class="main-content">
+                <h1 class="title color-white">{title}</h1>
+                <p class="subtitle color-white">{subtitle}</p>
+                <p class="description color-white">{description}</p>
+                <template if:true={linkData.label}>
+                    <c-ipa-link class-name="color-white text-underline-hover" label={linkData.label} community-page={linkData.communityPage} external-url={linkData.externalUrl} object-page={linkData.objectPage} record-id={linkData.recordId} caret={showCaret}></c-ipa-link>
+                </template>
+                <template if:true={showSearch}>
+                    <!--TODO: Move Search HTML and CSS to its own component in Sprint 3-->
+                    <div class="search">
+                        <form class="search-container">
+                            <a href="#"><span class="intel-icon i-search i-search-intel"></span></a>
+                            <input class="search-marquee" type="text" placeholder="Search Marketplace Offerings" id="searchMarquee" name="searchMarquee"/>
+                        </form>
+                    </div>
+                </template>
+            </div>
+            <template if:true={ifs.hasRightPanel}>
+                <div class="right-content">
+                    <div class="mobile-column">
+                        <template if:true={ifs.buttonCtaValid}>
+                            <c-ipa-link class-name="color-white text-underline-hover"  community-page={buttonLinkData.communityPage} external-url={buttonLinkData.externalUrl} hide-icon="true">
+                                <lightning-button label={buttonLinkData.label} variant="brand" class="dark-theme"></lightning-button>
+                            </c-ipa-link>
+                        </template>
+                    </div>
+                    <div class="mobile-column">
+                        <template if:true={ifs.rightCta1Valid}>
+                            <c-ipa-link class-name="color-white text-underline-hover" label={cta1LinkData.label} community-page={cta1LinkData.communityPage} object-page={cta1LinkData.objectPage} record-id={cta1LinkData.recordId} external-url={cta1LinkData.externalUrl} caret="true"></c-ipa-link>
+                        </template>
+                        <template if:true={ifs.rightCta2Valid}>
+                            <c-ipa-link class-name="color-white text-underline-hover" label={cta2LinkData.label} community-page={cta2LinkData.communityPage} external-url={cta2LinkData.externalUrl}  caret="true"></c-ipa-link>
+                        </template>
+                    </div>
+    
+                </div>
+            </template>
+        </div>
+
+    </div>
+</template>

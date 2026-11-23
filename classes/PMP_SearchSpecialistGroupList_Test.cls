@@ -9,7 +9,7 @@ public class PMP_SearchSpecialistGroupList_Test extends PMP_SearchWrapperStore{
         cmp1.PMP_Company_Information_Language_Nm__c = 'English';
         cmp1.PMP_Account_Dsc__c = 'test desc';
         cmp1.PMP_Account_Tag_Line__c = 'test tagline';
-        cmp1.PMP_Account_Specialty__c = 'None';
+        cmp1.PMP_Account_Specialty__c = 'Video';
         cmp1.PMP_Is_Published_Ind__c = true;
         update cmp1;
         System.debug('cmp1 '+cmp1);
@@ -19,7 +19,7 @@ public class PMP_SearchSpecialistGroupList_Test extends PMP_SearchWrapperStore{
         cmp2.PMP_Company_Information_Language_Nm__c = 'English';
         cmp2.PMP_Account_Dsc__c = 'test desc';
         cmp2.PMP_Account_Tag_Line__c = 'test tagline';
-        cmp2.PMP_Account_Specialty__c = 'None';
+        cmp2.PMP_Account_Specialty__c = 'Artificial Intelligence';
         cmp2.PMP_Is_Published_Ind__c = true;
         update cmp2;*/
         
@@ -30,7 +30,7 @@ public class PMP_SearchSpecialistGroupList_Test extends PMP_SearchWrapperStore{
         PMP_Company__c testPartner1 =  PMP_SearchTestDataFactory.createCompanyInformation('testPartner1',accId , false);
         testPartner1.PMP_Account_Region__c = 'EMEA';
         testPartner1.PMP_Account_Sub_Region__c = 'TAIWAN';
-        testPartner1.PMP_Account_Specialty__c = 'None';
+        testPartner1.PMP_Account_Specialty__c = 'Artificial Intelligence Specialist';
         //testPartner1.PMP_Account_Specialty__c = 'Videos';
         testPartner1.PMP_Account_Industry__c = 'Energy';
         testPartner1.PMP_Account_Application__c = 'Storage';
@@ -51,7 +51,7 @@ public class PMP_SearchSpecialistGroupList_Test extends PMP_SearchWrapperStore{
         testPartner2.PMP_Account_Region__c = 'ASMO';
         testPartner2.PMP_Account_Sub_Region__c = 'KOREA';
         //testPartner2.PMP_Account_Specialty__c = 'LOEM-ODM Partner Program';
-        testPartner2.PMP_Account_Specialty__c = 'None';
+        testPartner2.PMP_Account_Specialty__c = 'Specialty Partner';
         testPartner2.PMP_Account_Industry__c = 'Energy';
         testPartner2.PMP_Account_Application__c = 'Storage';
         testPartner2.PMP_Partner_Program_nm__c = 'ISA;ODM-LOEM';

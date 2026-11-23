@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>UserNote</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>UserNotes</value>
+    </caseValues>
+    <fields>
+        <label><!-- HideNote --></label>
+        <name>Xvoyant__HideNote__c</name>
+    </fields>
+    <fields>
+        <label><!-- NoteText --></label>
+        <name>Xvoyant__NoteText__c</name>
+    </fields>
+    <fields>
+        <label><!-- UserId --></label>
+        <name>Xvoyant__UserId__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

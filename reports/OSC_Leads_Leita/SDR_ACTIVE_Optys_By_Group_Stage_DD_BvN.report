@@ -51,7 +51,7 @@
     <description>RT: Opportunities.
 Active Opportunities created by SDR&apos;s grouped by Region</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9 OR 10 OR 11 OR 12 OR 13)</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8 OR 9)</booleanFilter>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -64,7 +64,14 @@ Active Opportunities created by SDR&apos;s grouped by Region</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>aliceuye,aorlowsk,bradhall,egray,kevinwei,kmckelli,kstark,tomomiao,weilunle,xuanying,ymun,yuyuanwa,zsmiley</value>
+            <value>aliceuye,aorlowsk,bradhall,coon1,egray,kevinwei,kkawelo,kmckelli,kstark,slal,tomomiao,weilunle,xuanying,ymun,yuyuanwa,zsmiley</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OPPORTUNITY_ID</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0061J00000Uv6C5,0061J00000VNyAO,0061J00000UwFe3,0061J00000W8KzW,0061J00000X0dAr,0061J00000X2YJk,0063b00001CqX9h,0063b00001CqaLD,0063b00001CqFcC,0061J00000X2YSD,0063b00001CqCSZ,0063b00001Cqh68</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_ID</column>
@@ -107,41 +114,6 @@ Active Opportunities created by SDR&apos;s grouped by Region</description>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0061J00000aJQ8N,0063b00001CqUqJ,0063b00001CqUux,0063b00001CqVL8,0063b00001CqVMQ,0063b00001CqVMp,0063b00001CqVNi,0063b00001CqVOg,0063b00001CqVOl,0063b00001CqZsS,0063b00001CqaBa,0063b00001CqeVn,0063b00001CqemA,0063b00001CqemF,0063b00001Cqeme,0063b00001CqenD,0063b00001CqenI,0063b00001CqenN,0063b00001CqenS,0063b00001Cqenc,0063b00001Cqenh</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0061J00000Uv6C5,0061J00000VNyAO,0061J00000UwFe3,0061J00000W8KzW,0061J00000X0dAr,0061J00000X2YJk,0063b00001CqX9h,0063b00001CqaLD,0063b00001CqFcC,0061J00000X2YSD,0063b00001CqCSZ,0063b00001Cqh68</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0063b00001CqXfv,0063b00001CqeSo,0063b00001Cqh99,0063b00001Cqkym,0063b00001Cql62,0063b00001CqoF0,0063b00001CqVRf,0063b00001CqaeY,0063b00001Cql5n,0063b00001CqaSf,0063b00001CqlyE,0063b00001Cqcwh,0063b00001Cqcww,0063b00001CqJ7L</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0063b00001Cqk2Z</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0063b00001CqDMS,0063b00001CqIta,0063b00001CqcJy,0063b00001CqjSA,0063b00001CqlYV,0063b00001CrU3q,0063b00001CqeQE,0063b00001CqgXZ,0063b00001CqNku,0063b00001CqEpU,0063b00001CqcKW,0063b00001CqI8K,0063b00001CqDMX,0063b00001CqItf,0063b00001CqJDT,0063b00001CqJDY,0063b00001CqMDZ,0063b00001Cqc2K,0063b00001Cqc2U</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_ID</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0063b00001Cr45G,0063b00001CrO6w,0063b00001CrQsc,0063b00001Cqed4,0063b00001CqQqU,0063b00001CrMuz,0063b00001CrMuQ,0063b00001CrTvm,0063b00001CrS1j,0063b00001Ez0ca,0063b00001Ez6j1,0063b00001Ez6rt,0063b00001EzFao,0063b00001EzIfR,0063b00001EzKYd,0063b00001EzOHM,0063b00001EzFZv,0063b00001DVJ16,0063b00001DVGGD,0063b00001DV8nR</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

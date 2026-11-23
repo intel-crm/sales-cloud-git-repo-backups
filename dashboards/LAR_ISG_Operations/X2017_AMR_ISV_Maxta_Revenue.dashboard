@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>23% of total quota</footer>
+            <gaugeMax>552000.0</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Maxta</header>
+            <indicatorBreakpoint1>496800.0</indicatorBreakpoint1>
+            <indicatorBreakpoint2>524400.0</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q1_17_AMR_ISV_Maxta_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q1&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>23% of total quota</footer>
+            <gaugeMax>1.45E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Maxta</header>
+            <indicatorBreakpoint1>1.305E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>1.3775E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q2_17_AMR_ISV_SAS_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q2&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_AMOUNT</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>24% of total quota</footer>
+            <gaugeMax>1.5466667E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Maxta</header>
+            <indicatorBreakpoint1>1.392E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>1.4693333E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q3_17_AMR_ISV_SAP_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q3&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <aggregate>Sum</aggregate>
+                <axisBinding>y</axisBinding>
+                <column>EXP_AMOUNT</column>
+            </chartSummary>
+            <componentType>Gauge</componentType>
+            <displayUnits>Millions</displayUnits>
+            <footer>30% of total quota</footer>
+            <gaugeMax>1.9333333E7</gaugeMax>
+            <gaugeMin>0.0</gaugeMin>
+            <groupingSortProperties/>
+            <header>Maxta</header>
+            <indicatorBreakpoint1>1.74E7</indicatorBreakpoint1>
+            <indicatorBreakpoint2>1.8366667E7</indicatorBreakpoint2>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#8BC254</indicatorMiddleColor>
+            <report>LAR_ISG_Operations/Q4_17_AMR_ISV_SAP_Rev</report>
+            <showPercentage>true</showPercentage>
+            <showRange>false</showRange>
+            <showTotal>true</showTotal>
+            <showValues>false</showValues>
+            <title>Q4&apos;17 - Weighted vs Projected Revenue</title>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+    </middleSection>
+    <owner>11631632@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+    </rightSection>
+    <runningUser>11631632@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>2017 AMR ISV Maxta Revenue</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

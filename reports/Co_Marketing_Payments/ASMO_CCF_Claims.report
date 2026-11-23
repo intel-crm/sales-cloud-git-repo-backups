@@ -16,9 +16,6 @@
         <field>PartnerFundClaim$Core_MDF_Program__c</field>
     </columns>
     <columns>
-        <field>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</field>
-    </columns>
-    <columns>
         <field>PartnerFundClaim$Core_MDF_Country_Location_nm__c</field>
     </columns>
     <columns>
@@ -29,7 +26,7 @@
 Program - CCF
 Claim Status - Payment Due</description>
     <filter>
-        <booleanFilter>(1 OR (3 AND 4)) AND 5 AND 2 AND 6</booleanFilter>
+        <booleanFilter>(1 OR (3 AND 4)) AND 5 AND 2</booleanFilter>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -42,7 +39,7 @@ Claim Status - Payment Due</description>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Client</value>
+            <value>Client Co-Marketing Fund</value>
         </criteriaItems>
         <criteriaItems>
             <column>PartnerFundClaim$Core_MDF_Type_Txt__c</column>
@@ -64,13 +61,6 @@ Claim Status - Payment Due</description>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_Budget_Type_Options_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCF 1.0,MDF,MDF+,OEM CMP</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

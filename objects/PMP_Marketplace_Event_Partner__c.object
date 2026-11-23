@@ -195,6 +195,11 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <label>Marketplace Event Partner</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>{000}</displayFormat>
         <label>Name</label>

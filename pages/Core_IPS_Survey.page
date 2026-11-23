@@ -15,21 +15,10 @@ Modification Log :
     <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, 'survey_style.css')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.Core_IPS_Survey, SUBSTITUTE(surveyType,' ','_')&'_survey_style.css')}"/>
     <style>     
-        <!-- TWC745-80 -- 24-08-21 -- Start -- Sai Krishna -- Updating old Survey Page for customer feedaback -->
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(1) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_SadEmoji}') " " "Strongly Disagree"  }  
-        </apex:outputPanel>
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(3) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_NeutralEmoji}') "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Neither"  } 
-        </apex:outputPanel>
-        <apex:outputPanel layout="none">
-            .answer2 .selectradio-input td:nth-child(5) input[type="radio"]+label:before { content:url('{!$Resource.Core_IPS_HappyEmoji}') " " "Strongly &nbsp;&nbsp;Agree"}
-        </apex:outputPanel>
-        <!-- TWC745-80 -- 24-08-21 -- End -- Sai Krishna -- Updating old Survey Page for customer feedaback -->
         <apex:outputPanel rendered="{!surveyType=='Customer'}" layout="none">
             .answer7:before { content:url('{!$Resource.Core_IPS_Survey_Rating_Image}');  }
         </apex:outputPanel>
-	<apex:outputText value="{!HTMLENCODE(containerCSS)}" escape="false" />
+        <apex:outputText value="{!containerCSS}" escape="false" />
     </style>
     <apex:includeScript value="{!URLFOR($Resource.Core_IPS_Survey,'jquery1124min.js')}"/>
     <script>function setFocusOnLoad() {}
@@ -86,7 +75,7 @@ Modification Log :
                                     <div class="float-left valign-top">
                                         <apex:outputPanel rendered="{!ques.isRequired}" layout="none"><br/>&nbsp;&nbsp;<font color="red">*required</font></apex:outputPanel>   
                                         <apex:outputPanel styleClass="custom_errmsg" layout="none" rendered="{!NOT(ISBLANK(ques.errorMsg))}">
-                                            <apex:outputText value="{!HTMLENCODE(JSENCODE(ques.errorMsg))}" escape="false" />
+                                            <apex:outputText value="{!ques.errorMsg}" escape="false" />
                                         </apex:outputPanel>
                                     </div>
                                 </div>
@@ -98,7 +87,6 @@ Modification Log :
                 <!-- Submit Button -->
                 <div class="buttonContainer">                      
                     <apex:commandButton value="Submit" action="{!captureSurvey}" styleClass="submitbutton" onclick="return validate_input()"/>
-                
                 </div>
                 
                 <!-- Footer -->
@@ -164,8 +152,6 @@ Modification Log :
         }
         return isAnyFilled;
     }
-    
-    
     </script>
     </apex:outputPanel>
 </apex:page>

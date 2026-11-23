@@ -264,14 +264,11 @@
     <relatedLists>
         <customButtons>Core_Product_Credit</customButtons>
         <fields>Product2</fields>
-        <fields>Core_Status__c</fields>
-        <fields>Core_Claim_Date__c</fields>
         <fields>Quantity</fields>
         <fields>UnitPrice</fields>
-        <fields>TotalPrice</fields>
-        <fields>Core_Write_In_Product_Name__c</fields>
-        <fields>Core_BU_Short_Name_Old__c</fields>
-        <fields>Core_Vendor__c</fields>
+        <fields>ServiceDate</fields>
+        <fields>Description</fields>
+        <fields>ListPrice</fields>
         <relatedList>RelatedLineItemList</relatedList>
     </relatedLists>
     <relatedLists>

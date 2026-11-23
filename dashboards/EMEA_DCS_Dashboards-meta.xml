@@ -2,37 +2,22 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10635811@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11635463@intel.com.crm</sharedTo>
+        <sharedTo>11568395@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10830939@intel.com.crm</sharedTo>
+        <sharedTo>10682153@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11571077@intel.com.crm</sharedTo>
+        <sharedTo>10637593@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10715677@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10696043@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10707793@intel.com.crm</sharedTo>
+        <sharedTo>10651570@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
@@ -42,52 +27,42 @@
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10660615@intel.com.crm</sharedTo>
+        <sharedTo>10004178@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11380021@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>Manage</accessLevel>
-        <sharedTo>11053895@intel.com.crm</sharedTo>
+        <sharedTo>10564221@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10667359@intel.com.crm</sharedTo>
+        <sharedTo>10683203@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>EditAllContents</accessLevel>
+        <sharedTo>10589044@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>EditAllContents</accessLevel>
+        <sharedTo>10680662@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>11574742@intel.com.crm</sharedTo>
+        <sharedTo>10566936@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>10661413@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>10779087@intel.com.crm</sharedTo>
+        <sharedTo>10102173@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11123496@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>10673092@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>EditAllContents</accessLevel>
-        <sharedTo>11449092@intel.com.crm</sharedTo>
+        <sharedTo>10707430@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <name>EMEA DCS Dashboards</name>

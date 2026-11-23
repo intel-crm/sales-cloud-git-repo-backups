@@ -1,8 +1,7 @@
 <apex:page controller="Core_CampaignWaveImportController" showHeader="true" sidebar="true" id="thePage"
            applyHtmlTag="true" applyBodyTag="true" title="Campaign Member Import from Wave" tabStyle="Campaign" lightningStylesheets="true">
     <script>
-      <!-- Kavyashree security scan fixes. -->
-        var globalSid = "{!JSENCODE(sid)}";
+        var globalSid = "{!sid}";
     </script>
     <header>
         <apex:styleSheet value="{! $Resource.Core_CampaignWaveImportCSS }"/>

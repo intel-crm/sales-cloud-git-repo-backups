@@ -53,5 +53,12 @@
         <label><!-- Storefront Working Copy --></label>
         <name>PMP_Storefront_Working_Copy__c</name>
     </fields>
+    <layouts>
+        <layout>OPID MPI Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

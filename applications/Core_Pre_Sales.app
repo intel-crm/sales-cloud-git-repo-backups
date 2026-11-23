@@ -2,13 +2,11 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <defaultLandingTab>standard-Case</defaultLandingTab>
     <description>IPS Pre-Sales</description>
-    <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Pre-Sales</label>
-    <logo>SharedDocuments/Intel_Logo_with_asterisk.png</logo>
     <tabs>Core_IPS_Product_Organization__c</tabs>
     <tabs>Core_IPS_Project__c</tabs>
     <tabs>standard-Account</tabs>
@@ -29,7 +27,46 @@
     <tabs>Core_Ask_a_Question_Grid_Mgt</tabs>
     <tabs>Core_Batch_Header__c</tabs>
     <tabs>CaseMilestoneCompare__c</tabs>
+    <tabs>Core_Account_Team_Review</tabs>
+    <tabs>Core_Account_Team_Review_Data_Ops</tabs>
     <tabs>Ask_a_Question</tabs>
-    <tabs>Core_IPS_Case_Owner_Group__c</tabs>
+    <tabs>PMP_Partner_Program__c</tabs>
+    <tabs>PRM_Message_Entitlement_Association__c</tabs>
+    <tabs>Core_Apex_EmailNotification__c</tabs>
+    <tabs>PMP_Partner_Segment__c</tabs>
+    <tabs>SCRTY_Object_Permission_Metrics__c</tabs>
+    <tabs>A_E_Error_Mapping__c</tabs>
+    <tabs>A_E_Integration_Status_Detail__c</tabs>
+    <tabs>Core_Platform_Event_Log__c</tabs>
+    <tabs>PSS_Solution_Contact_Association__c</tabs>
+    <tabs>Core_Channel_Program_Domaindetails__c</tabs>
+    <tabs>PRM_Bulk_Data_Upload__c</tabs>
+    <tabs>PMP_OPID_MPI_Rel__c</tabs>
+    <tabs>PRM_Email_Handler__c</tabs>
+    <tabs>PMP_Company_Resource__c</tabs>
+    <tabs>PMP_Rich_Media_Asset_Stage__c</tabs>
+    <tabs>PMP_Rich_Media_Asset_Category_Stage__c</tabs>
+    <tabs>Core_Log_Failed_Callout_Entry__c</tabs>
+    <tabs>Bulk_Data_Upload_Summary__c</tabs>
+    <tabs>Attachment__c</tabs>
+    <tabs>PRM_Notification_Event_Log__c</tabs>
+    <tabs>Core_GA_Banner__c</tabs>
+    <tabs>PRM_Registration_Tracker__c</tabs>
+    <tabs>PRM_IPA_Affiliation__c</tabs>
+    <tabs>PRM_Builder_Strategy__c</tabs>
+    <tabs>PMP_Partner_Tier__c</tabs>
+    <tabs>Problem_Request__c</tabs>
+    <tabs>Problem_Collaborator__c</tabs>
+    <tabs>PRM_Security_Test__c</tabs>
+    <tabs>PRM_Child_Security_Testing__c</tabs>
+    <tabs>PRM_Partner_Report_Matrix__c</tabs>
     <tabs>Account_Create_Request__c</tabs>
+    <tabs>ER_Customer_Master_File__c</tabs>
+    <tabs>ER_Customer_Master_File_Group__c</tabs>
+    <tabs>ER_CMFGroupAssociation__c</tabs>
+    <tabs>ER_ContactGroupAssociation__c</tabs>
+    <tabs>Core_CustomMetadata_Object__c</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

@@ -1,0 +1,23 @@
+<apex:page showHeader="false">
+<style>
+        .center {
+            text-align: center;
+            margin-top: 15vh; /* Adjust this value to position the content */
+            padding: 20px; /* Adjust padding as needed */
+            font-size: 20px; /* Adjust font size as needed */
+        }
+        .center p {
+            margin: 0;
+        }
+        .center a.link {
+            color: blue; /* Change URL color to blue */
+            font-size: 22px; /* Increase font size of the URL */
+        }
+</style>
+<div class="left">
+<p style="margin-bottom: 10px;"><span style="font-size : 40px"><b>Intel® Partner Alliance Refresh</b></span><br/><br/>
+Intel® Partner Alliance Refresh: Simplified, More Value, Continuous Innovation.  We are transitioning your Intel® Partner Alliance experience, and our sites are under construction.
+Experience it beginning October 13th
+Learn about Refresh: Intel® Partner Alliance Membership Benefits</p>
+</div>
+</apex:page>

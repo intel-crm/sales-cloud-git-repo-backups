@@ -9,6 +9,17 @@
     "regionName" : "header",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "flowArguments" : "",
+        "flowName" : "{!flowName}"
+      },
+      "componentName" : "forceCommunity:flowCommunity",
+      "id" : "302b7927-4442-4a0c-a140-0fb68f4f5781",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "fe599850-d074-495a-9bbe-68a69a43ebf4",
     "regionName" : "content",
     "type" : "region"

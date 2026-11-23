@@ -1,12 +1,12 @@
 ({
     doInit : function(component, event, helper) {
-        helper.getEventTopicType(component, event, helper);
-        //ipa 2.0 priyas change for topic event
-      //  helper.getPromotionLanguageOptions(component, event, helper);
+        //IPA2.0:TWC729-8114 Topics Removal/Event Removal
+        //helper.getEventTopicType(component, event, helper);
+        //helper.getPromotionLanguageOptions(component, event, helper);
     },
 
     handleDestroy : function (component, event, helper) {
-        helper.getCloneImages(component, event, helper);
+        //helper.getCloneImages(component, event, helper); //IPA2.0:TWC729-8114 Topics Removal/Event Removal
     },
 
 })

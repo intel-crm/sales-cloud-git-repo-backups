@@ -196,5 +196,16 @@
         <label><!-- Question 9 --></label>
         <name>Core_Question_9__c</name>
     </fields>
+    <layouts>
+        <layout>Call Script Response Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Q&amp;A --></label>
+            <section>Q&amp;A</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

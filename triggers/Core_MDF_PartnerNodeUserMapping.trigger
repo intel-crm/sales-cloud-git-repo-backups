@@ -14,6 +14,8 @@ trigger Core_MDF_PartnerNodeUserMapping on Core_MDF_Partner_Node_User_Mapping__c
                                                                                   after update,
                                                                                   after delete,
                                                                                   after undelete) {
-                                                                                      
-    new Core_MDF_PNUM_Mapping_TriggerHandler().run();
- }
+    try{                                                                              
+    new Core_MDF_PNUMappingTriggerHandler().run();}catch(Exception e){
+        system.debug('exception'+e.getMessage());
+    }
+}

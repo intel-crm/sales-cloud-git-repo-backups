@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Veoneer inc. Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Veoneer inc. Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>AUTOLIVELECTRONICSABCustomerExecutive</parentRole>
+</Role>

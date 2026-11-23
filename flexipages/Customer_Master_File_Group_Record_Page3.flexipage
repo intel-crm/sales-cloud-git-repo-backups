@@ -37,6 +37,9 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>CustomButton.ER_CMFGroupAssociation__c.mass_delete</value>
                         </valueListItems>
                     </valueList>
@@ -73,6 +76,9 @@
                         </valueListItems>
                         <valueListItems>
                             <value>ER_Customer_Master_File__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Account__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>ER_CMF_Name__c</value>
@@ -112,6 +118,69 @@
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>MassChangeOwner</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>New</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>maxRecordsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>parentFieldApiName</name>
+                    <value>ER_Customer_Master_File_Group__c.Id</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListApiName</name>
+                    <value>Account_Business_Partners__r</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListDisplayType</name>
+                    <value>ADVGRID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListFieldAliases</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NAME</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>ER_Account_Group__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Account__c</value>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relatedListLabel</name>
+                    <value>Account Business Partners</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldAlias</name>
+                    <value>__DEFAULT__</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>sortFieldOrder</name>
+                    <value>Default</value>
+                </componentInstanceProperties>
+                <componentName>lst:dynamicRelatedList</componentName>
+                <identifier>lst_dynamicRelatedList4</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -224,6 +293,16 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Name</fieldItem>
                 <identifier>RecordNameField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Account__c</fieldItem>
+                <identifier>RecordAccount__cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-b0f5a9a5-023c-4d78-8f24-bbc77b7c2231</name>
@@ -444,13 +523,13 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Information</value>
+                    <value>Section</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
+                        <leftValue>{!Record.Name}</leftValue>
                         <operator>EQUAL</operator>
                     </criteria>
                 </visibilityRule>
@@ -474,7 +553,7 @@
                 <identifier>flexipage_fieldSection3</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
+                        <leftValue>{!Record.Name}</leftValue>
                         <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
@@ -498,7 +577,7 @@
                 <identifier>flexipage_fieldSection2</identifier>
                 <visibilityRule>
                     <criteria>
-                        <leftValue>{!Record.CreatedBy.Username}</leftValue>
+                        <leftValue>{!Record.Name}</leftValue>
                         <operator>NE</operator>
                     </criteria>
                 </visibilityRule>
@@ -571,9 +650,6 @@
                             <value>ER_Customer_Master_File__c</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>ER_CMF_Name__c</value>
-                        </valueListItems>
-                        <valueListItems>
                             <value>ER_Created_By__c</value>
                         </valueListItems>
                         <valueListItems>
@@ -639,9 +715,6 @@
                     <valueList>
                         <valueListItems>
                             <value>ER_Contact__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>ER_Account__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>ER_Created_By__c</value>
@@ -736,6 +809,10 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Tabs</value>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>tabs</name>
                     <value>maintabs</value>

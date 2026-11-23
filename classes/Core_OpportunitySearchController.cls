@@ -13,7 +13,7 @@ Modification Log :
 * Brian Matthews           06/18/2015             Opportunity Partner Search
 * Ashwin Dash              06/20/2017             US67789: Commenting the existing sending mail to Owner and adding a path to a new vfpage where we can submit for approval
 *************************************************************************************/
-public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Added without sharing keyword to fix code scan issue
+public class Core_OpportunitySearchController {
 
 
     private static final String  DEFAULT_SORT_FIELD   = 'Core_Intel_Platform__c';
@@ -86,7 +86,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                 for (Core_FieldSetWrapper fieldSet : lstOpportunityFieldSetWrapper)
                     if (fieldSet.fieldName == RISK_REASON_FIELD)
                     {
-                       
+                        System.debug('#11 fieldSet.fieldName: ' + fieldSet.fieldName + '  fieldSet.chosenItems.size(): ' + fieldSet.chosenItems.size());
                         return (fieldSet.chosenItems.size() > 0);
                     }
                     
@@ -192,6 +192,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             lstSearchOpportunities = NULL;
             
             // Fetching the base URL of Salesforce instance
+            //sBaseURL = URL.getSalesforceBaseUrl().toExternalForm();
             sBaseURL = System.Label.Core_IPS_Notification_Internal_URL;
             
             // Intializing set of Ids
@@ -226,7 +227,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
 
         for (Schema.FieldSetMember fieldSetMember: lstFieldSetMembers) {
             
-            
+            System.debug('#60 fieldSetMember: ' + fieldSetMember);
             
             // Checking the data type of the fields from the field set
             if (String.ValueOf(fieldSetMember.getType()).equalsIgnoreCase('STRING') || 
@@ -346,8 +347,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         }
 
         // We don't want the UI to add these so they are being added outside of the fieldset.        
-        query += 'Core_Opportunity_Geo_ASMO__c, Core_Opportunity_Geo_EMEA__c, Core_Opportunity_Geo_APJ__c,Core_Opportunity_Geo_PRC__c, '; 
-        query += 'Owner.Name, Name, Account.Name, toLabel(Account.BillingCountryCode) ';
+        query += 'Core_Opportunity_Geo_ASMO__c, Core_Opportunity_Geo_EMEA__c, Core_Opportunity_Geo_APJ__c, Core_Opportunity_Geo_PRC__c, '; 
+        query += 'Owner.Name, Name, Account.Name, Account.Core_Account_Country__c ';
         query += ' FROM OPPORTUNITY ';        
         
         return query;
@@ -355,8 +356,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
 
 
     /*
-
-* Method name  : comparisonOperator
+     * Method name  : comparisonOperator
      * Description  : Method to add the search parameter with the operator based on the data type of the field
      * Return Type  : String
      * Parameter    : String,String
@@ -397,7 +397,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
 
             // if user has entered search value for String fields it will added to the query here
             if (fieldSetInstance.dataType.equalsIgnoreCase('STRING') && !(fieldSetInstance.textValue.equalsIgnoreCase(''))) {
-                whereClause += fieldPrefix + fieldSetInstance.fieldName + comparisonOperator(fieldSetInstance.dataType, String.escapeSingleQuotes(fieldSetInstance.textValue)) + ' AND ';
+                whereClause += fieldPrefix + fieldSetInstance.fieldName + comparisonOperator(fieldSetInstance.dataType, fieldSetInstance.textValue) + ' AND ';
                 bWhereClauseSet = true;
 
             }
@@ -405,7 +405,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             else if (fieldSetInstance.dataType.equalsIgnoreCase('DATE')) {
                 String strDate = String.valueOf(inputOpp.CloseDate);
                 
-              
+                System.debug('#81 strDate = ' + strDate);
                 if (String.isNotBlank(strDate))
                 {
                     whereClause += fieldPrefix + fieldSetInstance.fieldName + comparisonOperator(fieldSetInstance.dataType, strDate) + ' AND ';
@@ -429,7 +429,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             // if user has entered search value for Picklist fields ( if not none ) it will added to the query here
             else if (fieldSetInstance.dataType.equalsIgnoreCase('PICKLIST') && (fieldSetInstance.isPicklist) && 
                     fieldSetInstance.selectedPicklistValue != System.Label.Core_None_Value) {
-                whereClause += fieldPrefix + fieldSetInstance.fieldName + comparisonOperator(fieldSetInstance.dataType, String.escapeSingleQuotes(fieldSetInstance.selectedPicklistValue)) + ' AND ';
+                whereClause += fieldPrefix + fieldSetInstance.fieldName + comparisonOperator(fieldSetInstance.dataType, fieldSetInstance.selectedPicklistValue) + ' AND ';
                 bWhereClauseSet = true;
 
 
@@ -457,7 +457,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             }
         }
         
-        
+        System.debug('#66 inputOpp: ' + inputOpp);
 
         String geoCriteria = '';
         
@@ -466,12 +466,11 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_ASMO__c, fieldPrefix + 'Core_Opportunity_Geo_ASMO__c', geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_EMEA__c, fieldPrefix + 'Core_Opportunity_Geo_EMEA__c', geoCriteria);                   
         geoCriteria = checkGEOField(inputOpp.Core_Opportunity_Geo_PRC__c,  fieldPrefix + 'Core_Opportunity_Geo_PRC__c',  geoCriteria);                   
-        //geoCriteria = checkGEOField(inputOpp.CRM_Opportunity_Geo_INDIA__c, fieldPrefix + 'CRM_Opportunity_Geo_INDIA__c',geoCriteria);
                       
-         
+        System.debug('#37 After field checks, geoCriteria: ' + geoCriteria);    
                                       
         // The calling program truncates 5 characters off the end of the string, so add them.           
-        
+        //
         if (geoCriteria.length() > 0)
         {
             whereClause += ' ( ' + geoCriteria + ' ) ' + FIVE_SPACES;
@@ -492,7 +491,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             geoCriteria += geoField + ' = true '; 
         }    
         
-                         
+        System.debug('#12 geoCriteria: ' + geoCriteria);                        
         return geoCriteria;
     }
 
@@ -538,7 +537,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
 
     private void partnerSearch(Boolean firstCall)
     {
-       
+        System.debug('#24 partnerSearch - START');
 
         String partnerQuery = 'SELECT Id, Core_Partner__r.Id FROM Core_Opportunity_Partner__c ';    
         partnerQuery += getPartnerWhereClause(OPPORTUNITY_RELATION);
@@ -551,23 +550,25 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         else
         {
             Integer iOffset = iPageSize * (iPageNumber - 1);
-            
+            System.debug('#53 iOffset: ' + iOffset + '   iPageSize: ' + iPageSize + '    iPageNumber: ' + iPageNumber);
             partnerQuery += ' ORDER BY ' + getPartnerOrderByField(sortHeader.sortExpression) + ' ' + sortHeader.sortDirection + ' LIMIT ' + iPageSize + ' Offset ' + iOffset;
         }
 
 
-        
+        System.debug('#54 partnerQuery: ' + partnerQuery);
 
         // Get the Search Criteria Applied to a data set, ready for pre-qualification.
         // Apply Opportunity related criteria here, to further reduce the partner population
+        // 
         List<Core_Opportunity_Partner__c> lstOppPartners = Database.query(partnerQuery);
-        
+
         Map<Id, Id> oppPartnerAccountMap = new Map<Id, Id>();
         Map<Id, Id> queryMap             = new Map<Id, Id>();
         
         for (Core_Opportunity_Partner__c oppPartnerObj : lstOppPartners)
         {
-            
+            // oppPartnerObj.Id                 = Core_Opportunity_Partner__c record ID
+            // oppPartnerObj.Core_Partner__r.Id = Account record ID
             queryMap.put(oppPartnerObj.Id, oppPartnerObj.Core_Partner__r.Id);
             
             if (queryMap.size() == MAX_ACCESS_RECORDS)
@@ -585,7 +586,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         }
 
         Set<Id> oppPartnerSet = oppPartnerAccountMap.keySet();
-        
+        System.debug('#68 oppPartnerSet.size(): ' + oppPartnerSet.size() + '  ' + oppPartnerSet);
 
         // Use pre-qualified list of partners as a search criteria.  
         //
@@ -597,7 +598,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                               'Core_Opportunity__r.Core_Intel_Platform__c, ' + 
                               'Core_Opportunity__r.Owner.Name, ' + 
                               'Core_Opportunity__r.Account.Name, ' + 
-                              'toLabel(Core_Opportunity__r.Account.BillingCountryCode), ' + 
+                              'Core_Opportunity__r.Account.Core_Account_Country__c, ' + 
                               'Core_Opportunity__r.StageName, ' + 
                               'Core_Opportunity__r.CloseDate, ' +
                               'Core_Opportunity__r.Core_Product_Segment__c, ' + 
@@ -614,7 +615,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                               'Core_Opportunity__r.Core_Opportunity_Geo_APJ__c, ' + 
                               'Core_Opportunity__r.Core_Opportunity_Geo_PRC__c, ' + 
                               'Core_Partner__r.Name, ' +
-                              'toLabel(Core_Partner__r.BillingCountryCode), ' + 
+                              'Core_Partner__r.Core_Account_Country__c, ' + 
                               'Core_Partner_Role__c, ' + 
                               'Core_Partner_Type__c ' + 
                        'FROM Core_Opportunity_Partner__c ';
@@ -631,12 +632,12 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         // limit not neeed as Partner Ids drive query content
         partnerQuery += ' ORDER BY ' + getPartnerOrderByField(sortHeader.sortExpression) + ' ' + sortHeader.sortDirection;        
                           
-        
+        System.debug('#69 Final Partner Query: ' + partnerQuery);
 
-
-				lstOppPartners = Database.query(partnerQuery);
+//        try {
+            lstOppPartners = Database.query(partnerQuery);
     
-            
+            System.debug('#50 lstOppPartners.size() : ' + lstOppPartners.size());
     
     
             if (firstCall)
@@ -698,12 +699,20 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                 lstSearchOpportunities = mapOpportunityidWrapperclass.values();
 
 
+//        } catch (Exception err) {
+//            ApexPages.Message pageMessage = new ApexPages.Message(ApexPages.Severity.ERROR, err.getMessage());
+//            ApexPages.addMessage(pageMessage);
+//
+//            System.debug('The following error has occurred.');
+//            System.debug(err.getMessage());
+//        }
+
     }
 
 
     private String getPartnerOrderByField(String fieldName)
     {
-        
+        System.debug('#10 fieldName: ' + fieldName);
         if (fieldName.contains('Core_Partner__r.'))
             return fieldName;
         
@@ -747,7 +756,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
     {
         // Need to know if objects have Read-Write access.  This goes beyond what "WITH SHARING" offers.
         // UserRecordAccess Object only supports 200 records at a time.
-        
+        //
         List<UserRecordAccess> lstAccountAccess = [SELECT RecordId 
                                                    FROM UserRecordAccess              
                                                    WHERE UserId = :UserInfo.getUserId()
@@ -773,7 +782,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             else
                 whereClause += ' AND ';
                 
-            whereClause += ' Core_Partner__r.Name LIKE \'%' + String.escapeSingleQuotes(partnerName) + '%\' ';
+            whereClause += ' Core_Partner__r.Name LIKE \'%' + partnerName + '%\' ';
         } 
             
         if (String.isNotBlank(partnerType) && partnerType != NONE_SELECTED)
@@ -794,7 +803,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
                 
         whereClause += 'Core_Opportunity__c != \'\' AND Core_Partner__c != \'\' ';
 
-        
+        System.debug('#71 getPartnerWhereClause: ' + whereClause);
 
         return whereClause;        
     }
@@ -827,7 +836,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             lstOpportunitiesQueried = queryByPageSizeAndOffset(iPageSize, iOffset);
         }    
 
-        
+        System.debug('#41 lstOpportunitiesQueried.size(): ' + lstOpportunitiesQueried.size());
                     
         wrapAndCheckAccess(lstOpportunitiesQueried);
             
@@ -855,14 +864,15 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         try {
         
             String queryWithOrderBy = query + ' ORDER BY ' + sortHeader.sortExpression + ' ' + sortHeader.sortDirection + ' LIMIT ' + pPageSize + ' Offset ' + pOffset;
+            System.debug('#38 queryWithOrderBy: ' + queryWithOrderBy);
             lstOpp = Database.query(queryWithOrderBy);
             
         } catch (Exception err) {
             ApexPages.Message pageMessage = new ApexPages.Message(ApexPages.Severity.ERROR, err.getMessage());
             ApexPages.addMessage(pageMessage);
 
-            
-            
+            System.debug('The following error has occurred.');
+            System.debug(err.getMessage());
             lstOpp = new List<Opportunity>();
         }
                 
@@ -895,8 +905,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             
             // Fetching opportunity records for which user is having access 
             List<Opportunity> userOpportunityRecords = Core_SearchUsersOpportunityRecords.doQuery('SELECT Id FROM Opportunity ', setOpportunityRecordIds);
-           
-            
+            System.debug('#82 lstOpportunitiesQueried.size(): ' + lstOpportunitiesQueried.size());
+            System.debug('#83 userOpportunityRecords.size(): ' + userOpportunityRecords.size());
     
     
             // Filtering the records for which user is having  access and setting the bUserAccesspresent flag
@@ -921,8 +931,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             ApexPages.Message pageMessage = new ApexPages.Message(ApexPages.Severity.ERROR, err.getMessage());
             ApexPages.addMessage(pageMessage);
 
-           
-            
+            System.debug('The following error has occurred.');
+            System.debug(err.getMessage());
         }
     }
 
@@ -951,7 +961,7 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
             mail.saveAsActivity = false;
 
             // Setting the email body, subject and sending an email
-                mail.setHTMLBody(System.Label.Core_Email_Template_Part1 + ' ' + selectedOpp.opportunityInstance.owner.Name + ',' 
+            mail.setHTMLBody(System.Label.Core_Email_Template_Part1 + ' ' + selectedOpp.opportunityInstance.owner.Name + ',' 
                             + System.Label.Core_HTML_Line_Break + System.Label.Core_HTML_Line_Break + UserInfo.getName() + 
                             ' ' + System.Label.Core_Email_Template_Part2 + System.Label.Core_HTML_Link_Start 
                             + sBaseURL + '/' + selectedOpp.opportunityInstance.Id + System.Label.Core_HTML_Link_End + 
@@ -1073,8 +1083,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         public WrapperClass(Opportunity opp, Core_Opportunity_Partner__c partner) {
         
             if (String.isblank(opp.Core_Opportunity_Country__c))
-                if (!String.isblank(opp.Account.BillingCountryCode))  
-                    opp.Core_Opportunity_Country__c = opp.Account.BillingCountryCode;
+                if (!String.isblank(opp.Account.Core_Account_Country__c))
+                    opp.Core_Opportunity_Country__c = opp.Account.Core_Account_Country__c;
         
             opportunityInstance      = opp;
             partnerInstance          = partner;
@@ -1090,8 +1100,8 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
         public WrapperClass(Opportunity opp) {
 
             if (String.isblank(opp.Core_Opportunity_Country__c))
-                if (!String.isblank(opp.Account.BillingCountryCode))
-                    opp.Core_Opportunity_Country__c = opp.Account.BillingCountryCode;
+                if (!String.isblank(opp.Account.Core_Account_Country__c))
+                    opp.Core_Opportunity_Country__c = opp.Account.Core_Account_Country__c;
         
             opportunityInstance      = opp;
             bUserAccessPresent       = false;            
@@ -1116,8 +1126,6 @@ public without sharing class Core_OpportunitySearchController {//TWC3123-5338 Ad
     
             if (opp.Core_Opportunity_Geo_PRC__c)
                 result += 'PRC, ';
-            /*if(opp.CRM_Opportunity_Geo_INDIA__c)
-                result += 'INDIA, ';*/
                                                 
             result = result.removeEnd(' ');
             result = result.removeEnd(',');

@@ -21,27 +21,59 @@
         <url>https://intel--gblite.na104.visual.force.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
-        <context>VisualforcePages</context>
-        <url>https://intel--gblite.vf.force.com</url>
+        <context>Surveys</context>
+        <url>https://kprabuddh-developer-edition.ap17.force.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--c.vf.force.com</url>
+        <url>https://kprabuddh-developer-edition.ap17.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>Surveys</context>
+        <url>https://kprabuddh-dev-ed.my.salesforce.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--gblite.visualforce.com</url>
+        <url>https://kprabuddh-dev-ed.my.lightning.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>Surveys</context>
+        <url>https://kprabuddh-dev-ed.my.lightning.force.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>VisualforcePages</context>
-        <url>https://intel--c.visualforce.com</url>
+        <url>https://kprabuddh-dev-ed.my.salesforce.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>*.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://crmdevipa-intelcloudcrm.cs45.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevipa--gblite.cs45.visual.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>*.crmdevipa-intelcloudcrm.cs45.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevipa--c.cs45.visual.force.com</url>
+    </iframeWhiteListUrls>
+    <iframeWhiteListUrls>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevipa.my.salesforce.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
         <context>LightningOut</context>
-        <url>*.slack.com</url>
+        <url>https://intel--crmdevipa--c.sandbox.vf.force.com</url>
     </iframeWhiteListUrls>
     <iframeWhiteListUrls>
-        <context>LightningOut</context>
-        <url>*.slack-gov.com</url>
+        <context>VisualforcePages</context>
+        <url>https://intel--crmdevipa.sandbox.my.site.com</url>
     </iframeWhiteListUrls>
 </IframeWhiteListUrlSettings>

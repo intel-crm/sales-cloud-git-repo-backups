@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_CustomAccountTeam_Handler{
+public class Core_IPS_CustomAccountTeam_Handler{
 
     /***************************************************************************************************
     * Version     : 1.0 
@@ -20,10 +20,11 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
     * Brian Matthews              04/28/2016             Initial Release
     ****************************************************************************************************/
     public static void deleteStandardAccountTeam(List<Core_Account_Team__c> lstCustomDeletes) {
-            List <AccountTeamMember> lstAcctTeamMember = new List <AccountTeamMember>();
+            
         Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll();
         if(!mapFunctionalityNameTriggerExecution.containsKey('deleteStandardAccountTeam') ||
            !mapFunctionalityNameTriggerExecution.get('deleteStandardAccountTeam').Core_Active__c) {
+           System.debug('#01 deleteStandardAccountTeam BYPASSED by Core_Trigger_Executions__c');
            return;
         }
         
@@ -33,12 +34,11 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
 
         if (setAcctIds.size() == 0)
             return;
-        //FLS check added-Venugopal
-       if(AccountTeamMember.SObjectType.getDescribe().isAccessible()){        
-                                  lstAcctTeamMember = [SELECT Id, AccountId, UserId 
+        
+        List <AccountTeamMember> lstAcctTeamMember = [SELECT Id, AccountId, UserId 
                                                       FROM AccountTeamMember
                                                       WHERE AccountId = :setAcctIds];
-       }
+    
         if (lstAcctTeamMember == NULL || lstAcctTeamMember.size() == 0)
             return;    
     
@@ -59,9 +59,8 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 lstAcctTeamMember.add(acctTeamMemberId);                
         }
 
-        if (lstAcctTeamMember.size() > 0){ 
-            	delete lstAcctTeamMember;
-        }
+        if (lstAcctTeamMember.size() > 0)
+            delete lstAcctTeamMember;
     }
     
     
@@ -116,6 +115,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 for(Id faeUserId:faeUserIds){
                     if(userIdbyCustAccountTeam <> null && userIdbyCustAccountTeam.size() > 0 && userIdbyCustAccountTeam.get(faeUserId) <> null){
                         for(Core_Account_Team__c catObj: userIdbyCustAccountTeam.get(faeUserId)){
+                            //system.debug('#########'+catObj.Core_Case_Access__c);
                             if(catObj.Core_Case_Access__c <> null && catObj.Core_Case_Access__c <> 'None' && catObj.Core_Case_Access__c <> '')
                                 grantAccessbyUser.put(String.valueOf(catObj.Core_Team_Member__c)+'#'+String.valueOf(catObj.Core_Account__c),catObj); 
                             if(catObj.Core_Case_Access__c == 'None' || catObj.Core_Case_Access__c == '')
@@ -142,7 +142,8 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                     }
                 } 
             }*/
-            
+            //system.debug('##########'+grantAccessbyUser.size()+grantAccessbyUser);
+            //system.debug('##########'+revokeAccessbyUser.size()+revokeAccessbyUser);
             if(grantAccessbyUser <> null && grantAccessbyUser.size() > 0){
                 grantAccess(grantAccessbyUser);
             }
@@ -173,7 +174,6 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
     ****************************************************************************************************/
     public static List<Core_Account_Team__c> ipsRecordsOnly(List<Core_Account_Team__c> newList){        
         List<Core_Account_Team__c> ipsRecords = new List<Core_Account_Team__c>();
-        List<Account> accList = new List<Account>();
         if(newList <> null && newList.size() > 0){
             Map<Id,List<Core_Account_Team__c>> accountTeambyAccountId = new Map<Id,List<Core_Account_Team__c>>();
             List<Core_Account_Team__c> catList;
@@ -186,10 +186,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 }
                 accountTeambyAccountId.put(catObj.Core_Account__c,catList);
             }
-            //FLS check added-Venugopal
-            if(Account.SObjectType.getDescribe().isAccessible()){
-            accList = [select Id,Core_IPS_Active__c from Account where Id in:accountTeambyAccountId.keyset() and Core_IPS_Active__c = TRUE];
-               }
+            List<Account> accList = [select Id,Core_IPS_Active__c from Account where Id in:accountTeambyAccountId.keyset() and Core_IPS_Active__c = TRUE];
             if(accList <> null && accList.size() > 0){
                 for(Account accObj:accList){
                     if(accountTeambyAccountId <> null && accountTeambyAccountId.size() > 0 && accObj.Id <> null && accountTeambyAccountId.get(accObj.Id) <> null && accountTeambyAccountId.get(accObj.Id).size() > 0)
@@ -197,6 +194,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 }
             }
         }
+        System.debug('@@@@@@'+ipsRecords);
         return ipsRecords;
     }
     
@@ -222,6 +220,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
         if(customAccountTeambyUser <> null && customAccountTeambyUser.size() > 0 && Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('GrantCustomAccountTeam')){
             Set<Id> userIdSet;
             Map<Id,Set<Id>> faeIdsbyAccountId = new Map<Id,Set<Id>>();
+            //System.debug('######START#######');
             for(Core_Account_Team__c custom_ATObj:customAccountTeambyUser.values()){
                 userIdSet = new Set<Id>();
                 for(Core_Account_Team__c custom_ATObj1:customAccountTeambyUser.values()){
@@ -232,16 +231,19 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 }
                 faeIdsbyAccountId.put(custom_ATObj.Core_Account__c,userIdSet);
             }
-            
+            //system.debug('#######'+faeIdsbyAccountId);
             if(faeIdsbyAccountId <> null && faeIdsbyAccountId.size() > 0){
+                //System.debug('######'+faeIdsbyAccountId);
                 Map<Id,Set<Id>> userIdsbyAssetId = new Map<Id,Set<Id>>();
                 Map<Id,Set<Id>> userIdsbyProjectId = new Map<Id,Set<Id>>();
                 Map<Id,Set<Id>> userIdsbyParsId = new Map<Id,Set<Id>>();
                 Map<Id,Set<Id>> assetIdsbyAccountId = Core_IPS_Helper_Utility.getAssetsByAccountId(faeIdsbyAccountId.keyset());
+                //system.debug('#######assetIdsbyAccountId'+assetIdsbyAccountId.size()+assetIdsbyAccountId);
                 Map<Id,Set<Id>> projectIdsbyAccountId = Core_IPS_Helper_Utility.getProjectsByAccountId(faeIdsbyAccountId.keyset());
+                //system.debug('#######projectIdsbyAccountId'+projectIdsbyAccountId.size()+projectIdsbyAccountId);
                 Map<Id,Set<Id>> parsbyAccountId = Core_IPS_Helper_Utility.getPARsByAccountId(faeIdsbyAccountId.keyset());
                 Set<ID> projID=new Set<ID>();
-                
+                //system.debug('#######'+parsbyAccountId.size()+parsbyAccountId);
                 if((assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0) || (projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0) || (parsbyAccountId <> null && parsbyAccountId.size() > 0)){
                    //start added by Aayushi US113701
                     for(ID id:projectIdsbyAccountId.keyset()){
@@ -289,12 +291,15 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                     }
                 }
                 if(userIdsbyAssetId <> null && userIdsbyAssetId.size() > 0){
+                    //System.debug('#####Provide Access For Asset#####'+userIdsbyAssetId.size()+userIdsbyAssetId);
                     Core_SharingUtility.provideAccess('Asset','AssetShare','Read',userIdsbyAssetId);
                 }
                 if(userIdsbyProjectId <> null && userIdsbyProjectId.size() > 0){
+                    //System.debug('#####ProvideAccess For Project#####'+userIdsbyProjectId.size()+userIdsbyProjectId);
                     Core_SharingUtility.provideAccess('Core_IPS_Project__c','Core_IPS_Project__Share','Read',userIdsbyProjectId);
                 }
                 if(userIdsbyParsId <> null && userIdsbyParsId.size() > 0){
+                    //System.debug('#####ProvideAccess For PARS#####'+userIdsbyParsId.size()+userIdsbyParsId);
                     Core_SharingUtility.provideAccess('Core_IPS_MAP_PAR__c','Core_IPS_MAP_PAR__Share','Read',userIdsbyParsId);
                 }
             }            
@@ -344,7 +349,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 Map<Id,Set<Id>> assetIdsbyAccountId = Core_IPS_Helper_Utility.getAssetsByAccountId(faeIdsbyAccountId.keyset());
                 Map<Id,Set<Id>> projectIdsbyAccountId = Core_IPS_Helper_Utility.getProjectsByAccountId(faeIdsbyAccountId.keyset());
                 Map<Id,Set<Id>> parsbyAccountId = Core_IPS_Helper_Utility.getPARsByAccountId(faeIdsbyAccountId.keyset());
-                
+                //System.debug('######'+faeIdsbyAccountId);
                 if((assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0) || (projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0) || (parsbyAccountId <> null && parsbyAccountId.size() > 0)){
                     for(Core_Account_Team__c catObj:customAccountTeambyUser.values()){
                         if(assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0){
@@ -384,12 +389,16 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                     }
                 }
                 if(userIdsbyAssetId <> null && userIdsbyAssetId.size() > 0){
+                    //System.debug('#####revokeAccess For Asset#####'+userIdsbyAssetId.size()+userIdsbyAssetId);
                     Core_SharingUtility.revokeAccess('Asset','AssetShare',userIdsbyAssetId);
                 }
                 if(userIdsbyProjectId <> null && userIdsbyProjectId.size() > 0){
+                    //System.debug('#####revokeAccess For Project#####'+userIdsbyProjectId.size()+userIdsbyProjectId);                    
                     Core_SharingUtility.revokeAccess('Core_IPS_Project__c','Core_IPS_Project__Share',userIdsbyProjectId);
+                    //Core_SharingUtility.revokeProjectAccess(userIdsbyProjectId);
                 }
                 if(userIdsbyParsId <> null && userIdsbyParsId.size() > 0){
+                    //System.debug('#####RevokeAccess For PARS#####'+userIdsbyParsId.size()+userIdsbyParsId);
                     Core_SharingUtility.revokeAccess('Core_IPS_MAP_PAR__c','Core_IPS_MAP_PAR__Share',userIdsbyParsId);
                 }
             }
@@ -434,7 +443,7 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                 Map<Id,Set<Id>> assetIdsbyAccountId = Core_IPS_Helper_Utility.getAssetsByAccountId(faeIdsbyAccountId.keyset());
                 Map<Id,Set<Id>> projectIdsbyAccountId = Core_IPS_Helper_Utility.getProjectsByAccountId(faeIdsbyAccountId.keyset());
                 Map<Id,Set<Id>> parsbyAccountId = Core_IPS_Helper_Utility.getPARsByAccountId(faeIdsbyAccountId.keyset());
-                
+                System.debug('######'+faeIdsbyAccountId);
                 if((assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0) || (projectIdsbyAccountId <> null && projectIdsbyAccountId.size() > 0) || (parsbyAccountId <> null && parsbyAccountId.size() > 0)){
                     for(Core_Account_Team__c catObj:newList){
                         if(assetIdsbyAccountId <> null && assetIdsbyAccountId.size() > 0){
@@ -474,13 +483,16 @@ public without sharing class Core_IPS_CustomAccountTeam_Handler{
                     }
                 }
                 if(userIdsbyAssetId <> null && userIdsbyAssetId.size() > 0){
+                    System.debug('#####revokeAccess For Asset#####'+userIdsbyAssetId.size()+userIdsbyAssetId);
                     Core_SharingUtility.revokeAccess('Asset','AssetShare',userIdsbyAssetId);
                 }
                 if(userIdsbyProjectId <> null && userIdsbyProjectId.size() > 0){
+                    System.debug('#####revokeAccess For Project#####'+userIdsbyProjectId.size()+userIdsbyProjectId);                    
                     Core_SharingUtility.revokeAccess('Core_IPS_Project__c','Core_IPS_Project__Share',userIdsbyProjectId);
                     //Core_SharingUtility.revokeProjectAccess(userIdsbyProjectId);
                 }
                 if(userIdsbyParsId <> null && userIdsbyParsId.size() > 0){
+                    System.debug('#####RevokeAccess For PARS#####'+userIdsbyParsId.size()+userIdsbyParsId);
                     Core_SharingUtility.revokeAccess('Core_IPS_MAP_PAR__c','Core_IPS_MAP_PAR__Share',userIdsbyParsId);
                 }
             }

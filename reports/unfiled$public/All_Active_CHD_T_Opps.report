@@ -45,7 +45,7 @@
     <description>lists per Account all ACTIVE opps incl. all products, Dates, and Stage (NOTE: no STATUS, no DESCRIPTION)</description>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>contains</operator>

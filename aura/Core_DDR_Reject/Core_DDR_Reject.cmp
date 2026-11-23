@@ -1,9 +1,7 @@
 <aura:component controller="Core_DDR_Accept_Approve_Reject_Design" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public" >
 	<aura:attribute name="alertMessage" type="String" default=""/>
-    <aura:attribute name="alertMsg" type="String" default=""/>
     <aura:attribute name="message" type="String" default=""/>
     <aura:attribute name="LexSpinner" type="boolean" default="false"/>
-    <aura:attribute name="disableSaveBtn" type="boolean" default="false"/>
     <aura:attribute name="designRegisObject" type="Core_Design_Registration__c"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
@@ -18,20 +16,15 @@
         <ui:inputTextArea aura:id="commentText" value="{!v.designRegisObject.Core_Rejection_Comment_Txt__c}" label="Rejection Comments"/>
         <br/>
         <div style="float: right;">
-            <lightning:button label="Save" variant="brand" onclick="{!c.saveDesignRegistration}" disabled="{!v.disableSaveBtn}"/>
+            <lightning:button label="Save" variant="brand" onclick="{!c.saveDesignRegistration}"/>
         </div>
         <aura:set attribute="else">
             <aura:if isTrue="{!(v.alertMessage == 'error')}">
-            	<div class="slds-text-heading_small slds-var-p-top_xx-large">{!v.message}</div>
+            	<div class="slds-text-heading_small" style="padding-top:2%;">{!v.message}</div>
             </aura:if>
-            <aura:if isTrue="{!(v.alertMsg != '')}">
-                <div class="slds-text-heading_small slds-var-p-top_xx-large">{!v.alertMsg}</div>
-            </aura:if>
-            <div style="float: right;padding-top: 2%;">
-                <lightning:button label="Close" variant="brand" onclick="{!c.cancelPopup}"/>
+            <div style="float: right;padding-top: 20%;">
+                <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}"/>
             </div>
         </aura:set>
     </aura:if>
-
-    
 </aura:component>

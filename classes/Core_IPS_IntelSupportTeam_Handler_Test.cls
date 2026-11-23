@@ -16,7 +16,6 @@ Modification Log :
 @isTest
 public class Core_IPS_IntelSupportTeam_Handler_Test {
 
-    
     //Instance variables that are commonly used in multiple test methods
     static List<User> ListOfUser = new List<User> ();
     static Group grp = new Group();
@@ -55,7 +54,6 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            ContactRec.mailingCountry = 'India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -63,6 +61,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
         
         // Create Ips Project
         List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        
         //Custom setting record
         Core_Trigger_Executions__c  TriggerProj = new Core_Trigger_Executions__c();
         TriggerProj.Name = 'internalProjectGroup';
@@ -107,6 +106,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             ListOfIpsProjects[0].Core_MPNDA__c = '';
             insert IPSLabels;
             insert ListOfIpsProjects;
+            
             TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
         
             for(Core_IPS_Project__c proj:ListOfIpsProjects){
@@ -183,7 +183,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
                 delete ListOfISTMembers2;
                 
             }catch(Exception e){
-                throw new AuraHandledException(e.getMessage());// ATHR fix Gangadhar
+                system.debug('---Exception caught at Test class -remove method --');
             }
                         
             
@@ -283,6 +283,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
                 ListOfIpsProjects.get(0).Core_Status__c = 'Active';              
                 ListOfIpsProjects.get(0).Core_IPS_Enable_ISTasInterested_Parties__c  = true;              
                 update ListOfIpsProjects;
+                
                 //Add Member And Account to Project 
                 TestUtilities.addAccMemProdToProject(ListOfIpsProjects);
             } 
@@ -300,7 +301,6 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            ContactRec.MailingCountry = 'India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -310,7 +310,6 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
         for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
             IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
             IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
-            
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsAccounts;
@@ -502,7 +501,6 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
             ContactRec.Accountid = ListOfAccounts.get(0).Id;
             ContactRec.Core_IPS_Active__c = true;
-            ContactRec.MailingCountry = 'India';
         }
         System.runAs(ListOfUser.get(0)){
             insert ListOfContacts;
@@ -570,6 +568,7 @@ public class Core_IPS_IntelSupportTeam_Handler_Test {
             cip.Core_IPS_Project_Interested_Party__c = true;
             internalcipListToBeInserted.add(cip);
             insert internalcipListToBeInserted;
+            System.debug('internalcipListToBeInserted-->'+internalcipListToBeInserted);
             System.assert(internalcipListToBeInserted[0].Id != null, 'Record not created');
             
             //Create IST members

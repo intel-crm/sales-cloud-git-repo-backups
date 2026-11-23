@@ -10,23 +10,24 @@
         "richTextValue" : "<h2>Intel Co-Marketing Portal</h2>"
       },
       "componentName" : "forceCommunity:htmlBlock",
-      "id" : "939e3f9b-ab89-42a9-8f6e-4b7f90ec8c4c",
+      "id" : "51feddfb-034c-400b-b907-05cd0857c42f",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : {
-        "de" : "fc4fd19e-9a53-4da2-a5fc-084cc7fdd37d",
-        "es" : "47b4b8aa-89c1-4105-9878-3aa40a19dd0a",
-        "es_mx" : "8e7ec04d-96cf-41a0-9d77-bd1dbfb2df6d",
-        "fr" : "9b445880-481e-49d6-8680-ae0649e66da1",
-        "it" : "e6a3a78a-f485-45d1-a8a5-0c16e7d2c2a4",
-        "ja" : "fa7b9e1b-7424-46b2-ab43-a9f765a7b3d3",
-        "ko" : "77846a13-d2f5-4659-a06b-e3af3c93560d",
-        "pt_br" : "c1108db8-a055-45cd-86fa-4b6fbc122a4b",
-        "ru" : "ef82c2bd-26db-491a-86e8-a6475c995ba7",
-        "zh_cn" : "9807da72-cb2b-42bf-9adf-d273a9e6446e",
-        "zh_tw" : "35ccdab6-17ed-4c4b-8847-2527b650dc55"
+        "de" : "104c69cc-d374-4d2a-b55e-dca89cd7f860",
+        "es" : "cd6967fb-c593-42fc-a6d2-9a0cc313b654",
+        "es_mx" : "06da7561-1883-44a5-8733-57de64755d4e",
+        "fr" : "c109a159-f888-4f54-9029-f624929bc4e4",
+        "it" : "263c5080-0dc3-4e4b-b232-6ee60e5e9b19",
+        "ja" : "40373c13-ec5d-4b48-b1a2-04f54c89c462",
+        "ko" : "da0ebaf5-d06b-49cf-abca-87d89115be7e",
+        "pt_br" : "6cff136f-82b7-4cc1-b3bc-0b80b4af581e",
+        "pt_pt" : "222b718d-fda6-4c66-ba9f-d1c1be42bbae",
+        "ru" : "ff25ea37-4dd1-4f48-9f49-23e4525c596e",
+        "zh_cn" : "f83b19a4-2624-492e-905d-4797a2ed5522",
+        "zh_tw" : "a58682df-92d1-426d-8fb8-fbb4ea6bc175"
       },
       "renditions" : [ {
-        "id" : "9807da72-cb2b-42bf-9adf-d273a9e6446e",
+        "id" : "f83b19a4-2624-492e-905d-4797a2ed5522",
         "renditionValue" : {
           "componentAttributes" : {
             "richTextValue" : "<h2>英特尔联合市场推广门户网站</h2>"
@@ -34,71 +35,7 @@
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "fa7b9e1b-7424-46b2-ab43-a9f765a7b3d3",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>インテルの共同マーケティング・ポータル</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "9b445880-481e-49d6-8680-ae0649e66da1",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Portail de co-marketing Intel</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "fc4fd19e-9a53-4da2-a5fc-084cc7fdd37d",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Intel Co-Marketing-Portal</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "77846a13-d2f5-4659-a06b-e3af3c93560d",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>인텔 공동 마케팅 포털</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "47b4b8aa-89c1-4105-9878-3aa40a19dd0a",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Portal de marketing conjunto de Intel</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "8e7ec04d-96cf-41a0-9d77-bd1dbfb2df6d",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Portal de mercadeo conjunto de Intel</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "35ccdab6-17ed-4c4b-8847-2527b650dc55",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Intel 共同行銷入口</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "e6a3a78a-f485-45d1-a8a5-0c16e7d2c2a4",
-        "renditionValue" : {
-          "componentAttributes" : {
-            "richTextValue" : "<h2>Portale di co-marketing Intel</h2>"
-          }
-        },
-        "type" : "renditionComponent"
-      }, {
-        "id" : "ef82c2bd-26db-491a-86e8-a6475c995ba7",
+        "id" : "ff25ea37-4dd1-4f48-9f49-23e4525c596e",
         "renditionValue" : {
           "componentAttributes" : {
             "richTextValue" : "<h2>Портал совместного маркетинга Intel</h2>"
@@ -106,10 +43,82 @@
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "c1108db8-a055-45cd-86fa-4b6fbc122a4b",
+        "id" : "222b718d-fda6-4c66-ba9f-d1c1be42bbae",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de marketing conjunto da Intel para membros de clientes e do Data Center</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "40373c13-ec5d-4b48-b1a2-04f54c89c462",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>インテルの共同マーケティング・ポータル</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "263c5080-0dc3-4e4b-b232-6ee60e5e9b19",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portale di co-marketing Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c109a159-f888-4f54-9029-f624929bc4e4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portail de co-marketing Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "06da7561-1883-44a5-8733-57de64755d4e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de mercadeo conjunto de Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "104c69cc-d374-4d2a-b55e-dca89cd7f860",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Intel Co-Marketing-Portal</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "da0ebaf5-d06b-49cf-abca-87d89115be7e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>인텔 공동 마케팅 포털</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "cd6967fb-c593-42fc-a6d2-9a0cc313b654",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Portal de marketing conjunto de Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6cff136f-82b7-4cc1-b3bc-0b80b4af581e",
         "renditionValue" : {
           "componentAttributes" : {
             "richTextValue" : "<h2>Portal de Marketing Conjunto da Intel</h2>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a58682df-92d1-426d-8fb8-fbb4ea6bc175",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<h2>Intel 共同行銷入口</h2>"
           }
         },
         "type" : "renditionComponent"
@@ -121,16 +130,6 @@
     "type" : "region"
   }, {
     "components" : [ {
-      "componentAttributes" : {
-        "project" : "CCP",
-        "type" : "Community Home"
-      },
-      "componentName" : "c:core_MDF_Notification",
-      "id" : "fb9433f1-cdec-4778-9f2c-eeee5ebe09e7",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
       "componentAttributes" : {
         "richTextValue" : "<div style=\"height:1em;\"></div>\n<img src=\"../resource/1539040415000/CCP_Home_Banner\" alt=\"\">\n<div style=\"height:1em;\"></div>\n\n<div>\n    <p>Welcome Co-Marketing Partners!</p>\n</div>\n\n<div style=\"height:1em;\"></div>\n\n<div>\n\t<p>From managing your budget and planning campaigns to executing activities and submitting for reimbursement, here you can access resources needed to effectively co-market with Intel. Reference materials and program expertise are clicks away. You’ll find guides, training, program tools, and access to support that will help you get the most from your co-marketing partnership with Intel</p>\n</div>"
       },
@@ -249,22 +248,6 @@
         "type" : "renditionComponent"
       } ],
       "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "uniqueNameOrId" : "{!topicId}"
-      },
-      "componentName" : "forceCommunity:breadcrumbs",
-      "id" : "01682f61-d3fd-4e30-9c12-b4248c6d876c",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : { },
-      "componentName" : "c:core_MDF_SiteAdobeAnalyticsSupport",
-      "id" : "14131b6f-a069-47c4-9344-4cc2b647b8c1",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
     } ],
     "id" : "b8266e01-7035-4d38-8029-1186b06a4ea2",
     "regionName" : "content",
@@ -272,109 +255,118 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Training Resources</a>"
+        "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Key Resources</h3>           \n        </div>\n\n    </div>\n</div>"
       },
       "componentName" : "forceCommunity:htmlBlock",
-      "id" : "988c43f9-4fa7-4be9-8235-da72b184eb17",
+      "id" : "27267aa1-17fb-42a5-a8b8-ac02d74da3b7",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : {
-        "de" : "f3913b1c-49b2-4e9a-86aa-0ee8df444b82",
-        "es" : "b54c4947-f0d4-49ef-9766-bb43b1887a0d",
-        "es_mx" : "faa31646-9abb-4184-b615-385d7d2fee0d",
-        "fr" : "617d2ffd-3c86-420a-b6cc-586135b31088",
-        "it" : "4b7eb0eb-dda9-4c63-9a70-68d5fc0da40d",
-        "ja" : "44fef65b-6c94-4164-b404-5ac2c4d2e7b1",
-        "ko" : "573a6284-2377-4293-b5bc-1f7d925228ca",
-        "pt_br" : "2c44c06d-2b19-4363-b6aa-0597f785d5b1",
-        "ru" : "293bc88a-d011-4168-a95e-37ece390fd5d",
-        "zh_cn" : "42315430-93b9-4dd5-803c-2daaefc100af",
-        "zh_tw" : "3f394c98-1f9c-4805-bc95-8c0ddfafadda"
+        "de" : "e4c32d56-a579-4e5a-af8a-617a5f53d9d0",
+        "es" : "7aac2875-57c2-4df1-b795-a27bf625c233",
+        "es_mx" : "c2c6f1bd-4318-4dfa-b4a1-d5fe278831f0",
+        "fr" : "670d9b6d-fe17-46bc-a6e0-95596f61cb04",
+        "it" : "5943b161-3f9d-4175-b614-b3dca3beb05f",
+        "ja" : "93fe9cf8-e33d-49a5-92fb-71b7043c891c",
+        "ko" : "58fce386-cdfc-464f-8014-b1db78125f1d",
+        "pt_br" : "39815954-dda7-4c31-9383-5f917f554f0c",
+        "pt_pt" : "b2d76c03-bd58-4080-8b7c-7e008a6794ba",
+        "ru" : "cdd4ad27-b953-4310-a8bc-b491d453fed7",
+        "zh_cn" : "a23a92e7-1337-4dda-bdea-0f9051b0d6a3",
+        "zh_tw" : "220f6c65-e366-4395-b95e-e341925f90f6"
       },
       "renditions" : [ {
-        "id" : "42315430-93b9-4dd5-803c-2daaefc100af",
+        "id" : "a23a92e7-1337-4dda-bdea-0f9051b0d6a3",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">培训资源</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>主要资源</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "44fef65b-6c94-4164-b404-5ac2c4d2e7b1",
+        "id" : "cdd4ad27-b953-4310-a8bc-b491d453fed7",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">トレーニング・リソース</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Ключевые ресурсы</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "617d2ffd-3c86-420a-b6cc-586135b31088",
+        "id" : "b2d76c03-bd58-4080-8b7c-7e008a6794ba",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Ressources de formation</a>"
+            "richTextValue" : "<div class=\"storytelling-links\"><div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos principais\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Activity Guide</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Terms &amp; Conditions</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Reimbursement Overview</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Newsletter</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Site Updates</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Intel Brand Updates</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "f3913b1c-49b2-4e9a-86aa-0ee8df444b82",
+        "id" : "93fe9cf8-e33d-49a5-92fb-71b7043c891c",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Schulungsressourcen</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>主なリソース</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "573a6284-2377-4293-b5bc-1f7d925228ca",
+        "id" : "5943b161-3f9d-4175-b614-b3dca3beb05f",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">교육 리소스</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Risorse principali</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "3f394c98-1f9c-4805-bc95-8c0ddfafadda",
+        "id" : "670d9b6d-fe17-46bc-a6e0-95596f61cb04",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">訓練資源</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Principales ressources</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "4b7eb0eb-dda9-4c63-9a70-68d5fc0da40d",
+        "id" : "c2c6f1bd-4318-4dfa-b4a1-d5fe278831f0",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Risorse di formazione</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos clave</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "293bc88a-d011-4168-a95e-37ece390fd5d",
+        "id" : "e4c32d56-a579-4e5a-af8a-617a5f53d9d0",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Ресурсы для обучения</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Wichtige Ressourcen</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "2c44c06d-2b19-4363-b6aa-0597f785d5b1",
+        "id" : "58fce386-cdfc-464f-8014-b1db78125f1d",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de treinamento</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>주요 자료</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "b54c4947-f0d4-49ef-9766-bb43b1887a0d",
+        "id" : "7aac2875-57c2-4df1-b795-a27bf625c233",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de formación</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos clave</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
       }, {
-        "id" : "faa31646-9abb-4184-b615-385d7d2fee0d",
+        "id" : "39815954-dda7-4c31-9383-5f917f554f0c",
         "renditionValue" : {
           "componentAttributes" : {
-            "richTextValue" : "<div style=\"height:1em;\"></div>\n<button type=\"button\" class=\"btn btn-primary\">›</button>\n<a href=\"https://www.intel.com/content/www/us/en/secure/co-marketing/partner-investment-center/training-resources.html\" target=\"_blank\">Recursos de entrenamiento</a>"
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos principais</h3>           \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "220f6c65-e366-4395-b95e-e341925f90f6",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>關鍵資源</h3>           \n        </div>\n\n    </div>\n</div>"
           }
         },
         "type" : "renditionComponent"
@@ -382,96 +374,493 @@
       "type" : "component"
     }, {
       "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_EEF"
+        "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/us/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Cloud Insider Program</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Program Overview</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Activity Guide</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Site Updates</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Branding Changes</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Terms & Conditions</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Trademark License</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">SPCF Reimbursement Overview</span></a></p>\n            </div>\n            \n        </div>\n\n    </div>\n</div>"
       },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "335b9f58-7a11-4c0c-b7a3-0aecd09c3428",
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "df01640a-feb7-4ea9-bb1b-d2134e909100",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "de" : "da0cd340-2c96-46c9-a48e-81baa8389b47",
+        "es" : "1e6a54cd-25f3-41c7-b05c-c5c26578f0f2",
+        "es_mx" : "e4824b51-eb79-4c6a-8b0b-640f940f9aa0",
+        "fr" : "4c6bdc9b-9a61-4986-86d0-ba3abf4a926a",
+        "it" : "69a93f53-601e-4d71-b2cc-8d927a0d9868",
+        "ja" : "743fd8da-5a1f-46fd-9503-ed35c13c3056",
+        "ko" : "07b33e84-2978-4295-aa48-e96df8e5ab86",
+        "pt_br" : "53774f6b-c9cd-4314-a651-e444a47085dd",
+        "pt_pt" : "82a69dc0-9991-421e-9ef3-bd7f3c2c8a09",
+        "ru" : "6f03398d-7339-4737-b856-158be1b76b8f",
+        "zh_cn" : "c23f7297-89b6-4690-a39b-33163e42205b",
+        "zh_tw" : "45d4f5fc-2dc9-48b6-beb1-5efd7c880d50"
+      },
+      "renditions" : [ {
+        "id" : "c23f7297-89b6-4690-a39b-33163e42205b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/cn/zh/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cloud Insider 计划</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 项目概述</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 活动指南</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 站点更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 品牌推广变更</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 条款与条件</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 商标许可证</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 报销概述</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6f03398d-7339-4737-b856-158be1b76b8f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/ru/ru/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Программа Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Обзор программы Фонда совместного маркетинга&nbsp;для поставщиков сетевых услуг</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Руководство Фонда совместного маркетинга&nbsp;для поставщиков сетевых услуг</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Обновление сайта Фонда совместного маркетинга для поставщиков сетевых услуг</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Изменения в брендинге SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Положения и условия Фонда совместного маркетинга&nbsp;для поставщиков сетевых услуг</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Лицензия на торговую марку SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Фонд совместного маркетинга для поставщиков сетевых услуг - Описание процедуры возмещения расходов</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "82a69dc0-9991-421e-9ef3-bd7f3c2c8a09",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\"><div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos principais\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Activity Guide</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Terms &amp; Conditions</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Reimbursement Overview</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Newsletter</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Site Updates</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Intel Brand Updates</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "743fd8da-5a1f-46fd-9503-ed35c13c3056",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.sg/content/www/xa/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">クラウド・インサイダー・プログラム</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF プログラムの概要</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 活動ガイド</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF サイトの更新情報</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF ブランディングの変更</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 条件</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 商標ライセンス</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 償還の概要</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "69a93f53-601e-4d71-b2cc-8d927a0d9868",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.co.uk/content/www/uk/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Programma Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Informazioni generali sul programma SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guida alle attivit&agrave; SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Aggiornamenti del sito SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cambiamenti relativi al Branding SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Termini e Condizioni SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Contratto di licenza SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Panoramica sui rimborsi SPCF</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4c6bdc9b-9a61-4986-86d0-ba3abf4a926a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.co.uk/content/www/uk/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Programme Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Pr&eacute;sentation du programme SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guide des activit&eacute;s SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Mises &agrave; jour du site SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Changements de marquage SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Conditions g&eacute;n&eacute;rales du SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Licence d'utilisation de marques SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Présentation du remboursement SPCF</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e4824b51-eb79-4c6a-8b0b-640f940f9aa0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/xl/es/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Programa Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripci&oacute;n del programa SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones del sitio SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cambios en la promoción de marcas de SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">T&eacute;rminos y condiciones de SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Licencia de marca comercial de SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripción general de los reembolsos de SPCF</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "da0cd340-2c96-46c9-a48e-81baa8389b47",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/de/de/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cloud-Insider-Programm</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">&Uuml;bersicht &uuml;ber das SPCF-Programm</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF-Leitfaden f&uuml;r Werbema&szlig;nahmen</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF-Website-Updates</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Änderungen beim Branding für das SPCF-Programm</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF-Teilnahmebedingungen</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF-Markenlizenz</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Übersicht über die Kostenerstattung für das SPCF-Programm</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "07b33e84-2978-4295-aa48-e96df8e5ab86",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.sg/content/www/xa/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">클라우드 인사이더 프로그램</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 프로그램 개요</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 활동 가이드</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 사이트 업데이트</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 브랜딩 변경</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 약관</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 상표 라이센스</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 환급 개요</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1e6a54cd-25f3-41c7-b05c-c5c26578f0f2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.la/content/www/xl/es/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Programa Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripci&oacute;n general del programa SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones del sitio de SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cambios en la promoción de marca del SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">T&eacute;rminos y condiciones de SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Licencia de marca comercial del SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripción de los reembolsos del SPCF</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "53774f6b-c9cd-4314-a651-e444a47085dd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/www/us/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Programa Cloud Insider</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Resumo geral do programa do SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guia de Atividades do SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Atualiza&ccedil;&otilde;es do site de SPCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Alterações da Marca SPCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Termos e Condi&ccedil;&otilde;es do SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Licenças da Marca Comercial SPCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF Visão geral de reembolso</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "45d4f5fc-2dc9-48b6-beb1-5efd7c880d50",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.sg/content/www/xa/en/partner/cloud-insider/overview.html\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Cloud Insider 計畫</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/program-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 計畫概述</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 活動指南</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 網站更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 品牌設定變更</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/terms-and-conditions.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 條款與條件</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/trademark-license.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 商標授權</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a target=\"_blank\" class=\"text\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/spcf/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">SPCF 報銷概述</span></a></p>\n            </div>\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     }, {
       "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_SPCF"
+        "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Activity Guide (effective January 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Activity Guide (effective July 1, 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Activity Guide (effective January 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Activity Guide (effective July 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Site Updates</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Intel Brand Updates for CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Newsletter</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/us/en/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF Reimbursement Overview</span></a></p>\n            </div>\n            \n            \n            \n            \n        </div>\n\n    </div>\n</div>"
       },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "dfc22d5f-840f-46a5-aa9d-df2c2fcd0360",
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "8ef8ca68-ba8a-4248-a892-e900d3884ad6",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "de" : "e072da3d-bd13-410f-8300-a7cefa65787d",
+        "es" : "76f0c2b3-222a-4caa-b4da-6e641daa263c",
+        "es_mx" : "de3283cb-418b-4528-adda-2544d5c6df2b",
+        "fr" : "7e6f8d0e-9c5a-466e-b548-2af51911dcb8",
+        "it" : "cb518ddf-750b-4db4-8897-a863d641178f",
+        "ja" : "0a5ce937-f424-43ad-8046-9bbdb249c780",
+        "ko" : "2cc41125-4ed9-4e83-885d-4c745c81f64a",
+        "pt_br" : "62b8d7a9-226e-4c88-a54d-11cdfe24fcc7",
+        "pt_pt" : "82178641-f675-4d67-8ae4-60abe8cd70b7",
+        "ru" : "4543c03a-7c7e-40cf-8752-65aad4532c78",
+        "zh_cn" : "ba72abdc-a2b2-4d0f-8114-b5cf977760cf",
+        "zh_tw" : "a22e76eb-884c-4d15-af74-17dc27f3fa3b"
+      },
+      "renditions" : [ {
+        "id" : "ba72abdc-a2b2-4d0f-8114-b5cf977760cf",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 活动指南（2019 年 1 月生效）</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活动指南（2019 年 7 月 1 日生效）</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活动指南（2020 年 1 月 生效）</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活动指南（2020 年 7 月 生效）</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 站点更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">英特尔对 CCF/DCF 的品牌更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 新闻简报</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/cn/zh/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 报销概述</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "4543c03a-7c7e-40cf-8752-65aad4532c78",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Руководство Фонда совместного маркетинга для дата центров/Фонда совместного маркетинга для клиентских ПК (действительно с января 2019 г.)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Руководство Фонда совместного маркетинга для дата центров/Фонда совместного маркетинга для клиентских ПК (действительно с 1 июля 2019 г.)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Фонд совместного маркетинга для дата центров/Фонд совместного маркетинга для клиентских ПК - Руководство (действительно с января 2020 г.)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Фонд совместного маркетинга для дата центров/Фонд совместного маркетинга для клиентских ПК - Руководство (действительно с июля 2020 г.)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Обновление сайта Фонда совместного маркетинга для дата центров/Фонда совместного маркетинга для клиентских ПК</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Новости о торговых марках Intel для Фонда совместного маркетинга для дата центров/Фонда совместного маркетинга для клиентских ПК</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Информационный бюллетень Фонда совместного маркетинга для дата центров/Фонда совместного маркетинга для клиентских ПК</span></a></p>\n            </div>\n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/ru/ru/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Фонд совместного маркетинга для дата центров/Фонд совместного маркетинга для клиентских ПК - описание процедуры возмещения расходов</span></a></p>\n            </div>\n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "82178641-f675-4d67-8ae4-60abe8cd70b7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\"><div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <h3>Recursos principais\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Activity Guide</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Terms &amp; Conditions</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Reimbursement Overview</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Newsletter</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Site Updates</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"www.intel.com\"><span class=\"\">Intel Brand Updates</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0a5ce937-f424-43ad-8046-9bbdb249c780",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 活動ガイド (2019年1月より有効)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活動ガイド (2019年7月1日より有効)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活動ガイド (2020年1月より有効)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活動ガイド (2020年7月より有効)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF サイトの更新情報</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 向けインテル® ブランドの更新情報</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF ニュースレター</span></a></p>\n            </div>\n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/jp/ja/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 償還の概要</span></a></p>\n            </div>     \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "cb518ddf-750b-4db4-8897-a863d641178f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guida alle attivit&agrave; CCF/DCF (in vigore da gennaio 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guida alle attivit&agrave; CCF/DCF (in vigore dal 1° luglio 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guida alle attività CCF/DCF (in vigore da gennaio 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Guida alle attività CCF/DCF (in vigore da luglio 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Aggiornamenti del sito CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Aggiornamenti dei marchi Intel per CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Newsletter CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/it/it/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Panoramica sui rimborsi CCF/DCF</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7e6f8d0e-9c5a-466e-b548-2af51911dcb8",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guide des activit&eacute;s CCF/DCF (à compter de janvier 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guide des activit&eacute;s CCF/DCF (à compter du 1er juillet 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guide des activités CCF/DCF (à compter de janvier 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Guide des activités CCF/DCF (à compter de juillet 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Mises &agrave; jour du site CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Mises &agrave; jour de la marque Intel pour CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Lettre d&apos;information CCF/DCF</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/fr/fr/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Présentation du remboursement CCF/DCF</span></a></p>\n            </div>\n            \n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "de3283cb-418b-4528-adda-2544d5c6df2b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de CCF/DCF (vigencia enero de 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de CCF/DCF (vigencia 1 de julio de 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guía de actividades de CCF/DCF (vigencia enero de 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Guía de actividades de CCF/DCF (vigencia julio de 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones del sitio de CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones de la marca Intel para CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Bolet&iacute;n informativo de CCF/DCF</span></a></p>\n            </div>\n            \n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/xl/es/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripción general de los reembolsos de CCF/DCF</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e072da3d-bd13-410f-8300-a7cefa65787d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF-Leitfaden F&uuml;r Werbema&szlig;nahmen (gilt Januar 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF-Leitfaden F&uuml;r Werbema&szlig;nahmen (gilt 1. Juli 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF-Leitfaden für Werbemaßnahmen (gilt Januar 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF-Leitfaden für Werbemaßnahmen (gilt Juli 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF-Website-Updates</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Updates zu Intel-Markenbezeichnungen f&uuml;r den CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF-Newsletter</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/de/de/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Übersicht über die Kostenerstattung für das CCF/DCF-Programm</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "2cc41125-4ed9-4e83-885d-4c745c81f64a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 활동 가이드 (2019년 1월부터 유효)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 활동 가이드 (2019년 7월 1일부터 유효)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 활동 가이드(2020년 1월부터 유효)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 활동 가이드(2020년 7월부터 유효)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 사이트 업데이트</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF를 위한 인텔 브랜드 업데이트</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 뉴스레터</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/kr/ko/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 환급 개요</span></a></p>\n            </div>\n            \n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "76f0c2b3-222a-4caa-b4da-6e641daa263c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de CCF/DCF (en vigor a partir de enero de 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Gu&iacute;a de actividades de CCF/DCF (en vigor a partir del 1 de julio de 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guía de actividades de CCF/DCF (en vigor a partir de enero de 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Guía de actividades de CCF/DCF (en vigor a partir de julio de 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones del sitio de CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Actualizaciones de la marca Intel para CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Bolet&iacute;n de CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/es/es/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Descripción de los reembolsos del CCF/DCF</span></a></p>\n            </div>\n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "62b8d7a9-226e-4c88-a54d-11cdfe24fcc7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guia de Atividades de CCF/DCF (em vigor em janeiro 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guia de Atividades de CCF/DCF (em vigor em julho de 2019)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Guia de Atividades de CCF/DCF (em vigor em janeiro 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Guia de Atividades de CCF/DCF (em vigor em julho de 2020)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Atualiza&ccedil;&otilde;es do site de CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Atualiza&ccedil;&otilde;es da Marca Intel para CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Boletim de not&iacute;cias do CCF/DCF</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/br/pt/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF Visão geral de reembolso</span></a></p>\n            </div>\n     \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a22e76eb-884c-4d15-af74-17dc27f3fa3b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n            <div style=\"height:1em;\"></div>\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/activity-guide.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 活動指南 (自 2019 年 1 月起生效)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/activity-guide-july-2019.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 活動指南 (自 2019 年 7 月 1 日起生效)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/activity-guide-jan-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 活動指南 (自 2020 年 1 月起生效)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/activity-guide-july-2020.pdf\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">CCF/DCF 活動指南 (自 2020 年 7 月起生效)</span></a></p>\n            </div>\n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/site-updates.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 網站更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/branding-changes.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">針對 CCF/DCF 的 Intel 品牌更新</span></a></p>\n            </div>\n            \n            <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://partnercenter.intel.com/s/newsletters\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 新聞簡訊</span></a></p>\n            </div>\n             <div style=\"height:1em;\"></div>\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://www.intel.com/content/dam/ccp/tw/zh/secure/ccf-dcf-common/reimbursement-overview.pdf\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">CCF/DCF 報銷概述</span></a></p>\n            </div>\n            \n            \n            \n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     }, {
       "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_SysAdmin_ITAdmin"
+        "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">›</button><span class=\"\">Intel Premier Support</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
       },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "fc4bef12-983e-4030-aa0e-27046a9949b6",
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "f875cc89-7b18-487d-9034-7a2fea151b6b",
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_CCF_DCF"
+      "renditionMap" : {
+        "de" : "94eb39c0-0b71-4e31-834c-37577d933f3a",
+        "es" : "719ef160-f42d-4988-a96e-f3115593fb49",
+        "es_mx" : "b1a13a1f-f5fc-4920-8ef2-39980d66e217",
+        "fr" : "c4a4d571-93cf-4cd8-8036-d05866e97849",
+        "it" : "6c7c78ff-6f2f-4faa-9a29-53bac58fb9fd",
+        "ja" : "5ee0378e-8b5c-40a8-84b4-759a7e78245e",
+        "ko" : "9a026f6f-c1f0-4cab-bc3a-7333ae53aed4",
+        "pt_br" : "7828a8a3-eff6-4346-a46f-544a5da60c73",
+        "pt_pt" : "fcab70ea-ecd9-44a5-a22d-4051dce65930",
+        "ru" : "76b35b5a-074e-4ef8-8cfe-317e5323a28c",
+        "zh_cn" : "ff011f9b-39f1-41fb-9b84-228a3f66fee5",
+        "zh_tw" : "c532acc3-d793-4212-80c3-9ba6f8a5819e"
       },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "929006da-8633-4a4a-b3a9-4a6ba5a03b71",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_IPS"
-      },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "e5a9fe3f-49fa-40b7-b07a-2ba93b1bebc0",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_Retail"
-      },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "44cbd9a6-28c4-470c-81e8-666e96274276",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_IPA"
-      },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "7b50f61d-8db4-4e72-becb-04e9e77a4cd9",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : {
-        "currentPage" : "Home",
-        "sectionCode" : "Home_KeyResources_CMDF"
-      },
-      "componentName" : "c:core_MDF_dynamicURLsOnCommunity",
-      "id" : "786f3736-9869-49bc-87a4-c02f6203cf56",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditions" : [ {
+        "id" : "ff011f9b-39f1-41fb-9b84-228a3f66fee5",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">英特尔高级支持</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "76b35b5a-074e-4ef8-8cfe-317e5323a28c",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Поддержка Intel Premier Support</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "fcab70ea-ecd9-44a5-a22d-4051dce65930",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\"><div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"btn-chicklet\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><span class=\"\">Suporte Premier Intel</span></a>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "5ee0378e-8b5c-40a8-84b4-759a7e78245e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">インテルのプレミアサポート</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "6c7c78ff-6f2f-4faa-9a29-53bac58fb9fd",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Supporto Premier Intel</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c4a4d571-93cf-4cd8-8036-d05866e97849",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Assistance Premier Intel</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "b1a13a1f-f5fc-4920-8ef2-39980d66e217",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Asistencia t&eacute;cnica Premier</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "94eb39c0-0b71-4e31-834c-37577d933f3a",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Intel-Premiumsupport</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9a026f6f-c1f0-4cab-bc3a-7333ae53aed4",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">인텔 프리미어 지원</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "719ef160-f42d-4988-a96e-f3115593fb49",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Asistencia t&eacute;cnica Premier Intel</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7828a8a3-eff6-4346-a46f-544a5da60c73",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Suporte Premier Intel</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c532acc3-d793-4212-80c3-9ba6f8a5819e",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div class=\"storytelling-links\">\n    <div class=\"storytellingitems\">\n\n        <div id=\"storyTellingItems-1\" class=\"component\" data-component=\"storyTellingItems\" data-component-id=\"1\">\n\n            <div class=\"link\">\n                <p class=\"cta-item\"><a class=\"text\" target=\"_blank\" href=\"https://premiersupport.intel.com/IPS\"><button type=\"button\" class=\"btn btn-primary\">&rsaquo;</button><span class=\"\">Intel 頂級支援</span></a></p>\n            </div>\n\n        </div>\n\n    </div>\n</div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
     "id" : "8f2a2f11-73f3-4d5f-bf4a-d6fff722c90c",
     "regionName" : "sidebar",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<div style=\"height:4em;\"></div>"
+      },
+      "componentName" : "forceCommunity:htmlBlock",
+      "id" : "da509786-d83a-428b-aa78-2cf7f9eaa7dc",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : {
+        "de" : "547fda06-ce89-4dc9-895e-d1f40dfae29d",
+        "es" : "54ddd732-e816-479d-bdc4-b82cae06f1f2",
+        "es_mx" : "9899182f-b7c5-4eaf-bc2b-0cc9cc257492",
+        "fr" : "d7242833-97b7-43d0-bc7b-16bdde9c35f0",
+        "it" : "e1e03c20-a6a8-4f21-8cd0-713f112e772b",
+        "ja" : "36a0b675-ed4d-4bed-91d1-ae8a28b4f4ad",
+        "ko" : "9bde61c3-d3c9-406d-929e-5d3ad122dd64",
+        "pt_br" : "c10324dd-a554-48a9-b5d8-7534f344b366",
+        "pt_pt" : "0d21a2b2-10f4-451e-830f-04140be5f63f",
+        "ru" : "ff59858c-eab5-489a-9503-292f51cc74cc",
+        "zh_cn" : "cf34c515-bdee-47fb-b3b4-449081efe9c7",
+        "zh_tw" : "9e5de316-5c83-42ea-912a-9eae63665fd1"
+      },
+      "renditions" : [ {
+        "id" : "cf34c515-bdee-47fb-b3b4-449081efe9c7",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "ff59858c-eab5-489a-9503-292f51cc74cc",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "0d21a2b2-10f4-451e-830f-04140be5f63f",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "36a0b675-ed4d-4bed-91d1-ae8a28b4f4ad",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "e1e03c20-a6a8-4f21-8cd0-713f112e772b",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "d7242833-97b7-43d0-bc7b-16bdde9c35f0",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9899182f-b7c5-4eaf-bc2b-0cc9cc257492",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "547fda06-ce89-4dc9-895e-d1f40dfae29d",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9bde61c3-d3c9-406d-929e-5d3ad122dd64",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "54ddd732-e816-479d-bdc4-b82cae06f1f2",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "c10324dd-a554-48a9-b5d8-7534f344b366",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9e5de316-5c83-42ea-912a-9eae63665fd1",
+        "renditionValue" : {
+          "componentAttributes" : {
+            "richTextValue" : "<div style=\"height:4em;\"></div>"
+          }
+        },
+        "type" : "renditionComponent"
+      } ],
+      "type" : "component"
+    } ],
     "id" : "b5bdaaa7-1ed4-4247-bd59-24643e80c6d8",
     "regionName" : "footer",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "customHeadTags" : "<script>\n</script>",
+        "customHeadTags" : "",
         "description" : "",
         "title" : "Home"
       },
@@ -495,6 +884,7 @@
         "id" : "48fd0e2b-a555-445a-b62a-ee68dcc50a1d",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -504,6 +894,7 @@
         "id" : "d8db75e3-1fc1-4bc3-a8a1-f6e786547975",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -513,6 +904,7 @@
         "id" : "dae1cb8d-4660-4a35-8065-37e625e6f224",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -522,6 +914,7 @@
         "id" : "3e246e88-45d0-46e3-969f-ba9e048f5f7c",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -531,6 +924,7 @@
         "id" : "3b791db3-881d-43d7-a5f2-fe213f1cb8be",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -540,6 +934,7 @@
         "id" : "145772af-ced0-48ee-97c1-33aba0d0bfc0",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -549,6 +944,7 @@
         "id" : "e6a8e152-4c3e-4a28-948e-f7ee1457bc25",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -558,6 +954,7 @@
         "id" : "06b8034d-1149-4614-8bc4-bbc18e3a91f5",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -567,6 +964,7 @@
         "id" : "c17559ae-b8ee-4a07-83a4-ecb82c49d699",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -576,6 +974,7 @@
         "id" : "d1f80960-e74a-4ba7-9610-e2622025c3ca",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -585,6 +984,7 @@
         "id" : "b584a44e-f340-4e0c-accc-b33f9a725231",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }
@@ -594,6 +994,7 @@
         "id" : "4210da3e-db67-41ed-bd26-35b63048f777",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "Home",
             "title" : "Home"
           }

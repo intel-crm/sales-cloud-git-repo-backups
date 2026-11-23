@@ -50,34 +50,6 @@
             <operator>contains</operator>
             <value>#Gmp_Ger_I40</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ROLLUP_DESCRIPTION</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>EMP of Christian Ganz</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Production Win,Production Lost,Production Cancelled,Win Approved,Pending,On Hold,Win Submitted</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

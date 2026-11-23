@@ -130,7 +130,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>uniquest,altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
+            <value>altima,arrow,macnica,digi-key,GALAXY FAR EAST CORPORATION</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -140,7 +140,7 @@
         <field>CLOSED_DATE</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>MIPS Customer Survey TAT - Obsolete</name>
+    <name>MIPS Customer Survey TAT</name>
     <params>
         <name>units</name>
         <value>d</value>

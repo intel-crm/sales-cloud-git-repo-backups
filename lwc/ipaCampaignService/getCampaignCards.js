@@ -16,7 +16,7 @@
 // mock data
 // import MockData from "c/ipaMockData";
 import partners from '@salesforce/label/c.PMP_L2_Tab_Partners';
-import offerings from '@salesforce/label/c.PMP_Marketplace_Offerings';
+//import offerings from '@salesforce/label/c.PMP_Marketplace_Offerings';//IPA2.0:US-4497-1631_OfferingEOL
 import getCampaignDetails from '@salesforce/apex/PMP_SearchEventDetailController.getCampaignCardDetails';
 import USERLANG from '@salesforce/i18n/lang';
 
@@ -49,7 +49,9 @@ export default async ({ campaignId, cardType, page, perPage }) => {
         total = response.productTotal;
     }
     return {
-        heading: campaignName + ' '+(cardType === 'partner' ? partners : offerings),
+        //IPA2.0:US-4497-1631_OfferingEOL
+        //heading: campaignName + ' '+(cardType === 'partner' ? partners : offerings),
+        heading: campaignName + ' '+ partner,
         cards,
         total,
     };

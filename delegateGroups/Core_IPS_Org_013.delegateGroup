@@ -3,7 +3,6 @@
     <groups>TSD_Delphi_China_POC</groups>
     <groups>TSD-SDC-DIAM-Android</groups>
     <groups>TSD-GM-ASMO</groups>
-    <groups>TSD -QNX</groups>
     <groups>TSD-Wipro</groups>
     <groups>IPS - Org Admin - TSD</groups>
     <groups>TSD - Unassigned-ASMO</groups>
@@ -24,5 +23,4 @@
     <label>IPS - Org Admin - TSD</label>
     <loginAccess>false</loginAccess>
     <roles>IPS Product OrgAdmin</roles>
-    <roles>EMP_11298293_Kenta_Ueda</roles>
 </DelegateGroup>

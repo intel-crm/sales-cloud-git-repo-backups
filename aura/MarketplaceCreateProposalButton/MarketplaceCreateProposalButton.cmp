@@ -1,0 +1,24 @@
+<aura:component controller="PSS_PartnersOnSolution" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <lightning:navigation aura:id="navService"/>
+    <aura:attribute name="showCreateProposalButton" type="Boolean" default="false"/>
+    <aura:attribute name="redirectToLWC" type="Boolean" default="false"/>
+    <aura:attribute name="showSolutionButton" type="Boolean" default="false"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <!-- <aura:attribute name="refreshView" type="Boolean" default="true"/>-->
+    
+    <aura:if isTrue="{!v.showSolutionButton}"> 
+        <div><lightning:button onclick="{!c.gotoURL}" label="Submit a Solution"/></div>
+    </aura:if> 
+    
+    <!-- <aura:attribute name="selectedPartner" type="String" /> -->
+    <aura:if isTrue="{!v.redirectToLWC}">
+        <!--  <c:accountsOnSolutions onvaluechange="{!c.saveSelectedValue}"/><br/>-->
+        <c:pssPartnerSelectionModal /> <br/> 
+        <!-- <c:pSS_partnerOnSolutionLWC onvaluechange="{!c.saveSelectedValue}"/><br/>-->
+    </aura:if>
+    
+    
+    <!-- <aura:handler event="force:refreshView" action="{! c.handleForceRefreshViewForLWC }"></aura:handler>
+    <c:accountsOnSolutions aura:id="refreshBroker" onforceRefreshView="{!c.forceRefreshView}"></c:accountsOnSolutions> -->
+</aura:component>

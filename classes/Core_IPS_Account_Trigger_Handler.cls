@@ -300,7 +300,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
 ******************************************************************************************************/
     public static void restrictManageExternalAccount(List<Account> newList,Map<Id,Account> oldMap){
         Boolean isProfileRestricted = true;
-        if(UserInfo.getUserType() != 'automatedprocess') { //atuomatedprocess user validation US-0049253
+        if(UserInfo.getUserType() != 'automatedprocess') { //atuomatedprocess user validation US-0048819
         List<Profile> PROFILE = [SELECT Id, Name FROM Profile WHERE Id=:userinfo.getProfileId() LIMIT 1];
         String myProflieName = PROFILE[0].Name;
         
@@ -353,7 +353,8 @@ Method Name:                                             UpdateContactOnECBCheck
 Modified By:                            Date:            Changes: 
 Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
 ******************************************************************************************************/
-   /* public static void UpdateContactOnECBCheck(List<Account> newList,Map<id,Account> MapOldAccount){//US-0050009 Hercules_IPS_ECBFlagIssueFix- code shifted to batch class-begin
+    /* US-0050009 Hercules_IPS_ECBFlagIssueFix- code shifted to batch class-begin
+    public static void UpdateContactOnECBCheck(List<Account> newList,Map<id,Account> MapOldAccount){ //IPS logic code commented-gangadhar-begin
         Map<Id,Contact> mapContact;
         // START - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha //
         if (!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('UpdateContactOnECBCheck')){
@@ -363,7 +364,7 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
         // END - US604984 KTBR: Implement quick fix for setting Account (Huawei HQ) Export Compliance Block  - Sneha //
         Set<Id> accountIdSet = new Set<Id>();
         //account Id is collected
-        for(Account accObj:newList)
+       for(Account accObj:newList) 
         {  
             //Start of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
             if(accObj.RecordTypeId != coMarketingRecordTypeId && accObj.RecordTypeId != pAGRecordTypeId && accObj.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing
@@ -375,11 +376,11 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
                 }
             }
             
-        }
+        } 
         
-        //Take respected contact
+        //Take respected contact 
         if(accountIdSet<> null && accountIdSet.size()>0){
-        mapContact = new Map<Id,Contact>([Select id,Core_IPS_Active__c,Core_IPS_By_Pass_Validation__c,AccountId from Contact where AccountId in :accountIdSet]);
+        mapContact = new Map<Id,Contact>([Select id,Core_IPS_Active__c,Core_IPS_By_Pass_Validation__c,AccountId from Contact where AccountId in :accountIdSet and Core_IPS_Active__c = true and Core_Deactivated__c = false]); //query opt
 
         if(mapContact <> null && mapContact.size() > 0 && mapContact.keyset() <> null){
             //update the respected contact data        
@@ -390,21 +391,22 @@ Accenture – VD                          07/23/2018       US99134 - Updated Met
             if(mapContact.Values() <> null && mapContact.Values().size() > 0)
             {
                 try{
-                    update mapContact.Values();  
+                    Database.update(mapContact.Values());  
                 }catch(DMLException e){
                     Core_Exceptionclass Exce =  new Core_Exceptionclass();
                     string  Str = Exce.InsertException('','Core_IPS_Account_Trigger_Handler','Account','','UpdateContactOnECBCheck',e);
-        }
+              }
                 }
             }
-        }        
+        }     
+ 
     } */ //US-0050009 Hercules_IPS_ECBFlagIssueFix- code shifted to batch class-end 
 /***************************************************************************************************** 
 Method Name:                                             CIMIdStamped
 Accenture – VD                          01/06/2022       TWC729 - This method will check ifCIM is stamped or not 
 ******************************************************************************************************/
     public static void CIMIdStamped(List<Account> newList,Map<id,Account> MapOldAccount){
-    }      
+        } 
 
     public static void createTrackerMilestonesForBadgeTierUpdate(List<Account> newList,Map<id,Account> MapOldAccount){
         List<PRM_Tracker__c> trackers = new List<PRM_Tracker__c>();

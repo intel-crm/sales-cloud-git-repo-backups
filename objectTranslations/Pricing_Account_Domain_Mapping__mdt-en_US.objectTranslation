@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Pricing Account Domain Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Pricing Account Domain Mappings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Id --></label>
+        <name>Pricing_Account_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>Pricing_Account_Nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- Website --></label>
+        <name>Pricing_Account_Website_Txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

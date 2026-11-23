@@ -30,11 +30,25 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Coverage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>GMP Americas Sales Territory</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Hain</value>
+            <value>vitores</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -70,6 +84,6 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

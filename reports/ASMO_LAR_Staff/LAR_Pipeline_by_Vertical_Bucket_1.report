@@ -54,9 +54,6 @@
         <sourceColumnName>Opportunity.Core_Consumption_Market__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>Retail</value>
         </values>
         <values>

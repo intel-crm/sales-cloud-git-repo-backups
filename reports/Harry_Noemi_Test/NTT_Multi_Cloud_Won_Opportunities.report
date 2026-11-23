@@ -87,7 +87,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>.NTT - Multi-Cloud Won Opportunities</name>
+    <name>NTT - Multi-Cloud Won Opportunities</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -111,6 +111,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

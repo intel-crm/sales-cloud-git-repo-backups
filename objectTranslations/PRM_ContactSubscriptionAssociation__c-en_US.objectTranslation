@@ -46,13 +46,16 @@
         <label><!-- Status Reason --></label>
         <name>PRM_Status_Reason_Txt__c</name>
     </fields>
+    <layouts>
+        <layout>Contact Subscription Association Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- This record cannot be activated as the partner subscription is inactive. --></errorMessage>
-        <name>PRM_TrainingWebinarActivationRuleCheck</name>
-    </validationRules>
 </CustomObjectTranslation>

@@ -199,7 +199,6 @@ public without sharing class Core_IPS_Core_Question_Handler
     * Aayushi Singhal            04/04/2018               Created
     ****************************************************************************************************/ 
     public static void  updateEDQfilteringFieldOnCase(List<Core_IPS_Question__c> newList,Map<Id,Core_IPS_Question__c> oldMap){
-        List<Core_IPS_Response__c> respList = new List<Core_IPS_Response__c>();
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('updateEDQfilteringFieldOnCase'))
             return;  
         try{
@@ -209,15 +208,15 @@ public without sharing class Core_IPS_Core_Question_Handler
                  quesList.add(ques.Id);   
                 }
             } 
-            if(quesList!=null && quesList.size()>0){
-                //FLS check added-Venugopal
-                if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){
-          		respList=[Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c from Core_IPS_Response__c where Core_IPS_Question_Master__c In: quesList];
-                }
+            if(Core_IPS_Response__c.SObjectType.getDescribe().isQueryable()){
+                 if(quesList!=null && quesList.size()>0){
+          List<Core_IPS_Response__c> respList=[Select Id,Core_IPS_Case__c,Core_IPS_Answer__c,Core_IPS_Question_Master__c from Core_IPS_Response__c where Core_IPS_Question_Master__c In: quesList];
                 if(respList!=null && respList.size()>0){
                     Core_IPS_Response_Handler.updateEDQfilteringFieldOnCase(respList);
                 }
-            }          
+            }
+            }
+           
             
         }catch(Exception ex){ }
     }
@@ -247,9 +246,8 @@ public without sharing class Core_IPS_Core_Question_Handler
             return;
         
         Map<Id,Core_IPS_Question__c> mapParentChild = new Map<Id,Core_IPS_Question__c>();
-        List<Core_IPS_Question__c> listParentChild = new List<Core_IPS_Question__c>();
         if(Core_IPS_Question__c.SObjectType.getDescribe().isQueryable()){
-            listParentChild = [select id,Core_IPS_Parent_Question__c,Core_IPS_Datatype__c,Core_IPS_Question__c from Core_IPS_Question__c where Core_IPS_Parent_Question__c IN : oldMap.keySet()];
+            List<Core_IPS_Question__c> listParentChild = [select id,Core_IPS_Parent_Question__c,Core_IPS_Datatype__c,Core_IPS_Question__c from Core_IPS_Question__c where Core_IPS_Parent_Question__c IN : oldMap.keySet()];
         
         for(Core_IPS_Question__c objChild : listParentChild){
             mapParentChild.put(objChild.Core_IPS_Parent_Question__c,objChild);
@@ -365,8 +363,9 @@ public without sharing class Core_IPS_Core_Question_Handler
             }
             
         }
-        //FLS fix added-Venugopal
-        if(setSupportOrg!=null && setSupportOrg.size()>0 && Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
+        
+        if(setSupportOrg!=null && setSupportOrg.size()>0){
+            
             for(AggregateResult ag : [SELECT count(Id),Core_IPS_Product_Organization__c FROM Core_IPS_Question__c WHERE Core_IPS_Product_Organization__c IN :setSupportOrg GROUP BY Core_IPS_Product_Organization__c ]){
                 
                 Id supportOrgId = (Id)ag.get('Core_IPS_Product_Organization__c');
@@ -392,6 +391,7 @@ public without sharing class Core_IPS_Core_Question_Handler
         }
         
     }
+    
     /***************************************************************************************************
     Method Name         : updateReportingName
     Method Type         : void
@@ -423,9 +423,10 @@ public without sharing class Core_IPS_Core_Question_Handler
                     Core_IPS_Question__c newCq =new Core_IPS_Question__c();
                     /*US1021248 - 05/26/2021 - Vishal - FLS Check for security vulnerability --*/
                        newCq.id=cq.id;
-                  //  if (Schema.sObjectType.Core_IPS_Question__c.fields.Core_IPS_Reporting_Name__c.isUpdateable()) {
+                   
+                    if (Schema.sObjectType.Core_IPS_Question__c.fields.Core_IPS_Reporting_Name__c.isUpdateable()) {
                         newCq.Core_IPS_Reporting_Name__c = cq.Name;
-                   // }
+                    }
                     newListUpd.add(newCq);
                 }
                 else if(!trigger.isinsert){
@@ -443,4 +444,5 @@ public without sharing class Core_IPS_Core_Question_Handler
             update newListUpd;
         }        
     }
+
 }

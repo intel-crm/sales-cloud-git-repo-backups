@@ -58,6 +58,13 @@
         <name>Core_IPS_Supported_Product__c</name>
         <relationshipLabel><!-- Routing Criteria --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Backend Supported Product Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Please add Backend System Name as prefix for the Backend Supported Product Map ID. --></errorMessage>

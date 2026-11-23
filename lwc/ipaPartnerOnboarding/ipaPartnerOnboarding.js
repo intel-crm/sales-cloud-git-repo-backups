@@ -58,8 +58,10 @@ export default class IpaPartnerOnboarding extends LightningElement {
         try {
             if (USE_MOCK) {
                 result = await MockPartnerOnboardingService.getOnBoardingSteps(this.type);
+                console.log("TWC727-2981",this.type);
             } else {
                 result = await getOnBoardingSteps(this.type);
+                console.log("TWC727-2981 Else",this.type);
             }
         } catch(e) {
             console.error('getBenefits error', `${e}`);

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>PRM_Subscription__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PRM Subscription</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CSPx2_Sub2</fullName>
+                    <default>true</default>
+                    <label>Intel® Cloud Insider Events and Tradeshows</label>
+                </value>
+                <value>
+                    <fullName>CSP_Sub</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Newsletters</label>
+                </value>
+                <value>
+                    <fullName>CSPx2_Sub4</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Surveys</label>
+                </value>
+                <value>
+                    <fullName>CSPx2_Sub3</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Webinars</label>
+                </value>
+                <value>
+                    <fullName>FPGAPart_SUB01</fullName>
+                    <default>false</default>
+                    <label>FPGA Partner Program Newsletter</label>
+                </value>
+                <value>
+                    <fullName>FPGAPart_SUB03</fullName>
+                    <default>false</default>
+                    <label>Inside Edge Newsletter</label>
+                </value>
+                <value>
+                    <fullName>PSG_NEWSLETTER</fullName>
+                    <default>false</default>
+                    <label>Programmable Logic Newsletters</label>
+                </value>
+                <value>
+                    <fullName>PRDSOLCOM</fullName>
+                    <default>false</default>
+                    <label>Product and Solution Communications</label>
+                </value>
+                <value>
+                    <fullName>TRAWEBCOM</fullName>
+                    <default>false</default>
+                    <label>Training and Webinar Communications</label>
+                </value>
+                <value>
+                    <fullName>POINTCOM</fullName>
+                    <default>false</default>
+                    <label>Points Communications</label>
+                </value>
+                <value>
+                    <fullName>EVENTCOM</fullName>
+                    <default>false</default>
+                    <label>Events Communications</label>
+                </value>
+                <value>
+                    <fullName>PARRESCOM</fullName>
+                    <default>false</default>
+                    <label>Partner Research Communications</label>
+                </value>
+                <value>
+                    <fullName>MEMBCOM</fullName>
+                    <default>false</default>
+                    <label>Membership Communications</label>
+                </value>
+                <value>
+                    <fullName>ICLOUDPCC</fullName>
+                    <default>false</default>
+                    <label>Intel® Cloud Insider Partner Community Communications</label>
+                </value>
+                <value>
+                    <fullName>IIOTPCC</fullName>
+                    <default>false</default>
+                    <label>Intel® IOT Solution Partner Community Communications</label>
+                </value>
+                <value>
+                    <fullName>IFPGAPCC</fullName>
+                    <default>false</default>
+                    <label>Intel® FPGA Partner Community Communications</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>PRM Subscription Mapping</label>
+    <pluralLabel>PRM Subscription Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

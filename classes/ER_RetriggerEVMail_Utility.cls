@@ -23,6 +23,7 @@ public without sharing class ER_RetriggerEVMail_Utility {
         if(listRegReq.Size()>0){
             retrievalStatus=PRM_Retrigger_EV_Utility.reteriveNewEvToken(listRegReq[0]);
             if(retrievalStatus ==System.label.PRM_EV_TOKEN_RETERIEVED){
+                System.debug('Contain email log !!!');
                 if(evInput.IsProgramBased){
                     message=sendMail(listRegReq[0]); 
                 }
@@ -80,6 +81,7 @@ public without sharing class ER_RetriggerEVMail_Utility {
         emailIdOrLoginId=String.IsEmpty(evInput.Email)?' PRM_Contact_Login_ID__c= '+'\''+evInput.LoginId+'\'':'PRM_Email_ID__c ='+'\''+evInput.Email+'\'';
         programCheck=evInput.IsProgramBased?' PRM_Channel_Program__r.PRM_programCode__c ='+'\''+evInput.Name+'\'':'Entitlement_Details__r.Name='+'\''+evInput.Name+'\'';
         query=query+emailIdOrLoginId+' AND '+programCheck;
+        System.debug('query'+query);
         return query;
     }
     
@@ -117,6 +119,7 @@ paramMap.put('EmailContent_Setup',emailSetup.Id);
                // PRM_EmailUtility.sendEmail(objEmailNotif);
                // //added as part of governor limit story:4380
 				PRM_EmailUtility.sendEmail(new List<PRM_EmailUtility.EmailNotification> {objEmailNotif});       
+                system.debug('Mail sent for new User!!!');
             }
             UImessage = System.label.PRM_RetriggerEmail_Success;
         }

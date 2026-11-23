@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlowDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
-    <activeVersionNumber>82</activeVersionNumber>
-    <description>This will update the Budget Status to Pending Review and IsIgnoreValidation to true and submit it for Approval.</description>
-    <masterLabel>Core_MDF_FL_Update_the_Budget_Status_to_Pending_Review_and_IsIgnoreValidation_to_true_and_Send_for_Approval</masterLabel>
+    <activeVersionNumber>3</activeVersionNumber>
 </FlowDefinition>

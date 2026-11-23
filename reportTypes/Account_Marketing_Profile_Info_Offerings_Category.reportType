@@ -75,27 +75,132 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Owner_Preview__c</field>
+            <field>PRM_Active_Associations__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Name__c</field>
+            <field>OPID_Hierarchy__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Group_Id__c</field>
+            <field>Core_Sales_Group_New__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category_Preview__c</field>
+            <field>Core_MDF_Group_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Primary_Coverage_Preview__c</field>
+            <field>Core_Direct_Incoterm_Dsc__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Sales_Organization_Nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Payment_Term_Nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Shipping_Condition_Nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Ship_To_End_Customer_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Customer_Aggregation_Type__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_MDF_External_Group_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Direct_Primary_Account_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_PrimaryAccountCalucationLogic__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_OPID__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_OPID_Dummy__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Data_Simplified_Local_Language_Nm__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_UnifiedHierarchy__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Prime_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_IPA_Badge_Tier_Date__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Count_IPA_Terms_And_Conditions__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Parent_Business_Party_Id__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Business_Party_Idd__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Exception_Opid__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Exception_Comments__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>POC_Profile_Response__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_IPAMembership_Attributes__c</field>
             <table>Account</table>
         </columns>
         <columns>
@@ -105,17 +210,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Account_Category__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Groups__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Sales_Group_Preview__c</field>
+            <field>PRM_Impartner_Deal_Sync__c</field>
             <table>Account</table>
         </columns>
         <masterLabel>Accounts</masterLabel>
@@ -524,6 +619,46 @@
             <field>PMP_Translation_Lifecycle_Status_nm__c</field>
             <table>Account.Company_Informations__r.Offerings__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Is_Not_Available_On_MP_Ind__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Reason_for_Retired_Txt__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Partner_Offering_LifecycleStatus_Txt__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Clear_Cache__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>DataCleanupflag__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_View_Offering__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Edit_Clone_Offering__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Topic_Count__c</field>
+            <table>Account.Company_Informations__r.Offerings__r</table>
+        </columns>
         <masterLabel>Partner Offerings</masterLabel>
     </sections>
     <sections>
@@ -568,5 +703,48 @@
             <table>Account.Company_Informations__r.Offerings__r.Offering_Categories__r</table>
         </columns>
         <masterLabel>Partner Offering Categories</masterLabel>
+    </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Biz_Org_Type_Value_Txt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Txt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Ref_Txt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Active_OPID_Cnt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Topic_Count__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Storefront_SiteUrl__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Autofill_Txt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_ScrapStatusComment_Txt__c</field>
+            <table>Account.Company_Informations__r</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
     </sections>
 </ReportType>

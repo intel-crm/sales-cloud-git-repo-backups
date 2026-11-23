@@ -25,9 +25,6 @@
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Last_Approved_Date__c</field>
     </columns>
     <columns>
-        <field>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Type__c</field>
-    </columns>
-    <columns>
         <field>Core_Goal__c.Commissionable_Transactions__r$Core_Transaction_Timestamp__c</field>
     </columns>
     <description>Report to show the Milestone Commissionable Transactions for a given Goal.</description>

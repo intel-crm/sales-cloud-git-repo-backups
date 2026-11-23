@@ -1,0 +1,6 @@
+Dear {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c}
+
+The New Registration {!PRM_Registration_Request__c.Name} you have submitted had been rejected due to the reason "{!PRM_Registration_Request__c.PRM_Status_Reason__c}".
+
+Thanks,
+System Administrator.

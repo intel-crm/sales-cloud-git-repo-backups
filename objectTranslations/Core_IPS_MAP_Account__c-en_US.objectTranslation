@@ -20,6 +20,32 @@
         <name>Core_MAP_PAR__c</name>
         <relationshipLabel><!-- Product Access: Accounts --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>MAP Account Layout - Read Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAP Account Layout - Support Org Admin Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** change the MAP/PAR record value! --></label>
+            <section>WARNING: Please **DO NOT** change the MAP/PAR record value!</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- You cannot change an existing Account record.  You can only Add a new Account or Delete an existing Account. --></errorMessage>

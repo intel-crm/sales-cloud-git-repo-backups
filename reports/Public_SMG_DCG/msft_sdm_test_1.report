@@ -58,10 +58,10 @@
         <field>Opportunity.Core_Solution_Focus__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Area__c</field>
+        <field>Opportunity.Core_Solution_Type__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Solution_Type__c</field>
+        <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Detail__c</field>
@@ -70,13 +70,16 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
+        <field>Account.Core_Sales_Group__c</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Commissionable__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -185,7 +188,7 @@
             <value>deal</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -203,7 +206,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DCG Compute Deal $,DCG Adjacency</value>
+            <value>DCG Compute Deal $,enterprise &amp; gov</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>
@@ -282,6 +285,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

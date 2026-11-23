@@ -74,11 +74,11 @@ public class PRM_IPA_Utility_Test{
         String systemName ='AEM';
         String className = 'PRM_IPA_Utility';
         String requestedURL = 'services/apex/test/ddr_v1';
-    Id cpId = [SELECT Id FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;   
+	Id cpId = [SELECT Id FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;   
         PRM_IPA_Utility.createIntegrationLog(recordId,callType,module,reqPayload,respPayload,respCode,systemName,className);
         PRM_IPA_Utility.createIntegrationLog(recordId,callType,module,reqPayload,respPayload,respCode,systemName,className,System.now(),System.now());
         PRM_IPA_Utility.systemAccountDetails(regRequest);
-    PRM_IPA_Utility.createPCCIntegrationLog(recordId,callType,module,reqPayload,respPayload,respCode,systemName,className,reqTime,System.now(), true,cpId,requestedURL);
+	PRM_IPA_Utility.createPCCIntegrationLog(recordId,callType,module,reqPayload,respPayload,respCode,systemName,className,reqTime,System.now(), true,cpId,requestedURL);
         Test.stopTest();
     }
     @isTest static void CheckforSysAcc10(){
@@ -282,7 +282,7 @@ public class PRM_IPA_Utility_Test{
         newRequest.PRM_CIM_ID__c='';
         newRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         newRequest.PRM_EV_Token__c = 'gwiur#@98321327';
-        newRequest.PRM_Email_ID__c = 'testuser979@gmail.com';
+        newRequest.PRM_Email_ID__c = 'testuser@gmail.com';
         newRequest.PRM_Legal_Agreements__c = 'IPA_TANDC';
         newRequest.PRM_Partner_Relationship__c = '';
         newRequest.PRM_Preferred_Language__c = '';

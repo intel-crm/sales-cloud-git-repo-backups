@@ -1,0 +1,68 @@
+<template>
+
+    <h2 class="slds-p-around_large">Modals</h2>
+
+    <div class="slds-p-horizontal_large">
+        <h4 class="slds-p-vertical_medium">Primary Modal</h4>
+        <p class="slds-p-bottom_medium color-pink">Usage of the modal varies from a single screen display to a complex form experience.</p>
+        <lightning-button label="Open Modal" onclick={handleOpenModal} data-modal="1"></lightning-button>
+        <h4 class="slds-m-top_medium slds-p-vertical_medium">Quick View Modal</h4>
+        <p class="slds-p-bottom_medium color-pink">The quick view modal is meant to give a faster detailed look at something. (eg. product/partner cards)</p>
+        <lightning-button label="Open Quick View Modal" onclick={handleOpenModal} data-modal="2"></lightning-button>
+    </div>
+
+    <c-core-intc-modal data-name="modal1" has-header has-body has-footer>
+        <div slot="header"><h2 class="color-white">Modal Header</h2></div>
+        <div class="slds-p-around_large" slot="body">
+            <h4 class="slds-p-vertical_medium">Modal Body Content.</h4>
+            <p>Esse ut laboris cillum ullamco magna commodo aute. Nostrud laborum culpa quis nostrud et proident culpa velit elit incididunt Lorem. Cillum est veniam amet esse cillum. Sit commodo sint aute eiusmod dolore Lorem duis ullamco.</p>
+        </div>
+        <div slot="footer">
+            <p>Footer Content.</p>
+        </div>
+    </c-core-intc-modal>
+
+    <c-core-intc-modal data-name="modal2" has-body is-quickview>
+        <div class="slds-p-around_large" slot="body">
+            <h4 class="slds-p-vertical_medium">Quick View Content</h4>
+            <p>Occaecat cillum eiusmod anim reprehenderit ut adipisicing sit elit culpa. Labore culpa et non cillum ex nulla et veniam proident irure irure officia voluptate. Amet cillum occaecat culpa minim.</p>
+        </div>
+    </c-core-intc-modal>
+
+    <hr>
+
+    <h2 class="slds-p-around_large">Hub and Spoke</h2>
+    <p class="slds-p-horizontal_large color-pink">Hub and Spoke is generally used within a mobile view.</p>
+
+    <div class="hubspoke-container slds-p-vertical_large">
+        <c-core-intc-hub-spoke headline="Example 1">
+            <div slot="content">
+                <h4 class="slds-p-around_medium">Example Content</h4>
+                <p class="slds-p-around_large">Velit cupidatat dolore cillum duis exercitation ipsum aute sit nulla ipsum occaecat. Id cillum nulla adipisicing labore cillum sint fugiat in cillum quis. Est minim adipisicing veniam velit ex voluptate. Sunt consequat nostrud deserunt laborum ex elit ut incididunt incididunt ex ad. Eiusmod aliquip exercitation sit esse cupidatat deserunt dolor ea exercitation voluptate amet sunt culpa.</p>
+            </div>
+        </c-core-intc-hub-spoke>
+        <c-core-intc-hub-spoke headline="Example 2">
+            <div slot="content">
+                <h4 class="slds-p-around_medium">Example Content</h4>
+                <p class="slds-p-around_large">Velit cupidatat dolore cillum duis exercitation ipsum aute sit nulla ipsum occaecat. Id cillum nulla adipisicing labore cillum sint fugiat in cillum quis. Est minim adipisicing veniam velit ex voluptate. Sunt consequat nostrud deserunt laborum ex elit ut incididunt incididunt ex ad. Eiusmod aliquip exercitation sit esse cupidatat deserunt dolor ea exercitation voluptate amet sunt culpa.</p>
+            </div>
+        </c-core-intc-hub-spoke>
+        <c-core-intc-hub-spoke headline="Example 3">
+            <div class="ex3 cursor slds-p-around_medium" slot="link">
+                <h4>Example 3 Custom Link <lightning-icon class="slds-m-left_large" icon-name="utility:edit" size="small"></lightning-icon></h4>
+            </div>
+            <div slot="content">
+                <h4 class="slds-p-around_medium">Example Content</h4>
+                <p class="slds-p-around_large">Velit cupidatat dolore cillum duis exercitation ipsum aute sit nulla ipsum occaecat. Id cillum nulla adipisicing labore cillum sint fugiat in cillum quis. Est minim adipisicing veniam velit ex voluptate. Sunt consequat nostrud deserunt laborum ex elit ut incididunt incididunt ex ad. Eiusmod aliquip exercitation sit esse cupidatat deserunt dolor ea exercitation voluptate amet sunt culpa.</p>
+                <p class="slds-p-around_large">
+                    <img src="https://via.placeholder.com/300x800/000000/FFFFFF/?text=Example">
+                </p>
+                <p class="slds-p-around_large">Labore anim ipsum sit aliqua culpa nostrud sunt pariatur consectetur exercitation est. Eu pariatur nulla magna veniam officia non aliquip adipisicing ad laboris pariatur. Consectetur ut consequat pariatur culpa ut amet fugiat eiusmod irure. Ut quis commodo fugiat laboris mollit exercitation aliquip proident. Est qui amet eiusmod aliquip culpa elit nostrud.</p>
+            </div>
+        </c-core-intc-hub-spoke>
+    </div>
+    <div class="slds-p-around_small slds-align_absolute-center text-upcase text-bold color-white h5"
+        style="position: fixed; bottom: 1rem; left: 1rem; border-radius: 4px; background: var(--digitalBlue); z-index: 100000;">
+        {breakpoint.abbr}
+    </div>
+</template>

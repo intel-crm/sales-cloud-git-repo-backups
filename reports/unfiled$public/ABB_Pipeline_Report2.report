@@ -13,19 +13,13 @@
         <field>OpportunityLineItem.Core_Account_Name__c</field>
     </columns>
     <columns>
-        <field>ACCOUNT_ID</field>
-    </columns>
-    <columns>
-        <field>ADDRESS1_COUNTRY_CODE</field>
-    </columns>
-    <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>Product2.Core_OPN__c</field>
+        <field>PRODUCT_NAME</field>
     </columns>
     <columns>
         <field>STAGE_NAME</field>
@@ -40,12 +34,6 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>TOTAL_PRICE</field>
     </columns>
-    <columns>
-        <field>FAMILY</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Product_Group__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Product_Type__c</column>
@@ -59,7 +47,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Lost,Cancelled,Deleted,Production Win,Production Lost,Production Cancelled</value>
+            <value>Lost,Cancelled,Deleted,Production Lost,Production Cancelled</value>
         </criteriaItems>
         <criteriaItems>
             <column>ACCOUNT_NAME</column>

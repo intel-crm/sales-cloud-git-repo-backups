@@ -4,6 +4,9 @@
         <field>Core_Design_Registration__c.Core_Partner_Account_Region_Cd__c</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration__c.Core_Partner_Account_Id__c</field>
     </columns>
     <columns>
@@ -28,7 +31,7 @@
         <field>CUST_NAME</field>
     </columns>
     <columns>
-        <field>Core_Design_Registration__c.PCC_End_Customer_Country__c</field>
+        <field>Core_Design_Registration__c.Core_End_Customer_Country_Nm__c</field>
     </columns>
     <columns>
         <field>Core_Design_Registration__c.Core_Owner_Nm__c</field>
@@ -38,6 +41,9 @@
     </columns>
     <columns>
         <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
     </columns>
     <columns>
         <field>CHILD_NAME</field>
@@ -64,42 +70,13 @@
         <field>Core_Design_Registration__c.Core_Partner_Program_Nm__c</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration__c.Core_Partner_Account_Nm__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration_Product__c.Core_Full_Year_Value_Amt__c</field>
     </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Accepted_By_Id__c</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Stage_Id__c</field>
-    </columns>
-    <columns>
-        <field>CHILD_LAST_UPDATE</field>
-    </columns>
-    <columns>
-        <field>Core_Design_Registration_Product__c.Core_Partner_Tracking_Cd__c</field>
-    </columns>
     <description>Submitted DRegs</description>
-    <filter>
-        <criteriaItems>
-            <column>Core_Design_Registration__c.Core_Partner_Account_Nm__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Arrow</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
-    <format>Matrix</format>
-    <groupingsAcross>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsAcross>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Design_Registration__c.Core_Partner_Account_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>All Design Registrations</name>
     <params>
         <name>co</name>
@@ -110,6 +87,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
+    <sortColumn>Core_Design_Registration__c.Core_Partner_Account_Name__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CUST_CREATED_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

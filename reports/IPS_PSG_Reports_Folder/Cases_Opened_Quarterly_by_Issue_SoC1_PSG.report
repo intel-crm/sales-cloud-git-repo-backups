@@ -419,13 +419,6 @@
             <operator>notContain</operator>
             <value>PSG-ZBB,PSG-IR,PSG-Admin</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_MANAGED_SERVICES_DEU</name>
     <style>none</style>
@@ -18,17 +18,15 @@ Zusätzliche Intel Verkaufsanreizpunkte
 Bevorzugte Einladungen zu Branchenveranstaltungen und -schulungen
 Zugang zu Intel® Plattform Testing Services
 
-Senden Sie eine E-Mail mit den folgenden Informationen an ITP-MS@intel.com:
+Senden Sie eine E-Mail mit den folgenden Informationen an ITP-Cloud@intel.com:
 
 
 Primärer Kontakt für die Kommunikation mit dem Spezialisten für Managed-Services
-Name:
-E-Mail:
+Name:E-Mail:
 
 
 Für zusätzliches Verkaufs- und Werbematerial
-Firmenanschrift:
-Telefon:
+Firmenanschrift:Telefon:
 
 Zu den Vorteilen
 
@@ -37,14 +35,14 @@ Zu den Vorteilen
 
 Intel Partner können auf eine lange Geschichte voller Innovationen zurückblicken – und mit der Intel® Partner Alliance können wir Ihnen nun dabei helfen, Lösungen für die datenorientierte Wirtschaft schneller bereitzustellen. Gemeinsam können wir uns vernetzen, Innovationen entwickeln und unser Geschäft ausbauen – und außergewöhnliche neue Möglichkeiten schaffen.
 
-Besuchen Sie https://www.intel.com/content/www/de/de/partner-alliance/help/overview.html für Hinweise und Orientierung, wie Sie Ihre Mitgliedschaft optimal nutzen können.
+Besuchen Sie intel.com/partnerhelp für Hinweise und Orientierung, wie Sie Ihre Mitgliedschaft optimal nutzen können.
 
 
 Vielen Dank
 Ihr Intel® Partner Alliance Team
 
 Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
-© {!$Label.PRM_CurrentYear} Intel Corporation.
+© {!Contact.Core_Current_Year__c} Intel Corporation.
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Datenschutz | Cookies</textOnly>
     <type>custom</type>

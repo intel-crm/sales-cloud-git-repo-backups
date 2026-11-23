@@ -75,6 +75,13 @@
         <label><!-- UCD Hierarchy --></label>
         <name>UCD_Hierarchy__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Account Group Member Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

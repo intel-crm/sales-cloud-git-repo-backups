@@ -42,6 +42,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>ER_Clone_Source_Id__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>LastModifiedBy</field>
             <table>ER_Customer_Master_File_Group__c</table>
         </columns>
@@ -194,6 +199,16 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>ER_Active__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Description__c</field>
+            <table>ER_Customer_Master_File_Group__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account__c</field>
             <table>ER_Customer_Master_File_Group__c</table>
         </columns>
         <masterLabel>Customer Master File Groupings</masterLabel>

@@ -4,8 +4,8 @@
     <encodingKey>UTF-8</encodingKey>
     <name>ADMINREG_UK</name>
     <style>none</style>
-    <subject>Action Required to Complete Your Intel® Partner Alliance Registration</subject>
-    <textOnly>Action Required to Complete Your Intel® Partner Alliance Registration
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Action Required to Complete Your IPA Registration
 
 {!Contact.FirstName},
 
@@ -33,7 +33,7 @@ Sincerely,
 Your Intel® Partner Alliance team
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+©{!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

@@ -155,17 +155,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>Account_Staging_Id__c</fullName>
-        <externalId>false</externalId>
-        <label>Account Staging Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Account__c</fullName>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
@@ -245,7 +234,7 @@
                 <value>
                     <fullName>Rejected</fullName>
                     <default>false</default>
-                    <label>Removed</label>
+                    <label>Rejected</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -266,13 +255,6 @@
         <columns>Account__c</columns>
         <columns>Business_Types__c</columns>
         <columns>Status__c</columns>
-        <columns>Status_Reason__c</columns>
-        <columns>CREATEDBY_USER</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>UPDATEDBY_USER</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>Effective_Start_Date__c</columns>
-        <columns>Effective_End_Date__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -293,9 +275,10 @@ ISPICKVAL(Status__c, &apos;Approved&apos;) &amp;&amp;
 CONTAINS(Business_Types__r.Name, &apos;Developer Zone Premier&apos;) &amp;&amp;
 (
 AND(IF(CONTAINS(skipValidation__c, &apos;Core_CNDA_Number__c&apos;),false,true),ISBLANK(Account__r.Core_CNDA_Number__c))||
-AND(IF(CONTAINS(skipValidation__c, &apos;Core_Covered_Account__c&apos;),false,true),NOT(Account__r.Core_Covered_Account__c)) ||
+AND(IF(CONTAINS(skipValidation__c, &apos;Core_Covered_Account__c&apos;),false,true),Account__r.Core_Covered_Account__c) ||
 AND(IF(CONTAINS(skipValidation__c, &apos;Core_English_Only_Name__c&apos;),false,true),ISBLANK(Account__r.Core_English_Only_Name__c)) ||
-AND(IF(CONTAINS(skipValidation__c, &apos;Core_B2B_Entitlement__c&apos;),false,true),NOT(Account__r.Core_B2B_Entitlement__c))
+AND(IF(CONTAINS(skipValidation__c, &apos;Core_CIM_ID__c&apos;),false,true),ISBLANK(Account__r.Core_CIM_ID__c)) ||
+AND(IF(CONTAINS(skipValidation__c, &apos;Core_B2B_Entitlement__c&apos;),false,true),Account__r.Core_B2B_Entitlement__c)
 ),true,false
 )</errorConditionFormula>
         <errorDisplayField>Status__c</errorDisplayField>
@@ -305,21 +288,9 @@ AND(IF(CONTAINS(skipValidation__c, &apos;Core_B2B_Entitlement__c&apos;),false,tr
 
 •	Account&apos;s &apos;Covered Account&apos; should be checked.
 
-•	Account&apos;s &apos;English Only Name&apos; should have a Name.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>ECD_Only_CPE</fullName>
-        <active>true</active>
-        <description>Direct Price Exception CPE can not be added to Intel Accounts</description>
-        <errorConditionFormula>AND(
-    Business_Types__r.Business_Type_Code__c = &apos;DIR_PRC_EXCPT&apos;,
-    OR(
-       Account__r.Core_Account_Record_Type__c = &apos;Intel Account&apos;,
-       Account__r.Core_Account_Record_Type__c = &apos;Inactive Account&apos;
-    )
-)</errorConditionFormula>
-        <errorDisplayField>Business_Types__c</errorDisplayField>
-        <errorMessage>DPE CPE Can not be added to Intel Accounts</errorMessage>
+•	Account&apos;s &apos;English Only Name&apos; should have a Name.
+
+•	 Account&apos;s CIM ID should have value.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -56,7 +56,7 @@
         <field>OpportunityLineItem.Core_KPI_Non_CPU_Price__c</field>
     </columns>
     <filter>
-        <booleanFilter>(((((((((1 AND 2 AND 3) AND (4 OR 5 OR 6)))) AND 7) AND 8) AND 9) AND 10) AND 11) AND 12</booleanFilter>
+        <booleanFilter>(((((((((1 AND 2 AND 3) AND (4 OR 5 OR 6)) AND 7)) AND 8) AND 9) AND 10) AND 11) AND 12) AND 13</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -100,6 +100,13 @@
             <value>Idaville,Spring Hill,Spring Crest</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Approval_Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Account.Core_Account_BU_Focus__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -128,7 +135,7 @@
             <value>DCG Compute Deal $,DCG Enterprise &amp; Gov&apos;t Deal #</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -188,6 +195,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

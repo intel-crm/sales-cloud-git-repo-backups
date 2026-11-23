@@ -3,8 +3,8 @@
     <contactEmail>dinesh.maruti.mengade@intel.com</contactEmail>
     <label>Marketplace API</label>
     <oauthConfig>
-        <callbackUrl>https://intel.lightning.force.com/services/oauth2/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6v0lpllEpk2iipPUt.gzYHQWBWiJmFUxI8WQerhlun_arZayBUj0VejsBaOs</consumerKey>
+        <callbackUrl>https://intel--crmdevipa.sandbox.lightning.force.com/services/oauth2/callback</callbackUrl>
+        <consumerKey>3MVG9eQyYZ1h89HfOvSumrC7djXeI.IOd6kai7BeUQ21fQeDXztG3dA217swxhNgVpjxQruq_5byonZx4B1DV</consumerKey>
         <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>

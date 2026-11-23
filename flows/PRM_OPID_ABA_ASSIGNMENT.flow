@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Update_ABA_field</name>
+        <label>Update ABA field</label>
+        <locationX>68</locationX>
+        <locationY>490</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.IsValid__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Loop_Account_Records</targetReference>
+        </connector>
+    </assignments>
+    <decisions>
+        <name>Check_Account_Benefit_Association</name>
+        <label>Check Account Benefit Association</label>
+        <locationX>278</locationX>
+        <locationY>344</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_Basic_access_benefit</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BNFTSMBA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Account_Records</targetReference>
+            </connector>
+            <label>Check Basic access benefit</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Validate_ABA_records</name>
+        <label>Validate ABA records</label>
+        <locationX>385</locationX>
+        <locationY>640</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Check_for_One_Partner_Id</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Loop_Account_Records.Core_Account_Record_Type__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Partner Account Group</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PRM_Partner_Benefit_Id__r.PRM_Benefit_Cd__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>BNFTSMBA</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_ABA_field</targetReference>
+            </connector>
+            <label>Check for One Partner Id</label>
+        </rules>
+    </decisions>
+    <interviewLabel>PRM_OPID_ABA_ASSIGNMENT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_OPID_ABA_ASSIGNMENT</label>
+    <loops>
+        <name>Loop_Account_Records</name>
+        <label>Loop Account Records</label>
+        <locationX>657</locationX>
+        <locationY>532</locationY>
+        <collectionReference>Get_Account_Records</collectionReference>
+        <iterationOrder>Asc</iterationOrder>
+        <nextValueConnector>
+            <targetReference>Validate_ABA_records</targetReference>
+        </nextValueConnector>
+    </loops>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordLookups>
+        <name>Get_Account_Records</name>
+        <label>Get Account Records</label>
+        <locationX>648</locationX>
+        <locationY>351</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Loop_Account_Records</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Core_Account_ID__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.PRM_Account_Id__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>false</getFirstRecordOnly>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <start>
+        <locationX>142</locationX>
+        <locationY>26</locationY>
+        <connector>
+            <targetReference>Check_Account_Benefit_Association</targetReference>
+        </connector>
+        <object>PRM_AccountBenefitAssociation__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>AccountId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

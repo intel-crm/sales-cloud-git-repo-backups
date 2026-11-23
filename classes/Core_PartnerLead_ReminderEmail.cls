@@ -10,35 +10,22 @@ Modification Log :
 *************************************************************************************/
 global class Core_PartnerLead_ReminderEmail implements Database.Batchable<sObject>{
 
-  List<String> partnerSegmentList = new List<String>();
-    public Integer currentYear = date.today().year();
-    
-    //Public group name suffix
-    public static String adminPublicGroupNameSuffix = 'Leads';
-    
-    global Core_PartnerLead_ReminderEmail(){
-        Schema.sObjectType objType = Schema.getGlobalDescribe().get('Account');
-        Schema.DescribeSObjectResult objDescribe = objType.getDescribe();
-        map<String, Schema.SObjectField> fieldMap = objDescribe.fields.getMap();
-        list<Schema.PicklistEntry> values = fieldMap.get('Core_IPA_Partner_Segment__c').getDescribe().getPickListValues();
-        for (Schema.PicklistEntry a : values){
-            partnerSegmentList.add(a.getValue());
-        }
-    }
-    
     global Database.QueryLocator start(Database.BatchableContext BC){
-        String partnerRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
-        //String testPAGid='0013b00001phGiUAAU';
-        String query = 'select id, Name from Account where recordtypeId =: partnerRecTypeId';
+        String partnerRecType = System.Label.Core_Partner_Lead_Record_Id;
+        Date todatDt = date.today();
+        if(test.isRunningTest()){
+            todatDt = todatDt.addDays(8);
+        }
+        String leadStatus = 'New';
+        string LeadStage ='Rejected';
+        string LeadState ='Terminated';
+        String query = 'select Id, Core_Public_Group_Id__c, FirstName, LastName, Company, Core_Lead_Source_Pkt__c, OwnerId, Core_PSG_Lead__c, CreatedDate, Core_1st_Reminder__c, Core_2nd_Reminder__c, Core_3rd_Reminder__c, Core_4th_Reminder__c from Lead where recordTypeId =: partnerRecType AND (Core_1st_Reminder__c =: todatDt OR Core_2nd_Reminder__c =: todatDt OR Core_3rd_Reminder__c =: todatDt OR Core_4th_Reminder__c =: todatDt) AND Core_Lead_Status__c =: leadStatus AND (Status !=: LeadStage AND Core_Lead_State__c !=: LeadState)';
         return Database.getQueryLocator(query);
     }
     
-    global void execute(Database.BatchableContext BC, List<Account> opidList){
-		Core_PartnerLeadHandler.sendLeadEmailNotifications(opidList,true,partnerSegmentList);	
-
+    global void execute(Database.BatchableContext BC, List<Lead> leadList){
+        Core_PartnerLeadHandler.sendNotificationEmails(leadList,true);
     }
-    
-      
     
     global void finish(Database.BatchableContext BC){
         

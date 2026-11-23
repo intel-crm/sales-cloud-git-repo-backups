@@ -5,8 +5,8 @@
     <label>Eloqua</label>
     <oauthConfig>
         <callbackUrl>https://apps.p03.eloqua.com/eloqua/salesforce/callback</callbackUrl>
-        <consumerKey>3MVG9xOCXq4ID1uEa5F2lCYAp6lnCpt2acP3m1FQ4BKlwaB5R.d6W25Cjiqji0qodjeCx9eNFAdWyVsp7rpry</consumerKey>
-        <isAdminApproved>true</isAdminApproved>
+        <consumerKey>3MVG9eQyYZ1h89HeO90UV6o6amPyuThjQuhBzwNjaBiG0RMDRjW6LKGIQx.k9A0S4JxVNVUsyzopAuh_fEUMh</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
         <isClientCredentialEnabled>false</isClientCredentialEnabled>
         <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
         <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
@@ -32,5 +32,4 @@
         <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
         <refreshTokenPolicy>infinite</refreshTokenPolicy>
     </oauthPolicy>
-    <permissionSetName>Eloqua Integrator Permission Set</permissionSetName>
 </ConnectedApp>

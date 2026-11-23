@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>PowerBiAuthProvider</label>
+    <protected>false</protected>
+    <values>
+        <field>ApexClass__c</field>
+        <value xsi:type="xsd:string">PRM_PowerBIAuthProvi</value>
+    </values>
+    <values>
+        <field>Auth_URL__c</field>
+        <value xsi:type="xsd:string">https://login.microsoftonline.com/038a4372-a756-4c82-8adf-167df01297e2/oauth2/authorize</value>
+    </values>
+    <values>
+        <field>ClientId__c</field>
+        <value xsi:type="xsd:string">b2dbf413-0e2b-483d-ba84-7a2dde7ba9d0</value>
+    </values>
+    <values>
+        <field>ClientSecret__c</field>
+        <value xsi:type="xsd:string">Mxf8Q~nVnAdbySZ4IpKsB8~lFx4o4txP6RSF2aKK</value>
+    </values>
+    <values>
+        <field>Column_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>ReportId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Table_Name__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>TenantId__c</field>
+        <value xsi:type="xsd:string">46c98d88-e344-4ed4-8496-4ed7712e255d</value>
+    </values>
+    <values>
+        <field>WorkspaceId__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>

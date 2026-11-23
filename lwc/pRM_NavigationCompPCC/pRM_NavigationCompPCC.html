@@ -1,12 +1,28 @@
 <template>
-  <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
-<div>
-<template for:each={menus} for:item="menuItem">
-  <li key={menuItem.id} onclick={handleNavigation}  class={menuItem.className}>
-    <a data-target={menuItem.target} target="_blank" class="" data-label={menuItem.label}>{menuItem.label}</a>
-  </li>
-</template>
-<div class="slds-float_right userColor slds-p-around_xx-small"><b>Welcome!</b> {userName}</div>
+    <c-core-intc-breadcrumbs></c-core-intc-breadcrumbs>
+    <!-- <lightning-card>
+        <div>
+        <lightning-button-group>
+            <lightning-button label="Home" onclick={handleHome}></lightning-button>
+            &nbsp; &nbsp;
+            <lightning-button label="Registration" onclick={handleClick}></lightning-button>
+            &nbsp; &nbsp;
+            <lightning-button label="Opportunity" onclick={handleClick}></lightning-button>
+        </lightning-button-group>
+    </div>
+</lightning-card>    -->
 
+<!--<ul>
+    <li><a href="https://intel--crmdevipa.sandbox.my.site.com/partneradmin/s/ddr" data-toggle="tooltip" title="Home">Home</a></li>
+    <li><a  href="https://intel--crmdevipa.sandbox.my.site.com/partneradmin/s/recordlist/PRM_Registration_Request__c/Default" data-toggle="tooltip" title="Design Registration">Design Registration</a></li>
+    <li><a  href="https://intel--crmdevipa.sandbox.my.site.com/partneradmin/s/opportunity/Opportunity/Default" data-toggle="tooltip" title="Opportunity">Opportunity</a></li>
+  </ul>-->
+<div>
+  <template for:each={menuItems} for:item="menuItem">
+    <li key={menuItem.id} onclick={handleNavigation}>
+      <a data-target={menuItem.target}>{menuItem.label}</a>
+    </li>
+  </template>
 </div>
+
 </template>

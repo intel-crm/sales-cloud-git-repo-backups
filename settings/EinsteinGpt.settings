@@ -8,9 +8,9 @@
     <enableAIModelBeta>false</enableAIModelBeta>
     <enableAiSkillRoleHierarchy>false</enableAiSkillRoleHierarchy>
     <enableDeployOnlyActivePromptTemplateVersion>false</enableDeployOnlyActivePromptTemplateVersion>
-    <enableEinsteinGPTDeployPromptTemplatesAsActive>false</enableEinsteinGPTDeployPromptTemplatesAsActive>
+    <enableEinsteinGPTDeployPromptTemplatesAsActive>true</enableEinsteinGPTDeployPromptTemplatesAsActive>
     <enableEinsteinGptAllowUnsafePTInputChanges>false</enableEinsteinGptAllowUnsafePTInputChanges>
-    <enableEinsteinGptGlobalLangSupport>false</enableEinsteinGptGlobalLangSupport>
+    <enableEinsteinGptGlobalLangSupport>true</enableEinsteinGptGlobalLangSupport>
     <enableEinsteinGptPlatform>true</enableEinsteinGptPlatform>
     <enableEnhancedPromptSecurity>false</enableEnhancedPromptSecurity>
     <enablePBJinjaSyntaxBeta>false</enablePBJinjaSyntaxBeta>

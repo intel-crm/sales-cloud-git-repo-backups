@@ -15,6 +15,7 @@ public Without Sharing class ER_EmailNotification_Utility
     public static final String LOG_ENTRY_ERROR    = 'error';
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'ER_EmailNotificationUtility';
+    public static List<OrgWideEmailAddress> fromEmail = [select Id from OrgWideEmailAddress where Address =: Label.PRM_wsm_postmaster_intel_com];
     public static List<Messaging.SingleEmailMessage> allmails = new List<Messaging.SingleEmailMessage>();
     public class EmailNotification
     {
@@ -44,7 +45,7 @@ public Without Sharing class ER_EmailNotification_Utility
         {
             emailTempMapValue.put(emailTemp.DeveloperName,emailTemp);
         }
-        
+        system.debug('Total queries executed---> before getAll Map '+Limits.getQueries());
         
         Map<String,PRM_Email_Template_Translations__mdt> translationMap = new Map<String,PRM_Email_Template_Translations__mdt>();
         for(PRM_Email_Template_Translations__mdt rec : PRM_Email_Template_Translations__mdt.getAll().values())
@@ -54,11 +55,10 @@ public Without Sharing class ER_EmailNotification_Utility
         set<String> emailSet= new set<String>();
         Map<EmailNotification,ContactTemplateWrapper> conWrappMap= new Map<EmailNotification,ContactTemplateWrapper>();
         Map<EmailNotification,Map<String,SObject>> objDetailsMapEmailNot= new Map<EmailNotification,Map<String,SObject>>();
-        if(objEmailNotifList != Null && !objEmailNotifList.isEmpty()){
         for(EmailNotification objEmailNotifValue : objEmailNotifList)
         {
             for(ER_Email_Configuration__mdt emailConfig: objEmailNotifValue.emailConfigMapValue.get(objEmailNotifValue)){
-                 
+                //Get the record details to pass info in EmailTemplate using inputParams and inputParamQueryMap 
                 Map<String,SObject> objDetailsMap= new Map<String,SObject>();                
                 objDetailsMap = GetInputParametersMap(emailConfig,objEmailNotifValue);
                 objDetailsMapEmailNot.put(objEmailNotifValue,objDetailsMap);
@@ -66,7 +66,8 @@ public Without Sharing class ER_EmailNotification_Utility
                 {
                     langEmailTempMap.put(emailTempMapValue.get(emailConfig.Template_Name__c).DeveloperName,emailTempMapValue.get(emailConfig.Template_Name__c));                    
                 }                
-                
+                //Generate template body map
+                //emailTempMap
                 if(langEmailTempMap != null && !langEmailTempMap.IsEmpty()){                
                     EmailTemplate tempDetails = langEmailTempMap.get(emailConfig.Template_Name__c);
                     emailTempMap.put(tempDetails,processLabelsInBody(tempDetails.HtmlValue,emailConfig.Language__c,translationMap));             
@@ -90,13 +91,12 @@ public Without Sharing class ER_EmailNotification_Utility
                         }
                     }
                 }
-                
             }  
-        }
-        }
+        } 
         List<PRM_Registration_Request__c> prmList = new List<PRM_Registration_Request__c>();
         for(EmailNotification emailNoti: objEmailNotifList){
             prmEmailLogMap=processEmailLogs(conWrappMap.get(emailNoti),objDetailsMapEmailNot.get(emailNoti));
+            // if email notif has registration request as one of the parameters,then update the registration request with email log id.
             PRM_EmailLog__c prmEmailLog=prmEmailLogMap.get(emailNoti.emailID);
             prmEmailLogList.add(prmEmailLog);
             emailSet.add(emailNoti.emailID);
@@ -108,7 +108,7 @@ public Without Sharing class ER_EmailNotification_Utility
             }
         }
         for(EmailNotification emailNoti: objEmailNotifList){
-        	PRM_EmailLog__c prmEmailLog=prmEmailLogMapfetch.get(emailNoti.emailID);
+            PRM_EmailLog__c prmEmailLog=prmEmailLogMapfetch.get(emailNoti.emailID);
             if((emailNoti.inputParameters!=null)&&(emailNoti.inputParameters.get('Registration_Request_ID')!=null))
             {
                 PRM_Registration_Request__c regRequest=new PRM_Registration_Request__c();
@@ -118,12 +118,14 @@ public Without Sharing class ER_EmailNotification_Utility
                 
             } 
         }
-        if(prmList.size() > 0 && Schema.sObjectType.PRM_Registration_Request__c.isAccessible() && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable()){    
+        //}
+        //}
+        
+        if(Schema.sObjectType.PRM_Registration_Request__c.isAccessible() && Schema.sObjectType.PRM_Registration_Request__c.isUpdateable()){    
             update prmList;
         }
-         
+        //send mail and check the result obtained -- modify the log entry according to the results obtained 
         try{
-            
             List<Messaging.SendEmailResult> resultList;
             resultList = Messaging.sendEmail(allmails,false);
             if(Test.isRunningTest() && (ER_EmailNotification_Utility_Test.IsErrorTest||ER_AcknowledgementEmailUtility_Test.IsErrorTest || ER_RejectionEmailUtility_Test.IsErrorTest||ER_WelcomeEmailUtility_Test.IsErrorTest))
@@ -135,7 +137,6 @@ public Without Sharing class ER_EmailNotification_Utility
                 mail.setSenderDisplayName('Sender Display Name');
                 mail.setSubject('Subject');
                 mail.setPlainTextBody('Body');
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 resultList = Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail }, false);
             }
             if(Test.isRunningTest() && (ER_EmailNotification_Utility_Test.IsErrorTest ||ER_AcknowledgementEmailUtility_Test.IsErrorTest || ER_RejectionEmailUtility_Test.IsErrorTest||ER_WelcomeEmailUtility_Test.IsErrorTest))
@@ -155,10 +156,12 @@ public Without Sharing class ER_EmailNotification_Utility
                 custEx.TypeName = ex.getTypeName();            
                 ER_ErrorUtility.createLogEntry('Error in sendEmail', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
             }
- 
+            System.debug('Total Limit ' +  Limits.getLimitQueries());
         }
+        System.debug('Start of Acknowledge email logic <ER_EmailNotification_Utility> and <sendEmail>, SOQL count End : '+Limits.getQueries());
+        System.debug('Start of Rejection email logic <ER_EmailNotification_Utility> and <sendEmail>, SOQL count End : '+Limits.getQueries());
+        system.debug('Total queries executed--->'+Limits.getQueries());  
         
-       
     }
     
     public static String processLabelsInBody(String body,String language,Map<String,PRM_Email_Template_Translations__mdt> translationMap)
@@ -194,18 +197,19 @@ public Without Sharing class ER_EmailNotification_Utility
                     if(DataMap.get(o).get(f)!= null)
                     {
                         String fieldValue = String.valueOf(DataMap.get(o).get(f));    
-                        
+                        system.debug(o+'.'+f+'--->'+fieldValue); 
                         tempHtmlValue = tempHtmlValue.replace('{!'+o+'.'+f+'}',fieldValue); 
-                    }
+                    }//replace the value of field with blank space if no value is present in record
                     else{
                         String fieldValue = ' ' ;  
-                        
+                        system.debug(o+'.'+f+'--->'+fieldValue); 
                         tempHtmlValue= tempHtmlValue.replace('{!'+o+'.'+f+'}',fieldValue);  
                     }
                 }  
             }
         }
- 
+        
+        //Added to Embed values for Custom Placeholders in the email.
         if(customPlaceholdersMap != null){
             for(String key: customPlaceholdersMap.keySet()){                
                 tempHtmlValue = tempHtmlValue.replace(key, String.IsEmpty(customPlaceholdersMap.get(key))?'':customPlaceholdersMap.get(key));
@@ -226,21 +230,25 @@ public Without Sharing class ER_EmailNotification_Utility
         Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
         mail.setTemplateId(emailTemp.Id);
         mail.setSubject(emailTemp.Subject);
+        //set from adress and display name from OrgWide address
+        if ( fromEmail.size() > 0 ) {
+            mail.setOrgWideEmailAddressId(fromEmail.get(0).Id);
+        } 
         mail.saveAsActivity = false;
         mail.setHtmlBody(htmlValue);
         mail.setCharset('UTF-8');
         mail.setToAddresses(new List<String> {conWrapp.contId});
-        mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
-
+        
         allmails.add(mail);
-       
-        prmlogList.put(conWrapp.contId,createEmailLogs(mail,conWrapp,objDetailsMap));
+        //create log data for each mail entry assuming status as success
+        prmlogList.put(conWrapp.contId,createEmailLogs(mail,conWrapp));
         
         return prmlogList;
     }
-    public static PRM_EmailLog__c createEmailLogs(Messaging.SingleEmailMessage mail, ContactTemplateWrapper conWrapper, Map<String,SObject> objDetailsMap)
+    public static PRM_EmailLog__c createEmailLogs(Messaging.SingleEmailMessage mail,/*List<PRM_EmailLog__c> logList,String emailID,String lang,String templateName*/ ContactTemplateWrapper conWrapper)
     {
-        
+        //apend values in below fields and create record in EmailLogs Object using obtained status 
+        //PRM_EmailLog__c logList =new PRM_EmailLog__c();
         PRM_EmailLog__c log = new PRM_EmailLog__c();
         String successMsg ='Mail sent successfully !!';
         String toEmailId;
@@ -255,6 +263,7 @@ public Without Sharing class ER_EmailNotification_Utility
         log.PRM_Subject__c = mail.getSubject();
         if(mail.getToAddresses() != null ) {
             log.PRM_ToEmailID__c = string.join(mail.getToAddresses(),';');
+            //Added this if-else as part of US-618183
             if(log.PRM_ToEmailID__c.length() > 255)
             {
                 toEmailId = log.PRM_ToEmailID__c;
@@ -266,18 +275,19 @@ public Without Sharing class ER_EmailNotification_Utility
                 log.PRM_ToEmailIDCompleteValue__c = log.PRM_ToEmailID__c;
             }
         }
-        
-         if(objDetailsMap.keyset().contains('Contact'))
+        if(mail.getTargetObjectId() != null)
         {
-             log.PRM_Contact__c = objDetailsMap.get('Contact').Id;
-             log.PRM_ToEmailID__c = conWrapper.contId ; 
-             
+            String objType = String.valueof(mail.getTargetObjectId().getSObjectType());
+            if(objType == 'Contact')
+            { log.PRM_Contact__c = mail.getTargetObjectId() ;
+             log.PRM_ToEmailID__c = conWrapper.contId ;             
+            }
         }
-        
-
-        
+        //logList.add(log);
         return log ;
     }
+    //Get email configuration metadata details for each specific emailnotification
+    //bulkified
     public static Map<EmailNotification,List<ER_Email_Configuration__mdt>> GetEmailConfigurationMetadata(EmailNotification objEmailNotif, List<ER_Email_Configuration__mdt> erEmailConfidMdtList)
     {
         try
@@ -319,26 +329,25 @@ public Without Sharing class ER_EmailNotification_Utility
                 if(String.isNotBlank(objEmailNotif.language)){
                     compareEmailConfig = compareEmailConfig+''+erEmailConfidMdt.Language__c;
                 }
-                if(compareObjEmail == compareEmailConfig){                   
-                    objEmailConfigMdtAddList.add(erEmailConfidMdt);                  
+                if(compareObjEmail == compareEmailConfig){
+                    objEmailConfigMdtAddList.add(erEmailConfidMdt);
+                    
                 }
-                if(erEmailConfidMdt.Entitlements__c != null && erEmailConfidMdt.Entitlements__c == objEmailNotif.entitlements){
                 emailConfigMdtMapBusTypeLan.put(erEmailConfidMdt.Business_Event__c+''+erEmailConfidMdt.BusinessType__c+''+erEmailConfidMdt.Language__c,erEmailConfidMdt);
-                }
                 emailConfigMdtMapEntLan.put(erEmailConfidMdt.Business_Event__c+''+erEmailConfidMdt.Entitlements__c+''+erEmailConfidMdt.Language__c,erEmailConfidMdt);    
             } 
             if(objEmailConfigMdtAddList != null && objEmailConfigMdtAddList.size() == 0){
-                if(String.isNotBlank(objEmailNotif.Language) && String.isNotBlank(objEmailNotif.BusinessType) && emailConfigMdtMapBusTypeLan.containskey(objEmailNotif.businessEvent+''+objEmailNotif.BusinessType+''+objEmailNotif.Language)){
+                if(String.isNotBlank(objEmailNotif.Language) && String.isNotBlank(objEmailNotif.BusinessType)){
                     objEmailConfigMdtAddList.add(emailConfigMdtMapBusTypeLan.get(objEmailNotif.businessEvent+''+objEmailNotif.BusinessType+''+objEmailNotif.Language));                
-                }else if(String.isNotBlank(objEmailNotif.Language) && String.isNotBlank(objEmailNotif.Entitlements) && emailConfigMdtMapEntLan.containsKey(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+''+objEmailNotif.Language)){
-                    objEmailConfigMdtAddList.add(emailConfigMdtMapEntLan.get(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+''+objEmailNotif.Language));
+                }else if(String.isNotBlank(objEmailNotif.Language) && String.isNotBlank(objEmailNotif.Entitlements)){
+                    objEmailConfigMdtAddList.add(emailConfigMdtMapBusTypeLan.get(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+''+objEmailNotif.Language));
                 } 
             }
             if(objEmailConfigMdtAddList != null && objEmailConfigMdtAddList.size() == 0){
-                if(String.isNotBlank(objEmailNotif.BusinessType) && emailConfigMdtMapBusTypeLan.containskey(objEmailNotif.businessEvent+''+objEmailNotif.BusinessType+'ENG')){
+                if(String.isNotBlank(objEmailNotif.BusinessType)){
                     objEmailConfigMdtAddList.add(emailConfigMdtMapBusTypeLan.get(objEmailNotif.businessEvent+''+objEmailNotif.BusinessType+'ENG'));
-                }else if(String.isNotBlank(objEmailNotif.Entitlements) && emailConfigMdtMapEntLan.containsKey(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+'ENG')){
-                    objEmailConfigMdtAddList.add(emailConfigMdtMapEntLan.get(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+'ENG'));  
+                }else if(String.isNotBlank(objEmailNotif.Entitlements)){
+                    objEmailConfigMdtAddList.add(emailConfigMdtMapBusTypeLan.get(objEmailNotif.businessEvent+''+objEmailNotif.Entitlements+'ENG'));  
                 }
             }
             if(objEmailConfigMdtAddList != null && objEmailConfigMdtAddList.size() > 0){
@@ -347,8 +356,7 @@ public Without Sharing class ER_EmailNotification_Utility
             if(Test.isRunningTest() && emailConfigMap.get(objEmailNotif) == null){
                 emailConfigMap.put(objEmailNotif,erEmailConfidMdtList);
                 throw new CustomException('Empty');
-            } 
-            
+            }                
             return emailConfigMap;
         }
         catch(CustomException ce){
@@ -368,13 +376,14 @@ public Without Sharing class ER_EmailNotification_Utility
             return new Map<EmailNotification,List<ER_Email_Configuration__mdt>>();
         }
     }
-    
-    private static Map<String,SObject> GetInputParametersMap(ER_Email_Configuration__mdt emailConfig, EmailNotification objEmailNotif )
+    //Get inputparameters for specific object
+    private static Map<String,SObject> GetInputParametersMap(ER_Email_Configuration__mdt emailConfig, EmailNotification objEmailNotif /*Map<string,PRM_EmailInputParamClause__mdt> inputParamQueryMap*/)
     {
         Map<String,SObject> objDetailsMap = new Map<String,SObject>(); 
         List<String> dataQueryList = new List<String>();
         if(emailConfig != null && String.isNotBlank(emailConfig.Input_Parameter__c))
         {
+            //Input_Parameter__c - Registration_Request_ID;LanguageCulture_MDT
             for(String inputParam : emailConfig.Input_Parameter__c.split(';'))
             {
                 if(objEmailNotif.objDetailsMapNew.get(objEmailNotif.inputParameters.get(inputParam)) != null){
@@ -383,7 +392,7 @@ public Without Sharing class ER_EmailNotification_Utility
                     objDetailsMap.put(String.valueOf(obj),retrivedObjData);
                 }                   
             }
-            
+            //system.debug('dataQueryList -'+dataQueryList);
         }
         return objDetailsMap;
     }
@@ -396,7 +405,7 @@ public Without Sharing class ER_EmailNotification_Utility
         String lang;
     }
     
-    public static Map<String,Sobject> getMapofInputParameter(String inputParameter, Set<Id> ids){
+    public static Map<String,Sobject> getMapofInputParameter(String inputParameter, set<Id> ids){
         Map<String,Sobject> objectRegMap= new Map<String,Sobject>();
         
         map<string,PRM_EmailInputParamClause__mdt> inputParamQueryMap = new map<string,PRM_EmailInputParamClause__mdt>();

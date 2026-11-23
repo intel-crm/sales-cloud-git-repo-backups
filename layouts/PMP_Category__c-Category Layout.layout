@@ -95,11 +95,27 @@
                 <behavior>Readonly</behavior>
                 <field>Type__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Partner_Shadow__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>OwnerId</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_ChildMandatory_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Ancestor_Category_Chinese_Nm__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Ancestor_Category_Japanese_Nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -154,6 +170,9 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>PMP_Ancestor_Category_Nm__c</fields>
+        <fields>PMP_Active_Ind__c</fields>
+        <fields>PMP_Partner_Product_Category_Cd__c</fields>
         <relatedList>PMP_Category__c.PMP_Parent_Category_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
@@ -166,11 +185,18 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>PMP_Offering_Id__c</fields>
+        <fields>PMP_Offering_Category_External_Key__c</fields>
+        <fields>PMP_Ancestor_Category_Cd__c</fields>
         <relatedList>PMP_Partner_Offering_Category__c.PMP_Category_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>PMP_Partner_Category__c.PMP_Category_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PMP_Category_Partner__c.PMP_Category_Id__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
@@ -178,7 +204,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h0n000000FiDv</masterLabel>
+        <masterLabel>00h3b00000eyf4V</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

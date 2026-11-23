@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Rambus Partner User</description>
+    <description>Northwest Logic, Inc. Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Rambus Partner User</name>
+    <name>Northwest Logic, Inc. Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_11298293_Kenta_Ueda</parentRole>
+    <parentRole>NorthwestLogicIncPartnerManager</parentRole>
 </Role>

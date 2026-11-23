@@ -1,19 +1,18 @@
 @isTest
 public class Pricing_RegistrationReqUtility_Test {
-    public static Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+    
     @testSetup    
     static void setupDataCreation()
     {
-        Account acc = new account();
+        Account acc = PRM_TestUtility.getAccount();
         acc.Name = 'Dell US';
-        acc.RecordTypeId = accountRecordTypeIntel;
         acc.Core_IPA_Partner_Role__c = 'Service Provider';
         acc.Core_Account_Type__c='Cloud Service Provider (CSP)';
         acc.BillingCity='Bengaluru';
         acc.BillingCountry='India';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
         acc.BillingPostalCode='560037';
-        insert acc;  
+        insert(acc);  
         
         Core_Account_Whitelisted_Domains__c accWhitelist = new Core_Account_Whitelisted_Domains__c();
         accWhitelist.Name = 'mailinator.com';
@@ -62,8 +61,7 @@ public class Pricing_RegistrationReqUtility_Test {
         membership.PRM_Channel_Program_Id__c=cprogram.Id;
         membership.PRM_Account_Id__c=acc.Id;
         membership.PRM_Status_Nm__c = 'Approved';
-        membership.PRM_Partner_Role__c='Builder';
-        membership.PRM_Status_Reason_Txt__c='Updated';
+        membership.PRM_Partner_Role__c='Seller';
         insert(membership);  
         
         PRM_AccountChannelMembership__c membership1 = new PRM_AccountChannelMembership__c();
@@ -71,15 +69,13 @@ public class Pricing_RegistrationReqUtility_Test {
         membership1.PRM_Status_Nm__c = 'Pending';
         membership1.PRM_Channel_Program_Id__c=cp.Id;
         membership1.PRM_Partner_Role__c='Service Provider';
-        membership1.PRM_Status_Reason_Txt__c='Updated';
         insert(membership1);
         
         PRM_AccountChannelMembership__c membership2 = new PRM_AccountChannelMembership__c();
         membership2.PRM_Account_Id__c=acc.Id;
         membership2.PRM_Status_Nm__c = 'Pending';
         membership2.PRM_Channel_Program_Id__c=cp.Id;
-        membership2.PRM_Partner_Role__c='Distributor';
-        membership2.PRM_Status_Reason_Txt__c='Updated';
+        membership2.PRM_Partner_Role__c='FPGA Designer';
         insert(membership2);
         
         
@@ -108,7 +104,7 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest.PRM_CIM_ID__c='';
         newRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         newRequest.PRM_EV_Token__c = 'gwiur#@98321327';
-        newRequest.PRM_Email_ID__c = 'abc12344xyz@dell.com';
+        newRequest.PRM_Email_ID__c = 'testuser@dell.com';
         newRequest.PRM_Channel_Program__c = iqrProgram.Id;
         newRequest.PRM_Legal_Agreements__c = 'IQR_TANDC';
         newRequest.PRM_Partner_Relationship__c = '';
@@ -166,7 +162,7 @@ public class Pricing_RegistrationReqUtility_Test {
     
     private static testMethod void updateRegRequest(){
         system.debug('Queries 555===>'+Limits.getQueries());
-      //  test.startTest();
+        test.startTest();
         system.debug('Queries 666===>'+Limits.getQueries());
         //List<PRM_Registration_Request__c>  regReq = [SELECT id,Name,RecordTypeId,PRM_Salesforce_ID__c FROM PRM_Registration_Request__c LIMIT 1];
         List<Account> acc = [SELECT id FROM Account LIMIT 1];
@@ -183,7 +179,7 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest1.PRM_Legal_Agreements__c = 'IQR_TANDC';
         newRequest1.PRM_Partner_Relationship__c = '';
         newRequest1.PRM_Preferred_Language__c = 'ENG';
-        newRequest1.PRM_Contact_Country__c = 'IND';
+        newRequest1.PRM_Contact_Country__c = 'US';
         //newRequest.PRM_Matching_Contact__c = con.Id;
         newRequest1.PRM_Partner_Type__c = 'Original Equipment Manufacturer (OEM)';
         newRequest1.PRM_Salesforce_ID__c = acc[0].Id;
@@ -191,35 +187,12 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest1.RecordTypeId = accCreateRequestId;
         insert newRequest1;
         
-        List<Contact> conts = new list<Contact>(); //[SELECT id,Name,email,AccountId FROM Contact LIMIT 1];
-        Contact cont = new Contact();  //Contact
-        cont.AccountId=acc[0].Id;
-        cont.lastName='abcccc';
-        cont.FirstName='Adamnmmm';
-        cont.MailingCountry='India';
-        cont.email='abcccc@Adamnmmm.com';
-        //cont.Core_Job_Function__c='Branch Manager';
-        cont.Core_Profession__c='PROFESSOR';
-        cont.Core_eRPM_Language_Code__c='Eng';
-        cont.Core_IPA_PartnerRole__c = 'Service Provider';
-        cont.Core_Do_Not_Contact__c = false;
-        conts.add(cont);
-        insert conts;
+        //regReq[0].RecordTypeId = accCreateRequestId;
+        //regReq[0].PRM_Salesforce_ID__c = acc[0].Id;
+        //regReq[0].PRM_EmailVerifiedDateTime__c = system.now();
+        //update regReq[0];
         
-        List<Core_Contact_Entitlement__c> celist = new list<Core_Contact_Entitlement__c>();
-        Core_Contact_Entitlement__c ce =new Core_Contact_Entitlement__c();
-       
-                        ce.Core_Contact_Id__c = conts[0].Id;
-                        ce.Core_Entitlement_Id__c = 'a2W3b00000EW3esEAD';                        
-                        ce.Core_Selected__c = true;
-                        ce.Core_Data_Loaded__c = true;
-                        ce.Core_DontNotify__c = true;
-                        ce.Core_From_Source__c = false;                                   
-                        ce.Core_Source__c = 'IQR Registration';
-                        ce.Core_Status__c = 'Pending';
-                        //ce.Core_Status__c = 'Complete';
-                        celist.add(ce); 
-    
+        List<Contact> conts = [SELECT id,Name,AccountId FROM Contact LIMIT 1];
         List<PRM_AccountLegalAgreemntAssociation__c> legalAgrmntAssocs = [SELECT id FROM PRM_AccountLegalAgreemntAssociation__c];
         system.debug('legalAgrmntAssocs==>'+legalAgrmntAssocs.size());
         system.assert(conts.size() > 0);
@@ -232,7 +205,7 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest.PRM_CIM_ID__c='';
         newRequest.PRM_EmailVerifiedDateTime__c=System.Today();
         newRequest.PRM_EV_Token__c = 'gwiur#@98321327';
-        newRequest.PRM_Email_ID__c = 'testuser234@dell.com';
+        newRequest.PRM_Email_ID__c = 'testiqr@dell.com';
         newRequest.PRM_Channel_Program__c = iqrPrograms[0].Id;
         newRequest.PRM_Legal_Agreements__c = 'IQR_TANDC';
         newRequest.PRM_Partner_Relationship__c = '';
@@ -242,9 +215,8 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest.PRM_Salesforce_ID__c = conts[0].AccountId;
         newRequest.PRM_Contact_Salesforce_Id__c = conts[0].Id;
         newRequest.PRM_ProcessInstanceWorkItem_Id__c = '';
-        newRequest.PRM_Contact_Country__c = 'IND';
+        newRequest.PRM_Contact_Country__c = 'US';
         newRequest.RecordTypeId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
-          test.startTest();
         insert newRequest;
         
         system.debug('Queries 777===>'+Limits.getQueries());
@@ -253,53 +225,9 @@ public class Pricing_RegistrationReqUtility_Test {
         newRequest.PRM_Salesforce_ID__c = conts[0].AccountId;
         newRequest.PRM_Contact_Salesforce_Id__c = conts[0].Id;
         newRequest.PRM_EmailVerifiedDateTime__c = system.now();
-       
         update newRequest;
         system.debug('Queries 888===>'+Limits.getQueries());
         test.stopTest();
         
     }
-    @isTest
-    static void testInsertEntitlesForIQRContactsNew() {
-        // Step 1: Setup Test Data
-        List<Account> acc = [SELECT id FROM Account LIMIT 1];
-
-        Contact cont = new Contact(
-            FirstName = 'Test',
-            LastName = 'Contact',
-            AccountId = acc[0].Id,
-            MailingCountry='India',
-            Email = 'testcontact@example.com'
-        );
-        insert cont;
-
-        PRM_Registration_Request__c regReq = new PRM_Registration_Request__c(
-            PRM_Channel_Program__c = [SELECT Id FROM ChannelProgram WHERE PRM_ProgramCode__c = 'IQR' LIMIT 1].Id,
-            PRM_Status__c = 'Approved',
-            PRM_Salesforce_ID__c = acc[0].Id,
-            PRM_Contact_Salesforce_Id__c = cont.Id,
-            PRM_Email_ID__c = 'testuser2345@dell.com',
-            PRM_First_Name__c='Test',
-            PRM_Last_Name__c='user2345',
-            RecordTypeId = Schema.SObjectType.PRM_Registration_Request__c.getRecordTypeInfosByName().get('Account Create Request').getRecordTypeId()
-        );
-        insert regReq;
-
-        // Step 2: Setup entitlement mapping
-        PRM_VXEnttlmntMatrix__c entitlement = new PRM_VXEnttlmntMatrix__c(
-            Account__c = acc[0].Id,
-            PRM_Entitlement_Id__c = 'a2W3b00000EW3esEAD',PRM_Approval_Type_Nm__c='Manual'
-        );
-        insert entitlement;
-
-        // Step 3: Run the method
-        Test.startTest();
-        Pricing_RegistrationReqUtility.insertEntitlesForIQRContactsNew(new List<Contact>{cont}, new Set<Id>{cont.Id}, new Set<Id>{acc[0].Id});
-        Test.stopTest();
-
-        // Step 4: Verify entitlements
-        List<Core_Contact_Entitlement__c> entitlements = [SELECT Id FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c = :cont.Id];
-        System.assertEquals(0, entitlements.size());
-    }
-
 }

@@ -39,11 +39,11 @@
         <field>Opportunity.Core_Architecture_Conversion__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Product_Application__c</field>
+        <field>Opportunity.Core_Product_Segment__c</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -90,8 +90,8 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-26</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2019-12-29</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -11,7 +11,7 @@ Modification Log :
 * Dave Hood                 09/21/2015              Added parameter to method calls to bypass multiselect attribute,
 *                                                   and bulkified the code to work on multiple opportunities at once
 *************************************************************************************/
-public without sharing class Core_DescriptiveFeatureHandler {
+public class Core_DescriptiveFeatureHandler {
     
     public static Set<String> setAPIFieldName = new Set<String>{};
     
@@ -65,6 +65,9 @@ public without sharing class Core_DescriptiveFeatureHandler {
         /* Changed the query to make the Opportunity fact query selective */
         sQueryString = sQueryString +', (SELECT Id from Opportunities__r) FROM Core_Opportunity_Facts__c WHERE Core_Opportunity_ID__c in :lstOpportunityID';
         
+        System.debug('##### sQueryString: ' + sQueryString);
+        System.debug('##### lstOpportunityID: ' + lstOpportunityID);
+        
         //Get the SOQL from the Opportunity fact
         for(Core_Opportunity_Facts__c sobjOppFact : Database.Query(sQueryString)){
             if(!sobjOppFact.Opportunities__r.IsEmpty())
@@ -115,15 +118,17 @@ public without sharing class Core_DescriptiveFeatureHandler {
                 
                 oppFact = OpportunityFactsInsertUpdateOp(oppId, mapOppIDOldNewDescFeatures.get(oppId), mapOpportunityIDToFact.get(oppId), false);
             }
+            
             lstOpportunityFact.add(oppFact);
         }
         
+        System.debug('##### lstOpportunityFact.size(): ' + lstOpportunityFact.size());
        
        //If the list is not empty then upsert the opportunity fact instance
        if(!lstOpportunityFact.isEmpty()){
            List<Database.upsertResult> uResults = Database.upsert(lstOpportunityFact,false);
            for (Database.upsertResult sr : uResults){
-               //If there are failed result             
+               //If there are failed result               
                if (!sr.isSuccess() || Test.isRunningTest()) {
                    for(Database.Error err : sr.getErrors()) {
                        //Get the instance of the opprtunity fact to throw up error
@@ -183,12 +188,6 @@ public without sharing class Core_DescriptiveFeatureHandler {
             fieldName = 'Core_' + Core_Utility.replaceSpecialCharacWithUnderscore(descFeature.Core_Feature_Type__c) + '__c';
             fieldValue = '';
             
-            //TWC3123-6620 PCI Express field issue
-            if(fieldName == Core_CRM_Utility.getCRMLabel('PCI_Express')){
-                fieldName = Core_CRM_Utility.getCRMLabel('If_PCI_Express');
-            }
-            //TWC3123-6620 end
-            
             // Check if the field name constructed belongs to the API field names in the opportunity facts
             if (setAPIFieldName.Contains(fieldName.toLowerCase())) {
                 
@@ -230,6 +229,8 @@ public without sharing class Core_DescriptiveFeatureHandler {
         // Initialize the new Opportunity Facts record based on a clone of the old one
         Core_Opportunity_Facts__c newOppFacts = oldOppFacts.clone(true, true, true, true);
         
+        System.debug('####### OpportunityFactsInsertOp START newDescFeatures = ' + newDescFeatures);
+        System.debug('####### OpportunityFactsInsertOp START newOppFacts = ' + newOppFacts);
         
         // If we're overwriting multi-select values, blank them out before we do our normal concatenation logic below
         if (overwriteMultiselect) {
@@ -244,16 +245,11 @@ public without sharing class Core_DescriptiveFeatureHandler {
         
         // Loop through the Descriptive Features records that were passed in
         for (Core_Opportunity_Features__c descFeature : newDescFeatures) {
+            System.debug('####### OpportunityFactsInsertOp MIDDLE descFeature = ' + descFeature);
                 
             // Field name should be what the field is called in Opportunity Facts, e.g. Core_Screen_Size__c for a
             // Feature Type of Screen Size
             fieldName = 'Core_' + Core_Utility.replaceSpecialCharacWithUnderscore(descFeature.Core_Feature_Type__c) + '__c';
-           
-            //TWC3123-6620 PCI Express field issue
-            if(fieldName == Core_CRM_Utility.getCRMLabel('PCI_Express')){
-                fieldName = Core_CRM_Utility.getCRMLabel('If_PCI_Express');
-            }
-            //TWC3123-6620 end
             
             fieldValue = ''; // Blank this out every time through the loop so we can check for that later
             
@@ -287,9 +283,11 @@ public without sharing class Core_DescriptiveFeatureHandler {
                 
                 //Put the value of the field to the field    
                 newOppFacts.put(fieldName, fieldValue);
-               
+                System.debug('####### OpportunityFactsInsertOp MIDDLE fieldName = ' + fieldName + ' fieldValue = ' + fieldValue);
+                System.debug('####### OpportunityFactsInsertOp MIDDLE newOppFacts = ' + newOppFacts);
             }
         }
+        System.debug('####### OpportunityFactsInsertOp FINISH newOppFacts = ' + newOppFacts);
         return newOppFacts;
     }
 }

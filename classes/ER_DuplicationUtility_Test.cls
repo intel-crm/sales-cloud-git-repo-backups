@@ -52,7 +52,7 @@ public class ER_DuplicationUtility_Test {
         List<PRM_Registration_Request__c> newList = new List<PRM_Registration_Request__c>();
         newList.add(regRequest1);
         newList.add(regRequest2);
-        //ER_DuplicationUtility.rejectDuplicates(newList,null);
+        ER_DuplicationUtility.rejectDuplicates(newList,null);
        // System.assertEquals(req[0].PRM_Status__c,'Rejected');
        // ER_DuplicationUtility.rejectDuplicates(); 
        // ER_DuplicationUtility.DupCheck();

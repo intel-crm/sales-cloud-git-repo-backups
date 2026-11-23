@@ -16,15 +16,14 @@ public without sharing class Core_UtilityControllerTest{
         // Create common test user
         User poeUser= PMP_TestDataUtility.createUser(True);
         poeUser.Alias = ALIAS_NAME;
-      //  update poeUser;
+        update poeUser;
 
         User usr = [select Id, Core_IPA_One_Partner_Id__c, name, AccountID from User where Id=:poeUser.id limit 1];
        system.debug('usr:'+usr);
          PMP_Company__c cmp1 = PMP_TestDataUtility.createCompanyInformation('TestCompany1', usr.AccountID, true);
         cmp1.PMP_One_Partner_ID__c=usr.Core_IPA_One_Partner_Id__c;
         cmp1.PMP_Company_Lifecycle_Status_Nm__c=PMP_StaticConstants_Partner.Published;
-        //cmp1.PMP_Partner_Benefit_Type__c =PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-        cmp1.PMP_Partner_Benefit_Type__c =PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        //cmp1.PMP_Partner_Benefit_Type__c =PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
         update cmp1;
         
         createAdminUser(); //admin user with role assigned is required to create partner account and partner user
@@ -68,8 +67,7 @@ public without sharing class Core_UtilityControllerTest{
         company1.PMP_Benefit_Update_Ind__c=False;
         company1.PMP_Partner_Inactive_Ind__c = False;
         company1.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access;
-        company1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        //company1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solution_Marketplace_Basic_Access; //IPA2.0 - TWC729-7885
         company1.PMP_Is_Published_Ind__c=true;
         insert company1;
             
@@ -101,7 +99,7 @@ public without sharing class Core_UtilityControllerTest{
         System.debug('intelAccount1 inserted = '+ intelAccount1);
         
         Contact contact1 = new Contact(firstname='Intel', 
-                    lastname='Contact1', accountId=intelAccount1.id,Email='dellco1234@dell.com', MailingCountry= 'India');
+                    lastname='Contact1', accountId=intelAccount1.id,Email='dellco1234@dell.com');
         Database.insert(contact1);
         UserRole userRole = [Select Name, PortalType, PortalAccountId From UserRole where PortalType ='Partner' limit 1];
         system.debug('roldName--'+userRole.name );        
@@ -208,8 +206,7 @@ public without sharing class Core_UtilityControllerTest{
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced;
-		company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile;
+        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
         company.PMP_Is_Published_Ind__c=true;
         insert company;
             

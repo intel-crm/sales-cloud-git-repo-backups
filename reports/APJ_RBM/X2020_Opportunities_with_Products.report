@@ -48,6 +48,9 @@
         <useOther>false</useOther>
         <values>
             <sourceValues>
+                <sourceValue>Production Win</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Production Cancelled</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -56,33 +59,6 @@
             <value>Win Approved</value>
         </values>
     </buckets>
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <aggregate>Sum</aggregate>
-            <axisBinding>y</axisBinding>
-            <column>OpportunityLineItem.Core_KPI_Total_Price__c</column>
-        </chartSummaries>
-        <chartType>VerticalColumnGrouped</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
-        <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>STAGE_NAME</secondaryGroupingColumn>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>true</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
@@ -150,6 +126,9 @@
         <field>CLOSE_DATE</field>
     </columns>
     <columns>
+        <field>STAGE_NAME</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Approver_1__c</field>
     </columns>
     <columns>
@@ -193,7 +172,7 @@
         <field>Opportunity.Core_Low_Velocity__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
@@ -280,33 +259,7 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>OpportunityLineItem.Core_KPI_Days_DesignWin_to_ProductionWin__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>CDF1</field>
-    </columns>
-    <customDetailFormulas>
-        <calculatedFormula>CASE(OpportunityLineItem.Core_Risk_Reason1__c,&quot;&quot;,case(OpportunityLineItem.Core_Risk_Reason2__c,&quot;&quot;,0,1),1)*OpportunityLineItem.Core_KPI_Total_Price__c</calculatedFormula>
-        <dataType>Double</dataType>
-        <developerName>CDF1</developerName>
-        <label>Risk $ (Jason)</label>
-        <scale>2</scale>
-    </customDetailFormulas>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>,Lost,Cancelled,Deleted</value>
-        </criteriaItems>
         <criteriaItems>
             <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
@@ -316,22 +269,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>STAGE_NAME</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>2020 Opportunities with Products</name>
     <params>
         <name>terr</name>
@@ -357,7 +295,7 @@
     <sortColumn>BucketField_72264943</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURNEXTY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

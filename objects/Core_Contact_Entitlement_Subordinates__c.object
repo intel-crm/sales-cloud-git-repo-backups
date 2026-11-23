@@ -76,11 +76,8 @@
         <columns>Core_Entitlement_Subordinate_Id__c</columns>
         <columns>Core_Entitlement_Subordinate_Name__c</columns>
         <columns>Core_Is_ODM_True__c</columns>
-        <columns>Core_Is_ODM_False__c</columns>
-        <columns>Core_Is_CNDA_True__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <visibility>Protected</visibility>
 </CustomObject>

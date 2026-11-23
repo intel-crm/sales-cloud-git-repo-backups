@@ -59,9 +59,16 @@
             <value>PRM_Registration_Request__c.Account_Create_Request</value>
         </criteriaItems>
         <criteriaItems>
-            <column>PRM_Registration_Request__c$PRM_Channel_Program__c</column>
+            <column>PRM_Registration_Request__c.Registration_Trackers__r$Stage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>6</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PRM_Registration_Request__c$PRM_Channel_Program__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Intel Partner Alliance</value>
         </criteriaItems>
@@ -71,13 +78,6 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>LAST_N_DAYS:45</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRM_Registration_Request__c.Registration_Trackers__r$Stage__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>6,SBC Callout Made</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

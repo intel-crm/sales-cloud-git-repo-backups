@@ -1,0 +1,100 @@
+.THIS .slds-truncate {
+    text-overflow: inherit;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    background-color : inherit;
+    
+}
+
+.THIS .slds-radio 
+{
+    padding-left:37px;
+}
+
+.THIS .slds-button_icon-bare{
+display: none;
+}
+
+.THIS .slds-card__body{
+  margin-bottom: 0.0001rem;  
+}
+
+.THIS #accsFound .slds-grid_align-spread{
+    margin-left:4%;
+}
+
+.THIS #accsFound  .slds-table_header-fixed_container{
+    background-color : none; 
+    border-style: none;
+    border-width: 0px;
+    border-color: white;
+}
+
+.THIS #accsFound .slds-table_header-fixed {
+    visibility:hidden; 
+}
+
+.THIS #accsFound .slds-scrollable_y{
+    background-color : white; 
+}
+.THIS #accsFound .slds-grid{
+    visibility:visible;
+    
+}
+
+.THIS #accsFound .slds-radio__label{
+    visibility:visible;
+}
+
+.THIS #reqAcc .slds-radio__label{
+    visibility:hidden;
+}
+
+.THIS  .table-align thead th span {
+    margin-left:2%;
+}
+
+.THIS #reqAcc .slds-grid_align-spread{
+    margin-left:4%;
+    
+}
+.THIS .slds-table:not(.slds-no-row-hover) tbody tr:hover>th{
+    background-color:transparent;
+}
+.THIS #cntctsFound .slds-truncate {
+    
+    margin-left:-0.5rem;
+}
+
+
+.THIS .colorReqAcc{
+    color: rgb(0, 109, 204);
+}
+
+.THIS #cntctsFound .slds-grid_align-spread{
+    margin-left:2%;
+}
+
+
+.THIS #cntctsFound  .slds-table_header-fixed_container{
+    background-color : none; 
+    border-style: none;
+    border-width: 0px;
+    border-color: white;
+}
+.THIS .slds-table tbody tr:hover td{
+    background-color: white;
+    
+}
+.THIS #cntctsFound .slds-table_header-fixed {
+    border-style: none;
+}
+
+.THIS #cntctsFound .slds-grid{
+    visibility:visible;
+    }
+
+.THIS .allign-text {
+    margin-left: 2%;
+}

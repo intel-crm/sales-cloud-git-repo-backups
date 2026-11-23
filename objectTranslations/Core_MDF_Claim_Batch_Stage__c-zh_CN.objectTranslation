@@ -5,54 +5,16 @@
         <value>报销申请批量记录</value>
     </caseValues>
     <fields>
-        <label><!-- 3rd Party POP Documentation Required --></label>
-        <name>Core_MDF_3rd_Party_POP_Doc_Required_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Category --></label>
-        <name>Core_MDF_ActivityCategory__c</name>
-    </fields>
-    <fields>
         <label>活动</label>
         <name>Core_MDF_Activity_Nbr__c</name>
     </fields>
     <fields>
-        <label>活动子类型</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Activity Type --></label>
-        <name>Core_MDF_Activity_Type__c</name>
-    </fields>
-    <fields>
-        <label>执行结束日期</label>
+        <label>广告投放结束日期</label>
         <name>Core_MDF_Ad_Run_End_Dt__c</name>
     </fields>
     <fields>
-        <label>执行开始日期</label>
+        <label>广告投放开始日期</label>
         <name>Core_MDF_Ad_Run_Start_Dt__c</name>
-    </fields>
-    <fields>
-        <help>适用的增值税百分比</help>
-        <label>适用的增值税百分比</label>
-        <name>Core_MDF_Applicable_VAT_Percentage_nm__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <help>银行账号为机密信息。请仅输入银行账号的最后 4 位数字。完整账号存储于企业供应商数据库中。</help>
-        <label>银行帐号（末尾 4 个数字）</label>
-        <name>Core_MDF_Bank_Account_Nbr__c</name>
     </fields>
     <fields>
         <label>银行 ID</label>
@@ -66,15 +28,7 @@
     <fields>
         <label>报销申请批量 ID</label>
         <name>Core_MDF_Batch_ID__c</name>
-        <relationshipLabel>报销申请批量记录</relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type__c</name>
+        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
     </fields>
     <fields>
         <label>申请评论</label>
@@ -89,52 +43,28 @@
         <name>Core_MDF_Claim_Reference_Nbr__c</name>
     </fields>
     <fields>
-        <label>国家/地区：</label>
-        <name>Core_MDF_Country_Location_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Country --></label>
-        <name>Core_MDF_Country_nm__c</name>
-    </fields>
-    <fields>
         <label>创建副本</label>
         <name>Core_MDF_Create_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>创建者</label>
-        <name>Core_MDF_CreatedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Failure Reason --></label>
-        <name>Core_MDF_Failure_Reason_Txt__c</name>
     </fields>
     <fields>
         <label>印象数</label>
         <name>Core_MDF_Impressions_Cnt__c</name>
     </fields>
     <fields>
-        <label>开支证明货币</label>
+        <label>发票/收据币种</label>
         <name>Core_MDF_Inv_Receipt_Cur_Cd__c</name>
     </fields>
     <fields>
-        <label>开支证明日期</label>
+        <label>发票/收据日期</label>
         <name>Core_MDF_Inv_Receipt_Dt__c</name>
     </fields>
     <fields>
-        <label>开支证明编号</label>
+        <label>发票/收据号码</label>
         <name>Core_MDF_Inv_Receipt_Nbr__c</name>
     </fields>
     <fields>
         <label>是重复的</label>
         <name>Core_MDF_Is_Duplicate_ind__c</name>
-    </fields>
-    <fields>
-        <label>最后修改者</label>
-        <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Log Info --></label>
-        <name>Core_MDF_Log_Info_txt__c</name>
     </fields>
     <fields>
         <label>媒体载体</label>
@@ -157,12 +87,7 @@
         <name>Core_MDF_NoOfTrialActivations_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Node Account --></label>
-        <name>Core_MDF_Node_Account_Txt__c</name>
-        <relationshipLabel><!-- Claim Batch Records --></relationshipLabel>
-    </fields>
-    <fields>
-        <label>不予报销的开支（本位币）</label>
+        <label>其他不予报销的开支（当地）</label>
         <name>Core_MDF_Non_Reimbursable_Amt__c</name>
     </fields>
     <fields>
@@ -170,91 +95,56 @@
         <name>Core_MDF_Processing_Status_Nm__c</name>
         <picklistValues>
             <masterLabel>Failed</masterLabel>
-            <translation>发生故障</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Pending Documents</masterLabel>
-            <translation>有待文档</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Submitted</masterLabel>
-            <translation>已提交</translation>
+            <translation><!-- Failed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Successful</masterLabel>
-            <translation>成功</translation>
+            <translation><!-- Successful --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reimbursement Rate (%) --></label>
-        <name>Core_MDF_Reimbursement_Percent__c</name>
     </fields>
     <fields>
         <label>要求 ID</label>
         <name>Core_MDF_Request_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Retry Count --></label>
-        <name>Core_MDF_Retry_Count_Nbr__c</name>
-    </fields>
-    <fields>
-        <label><!-- Review Hold Rule --></label>
-        <name>Core_MDF_Review_Hold_Rule_Nm__c</name>
-    </fields>
-    <fields>
-        <label>税款（本位币）</label>
+        <label>税（当地货币)</label>
         <name>Core_MDF_Taxes_Local_Amt__c</name>
     </fields>
     <fields>
-        <label>总金额（本位币）</label>
+        <label>发票总金额（当地）</label>
         <name>Core_MDF_Total_Amt__c</name>
     </fields>
-    <fields>
-        <label><!-- Ultimate Account ID --></label>
-        <name>Core_MDF_Ultimate_Account_ID__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ultimate Account --></label>
-        <name>Core_MDF_Ultimate_Account_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Upload POP Document --></label>
-        <name>Core_MDF_Upload_POP_Document__c</name>
-    </fields>
-    <fields>
-        <label>发票类型</label>
-        <name>Core_MDF_VAT_Opt_In__c</name>
-        <picklistValues>
-            <masterLabel>Reimbursement Request for 3rd party payment (NET cost only)</masterLabel>
-            <translation>第三方付款的报销请求（仅限净成本）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Invoice to Intel (VAT may apply)</masterLabel>
-            <translation>向英特尔开具的服务发票（可能缴付增值税）</translation>
-        </picklistValues>
-    </fields>
+    <layouts>
+        <layout>Core_MDF_Claim_CCF_DCF_Batch_Record_Layout</layout>
+        <sections>
+            <label><!-- Claim Details --></label>
+            <section>Claim Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_MDF_Claim_SPCF_Batch_Record_Layout</layout>
+        <sections>
+            <label><!-- Claim Details --></label>
+            <section>Claim Details</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>报销申请批量记录 ID</nameFieldLabel>
+    <quickActions>
+        <label><!-- Create Claim --></label>
+        <name>Core_MDF_BatchStage_CreateClaim</name>
+    </quickActions>
     <recordTypes>
-        <description><!-- Record Type for Client and Datacenter Claims --></description>
-        <label><!-- Claim Client Datacenter Batch Record --></label>
+        <description><!-- Record Type for CCF and DCF Claims --></description>
+        <label><!-- Claim CCF DCF Batch Record --></label>
         <name>Core_MDF_Claim_CCF_DCF_Batch_Record</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- claim batch records of RMF program --></description>
-        <label><!-- Claim RMF Batch Record --></label>
-        <name>Core_MDF_Claim_RMF_Batch_Record</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record Type for SPCF Claims --></description>

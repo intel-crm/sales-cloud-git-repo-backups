@@ -1,0 +1,48 @@
+<template>
+<div class="slds-theme_default">
+    <div class="slds-p-around_medium">
+        
+            
+            <div class="slds-m-vertical_medium">
+                    <template if:true={isSelectStep1}>
+                        <div class="slds-section__title slds-theme--shade primaryPaletteBorder test-id__section-header-container">
+                            <span class="test-id__section-header-title section-header-title slds-p-horizontal--small slds-truncate">
+                                Contact Information
+                            </span> 
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-form__item" role="listitem">
+                                <div class="slds-form-element slds-form-element_stacked slds-is-editing">
+                                    <div class="slds-form-element__control">        
+                                        <lightning-input label="Contact First Name" value={firstname}></lightning-input>
+                                    </div>
+                                    <div class="slds-form-element__control">        
+                                        <lightning-input label="Contact Last Name" value={Con.lastname}></lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col">
+                            <div class="slds-form__item" role="listitem">
+                                <div class="slds-form-element slds-form-element_stacked slds-is-editing">    
+                                    <div class="slds-form-element__control">        
+                                        <lightning-input label="Contact Email" value={Con.email}></lightning-input>
+                                    </div>
+                                    <div class="slds-form-element__control">        
+                                        <lightning-combobox label="Preferred Language" placeholder="Select" options={optionsLanguage} value={languageSelected}></lightning-combobox>
+                                    </div>
+                                    <div class="slds-form-element__control">        
+                                        <lightning-combobox  name="conCountry" label="Contact Country" placeholder="Select" options={optionsCountry} value={countrySelected} required="true"></lightning-combobox>             
+                                    </div>
+                                    <div class="slds-form-element__control" style="padding-top: 50px;">        
+                                        <lightning-input type="checkbox" label="Suppress Email" value={Con.surmail}></lightning-input>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                    </template>
+                </div>
+
+        </div>
+    </div>
+</template>

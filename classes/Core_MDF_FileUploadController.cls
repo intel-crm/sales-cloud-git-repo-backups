@@ -1,4 +1,4 @@
-public with sharing class Core_MDF_FileUploadController {
+public class Core_MDF_FileUploadController {
     
 /****************************************************************************************************** 
 Method Name:        fetchDocumentIds
@@ -12,40 +12,45 @@ Modified By:        Date:      Changes:
     public static List<WrapperDocs> fetchDocumentIds(string pfrId,list<string> unsaveddocs)
     {
         List<WrapperDocs> wrapperdocIds = new List<WrapperDocs>();
+        //List<ContentDocument> docIds = new List<ContentDocument>();
+        //List<ContentDocumentLink> docIdsLink = new List<ContentDocumentLink>();
         WrapperDocs docId;
         try {
             
 			if (unsaveddocs.size() > 0 && unsaveddocs != NULL) // Select the documents which are not associated to activity
             {
+                //docIds = [SELECT Title,Id,FileExtension FROM ContentDocument WHERE Id IN: unsaveddocs
+                //          order by Title];
                 for (ContentDocument contentDocId:[SELECT Title,Id,FileExtension FROM ContentDocument WHERE Id IN: unsaveddocs
                           order by Title])
                 {
                     docId = new WrapperDocs();
                     docId.Title = contentDocId.Title + '.' + contentDocId.FileExtension;
                     docId.ContentDocumentId = contentDocId.Id;
-                    docId.userType = UserInfo.getUserType();
                     wrapperdocIds.add(docId);
                 }
             }
             else if(pfrId != null ) // Select the documents which are associated to activity
             {
+                //docIdsLink = [SELECT ContentDocument.Title,ContentDocumentId,ContentDocument.FileExtension FROM ContentDocumentLink WHERE LinkedEntityId = :pfrId 
+                //          order by ContentDocument.Title];
                 for (ContentDocumentLink contentDocId:[SELECT ContentDocument.Title,ContentDocumentId,ContentDocument.FileExtension FROM ContentDocumentLink WHERE LinkedEntityId = :pfrId 
                           order by ContentDocument.Title])
                 {
                     docId = new WrapperDocs();
                     docId.Title = contentDocId.ContentDocument.Title + '.' + contentDocId.ContentDocument.FileExtension;
                     docId.ContentDocumentId = contentDocId.ContentDocumentId;
-                    docId.userType = UserInfo.getUserType();
                     wrapperdocIds.add(docId);
                 }
             }
                 
         }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;//throw new AuraHandledException(Label.Core_MDF_ShowFile_Error + e.getMessage()); 
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(Label.Core_MDF_ShowFile_Error + e.getMessage()); 
         }
         
         return wrapperdocIds;
     }
+    
 /****************************************************************************************************** 
 Method Name:        deleteDocumentIds
 @return  :          
@@ -79,7 +84,7 @@ Modified By:        Date:      Changes:
                 
             }
        }
-        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw e;//throw new AuraHandledException(Label.Core_MDF_DeleteFile_Error + e.getMessage()); 
+        catch (Exception e){Core_MDF_CCP_UtilityClass.logError(e);throw new AuraHandledException(Label.Core_MDF_DeleteFile_Error + e.getMessage()); 
         }
     }
     
@@ -90,8 +95,6 @@ Modified By:        Date:      Changes:
         public string ContentDocumentId {get;set;}
         @AuraEnabled
         public string docurl {get;set;}
-        @AuraEnabled
-        public string userType {get;set;}
         
         public WrapperDocs(){
          	Title='';

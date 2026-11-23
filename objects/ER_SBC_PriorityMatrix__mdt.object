@@ -6,7 +6,7 @@
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>AccountType</label>
-        <length>50</length>
+        <length>15</length>
         <required>true</required>
         <type>Text</type>
         <unique>false</unique>

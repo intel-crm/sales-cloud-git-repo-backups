@@ -36,5 +36,12 @@
         <label><!-- Weightage --></label>
         <name>PSS_Weightage__c</name>
     </fields>
+    <layouts>
+        <layout>Impact Path Scoring Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

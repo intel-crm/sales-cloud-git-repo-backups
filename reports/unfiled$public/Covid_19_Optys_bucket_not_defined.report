@@ -116,7 +116,7 @@
     </columns>
     <description>grouped on Sales Group and BU Short Name and Stage</description>
     <filter>
-        <booleanFilter>(1 OR 2 OR 3) AND (4 OR 5) AND 6</booleanFilter>
+        <booleanFilter>(1 OR 2 OR 3) AND (4 OR 5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -139,25 +139,25 @@
             <value>covid,coronavirus,corona virus</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Account.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>US Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>downside,upside,pull in,on hold,new,push out,delay,pull-in,pullin,onhold,on-hold,down side,up side,pushing,ON HOLD</value>
+            <value>downside,upside,pull in,on hold,new</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Status_Update__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
-            <value>downside,upside,pull in,on hold,new,push out,delay,pullin,pull-in,onhold,on-hold,down side,up side,pushing,ON HOLD</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>US Sales Group</value>
+            <value>downside,upside,pull in,on hold,new</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -169,7 +169,7 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>
@@ -201,6 +201,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

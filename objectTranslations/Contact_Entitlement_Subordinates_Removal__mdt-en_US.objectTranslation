@@ -28,5 +28,12 @@
         <label><!-- Entitlement Subordinate Name --></label>
         <name>Core_Entitlement_Subordinate_Name__c</name>
     </fields>
+    <layouts>
+        <layout>Contact Entitlement Subordinates Removal Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

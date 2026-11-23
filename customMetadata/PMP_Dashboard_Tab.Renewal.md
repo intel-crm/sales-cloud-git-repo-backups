@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>PMP_Benefit_Code_Txt__c</field>
-        <value xsi:type="xsd:string">Gold;Titanium</value>
+        <value xsi:type="xsd:string">Partner;Prestige</value>
     </values>
     <values>
         <field>PMP_Is_Active_Ind__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>PRM_Partner_Role_Txt__c</field>
-        <value xsi:type="xsd:string">Original Equipment Manufacturer (OEM);Manufacturer;Seller</value>
+        <value xsi:type="xsd:string">Builder;Solution Integrator</value>
     </values>
     <values>
         <field>PRM_Profile_Txt__c</field>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_BULKDummy_ENG</name>
+    <style>none</style>
+    <subject>Activate your Intel® Partner Alliance account</subject>
+    <textOnly>You’re Almost There!
+
+{!Contact.FirstName},
+
+A profile has been created for {{ACCOUNTNAME}} and you are only a few steps away from becoming an Intel® Partner Alliance partner.
+
+Please save your log-in information for future reference:
+
+Username: {!Contact.Core_Login_Id__c}
+Email Address: {!Contact.Email}
+Company Name: {{ACCOUNTNAME}}
+Intel Partner Alliance Business ID: {{ACCOUNTNUMBER}}
+
+
+Your password should be protected as confidential. The use of this password on Intel&apos;s websites is governed by Intel&apos;s Terms and Conditions of Use linked from the bottom of each respective site&apos;s web pages.
+
+To activate your account and start enjoying your benefits, please review your account information and complete the legal requirements section.
+
+
+Complete now
+
+Can&apos;t access the link above?
+{{EVLINK}}
+
+If you have any questions, please contact us at {{SUPPORTLINK}}.
+
+
+Thank you,
+Your Intel® Partner Alliance team
+
+This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privacy | Cookies</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

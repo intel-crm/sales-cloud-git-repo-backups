@@ -14,9 +14,9 @@ Modification Log :
 * Deepak Jetty              01/02/2016                 Created
 ****************************************************************************************************/
 @isTest
-public class Core_IPS_ProductTriggerHandler_Test { 
+public class Core_IPS_ProductTriggerHandler_Test {
     //Instance variables that are commonly used in multiple test methods
-    static List<User> listOfUser = new List<User> ();
+    static List<User> ListOfUser = new List<User> ();
     /***************************************************************************************************
 Method Name:  getRecords()
 Method Type: void
@@ -36,7 +36,7 @@ Modification Log :
         strProf.add('System Administrator');
         strProf.add('IPS Agent');
         
-        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
@@ -47,17 +47,14 @@ Modification Log :
         ListOfUser.get(2).ProfileID =  profiles.get('IPS Agent');
         ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent');
         //ListOfUser.get(3).ProfileID =  profiles.get('IPS Agent-Partner');
-        User validationBypassUser = [SELECT Id FROM User WHERE Profile.Name = :System.Label.Core_System_Admin_Profile_Name AND IsActive = true LIMIT 1];
-        System.runAs(validationBypassUser){
-            insert ListOfUser;
-        }
+        insert ListOfUser;
         System.assertEquals(ListOfUser.get(0).profileid, profiles.get('System Administrator'));
         Core_IPS_Labels__c inActiveErrorMsg= new Core_IPS_Labels__c(Name='Core_IPS_InActiveProdError',Value__c='When initially adding a new Product to a Project, the Product Status must be kept Active.');
         //Creating Custom Settings for search criteria of Accountteammembers
-        List<Core_IPS_Labels__c> ipsLabels = new List<Core_IPS_Labels__c>();
+        List<Core_IPS_Labels__c> IpsLabels = new List<Core_IPS_Labels__c>();
         IpsLabels.add(inActiveErrorMsg);
         //Create Custom Setting - Trigger Executions
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+            Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
             TriggerExecution.Name = 'preventAddingInactiveProduct';
             TriggerExecution.Core_Active__c = true;
             TriggerExecution.Core_Class_Name__c ='Core_IPS_ProductTriggerHandler';
@@ -79,20 +76,20 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void productNoDuplicateTest(){
+    static testmethod void ProductNoDuplicate_test(){
         getrecords();
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -113,8 +110,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
                 SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
@@ -130,13 +127,13 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
         // Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(4);
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsOne){
+        List<Core_IPS_Product__c> ListOfIpsProducts_One = TestUtilities.getListOfIpsProducts(4);
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_One){
             if(counter<2){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
@@ -150,13 +147,13 @@ Modification Log :
             }   
         }
         System.runAs(ListOfUser.get(0)){
-            insert ListOfIpsProductsOne;
+            insert ListOfIpsProducts_One;
             
         }
-        System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProducts_One[0].Id != null, 'Record not created');
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsTwo = TestUtilities.getListOfIpsProducts(4);
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsTwo){
+        List<Core_IPS_Product__c> ListOfIpsProducts_Two = TestUtilities.getListOfIpsProducts(4);
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_Two){
             if(counter<2){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct.get(1).id;
@@ -169,9 +166,9 @@ Modification Log :
         }
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
-            insert ListOfIpsProductsTwo;
+            insert ListOfIpsProducts_Two;
         }
-        System.assert(ListOfIpsProductsTwo[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProducts_Two[0].Id != null, 'Record not created');
         Test.stopTest();
     }
     /***************************************************************************************************
@@ -186,21 +183,21 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              25/01/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void productDuplicateTest(){
+    static testmethod void ProductDuplicate_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();            
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();            
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -221,8 +218,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
                 SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
@@ -238,13 +235,13 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
         // Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(4);
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsOne){
+        List<Core_IPS_Product__c> ListOfIpsProducts_One = TestUtilities.getListOfIpsProducts(4);
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_One){
             if(counter<2){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
@@ -256,12 +253,12 @@ Modification Log :
             }   
         }
         System.runAs(ListOfUser.get(0)){
-            insert ListOfIpsProductsOne;
+            insert ListOfIpsProducts_One;
         }
-        System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProducts_One[0].Id != null, 'Record not created');
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsTwo = TestUtilities.getListOfIpsProducts(4);
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsTwo){
+        List<Core_IPS_Product__c> ListOfIpsProducts_Two = TestUtilities.getListOfIpsProducts(4);
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_Two){
             if(counter<2){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
@@ -275,7 +272,7 @@ Modification Log :
         Test.startTest();
         System.runAs(ListOfUser.get(0)){
             try{
-                insert ListOfIpsProductsTwo;
+                insert ListOfIpsProducts_Two;
             }Catch(Exception e){
                 ExceptionError = e.getMessage();
             }
@@ -295,21 +292,21 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void productProjectActiveNoSupportProdAutoApproveTest(){
+    static testmethod void ProductProjectActiveNoSupportProdAutoApprove_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -331,9 +328,9 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
         
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
                 SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
@@ -351,12 +348,12 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             if(counter<2){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
@@ -390,21 +387,21 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void productProjectSubmittedPendingWithSupportProdAutoApproveTest(){
+    static testmethod void ProductProjectSubmittedPendingWithSupportProdAutoApprove_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }  
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -425,8 +422,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -443,7 +440,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft';
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -451,7 +448,7 @@ Modification Log :
             update ListOfIpsProjects.get(0);
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Status__c = 'Submitted';
             if(counter<2){
@@ -492,23 +489,23 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void updateProductRecTypeIPSProjectProductBasicSubmittedTest(){
+    static testmethod void updateProductRecTypeIPSProjectProductBasic_Submitted_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
             insert IPSLabelsForGlobalAsset;  
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -529,8 +526,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -547,7 +544,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft'; 
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -555,7 +552,7 @@ Modification Log :
             update ListOfIpsProjects.get(0);
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Status__c = 'Not Approved';
             if(counter<2){
@@ -593,23 +590,23 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void updateSumbittingIPSProductforApprovalest(){
+    static testmethod void updateSumbittingIPSProductforApproval_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : listOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -630,8 +627,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -648,7 +645,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft'; 
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -656,7 +653,7 @@ Modification Log :
             update ListOfIpsProjects.get(0); 
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             //ipsProduct.Status__c = 'Not Approved';
             if(counter<2){
@@ -699,14 +696,14 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void updateInactivateAssetsTest(){
+    static testmethod void updateInactivateAssets_test(){
         getrecords();
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
-        List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
         System.runAs(ListOfUser.get(0)){
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
@@ -714,8 +711,8 @@ Modification Log :
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -736,8 +733,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -754,7 +751,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft'; 
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -762,7 +759,7 @@ Modification Log :
             update ListOfIpsProjects.get(0);
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Core_IPS_Product_Status__c = 'Active';
             ipsProduct.Status__c = 'Not Approved';
@@ -801,11 +798,12 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void productProjectNewTest(){
+    static testmethod void 
+        ProductProjectNew_test(){
             getrecords();
             
             List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+            Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
             TriggerExecution.Name = 'PreventDelete';
             TriggerExecution.Core_Active__c = true;
             TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
@@ -814,7 +812,7 @@ Modification Log :
             TriggerExecution.Core_Trigger_Events__c = 'after update';
             lstTriggerExecution.add(TriggerExecution);
             
-            Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
+            Core_Trigger_Executions__c  TriggerExecution1 = new Core_Trigger_Executions__c();
             TriggerExecution1.Name = 'deleteAsset';
             TriggerExecution1.Core_Active__c = true;
             TriggerExecution1.Core_Class_Name__c ='Core_IPS_ProductTriggerHandler';
@@ -827,8 +825,8 @@ Modification Log :
                 insert lstTriggerExecution;
             } 
         // Create Ips Labels
-        List<Core_IPS_Labels__c> iPSLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c iL: IPSLabels){
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
             if(IL.name=='ProjectGroupPrefix'){
                 IL.Value__c = 'IPS_Proj_';
             }
@@ -858,19 +856,19 @@ Modification Log :
         }   
         
         
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -891,8 +889,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -909,12 +907,12 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
         }
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Core_IPS_Product_Status__c = 'Active';
             if(counter<2){ 
@@ -934,8 +932,8 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             delete ListOfIpsProducts;
         }  
-        List<Core_IPS_Product__c> listOfProductDelete = [select id from Core_IPS_Product__c where id IN: ListOfIpsProducts];
-        System.assert(ListOfProductDelete.isEmpty(), 'Record not deleted');
+        List<Core_IPS_Product__c> ListOfProduct_Delete = [select id from Core_IPS_Product__c where id IN: ListOfIpsProducts];
+        System.assert(ListOfProduct_Delete.isEmpty(), 'Record not deleted');
         Test.stopTest();
     }
     /***************************************************************************************************
@@ -950,11 +948,11 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void preventDeleteProjActiveTest(){
+    static testmethod void PreventDeleteProjActive_test(){
         getrecords();
         //Create Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
         TriggerExecution.Name = 'PreventDelete';
         TriggerExecution.Core_Active__c = true;
         TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
@@ -963,7 +961,7 @@ Modification Log :
         TriggerExecution.Core_Trigger_Events__c = 'after update';
         lstTriggerExecution.add(TriggerExecution);
         
-        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
+        Core_Trigger_Executions__c  TriggerExecution1 = new Core_Trigger_Executions__c();
         TriggerExecution1.Name = 'activateProject';
         TriggerExecution1.Core_Active__c = true;
         TriggerExecution1.Core_Class_Name__c ='Core_IPS_Project_Handler';
@@ -976,8 +974,8 @@ Modification Log :
             insert lstTriggerExecution;
         } 
         // Create Ips Labels
-        List<Core_IPS_Labels__c> iPSLabels = TestUtilities.getIPSLabel();
-        for(Core_IPS_Labels__c iL: IPSLabels){
+        List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
+        for(Core_IPS_Labels__c IL: IPSLabels){
             if(IL.name=='ProjectGroupPrefix'){
                 IL.Value__c = 'IPS_Proj_';
             }
@@ -1003,19 +1001,19 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             Insert IPSLabels;
         }
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -1036,8 +1034,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -1053,10 +1051,8 @@ Modification Log :
         }
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
-          Test.startTest();
-      
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft';
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -1065,8 +1061,9 @@ Modification Log :
             update ListOfIpsProjects.get(0);
         }
         
+        
         //Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Core_IPS_Product_Status__c = 'Active';
             if(counter<2){
@@ -1080,8 +1077,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProducts;
         }
-              Test.stopTest();
-  
+        Test.startTest();
         System.runAs(ListOfUser.get(1)){
             try{
                 delete ListOfIpsProducts;
@@ -1090,6 +1086,7 @@ Modification Log :
             }
         }
         //System.assert(ExceptionError.contains('Cannot delete this Project Product when status is either Submitted or Active'), 'Record deleted Error not fired');
+        Test.stopTest();
     }
     /***************************************************************************************************
 Method Name:  PreventDeleteProjSubmittedPending_test
@@ -1103,11 +1100,11 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Deepak Jetty              1/02/2016                Created
 ****************************************************************************************************/ 
-    static testmethod void preventDeleteProjSubmittedPendingTest(){
+    static testmethod void PreventDeleteProjSubmittedPending_test(){
         getrecords();
         //Create Custom Setting - Trigger Executions
         List<Core_Trigger_Executions__c> lstTriggerExecution  = new List<Core_Trigger_Executions__c>();
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
         TriggerExecution.Name = 'PreventDelete';
         TriggerExecution.Core_Active__c = true;
         TriggerExecution.Core_Class_Name__c ='Core_IPS_Account_Handler';
@@ -1116,7 +1113,7 @@ Modification Log :
         TriggerExecution.Core_Trigger_Events__c = 'after update';
         lstTriggerExecution.add(TriggerExecution);
         
-        Core_Trigger_Executions__c  triggerExecution1 = new Core_Trigger_Executions__c();
+        Core_Trigger_Executions__c  TriggerExecution1 = new Core_Trigger_Executions__c();
         TriggerExecution1.Name = 'activateProject';
         TriggerExecution1.Core_Active__c = true;
         TriggerExecution1.Core_Class_Name__c ='Core_IPS_Project_Handler';
@@ -1128,21 +1125,21 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert lstTriggerExecution;
         } 
-        String exceptionError;
+        String ExceptionError;
         //Get Record Type
-        RecordType rt = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
+        RecordType RT = [select id, name from recordtype where name = 'IPS Project Product(Basic)' Limit 1];
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -1163,8 +1160,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             SupportedProduct.Core_Flag_Status__c = 'Auto Approve';
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
@@ -1181,7 +1178,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         ListOfIpsProjects.get(0).Core_Status__c = 'Draft';
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProjects;
@@ -1190,9 +1187,7 @@ Modification Log :
             update ListOfIpsProjects.get(0); 
         }
         //Create IPS Product
-           Test.startTest();
-     
-        List<Core_IPS_Product__c> listOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
+        List<Core_IPS_Product__c> ListOfIpsProducts = TestUtilities.getListOfIpsProducts(4);
         for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts){
             ipsProduct.Core_IPS_Product_Status__c = 'Active';
             if(counter<2){
@@ -1206,6 +1201,7 @@ Modification Log :
         System.runAs(ListOfUser.get(0)){
             insert ListOfIpsProducts;
         }
+        Test.startTest();
         System.runAs(ListOfUser.get(1)){
             try{
                 delete ListOfIpsProducts;
@@ -1227,15 +1223,14 @@ Modification Log :
         List<String> strProf = new List<String>();
         Account acc;
         Contact con;
-        strProf.add('System Administrator');
-        strProf.add(System.Label.Core_IPS_System_Admin_Profile_Name);
-        List<Profile> profileList = [select id, name from Profile where name IN : strProf];
+        strProf.add('IPS Support Org Admin');
+        List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         
         //Create Role
-        UserRole r = [SELECT Id, Name FROM UserRole WHERE DeveloperName = 'IPS_Admin' LIMIT 1];
+        UserRole r = [SELECT Id, Name FROM UserRole WHERE DeveloperName = 'IPS_Product_Org_Admin' LIMIT 1];
         
         User userRecord = new User(
             Alias = 'StdUser', 
@@ -1251,17 +1246,16 @@ Modification Log :
             UserRoleId = r.Id
             
         );
-        List<User> listOfUser1;
+        List<User> ListOfUser1;
         System.runAs(ListOfUser[0]){
         ListOfUser1 = new List<User>{userRecord}; //TestUtilities.getListOfUser(1);
-            ListOfUser1.get(0).ProfileID =  profiles.get(System.Label.Core_IPS_System_Admin_Profile_Name);
+            ListOfUser1.get(0).ProfileID =  profiles.get('IPS Support Org Admin');
             acc=TestUtilities.getListOfAccounts(1).get(0);
             insert acc;
             con = TestUtilities.getListOfContact(1).get(0);
             con.Accountid = acc.Id;
             con.Core_IPS_Intel_Support_Owner__c = ListOfUser1.get(0).id; 
             con.Core_IPS_Active__c = true;
-            con.MailingCountry = 'India';
             insert con;
         //ListOfUser1.get(1).ProfileID =  profiles.get('IPS Support Org Admin');
         
@@ -1269,50 +1263,44 @@ Modification Log :
         }
         // Get intelSupportOwner Id (User Id)
         Id intelSupportOwner = ListOfUser1.get(0).id; 
-        String exceptionError;
+        String ExceptionError;
         
         
         
-        Group queueRecord = TestUtilities.getQueue();
+        Group QueueRecord = TestUtilities.getQueue();
         System.runAs(Listofuser[0]){
         insert QueueRecord;
         }
         System.Assert(QueueRecord.Id != null, 'Record not created');
         System.runAs(Listofuser[0]){
-        Group publicGroupRecord = new Group();
+        Group PublicGroupRecord = new Group();
         PublicGroupRecord.Name = 'TestPublicGroup';
         insert PublicGroupRecord;
         System.Assert(PublicGroupRecord.Id != null, 'Record not created');
         
-            QueuesObject mappingQueueRecord = TestUtilities.getMappingQueue();
+            QueuesObject MappingQueueRecord = TestUtilities.getMappingQueue();
             MappingQueueRecord.QueueID = QueueRecord.id;
             MappingQueueRecord.SobjectType = 'Core_IPS_Product_Organization__c';
             System.runAs(listofUser[0]){
             insert MappingQueueRecord;
             }
-            QueuesObject mappingQueueRecord1 = TestUtilities.getMappingQueue();
-            mappingQueueRecord1.QueueID = QueueRecord.id;
-            mappingQueueRecord1.SobjectType = 'Core_IPS_MAP_PAR__c';
-            System.runAs(listofUser[0]){
-            insert mappingQueueRecord1;
-            }
             System.Assert(MappingQueueRecord.Id != null, 'Record not created');
-            GroupMember groupMemberObjectUser = new GroupMember(
+            GroupMember groupMemberObject_User = new GroupMember(
                 GroupId = PublicGroupRecord.Id,
                 UserOrGroupId = ListOfUser1.get(0).Id
             );
-            insert groupMemberObjectUser;
-            System.Assert(groupMemberObjectUser.Id != null, 'Record not created');
-            GroupMember groupMemberObjectGroup = new GroupMember(
+            insert groupMemberObject_User;
+            System.Assert(groupMemberObject_User.Id != null, 'Record not created');
+            GroupMember groupMemberObject_Group = new GroupMember(
                 GroupId = QueueRecord.Id,
                 UserOrGroupId = PublicGroupRecord.id
             );
-            insert groupMemberObjectGroup;  
-            System.Assert(groupMemberObjectGroup.Id != null, 'Record not created');
+            insert groupMemberObject_Group;  
+            System.Assert(groupMemberObject_Group.Id != null, 'Record not created');
         }
         
         //Create Custom Setting - Trigger Executions
-        Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
         TriggerExecution.Name = 'activateProject';
         TriggerExecution.Core_Active__c = true;
         TriggerExecution.Core_Class_Name__c ='Core_IPS_Project_Handler';
@@ -1321,20 +1309,21 @@ Modification Log :
         TriggerExecution.Core_Trigger_Events__c = 'before update,after update';
         
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         ListOfSupportOrg.get(0).ownerId = QueueRecord.Id;
         
         System.runAs(ListOfUser.get(0)){
             insert TriggerExecution; 
             //insert IPSLabels;
             insert ListOfSupportOrg.get(0);
+            System.debug('>>>> Sup Org'+ListOfSupportOrg.get(0));
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -1356,8 +1345,8 @@ Modification Log :
         
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
                 SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
@@ -1371,6 +1360,7 @@ Modification Log :
         }
         System.runAs(ListOfUser1.get(0)){
             insert ListOfSupportedProduct;
+            System.debug('>>>> Sup Prod'+ListOfSupportedProduct.get(0));
         }
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         
@@ -1385,7 +1375,7 @@ Modification Log :
             Core_MPNDA__c='12345',
             recordTypeId = projectRecordTypeId
         );
-        List<Core_IPS_Project__c> listOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
+        List<Core_IPS_Project__c> ListOfIpsProjects = new List<Core_IPS_Project__c>{ipsProjectRecord};
             System.runAs(ListOfUser1.get(0)){
                 insert ListOfIpsProjects; 
                 
@@ -1395,18 +1385,21 @@ Modification Log :
         System.runAs(ListOfUser[0]){
                 ListOfIpsProjects.get(0).Core_Status__c = 'Submitted Pending';
                 update ListOfIpsProjects;
+                System.debug('>>>> IPS Proj'+ListOfIpsProjects);
                 core_ips_account__c projAccount= TestUtilities.getCoreIpsAccount();
                 projAccount.Core_Account__c=acc.Id;
                 projAccount.Core_IPS_Project__c=ListOfIpsProjects.get(0).Id;
                 insert projAccount;
+                System.debug('>>>> projAccount'+projAccount+'Account '+acc.Id);
                 Core_IPS_Project_Member__c projectMember = TestUtilities.getProjectMember();
                 projectMember.core_ips_contact__c = con.id;
                 projectMember.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
                 insert projectMember;
+            System.debug('>>>> projectMember'+projAccount+'Contact '+con.Id);
         }
         // Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(1);
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsOne){
+        List<Core_IPS_Product__c> ListOfIpsProducts_One = TestUtilities.getListOfIpsProducts(1);
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_One){
             
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
             ipsProduct.Core_IsSubmitted_Header__c = true;
@@ -1415,11 +1408,11 @@ Modification Log :
             
         } 
         System.runAs(ListOfUser1.get(0)){
-            insert ListOfIpsProductsOne;
-            ListOfIpsProductsOne[0].Core_IPS_Product_Status__c = 'Inactive';
-            update ListOfIpsProductsOne;
+            System.debug('>>>User is'+Userinfo.getName()+':: Profile'+UserInfo.getProfileId());
+            insert ListOfIpsProducts_One;
+            System.debug('>>>ListOfIpsProducts_One'+ListOfIpsProducts_One);
         }
-        System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProducts_One[0].Id != null, 'Record not created');
         
         
         
@@ -1440,12 +1433,12 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Aayushi                   28/12/2018                Created
 ****************************************************************************************************/
-   static testmethod void addDefaultCaseOwnerToISTTest(){
+   static testmethod void addDefaultCaseOwnerToIST_test(){
     getrecords();
               List<Core_IPS_Intel_Support_Team__c> istList=new List<Core_IPS_Intel_Support_Team__c>();
 
        //Create Custom Setting - Trigger Executions
-            Core_Trigger_Executions__c  triggerExecution = new Core_Trigger_Executions__c();
+            Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
             TriggerExecution.Name = 'addDefaultCaseOwnerToIST';
             TriggerExecution.Core_Active__c = true;
             TriggerExecution.Core_Class_Name__c ='Core_IPS_ProductTriggerHandler';
@@ -1454,17 +1447,17 @@ Modification Log :
             TriggerExecution.Core_Trigger_Events__c = 'Afer Insert,After Update';
        insert TriggerExecution;
         // Create Support Org
-        List<Core_IPS_Product_Organization__c> listOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
+        List<Core_IPS_Product_Organization__c> ListOfSupportOrg  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg;
         }
         System.assert(ListOfSupportOrg != null, 'Record not created');
         integer counter = 0;
         // Create Product
-        List<Product2> listOfProducts = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts){
+        List<Product2> ListOfProducts = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '43';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName';
@@ -1485,8 +1478,8 @@ Modification Log :
         System.assert(ListOfProducts[0].id != null,'Record not created');
         counter = 0;
         // Create Supported product
-        List<Core_IPS_Supported_Product__c> listOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
-        for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct){
+        List<Core_IPS_Supported_Product__c> ListOfSupportedProduct = TestUtilities.getListOfSupportedProduct(2);
+        for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct){
             if(counter==0){
                 SupportedProduct.Core_Product__c = ListOfProducts.get(0).id;
                 SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg.get(0).id;
@@ -1502,7 +1495,7 @@ Modification Log :
         System.assert(ListOfSupportedProduct[0].id != null,'Record not created');
         counter = 0;
         // Create Ips Project
-        List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
+        List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(1);
         System.runAs(ListOfUser.get(0)){
             ListOfIpsProjects.get(0).Core_Ips_Private__c=true;
             insert ListOfIpsProjects;
@@ -1520,21 +1513,21 @@ Modification Log :
        istList.add(istInsertRec1);
        insert istList;
         // Create IPS Product
-        List<Core_IPS_Product__c> listOfIpsProductsOne = TestUtilities.getListOfIpsProducts(3);
+        List<Core_IPS_Product__c> ListOfIpsProducts_One = TestUtilities.getListOfIpsProducts(3);
        Integer i=1;
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsOne){
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_One){
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct.get(0).id;
                 ipsProduct.Status__c = 'Submitted';
                 ipsProduct.Is_Approved__c = false;
-                ipsProduct.Core_IPS_Prod_Def_Case_Owner_ID__c=ListOfUser.get(i).Id;
+                ipsProduct.Core_IPS_Product_Case_Owner__c=ListOfUser.get(i).Id;
             i++;   
         }
         System.runAs(ListOfUser.get(0)){
-            insert ListOfIpsProductsOne;
+            insert ListOfIpsProducts_One;
             
         }
-        System.assert(ListOfIpsProductsOne[0].Id != null, 'Record not created');
+        System.assert(ListOfIpsProducts_One[0].Id != null, 'Record not created');
         
             }
             
@@ -1550,15 +1543,16 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Sumukh                    03/01/2018                Created
 ****************************************************************************************************/
-  static testmethod void partnerAgentAsProjectMemberTest(){
+  static testmethod void partnerAgentAsProjectMember_test(){
    getrecords();
    integer counter = 0;
    
     Map<String,ID> profiles = new Map<String,ID>();
-        List<Profile> profileList = [select id, name from Profile where name='IPS Agent-Partner' ];
+        List<Profile> ProfileList = [select id, name from Profile where name='IPS Agent-Partner' ];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
+        system.debug('profiles'+profiles);
         
         User thisUser = [select Id from User where Id = :UserInfo.getUserId()];
         User userRecord = new User();
@@ -1584,7 +1578,7 @@ Modification Log :
             testAccount1.ownerid = portalAccountOwner1.id;      
             insert testAccount1;             
             Contact testContact1 = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234643@testing.com.testsetup',
-                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful',MailingCountry = 'India');
+                                 AccountId=testAccount1.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_AGS_Integration_Status__c='Successful');
             insert testContact1;
              
             UserRole ur = new UserRole(DeveloperName = 'MyCustomRole', Name = 'My Role');
@@ -1606,7 +1600,7 @@ Modification Log :
             insert userRecord;
             
               // Create Accounts
-            List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
+            List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
             for(Account acc: ListOfAccounts){
                 acc.Core_CNDA_Number__c='123';
             }
@@ -1614,23 +1608,22 @@ Modification Log :
             System.assert(ListOfAccounts[0].Id != null, 'Record not created');
            
             // Create Contact
-            List<Contact> listOfContacts = TestUtilities.getListOfContact(1);
-            for(Contact contactRec : ListOfContacts){                
+            List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
+            for(Contact ContactRec : ListOfContacts){                
                 ContactRec.Accountid = ListOfAccounts.get(0).Id;
                 ContactRec.Core_IPS_Active__c = true;
-                ContactRec.MailingCountry = 'India';
             }
             insert ListOfContacts;
             System.assert(ListOfContacts[0].Id != null, 'Record not created');
            
             // Create Ips Project
-            List<Core_IPS_Project__c> listOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
+            List<Core_IPS_Project__c> ListOfIpsProjects = TestUtilities.getListOfIpsProjects(2);
             insert ListOfIpsProjects;
             System.assert(ListOfIpsProjects[0].Id != null, 'Record not created');
            
             // Create Ips Account
-            List<Core_IPS_Account__c> listOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
-            for(Core_IPS_Account__c ipsAcc : ListOfIpsAccounts){
+            List<Core_IPS_Account__c> ListOfIpsAccounts = TestUtilities.getListOfIpsAccounts(1);
+            for(Core_IPS_Account__c IpsAcc : ListOfIpsAccounts){
                 IpsAcc.Core_Account__c = ListOfAccounts.get(0).Id;
                 IpsAcc.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
             }
@@ -1638,8 +1631,8 @@ Modification Log :
             System.assert(ListOfIpsAccounts[0].Id != null, 'Record not created');
             
             // Create Project Member
-            List<Core_IPS_Project_Member__c> listOfProjectMembers = TestUtilities.getListOfProjectMembers(1);
-            for(Core_IPS_Project_Member__c projMem : ListOfProjectMembers){
+            List<Core_IPS_Project_Member__c> ListOfProjectMembers = TestUtilities.getListOfProjectMembers(1);
+            for(Core_IPS_Project_Member__c ProjMem : ListOfProjectMembers){
                 ProjMem.Core_IPS_Contact__c = testContact1.Id;
                 ProjMem.Core_IPS_Project__c = ListOfIpsProjects.get(0).Id;
                 ProjMem.Core_User__c = userRecord.id;
@@ -1647,23 +1640,23 @@ Modification Log :
             insert ListOfProjectMembers; 
           
           
-   List<Core_IPS_Product_Organization__c> listOfSupportOrg1  = TestUtilities.getListOfSupportOrg(2);
+   List<Core_IPS_Product_Organization__c> ListOfSupportOrg1  = TestUtilities.getListOfSupportOrg(2);
         System.runAs(ListOfUser.get(0)){
-            List<Core_IPS_Labels__c> iPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
+            List<Core_IPS_Labels__c> IPSLabelsForGlobalAsset = TestUtilities.getIPSLabel();           
             insert IPSLabelsForGlobalAsset; 
             insert ListOfSupportOrg1;
         }
         System.assert(ListOfSupportOrg1 != null, 'Record not created');
         
    // create project
-   List<Core_IPS_Project__c> listOfIpsProjects1 = TestUtilities.getListOfIpsProjects(1);
+   List<Core_IPS_Project__c> ListOfIpsProjects1 = TestUtilities.getListOfIpsProjects(1);
  
    System.runAs(ListOfUser.get(0)){
    insert ListOfIpsProjects1;
    }
    
-   List<Product2> listOfProducts1 = TestUtilities.getListOfProduct(2);
-        for(Product2 product : ListOfProducts1){
+   List<Product2> ListOfProducts1 = TestUtilities.getListOfProduct(2);
+        for(Product2 Product : ListOfProducts1){
             if(counter==0){
                 Product.Core_Hierarchy_ID__c = '431';
                 Product.Core_Hierarchy_Name__c = 'ProdHierarchyName2';
@@ -1683,8 +1676,8 @@ Modification Log :
         }
         System.assert(ListOfProducts1[0].id != null,'Record not created');
   
-   List<Core_IPS_Supported_Product__c> listOfSupportedProduct1 = TestUtilities.getListOfSupportedProduct(1);
-   for(Core_IPS_Supported_Product__c supportedProduct : ListOfSupportedProduct1){           
+   List<Core_IPS_Supported_Product__c> ListOfSupportedProduct1 = TestUtilities.getListOfSupportedProduct(1);
+   for(Core_IPS_Supported_Product__c SupportedProduct : ListOfSupportedProduct1){           
             SupportedProduct.Core_Product__c = ListOfProducts1.get(1).id;
             SupportedProduct.Core_Product_Organization__c = ListOfSupportOrg1.get(1).id;
             } 
@@ -1695,21 +1688,21 @@ Modification Log :
    System.assert(ListOfSupportedProduct1[0].id != null,'Record not created');
         
    // Create Product
-    List<Core_IPS_Product__c> listOfIpsProductsOne1 = TestUtilities.getListOfIpsProducts(3);
+    List<Core_IPS_Product__c> ListOfIpsProducts_One1 = TestUtilities.getListOfIpsProducts(3);
        Integer i=1;
-        for(Core_IPS_Product__c ipsProduct:ListOfIpsProductsOne1){
+        for(Core_IPS_Product__c ipsProduct:ListOfIpsProducts_One1){
                 ipsProduct.Core_IPS_Product_Name__c = 'Test product';
                 ipsProduct.Core_IPS_Project__c = ListOfIpsProjects.get(0).id;
                 ipsProduct.Core_Supported_Product__c = ListOfSupportedProduct1.get(0).id;
                 ipsProduct.Status__c = 'Submitted';
                 ipsProduct.Is_Approved__c = true;
-                ipsProduct.Core_IPS_Prod_Def_Case_Owner_ID__c= userRecord.id;
+                ipsProduct.Core_IPS_Product_Case_Owner__c= userRecord.id;
             i++;   
         }
     System.runAs(ListOfUser.get(0)){
-            insert ListOfIpsProductsOne1;
+            insert ListOfIpsProducts_One1;
     }
-    System.assert(ListOfIpsProductsOne1[0].Id != null, 'Record not created');     
+    System.assert(ListOfIpsProducts_One1[0].Id != null, 'Record not created');     
      }
     }
   }

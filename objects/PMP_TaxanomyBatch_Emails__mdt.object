@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This metadata contains list of email ids to which the mail has to be sent post batch job runs</description>
+    <fields>
+        <fullName>PMP_Email_Distribution_List__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP Email Distribution List</label>
+        <required>false</required>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <label>PMP_TaxanomyBatch_Emails</label>
+    <pluralLabel>PMP_TaxanomyBatch_Emails</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

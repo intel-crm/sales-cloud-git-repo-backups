@@ -1,0 +1,11 @@
+<apex:page controller="PMP_ClearCacheOnSpecificRecordController" lightningStyleSheets="true">
+    <script type="text/javascript">
+    function setupPage() {
+        sforce.one.showToast({
+        "title": "Success",
+        "message": "Cache Cleared!",
+        "type": "success" 
+        });
+    }
+    </script>
+</apex:page>

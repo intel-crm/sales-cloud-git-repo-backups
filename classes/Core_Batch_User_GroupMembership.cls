@@ -13,7 +13,6 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
 
     // Compare the user type to the group that it should be assigned to, returning Users not assigned correctly.
     global List<User> CompareGroup(string Field, string Value, string ExpectedGroup){
-        System.debug('Entering CompareGroup: ' + Field + ',  ' + Value + ',  ' + ExpectedGroup);
         List<Group> G = [ SELECT id FROM Group WHERE DeveloperName = :ExpectedGroup ];
         if(!G.isEmpty()) {
             id GroupID = G[0].id;
@@ -22,7 +21,6 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
                 Members.add(M.UserOrGroupId);
             }
             if(Field == 'Core_Employee_Type_Code__c' && !Members.isEmpty()) {
-                System.debug('Exiting CompareGroup');
                 return [
                     SELECT id, Core_Employee_Type_Code__c, Username, alias
                     FROM User
@@ -33,7 +31,7 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
                 ];
             }
         }
-        System.debug('Exiting CompareGroup: no results');
+        
         return null;
     }
 
@@ -44,7 +42,7 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
         for(Core_User_Group_Rule__c Rule : Core_User_Group_Rule__c.getAll().values()) {
             if(Rule.Core_Field_Name__c == 'Core_Employee_Type_Code__c') {
                 Users.addAll(CompareGroup(Rule.Core_Field_Name__c, Rule.Core_Field_Value__c, Rule.Core_Group_Name__c));
-                System.debug('Zay - inside Core_Batch_User_Group_Membmership - User List Count - ' + Users.size());
+                
             }
         }
         // For inversion of control unit test, to limit the result set:
@@ -70,8 +68,6 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
     // group membership based on the mapping rules.
     global void execute(Database.BatchableContext BC, list<User> Users) {
         if(Users.isEmpty()) return;
-        System.Debug('Zay - inside batch execute - ' + Users);
-        System.debug('Correcting group membership for users:');
         List<GroupMember> Members = new List<GroupMember>();
         List<GroupMember> Remove = new List<GroupMember>();
         Map<Id,GroupMember> employeeIdGroupMemberMap = createUserGroupMemberMap(Label.Core_All_Employees_Group_Id);
@@ -79,7 +75,7 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
         Map<Id,GroupMember> nonbadgedIdGroupMemberMap = createUserGroupMemberMap(Label.Core_All_Non_Badged_Group_Id);
         
         for(User U : Users) {
-            System.debug('Adding ' + U.Username);
+            
             if(U.Core_Employee_Type_Code__c == 'EMP') {
                 Members.add(new GroupMember(GroupID=Label.Core_All_Employees_Group_Id, UserOrGroupId=U.ID));
                 if(ctwIdGroupMemberMap.containsKey(U.Id)) {
@@ -124,10 +120,6 @@ global class Core_Batch_User_GroupMembership implements Database.Batchable<User>
         mail.setSubject('Batch Status: ' + Job.Status);
         mail.setPlainTextBody('The batch Apex job processed ' + Job.TotalJobItems +
             ' items with '+ Job.NumberOfErrors + ' failures.');
-        OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    mail.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
         Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
     }
 }

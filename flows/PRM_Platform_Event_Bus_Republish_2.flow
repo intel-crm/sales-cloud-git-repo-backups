@@ -9,7 +9,6 @@
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>PRM_Email_Log_PlatformEventBus_Republish</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <actionCalls>
         <name>Execute_PEB_Batch_2</name>
@@ -20,14 +19,14 @@
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>PRM_Email_Log_PlatformEventBus_Republish</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <description>Converted from PB</description>
+    <description>Check for failed EmailLog Records criteria.
+Republish Failed Platform Event records</description>
     <environments>Default</environments>
-    <interviewLabel>PRM_Platform Event Bus_Republish {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>PRM_Platform Event Bus_Republish</label>
+    <interviewLabel>PRM_Platform Event Bus_Republish_2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_Platform Event Bus_Republish_2</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -38,12 +37,6 @@
         <name>CanvasMode</name>
         <value>
             <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>OriginBuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
         </value>
     </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
@@ -68,7 +61,7 @@
         <object>Core_Platform_Event_Log__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <scheduledPaths>
-            <name>ScheduledPath1</name>
+            <name>ScheduledPath_1</name>
             <connector>
                 <targetReference>Execute_PEB_Batch_1</targetReference>
             </connector>

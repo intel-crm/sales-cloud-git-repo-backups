@@ -8,736 +8,108 @@
         <label><!-- Core_MDF_ActivityCategory --></label>
         <name>Core_MDF_ActivityCategory__c</name>
         <picklistValues>
-            <masterLabel>Audio</masterLabel>
-            <translation><!-- Audio --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Audio 2025</masterLabel>
-            <translation><!-- Audio 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Broadcast</masterLabel>
             <translation>广播</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Broadcast (Pre-2025)</masterLabel>
-            <translation><!-- Broadcast (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Buyer Incentive</masterLabel>
-            <translation><!-- Buyer Incentive --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Buyer Incentive 2025</masterLabel>
-            <translation><!-- Buyer Incentive 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Digital</masterLabel>
-            <translation><!-- Digital --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Digital 2025</masterLabel>
-            <translation><!-- Digital 2025 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Digital Media</masterLabel>
             <translation>数字媒体</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Digital Media (Pre-2025)</masterLabel>
-            <translation><!-- Digital Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Event</masterLabel>
             <translation>活动</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Event (Pre-2025)</masterLabel>
-            <translation><!-- Event (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Event 2025</masterLabel>
-            <translation><!-- Event 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Incentive</masterLabel>
-            <translation>激励选项</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Lead Management</masterLabel>
             <translation>管理销售线索</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Lead Management (Pre-2025)</masterLabel>
-            <translation><!-- Lead Management (Pre-2025) --></translation>
+            <masterLabel>Media</masterLabel>
+            <translation><!-- Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Online</masterLabel>
+            <translation><!-- Online --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Online Ad</masterLabel>
             <translation><!-- Online Ad --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Out of Home</masterLabel>
-            <translation><!-- Out of Home --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of Home (Pre-2025)</masterLabel>
-            <translation><!-- Out of Home (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of Home 2025</masterLabel>
-            <translation><!-- Out of Home 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Out of Home Media</masterLabel>
             <translation>户外媒体</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out of Home Media (Pre-2025)</masterLabel>
-            <translation><!-- Out of Home Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Outcome-Based</masterLabel>
-            <translation><!-- Outcome-Based --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Paid Social Media</masterLabel>
             <translation>付费社交媒体</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Paid Social Media (Pre-2025)</masterLabel>
-            <translation><!-- Paid Social Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Print</masterLabel>
-            <translation>平面媒体</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Print (Pre-2025)</masterLabel>
-            <translation><!-- Print (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Print 2025</masterLabel>
-            <translation><!-- Print 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Print Media</masterLabel>
             <translation>平面广告媒体</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Print Media (Pre-2025)</masterLabel>
-            <translation><!-- Print Media (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Production</masterLabel>
-            <translation><!-- Production --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Production 2025</masterLabel>
-            <translation><!-- Production 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Purchase Incentive</masterLabel>
-            <translation>购买激励</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Purchase Incentive (Pre-2025)</masterLabel>
-            <translation><!-- Purchase Incentive (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Sales Incentive</masterLabel>
-            <translation>销售激励</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Incentive (Pre-2025)</masterLabel>
-            <translation><!-- Sales Incentive (Pre-2025) --></translation>
+            <translation><!-- Sales Incentive --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Sales Readiness</masterLabel>
-            <translation>销售就绪</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Readiness (Pre-2025)</masterLabel>
-            <translation><!-- Sales Readiness (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Readiness 2025</masterLabel>
-            <translation><!-- Sales Readiness 2025 --></translation>
+            <translation><!-- Sales Readiness --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Search Engine Marketing (SEM)</masterLabel>
             <translation>搜索引擎营销 (SEM)</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Search Engine Marketing (SEM) (Pre-2025)</masterLabel>
-            <translation><!-- Search Engine Marketing (SEM) (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Search Performance</masterLabel>
             <translation><!-- Search Performance --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Seller Incentive</masterLabel>
-            <translation><!-- Seller Incentive --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller Incentive 2025</masterLabel>
-            <translation><!-- Seller Incentive 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tech Exploration</masterLabel>
-            <translation>技术探索</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tech Exploration (Pre-2025)</masterLabel>
-            <translation><!-- Tech Exploration (Pre-2025) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Sales</masterLabel>
-            <translation><!-- Technical Sales --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Technical Sales 2025</masterLabel>
-            <translation><!-- Technical Sales 2025 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Training</masterLabel>
             <translation><!-- Training --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video</masterLabel>
-            <translation><!-- Video --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video 2025</masterLabel>
-            <translation><!-- Video 2025 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Activity Category -&gt;Type --></label>
-        <name>Core_MDF_Activity_Category_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Engineering Activity --></label>
-        <name>Core_MDF_Activity_Engineering_Nm__c</name>
-        <picklistValues>
-            <masterLabel>DVT Board &amp; system build &amp; delivery (ES2/QS)</masterLabel>
-            <translation><!-- DVT Board &amp; system build &amp; delivery (ES2/QS) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DVT Exit</masterLabel>
-            <translation><!-- DVT Exit --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EVT Board &amp; system build &amp; delivery (ES1/ES2)</masterLabel>
-            <translation><!-- EVT Board &amp; system build &amp; delivery (ES1/ES2) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EVT Exit</masterLabel>
-            <translation><!-- EVT Exit --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>First Customer Shipment</masterLabel>
-            <translation><!-- First Customer Shipment --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lab/Factory prep &amp; tools</masterLabel>
-            <translation><!-- Lab/Factory prep &amp; tools --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other - Eng Act field</masterLabel>
-            <translation><!-- Other - Eng Act field --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other - Research &amp; Incubation</masterLabel>
-            <translation><!-- Other - Research &amp; Incubation --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PVT Board &amp; system build &amp; delivery (QS/PRQ)</masterLabel>
-            <translation><!-- PVT Board &amp; system build &amp; delivery (QS/PRQ) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PVT Exit</masterLabel>
-            <translation><!-- PVT Exit --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Power On Board &amp; system build &amp; delivery</masterLabel>
-            <translation><!-- Power On Board &amp; system build &amp; delivery --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Power On Exit</masterLabel>
-            <translation><!-- Power On Exit --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>活动子类型</label>
-        <name>Core_MDF_Activity_SubType_nm__c</name>
-        <picklistValues>
-            <masterLabel>Affiliate</masterLabel>
-            <translation>附属会员</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Banner/Display</masterLabel>
-            <translation>横幅广告/显示器</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Catalog/Brochure</masterLabel>
-            <translation>目录/小册子</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Circular</masterLabel>
-            <translation>圆形</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Connected IPOS</masterLabel>
-            <translation>联网 IPOS</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Content Library</masterLabel>
-            <translation><!-- Content Library --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DCF SMF</masterLabel>
-            <translation><!-- DCF SMF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Demonstration</masterLabel>
-            <translation>演示</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Direct Mail</masterLabel>
-            <translation>直邮广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Email</masterLabel>
-            <translation>电子邮件</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>End Cap</masterLabel>
-            <translation>端架</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Giveaway</masterLabel>
-            <translation>赠品</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPOS/ePOS</masterLabel>
-            <translation><!-- IPOS/ePOS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Insert/Outsert/Flyer</masterLabel>
-            <translation>内插页/外插页/传单</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Landing Experience</masterLabel>
-            <translation>登陆体验</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Lead Generation</masterLabel>
-            <translation>生成销售线索</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Listing Page Branding</masterLabel>
-            <translation>列出页面品牌</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mobile App</masterLabel>
-            <translation><!-- Mobile App --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Operational Support</masterLabel>
-            <translation>运营支持</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Collateral)</masterLabel>
-            <translation>其他（宣传材料）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (EcosystemPartner.com)</masterLabel>
-            <translation><!-- Other (EcosystemPartner.com) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (In-Store Promotion)</masterLabel>
-            <translation>其他（店内促销）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (IndustryPartner.com)</masterLabel>
-            <translation>其他（IndustryPartner.com）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Joint Event)</masterLabel>
-            <translation>其他（联合活动）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Member.com)</masterLabel>
-            <translation>其他（Member.com）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (NonPartner.com)</masterLabel>
-            <translation>其他（NonPartner.com）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Out-Of-Store Promotion)</masterLabel>
-            <translation>其他（店外促销）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Personnel)</masterLabel>
-            <translation>其他（人员）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Promotion)</masterLabel>
-            <translation>其他（促销）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Poster/Sign/Banner</masterLabel>
-            <translation>海报/标牌/条幅</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Champion</masterLabel>
-            <translation>产品推介人</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Branding</masterLabel>
-            <translation>产品页面品牌推广</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Carousel</masterLabel>
-            <translation>产品页面轮播</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Content</masterLabel>
-            <translation>产品页面内容</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Promo/Landing Page</masterLabel>
-            <translation>促销/登录页面</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Promoter</masterLabel>
-            <translation>促销员</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Recommendation Tool</masterLabel>
-            <translation>推荐工具</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retargeting - Banner/Display</masterLabel>
-            <translation>重新定位 - 横幅/展示</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retargeting - Text Ad</masterLabel>
-            <translation>重新定位 - 文本广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Reviews/Ratings</masterLabel>
-            <translation><!-- Reviews/Ratings --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Riser</masterLabel>
-            <translation>立架</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Kit</masterLabel>
-            <translation>销售套件</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Onsite</masterLabel>
-            <translation>现场销售</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search</masterLabel>
-            <translation>搜索</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Banner/Display</masterLabel>
-            <translation>搜索 - 横幅/展示</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Shopping</masterLabel>
-            <translation>搜索 - 购物</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Sponsored Brand</masterLabel>
-            <translation>搜索 - 赞助品牌</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Text Ad</masterLabel>
-            <translation>搜索 - 文本广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Top Products</masterLabel>
-            <translation>搜索 - 热门产品</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search – Text Ad</masterLabel>
-            <translation><!-- Search – Text Ad --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shop in Shop</masterLabel>
-            <translation>店中店</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shopper Review</masterLabel>
-            <translation>买家评价</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Signage</masterLabel>
-            <translation>标牌广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Social Media - Banner/Display</masterLabel>
-            <translation>社交媒体 - 横幅/展示</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Social Media - Post</masterLabel>
-            <translation>社交媒体 - 贴文</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Streaming/Content Mkt</masterLabel>
-            <translation><!-- Streaming/Content Mkt --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Text Ad</masterLabel>
-            <translation>文本广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Traffic Driver + Landing Page</masterLabel>
-            <translation><!-- Traffic Driver + Landing Page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video</masterLabel>
-            <translation>视频广告</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zone</masterLabel>
-            <translation>专区</translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Activity Subtype old --></label>
-        <name>Core_MDF_Activity_Sub_Type_nm__c</name>
-        <picklistValues>
-            <masterLabel>Affiliate</masterLabel>
-            <translation><!-- Affiliate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Banner/Display</masterLabel>
-            <translation><!-- Banner/Display --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Catalog/Brochure</masterLabel>
-            <translation><!-- Catalog/Brochure --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Circular</masterLabel>
-            <translation><!-- Circular --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Connected IPOS</masterLabel>
-            <translation><!-- Connected IPOS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Demonstration</masterLabel>
-            <translation><!-- Demonstration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Email</masterLabel>
-            <translation><!-- Email --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>End Cap</masterLabel>
-            <translation><!-- End Cap --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Giveaway</masterLabel>
-            <translation><!-- Giveaway --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPOS/ePOS</masterLabel>
-            <translation><!-- IPOS/ePOS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Insert/Outsert/Flyer</masterLabel>
-            <translation><!-- Insert/Outsert/Flyer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Landing Experience</masterLabel>
-            <translation><!-- Landing Experience --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Listing Page Branding</masterLabel>
-            <translation><!-- Listing Page Branding --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Collateral)</masterLabel>
-            <translation><!-- Other (Collateral) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Direct Mail)</masterLabel>
-            <translation><!-- Other (Direct Mail) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (IndustryPartner.com)</masterLabel>
-            <translation><!-- Other (IndustryPartner.com) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Joint Event)</masterLabel>
-            <translation><!-- Other (Joint Event) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Member.com)</masterLabel>
-            <translation><!-- Other (Member.com) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (NonPartner.com)</masterLabel>
-            <translation><!-- Other (NonPartner.com) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Promotion)</masterLabel>
-            <translation><!-- Other (Promotion) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Poster/Sign/Banner</masterLabel>
-            <translation><!-- Poster/Sign/Banner --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Branding</masterLabel>
-            <translation><!-- Product Page Branding --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Carousel</masterLabel>
-            <translation><!-- Product Page Carousel --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Page Content</masterLabel>
-            <translation><!-- Product Page Content --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Promo/Landing Page</masterLabel>
-            <translation><!-- Promo/Landing Page --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Promoter</masterLabel>
-            <translation><!-- Promoter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Recommendation Tool</masterLabel>
-            <translation><!-- Recommendation Tool --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retargeting - Banner/Display</masterLabel>
-            <translation><!-- Retargeting - Banner/Display --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retargeting - Text Ad</masterLabel>
-            <translation><!-- Retargeting - Text Ad --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Riser</masterLabel>
-            <translation><!-- Riser --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sales Onsite</masterLabel>
-            <translation><!-- Sales Onsite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search</masterLabel>
-            <translation><!-- Search --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Banner/Display</masterLabel>
-            <translation><!-- Search - Banner/Display --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Shopping</masterLabel>
-            <translation><!-- Search - Shopping --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Sponsored Brand</masterLabel>
-            <translation><!-- Search - Sponsored Brand --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Text Ad</masterLabel>
-            <translation><!-- Search - Text Ad --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Search - Top Products</masterLabel>
-            <translation><!-- Search - Top Products --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shop in Shop</masterLabel>
-            <translation><!-- Shop in Shop --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Shopper Review</masterLabel>
-            <translation><!-- Shopper Review --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Signage</masterLabel>
-            <translation><!-- Signage --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Social Media - Banner/Display</masterLabel>
-            <translation><!-- Social Media - Banner/Display --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Social Media - Post</masterLabel>
-            <translation><!-- Social Media - Post --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Text Ad</masterLabel>
-            <translation><!-- Text Ad --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Video</masterLabel>
-            <translation><!-- Video --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zone</masterLabel>
-            <translation><!-- Zone --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label><!-- Core_MDF_Activity_Types --></label>
         <name>Core_MDF_Activity_Types__c</name>
         <picklistValues>
+            <masterLabel>Affiliate/ Referral Programs</masterLabel>
+            <translation><!-- Affiliate/ Referral Programs --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Banner Ad</masterLabel>
             <translation><!-- Banner Ad --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Benchmarking</masterLabel>
-            <translation><!-- Benchmarking --></translation>
+            <masterLabel>Billboard, Transit and Digital Signage</masterLabel>
+            <translation><!-- Billboard, Transit and Digital Signage --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Benchmarks</masterLabel>
-            <translation><!-- Benchmarks --></translation>
+            <masterLabel>Billboard, Transit and Digital Signage - OOH Digital Displays</masterLabel>
+            <translation><!-- Billboard, Transit and Digital Signage - OOH Digital Displays --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Billboard/Transit</masterLabel>
             <translation>路牌广告/流动广告</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Buyer - Bundle Offer</masterLabel>
-            <translation><!-- Buyer - Bundle Offer --></translation>
+            <masterLabel>Broadcast (Audio-Visual) - Radio Ad - out of store</masterLabel>
+            <translation><!-- Broadcast (Audio-Visual) - Radio Ad - out of store --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Buyer - Other</masterLabel>
-            <translation>购买者 - 其他</translation>
+            <masterLabel>Broadcast (Audio-Visual) - TV Ad - TV Channels</masterLabel>
+            <translation><!-- Broadcast (Audio-Visual) - TV Ad - TV Channels --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Buyer - Reward/Frequency</masterLabel>
-            <translation>购买者 - 奖励/频率</translation>
+            <masterLabel>Broadcast (Audio-Visual) - TV Ad - in store</masterLabel>
+            <translation><!-- Broadcast (Audio-Visual) - TV Ad - in store --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Buyer - Sweepstakes</masterLabel>
-            <translation>购买者 - 抽奖</translation>
+            <masterLabel>Broadcast (Audio/Visual)</masterLabel>
+            <translation><!-- Broadcast (Audio/Visual) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Case Study</masterLabel>
-            <translation>案例研究</translation>
+            <masterLabel>Bundling with Merchandise Giveaways</masterLabel>
+            <translation><!-- Bundling with Merchandise Giveaways --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Catalog/Brochure</masterLabel>
@@ -760,36 +132,108 @@
             <translation>影院广告</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cloud/Platform Trial</masterLabel>
-            <translation><!-- Cloud/Platform Trial --></translation>
+            <masterLabel>Collateral</masterLabel>
+            <translation><!-- Collateral --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Collateral</masterLabel>
-            <translation>宣传材料</translation>
+            <masterLabel>Collateral - Ad- Magazine/ Newspaper (Print)</masterLabel>
+            <translation><!-- Collateral - Ad- Magazine/ Newspaper (Print) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Catalog</masterLabel>
+            <translation><!-- Collateral - Catalog --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Collateral (Print)</masterLabel>
+            <translation><!-- Collateral - Collateral (Print) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Intel Text boxes on Collateral (Print)</masterLabel>
+            <translation><!-- Collateral - Intel Text boxes on Collateral (Print) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Collateral - Newsletter - PC Products</masterLabel>
+            <translation><!-- Collateral - Newsletter - PC Products --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Collateral - Other</masterLabel>
             <translation>宣传材料 - 其他</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Content</masterLabel>
-            <translation><!-- Content --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Content Creation</masterLabel>
             <translation>内容创建</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Deal Investment</masterLabel>
-            <translation><!-- Deal Investment --></translation>
+            <masterLabel>Customer Demonstrations</masterLabel>
+            <translation><!-- Customer Demonstrations --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Demo Hardware</masterLabel>
-            <translation>演示硬件</translation>
+            <masterLabel>Customer.com</masterLabel>
+            <translation><!-- Customer.com --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Demo Hardware/Cloud Instance</masterLabel>
-            <translation><!-- Demo Hardware/Cloud Instance --></translation>
+            <masterLabel>Customer.com - Intel Logos</masterLabel>
+            <translation><!-- Customer.com - Intel Logos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Intel Promo Page</masterLabel>
+            <translation><!-- Customer.com - Intel Promo Page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Intel Shop in Shop [SIS]</masterLabel>
+            <translation><!-- Customer.com - Intel Shop in Shop [SIS] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Intel Shopper Recommendation Tool [SRT]</masterLabel>
+            <translation><!-- Customer.com - Intel Shopper Recommendation Tool [SRT] --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Intel Shopper Recommendation tool</masterLabel>
+            <translation><!-- Customer.com - Intel Shopper Recommendation tool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Newsletter - PC/non PC Products</masterLabel>
+            <translation><!-- Customer.com - Newsletter - PC/non PC Products --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Onsite Banner Ad</masterLabel>
+            <translation><!-- Customer.com - Onsite Banner Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Onsite Search - Cross sell keywords</masterLabel>
+            <translation><!-- Customer.com - Onsite Search - Cross sell keywords --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Onsite Search - PC keywords</masterLabel>
+            <translation><!-- Customer.com - Onsite Search - PC keywords --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Processor Badges on listing pages</masterLabel>
+            <translation><!-- Customer.com - Processor Badges on listing pages --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Processor Badges on product pages</masterLabel>
+            <translation><!-- Customer.com - Processor Badges on product pages --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Processor Fact tags/ Processor Videos</masterLabel>
+            <translation><!-- Customer.com - Processor Fact tags/ Processor Videos --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Retail Campaign landing page</masterLabel>
+            <translation><!-- Customer.com - Retail Campaign landing page --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Searchandizing</masterLabel>
+            <translation><!-- Customer.com - Searchandizing --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Customer.com - Third Party Banner ad</masterLabel>
+            <translation><!-- Customer.com - Third Party Banner ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Demonstration Unit/Demo Depot</masterLabel>
+            <translation><!-- Demonstration Unit/Demo Depot --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Digital Video Screen</masterLabel>
@@ -800,28 +244,56 @@
             <translation>直邮广告</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Display/Video Ad</masterLabel>
-            <translation><!-- Display/Video Ad --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EcosystemPartner.com</masterLabel>
-            <translation><!-- EcosystemPartner.com --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Email</masterLabel>
             <translation>电子邮件</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Event w Product Sales Onsite</masterLabel>
+            <translation><!-- Event w Product Sales Onsite --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>General (Customer-owned)</masterLabel>
+            <translation><!-- General (Customer-owned) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Graphic Ad</masterLabel>
             <translation>图像广告</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>In-Store Promotion</masterLabel>
-            <translation>店内促销</translation>
+            <masterLabel>In store Point of Sale - End-Cap</masterLabel>
+            <translation><!-- In store Point of Sale - End-Cap --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IndustryPartner.com</masterLabel>
-            <translation><!-- IndustryPartner.com --></translation>
+            <masterLabel>In store Point of Sale - IPOS</masterLabel>
+            <translation><!-- In store Point of Sale - IPOS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - Intel POS Materials</masterLabel>
+            <translation><!-- In store Point of Sale - Intel POS Materials --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - Riser</masterLabel>
+            <translation><!-- In store Point of Sale - Riser --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - Store Zone</masterLabel>
+            <translation><!-- In store Point of Sale - Store Zone --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - TV Ad - in store</masterLabel>
+            <translation><!-- In store Point of Sale - TV Ad - in store --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - Video Ad</masterLabel>
+            <translation><!-- In store Point of Sale - Video Ad --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In store Point of Sale - ePOS with Intel Content</masterLabel>
+            <translation><!-- In store Point of Sale - ePOS with Intel Content --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>In-Store Point-of-Sale (POS)</masterLabel>
+            <translation><!-- In-Store Point-of-Sale (POS) --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Insert/Outsert/Flyer</masterLabel>
@@ -830,14 +302,6 @@
         <picklistValues>
             <masterLabel>Intelligent Point-of-Sale (iPOS)</masterLabel>
             <translation><!-- Intelligent Point-of-Sale (iPOS) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Joint Engineering/Optimization</masterLabel>
-            <translation><!-- Joint Engineering/Optimization --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Joint Event</masterLabel>
-            <translation>联合活动</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Lead Generation</masterLabel>
@@ -856,12 +320,16 @@
             <translation><!-- MDF Recipient Demonstrations (External) --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Magazine and Newspaper</masterLabel>
+            <translation><!-- Magazine and Newspaper --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Magazine/Newspaper</masterLabel>
             <translation>杂志/报纸</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Member Event</masterLabel>
-            <translation>会员活动</translation>
+            <masterLabel>Marketing Support Headcount - Headcount</masterLabel>
+            <translation><!-- Marketing Support Headcount - Headcount --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Member Owned Event</masterLabel>
@@ -876,44 +344,16 @@
             <translation>成员网站在线显示</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Member.com</masterLabel>
-            <translation><!-- Member.com --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Migration</masterLabel>
-            <translation><!-- Migration --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Newsletter</masterLabel>
             <translation><!-- Newsletter --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>NonPartner.com</masterLabel>
-            <translation><!-- NonPartner.com --></translation>
+            <masterLabel>Online Ad - Banner Ad Third party.com</masterLabel>
+            <translation><!-- Online Ad - Banner Ad Third party.com --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Offer - Bundle</masterLabel>
-            <translation><!-- Offer - Bundle --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offer - Contest</masterLabel>
-            <translation><!-- Offer - Contest --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offer - Other</masterLabel>
-            <translation><!-- Offer - Other --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offer - Rewards</masterLabel>
-            <translation><!-- Offer - Rewards --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offer - Sweepstakes</masterLabel>
-            <translation><!-- Offer - Sweepstakes --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offer - Target</masterLabel>
-            <translation><!-- Offer - Target --></translation>
+            <masterLabel>Online Ad - Banner Ad retailer.com</masterLabel>
+            <translation><!-- Online Ad - Banner Ad retailer.com --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Online Ad - Retargeting Banner Ad</masterLabel>
@@ -924,64 +364,12 @@
             <translation>在线投放</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Online Marketing</masterLabel>
+            <translation><!-- Online Marketing --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Online Video Spot</masterLabel>
             <translation>在线视频热点</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Audio)</masterLabel>
-            <translation><!-- Other (Audio) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Broadcast)</masterLabel>
-            <translation>其他（广播）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Digital)</masterLabel>
-            <translation><!-- Other (Digital) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Event)</masterLabel>
-            <translation>其他（活动）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Out Of Home)</masterLabel>
-            <translation><!-- Other (Out Of Home) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Print)</masterLabel>
-            <translation><!-- Other (Print) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Production)</masterLabel>
-            <translation><!-- Other (Production) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Sales Readiness)</masterLabel>
-            <translation>其他（销售就绪）</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Tech Exploration)</masterLabel>
-            <translation><!-- Other (Tech Exploration) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Technical Sales)</masterLabel>
-            <translation><!-- Other (Technical Sales) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other (Video)</masterLabel>
-            <translation><!-- Other (Video) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Out-of-Store Promotion</masterLabel>
-            <translation>店外促销</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Outcome-Based</masterLabel>
-            <translation><!-- Outcome-Based --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Personnel</masterLabel>
-            <translation>人员</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Podcast</masterLabel>
@@ -996,84 +384,60 @@
             <translation>促销活动</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Promotion - Non-Retail</masterLabel>
-            <translation><!-- Promotion - Non-Retail --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Promotion - Retail</masterLabel>
-            <translation><!-- Promotion - Retail --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Proof of Concept</masterLabel>
-            <translation>概念验证</translation>
+            <translation><!-- Proof of Concept --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Radio</masterLabel>
             <translation>电台</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Radio Ad - in store</masterLabel>
+            <translation><!-- Radio Ad - in store --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Radio Ad - out of store</masterLabel>
             <translation><!-- Radio Ad - out of store --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SPIF - Contest</masterLabel>
-            <translation><!-- SPIF - Contest --></translation>
+            <masterLabel>Reward/Frequency Program</masterLabel>
+            <translation><!-- Reward/Frequency Program --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SPIF - Other</masterLabel>
-            <translation><!-- SPIF - Other --></translation>
+            <masterLabel>SPIF - $/Unit</masterLabel>
+            <translation><!-- SPIF - $/Unit --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SPIF - Target</masterLabel>
-            <translation><!-- SPIF - Target --></translation>
+            <masterLabel>SPIF - Competition/Context/Prize</masterLabel>
+            <translation><!-- SPIF - Competition/Context/Prize --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>SPIF - Volume</masterLabel>
-            <translation><!-- SPIF - Volume --></translation>
+            <masterLabel>SPIF - Meeting Target</masterLabel>
+            <translation><!-- SPIF - Meeting Target --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Sales Event</masterLabel>
-            <translation><!-- Sales Event --></translation>
+            <masterLabel>Sales Force Training</masterLabel>
+            <translation><!-- Sales Force Training --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Search (SEM) Ad</masterLabel>
-            <translation><!-- Search (SEM) Ad --></translation>
+            <masterLabel>Sales/ Marketing Support Headcount</masterLabel>
+            <translation><!-- Sales/ Marketing Support Headcount --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Training - Demo Days</masterLabel>
+            <translation><!-- Salesforce Training - Demo Days --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Training - RSP Training - F2F</masterLabel>
+            <translation><!-- Salesforce Training - RSP Training - F2F --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Salesforce Training - RSP Training - IREP</masterLabel>
+            <translation><!-- Salesforce Training - RSP Training - IREP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Search Engine Marketing (SEM)</masterLabel>
             <translation><!-- Search Engine Marketing (SEM) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seed Unit</masterLabel>
-            <translation>样机</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller - Contest SPIF</masterLabel>
-            <translation>销售者 - 竞争性销售业绩奖金</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller - Other</masterLabel>
-            <translation>销售者 - 其他</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller - Per Instance SPIF</masterLabel>
-            <translation><!-- Seller - Per Instance SPIF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller - Per Unit SPIF</masterLabel>
-            <translation>销售者 - 单件销售业绩奖金</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Seller - Target SPIF</masterLabel>
-            <translation>销售者 - 目标销售业绩奖金</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Slotting</masterLabel>
-            <translation>上货</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Social Ad</masterLabel>
-            <translation><!-- Social Ad --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Social Online Display</masterLabel>
@@ -1084,24 +448,32 @@
             <translation><!-- Social Post --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Development</masterLabel>
-            <translation><!-- Solution Development --></translation>
+            <masterLabel>Sponsorships</masterLabel>
+            <translation><!-- Sponsorships --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Streaming</masterLabel>
-            <translation>流播放</translation>
+            <masterLabel>Sponsorships/ Third Party Event</masterLabel>
+            <translation><!-- Sponsorships/ Third Party Event --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>System Demo</masterLabel>
-            <translation><!-- System Demo --></translation>
+            <masterLabel>Sweepstakes</masterLabel>
+            <translation><!-- Sweepstakes --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>TV</masterLabel>
-            <translation>电视</translation>
+            <masterLabel>System Seed</masterLabel>
+            <translation><!-- System Seed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Seed – End-Customer</masterLabel>
+            <translation><!-- System Seed – End-Customer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>System Seed – Government Entities</masterLabel>
+            <translation><!-- System Seed – Government Entities --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Telemarketing</masterLabel>
-            <translation>电话营销</translation>
+            <translation><!-- Telemarketing --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Television</masterLabel>
@@ -1112,32 +484,28 @@
             <translation><!-- Text Ad --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Third Party Event</masterLabel>
-            <translation>第三方活动</translation>
+            <masterLabel>Third-party.com</masterLabel>
+            <translation><!-- Third-party.com --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Third-Party Event</masterLabel>
-            <translation><!-- Third-Party Event --></translation>
+            <masterLabel>Thirdparty.com - Blog Post</masterLabel>
+            <translation><!-- Thirdparty.com - Blog Post --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Training Incentive</masterLabel>
-            <translation><!-- Training Incentive --></translation>
+            <masterLabel>Thirdparty.com - Retargeting</masterLabel>
+            <translation><!-- Thirdparty.com - Retargeting --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Training/Meeting</masterLabel>
-            <translation>培训/会议</translation>
+            <masterLabel>Thirdparty.com - SEM</masterLabel>
+            <translation><!-- Thirdparty.com - SEM --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Trial Instance</masterLabel>
-            <translation><!-- Trial Instance --></translation>
+            <masterLabel>Thirdparty.com - Social Post</masterLabel>
+            <translation><!-- Thirdparty.com - Social Post --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Video Screen</masterLabel>
-            <translation>视频画面</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Web Content</masterLabel>
-            <translation><!-- Web Content --></translation>
+            <masterLabel>White Paper/ Case Study/ Benchmarking</masterLabel>
+            <translation><!-- White Paper/ Case Study/ Benchmarking --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>iREP</masterLabel>
@@ -1160,10 +528,6 @@
             <translation><!-- 10ᵗʰ Gen Core i5 processors --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>11ᵗʰ Gen</masterLabel>
-            <translation><!-- 11ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>6ᵗʰ – 7ᵗʰ Gen</masterLabel>
             <translation><!-- 6ᵗʰ – 7ᵗʰ Gen --></translation>
         </picklistValues>
@@ -1176,68 +540,12 @@
             <translation><!-- 9ᵗʰ Gen --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Altera®</masterLabel>
-            <translation><!-- Altera® --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Athena</masterLabel>
             <translation><!-- Athena --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>EVO</masterLabel>
-            <translation><!-- EVO --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Atom®</masterLabel>
-            <translation>英特尔凌动®</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Unite®</masterLabel>
-            <translation><!-- Intel Unite® --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel vPro®</masterLabel>
-            <translation><!-- Intel vPro® --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel vPro® platform</masterLabel>
-            <translation><!-- Intel vPro® platform --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 10ᵗʰ Gen</masterLabel>
-            <translation><!-- Intel® 10ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 11ᵗʰ Gen</masterLabel>
-            <translation><!-- Intel® 11ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 12ᵗʰ Gen</masterLabel>
-            <translation><!-- Intel® 12ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 7ᵗʰ Gen Core™ or older</masterLabel>
-            <translation><!-- Intel® 7ᵗʰ Gen Core™ or older --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 8ᵗʰ Gen</masterLabel>
-            <translation><!-- Intel® 8ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® 9ᵗʰ Gen</masterLabel>
-            <translation><!-- Intel® 9ᵗʰ Gen --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Arc™ GPU</masterLabel>
-            <translation><!-- Intel® Arc™ GPU --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Atom® Processor</masterLabel>
-            <translation><!-- Intel® Atom® Processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Celeron ®</masterLabel>
-            <translation><!-- Intel® Celeron ® --></translation>
+            <masterLabel>Intel® Atom®  Processor</masterLabel>
+            <translation><!-- Intel® Atom®  Processor --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Core™ M Processor</masterLabel>
@@ -1252,20 +560,8 @@
             <translation><!-- Intel® Core™ X-Series Processor Family --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel® Core™ i3</masterLabel>
-            <translation><!-- Intel® Core™ i3 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel® Core™ i3 Processor</masterLabel>
             <translation><!-- Intel® Core™ i3 Processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Core™ i3 processor with Intel® Hybrid Technology</masterLabel>
-            <translation><!-- Intel® Core™ i3 processor with Intel® Hybrid Technology --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Core™ i5</masterLabel>
-            <translation><!-- Intel® Core™ i5 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Core™ i5 Processor</masterLabel>
@@ -1278,10 +574,6 @@
         <picklistValues>
             <masterLabel>Intel® Core™ i5 X-Series Processor</masterLabel>
             <translation><!-- Intel® Core™ i5 X-Series Processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Core™ i5 processor with Intel® Hybrid Technology</masterLabel>
-            <translation><!-- Intel® Core™ i5 processor with Intel® Hybrid Technology --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Core™ i5 vPro® Processor</masterLabel>
@@ -1298,10 +590,6 @@
         <picklistValues>
             <masterLabel>Intel® Core™ i5+ vPro® Processor</masterLabel>
             <translation><!-- Intel® Core™ i5+ vPro® Processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Core™ i7</masterLabel>
-            <translation><!-- Intel® Core™ i7 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Core™ i7 Processor</masterLabel>
@@ -1336,10 +624,6 @@
             <translation><!-- Intel® Core™ i7+ vPro® Processor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel® Core™ i9</masterLabel>
-            <translation><!-- Intel® Core™ i9 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel® Core™ i9 Processor</masterLabel>
             <translation><!-- Intel® Core™ i9 Processor --></translation>
         </picklistValues>
@@ -1372,84 +656,16 @@
             <translation><!-- Intel® Corporate Logo --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel® Evo™ platform</masterLabel>
-            <translation><!-- Intel® Evo™ platform --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Evo™ platform powered by Intel® Core™ vPro® processor</masterLabel>
-            <translation><!-- Intel® Evo™ platform powered by Intel® Core™ vPro® processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Evo™ powered by Core™ i5 processor</masterLabel>
-            <translation><!-- Intel® Evo™ powered by Core™ i5 processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Evo™ powered by Core™ i7 processor</masterLabel>
-            <translation><!-- Intel® Evo™ powered by Core™ i7 processor --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Evo™ vPro® platform</masterLabel>
-            <translation><!-- Intel® Evo™ vPro® platform --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Iris® Graphics</masterLabel>
-            <translation><!-- Intel® Iris® Graphics --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Iris® Xe Graphics</masterLabel>
-            <translation>英特尔锐炬® Xe 显卡</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Iris® Xe Max Graphics</masterLabel>
-            <translation>英特尔锐炬® Xe Max 显卡</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Movidius™</masterLabel>
-            <translation><!-- Intel® Movidius™ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Nervana™</masterLabel>
-            <translation><!-- Intel® Nervana™ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Optane™ DC Persistent Memory</masterLabel>
-            <translation><!-- Intel® Optane™ DC Persistent Memory --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Optane™ Memory</masterLabel>
-            <translation><!-- Intel® Optane™ Memory --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel® Optane™ PMem</masterLabel>
             <translation><!-- Intel® Optane™ PMem --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Optane™ Solid State Drives</masterLabel>
-            <translation><!-- Intel® Optane™ Solid State Drives --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Pentium ®</masterLabel>
-            <translation><!-- Intel® Pentium ® --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Pentium® Gold Processor</masterLabel>
             <translation><!-- Intel® Pentium® Gold Processor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Intel® RealSense™</masterLabel>
-            <translation><!-- Intel® RealSense™ --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Intel® Select Solution</masterLabel>
             <translation><!-- Intel® Select Solution --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Select Solutions</masterLabel>
-            <translation><!-- Intel® Select Solutions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel® Xeon®</masterLabel>
-            <translation><!-- Intel® Xeon® --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Xeon® Bronze Processor</masterLabel>
@@ -1457,11 +673,11 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Xeon® D Processor</masterLabel>
-            <translation>英特尔® 至强® D 处理器</translation>
+            <translation><!-- Intel® Xeon® D Processor --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Xeon® E Processor</masterLabel>
-            <translation>英特尔® 至强® E 处理器</translation>
+            <translation><!-- Intel® Xeon® E Processor --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Xeon® Gold Processor</masterLabel>
@@ -1481,24 +697,12 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Xeon® W processor</masterLabel>
-            <translation>英特尔® 至强® W 处理器</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OpenVINO™</masterLabel>
-            <translation><!-- OpenVINO™ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
+            <translation><!-- Intel® Xeon® W processor --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pentium® Gold/Silver &amp; Celeron®</masterLabel>
             <translation><!-- Pentium® Gold/Silver &amp; Celeron® --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Brand --></label>
-        <name>Core_MDF_Brand_nm__c</name>
     </fields>
     <fields>
         <label><!-- Country/Region_Old --></label>
@@ -2388,10 +1592,6 @@
             <translation><!-- BRAZIL --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>BRITISH VIRGIN ISLANDS</masterLabel>
-            <translation><!-- BRITISH VIRGIN ISLANDS --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>BRUNEI DARUSSALAM</masterLabel>
             <translation><!-- BRUNEI DARUSSALAM --></translation>
         </picklistValues>
@@ -3061,14 +2261,6 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Domain Type --></label>
-        <name>Core_MDF_Domain_Type_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ecosystem Partner --></label>
-        <name>Core_MDF_Ecosystem_Partner__c</name>
-    </fields>
-    <fields>
         <label><!-- Event Format --></label>
         <name>Core_MDF_Event_Format_Nm__c</name>
         <picklistValues>
@@ -3076,77 +2268,13 @@
             <translation>混合事件</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>In Person Event</masterLabel>
+            <masterLabel>In Person</masterLabel>
             <translation>面对面活动</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Virtual Event</masterLabel>
             <translation>虚拟事件</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Event Name --></label>
-        <name>Core_MDF_Event_Name_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Industry --></label>
-        <name>Core_MDF_Industry_Multi_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Industry --></label>
-        <name>Core_MDF_Industry__c</name>
-    </fields>
-    <fields>
-        <label><!-- Initiatives --></label>
-        <name>Core_MDF_Initiative_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- POP Requirement --></label>
-        <name>Core_MDF_POP_Requirement_nm__c</name>
-        <picklistValues>
-            <masterLabel>Documentation (photographs, printouts, test results)</masterLabel>
-            <translation><!-- Documentation (photographs, printouts, test results) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Email certifying completion by partner&apos;s senior engineer</masterLabel>
-            <translation><!-- Email certifying completion by partner&apos;s senior engineer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Live demonstration</masterLabel>
-            <translation><!-- Live demonstration --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product availability in catalog</masterLabel>
-            <translation><!-- Product availability in catalog --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product availability in configuration tool</masterLabel>
-            <translation><!-- Product availability in configuration tool --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product availability in public catalog</masterLabel>
-            <translation><!-- Product availability in public catalog --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product received by Intel</masterLabel>
-            <translation><!-- Product received by Intel --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proof of general availability of product</masterLabel>
-            <translation><!-- Proof of general availability of product --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Priority #2 --></label>
-        <name>Core_MDF_Priority_2_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority #3 --></label>
-        <name>Core_MDF_Priority_3_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Priority --></label>
-        <name>Core_MDF_Priority__c</name>
     </fields>
     <fields>
         <label><!-- Product Type --></label>
@@ -3156,28 +2284,8 @@
             <translation>2 合 1</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>ACPC</masterLabel>
-            <translation>全互联电脑</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>AIO</masterLabel>
-            <translation>一体机</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>All-in-One Desktop</masterLabel>
-            <translation><!-- All-in-One Desktop --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>All-in-one</masterLabel>
             <translation>一体机</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Appliance</masterLabel>
-            <translation>设备</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Athena</masterLabel>
-            <translation><!-- Athena --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Chromebook</masterLabel>
@@ -3188,28 +2296,12 @@
             <translation><!-- Cloud --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Cloud Instance Consumption</masterLabel>
-            <translation><!-- Cloud Instance Consumption --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Communications</masterLabel>
             <translation><!-- Communications --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Desktop</masterLabel>
             <translation>台式机</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Edge Gateway</masterLabel>
-            <translation>边缘网关</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Edge/IOT</masterLabel>
-            <translation><!-- Edge/IOT --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Handheld</masterLabel>
-            <translation>手持设备</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hyper Converged Solutions</masterLabel>
@@ -3225,23 +2317,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Mini PC w/NUC</masterLabel>
-            <translation>迷你 PC 与 NUC</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mini PC/NUC</masterLabel>
-            <translation>迷你电脑/NUC</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Modern Notebook (2-in-1/T+L)</masterLabel>
-            <translation><!-- Modern Notebook (2-in-1/T+L) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Motherboard</masterLabel>
-            <translation>主板</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Notebook</masterLabel>
-            <translation><!-- Notebook --></translation>
+            <translation><!-- Mini PC w/NUC --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Server</masterLabel>
@@ -3253,23 +2329,7 @@
         </picklistValues>
         <picklistValues>
             <masterLabel>Thin &amp; Light</masterLabel>
-            <translation>轻薄</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Traditional Desktop</masterLabel>
-            <translation><!-- Traditional Desktop --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Traditional Notebook</masterLabel>
-            <translation>传统笔记本</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Workstation</masterLabel>
-            <translation><!-- Workstation --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Workstation - Desktop</masterLabel>
-            <translation><!-- Workstation - Desktop --></translation>
+            <translation><!-- Thin &amp; Light --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Workstation - Fixed</masterLabel>
@@ -3281,23 +2341,11 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Program --></label>
-        <name>Core_MDF_Program__c</name>
-    </fields>
-    <fields>
-        <label><!-- Reason for Past Dated Activity --></label>
-        <name>Core_MDF_ReasonforPastDatedActivity_Nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Reimbursement Rate --></label>
         <name>Core_MDF_Reimbursement_Rate_pct__c</name>
         <picklistValues>
             <masterLabel>100%</masterLabel>
             <translation><!-- 100% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>25%</masterLabel>
-            <translation><!-- 25% --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>50%</masterLabel>
@@ -3341,92 +2389,28 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Tactics --></label>
-        <name>Core_MDF_Tactics_nm__c</name>
-    </fields>
-    <fields>
         <help><!-- The Audience the marketing activity is intended for --></help>
         <label><!-- Target Audience --></label>
         <name>Core_MDF_TargetAudience__c</name>
-        <picklistValues>
-            <masterLabel>All</masterLabel>
-            <translation><!-- All --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Business</masterLabel>
-            <translation><!-- Business --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Business Owners/SMB</masterLabel>
-            <translation><!-- Business Owners/SMB --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>C-Suite</masterLabel>
             <translation>高管</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Channel Partner</masterLabel>
-            <translation><!-- Channel Partner --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Commercial</masterLabel>
-            <translation>商业</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Consultant/Influencer</masterLabel>
-            <translation><!-- Consultant/Influencer --></translation>
+            <translation><!-- Commercial --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Consumer</masterLabel>
             <translation>家用</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Consumer - Mainstream</masterLabel>
-            <translation><!-- Consumer - Mainstream --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Consumer - Premium</masterLabel>
-            <translation><!-- Consumer - Premium --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Creator</masterLabel>
             <translation>创作者</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DIY</masterLabel>
-            <translation><!-- DIY --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Developer</masterLabel>
             <translation>开发人员</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Education</masterLabel>
-            <translation>教育</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Education Professionals</masterLabel>
-            <translation><!-- Education Professionals --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Employees</masterLabel>
-            <translation><!-- Employees --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Enterprise</masterLabel>
-            <translation><!-- Enterprise --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Enthusiast Gaming</masterLabel>
-            <translation><!-- Enthusiast Gaming --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Entry Gaming</masterLabel>
-            <translation>入门级游戏</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Gamer</masterLabel>
-            <translation><!-- Gamer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Gaming</masterLabel>
@@ -3437,24 +2421,8 @@
             <translation>政府机关</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government agency heads</masterLabel>
-            <translation><!-- Government agency heads --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government/Public Sector</masterLabel>
-            <translation>政府/公共事业</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Healthcare</masterLabel>
-            <translation>医疗</translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IT Decision Maker</masterLabel>
             <translation>IT 决策者</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IT Manager</masterLabel>
-            <translation><!-- IT Manager --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Large Business</masterLabel>
@@ -3465,93 +2433,39 @@
             <translation>业务类型</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Mainstream Consumer (Overwhelmed)</masterLabel>
-            <translation><!-- Mainstream Consumer (Overwhelmed) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-            <translation>主流消费者 - 知识</translation>
+            <translation><!-- Mainstream Consumer - Knowledge --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-            <translation>主流消费者 - 选择困难</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-            <translation>主流消费者 – 技术知识</translation>
+            <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Managed Business</masterLabel>
-            <translation>托管业务</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Manufacturer/OEM</masterLabel>
-            <translation>制造商/原始设备制造商</translation>
+            <translation><!-- Managed Business --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Mid Market</masterLabel>
             <translation>中间市场</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Mobile Go Getter</masterLabel>
-            <translation><!-- Mobile Go Getter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
-            <translation><!-- Modern Consumer (Knowledgeable) --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Sales Force</masterLabel>
-            <translation><!-- Partner Sales Force --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Reseller</masterLabel>
             <translation>经销商</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Senior Business Decision Maker</masterLabel>
-            <translation><!-- Senior Business Decision Maker --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Small Business</masterLabel>
             <translation>小型企业</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Small and Medium Business</masterLabel>
-            <translation><!-- Small and Medium Business --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Solutions Architect</masterLabel>
             <translation><!-- Solutions Architect --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Technical Influencer</masterLabel>
-            <translation><!-- Technical Influencer --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Unmanaged Small Business</masterLabel>
-            <translation>非托管小业务</translation>
+            <translation><!-- Unmanaged Small Business --></translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Technology --></label>
-        <name>Core_MDF_Technology__c</name>
     </fields>
     <nameFieldLabel><!-- PartnerFundRequest Picklist --></nameFieldLabel>
-    <recordTypes>
-        <description><!-- Channel MDF - Account based Record type --></description>
-        <label><!-- Channel MDF- Account Based --></label>
-        <name>Core_MDF_Channel_MDF_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Channel MDF - Proposal based Record type --></description>
-        <label><!-- Channel MDF- Proposal Based --></label>
-        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
-    </recordTypes>
     <recordTypes>
         <label><!-- Client Co-Marketing Fund --></label>
         <name>Core_MDF_Client_CoMarketing_Fund</name>
@@ -3562,23 +2476,8 @@
         <name>Core_MDF_Client_CoMarketing_Fund_Boost</name>
     </recordTypes>
     <recordTypes>
-        <description><!-- Co-GTM Program Record type --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
         <label><!-- Data Center Co-Marketing Fund --></label>
         <name>Core_MDF_Data_Center_CoMarketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Ecosystem Extension Fund --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- IPA Program Type --></description>
-        <label><!-- Intel Partner Alliance --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Record type created for Retail program --></description>

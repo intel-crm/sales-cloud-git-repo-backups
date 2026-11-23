@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_Txt__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Employee,Lead Development Representative,Marketing Specialist,Partner Admin</value>
     </values>
     <values>
         <field>PRM_Partner_Role_Txt__c</field>

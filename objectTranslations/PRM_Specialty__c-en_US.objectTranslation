@@ -163,6 +163,10 @@
             <masterLabel>Solution Provider</masterLabel>
             <translation><!-- Solution Provider --></translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Start Date --></label>
@@ -184,10 +188,25 @@
             <translation><!-- Member --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Partner</masterLabel>
+            <translation><!-- Partner --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Titanium</masterLabel>
             <translation><!-- Titanium --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Specialty Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Add To Contact Group --></label>
+        <name>PRM_Add_ToContact_Group</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Select Benefits --></label>
         <name>PRM_Select_Benefits</name>

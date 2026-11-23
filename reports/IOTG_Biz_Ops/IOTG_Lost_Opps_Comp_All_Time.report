@@ -27,7 +27,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -52,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>,Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing,Lost - Another IA Solution,Lost - Business Relationship,Lost - Intel Discontinued Product,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Product Features,Lost - Product Performance,Lost - Schedule</value>
+            <value>,Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Entered in Error,Cancelled - Timing,Lost - Another IA Solution,Lost - Business Relationship,Lost - Intel Discontinued Product,Lost - Intel No Longer Covering Account,Lost - Intel Not Considered,Lost - Intel Technical Support Not Provided,Lost - Internal Build,Lost - Lack of OEM Support,Lost - Price,Lost - Product Features,Lost - Product Performance,Lost - Schedule,Lost - Supply</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

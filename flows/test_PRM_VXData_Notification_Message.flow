@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Notifications</name>
+        <label>Send Notifications</label>
+        <locationX>176</locationX>
+        <locationY>335</locationY>
+        <actionName>01p8A000003xcTzNotFound</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>vxdataList</name>
+            <value>
+                <elementReference>sendVXData</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>for testing</description>
+    <environments>Default</environments>
+    <interviewLabel>test PRM VXData Notification Message {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>test PRM VXData Notification Message</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Send_Notifications</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterFormula>AND(
+{!$Record.PRM_Percent_to_next_tier_Nbr__c}&lt;=10,
+NOT(ISBLANK({!$Record.PRM_One_Partner_Id__c})),
+{!$Record.PRM_Tier_Id__r.Name}&lt;&gt;{!$Label.PRM_Tier_Titanium},
+{!$Record.PRM_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c}=true
+)</filterFormula>
+        <object>PRM_Value_Exchange_Data__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>sendVXData</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>PRM_Value_Exchange_Data__c</objectType>
+    </variables>
+</Flow>

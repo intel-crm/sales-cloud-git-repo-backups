@@ -9,7 +9,7 @@ Modification Log :
 * ----------------------------------------------------------------------------                 
 * Mahesh Manikonda               15/04/2020               Original Version developed
 *******************************************************************************************************************************************************************/
-global without sharing class Core_Opp_LastActvityDt_Schedule  implements Schedulable { //TWC3123-5359 Added without sharing keyword to fix code scan issue
+global class Core_Opp_LastActvityDt_Schedule  implements Schedulable {
 
         global void execute(SchedulableContext sc) {
         Database.executeBatch(new Core_Opp_LastActvityUpdate_Batch(), 200);

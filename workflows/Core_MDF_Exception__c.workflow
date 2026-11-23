@@ -7,9 +7,9 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
-        <template>Testt/Core_MDF_ExceptionApprovalStatusUpdate</template>
+        <template>unfiled$public/Core_MDF_ExceptionApprovalStatusUpdate</template>
     </alerts>
     <fieldUpdates>
         <fullName>Core_MDF_Update_Status_to_Approved</fullName>
@@ -20,7 +20,7 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
     <fieldUpdates>
         <fullName>Core_MDF_Update_Status_to_Denied</fullName>
@@ -31,6 +31,6 @@
         <notifyAssignee>false</notifyAssignee>
         <operation>Literal</operation>
         <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
+        <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
 </Workflow>

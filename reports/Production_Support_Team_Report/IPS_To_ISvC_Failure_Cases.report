@@ -21,12 +21,6 @@
     <columns>
         <field>CREATED_DATE</field>
     </columns>
-    <columns>
-        <field>Case.Core_Promote_Status__c</field>
-    </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_Promote_Status__c</column>
@@ -52,6 +46,11 @@
         <language>en_US</language>
     </filter>
     <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Case.Core_Promote_Status__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
     <name>Backend Promotion failure : Cases</name>
     <params>
         <name>units</name>

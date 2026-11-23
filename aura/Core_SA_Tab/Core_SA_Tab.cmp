@@ -38,7 +38,7 @@
 	<aura:if isTrue="{!v.pageRefresh == false}">
         <!--<lightning:helptext content='{!v.urlParams}'/> -->
  		<div class="h_iframe">    
-	   		<iframe src='{!v.urlParams}' frameborder="0" scrolling="true" allow="fullscreen" allowfullscreen="true" id="{!v.cimId}"/>
+	   		<iframe src='{!v.urlParams}' frameborder="0" scrolling="true" allowfullscreen="true" id="{!v.cimId}"/>
     	</div>
     </aura:if>
 </aura:component>

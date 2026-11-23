@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ApprovalProcess xmlns="http://soap.sforce.com/2006/04/metadata">
-    <active>false</active>
+    <active>true</active>
     <allowRecall>true</allowRecall>
     <allowedSubmitters>
         <type>creator</type>
@@ -191,7 +191,7 @@
         </rejectBehavior>
     </approvalStep>
     <description>Escalation Approval flow for Budget Record Type</description>
-    <emailTemplate>Testt/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
+    <emailTemplate>unfiled$public/Core_MDF_Escalation_Email_Template_for_Approvers_Queue</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <entryCriteria>
         <criteriaItems>

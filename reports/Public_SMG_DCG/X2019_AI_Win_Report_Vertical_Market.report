@@ -20,9 +20,6 @@
         <field>Opportunity.Core_Opportunity_Products__c</field>
     </columns>
     <columns>
-        <field>OPP_QUANTITY</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
     <columns>
@@ -41,13 +38,16 @@
         <field>OWNER_EMAIL</field>
     </columns>
     <columns>
+        <field>OWNER_MANAGER</field>
+    </columns>
+    <columns>
         <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Solution_Type__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
+        <field>DESCRIPTION</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -84,13 +84,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>DCG-Cloud</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

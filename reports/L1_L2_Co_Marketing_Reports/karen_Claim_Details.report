@@ -67,6 +67,9 @@
         <field>PartnerFundRequest.PartnerFundClaims$Core_MDF_Activity_Types__c</field>
     </columns>
     <columns>
+        <field>PartnerFundRequest$Core_MDF_Brand__c</field>
+    </columns>
+    <columns>
         <field>PartnerFundRequest$Core_MDF_Other_Channel_Partner__c</field>
     </columns>
     <columns>

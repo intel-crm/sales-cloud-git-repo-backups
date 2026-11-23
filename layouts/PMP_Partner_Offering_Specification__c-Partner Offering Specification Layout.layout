@@ -59,6 +59,14 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Is_Pre_Release_Item_Ind__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Boolean_Ind__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Specification_Value_Chinese_Nm__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

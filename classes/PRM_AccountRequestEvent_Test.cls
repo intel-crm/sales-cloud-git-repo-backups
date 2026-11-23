@@ -16,10 +16,11 @@ public class PRM_AccountRequestEvent_Test {
         req.Process_Type__c = 'Partner';
         req.Requestor_Name__c = UserInfo.getName();
         req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
+        req.State__c = 'New';
         req.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req.Address__City__s = 'Test';
-        req.Address__CountryCode__s = 'IND';
-        req.Address__Street__s = 'Test';
+        //req.Address__City__s = 'Test';
+        //req.Address__CountryCode__s = 'IND'; 
+        //req.Address__Street__s = 'Test';
         insert req;
     }
     
@@ -30,7 +31,7 @@ public class PRM_AccountRequestEvent_Test {
         
         PRM_Registration_Request__c regReq = PRM_TestUtility.getPRMRegistrationRequest();
         regReq.PRM_Account_Request_Queue__c = req.Id;
-        //regReq.PRM_Status__c = 'Pending';
+        regReq.PRM_Status__c = 'Pending';
         regReq.PRM_Review_Note_txt__c = 'Test';
         insert regReq;
         
@@ -55,7 +56,7 @@ public class PRM_AccountRequestEvent_Test {
         
         PRM_Registration_Request__c regReq = PRM_TestUtility.getPRMRegistrationRequest();
         regReq.PRM_Account_Request_Queue__c = req.Id;
-        //regReq.PRM_Status__c = 'Pending';
+        regReq.PRM_Status__c = 'Pending';
         regReq.PRM_Review_Note_txt__c = 'Test';
         insert regReq;
         
@@ -73,7 +74,7 @@ public class PRM_AccountRequestEvent_Test {
         
         PRM_Registration_Request__c regReq = PRM_TestUtility.getPRMRegistrationRequest();
         regReq.PRM_Account_Request_Queue__c = req.Id;
-        //regReq.PRM_Status__c = 'Pending';
+        regReq.PRM_Status__c = 'Pending';
         regReq.PRM_Review_Note_txt__c = 'Test';
         insert regReq;
         

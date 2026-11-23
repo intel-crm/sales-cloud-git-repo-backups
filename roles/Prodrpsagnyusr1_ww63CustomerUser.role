@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Prodrpsagnyusr1_ww6.3 Customer User</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>Prodrpsagnyusr1_ww6.3 Customer User</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>Prodrpsagnyusr1_ww63CustomerManager</parentRole>
+</Role>

@@ -4,10 +4,10 @@
     <protected>false</protected>
     <values>
         <field>Category__c</field>
-        <value xsi:type="xsd:string">PRM</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">MEMBCOM</value>
+        <value xsi:type="xsd:string">Points Communications;Partner Training, Webinar &amp; Events;Partner Research Communications;Membership Communications;Product and Solution Communications</value>
     </values>
 </CustomMetadata>

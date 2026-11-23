@@ -169,9 +169,8 @@
         <fullName>PRM_Account__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Lookup to the Account record. This is assigned after validating the Id value in &apos;Account Id&apos; field.</description>
-        <label>SFDC Account</label>
+        <label>Account</label>
         <referenceTo>Account</referenceTo>
-        <relationshipLabel>IPA Staging - Contacts</relationshipLabel>
         <relationshipName>IPA_Campaign_Registrations_Staging_Table</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -203,9 +202,8 @@
         <fullName>PRM_Campaign__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Lookup to the Campaign record. This is assigned after validating the Id value in &apos;Campaign Id&apos; field.</description>
-        <label>SFDC Campaign</label>
+        <label>Campaign</label>
         <referenceTo>Campaign</referenceTo>
-        <relationshipLabel>IPA Staging - Contacts</relationshipLabel>
         <relationshipName>IPA_Campaign_Registrations_Staging_Table</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -251,6 +249,80 @@
         <label>New Contact</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PRM_Contact_Partner_Role__c</fullName>
+        <description>Partner Role of the Contact. This data comes from the data load file.</description>
+        <label>xContact Partner Role</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Not Applicable</fullName>
+                    <default>false</default>
+                    <label>Not Applicable</label>
+                </value>
+                <value>
+                    <fullName>Distributor</fullName>
+                    <default>false</default>
+                    <label>Distributor</label>
+                </value>
+                <value>
+                    <fullName>FPGA Designer</fullName>
+                    <default>false</default>
+                    <label>FPGA Design Services</label>
+                </value>
+                <value>
+                    <fullName>Guest</fullName>
+                    <default>false</default>
+                    <label>Guest</label>
+                </value>
+                <value>
+                    <fullName>Independent Software Vendor</fullName>
+                    <default>false</default>
+                    <label>Independent Software Vendor</label>
+                </value>
+                <value>
+                    <fullName>Manufacturer</fullName>
+                    <default>false</default>
+                    <label>Manufacturer</label>
+                </value>
+                <value>
+                    <fullName>Original Equipment Manufacturer (OEM)</fullName>
+                    <default>false</default>
+                    <label>Original Equipment Manufacturer (OEM)</label>
+                </value>
+                <value>
+                    <fullName>Seller</fullName>
+                    <default>false</default>
+                    <label>Solution Provider</label>
+                </value>
+                <value>
+                    <fullName>Service Provider</fullName>
+                    <default>false</default>
+                    <label>Cloud &amp; Comms Service Provider</label>
+                </value>
+                <value>
+                    <fullName>Solution Integrator</fullName>
+                    <default>false</default>
+                    <label>Service Integrator</label>
+                </value>
+                <value>
+                    <fullName>Sponsor</fullName>
+                    <default>false</default>
+                    <label>Sponsor</label>
+                </value>
+                <value>
+                    <fullName>TBD</fullName>
+                    <default>false</default>
+                    <label>TBD</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
     </fields>
     <fields>
         <fullName>PRM_Contact_Phone__c</fullName>
@@ -372,68 +444,12 @@
         <fullName>PRM_Contact__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <description>Lookup to the Contact record. This is assigned based on Email of the Contact.</description>
-        <label>SFDC Contact</label>
+        <label>Contact</label>
         <referenceTo>Contact</referenceTo>
-        <relationshipLabel>IPA Staging - Contacts</relationshipLabel>
         <relationshipName>IPA_Campaign_Registrations_Staging_Table</relationshipName>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Generic_Field1__c</fullName>
-        <description>Generic Field to store any additional info.</description>
-        <externalId>false</externalId>
-        <label>Generic Field1</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Generic_Field2__c</fullName>
-        <description>Generic Field to store any additional info.</description>
-        <externalId>false</externalId>
-        <label>Generic Field2</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Generic_Field3__c</fullName>
-        <description>Generic Field to store any additional info.</description>
-        <externalId>false</externalId>
-        <label>Generic Field3</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Generic_Field4__c</fullName>
-        <description>Generic Field to store any additional info.</description>
-        <externalId>false</externalId>
-        <label>Generic Field4</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Generic_Field5__c</fullName>
-        <description>Generic Field to store any additional info.</description>
-        <externalId>false</externalId>
-        <label>Generic Field5</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Validation_Message__c</fullName>
@@ -475,84 +491,25 @@
             </valueSetDefinition>
         </valueSet>
     </fields>
-    <label>IPA Staging - Contact</label>
+    <label>IPA Staging - Contacts</label>
     <listViews>
         <fullName>All_Records</fullName>
         <columns>NAME</columns>
         <columns>PRM_Batch_Id__c</columns>
         <columns>PRM_Campaign_Id__c</columns>
+        <columns>PRM_Campaign__c</columns>
         <columns>PRM_Account_Id__c</columns>
+        <columns>PRM_Account__c</columns>
+        <columns>PRM_Validation_Status__c</columns>
+        <columns>PRM_Validation_Message__c</columns>
         <columns>PRM_Contact_First_Name__c</columns>
         <columns>PRM_Contact_Last_Name__c</columns>
         <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>PRM_Contact_Relationship__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
         <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
         <filterScope>Everything</filterScope>
         <label>All Records</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000005</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Campaign_Id__c</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_First_Name__c</columns>
-        <columns>PRM_Contact_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>PRM_Validation_Message__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000005</value>
-        </filters>
-        <label>BATCH-0000005</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>BATCH_0000012</fullName>
-        <columns>NAME</columns>
-        <columns>PRM_Batch_Id__c</columns>
-        <columns>PRM_Campaign_Id__c</columns>
-        <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_First_Name__c</columns>
-        <columns>PRM_Contact_Last_Name__c</columns>
-        <columns>PRM_Contact_Email__c</columns>
-        <columns>PRM_Validation_Status__c</columns>
-        <columns>PRM_Validation_Message__c</columns>
-        <columns>PRM_Campaign__c</columns>
-        <columns>PRM_Account__c</columns>
-        <columns>PRM_Contact__c</columns>
-        <columns>PRM_Contact_New__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Batch_Id__c</field>
-            <operation>equals</operation>
-            <value>BATCH-0000012</value>
-        </filters>
-        <label>BATCH-0000012</label>
         <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -565,6 +522,6 @@
     </nameField>
     <pluralLabel>IPA Staging - Contacts</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Private</sharingModel>
+    <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -48,7 +48,7 @@ public without sharing class EPUM_SearchContact {
         for(Core_Entitlement__c coreEnt : EPUM_ContactEntitlement_Util.getCoreEntitlements()){
             setEntIds.add(coreEnt.Id);
         }
-			
+      
         //Search for the contact in database
         
         List<Contact> lstContacts = [SELECT Id, Email,Core_Login_Status__c,Core_Enterprise_Id__c, Phone, Name, FirstName, LastName, AccountId, Account.Name, Account.Core_IPA_Partner_Role__c, Core_IPA_One_Partner_Id__c, Core_IPA_PartnerRole__c,(SELECT Id,PRM_Relationship_Id__r.Name,PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c,PRM_Status_Nm__c, PRM_InActive_Ind__c FROM Account_Contact_Relationships__r WHERE PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c =: strEMPRelationshipName), (SELECT Id,Core_Entitlement_Id__r.Name,Core_Entitlement_Id__c, Core_Entitlement_Id__r.Core_Display_Name__c FROM Contact_Entitlements__r WHERE Core_Selected__c =true AND Core_Status__c =:strCompleteStatus AND ( Core_Entitlement_Id__c IN:setEntIds OR Core_Entitlement_Id__r.Name =: strPartnerAdminName ) ORDER BY Core_Entitlement_Id__r.Name ) FROM Contact WHERE Email =: strSearchedEmailText];
@@ -65,7 +65,7 @@ public without sharing class EPUM_SearchContact {
         }
             wrapContactDetailsObj.isContactExistsinDB = true;
             //call log entry method
-           	EPUM_Log__c epumLog1 = EPUM_Utility.createEPUMLogs(strActionSalesCRMSearch,'Yes',dtSearchStart,strSearchedEmailText);  
+             EPUM_Log__c epumLog1 = EPUM_Utility.createEPUMLogs(strActionSalesCRMSearch,'Yes',dtSearchStart,strSearchedEmailText);  
             lstEpumLogs.add(epumLog1);
 
         // *** DRACO - Error message on searching for Deleted/Expired/Disabled Contacts - start ***//
@@ -128,9 +128,9 @@ public without sharing class EPUM_SearchContact {
                             lstEpumLogs.add(epumLog6);
                         } else if (lstContacts[0].Account_Contact_Relationships__r[0].PRM_InActive_Ind__c == True) {
                             wrapContactDetailsObj.isSendInvite = true;
-                        	wrapContactDetailsObj.contactDetails = lstContacts[0];
-                        	wrapContactDetailsObj.strLoggedinUserAccId = lstLoggedInUser[0].Contact.AccountId;
-                        	wrapContactDetailsObj.strOnePartnerId = lstLoggedInUser[0].Core_IPA_One_Partner_Id__c;
+                          wrapContactDetailsObj.contactDetails = lstContacts[0];
+                          wrapContactDetailsObj.strLoggedinUserAccId = lstLoggedInUser[0].Contact.AccountId;
+                          wrapContactDetailsObj.strOnePartnerId = lstLoggedInUser[0].Core_IPA_One_Partner_Id__c;
                         }
                     } else {
                         //wrapContactDetailsObj.isPendingContact = true;
@@ -182,7 +182,7 @@ public without sharing class EPUM_SearchContact {
         }
         
         if(!lstEpumLogs.isEmpty()){
-        	Database.insert(lstEpumLogs, false);
+          Database.insert(lstEpumLogs, false);
         }
         if(string.isNotBlank(searchKeyWord)){
            wrapContactDetailsObj.BlockedContact=PRM_AdminRegistration.getBlockedAccountContact(searchKeyWord,null);
@@ -202,7 +202,7 @@ public without sharing class EPUM_SearchContact {
         
     } */ 
     
-    @AuraEnabled	
+    @AuraEnabled  
     public static WrapperPicklists fetchContactPickListValues(String searchedEmail) {
         String strActionInviteContact = 'InviteContact';
         DateTime dtSearchStart = datetime.now();
@@ -303,9 +303,9 @@ public without sharing class EPUM_SearchContact {
         List<User> lstLoggedInUser = [SELECT Id, ContactId, Contact.AccountId, Contact.Core_IPA_PartnerRole__c, Core_IPA_One_Partner_Id__c FROM User WHERE Id = : UserInfo.getUserId()];
         try {
             if(con.Core_IPA_PartnerRole__c == null || con.Core_IPA_PartnerRole__c != lstLoggedInUser[0].Contact.Core_IPA_PartnerRole__c ) {
-            	Contact updateCon = new Contact();
+              Contact updateCon = new Contact();
                 updateCon.id = con.Id;
-            	updateCon.Core_IPA_PartnerRole__c = lstLoggedInUser[0].Contact.Core_IPA_PartnerRole__c;
+              updateCon.Core_IPA_PartnerRole__c = lstLoggedInUser[0].Contact.Core_IPA_PartnerRole__c;
                 update updateCon;
             }
             if(acrToUpdate != null && acrToUpdate.PRM_InActive_Ind__c == True) {
@@ -335,7 +335,7 @@ public without sharing class EPUM_SearchContact {
                     Insert insertACR;
                 }
             }
-        	mapResult.put('status', 'success');
+          mapResult.put('status', 'success');
             mapResult.put('message', 'Invite sent successfully');  
         }
         catch (Exception e) {
@@ -359,8 +359,8 @@ public without sharing class EPUM_SearchContact {
         List<String> IPADetachedEntList = string.isNotBlank(Label.EPUM_IPADetachEntitlements) ? Label.EPUM_IPADetachEntitlements.split(',') : null;
         
         List<User> lstUserIntelAccountId = [SELECT Id, ContactId,toLabel(Contact.Core_IPA_PartnerRole__c), Contact.AccountId,Core_IPA_One_Partner_Id__c FROM User WHERE Id = :UserInfo.getUserId()];//subhadeep change for country
-		 //Added by raushan
-		 String strOnePartnerId = lstUserIntelAccountId[0].Core_IPA_One_Partner_Id__c;
+     //Added by raushan
+     String strOnePartnerId = lstUserIntelAccountId[0].Core_IPA_One_Partner_Id__c;
          String strContactPartnerRole = lstUserIntelAccountId[0].Contact.Core_IPA_PartnerRole__c;
          String strContactId = lstUserIntelAccountId[0].ContactId;
          String strAccuntId = lstUserIntelAccountId[0].Contact.AccountId;
@@ -371,7 +371,7 @@ public without sharing class EPUM_SearchContact {
            
           //    setEntIds.add(vxe.PRM_Entitlement_Id__c);
         //}
-       	for(Core_Entitlement__c coreEnt : coreEntNames){
+         for(Core_Entitlement__c coreEnt : coreEntNames){
             setEntIds.add(coreEnt.Id);
         }
         //subhadeep change for country---START
@@ -388,11 +388,11 @@ public without sharing class EPUM_SearchContact {
         List<Contact> lstWorksFor2 = new List<Contact>();
         List<Contact> lstWorksFor3 = new List<Contact>();
         List<Contact> lstAllContacts = new List<Contact>();
-		list<contact> lstNonIPAContacts = new list<Contact>();
-		Map<Id,Contact> mapPADContacts = new Map<Id,Contact>();
-		Map<Id,Contact> mapPAContacts = new Map<Id,Contact>();
+    list<contact> lstNonIPAContacts = new list<Contact>();
+    Map<Id,Contact> mapPADContacts = new Map<Id,Contact>();
+    Map<Id,Contact> mapPAContacts = new Map<Id,Contact>();
         Integer rank = 0;
-		Map<Integer , Contact> rankContactToDisplay = new Map<Integer,Contact>();
+    Map<Integer , Contact> rankContactToDisplay = new Map<Integer,Contact>();
         List<Id> lstOfOPID = new list<Id>();
 
         // Akshay change START -----
@@ -427,10 +427,10 @@ public without sharing class EPUM_SearchContact {
                                 FROM contact WHERE ((Core_Login_Status__c = 'Active' OR Core_Login_Status__c = null) AND Core_Enterprise_Id__c != null) AND Core_IPA_PartnerRole__c != NULL AND
                                 ((Core_IPA_One_Partner_Id__c =: listOfOPIDsForMPI_Id AND Core_IPA_One_Partner_Id__c != NULL) OR AccountId =: strAccuntId) AND
                                 Id IN (SELECT PRM_Contact_Id__c FROM PRM_Account_Contact_Relationship__c WHERE /* PRM_Status_Nm__c =: strCompleteStatus AND */ PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c =: strWFRelationCode AND PRM_InActive_Ind__c = false) ORDER BY Name]){  
-		
+    
             if(con.Core_IPA_One_Partner_Id__c == strOnePartnerId && con.Core_IPA_PartnerRole__c == strContactPartnerRole){
                 if(con.Contact_Entitlements__r.size() > 0){
-                    for(Core_Contact_Entitlement__c conEnt: con.Contact_Entitlements__r){				
+                    for(Core_Contact_Entitlement__c conEnt: con.Contact_Entitlements__r){        
                     if(conEnt.Core_Entitlement_Id__r.Name == 'Partner Admin'){
                         mapPAContacts.put(con.Id,con);
                         System.debug('Partner Admin Contact: ==='+con);
@@ -462,17 +462,17 @@ public without sharing class EPUM_SearchContact {
             if(con.Core_IPA_One_Partner_Id__c != null){
                 lstOfOPID.add(con.Core_IPA_One_Partner_Id__c);
             }
-		}
+    }
         lstOfOPID.add(strAccuntId);
-		lstAllContacts.addAll(mapPAContacts.values());
+    lstAllContacts.addAll(mapPAContacts.values());
         lstAllContacts.addAll(mapPADContacts.values());
         
-		for(contact c: lstWorksFor1){
-			if(!mapPAContacts.containsKey(c.Id) && !mapPADContacts.containsKey(c.Id)){
-				lstAllContacts.add(c);
-			}			
-		}
-		lstAllContacts.addAll(lstWorksFor2);
+    for(contact c: lstWorksFor1){
+      if(!mapPAContacts.containsKey(c.Id) && !mapPADContacts.containsKey(c.Id)){
+        lstAllContacts.add(c);
+      }      
+    }
+    lstAllContacts.addAll(lstWorksFor2);
         lstAllContacts.addAll(lstWorksFor3);
         // Country should be contact country instead of Account Billing country on manage personal page on bulk invite
         for(Contact fetContactRec :lstAllContacts){
@@ -489,9 +489,9 @@ public without sharing class EPUM_SearchContact {
             if(countryMap.get(fetContactRec.Account.BillingCountry) != null){
                 
                 fetContactRec.Account.BillingCountry = countryMap.get(fetContactRec.Account.BillingCountry);
-            	acctIds.add(fetContactRec.Account.Id);
+              acctIds.add(fetContactRec.Account.Id);
             }
-			system.debug(fetContactRec.Account.BillingCountry);            
+      system.debug(fetContactRec.Account.BillingCountry);            
             
         }
         //Subhadeep change for country---END
@@ -507,13 +507,13 @@ public without sharing class EPUM_SearchContact {
         contactListViewWrapperObject.listOfOPIDs = [SELECT Id, Name, Core_IPA_One_Partner_Id__c, (select toLabel(PRM_Partner_Role__c),PRM_Tier_Name_txt__c from Channel_Memberships1__r) FROM Account WHERE (Core_IPA_One_Partner_Id__c =: listOfOPIDsForMPI_Id OR Id =: listOfOPIDsForMPI_Id) ];
         return contactListViewWrapperObject;
     }
-	@AuraEnabled
+  @AuraEnabled
     public static void insertEpumLog(){
             String strListView = 'ListViewContact';
             DateTime dtSearchStart = datetime.now();
             EPUM_Log__c epumLog1 = EPUM_Utility.createEPUMLogs(strListView,'Yes',dtSearchStart,'');
             Database.insert(epumLog1);
-    	}
+      }
     
     @AuraEnabled
     public static loggedInUserWrapper isLoggedInUserPAOrPAD() {
@@ -636,7 +636,7 @@ public without sharing class EPUM_SearchContact {
         string conMail = cEmail.toLowerCase();
 
         Contact cont = [SELECT Id, Email, Core_IPA_PartnerRole__c, AccountId, Account.Name, Account.AccountNumber, MailingCountryCode, Core_Preferred_Language__c,Core_Do_Not_Contact__c FROM Contact WHERE email =: conMail][0];
-		string newEVToken = PRM_RetriggerEV_Token_API.reTriggerEV(conMail);
+    string newEVToken = PRM_RetriggerEV_Token_API.reTriggerEV(conMail);
         If(cont.Core_Do_Not_Contact__c == false && newEVToken != null){
     //           if(IS_CIDAAS_ENABLED) {
     //             PRM_Contact_AGS_CallbackHandler.IS_CIDAAS_ENABLED = True;

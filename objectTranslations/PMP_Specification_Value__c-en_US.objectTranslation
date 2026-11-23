@@ -31,6 +31,10 @@
         <name>PMP_Name_Japanese__c</name>
     </fields>
     <fields>
+        <label><!-- Name --></label>
+        <name>PMP_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- Partner Off-Roadmap Indicator --></label>
         <name>PMP_Partner_Off_Roadmap_Ind__c</name>
     </fields>
@@ -122,5 +126,12 @@
         <label><!-- PMP Specification id --></label>
         <name>PMP_Specification_id__c</name>
     </fields>
+    <layouts>
+        <layout>Specification Value Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

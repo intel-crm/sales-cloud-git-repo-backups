@@ -74,7 +74,7 @@
         <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Opportunity_ID__c</field>
@@ -87,7 +87,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>&lt;Not Applicable&gt;,Basin Falls,Brickland EX,BROADWELL,Bromolow,Denlow,Edisonville,Grangeville,Grantley EP,Grantley EP 4S,Greenlow,Groveport,Harrisonville,Purley,Romley EN,Romley EP,Romley EP 4S</value>
+            <value>&lt;Not Applicable&gt;,Basin Falls,Brickland EX,Broadwell,Bromolow,Denlow,Edisonville,Grangeville,Grantley EP,Grantley EP 4S,Greenlow,Groveport,Harrisonville,Purley,Romley EN,Romley EP,Romley EP 4S</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>

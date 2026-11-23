@@ -149,29 +149,38 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>false</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
+        <fullName>Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <label>Account</label>
+        <referenceTo>Account</referenceTo>
+        <relationshipLabel>Core Platform Event Logs</relationshipLabel>
+        <relationshipName>Core_Platform_Event_Logs</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
         <fullName>Core_IsActive__c</fullName>
         <defaultValue>false</defaultValue>
-        <label>IsActive</label>
+        <label>isActive</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_Message__c</fullName>
-        <description>Holds Message that was published on Platform Event Bus</description>
         <label>Message</label>
-        <length>131072</length>
+        <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
         <fullName>Core_Number_Of_Attempts__c</fullName>
-        <description>Holds number attempts already made to publish the message to Platform Event Bus</description>
         <externalId>false</externalId>
         <label>Number of Attempts</label>
         <precision>18</precision>
@@ -183,7 +192,6 @@
     </fields>
     <fields>
         <fullName>Core_Object_API_Name__c</fullName>
-        <description>Holds Object API Name been published</description>
         <externalId>false</externalId>
         <label>Object API Name</label>
         <length>255</length>
@@ -193,19 +201,7 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Object_Id__c</fullName>
-        <description>Holds SF Record Id</description>
-        <externalId>false</externalId>
-        <label>Object Id</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Status__c</fullName>
-        <description>Holds the status of published message from Platform Event Bus</description>
         <label>Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -233,6 +229,11 @@
         </valueSet>
     </fields>
     <label>Core Platform Event Log</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>PE-{000000}</displayFormat>
         <label>Log Number</label>

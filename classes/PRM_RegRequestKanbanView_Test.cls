@@ -29,13 +29,11 @@ public class PRM_RegRequestKanbanView_Test{
     static testMethod void approvalRequest() {
         PRM_Registration_Request__c newRequest = PRM_TestUtility.getPRMRegistrationRequest();
         insert newRequest;
-        //System.debug(' @@ newRequest'+newRequest);
         Approval.ProcessSubmitRequest req1 = 
             new Approval.ProcessSubmitRequest();
         req1.setComments('Submitting request for approval.');
         req1.setObjectId(newRequest.id);
         Approval.ProcessResult result = Approval.process(req1);
-        //System.debug('result'+result);
         Test.startTest();
         if(result.getNewWorkitemIds() != null && result.getNewWorkitemIds().size()>0){
         PRM_RegRequestKanbanView.getRegRecord(result.getNewWorkitemIds()[0]);

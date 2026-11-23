@@ -5,8 +5,8 @@ Created Date: 11 AUG 2021
 Function    : This class contains methods to send email notification to Entitlement Requester on Email Verification completion of Contacts
 Modification Log :
 * Developer                   Date                   Description
-* ---------------------------------------------------------------------------- 
-Subhadeep Sadhu				10-Dec-2021				Added checks for blank Core_Entitlement_Requester_Id__c contact entitlements 
+* ----------------------------------------------------------------------------   
+	Subhadeep				08/11/2021				Email notification to Entitlement Requester on Email Verification completion of Contacts
 *******************************************************************************************************************************/
 Public without sharing class Core_internalUserNotificationOnEV {
 
@@ -38,8 +38,7 @@ Description: This method send email to contact entitlement requester  .*/
                                                                                                 WHERE Core_Contact_Id__c in:contactId 
                                                                                                 AND Core_Source__c = 'Grant Access' 
                                                                                                 AND Core_Selected__c = True 
-                                                                                                AND Core_Status__c = 'Complete'
-                                                                                               	AND Core_Entitlement_Requester_Id__c != null]);
+                                                                                                AND Core_Status__c = 'Complete']);
         
         if(conEntlmtLst.size()>0){
             conEntlmtLst1 =conEntlmtLst;
@@ -58,10 +57,6 @@ Description: This method send email to contact entitlement requester  .*/
                     Messaging.SingleEmailMessage email = Messaging.renderStoredEmailTemplate(templateId, whoId, whatId);
                     email.saveAsActivity = false;
                     lstEmails.add(email);
-                    OrgWideEmailAddress[] owea = [select Id from OrgWideEmailAddress where Address = 'wsm-postmaster@intel.com'LIMIT 1 ];
-                if ( owea.size() > 0 ) {
-                    email.setOrgWideEmailAddressId(owea.get(0).Id);
-                }
                     contactUser.add(conEntl.Core_Entitlement_Requester_Id__c +'__'+ conEntl.Core_Contact_Id__r.Id);
                 }
             }

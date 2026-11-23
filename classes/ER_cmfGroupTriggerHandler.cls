@@ -3,7 +3,7 @@ Class Name  : ER_cmfGroupTriggerHandler
 Test Class Name : ER_cmfGroupBusinessLogic_Test, Coverage:93%
 Version     : 1.0 
 Created Date: 15 Nov 2023
-Function    : CMF Group Trigger Handler
+Function    : Utility class to handle email delivery logic, Email logs creation.
 Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------      
@@ -34,10 +34,10 @@ public class ER_cmfGroupTriggerHandler  extends TriggerHandler {
         }
     }
     public override void beforeInsert() {
-        
+       // ER_cmfGroupBusinessLogic.beforeInsertUpdateOperation(cmfGroupTriggerNewList,cmfGroupTriggerOldMap,Trigger.isInsert);
     }
     public override void beforeUpdate() {
-        
+       // ER_cmfGroupBusinessLogic.beforeInsertUpdateOperation(cmfGroupTriggerNewList,cmfGroupTriggerOldMap,Trigger.isInsert);
     }
     public override void afterInsert() {
         if(!cmfGroupTriggerNewList.isEmpty()){

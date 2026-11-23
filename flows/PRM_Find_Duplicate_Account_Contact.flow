@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Get_Duplicate_Accounts_and_Contacts</name>
+        <label>Get Duplicate Accounts and Contacts</label>
+        <locationX>176</locationX>
+        <locationY>134</locationY>
+        <actionName>PRM_AdminRegistrationFlowCntrl</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <nameSegment>PRM_AdminRegistrationFlowCntrl</nameSegment>
+        <offset>0</offset>
+    </actionCalls>
+    <apiVersion>63.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>This flow is used as an action in PRM Admin registration flow</description>
+    <environments>Default</environments>
+    <interviewLabel>Find Duplicate Account/Contact {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Find Duplicate Account/Contact</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Duplicate_Accounts_and_Contacts</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <variables>
+        <name>inputJSON</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

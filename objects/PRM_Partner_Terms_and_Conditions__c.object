@@ -229,24 +229,24 @@
     <listViews>
         <fullName>GDPR</fullName>
         <columns>NAME</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Content_Code_Txt__c</field>
-            <operation>contains</operation>
+            <operation>equals</operation>
             <value>GDPR</value>
         </filters>
         <label>GDPR</label>
     </listViews>
     <listViews>
-        <fullName>I_Accept_Text</fullName>
+        <fullName>I_accept_text</fullName>
         <columns>NAME</columns>
-        <filterScope>Mine</filterScope>
+        <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Content_Code_Txt__c</field>
-            <operation>contains</operation>
+            <operation>equals</operation>
             <value>IPA_CHECKBOX_TEXT</value>
         </filters>
-        <label>I Accept Text</label>
+        <label>I accept text</label>
     </listViews>
     <listViews>
         <fullName>Partner_Assist</fullName>
@@ -263,12 +263,11 @@
         <fullName>Terms_and_Conditions</fullName>
         <columns>NAME</columns>
         <columns>PRM_Content_Language_Nm__c</columns>
-        <columns>PRM_InActive_Ind__c</columns>
-        <columns>PRM_Terms_and_Conditions_Type_Nm__c</columns>
+        <columns>PRM_Content_Code_Txt__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>PRM_Content_Code_Txt__c</field>
-            <operation>equals</operation>
+            <operation>contains</operation>
             <value>IPA_TANDC1,IPA_TANDC2,IPA_TANDC3,IPA_TANDC4,IPA_TANDC5,IPA_TANDC6</value>
         </filters>
         <label>Terms and Conditions</label>

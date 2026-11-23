@@ -154,17 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Private</externalSharingModel>
-    <fields>
-        <fullName>Core_AI_Content_in_System__c</fullName>
-        <externalId>false</externalId>
-        <label>AI Content in System</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
+    <externalSharingModel>ReadWrite</externalSharingModel>
     <fields>
         <fullName>Core_Ambient_Temp_Req__c</fullName>
         <description>Compute descriptive feature</description>
@@ -283,26 +273,6 @@
         <fullName>Core_Consumer_Factor_Login__c</fullName>
         <externalId>false</externalId>
         <label>Consumer Factor Login</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Consumer_Sales_Category__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales Category</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Consumer_Sales_System__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales System</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -771,16 +741,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Multi_boarded__c</fullName>
-        <externalId>false</externalId>
-        <label>Multi boarded</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_New_ID__c</fullName>
         <externalId>false</externalId>
         <label>New ID?</label>
@@ -1156,16 +1116,6 @@
         <fullName>Core_Stylus__c</fullName>
         <externalId>false</externalId>
         <label>Stylus</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_Sustainability_Compliance__c</fullName>
-        <externalId>false</externalId>
-        <label>Sustainability Compliance</label>
         <length>255</length>
         <required>false</required>
         <trackTrending>false</trackTrending>

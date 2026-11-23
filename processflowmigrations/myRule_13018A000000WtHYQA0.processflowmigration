@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_PartnerPortal_ApproveRegistrationRequest_2</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_PartnerPortal_ApproveRegistrationRequest_2-1</destinationFlowVersion>
+    <developerName>myRule_13018A000000WtHYQA0</developerName>
+    <masterLabel>PRM_PartnerPortal_ApproveRegistrationRequest_2</masterLabel>
+    <migratedCriteriaLabel>Approve Request From Partner Portal</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_PartnerPortal_ApproveRegistrationRequest-1</processVersion>
+</ProcessFlowMigration>

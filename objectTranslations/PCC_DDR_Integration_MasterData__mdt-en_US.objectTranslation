@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>DDR Integration Master Data</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>DDR Integration Master Data</value>
+    </caseValues>
+    <fields>
+        <label><!-- Picklist API Name --></label>
+        <name>PCC_Picklist_API_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reference Picklist Name --></label>
+        <name>PCC_Rfr_Picklist_Name__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -19,10 +19,10 @@
         <field>LAST_STAGE_CHANGE_DATE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>PRODUCT_NAME</field>
@@ -50,7 +50,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
@@ -75,7 +75,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Timing</value>
+            <value>Cancelled - Authority,Cancelled - Budget,Cancelled - Duplicate,Cancelled - Entered in Error,Cancelled - POP Unobtainable,Cancelled - Timing</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

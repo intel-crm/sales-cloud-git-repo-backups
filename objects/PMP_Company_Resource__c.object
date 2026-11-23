@@ -156,6 +156,74 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>PMP_BrightCovePlayerId__c</fullName>
+        <externalId>false</externalId>
+        <label>BrightCove Player Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_BrightCoveVideoAccountID__c</fullName>
+        <externalId>false</externalId>
+        <label>BrightCove Video Account ID</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_BrightCoveVideoId__c</fullName>
+        <externalId>false</externalId>
+        <label>BrightCove Video Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_BrightCoveVideoJobId__c</fullName>
+        <externalId>false</externalId>
+        <label>BrightCove Video Job Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_BrightCoveVideoThumbnail_URL__c</fullName>
+        <label>BrightCove Video Thumbnail URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_Brightcove_VideoPreviewURL__c</fullName>
+        <label>Brightcove Video Preview URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_CalloutPayloadMessage__c</fullName>
+        <label>Callout Payload Message</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
         <fullName>PMP_Company_Id__c</fullName>
         <description>Master Detail  to the Company Information object</description>
         <inlineHelpText>Master Detail  to the Company Information object</inlineHelpText>
@@ -248,6 +316,12 @@
                     <default>false</default>
                     <label>Product Website</label>
                 </value>
+                <value>
+                    <fullName>Video/mp4</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Video/mp4</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
@@ -261,7 +335,84 @@
         <trackTrending>false</trackTrending>
         <type>Url</type>
     </fields>
+    <fields>
+        <fullName>PMP_S3VideoURL__c</fullName>
+        <externalId>false</externalId>
+        <label>S3 Video URL</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_S3_VideoDownload_URL__c</fullName>
+        <label>S3 Video Download URL</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>PMP_VideoName__c</fullName>
+        <externalId>false</externalId>
+        <label>Video Name</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_VideoUploadToS3FailedReason__c</fullName>
+        <externalId>false</externalId>
+        <label>Video Upload To S3 Failed Reason</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_VideoUploadToS3__c</fullName>
+        <label>Video Upload To S3</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Success</fullName>
+                    <default>false</default>
+                    <label>Success</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Marketing Profile Resource</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>UPDATEDBY_USER</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>PMP_Company_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <label>Marketing Profile Title</label>
         <trackHistory>false</trackHistory>

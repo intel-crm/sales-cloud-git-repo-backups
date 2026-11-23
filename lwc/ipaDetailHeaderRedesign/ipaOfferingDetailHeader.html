@@ -1,0 +1,70 @@
+<template>
+  <!-- <c-ipa-sticky class="offering-content" full-width start="bottom" preview-mode={previewMode}>
+    <div slot="sticky">
+       Sticky outline 
+      <div class="sticky-container detail-marquee">
+        <div class="slds-m-left_x-small slds-m-right_medium slds-m-vertical_x-small sticky-logo-container">
+          <img src={logoUrl} alt={logoAlt} class="sticky-logo"></img>
+        </div>
+        <template if:true={contactPartnerVisible}>
+          <div class="sticky-contact-button slds-p-top_small slds-p-bottom_small slds-m-right_medium">
+            <c-ipa-contact-partner-button
+              analytics-details={contactPartnerAnalyticsDetails}
+              button-class="button-inverse text-bold"
+              modal-data={contactPartnerModalData}>
+            </c-ipa-contact-partner-button>
+          </div>
+        </template>
+        <h1 class="sticky-headline slds-m-right_medium truncate-1 h3">
+          {headline}
+        </h1>
+        <div class="sticky-social-button">
+          <div class="slds-show_x-large">
+            <c-ipa-share button-classes="color-white inverse" show-label email-body={headline}></c-ipa-share>
+          </div>
+          <div class="slds-hide_x-large">
+            <c-ipa-share button-classes="inverse" email-body={headline}></c-ipa-share>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div slot="content" class="detail-marquee detail-marquee-content slds-p-top_xx-large">
+      <div class="slds-grid slds-wrap header container">
+        <div class="slds-col slds-size_1-of-1 slds-medium-size_7-of-12 slds-large-size_6-of-12 slds-p-bottom_medium">
+          <div class="img-container">
+            <img src={logoUrl} alt={logoAlt} class="logo"></img>
+          </div>
+          <h1 class="h1 slds-p-top_large">{headline}</h1>
+          <div class="slds-text-heading_small tagline">{tagline}</div>
+          <div class="slds-text-heading_small slds-p-top_large"> {labels.by} <c-ipa-link class-name="color-white inverse" object-page="PMP_Company__c" record-id={offeringOwnerId} label={offeringOwner} preview={previewMode}></c-ipa-link></div>
+          <template if:true={contactPartnerVisible}>
+            <div class="slds-p-top_x-large contact-partner-container">
+              <c-ipa-contact-partner-button
+                preview-mode={previewMode}
+                analytics-details={contactPartnerAnalyticsDetails}
+                button-class="button-inverse text-bold"
+                modal-data={contactPartnerModalData}>
+              </c-ipa-contact-partner-button>
+            </div>
+          </template>
+        </div>
+        <div class={offeringGalleryClass}>
+          <c-core-intc-gallery thumbnail-on-cover="true" images={images} fixed-height onopen={handleModalOpen}></c-core-intc-gallery>
+        </div>
+      </div>
+      <div class="slds-grid slds-wrap slds-grid_vertical-align-end container">
+        <div class="slds-col slds-size_8-of-12 slds-large-size_9-of-12 slds-p-top_large">
+          <c-core-intc-tabset name="marqueeTabs" ontabchange={handleTabChange}>
+            <template for:each={tabs} for:item='tab'>
+              <c-core-intc-tab key={tab.value} heading={tab.value}></c-core-intc-tab>
+            </template>
+          </c-core-intc-tabset>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-large-size_3-of-12 slds-p-top_large social-share-container color-white">
+          <c-ipa-share show-label email-body={headline} preview-mode={previewMode} button-classes="color-white inverse"></c-ipa-share>
+        </div>
+      </div>
+    </div>
+  </c-ipa-sticky> -->
+</template>

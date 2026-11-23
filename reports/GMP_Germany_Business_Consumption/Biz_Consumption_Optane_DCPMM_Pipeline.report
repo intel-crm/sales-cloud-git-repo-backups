@@ -63,13 +63,6 @@
             <operator>equals</operator>
             <value>Dieter Hoffend,Andreas Timm,Christian Anderka,Christian Roth</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Yes</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>

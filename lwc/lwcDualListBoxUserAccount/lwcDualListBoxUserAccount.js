@@ -45,10 +45,8 @@ export default class LwcDualListBoxAccountUser extends LightningElement {
   @track clonedRemovedRightDataOnFilter = [];
   //Input Disable
   @track inputDisable = false;
- 
-//To Hold Program Name
-  @api program; 
-
+  //Get Program
+  @api program;
   // Expose the labels to use in the template.
   label = {
     userFieldLabel,

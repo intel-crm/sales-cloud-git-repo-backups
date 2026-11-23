@@ -1,96 +1,44 @@
 <aura:component controller="Core_MDF_Escalation_ServiceHandler" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+
+	<aura:html tag="style">
+		<!--To hide standard quick action pop up-->
+		.slds-button.slds-button_icon.slds-modal__close.closeIcon.slds-button_icon-bare.slds-button_icon-inverse{
+			visibility: hidden;
+		}
+	</aura:html>    
     
-    <!--<aura:html tag="style">
-        To hide standard quick action pop up
-        .slds-button.slds-button_icon.slds-modal__close.closeIcon.slds-button_icon-bare.slds-button_icon-inverse{
-        visibility: hidden;
-        }        
-    </aura:html> -->
-    
-    <aura:attribute name = "chkbox" type = "Boolean" default=""/>
-    <aura:attribute name = "showErr" type = "Boolean" default=""/>    
-    <aura:attribute name = "canCreateClaim" type = "Boolean" default=""/>
-    <aura:attribute name = "isUserEligible" type = "Boolean" default="false"/>
-    <aura:attribute name = "usrNotEligible" type = "Boolean" default="false"/>
-    
+    <aura:attribute name = "isUserEligible" type = "Boolean" default=""/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:attribute name="escalationRecord" type="Object"/>
-    <aura:attribute name="EscactivityId" type="string" default="" />
+	<aura:attribute name="EscactivityId" type="string" default="" />
     <aura:attribute name="Spinner" type="boolean" default="true"/>  
     <aura:attribute name="renderModal" type="boolean" default="false"/>  
-    <aura:attribute name="claimCreationError" type="string" default="" />
+	<force:recordData aura:id="recordLoader"
+    recordId="{!v.recordId}"
+    fields="Core_MDF_Co_Marketing_Activity_id__c, Core_MDF_Escalation_Type_nm__c, Core_MDF_Escalation_Status_nm__c"
+    targetFields="{!v.escalationRecord}"
+    targetError="{!v.recordLoadError}"
+    />
+	 <aura:if isTrue="{!v.Spinner}">
+        	<lightning:spinner alternativeText="Loading" size="medium" />
+     </aura:if> 
     
-    
-    <force:recordData aura:id="recordLoader"
-                      recordId="{!v.recordId}"
-                      fields="Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c,Core_MDF_Case_ID_Number_id__r.Core_MDF_Activity_ID__c, Core_MDF_Co_Marketing_Activity_id__c, Core_MDF_Escalation_Type_nm__c, Core_MDF_Escalation_Status_nm__c, Core_MDF_Claim_Number_id__c, Core_MDF_Do_not_Auto_Create_Claim_Ind__c"
-                      targetFields="{!v.escalationRecord}"
-                      targetError="{!v.recordLoadError}"
-                      />
-   
-    <aura:if isTrue="{!v.Spinner}">
-        <lightning:spinner alternativeText="Loading" size="medium" />
-    </aura:if>
-    
-    <!--Err:Claim can be created manually only if the Do Not Auto Create Claim is Checked.-->
-    
-    <aura:if isTrue="{!v.escalationRecord.Core_MDF_Escalation_Type_nm__c == 'Claim Case Review Result'}">
-        <aura:if isTrue="{!and(and(v.chkbox, not(v.usrNotEligible)), not(v.showErr))}">
-            <h5 class="slds-text-heading_small slds-align_absolute-center">{!$Label.c.Core_MDF_Escalation_Error_On_Manual_Claim_Creation}</h5>
-        </aura:if>
-    </aura:if>
-   
     <aura:if isTrue="{!v.renderModal}">
-        
-        <aura:if isTrue="{!and(v.isUserEligible,not(v.chkbox))}">
-            
-          <aura:if isTrue="{!or(or(v.escalationRecord.Core_MDF_Escalation_Status_nm__c == 'Pending Review',v.escalationRecord.Core_MDF_Escalation_Status_nm__c == 'Denied'),
-                             (or(v.escalationRecord.Core_MDF_Escalation_Status_nm__c == 'Cancelled',v.escalationRecord.Core_MDF_Escalation_Status_nm__c == 'Expired')))}">
-                            	
-                <div class="slds-notify__content">
-                    <h5 class="slds-text-heading_small slds-align_absolute-center">{!$Label.c.Core_MDF_Escalation_Error_Message}</h5>
-                </div>
-            </aura:if>
-            
-            
-            <aura:if isTrue="{!v.escalationRecord.Core_MDF_Escalation_Status_nm__c == $Label.c.Core_MDF_Status_Approved}">
-                <aura:if isTrue="{!and(v.escalationRecord.Core_MDF_Escalation_Type_nm__c == $Label.c.Core_MDF_Escalation_Status_Type, 
-                                 v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__c != null) }">
-                    
-                    <aura:if isTrue="{!v.canCreateClaim}"> 
-                        
-                        <c:Core_MDF_PFC_Create escalationId="{!v.recordId}" 
-                                               escActivityId ="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__c}"
-                                               recordId= "{!v.recordId}"
-                                               isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"/>
-                      <aura:set attribute="else">   
-                            <div class="slds-notify__content">
-                                <h5 class="slds-text-heading_small slds-align_absolute-center">{!v.claimCreationError}</h5>
-                            </div>
-                        </aura:set>    
-                    </aura:if>  
-                    <aura:set attribute="else">            
-                        <aura:if isTrue="{!and(v.escalationRecord.Core_MDF_Escalation_Type_nm__c == $Label.c.Core_MDF_Case_Escalation_Type, 
-                                         v.escalationRecord.Core_MDF_Case_ID_Number_id__r.Core_MDF_Activity_ID__c != null) }">
-                            <c:Core_MDF_PFC_Create escalationId="{!v.recordId}"
-                                                   escActivityId ="{!v.escalationRecord.Core_MDF_Case_ID_Number_id__r.Core_MDF_Activity_ID__c}"
-                                                   recordId= "{!v.recordId}"
-                                                   isProposalbasedInd="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__r.Core_MDF_Proposal_Based_Ind__c}"/> 
-  
-                        </aura:if> 
-                    </aura:set>
-                </aura:if>
-            </aura:if>            
-            <aura:set attribute="else">
-                <aura:if isTrue="{!not(v.isUserEligible)}">
-                    <aura:if isTrue="{!v.showErr}">
-                        <div class="slds-notify__content">
-                            <h5 class="slds-text-heading_small slds-align_absolute-center">{!$Label.c.Core_MDF_Escalation_Create_Claim_Error_Message}</h5>
-                        </div>  
-                    </aura:if> 
-                </aura:if>
-            </aura:set>
-        </aura:if> 
-    </aura:if> 
-    
+    <aura:if isTrue="{!v.isUserEligible}">
+       <aura:if isTrue="{!and(and(v.escalationRecord.Core_MDF_Escalation_Type_nm__c == $Label.c.Core_MDF_Escalation_Status_Type, v.escalationRecord.Core_MDF_Escalation_Status_nm__c == $Label.c.Core_MDF_Status_Approved), v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__c != null) }">
+	   <c:Core_MDF_PFC_Create escalationId="{!v.recordId}" escActivityId ="{!v.escalationRecord.Core_MDF_Co_Marketing_Activity_id__c}" recordId= "{!v.recordId}"/>
+	   		 <aura:set attribute="else">
+			   <div class="slds-notify__content">
+					<h5 class="slds-text-heading_small slds-align_absolute-center" >{!$Label.c.Core_MDF_Escalation_Error_Message}</h5>
+				</div>
+			</aura:set>		   
+	   </aura:if> 
+       <aura:set attribute="else">
+				<div class="slds-notify__content">
+					<h5 class="slds-text-heading_small slds-align_absolute-center" >{!$Label.c.Core_MDF_Escalation_Create_Claim_Error_Message}</h5>
+				</div>   
+	   </aura:set>
+	</aura:if> 
+    </aura:if>
+     
 </aura:component>

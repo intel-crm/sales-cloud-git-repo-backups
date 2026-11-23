@@ -46,12 +46,17 @@
         <field>Opportunity.Core_Past_Due__c</field>
     </columns>
     <description>Shows all opportunities with Revenue and Solution area for current fiscal year. Excludes lost and canceled opportunities.</description>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Product_Segment__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <filter>
+        <criteriaItems>
+            <column>STAGE_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value>Lost,Cancelled</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
     <name>Nick&apos;s Current Year Pipeline Report</name>
     <params>
         <name>terr</name>
@@ -59,7 +64,7 @@
     </params>
     <params>
         <name>open</name>
-        <value>open</value>
+        <value>all</value>
     </params>
     <params>
         <name>probability</name>
@@ -76,8 +81,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-12-31</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2025-12-29</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

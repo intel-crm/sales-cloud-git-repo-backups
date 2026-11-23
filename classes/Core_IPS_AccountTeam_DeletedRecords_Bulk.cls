@@ -5,10 +5,12 @@ global class Core_IPS_AccountTeam_DeletedRecords_Bulk implements Database.Batcha
     global List<Core_Account_team__c> toBeDeletedList;
     global Database.QueryLocator start(Database.BatchableContext BC) {
 
+            System.debug('#01 Database.QueryLocator start'); 
         
             String query='';
             batchProcessing = new Core_Batch_Processing__c();
             Core_Batch_header__c header=AccountTeamBatchHandler.getHeader('Core_IPS_AccountTeam_DeletedRecords_Bulk');
+            System.debug('#02 header = ' + header);
 
             batchProcessing.Core_Start_Date_Time__c = system.Now();
             try{
@@ -45,10 +47,13 @@ global class Core_IPS_AccountTeam_DeletedRecords_Bulk implements Database.Batcha
                 batchProcessing.Core_Batch_Query__c = query;
                 batchProcessing.Core_Email_Distribution_List__c=header.Email_Distribution_List__c;
                 batchProcessing.Core_Object_Name__c = 'Account';
+                System.debug('#03 batchProcessing = ' + batchProcessing);
                 
                 insert batchProcessing;
                 return Database.getQuerylocator(query);
             }catch(Exception e){
+                System.debug('#05 e.message(): ' + e.getMessage());
+                System.debug('#06 e): ' + e);
                 batchProcessing.Core_Exception_Log__c=e.getMessage();
                 insert batchProcessing;
                 return null;
@@ -59,6 +64,8 @@ global class Core_IPS_AccountTeam_DeletedRecords_Bulk implements Database.Batcha
     global void execute(Database.BatchableContext BC, List<Core_Account_Team__c> scope) {
 
         if (scope != NULL) { 
+            System.debug('#21 scope[0]: '     + scope[0]);
+            System.debug('#22 scope.size(): ' + scope.size());
         }
                 
         batchsize = scope.size();
@@ -82,6 +89,7 @@ global class Core_IPS_AccountTeam_DeletedRecords_Bulk implements Database.Batcha
                                                           FROM AccountTeamMember
                                                           WHERE AccountId IN :setAcctIds];
         
+            System.debug('#23 lstAcctTeamMember: ' + lstAcctTeamMember);       
         
             if (lstAcctTeamMember == NULL || lstAcctTeamMember.size() == 0)
                 return;    
@@ -90,10 +98,12 @@ global class Core_IPS_AccountTeam_DeletedRecords_Bulk implements Database.Batcha
             for (AccountTeamMember stdAcctTeam : lstAcctTeamMember) {
                 searchKey = createSearchKey(stdAcctTeam.AccountId, stdAcctTeam.UserId);
                 custMatch = mapCustAccountTeam.remove(searchKey);                
+                //System.debug('#25 custMatch: ' + custMatch + '  stdAcctTeam: ' + stdAcctTeam);
             }
         
             if (mapCustAccountTeam.size() > 0) {
                 delete mapCustAccountTeam.values();    
+                System.debug('#26 DELETED mapCustAccountTeam.values(): ' + mapCustAccountTeam.values());
             }    
                 
         } catch (Exception e) {

@@ -82,15 +82,6 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Owner_Geo__c</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner_Manager__c</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_ID</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -121,11 +112,11 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_Account_BU_Focus__c</column>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>includes</operator>
-            <value>IOTG-AMS</value>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG Sales Group</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -140,7 +131,7 @@
         <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>NEX IOTG-AMS Sales Pipeline Health</name>
+    <name>IOTG Sales Pipeline Health by Prime</name>
     <params>
         <name>terr</name>
         <value>all</value>

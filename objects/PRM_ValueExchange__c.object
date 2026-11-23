@@ -618,8 +618,8 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Partner_Role_Nm__c</columns>
-        <columns>CREATED_DATE</columns>
         <columns>PRM_Country_Market_Type_Nm__c</columns>
+        <columns>PRM_InActive_Ind__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

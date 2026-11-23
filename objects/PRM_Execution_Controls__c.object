@@ -3,11 +3,15 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>BypassValidationInTransferAdmin__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>BypassValidationInTransferAdmin</label>
+        <fullName>Current_Year__c</fullName>
+        <defaultValue>TEXT( YEAR( TODAY()+82) )</defaultValue>
+        <externalId>false</externalId>
+        <label>Current Year</label>
+        <length>100</length>
+        <required>true</required>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Skip_Process_Builder_Ind__c</fullName>
@@ -38,19 +42,12 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Skip_ValidationRule_ContractStatus__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Skip_ValidationRule_ContractStatus</label>
+        <fullName>Present_Year__c</fullName>
+        <defaultValue>TODAY() + 100</defaultValue>
+        <label>Present_Year</label>
+        <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Skip_ValidationRule_Order_Status__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>Skips the validation rule for Submitted Order</description>
-        <label>Skip_ValidationRule_Order_Status</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Date</type>
     </fields>
     <label>PRM Execution Controls</label>
     <visibility>Public</visibility>

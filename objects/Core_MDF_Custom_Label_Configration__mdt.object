@@ -15,7 +15,6 @@
     <fields>
         <fullName>Core_MDF_Org_Specific_Ind__c</fullName>
         <defaultValue>false</defaultValue>
-        <description>To check specific to org</description>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Org Specific</label>
         <type>Checkbox</type>
@@ -54,17 +53,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Value5_Txt__c</fullName>
-        <description>Stores the value after Value 4</description>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Value 5</label>
-        <length>255</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Value_Txt__c</fullName>
         <description>Stores the first 255 characters of value</description>
         <externalId>false</externalId>
@@ -77,22 +65,5 @@
     </fields>
     <label>Custom Label Configration</label>
     <pluralLabel>Custom Label Configrations</pluralLabel>
-    <validationRules>
-        <fullName>Core_MDF_Value_Order_Validation</fullName>
-        <active>true</active>
-        <description>To validate if user is populating value in right order sequence.</description>
-        <errorConditionFormula>OR(AND(ISBLANK(Core_MDF_Value_Txt__c),NOT(ISBLANK(Core_MDF_Value2_Txt__c))),
-   AND(ISBLANK(Core_MDF_Value_Txt__c),NOT(ISBLANK(Core_MDF_Value3_Txt__c))),
-   AND(ISBLANK(Core_MDF_Value_Txt__c),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(ISBLANK(Core_MDF_Value_Txt__c),ISBLANK(Core_MDF_Value2_Txt__c),NOT(ISBLANK(Core_MDF_Value3_Txt__c))),
-   AND(ISBLANK(Core_MDF_Value_Txt__c),ISBLANK(Core_MDF_Value2_Txt__c),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(ISBLANK(Core_MDF_Value_Txt__c),ISBLANK(Core_MDF_Value2_Txt__c),ISBLANK(Core_MDF_Value3_Txt__c),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(NOT(ISBLANK(Core_MDF_Value_Txt__c)),ISBLANK(Core_MDF_Value2_Txt__c),NOT(ISBLANK(Core_MDF_Value3_Txt__c)),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(NOT(ISBLANK(Core_MDF_Value_Txt__c)),NOT(ISBLANK(Core_MDF_Value2_Txt__c)),ISBLANK(Core_MDF_Value3_Txt__c),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(NOT(ISBLANK(Core_MDF_Value_Txt__c)),ISBLANK(Core_MDF_Value2_Txt__c),ISBLANK(Core_MDF_Value3_Txt__c),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(NOT(ISBLANK(Core_MDF_Value_Txt__c)),ISBLANK(Core_MDF_Value2_Txt__c),NOT(ISBLANK(Core_MDF_Value3_Txt__c)),NOT(ISBLANK(Core_MDF_Value4_Txt__c))),
-   AND(NOT(ISBLANK(Core_MDF_Value_Txt__c)),ISBLANK(Core_MDF_Value2_Txt__c),NOT(ISBLANK(Core_MDF_Value3_Txt__c)),ISBLANK(Core_MDF_Value4_Txt__c)))</errorConditionFormula>
-        <errorMessage>Please populate values in right sequence. Eg. Value 1 should be populated before Value 2/3/4 and likewise.</errorMessage>
-    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

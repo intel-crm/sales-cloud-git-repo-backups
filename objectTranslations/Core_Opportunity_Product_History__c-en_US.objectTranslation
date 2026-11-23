@@ -25,10 +25,6 @@
         <name>Core_Opportunity_Product_ID__c</name>
     </fields>
     <fields>
-        <label><!-- Opportunity Product Name --></label>
-        <name>Core_Opportunity_Product_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Opportunity --></label>
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Opportunity Product History --></relationshipLabel>

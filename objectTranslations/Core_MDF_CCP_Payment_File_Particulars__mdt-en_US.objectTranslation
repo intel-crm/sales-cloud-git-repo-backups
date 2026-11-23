@@ -25,15 +25,7 @@
         <name>Core_MDF_City__c</name>
     </fields>
     <fields>
-        <label><!-- Commodity Code CSAR --></label>
-        <name>Core_MDF_Commodity_Code_CSAR__c</name>
-    </fields>
-    <fields>
-        <label><!-- Commodity Code Customer NonPO --></label>
-        <name>Core_MDF_Commodity_Code_Customer_NonPO__c</name>
-    </fields>
-    <fields>
-        <label><!-- Commodity Code Expense --></label>
+        <label><!-- Commodity Code --></label>
         <name>Core_MDF_Commodity_Code__c</name>
     </fields>
     <fields>
@@ -45,15 +37,7 @@
         <name>Core_MDF_Country__c</name>
     </fields>
     <fields>
-        <label><!-- GL Account CSAR --></label>
-        <name>Core_MDF_GL_Account_CSAR__c</name>
-    </fields>
-    <fields>
-        <label><!-- GL Account Customer NonPO --></label>
-        <name>Core_MDF_GL_Account_Customer_NonPO__c</name>
-    </fields>
-    <fields>
-        <label><!-- GL Account Expense --></label>
+        <label><!-- GL Account --></label>
         <name>Core_MDF_GL_Account__c</name>
     </fields>
     <fields>
@@ -73,16 +57,12 @@
         <name>Core_MDF_Payment_File_Code__c</name>
     </fields>
     <fields>
-        <label><!-- Buy from Postal Code --></label>
+        <label><!-- Postal Code --></label>
         <name>Core_MDF_Postal_Code__c</name>
     </fields>
     <fields>
         <label><!-- Profit Center --></label>
         <name>Core_MDF_Profit_Center__c</name>
-    </fields>
-    <fields>
-        <label><!-- Program ID --></label>
-        <name>Core_MDF_Program_ID__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>
@@ -91,10 +71,6 @@
     <fields>
         <label><!-- Region --></label>
         <name>Core_MDF_Region__c</name>
-    </fields>
-    <fields>
-        <label><!-- Ship to Postal Code --></label>
-        <name>Core_MDF_Ship_to_Postal_Code__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

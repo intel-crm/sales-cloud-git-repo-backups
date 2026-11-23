@@ -38,5 +38,12 @@
         <label><!-- Trigger Events --></label>
         <name>Trigger_Events__c</name>
     </fields>
+    <layouts>
+        <layout>Trigger Execution Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,4 +1,4 @@
-public without sharing class Core_IPS_UserTriggerHandler{
+public class Core_IPS_UserTriggerHandler{
     
     /***************************************************************************************************
 Version     : 1.0 
@@ -22,12 +22,8 @@ Modification Log :
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('insertprojmemberfromuser')) return;
         List<Id> accList = new List<Id>();
         List<Id> usersList = new List<Id>();
-        if(UserList <> null && UserList.size()>0){
-            List<User> ipsUsers = new List<User>();
-            String userType = 'PowerCustomerSuccess';
-            String query = 'select id, name, Contact.Id, Contact.AccountId from user where id IN: UserList and usertype=:userType and userroleid!=null and Contact.Core_IPS_Active__c = true';
-              ipsUsers = Database.query(query);
-            
+        if(UserList <> null && UserList.size()>0){          
+            List<User> ipsUsers = [select id, name, Contact.Id, Contact.AccountId from user where id IN: UserList and usertype='PowerCustomerSuccess' and userroleid!=null and Contact.Core_IPS_Active__c = true];
             for(User Usr: ipsUsers){
                 accList.add(Usr.Contact.AccountId);
                 usersList.add(Usr.id);
@@ -63,6 +59,7 @@ if(usersList <> null && usersList.size()>0 && accList <> null && accList.size()>
 List<Core_IPS_Project_Member__c> ProjMemberList = new List<Core_IPS_Project_Member__c>();
 List<User> ipsUsers = [select id, name, Contact.Id, Contact.AccountId from user where id IN: usersList and usertype='PowerCustomerSuccess' and userroleid!=null and Contact.Core_IPS_Active__c = true];
 List<Core_IPS_Account__c> ProjAccounts = [Select id, Core_Account__c, Core_IPS_Project__c, Core_Status__c from Core_IPS_Account__c where Core_Account__c IN: accList and Core_Members__c ='All'];
+system.debug('USERS'+ipsUsers +' '+'Accounts'+ProjAccounts);    
 if(ipsUsers <> null && ipsUsers.size()>0){
 for(User u: ipsUsers){
 for(Core_IPS_Account__c projAccount: ProjAccounts){
@@ -78,12 +75,14 @@ ProjMemberList.add(ProjMembers);
 }
 }
 }
+system.debug('debug user 5'+ProjMemberList);
 if(ProjMemberList <> null && ProjMemberList.size()>0){
 try{
 insert ProjMemberList;
 }catch(exception e){
 Core_Exceptionclass Exce =  new Core_Exceptionclass();
 string  Str = Exce.InsertException('','Core_IPS_UserTriggerHandler','User','','InsertProjMemberatFuture',e);
+system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + Str);
 }
 }
 }
@@ -116,11 +115,7 @@ Modification Log :
         List<Id> ContactIds = new List<Id>();
         List<Id> UserIds = new List<Id>();
         List<Core_IPS_Account__c> ProjAccounts = new List<Core_IPS_Account__c>();
-        List<User> ipsUsers = new List<User>();
-        String userType = 'PowerCustomerSuccess';
-        String query = 'select id, name, Contact.Id, Contact.AccountId,isActive , usertype from user where id IN: UserList and usertype=:userType and userroleid!=null and Contact.Core_IPS_Active__c = true';
-         ipsUsers = Database.query(query);
-        
+        List<User> ipsUsers = [select id, name, Contact.Id, Contact.AccountId,isActive , usertype from user where id IN: UserList and usertype='PowerCustomerSuccess' and userroleid!=null and Contact.Core_IPS_Active__c = true];
         for(User ipsUser: ipsUsers){
             if(oldMap <> null && newMap <> null && ipsUser.usertype=='PowerCustomerSuccess' && ipsUser.isActive == true && ((oldMap.get(ipsUser.id).IsActive <> newMap.get(ipsUser.id).IsActive) ||(oldMap.get(ipsUser.id).AccountId <> newMap.get(ipsUser.id).AccountId))){
                 AccountIds.add(ipsUser.Contact.AccountId);
@@ -128,10 +123,8 @@ Modification Log :
                 UserIds.add(ipsUser.id);
             }
         }
-        if(AccountIds <> null && AccountIds.size()>0) 
-            if(Core_IPS_Account__c.SObjectType.getDescribe().isQueryable()){
-                ProjAccounts = [Select id, Core_Account__c, Core_IPS_Project__c, Core_Status__c from Core_IPS_Account__c where Core_Account__c IN: AccountIds];
-            }
+        if(AccountIds <> null && AccountIds.size()>0)   
+            ProjAccounts = [Select id, Core_Account__c, Core_IPS_Project__c, Core_Status__c from Core_IPS_Account__c where Core_Account__c IN: AccountIds];
         for(Core_IPS_Account__c ProjAcc: ProjAccounts){
             ProjectIds.add(ProjAcc.Core_IPS_Project__c);
         }        
@@ -181,9 +174,7 @@ Modification Log :
             if(!lstUsersIds.isEmpty())
                 updateUserRegionFieldsAtFuture(lstUsersIds);
         }
-        catch(Exception e){  
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');
-            }        
+        catch(Exception e){  Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');System.debug('Core_IPS_UserTriggerHandler-->updateUserRegionFields-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber()); }        
     }
     
     /***************************************************************************************************
@@ -217,8 +208,6 @@ Modification Log :
                             }
         
         List<Contact> lstFilteredContacts = new List<Contact>();
-        //FLS check added-Venugopal
-        if(Contact.SObjectType.getDescribe().isAccessible()){
         for(Contact objContact : [Select Id,Core_IPS_Region__c,Core_IPS_Sub_Region__c,MailingCountry,Core_IPS_Employee_Customer__c
                                   FROM Contact 
                                   WHERE Id IN : mapUserRegion.keyset()]){
@@ -234,7 +223,6 @@ Modification Log :
                                           lstFilteredContacts.add(objContact);
                                       }
                                   }
-        }
         
         if(!Test.isRunningTest()){ if(!lstFilteredContacts.isEmpty()) { Database.update(lstFilteredContacts,false);}      }       
     }
@@ -267,7 +255,7 @@ Modification Log :
             //Map to store the user email id and conatct record to associate for employee as customer. US80492
             map<String, Contact> mapEmployeeEmailToContact = new map<String,Contact>();
             map<String, String> mapEmailToExistingContactId = new map<String,String>();
-
+            
             Id ConRecId=Schema.SObjectType.Contact.getRecordTypeInfosByName().get('Intel Contact').getRecordTypeId();
             Boolean isSB = [Select isSandbox from Organization Limit 1].isSandbox ; 
             
@@ -281,11 +269,8 @@ Modification Log :
                 }
             } 
             if(setEmailIds.size()>0) {
-                //FLS check added-Venugopal
-                if(Contact.SObjectType.getDescribe().isAccessible()){
-                    for(Contact objContact : [Select Id, Email from Contact where Email IN:setEmailIds]){
-                        mapEmailToExistingContactId.put(objContact.Email, objContact.Id);
-                    }
+                for(Contact objContact : [Select Id, Email from Contact where Email IN:setEmailIds]){
+                    mapEmailToExistingContactId.put(objContact.Email, objContact.Id);
                 }
                 
                 for(User populateEmailList : lstUsers){
@@ -297,12 +282,15 @@ Modification Log :
                     
                     if(!mapEmailToExistingContactId.containskey(populateEmailList.Email)){
                         //Raj Kommera added below code for US96050
+                        //System.debug('Contact with same email and @intel.com does not exist,contact will be created');
                         if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
-                            objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
+                            objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
+                            //System.debug('External User Block');
                             //AccountID: 0013F0000052PUp
                             //Profile ID:  00eo0000000f7GOAAY
                         }else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true,RecordtypeId = ConRecId,AccountId = Label.Core_Partner_Agent_Holding_Account ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);//RK Changes
+                            //System.debug('Partner Block');
                             //AccountID: 0014F000004C9FOQA0
                             //Profile ID: 00e4F000000LrLB
                         }//RK add
@@ -310,10 +298,12 @@ Modification Log :
                     }
                     else{
                        if (string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){//RK add
-                            objIPSContact = new Contact(Core_IPS_Active__c = true,Core_Account_Changeable__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId, AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email, MailingCountry='USA');//Tejaswini: Added MailingCountry='USA'to consider MailingCountry validation rule
+                            objIPSContact = new Contact(Core_IPS_Active__c = true,Core_Account_Changeable__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId, AccountId = Label.Core_IPS_AccountID ,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
+                            //System.debug('Else User block');
                         }//RK add
                         else if(string.valueof(populateEmailList.ProfileId).contains(Label.Core_IPS_Partner_AE_Profile_Id)){//RK add
                             objIPSContact = new Contact(Core_IPS_Active__c = true, Id = mapEmailToExistingContactId.get(populateEmailList.Email),RecordtypeId = ConRecId,FirstName = populateEmailList.FirstName, LastName = populateEmailList.LastName, Email = populateEmailList.Email);
+                            //System.debug('Else Partner block');
                         }
                     }
                     //RK add
@@ -343,9 +333,7 @@ Modification Log :
                 }
             }
         }
-        catch(Exception e){ 
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');
-            }
+        catch(Exception e){ Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');System.debug('Core_IPS_UserTriggerHandler-->createContactForEAC-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber()); }
     }
     
     
@@ -370,20 +358,16 @@ Modification Log :
     public static void UpdateProjMemberatFuture(Set<Id> ProjectIds, List<Id> UserIds, List<Id> ContactIds){
         List<Core_IPS_Project_Member__c> ProjMemberList = new List<Core_IPS_Project_Member__c>();
         List<Core_IPS_Project_Member__c> ProjectMembers = new List<Core_IPS_Project_Member__c>();
-        if(ProjectIds <> null && ProjectIds.size()>0){
-            if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-                ProjectMembers = [Select id from Core_IPS_Project_Member__c where Core_Status__c = 'Inactive' and Core_User__c IN: UserIds and Core_IPS_Contact__c IN: ContactIds AND Core_IPS_Project__c IN: ProjectIds];
+        if(ProjectIds <> null && ProjectIds.size()>0)
+            ProjectMembers = [Select id from Core_IPS_Project_Member__c where Core_Status__c = 'Inactive' and Core_User__c IN: UserIds and Core_IPS_Contact__c IN: ContactIds AND Core_IPS_Project__c IN: ProjectIds];
+        if(ProjectMembers <> null && ProjectMembers.size()>0){
+            for(Core_IPS_Project_Member__c ProjMember: ProjectMembers){
+                ProjMember.Core_Status__c = 'Active';
+                ProjMember.Core_IPS_Provisioning_Date__c = System.Now();
+                ProjMemberList.add(ProjMember);
             }
-            if(ProjectMembers <> null && ProjectMembers.size()>0){
-                for(Core_IPS_Project_Member__c ProjMember: ProjectMembers){
-                    ProjMember.Core_Status__c = 'Active';
-                    ProjMember.Core_IPS_Provisioning_Date__c = System.Now();
-                    ProjMemberList.add(ProjMember);
-                }
-                if(ProjMemberList <> null && ProjMemberList.size()>0 && Core_IPS_Project_Member__c.SObjectType.getDescribe().isUpdateable()){
-                    update ProjMemberList;
-                }
-            }
+            if(ProjMemberList <> null && ProjMemberList.size()>0)
+                update ProjMemberList;
         }
     }
     
@@ -434,8 +418,8 @@ Modification Log :
         
         // Add the users to the groups
         if (setNewUserIds.size() != 0 ) {
-            String query = 'SELECT Id, Name, ProfileId,Email FROM User WHERE Id IN :setNewUserIds';   //Added Email to queried field Tejaswini   
-            List<User> lstUsers = Database.query(query);
+                    
+            List<User> lstUsers = [SELECT Id, Name, ProfileId FROM User WHERE Id IN :setNewUserIds];
             
             // Build the list of user ids and their group ids
             Map<Id, Id> mapUserIdGroupId = new Map<Id, Id>();
@@ -444,16 +428,8 @@ Modification Log :
                 if(mapProfileIdGroupId.containsKey(user.ProfileId) ){
                     Id groupId = mapProfileIdGroupId.get(user.ProfileId);
                 
-                    if (groupId != null) {// User has a ProfileId that has a matching groupId
-                        /*added by Tejaswini for Employee as Customer profil migration to Partner */
-                       if(user.Email!=null && user.Email.Contains('@intel.com') && string.valueof(user.ProfileId).contains(Label.Core_IPS_External_Customer_Profile_Id) ){
-                           mapUserIdGroupId.put(user.Id, Label.Core_IPS_Employee_As_Customer_PG_Id);
-                        } else {
-                           mapUserIdGroupId.put(user.Id, groupId);
-                        }
-                    	/*End of code by Tejaswini */ 
-
-                    }
+                    if (groupId != null) // User has a ProfileId that has a matching groupId
+                        mapUserIdGroupId.put(user.Id, groupId);
                 }
                 
             }
@@ -511,7 +487,7 @@ Modification Log :
                 } 
             }
         }catch(Exception e){
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler'); 
+            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler'); System.debug('Core_IPS_UserTriggerHandler-->addGroupMembersAtFuture-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber());
         }
              
     }
@@ -535,6 +511,7 @@ Modification Log :
 ****************************************************************************************************/ 
     
     public static void convertCountryCodeToISO(List<User> newList,map<Id, User> mapOld) {
+        //System.debug('----convertCountryCodeToISO---:'+newList);
         if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('convertCountryCodeToISO'))
             return;
         try {
@@ -560,6 +537,7 @@ Modification Log :
                             if(mapCountryCode!=null && mapCountryCode.containsKey(user.CountryCode) ){
                                 Core_IPS_Country_Code_Mapping__c country = mapCountryCode.get(user.CountryCode);
                                 user.CountryCode = country.Core_IPS_SFDC_Country_Code__c;                            
+                                System.debug('----SFdC Country Name ---:'+country);                            
                             }else{
                                 user.CountryCode = Label.Core_IPS_Default_Country;
                             }
@@ -577,9 +555,7 @@ Modification Log :
                     } */              
                 }
             }
-        } catch(Exception e){ 
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');
-             }
+        } catch(Exception e){ Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');System.debug('Core_IPS_UserTriggerHandler-->convertCountryCodeToISO-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber()); }
     
     }
     
@@ -620,7 +596,7 @@ Modification Log :
                 lstInactivatedUsers.add(objUser.Id);
             }
         }
-        if((lstActivatedUsers.size()>0 || lstInactivatedUsers.size()>0) && !system.isBatch()) {
+        if(lstActivatedUsers.size()>0 || lstInactivatedUsers.size()>0) {
             InactivateActivateInterestedParty_Future(JSON.serialize(lstActivatedUsers), JSON.serialize(lstInactivatedUsers));
         }
     }
@@ -654,9 +630,8 @@ Modification Log :
             for(Core_IPS_Case_Interested_Party__c objIP : lstCaseInterestedParty2Activate) {
                 objIP.Active__c = true;
             }
-            if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
-              update lstCaseInterestedParty2Activate;
-            }
+            update lstCaseInterestedParty2Activate;
+            system.debug('lstCaseInterestedParty2Activate=='+lstCaseInterestedParty2Activate);
         }
         
         if(lstInactivatedUsers!=null && lstInactivatedUsers.size()>0) {
@@ -665,11 +640,11 @@ Modification Log :
             //End --DE35667--Added type external
             for(Core_IPS_Case_Interested_Party__c objIP : lstCaseInterestedParty2Inactivate) {
                 objIP.Active__c = false;
-            
+                 
+            system.debug('objIP==='+objIP.Active__c);
             }
-            if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isUpdateable()){
-              update lstCaseInterestedParty2Inactivate;
-            }
+            update lstCaseInterestedParty2Inactivate;
+            system.debug('lstCaseInterestedParty2Inactivate=='+lstCaseInterestedParty2Inactivate);
         }
     }
     
@@ -703,151 +678,9 @@ Modification Log :
             if(lstTracker.size()>0) {
                 Database.insert(lstTracker, false);
             }
-        } catch(Exception e){ 
-            Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');
-            }
+        } catch(Exception e){ Core_IPS_ExceptionHandling.logEntryWithException(e, 'User', 'Core_IPS_UserTriggerHandler');System.debug('Core_IPS_UserTriggerHandler-->managerChangelogger-->Exception--->'+e.getMessage()+'At Line Number-->'+e.getLineNumber()); }
     }
-    /***************************************************************************************************
-Version     : 1.0 
-Function    : This method shares assets to customers
-Input Parameters: User New List
-Output Parameters: None
-Transactions: After Intert           
-Used in     : Core_User Trigger
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Ganapati                    22/04/2020              Created for US618169 - PRB000091747: Fix issue with Product Access and when Contacts become IPS Active
-****************************************************************************************************/     
-    public static void shareAssetsToCustomers(List<User> usrList) {
-        if(!Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('shareAssetsToCustomers')) {
-            return;
-        }
-        List<User> userList = new List<User>();
-        if(User.SObjectType.getDescribe().isQueryable()){
-           userList = [SELECT Id, Contact.AccountId, ContactId, UserRoleId FROM User WHERE Id IN :usrList AND (Profile.Name = : System.Label.Core_IPS_Profile_Name OR Profile.Name =: System.Label.Core_IPS_Partner_AE_ProfileName ) AND ContactId != null and Contact.Core_IPS_Active__c = true and Contact.Account.Core_IPS_Active__c = true ];
-        }
-            if(userList!=null && !userList.isEmpty()) {
-            Set<Id> accountIdSet = new Set<Id>();
-            Map<Id, Set<Id>> assetUsrRoleIdMap = new Map<Id, Set<Id>>();
-            Map<Id, Id> assetShareIdMap = new Map<Id, Id>();
-            List<Asset> assetToShare = new List<Asset>();
-            Map<Id, Id> groupUsrRoleIdMap = new Map<Id, Id>();
-            Map<Id, Asset> assetMap;
-            List<AssetShare> assetShareList;
-            List<Group> groupList;
-            
-            for(User usr : userList ) {
-                accountIdSet.add(usr.Contact.AccountId);
-            }
-            
-                if(!accountIdSet.isEmpty()) {
-                    if(Asset.SObjectType.getDescribe().isQueryable()){
-                        assetMap = new Map<Id, Asset>([SELECT Id, AccountId, Status, Core_IPS_Project__c, RecordTypeId FROM Asset WHERE AccountId IN :accountIdSet]);
-                    }
-                    if(AssetShare.SObjectType.getDescribe().isQueryable()){
-                        assetShareList = [select AssetId, Asset.AccountId, UserOrGroupId from AssetShare  where Asset.AccountId IN : accountIdSet];
-                    }
-                    if(Group.SObjectType.getDescribe().isQueryable()){
-                        groupList  = [SELECT Id, Name, DeveloperName, RelatedId, Related.Name FROM Group WHERE Id IN ( SELECT UserOrGroupId FROM AssetShare WHERE Asset.AccountId IN : accountIdSet)];
-                    }
-                }
-            if( groupList != null && !groupList.isEmpty()) {                
-                for(Group grpObj : groupList) {
-                    groupUsrRoleIdMap.put(grpObj.Id, grpObj.RelatedId);
-                }
-            }
-            if(assetShareList!=null && !assetShareList.isEmpty() && !groupUsrRoleIdMap.isEmpty()) {
-                for(AssetShare assetShareObj : assetShareList) {    
-                    if(assetUsrRoleIdMap.get(assetShareObj.AssetId)!= null) {
-                        assetUsrRoleIdMap.get(assetShareObj.AssetId).add(groupUsrRoleIdMap.get(assetShareObj.UserOrGroupId));
-                    } else {
-                        Set<Id> usrRoleSet = new Set<Id>();
-                        usrRoleSet.add(groupUsrRoleIdMap.get(assetShareObj.UserOrGroupId));
-                        assetUsrRoleIdMap.put(assetShareObj.AssetId, usrRoleSet);
-                    }
-                }
-            }
-            if(assetMap!=null && !assetMap.isEmpty()) {
-                for(User usr : userList ) {
-                    for(Id assetid : assetMap.keySet()) {
-                        if(!(assetUsrRoleIdMap != null && !assetUsrRoleIdMap.isEmpty() && assetUsrRoleIdMap.get(assetid).contains(usr.UserRoleId))) {
-                            assetToShare.add(assetMap.get(assetid));
-                        } 
-                    }
-                }
-            }
-            if(assetToShare!=null && !assetToShare.isEmpty()) {
-                List<Asset> ipsNewRecordList = Core_IPS_Helper_Utility.getIPSRecords('Asset',assetToShare);
-                if(ipsNewRecordList!=null && !ipsNewRecordList.isEmpty()) {
-                    String newListStr = JSON.serialize(ipsNewRecordList);
-                    Core_Asset_Handler.grantAssetAccesstoCustomers(newListStr); //Sharing asset to IPS External
-                }
-            }
-        }
-    }   
- /***************************************************************************************************
-Version     : 1.0 
-Created Date: 12 Nov 2020
-Function    : This method adds  
-Input Parameters: List<User>
-Output Parameters: None
-Transactions: 
-Description: This method update Active Project Member and interested party record with active user. 
-Number of Queries Within this Method: 2
-Number of Queries in Loop: 0
-Number of Queries from Called methods: 0
-Number of times called: 
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Prem                      11/12/2020              Added - updated the InsertProjMemberatFuture with Queueable apex
-****************************************************************************************************/ 
-    public static void UpdateUIOLIUserLostVisibilty(Map<Id, User> UserMap){
-        List<User> ipsUsers = [select id, name, ContactId, Contact.AccountId from user where Contact.Core_IPS_Active__c = true AND isActive=true and Id In :UserMap.keyset()];
-        Map<Id,Id> contactUserMap = new Map<Id,Id>();
-        for(User ipsUser : ipsUsers){
-            contactUserMap.put(ipsUser.ContactId,ipsUser.Id);
-        }
-        List<Sobject> allProjectMemAndIntParty =new List<Sobject>();
-        List<Core_IPS_Project_Member__c> ProjectMembers = new List<Core_IPS_Project_Member__c>();
-        //FLS check added-Venugopal.
-        if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-            ProjectMembers = [Select id,Core_IPS_Contact__c,Core_User__c from Core_IPS_Project_Member__c where Core_Status__c = 'active' and Core_IPS_Contact__c IN :contactUserMap.keySet() and Core_User__c NOT IN :contactUserMap.values()];
-        }
-        for( Core_IPS_Project_Member__c projMem: ProjectMembers){
-            projMem.Core_User__c = contactUserMap.get((Id)projMem.Core_IPS_Contact__c);
-        }
-        //database.update(ProjectMembers);
-        allProjectMemAndIntParty.addAll((List<Sobject>)ProjectMembers);
-        //Interested party adding
-        List<Core_IPS_Case_Interested_Party__c> interestedparties = new List<Core_IPS_Case_Interested_Party__c>();
-        //FLS check added-Venugopal
-        if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
-            interestedparties = [Select id,Contact__c,User__c from Core_IPS_Case_Interested_Party__c where Active__c = true and Contact__c IN :contactUserMap.keySet() and User__c NOT IN :contactUserMap.values()];
-        }
-        for( Core_IPS_Case_Interested_Party__c interestedParty: interestedparties){
-            interestedParty.User__c = contactUserMap.get((Id)interestedParty.Contact__c);
-        }
-        //database.update(interestedparties);
-        allProjectMemAndIntParty.addAll((List<Sobject>)interestedparties);
-        if(allProjectMemAndIntParty.size()>0){
-            ID jobID = System.enqueueJob(new UpdateProjectMemAndIntParty(allProjectMemAndIntParty));
-        }
-        
-    }
+      
     
-    //Queueable class
-    public class UpdateProjectMemAndIntParty implements Queueable {
-        public List<Sobject> allMemAndIntPartyList =null;
-        public updateProjectMemAndIntParty(List<Sobject> sobjectList){
-            allMemAndIntPartyList = sobjectList;
-        }
-        public void execute(QueueableContext context) {
-            if(allMemAndIntPartyList.size()>0){
-                database.update(allMemAndIntPartyList);
-            }      
-        }
-    }    
     
 }

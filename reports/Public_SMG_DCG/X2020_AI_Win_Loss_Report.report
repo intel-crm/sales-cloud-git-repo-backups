@@ -7,9 +7,6 @@
         <field>OpportunityLineItem.Core_Status__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Approved_Date__c</field>
-    </columns>
-    <columns>
         <field>PRODUCT_NAME</field>
     </columns>
     <columns>
@@ -123,8 +120,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Opportunity.Core_Approved_Date__c</sortColumn>
-    <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
         <interval>INTERVAL_CURY</interval>

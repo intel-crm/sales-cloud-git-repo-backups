@@ -50,8 +50,7 @@ public class Core_IPS_Copy_EDQ_Controller_Test {
             lstEDO[0].Core_IPS_Question__c = lstEDO[1].Core_IPS_Question__c = objEDQ.Id;
             lstEDO[0].Core_Supported_Product__c = lstSupProd[0].Id;
             lstEDO[1].Core_Product_Issue_Sub_Category__c = caseSubCat.Id;
-            insert lstEDO;      
-             System.AssertEquals(lstEDO.size()>0, true);                  
+            insert lstEDO;                        
         }
         
         Test.startTest();

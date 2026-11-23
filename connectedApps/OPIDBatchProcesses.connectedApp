@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>asha.alex@intel.com</contactEmail>
+    <label>OPIDBatchProcesses</label>
+    <oauthConfig>
+        <callbackUrl>https://test.salesforce.com/services/oauth2/success</callbackUrl>
+        <certificate>MIIDlzCCAn8CFFLUX/4yEeHNgggx+IN5oekLm45iMA0GCSqGSIb3DQEBCwUAMIGHMQswCQYDVQQGEwJJTjESMBAGA1UECAwJS2FybmF0YWthMRIwEAYDVQQHDAlCYW5nYWxvcmUxDjAMBgNVBAoMBUludGVsMQswCQYDVQQLDAJJVDEPMA0GA1UEAwwGRGV2SVBBMSIwIAYJKoZIhvcNAQkBFhNhc2hhLmFsZXhAaW50ZWwuY29tMB4XDTIwMTExMTE5MzQyMVoXDTIxMTExMTE5MzQyMVowgYcxCzAJBgNVBAYTAklOMRIwEAYDVQQIDAlLYXJuYXRha2ExEjAQBgNVBAcMCUJhbmdhbG9yZTEOMAwGA1UECgwFSW50ZWwxCzAJBgNVBAsMAklUMQ8wDQYDVQQDDAZEZXZJUEExIjAgBgkqhkiG9w0BCQEWE2FzaGEuYWxleEBpbnRlbC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCxYobHGAkHFnWSxn3MY8dyLp2VbUPNzpty9/JUWGiJyFTOMKU+c+dJLeDej51q7MAnLtawRAge1xCUUVtGBwGjK/yeEHShQe1y3b3Ze+vYB7yKE5nehG6rTn1Xf8WkV9B3jr+pl28kqhnYnRWAG+eVLChHNkG0cC1Y/o8JA/Yzha6LW7a52LFmVvbo+xD3xcvCjw1uiJBatkBQOuAqb4220M1CSC9hEZzfnDYsiFDL0rjigCi5G/ff1APlLeErEVbq9FrMXXMFKi1t5qx+UFk6CmKmyt+x9RXEmaXwzzQYQBqIJxYoK+qmJ4T93abdt/jw9GIq7fDy/GlyVhEl+zqLAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAA6FMlKD0DrzU1i4b57P7q1MU6edMAt7BZEJHPRvWIdULeVI54yrseWQFWhcP9PSKI2ZF+PWcHoZ51Z/+uLnbXPyo3A3+km9CvlNOoX1o8CIBdbmnKVEItRqI0uho2sdMpD3Pabyu3yQNXCoGmUSMMjrYfPYwheXzuNlPwa7IdnIh1QRBuM3A/8y5QUTrzaaoMiZoDO9+H5S29GZ9f+e1PgxSTrFOP2SgzOhm1SHrpe+vVUsDoXRk7nhrebI7Wh0wxcjKvpeHTUIvTdUFDcwzl/ZRpbycoO/XWDNzCz0VMOU1WKUuQgdcPFGl02O4K3hyiidUNI9fnMuEEfA5fIyJlA=</certificate>
+        <consumerKey>3MVG9eQyYZ1h89HfOvSumrC7djYDIqSwHUbnDn45tYAnfMuFscM3yR4fzJepmL0WnwJWyB0kG_gME5SeCAZP7</consumerKey>
+        <isAdminApproved>true</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>false</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>false</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+    <profileName>System Administrator</profileName>
+</ConnectedApp>

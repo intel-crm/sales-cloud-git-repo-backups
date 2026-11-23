@@ -130,7 +130,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Marketplace_Topic_Record_Page</content>
-        <formFactor>Small</formFactor>
+        <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -138,7 +138,7 @@
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
         <content>Marketplace_Topic_Record_Page</content>
-        <formFactor>Large</formFactor>
+        <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
     </actionOverrides>
@@ -426,7 +426,6 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PMP_Marketplace_Topic_Name__c</columns>
-        <columns>PMP_Topic_Id__c</columns>
         <columns>PMP_Topic_Type__c</columns>
         <columns>PMP_Is_Active_Ind__c</columns>
         <filterScope>Everything</filterScope>

@@ -113,25 +113,23 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
         programName: progName
       })
         .then(result => {
-          if (result !=''){
-            console.log('Inside If-->', result);
-            this.spinner = !this.spinner;
-            this.message = JSON.stringify(result);
-            this.variant = "error";
-            this._title = invalidSelectionTitle;  // Invalide selection Eg: CCF prgm : DCF AUSU user
-            this.showNotification();
-          }else{
-            console.log('Inside else-->', result);
+          if (result == null || result === undefined) {
             this.spinner = !this.spinner;
             this._title = successMsgTitle;
             this.message = successMsg;
             this.variant = "success";
             this.onCancel();
             this.showNotification();
+          } else {
+            this.spinner = !this.spinner;
+            this.message = JSON.stringify(result);
+            this.variant = "error";
+            this._title = invalidSelectionTitle;
+            this.showNotification();
           }
         })
         .catch(error => {
-          console.log('Inside catch-->', result);
+          this.spinner = !this.spinner;
           this.showGenericError(error);
           this.showNotification();
         });
@@ -187,7 +185,7 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
   //Get User Type
   getUserType() {
     fetchUserInfo({}).then(result => {
-      if (result) {
+      if (result !== null || result !== undefined) {
         //Getting all available user list
         this.usrType = result;
       }
@@ -222,8 +220,7 @@ export default class Core_MDF_LWC_AccountUser extends NavigationMixin(
 
   //Show Generic Error
   showGenericError(error) {
-    console.log('inside showGenericError' , error);
-    if (error){
+    if (error != null && error !== "" && error !== undefined) {
       this.variant = "error";
       this.message = applicationErrorMsg;
       this._title = applicationErrorMsgTitle;

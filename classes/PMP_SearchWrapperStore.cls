@@ -238,6 +238,8 @@ public with sharing virtual class PMP_SearchWrapperStore {
         @AuraEnabled public Boolean contactPartnerVisible {get; set;}
         //Added by raj for partner benefit type
         @AuraEnabled public String benefitType {get; set;}
+        
+       
             
     }
    
@@ -379,7 +381,7 @@ public with sharing virtual class PMP_SearchWrapperStore {
         @AuraEnabled public List<Specialties> specialties { get; set; }
         @AuraEnabled public String tierStatus { get; set; }
         @AuraEnabled public Boolean isDistributor { get; set; }
-         //For adding banner to storefront if its AI generated
+        //For adding banner to storefront if its AI generated
          @AuraEnabled public Boolean scrapingValue {get; set;}
     }
     

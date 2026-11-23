@@ -80,12 +80,6 @@
         <default>false</default>
         <label>WEUR</label>
     </customValue>
-    <customValue>
-        <fullName>INDIA</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>INDIA</label>
-    </customValue>
     <masterLabel>Sub Region</masterLabel>
     <sorted>false</sorted>
 </GlobalValueSet>

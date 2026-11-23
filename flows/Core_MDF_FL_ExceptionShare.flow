@@ -224,7 +224,7 @@
             <name>Core_MDF_CCF</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>sCPtemp.Core_MDF_Bank_Program_Value__c</leftValueReference>
+                <leftValueReference>sCP_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>vCCFExceptionProgram</elementReference>
@@ -239,7 +239,7 @@
             <name>Core_MDF_DCF</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>sCPtemp.Core_MDF_Bank_Program_Value__c</leftValueReference>
+                <leftValueReference>sCP_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>vDCFExceptionProgram</elementReference>
@@ -254,7 +254,7 @@
             <name>Core_MDF_SPCF</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>sCPtemp.Core_MDF_Bank_Program_Value__c</leftValueReference>
+                <leftValueReference>sCP_temp.Core_MDF_Bank_Program_Name__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <elementReference>vSPCFExceptionProgram</elementReference>
@@ -363,8 +363,8 @@
         <label>Loop Metadata</label>
         <locationX>247</locationX>
         <locationY>427</locationY>
-        <assignNextValueToReference>sCPtemp</assignNextValueToReference>
-        <collectionReference>sCPcollection</collectionReference>
+        <assignNextValueToReference>sCP_temp</assignNextValueToReference>
+        <collectionReference>sCollChannelProgramName</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
             <targetReference>Core_MDF_Align_Exception_Program_with_it_s_respective_values</targetReference>
@@ -488,19 +488,13 @@
         <connector>
             <targetReference>Core_MDF_Loop_Metadata</targetReference>
         </connector>
-        <object>Core_MDF_ChannelProgram__mdt</object>
-        <outputReference>sCPcollection</outputReference>
+        <object>Core_MDF_BankProgram_Entitlement_Mapping__mdt</object>
+        <outputReference>sCollChannelProgramName</outputReference>
         <queriedFields>Id</queriedFields>
-        <queriedFields>Core_MDF_Bank_Program_Value__c</queriedFields>
-        <queriedFields>Core_MDF_Technical_Program_Name__c</queriedFields>
+        <queriedFields>Core_MDF_Channel_Program__c</queriedFields>
+        <queriedFields>Core_MDF_Bank_Program_Name__c</queriedFields>
     </recordLookups>
-    <start>
-        <locationX>254</locationX>
-        <locationY>0</locationY>
-        <connector>
-            <targetReference>Core_MDF_Fetch_Program_Mapping_Metadata</targetReference>
-        </connector>
-    </start>
+    <startElementReference>Core_MDF_Fetch_Program_Mapping_Metadata</startElementReference>
     <status>Active</status>
     <variables>
         <name>sCollChannelProgramName</name>
@@ -536,23 +530,7 @@
         <objectType>Core_MDF_Partner_Group_Mapping__c</objectType>
     </variables>
     <variables>
-        <name>sCPcollection</name>
-        <dataType>SObject</dataType>
-        <isCollection>true</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_ChannelProgram__mdt</objectType>
-    </variables>
-    <variables>
-        <name>sCPtemp</name>
-        <dataType>SObject</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <objectType>Core_MDF_ChannelProgram__mdt</objectType>
-    </variables>
-    <variables>
-        <name>sCPtemp1</name>
+        <name>sCP_temp</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>

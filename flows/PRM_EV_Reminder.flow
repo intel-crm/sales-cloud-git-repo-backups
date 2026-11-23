@@ -321,8 +321,8 @@
             <label>myPreWaitRule_myWait_myRule_1</label>
         </rules>
     </decisions>
-    <description>Remind users to complete EV on 3rd and 5th date since registration request date</description>
-    <interviewLabel>PRM_EV_Reminder-1_InterviewLabel</interviewLabel>
+    <description>Remind users to complete EV after 1 hour and 20 hours since registration request creation</description>
+    <interviewLabel>PRM_EV_Reminder-3_InterviewLabel</interviewLabel>
     <label>PRM_EV_Reminder</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -435,13 +435,13 @@
             <inputParameters>
                 <name>TimeOffsetUnit</name>
                 <value>
-                    <stringValue>Days</stringValue>
+                    <stringValue>Hours</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>TimeOffset</name>
                 <value>
-                    <numberValue>2.0</numberValue>
+                    <numberValue>1.0</numberValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -487,13 +487,13 @@
             <inputParameters>
                 <name>TimeOffsetUnit</name>
                 <value>
-                    <stringValue>Days</stringValue>
+                    <stringValue>Hours</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>TimeOffset</name>
                 <value>
-                    <numberValue>4.0</numberValue>
+                    <numberValue>20.0</numberValue>
                 </value>
             </inputParameters>
             <inputParameters>

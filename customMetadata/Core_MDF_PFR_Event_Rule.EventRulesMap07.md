@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Core_MDF_Activity_Types__c</field>
-        <value xsi:type="xsd:string">Member Owned Event,Member Participation in Third-Party Event,Channel Partner Owned Event,Channel Partner Participation in Third-Party Event,Promotion</value>
+        <value xsi:type="xsd:string">Promotion</value>
     </values>
     <values>
         <field>Core_MDF_Amount_Operator__c</field>

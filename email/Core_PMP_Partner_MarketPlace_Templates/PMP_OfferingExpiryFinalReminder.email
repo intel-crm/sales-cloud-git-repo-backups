@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Notice: Your {!relatedTo.PMP_Partner_Offering_Nm__c} Offering has expired" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingExpiryFinalReminder offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

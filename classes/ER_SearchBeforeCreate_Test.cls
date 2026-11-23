@@ -2,6 +2,7 @@
 public class ER_SearchBeforeCreate_Test {
     public static boolean IsEmailTest = false;
 
+    
     @isTest 
     public static void DoPostTest_One(){
         //Address address = new Address('Magarpatta','Pune','411024','Maharashtra','02039399');
@@ -25,7 +26,6 @@ public class ER_SearchBeforeCreate_Test {
         ct.LastName='New';
         ct.Email='new@test.com';
         ct.AccountId=acc.id;
-        ct.MailingCountry='India';
         insert ct;
         
         RestRequest req = new RestRequest(); 
@@ -80,7 +80,6 @@ public class ER_SearchBeforeCreate_Test {
         ct.LastName='New';
         ct.Email='new@test.com';
         ct.AccountId=acc.id;
-        ct.MailingCountry='India';
         insert ct;
         
         RestRequest req = new RestRequest(); 
@@ -135,7 +134,6 @@ public class ER_SearchBeforeCreate_Test {
         ct.LastName='New';
         ct.Email='new@test.com';
         ct.AccountId=acc.id;
-        ct.MailingCountry='India';
         insert ct;
         
         RestRequest req = new RestRequest(); 
@@ -192,7 +190,6 @@ public class ER_SearchBeforeCreate_Test {
         ct.LastName='New';
         ct.Email='new@test.com';
         ct.AccountId=acc.id;
-        ct.MailingCountry='India';
         insert ct;
         
         ER_SearchBeforeCreate.CIMSearchBeforeCreate cimSBC = new ER_SearchBeforeCreate.CIMSearchBeforeCreate();
@@ -207,7 +204,7 @@ public class ER_SearchBeforeCreate_Test {
         Core_Country_Code_Mapping__c countryIsoSetting = new Core_Country_Code_Mapping__c ();
         countryIsoSetting.Name='TestName';
         countryIsoSetting.ISO_Code__c='IND';
-        countryIsoSetting.Country_Code__c='IN'; 
+         countryIsoSetting.Country_Code__c='IN'; 
         insert countryIsoSetting;
         
         Test.startTest();        
@@ -246,7 +243,6 @@ public class ER_SearchBeforeCreate_Test {
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@test.com';
-        ct.MailingCountry='India';
         ct.AccountId=acc.id;
         
         insert ct;

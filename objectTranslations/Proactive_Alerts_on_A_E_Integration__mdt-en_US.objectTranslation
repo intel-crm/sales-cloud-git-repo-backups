@@ -23,10 +23,6 @@
             <masterLabel>ERPM</masterLabel>
             <translation><!-- ERPM --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Salesforce</masterLabel>
-            <translation><!-- Salesforce --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Error Text --></label>

@@ -14,25 +14,8 @@
         <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Contact Email --></label>
-        <name>Core_IPS_Contact_Email__c</name>
-    </fields>
-    <fields>
         <label><!-- Contact --></label>
         <name>Core_IPS_Contact_Id__c</name>
-        <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Description --></label>
-        <name>Core_IPS_Description__c</name>
-    </fields>
-    <fields>
-        <label><!-- Description on Coveo --></label>
-        <name>Core_IPS_Description_on_Coveo__c</name>
-    </fields>
-    <fields>
-        <label><!-- Product --></label>
-        <name>Core_IPS_Product__c</name>
         <relationshipLabel><!-- Deflected Objects --></relationshipLabel>
     </fields>
     <fields>
@@ -47,10 +30,6 @@
         <label><!-- Status --></label>
         <name>Core_IPS_Status__c</name>
         <picklistValues>
-            <masterLabel>Abandoned</masterLabel>
-            <translation><!-- Abandoned --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Case Created</masterLabel>
             <translation><!-- Case Created --></translation>
         </picklistValues>
@@ -63,5 +42,19 @@
             <translation><!-- Deflected --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Deflected Object External  Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Deflected Object Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

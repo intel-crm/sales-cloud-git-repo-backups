@@ -1,9 +1,9 @@
-<apex:page standardController="case" showheader="true"  sidebar="true" lightningstylesheets="true">
-	<apex:includeScript value="/support/console/20.0/integration.js"/>
-  	<script type="text/javascript">
+<apex:page standardController="case" showheader="true"  sidebar="true">
+  <apex:includeScript value="/support/console/20.0/integration.js"/>
+  <script type="text/javascript">
       function testSetTabTitle() {
           //Set the current tab's title
-          sforce.console.setTabTitle('Case: {!JSENCODE(case.CaseNumber)}');
+          sforce.console.setTabTitle('Case: {!case.CaseNumber}');
       }
       var pageLoad = window.onload;
         window.onload = function() {
@@ -14,13 +14,12 @@
         }
   </script>    
  
-<apex:outputPanel rendered="{! ($Profile.Id == $Label.Core_IPS_External_Customer_Profile_Id|| LEFT($Profile.Id,15) == $Label.Core_Partner_Profile_Id || LEFT($Profile.Id,15) == $Label.Core_IPS_Partner_AE_Profile_Id) && (Case.Core_IPS_Customer_Visible__c == false)}">
+  <apex:outputPanel rendered="{! ($Profile.Id == $Label.Core_IPS_External_Customer_Profile_Id|| LEFT($Profile.Id,15) == $Label.Core_Partner_Profile_Id || LEFT($Profile.Id,15) == $Label.Core_IPS_Partner_AE_Profile_Id) && (Case.Core_IPS_Customer_Visible__c == false)}">
  
 <span style="font-weight: bold; font-size: 12pt;">Data Not Available</span><br/><br/>
 The data you were trying to access could not be found. It may be due to another user deleting the data or a system error. If you know the data is not deleted but cannot access it, please look at our <a href="javascript:openPopupFocusEscapePounds('https://help.salesforce.com/apex/htdoor?body=%2Ftrain%2FonlineSupport.jsp&amp;loc=support&amp;language=en_US&amp;release=210.16.4&amp;instance=CS92&amp;showSplash=true', 'Help', 1024, 768, 'width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no', false, false);" title="support (New Window)">support</a> page.
 
  </apex:outputPanel>
-
 <apex:detail inlineEdit="true" showChatter="true" rendered="{!if(((($Profile.Id == $Label.Core_IPS_External_Customer_Profile_Id || LEFT($Profile.Id,15) == $Label.Core_Partner_Profile_Id || LEFT($Profile.Id,15) == $Label.Core_IPS_Partner_AE_Profile_Id) && 
     (Case.Core_IPS_Customer_Visible__c)
     )|| ($Profile.Id != $Label.Core_IPS_External_Customer_Profile_Id && LEFT($Profile.Id,15) != $Label.Core_Partner_Profile_Id && LEFT($Profile.Id,15) != $Label.Core_IPS_Partner_AE_Profile_Id ))

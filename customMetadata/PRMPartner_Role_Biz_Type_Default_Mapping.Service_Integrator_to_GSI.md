@@ -3,6 +3,10 @@
     <label>Service Integrator to GSI</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">Global System Integrator (GSI)</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Solution Integrator</value>
     </values>

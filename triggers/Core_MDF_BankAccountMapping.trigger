@@ -14,5 +14,8 @@ trigger Core_MDF_BankAccountMapping on Core_MDF_Account_Bank_Mapping__c (before 
                                                                                   after update,
                                                                                   after delete,
                                                                                   after undelete) {
-    new Core_MDF_BankAccountTriggerHandler().run();
+    try{                                                                              
+    new Core_MDF_BankAccountTriggerHandler().run();}catch(Exception e){
+        system.debug('exception'+e.getMessage());
+    }
 }

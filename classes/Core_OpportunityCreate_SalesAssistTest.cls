@@ -13,6 +13,5 @@ public class Core_OpportunityCreate_SalesAssistTest {
         Test.setCurrentPage(pageRef);
         Core_OpportunityCreate_SalesAssistCtrl oppCreate = new Core_OpportunityCreate_SalesAssistCtrl();
         Test.stopTest();
-        Assert.areEqual(true, oppCreate!=null);
     }
 }

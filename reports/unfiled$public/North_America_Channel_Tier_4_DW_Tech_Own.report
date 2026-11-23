@@ -117,13 +117,6 @@
             <operator>notContain</operator>
             <value>Charlie Mark,Pete Schmitz,Fekete,Anna Spencer,Scott Blackburn,Claudine Conway,Dean Johnson,Colton Story,Richard Mason,Billo,Charles Mark,Martin Santucci,Dave Ciampa</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

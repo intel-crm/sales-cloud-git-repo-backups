@@ -44,5 +44,12 @@
         <label><!-- Shared Object --></label>
         <name>Core_IPS_Shared_Object__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Conversion - Sharing Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

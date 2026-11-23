@@ -3,32 +3,8 @@
     <label>COLOMBIA</label>
     <protected>false</protected>
     <values>
-        <field>Core_MDF_All_Other_APJ_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_All_Other_ASMO_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_All_Other_EMEA_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_Blocked_in_UI_ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
         <field>Core_MDF_Code_2_Digits__c</field>
         <value xsi:type="xsd:string">CO</value>
-    </values>
-    <values>
-        <field>Core_MDF_Geo_Code_cd__c</field>
-        <value xsi:type="xsd:string">AM</value>
-    </values>
-    <values>
-        <field>Core_MDF_Geo_Sales_Org_Code_cd__c</field>
-        <value xsi:type="xsd:string">AM03</value>
     </values>
     <values>
         <field>Core_MDF_Geo__c</field>

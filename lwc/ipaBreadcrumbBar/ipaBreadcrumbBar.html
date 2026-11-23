@@ -8,8 +8,8 @@
           <div class="breadcrumbSeparator" if:false={it.last}>/</div>
         </div>
         <div class={it.value.className} if:true={it.value.children}>
+          <!-- <div for:each={it.value.children} for:item="child" key={child.id}>; -->
           <div for:each={sanitizedChildren} for:item="child" key={child.id}>;
-            <!-- <div for:each={it.value.children} for:item="child" key={child.id}>; -->
             <!-- <span if:true={child.textOnly}>{child.text}</span> -->
             <span if:true={child.textOnly}>
             <lightning-formatted-text value={child.text}></lightning-formatted-text>

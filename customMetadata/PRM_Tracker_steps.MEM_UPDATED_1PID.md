@@ -16,11 +16,11 @@
     </values>
     <values>
         <field>PRM_Milestone_Display_Name__c</field>
-        <value xsi:type="xsd:string">Membership Updated on OPID</value>
+        <value xsi:type="xsd:string">Membership Updated with Partner Role PRM_Merge_field_1__c and Tier PRM_Merge_field_2__c</value>
     </values>
     <values>
         <field>PRM_Order__c</field>
-        <value xsi:type="xsd:double">1.0</value>
+        <value xsi:type="xsd:double">4.0</value>
     </values>
     <values>
         <field>PRM_Skippable_step__c</field>

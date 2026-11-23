@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesIncludeBosses>true</doesIncludeBosses>
+    <doesSendEmailToMembers>true</doesSendEmailToMembers>
+    <name>INSIDE APJ Qual</name>
+    <queueMembers>
+        <users>
+            <user>11396117@intel.com.crm</user>
+            <user>11816673@intel.com.crm</user>
+            <user>11936044@intel.com.crm</user>
+            <user>11812078@intel.com.crm</user>
+            <user>11932708@intel.com.crm</user>
+            <user>10543934@intel.com.crm</user>
+            <user>11446753@intel.com.crm</user>
+            <user>10452027@intel.com.crm</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>Lead</sobjectType>
+    </queueSobject>
+</Queue>

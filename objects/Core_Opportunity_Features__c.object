@@ -159,16 +159,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>Core_Consumer_Sales_system__c</fullName>
-        <externalId>false</externalId>
-        <label>Consumer Sales System</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_Feature_Name__c</fullName>
         <description>This field is used as a formula reference to the field Feature Value in the Feature Object</description>
         <externalId>false</externalId>
@@ -228,13 +218,7 @@
     <fields>
         <fullName>Core_Platform_BU__c</fullName>
         <externalId>false</externalId>
-        <formula>CASE(Core_Feature_Set__r.Core_Feature__r.Core_Feature_BU__c,
-&quot;CCG&quot;, &quot;CCG&quot;,
-&quot;CCG ECG&quot;, &quot;CCG ECG&quot;,
-&quot;DCG&quot;, &quot;DCAI&quot;,
-&quot;PSG&quot;, &quot;PSG&quot;,
-&quot;NTG&quot;, &quot;NTG&quot;,&quot;&quot;
-)</formula>
+        <formula>TEXT(Core_Feature_Set__r.Core_Feature__r.Core_Feature_BU__c)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Platform BU</label>
         <required>false</required>

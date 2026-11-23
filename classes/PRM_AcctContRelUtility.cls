@@ -173,10 +173,10 @@ Purpose:   1. Whenever duplicate acr is inserted with same relationship it retur
                 if(oldMap!=null && oldMap.keyset().contains(acr.Id)){
                     PRM_Account_Contact_Relationship__c acrOldValue = oldMap.get(acr.Id);
                     if(acrOldValue.PRM_InActive_Ind__c!=acr.PRM_InActive_Ind__c && acr.PRM_InActive_Ind__c==false){
-		    	acr.PRM_Initiated_By__c=CurrentUser.Id;
+          acr.PRM_Initiated_By__c=CurrentUser.Id;
                         acr.PRM_Activated_Date__c=SYSTEM.NOW();
                         if(CurrentUser.isportalenabled){
-			    acr.PRM_Source_Agent__c='External Partner Invite';
+          acr.PRM_Source_Agent__c='External Partner Invite';
                             acr.PRM_CampaignId__c=null;
                             acr.Bulk_Data_Upload__c=null;
                         }     
@@ -348,12 +348,12 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                 //Fetching Entitlement Matrix record based on ACR relation.
                     if(acrList !=null && !acrList.IsEmpty()){                        
                         for(PRM_VXEnttlmntMatrix__c em: [Select Id, Name,PRM_Entitlement_Id__c,PRM_Contact_Relationship_Id__c,PRM_IsActive_Ind__c, PRM_Contact_Relationship_Id__R.PRM_Default_Relationship_Ind__c From PRM_VXEnttlmntMatrix__c Where PRM_Approval_Type_Nm__c =:System.Label.PRM_ApprovalType AND PRM_IsActive_Ind__c = true]){
-                            if(acrList.contains(em.PRM_Contact_Relationship_Id__c)){emList.add(em);     
-                            }
-                            if(em.PRM_Contact_Relationship_Id__R.PRM_Default_Relationship_Ind__c == true){emListWorksfor.add(em);    
+                                if(acrList.contains(em.PRM_Contact_Relationship_Id__c)){emList.add(em);     
+                                }
+                                if(em.PRM_Contact_Relationship_Id__R.PRM_Default_Relationship_Ind__c == true){emListWorksfor.add(em);    
+                                }
                             }
                         }
-                    } 
                 //System.debug('emList-->'+emList);
                 //Fetching worksfor relationship Entitlement Matrix record .
                 //Commenting below query to fix SOQL issue, emListWorksfor is created above in existing entitlement matrix query 
@@ -384,6 +384,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                                                                      From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' 
                                                                      AND PRM_Contact_Id__c IN:contactRelatedACRList 
                                                                      AND PRM_Entitlement_Id__c IN :entitlementList]){batchEntitlements.PRM_Status_Nm__c = 'Success';
+                                                                                                                    batchEntitlements.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Entitlement insertion/removal succeeded';//TWC729-8089 : Adding reason text : NJ
                                                                                                                      beListTemp.add(batchEntitlements);
                                                                                                                     }
                 }
@@ -396,6 +397,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                             be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;
                             be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
                             be.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                            be.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Removal of Entitlement';//TWC729-8089 : Adding reason text : NJ
                             be.PRM_IsRemove_Ind__c = true;
                             if(!beListTemp.Contains(be)){
                                 beListTemp.add(be);
@@ -436,6 +438,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                 
                 if((contactRelatedACRList != null && !contactRelatedACRList.IsEmpty()) && (finalExistingEntId != null && !finalExistingEntId.IsEmpty())){
                     for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' AND PRM_Contact_Id__c IN:contactRelatedACRList AND PRM_Entitlement_Id__c IN :finalExistingEntId]){batchEntitlements.PRM_Status_Nm__c = 'Success';
+                                                                                                                                                                                                                                                                                                                                batchEntitlements.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Entitlement insertion/removal succeeded';//TWC729-8089 : Adding reason text : NJ
                                                                                                                                                                                                                                                                                                                                   beListTemp.add(batchEntitlements);
                                                                                                                                                                                                                                                                                                                                  }
                 }
@@ -448,6 +451,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                             be1.PRM_Contact_Id__c = ce1.Core_Contact_Id__c;
                             be1.PRM_Entitlement_Id__c = ce1.Core_Entitlement_Id__c;
                             be1.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                            be1.PRM_Status_Reason_Txt__c = 'PRM_AcctContRelUtility : Removal of Entitlement';//TWC729-8089 : Adding reason text : NJ
                             be1.PRM_IsRemove_Ind__c = true;
                             if(!beListTemp.Contains(be1)){beListTemp.add(be1);
                             }
@@ -498,7 +502,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
             if(!conFinalset.isEmpty()){
                 //Fetching the contact subscriptions for the inactive contacts
                 if(!softContactIndicator || Test.isRunningTest()){
-                    for(PRM_ContactSubscriptionAssociation__c conSubAssoc :[select id, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :conFinalset AND PRM_Status_Nm__c=:System.Label.PRM_Status_Active]){conSubAssoc.PRM_Status_Nm__c= System.Label.PRM_Status_Inactive;                                                                                                                                                                                                                                            
+                    for(PRM_ContactSubscriptionAssociation__c conSubAssoc :[select id, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :conFinalset AND PRM_Status_Nm__c=:System.Label.PRM_Status_Active]){conSubAssoc.PRM_Status_Nm__c= System.Label.PRM_Status_Inactive;conSubAssoc.PRM_Status_Reason_Txt__c ='Inactivating contact subscription for inactive contact';//TWC729-8089 : Adding reason text : NJ                                                                                                                                                                                                                                    
                         conSubAssocUpdateList.add(conSubAssoc);
                     }
                 }
@@ -510,7 +514,7 @@ Purpose:   if any ACR become inactive then delete contact entitlement related wi
                                                                                                                                                                                                                                                                                            }
             }
             if(softContactIndicator){
-                for(PRM_ContactSubscriptionAssociation__c conSubAssoc :[select id, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :softContatid AND PRM_Status_Nm__c=:System.Label.PRM_Status_Active]){conSubAssoc.PRM_Status_Nm__c= System.Label.PRM_Status_Inactive;                                                                                                                                                                                                                                            
+                for(PRM_ContactSubscriptionAssociation__c conSubAssoc :[select id, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :softContatid AND PRM_Status_Nm__c=:System.Label.PRM_Status_Active]){conSubAssoc.PRM_Status_Nm__c= System.Label.PRM_Status_Inactive;conSubAssoc.PRM_Status_Reason_Txt__c ='Inactivating contact subscription for inactive contact';//TWC729-8089 : Adding reason text : NJ                                                                                                                                                                                                                                             
                     conSubAssocUpdateList.add(conSubAssoc);
                 }
             }
@@ -622,6 +626,7 @@ Purpose:   if any ACR become active then corresponding contact entitlement shoul
             for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' AND PRM_Contact_Id__c IN:contactRelatedACRList AND PRM_Entitlement_Id__c IN :entitlementWithoutBEList]){
                 //batchEntitlements.PRM_IsRemove_Ind__c = false;
                 batchEntitlements.PRM_Status_Nm__c = 'Success';
+                batchEntitlements.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Entitlement Insertion/Removal Succeeded';//TWC729-8089 : Adding reason text : NJ
                 beListTemp.add(batchEntitlements);
             }
             //System.debug('beListTemp-->'+beListTemp);
@@ -631,6 +636,7 @@ Purpose:   if any ACR become active then corresponding contact entitlement shoul
                     be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;
                     be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
                     be.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                    be.PRM_Status_Reason_Txt__c = 'PRM_AcctContRelUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
                     be.PRM_IsRemove_Ind__c = false;
                     if(!beListTemp.Contains(be)){beListTemp.add(be);
                     }
@@ -641,6 +647,7 @@ Purpose:   if any ACR become active then corresponding contact entitlement shoul
                 for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' AND PRM_Contact_Id__c IN:contactRelatedACRList AND PRM_Entitlement_Id__c IN :entitlementList]){
                     //batchEntitlements.PRM_IsRemove_Ind__c = false;
                     batchEntitlements.PRM_Status_Nm__c = 'Success';
+                    batchEntitlements.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Entitlement Insertion/Removal Succeeded';//TWC729-8089 : Adding reason text : NJ
                     beListTemp.add(batchEntitlements);
                 }
                 for(Core_Contact_Entitlement__c ce :[Select Id,Core_Selected__c,Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Type__c,Core_Entitlement_Id__r.Name From Core_Contact_Entitlement__c Where Core_Selected__c = false AND Core_Contact_Id__c IN :contactRelatedACRList AND Core_Entitlement_Id__c IN :entitlementList AND (Core_Type__c =:System.Label.PRM_Entitlement_Type OR Core_Entitlement_Id__r.Name =:System.Label.PRM_PSG)]){
@@ -649,6 +656,7 @@ Purpose:   if any ACR become active then corresponding contact entitlement shoul
                         be1.PRM_Contact_Id__c = ce.Core_Contact_Id__c;
                         be1.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
                         be1.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                        be1.PRM_Status_Reason_Txt__c = 'PRM_AcctContRelUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
                         be1.PRM_IsRemove_Ind__c = false;
                         if(!beListTemp.Contains(be1)){beListTemp.add(be1);
                         }
@@ -672,6 +680,7 @@ Purpose:   if any ACR become active then corresponding contact entitlement shoul
                 for(PRM_ContactSubscriptionAssociation__c conSubAssoc :[select id, PRM_Contact_Id__c, PRM_Status_Nm__c from PRM_ContactSubscriptionAssociation__c where PRM_Contact_Id__c IN :contactRelatedACRList AND PRM_Status_Nm__c=:System.Label.PRM_Status_Inactive]){
                         if(!mapContIdToSourceAgent.containsKey(conSubAssoc.PRM_Contact_Id__c)){
                     conSubAssoc.PRM_Status_Nm__c= System.Label.PRM_Status_Active;
+                    conSubAssoc.PRM_Status_Reason_Txt__c = 'Activated as ACR is activated ';//TWC729-8089 : Adding reason text : NJ
                     conSubAssocUpdateList.add(conSubAssoc);
                         }
                 }
@@ -930,6 +939,7 @@ Purpose:   insert contact entitlements whenever ACR got inserted
             //System.debug('finalCEList-->'+finalCEList);
             if((beCon != null && !beCon.IsEmpty()) && (beEnt != null && !beEnt.IsEmpty())){ // Updating batch entitlement records.
                 for(PRM_Batch_Entitlement__c batchEntitlements :[Select Id, Name, PRM_Contact_Id__c,PRM_Entitlement_Id__c,PRM_Status_Nm__c,PRM_IsRemove_Ind__c From PRM_Batch_Entitlement__c Where PRM_Status_Nm__c = 'New' AND PRM_Contact_Id__c IN:beCon AND PRM_Entitlement_Id__c IN :beEnt]){batchEntitlements.PRM_Status_Nm__c = 'Success';
+                                                                                                                                                                                                                                                                                                batchEntitlements.PRM_Status_Reason_Txt__c ='PRM_AcctContRelUtility : Entitlement insertion/removal succeeded';//TWC729-8089 : Adding reason text : NJ
                                                                                                                                                                                                                                                                                                  beListTemp.add(batchEntitlements);
                                                                                                                                                                                                                                                                                                 }
             }
@@ -939,6 +949,7 @@ Purpose:   insert contact entitlements whenever ACR got inserted
                     be.PRM_Contact_Id__c = ce.Core_Contact_Id__c;
                     be.PRM_Entitlement_Id__c = ce.Core_Entitlement_Id__c;
                     be.PRM_Status_Nm__c = System.label.PRM_Status_New;
+                    be.PRM_Status_Reason_Txt__c = 'PRM_AcctContRelUtility : Activation of Entitlement';//TWC729-8089 : Adding reason text : NJ
                     if(!beListTemp.Contains(be)){
                         beListTemp.add(be);
                     }
@@ -1028,7 +1039,7 @@ Purpose:   Update the Contact Segment on contact based on the partner role of as
             //Set<Id> conRelIds = new Set<Id>();
             List<Contact> contList = new List<Contact>();
             List<Account> accList = new List<Account>();
-        	Set<Id> ipaAccountIdSet = new Set<Id>();
+          Set<Id> ipaAccountIdSet = new Set<Id>();
         
            try{
             if(acctContRelNewList != null){

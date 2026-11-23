@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <description>Update PRM_EV_Token_Renewed_Date__c on Registration record before record is saved</description>
+    <interviewLabel>Update EV Token Renewed Date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update EV Token Renewed Date</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <description>When a new registration record is created update PRM_EV_Token_Renewed_Date__c with system date</description>
+        <name>Update_EV_Token_Renewed_Date</name>
+        <label>Update EV Token Renewed Date</label>
+        <locationX>176</locationX>
+        <locationY>325</locationY>
+        <inputAssignments>
+            <field>PRM_EV_Token_Renewed_Date__c</field>
+            <value>
+                <elementReference>$Flow.CurrentDateTime</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Update_EV_Token_Renewed_Date</targetReference>
+        </connector>
+        <object>PRM_Registration_Request__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

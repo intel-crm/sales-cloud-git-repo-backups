@@ -69,11 +69,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_CNDA_Indicator_Nm__c</field>
+                <field>PRM_Account_Coverage_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Account_Coverage_Nm__c</field>
+                <field>PRM_CNDA_Indicator_Nm__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
@@ -159,7 +159,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h6C000000FU8J</masterLabel>
+        <masterLabel>00h8A000000T458</masterLabel>
         <sizeX>4</sizeX>
         <sizeY>0</sizeY>
         <summaryLayoutStyle>Default</summaryLayoutStyle>

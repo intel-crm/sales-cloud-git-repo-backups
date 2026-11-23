@@ -1,56 +1,8 @@
 @isTest
 public with sharing class PMP_TopicAssignmentHelper_Test {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_TopicAssignmentHelper.isWorking();
-        System.assertEquals(true, result);
-    }
-    @isTest
-    static void testIsWorking1() {
-        Boolean result = Core_TopicAssignmentHandler.isWorking();
-        System.assertEquals(true, result);
-    }
-    @isTest
-    static void testInsertTrigger() {
-        PMP_Marketplace_Topic__c topic = new PMP_Marketplace_Topic__c(
-            PMP_Marketplace_Topic_Name__c = 'Test Topic'
-        );
-        insert topic;
-    }
-    static testMethod void assignNegetivTopicRecord(){
-    test.startTest();
-    
-   
-    Account acc1 = PMP_TestDataUtility.createIntelAccount('TestAccount1838', PMP_TestDataUtility.intel_Account_Record_Type, true);
-    Topic newTopic = new Topic();
-    newTopic.Name = 'NotAllowedTopic';
-
-    insert newTopic;
-
-    PMP_Company__c testCompany = new PMP_Company__c(Name='testCompany9388', PMP_Account_Industry__c='Others');
-	testCompany.PMP_Opid_Sfid_Txt__c = acc1.Id;
-    testCompany.PMP_Is_Published_Ind__c=false;  
-    insert testCompany;
-                  
-        
-  
-
-    TopicAssignment topicAssignment = new TopicAssignment();
-    topicAssignment.entityId = testCompany.Id;
-    topicAssignment.topicId = newTopic.Id;
-    try{
-    insert topicAssignment;
-    }catch(Exception e){
-        System.assert(true);
-    }
-    
-    test.stopTest();
- }
-
-   
 
 
-/*    @TestSetup//IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    @TestSetup
     static void makeData(){
 
         list<Topic> listTopics = new List<Topic>();                                                                                 
@@ -155,7 +107,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
         triggerCust6.Core_Description__c ='To Sync Topic COunt';
         triggerCust6.Core_Object__c ='TopicAssignment';
         triggerCust6.Core_Trigger_Events__c ='after delete';
-        listSwitches.add(triggerCust6);//
+        listSwitches.add(triggerCust6);*/
 
         insert listSwitches;
 
@@ -204,7 +156,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
         listOfferings.add(offering);
     }
 
-    insert listOfferings;//
+    insert listOfferings;*/
 
     List<PMP_Partner_Offering__c> workingCopyOfferings = new List<PMP_Partner_Offering__c>();
     Map<Id,PMP_Partner_Offering__c> mapPublishedOfferings = new Map<Id,PMP_Partner_Offering__c>();
@@ -215,7 +167,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
         offering1.PMP_Published_Copy_Id_Txt__c = offering.Id;
         workingCopyOfferings.add(offering1);
     }
-    insert workingCopyOfferings;//
+    insert workingCopyOfferings;*/
 
     
     for(PMP_Partner_Offering__c offering : workingCopyOfferings){
@@ -234,7 +186,6 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
         /*PMP_Partner_Offering__c offering1 = [select id from PMP_Partner_Offering__c limit 1];
        
 
-
         map<Id,PMP_Marketplace_Topic__c> topicMap = PMP_MarketplaceTopics.getTopicMetadata();
         String TopicId;
         for(String strId:topicMap.keySet()){
@@ -247,7 +198,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
         insert topicAssignment;
 
-        delete topicAssignment;//
+        delete topicAssignment;*/
         
         test.stopTest();
      }
@@ -272,7 +223,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             insert topicAssignment;
             }catch(Exception e){
                 System.assert(true);
-        }//
+        }*/
         
         test.stopTest();
      }
@@ -286,7 +237,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     String TopicId;
     for(String strId:topicMap.keySet()){
         TopicId = strId;
-    }//
+    }*/
 
     TopicAssignment topicAssignment = new TopicAssignment();
     topicAssignment.entityId = testCompany.Id;
@@ -345,7 +296,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     for(String strId:topicMap.keySet()){
         TopicId = strId;
         topics.add(strId);
-    }//
+    }*/
     Map<Id,PMP_Company__c> mapPublishedCompanies = new Map<Id,PMP_Company__c>([select id,PMP_Working_Copy_Id__c from PMP_Company__c where PMP_Is_Published_Ind__c = true]);
     List<PMP_Company__c> workingCopyCompanies = new List<PMP_Company__c>([select id,PMP_Published_Copy_Id__c from PMP_Company__c where PMP_Is_Published_Ind__c = false]);
 
@@ -365,7 +316,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             }
             listTopicAssignment.add(topicAssignment);
         }
-    }//
+    }*/
 
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
     //System.debug(listCountTopicAssignment1.size());
@@ -383,7 +334,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     test.startTest();
    /*  System.debug(listTopicAssignment.size());
     System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
+    System.debug(listWorkingCopyTopicAssignment.size()); */
     //System.assert(listCountTopicAssignment.size()==400);
     delete listWorkingCopyTopicAssignment;
 
@@ -446,7 +397,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     for(String strId:topicMap.keySet()){
         TopicId = strId;
         topics.add(strId);
-    }//
+    }*/
 
     Map<Id,PMP_Partner_Offering__c> mapPublishedOfferings = new Map<Id,PMP_Partner_Offering__c>([select id,PMP_Published_Copy_Id_Txt__c,PMP_Working_Copy_Id__c from PMP_Partner_Offering__c where PMP_Working_Copy_Id__c!=null]);
 
@@ -466,7 +417,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             }
             listTopicAssignment.add(topicAssignment);
         }
-    }//
+    }*/
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
     // System.debug(listCountTopicAssignment1.size());
@@ -481,7 +432,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }
     /* System.debug(listTopicAssignment.size());
     System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
+    System.debug(listWorkingCopyTopicAssignment.size()); */
     //System.assert(listCountTopicAssignment.size()==400);
     Test.startTest();
     delete listWorkingCopyTopicAssignment;
@@ -594,7 +545,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     for(String strId:topicMap.keySet()){
         TopicId = strId;
         topics.add(strId);
-    }//
+    }*/
 
     Map<Id,PMP_Partner_Offering__c> mapPublishedOfferings = new Map<Id,PMP_Partner_Offering__c>([select id,PMP_Published_Copy_Id_Txt__c,PMP_Working_Copy_Id__c from PMP_Partner_Offering__c where PMP_Working_Copy_Id__c!=null]);
 
@@ -614,7 +565,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             }
             listTopicAssignment.add(topicAssignment);
         }
-    }//
+    }*/
 
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
@@ -630,7 +581,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }
     /* System.debug(listTopicAssignment.size());
     System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); 
+    System.debug(listWorkingCopyTopicAssignment.size()); */
     //System.assert(listCountTopicAssignment.size()==600);
 
 
@@ -638,7 +589,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     List<PMP_Marketplace_Event_Partner__c> listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
     /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    System.debug(listEventCompanies.size()); */
     //System.assert(listEventOfferings.size() == 200);
     Test.startTest();
     
@@ -653,7 +604,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
 
     /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    System.debug(listEventCompanies.size()); */
     System.assert(listEventOfferings.isEmpty());
     
     
@@ -762,7 +713,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     for(String strId:topicMap.keySet()){
         TopicId = strId;
         topics.add(strId);
-    }//
+    }*/
 
     Map<Id,PMP_Company__c> mapPublishedCompanies = new Map<Id,PMP_Company__c>([select id,PMP_Working_Copy_Id__c from PMP_Company__c where PMP_Is_Published_Ind__c = true]);
 
@@ -783,7 +734,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
             }
             listTopicAssignment.add(topicAssignment);
         }
-    }//
+    }*/
 
     
     List<TopicAssignment> listCountTopicAssignment1 = [select id,entityId from TopicAssignment];
@@ -799,7 +750,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     }
     /* System.debug(listTopicAssignment.size());
     System.debug(listCountTopicAssignment.size());
-    System.debug(listWorkingCopyTopicAssignment.size()); //
+    System.debug(listWorkingCopyTopicAssignment.size()); */
     //System.assert(listCountTopicAssignment.size()==1200);
 
 
@@ -807,7 +758,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
     List<PMP_Marketplace_Event_Partner__c> listEventCompanies = [select id from PMP_Marketplace_Event_Partner__c];
 
     /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    System.debug(listEventCompanies.size()); */
     //System.assert(listEventCompanies.size() == 400);
     Test.startTest();
 
@@ -822,7 +773,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
 
     /* System.debug(listEventOfferings.size());
-    System.debug(listEventCompanies.size()); //
+    System.debug(listEventCompanies.size()); */
     System.assert(listEventOfferings.isEmpty());
     
     
@@ -940,7 +891,7 @@ public with sharing class PMP_TopicAssignmentHelper_Test {
 
  static testMethod void ExceptionTest2(){
     //PMP_TopicAssignmentHelper.handleException('PMP_TopicAssignmentHelper', new DmlException('FIELD_FILTER_VALIDATION_EXCEPTION'), new List<Sobject>()); //IPA2.0:TWC729-8114 Topics Removal/Event Removal
- }*/
+ }
 
 
 

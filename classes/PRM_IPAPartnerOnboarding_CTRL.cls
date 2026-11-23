@@ -539,7 +539,7 @@ public without sharing class PRM_IPAPartnerOnboarding_CTRL {
     private static Boolean showTandCCheckbox(Id loggedInContactId){
         Boolean showTAndC=false;
         try{
-            Contact loggedInContact =[Select Id,Core_Primary_Contact__c,AccountId 
+            Contact loggedInContact =[Select Id,/*Core_Primary_Contact__c,*/AccountId 
                                       from Contact 
                                       where Id =:loggedInContactId limit 1];
             Set<String> contactEntitlements = new Set<String>();

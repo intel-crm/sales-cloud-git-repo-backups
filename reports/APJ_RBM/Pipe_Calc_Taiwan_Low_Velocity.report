@@ -70,8 +70,7 @@
         <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>AMOUNT</field>
+        <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -93,7 +92,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>APJ India Sales Group,APJ Japan Sales Group,APJ Korea Sales Group,APJ Named Account Sales Group,APJ Sales Territory,APJ Taiwan Sales Group</value>
+            <value>GMP APJ Sales Territory,GMP India Sales Group,GMP Japan Sales Group,GMP Korea Sales Group,GMP Taiwan Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Pipeline_Heath__c</column>
@@ -115,13 +114,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>On Hold – Review in Progress,On Hold – Government Authorization Needed</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Account.Core_Export_Compliance_Block__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

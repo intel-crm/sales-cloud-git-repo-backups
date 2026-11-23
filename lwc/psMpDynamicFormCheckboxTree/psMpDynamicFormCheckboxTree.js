@@ -1,11 +1,6 @@
 import { LightningElement, track, api } from "lwc";
 import selectAll from '@salesforce/label/c.Core_PMP_Select_All';
 import deslectAll from '@salesforce/label/c.Core_PMP_Deselect_All';
-import expandTitle from '@salesforce/label/c.PMP_Expand';
-import expandAlternative from '@salesforce/label/c.PMP_Expand_Category';
-import collapseTitle from '@salesforce/label/c.PMP_Collapse';
-import collapseAlternative from '@salesforce/label/c.PMP_Collapse_Category';
-
 
 export default class PsMpDynamicFormCheckboxTree extends LightningElement {
     // input vars
@@ -62,6 +57,7 @@ export default class PsMpDynamicFormCheckboxTree extends LightningElement {
     }
 
     @api set options(val) {
+        console.log('OPTIONS!', JSON.parse(JSON.stringify(val)));
         // do pre processing
         this._options = val;
         this._setInitialValue();
@@ -104,11 +100,10 @@ export default class PsMpDynamicFormCheckboxTree extends LightningElement {
     get classes() {
         return {
             parentHost: "slds-p-around_medium " + (this.required ? "isRequired " : "isNotRequired ") + (" theme-" + this.theme) + (" type-" + this.type),
+
             childHost: 'child childCheckbox clearFilters ' + (this.topLevel ? 'topLevel ' : '') + (this.collapsible ? 'collapsible ' : '') + 'theme-' + this.theme + ' type-' + this.type,
             toggleClass: 'slds-m-right_xx-small cursor slds-icon_container ' + (this.isExpanded ? 'slds-icon-utility-dash' : 'slds-icon-utility-add'),
-            toggleIcon: 'utility:' + (this.isExpanded ? 'dash' : 'add'),
-            toggleAlternativeText: this.isExpanded ? collapseAlternative : expandAlternative,
-            toggleTitle: this.isExpanded ? collapseTitle : expandTitle,
+            toggleIcon: '/styleguide/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.31.2-1#' + (this.isExpanded ? 'dash' : 'add'),
             checkboxContainerClass: 'checkboxPadding slds-m-vertical_xx-small ' + (this.highlight ? 'highlight slds-p-vertical_xx-small ' : '') + (this.firstResult ? 'firstResult ' : '') + (this.prerelease ? 'prerelease ' : ''),
             checkboxInputClass: (this.collapsible ? 'collapsible-input ' : '') + (this.firstResult ? 'firstResult ' : ''),
             childrenVisible: this.isExpanded ? 'child-visible': 'child-hidden'

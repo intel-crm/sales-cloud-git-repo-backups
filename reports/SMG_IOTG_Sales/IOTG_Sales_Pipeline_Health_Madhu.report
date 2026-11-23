@@ -118,6 +118,13 @@
             <operator>includes</operator>
             <value>IOTG-AMS</value>
         </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG Sales Group</value>
+        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Matrix</format>
@@ -131,12 +138,7 @@
         <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>NEX IOTG-AMS Sales Pipeline Health</name>
+    <name>IOTG Sales Pipeline Health_Madhu</name>
     <params>
         <name>terr</name>
         <value>all</value>

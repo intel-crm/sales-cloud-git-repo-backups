@@ -4,10 +4,6 @@
         <application>Core_MDF_CoMarketing</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_CCF_BOOST_USER</name>
-    </customPermissions>
     <description>Permission Set for CCF Boost Program for external users</description>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP CCF Boost USER</label>
@@ -22,6 +18,10 @@
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>Campaign.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <recordTypeVisibilities>
         <recordType>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Claim_CCF_DCF_Batch_Record</recordType>
         <visible>true</visible>
@@ -38,6 +38,10 @@
         <recordType>PartnerFundClaim.Core_MDF_Client_Co_Marketing_Fund_Boost</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
+    <recordTypeVisibilities>
+        <recordType>PartnerFundRequest.Core_MDF_Client_CoMarketing_Fund_Boost</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
     <userPermissions>
         <enabled>true</enabled>
         <name>ChatterEnabledForUser</name>
@@ -45,10 +49,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>CreateCustomizeFilters</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ViewAllForeignKeyNames</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

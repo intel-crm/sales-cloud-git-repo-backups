@@ -59,7 +59,7 @@ public with sharing class uCDPartnerGrouping {
                 accRecord.Core_Business_Party_Id__c != accRecord.Core_Unified_Intermdt_Customer_2_BP_Id__c) {
                 return null;
             }
-	    
+      
             accList.add(accRecord);
         } 
         else {
@@ -88,7 +88,7 @@ public with sharing class uCDPartnerGrouping {
         if (parentGlobalAccountIds == null) {
             return new List<Account>();
         }
-	
+  
         List<Account> accList = new List<Account>();
         
         String queryFilter;
@@ -156,7 +156,7 @@ public with sharing class uCDPartnerGrouping {
         List<Account> accList = getAccountHierarchy(accountId, picklistValue, true);
         if (accList.isEmpty()) {
             return;
-	    }
+      }
         Integer ucd_OnePartnerID = integer.valueOf(PRM_ACMTriggerHandlerNew.fetchOpidNumber());
         List<Core_OnePartner_Inbound_Message__c> inboundMessages = new List<Core_OnePartner_Inbound_Message__c>();
             for (Account acc : accList) {
@@ -174,7 +174,7 @@ public with sharing class uCDPartnerGrouping {
                 inboundMessages.add(inboundMessage);
             }
 
-	    //insertion of inbounds and tracker record creation
+      //insertion of inbounds and tracker record creation
         if (!inboundMessages.isEmpty()) {
             try {
                 PRM_ACMTriggerHandlerNew.updateOpidNumber(inboundMessages);
@@ -217,12 +217,12 @@ public with sharing class uCDPartnerGrouping {
                     }//loop end
                 }
             } 
-	        catch (Exception ex) {
+          catch (Exception ex) {
                 errorLogMsg+= ex.getMessage();
-		    }
-	        finally{
+        }
+          finally{
                 Core_Log_Entry.logEntryWithDetails(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT,LOG_ENTRY_SCOPE,LOG_ENTRY_SEVERITY,'',errorLogMsg ,'', '', '');
-	        }
+          }
         }
 }
 }

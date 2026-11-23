@@ -12,11 +12,6 @@
             <operation>notEqual</operation>
             <value>Null</value>
         </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value>IPA Budget Type Cap</value>
-        </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
@@ -45,26 +40,6 @@
             <field>Core_MDF_Program_txt__c</field>
             <operation>contains</operation>
             <value>0Pk1J000000CaSe</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Budget_Cap_CCP_Claim_Case_Reviewer_Internal</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>Budget Cap - CCP Claim Case Reviewer Internal</description>
-        <label>Budget Cap - CCP Claim Case Reviewer Internal</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>Null</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value>IPA Budget Type Cap</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>

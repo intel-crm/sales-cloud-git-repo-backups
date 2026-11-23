@@ -3,16 +3,14 @@
     access="global" controller="Core_MDF_ClaimReviewChecklist">
 
     <aura:attribute name="checklistResults" access="private" type="Core_MDF_Claim_Case_Checklist__c" />
-    <aura:attribute name="headerStyleStr" access="private" type="String" default="" />
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <aura:handler event="force:refreshView" action="{!c.doInit}" />
 
-
     <table class="slds-table slds-table--bordered">
         <thead>
             <tr class="slds-line-height_reset">
-                <th scope="col" style="{!v.headerStyleStr}">
+                <th scope="col">
                     <div> {!$Label.c.Core_MDF_Case_Review_Findings}
                     </div>
                 </th>

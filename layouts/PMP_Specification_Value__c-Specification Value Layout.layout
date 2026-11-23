@@ -74,6 +74,26 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Product_Restriction_Lvl__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Specification_id__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>PMP_Specification_Product_Cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Name__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Name_Japanese__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>PMP_Name_Chinese__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
@@ -133,11 +153,20 @@
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
+        <fields>PMP_Category_Id__c</fields>
+        <fields>CREATEDBY_USER</fields>
+        <fields>CREATED_DATE</fields>
+        <fields>CREATEDBY_USER.ALIAS</fields>
+        <fields>PMP_Specification__c.PMP_Active_Ind__c</fields>
         <relatedList>PMP_Specification_Value_Association__c.PMP_Specification_Value_Id__c</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>NAME</fields>
         <relatedList>PMP_Partner_Offering_Specification__c.PMP_Specification_Value_Id__c</relatedList>
+    </relatedLists>
+    <relatedLists>
+        <fields>NAME</fields>
+        <relatedList>PMP_Company_Region__c.PMP_Specification_Value__c</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

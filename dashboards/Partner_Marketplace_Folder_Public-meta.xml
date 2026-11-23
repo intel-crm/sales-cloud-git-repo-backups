@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>IPA_All_Intel_Admin_Users</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>PMP_All_Intel_Admin_Users</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>PMP_All_Partner_Users</sharedTo>
+        <sharedToType>Group</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>mayor_julie@tp.com</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>sales_partner@sp.com</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>william_james@actr.com</sharedTo>
+        <sharedToType>PartnerUser</sharedToType>
+    </folderShares>
+    <name>Partner Marketplace Folder (Public)</name>
+</DashboardFolder>

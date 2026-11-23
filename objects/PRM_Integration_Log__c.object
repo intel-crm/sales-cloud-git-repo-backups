@@ -168,7 +168,7 @@
     <fields>
         <fullName>PCC_Requested_URL__c</fullName>
         <label>Requested URL</label>
-        <length>131072</length>
+        <length>32768</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
@@ -199,7 +199,7 @@
         <fullName>PRM_Class__c</fullName>
         <externalId>false</externalId>
         <label>Class</label>
-        <length>100</length>
+        <length>50</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -357,33 +357,28 @@
     <fields>
         <fullName>PRM_Transaction_time__c</fullName>
         <externalId>false</externalId>
-        <formula>( PRM_Response_timestamp__c -  PRM_Request_timestamp__c )*24*60*60</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Transaction time(in seconds)</label>
+        <formula>TIMEVALUE(PRM_Response_timestamp__c) -  TIMEVALUE(PRM_Request_timestamp__c )</formula>
+        <inlineHelpText>Milliseconds are ignored in the calculations</inlineHelpText>
+        <label>Transaction time(in milliseconds)</label>
         <precision>18</precision>
         <required>false</required>
-        <scale>2</scale>
+        <scale>0</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
     </fields>
     <label>Integration Log</label>
     <listViews>
-        <fullName>All_logs</fullName>
+        <fullName>All</fullName>
         <columns>NAME</columns>
-        <columns>PRM_System_Name__c</columns>
-        <columns>PRM_Callout_Type__c</columns>
-        <columns>PRM_Module__c</columns>
-        <columns>PRM_Record_ID__c</columns>
-        <columns>PRM_External_ID__c</columns>
         <columns>PRM_Class__c</columns>
-        <columns>PRM_Request_timestamp__c</columns>
-        <columns>PRM_Response_timestamp__c</columns>
-        <columns>PRM_Transaction_time__c</columns>
         <columns>CREATEDBY_USER</columns>
+        <columns>PRM_Response_Code__c</columns>
+        <columns>PRM_System_Name__c</columns>
         <columns>CREATED_DATE</columns>
+        <columns>PRM_Transaction_time__c</columns>
         <filterScope>Everything</filterScope>
-        <label>All Integration logs</label>
+        <label>All</label>
     </listViews>
     <nameField>
         <displayFormat>INT-{00000000}</displayFormat>
@@ -391,7 +386,12 @@
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Integration Logs</pluralLabel>
-    <searchLayouts/>
+    <searchLayouts>
+        <searchResultsAdditionalFields>PRM_Record_ID__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_System_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_Callout_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>PRM_Transaction_time__c</searchResultsAdditionalFields>
+    </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -1,0 +1,44 @@
+<!-----------------------------------------------------------------------------------------------------------
+VF Page Name: Core_IPS_File_LinkToCase
+Version     : 1.0 
+Created Date: 09 Sept 2015
+Function    : Visualforce Page to Link Core IPS File to Case 
+Modification Log :
+* Developer                    Date                   Description
+* ----------------------------------------------------------------------------                 
+* Prakash, Jyothi             09/15/2015             Created
+* Johri, Sagar                09/17/2015             Code Fix
+------------------------------------------------------------------------------------------------------------>
+
+<apex:page standardController="case" extensions="Core_IPS_File_LinkToCase_Controller">
+    <apex:form >
+        <apex:outputPanel id="pageMessage"  rendered="{!!(recordAvailable)}">
+            <apex:pageMessages escape="false"  />
+            
+        </apex:outputPanel>
+    
+        <apex:pageBlock title="Select Files">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Save" action="{!Save}"/>
+                <apex:commandButton value="Cancel" action="{!Cancel}"/>
+            </apex:pageBlockButtons>
+            
+            <apex:pageBlockTable value="{!Files}" var="f">
+                <apex:column > 
+                    <apex:inputCheckbox value="{!f.selected}"/>
+                </apex:column>
+                <apex:column value="{!f.file.Core_File_Name__c}"/>
+                <apex:column value="{!f.file.Core_File_Description__c}"/>
+                <apex:column value="{!f.file.Core_Category__c}"/>
+                <apex:column value="{!f.file.Core_File_Size__c}"/>
+                <apex:column value="{!f.file.Core_Effective_Date__c}"/>
+                <apex:column value="{!f.file.Core_Expiration_Date__c}"/>   
+                <apex:column value="{!f.file.Core_File_Hyperlink__c}"/>
+                <apex:column value="{!f.file.Core_Upload_Status__c}"/>
+                <apex:column value="{!f.file.Core_Last_Status_Updated_At__c}"/>
+                <apex:column value="{!f.file.Core_FileUploadedBy__c}"/>
+                <apex:column value="{!f.file.Core_File_GUID__c}"/>                
+            </apex:pageBlockTable>
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

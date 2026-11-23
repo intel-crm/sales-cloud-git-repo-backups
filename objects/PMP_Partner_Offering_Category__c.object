@@ -221,16 +221,14 @@
     <label>Partner Offering Category</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>PMP_Offering_Id__c</columns>
         <columns>NAME</columns>
-        <columns>PMP_Ancestor_Category_Cd__c</columns>
-        <columns>PMP_Offering_Category_External_Key__c</columns>
         <columns>PMP_Category_Id__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>CREATEDBY_USER</columns>
+        <columns>PMP_Ancestor_Category_Cd__c</columns>
+        <columns>PMP_Offering_Id__c</columns>
+        <columns>PMP_Localized_Category_Nm__c</columns>
+        <columns>PMP_Offering_Category_External_Key__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>Category Name</label>

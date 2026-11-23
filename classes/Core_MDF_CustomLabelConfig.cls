@@ -8,7 +8,7 @@
 * Accenture - Nirmala     		28/06/2021                    Class contains all the methods supporting String,Integer,Boolean,
 Double,List,Map Data types of Metadata
 *****************************************************************************************************************************************/
-public without sharing class Core_MDF_CustomLabelConfig{
+public class Core_MDF_CustomLabelConfig{
     
     /***************************************************************************************************** 
 Method Name   :        getTextValues
@@ -40,9 +40,6 @@ Modified By   :        Date:       		Changes:
                                     temp+=metadata.Core_MDF_Value3_Txt__c;
                                     if(metadata.Core_MDF_Value4_Txt__c!=null){
                                         temp+=metadata.Core_MDF_Value4_Txt__c; 
-                                        if(metadata.Core_MDF_Value5_Txt__c!=null){
-                                            temp+=metadata.Core_MDF_Value5_Txt__c;
-                                        }
                                     }
                                 }
                             }
@@ -185,7 +182,7 @@ Modified By   :        Date:       		Changes:
     public static Map<String,String> getBulkTextValues(List<String> labelList){
         Map<String,String> keyValueMap =new Map<String,String>();
         List<String> finalLabelList = new List<String>();
-        
+        system.debug('List values are'+labelList);
         try{
             if(!labelList.isEmpty()){
                 for(String st : labelList){
@@ -216,11 +213,9 @@ Modified By   :        Date:       		Changes:
                     }
                 }  
             }else throw new CustomException('Key is empty'); 
-        }Catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-            Throw e;
-        }
-        
+        }Catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);Throw e;}
+        System.debug('Values are'+keyValueMap);
+        system.debug('the count is'+limits.getQueries());
         //Returns map of records which are not org specific from input list
         return keyValueMap;
     }
@@ -264,11 +259,8 @@ Modified By   :        Date:       		Changes:
                     }
                 }
             }else throw new CustomException('Category is empty'); 
-        }Catch(Exception e){
-            Core_MDF_CCP_UtilityClass.logError(e);
-            Throw e;
-        }
-        
+        }Catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);Throw e;}
+        System.debug('Values are'+keyValueMap);
         //Returns map of records which are not org specific from input list
         return keyValueMap;
     }     

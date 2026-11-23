@@ -63,6 +63,13 @@
         <label><!-- Program --></label>
         <name>Core_MDF_Program_txt__c</name>
     </fields>
+    <layouts>
+        <layout>Exception Case Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
     <validationRules>
         <errorMessage><!-- Cannot update Exception Case Mapping records for a Case. --></errorMessage>

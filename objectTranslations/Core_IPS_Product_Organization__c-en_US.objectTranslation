@@ -22,6 +22,27 @@
         <label><!-- Product Focus Area --></label>
         <name>Core_Organization_Description__c</name>
     </fields>
+    <layouts>
+        <layout>Customer Product Organization Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Support Org Layout</layout>
+        <sections>
+            <label><!-- Quick Access Reports --></label>
+            <section>Quick Access Reports</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Support Org Layout - Org Admin Only</layout>
+        <sections>
+            <label><!-- Quick Access Reports --></label>
+            <section>Quick Access Reports</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- IPS Support Org --></label>
         <name>IPS_Support_Org</name>
@@ -30,6 +51,10 @@
     <webLinks>
         <label><!-- Core_IPS_All_Operational_Env_Details_Report --></label>
         <name>Core_IPS_All_Operational_Env_Details_Report</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_IPS_Create_Map --></label>
+        <name>Core_IPS_Create_Map</name>
     </webLinks>
     <webLinks>
         <label><!-- Core_IPS_Env_Details_Master_Q_A_Report --></label>
@@ -46,9 +71,5 @@
     <webLinks>
         <label><!-- Core_IPS_Pending_PAR_Report_Link --></label>
         <name>Core_IPS_Pending_PAR_Report_Link</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Create_Product_Access --></label>
-        <name>Create_Product_Access</name>
     </webLinks>
 </CustomObjectTranslation>

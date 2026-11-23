@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.ImageServer?id=0153b000004Pg4q&amp;oid=00Do0000000aRcf</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.FileDownload?file=0158A0000001wpE</value>
     </values>
 </CustomMetadata>

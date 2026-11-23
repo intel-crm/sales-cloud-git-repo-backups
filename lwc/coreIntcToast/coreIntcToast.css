@@ -1,0 +1,12 @@
+.toastContainer {
+  display: block;
+}
+
+.slds-notify {
+  background-color: #f6cb4b;
+}
+
+.toastWrapper {
+  position: fixed;
+  width: 100%;
+}

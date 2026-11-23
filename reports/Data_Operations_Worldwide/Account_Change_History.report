@@ -1,38 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
-    <chart>
-        <backgroundColor1>#FFFFFF</backgroundColor1>
-        <backgroundColor2>#FFFFFF</backgroundColor2>
-        <backgroundFadeDir>Diagonal</backgroundFadeDir>
-        <chartSummaries>
-            <axisBinding>y</axisBinding>
-            <column>RowCount</column>
-        </chartSummaries>
-        <chartType>VerticalColumn</chartType>
-        <enableHoverLabels>false</enableHoverLabels>
-        <expandOthers>true</expandOthers>
-        <groupingColumn>field_key</groupingColumn>
-        <location>CHART_BOTTOM</location>
-        <showAxisLabels>true</showAxisLabels>
-        <showPercentage>false</showPercentage>
-        <showTotal>false</showTotal>
-        <showValues>false</showValues>
-        <size>Medium</size>
-        <summaryAxisRange>Auto</summaryAxisRange>
-        <textColor>#000000</textColor>
-        <textSize>12</textSize>
-        <titleColor>#000000</titleColor>
-        <titleSize>18</titleSize>
-    </chart>
-    <columns>
-        <field>Account.Core_Account_Record_Type__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Geo__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
     <columns>
         <field>CREATED</field>
     </columns>
@@ -41,6 +8,12 @@
     </columns>
     <columns>
         <field>ACCOUNT_ID</field>
+    </columns>
+    <columns>
+        <field>Account.Core_Sales_Segment__c</field>
+    </columns>
+    <columns>
+        <field>field_key</field>
     </columns>
     <columns>
         <field>OLDVAL</field>
@@ -56,43 +29,43 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>RECORDTYPE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Account.Mastered_Account,Account.Inactive_Account</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Jeff Peet</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>greaterOrEqual</operator>
+            <value>12/1/2016 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>field_key</column>
+            <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>YueXin Wang,Nurzalifah Binti Sulaiman,Joshua Musin,Michael Sweet,KONDWANI YUSUF CRAWFORD,Nhat Nguyen,LINDA LEE NORTH,Michael Thurmond,Jeffrey Peet,Gabriella Mejia,Jason Xiao,Belinda Khor,KAROLINA JURKIEWICZ,Leila Zarrinnam,Ma. Asuncion Nafarrete,Mei Ling Loi,Milly Joo Lee Yeap,Luna Tseng,Joseph Hostettler-Bath,Ali El Gohary,Justyna Pieniążek,CADEE STAUFFER,Marianne Merrill,Reselle Maningding,Daniela Kaelin,Sales.CRM.WW. Data.Operations,Yun Soon Soh,Test PCC DataOps User,Yu Hong Deng,Sheron Hu,Heather Cox,Christian Arandia,Ricardo Inoue,Sylvia Ong,Michelle Greggi,Natalia Yakovleva,Carlos Plazas,Jacob Michel,Saranya Remesh,Konidala Sairam Sharma,Kenneth Cuy,Erickson Dela Cruz</value>
+            <value>Account Owner</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>field_key</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>Account Change History Q4 2024</name>
+    <format>Tabular</format>
+    <name>Account Change History</name>
     <params>
         <name>co</name>
         <value>1</value>
     </params>
     <reportType>AccountAuditHistory</reportType>
     <scope>organization</scope>
-    <showDetails>false</showDetails>
+    <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <sortColumn>CREATED_DATE</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATE</dateColumn>
-        <endDate>2024-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-10-01</startDate>
     </timeFrameFilter>
 </Report>

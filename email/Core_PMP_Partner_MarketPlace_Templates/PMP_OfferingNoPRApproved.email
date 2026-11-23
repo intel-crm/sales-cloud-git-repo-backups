@@ -1,0 +1,11 @@
+<messaging:emailTemplate subject="Notification:  Your {!relatedTo.PMP_Partner_Offering_Nm__c} Showcase Offering has been Approved and is Waiting for Pre-Release Product/s to be Released." recipientType="User" relatedToType="PMP_Partner_Offering__c">
+
+<messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingNOPRApproved offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+         
+
+</messaging:emailTemplate>

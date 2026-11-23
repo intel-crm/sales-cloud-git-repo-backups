@@ -14,23 +14,6 @@
         <name>Code__c</name>
     </fields>
     <fields>
-        <help><!-- This field will signify the ownership of the record. --></help>
-        <label><!-- Source --></label>
-        <name>Core_Source__c</name>
-        <picklistValues>
-            <masterLabel>Both</masterLabel>
-            <translation><!-- Both --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ERPM</masterLabel>
-            <translation><!-- ERPM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Salesforce</masterLabel>
-            <translation><!-- Salesforce --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <help><!-- Entitlement name or Program name --></help>
         <label><!-- EntitlementProgName --></label>
         <name>EntitlementProgName__c</name>
@@ -41,7 +24,8 @@
         <name>Notify__c</name>
     </fields>
     <fields>
-        <label><!-- removalRequired --></label>
+        <help><!-- Check this box if Engagement is to be removed upon removal of the Entitlement --></help>
+        <label><!-- Removal Required --></label>
         <name>core_removalRequired__c</name>
     </fields>
     <startsWith>Consonant</startsWith>

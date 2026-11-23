@@ -1,12 +1,14 @@
 @isTest
 public  class PMP_SendTranslationExceptionEmail_Test {
     
+    //TranslationEOL
     @isTest
     static void testIsWorking() {
         Boolean result = PMP_SendTranslationExceptionEmail.isWorking();
         System.assertEquals(true, result);
     }
-   /* @isTest
+    /*
+    @isTest
     static void sendEmail() {
 
      Core_Integration_Inbound_Message__c failedMessages = new Core_Integration_Inbound_Message__c();
@@ -26,7 +28,7 @@ public  class PMP_SendTranslationExceptionEmail_Test {
      aList.add(failedMessages);
      aList.add(failedMessages1);
 
-    PMP_SendTranslationExceptionEmail.sendFailureEmail(aList);
+    //PMP_SendTranslationExceptionEmail.sendFailureEmail(aList);
         
     Integer emailCount = Limits.getEmailInvocations();
     System.assert(emailCount >= 0, 'Expected at least one email to be sent, but none were sent.');

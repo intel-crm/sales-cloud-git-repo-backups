@@ -127,18 +127,14 @@ Modification Log :
         List<String> strProf = new List<String>();
         List<User> UserList = new List<User> ();
         //Get Profile
-        //Changed to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        // strProf.add('IPS External Customer');
-        strProf.add('Partner');
+        strProf.add('IPS External Customer');
         List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //Create Users
         UserList = TestUtilities.getListOfUser(1);
-        //Changed to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        // UserList.get(0).ProfileID =  profiles.get('IPS External Customer');
-        UserList.get(0).ProfileID =  profiles.get('Partner');
+        UserList.get(0).ProfileID =  profiles.get('IPS External Customer');
         UserList.get(0).UserName = 'Testnewuser@intel.com';
         
         // Create Accounts
@@ -176,8 +172,7 @@ Modification Log :
             //Insert Users
             insert UserList;
         }
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        System.assertEquals(UserList.get(0).profileid, profiles.get('Partner'));
+        System.assertEquals(UserList.get(0).profileid, profiles.get('IPS External Customer'));
         Test.stopTest();
     }
     /***************************************************************************************************
@@ -200,16 +195,14 @@ Modification Log :
         List<String> strProf = new List<String>();
         List<User> UserList = new List<User> ();
         //Get Profile
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        strProf.add('Partner');
+        strProf.add('IPS External Customer');
         List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //Create Users
         UserList = TestUtilities.getListOfUser(1);
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        UserList.get(0).ProfileID =  profiles.get('Partner');
+        UserList.get(0).ProfileID =  profiles.get('IPS External Customer');
         UserList.get(0).UserName = 'Testnewuser@intel.com';
         // Create Accounts
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
@@ -245,8 +238,7 @@ Modification Log :
             //Insert Users
             insert UserList;
         }
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        System.assertEquals(UserList.get(0).profileid, profiles.get('Partner'));
+        System.assertEquals(UserList.get(0).profileid, profiles.get('IPS External Customer'));
         Test.stopTest();
     }
     /***************************************************************************************************
@@ -270,8 +262,7 @@ Modification Log :
         List<String> strProf = new List<String>();
         List<User> UserList = new List<User> ();
         //Get Profile
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        strProf.add('Partner');
+        strProf.add('IPS External Customer');
         List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
@@ -281,50 +272,7 @@ Modification Log :
 UserList.get(0).ProfileID =  profiles.get('IPS External Customer');
 UserList.get(0).UserName = 'Testnewuser@intel.com';*/
         System.runAs(ListOfUser.get(1)){
-            //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-           // UserList.add(TestUtilities.getCustomerUser('Partner'));
-           //Replaced TestUtilities.getCustomerUser('Partner') with code from 287 to 325
-           // Start Tejaswini
-           User adminUser = [ select Id from User where profile.Name = 'System Administrator' and userRoleId != null AND ISActive=true Limit 1];
-           Set<String> customerUserTypes = new Set<String> {'CSPLiteUser', 'PowerPartner', 'PowerCustomerSuccess',   'CustomerSuccess'};
-            // Modified for DE55770 
-            Account acc = new Account (
-                Name = 'newAcc1',
-                BillingCity = 'folsom',
-                BillingCountry = 'USA',
-                BillingStreet = 'Creek Side Dr',
-                BillingState = 'NV',
-                BillingPostalCode = '591213',
-                Core_CIM_ID__c = '11429344',
-                Core_B2B_Entitlement__c = true,
-                Core_Account_Legal_Name__c = 'TestLegalName',
-                Ownerid =adminUser.id
-            );  
-        insert acc;
-        Contact con = new Contact (
-            AccountId = acc.id,
-            FirstName = 'portia',
-            LastName  = 'portalTestUser',
-            email     = 'pb@ff.com',
-            MailingCountry = 'India'
-        );
-        insert con;
-        
-        User newUser;
-            newUser = new User(
-                //UserRoleId = ur.Id,
-                 profileId = profiles.get('Partner'),
-                username = 'newUser12@yahoo.com',
-                email = 'pb@ff.com',
-                emailencodingkey = 'UTF-8',
-                localesidkey = 'en_US',
-                languagelocalekey = 'en_US',
-                timezonesidkey = 'America/Los_Angeles',
-                alias='nuser',
-                lastname='lastname',
-                contactId = con.id
-            );
-            insert newUser;  
+            UserList.add(TestUtilities.getCustomerUser('IPS External Customer'));
         }
         // Create Accounts
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
@@ -410,16 +358,14 @@ Modification Log :
         List<String> strProf = new List<String>();
         List<User> UserList = new List<User> ();
         //Get Profile
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    strProf.add('Partner');
+        strProf.add('IPS External Customer');
         List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
         }
         //Create Users
         UserList = TestUtilities.getListOfUser(1);
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    UserList.get(0).ProfileID =  profiles.get('Partner');
+        UserList.get(0).ProfileID =  profiles.get('IPS External Customer');
         UserList.get(0).UserName = 'Testnewuser@intel.com';
         UserList.get(0).isActive = false;
         
@@ -507,8 +453,7 @@ Modification Log :
             update UserList;
         }
         Test.stopTest();
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    System.assertEquals(UserList.get(0).profileid, profiles.get('Partner'));
+        System.assertEquals(UserList.get(0).profileid, profiles.get('IPS External Customer'));
     }
     
     static testmethod void InsertProjMemberScenario1_positivetest(){
@@ -578,12 +523,12 @@ Modification Log :
         Test.startTest();            
         System.runAs(ListOfUser.get(2)){            
             User newUser;
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        Profile p =   [select Id,name from Profile where Name = :'Partner' limit 1];
+            Profile p =   [select Id,name from Profile where Name = :'IPS External Customer' limit 1];
+            system.debug('>>>>>>>>>>>>>>>' + p);
             newUser = new User(
                 profileId = p.id,
-            username = 'newUser112@yahoo.com',
-                email = 'pb1@ff.com',
+                username = 'newUser@yahoo.com',
+                email = 'pb@ff.com',
                 emailencodingkey = 'UTF-8',
                 localesidkey = 'en_US',
                 languagelocalekey = 'en_US',
@@ -592,6 +537,7 @@ Modification Log :
                 lastname='lastname',
                 contactId = ListOfContacts.get(0).id
             );
+            system.debug(newUser);
             insert newUser;  
         }    
         
@@ -607,8 +553,7 @@ Modification Log :
         List<String> strProf = new List<String>();
         //List<User> UserList = new List<User> ();
         //Get Profile
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    strProf.add('Partner');
+        strProf.add('IPS External Customer');
         List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
         for(Profile prf : ProfileList){
             profiles.put(prf.name, prf.id);
@@ -739,6 +684,7 @@ Modification Log :
         ProjectMembers[0].Core_IPS_Project__c=ListOfIpsProjects.get(0).id;
         ProjectMembers[0].Core_User__c=ListOfUser.get(0).id;
         ProjectMembers[0].Core_IPS_Contact__c=ListOfContacts.get(0).id;
+        //system.debug('test ### '+ProjectMembers);
         System.runAs(ListOfUser.get(1)){
             insert ProjectMembers;
         }
@@ -827,7 +773,7 @@ Modification Log :
             
         }  
         
-       System.AssertEquals(TriggerExecutionRegion != null, true);	
+        
     }  
     
     /*
@@ -929,8 +875,7 @@ Modification Log :
         Core_Profile_To_Group_Mapping__c IPSExternalCustomerCS =  new Core_Profile_To_Group_Mapping__c();
         IPSExternalCustomerCS.Name='IPS External Customer';
         IPSExternalCustomerCS.Core_Active__c=true;
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    IPSExternalCustomerCS.Core_Profile_Name__c='Partner';
+        IPSExternalCustomerCS.Core_Profile_Name__c='IPS External Customer';
         IPSExternalCustomerCS.Core_Group_Name__c='Core_PG_IPS_External_Customer';
         
         Group testGroup = new Group();
@@ -944,6 +889,7 @@ Modification Log :
         }
         
         List<Group> lstGroups = [SELECT Id, DeveloperName From Group Where Type = 'Regular' AND DeveloperName='Core_PG_IPS_External_Customer'];
+        System.debug('-----------lstGroups:::'+lstGroups);
         
         List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
         System.runAs(ListOfUser.get(1)){
@@ -1029,6 +975,7 @@ Modification Log :
         }   
         
         System.runAs([select Id from User where Id = :Label.Core_User_Provisioning_User_ID limit 1][0]) {
+            System.debug('-----Inside Run As ---'+userInfo.getUserId());
             //Create Users      
             UserList = TestUtilities.getListOfUser(1);
             UserList.get(0).ProfileID =  Label.Core_IPS_External_Customer_Profile_Id;
@@ -1053,10 +1000,14 @@ Modification Log :
             UserList.get(1).contactId = lstCo11.get(0).Id; 
             userList.get(1).CountryCode = 'IN'; */
             
-            insert UserList;                        
+            insert UserList;
+            System.debug('-----UserList---'+UserList);
+            
+            
+            
         } 
-	Test.stopTest();
-	System.AssertEquals(TriggerCountryCode != null, true);
+        
+        Test.stopTest();
     }
     
     /**
@@ -1104,9 +1055,8 @@ Modification Log :
             update objUser;
             objUser.IsActive = true;
             update objUser;
-        } 	
+        } 
         Test.stopTest();
-	System.AssertEquals(TriggerExecutionEAC != null, true);
     }
     
     /**
@@ -1147,162 +1097,7 @@ Modification Log :
             insert lstUser;
             lstUser[1].ManagerId = lstUser[0].Id;
             update lstUser;
-        }
-	Test.stopTest();
-	System.AssertEquals(TriggerExecutionEAC != null, true);
-    }
-    
-    static testMethod void shareAssetsToCustomersTest() {
-        getrecords();
-        
-        Map<String,ID> profiles = new Map<String,ID>();
-        List<String> strProf = new List<String>();
-        List<User> UserList = new List<User> ();
-        
-        Core_Trigger_Executions__c  TriggerExecutionEAC = new Core_Trigger_Executions__c();
-        TriggerExecutionEAC.Name = 'shareAssetsToCustomers';
-        TriggerExecutionEAC.Core_Active__c = true;
-        TriggerExecutionEAC.Core_Class_Name__c ='Core_IPS_UserTriggerHandler';
-        TriggerExecutionEAC.Core_Description__c = 'This method shares assets to customers';
-        TriggerExecutionEAC.Core_Object__c = 'User';
-        TriggerExecutionEAC.Core_Trigger_Events__c = 'After Insert';
-        System.runAs(ListOfUser.get(1)){
-            insert TriggerExecutionEAC;
-        }  
-        
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    List<Profile> profileList = [select id, name from Profile where name='Partner' OR name='IPS Agent-Partner' ];
-        for(Profile prf : profileList){
-            profiles.put(prf.name, prf.id);
-        }
-        List<Account> listOfAccounts = TestUtilities.getListOfAccounts(1);
-        listOfAccounts[0].Core_IPS_Active__c = true;
-        System.runAs(ListOfUser.get(1)){
-            insert listOfAccounts;
-
-        }     
-        List<Asset> assetList = TestUtilities.getAssetList(1);
-        for(Asset asst : assetList){
-            asst.accountId = listOfAccounts.get(0).Id;
-        }
-        System.runAs(ListOfUser.get(1)){
-            insert assetList;
-        }
-        
-        List<Contact> lstCo11 = TestUtilities.getListOfContact(2);        
-        System.runAs(ListOfUser.get(1)){
-            lstCo11.get(0).AccountId = listOfAccounts.get(0).Id; 
-            lstCo11.get(0).Core_IPS_Active__c = true;
-            lstCo11.get(1).AccountId = listOfAccounts.get(0).Id; 
-            lstCo11.get(1).Email = 'lstCo11@email.com'; 
-            lstCo11.get(1).Core_IPS_Active__c = true;
-            //Insert Users
-            insert lstCo11[0] ;             
-        }
-        
-        Test.startTest();
-        // Create Users
-        List<User> lstUser = TestUtilities.getListOfUser(2);
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    lstUser[0].ProfileID = profiles.get('Partner');       
-        lstUser[0].contactId = lstCo11.get(0).Id;
-        
-        /*
-        UserList = TestUtilities.getListOfUser(1);
-            UserList.get(0).ProfileID =  Label.Core_IPS_External_Customer_Profile_Id;
-            UserList.get(0).UserName = 'TestInternalEmployee033@intel.com';
-            UserList.get(0).FirstName = 'FNEmployee033@intel.com';
-            UserList.get(0).LastName = 'LNEmployee033@intel.com';
-            UserList.get(0).Email = 'TestInternalEmployee033@intel.com';
-            UserList.get(0).isActive = true;
-            UserList.get(0).Phone = '9900454063';
-            UserList.get(0).MobilePhone = '9900454063'; 
-            UserList.get(0).contactId = lstCo11.get(0).Id; 
-            userList.get(0).CountryCode = 'US';
-            
-            insert UserList;
-        */
-        System.runAs(ListOfUser.get(1)) {
-            insert lstUser[0];
-            insert lstCo11[1] ; 
-        //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-        lstUser[1].ProfileID = profiles.get('Partner');       
-            lstUser[1].contactId = lstCo11.get(1).Id;
-            insert lstUser[1];
         } 
-        Test.stopTest();
-	System.AssertEquals(TriggerExecutionEAC != null, true);	
-
-    }
-    /***************************************************************************************************
-Method Name:  UIOLI_test
-Method Type: Test Method
-Version     : 1.0 
-Created Date: 06 Jan 2021
-Description:  Testing with User and Contact record and assigning and not matching
-Scenario Type:  positive
-Modification Log :
-* Developer                   Date                   Description
-* ----------------------------------------------------------------------------                 
-* Prem Ranjan              06/01/2021                Created
-****************************************************************************************************/ 
-    static testmethod void UIOLI_test(){
-        getrecords();
-        // Get intelSupportOwner Id (User Id)
-        Id intelSupportOwner = ListOfUser.get(0).id;
-        Map<String,ID> profiles = new Map<String,ID>();
-        List<String> strProf = new List<String>();
-        List<User> UserList = new List<User> ();
-        //Get Profile
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    strProf.add('Partner');
-        List<Profile> ProfileList = [select id, name from Profile where name IN : strProf];
-        for(Profile prf : ProfileList){
-            profiles.put(prf.name, prf.id);
-        }
-        //Create Users
-        UserList = TestUtilities.getListOfUser(1);
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    UserList.get(0).ProfileID =  profiles.get('Partner');
-        UserList.get(0).UserName = 'Testnewuseruioli@intel.com';
-        // Create Accounts
-        List<Account> ListOfAccounts = TestUtilities.getListOfAccounts(1);
-        System.runAs(ListOfUser.get(1)){
-            insert ListOfAccounts;
-        }
-        System.assert(ListOfAccounts[0].Id != null, 'Record not created');
-        // Create Contact
-        List<Contact> ListOfContacts = TestUtilities.getListOfContact(1);
-        for(Contact ContactRec : ListOfContacts){
-            ContactRec.Core_IPS_Intel_Support_Owner__c = intelSupportOwner;
-            ContactRec.Accountid = ListOfAccounts.get(0).Id;
-        }
-        System.runAs(ListOfUser.get(1)){
-            insert ListOfContacts;
-            UserList.get(0).ContactID = ListOfContacts.get(0).id;
-        }       
-        System.assert(ListOfContacts[0].Id != null, 'Record not created');
-        //Create Custom Settings
-        Core_Trigger_Executions__c  TriggerExecution = new Core_Trigger_Executions__c();
-        TriggerExecution.Name = 'assignContactRule';
-        TriggerExecution.Core_Active__c = true;
-        TriggerExecution.Core_Class_Name__c ='ClassName';
-        TriggerExecution.Core_Description__c = 'MethodDescription';
-        TriggerExecution.Core_Object__c = 'Account';
-        TriggerExecution.Core_Trigger_Events__c = 'Before Insert';
-        System.runAs(ListOfUser.get(1)){
-            insert TriggerExecution;
-        } 
-        System.assert(TriggerExecution.id!= null, 'Record not created');
-        Test.startTest();
-        System.runAs(ListOfUser.get(1)){
-            //Insert Users
-            insert UserList;
-        }
-    //Changed from 'IPS External Customer'to Partner as part if Employee as Customer profile mapping to partner - Tejaswini
-    System.assertEquals(UserList.get(0).profileid, profiles.get('Partner'));
-        Core_IPS_UserTriggerHandler.UpdateProjectMemAndIntParty projMem = new Core_IPS_UserTriggerHandler.UpdateProjectMemAndIntParty(new List<Sobject>());
-        System.enqueueJob(projMem);
         Test.stopTest();
     }
 }

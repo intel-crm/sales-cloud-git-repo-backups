@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>IPA Keyword and Filter Search</masterLabel>
+    <description>Marketplace Offering and Partner Search component</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property label="Primary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy1" type="String"/>
+            <property label="Secondary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy2" type="String"/>
+            <property label="Tertiary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy3" type="String"/>
+            <property label="Quaternary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy4" type="String"/>
+            <property label="Quinary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy5" type="String"/>
+            <property label="Senary Taxonomy" description="A value for this taxonomy is optional to search." name="taxonomy6" type="String"/>
+            <property label="Add Separator Above Component" name="separatorAbove" type="Boolean"/>
+            <property label="Add Separator Below Component" name="separatorBelow" type="Boolean"/>
+            <property label="Add Padding Above Component" name="paddingAbove" type="Boolean"/>
+            <property label="Add Padding Below Component" name="paddingBelow" type="Boolean"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

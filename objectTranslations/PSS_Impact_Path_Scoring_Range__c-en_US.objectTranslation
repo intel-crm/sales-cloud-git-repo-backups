@@ -49,5 +49,12 @@
         <label><!-- Score Value --></label>
         <name>PSS_Score_Value__c</name>
     </fields>
+    <layouts>
+        <layout>Impact Path Scoring Range Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

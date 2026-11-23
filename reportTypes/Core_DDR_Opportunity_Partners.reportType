@@ -158,6 +158,11 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>CORE_PRIME_ACC_NAME__c</field>
+            <table>Core_Opportunity_Partner__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.StageName</field>
             <table>Core_Opportunity_Partner__c</table>
         </columns>
@@ -238,11 +243,6 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>CORE_PRIME_ACC_NAME__c</field>
-            <table>Core_Opportunity_Partner__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.Core_Consumption_Market__c</field>
             <table>Core_Opportunity_Partner__c</table>
         </columns>
@@ -254,11 +254,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Core_Opportunity__c.Core_Military_Aerospace_Govmt_End_Use__c</field>
-            <table>Core_Opportunity_Partner__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Opportunity_Partner_Prime__c</field>
             <table>Core_Opportunity_Partner__c</table>
         </columns>
         <columns>
@@ -283,17 +278,7 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_UCD_Partner_Account_Name__c</field>
-            <table>Core_Opportunity_Partner__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Partner__c.Core_Partner_Account__c</field>
-            <table>Core_Opportunity_Partner__c</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>CRM_Unified_Global_Opportunity_Partner__c</field>
+            <field>Core_Opportunity__c.Core_Opp_Prime_Account_Name__c</field>
             <table>Core_Opportunity_Partner__c</table>
         </columns>
         <masterLabel>Opportunity Partners</masterLabel>

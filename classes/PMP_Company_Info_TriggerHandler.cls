@@ -5,7 +5,7 @@ public class PMP_Company_Info_TriggerHandler extends TriggerHandler {
     Map<String,Core_Trigger_Executions__c> mapFunctionalityNameTriggerExecution = Core_Trigger_Executions__c.getAll(); 
     //Public Static Boolean solutionInsertOpidRecursive= false;/*IPA2.0: US-TWC729-7976*/
     //Public Static Boolean solutionUpdateOpidRecursive= false;/*IPA2.0: US-TWC729-7976*/
-    Public Static Boolean offeringSharingOpidRecursive = false;
+    //Public Static Boolean offeringSharingOpidRecursive = false;
     Public static Boolean mappingAttributeRecursive = false;
     
     public override void afterInsert() { 
@@ -16,14 +16,13 @@ public class PMP_Company_Info_TriggerHandler extends TriggerHandler {
              //   PMP_Company_Info_Sharing.shareCompanyInfoRecords(Trigger.Old, Trigger.New);
                 
         //}
-
  
-        
         //Tanzanite code added on 22nd Aug
         if(mapFunctionalityNameTriggerExecution.containsKey('Company_Info_Handler') && 
            mapFunctionalityNameTriggerExecution.get('Company_Info_Handler').Core_Active__c){  
                if(!mappingAttributeRecursive){
-          PMP_SearchCompanyTranslationAction.insertTranslation(Trigger.isInsert, trigger.new);
+                   //TranslationEOL-Phase2
+         // PMP_SearchCompanyTranslationAction.insertTranslation(Trigger.isInsert, trigger.new);
             PMP_AccountBenefitPartnerUtility.InsertCompanyAttributeMappingRecords(trigger.new);
                    mappingAttributeRecursive = true;
                }
@@ -92,7 +91,8 @@ public class PMP_Company_Info_TriggerHandler extends TriggerHandler {
             }
 
             if (!mappingAttributeRecursive) {
-                PMP_SearchPartnerTriggerHelper.createTranslationForRSSFeed(Trigger.new, oldMap);
+                 //TranslationEOL-Phase2
+                //PMP_SearchPartnerTriggerHelper.createTranslationForRSSFeed(Trigger.new, oldMap);
                 PMP_Company_Info_TriggerHelper.updatecompanyAttributeMappingRecords(Trigger.new, oldMap);
                 mappingAttributeRecursive = true;
             }
@@ -132,7 +132,6 @@ public class PMP_Company_Info_TriggerHandler extends TriggerHandler {
      mapFunctionalityNameTriggerExecution.get('OPID_MPI_Validation_Handler').Core_Active__c)){
         PMP_AccountBenefitPartnerUtility.validateForAutoAssignBenefits((Map<Id,PMP_Company__c>)Trigger.newMap,(Map<Id,PMP_Company__c>)Trigger.oldMap);
      }  */    
-         //IPA: Benefit changes
       /*for(PMP_Company__c newCompany : (List<PMP_Company__c>) trigger.new){
              if(newCompany.PMP_Partner_Benefit_Type__c == PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile && 
                 oldMap.get(newCompany.Id).PMP_Partner_Benefit_Type__c  == PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced ){

@@ -40,5 +40,12 @@
         <label><!-- Survey Attributes --></label>
         <name>MaritzCX__Survey_Attributes__c</name>
     </fields>
+    <layouts>
+        <layout>Invitation File Setting Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

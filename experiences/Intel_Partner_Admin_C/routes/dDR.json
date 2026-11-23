@@ -2,11 +2,11 @@
   "activeViewId" : null,
   "appPageId" : "16168ba7-1067-4013-806b-b7978aae2256",
   "configurationTags" : [ ],
-  "devName" : "DDR__c",
-  "id" : "a266a93f-1622-4c88-9041-0485d6e660e2",
+  "devName" : "DDR2__c",
+  "id" : "4ab50893-30ca-406d-9771-0e87d42bf7a6",
   "label" : "DDR",
   "pageAccess" : "UseParent",
-  "routeType" : "custom-ddr",
+  "routeType" : "custom-ddr2",
   "type" : "route",
   "urlPrefix" : "ddr"
 }

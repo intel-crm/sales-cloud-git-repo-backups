@@ -68,6 +68,10 @@
         <showSubTotals>true</showSubTotals>
         <sortColumn>Account$BillingAddress</sortColumn>
         <sortOrder>Asc</sortOrder>
+        <timeFrameFilter>
+            <dateColumn>Account$PRM_IPA_Badge_Tier_Date__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
     </block>
     <block>
         <blockInfo>

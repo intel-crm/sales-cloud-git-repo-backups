@@ -38,6 +38,10 @@
                 <behavior>Edit</behavior>
                 <field>PRM_Rank_Nbr__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>value__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns/>
         <style>TwoColumnsTopToBottom</style>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>VisionError</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>VisionError</value>
+    </caseValues>
+    <fields>
+        <label><!-- NotificationSent --></label>
+        <name>Xvoyant__NotificationSent__c</name>
+    </fields>
+    <fields>
+        <label><!-- message --></label>
+        <name>Xvoyant__message__c</name>
+    </fields>
+    <fields>
+        <label><!-- params --></label>
+        <name>Xvoyant__params__c</name>
+    </fields>
+    <fields>
+        <label><!-- stack --></label>
+        <name>Xvoyant__stack__c</name>
+    </fields>
+    <fields>
+        <label><!-- timings --></label>
+        <name>Xvoyant__timings__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

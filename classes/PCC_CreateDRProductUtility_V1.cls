@@ -7,9 +7,8 @@ Modification Log    :
 * Developer                 Date                    Description
 * --------------------------------------------------------------------------------------------------------------------------
 * Shraddha                June- 2023        
-* Shivini                 30-sep-2024         Added WITH USER_MODE to SOQL and DML statements.
 ***************************************************************************************************************************************/
-Global with sharing class PCC_CreateDRProductUtility_V1 {
+Global class PCC_CreateDRProductUtility_V1 {
     public static final String LOG_ENTRY_ORIGIN   = 'PCC_CreateDesignRegistration';
     public static final String LOG_ENTRY_PROJECT  = 'DDR Registration';
     public static final String LOG_ENTRY_SCOPE    = 'Create DDR Records';
@@ -18,7 +17,6 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
     public static final String LOG_ENTRY_SEVERITY = 'Medium';
     public static final String LOG_ENTRY_INFO     = 'info'; 
     
-    //public static final List<Id> cpList = new List<Id>{Label.PCC_ChannelProgramId};
     
 /*****************************************************************************************************************
 * Method Name:createDRProductRecord
@@ -29,18 +27,8 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
     public static void getDRProductRecordDetails(){
         Boolean isSuccess = false;
         Boolean isError = false;
-        PCC_Wrapper.PCC_restAPIDDRDetailsWrapper respWrp = new PCC_Wrapper.PCC_restAPIDDRDetailsWrapper();
+        restAPIDDRDetailsWrapper respWrp = new restAPIDDRDetailsWrapper();
         PCC_Wrapper.PCC_MasterData_ErrorWrapper errWrp = new PCC_Wrapper.PCC_MasterData_ErrorWrapper();
-		String requestedUrl = 'RequestedURI: '+RestContext.request.requestURI+' Params: '+RestContext.request.params;    
-        DateTime reqTime = System.now();
-        String respBody;
-	Id cpId;
-        
-        try{
-            cpId = [SELECT Id, Name FROM ChannelProgram WHERE Name = :System.label.PCC_Channel_Program_Name LIMIT 1].Id;
-        }catch(exception ex){ 
-            cpId = null;
-        }
         
         try{
             Integer paramSize  = RestContext.request.params.keySet().size();
@@ -51,22 +39,31 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
 				String decodedId = EncodingUtil.urlDecode(uniqueId, 'UTF-8');
                 if(decodedId != null && String.isNotBlank(decodedId)){
                     try {
-                        respWrp = getDrProd(decodedId);
-                        isSuccess =  true;   
+                        Core_Design_Registration_Product__c drProduct =  [SELECT Id, Name, Core_Design_Registration_Id__c, Core_Product_Id__c,Core_Full_Year_Qty__c, Core_Retired_As_Of_Dt__c, Core_External_Id__c 
+                                                                          FROM Core_Design_Registration_Product__c 
+                                                                          WHERE (id =: decodedId OR Core_External_Id__c =: decodedId) limit 1];      
+                        
+                        PCC_DDRDetailsWrapper ddrWrp = new PCC_DDRDetailsWrapper(drProduct.Name, drProduct.Core_Design_Registration_Id__c, drProduct.Core_Product_Id__c, 
+                                                                                 String.valueOf(drProduct.Core_Full_Year_Qty__c), drProduct.Core_Retired_As_Of_Dt__c, drProduct.Core_External_Id__c );
+                        isSuccess =  true;
+                        respWrp = setResponseBody(200, 'SUCCESS', null, ddrWrp, drProduct.Id);
+                        
                     } catch (QueryException e) {
-                        errWrp.ResponseBody =LabelConfiguration__mdt.getInstance('PCC_NoDRPFound_GetDRP').Value__c+ decodedId;
+                        errWrp.ResponseBody = 'No Design Registration Product found with ID: '+ decodedId;
                         errWrp.ErrorCode = 9011;
                         isError = true;
                     }
                 }else{
-                    errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_NoDRPId_GetDRP').Value__c;
+                    errWrp.ResponseBody = 'Please provide an Id to get Design Registration Product Details';
                     errWrp.ErrorCode = 9002;
                     isError = true;
                 }
             }else if(paramSize == 0){
-                RestContext.response = PCC_CreateDesignRegistrationUtility_V1.getDDRwithNoParam();
+                RestContext.response.addHeader('Content-Type', 'application/json');      
+                RestContext.response.statusCode = 404;
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(404, 'FAILURE', 404, 'Invalid URL. Please provide mandatory parameters', null))); 
             }else{
-                errWrp.ResponseBody = LabelConfiguration__mdt.getInstance('PCC_InvalidParamId_GetDDR').Value__c;
+                errWrp.ResponseBody = 'The parameter provided in the request is not valid. The expected parameter is `Id`';
                 errWrp.ErrorCode = 9010;
                 isError = true;
             }
@@ -79,42 +76,55 @@ Global with sharing class PCC_CreateDRProductUtility_V1 {
             }else if(isError){
                 errWrp.StatusCode = 400;
                 errWrp.Status = 'FAILURE';
-                RestContext.response = PCC_CreateDesignRegistrationUtility_V1.getErrorResponse(errWrp);
+                RestContext.response.addHeader('Content-Type', 'application/json');
+                RestContext.response.responseBody = Blob.valueOf(JSON.serialize(errWrp));      
+                RestContext.response.statusCode = 400;
             }
             
         }catch (Exception ex){
-            RestContext.response = PCC_CreateDesignRegistrationUtility_V1.getErrorForCatch(ex);
-        }finally{
-            respBody = RestContext.response.responseBody.toString();
-            if (respBody.length() > PCC_Constants.MAX_CHARACTER_TO_STORE) { respBody = respBody.substring(0, PCC_Constants.MAX_CHARACTER_TO_STORE);
-            }
-            PRM_IPA_Utility.createPCCIntegrationLog('',PCC_Constants.CALLOUT_TYPE_INBOUND,PCC_Constants.MODULE_DDR_REGISTRATION,'',respBody ,
-                                                    RestContext.response.statusCode,PCC_Constants.SYSTEM_NAME_M2M,'PCC_CreateDRProductUtility_V1.getDRProductRecordDetails',
-                                                    reqTime,System.now(), true, cpId,requestedUrl);
-        }  
-    } 
-
-/*****************************************************************************************************************
-* Method Name: getDrProd
-* Date: 21/12/2023    
-* Owner: Sushmita
-* Description: returns payload response
-******************************************************************************************************************/
-    public static PCC_Wrapper.PCC_restAPIDDRDetailsWrapper getDrProd(String decodedId){
-        PCC_Wrapper.PCC_restAPIDDRDetailsWrapper respWrp = new PCC_Wrapper.PCC_restAPIDDRDetailsWrapper();
-        Core_Design_Registration_Product__c drProduct =  [SELECT Id,Name,Core_Design_Registration_Id__c, Core_Product_Id__c, Core_Full_Year_Qty__c,
-                                                                          Core_Retired_As_Of_Dt__c, Core_External_Id__c, Core_Target_Resale_Amt__c,
-                                                                          DDR_Target_Resale_Price_Note__c, Core_Design_Product_Status_Nm__c,
-                                                                          Core_Comment_Txt__c, Core_Partner_Tracking_Cd__c,Core_Product_List_Price_Amt__c,	
-                                                                          Core_Full_Year_Value_Amt__c, Core_Opportunity_Product_Id__c,
-                                                                          (SELECT Id, PCC_MM_ID__c, PCC_Ordering_Cd__c, PCC_L4_Product_Name__c, PCC_L5_Product_Name__c,PCC_Old_MM_Id__c
-                                                                          FROM DDR_Product_Mappings__r LIMIT 1)
-                                                                          FROM Core_Design_Registration_Product__c
-                                                                          WHERE Id = :decodedId WITH USER_MODE
-                                                                          LIMIT 1]; 
-        PCC_Wrapper.PCC_DDRDetailsWrapper ddrWrp = PCC_CreateDRProductUtilityHandler_V1.setDDRProductWrapper(drProduct);
-        respWrp = PCC_CreateDRProductUtilityHandler_V1.setResponseBody(200, 'SUCCESS', null, ddrWrp, drProduct.Id,drProduct.Name);
-
+            Core_Log_Entry.logEntryWithException(LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT, LOG_ENTRY_SCOPE_1, LOG_ENTRY_SEVERITY,'', '' ,'' ,'PCC_CreateDesignRegistrationUtility_V1' ,'' ,ex); 
+            RestContext.response.addHeader('Content-Type', 'application/json');
+            RestContext.response.responseBody = Blob.valueOf(JSON.serialize(PCC_CreateDDRUtilityHandler.setResponseBody(500, 'FAILURE', 500, 'An internal server error has occurred', null))); 
+            RestContext.response.statusCode = 500;
+        }
+        
+    }
+    
+    //wrappers (to move in PCC_Wrapper) 
+     global class PCC_DDRDetailsWrapper{
+        Public String name{get;set;}
+        Public String designRegId{get;set;}
+        Public String productId{get;set;}
+        Public String quantity{get;set;}
+        Public Date retiredAsOf{get;set;}
+        Public String externalId{get;set;}
+        
+        global PCC_DDRDetailsWrapper(String nameParam, Id designRegIdParam, Id productIdParam, String quantityParam, Date retiredAsOfParam, String externalIdParam){
+            name = nameParam;
+            designRegId = designRegIdParam;
+            productId = productIdParam;
+            quantity = quantityParam;
+            retiredAsOf = retiredAsOfParam;
+            externalId = externalIdParam;        
+        }
+    }
+    
+    global class restAPIDDRDetailsWrapper{
+        public Integer StatusCode{get;set;}
+        public String Status{get;set;}
+        public Integer ErrorCode{get;set;}
+        public PCC_DDRDetailsWrapper ResponseBody{get;set;}
+        public String RecordId{get;set;}
+    }  
+    
+    Public static restAPIDDRDetailsWrapper setResponseBody(Integer StCodeParam, String StatusParam, Integer ErrCodeParam, PCC_DDRDetailsWrapper ResBodyParam, String RecIdParam){
+        restAPIDDRDetailsWrapper respWrp = new restAPIDDRDetailsWrapper();
+        respWrp.StatusCode = StCodeParam;
+        respWrp.Status = StatusParam;
+        respWrp.ErrorCode = ErrCodeParam;
+        respWrp.ResponseBody = ResBodyParam;
+        respWrp.RecordId = RecIdParam;    
         return respWrp;
     }
+    
 }

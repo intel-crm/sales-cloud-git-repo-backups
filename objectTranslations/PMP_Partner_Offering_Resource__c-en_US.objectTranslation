@@ -165,8 +165,51 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Video Avg Seconds Viewed --></label>
+        <name>PMP_Video_Avg_Seconds_Viewed_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Engagement Score --></label>
+        <name>PMP_Video_Engagement_Score_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Impression --></label>
+        <name>PMP_Video_Impression_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Percent Viewed --></label>
+        <name>PMP_Video_Percent_Viewed_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Play Rate --></label>
+        <name>PMP_Video_Play_Rate_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Play Request --></label>
+        <name>PMP_Video_Play_Request_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video S3 URL --></label>
+        <name>PMP_Video_S3URL_Txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Seconds Viewed --></label>
+        <name>PMP_Video_Seconds_Viewed_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Video Title --></label>
         <name>PMP_Video_Title_Txt__c</name>
     </fields>
+    <fields>
+        <label><!-- Video View --></label>
+        <name>PMP_Video_View_Txt__c</name>
+    </fields>
+    <layouts>
+        <layout>Partner Offering Resource Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

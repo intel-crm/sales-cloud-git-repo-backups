@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>AppLogic Networks Partner User</description>
+    <description>SANDVINE INCORPORATED Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>AppLogic Networks Partner User</name>
+    <name>SANDVINE INCORPORATED Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12226669_RAJNISH_CHANDRA</parentRole>
+    <parentRole>SANDVINEINCORPORATEDPartnerManager</parentRole>
 </Role>

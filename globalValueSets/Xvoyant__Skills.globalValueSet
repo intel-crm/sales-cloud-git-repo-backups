@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Skill</fullName>
+        <default>false</default>
+        <label>Skill</label>
+    </customValue>
+    <customValue>
+        <fullName>Anticipate/Mitigate Objections</fullName>
+        <default>false</default>
+        <label>Anticipate/Mitigate Objections</label>
+    </customValue>
+    <customValue>
+        <fullName>ARK</fullName>
+        <default>false</default>
+        <label>ARK</label>
+    </customValue>
+    <customValue>
+        <fullName>Articulate The Value Proposition</fullName>
+        <default>false</default>
+        <label>Articulate The Value Proposition</label>
+    </customValue>
+    <customValue>
+        <fullName>Ask For The Business</fullName>
+        <default>false</default>
+        <label>Ask For The Business</label>
+    </customValue>
+    <customValue>
+        <fullName>Ask The Right Questions</fullName>
+        <default>false</default>
+        <label>Ask The Right Questions</label>
+    </customValue>
+    <customValue>
+        <fullName>Building Trust</fullName>
+        <default>false</default>
+        <label>Building Trust</label>
+    </customValue>
+    <customValue>
+        <fullName>Business Acumen</fullName>
+        <default>false</default>
+        <label>Business Acumen</label>
+    </customValue>
+    <customValue>
+        <fullName>Communications Excellence</fullName>
+        <default>false</default>
+        <label>Communications Excellence</label>
+    </customValue>
+    <customValue>
+        <fullName>Creative Problem Solving</fullName>
+        <default>false</default>
+        <label>Creative Problem Solving</label>
+    </customValue>
+    <customValue>
+        <fullName>Disciplined Follow Up Process</fullName>
+        <default>false</default>
+        <label>Disciplined Follow Up Process</label>
+    </customValue>
+    <customValue>
+        <fullName>Executive Presence</fullName>
+        <default>false</default>
+        <label>Executive Presence</label>
+    </customValue>
+    <customValue>
+        <fullName>Identify Needs</fullName>
+        <default>false</default>
+        <label>Identify Needs</label>
+    </customValue>
+    <customValue>
+        <fullName>Listening Skills</fullName>
+        <default>false</default>
+        <label>Listening Skills</label>
+    </customValue>
+    <customValue>
+        <fullName>Manage Customer Expectations/Timing</fullName>
+        <default>false</default>
+        <label>Manage Customer Expectations/Timing</label>
+    </customValue>
+    <customValue>
+        <fullName>Market Knowledge</fullName>
+        <default>false</default>
+        <label>Market Knowledge</label>
+    </customValue>
+    <customValue>
+        <fullName>Negotiation Skills</fullName>
+        <default>false</default>
+        <label>Negotiation Skills</label>
+    </customValue>
+    <customValue>
+        <fullName>Networking</fullName>
+        <default>false</default>
+        <label>Networking</label>
+    </customValue>
+    <customValue>
+        <fullName>Overcome Objections</fullName>
+        <default>false</default>
+        <label>Overcome Objections</label>
+    </customValue>
+    <customValue>
+        <fullName>Planning &amp; Preparation</fullName>
+        <default>false</default>
+        <label>Planning &amp; Preparation</label>
+    </customValue>
+    <customValue>
+        <fullName>Presentation Skills</fullName>
+        <default>false</default>
+        <label>Presentation Skills</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Courses</fullName>
+        <default>false</default>
+        <label>Product Courses</label>
+    </customValue>
+    <customValue>
+        <fullName>Product Knowledge</fullName>
+        <default>false</default>
+        <label>Product Knowledge</label>
+    </customValue>
+    <customValue>
+        <fullName>Program Management</fullName>
+        <default>false</default>
+        <label>Program Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Risk Mitigation</fullName>
+        <default>false</default>
+        <label>Risk Mitigation</label>
+    </customValue>
+    <customValue>
+        <fullName>Sales Navigator</fullName>
+        <default>false</default>
+        <label>Sales Navigator</label>
+    </customValue>
+    <customValue>
+        <fullName>Salesforce Hygiene</fullName>
+        <default>false</default>
+        <label>Salesforce Hygiene</label>
+    </customValue>
+    <customValue>
+        <fullName>Technical Acumen</fullName>
+        <default>false</default>
+        <label>Technical Acumen</label>
+    </customValue>
+    <customValue>
+        <fullName>Time Management</fullName>
+        <default>false</default>
+        <label>Time Management</label>
+    </customValue>
+    <customValue>
+        <fullName>Tool Proficiency</fullName>
+        <default>false</default>
+        <label>Tool Proficiency</label>
+    </customValue>
+    <customValue>
+        <fullName>Understanding Ecosystem Options</fullName>
+        <default>false</default>
+        <label>Understanding Ecosystem Options</label>
+    </customValue>
+    <customValue>
+        <fullName>Working With Business Partners</fullName>
+        <default>false</default>
+        <label>Working With Business Partners</label>
+    </customValue>
+    <description>List of skills that a sales rep can improve on.</description>
+    <masterLabel>Skills</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

@@ -7,7 +7,7 @@ Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------
 * Popcornapps                5/28/2017             Bulkified email change code
-* Popcornapps              6/05/2017               Fixed the bug -- Dataops not able to change email address in production if there is no entitlement associated with contact
+* Popcornapps                6/05/2017             Fixed the bug -- Dataops not able to change email address in production if there is no entitlement associated with contact
 * Team Draco                 22/12/2022            Added logic to stop call to AGS due to ERPM By-pass logic upon Email change
 *************************************************************************************/
 public class Core_Contact_EmailChange_Handler{
@@ -31,7 +31,7 @@ public class Core_Contact_EmailChange_Handler{
         Boolean blnRemoveAccess = false;
         Map <String, Core_Contact_Access_Profiles__c> mapContactAcessProfiles = Core_Contact_Access_Profiles__c.getAll();
 
-        Profile userProfileName = [Select Name from Profile where Id = : UserInfo.getProfileId() limit 1];
+        Schema.Profile userProfileName = [Select Name from Profile where Id = : UserInfo.getProfileId() limit 1];
 
         System.debug('==='+userProfileName.Name);
         System.debug('==='+mapContactAcessProfiles.keyset());

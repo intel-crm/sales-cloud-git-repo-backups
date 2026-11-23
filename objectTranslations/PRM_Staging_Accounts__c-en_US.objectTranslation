@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>IPA Staging - Accounts</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>IPA Staging - Accounts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account City --></label>
+        <name>PRM_Account_City__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Country Code --></label>
+        <name>PRM_Account_Country_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Name --></label>
+        <name>PRM_Account_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Partner Role --></label>
+        <name>PRM_Account_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TBD</masterLabel>
+            <translation><!-- TBD --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Account Postal Code --></label>
+        <name>PRM_Account_Postal_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account State Code --></label>
+        <name>PRM_Account_State_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Street --></label>
+        <name>PRM_Account_Street__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Website --></label>
+        <name>PRM_Account_Website__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account__c</name>
+        <relationshipLabel><!-- IPA Staging - Accounts --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Batch Id --></label>
+        <name>PRM_Batch_Id__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

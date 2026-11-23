@@ -1,156 +1,81 @@
 <template>
-  <!-- <lightning-input type="file"
-                   label="Import Template"
-                   variant="label-hidden"
-                   multiple="false"
-                   accept=".csv"
-                   onchange={handleTemplate}
-                   class="clearSearch"></lightning-input>           -->
-      
-                   <div class="choose_file">
-                   
-                    <button id="myBtn" type="button" class="slds-button slds-button_brand clearSearch" disabled={disableButton}>Choose file</button>
-                    <input name="file" type="file"  onchange={uploadBulkDataUploadRecords} accept=".csv" disabled={disableButton}/>
-                </div>
-                <br/>
-                <br/>
-               <br/>
-             
-                <div>
-                  <template if:true={isShowModal}>
-                    <p style="text-align: center; font-weight:30px">{label.PRM_PleaseWaitSpinnerBulk}</p> 
-              <div class="exampleHolder">
-                <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
-            </div>
-            </template>
-          
-                </div>
-              
-              
+  <br>
+  <lightning-card title="Import Bulk invite Template">
+      <lightning-spinner if:true={loading}></lightning-spinner>
+      <div class="slds-p-around_medium">
+          <lightning-input type="file"
+                           label="Import Template"
+                           variant="label-hidden"
+                           multiple="false"
+                           accept=".csv"
+                           onchange={handleTemplate}></lightning-input>
+      </div>
+      <template if:true={rows.length}>
+        <div class="slds-p-around_small slds-align_absolute-center">          
+          <!--<lightning-button label={toggleButtonLabel} 
+                            title="Toggle Data action" 
+                            icon-name={toggleIconName}
+                            onclick={handleToggleClick}
+                            class="slds-m-left_x-small"></lightning-button>-->
+          <lightning-button label='Show/Hide Data'                            
+                            onclick={handleBtn}
+                            icon-name="utility:preview"
+                            class="slds-m-left_x-small"></lightning-button>                  
+          <lightning-button variant="brand"
+                            label="Upload Data"
+                            title="Upload" 
+                            onclick={uploadBulkDataUploadRecords}
+                            class="slds-m-left_x-small"></lightning-button>
+          <lightning-button variant="destructive"
+                            label="Cancel"
+                            title="Cancel" 
+                            onclick={cancel}
+                            class="slds-m-left_x-small"></lightning-button>
+        </div>
+        <!--show or hide the data table-->
+        <div class="slds-m-top_medium slds-m-bottom_x-large" if:true={showData}>
+              <div class="slds-m-vertical_large slds-m-around_medium lgc-id_content-toggle">
+                  <!--Data Segment-->
+                  <div class="slds-p-around_medium">            
+                    <lightning-datatable key-field="id"
+                                    hide-checkbox-column
+                                    show-row-number-column="true"
+                                    data={rows}
+                                    columns={columns}
+                    ></lightning-datatable>                    
+                  </div>
+              </div>
+        </div>           
+      </template>      
+  </lightning-card>
+  <p>accId: {acctDetails}</p>
   <!-- modal start -->      
-  <template if:true={isShowModalSuccess}>
-    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+  <template if:true={isShowModal}>
+      <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
       <div class="slds-modal__container">
       <!-- modal header start -->
         <header class="slds-modal__header">
           <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
               <lightning-icon icon-name="utility:close"
                 alternative-text="close"
-                
+                variant="inverse"
                 size="small" ></lightning-icon>
               <span class="slds-assistive-text">Close</span>
           </button>
-          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{label.PRM_Upload_Message}</h2>
+          <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Upload Status</h2>
         </header>
         <!-- modal body start -->
-        <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-12">
-              <p>{label.PRM_Success_AlertMsgBulk}</p>
-             <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Confirm" onclick={closeModal}></button> -->
+        <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-1">
+              <p>Your records are processed successfully!</p>
         </div>
-     
         <!-- modal footer start-->
         <footer class="slds-modal__footer">
-          
-          <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">{label.PMP_Okay}</button>
-        
-          <!-- <button class="slds-button slds-button_brand" onclick={submitDetails} title="Confirm">Confirm</button> -->
-          </footer>
+          <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
+        </footer>
       </div>
       </section>
     <div class="slds-backdrop slds-backdrop_open"></div>
 </template>
-
-<template if:true={isShowModalFail}>
-  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-    <div class="slds-modal__container">
-    <!-- modal header start -->
-      <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-            <lightning-icon icon-name="utility:close"
-              alternative-text="close"
-              size="small" ></lightning-icon>
-            <span class="slds-assistive-text">Close</span>
-        </button>
-        <h2 id="modal-heading-012" class="slds-text-heading_medium slds-hyphenate">{label.PRM_Upload_Message}</h2>
-      </header>
-      <!-- modal body start -->
-      <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-13">
-            <p>{label.PRM_Fail_AlertMsgBulk}</p>
-           <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Confirm" onclick={closeModal}></button> -->
-      </div>
-   
-      <!-- modal footer start-->
-      <footer class="slds-modal__footer">
-        
-        <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">{label.PMP_Okay}</button>
-       
-        <!-- <button class="slds-button slds-button_brand" onclick={submitDetails} title="Confirm">Confirm</button> -->
-        </footer>
-    </div>
-    </section>
-  <div class="slds-backdrop slds-backdrop_open"></div>
-</template>
-<template if:true={isWaitStatusOver}>
-  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-    <div class="slds-modal__container">
-    <!-- modal header start -->
-      <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-            <lightning-icon icon-name="utility:close"
-              alternative-text="close"
-              size="small" ></lightning-icon>
-            <span class="slds-assistive-text">Close</span>
-        </button>
-        <h2 id="modal-heading-018" class="slds-text-heading_medium slds-hyphenate">{label.PRM_Upload_Message}</h2>
-      </header>
-      <!-- modal body start -->
-      <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-19">
-            <p>{label.PRM_Discard_AlertMsgBulk}</p>
-            <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Confirm" onclick={closeModal}></button> -->
-      </div>
-   
-      <!-- modal footer start-->
-      <footer class="slds-modal__footer">
-        
-        <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">{label.PMP_Okay}</button>
-       
-        <!-- <button class="slds-button slds-button_brand" onclick={submitDetails} title="Confirm">Confirm</button> -->
-        </footer>
-    </div>
-    </section>
-  <div class="slds-backdrop slds-backdrop_open"></div>
-</template>
-
-<template if:true={isWaitStatus}>
-  <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
-    <div class="slds-modal__container">
-    <!-- modal header start -->
-      <header class="slds-modal__header">
-        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-            <lightning-icon icon-name="utility:close"
-              alternative-text="close"
-              size="small" ></lightning-icon>
-            <span class="slds-assistive-text">Close</span>
-        </button>
-        <h2 id="modal-heading-015" class="slds-text-heading_medium slds-hyphenate">{label.PRM_Upload_Message}</h2>
-      </header>
-      <!-- modal body start -->
-      <div class="slds-modal__content slds-p-around_medium slds-text-align_center" id="modal-content-id-17">
-            <p>{label.PRM_Wait_alermsgBulk}</p>
-            <!-- <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Confirm" onclick={closeModal}></button> -->
-      </div>
-   
-      <!-- modal footer start-->
-      <footer class="slds-modal__footer">
-        
-        <button class="slds-button slds-button_brand" onclick={closeModal} title="OK">{label.PMP_Okay}</button>
-       
-        <!-- <button class="slds-button slds-button_brand" onclick={submitDetails} title="Confirm">Confirm</button> -->
-        </footer>
-    </div>
-    </section>
-  <div class="slds-backdrop slds-backdrop_open"></div>
-</template>
-
-  
+<!-- modal end -->  
+  <br>
 </template>

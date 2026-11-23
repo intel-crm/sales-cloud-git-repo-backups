@@ -62,6 +62,13 @@
         <label><!-- Question --></label>
         <name>MaritzCX__question__c</name>
     </fields>
+    <layouts>
+        <layout>Survey Question Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>CEP Survey Question Name</nameFieldLabel>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

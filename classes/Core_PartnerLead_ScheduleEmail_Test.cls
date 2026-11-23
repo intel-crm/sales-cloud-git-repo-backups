@@ -10,65 +10,20 @@ Modification Log :
 *************************************************************************************/
 @isTest
 public class Core_PartnerLead_ScheduleEmail_Test {
-    
-    @isTest
-    static void scheduleSummaryEmailTest(){
+
+    public static testMethod void scheduleSummaryEmail(){
         Test.startTest();
-        
-        // Test scheduling without actually instantiating the problematic class
         String cronExp = '0 0 21 ? * *';
-        String jobName = 'Partner Lead Summary Email Test';
-        
-        try {
-            // Create a simple schedulable class for testing
-            TestSchedulableClass testSchedulable = new TestSchedulableClass();
-            String jobId = System.schedule(jobName, cronExp, testSchedulable);
-            
-            // Verify the job was scheduled successfully
-            System.assertNotEquals(null, jobId, 'Job should be scheduled successfully');
-            
-            // Verify the scheduled job exists in the system
-            List<CronTrigger> scheduledJobs = [SELECT Id, CronJobDetail.Name FROM CronTrigger WHERE Id = :jobId];
-            System.assertEquals(1, scheduledJobs.size(), 'Scheduled job should exist');
-            
-        } catch (Exception e) {
-            System.debug('Scheduling test completed with exception handling: ' + e.getMessage());
-        }
-        
+        Core_Lead_Daily_PartnerNotification summary = new Core_Lead_Daily_PartnerNotification();
+        System.schedule('Partner Lead Summary Email', cronExp, summary);
         Test.stopTest();
     }
     
-    @isTest
-    static void scheduleReminderEmailTest(){
+    public static testMethod void scheduleReminderEmail(){
         Test.startTest();
-        
         String cronExp = '0 0 5 ? * *';
-        String jobName = 'Partner Lead Reminder Email Test';
-        
-        try {
-            // Create a simple schedulable class for testing
-            TestSchedulableClass testSchedulable = new TestSchedulableClass();
-            String jobId = System.schedule(jobName, cronExp, testSchedulable);
-            
-            // Verify the job was scheduled successfully
-            System.assertNotEquals(null, jobId, 'Job should be scheduled successfully');
-            
-            // Verify the scheduled job exists in the system
-            List<CronTrigger> scheduledJobs = [SELECT Id, CronJobDetail.Name FROM CronTrigger WHERE Id = :jobId];
-            System.assertEquals(1, scheduledJobs.size(), 'Scheduled job should exist');
-            
-        } catch (Exception e) {
-            System.debug('Scheduling test completed with exception handling: ' + e.getMessage());
-        }
-        
+        Core_Lead_Weekly_PartnerNotification reminder = new Core_Lead_Weekly_PartnerNotification();
+        System.schedule('Partner Lead Reminder Email', cronExp, reminder);
         Test.stopTest();
-    }
-    
-    // Simple test schedulable class to avoid dependency issues
-    public class TestSchedulableClass implements Schedulable {
-        public void execute(SchedulableContext sc) {
-            // Simple implementation for testing purposes
-            System.debug('Test schedulable executed');
-        }
     }
 }

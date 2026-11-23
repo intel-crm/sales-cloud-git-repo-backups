@@ -1,37 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
-    <description>Welcome to the Developer Zone Premiere - Simplified Chinese</description>
+    <description>Welcome email for DZP in Simplified Chinese</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDNEW_DZP_ZHO</name>
     <style>none</style>
-    <subject>开发员专区高级帐户已获批准</subject>
-    <textOnly>開發人員專區 Premier 帳戶已核准
+    <subject>英特尔注册确认 - 开发员专区高级帐户</subject>
+    <textOnly>英特尔注册确认 - 开发员专区高级帐户
 
-歡迎來到開發人員專區 Premier
-
-
-親愛的 {!Contact.FirstName} {!Contact.LastName},
-
-您開發人員專區 Premier 帳戶的申請已核准。請使用下方列出的認證登入 Intel 開發人員專區。
-
-使用者名稱：{!Contact.Name}
-電子郵件地址：{!Contact.Email}
-
-請保留此封電子郵件以供日後參考。
-
-請確實保護您的密碼，不要外洩。您使用密碼和  Intel 網站時，必須遵守 Intel 的使用條款。各網站網頁最下方均有使用條款的連結。
-
-如果您有任何疑問，請與我們聯絡。
-
-若要管理您的個人檔案，包括可用的行銷訂閱，請造訪 My Intel。
-
-請勿回覆此電子郵件訊息。此郵件是系統自動傳送。為確保您可以繼續收到我們的電子郵件，請將我們加進您的通訊錄。
+待批准
 
 
-Intel 承諾保護您的隱私權。如需更多資訊，請參閱 Intel 隱私權聲明。Intel Cookie 注意事項。
+欢迎 {!Contact.Name},
 
-法律聲明 &amp;verbar; 商標 © Intel Corporation。!%TemplateCode%!</textOnly>
+感谢您注册开发员专区高级帐户。
+
+如果您尚未与英特尔签署企业保密协议 (CNDA)，则可能需要最多 10 个工作日来审核您的高级帐户申请。您将在 3 个工作日内看到状态更新。
+
+在审核您的高级帐户申请时，您可以立即以标准用户的身份访问英特尔的开发员专区。
+
+用户名： {!Contact.Core_Login_Id__c}
+电子邮件地址：{!Contact.Email}
+
+请保留这封电子邮件供以后参考。
+
+您的密码应该像机密一样受到保护。您对密码和英特尔网站的使用受英特尔使用条款的约束，每个相关站点的网页底部均有使用条款的链接。
+
+如果您有任何疑问，请联系我们。
+
+若需管理您的个人资料，包括可用的营销订阅信息，请访问“我的英特尔”。
+
+请勿回复此邮件。这是一封自动回复邮件。为了确保能继续收到我们的邮件，请将我们添加至您的地址簿。
+
+
+英特尔致力于保护您的隐私。如欲了解更多信息，请参阅英特尔隐私条款。英特尔 Cookie 声明。
+
+法律信息 | 商标 | © 英特尔公司。!%TemplateCode%!</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

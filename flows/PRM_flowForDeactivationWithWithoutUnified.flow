@@ -18,7 +18,7 @@
             <assignToReference>get_OPID_ACMS_to_Inactivate.PRM_Status_Reason_Txt__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>acmInactivationReason</elementReference>
+                <stringValue>account inactivation</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -75,10 +75,17 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>listOfACMToUpdate</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Acm_to_Inactive</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>opid_id</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Acm_to_Inactive.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c</elementReference>
+                <stringValue>{!Acm_to_Inactive.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c}</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -93,13 +100,6 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>acmInactivationReason</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>listOfACMToUpdate</assignToReference>
-            <operator>Add</operator>
-            <value>
-                <elementReference>Acm_to_Inactive</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -245,13 +245,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>loop_affliliations_for_strategyname_of_intel.PRM_Builder_Strategy__r.PRM_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>Assignment_intel_accs_strategyname</targetReference>
             </connector>
@@ -298,20 +291,6 @@
                     <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
-            <conditions>
-                <leftValueReference>loop_affiliations_for_OPID.PRM_Builder_Strategy__r.PRM_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>loop_affiliations_for_OPID.PRM_Active__c</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
             <connector>
                 <targetReference>assign_inactive_status_to_affiliation</targetReference>
             </connector>
@@ -348,6 +327,9 @@
         <label>get IPA Affiliation records not null</label>
         <locationX>666</locationX>
         <locationY>3206</locationY>
+        <defaultConnector>
+            <targetReference>END_ELEMENT_4</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>not there</defaultConnectorLabel>
         <rules>
             <name>records_are_there</name>
@@ -505,6 +487,21 @@
             <label>if active</label>
         </rules>
     </decisions>
+    <ends>
+        <name>END_ELEMENT_4</name>
+        <locationX>930</locationX>
+        <locationY>3314</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_5</name>
+        <locationX>446</locationX>
+        <locationY>2798</locationY>
+    </ends>
+    <ends>
+        <name>END_ELEMENT_6</name>
+        <locationX>402</locationX>
+        <locationY>4406</locationY>
+    </ends>
     <environments>Default</environments>
     <interviewLabel>PRM_flowForDeactivationWithWithoutUnified {!$Flow.CurrentDateTime}</interviewLabel>
     <label>PRM_flowForDeactivationWithWithoutUnified</label>
@@ -588,6 +585,9 @@
         <label>Create Log Entry</label>
         <locationX>446</locationX>
         <locationY>2690</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_5</targetReference>
+        </connector>
         <inputAssignments>
             <field>Core_Details__c</field>
             <value>
@@ -680,6 +680,7 @@
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
         <object>PRM_AccountChannelMembership__c</object>
+        <queriedFields>Id</queriedFields>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
@@ -886,6 +887,9 @@
         <label>update affilitions</label>
         <locationX>402</locationX>
         <locationY>4298</locationY>
+        <connector>
+            <targetReference>END_ELEMENT_6</targetReference>
+        </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Create_Log_Entry</targetReference>

@@ -9,16 +9,18 @@
                     <span class="icon">
                         <span class={iconClass}></span>
                     </span>
-                    <div class="text"  >{subject}</div>
+                    <div class="text" role="cell" >{subject}</div>
                 </a>
             </div>
             <!-- ipapartnermessage <div class="type mobile-hide ">
                 {type}/
             </div> -->
             <div class="date mobile-hide "   >
-                <div class="slds-assistive-text" >Date</div>
+                <div class="slds-assistive-text" role="cell">Date</div>
                 {formattedDate}
             </div>
+
+
             <div class="toggle" >
                 <a href="javascript:void(0);" aria-label="Expand to read full message" onclick={toggleOpen}>
                     <template if:true={isOpen}  >
@@ -35,24 +37,24 @@
             <template for:each={fields} for:item="field"   >
                 <p class="slds-m-bottom_medium" key={field.id}><b>{field.label}:</b> {field.value}</p>
             </template>
-            <div class="slds-assistive-text">Reading full Message now</div> 
-            <div class="body" role="none">
-
-            <lightning-formatted-rich-text class="slbody"   value={body} ></lightning-formatted-rich-text> 
+            <div class="slds-assistive-text">Reading full Message now</div>    
+            <div class="body">
+            <lightning-formatted-rich-text class="slbody"  value={body}></lightning-formatted-rich-text> 
+                
                 </div>
             <div class="footer-actions">
 
                 <template if:false={read}>
-                    <a href="#" aria-label="mark as read" class="mark-as-read slds-p-right_x-small" onclick={markAsRead}>{label.markAsRead}</a>
+                    <a href="#" class="mark-as-read slds-p-right_x-small" onclick={markAsRead}>{label.markAsRead}</a>
                 </template>
 
                 <template if:true={markAsReadServiceError}>
                     <div><span class="error">{label.markAsReadServiceError}</span></div>
                 </template>
-<!--
+
                 <template if:false={del}>
-                    <a href="#" aria-label="mark as delete" class="mark-as-delete" onclick={markAsDelete}>{label.markAsDelete}</a>
-				</template> -->
+                    <a href="#" class="mark-as-delete" onclick={markAsDelete}>{label.markAsDelete}</a>
+                </template>
 
                 <template if:true={markAsDeleteServiceError}>
                     <div><span class="error">{label.markAsDeleteServiceError}</span></div>

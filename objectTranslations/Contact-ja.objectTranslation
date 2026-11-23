@@ -9,9 +9,17 @@
         <name>DynamicDataTableFieldSet</name>
     </fieldSets>
     <fieldSets>
-        <label><!-- New Intel Contact --></label>
-        <name>Groove_New_Contact</name>
+        <label><!-- test --></label>
+        <name>test</name>
     </fieldSets>
+    <fields>
+        <label><!-- AGS Inactive --></label>
+        <name>AGS_Inactive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Cvent Contact Stub --></label>
+        <name>ContactStub__c</name>
+    </fields>
     <fields>
         <label><!-- Contact ID --></label>
         <name>Contact_ID__c</name>
@@ -29,7 +37,6 @@
         <name>Core_AGS_Inactive__c</name>
     </fields>
     <fields>
-        <help><!-- For next steps on error, refer to Entitlement Integration Status Details --></help>
         <label><!-- AGS Integration Message --></label>
         <name>Core_AGS_Integration_Message__c</name>
     </fields>
@@ -56,6 +63,10 @@
     <fields>
         <label><!-- AGS Re-publish Ind --></label>
         <name>Core_AGS_Republish_Ind__c</name>
+    </fields>
+    <fields>
+        <label><!-- AGS Re-publish Signal --></label>
+        <name>Core_AGS_Republish_Signal__c</name>
     </fields>
     <fields>
         <help><!-- Number of retry attempts made upon failure on AGS Integration. --></help>
@@ -125,7 +136,7 @@
         <name>Core_Alt_Language_Postal_Code__c</name>
     </fields>
     <fields>
-        <label><!-- Alt Language Country/Region --></label>
+        <label><!-- Alt Language country --></label>
         <name>Core_Alt_Language_country__c</name>
     </fields>
     <fields>
@@ -216,36 +227,28 @@
             <translation><!-- DCF User Administrator --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>IPA User</masterLabel>
-            <translation><!-- IPA User --></translation>
+            <masterLabel>Intel Partner FAE</masterLabel>
+            <translation><!-- Intel Partner FAE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Portal - DDR</masterLabel>
+            <translation><!-- Partner Portal - DDR --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Partner Portal - IPS</masterLabel>
             <translation><!-- Partner Portal - IPS --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RMF External Activity Approver</masterLabel>
-            <translation><!-- RMF External Activity Approver --></translation>
+            <masterLabel>Partner Portal - Leads</masterLabel>
+            <translation><!-- Partner Portal - Leads --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RMF External Claim Submitter</masterLabel>
-            <translation><!-- RMF External Claim Submitter --></translation>
+            <masterLabel>QUOTE User</masterLabel>
+            <translation><!-- QUOTE User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>RMF External Content Viewer</masterLabel>
-            <translation><!-- RMF External Content Viewer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RMF External User Administrator</masterLabel>
-            <translation><!-- RMF External User Administrator --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RMF External View Only</masterLabel>
-            <translation><!-- RMF External View Only --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RMF User</masterLabel>
-            <translation><!-- RMF User --></translation>
+            <masterLabel>Retail User</masterLabel>
+            <translation><!-- Retail User --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>SPCF Account Budget Administrator</masterLabel>
@@ -293,7 +296,7 @@
         <name>Core_City__c</name>
     </fields>
     <fields>
-        <label><!-- Export Compliance Block Reason --></label>
+        <label><!-- Core_Con_Export_Compliance_Block_Reason_ --></label>
         <name>Core_Con_Export_Compliance_Block_Reason__c</name>
     </fields>
     <fields>
@@ -303,23 +306,6 @@
     <fields>
         <label><!-- Export Compliance Block --></label>
         <name>Core_Contact_Export_Compliance_Block__c</name>
-    </fields>
-    <fields>
-        <help><!-- Marketing Status Indicator --></help>
-        <label><!-- Marketing Status --></label>
-        <name>Core_Contact_Marketing_Status__c</name>
-        <picklistValues>
-            <masterLabel>Not Signed Up</masterLabel>
-            <translation><!-- Not Signed Up --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Signed Up</masterLabel>
-            <translation><!-- Signed Up --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Contacts for Marketing --></label>
-        <name>Core_Contacts_for_Marketing__c</name>
     </fields>
     <fields>
         <help><!-- Please select the primary location in which the contact will be submitting Cases on Intel® Premier Support --></help>
@@ -1246,8 +1232,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1331,11 +1317,15 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Current Year --></label>
+        <name>Core_Current_Year__c</name>
+    </fields>
+    <fields>
         <label><!-- Candidate for Customer Excellence Survey --></label>
         <name>Core_Customer_Excellence_Survey__c</name>
     </fields>
     <fields>
-        <help><!-- Prior to deactivating contact, view all opportunities/cases associated --></help>
+        <help><!-- Check this box if you want to deactivate a contact --></help>
         <label><!-- Deactivation Requested --></label>
         <name>Core_Deactivated__c</name>
     </fields>
@@ -1343,10 +1333,6 @@
         <help><!-- Provide deactivation reason --></help>
         <label><!-- Deactivation Reason --></label>
         <name>Core_Deactivation_Reason__c</name>
-        <picklistValues>
-            <masterLabel>Contact Inactive</masterLabel>
-            <translation><!-- Contact Inactive --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Denied Party</masterLabel>
             <translation><!-- Denied Party --></translation>
@@ -1356,8 +1342,8 @@
             <translation><!-- Duplicate Contact --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Left Company</masterLabel>
-            <translation><!-- Left Company --></translation>
+            <masterLabel>Moved to new company</masterLabel>
+            <translation><!-- Moved to new company --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1368,52 +1354,48 @@
             <translation><!-- Abandoned Registration --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Denied Party</masterLabel>
-            <translation><!-- Denied Party --></translation>
+            <masterLabel>DeniedParty</masterLabel>
+            <translation><!-- DeniedParty --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Duplicate Account</masterLabel>
-            <translation><!-- Duplicate Account --></translation>
+            <masterLabel>DuplicateAccount</masterLabel>
+            <translation><!-- DuplicateAccount --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Employee Termination</masterLabel>
-            <translation><!-- Employee Termination --></translation>
+            <masterLabel>EmployeeTermination</masterLabel>
+            <translation><!-- EmployeeTermination --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Idle Account</masterLabel>
-            <translation><!-- Idle Account --></translation>
+            <masterLabel>IdleAccount</masterLabel>
+            <translation><!-- IdleAccount --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Malicious User</masterLabel>
-            <translation><!-- Malicious User --></translation>
+            <masterLabel>MaliciousUser</masterLabel>
+            <translation><!-- MaliciousUser --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
+            <masterLabel>OrphanedAccount</masterLabel>
+            <translation><!-- OrphanedAccount --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Orphaned Account</masterLabel>
-            <translation><!-- Orphaned Account --></translation>
+            <masterLabel>SocialRegistrationFailed</masterLabel>
+            <translation><!-- SocialRegistrationFailed --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Social Registration Failed</masterLabel>
-            <translation><!-- Social Registration Failed --></translation>
+            <masterLabel>TestAccountRemoval</masterLabel>
+            <translation><!-- TestAccountRemoval --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Test Account Removal</masterLabel>
-            <translation><!-- Test Account Removal --></translation>
+            <masterLabel>UnredeemedInvitation</masterLabel>
+            <translation><!-- UnredeemedInvitation --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Unredeemed Invitation</masterLabel>
-            <translation><!-- Unredeemed Invitation --></translation>
+            <masterLabel>UnredeemedInvitationDowngrade</masterLabel>
+            <translation><!-- UnredeemedInvitationDowngrade --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Unredeemed Invitation Downgrade</masterLabel>
-            <translation><!-- Unredeemed Invitation Downgrade --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>User Request</masterLabel>
-            <translation><!-- User Request --></translation>
+            <masterLabel>UserRequest</masterLabel>
+            <translation><!-- UserRequest --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -1421,7 +1403,7 @@
         <name>Core_Do_Not_Contact_Dtm__c</name>
     </fields>
     <fields>
-        <help><!-- No Marketing communication or methods can be used to contact this person. --></help>
+        <help><!-- If enabled, you may not contact the individual for sales purposes. --></help>
         <label><!-- Marketing - Do Not Contact --></label>
         <name>Core_Do_Not_Contact__c</name>
     </fields>
@@ -1434,7 +1416,6 @@
         <name>Core_ERPM_Duration__c</name>
     </fields>
     <fields>
-        <help><!-- For next steps on error, refer to Entitlement Integration Status Details. --></help>
         <label><!-- ERPM Integration Message --></label>
         <name>Core_ERPM_Integration_Message__c</name>
     </fields>
@@ -1503,6 +1484,10 @@
         <name>Core_Enterprise_Id__c</name>
     </fields>
     <fields>
+        <label><!-- Entitlement Assignment Duration --></label>
+        <name>Core_Entitlement_Assignment_Duration__c</name>
+    </fields>
+    <fields>
         <label><!-- Entitlement Assignment Message --></label>
         <name>Core_Entitlement_Assignment_Message__c</name>
     </fields>
@@ -1525,6 +1510,10 @@
     <fields>
         <label><!-- Entitlement Status Change Date/Time --></label>
         <name>Core_Entitlement_Status_Change_Date_Time__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsBulkLoadedContact --></label>
+        <name>Core_IPA_Contact_Assignment__c</name>
     </fields>
     <fields>
         <label><!-- Contact Segment --></label>
@@ -1578,6 +1567,10 @@
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -1623,7 +1616,7 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Partner Role Old --></label>
+        <label><!-- Partner Role_Old --></label>
         <name>Core_IPA_Partner_Role__c</name>
         <picklistValues>
             <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
@@ -1658,8 +1651,8 @@
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Service Integrator</masterLabel>
-            <translation><!-- Service Integrator --></translation>
+            <masterLabel>Service  Integrator</masterLabel>
+            <translation><!-- Service  Integrator --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution Provider</masterLabel>
@@ -1703,10 +1696,6 @@
         <name>Core_IPS_Email_Opt_Out__c</name>
     </fields>
     <fields>
-        <label><!-- Core IPS Embargoed State --></label>
-        <name>Core_IPS_Embargoed_State__c</name>
-    </fields>
-    <fields>
         <label><!-- Employee Customer? --></label>
         <name>Core_IPS_Employee_Customer__c</name>
     </fields>
@@ -1731,118 +1720,6 @@
         <help><!-- This field is copied from Employee Customer User. --></help>
         <label><!-- Region --></label>
         <name>Core_IPS_Region__c</name>
-    </fields>
-    <fields>
-        <label><!-- Core IPS State --></label>
-        <name>Core_IPS_State__c</name>
-        <picklistValues>
-            <masterLabel>Cherkasy</masterLabel>
-            <translation><!-- Cherkasy --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chernihiv</masterLabel>
-            <translation><!-- Chernihiv --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Chernivtsi</masterLabel>
-            <translation><!-- Chernivtsi --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Crimea</masterLabel>
-            <translation><!-- Crimea --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Dinpropetrovsk</masterLabel>
-            <translation><!-- Dinpropetrovsk --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Donetsk</masterLabel>
-            <translation><!-- Donetsk --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kharkivs&apos;ka Oblast</masterLabel>
-            <translation><!-- Kharkivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Khersons&apos;ka Oblast</masterLabel>
-            <translation><!-- Khersons&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Khmel&apos;nyts&apos;ka</masterLabel>
-            <translation><!-- Khmel&apos;nyts&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kirovohrads&apos;ka</masterLabel>
-            <translation><!-- Kirovohrads&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kyiv</masterLabel>
-            <translation><!-- Kyiv --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Kyivs&apos;ka Oblast</masterLabel>
-            <translation><!-- Kyivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>L&apos;vivs&apos;ka Oblast</masterLabel>
-            <translation><!-- L&apos;vivs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Luhans&apos;ka Oblast</masterLabel>
-            <translation><!-- Luhans&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Mykolaivs&apos;ka</masterLabel>
-            <translation><!-- Mykolaivs&apos;ka --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Odeska Oblast</masterLabel>
-            <translation><!-- Odeska Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Poltavs&apos;ka Oblast</masterLabel>
-            <translation><!-- Poltavs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Rivnens&apos;ka Oblast</masterLabel>
-            <translation><!-- Rivnens&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sevastopol</masterLabel>
-            <translation><!-- Sevastopol --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Sums&apos;ka Oblast</masterLabel>
-            <translation><!-- Sums&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ternopil&apos;s&apos;ka Oblast</masterLabel>
-            <translation><!-- Ternopil&apos;s&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Vinnyts&apos;ka Oblast</masterLabel>
-            <translation><!-- Vinnyts&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Volyns&apos;ka Oblast</masterLabel>
-            <translation><!-- Volyns&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zakarpats&apos;ka Oblast</masterLabel>
-            <translation><!-- Zakarpats&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zaporiz&apos;ka Oblast</masterLabel>
-            <translation><!-- Zaporiz&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Zhtomyrs&apos;ka Oblast</masterLabel>
-            <translation><!-- Zhtomyrs&apos;ka Oblast --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>lvano-frankivs&apos;ka</masterLabel>
-            <translation><!-- lvano-frankivs&apos;ka --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- This field is copied from Employee Customer User. --></help>
@@ -1888,10 +1765,6 @@
         <picklistValues>
             <masterLabel>Business Development</masterLabel>
             <translation>事業開発</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>College/University Faculty</masterLabel>
-            <translation><!-- College/University Faculty --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Communications Engineer</masterLabel>
@@ -2066,10 +1939,6 @@
             <translation>テクニカル・インテグレーター</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>University Member</masterLabel>
-            <translation><!-- University Member --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Warehousing, Transportation and Conveyan</masterLabel>
             <translation>倉庫保管、輸送、運搬</translation>
         </picklistValues>
@@ -2081,66 +1950,6 @@
             <masterLabel>eBusiness Manager/Developer</masterLabel>
             <translation>eBusiness マネージャー / 開発者</translation>
         </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- LS Best Profile Fit --></label>
-        <name>Core_LS_Best_Profile_Fit__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Description --></label>
-        <name>Core_LS_Company_Description__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Industry --></label>
-        <name>Core_LS_Company_Industry__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Name --></label>
-        <name>Core_LS_Company_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Revenue --></label>
-        <name>Core_LS_Company_Revenue__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Size Employees --></label>
-        <name>Core_LS_Company_Size_Employees__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Size Range Employees --></label>
-        <name>Core_LS_Company_Size_Range_Employees__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Company Website --></label>
-        <name>Core_LS_Company_Website__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Department --></label>
-        <name>Core_LS_Department__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Email --></label>
-        <name>Core_LS_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Job Function --></label>
-        <name>Core_LS_Job_Function__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Level --></label>
-        <name>Core_LS_Level__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS LinkedIn Profile --></label>
-        <name>Core_LS_LinkedIn_Profile__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Phone --></label>
-        <name>Core_LS_Phone__c</name>
-    </fields>
-    <fields>
-        <label><!-- LS Title --></label>
-        <name>Core_LS_Title__c</name>
     </fields>
     <fields>
         <label><!-- Language --></label>
@@ -2167,7 +1976,7 @@
         <name>Core_Login_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Identity Status --></label>
+        <label><!-- Login Status --></label>
         <name>Core_Login_Status__c</name>
         <picklistValues>
             <masterLabel>Active</masterLabel>
@@ -2266,10 +2075,10 @@
             <masterLabel>D4</masterLabel>
             <translation><!-- D4 --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>None</masterLabel>
-            <translation><!-- None --></translation>
-        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Next Steps --></label>
+        <name>Core_Next_Steps__c</name>
     </fields>
     <fields>
         <label><!-- Old Email --></label>
@@ -2320,12 +2129,24 @@
         <label><!-- Preferred Language --></label>
         <name>Core_Preferred_Language__c</name>
         <picklistValues>
-            <masterLabel>Chinese Simplified</masterLabel>
-            <translation><!-- Chinese Simplified --></translation>
+            <masterLabel>Arabic</masterLabel>
+            <translation><!-- Arabic --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Chinese Traditional</masterLabel>
-            <translation><!-- Chinese Traditional --></translation>
+            <masterLabel>Azerbaijani</masterLabel>
+            <translation><!-- Azerbaijani --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Simplified) - China</masterLabel>
+            <translation><!-- Chinese (Simplified) - China --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chinese (Traditional) - Taiwan</masterLabel>
+            <translation><!-- Chinese (Traditional) - Taiwan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Czech</masterLabel>
+            <translation><!-- Czech --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>English</masterLabel>
@@ -2340,12 +2161,20 @@
             <translation><!-- French --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>French (Canada)</masterLabel>
-            <translation><!-- French (Canada) --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>German</masterLabel>
             <translation><!-- German --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Greek</masterLabel>
+            <translation><!-- Greek --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hebrew</masterLabel>
+            <translation><!-- Hebrew --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Hungarian</masterLabel>
+            <translation><!-- Hungarian --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Indonesian</masterLabel>
@@ -2372,16 +2201,28 @@
             <translation><!-- Portuguese --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Romanian</masterLabel>
+            <translation><!-- Romanian --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Russian</masterLabel>
             <translation><!-- Russian --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Spanish (LAR)</masterLabel>
-            <translation><!-- Spanish (LAR) --></translation>
+            <masterLabel>Sinhalese</masterLabel>
+            <translation><!-- Sinhalese --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Spanish</masterLabel>
+            <translation><!-- Spanish --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Spanish(EMEA)</masterLabel>
             <translation><!-- Spanish(EMEA) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swedish</masterLabel>
+            <translation><!-- Swedish --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Thai</masterLabel>
@@ -2390,6 +2231,10 @@
         <picklistValues>
             <masterLabel>Turkish</masterLabel>
             <translation><!-- Turkish --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ukrainian</masterLabel>
+            <translation><!-- Ukrainian --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Vietnamese</masterLabel>
@@ -2403,6 +2248,10 @@
     <fields>
         <label><!-- Profession --></label>
         <name>Core_Profession__c</name>
+        <picklistValues>
+            <masterLabel>Business Executive</masterLabel>
+            <translation><!-- Business Executive --></translation>
+        </picklistValues>
         <picklistValues>
             <masterLabel>CIO (Chief Information Officer)</masterLabel>
             <translation>CIO (最高情報責任者)</translation>
@@ -2424,12 +2273,20 @@
             <translation>コンサルタント</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Data Center Manager</masterLabel>
+            <translation><!-- Data Center Manager --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Data Sciences</masterLabel>
             <translation>データサイエンス</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Educator</masterLabel>
             <translation>教育関係者</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Engineer</masterLabel>
+            <translation><!-- Engineer --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>FPGA Engineering</masterLabel>
@@ -2442,10 +2299,6 @@
         <picklistValues>
             <masterLabel>Finance/Procurement</masterLabel>
             <translation>財務 / 調達</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
@@ -2488,12 +2341,20 @@
             <translation>マーケティング</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Marketing Manager</masterLabel>
+            <translation><!-- Marketing Manager --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Network Architecture/Engineering</masterLabel>
             <translation>ネットワーク・アーキテクチャー / エンジニアリング</translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Operations Engineer</masterLabel>
             <translation>オペレーション・エンジニア</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Operations Manager</masterLabel>
+            <translation><!-- Operations Manager --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Other</masterLabel>
@@ -2512,16 +2373,20 @@
             <translation>売上</translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>Sales Manager</masterLabel>
+            <translation><!-- Sales Manager --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Scientist/Researcher</masterLabel>
             <translation>科学者 / 研究調査員</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
             <translation>ソフトウェア / アプリケーションの開発 / エンジニアリング</translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Architect</masterLabel>
+            <translation><!-- Solution Architect --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Solution/System Architecture</masterLabel>
@@ -2531,50 +2396,14 @@
             <masterLabel>Student</masterLabel>
             <translation>学生</translation>
         </picklistValues>
+        <picklistValues>
+            <masterLabel>Technology Executive</masterLabel>
+            <translation><!-- Technology Executive --></translation>
+        </picklistValues>
     </fields>
     <fields>
         <label><!-- Profiled Engagement Count --></label>
         <name>Core_Profiled_Engagements_Count__c</name>
-    </fields>
-    <fields>
-        <label><!-- Pronouns --></label>
-        <name>Core_Pronouns__c</name>
-        <picklistValues>
-            <masterLabel>Any/All Pronouns</masterLabel>
-            <translation><!-- Any/All Pronouns --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>He/Him/His</masterLabel>
-            <translation><!-- He/Him/His --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>He/They</masterLabel>
-            <translation><!-- He/They --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>She/Her/Hers</masterLabel>
-            <translation><!-- She/Her/Hers --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>She/They</masterLabel>
-            <translation><!-- She/They --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>They/Them/Theirs</masterLabel>
-            <translation><!-- They/Them/Theirs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Xe/Xie/Xem</masterLabel>
-            <translation><!-- Xe/Xie/Xem --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ze/Hir/Hirs</masterLabel>
-            <translation><!-- Ze/Hir/Hirs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ze/Zie/Zem</masterLabel>
-            <translation><!-- Ze/Zie/Zem --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <help><!-- Checking this starts the Outbound Message Process. --></help>
@@ -2636,8 +2465,25 @@
         <name>Core_isEmailBounced_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Cvent Contact Stub --></label>
-        <name>CventEvents__ContactStub__c</name>
+        <label><!-- Data Quality Description --></label>
+        <name>Data_Quality_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Data Quality Score --></label>
+        <name>Data_Quality_Score__c</name>
+    </fields>
+    <fields>
+        <help><!-- is the secondary email address of this contact --></help>
+        <label><!-- Email 2 --></label>
+        <name>Email_2__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Domain and Contact Hash --></label>
+        <name>Email_Domain__c</name>
+    </fields>
+    <fields>
+        <label><!-- Email Verification Status --></label>
+        <name>Email_Verification_Status__c</name>
     </fields>
     <fields>
         <label><!-- External User State Change Date/Time --></label>
@@ -2654,6 +2500,36 @@
             <masterLabel>Pending Acceptance</masterLabel>
             <translation><!-- Pending Acceptance --></translation>
         </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Is the URL of a &quot;Create Opportunity&quot; screen. It allows the user to create an opportunity with a contact role. This can be added to a Groove View and can be rendered as an action button in your email client. --></help>
+        <label><!-- Create Opportunity --></label>
+        <name>Groove_Create_Opportunity__c</name>
+    </fields>
+    <fields>
+        <help><!-- Is the URL of a &quot;Log a Call&quot; screen. This can be added to a Groove View and can be rendered as an action button in your email client. --></help>
+        <label><!-- Log a Call --></label>
+        <name>Groove_Log_a_Call__c</name>
+    </fields>
+    <fields>
+        <label><!-- Groove Notes --></label>
+        <name>Groove_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Created By Groove --></label>
+        <name>Is_Created_By_Groove__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Company Id --></label>
+        <name>LID__LinkedIn_Company_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- LinkedIn Member Token --></label>
+        <name>LID__LinkedIn_Member_Token__c</name>
+    </fields>
+    <fields>
+        <label><!-- Languages --></label>
+        <name>Languages__c</name>
     </fields>
     <fields>
         <label><!-- Mailing Country/Region --></label>
@@ -2680,9 +2556,30 @@
         </picklistValues>
     </fields>
     <fields>
-        <help><!-- PIPL Consent Date --></help>
-        <label><!-- PIPL Consent Date --></label>
-        <name>PIPL_Consent_Date__c</name>
+        <label><!-- Not at Company Flag --></label>
+        <name>No_longer_at_Company__c</name>
+        <picklistValues>
+            <masterLabel>Ignore</masterLabel>
+            <translation><!-- Ignore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not at Company</masterLabel>
+            <translation><!-- Not at Company --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <help><!-- Managed by Groove. --></help>
+        <label><!-- Normalized Mobile --></label>
+        <name>Normalized_Mobile__c</name>
+    </fields>
+    <fields>
+        <help><!-- Managed by Groove. --></help>
+        <label><!-- Normalized Phone --></label>
+        <name>Normalized_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP IsBounced Email check --></label>
+        <name>PMP_IsBounced_Email_check__c</name>
     </fields>
     <fields>
         <label><!-- Community Change Agent --></label>
@@ -2729,89 +2626,164 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Username --></label>
-        <name>Username__c</name>
+        <label><!-- Session Id --></label>
+        <name>Session_Id__c</name>
     </fields>
     <fields>
-        <label><!-- Add to Marketo Campaign --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign__c</name>
+        <label><!-- Status of deletion --></label>
+        <name>Status_of_deletion__c</name>
     </fields>
     <fields>
-        <label><!-- Current Sales Campaign --></label>
-        <name>mkto_si__Current_Sales_Campaign__c</name>
+        <label><!-- TempUrl_contact --></label>
+        <name>TempUrl_contact__c</name>
     </fields>
     <fields>
-        <label><!-- Hide Date --></label>
-        <name>mkto_si__HideDate__c</name>
+        <label><!-- User Status --></label>
+        <name>User_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>InActive</masterLabel>
+            <translation><!-- InActive --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not exist</masterLabel>
+            <translation><!-- Not exist --></translation>
+        </picklistValues>
     </fields>
     <fields>
-        <label><!-- Last Activity by Sales --></label>
-        <name>mkto_si__Last_Activity_By_Sales__c</name>
+        <label><!-- User_statuss --></label>
+        <name>User_statuss__c</name>
     </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Date --></label>
-        <name>mkto_si__Last_Interesting_Moment_Date__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Desc --></label>
-        <name>mkto_si__Last_Interesting_Moment_Desc__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Source --></label>
-        <name>mkto_si__Last_Interesting_Moment_Source__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment Type --></label>
-        <name>mkto_si__Last_Interesting_Moment_Type__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Interesting Moment --></label>
-        <name>mkto_si__Last_Interesting_Moment__c</name>
-    </fields>
-    <fields>
-        <label><!-- Last Sales Engagement --></label>
-        <name>mkto_si__Last_Sales_Engagement__c</name>
-    </fields>
-    <fields>
-        <label><!-- Mkto Lead Score --></label>
-        <name>mkto_si__Mkto_Lead_Score__c</name>
-    </fields>
-    <fields>
-        <label><!-- Engagement --></label>
-        <name>mkto_si__Priority__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score Value --></label>
-        <name>mkto_si__Relative_Score_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Relative Score --></label>
-        <name>mkto_si__Relative_Score__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Insight --></label>
-        <name>mkto_si__Sales_Insight__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Last Replied --></label>
-        <name>mkto_si__Sales_Last_Replied__c</name>
-    </fields>
-    <fields>
-        <label><!-- Sales Opt Out --></label>
-        <name>mkto_si__Sales_Opt_Out__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency Value --></label>
-        <name>mkto_si__Urgency_Value__c</name>
-    </fields>
-    <fields>
-        <label><!-- Urgency --></label>
-        <name>mkto_si__Urgency__c</name>
-    </fields>
-    <fields>
-        <label><!-- View in Marketo --></label>
-        <name>mkto_si__View_in_Marketo__c</name>
-    </fields>
+    <layouts>
+        <layout>Contact (MCX) Layout</layout>
+        <sections>
+            <label><!-- Charts --></label>
+            <section>Charts</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Entitlement Based Layout</layout>
+        <sections>
+            <label><!-- Alternate Language Address --></label>
+            <section>Alternate Language Address</section>
+        </sections>
+        <sections>
+            <label><!-- Intel Premier Support --></label>
+            <section>Intel Premier Support</section>
+        </sections>
+        <sections>
+            <label><!-- Master Data Information --></label>
+            <section>Master Data Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Layout</layout>
+        <sections>
+            <label><!-- Intel® Premier Support --></label>
+            <section>Intel® Premier Support</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Contact Layout SDoc</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core IPS External Contact Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Contact_Layout</layout>
+        <sections>
+            <label><!-- Alternate Language Address --></label>
+            <section>Alternate Language Address</section>
+        </sections>
+        <sections>
+            <label><!-- Intel® Premier Support --></label>
+            <section>Intel® Premier Support</section>
+        </sections>
+        <sections>
+            <label><!-- Internal Entitlements Status --></label>
+            <section>Internal Entitlements Status</section>
+        </sections>
+        <sections>
+            <label><!-- Master Data Information --></label>
+            <section>Master Data Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Contact_Layout W/Maritz</layout>
+        <sections>
+            <label><!-- Alternate Language Address --></label>
+            <section>Alternate Language Address</section>
+        </sections>
+        <sections>
+            <label><!-- Intel Premier Support --></label>
+            <section>Intel Premier Support</section>
+        </sections>
+        <sections>
+            <label><!-- Internal Entitlement Status --></label>
+            <section>Internal Entitlement Status</section>
+        </sections>
+        <sections>
+            <label><!-- Master Data Information --></label>
+            <section>Master Data Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Core_Contact_Layout_Do_Not_Contact</layout>
+        <sections>
+            <label><!-- Alternate Language Address --></label>
+            <section>Alternate Language Address</section>
+        </sections>
+        <sections>
+            <label><!-- Intel® Premier Support --></label>
+            <section>Intel® Premier Support</section>
+        </sections>
+        <sections>
+            <label><!-- Master Data Information --></label>
+            <section>Master Data Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Temp Core_Contact_Layout W/Maritz clone</layout>
+        <sections>
+            <label><!-- Alternate Language Address --></label>
+            <section>Alternate Language Address</section>
+        </sections>
+        <sections>
+            <label><!-- Intel Premier Support --></label>
+            <section>Intel Premier Support</section>
+        </sections>
+        <sections>
+            <label><!-- Master Data Information --></label>
+            <section>Master Data Information</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- LinkedIn inMail --></label>
+        <name>LID__LinkedIn_Message</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- View Profile --></label>
+        <name>LID__View_Profile</name>
+    </quickActions>
     <recordTypes>
         <description><!-- If Do Not Contact flag is selected --></description>
         <label><!-- Contact Layout – Do Not Contact --></label>
@@ -2845,10 +2817,6 @@
         <name>Core_B2B_English_Only_Last_Name</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please select Deactivation Reason --></errorMessage>
-        <name>Core_Contact_Deactivation_Reason</name>
-    </validationRules>
-    <validationRules>
         <errorMessage><!-- Only English (alphanumeric ASCII) characters are allowed in the English Only First Name field --></errorMessage>
         <name>Core_Contact_English_Only_First_Name</name>
     </validationRules>
@@ -2867,6 +2835,10 @@
     <validationRules>
         <errorMessage><!-- Please Contact Data Ops to ensure that the Account Owner  for this Contact&apos;s Account has been setup properly in the Role Hierarchy. --></errorMessage>
         <name>Core_IPS_Active_Account_Owner_Role_Null</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- This contact already has been assigned a Lead Management engagement and profile. User accounts can only be assigned one profile at a time. --></errorMessage>
+        <name>Core_IPS_Active_Elligible</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- The Contact&apos;s Account is under Export Compliance Block and can not be enabled for Intel Premier Support. --></errorMessage>
@@ -2910,28 +2882,28 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Core_Prevent_AE_User_Contact_Name_Edit</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Direct, Requested, Rejected or End Customer Account Record Types are not permissible on this field. Please choose the Intel Account. --></errorMessage>
-        <name>Core_Prevent_Account_on_Contact</name>
+        <errorMessage><!-- CompanyId should be a numeric value --></errorMessage>
+        <name>LID__Check_CompanyId_Value</name>
     </validationRules>
-    <validationRules>
-        <errorMessage><!-- You don&apos;t have permission to uncheck the Deactivation flag --></errorMessage>
-        <name>Core_Prevent_Deactivation_Request_Unchec</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Email ID length exceeds 64 characters --></errorMessage>
-        <name>Email_ID_Character_Restriction</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
-        <name>Embargoed_Country</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Mailing Country/Region signifies where the Contact currently resides and is mandatory --></errorMessage>
-        <name>Mailing_Country_cannot_be_blank</name>
-    </validationRules>
+    <webLinks>
+        <label><!-- Conga_Composer_OAuth --></label>
+        <name>APXTConga4__Conga_Composer_OAuth</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Conga_Mail_Merge --></label>
+        <name>APXTConga4__Conga_Mail_Merge</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- BLND_FormFactoryContactLink --></label>
+        <name>BLND_FormFactoryContactLink</name>
+    </webLinks>
     <webLinks>
         <label><!-- Change_Account --></label>
         <name>Change_Account</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Commisions_test --></label>
+        <name>Commisions_test</name>
     </webLinks>
     <webLinks>
         <label><!-- ContactActivityOverview --></label>
@@ -2954,26 +2926,6 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>Core_Grant_Access_Lex</name>
     </webLinks>
     <webLinks>
-        <label><!-- Create_new_Contact --></label>
-        <name>Create_new_Contact</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- InviteContactToEvent --></label>
-        <name>CventEvents__InviteContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- ModifyCancelContactToEvent --></label>
-        <name>CventEvents__ModifyCancelContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- NominateContactToEvent --></label>
-        <name>CventEvents__NominateContactToEvent</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- RegisterContactToEvent --></label>
-        <name>CventEvents__RegisterContactToEvent</name>
-    </webLinks>
-    <webLinks>
         <label><!-- GoogleMaps --></label>
         <name>GoogleMaps</name>
     </webLinks>
@@ -2982,8 +2934,20 @@ Please ensure that all of these fields are filled in. --></errorMessage>
         <name>GoogleSearch</name>
     </webLinks>
     <webLinks>
-        <label><!-- Remove_PSOs --></label>
-        <name>Remove_PSOs</name>
+        <label><!-- Add_to_Mass_Merge_List --></label>
+        <name>SDOC__Add_to_Mass_Merge_List</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Email_Docs --></label>
+        <name>SDOC__Email_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- S_Docs --></label>
+        <name>SDOC__S_Docs</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- View_Mass_Merge_List --></label>
+        <name>SDOC__View_Mass_Merge_List</name>
     </webLinks>
     <webLinks>
         <label><!-- SendGmail --></label>
@@ -2996,37 +2960,5 @@ Please ensure that all of these fields are filled in. --></errorMessage>
     <webLinks>
         <label><!-- YahooWeather --></label>
         <name>YahooWeather</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Jifflenow_Meetings --></label>
-        <name>jiffle__Jifflenow_Meetings</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Details --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Marketo_Campaign_Lightning --></label>
-        <name>mkto_si__Add_to_Marketo_Campaign_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Sales_Campaign --></label>
-        <name>mkto_si__Add_to_Sales_Campaign</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Add_to_Watch_List --></label>
-        <name>mkto_si__Add_to_Watch_List</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Details --></label>
-        <name>mkto_si__Send_Marketo_Email_Details</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Marketo_Email_Lightning --></label>
-        <name>mkto_si__Send_Marketo_Email_Lightning</name>
-    </webLinks>
-    <webLinks>
-        <label><!-- Send_Sales_Email --></label>
-        <name>mkto_si__Send_Sales_Email</name>
     </webLinks>
 </CustomObjectTranslation>

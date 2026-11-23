@@ -1,0 +1,164 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="Core_UtilityController">
+        <aura:attribute name="userName" type="string" default="" description="Logged in Username" />
+        <!-- IPA2.0 + US TWC4497-1631  -->
+    <aura:attribute name="disableManageOfferings" type="boolean" default="true" description="Disable Manage Offering Button" />
+    <aura:attribute name="disableViewDashboard" type="boolean" default="false" description="Disable View Dashboard Button" />
+    <aura:attribute name="disableManageLeads" type="boolean" default="false" description="Disable Manage Leads Button" />
+    <aura:attribute name="disableManageStorefront" type="boolean" default="false" description="Disable Manage Storefront Button" />
+    <aura:attribute name="disableManageEvents" type="boolean" default="false" description = "Disable Manage Events button" />
+    <aura:attribute name="disableManageSolutions" type="boolean" default="false" description = "Disable Manage Solutions button" />
+    <aura:attribute name="open" type="boolean" default="false" description="Internal attribute only" />
+
+    <aura:attribute name="disableManagedMPPartners" type="boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="showManageOfferings" type="boolean" default="false" /> -->
+    <aura:attribute name="showDashboard" type="boolean" default="false" />
+    <aura:attribute name="showManageLeads" type="boolean" default="false" />
+    <aura:attribute name="showManageStorefront" type="boolean" default="false" />
+    <aura:attribute name="showManagedPartners" type="boolean" default="false" />
+    <aura:attribute name="showManageEvents" type="boolean" default="false" />
+   <!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="manageOffering" type="boolean" default="false"/> -->
+    <aura:attribute name="showManageSolutions" type="boolean" default="false"/> <!--Added by Subash for US842248-->
+    <aura:attribute name="loggedInInfo" type="boolean" default="false" description="boolean value true for 
+                               logged in user and false for ananyomous user"/>
+    <aura:attribute name="loggedInCompany" type="boolean" default="false" description="boolean value to indicate if user is associated with a company"/>
+    
+    <aura:attribute name="companyId" type="String" />
+    <aura:attribute name="portal" type="String" default="Marketplace" />
+    <aura:attribute name="fullWidth" type="boolean" default="false" />
+    <aura:attribute name="links" type="Map" />
+    <aura:attribute name="showSpinner" type="boolean" default="false" />
+<!-- IPA2.0 + US TWC4497-1631 -->
+    <!-- <aura:attribute name="manageOfferingData" type="Object" /> -->
+    <aura:attribute name="managePartnergData" type="String" />
+    
+    
+    <aura:if isTrue="{!v.showSpinner}">
+    	<div class="slds-spinner_container spinner">>
+        	<lightning:spinner alternativeText="Loading" size="medium" variant="inverse"/>
+    	</div>
+    </aura:if>
+    
+	    
+    <aura:if isTrue="{!v.loggedInInfo}">
+        
+        <div class="{! v.fullWidth ? 'fullWidth' : ''}">
+            
+            <!-- Mobile View -->
+            <div class="accordionSection slds-hide_large">
+                <div class="accordionSectionHeader slds-p-around_medium">
+                    <h3 onclick="{!c.handleToggleOpen}" class="intel-clear">
+                        {!$Label.c.PMP_ManageOffering_Welcome 	+ ' ' + v.userName}
+                         <aura:if isTrue="{ v.showManageLeads || v.showManageStorefront || v.showDashboard || v.disableManagedMPPartners || v.showManageEvents}">
+                       <!-- IPA2.0 + US TWC4497-1631 -->
+                         <!-- <aura:if isTrue="{!v.showManageOfferings || v.showManageLeads || v.showManageStorefront || v.showDashboard || v.disableManagedMPPartners || v.showManageEvents}"> -->
+                            <span class="icon">
+                                <lightning:icon iconName="{!v.open ? 'utility:chevronup' : 'utility:chevrondown'}" />
+                            </span>
+                        </aura:if>
+                    </h3>
+                </div>
+                <aura:if isTrue="{!v.open}">
+                    <div class="buttonContainer">
+                         <aura:if isTrue="{!v.showManageStorefront}" >
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableManageStorefront}" enabled="{!and(and(v.disableManageStorefront == false, v.portal == 'Marketplace'), v.loggedInCompany)}" intelButtonClass="full-width" url="{!v.links.manageStorefrontUrl}" text="{!$Label.c.PMP_ManageOffering_Your_Storefront}" type="mobile"></c:MarketplaceNavigationBarButton>    <!-- Modified to show manage storefront on lead portal - 27/01/2022-->
+                        </aura:if>
+                        <!-- IPA2.0 + US TWC4497-1631 -->
+                        <!-- <aura:if isTrue="{!v.showManageOfferings}">
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableManageOfferings}" intelButtonClass="full-width" objectApiName='{!v.links.manageOfferingsApi}' text="{!$Label.c.PMP_ManageOffering_Manage_Marketplace_Offerings}" url="{!v.links.manageOfferingsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}" type="mobile"></c:MarketplaceNavigationBarButton>   
+                        </aura:if> -->
+                        <aura:if isTrue="{!v.showManageLeads}" >
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableManageLeads}" intelButtonClass="full-width" text="{!$Label.c.PMP_ManageOffering_Manage_Leads}" url="{!v.links.manageLeadsUrl}" useNavigateToURL="{!v.portal == 'Partner Admin'}" type="mobile"></c:MarketplaceNavigationBarButton>
+                        </aura:if>
+                        <aura:if isTrue="{!v.showDashboard}">
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableViewDashboard}" intelButtonClass="full-width" page="{!v.links.manageDashboardPage}" text="{!$Label.c.PMP_ManageOffering_View_Marketplace_Dashboard}" url="{!v.links.manageDashboardUrl}" useNavigateToURL="false" type="mobile"></c:MarketplaceNavigationBarButton>   
+                        </aura:if>
+                        <aura:if isTrue="{!v.showManagedPartners}">
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableManagedMPPartners}" intelButtonClass="full-width" objectApiName="{!v.links.managePartnersApi}" text="{!$Label.c.PMP_Manage_Marketplace_Partners}" url="{!v.links.managePartnersUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}" type="mobile"></c:MarketplaceNavigationBarButton>   
+                        </aura:if>
+                        <aura:if isTrue="{!v.showManageEvents}">
+                            <c:MarketplaceNavigationBarButton disabled="{!v.disableManageEvents}" intelButtonClass="full-width" objectApiName="{!v.links.manageEventsApi}" text="Manage Events" url="{!v.links.manageEventsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}" type="mobile"></c:MarketplaceNavigationBarButton>    
+                        </aura:if>
+                        <aura:if isTrue="{!v.showManageSolutions}">
+                            <c:MarketplaceNavigationBarButton  intelButtonClass="full-width"  text="{!$Label.c.PMP_ManageSolution_Manage_Marketplace_Solutions}" url="{!v.links.manageSolutionsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}" type="mobile"></c:MarketplaceNavigationBarButton>   
+                        </aura:if>
+                    </div>
+                </aura:if>
+            </div>
+            
+             
+            <!-- Desktop View View -->
+            <div>
+                <div class="userText">
+                    Hi&nbsp;{!v.userName}, You are entitled to perform following actions
+                </div>
+        
+               <div class="buttonContainer">
+                    <div class="slds-grid slds-wrap">
+                        <div class="{!v.showManageStorefront ? 'slds-col slds-size_1-of-3' : '' }">
+                            <aura:if isTrue="{!v.showManageStorefront}" >
+                                <c:MarketplaceNavigationBarButton disabled="{!v.disableManageStorefront}" enabled="{!and(and(v.disableManageStorefront == false, v.portal == 'Marketplace'), v.loggedInCompany)}"  url="{!v.links.manageStorefrontUrl}" text="{!$Label.c.PMP_ManageOffering_Your_Storefront}"></c:MarketplaceNavigationBarButton>   <!-- Modified to show manage storefront on lead portal - 27/01/2022-->
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <!-- IPA2.0 + US TWC4497-1631 -->
+                            <!-- <aura:if isTrue="{!v.showManageOfferings}">
+                                
+                                <lightning:icon iconName="utility:right"/>
+                                <a href="{!v.manageOfferingData.linkData.externalUrl}">{!$Label.c.PMP_ManageOffering_Manage_Marketplace_Offerings}</a> -->
+
+                                <!-- <c:coreIntcSimpleCard card="{!v.manageOfferingData}" card-template-type="Icon Horizontal" theme="gray"></c:coreIntcSimpleCard> -->
+                                <!-- <c:MarketplaceNavigationBarButton disabled="{!v.disableManageOfferings}" objectApiName='{!v.links.manageOfferingsApi}' text="{!$Label.c.PMP_ManageOffering_Manage_Marketplace_Offerings}" url="{!v.links.manageOfferingsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}"></c:MarketplaceNavigationBarButton>    -->
+                                
+                            <!-- </aura:if> -->
+                        </div>
+                        <div class="slds-col slds-size_1-of-3">
+                            <aura:if isTrue="{!v.showManageLeads}" >
+                                <!-- <c:MarketplaceNavigationBarButton disabled="{!v.disableManageLeads}" page="{!v.links.manageLeadsPage}" text="{!$Label.c.PMP_ManageOffering_Manage_Leads}" url="{!v.links.manageLeadsUrl}" useNavigateToURL="{!v.portal == 'Partner Admin'}"></c:MarketplaceNavigationBarButton>    -->
+                                    <lightning:icon iconName="utility:right"/>
+                                    <a href="{!v.links.manageLeadsUrl}">{!$Label.c.PMP_ManageOffering_Manage_Leads}</a>
+                                        
+                            </aura:if>
+                        </div>
+                     
+                        <div class="slds-col slds-size_1-of-3">
+                            <aura:if isTrue="{!v.showDashboard}">
+                                <!-- <c:MarketplaceNavigationBarButton disabled="{!v.disableViewDashboard}" page="{!v.links.manageDashboardPage}" text="{!$Label.c.PMP_ManageOffering_View_Marketplace_Dashboard}" url="{!v.links.manageDashboardUrl}" useNavigateToURL="false"></c:MarketplaceNavigationBarButton>    -->
+                                <lightning:icon iconName="utility:right"/>
+                                    <a href="{!v.links.manageDashboardUrl}">{!$Label.c.PMP_ManageOffering_View_Marketplace_Dashboard}</a>
+                            </aura:if>
+                        </div>
+
+                    </div>
+                    <div class="slds-m-top_xx-large">
+                        <div class="slds-grid slds-wrap">    
+                            <div class="slds-col slds-size_1-of-3">
+                                <aura:if isTrue="{!v.showManagedPartners}">
+                                    <!-- <c:MarketplaceNavigationBarButton disabled="{!v.disableManagedMPPartners}" objectApiName="{!v.links.managePartnersApi}" text="{!$Label.c.PMP_Manage_Marketplace_Partners}" url="{!v.links.managePartnersUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}"></c:MarketplaceNavigationBarButton>    -->
+                                    <lightning:icon iconName="utility:right"/>
+                                <a href="{!v.managePartnergData}">{!$Label.c.PMP_Manage_Marketplace_Partners}</a>
+                                </aura:if>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3">
+                                <aura:if isTrue="{!v.showManageEvents}">
+                                    <!-- <c:MarketplaceNavigationBarButton disabled="{!v.disableManageEvents}" objectApiName="{!v.links.manageEventsApi}" text="Manage Events" url="{!v.links.manageEventsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}"></c:MarketplaceNavigationBarButton>     -->
+                                    <lightning:icon iconName="utility:right"/>
+                                <a href="{!v.links.manageEventsUrl}">Manage Events</a>
+                                </aura:if>
+                            </div>
+                            <div class="slds-col slds-size_1-of-3">
+                                <aura:if isTrue="{!v.showManageSolutions}">
+                                    <!-- <c:MarketplaceNavigationBarButton  disabled="{!v.disableManageSolutions}" objectApiName='{!v.links.manageSolutions}' text="{!$Label.c.PMP_ManageSolution_Manage_Marketplace_Solutions}" url="{!v.links.manageSolutionsUrl}" useNavigateToURL="{!v.portal == 'Marketplace'}" ></c:MarketplaceNavigationBarButton> -->
+                                    <lightning:icon iconName="utility:right"/>
+                                <a href="{!v.links.manageSolutionsUrl}">{!$Label.c.PMP_ManageSolution_Manage_Marketplace_Solutions}</a>
+                                </aura:if>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

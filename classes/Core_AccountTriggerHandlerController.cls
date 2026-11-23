@@ -10,13 +10,11 @@ public without sharing class Core_AccountTriggerHandlerController {
     public static Id DirectAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Direct Account').getRecordTypeId();// Added by Unicorn Team to bypass trigger methods 
     public static Id requestedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
     public static Map<Id,set<Id>> accIdToExtGrpIdMap = new Map<Id,set<Id>>();
-    public static Boolean runOnce = true;
+
     private static UCD_ACM_ServiceContracts.IAccountService accountServiceInstance = UCD_ACM_AccountService.getInstance();
     private static Id intelAccountRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
     private static Id endCustomerRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
     private static Id rejectedAccount = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
-    public static Id masterRecrodtypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-
 
     /*
      * description : Assign Account record type to new field value before insert and before update
@@ -25,56 +23,14 @@ public without sharing class Core_AccountTriggerHandlerController {
      * return : NA
      * author and date : Tejasri yenuganti, 19 May 2022
     */
-   
-
     public static void accountRecordTypeDupFieldUpdate(List<Account> allAccounts) {
-
         if(allAccounts!= null){
-
-            Map<String, String> mapOfRecordtypeIdByName = new   Map<String, String>();
-            Map<Id,Schema.RecordTypeInfo> rtMapById = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosById();
-
-            for(Id recordTypeId : rtMapById.keySet()){
-                mapOfRecordtypeIdByName.put(recordTypeId, rtMapById.get(recordTypeId).getName());
-            }
             for (Account newAccount : allAccounts) {
-                if(!mapOfRecordtypeIdByName.isEmpty() && mapOfRecordtypeIdByName.get(newAccount.RecordTypeId) != null){
-                    newAccount.Core_Account_Record_Type_Dup_Check__c = mapOfRecordtypeIdByName.get(newAccount.RecordTypeId);
-                }
+                String recordTypeName = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosById().get(newAccount.RecordTypeId).getName();
+                newAccount.Core_Account_Record_Type_Dup_Check__c = recordTypeName;
             }
-        } 
-
-    }
-
-
-/*
-     * description : Assign Unified Hierarchy to Unified Hierarchy View before insert and before update
-                    This method is called from Core_Account trigger.
-     * params : List<Account> newAccounts
-     * return : NA
-     * author and date : Sunidhi Nadagouda, 03 Jan 2023
-    */
-   /* public static void accountHierarchyViewUpdate(List<Account> newAccounts) {
-        if(newAccounts!=null){
-            for (Account account : newAccounts) {
-                if(account.KCR_Process_Outcome_Temp__c == 'Business Process Block'){
-                    account.Unified_Hierarchy_View__c = 'Not Unified';
-                }
-                
-                else if (account.Core_Customer_Aggregation_Type__c != null){
-                    if(account.Core_Customer_Aggregation_Type__c == 'UNFD_GLBL_CUST'){
-                        account.Unified_Hierarchy_View__c = 'Global';
-                    }
-                    else if(account.Core_Customer_Aggregation_Type__c == 'UNFD_INTRMD_CUST'){
-                        account.Unified_Hierarchy_View__c = 'Intermediate';
-                    }
-                    else if(account.Core_Customer_Aggregation_Type__c == 'UNFD_CTRY_CUST'){
-                        account.Unified_Hierarchy_View__c = account.Core_Data_Country_Nm__c;
-                    }
-               }
         }
     }
-    }*/
 
     /*
     * Method name  : AccountObjectBeforeHandler
@@ -84,7 +40,6 @@ public without sharing class Core_AccountTriggerHandlerController {
     */ 
     public static void accountObjectBeforeHandler(List<Account> listNewAccount, Map<Id,Account> mapNewsObject, Map<Id,Account> mapOldsObject)
     {
-        if(listNewAccount!=null){
         //Call the method to populate both Geo & Sub Geo fields using the Country State Reference object
         //Core_Utility.sObjectGeoMappingField(listNewAcccount,mapNewsObject,mapOldsObject,'BillingCountryCode','BillingStateCode','Core_Geo__c','Core_Sub_Geo__c','Account');
 
@@ -94,7 +49,7 @@ public without sharing class Core_AccountTriggerHandlerController {
         Map<Id,Account> oldAccountMapToBeInserted = new Map<Id,Account>();
         for(Account acc : listNewAccount){
             //Start of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
-            if(acc.RecordTypeId != coMarketingRecordTypeId && acc.RecordTypeId != pAGRecordTypeId && acc.RecordTypeId != DirectAccRecTypeId && Acc.RecordTypeId != requestedAccount){
+            if(acc.RecordTypeId != coMarketingRecordTypeId && acc.RecordTypeId != pAGRecordTypeId && acc.RecordTypeId != DirectAccRecTypeId && acc.RecordTypeId != requestedAccount){
             //End of Changes - To check if the record type is not Core_Partner_Account_Group - US408340 - by Accenture 
                 newAccountListToBeInserted.add(acc);
                 if(mapOldsObject != NULL && mapOldsObject.size() > 0){
@@ -106,7 +61,6 @@ public without sharing class Core_AccountTriggerHandlerController {
         if(newAccountListToBeInserted.size() > 0)
             Core_Utility.sObjectGeoMappingField(newAccountListToBeInserted, oldAccountMapToBeInserted, new list<String>{'BillingCountry', 'BillingCountryCode'}, 
                                                 new list<String>{'BillingState', 'BillingStateCode'}, 'Core_Geo__c','Core_Sub_Geo__c');
-        }
     }
 
     /***************************************************************************************************** 
@@ -132,6 +86,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                    (mapOldsObject.get(acct.Id) == null) ||
                    (acct.Core_CPM_ID__c != mapOldsObject.get(acct.Id).Core_CPM_ID__c))
                 {
+                    System.debug('Evaluating CPM ID');
                     cpmIdStr = acct.Core_CPM_ID__c;
                     if (string.isblank(cpmIdStr))
                         continue;
@@ -155,7 +110,8 @@ public without sharing class Core_AccountTriggerHandlerController {
                                 break;
                             else
                                 cpmIdStr = newStr + CPMID_DELIMITER;  
-                                   
+                                
+                            System.debug('cpmIdStr = ' + cpmIdStr);     
                         }    
                         
                         while (cpmIdStr.right(2) == CPMID_DELIMITER)
@@ -271,9 +227,11 @@ public without sharing class Core_AccountTriggerHandlerController {
                             displayMessage(acc,'NTG');
                         }
                         if(tier.contains('PSG')){
+                            system.debug('PSG');
                             Integer tierValue = tier.countMatches('PSG');
                             if(tierValue > 1)
                             displayMessage(acc,'PSG');
+                            system.debug('>1 psg');
                         }
                         if(tier.contains('RSG')){
                             Integer tierValue = tier.countMatches('RSG');
@@ -304,7 +262,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
     ******************************************************************************************************/
     public static void preventAEUserAccountOwnership(List<Account> newList, Map<Id,Account> oldMap) {
-        if(newList!=null){
+        
         List<Account> accountsChangedOwnership = new List<Account>();
         Set<Id> accountOwnerIdsChangedOwnership = new Set<Id>();
         
@@ -312,6 +270,8 @@ public without sharing class Core_AccountTriggerHandlerController {
         {
            if(a.RecordTypeId != coMarketingRecordTypeId && a.RecordTypeId != pAGRecordTypeId && a.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing. Check to bypass for PAG record type is Added by Accenture - Anupam
             {
+                System.debug(a);
+                System.debug('preventAEUserAccountOwnership!!!'+a.OwnerId + '@@@'+ oldMap.get(a.Id).OwnerId);
                 if (a.OwnerId != oldMap.get(a.Id).OwnerId) {
                     accountsChangedOwnership.add(a);
                     accountOwnerIdsChangedOwnership.add(a.OwnerId);
@@ -319,17 +279,14 @@ public without sharing class Core_AccountTriggerHandlerController {
             }
         }
         Set<Id> aeUserIds = new Set<Id>();
-        List<PermissionSetAssignment> superUserAssignments = new List<PermissionSetAssignment>();
         if(!accountOwnerIdsChangedOwnership.isEmpty()){
-            Map<Id,User> aeUserOwnerMap = new Map<Id,User>([select Id from User where Id in :accountOwnerIdsChangedOwnership
+        	Map<Id,User> aeUserOwnerMap = new Map<Id,User>([select Id from User where Id in :accountOwnerIdsChangedOwnership
                                                         and ProfileId = :Label.Core_A_E_User_Profile_ID]);
-            aeUserIds = aeUserOwnerMap.keySet();
-                
+        	aeUserIds = aeUserOwnerMap.keySet();
+        }         
         
-            superUserAssignments = [select AssigneeId from PermissionSetAssignment
+        List<PermissionSetAssignment> superUserAssignments = [select AssigneeId from PermissionSetAssignment
                                                               where PermissionSetId = :Label.Core_A_E_Super_User_Permission_Set_ID];     
-            
-        }
         Set<Id> superUserIds = new Set<Id>();
         for (PermissionSetAssignment psa : superUserAssignments)
             superUserIds.add(psa.AssigneeId);       
@@ -338,6 +295,51 @@ public without sharing class Core_AccountTriggerHandlerController {
             if (aeUserIds.contains(a.OwnerId) && !superUserIds.contains(a.OwnerId))
                 a.addError('An Account cannot be owned by an A&E User who is not an A&E Super User');
         }
+    }
+
+    /*
+     * description : Update Billing Address.
+     * params : List<Account> accounts
+     * return : NA
+     * author and date : harshalx.sunil.gosavi@intel.com, 08/12/2021
+    */
+    public static void updateAccountAddress(List<Account> accounts) {
+        if(accounts !=null){
+            Set<Id> loggingAccountIds = new Set<Id>();
+            try {
+                For(Account account: accounts) {
+                    loggingAccountIds.add(account.Id);
+                    if (account.Core_Customer_Aggregation_Type__c != null && account.Core_Data_Country_Nm__c != null) {
+                        if ((account.BillingCountryCode == '' || account.BillingCountryCode == null)) {
+                            account.BillingCountryCode = UCD_ACM_Utils.validateCountryName(account.Core_Data_Country_Nm__c);
+                        }
+                        if ((account.ShippingCountryCode == '' || account.ShippingCountryCode == null)) {
+                            account.ShippingCountryCode = UCD_ACM_Utils.validateCountryName(account.Core_Data_Country_Nm__c);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex) {
+                UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','updateAccountAddress','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + loggingAccountIds.toString());
+                UCD_ACM_Logger.setLogDetails();
+            }
+        }
+    }
+
+    /*
+     * description : Ignore updating Name/Billing/Shipping Address/Account Owner if existing UCD SF record.
+     * params : List<Account> newValues, List<Account> oldvalues
+     * return : NA
+     * author and date : ankit1x.sharma@intel.com, 20/11/2021
+    */
+    public static void restrictUpdatingSFFields(List<Account> newValues, List<Account> oldvalues) {
+        if(newValues != null && oldvalues != null){
+            String allUser = System.Label.UCD_ACM_RestrictAccountsUpdateByUsers;
+            Set<String> lstofUser = new Set<String>(allUser.split(','));
+            boolean validUser = lstofUser.contains(UserInfo.getUserName());
+            if (validUser) {
+                accountServiceInstance.restrictUpdatingSFFields(newValues,oldvalues);
+            }
         }
     }
 
@@ -349,35 +351,18 @@ public without sharing class Core_AccountTriggerHandlerController {
     Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
     ******************************************************************************************************/
     public static void preventUncoveredAccountChange(List<Account> newList, Map<Id, Account> oldMap) {
-
-       //Adding permission set logic to bypass error message on owner change to uncovered Account.       
-        if(newList!=null){
         List<Account> accountsChangedToUncovered = new List<Account>();
         for(Account acctObj : newList) 
         {
             if(acctObj.RecordTypeId != coMarketingRecordTypeId && acctObj.RecordTypeId != pAGRecordTypeId && acctObj.RecordTypeId != DirectAccRecTypeId) //Added by Accenture - VD -> Check if the record type is not Co-Marketing. Check to bypass for PAG record type is Added by Accenture - Anupam 
             {
+                System.debug('preventUncoveredAccountChange!!!'+acctObj.OwnerId + '@@@'+ oldMap.get(acctObj.Id).OwnerId);
                 if(acctObj.OwnerId == Label.Core_Uncovered_Account_ID && oldMap.get(acctObj.Id).OwnerId != Label.Core_Uncovered_Account_ID) {
                     accountsChangedToUncovered.add(acctObj);
                 }
             }
         }
-        /*Utkarsh Changes start - TWC729-9520 - Calling IPA Partner Deal class when account become uncovered.*/
-        if (!accountsChangedToUncovered.isEmpty()) {
-        List<AccountTeamMember> lstAccountTeamMember = new List<AccountTeamMember>();
-        
-        lstAccountTeamMember = [Select id, AccountId, UserId,Core_Account_Category__c,TeamMemberRole from AccountTeamMember where AccountId IN : accountsChangedToUncovered  Order By CreatedDate ];
-        PRM_PartnerDealOpportunitySharingService.removeShares(lstAccountTeamMember);}
-        /*Utkarsh Changes END*/
         if(accountsChangedToUncovered != null && !accountsChangedToUncovered.isEmpty()) {
-            List<PermissionSetAssignment> currentUserPerSet = new List<PermissionSetAssignment>();
-            currentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId
-                                    FROM PermissionSetAssignment
-                                    WHERE AssigneeId = :Userinfo.getUserId() and PermissionSet.Name = 'Account_Validations_Bypass'];
-    
-            if(!currentUserPerSet.isEmpty()){
-                return;
-            }
             List<Contact> lContacts = new List<Contact>();
             List<Core_Contact_Entitlement__c> lContactEntitlements = new List<Core_Contact_Entitlement__c>();
             List<Core_Contact_Entitlement__c> lContactEntitlementsForASingleObject = new List<Core_Contact_Entitlement__c>();
@@ -408,7 +393,6 @@ public without sharing class Core_AccountTriggerHandlerController {
                     }
                 }
             }
-        }
         }
     }
 
@@ -452,7 +436,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                 for(Account acctObj : accountsChangedToUncovered){
                     List<Opportunity> OppList = new List<Opportunity>();
                     OppList = AccntOppMap.get(acctObj.id);
-                    if(Opplist!= NULL && OppList.size()>0){
+                    if(OppList.size()>0){
                         for(Opportunity opp : OppList){
                             if(opp.Core_Open_Oppty__c  == 1 || opp.Core_Pending_Product_Count__c > 0 || opp.Core_No_of_On_Hold_Opportunity_Products__c > 0){
                                 acctObj.addError(Label.Core_PreventUncoveredonUpdate);
@@ -472,7 +456,6 @@ public without sharing class Core_AccountTriggerHandlerController {
     ******************************************************************************************************/
     public static void validateMDFParentFundAccChanges(List<Account> newList, Map<Id,Account> oldMap){
         //To By-pass the method execution
-        if(newList!=null){
         if(Core_MDF_Utility.byPassFeature('byPassMDFPFAChangesMethod')){
             return;
         }
@@ -506,6 +489,8 @@ public without sharing class Core_AccountTriggerHandlerController {
                     for(Account acc : hierarchyList){
                         //Retail sharing
                         if(!Core_MDF_Utility.byPassFeature('byPassRetailCampSharingOnPFAChange')){
+                            System.debug('acc.Core_MDF_Channel_Program__r@@@'+acc.Core_MDF_Channel_Program__c);
+                            System.debug('acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c@@@'+acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c);
                             if(acc.Id == acctObj.Id && acc.Core_MDF_External_Group_Id__c != NULL && acc.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c == 'Retail Marketing Funds'){
                                 accIdToExtGrpIdMap.put(acc.Id, new set<Id>{acc.Core_MDF_External_Group_Id__c});
                                 if(acc.Core_MDF_Parent_Fund_Account__c != null && acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c != null){
@@ -524,6 +509,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                                         accIdToExtGrpIdMap.put(acc.id, new set<Id>{acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_External_Group_Id__c});
                                     }
                                 }
+                                system.debug('addingtomap::'+accIdToExtGrpIdMap);
                             }
                         }
                         //check if child nodes parent match with editing node  
@@ -565,6 +551,66 @@ public without sharing class Core_AccountTriggerHandlerController {
                 }
             }
         }
+    }
+
+    /*
+     * description : If Business Party Id is already present in salesforce then change the recordType
+     *               to RejectedAccount otherwise it is EndCustomer.
+     * params : Trigger.new (List<Account>,Trigger.isInsert,Trigger.isUpdate)
+     * return : NA
+     * author and date : Harshal Gosavi, 4th August 2021
+    */
+    public static void updateAccountRecordType(List<Account> newValues, Map<Id,Account> oldMap) {
+        /*for(Account account : newValues){
+            //accountServiceInstance.updateAccRecordTypeByBpId(account,oldMap);
+           }*/
+        if(newValues!=null && oldMap != null)
+            accountServiceInstance.updateAccRecordTypeByBpId(newValues,oldMap);
+    }
+
+    /*
+     * description : Set UCD hierarchy fields before insert
+     * params : List<Account> newValues
+     * return : NA
+     * author and date : chethan.s.kunder@intel.com, 25 Nov. 2021
+    */
+    public static void updateHierarchyFields(List<Account> newValues) {
+        If(newValues != null){
+            Set<Id> loggingAccountIds = new Set<Id>();
+            try {
+                for (Account account : newValues) {
+                    loggingAccountIds.add(account.Id);
+                    if (account.Core_Customer_Aggregation_Type__c != null) {
+                        accountServiceInstance.updateHierarchyFields(account, false);
+                    }
+                }
+            }
+            catch (Exception ex) {
+                UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','updateHierarchyFields','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + loggingAccountIds.toString());
+                UCD_ACM_Logger.setLogDetails();
+            }
+        }
+    }
+
+    /*
+     * description : Update Account UCD hierarchy fields before update and Child account UCD hierarchy fields after update (change in ParentId/Customer Aggr. Type)
+     * params : List<Account> newValues, List<Account> oldvalues, Boolean updateChildAccounts
+     * return : NA
+     * author and date : chethan.s.kunder@intel.com, 25 Nov. 2021
+    */
+    public static void updateHierarchyFields(List<Account> newAccounts, Map<Id,Account> oldAccounts, Boolean updateChildAccounts) {
+        Set<Id> loggingAccountIds = new Set<Id>();
+        try {
+            for (Account account : newAccounts) {
+                loggingAccountIds.add(account.Id);
+                if (account.Core_Customer_Aggregation_Type__c != null && (account.ParentId != oldAccounts.get(account.Id).ParentId || account.Core_Customer_Aggregation_Type__c != oldAccounts.get(account.Id).Core_Customer_Aggregation_Type__c || account.RecordTypeId != oldAccounts.get(account.Id).RecordTypeId)) {
+                    accountServiceInstance.updateHierarchyFields(account, updateChildAccounts);
+                }
+            }
+        }
+        catch (Exception ex) {
+            UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','updateHierarchyFields','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + loggingAccountIds.toString());
+            UCD_ACM_Logger.setLogDetails();
         }
     }
 
@@ -653,6 +699,7 @@ public without sharing class Core_AccountTriggerHandlerController {
     ******************************************************************************************************/
     public static void accountObjectAfterDelete(List<Account> newList, Map<Id,Account> newMap, List<Account> oldList, Map<Id,Account> oldMap)
     { 
+        System.debug('accountObjectAfterDelete : START');
         try {                    
             List<Core_Integration_Outbound_Message__c> msgList;        
             Set<Id> dupeCheck = new Set<Id>();
@@ -665,6 +712,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                     else
                         dupeCheck.add(account.Id);    
         
+                    System.debug('IOM Message create for ' + account.Id);
         
                     // Get a fresh instance for each use.
                     JSONGenerator jsonGen = JSON.createGenerator(false);                    
@@ -696,17 +744,17 @@ public without sharing class Core_AccountTriggerHandlerController {
                 insert msgList;    
         }
         catch(Exception e){
+            System.debug('check@@@!!!===>'+e.getStackTraceString());
             //If there is any exception, append it to the list of sobject records
-            if(oldList!=null){
             for(Account account : oldList)
-                account.addError(System.Label.Core_Exception+e.getMessage());   
-            }                       
-        }          
+                account.addError(System.Label.Core_Exception+e.getMessage());                          
+        }    
+        
+        System.debug('accountObjectAfterDelete : END');        
     }
     
     //TWC729-3627:Update Intel Record type field for Inactive_Account.
     Public static void accountRecordTypeAfterUpdate(List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
-        if(newAccList!=null){
             Set<Id> accountId = new Set<Id>();         
             for(Account acc:newAccList){
             if(oldAccMap.get(acc.Id).RecordTypeID != newAccMap.get(acc.Id).RecordTypeID){
@@ -727,8 +775,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                 if(!coreActList.isEmpty()){
                     update coreActList;
                 }             
-            }    
-        }    
+            }        
     }
 
     /***************************************************************************************************** 
@@ -738,7 +785,6 @@ public without sharing class Core_AccountTriggerHandlerController {
     Accenture – VD                          07/23/2018       US99134 - Updated Method to stop creating OutBound message for Co-Marketing Record Type of Account 
     ******************************************************************************************************/
     public static void accountTeamAuditCompletion(List<Account> newList, Map<Id,Account> oldMap) {
-        if(newList!=null){
         List<Id> auditCompletedAccounts = new List<Id>();
 
         //Get a list of all accounts whose audit was just marked complete, 
@@ -774,7 +820,6 @@ public without sharing class Core_AccountTriggerHandlerController {
         
         update logsToUpdate;
             }
-        }
     }
     /***************************************************************************************************** 
     Method Name:membershipFlagUpdate                                          
@@ -783,9 +828,8 @@ public without sharing class Core_AccountTriggerHandlerController {
     Date: 29/7/2020                  
     Manikanta                                                  
     ******************************************************************************************************/
-    /*public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
+    public static void membershipFlagUpdate(List<Account> oldAccList,List<Account> newAccList, Map<Id,Account> oldAccMap, Map<Id,Account> newAccMap){
 
-        if(newAccList!=null){
         Set<Id> accIds = new Set<Id>();
         
         for(Account changedAcc:newAccList){
@@ -806,7 +850,7 @@ public without sharing class Core_AccountTriggerHandlerController {
                      partneracctIds.add(partneraccount.Core_Partner_Account_Id__c);
          }
         } 
-         List<Account> accToUpdate = new List<Account>();
+         /*List<Account> accToUpdate = new List<Account>();
          
          for(Id partnerAcc : partneracctIds){
              
@@ -817,25 +861,10 @@ public without sharing class Core_AccountTriggerHandlerController {
              
          }
         if(!accToUpdate.isEmpty()){
-                    //Database.Update(accToUpdate);
-                    asyncAccountUpdate(JSON.serialize(accToUpdate));
-        }
-        }
+            Database.Update(accToUpdate);
+        }*/
         
-    }*/
-
-/***************************************************************************************************** 
-Method Name:asyncAccountUpdate      
-Description: This method is created to update the Account in Async to avoid issue with multiple trigger hits                                    
-@return  :  Void
-Created By: Akshay More [Team Draco]               
-Date: 26/02/2024                                                                  
-******************************************************************************************************/
-@future
-public static void asyncAccountUpdate(String accObj){
-    List<Account> accToUpdateList = (List<Account>)JSON.deserialize(accObj, List<Account>.class);
-    Database.Update(accToUpdateList);
-}
+    }
 
     /***************************************************************************************************** 
     Method Name:invokeRollUpScenario                                          
@@ -844,9 +873,96 @@ public static void asyncAccountUpdate(String accObj){
     Date: 15/9/2020                  
     ******************************************************************************************************/
     public static void invokeRollUpScenario(List<Account> actList,Map<Id,Account> acctMap){
-        if(actList!=null)
         PRM_PAGAccountTriggerRollUp.updatepagaccount(actList,acctMap);
     }
+
+    /*
+     * description : This method check accounts record type and Cutomer Aggregation Type.
+       If account record type is 'Intel Account' and Customer Aggregation Type is not blank
+       then pass the list of account to UCD_ACM_AccountService.
+     * params : List<Account>,Trigger.isInsert,Trigger.isUpdate
+     * return : NA
+     * author and date : Harshal Gosavi, 4th August 2021
+    */
+    public static void triggerPlatformEventOnUpdate(List<Account> triggerAccounts, map<Id,Account> accountById) {
+        if(triggerAccounts != null && accountById != null){
+            // Create a Set for account Id.
+            Set<Id> accountIds = new Set<Id>();
+            //For(Account account : triggerAccounts){
+            try {
+                For(Account account: triggerAccounts) {
+                    if ((account.RecordTypeId == intelAccountRecordType ||
+                        account.RecordTypeId == rejectedAccount ||
+                        account.RecordTypeId == endCustomerRecordType) &&  (account.Core_Customer_Aggregation_Type__c != null) &&
+                        ((account.Core_Customer_Aggregation_Type__c != accountById.get(account.Id).Core_Customer_Aggregation_Type__c) ||
+                        (account.Core_Survivor_Account_Id__c != accountById.get(account.Id).Core_Survivor_Account_Id__c) ||
+                        (account.Core_Business_Party_Id__c != accountById.get(account.Id).Core_Business_Party_Id__c) ||
+                        (account.Core_Data_Simplified_Account_Nm__c != accountById.get(account.Id).Core_Data_Simplified_Account_Nm__c) ||
+                        (account.RecordTypeId != accountById.get(account.Id).RecordTypeId) ||
+                        (account.BillingCountry != accountById.get(account.Id).BillingCountry) ||
+                        (account.ShippingCountry != accountById.get(account.Id).ShippingCountry) ||
+                        (account.parentId != accountById.get(account.Id).parentId) ||
+                        (account.Core_Data_Country_Cd__c != accountById.get(account.Id).Core_Data_Country_Cd__c) ||
+                        (account.Core_Data_Country_Nm__c != accountById.get(account.Id).Core_Data_Country_Nm__c) ||
+                        (account.Core_Account_Request_Rejection_Reason__c != accountById.get(account.Id).Core_Account_Request_Rejection_Reason__c) ||
+                        (account.Core_Account_Request_Rejection_Notes__c != accountById.get(account.Id).Core_Account_Request_Rejection_Notes__c) ||
+                        (account.Name != accountById.get(account.Id).Name))) {
+                        accountIds.add(account.Id);
+                    }
+                }
+                if (accountIds.size() > 0) {
+                    //UCD_ACM_AccountService.publishAccountChangeEvent(accountIds);
+                    accountServiceInstance.updateACMIntegrationMessage(accountIds);
+                }
+            }
+            catch (Exception ex) {
+                UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','triggerPlatformEventOnUpdate','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + accountIds.toString());
+                UCD_ACM_Logger.setLogDetails();
+            }
+        }
+    }
+
+    /**
+     * description : call the 'updateParentOnAccountsByBpId' service class method
+                    when Business Party Id or ParentId is changed and RecordType must be 'Intel Account' or 'End Customer Deal Account' and Modified by Reltio.
+     * params : List<Account>,Map<Id,Account>
+     * return : void
+     * author and date : harshalx.sunil.gosavi@intel.com 24/05/2022.
+    */
+    public static void updateParentOnAccount(List<Account> newAccounts,Map<Id,Account> oldAccountById) {
+        system.debug('In updateParentOnAccount--> ');
+        List<Account> updatedParentAccountsInMDM = new List<Account>();
+        List<Account> mergedAccountsInMDM = new List<Account>();
+        Set<String> currentAccountsBpIds = new Set<String>();
+        Set<Id> parentAcountIds = new Set<Id>();
+        // Create a list on Accounts where Business Party Id or ParentId is changed and RecordType must be 'Intel Account' or 'End Customer Deal Account'
+        // and Modified by Reltio.
+        for (Account acc : newAccounts) {
+            System.debug('updateParentOnAccount!!!'+acc.Core_Business_Party_Id__c + '@@@'+oldAccountById.get(acc.Id).Core_Business_Party_Id__c);
+            if (acc.Core_Business_Party_Id__c != null
+               && (acc.Core_Business_Party_Id__c != oldAccountById.get(acc.Id).Core_Business_Party_Id__c || acc.ParentId != oldAccountById.get(acc.Id).ParentId)
+               && (acc.RecordTypeId == intelAccountRecordType || acc.RecordTypeId == endCustomerRecordType)
+               /*&& acc.LastModifiedById == Label.UCD_ACM_ReltioUser*/) {
+                // Merge scenario in Reltio (BPID change) 
+                if (acc.Core_Business_Party_Id__c != oldAccountById.get(acc.Id).Core_Business_Party_Id__c)
+                    mergedAccountsInMDM.add(acc);
+                // Create a set for Parent Accounts
+                if (acc.parentId != null) {
+                    parentAcountIds.add(acc.parentId);
+                }
+                // Create a set for Account BPIds
+                currentAccountsBpIds.add(acc.Core_Business_Party_Id__c);
+                // Accounts for which parent is Updated
+                if (acc.Core_Business_Party_Id__c == oldAccountById.get(acc.Id).Core_Business_Party_Id__c
+                   && acc.ParentId != oldAccountById.get(acc.id).ParentId)
+                    updatedParentAccountsInMDM.add(acc);
+            }
+        }
+        if (updatedParentAccountsInMDM.size() > 0 || mergedAccountsInMDM.size() > 0) {
+            accountServiceInstance.onUpdatedOrMergedAccountsInMDM(updatedParentAccountsInMDM,mergedAccountsInMDM,currentAccountsBpIds,parentAcountIds);
+        }
+    }
+
 
      /***************************************************************************************************** 
     Method Name: validateAccountHierarchy
@@ -856,7 +972,6 @@ public static void asyncAccountUpdate(String accObj){
     ******************************************************************************************************/
     public static void validateAccountHierarchy(List<Account> newList,Map<Id,Account> oldMap){ 
         //To By-pass the method execution
-        if(newList!=null){
         if(Core_MDF_Utility.byPassFeature('byPassValidateAccountHierarchy')){
             return;
         }
@@ -916,7 +1031,6 @@ public static void asyncAccountUpdate(String accObj){
                 }
             }
         }
-        }
     }   
     
       /***************************************************************************************************** 
@@ -945,302 +1059,42 @@ public static void asyncAccountUpdate(String accObj){
      * author and date : chethan.s.kunder@intel.com, 12 Dec. 2021
      */
     public static void triggerReltioSync(System.TriggerOperation operation, List<Account> newAccounts, Map<Id,Account> mNewAccounts, List<Account> oldAccounts, Map<Id,Account> mOldAccounts) {
-        String events = System.Label.Reltio_Sync_Trigger_Events;
-        List<String> newEvents = String.IsNotEmpty(events)? events.split(','): new List<String>();
-        if(newEvents.contains(string.valueof(operation))) {   
-            List<Account> rNewAccounts = new List<Account>();
-            List<Account> rOldAccounts = new List<Account>();
-            Map<Id,Account> rMapNewAccounts = new Map<Id,Account>();
-            Map<Id,Account> rMapOldAccounts = new Map<Id,Account>();
-            Set<Id> loggingAccountIds = new Set<Id>();
-            try {
-                if (newAccounts != null && !newAccounts.isEmpty())
-                /*if (operation == System.TriggerOperation.AFTER_UPDATE) {
-                    for (Account account : newAccounts) {
-                        loggingAccountIds.add(account.Id);
-                        if (account.Core_Customer_Aggregation_Type__c <> null && (account.Name <> mOldAccounts.get(account.Id).Name || account.ShippingCountry <> mOldAccounts.get(account.Id).ShippingCountry || account.Core_Customer_Aggregation_Type__c <> mOldAccounts.get(account.Id).Core_Customer_Aggregation_Type__c)) {
-                            rNewAccounts.add(account);
-                            rOldAccounts.add(mOldAccounts.get(account.Id));
-                            rMapNewAccounts.put(account.Id, account);
-                            rMapOldAccounts.put(mOldAccounts.get(account.Id).Id, mOldAccounts.get(account.Id));
-                        }
-                    }
-                    if (!rNewAccounts.isEmpty()) {
-                        rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, rOldAccounts, rMapOldAccounts);
-                    }
-                } else*/ {
-                    for (Account account : newAccounts) {
-                        if (account.Core_Customer_Aggregation_Type__c <> null) {
-                            rNewAccounts.add(account);
-                            rMapNewAccounts.put(account.Id, account);
-                        }
-                    }
-                    if (!rNewAccounts.isEmpty()) {
-                        
-                        rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, oldAccounts, mOldAccounts);
-                    }
-                }
-            }
-            catch (Exception ex) {
-                UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','triggerReltioSync','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + loggingAccountIds.toString());
-                UCD_ACM_Logger.setLogDetails();
-            }
-    }
-}
-
-
-    /*
-    * description : publishing Account
-    * params : Trigger.New
-    * return : NA
-    * author and date :ankit1x.sharma@intel.com, 10/11/2022
-    */
-    public static void publishAccount(List<Account> accounts){
-        Id intelRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Id endCustomerDealRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('End Customer Deal Account').getRecordTypeId();
-        Id rejectedAccountRecordtypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Rejected Account').getRecordTypeId();
-
-        Set<Id> accountIds = new Set<Id>();
-        if(accounts != null){
-            for(Account account : accounts){
-                if(account.recordTypeId == intelRecordtypeId || account.recordTypeId == endCustomerDealRecordtypeId || account.recordTypeId == rejectedAccountRecordtypeId){
-                    accountIds.add(account.Id);
-                }
-            }
-        }
-        if(accountIds.size()>0)
-        accountServiceInstance.updateACMIntegrationMessage(accountIds);
-
-    }
- /*Description: on Update Account Name call psg method which will update same in license record
-     * params : Trigger.New,,Map<Id,Account>
-    * return : NA
-     author and date:dnyanadax.argulwar@intel.com ,23Nov    
-     */
-    // Public static void sendAccountDetailsToPsgMethods(List<Account> newAccounts, Map<Id, Account> oldAccounts){
-    //     List<Account> AcountList=new List<Account>();
-    //     if(newAccounts!=null){
-    //         for(Account acc: newAccounts){
-    //             if(oldAccounts.get(acc.Id).name!=acc.name && acc.Core_Account_Record_Type__c=='Intel Account'){
-    //               AcountList.add(acc);
-    //             }
-    //         }
-    //         if(AcountList.size()>0){
-    //             Sales_UpdateAccountDetails.updateAccountDetails_License(AcountList); 
-    //         }
-    //     }
-    // }
-
-    /***************************************************************************************************** 
-    Method name  : processCCPTriggerUpdates
-    Description  : To trigger the Host Region related validations and update based on the trigger context
-    Return Type  : VOID
-    Parameter    : Trigger.new  ,Trigger.newmap,Trigger.oldmap,trigger context 
-    Created By   : VB                 
-    Date         : 29 Nov, 2022     
-    ******************************************************************************************************/
-    public static void processCCPTriggerUpdates(List<Account> newAccountList, Map<Id, Account> newAccountMap, Map<Id, Account> oldAccountMap, String triggerContext) {
-        if(triggerContext == 'before insert') {
-            updateHostRegionOnNodeAccounts(newAccountList);
-        } 
-        
-        if(triggerContext == 'after update') {
-            updateHostRegionAfterVirtualCorpUpdate(newAccountList, oldAccountMap);
-        }
-        
-        if(triggerContext == 'before update') {
-            restrictHostRegionUpdateOnNodeAccounts(newAccountMap, oldAccountMap);
-        }
-    }
-
-    /***************************************************************************************************** 
-    Method name  : updateHostRegionOnNodeAccounts
-    Description  : To stamp the host region on Node/Sub node accounts from their parent fund account(before insert)
-    Return Type  : VOID
-    Parameter    : List Trigger.new    
-    Created By   : VB                 
-    Date         : 29 Nov, 2022     
-    ******************************************************************************************************/
-
-    public static void updateHostRegionOnNodeAccounts(List<Account> listNewAccount) {
-        //Set to Store the parent fund account Id's of a coMarketing Account
-        Set<Id> parentFundAccountIdsSet = new Set<Id>();
-        List<Account> accountsWithoutSubGeo = new List<Account>();
-        //Map to Store the parent fund account Id as key as Parent fund account record as value of any node account
-        Map<Id,Account> coMarkAccIdToCoMarkAccMap = new Map<Id,Account>();
+        List<Account> rNewAccounts = new List<Account>();
+        List<Account> rOldAccounts = new List<Account>();
+        Map<Id,Account> rMapNewAccounts = new Map<Id,Account>();
+        Map<Id,Account> rMapOldAccounts = new Map<Id,Account>();
+        Set<Id> loggingAccountIds = new Set<Id>();
         try {
-            //Get the channel Program id of IPA program
-            Core_MDF_ChannelProgram__mdt channelProgramDetailsOfIPA = Core_MDF_ChannelProgram__mdt.getInstance('Intel_Partner_Alliance');
-            // Get the parent fund account Id of node accounts
-                for(Account acc : listNewAccount){
-                    if (acc.RecordTypeId == coMarketingRecordTypeId && acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfIPA.Core_MDF_Program_ID__c && !acc.Core_MDF_CoMarketingActive__c && !acc.Core_MDF_CoMarketingAgency__c) {
-                        if(acc.Core_Sub_Geo__c != null) {
-                            acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SubRegion_Inapplicable_Message'));
-                        } else {
-                            accountsWithoutSubGeo.add(acc);
-                            parentFundAccountIdsSet.add(acc.Core_MDF_Parent_Fund_Account__c);
-                        }
+            if (newAccounts != null && !newAccounts.isEmpty()) {
+            if (operation == System.TriggerOperation.AFTER_UPDATE) {
+                for (Account account : newAccounts) {
+                    loggingAccountIds.add(account.Id);
+                    if (account.Core_Customer_Aggregation_Type__c <> null && (account.Name <> mOldAccounts.get(account.Id).Name || account.ShippingCountry <> mOldAccounts.get(account.Id).ShippingCountry || account.Core_Customer_Aggregation_Type__c <> mOldAccounts.get(account.Id).Core_Customer_Aggregation_Type__c)) {
+                        rNewAccounts.add(account);
+                        rOldAccounts.add(mOldAccounts.get(account.Id));
+                        rMapNewAccounts.put(account.Id, account);
+                        rMapOldAccounts.put(mOldAccounts.get(account.Id).Id, mOldAccounts.get(account.Id));
                     }
                 }
-            //query the parent fund account details, coMarkAccIdToCoMarkAccMap - Map of key as parent fund account Id and value as parent fund account record
-            if(!parentFundAccountIdsSet.isEmpty()) {
-                coMarkAccIdToCoMarkAccMap = new Map<Id, Account>([select Id, Name, Core_Geo__c, RecordTypeId from Account where Id IN: parentFundAccountIdsSet and RecordTypeId =: coMarketingRecordTypeId]);
-            }
-            
-            //stamp the host region from its parent account for the parent fund account matching records
-            if(!coMarkAccIdToCoMarkAccMap.isEmpty()) {
-                for(Account acc: accountsWithoutSubGeo) {
-                    if(coMarkAccIdToCoMarkAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id == acc.Core_MDF_Parent_Fund_Account__c) {
-                        if(acc.Core_Geo__c != null) {
-                            if(coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c) {
-                                acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RegionMismatch_Error'));
-                            } else {
-                                acc.Core_Geo__c = coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                            }
-                        } else {
-                            acc.Core_Geo__c = coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                        }
+                if (!rNewAccounts.isEmpty()) {
+                 //   rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, rOldAccounts, rMapOldAccounts);
+                }
+            } else {
+                for (Account account : newAccounts) {
+                    if (account.Core_Customer_Aggregation_Type__c <> null) {
+                        rNewAccounts.add(account);
+                        rMapNewAccounts.put(account.Id, account);
                     }
                 }
+                if (!rNewAccounts.isEmpty()) {
+                 //   rtsync.TriggerHandler.handle(operation, rNewAccounts, rMapNewAccounts, oldAccounts, mOldAccounts);
+                }
             }
-        } catch(Exception ex) {
-            Core_MDF_CCP_UtilityClass.logError(ex);
         }
-    }
-
-    /***************************************************************************************************** 
-    Method name  : updateHostRegionAfterVirtualCorpUpdate
-    Description  : when a virtual corp account' host region is changed, update the same to its child accounts
-    Return Type  : VOID
-    Parameter    : List Trigger.new, Map<Id,Account> Trigger.OldMap    
-    Created By   : VB                 
-    Date         : 29 Nov, 2022     
-    ******************************************************************************************************/
-
-    public static void updateHostRegionAfterVirtualCorpUpdate(List<Account> listNewAccount, Map<Id,Account> accRecsOldMap) {
-        //Set to Store the coMarketing Account Ids
-        Set<Id> coMarketingAccountIds = new Set<Id>();
-        //Map to store the virtual corp account id as key and its details as value
-        Map<Id, Account> virtualCorpIdsToVirtualCorpMap = new Map<Id, Account>();
-        //List to store the accounts to update
-        List<Account> childAccountsToBeUpdatedList = new List<Account>();
-        Map<Id, Account> childAccIdsToChildAccMap = new Map<Id, Account>();
-        try {
-            //Get the channel Program id of IPA program
-            Core_MDF_ChannelProgram__mdt channelProgramDetailsOfIPA = Core_MDF_ChannelProgram__mdt.getInstance('Intel_Partner_Alliance');
-            // Get the account Ids of the virtual corp accounts on update of host region field
-            for(Account acc : listNewAccount){
-                if (acc.RecordTypeId == coMarketingRecordTypeId && acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfIPA.Core_MDF_Program_ID__c && !acc.Core_MDF_CoMarketingActive__c && !acc.Core_MDF_CoMarketingAgency__c
-                    && acc.Core_Geo__c != accRecsOldMap.get(acc.Id).Core_Geo__c) {
-                        coMarketingAccountIds.add(acc.Id);
-                    }
-            }
-            
-            //query virtual corp and all the child accounts of virtual corp
-            if(!coMarketingAccountIds.isEmpty()) {
-                for(Account acc : [select Id, Name, Core_MDF_Parent_Fund_Account__c, Core_MDF_Parent_Fund_Account__r.RecordTypeId, 
-                                        Core_MDF_Parent_Fund_Account__r.Core_Geo__c, Core_Geo__c, Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c,
-                                        Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c, Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c 
-                                        from Account where ((Core_MDF_Parent_Fund_Account__c IN: coMarketingAccountIds 
-                                                             OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN: coMarketingAccountIds 
-                                                             OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN: coMarketingAccountIds 
-                                                             OR Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c IN: coMarketingAccountIds)
-                                                            OR Id IN: coMarketingAccountIds)]) {
-                                                                 if(acc.Core_MDF_Parent_Fund_Account__r.RecordTypeId == masterRecrodtypeId) {
-                                                                     virtualCorpIdsToVirtualCorpMap.put(acc.Id, acc);
-                                                                 } else {
-                                                                     childAccIdsToChildAccMap.put(acc.Id, acc);
-                                                                 }
-                                                             }
-            }
-            
-            //stamp the host region value from virtual corp to its child accounts
-            if(!virtualCorpIdsToVirtualCorpMap.isEmpty() && !childAccIdsToChildAccMap.isEmpty()) {
-                for(Account childAcc : childAccIdsToChildAccMap.values()) {
-                    if(virtualCorpIdsToVirtualCorpMap.containsKey(childAcc.Core_MDF_Parent_Fund_Account__c) && 
-                       virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__c).Id == childAcc.Core_MDF_Parent_Fund_Account__c) {
-                           childAcc.Core_Geo__c = virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                       }else if (virtualCorpIdsToVirtualCorpMap.containsKey(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) && 
-                                 virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Id == childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) {
-                                     childAcc.Core_Geo__c = virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Core_Geo__c; 
-                                 } else if (virtualCorpIdsToVirtualCorpMap.containsKey(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) && 
-                                            virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Id == childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) {
-                                                childAcc.Core_Geo__c = virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                                            }else if(virtualCorpIdsToVirtualCorpMap.containsKey(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) && 
-                                                     virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Id == childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c) {
-                                                         childAcc.Core_Geo__c =virtualCorpIdsToVirtualCorpMap.get(childAcc.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__r.Core_MDF_Parent_Fund_Account__c).Core_Geo__c;
-                                                     }
-                    childAccountsToBeUpdatedList.add(childAcc);
-                }
-            }
-
-             
-            
-            if(!childAccountsToBeUpdatedList.isEmpty()) {
-                update childAccountsToBeUpdatedList;
-            }
-        } catch(Exception ex) {
-            Core_MDF_CCP_UtilityClass.logError(ex);
-        }   
-    }
-
-    /***************************************************************************************************** 
-    Method name  : restrictHostRegionUpdateOnNodeAccounts
-    Description  : To restrict the host region update on Node/Sub node accounts if its not same as its parent(before update)
-    Return Type  : VOID
-    Parameter    : Map<Id,Account> Trigger.NewMap, Map<Id,Account> Trigger.OldMap   
-    Created By   : VB                 
-    Date         : 12 Dec, 2022     
-    ******************************************************************************************************/ 
-    
-    public static void restrictHostRegionUpdateOnNodeAccounts(Map<Id,Account> newAccountMap, Map<Id,Account> accRecsOldMap) {
-        try {
-            Set<Id> parentFundAccountIdsSet = new Set<Id>();
-            Map<Id,Account> coMarkAccIdToCoMarkAccMap = new Map<Id,Account>();
-            List<Account> geoUpdatedAccountsList = new List<Account>();
-
-            //Get the channel Program id of IPA program
-            Core_MDF_ChannelProgram__mdt channelProgramDetailsOfIPA = Core_MDF_ChannelProgram__mdt.getInstance('Intel_Partner_Alliance');
-            
-            // Loop through the Accounts
-            for(Account acc : newAccountMap.values()){
-                if (acc.RecordTypeId == coMarketingRecordTypeId && acc.Core_MDF_Channel_Program__c == channelProgramDetailsOfIPA.Core_MDF_Program_ID__c  && !acc.Core_MDF_CoMarketingActive__c && !acc.Core_MDF_CoMarketingAgency__c) {
-                    // sub-geo is updated/selected, throw error. Core_MDF_SubRegion_Inapplicable_Message - Sub-Region is not applicable for Intel Partner Alliance Program.
-                    if(accRecsOldMap != null && accRecsOldMap.get(acc.Id).Core_Sub_Geo__c != acc.Core_Sub_Geo__c) {
-                        acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_SubRegion_Inapplicable_Message'));
-                    } 
-                    //geo is updated without valid user access. Core_MDF_UserPermissionToInactivate - This user does not have permissions to perform this action.
-                    else if(accRecsOldMap != null && accRecsOldMap.get(acc.Id).Core_Geo__c != acc.Core_Geo__c && !FeatureManagement.checkPermission('Core_MDF_CCP_users_with_Region_Field_Edit_Access_on_CoMarketing_Account')) {
-                        acc.addError(Label.Core_MDF_UserPermissionToInactivate);
-                    }
-                    //geo is updated with valid user access - store the accounts and accounts parent Id
-                    else if(accRecsOldMap != null && accRecsOldMap.get(acc.Id).Core_Geo__c != acc.Core_Geo__c && FeatureManagement.checkPermission('Core_MDF_CCP_users_with_Region_Field_Edit_Access_on_CoMarketing_Account')) {
-                        geoUpdatedAccountsList.add(acc);
-                        parentFundAccountIdsSet.add(acc.Core_MDF_Parent_Fund_Account__c);
-                    }
-                }
-            }
-            
-            //query the parent fund account details, coMarkAccIdToCoMarkAccMap - Map of key as parent fund account Id and value as parent fund account record
-            if(!parentFundAccountIdsSet.isEmpty()) {
-                coMarkAccIdToCoMarkAccMap = new Map<Id, Account>([select Id, Name, Core_Geo__c, RecordTypeId, Core_MDF_Parent_Fund_Account__c from Account where Id IN: parentFundAccountIdsSet and RecordTypeId =: coMarketingRecordtypeId]);
-            }
-            
-            //Throw an error 'Region Should be Same as its Parent Account', if the region on node/sub-node accounts is not same as its Parent Account's region
-            if(!coMarkAccIdToCoMarkAccMap.isEmpty()) {
-                    for(Account acc : geoUpdatedAccountsList){
-                        if(coMarkAccIdToCoMarkAccMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Id == acc.Core_MDF_Parent_Fund_Account__c) {
-                            if((newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
-                                newAccountMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c)  || 
-                               (!newAccountMap.containsKey(acc.Core_MDF_Parent_Fund_Account__c) && 
-                                coMarkAccIdToCoMarkAccMap.get(acc.Core_MDF_Parent_Fund_Account__c).Core_Geo__c != acc.Core_Geo__c)) {
-                                    acc.addError(Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_RegionMismatch_Error')); //Core_MDF_RegionMismatch_Error - Region Should be Same as its Parent Account
-                                }
-                        }
-                    } 
-                }
-        } catch(Exception ex) {
-            Core_MDF_CCP_UtilityClass.logError(ex);
+        }
+        catch (Exception ex) {
+            UCD_ACM_Logger.error('Core_AccountTriggerHandlerController','triggerReltioSync','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString() + ' UserName: ' + UserInfo.getUserName(),'AccountIds: ' + loggingAccountIds.toString());
+            UCD_ACM_Logger.setLogDetails();
         }
     }
 }

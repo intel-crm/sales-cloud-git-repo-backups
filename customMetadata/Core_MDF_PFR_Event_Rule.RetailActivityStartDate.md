@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Core_MDF_Day_Difference__c</field>
-        <value xsi:type="xsd:string">0</value>
+        <value xsi:type="xsd:string">14</value>
     </values>
     <values>
         <field>Core_MDF_Days_Difference_Operator__c</field>

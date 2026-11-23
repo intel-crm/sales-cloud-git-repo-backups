@@ -74,14 +74,14 @@ public class PRM_Email_Log_Utility_Test {
         List<Integer> attemptList = new List<Integer>(); 
         attemptList.add(1);
         
-        PRM_Email_Log_Utility.publish_Platform_EventWrapper obj=new PRM_Email_Log_Utility.publish_Platform_EventWrapper();
-        obj.republishList=emailLogList;
-        obj.isRepublish=True;
-        obj.platFormEventLogidList=platformEventLogListId;
-        obj.attemptList=attemptList;
-        PRM_Email_Log_Utility.publish_Platform_Event(obj);//Athr fixes
+        PRM_Email_Log_Utility.publish_Platform_EventWrapper obj = new PRM_Email_Log_Utility.publish_Platform_EventWrapper();
+        obj.republishList = emailLogList;
+        obj.isRepublish = True;
+        obj.platFormEventLogidList = platformEventLogListId;
+        obj.attemptList = attemptList;
+        PRM_Email_Log_Utility.publish_Platform_Event(obj); //Athr fixes
         //PRM_Email_Log_Utility.publish_Platform_Event(emailLogList,True,platformEventLogListId,attemptList);
-        //PRM_Email_Log_Utility.checkForIPAEmailTemplates ('ACR_CONTACT_ADDITION');
+        
         Test.stopTest();
     }
 }

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+	<title>Intel Registration Confirmation</title>
+	<style>
+		/* Font Definitions */ @font-face {
+			font-family: "Intel Clear";
+			panose-1: 2 11 5 4 2 2 2 2 2 4;
+			mso-font-charset: 0;
+			mso-generic-font-family: swiss;
+			mso-font-pitch: variable;
+			mso-font-signature: 3 0 0 0 1 0;
+		}
+		/* Style Definitions */
+
+		a {
+			color: #003C71;
+			font-family: "Intel Clear","TAHOMA" !important;
+		}
+		p.uppercase {
+			text-transform: uppercase;
+		}
+	</style>
+</head>
+<body style="font-family: 'Intel Clear','TAHOMA'; background-color:#f9f9f9;background: url('https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png') repeat-x scroll left top #f9f9f9;      height: 100%;      outline: medium none;">
+<table style="background-color: #ffffff; margin: 0 50px; overflow: hidden; width: 550pt; line-height: 20px; border: 1px solid #E5E5E5;">
+<tbody>
+<tr style="height: 320px;">
+<td colspan="2" style="color: #086db6; font-size: 24pt; padding-top: 50px; padding-bottom: 12px; padding-left: 50px; font-family: 'Intel Clear', TAHOMA; height: 320px;">
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear Pro','TAHOMA'; color: #003c71; font-size: 28pt;"><img src="https://messagecenter.intel.com/v1/images/uploads/34749eb0-3742-11ec-9e86-55b8d111e922.png" alt="" title="devzone-premier-header_720x160@2x.png" /></p>
+</td>
+</tr>
+<tr style="height: 17px;">
+<td colspan="2" style="padding-left: 40px; padding-right: 40px; height: 17px;"><hr style="background-color: #e5e5e5; color: #e5e5e5; border: 0 none; height: 1px;" /></td>
+</tr>
+<tr style="height: 20px;">
+<td colspan="2" id="emailMainDiv" style="font-family: 'Intel Clear', TAHOMA; padding-left: 50px; padding-top: 30px; height: 20px;">
+<p style="margin-bottom: 0px; margin-top: 0px;"><b style="font-family: 'Intel Clear','TAHOMA'; color: #086db6; font-size: 10pt;">Hello {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},</b></p>
+</td>
+</tr>
+<tr id="emailBody" style="height: 152px;">
+<td colspan="2" style="padding-left: 50px; padding-top: 15px; padding-right: 50px; height: 152px;">
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">We currently do not have an Account Manager in your region to review your request at this time. We encourage you to continue utilizing your basic access to Developer Zone.</p>
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;"></p></br>
+<p style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt; margin-top: 0px; margin-bottom: 0px;"><span>Additionally, we have several resellers that you may wish to engage with for resource help with your project.  </span><span>  </span></p>
+<ul>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Intel Solutions Document Library</em>: <a href="https://builders.intel.com/solutionslibrary">https://builders.intel.com/solutionslibrary</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>For product and pricing related questions, please contact your Motherboard OEM, Intel Authorized Distributors (IAD) or Intel Authorized Supplier (IAS). You can locate a list of IAD or IAS at: </em><a href="https://www.intel.com/content/www/us/en/partner/where-to-buy/overview.html">https://www.intel.com/content/www/us/en/partner/where-to-buy/overview.html</a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>For Intel Programs information and support:</em><a href="https://www.intel.com/partner-alliance">https://www.intel.com/partner-alliance</a> </span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>For product information:</em><u></u><a href="https://ark.intel.com/">https://ark.intel.com/</a> </span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Software &amp; Drivers download center:</em><strong></strong><a href="https://downloadcenter.intel.com/">https://downloadcenter.intel.com/</a> </span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Intel Community:</em><em></em><a href="https://community.intel.com/">https://community.intel.com/</a> </span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Intel Solutions Marketplace catalog:</em> <a href="https://marketplace.intel.com/">https://marketplace.intel.com/</a><a href="https://marketplace.intel.com/"></a></span></li>
+<li><span style="font-family: calibri; font-size: 11pt;"><em>Intel Customer Support: </em><a href="https://www.intel.com/support">https://www.intel.com/support</a> </span></li>
+</ul>
+<p style="margin-bottom: 0px; margin-top: 0px; font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Thank you for your interest in Intel.</p>
+</td>
+</tr>
+<tr id="salutationDiv" style="padding-bottom: 5px; height: 52px;">
+<td colspan="2" style="font-family: 'Intel Clear', TAHOMA; font-size: 10pt; color: #666666; padding-left: 50px; padding-top: 14px; line-height: 18px; height: 52px;">
+<p>Kindest Regards,<br />Intel Corporation<br />Intel.com, Intel Privacy Notice, Intel Cookie Notice</p>
+<p></p>
+</td>
+</tr>
+<tr style="height: 52.6667px;">
+<td colspan="2" style="padding-left: 50px; padding-right: 110px; padding-top: 25px; line-height: 18px; height: 52.6667px;">
+<p style="margin-top: 0px; margin-bottom: 0px; font-family: 'Intel Clear','TAHOMA'; font-size: 7.5pt; color: #62686e;"><span style="font-family: calibri; font-size: 11pt;">Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book. </span><br /> <br /><br /></p>
+</td>
+</tr>
+<tr style="height: 17px;">
+<td colspan="2" style="padding-left: 40px; padding-right: 40px; padding-top: 15px; height: 17px;" align="center"><hr style="background-color: #e5e5e5; color: #e5e5e5; border: 0 none; height: 1px;" /></td>
+</tr>
+<tr id="emailFooter" style="height: 32px;">
+<td style="padding-left: 50px; font-family: 'Intel Clear', TAHOMA; font-size: 9pt; line-height: 16px; color: #666666; padding-top: 13px; height: 32px;">Intel is committed to protecting your privacy. For more Information, <br /> please see the <a href="http://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">Intel Privacy Notice.</a> <a href="http://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">Intel Cookie Notice.</a></td>
+<td rowspan="2" style="font-family: 'Intel Clear', TAHOMA; padding-top: 10px; height: 48px;">
+<div style="margin-right: -20px;"><img hspace="0px;" src="http://www.intel.com/etc/designs/intel/us/en/images/myIntelLogo.jpg" height="62px" /></div>
+</td>
+</tr>
+<tr id="emailFooter2" style="height: 16px;">
+<td style="padding-left: 50px; font-family: 'Intel Clear', TAHOMA; font-size: 9pt; color: #666666; padding-top: 14px; line-height: 16px; height: 16px;"><a href="http://www.intel.com/content/www/us/en/legal/terms-of-use.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important;">Legal Information</a> | <a href="http://www.intel.com/content/www/us/en/legal/trademarks.html" style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; text-decoration: none; color: #086db6 !important; outline: none;">Trademarks</a> | <span style="font-size: 10pt; font-family: 'Intel Clear','TAHOMA'; color: #666666;">©</span> <span style="font-family: 'Intel Clear','TAHOMA'; font-size: 9pt; color: #666666;">Intel Corporation.</span></td>
+</tr>
+<tr style="height: 10px;">
+<td style="display: none; height: 10px;"> </td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

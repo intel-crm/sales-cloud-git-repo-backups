@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Status Change- Requested to Rejected</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTD</name>
+    <style>none</style>
+    <subject>Thank you for your Interest in Intel® Premier Support</subject>
+    <textOnly>We appreciate your interest in Intel® Premier Support.
+
+However, upon review of your application we regret to inform you that your request of Intel Premier Support access has been declined.
+
+
+Some reasons for denial may include:
+
+Application does not meet the company validation criteria.
+The request of Intel Premier Support access does not allow for the use of personal emails. The request needs to be submitted with your company’s e-mail address.
+
+
+Alternative FPGA technical support path:
+
+Access FPGA sign-in here
+Access Intel Communities here and Guidance here
+
+If you feel your request was denied in error, contact Customer Support here
+
+
+Please DO NOT reply to this e-mail message. This is an automated response.
+
+To ensure that you continue receiving our e-mails, please add us to your address book.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

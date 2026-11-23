@@ -1,4 +1,4 @@
-public class ICS_AVM_UserInfoController {
+public  with sharing class ICS_AVM_UserInfoController {
     public String userDetails {get;set;}
     public String iv {get;set;}
    // public string  lang {get;set;}
@@ -6,7 +6,7 @@ public class ICS_AVM_UserInfoController {
 
    
     public ICS_AVM_UserInfoController() {
-        User usr = [SELECT FirstName, LastName,Languagelocalekey , Email, FederationIdentifier FROM User WHERE Id =:UserInfo.getUserId()];// '0051J000004jIujQAE'
+        User usr = [SELECT FirstName, LastName,Languagelocalekey , Email, FederationIdentifier FROM User WHERE Id =:UserInfo.getUserId()];
         system.debug('usr'+usr);
         userInfoWrapper wrapper = new userInfoWrapper();
         wrapper.firstName = usr.FirstName;
@@ -16,7 +16,7 @@ public class ICS_AVM_UserInfoController {
         wrapper.us_Lang = usr.LanguageLocaleKey;
         wrapper.isLoggedIn = 'true';
         
-        if(usr.Languagelocalekey =='en_US'){
+        if(usr.Languagelocalekey.contains('en')){
             Blob blobiv = Blob.valueOf('sixteencharslong');
             Blob key = EncodingUtil.convertFromHex('345a970527db7145325387f7447f4746bf29069fb0014e049eda83951282c7ed');
             Blob data = Blob.valueOf(JSON.serialize(wrapper));

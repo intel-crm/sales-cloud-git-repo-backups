@@ -1,0 +1,66 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:sldsOneColLayout",
+  "dataProviders" : [ ],
+  "id" : "ed08b7f2-db16-4841-b0e0-ee4cb59b766a",
+  "label" : "Design Registration Detail",
+  "regions" : [ {
+    "id" : "08a0364b-d825-4909-a8da-947dbd3811d3",
+    "regionName" : "header",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "recordId" : "{!recordId}"
+      },
+      "componentName" : "forceCommunity:recordHeadline",
+      "id" : "7fbfaa58-eb1a-4da3-ba5a-00132c323530",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "detailsTabLabel" : "Details",
+        "discussionsTabLabel" : "Feed",
+        "recordId" : "{!recordId}",
+        "relatedTabLabel" : "Related",
+        "showLegacyActivityComposer" : false,
+        "tab1Type" : "details",
+        "tab2Type" : "related",
+        "tab3Type" : "chatter",
+        "tab4Type" : "none",
+        "timelineTabLabel" : "Activity"
+      },
+      "componentName" : "forceCommunity:recordHomeTabs",
+      "id" : "1060b013-11da-4763-a5a0-9c543ee587e3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "6419981e-0c80-42ea-98b0-4ea147842363",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "id" : "3735ff56-0870-4ac6-b14f-123bf815fa7e",
+    "regionName" : "footer",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "{!Record._Object}: {!Record._Title}"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "e7ecb78a-0850-444a-9ab8-9fd616f218ae",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "7b195398-2d3b-4fa1-b1d2-72af16b4b720",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "detail-a3D"
+}

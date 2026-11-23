@@ -66,13 +66,12 @@
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "fieldsToMask" : "",
             "internalUserName" : "Intel System User",
             "objectApiName" : "PartnerFundAllocation",
             "recordId" : "{!recordId}"
           },
           "componentName" : "c:core_MDF_HistoryComponent",
-          "id" : "b9634311-90af-4c36-bfd8-721132bd21c7",
+          "id" : "81f66bb5-e8dd-47a9-a316-c82102dc46fe",
           "renditionMap" : { },
           "type" : "component"
         } ],

@@ -67,7 +67,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA UK Sales Group</value>
+            <value>GMP UK Sales Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Past_Due__c</column>
@@ -95,7 +95,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Deal: Sell-through,Deal: Sell-to</value>
+            <value>Deal: Scale-enable,Deal: Sell-through,Deal: Sell-to</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

@@ -11,6 +11,7 @@
 
 @isTest
 public class PMP_Utility_Test{
+
    @testSetup static void setup() {
        EmailTemplate validEmailTemplate = new EmailTemplate();
             validEmailTemplate.isActive = true;
@@ -65,14 +66,14 @@ public class PMP_Utility_Test{
        // gg//PMP_Utility.isUserUnderSamePartner(offObj); 
       system.runAs(u){
           boolean isAdmin = PMP_Utility.isLoggedInUserAdmin();  
-        //  PMP_Utility.intelAdminGrpMembers();
+          PMP_Utility.intelAdminGrpMembers();
       }
       //List<ContentDistribution> contentDistributionList1 = PMP_Utility.getContentDownloadUrls(contentDocumentIds);
       //List<ContentDistribution> contentDistributionList2 = PMP_Utility.getContentDownloadUrlData(contentDocumentIds);
       //Boolean isUserInSameCompany = PMP_Utility.isUserInSameCompany(offObj);
               
       PMP_Utility.isIntelEmployee();
-    //  Boolean isLoggedInUserAnonymous = PMP_Utility.isLoggedInUserAnonymous();
+      Boolean isLoggedInUserAnonymous = PMP_Utility.isLoggedInUserAnonymous();
       Map<String,String> getLocaleFields = PMP_Utility.getLocaleFields('Partner Offering','en_US');
       List<PMP_Locale_To_FieldAPINm_Mapping__mdt> getLocaleToFieldMdtRecordsByField = PMP_Utility.getLocaleToFieldMdtRecordsByField('en_US','Field');
       Map<String,Object> mapSpec = new Map<String,Object>();
@@ -220,7 +221,6 @@ public class PMP_Utility_Test{
         acm.PRM_Channel_Program_Id__c=cpIPA.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-        acm.PRM_Status_Reason_Txt__c='Test';
         insert acm;
         
         PMP_Company__c cmp1=new PMP_Company__c();
@@ -228,8 +228,7 @@ public class PMP_Utility_Test{
         cmp1.PMP_Benefit_Update_Ind__c=False;
         cmp1.PMP_Partner_Inactive_Ind__c = False;
         cmp1.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //cmp1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
-		cmp1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile; //IPA2.0 - TWC729-7885
+        cmp1.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
         cmp1.PMP_Is_Published_Ind__c=true;
         insert cmp1;
         
@@ -317,13 +316,13 @@ public class PMP_Utility_Test{
         Test.stopTest();
     }
     
-   // static testMethod void getLoggedInUSersLanguageTest(){
-    //    Test.startTest();
-      //  String language = PMP_Utility.getLoggedInUsersLanguage();
+    static testMethod void getLoggedInUSersLanguageTest(){
+        Test.startTest();
+        String language = PMP_Utility.getLoggedInUsersLanguage();
         
-      //  System.assertEquals(userInfo.getLanguage(), language);
-      //  Test.stopTest();
-  //  }
+        System.assertEquals(userInfo.getLanguage(), language);
+        Test.stopTest();
+    }
     
     /*static testMethod void isTranslationRequired(){
         Test.startTest();
@@ -344,7 +343,7 @@ public class PMP_Utility_Test{
         Test.stopTest();
     }
     
-   /* static testMethod void getContentDocumentLinkInstanceTest(){
+    static testMethod void getContentDocumentLinkInstanceTest(){
         Test.startTest();
         //PMP_Partner_Offering__c offering = PMP_TestDataUtility.createOffering('Testoffering', 'Public Content','off desc',null,true,'draft','taglineTest' );
         List<ContentDocument> docs = PMP_TestDataUtility.createContentDocument(true);
@@ -352,7 +351,7 @@ public class PMP_Utility_Test{
         //ContentDocumentLink cdl = PMP_Utility.getContentDocumentLinkInstance(docs[0].Id, offering.Id);
         //System.assertEquals(cdl.ContentDocumentId, docs[0].Id);
         Test.stopTest();
-    }*/
+    }
     
     static testMethod void getSpecificationSequenceNumberTest(){
         Test.startTest();
@@ -402,11 +401,11 @@ public class PMP_Utility_Test{
         EmailTemplate testTemplate = PMP_Utility.getEmailTemplate(validEmailTemplate.DeveloperName);
         System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
     }
-  //  @isTest
-   // static void getReplacedWithDynamicValue(){
-     //   String replacedLabel = PMP_Utility.getReplacedWithDynamicValue('View all {0}  Participants', 'Test Event');
-       // System.assertEquals(replacedLabel, 'View all Test Event  Participants');
-   // }
+    @isTest
+    static void getReplacedWithDynamicValue(){
+        String replacedLabel = PMP_Utility.getReplacedWithDynamicValue('View all {0}  Participants', 'Test Event');
+        System.assertEquals(replacedLabel, 'View all Test Event  Participants');
+    }
     @isTest
     Static Void sendEmailAndLogDataTest(){
         Test.startTest();
@@ -458,7 +457,7 @@ public class PMP_Utility_Test{
         }
         //System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
         PMP_Utility.sendEmailAndLogData(validEmailTemplate.DeveloperName,userWhatIDMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
         
        u.IsActive = false;
         //userWhatIDMap.put(u.id, off1.id);
@@ -468,7 +467,7 @@ public class PMP_Utility_Test{
         PMP_Utility.showContactPartnerButton();
         Set<Id> accId = new Set<Id>();
         accId.add(acc1.id);
-       // PMP_Utility.fetchUsersFromPagMember(accId,pslist);
+        PMP_Utility.fetchUsersFromPagMember(accId,pslist);
         //PMP_Utility.getAlertToEmailSettingData('No_update_for_six_months_Profile');
         PMP_Utility.fetchUsersMapFromPagMember(compInfoList,pslist);
         system.assertNotEquals(accId.size(),0,'Successful');
@@ -534,8 +533,7 @@ public class PMP_Utility_Test{
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile; //IPA2.0 - TWC729-7885
+        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
         company.PMP_Is_Published_Ind__c=true;
         insert company;
         System.assertNotEquals(company, Null);
@@ -566,15 +564,15 @@ public class PMP_Utility_Test{
         PMP_Utility.getLoggedInUser();
         PMP_Utility.getCompanyInfoForOpid(jun.PMP_One_Partner_ID__c);
         PMP_Utility u = new PMP_Utility();
-      //   Map<Id,List<Account>> AllAccountRelatedToMPIActive = u.getAllAccountRelatedToMPIActive(comp);
+         Map<Id,List<Account>> AllAccountRelatedToMPIActive = u.getAllAccountRelatedToMPIActive(comp);
         
-     //   Map<Id,Set<Id>> AllAccountRelatedToMPI           = u.getAllAccountRelatedToMPI(new List<Id>{company.Id});
-     //  Map<Id,Set<Id>> AllAccountRelatedToMPIActive1     = u.getAllAccountRelatedToMPIActive(new List<Id>{company.Id});
-     //  Map<Id,Set<Id>> AllAccountRelatedToMPIActiveList = u.getAllAccountRelatedToMPIActiveList(new List<Id>{company.Id});
+        Map<Id,Set<Id>> AllAccountRelatedToMPI           = u.getAllAccountRelatedToMPI(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPIActive1     = u.getAllAccountRelatedToMPIActive(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPIActiveList = u.getAllAccountRelatedToMPIActiveList(new List<Id>{company.Id});
         
         jun.Is_Active__c=false;     
         update jun;
-      // Map<Id,Set<Id>> AllAccountRelatedToMPINotActive  = u.getAllAccountRelatedToMPINotActive(new List<Id>{company.Id});
+       Map<Id,Set<Id>> AllAccountRelatedToMPINotActive  = u.getAllAccountRelatedToMPINotActive(new List<Id>{company.Id});
         Test.stopTest();
     }
     
@@ -652,8 +650,7 @@ public class PMP_Utility_Test{
         company.PMP_Benefit_Update_Ind__c=False;
         company.PMP_Partner_Inactive_Ind__c = False;
         company.PMP_Company_Lifecycle_Status_Nm__c =PMP_StaticConstants_Partner.Published;
-        //company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
-        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Basic_Profile; //IPA2.0 - TWC729-7885
+        company.PMP_Partner_Benefit_Type__c = PMP_StaticConstants_Partner.Solutions_Marketplace_Enhanced; //IPA2.0 - TWC729-7885
         company.PMP_Is_Published_Ind__c=true;
         company.PMP_Published_Copy_Id__c=Partner_pc.Id;
         company.PMP_Working_Copy_Id__c=partner_wc.Id;
@@ -666,7 +663,6 @@ public class PMP_Utility_Test{
         acm.PRM_Channel_Program_Id__c=cpIPA.Id;
         acm.PRM_Channel_Program_Level_Id__c=cplTitanium.Id;
         acm.PRM_Partner_Role__c='Service Provider';
-        acm.PRM_Status_Reason_Txt__c='Test';
         insert acm;
         
         Contact cont = new Contact(); //Contact
@@ -727,7 +723,7 @@ public class PMP_Utility_Test{
         PMP_Utility.getJunctionAccToMpiByCompanyId(jun.PMP_Marketing_Profile_Id__c);
         PMP_Utility u = new PMP_Utility();
         u.getAllAccountRelatedToMPI_WCandPC(junction);
-      //  u.getAccountRelatedMPIRecord(s);
+        u.getAccountRelatedMPIRecord(s);
         List<PMP_Company__c> mpiList = [Select Id from PMP_Company__c limit 10];
         u.getAllAccountRelatedToMPI(mpiList);
         PMP_Utility.getPagMembers(core);
@@ -793,8 +789,8 @@ public class PMP_Utility_Test{
         }
         //System.assertEquals('test email body', testTemplate.Body, 'Email body Not as expected');
        // PMP_Utility.sendEmailAndLogData(validEmailTemplate.DeveloperName,userWhatIDMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
-      //  PMP_Utility.sendEmailAndLogDataWithBulkification(null,null);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(validEmailTemplate.DeveloperName,userWhatIDListMap);
+        PMP_Utility.sendEmailAndLogDataWithBulkification(null,null);
         integer emailLogcount = [Select count() from Core_Apex_EmailNotification__c limit 10];
         System.assertEquals(emailLogcount,0);    
         
@@ -805,12 +801,12 @@ public class PMP_Utility_Test{
         System.assertNotEquals(Null, cacheFlag,'cacheFlag');
     }
     
-  /*  @isTest
+    @isTest
     Static Void fetchEmailTemplateTest(){
        EmailTemplate validEmailTemplate = [select id ,DeveloperName from EmailTemplate where DeveloperName = 'unique_name_addSomethingSpecialHere'];
        EmailTemplate template = PMP_Utility.fetchEmailTemplate(validEmailTemplate.DeveloperName);
        System.assertNotEquals(Null, template,'template');
-    }*/
+    }
     
     @isTest
     Static Void getApexEmailRecordTest(){
@@ -825,11 +821,11 @@ public class PMP_Utility_Test{
     }
     
     
- /*   @isTest
+    @isTest
     static void replaceLabelWithDynamicValueTest(){
         String replacedLabel = PMP_Utility.replaceLabelWithDynamicValue('View all {0}  Participants', 'Test Event');
         System.assertEquals(replacedLabel, 'View all Test Event  Participants','success');
-    }*/
+    }
     
     
     @isTest
@@ -839,7 +835,7 @@ public class PMP_Utility_Test{
         System.assertNotEquals(returnQuery, Null,'success');
     }
     
-  /*  @isTest
+    @isTest
     static void FileSizeToStringTest(){
         String resizedVal = PMP_Utility.FileSizeToString(1220);
         PMP_Utility.FileSizeToString(400);
@@ -847,7 +843,7 @@ public class PMP_Utility_Test{
         PMP_Utility.FileSizeToString(1049600);
         PMP_Utility.FileSizeToString(1074790400);
         System.assertNotEquals(resizedVal, Null,'success');
-    }*/
+    }
    	/*IPA2.0: US-TWC729-7976*/
     /*@isTest
     static void sendEmailToIOTReadyTest(){

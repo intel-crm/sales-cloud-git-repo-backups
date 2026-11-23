@@ -48,7 +48,7 @@
     </values>
     <values>
         <field>PRM_Recipient__c</field>
-        <value xsi:type="xsd:string">Public Group: PRM Tech Email Recipient</value>
+        <value xsi:type="xsd:string">Public Group: AGS_1PID IPA Admin Group</value>
     </values>
     <values>
         <field>PRM_Specialty__c</field>

@@ -94,6 +94,7 @@ public class Core_AccountMeetingBriefHandler {
             objectsToInsertCounter = true;
             
             if (objectsToInsert.size() > 0) {
+                System.debug('##### objectsToInsert: ' + objectsToInsert);
                 insert objectsToInsert;
                 objectsToInsert.clear();
             }

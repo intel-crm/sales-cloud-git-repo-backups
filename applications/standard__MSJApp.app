@@ -10,8 +10,20 @@
     <tabs>standard-JourneyHome</tabs>
     <tabs>standard-SalesforceJourney</tabs>
     <tabs>standard-JourneyMap</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>PMP_CompanyAutoFill__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PRM_IPAMembership_Attributes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PRM_IPA_DQ_Logs__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-JourneyHome</tab>
         </mappings>

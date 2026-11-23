@@ -15,6 +15,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
     public String billingCountryForCallout;
     public boolean isSameRequestedAccount=false;
     public Boolean cimCall;
+    public static boolean autoapproval = false;
     
     public ER_DupCheck_CIMCallout(PRM_Registration_Request__c regRequest,Integer countReattempt,String rcdLimit,String searchScore,String companyWebsite, Boolean cimCall)
     {
@@ -24,154 +25,115 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
         this.searchScore= searchScore;
         this.companyWebsite = companyWebsite;
         this.cimCall = cimCall;
+        System.debug('@@ cimCall'+cimCall);
+        system.debug('@@Constructor req request::'+this.regRequest);
         regEmail=regRequest.PRM_Email_ID__c;
+        system.debug('accountsSize -->' + acctCont);
+        system.debug('rcdLimit -->' + rcdLimit); 
         if (regRequest.PRM_Salesforce_ID__c!=null){
             reqAcctId = regRequest.PRM_Salesforce_ID__c;
-        }     
+        }    
     }
-    
-    public void execute(QueueableContext currentContext){
-        
-        //Building http Request for CIM Callout
-        Http http = new Http();
-        HttpRequest req = new HttpRequest();
-        req.setHeader('Content-Type','application/json');
-        req.setEndpoint('callout:PRM_CIM_Callout_Credentials');        
-        req.setMethod('POST');
-        req.setTimeout(Integer.valueOf(System.Label.PRM_Timeout));    
-        
-        Map<String,String> countryMap = new map<String,String>();
-        for(Core_Country_Code_Mapping__c allCountries : Core_Country_Code_Mapping__c.getAll().values()) {
-            countryMap.put(allCountries.ISO_Code__c, allCountries.Country_Code__c);
+public void execute(QueueableContext currentContext) {
+    System.debug('@@ EXECUTE STARTED for: ' + regRequest.Id);
+
+    try {
+        // Step 1: Re-fetch the registration record
+        PRM_Registration_Request__c regRequestUpdate = [
+            SELECT Id,
+                   PRM_Account_Name__c,
+                   PRM_Email_ID__c,
+                   PRM_First_Name__c,
+                   PRM_Last_Name__c,
+                   PRM_Country__c,
+                   PRM_State_Province__c,
+                   PRM_Account_URL__c,
+                   PRM_Salesforce_ID__c,
+                   PRM_Dup_Status__c,
+                   PRM_DeDup_Criteria__c,
+                   PRM_CIMStatusDetails__c
+            FROM PRM_Registration_Request__c
+            WHERE Id = :regRequest.Id
+            LIMIT 1
+        ];
+
+        // Step 2: Short-circuit if matched with SF ID
+        if (regRequestUpdate.PRM_Salesforce_ID__c != null) {
+            regRequestUpdate.PRM_Dup_Status__c = System.Label.PRM_Fulldup;
+            regRequestUpdate.PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
+            regRequestUpdate.PRM_CIMStatusDetails__c = 'Matched by Salesforce ID';
+            update regRequestUpdate;
+            System.debug(' Matched by Salesforce ID, skipping RELTO.');
+            return;
         }
-        
-        if(regRequest.PRM_Country__c!=null && regRequest.PRM_Country__c.length() == 3 && countryMap != null && countryMap.containsKey(regRequest.PRM_Country__c)){
-            billingCountryForCallout = countryMap.get(regRequest.PRM_Country__c);
-        }
-        
-        List<PRM_Registration_Request__c> updateReg = [Select Id, PRM_Dup_Status__c, PRM_DeDup_Criteria__c,PRM_CIMStatusDetails__c from PRM_Registration_Request__c where Id =: regRequest.Id];
-        
-        // Building CIM Request Details        
-        ER_SearchCIMAccounts.RequestDetails requestDetail = new ER_SearchCIMAccounts.RequestDetails(); 
-        ER_SearchCIMAccounts.PhysicalAddress physicalAdd = new ER_SearchCIMAccounts.PhysicalAddress();
-        ER_SearchCIMAccounts.BusinessOrganization busOrg = new ER_SearchCIMAccounts.BusinessOrganization();
-        
-        // Get the details from Account object for existing Account scenario
-        if (regRequest.PRM_Salesforce_ID__c!=null){
-            reqAcctId = regRequest.PRM_Salesforce_ID__c;
-            Account acc =[select name,BillingStreet,BillingCity,BillingState,BillingPostalCode,BillingCountry,Website from account where id =:regRequest.PRM_Salesforce_ID__c];
-            physicalAdd.PhysicalStreetAddressTxt=acc.BillingStreet;
-            physicalAdd.PostalCd = acc.BillingPostalCode;
-            physicalAdd.CityNm = acc.BillingCity;
-            physicalAdd.Country2Cd = countryMap.get(acc.BillingCountry);
-            physicalAdd.CountrySubdivisionCd = acc.BillingState;
-            busOrg.BusinessOrganizationNm = acc.Name;
-        }else{
-            busOrg.BusinessOrganizationNm = regRequest.PRM_Account_Name__c;
-            physicalAdd.PostalCd = regRequest.PRM_Zip_Postal_Code__c;
-            physicalAdd.CityNm = regRequest.PRM_City__c;
-            if (regRequest.PRM_Address_Line_2__c!=null && regRequest.PRM_Address_Line_2__c!=''){
-                physicalAdd.PhysicalStreetAddressTxt = regRequest.PRM_Address_Line_1__c+' '+regRequest.PRM_Address_Line_2__c; 
-            }else{
-                physicalAdd.PhysicalStreetAddressTxt = regRequest.PRM_Address_Line_1__c;
-            }
-            if(billingCountryForCallout!=null){
-                physicalAdd.Country2Cd=billingCountryForCallout;
-            }else{
-                physicalAdd.Country2Cd = regRequest.PRM_Country__c;
-            }
-            physicalAdd.CountrySubdivisionCd = regRequest.PRM_State_Province__c;
-        }        
-        busOrg.PhysicalAddress = physicalAdd;
-        
-        
-        list<ER_SearchCIMAccounts.ElectronicAddress> elecAddrList= new list<ER_SearchCIMAccounts.ElectronicAddress>();
-        if(companyWebsite!=null){
-            ER_SearchCIMAccounts.ElectronicAddress elecAddr= new ER_SearchCIMAccounts.ElectronicAddress();
-            elecAddr.ElectronicAddressTypeCd=System.Label.PRM_ELECADDR;
-            elecAddr.ElectronicAddressTxt=companyWebsite;
-            elecAddrList.add(elecAddr);
-            busOrg.ElectronicAddress=elecAddrList;
-        }
-        else{
-            ER_SearchCIMAccounts.ElectronicAddress elecAddr= new ER_SearchCIMAccounts.ElectronicAddress();
-            elecAddr.ElectronicAddressTypeCd=System.Label.PRM_ELECADDR;
-            elecAddr.ElectronicAddressTxt=regRequest.PRM_Account_URL__c;
-            elecAddrList.add(elecAddr);
-            busOrg.ElectronicAddress=elecAddrList;
-        }
-        requestDetail.BusinessOrganization = busOrg;
-        if (rcdLimit==null){
-            rcdLimit=cimMdt.PRM_Max_Records__c;
-        }
-        if(searchScore==null){
-            searchScore=string.valueof(cimMdt.PRM_Min_Score__c);   
-        }
-        requestDetail.MaximumNumberOfRecordsToReturn = rcdLimit;
-        requestDetail.CallingSourceSystem = cimMdt.PRM_Calling_System__c;
-        requestDetail.MandatoryFieldRestrictionLevel = Integer.valueOf(cimMdt.PRM_Restriction_Level__c);
-        requestDetail.MinimumSearchScore = Integer.valueOf(searchScore);
-        requestDetail.IncludeDefaultAttributesForSourceTypes = False;
-        requestDetail.AsynchronousRequestId = cimMdt.PRM_Async_Id__c;
-        
-        String reqBody = JSON.serialize(requestDetail);
-        
-        req.setBody(reqBody);
-        
-        try {
-            HttpResponse response = http.send(req);
+
+        // Step 3: Validate required fields
+        if (String.isBlank(regRequestUpdate.PRM_Account_Name__c) ||
+            String.isBlank(regRequestUpdate.PRM_Email_ID__c) ||
+            String.isBlank(regRequestUpdate.PRM_Last_Name__c)) {
             
-            if(response.getStatusCode() == 200 && String.isNotBlank(response.getBody())){
-                PRM_CIMWrapper respWrap = (PRM_CIMWrapper)JSON.deserialize(response.getBody(),PRM_CIMWrapper.class);
-                if(Test.isRunningTest() && ER_SearchBeforeCreate_Test.IsEmailTest)
-                {
-                    respWrap=null;
-                }
-                if(respWrap != null){
-                    handleResponse(respWrap, updateReg);
-                }
-            }
-            else{
-                countReattempt=countReattempt+1;
-                if(countReattempt==3){
-                    updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Error;
-                    updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
-                    updateReg[0].PRM_CIMStatusDetails__c = response.getBody();
-                    update updateReg;                    
-                }
-                else if(countReattempt ==null || countReattempt <3){
-                    if(!Test.isRunningTest())
-                    {
-                        Id queueId = System.enqueueJob(new ER_DupCheck_CIMCallout(regRequest,countReattempt,rcdLimit,searchScore,companyWebsite,true));
-                    }
-                }                  
-            }          
-        }   
-        catch(Exception e){
-            countReattempt=countReattempt+1;
-            if(countReattempt==3){
-                updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Error;
-                updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
-                if(e.getMessage().contains('System.CalloutException')){
-                    updateReg[0].PRM_CIMStatusDetails__c = 'CIM Call Out Error';
-                }
-                else{
-                    updateReg[0].PRM_CIMStatusDetails__c = e.getMessage();
-                }
-                update updateReg;
-                PRM_ErrorUtilityClass.logError(e);
-                
-            }
-            else if(countReattempt ==null || countReattempt <3){
-                if(!Test.isRunningTest())
-                {
-                    Id queueId = System.enqueueJob(new ER_DupCheck_CIMCallout(regRequest,countReattempt,rcdLimit,searchScore,companyWebsite,true));
-                }
-            }
+            regRequestUpdate.PRM_Dup_Status__c = System.Label.PRM_Error;
+            regRequestUpdate.PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
+            regRequestUpdate.PRM_CIMStatusDetails__c = 'Missing required fields';
+            update regRequestUpdate;
+            System.debug(' Missing required fields. Skipping duplicate check.');
+            return;
         }
-        
+
+        // Step 4: Get country/state wrapper
+        PRM_AdminRegistrationDuplicateDetails.CountryStateWrapperForSBR csWrp =
+            PRM_AdminRegistrationDuplicateDetails.getCountryOrStateForSBR(
+                regRequestUpdate.PRM_Country__c,
+                regRequestUpdate.PRM_State_Province__c
+            );
+
+        // Step 5: Build fieldset for RELTO
+        List<UCD_GenericAcctSearch_SBR.fieldsetwrapper> fDetailsList =
+            PRM_AdminRegistrationDuplicateDetails.createFDetailsList(
+                regRequestUpdate.PRM_Account_Name__c,
+                csWrp.country,
+                csWrp.state,
+                regRequestUpdate.PRM_Account_URL__c
+            );
+
+        // Step 6: Call UCD/RELTO API
+        UCD_GenericAcctSearch_SBR.AccountSearchDataModelWithError accFinalDetails =
+            UCD_GenericAcctSearch_SBR.getAcctResults(fDetailsList, '');
+
+        List<UCD_GenericAcctSearch_SBR.AccountSearchDataModel> accDetails =
+            accFinalDetails.accountSearchModel;
+
+        // Step 7: Evaluate RELTO result
+        if (accDetails == null || accDetails.isEmpty()) {
+            regRequestUpdate.PRM_Dup_Status__c = System.Label.PRM_Nodup;
+            regRequestUpdate.PRM_DeDup_Criteria__c = System.Label.PRM_Success;
+            regRequestUpdate.PRM_CIMStatusDetails__c = 'No duplicates found.';
+            System.debug(' No duplicates found.');
+        } else {
+            regRequestUpdate.PRM_Dup_Status__c = System.Label.PRM_Fulldup;
+            regRequestUpdate.PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
+            regRequestUpdate.PRM_CIMStatusDetails__c = accDetails.size() + ' potential duplicate(s) found.';
+            System.debug(' Duplicates found: ' + accDetails.size());
+        }
+
+        update regRequestUpdate;
+        System.debug(' Record updated: ' + regRequestUpdate.Id);
+
+    } catch (Exception e) {
+        System.debug(' Exception during duplicate check: ' + e.getMessage());
+
+        PRM_Registration_Request__c errorReg = new PRM_Registration_Request__c(
+            Id = regRequest.Id,
+            PRM_Dup_Status__c = System.Label.PRM_Error,
+            PRM_DeDup_Criteria__c = System.Label.PRM_Fail,
+            PRM_CIMStatusDetails__c = 'Exception: ' + e.getMessage()
+        );
+        update errorReg;
     }
-    
+}
+
+
+
     public void handleResponse(PRM_CIMWrapper wrapResp,List<PRM_Registration_Request__c> updateReg){
         PRM_CIMWrapper respWrap = new PRM_CIMWrapper();
         respWrap.organization = wrapResp.organization;
@@ -194,6 +156,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
         map<string,string> cimPhysicalAddrLocType = new map<string,string>();
         
         if(respWrap.organization != null && respWrap.ErrorDetailsTxt == null){
+            system.debug('@@ Inside main if');
             Integer maxVal = 0;
             Integer counterMax = 0;
             Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
@@ -213,9 +176,13 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                     }
                 }
             }
+            system.debug('validSfidSet -- > '+validSfidSet);
+            system.debug('validCimSet---> '+validCimSet);
             for(Account a : [Select Id,Name,Core_CIM_ID__c from Account where RecordTypeId =:intelaccountRT and (Core_CIM_ID__c IN: validCimSet or id in:validSfidSet)]){
                 validCimAccountMap.put(String.valueof(a.Id),a.Core_CIM_ID__c);
             }
+            
+            system.debug('MAP VALUES --> '+validCimAccountMap);
             // Code for adding the source records
             map<string,list<PRM_CIMWrapper.SourceRecord>> cimAccountSourceMap = new map<string,list<PRM_CIMWrapper.SourceRecord>>();
             for (string accountId: validCimAccountMap.keyset()){
@@ -258,6 +225,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                 }
                 for(integer j=0;j<respWrap.organization[i].sourceRecords.SourceRecord.size();j++){
                     if(validCimAccountMap.containsKey(respWrap.organization[i].sourceRecords.SourceRecord[j].SourceBusinessOrganization.BusinessOrganizationPartyId) || validCimAccountMap.values().contains(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId)){
+                        system.debug('Search Score '+respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd);
                         if(respWrap.organization[i].searchScore >= Integer.valueOf(cimMdt.PRM_Max_Score__c) && respWrap.organization[i].sourceRecords.SourceRecord[j].SourceSystemCd=='SLSCLD'){
                             //Code for setting status based on existing account
                             if (reqAcctId==null){
@@ -269,6 +237,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                             }
                             counterMax = counterMax + 1;
                             // Get the map for the organization searchscore and source records
+                            system.debug('CIM ID----> '+respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId);
                             cimSearchScoreMap.put(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId,respWrap.organization[i].searchScore);
                             cimSourceRecordsMap.put(respWrap.organization[i].sourceRecords.SourceRecord[j],respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId);
                             cimOrganizationMap.put(respWrap.organization[i].Snapshot.BusinessOrganization.BusinessOrganizationPartyId,respWrap.organization[i]);
@@ -314,6 +283,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                     usgPhyAddrDet = cimUsagePhyMap.get(cimIDs);
                     for (list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation> listusg: usgPhyAddrDet.keyset()){
                         usgCimMap.put(listusg,cimIDs);
+                        //system.debug('FOUND VALUES--> ' +usgDet.AddressUsageTypeCd+' '+usgDet.AddressLocationTypeCd) ;
                     }
                 }}
             if(usgCimMap != null && !usgCimMap.isEmpty()){
@@ -322,6 +292,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                         if (usgDet.AddressUsageTypeCd == System.Label.PRM_ADDRUSGTYPE && usgDet.AddressLocationTypeCd== System.Label.PRM_ADDRLOCTYPE){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('PHY VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrLocType.put(usgCimMap.get(usgDetList),System.Label.PRM_ADDRUSGTYPE+','+System.Label.PRM_ADDRLOCTYPE);
                             break;
@@ -329,31 +300,40 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                         else if (usgDet.AddressUsageTypeCd == System.Label.PRM_ADDRUSGTYPE_MAIL && usgDet.AddressLocationTypeCd== System.Label.PRM_ADDRLOCTYPE){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('MAIL VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrLocType.put(usgCimMap.get(usgDetList),System.Label.PRM_ADDRUSGTYPE_MAIL+','+System.Label.PRM_ADDRLOCTYPE);
                         }
                         else if (!cimPhysicalAddrUsageMap.containsKey(usgCimMap.get(usgDetList))){
                             map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>  usgPhyAddrDetUsg = new map<list<PRM_CIMWrapper.PhysicalAddressUsageLocationAssociation>,PRM_CIMWrapper.PhysicalAddress>(); 
                             usgPhyAddrDetUsg=cimUsagePhyMap.get(usgCimMap.get(usgDetList));
+                            system.debug('OTHR VALUES--> ' +usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrUsageMap.put(usgCimMap.get(usgDetList),usgPhyAddrDetUsg.get(usgDetList));
                             cimPhysicalAddrLocType.put(usgCimMap.get(usgDetList),usgDet.AddressUsageTypeCd+','+usgDet.AddressLocationTypeCd);
                         }
                         
                     }
                 }}
+            system.debug('cimSourceRecordsMap '+cimSourceRecordsMap.size());
+            system.debug('cimSourceRecordsMapVAL '+cimSourceRecordsMap);
+            system.debug('cimSearchScoreMapVAL '+cimSearchScoreMap);
+            system.debug('maxval  '+ maxval);
             if(maxVal < Integer.valueOf(cimMdt.PRM_Min_Score__c)){
                 updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Nodup;
                 updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Success;
+                system.debug('dupcheck- nodup-'+updateReg[0].PRM_Dup_Status__c);
             }
             //else if(maxVal >= Integer.valueOf(cimMdt.PRM_Min_Score__c) && maxVal < Integer.valueOf(cimMdt.PRM_Max_Score__c) && (acctConts==null || acctConts.size()==0)){
             else if(maxVal >= Integer.valueOf(cimMdt.PRM_Min_Score__c) && maxVal < Integer.valueOf(cimMdt.PRM_Max_Score__c)){
                 updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Partdup;
                 updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
+                system.debug('dupcheck- Partdup-'+updateReg[0].PRM_Dup_Status__c);
                 
             }
             else{
                 updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Fulldup;
                 updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Fail;
+                system.debug('dupcheck- fulldup-'+updateReg[0].PRM_Dup_Status__c);
             }
             //Insert into the CIM Search Result Object
             ER_SearchCIMAccounts.ER_cimDataWrap cimDataWrap = new ER_SearchCIMAccounts.ER_cimDataWrap();
@@ -370,6 +350,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
             
         }
         else if(respWrap.organization == null && respWrap.ErrorDetailsTxt!=null && respWrap.ErrorDetailsTxt.contains(System.Label.PRM_ErrorDetails)){
+            system.debug('@@ Inside else if');
             updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Nodup;
             updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Success;
         }
@@ -380,6 +361,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
             updateReg[0].PRM_CIMStatusDetails__c = respWrap.ErrorDetailsTxt + ' - ' + respWrap.ErrorDsc;
         }
         if(updateReg != null && !updateReg.isEmpty() && updateReg[0].PRM_DeDup_Criteria__c != System.Label.PRM_Pending){
+            system.debug('@@ Update Record: '+updateReg);
             if(isSameRequestedAccount==true){
                 updateReg[0].PRM_Dup_Status__c = System.Label.PRM_Nodup;
                 updateReg[0].PRM_DeDup_Criteria__c = System.Label.PRM_Success; 
@@ -402,18 +384,28 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
         map<string,PRM_CIMWrapper.PhysicalAddress> cimPhysicalAddrUsageMap=cimDataWrap.cimPhysicalAddrUsageMap;
         string dupStatus=cimDataWrap.dupStatus;
         
+        System.debug('cimDataWrap >> '+cimDataWrap);
+        System.debug('cimSearchScoreMap >>> '+cimSearchScoreMap);
         try{
+            //system.debug('Inside method Search Results');
             for (PRM_CIMWrapper.SourceRecord sourceRecord : cimSourceRecordsMap.keySet()){
                 PRM_CIMSearchResults__c searchResults = new PRM_CIMSearchResults__c();
                 PRM_CIMWrapper.organization orgValue = new PRM_CIMWrapper.organization();
                 //list<PRM_CIMWrapper.PhysicalAddress> physicaladdrs = new list<PRM_CIMWrapper.PhysicalAddress>();
                 //orgValue = organizationKey;
                 string cimId = cimSourceRecordsMap.get(sourceRecord);
+                system.debug('insertCimSearchResults CIM ID--> '+cimId);
                 orgValue = cimOrganizationMap.get(cimId);
                 integer searchScore = cimSearchScoreMap.get(cimId);
                 //physicaladdrs = cimPhysicalAddrsMap.get(cimId);
+                system.debug('insertCimSearchResults searchScore--> '+searchScore);
                 //PRM_CIMWrapper.SourceRecord sourceRecord = new PRM_CIMWrapper.SourceRecord();
                 //sourceRecord = organizationSourceMap.get(organizationKey);
+                system.debug('Inside method Search Results');
+                System.debug('System.Label.PRM_Fulldup >>> '+System.Label.PRM_Fulldup);
+                System.debug('cimMdt.PRM_Max_Score__c >>> '+cimMdt.PRM_Max_Score__c);
+                System.debug('dupStatus >>> '+dupStatus);
+                System.debug('searchScore >>> '+searchScore);
                 ER_SearchCIMAccounts.ER_cimInstWrap cimInstWrap = new ER_SearchCIMAccounts.ER_cimInstWrap();
                 cimInstWrap.regReqId=regReqId;
                 cimInstWrap.searchscore=searchScore;
@@ -425,15 +417,22 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                 cimInstWrap.cimPhysicalAddrUsageMap=cimPhysicalAddrUsageMap;
                 cimInstWrap.cimPhyAddLocType=cimDataWrap.cimPhyAddrLocType;
                 searchResults = instantiateCimSearchResultsObj(cimInstWrap);
+                system.debug('Inside insertCIMResults');
                 searchResultsList.add(searchResults);
             }
+            system.debug('searchResultsList '+searchResultsList.size());
+            system.debug('searchResultsList '+searchResultsList);
             
             Database.SaveResult[] insertReslt = Database.insert(searchResultsList,false);
             for (Database.SaveResult sr : insertReslt) {
                 if (sr.isSuccess()) {
+                    System.debug('Successfully inserted records ID:-> ' + sr.getId());
                 }
                 else {
                     for(Database.Error err : sr.getErrors()) {
+                        System.debug('Error while inserting records');                    
+                        System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                        System.debug('Fields that caused this error: ' + err.getFields());
                     }
                 }
             }
@@ -442,6 +441,8 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
                 
             {
                 
+                System.debug('Account Id: ' + searchResults.PRM_Account_Id__c);
+                System.debug('searchResults Id: ' + searchResults.id);
                 if(string.valueOf(searchResults.PRM_Account_Id__c)==reqAcctId && countAcc==0){
                     isSameRequestedAccount=true;
                     countAcc=countAcc+1;
@@ -455,6 +456,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
             
         }
         catch(Exception errCimResults){
+            system.debug('Error Insert CIM Results :: '+errCimResults.getMessage());
             PRM_ErrorUtilityClass.logError(errCimResults);
         }
     }
@@ -462,6 +464,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
     // Instantiating the CIM Search Results Object
     private PRM_CIMSearchResults__c instantiateCimSearchResultsObj(ER_SearchCIMAccounts.ER_cimInstWrap cimInstWrap){
         PRM_CIMSearchResults__c searchResultsInst = new PRM_CIMSearchResults__c();
+        system.debug('regReqId '+ cimInstWrap.regReqId);
         PRM_CIMWrapper.PhysicalAddress phyAddrUsageDet=new PRM_CIMWrapper.PhysicalAddress();
         searchResultsInst.PRM_RegReq_Id__c = cimInstWrap.regReqId;
         searchResultsInst.PRM_CIM_Id__c = cimInstWrap.cimId;
@@ -478,6 +481,7 @@ public class ER_DupCheck_CIMCallout implements Queueable, Database.AllowsCallout
         }
         if(cimPhysicalAddrUsageMap != null && !cimPhysicalAddrUsageMap.isEmpty()){
             phyAddrUsageDet=cimPhysicalAddrUsageMap.get(cimID);
+            system.debug('PHY ADDR -->'+phyAddrUsageDet);
             /*searchResultsInst.PRM_AddressType_Nm__c = System.Label.PRM_ADDRUSGTYPE;
 searchResultsInst.PRM_AddressLoc_Nm__c = System.Label.PRM_ADDRLOCTYPE; */
             String addrdetails = cimInstWrap.cimPhyAddLocType.get(cimID);

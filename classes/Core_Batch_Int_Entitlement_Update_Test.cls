@@ -15,8 +15,7 @@ public class Core_Batch_Int_Entitlement_Update_Test {
     static void setup() {
         //Prepare the list of Accounts
         List<Account> accList = new List<Account>();
-		String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
-        Account intelAccount1 = new Account(Name ='IntelAccount34',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',RecordTypeId=intelAccRecTypeId,
+        Account intelAccount1 = new Account(Name ='IntelAccount34',Core_Account_Type__c = 'Original Design Manufacturer (ODM)',Core_Sales_Groups__c= 'PRC Sales Group',
                                             Industry='Agriculture', BillingCity='Pune',BillingCountry='Ind',BillingStreet='abc chowk delhi', Core_IPA_Partner_Role__c = 'Distributor');
         
         accList.add(intelAccount1);
@@ -26,10 +25,10 @@ public class Core_Batch_Int_Entitlement_Update_Test {
         //Prepare the list of Contacts
         List<Contact> allContacts = new List<Contact>();
         
-        Contact conTest1 = new Contact(firstname='TestIntel',lastname='ContactAE', accountId=intelAccount1.id, Core_Enterprise_Id__c='300002701661',MailingCountry='India', Email='dellcon1@dell.com');
+        Contact conTest1 = new Contact(firstname='TestIntel',lastname='ContactAE', accountId=intelAccount1.id, Core_Enterprise_Id__c='300002701661', Email='dellcon1@dell.com');
         allContacts.add(conTest1);
         
-        Contact conTest2 = new Contact(firstname='TestIntel',lastname='ContactNM', accountId=intelAccount1.id, Core_Enterprise_Id__c='300002701662',MailingCountry='India', Email='dellco2@dell.com'); 
+        Contact conTest2 = new Contact(firstname='TestIntel',lastname='ContactNM', accountId=intelAccount1.id, Core_Enterprise_Id__c='300002701662', Email='dellco2@dell.com'); 
         allContacts.add(conTest2);
         insert allContacts;
         

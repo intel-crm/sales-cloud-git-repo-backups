@@ -34,7 +34,7 @@
                 <value></value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>CMF Groups</name>
         <params>
             <name>co</name>
@@ -54,9 +54,6 @@
             <blockId>B1</blockId>
             <joinTable>ER_Customer_Master_File_Group__c</joinTable>
         </blockInfo>
-        <columns>
-            <field>ER_Customer_Master_File_Group__c$Name</field>
-        </columns>
         <columns>
             <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Customer_Master_File__c</field>
         </columns>
@@ -84,6 +81,9 @@
         <columns>
             <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$Name</field>
         </columns>
+        <columns>
+            <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_SalesAreaOrderBlockCd__c</field>
+        </columns>
         <filter>
             <criteriaItems>
                 <column>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_End_Date__c</column>
@@ -100,7 +100,7 @@
                 <value></value>
             </criteriaItems>
         </filter>
-        <format>Summary</format>
+        <format>Tabular</format>
         <name>Active CMFs</name>
         <params>
             <name>co</name>

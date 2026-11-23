@@ -1,0 +1,38 @@
+<!--IPA2.0: US-TWC729-7976-->
+<aura:component >
+</aura:component>
+<!-- <aura:component Controller="PSS_SolutionSubmitCtrl"
+    implements="forceCommunity:availableForAllPageTypes,force:hasRecordId" access="global">
+
+    <aura:attribute type="String" name="recordId" />
+    <aura:attribute name="spinner" type="Boolean" default="true" />
+    <aura:attribute name="loadCreateEditPage" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="sandbox" type="String" default="allow-same-origin allow-scripts allow-forms"/>
+    <aura:attribute name="iframeUrl" type="String" default="https://crmdevipa-intelcloudcrm.cs45.force.com/apex/PSS_SolutionSubmit?recordId=a7x8A000000DHBZ"/>
+
+    <lightning:card> -->
+        <!--loading spinner start-->
+        <!-- <aura:if isTrue="{!v.spinner}">
+            <div aura:id="spinnerId" class="slds-spinner_container">
+                <div class="slds-spinner slds-spinner_medium slds-is-relative" role="alert">
+                    <span class="slds-assistive-text">Loading...</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </aura:if> -->
+        <!-- Loading spinner end-->
+
+        <!-- <aura:if isTrue="{!v.loadCreateEditPage}">
+            <div id="PSS_CreateEditSolution">
+                <c:PSS_CreateEditSolution></c:PSS_CreateEditSolution>
+            </div>
+            <iframe src="{!v.iframeUrl}" 
+                sandbox="{!v.sandbox}"
+                width="100%"
+                height="500px;" frameBorder="0" />
+        </aura:if>
+
+    </lightning:card>
+</aura:component> -->

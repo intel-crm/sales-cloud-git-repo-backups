@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PRM_InputParameter__c</field>
-        <value xsi:type="xsd:string">EmailContent_Setup,Account_ID</value>
+        <value xsi:type="xsd:string">Account_ID;EmailContent_Setup</value>
     </values>
     <values>
         <field>PRM_Language__c</field>

@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_EmailOptController{
+public class Core_IPS_EmailOptController{
     public User Usr{get;set;}
     public Boolean EmailOptOut{get;set;}
     public Boolean EmailOptIn{get;set;}

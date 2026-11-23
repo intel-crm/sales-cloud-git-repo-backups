@@ -1,0 +1,30 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="totalRecords" type="Integer"/>
+    <div style="height: 100%" class="first-row-bold slds-text-body_medium">
+        <lightning:datatable
+                             keyField="id"
+                             data="{! v.data }"
+                             columns="{! v.columns }"
+                             hideCheckboxColumn="true"
+                             column-widths-mode="true"
+                             is-loading="true"/>     
+    </div>
+    <div class="slds-float_right slds-text-body_small slds-border_top">
+        {!v.data.length} of {!v.totalRecords}
+        <aura:if isTrue="{!v.totalRecords >= 10}">
+            <c:EPUM_RolesAndResponsibilityUtility aura:id="child" />
+            <lightning:button variant="base"
+                              label="View All"
+                              title="View All"
+                              onclick="{!c.gotoURL}"/>
+        </aura:if>
+    </div>
+    
+            
+    
+    
+    
+    
+</aura:component>

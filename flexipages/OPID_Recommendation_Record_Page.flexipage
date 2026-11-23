@@ -183,6 +183,10 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>displayLabel</name>
+                    <value>OPID Recommendation</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>lookupApiName</name>
                     <value>PRM_OPID_Recommendation__c</value>
                 </componentInstanceProperties>

@@ -5,6 +5,14 @@
   "id" : "3cb25101-b18c-4b4c-bd2c-42cde40efd23",
   "label" : "AccountTransfer",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_New_Button",
+      "id" : "e49bbfd5-ee9f-4c60-9240-50e29322125c",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "d3b5294e-5afa-4fe9-b571-d239c7a12258",
     "regionName" : "header",
     "type" : "region"
@@ -51,6 +59,7 @@
         "id" : "6175c7ba-505a-49f8-beaa-515d330f8cfb",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -60,6 +69,7 @@
         "id" : "853cf8c2-c4ab-46c5-bf9a-6d8d73e09b44",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -69,6 +79,7 @@
         "id" : "0972285f-7c24-4b6f-b136-72eb8950e11b",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -78,6 +89,7 @@
         "id" : "d0a4035f-53a4-4c95-a646-644efbbdb7b1",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -87,6 +99,7 @@
         "id" : "6ec34356-782e-4e56-bfc5-0174436d0544",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -96,6 +109,7 @@
         "id" : "6990df54-162f-486e-925b-71c5df872826",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -105,6 +119,7 @@
         "id" : "7ca0f5d8-3c83-4ad6-8167-eb515134bf3f",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -114,6 +129,7 @@
         "id" : "a5303eb9-343b-41c5-809f-b8540099103d",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -123,6 +139,7 @@
         "id" : "5313f8a7-31d1-4cbe-b63c-2e0b28d3070a",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -132,6 +149,7 @@
         "id" : "6714c0fc-c989-405c-ac60-d5ecfdc3183a",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -141,6 +159,7 @@
         "id" : "31597683-c6a2-446a-be0b-a5db034e79df",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }
@@ -150,6 +169,7 @@
         "id" : "dc599767-d6a3-4ac7-b7a0-88bb7347f884",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "AccountTransfer",
             "title" : "AccountTransfer"
           }

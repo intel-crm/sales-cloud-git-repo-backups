@@ -8,8 +8,8 @@ Modification Log :
 * Developer                 Date                    Description
 * --------------------------------------------------------------------------------------------------------------------
 * Saba Husain               18/05/2020              Utility class for Integration Outbound Messages
-* Neha Sharma           13/02/2024            Updated the class to reduce cognitive complexity. Divided the method 'createOPIDRequestMessage'
-                            into smaller methods.
+* Neha Sharma               13/02/2024              Updated the class to reduce cognitive complexity. Divided the method 'createOPIDRequestMessage'
+                                                    into smaller methods.
 *********************************************************************************************************************/
 
 public without sharing class PRM_IntegrationOutboundMessageUtility{
@@ -26,7 +26,7 @@ public static List<String> createOPIDRequestMessage(List<OPIDRecommendation> opi
     List<Core_Integration_Outbound_Message__c> intOutboundMessageList = new List<Core_Integration_Outbound_Message__c>();
     List<String> listOfRecommendationIds = new List<String>();
     List<String> successfulRecordIds = new List<String>();
-    if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
     if (opidRecommendationList != null) {
         for (OPIDRecommendation opidRecom : opidRecommendationList) {
             addIntegrationOutboundMessage(intOutboundMessageList, opidRecom, System.label.Setup_Prime_Hierarchy);
@@ -41,43 +41,43 @@ public static List<String> createOPIDRequestMessage(List<OPIDRecommendation> opi
 
         listOfRecommendationIds = getRecommendationIds(successfulRecordIds);
     }
-    }
+    }*/
     return listOfRecommendationIds;
     } //TWC729-6800 EOL activities--End
 
 private static void addIntegrationOutboundMessage(List<Core_Integration_Outbound_Message__c> intOutboundMessageList, OPIDRecommendation opidRecom, String groupingMethod) {
-    if ((String.IsNotBlank(opidRecom.accountId) && String.IsNotBlank(opidRecom.cimId) && String.IsNotBlank(opidRecom.groupingMethod) && String.IsNotBlank(opidRecom.groupingValue) && String.isNotBlank(opidRecom.recommendationId) &&CimPrimeEol!='TRUE') || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*if ((String.IsNotBlank(opidRecom.accountId) && String.IsNotBlank(opidRecom.cimId) && String.IsNotBlank(opidRecom.groupingMethod) && String.IsNotBlank(opidRecom.groupingValue) && String.isNotBlank(opidRecom.recommendationId) &&CimPrimeEol!='TRUE') || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         Core_Integration_Outbound_Message__c intOutboundMessage = new Core_Integration_Outbound_Message__c();
         intOutboundMessage.Core_Payload__c = createPayload(groupingMethod, opidRecom.accountId, opidRecom.cimId, opidRecom.groupingMethod, UserInfo.getUserId(), opidRecom.website);
         intOutboundMessage.Core_MessageType__c = System.label.PRM_Message_Type;
         intOutboundMessage.Core_Tags__c = opidRecom.recommendationId;
         intOutboundMessage.Core_Status__c = 'Pending';
         intOutboundMessageList.add(intOutboundMessage);
-    }
+    }*/
 }
 
 //TWC729-6800 EOL activities--Start
 private static void processSaveResult(Database.SaveResult sr, List<String> successfulRecordIds) {
-    if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+    /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
     if (sr.isSuccess()) {
         successfulRecordIds.add(sr.getId());
     } else {
-        //System.debug('@@ Errors encountered !');
+       
         for (Database.Error err : sr.getErrors()) {
             Core_Log_Entry.logEntryWithDetails('PRM_IntegrationOutboundMessageUtility', 'IPA', 'createOPIDRequestMessage', 'exception', 'Exception occurred while inserting Core_Integration_Outbound_Message__c', err.getMessage(), ' ', 'Core_Integration_Outbound_Message__c', ' ');
         }
     }
-    }} //TWC729-6800 EOL activities--End
+    }*/} //TWC729-6800 EOL activities--End
 
 private static List<String> getRecommendationIds(List<String> successfulRecordIds) {
     List<String> listOfRecommendationIds = new List<String>();
-	if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+	/*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
     for (Core_Integration_Outbound_Message__c outboundMsg : [SELECT Id, Core_Tags__c FROM Core_Integration_Outbound_Message__c WHERE Id IN :successfulRecordIds]) {
         if (outboundMsg.Id != null && outboundMsg.Core_Tags__c != null) {
             listOfRecommendationIds.add(outboundMsg.Core_Tags__c);
         }
     }
-}
+}*/
     return listOfRecommendationIds;
 }
 
@@ -91,7 +91,7 @@ private static List<String> getRecommendationIds(List<String> successfulRecordId
     
     public static String createPayload(String requestType, String accId, String cimId, String groupingMethod, String federationId ,string website){
         String payload = '';
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
         GeneratePayload genPayload = new GeneratePayload();
         
         genPayload.RegistryId = Integer.valueOf(System.label.PRM_Registry_Id);
@@ -101,7 +101,7 @@ private static List<String> getRecommendationIds(List<String> successfulRecordId
         genPayload.ApplicationSystemCustomerId = accId;
         genPayload.PriorityNbr = Integer.valueOf(System.label.PRM_Priority_Nbr);
         genPayload.RequesterId = federationId;
-        genPayload.MasterDataRecordID = cimId;
+        genPayload.MasterDataRecordID = cimId; 
         genPayload.PrimeCustomerRowId = '';
         genPayload.CustomerAggregrationMethodType = groupingMethod;
         genPayload.LineOfBusiness = '';
@@ -116,8 +116,7 @@ private static List<String> getRecommendationIds(List<String> successfulRecordId
         genPayload.Website = website;
         payload += JSON.serialize(genPayload);
         
-        //System.debug('@@ PAYLOAD : '+payload);
-        }
+        }*/
         return payload;
     }
     

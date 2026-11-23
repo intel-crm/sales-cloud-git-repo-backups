@@ -10,23 +10,12 @@
         <field>EMAIL</field>
     </columns>
     <columns>
-        <field>Contact.Core_Login_Id__c</field>
-    </columns>
-    <columns>
-        <field>Account.Core_Account_Tier__c</field>
-    </columns>
-    <columns>
         <field>Contact.Core_IPA_PartnerRole__c</field>
     </columns>
     <columns>
-        <field>Account.Core_IPA_Partner_Segment__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Partner_Alliance_Program_Member__c</field>
+        <field>Contact.Core_Login_Id__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</column>
             <columnToColumn>false</columnToColumn>
@@ -42,18 +31,11 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>EMAIL</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>mailinator,33mail,mailosaur,gmail</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Contact.Core_IPA_PartnerRole__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Cloud &amp; Comms Service Provider</value>
+            <operator>equals</operator>
+            <value>Service Provider</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

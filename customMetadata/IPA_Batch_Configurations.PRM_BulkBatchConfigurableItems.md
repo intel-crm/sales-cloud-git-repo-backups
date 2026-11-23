@@ -16,7 +16,7 @@
     </values>
     <values>
         <field>Record_Limit__c</field>
-        <value xsi:type="xsd:string">14</value>
+        <value xsi:type="xsd:string">100</value>
     </values>
     <values>
         <field>Stage__c</field>

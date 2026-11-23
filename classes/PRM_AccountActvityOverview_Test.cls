@@ -149,7 +149,7 @@ private class PRM_AccountActvityOverview_Test{
             pointsDataList.add(point); 
         }
         
-      	update pointsDataList;
+        update pointsDataList;
         Test.stopTest();
         PRM_AccountActvityOverview.displayPointsData(locId);
         PRM_AccountActvityOverview.displayPointsData(newPagAccount.Id);
@@ -207,7 +207,7 @@ private class PRM_AccountActvityOverview_Test{
                                         emailencodingkey='UTF-8', languagelocalekey='en_US', localesidkey='en_US',timezonesidkey='Europe/London');//, UserRoleId = r.id);*/
             test.startTest();
             //insert partnerUser;
-            createPortalUser(cont.Id, 'XYZ');
+            //createPortalUser(cont.Id, 'XYZ');
             test.stopTest();
             User u = [select id,IsPortalEnabled from user where email = 'XYZmrtestuser99@mailinator.com' LIMIT 1];
           //system.debug('partnerUser-->'+u.IsPortalEnabled);
@@ -332,7 +332,7 @@ private class PRM_AccountActvityOverview_Test{
         //update partnerUser;
        //system.debug('partnerUser2-->'+partnerUser.IsPortalEnabled);       
      //system.debug('newAccount-->'+newAccount);
-       createPortalUser(cont.Id, 'abc');
+       //createPortalUser(cont.Id, 'abc');
        Test.Stoptest();
        Test.setMock(HttpCalloutMock.class, new MockHttpResponseGenerator1());
        User portalUser = [select id,IsPortalEnabled, UserRole.PortalType, UserRole.PortalRole from user where email = 'abcmrtestuser99@mailinator.com' LIMIT 1];

@@ -1,9 +1,6 @@
-public with sharing class Core_Account_330_URL 
+public class Core_Account_330_URL 
 {
-      public static String dummyMethod1() {
-        return null;
-    }
-   /* private Account account;
+    private Account account;
 
     // Source var for the iFrame
     public String  accountId    { get; set; }
@@ -27,12 +24,14 @@ public with sharing class Core_Account_330_URL
     public Core_Account_330_URL(ApexPages.StandardController controller) 
     {
         account = (Account)controller.getRecord();
+        System.debug('account: ' + account); 
 
         account = [SELECT Id, Name, Owner.Id, Core_CPM_ID__c, Core_GEO__c 
                    FROM Account 
                    WHERE Id = :account.Id];
 
         Id userId = UserInfo.getUserId();
+        System.debug('#05 userId: ' + userId); 
 
         isAccessAllowed = accessCheck(userId);    
         if (!isAccessAllowed)       
@@ -56,11 +55,14 @@ public with sharing class Core_Account_330_URL
     
         // load the current record
         accountId   = account.Id;
+        System.debug('accountId: ' + accountId); 
 
         accountName = account.Name;
+        System.debug('accountName: ' + accountName); 
            
         cpmIdList = new List<String>();                
         cpmId     = account.Core_CPM_ID__c;
+        System.debug('cpmId: ' + cpmId); 
 
         // Check before the split, to avoid a NULL POINTER ERROR
         isNotBlankCpmId = !string.isblank(cpmId);
@@ -85,6 +87,9 @@ public with sharing class Core_Account_330_URL
         if (isNotBlankCpmId == FALSE)
             return;
 
+        System.debug('cpmId: ' + cpmId); 
+        System.debug('isMultipleCpmId: ' + isMultipleCpmId); 
+
         csMap = Core_Account330CustomSettings__c.getAll();            
         
         // Default value of the frame source
@@ -95,6 +100,9 @@ public with sharing class Core_Account_330_URL
     { 
         if (account == null)
             return false;
+
+        System.debug('#12 account.Owner.Id '     + account.Owner.Id);
+        System.debug('#13 UserInfo.getUserId() ' + userId);
     
         if (account.Owner.Id == userId)
             return true;
@@ -129,6 +137,7 @@ public with sharing class Core_Account_330_URL
         for (Core_Account330_GeoAccessGroups__c setting : accessMap.values())
             if (setting.name == geo)
             {
+                System.debug('#63 setting.Core_Group_Name__c: ' + setting.Core_Group_Name__c);
                 return setting.Core_Group_Name__c;
             }
         
@@ -138,18 +147,27 @@ public with sharing class Core_Account_330_URL
 
     public Boolean upWardTraversal(Set<Id> leafIds, Id currentUserId)
     {
+        System.debug('#10 currentUserId: ' + currentUserId);
+        System.debug('#11 leafIds: '  + leafIds);
 
         roleHierarchyAccessor.userIds = leafIds;
+        System.debug('#12 roleHierarchyAccessor.userIds: ' + roleHierarchyAccessor.userIds);
 
 
         while (roleHierarchyAccessor.RoleIds.size() > 0) {
+
+            System.debug('#13 roleHierarchyAccessor.RoleIds: '       + roleHierarchyAccessor.RoleIds);
+            System.debug('#14 roleHierarchyAccessor.ParentRoleIds: ' + roleHierarchyAccessor.ParentRoleIds);
         
             roleHierarchyAccessor.RoleIds = roleHierarchyAccessor.ParentRoleIds;
+            System.debug('#15 roleHierarchyAccessor.RoleIds: '       + roleHierarchyAccessor.RoleIds);
+            System.debug('#16 roleHierarchyAccessor.RoleUserIds: '   + roleHierarchyAccessor.RoleUserIds);
                         
             if (roleHierarchyAccessor.RoleUserIds.size() > 0) {        
                 for (Id roleUserId : roleHierarchyAccessor.RoleUserIds)
                     if (roleUserId == currentUserId)
                     {
+                        System.debug('MANAGER MATCH: ' + roleUserId);
                         return true;
                     }
             }
@@ -241,5 +259,5 @@ public with sharing class Core_Account_330_URL
                 iframeSource = cs.Core_Report_URL__c + cpmId;
         }
         return null;
-    }*/
+    } 
 }

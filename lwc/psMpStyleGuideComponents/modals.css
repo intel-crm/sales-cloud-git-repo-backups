@@ -1,0 +1,26 @@
+.hubspoke-container {
+    height: 100%;
+}
+
+c-core-intc-hub-spoke {
+    display: block;
+    margin: 1px 0;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+lightning-icon {
+    transform: translateY(-2px);
+}
+
+.ex3:hover {
+    background-color: var(--gray);
+}
+
+@media (max-width: 767px) {
+    c-core-intc-modal[data-name="modal1"] div[slot="body"] {
+        padding-top: 6rem;
+    }
+}

@@ -1,224 +1,99 @@
 @isTest(seeAllData = false)
 public class Core_DDR_Cancel_Product_Controller_Test
 {
-    
-    @IsTest
-    public static void testAuraMethod(){
-       
+    public static testmethod void DR_Product_test1() {
+        List<account> LstAcc = Core_Test_Utility.createAccount(2);
+        LstAcc[0].Core_Sales_Groups__c = 'GMP India Sales Group';
+        lstAcc[1].Core_Sales_Groups__c = 'GMP India Sales Group';
+        insert LstAcc;
         
-        List<Product2> lstProduct = new List<Product2>();
+        List<Core_Location_To_Approver_Group_Mapping__c> LocToAppGroup = Core_DDR_Utility.CreateLocationToApproverGroup();
         
-        //Product1 price book entry update scenario
-        Product2 product1 = new Product2();
-        product1.Name = 'Intel Atom® CE4275 Media Processor';
-        product1.IsActive = TRUE;
-        product1.Core_Design_Registration_Eligible_Ind__c = TRUE;
-        product1.Core_Sales_Visible_Flag__c = TRUE;
-        product1.Core_Partner_Visible_Ind__c  = TRUE;
-        product1.Core_Design_Registration_Eligible_Ind__c = true;
-        product1.IsActive = true;
-        lstProduct.add(product1);
+        List<Core_LogEntry_Switch__c> LogEntryCS = Core_DDR_Utility.CreateLogEntry();
         
-        Product2 product12 = new Product2();
-        product12.Name = 'Intel® Core™ i3-4020M Processor (3M Cache, 2.60 GHz)';
-        product12.IsActive = TRUE;
-        product12.Core_Design_Registration_Eligible_Ind__c = TRUE;
-        product12.Core_Sales_Visible_Flag__c = TRUE;
-        product12.Core_Partner_Visible_Ind__c  = TRUE;
-        product12.Core_Design_Registration_Eligible_Ind__c = true;
-        //product12.Core_Design_Registration_Eligible_Ind__c = false;
-        lstProduct.add(product12);
+        List<Product2> ProdLst = Core_DDR_Utility.CreateProduct(5);
+        insert ProdLst;
         
-        insert lstProduct;
+        List<PriceBook2> PriceBookLst = Core_DDR_Utility.CreatePriceBook2();
+        insert PriceBookLst;
+        
+        List<PriceBookEntry> PBELst = Core_DDR_Utility.CreatePriceBookEntry(5, ProdLst, PriceBookLst);
         
         List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
         DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
         insert DDRLst;
-        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-         Account testAcct = Core_Test_Utility.createAccount(1)[0];
-        testAcct.recordTypeId = accountRecordTypeIntel;
-        testAcct.Core_Sales_Groups__c = 'EMEA Sales Group';
-        testAcct.Industry = 'Telecommunications';
-        testAcct.Core_Sub_Industry__c = 'Diversified Telecommunications Services';
-        insert testAcct;
         
-        Opportunity testOpp = new Opportunity();
-        testOpp.CloseDate = System.Today().addDays(24);
-        testOpp.StageName = 'Qualify';
-        testOpp.Name = 'Test1';
-           
-        testOpp.AccountId = testAcct.Id;
-        insert testOpp;
+        List<Core_Design_Registration_Product__c> DRPLst = Core_DDR_Utility.CreateDRProduct(5, DDRLst, ProdLst);
+        insert DRPLst;
         
-        List<Product2> testProducts = Core_Test_Utility.createProduct(3);
-        insert testProducts;
+        for(Core_Design_Registration_Product__c DRP : DRPLst){
+            DRP.Core_Design_Product_Status_Nm__c = 'Approved';
+        }
+        update DRPLst;
         
-        List<PricebookEntry> testPBEs = Core_Test_Utility.createPriceBookEntry(3, testProducts, Test.getStandardPricebookId());
-        insert testPBEs;
-        
-        OpportunityLineItem testOppLineItem1;
-        testOppLineItem1 = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[0].Id,
-                                                  Description='Test 11', UnitPrice=11, Quantity=11, Core_Loss_Cancel_Details__c = 'Test Loss',
-                                                  Core_Loss_Cancel_Reason__c='Cancelled - Design Reg. Product Swap', Core_Status__c='Production Win' /*Core_Design_Registration_Product_Id__c = DRproducts.Id*/);
-        insert testOppLineItem1;
-        
-         Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
-            
-            DRproducts.Core_Design_Registration_Id__c = DDRLst[0].id;
-            DRproducts.Core_Product_Id__c = lstProduct[0].id;
-            DRproducts.Core_Target_Resale_Amt__c = 20;
-            DRproducts.Core_Full_Year_Qty__c = 3;
-            DRproducts.Core_Design_Product_Status_Nm__c = 'Pending';
-            DRproducts.Core_Opportunity_Product_Id__c = testOppLineItem1.Id;
-        	DRproducts.Core_Comment_Txt__c ='Test comment';
-
-        insert DRproducts;
-        //DRproducts.Core_External_Id__c ='ABCDFEGHIJKLMONPRSTUVXWZabcdefghihlmnopqrstuvwxyz16874';
-        //    update DRproducts;
-        
-        Core_Design_Registration_Product__c DRproducts1 = new Core_Design_Registration_Product__c();
-            
-            DRproducts1.Core_Design_Registration_Id__c = DDRLst[0].id;
-            DRproducts1.Core_Product_Id__c = lstProduct[1].id;
-            DRproducts1.Core_Target_Resale_Amt__c = 20;
-            DRproducts1.Core_Full_Year_Qty__c = 3;
-            DRproducts1.Core_Design_Product_Status_Nm__c = 'Pending';
-        DRproducts1.Core_Comment_Txt__c ='Test comment';
-        insert DRproducts1;
-        lstProduct[1].Core_Design_Registration_Eligible_Ind__c = false;
-        //lstProduct.add(product12);
-        
-        update lstProduct;
-        
-        
-        OpportunityLineItem testOppLineItem;
-        testOppLineItem = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[0].Id,
-                                                  Description='Test 11', UnitPrice=11, Quantity=11, Core_Loss_Cancel_Details__c = 'Test Loss',
-                                                  Core_Loss_Cancel_Reason__c='Cancelled - Design Reg. Product Swap', Core_Status__c='Production Win', Core_Design_Registration_Product_Id__c = DRproducts.Id);
-        insert testOppLineItem;
+        for(Core_Design_Registration__c Design: DDRLst){
+            Design.Core_Design_Registration_Status_Nm__c = 'Approved';
+            Design.Core_End_Customer_Account_Id__c = LstAcc[0].id;
+            Design.Core_Partner_Account_Id__c = LstAcc[1].id;
+        }        
+        update DDRLst;
         Test.startTest();
-        String result = Core_DDR_Cancel_Product_Controller.cancelProduct(DRproducts.Id);
-        String result1 = Core_DDR_Cancel_Product_Controller.cancelProduct(DRproducts1.Id);
-		
-        System.assertNotEquals(null,result);
-        Core_DDR_Cancel_Product_Controller.updateOppLineItem(DRproducts.Id);
-        Core_DDR_Cancel_Product_Controller.updatingComments(DRproducts.Id,'cancel');
-        Core_DDR_Cancel_Product_Controller.updatingComments(DRproducts1.Id,'cancel');
-		
-        Core_DDR_Cancel_Product_Controller.callAlertFunc = 'test';
         
-        Test.stopTest();
-    }
-
-    @IsTest
-    public static void testAuraMethod2(){
-        List<Product2> lstProduct = new List<Product2>();
+        List<Opportunity> OppList = Core_Test_Utility.Core_Opportunity(1);
+        OppList[0].Pricebook2Id = PriceBookLst[0].id;
+        OppList[0].AccountID = LstAcc[0].id;
+        OppList[0].Core_Intel_Platform__c = 'Bakerville';
+        insert OppList;
         
-        //Product1 price book entry update scenario
-        Product2 product1 = new Product2();
-        product1.Name = 'Intel Atom® CE4275 Media Processor';
-        product1.IsActive = true;
-        product1.Core_Design_Registration_Eligible_Ind__c = true;
-        product1.Core_Sales_Visible_Flag__c = TRUE;
-        product1.Core_Partner_Visible_Ind__c  = TRUE;
-        product1.IsActive = true;
-        lstProduct.add(product1);
+        OpportunityLineItem tempOppLI = new OpportunityLineItem(OpportunityId = OppList[0].id, Core_Design_Registration_Product_Id__c = DRPLst[0].Id, UnitPrice = 5, Quantity = 4, Product2ID = ProdLst[0].id);
+        insert tempOppLI;
         
-        Product2 product12 = new Product2();
-        product12.Name = 'Intel® Core™ i3-4020M Processor (3M Cache, 2.60 GHz)';
-        product12.IsActive = TRUE;
-        product12.Core_Design_Registration_Eligible_Ind__c = true;
-        product12.Core_Sales_Visible_Flag__c = TRUE;
-        product12.Core_Partner_Visible_Ind__c  = TRUE;
-        product12.IsActive = true;
-        lstProduct.add(product12);
+        OpportunityLineItem tempOppLI2 = new OpportunityLineItem(OpportunityId = OppList[0].id, Core_Design_Registration_Product_Id__c = DRPLst[1].Id, UnitPrice = 5, Quantity = 4, Product2ID = ProdLst[1].id);
+        insert tempOppLI2;  
         
-        Product2 product3 = new Product2();
-        product3.Name = 'Intel® Core™ i3-4020M Processor (3M Cache, 2.60 GHz)';
-        product3.IsActive = TRUE;
-        product3.Core_Design_Registration_Eligible_Ind__c = true;
-        product3.Core_Sales_Visible_Flag__c = TRUE;
-        product3.Core_Partner_Visible_Ind__c  = TRUE;
-       product12.Core_Design_Registration_Eligible_Ind__c = true;
-        lstProduct.add(product3);
+        tempOppLI2.Core_Status__c = 'Production Win';
+        update tempOppLI2;      
         
-        insert lstProduct;
+        Core_Design_Registration_Product__c DRP = new Core_Design_Registration_Product__c();
+        DRP.id = DRPLst[0].id;
+        update DRP;
         
-        List<Core_Design_Registration__c> DDRLst = Core_DDR_Utility.createDDR(5);
-        DDRLst[0].Core_Product_Group_Nm__c = 'Embedded/IOT';
-        insert DDRLst;
-        Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        Account testAcct = Core_Test_Utility.createAccount(1)[0];
-        testAcct.recordTypeId = accountRecordTypeIntel;
-        testAcct.Core_Sales_Groups__c = 'Americas US Sales Group';
-        testAcct.Industry = 'Telecommunications';
-        testAcct.Core_Sub_Industry__c = 'Diversified Telecommunications Services';
-        insert testAcct;
+        Core_Design_Registration_Product__c DRP1 = new Core_Design_Registration_Product__c();
+        DRP1.id = DRPLst[1].id;
+        update DRP1;
         
-        List<Product2> testProducts = Core_Test_Utility.createProduct(3);
-        insert testProducts;
+        Core_Design_Registration_Product__c DRP2 = new Core_Design_Registration_Product__c();
+        DRP1.Core_Design_Product_Status_Nm__c = 'Pending';
+        update DRP1;
         
-        List<PricebookEntry> testPBEs = Core_Test_Utility.createPriceBookEntry(3, testProducts, Test.getStandardPricebookId());
-        insert testPBEs;
-        Opportunity testOpp = new Opportunity();
-        testOpp.CloseDate = System.Today().addDays(24);
-        testOpp.StageName = 'Qualify';
-        testOpp.Name = 'Test1';
-           
-        testOpp.AccountId = testAcct.Id;
-        insert testOpp;
+        ApexPages.StandardController sc = new ApexPages.StandardController(DRP1);
+        Core_DDR_Cancel_Product_Controller CancelDDR_Product = new Core_DDR_Cancel_Product_Controller(Sc);
+        PageReference pageRef = Page.Core_DDR_Cancel_Product; 
+        pageRef.getParameters().put('id', DRP1.id);
+        Test.setCurrentPage(pageRef);       
+        CancelDDR_Product.cancelDDRProduct();
         
-        OpportunityLineItem testOppLineItem1;
-        testOppLineItem1 = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[0].Id,
-                                                  Description='Test 11', UnitPrice=11, Quantity=11, Core_Loss_Cancel_Details__c = 'Test Loss',
-                                                  Core_Loss_Cancel_Reason__c='Cancelled - Design Reg. Product Swap', Core_Status__c='Production Win' /*Core_Design_Registration_Product_Id__c = DRproducts.Id*/);
-        insert testOppLineItem1;
+        ApexPages.StandardController sc1 = new ApexPages.StandardController(DRP1);
+        Core_DDR_Cancel_Product_Controller CancelDDR_Product1 = new Core_DDR_Cancel_Product_Controller(Sc);
+        PageReference pageRef1 = Page.Core_DDR_Cancel_Product; 
+        pageRef1.getParameters().put('id', DRP1.id);
+        Test.setCurrentPage(pageRef1);       
+        CancelDDR_Product.cancelDDRProduct();
         
-         list<Core_Design_Registration_Product__c> DRproductslst = new list<Core_Design_Registration_Product__c>();
-            Core_Design_Registration_Product__c DRproducts = new Core_Design_Registration_Product__c();
-            DRproducts.Core_Design_Registration_Id__c = DDRLst[0].id;
-            DRproducts.Core_Product_Id__c = lstProduct[0].id;
-            DRproducts.Core_Target_Resale_Amt__c = 20;
-            DRproducts.Core_Full_Year_Qty__c = 3;
-            DRproducts.Core_Design_Product_Status_Nm__c = 'Approved';
-        	DRproducts.Core_Comment_Txt__c = 'abcd';
-        	DRproductslst.add(DRproducts);
-            Core_Design_Registration_Product__c DRproducts1 = new Core_Design_Registration_Product__c();
-       		DRproducts1.Core_Design_Registration_Id__c = DDRLst[0].id;
-            DRproducts1.Core_Product_Id__c = lstProduct[2].id;
-            DRproducts1.Core_Target_Resale_Amt__c = 20;
-            DRproducts1.Core_Full_Year_Qty__c = 3;
-            DRproducts1.Core_Design_Product_Status_Nm__c = 'Approved';
-       		DRproductslst.add(DRproducts1);
-        Core_Design_Registration_Product__c DRproducts2 = new Core_Design_Registration_Product__c();
-       		DRproducts2.Core_Design_Registration_Id__c = DDRLst[0].id;
-            DRproducts2.Core_Product_Id__c = lstProduct[2].id;
-            DRproducts2.Core_Target_Resale_Amt__c = 20;
-            DRproducts2.Core_Full_Year_Qty__c = 3;
-            DRproducts2.Core_Design_Product_Status_Nm__c = 'Approved';
-        	DRproducts2.Core_Opportunity_Product_Id__c = testOppLineItem1.Id;
-       		DRproductslst.add(DRproducts2);
+        ApexPages.StandardController sc2 = new ApexPages.StandardController(DRP);
+        Core_DDR_Cancel_Product_Controller CancelDDR_Product2 = new Core_DDR_Cancel_Product_Controller(Sc2);
+        PageReference pageRef2 = Page.Core_DDR_Cancel_Product; 
+        pageRef2.getParameters().put('id', DRP.id);
+        Test.setCurrentPage(pageRef2);
+        CancelDDR_Product2.cancelDDRProduct();
         
-        	insert DRproductslst;
-        //insert DRproducts;
-        //DRproducts.Core_External_Id__c ='ABCDFEGHIJKLMONPRSTUVXWZabcdefghihlmnopqrstuvwxyz16874';
-        //    update DRproducts;
+        ApexPages.StandardController sc3 = new ApexPages.StandardController(DRP2);
+        Core_DDR_Cancel_Product_Controller CancelDDR_Product3 = new Core_DDR_Cancel_Product_Controller(Sc2);
+        PageReference pageRef3 = Page.Core_DDR_Cancel_Product; 
+        pageRef3.getParameters().put('id', 'DRP2.Core_Design_Product_Status_Nm__c');
+        Test.setCurrentPage(pageRef3);
+        CancelDDR_Product3.cancelDDRProduct();
         
-         
-        
-        OpportunityLineItem testOppLineItem;
-        testOppLineItem = new OpportunityLineItem(OpportunityId=testOpp.Id, PricebookEntryId=testPBEs[0].Id,
-                                                  Description='Test 11', UnitPrice=11, Quantity=11, Core_Loss_Cancel_Details__c = 'Test Loss',
-                                                  Core_Loss_Cancel_Reason__c='Cancelled - Design Reg. Product Swap', Core_Status__c='Production Win', Core_Design_Registration_Product_Id__c = DRproductslst[0].Id);
-        insert testOppLineItem;
-        Test.startTest();
-        String result = Core_DDR_Cancel_Product_Controller.cancelProduct(DRproductslst[0].Id);
-        String result1 = Core_DDR_Cancel_Product_Controller.cancelProduct(DRproductslst[1].Id);
-        String result2 = Core_DDR_Cancel_Product_Controller.cancelProduct(DRproductslst[2].Id);
-        //System.assertNotEquals(null,result);
-        Core_DDR_Cancel_Product_Controller.updateOppLineItem(DRproductslst[0].Id);
-        Core_DDR_Cancel_Product_Controller.updatingComments(DRproductslst[0].Id,'cancel');
-        Test.stopTest();
-        //System.assertNotEquals(null,result);
+        test.stoptest();
     }
 }

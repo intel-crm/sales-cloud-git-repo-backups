@@ -154,9 +154,8 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
     <fields>
-        <fullName>Core_Integration_Direction_Nm__c</fullName>
-        <description>Specifies the Integration Direction if it is an Outbound or an Inbound Integration</description>
-        <label>Integration Direction</label>
+        <fullName>Core_Inbound_Status__c</fullName>
+        <label>Inbound Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
@@ -165,21 +164,20 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Outbound</fullName>
+                    <fullName>Successful</fullName>
                     <default>false</default>
-                    <label>Outbound</label>
+                    <label>Successful</label>
                 </value>
                 <value>
-                    <fullName>Inbound</fullName>
+                    <fullName>Failed</fullName>
                     <default>false</default>
-                    <label>Inbound</label>
+                    <label>Failed</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
         <fullName>Core_Integration_Type__c</fullName>
-        <description>Stores the program name associated with the corresponding CDB AI Integration</description>
         <externalId>false</externalId>
         <label>Integration Type</label>
         <length>50</length>
@@ -190,7 +188,6 @@
     </fields>
     <fields>
         <fullName>Core_Log_Status_Nm__c</fullName>
-        <description>Stores the Integration Log status such as Successful and Failed</description>
         <label>Log Status</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -200,9 +197,9 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Pending</fullName>
+                    <fullName>Successful</fullName>
                     <default>false</default>
-                    <label>Pending</label>
+                    <label>Successful</label>
                 </value>
                 <value>
                     <fullName>Failed</fullName>
@@ -210,27 +207,35 @@
                     <label>Failed</label>
                 </value>
                 <value>
-                    <fullName>Successful</fullName>
+                    <fullName>Pending</fullName>
                     <default>false</default>
-                    <label>Successful</label>
+                    <label>Pending</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
     </fields>
     <fields>
-        <fullName>Core_Record_Id__c</fullName>
-        <description>Stores the Record Id of the corresponding object that is associated with the CDB API callout. For MDF, this field stores a composite value of Claim Id and the Review Id, and for IPA, this field stores the Registration Id</description>
-        <externalId>true</externalId>
-        <label>Record Id</label>
-        <length>255</length>
+        <fullName>Core_Program_Name__c</fullName>
+        <externalId>false</externalId>
+        <label>Program Name</label>
+        <length>100</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Retry_Number_Nbr__c</fullName>
-        <description>Stores the Retry Counter value in case an outbound request fails. Retry Counter will be incremented every time a request to CDB fails.</description>
+        <fullName>Core_Record_Id__c</fullName>
+        <externalId>true</externalId>
+        <label>Record Id</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Core_Retry_Number__c</fullName>
         <externalId>false</externalId>
         <label>Retry Number</label>
         <precision>18</precision>
@@ -242,7 +247,6 @@
     </fields>
     <fields>
         <fullName>Core_Status_Code__c</fullName>
-        <description>Stores the status code associated with the CDB Integration Acknowledgement response</description>
         <externalId>false</externalId>
         <label>Status Code</label>
         <length>20</length>
@@ -253,7 +257,6 @@
     </fields>
     <fields>
         <fullName>Core_Status_Message__c</fullName>
-        <description>Stores the status message associated with the CDB Integration Acknowledgement response</description>
         <label>Status Message</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -261,8 +264,8 @@
     </fields>
     <label>CDB Integration Log</label>
     <nameField>
-        <displayFormat>CDB-{000}</displayFormat>
-        <label>CDB Integration Log Name</label>
+        <displayFormat>{000000}</displayFormat>
+        <label>Name</label>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>CDB Integration Logs</pluralLabel>

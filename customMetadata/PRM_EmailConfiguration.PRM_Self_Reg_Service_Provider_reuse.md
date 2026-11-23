@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">Points View,Employee</value>
+        <value xsi:type="xsd:string">CIP General View,Partner Marketing Studio,Partner University,Resource &amp; Design Center for Secure Content,Points View</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>

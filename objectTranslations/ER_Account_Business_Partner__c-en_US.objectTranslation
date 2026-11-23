@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account Business Partner</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account Business Partners</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Master File Grouping --></label>
+        <name>Customer_Master_File_Grouping__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Account Group --></label>
+        <name>ER_Account_Group__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Customer Master File --></label>
+        <name>ER_CMFGroupAssociation__c</name>
+        <relationshipLabel><!-- Account Business Partners --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Account Business Partner Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

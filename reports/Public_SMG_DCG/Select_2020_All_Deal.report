@@ -68,7 +68,7 @@
         <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Combined_Solution_Detail__c</field>
+        <field>Opportunity.Core_Solution_Detail__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
@@ -83,7 +83,7 @@
         <field>Product2.Core_Code_Name__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -117,9 +117,6 @@
     </columns>
     <columns>
         <field>OWNER_MANAGER</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Technical_Owner__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner_Manager__c</field>
@@ -178,11 +175,8 @@
     <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
-    </columns>
     <filter>
-        <booleanFilter>(((1 and 2 and 3 and 9 and (4 or 5 or 6)) or (1 and 2 and (4 or 5 or 6) and 8) and 7)) AND 10</booleanFilter>
+        <booleanFilter>(((((1 and 2 AND 3 and 4 and 5 and (6 or 7 or 8 or 9)))))) AND 10</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -196,6 +190,20 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>deal</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Area__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>dcg compute deal $,enterprise,cloud new,comms infra</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Exclude_From_KPIs__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Commissionable__c</column>
@@ -223,7 +231,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>select</value>
+            <value>select Solutions - PRC Select,select solutions - prc isv,select</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Solution_Detail__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>includes</operator>
+            <value>Select Solutions - PRC Select</value>
         </criteriaItems>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
@@ -231,27 +246,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>batch</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Commissionable__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>no</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Distribution,batch,WWT,CDW,Insight,Shi,Redapt,ONX,Presido,ePlus,Zonex,Prosys,SiriUSA,PC Connections,Logicalis,Government Acquisitions,FusionStorm,Iron Bow,CompuCom,United Data,vmware,Sas Institute,SAP,red hat,national</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Combined_Solution_Detail__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>speed select</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -295,6 +289,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

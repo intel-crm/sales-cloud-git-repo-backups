@@ -3,6 +3,10 @@
     <label>Distributor to Distributor</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">Distributor</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Distributor</value>
     </values>

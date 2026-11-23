@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalDataSource xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customConfiguration>{&quot;inlineCountEnabled&quot;:&quot;false&quot;,&quot;requestCompression&quot;:&quot;true&quot;,&quot;pagination&quot;:&quot;CLIENT&quot;,&quot;noIdMapping&quot;:&quot;false&quot;,&quot;format&quot;:&quot;ATOM&quot;,&quot;searchFunc&quot;:&quot;&quot;,&quot;compatibility&quot;:&quot;DEFAULT&quot;,&quot;timeout&quot;:&quot;120&quot;,&quot;searchEnabled&quot;:&quot;true&quot;}</customConfiguration>
+    <customHttpHeaders>
+        <headerFieldName>api_key</headerFieldName>
+        <headerFieldValue>&apos;HZTfrL6YpSvKZFMTj2JkkHR6ZrLyaIJp&apos;</headerFieldValue>
+        <isActive>true</isActive>
+    </customHttpHeaders>
+    <customHttpHeaders>
+        <headerFieldName>apikey</headerFieldName>
+        <headerFieldValue>&apos;c800f38e-ce81-4dd0-85ad-5369c5a6d933&apos;</headerFieldValue>
+        <isActive>true</isActive>
+    </customHttpHeaders>
+    <endpoint>https://apis-stage.intel.com/m2r/v1/non-revenue-sales</endpoint>
+    <isWritable>false</isWritable>
+    <label>Apigee_poc</label>
+    <principalType>Anonymous</principalType>
+    <protocol>NoAuthentication</protocol>
+    <type>OData</type>
+</ExternalDataSource>

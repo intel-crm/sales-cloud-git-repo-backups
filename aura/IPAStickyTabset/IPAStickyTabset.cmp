@@ -33,7 +33,7 @@
             <div aura:id="navigation" class="linkList">
                 <div aura:id="inner-link-list" class="innerLinkList">
                     <aura:iteration items="{!v.allTabLabels}" var="label" indexVar="i">
-                        <button aura:id="navItem" href="{!'#StickyTab' + i}" data-index="{!i}" onclick="{!c.scrollToTabBody}"
+                        <button  aura:id="navItem" href="{!'#StickyTab' + i}" data-index="{!i}" onclick="{!c.scrollToTabBody}"
                             class="{! (v.currentTabIndex == i ? 'active': '') + ' linkItem pointer' }">
                             {!label}
                         </button>

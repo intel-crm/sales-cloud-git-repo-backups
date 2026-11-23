@@ -107,6 +107,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURRENT</interval>
+        <endDate>2026-08-07</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-08-07</startDate>
     </timeFrameFilter>
 </Report>

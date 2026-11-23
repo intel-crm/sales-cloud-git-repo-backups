@@ -8,77 +8,54 @@
                                                                       Core_MDF_ofPagesEligible__c:'',
                                                                       Core_MDF_pagespayingfor__c:''}"></aura:attribute>	
     <aura:attribute type="boolean" name="renderPrintQuestions" default = "FALSE" />
-    <aura:attribute type="boolean" name="hideCompetitiveQuest" default = "TRUE" />
-    <aura:attribute type="boolean" name="isOpalActivity" default = "FALSE" />
-    <aura:attribute type="boolean" name="renderGovtQuestions" default = "FALSE" />
-    <aura:attribute type="boolean" name="renderTechExplorationQuestSection" default = "FALSE" />
+	<aura:attribute type="boolean" name="renderGovtQuestions" default = "FALSE" />
     <aura:registerEvent name="dynamicQuestionEvt" type="c:Core_MDF_DynamicQuestionEvent"/>
     <aura:attribute name="disabled" type="Boolean" default="false"
                     description="Conditionally disabling the questions functionality"/>
-    <aura:attribute name="recordtypeDeveloperName" type="String" default="" 
-                    description="This attribute holds the record type developer name"/>
-    <aura:handler name="init" value="{!this}" action="{!c.doinit}"/>
     
-    <!--Select Component For Extra Questions for Event Govt Questions-->
     <aura:if isTrue = "{!v.renderGovtQuestions}">
        	<div class="slds-card">
 			<div class="slds-p-around_large">
                 <lightning:layout horizontalAlign="spread" multipleRows="true">
-					<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
-					 <!--	US914477:Checked added to hide competitive questions for both ccf/dcf events -->
-                     <aura:if isTrue= "{!v.hideCompetitiveQuest}">
-					<lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
-                            <lightning:select aura:id="competitiveElements" value="{!v.newPFRq.Core_MDF_Competitive_Elements__c}" onchange="{!c.loadQuestion}" name="Competitive Elements" label="{!$Label.c.Core_MDF_Competitive_Element}" disabled = "{!v.disabled}" class="{!if(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,'elementLabel','')}">
-                            <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
-                            <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                       <!-- <lightning:input aura:id="NewForm" type="checkbox" label="{!$Label.c.Core_MDF_Competitive_Element}" name="Competitive Elements" checked="{!v.newPFRq.Core_MDF_Competitive_Elements__c}" onchange="{!c.loadQuestion}"/> -->
+                        <lightning:select value="{!v.newPFRq.Core_MDF_Competitive_Elements__c}" onchange="{!c.loadQuestion}" name="Competitive Elements" label="{!$Label.c.Core_MDF_Competitive_Element}" disabled = "{!v.disabled}">
+                            <option value="{!$Label.c.Core_MDF_DQNo}">{!$Label.c.Core_MDF_DQNo}</option>
+                            <option value="{!$Label.c.Core_MDF_DQYes}">{!$Label.c.Core_MDF_DQYes}</option>
                         </lightning:select>
-                    </lightning:layoutItem>
-					  </aura:if>
-                    <lightning:layoutItem aura:id="govtNexus" padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
-                        <lightning:select value="{!v.newPFRq.Core_MDF_Government_Nexus__c}" onchange="{!c.loadQuestion}" name="Competitive Elements" label="{!$Label.c.Core_MDF_Gov_Nexus}" disabled = "{!v.disabled}" class="{!if(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,'elementLabel','')}">
-                                <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
-                                <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
+                        <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+					</lightning:layoutItem>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+						<!--<lightning:input aura:id="NewForm" type="checkbox" label="{!$Label.c.Core_MDF_Gov_Nexus}" name="Government Nexus" checked="{!v.newPFRq.Core_MDF_Government_Nexus__c}" onchange="{!c.loadQuestion}"/> -->
+                        <lightning:select value="{!v.newPFRq.Core_MDF_Government_Nexus__c}" onchange="{!c.loadQuestion}" name="Competitive Elements" label="{!$Label.c.Core_MDF_Gov_Nexus}" disabled = "{!v.disabled}">
+                            <option value="{!$Label.c.Core_MDF_DQNo}">{!$Label.c.Core_MDF_DQNo}</option>
+                            <option value="{!$Label.c.Core_MDF_DQYes}">{!$Label.c.Core_MDF_DQYes}</option>
                         </lightning:select>
 					</lightning:layoutItem>
-                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
-                    </lightning:layout>
-            </div>
-        </div>
-    </aura:if>
-     <!--Select Component For Extra Questions for Print Questions-->
-    <aura:if isTrue = "{!v.renderPrintQuestions}">
-    <div class="slds-card">
-        <div class="slds-p-around_large">         
-            <lightning:layout horizontalAlign="spread" multipleRows="true">
-            <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
-            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
-                <lightning:input aura:id="pagesEligible" type="number" label="{!$Label.c.Core_MDF_ofPagesEligible}" name="# of pages eligible" value="{!v.newPFRq.Core_MDF_ofPagesEligible__c}" maxlength="10" onchange="{!c.loadQuestion}" required="true" min="0" step="any" disabled = "{!v.disabled}"/>
-            </lightning:layoutItem>
-            <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
-                <lightning:input aura:id="pagesPaying" type="number" label="{!$Label.c.Core_MDF_pagespayingfor}" name="# of pages paying for" value="{!v.newPFRq.Core_MDF_pagespayingfor__c}" maxlength="10" onchange="{!c.loadQuestion}" required="true" min="0" step="any" disabled = "{!v.disabled}"/>
-            </lightning:layoutItem>
-                <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
-            </lightning:layout>
-        
-        </div>
-    </div>				
-    </aura:if>
-    <!--Select Component For Extra Questions for Tech  Questions-->
-    <aura:if isTrue = "{!v.renderTechExplorationQuestSection}">
-       	<div class="slds-card">
-			<div class="slds-p-around_large">
-                <lightning:layout horizontalAlign="spread" multipleRows="true">
-					<lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
-					<lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5">
-                        <lightning:select value="{!v.newPFRq.Core_MDF_Government_Nexus__c}" onchange="{!c.loadQuestion}" name="Tech Exploration" label="{!$Label.c.Core_MDF_Tech_Exploration_Question}" disabled = "{!v.disabled}" class="{!if(v.recordtypeDeveloperName == $Label.c.Core_MDF_IPA_RecordType,'elementLabel','')}">
-                            <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
-                            <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
-                        </lightning:select>
-					</lightning:layoutItem>
-                    <lightning:layoutItem padding="around-small" flexibility="grow" size="5" mediumDeviceSize="5" largeDeviceSize="5"></lightning:layoutItem>
-                    <lightning:layoutItem padding="around-small" flexibility="grow" size="1" mediumDeviceSize="1" largeDeviceSize="1"></lightning:layoutItem>
+                      <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
                   </lightning:layout>
             </div>
         </div>
-    </aura:if>
+        </aura:if>
+    
+         <aura:if isTrue = "{!v.renderPrintQuestions}">
+            <div class="slds-card">
+				<div class="slds-p-around_large">                  
+                 
+                  <lightning:layout horizontalAlign="spread" multipleRows="true">
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+                        <lightning:input aura:id="NewForm" type="number" label="{!$Label.c.Core_MDF_ofPagesEligible}" name="# of pages eligible" value="{!v.newPFRq.Core_MDF_ofPagesEligible__c}" maxlength="10" onchange="{!c.loadQuestion}" required="true" min="0" step="any"/>
+					</lightning:layoutItem>
+					<lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3">
+						<lightning:input aura:id="NewForm" type="number" label="{!$Label.c.Core_MDF_pagespayingfor}" name="# of pages paying for" value="{!v.newPFRq.Core_MDF_pagespayingfor__c}" maxlength="10" onchange="{!c.loadQuestion}" required="true" min="0" step="any"/>
+					</lightning:layoutItem>
+                      <lightning:layoutItem padding="around-small" flexibility="grow" size="3" mediumDeviceSize="3" largeDeviceSize="3"></lightning:layoutItem>
+                  </lightning:layout>
+                
+              </div>
+            </div>				
+         </aura:if>
+     
 </aura:component>

@@ -1,0 +1,211 @@
+<template>
+    <div class="slds-p-around_large">
+    <h1 class="slds-p-bottom_medium">Intel Marketplace Styleguide</h1>
+    <h4 class="slds-p-bottom_x-small">Developer Guide to Components, Lightning Web Components, and Global Styles</h4>
+    <h5 class="slds-p-bottom_medium">Marketplace Version 1.1</h5>
+    <p>Uses <a href="https://lightningdesignsystem.com/getting-started/">Lightning Design System</a> as a base framework.</p>
+    <hr style="margin: 1rem 0;">
+    <ul class="slds-p-left_small">
+        <li><span class="coming-soon"></span><span class="wip"></span> LWC Work in Progress</li>
+        <li class="deprecated slds-m-vertical_xx-small"> Component Deprecated</li>
+        <div class="finished" style="display: inline-block;"><span class="slds-m-left_small">Finished</span></div>
+    </ul>
+    <table class="sdls-p-around_large">
+        <thead></thead>
+        <tbody>
+
+            <tr class="heading"><td colspan="6"><h4 class="slds-p-bottom_medium">Global Stylesheets</h4></td></tr>
+            <tr class="">
+                <th>Status</th>
+                <th>Component Type</th>
+                <th>Aura Component</th>
+                <th>Web Component</th>
+                <th>Salesforce Component (ootb)</th>
+                <th>Global Stylesheet File</th>
+            </tr>
+            <!-- Colors -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">colors<span>color tokens (ie. --blue, --digitalBlue)</span></div></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="">colors.css</td>
+            </tr>
+
+            <!-- Typography -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">typography<span>Specifies fonts... Intel Clear Pro, etc.</span></div></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="">typography.css</td>
+            </tr>
+
+            <!-- Headings -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">headings<span>h1, h2, ...</span></div></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="">headings.css</td>
+            </tr>
+
+            <!-- Variables -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">variables<span>misc variables and tokens (ie. recode50, zIndex, ...)</span></div></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="">variables.css</td>
+            </tr>
+
+            <!-- Responsive -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">responsive<span>All things responsive, including variables for breakpoints.</span></div></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td class="">responsive.css</td>
+            </tr>
+
+            <tr class="heading"><td colspan="6"><h4 class="slds-p-top_x-large slds-p-bottom_medium">Components with Shared Global Styles</h4></td></tr>
+
+            <!-- Alerts -->
+            <tr class="finished">
+                <td class=""></td>
+                <td>alerts</td>
+                <td class="na"></td>
+                <td class="na"></td>
+                <td><a href="https://developer.salesforce.com/docs/component-library/documentation/lwc/lwc.use_toast">native Toast</a></td>
+                <td class="">alerts.css</td>
+            </tr>
+
+            <!-- Buttons -->
+            <tr class="finished">
+                <td class=""></td>
+                <td>buttons</td>
+                <td class="deprecated">ISG_Button</td>
+                <td class="na"></td>
+                <td><a href="https://developer.salesforce.com/docs/component-library/bundle/lightning-button/example">lightning-button</a></td>
+                <td class="wip">buttons.css</td>
+            </tr>
+
+            <!-- Links -->
+            <tr class="">
+                <td class=""></td>
+                <td>links</td>
+                <td>ISGLink</td>
+                <td class="wip">psMpLink</td>
+                <td class="na"></td>
+                <td class="">links.css</td>
+            </tr>
+
+            <!-- Accordion -->
+            <tr class="">
+                <td class=""></td>
+                <td>accordion</td>
+                <td>ISGAccordion</td>
+                <td class="wip">psMpAccordion</td>
+                <td>lightning-accordion</td>
+                <td class="wip">accordions.css</td>
+            </tr>
+
+            <!-- Icon -->
+            <tr class="">
+                <td class=""></td>
+                <td>icon</td>
+                <td>ISGIcon</td>
+                <td class="wip">psMpIcon</td>
+                <td>lightning-icon</td>
+                <td class="wip">icons.css</td>
+            </tr>
+
+            <tr class="heading"><td colspan="6"><h4 class="slds-p-top_x-large slds-p-bottom_medium">Components Only (no global stylesheet file)</h4></td></tr>
+
+            <!-- FAQ -->
+            <tr class="">
+                <td class=""></td>
+                <td>faq</td>
+                <td>ISGFaq</td>
+                <td class="wip">psMpFAQ</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- Marquee -->
+            <tr class="">
+                <td class=""></td>
+                <td>marquee</td>
+                <td>ISGMarqueeCombined</td>
+                <td class="wip">psMpMarquee</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- L2 Search -->
+            <tr class="">
+                <td class=""></td>
+                <td>L2 search functionality</td>
+                <td class="deprecated">ISGSearchParams</td>
+                <td class="wip">psMpL2Search</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- Redux Store -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">redux store<span>Redux Store, actions, reducers, middleware, utils</span></div></td>
+                <td>
+                    <div class="deprecated">ISGActionsCompareTray</div>
+                    <div class="deprecated">ISGActionsSearch</div>
+                    <div class="deprecated">ISGActionsSettings</div>
+                    <div class="">ISGRedux</div>
+                    <div class="deprecated">ISGReducerCompareTray</div>
+                    <div class="deprecated">ISGReducerSearch</div>
+                    <div class="deprecated">ISGReducerSettings</div>
+                </td>
+                <td class="">psMpReduxStore<br/>reduxStore<br/>ISGRedux<br/>psMpReduxConnector</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- Simple Content Card -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">simple content card<span>Card with image/text/button cta</span></div></td>
+                <td class="na"></td>
+                <td class="">psMpSimpleContentCard</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- Tabs -->
+            <tr class="">
+                <td class=""></td>
+                <td>tabs</td>
+                <td>ISGTabs</td>
+                <td class="wip">psMpTabs</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+
+            <!-- Text Block -->
+            <tr class="finished">
+                <td class=""></td>
+                <td><div class="help">text block<span>Dynamic text block with Show More / Show Less</span></div></td>
+                <td class="na"></td>
+                <td class="">psMpTextBlock</td>
+                <td class="na"></td>
+                <td class="na"></td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+</template>

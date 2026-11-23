@@ -9,7 +9,7 @@
                         <valueListItems>
                             <value>PRM_Registration_Request__c.Create_Lead</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND (2 OR 3) AND 4 AND 5</booleanFilter>
+                                <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
                                 <criteria>
                                     <leftValue>{!Record.PRM_Record_Type_Name_rpt_txt__c}</leftValue>
                                     <operator>CONTAINS</operator>
@@ -29,11 +29,6 @@
                                     <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
                                     <operator>NE</operator>
                                 </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Source__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>DZP</rightValue>
-                                </criteria>
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
@@ -47,87 +42,18 @@
                             </visibilityRule>
                         </valueListItems>
                         <valueListItems>
-                            <value>PRM_Registration_Request__c.Re_Validate</value>
-                            <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3 AND 4 AND NOT(5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Status__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>New</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Salesforce_ID__r.Name}</leftValue>
-                                    <operator>EQUAL</operator>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Intel Partner Alliance</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>true</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Sales Rep</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Sales Ops</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>IPS Agent Enhanced</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>IPS Support Org Admin</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Production Support-IPS</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>A&amp;E User</rightValue>
-                                </criteria>
-                            </visibilityRule>
-                        </valueListItems>
-                        <valueListItems>
                             <value>PRM_Registration_Request__c.ER_Approve</value>
                             <visibilityRule>
-                                <booleanFilter>(1 OR 2) AND 3 AND 4 AND 5</booleanFilter>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Status__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>New</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Status__c}</leftValue>
-                                    <operator>EQUAL</operator>
-                                    <rightValue>Pending</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.ER_Entitlement_Detail_Name__c}</leftValue>
-                                    <operator>NE</operator>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!Record.PRM_Source__c}</leftValue>
-                                    <operator>NE</operator>
-                                    <rightValue>IPA - Portal</rightValue>
-                                </criteria>
+                                <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.ER_A_E_Approve}</leftValue>
                                     <operator>EQUAL</operator>
                                     <rightValue>true</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.PRM_Status__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>New</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -211,7 +137,17 @@
                         <valueListItems>
                             <value>PRM_Registration_Request__c.Request_Company_Document</value>
                             <visibilityRule>
-                                <booleanFilter>1 AND 2 AND 3 AND 4 AND NOT(5 OR 6 OR 7 OR 8 OR 9 OR 10)</booleanFilter>
+                                <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>Intel Partner Alliance</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                                    <operator>EQUAL</operator>
+                                    <rightValue>true</rightValue>
+                                </criteria>
                                 <criteria>
                                     <leftValue>{!Record.PRM_Status__c}</leftValue>
                                     <operator>EQUAL</operator>
@@ -221,6 +157,12 @@
                                     <leftValue>{!Record.PRM_Salesforce_ID__r.Name}</leftValue>
                                     <operator>EQUAL</operator>
                                 </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>PRM_Registration_Request__c.Re_Validate</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2 AND 3</booleanFilter>
                                 <criteria>
                                     <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
                                     <operator>EQUAL</operator>
@@ -232,34 +174,9 @@
                                     <rightValue>Intel Partner Alliance</rightValue>
                                 </criteria>
                                 <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Sales Rep</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Sales Ops</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>IPS Agent Enhanced</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>IPS Support Org Admin</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
-                                    <operator>CONTAINS</operator>
-                                    <rightValue>Production Support-IPS</rightValue>
-                                </criteria>
-                                <criteria>
-                                    <leftValue>{!$User.Profile.Name}</leftValue>
+                                    <leftValue>{!Record.PRM_Status__c}</leftValue>
                                     <operator>EQUAL</operator>
-                                    <rightValue>A&amp;E User</rightValue>
+                                    <rightValue>New</rightValue>
                                 </criteria>
                             </visibilityRule>
                         </valueListItems>
@@ -280,6 +197,10 @@
                 <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideSlackAction</name>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>numVisibleActions</name>
@@ -331,46 +252,10 @@
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer6</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND NOT(2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program__r.Name}</leftValue>
+                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Rep</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Ops</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Agent Enhanced</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Support Org Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Production Support-IPS</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User (Read Only)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -535,68 +420,14 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer7</identifier>
+                <identifier>force_relatedListSingleContainer8</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND NOT(2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
                     </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Rep</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Ops</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Agent Enhanced</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Support Org Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Production Support-IPS</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User (Read Only)</rightValue>
-                    </criteria>
                 </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>flowArguments</name>
-                    <value>[{&quot;label&quot;:&quot;regReq&quot;,&quot;dataType&quot;:&quot;SObject&quot;,&quot;supportsRecordId&quot;:true,&quot;value&quot;:&quot;{!Record.Id}&quot;}]</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowLayout</name>
-                    <value>oneColumn</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>flowName</name>
-                    <value>PRM_Related_Registration_Requests</value>
-                </componentInstanceProperties>
-                <componentName>flowruntime:interview</componentName>
-                <identifier>flowruntime_interview</identifier>
             </componentInstance>
         </itemInstances>
         <name>relatedTabContent</name>
@@ -649,72 +480,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Company_Nm_Eng__c</fieldItem>
-                <identifier>RecordPRM_Company_Nm_Eng_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Alt_CompanyNameLang__c</fieldItem>
-                <identifier>RecordPRM_Alt_CompanyNameLang_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Salesforce_ID__c</fieldItem>
                 <identifier>RecordPRM_Salesforce_ID_cField</identifier>
             </fieldInstance>
@@ -727,8 +492,28 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Contact_Salesforce_Id__c</fieldItem>
                 <identifier>RecordPRM_Contact_Salesforce_Id_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Matching_Contact__c</fieldItem>
+                <identifier>RecordPRM_Matching_Contact_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Assigned_To__c</fieldItem>
+                <identifier>RecordAssigned_To_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2 ) OR (3 AND 4 AND 5)</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
                         <operator>EQUAL</operator>
@@ -762,34 +547,33 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Partner_Type__c</fieldItem>
-                <identifier>RecordPRM_Partner_Type_cField2</identifier>
+                <fieldItem>Record.ActualApprover__c</fieldItem>
+                <identifier>RecordActualApprover_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 AND 2) OR (3 AND 4)) OR 5</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
                     <criteria>
                         <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
                         <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>true</rightValue>
                     </criteria>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>DZP</rightValue>
+                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1002,110 +786,6 @@
                 </visibilityRule>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Assigned_To__c</fieldItem>
-                <identifier>RecordAssigned_To_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4 AND 5)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Company_Size__c</fieldItem>
-                <identifier>RecordPRM_Company_Size_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ACM_SDP_Product_Code__c</fieldItem>
-                <identifier>RecordACM_SDP_Product_Code__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>EPS Verified Company</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ACM_SDP_System_Serial_Number__c</fieldItem>
-                <identifier>RecordACM_SDP_System_Serial_Number__cField</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>EPS Verified Company</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-6644a212-ea59-400b-872a-363ceb50c018</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1151,12 +831,12 @@
                         <rightValue>true</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
+                        <rightValue>true</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>
@@ -1171,33 +851,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Entitlement_Details__c</fieldItem>
                 <identifier>RecordEntitlement_Details_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4 AND 5)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1249,6 +902,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.PRM_CIMStatusDetails__c</fieldItem>
+                <identifier>RecordPRM_CIMStatusDetails_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Email_Log__c</fieldItem>
                 <identifier>RecordPRM_Email_Log_cField</identifier>
             </fieldInstance>
@@ -1271,6 +934,23 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Legal_Agreement_Criteria__c</fieldItem>
                 <identifier>RecordPRM_Legal_Agreement_Criteria_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Partner_Type__c</fieldItem>
+                <identifier>RecordPRM_Partner_Type_cField2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PRM_IPARefresh__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1415,16 +1095,6 @@
                 <identifier>RecordPRM_Tax_Number_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Account_URL__c</fieldItem>
-                <identifier>RecordPRM_Account_URL_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-06ebedc6-42ee-4a69-ac36-cb1407770fad</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1459,48 +1129,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Profile_Response__c</fieldItem>
-                <identifier>RecordPRM_Profile_Response_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-57a9dtwfal4</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-h94jtmgdam6</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-57a9dtwfal4</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column9</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-h94jtmgdam6</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column10</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-2fc86r2mp5b</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Status__c</fieldItem>
                 <identifier>RecordPRM_Status_cField</identifier>
             </fieldInstance>
@@ -1511,35 +1139,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.ActualApprover__c</fieldItem>
-                <identifier>RecordActualApprover_cField2</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4 AND 5)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <fieldItem>Record.PRM_Review_Note_txt__c</fieldItem>
+                <identifier>RecordPRM_Review_Note_txt_cField2</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1548,8 +1149,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Is_Returning_User__c</fieldItem>
-                <identifier>RecordPRM_Is_Returning_User_cField</identifier>
+                <fieldItem>Record.PRM_Rejected_By__c</fieldItem>
+                <identifier>RecordPRM_Rejected_By_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-315ef91d-87c0-4268-9662-776fdd492330</name>
@@ -1565,7 +1166,7 @@
                 <fieldItem>Record.Current_Status__c</fieldItem>
                 <identifier>RecordCurrent_Status_cField2</identifier>
                 <visibilityRule>
-                    <booleanFilter>((1 AND 2) OR (3 AND 4 AND 5)) AND (6 OR 7)</booleanFilter>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
                         <operator>EQUAL</operator>
@@ -1589,16 +1190,6 @@
                         <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>DZP</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IPA - Portal</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -1611,53 +1202,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Status_Reason__c</fieldItem>
                 <identifier>RecordPRM_Status_Reason_cField2</identifier>
-                <visibilityRule>
-                    <booleanFilter>((1 AND 2) OR (3 AND 4 AND 5)) AND (6 OR 7)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>NE</operator>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>DZP</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IPA - Portal</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Review_Note_txt__c</fieldItem>
-                <identifier>RecordPRM_Review_Note_txt_cField2</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1724,8 +1268,31 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Matching_Contact__c</fieldItem>
-                <identifier>RecordPRM_Matching_Contact_cField</identifier>
+                <fieldItem>Record.PRM_Company_Size__c</fieldItem>
+                <identifier>RecordPRM_Company_Size_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1781,8 +1348,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Address_Line_2__c</fieldItem>
-                <identifier>RecordPRM_Address_Line_2_cField</identifier>
+                <fieldItem>Record.PRM_Country__c</fieldItem>
+                <identifier>RecordPRM_Country_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1791,8 +1358,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_State_Province__c</fieldItem>
-                <identifier>RecordPRM_State_Province_cField</identifier>
+                <fieldItem>Record.PRM_City__c</fieldItem>
+                <identifier>RecordPRM_City_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1801,8 +1368,38 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Zip_Postal_Code__c</fieldItem>
-                <identifier>RecordPRM_Zip_Postal_Code_cField</identifier>
+                <fieldItem>Record.PRM_Address_Line_1__c</fieldItem>
+                <identifier>RecordPRM_Address_Line_1_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Phy_Address_Line_1__c</fieldItem>
+                <identifier>RecordPRM_Phy_Address_Line_1_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Phy_City__c</fieldItem>
+                <identifier>RecordPRM_Phy_City_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Phy_State_Province__c</fieldItem>
+                <identifier>RecordPRM_Phy_State_Province_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-d0877aed-11a2-4e51-a6ac-97ac61bf79db</name>
@@ -1825,39 +1422,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Contact_Salesforce_Id__c</fieldItem>
-                <identifier>RecordPRM_Contact_Salesforce_Id_cField2</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Person_Phone_Number__c</fieldItem>
                 <identifier>RecordPRM_Person_Phone_Number_cField2</identifier>
             </fieldInstance>
@@ -1868,8 +1432,75 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Account_URL__c</fieldItem>
+                <identifier>RecordPRM_Account_URL_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.Job_Title__c</fieldItem>
                 <identifier>RecordJob_Title_cField</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3 AND 4 AND 5</booleanFilter>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Intel Partner Alliance</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_State_Province__c</fieldItem>
+                <identifier>RecordPRM_State_Province_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Zip_Postal_Code__c</fieldItem>
+                <identifier>RecordPRM_Zip_Postal_Code_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Geo__c</fieldItem>
+                <identifier>RecordGeo_cField</identifier>
                 <visibilityRule>
                     <booleanFilter>(1 AND 2) OR (3 AND 4 AND 5)</booleanFilter>
                     <criteria>
@@ -1905,8 +1536,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Address_Line_1__c</fieldItem>
-                <identifier>RecordPRM_Address_Line_1_cField</identifier>
+                <fieldItem>Record.PRM_Address_Line_2__c</fieldItem>
+                <identifier>RecordPRM_Address_Line_2_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1915,8 +1546,8 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_City__c</fieldItem>
-                <identifier>RecordPRM_City_cField</identifier>
+                <fieldItem>Record.PRM_Phy_Address_Line_2__c</fieldItem>
+                <identifier>RecordPRM_Phy_Address_Line_2_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -1925,8 +1556,18 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Country__c</fieldItem>
-                <identifier>RecordPRM_Country_cField</identifier>
+                <fieldItem>Record.PRM_Phy_Zip_Postal_Code__c</fieldItem>
+                <identifier>RecordPRM_Phy_Zip_Postal_Code_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Phy_Country__c</fieldItem>
+                <identifier>RecordPRM_Phy_Country_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-a76a152d-ced7-4c78-a924-9ef785b4fc96</name>
@@ -1963,6 +1604,78 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.PRM_Profile_Response__c</fieldItem>
+                <identifier>RecordPRM_Profile_Response_cField2</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Project_Description__c</fieldItem>
+                <identifier>RecordProject_Description_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-57a9dtwfal4</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Project_Size__c</fieldItem>
+                <identifier>RecordProject_Size_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Project_Timeframe__c</fieldItem>
+                <identifier>RecordProject_Timeframe_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-h94jtmgdam6</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-57a9dtwfal4</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-h94jtmgdam6</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column10</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-2fc86r2mp5b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Salesforce_ID__c</fieldItem>
                 <identifier>RecordPRM_Salesforce_ID_cField2</identifier>
             </fieldInstance>
@@ -1983,16 +1696,6 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Rejected_By__c</fieldItem>
-                <identifier>RecordPRM_Rejected_By_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
                 <fieldItem>Record.PRM_Dup_Status__c</fieldItem>
                 <identifier>RecordPRM_Dup_Status_cField2</identifier>
             </fieldInstance>
@@ -2003,59 +1706,29 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
-                <fieldItem>Record.PRM_CIMStatusDetails__c</fieldItem>
-                <identifier>RecordPRM_CIMStatusDetails_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_Address_Line_1__c</fieldItem>
-                <identifier>RecordPRM_Phy_Address_Line_1_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_City__c</fieldItem>
-                <identifier>RecordPRM_Phy_City_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_Country__c</fieldItem>
-                <identifier>RecordPRM_Phy_Country_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.ER_CMP_ID__c</fieldItem>
-                <identifier>RecordER_CMP_ID_cField</identifier>
+                <fieldItem>Record.PRM_New_Account__c</fieldItem>
+                <identifier>RecordPRM_New_Account_cField</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
+                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
                     <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
+                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>Siaas_Service</rightValue>
+                        <rightValue>Intel Partner Alliance</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.PRM_Source__c}</leftValue>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
                         <operator>EQUAL</operator>
-                        <rightValue>OnDemand_Rev</rightValue>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
                     </criteria>
                 </visibilityRule>
             </fieldInstance>
@@ -2102,69 +1775,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.PRM_DeDup_Criteria__c</fieldItem>
                 <identifier>RecordPRM_DeDup_Criteria_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_New_Account__c</fieldItem>
-                <identifier>RecordPRM_New_Account_cField</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR (3 AND 4)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_DZP_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_Address_Line_2__c</fieldItem>
-                <identifier>RecordPRM_Phy_Address_Line_2_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_State_Province__c</fieldItem>
-                <identifier>RecordPRM_Phy_State_Province_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.PRM_Phy_Zip_Postal_Code__c</fieldItem>
-                <identifier>RecordPRM_Phy_Zip_Postal_Code_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-d89a79f4-2ea4-435a-930f-b4eac1ed8c98</name>
@@ -2269,24 +1879,6 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-2fc86r2mp5b</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Project Details</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection5</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
                     <value>Facet-e63ad826-55a2-4195-9a96-65e0bba2876e</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -2317,6 +1909,24 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-2fc86r2mp5b</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Project Details</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection5</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -2414,7 +2024,7 @@
                 <componentName>pRM_MatchingAccountList</componentName>
                 <identifier>c_pRM_MatchingAccountList</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR (2 AND (3 OR 6))) AND 4 AND 5</booleanFilter>
+                    <booleanFilter>(1 OR (2 OR 3 OR 5)) AND (4 OR 6)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PRM_Status__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -2431,11 +2041,6 @@
                         <rightValue>MDM</rightValue>
                     </criteria>
                     <criteria>
-                        <leftValue>{!Record.PRM_Record_Type_Name_rpt_txt__c}</leftValue>
-                        <operator>NE</operator>
-                        <rightValue>Email Verification Request</rightValue>
-                    </criteria>
-                    <criteria>
                         <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
@@ -2444,6 +2049,10 @@
                         <leftValue>{!Record.PRM_Rejected_By__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Data Ops</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PRM_Salesforce_ID__r.Name}</leftValue>
+                        <operator>EQUAL</operator>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -2456,7 +2065,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListApiName</name>
-                    <value>Registration_Trackers__r</value>
+                    <value>ProcessSteps</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
@@ -2472,37 +2081,12 @@
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
                 <identifier>force_relatedListSingleContainer</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>prm_Registration_tracker</componentName>
-                <identifier>c_prm_Registration_tracker</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.View_IPA_Layout}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Entitlement_Details__r.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -2526,48 +2110,12 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer8</identifier>
+                <identifier>force_relatedListSingleContainer7</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND NOT(2 OR 3 OR 4 OR 5 OR 6 OR 7 OR 8)</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PRM_Channel_Program_Level_txt__c}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Rep</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Sales Ops</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Agent Enhanced</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>IPS Support Org Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>CONTAINS</operator>
-                        <rightValue>Production Support-IPS</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>A&amp;E User (Read Only)</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

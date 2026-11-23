@@ -12,7 +12,7 @@
 
 Thank you for registering for access to Intel® Quote Request.
 Before we can process it, we need to make sure this email address is yours.
-This link will expire in 5 days and will require you to trigger another email verification using your Login ID and password.
+This link will expire in 24 hours and will require you to trigger another email verification using your Login ID and password.
 
 
 Verify now
@@ -25,7 +25,7 @@ Thank you,
 Your Intel® Quote Request team
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Quote Request.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

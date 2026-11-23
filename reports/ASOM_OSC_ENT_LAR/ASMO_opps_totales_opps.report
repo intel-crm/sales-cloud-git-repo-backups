@@ -11,7 +11,7 @@
         <scale>0</scale>
     </aggregates>
     <aggregates>
-        <calculatedFormula>DATE(YEAR(TODAY()),09,30) - TODAY()</calculatedFormula>
+        <calculatedFormula>DATE(YEAR(TODAY()),06,30) - TODAY()</calculatedFormula>
         <datatype>number</datatype>
         <description>Dias hasta el fin del quarter</description>
         <developerName>FORMULA2</developerName>
@@ -71,7 +71,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Villamil,Vitores,Hain,Napolitano,De Grazia</value>
+            <value>Villamil,Vitores,Hain,de grazia</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Tiago Rubortone Velasque</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

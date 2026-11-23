@@ -4,61 +4,110 @@
     <containerType>Network</containerType>
     <label>Default Navigation</label>
     <navigationMenuItem>
-        <label>Pages</label>
+        <label>New menu item</label>
         <position>1</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>L2 Page Examples</label>
+        <position>2</position>
         <publiclyAvailable>true</publiclyAvailable>
         <subMenu>
             <navigationMenuItem>
-                <label>Search</label>
+                <label>Product</label>
                 <position>0</position>
                 <publiclyAvailable>true</publiclyAvailable>
-                <target>/search</target>
+                <target>/pmp-category/a5N8A000000Co2IUAS</target>
                 <type>InternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Offering Catalog</label>
+                <label>Partner</label>
                 <position>1</position>
                 <publiclyAvailable>true</publiclyAvailable>
-                <target>/offerings</target>
+                <target>/pmp-category/a6y8A000000L8T3QAK</target>
                 <type>InternalLink</type>
             </navigationMenuItem>
             <navigationMenuItem>
-                <label>Partner Directory</label>
+                <label>Distributor</label>
                 <position>2</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>/partners</target>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/pmp-category/a5N8A000000Co3gUAC</target>
                 <type>InternalLink</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
-                <defaultListViewId>All_Offerings</defaultListViewId>
-                <label>Manage Offering</label>
-                <position>3</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>PMP_Partner_Offering__c</target>
-                <type>SalesforceObject</type>
-            </navigationMenuItem>
-            <navigationMenuItem>
-                <label>Offering Category</label>
-                <position>4</position>
-                <publiclyAvailable>false</publiclyAvailable>
-                <target>PMP_Partner_Offering_Category__c</target>
-                <type>SalesforceObject</type>
             </navigationMenuItem>
         </subMenu>
         <type>MenuLabel</type>
     </navigationMenuItem>
     <navigationMenuItem>
-        <label>Dashboard</label>
-        <position>2</position>
-        <publiclyAvailable>true</publiclyAvailable>
-        <target>/dashboard</target>
-        <type>InternalLink</type>
-    </navigationMenuItem>
-    <navigationMenuItem>
-        <label>Help</label>
+        <label>L3 Page Examples</label>
         <position>3</position>
         <publiclyAvailable>true</publiclyAvailable>
-        <target>/help</target>
-        <type>InternalLink</type>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Event</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/pmp-marketplace-event/a6R8A000000Cg99UAC</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Partner Offering</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/offering/a5b8A000000DE4RQAW</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Partner</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/partner-edit/a5S8A000000CmnaUAC</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Other Page Examples</label>
+        <position>4</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <subMenu>
+            <navigationMenuItem>
+                <label>Dashboard</label>
+                <position>0</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/dashboard</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Help</label>
+                <position>1</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/help</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+            <navigationMenuItem>
+                <label>Card Variations</label>
+                <position>2</position>
+                <publiclyAvailable>true</publiclyAvailable>
+                <target>/marketplace-card-variations</target>
+                <type>InternalLink</type>
+            </navigationMenuItem>
+        </subMenu>
+        <type>MenuLabel</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Front End Documentation</label>
+        <position>5</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>https://intel--crmdevipa--c.visualforce.com/resource/1590797001000/IpaDocs/index.html</target>
+        <type>ExternalLink</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>New menu item</label>
+        <position>6</position>
+        <publiclyAvailable>false</publiclyAvailable>
+        <target>NewAccount</target>
+        <type>GlobalAction</type>
     </navigationMenuItem>
 </NavigationMenu>

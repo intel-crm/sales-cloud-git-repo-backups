@@ -921,7 +921,8 @@ inactivateBenefitAsPerACM(listOfInactiveACM,parentSfID,errorWrapper);
         }
         
         
-        Id pagRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        //Id pagRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        Id pagRecordType = Account.Account.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
         Map<String,PRM_AccountChannelMembership__c> mapOfPartnerRoleACM;
         Map<String,Map<String,PRM_AccountChannelMembership__c>>  mapOfPAGAccACM =  new Map<String,Map<String,PRM_AccountChannelMembership__c>>();
         Map<String,List<PRM_AccountChannelMembership__c>> mapOfIntelAccACMList =  new Map<String,List<PRM_AccountChannelMembership__c>>();
@@ -1484,7 +1485,8 @@ errorWrapper.putASAError(asaMapError);
     
     @TestVisible
     private Map<String,String> getPagAccountDetails(Set<String> setOfPagIntelAcc){
-        Id pagRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        //Id pagRecordType = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        Id pagRecordType = Account.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
         List<Account> listOfPAGAcc = [select id,Core_OnePartnerID__c from Account where id in :setOfPagIntelAcc and recordtypeid =:pagRecordType WITH SECURITY_ENFORCED];
         Map<String,String> mapOfOPIDs = new Map<String,String>();
         if(listOfPAGAcc != null){
@@ -1526,7 +1528,8 @@ inboundMessage.Error_Description__c = abaMapError.get(intelAccId);
     public String inactivateBenefitAsPerACM(Set<String> setOfOPIDAcc){
         String logEntryMsg='';
         logEntryMsg+='\n*****inactivateBenefitAsPerACM Method Start here...******';
-        String pagRecordId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        //String pagRecordId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
+        String pagRecordId = Account.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
         Map<String, List<PRM_AccountChannelMembership__c>> mapOfParentACMs = new Map<String, List<PRM_AccountChannelMembership__c>>();
         //Map<String, List<PRM_AccountBenefitAssociation__c>> mapOfABAAtParents = new Map<String, List<PRM_AccountBenefitAssociation__c>>();
         Map<String,String> mapOfPtnrRoleTier = new Map<String,String>(); 

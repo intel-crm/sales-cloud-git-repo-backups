@@ -1,0 +1,157 @@
+<aura:component controller="PRM_AdminRegistrationDuplicateDetailsDup" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <!--attributes -->
+    <aura:attribute name="accountName" type="String" />
+    <aura:attribute name="accountColumns" type="List" />
+    <aura:attribute name="requstdaccountColumns" type="List" />
+    <aura:attribute name="contactEmail" type="String" />
+    <aura:attribute name="contactColumns" type="List" />
+    <aura:attribute name="ReqAccList" type="Object"/>
+    <aura:attribute name="AccountList" type="Object"/>
+    <aura:attribute name="ContactList" type="Object"/>
+    <aura:attribute name="accountsCim" type="Object"/>
+    <aura:attribute name="maxRowSelection" type="Integer" default="1"/>
+    <aura:attribute name="displayDuplicates" type="Boolean"/>
+    <aura:attribute name="displaySpinner" type="Boolean" default="true"/>
+    <aura:attribute type="Boolean" name="showSecondPopOver" default="false"/>
+    <aura:attribute name="redDetMap" type="Map"/>
+    <aura:attribute name="currentPageNumber" type="Integer" default="1"/>
+    <aura:attribute name="pageSize" type="Integer" default="4"/>
+    <aura:attribute name="totalPages" type="Integer" default="0"/>
+    <aura:attribute name="pageList" type="List"/>
+    <aura:attribute name="allData" type="List"/>
+    <aura:attribute name="selectedList" type="List"/>
+    <aura:attribute name="selectedRowsList" type="List"/>
+    <aura:attribute name="prevSelectedRowsList" type="List"/>
+    <aura:attribute name="prevSelectedList" type="List"/>
+    <aura:attribute name="selectedRowMap" type="Object"/>
+    <aura:attribute name="clearSelections" type="Boolean" default="false"/>
+    <aura:attribute name="disableRadioButton" type="Boolean" default="false"/>
+    <aura:attribute name="accountDupStatus" type="String"/>
+    <aura:attribute name="contDupStatus" type="String"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:registerEvent name="myComponentEvent" type="c:PRM_AdminRegistrationEvent"/>
+    <aura:registerEvent name="displayButtonEvent" type="c:PRM_AdminRegistrationDisplayEvent"/>
+    
+    <aura:if isTrue="{!v.disableRadioButton}">        
+        <aura:html tag="style">
+            .slds-radio{
+            pointer-events:none;
+            }
+        </aura:html>
+    </aura:if>
+    
+    
+    <lightning:spinner aura:id="mySpinner" variant="brand" alternativeText="{!$Label.c.PRM_DuplicateInfoSpinner}" 
+                       title = "{!$Label.c.PRM_DuplicateInfoSpinner}"/>
+    
+    <aura:method name="getCimAccounts" action="{!c.cimAccounts}" access="public">
+        <aura:attribute name="accountCimList" type="Object"/>
+    </aura:method>
+    
+    <!-- <aura:if isTrue="{!v.displayDuplicates}"> -->
+    <div class="{!v.displayDuplicates ? 'slds-show' : 'slds-hide'}">    
+        <div class="slds-p-top_xxx-small">
+            <div style="background-color:white">
+                <div class="inlineTitle slds-p-top--large slds-p-horizontal--medium slds-p-bottom--medium slds-text-heading--medium slds-align_absolute-center">
+                    {!$Label.c.PRM_DuplicateInfo}
+                </div>
+                
+                <lightning:card iconName="standard:account" title='{!$Label.c.PRM_CIM}'>
+                    
+                    <!--<aura:if isTrue="{!not(empty(v.AccountList))}">  -->
+                    <div class="{!not(empty(v.AccountList)) ? 'slds-show' : 'slds-hide'}"> 
+                        <div id = "reqAcc" class="slds-border_top table-align">
+                            <lightning:datatable aura:id="reqAccTbl" data="{! v.ReqAccList }" columns="{! v.requstdaccountColumns }" resizeColumnDisabled="true"  keyField="Name" hideCheckboxColumn="false" hideTableHeader="false" maxRowSelection="{!v.maxRowSelection}"/>
+                        </div> 
+                        
+                        <div id ="accsFound" class="table-align">
+                            <lightning:datatable aura:id="accsFoundTable" data="{! v.AccountList }" columns="{! v.accountColumns }" keyField="Id" onrowselection="{!c.updateSelectedText}"  selectedRows = "{!v.selectedList}" hideCheckboxColumn="false" maxRowSelection="{!v.maxRowSelection}" hideTableHeader="false"/>
+                        </div>
+                        <!-- <aura:if isTrue="{!v.clearSelections}">
+                            <div class="slds-p-left_small">
+                            <lightning:button label="Clear" name="button1" onclick="{!c.clearEvent}" disabled="false"/>
+                        </div>
+                            </aura:if>-->
+                        
+                        <!-- Pagination logic -->
+                        
+                        <lightning:layout multipleRows="true">
+                            
+                            <lightning:layoutItem size="1">
+                                <div class="slds-p-left_x-large slds-p-top_small">
+                                    <aura:if isTrue="{!v.clearSelections}">
+                                        <lightning:button aura:id="clearButton" label="Clear" name="button1" onclick="{!c.clearEvent}" disabled="false"/>
+                                    </aura:if>
+                                </div>
+                            </lightning:layoutItem>
+                            
+                            <lightning:layoutItem padding="around-small" flexibility = "auto" size="11">
+                                <!--<aura:if isTrue="{!v.clearSelections}">
+                                        <lightning:button aura:id="clearButton" label="Clear" name="button1" onclick="{!c.clearEvent}" disabled="false"/>
+                                    </aura:if>-->
+                                <div style="padding-left:34%">
+                                    <lightning:button label="First" iconName="utility:left" iconPosition="left"
+                                                      onclick="{!c.onFirst}" disabled="{! v.currentPageNumber == 1}"/>
+                                    <lightning:button iconName="utility:chevronleft" iconPosition="left"
+                                                      onclick="{!c.onPrev}" disabled="{! v.currentPageNumber == 1}"/>
+                                    <span class="slds-p-horizontal_x-small">
+                                        <a onclick="{!c.processMe}" name="1" 
+                                           class="{! (v.currentPageNumber == 1) ? 'selected' : ''}">1</a>
+                                    </span>
+                                    
+                                    <aura:iteration items="{!v.pageList}" var="item">
+                                        <span class="slds-p-horizontal_x-small">
+                                            <a onclick="{!c.processMe}" name="{!item}"
+                                               class="{! (v.currentPageNumber == item) ? 'selected' : ''}">{!item}</a>
+                                        </span>
+                                    </aura:iteration>
+                                    
+                                    <span class="slds-p-horizontal_x-small">
+                                        <aura:if isTrue="{!(v.totalPages > 1)}">
+                                            <a onclick="{!c.processMe}" name="{!v.totalPages}"
+                                               class="{! (v.currentPageNumber == v.totalPages) ? 'selected' : ''}">{!v.totalPages}</a>
+                                        </aura:if>
+                                    </span>
+                                    
+                                    <lightning:button iconName="utility:chevronright" iconPosition="right" 
+                                                      disabled="{! v.currentPageNumber == v.totalPages}" onclick="{!c.onNext}"/>
+                                    <lightning:button label="Last" iconName="utility:right" iconPosition="right" 
+                                                      disabled="{! v.currentPageNumber == v.totalPages}" onclick="{!c.onLast}"/>
+                                </div>
+                            </lightning:layoutItem>
+                            
+                        </lightning:layout>
+                    </div>  
+                    <div class="{!not(empty(v.AccountList)) ? 'slds-hide' : 'slds-show'}"> 
+                        <!--   <aura:set attribute="else"> -->
+                        <div class="allign-text">
+                            <p>{!$Label.c.PRM_NoAccountsFound}</p>
+                        </div>
+                        <!--   </aura:set> 
+                  </aura:if>  -->
+                    </div>  
+                </lightning:card>
+                
+                <div class="slds-p-top_xx-large">
+                    <lightning:card iconName="standard:contact" title='{!$Label.c.PRM_DUPLICATECONTACTS}'>
+                        <aura:if isTrue="{!not(empty(v.ContactList))}">
+                            
+                            <div id ="cntctsFound" class="slds-border_top table-align">
+                                <lightning:datatable aura:id="cntctsFoundTable" data="{! v.ContactList }" columns="{! v.contactColumns }" keyField="ContName" hideCheckboxColumn="false" maxRowSelection ="{!v.maxRowSelection}" hideTableHeader="false"/>  
+                            </div>
+                                
+                            <aura:set attribute="else">
+                                <div class="allign-text">
+                                    <p>{!$Label.c.PRM_NoContactsFound}</p>
+                                </div>
+                            </aura:set>
+                        </aura:if>
+                    </lightning:card>
+                </div>
+                
+            </div>
+        </div>
+    </div>  
+    <!-- </aura:if>-->
+</aura:component>

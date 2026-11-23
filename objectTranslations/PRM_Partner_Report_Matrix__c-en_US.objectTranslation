@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Report Matrics</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Report Matrics</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>PRM_Account__c</name>
+        <relationshipLabel><!-- Partner Report Matrics (Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Branded Points --></label>
+        <name>PRM_Branded_Points__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component Points --></label>
+        <name>PRM_Component_Points__c</name>
+    </fields>
+    <fields>
+        <label><!-- Extra Benefit --></label>
+        <name>PRM_Extra_Benefit__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM Points --></label>
+        <name>PRM_ODM_Points__c</name>
+    </fields>
+    <fields>
+        <label><!-- One Partner Account --></label>
+        <name>PRM_One_Partner_Account__c</name>
+        <relationshipLabel><!-- Partner Report Matrics (One Partner Account) --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>PRM_Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Cloud &amp; Comms Service Provider</masterLabel>
+            <translation><!-- Cloud &amp; Comms Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guest</masterLabel>
+            <translation><!-- Guest --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sponsor</masterLabel>
+            <translation><!-- Sponsor --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Points Not Eligible --></label>
+        <name>PRM_Points_Not_Eligible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Opt-In --></label>
+        <name>PRM_Points_Opt_In__c</name>
+    </fields>
+    <fields>
+        <label><!-- Missing Benefits --></label>
+        <name>PRM_Required_Benefits__c</name>
+    </fields>
+    <fields>
+        <label><!-- Response --></label>
+        <name>PRM_Response__c</name>
+        <picklistValues>
+            <masterLabel>Branded Point earning excluded</masterLabel>
+            <translation><!-- Branded Point earning excluded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Component Point earning excluded</masterLabel>
+            <translation><!-- Component Point earning excluded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ODM whitebox Point earning excluded</masterLabel>
+            <translation><!-- ODM whitebox Point earning excluded --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points Not eligible</masterLabel>
+            <translation><!-- Points Not eligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Points Opt-in</masterLabel>
+            <translation><!-- Points Opt-in --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Program Tier --></label>
+        <name>PRM_Tier__c</name>
+        <picklistValues>
+            <masterLabel>Gold</masterLabel>
+            <translation><!-- Gold --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Member</masterLabel>
+            <translation><!-- Member --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Titanium</masterLabel>
+            <translation><!-- Titanium --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Type --></label>
+        <name>PRM_Type__c</name>
+        <picklistValues>
+            <masterLabel>Benefit Mismatch</masterLabel>
+            <translation><!-- Benefit Mismatch --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Profile Response Mismatch</masterLabel>
+            <translation><!-- Profile Response Mismatch --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Unique Key --></label>
+        <name>PRM_Unique_Key__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

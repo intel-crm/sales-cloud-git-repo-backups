@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <block>
+        <blockInfo>
+            <blockId>B0</blockId>
+            <joinTable>Contact</joinTable>
+        </blockInfo>
+        <columns>
+            <field>Contact$Name</field>
+        </columns>
+        <columns>
+            <field>Contact.AccountContactRelations$Name</field>
+        </columns>
+        <columns>
+            <field>Contact.AccountContactRelations.Company_Informations__r$Name</field>
+        </columns>
+        <columns>
+            <field>Contact.AccountContactRelations.Company_Informations__r$PMP_Partner_Benefit_Type__c</field>
+        </columns>
+        <columns>
+            <aggregateTypes>Sum</aggregateTypes>
+            <field>Contact.AccountContactRelations.Company_Informations__r$PMP_Benefit_Update_Ind__c</field>
+        </columns>
+        <columns>
+            <field>Contact$Email</field>
+        </columns>
+        <columns>
+            <field>Contact.AccountContactRelations$RecordType</field>
+        </columns>
+        <filter>
+            <criteriaItems>
+                <column>Contact.AccountContactRelations.Company_Informations__r$PMP_Partner_Benefit_Type__c</column>
+                <columnToColumn>false</columnToColumn>
+                <isUnlocked>true</isUnlocked>
+                <operator>equals</operator>
+                <value>Solution Marketplace Basic Access,Solutions Marketplace Basic Profile,Solutions Marketplace Enhanced</value>
+            </criteriaItems>
+        </filter>
+        <format>Summary</format>
+        <name>Account with MP benefit block 1</name>
+        <params>
+            <name>co</name>
+            <value>1</value>
+        </params>
+        <reportType>Account_with_MP_benefit__c</reportType>
+        <scope>organization</scope>
+        <showGrandTotal>true</showGrandTotal>
+        <showSubTotals>true</showSubTotals>
+        <timeFrameFilter>
+            <dateColumn>Contact$Core_AGS_Status_Change_Date_Time__c</dateColumn>
+            <interval>INTERVAL_CUSTOM</interval>
+        </timeFrameFilter>
+    </block>
+    <blockInfo>
+        <blockId xsi:nil="true"/>
+        <joinTable>Contact</joinTable>
+    </blockInfo>
+    <description>MP with contact 1</description>
+    <format>MultiBlock</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Contact$Account</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>MP with contact 1</name>
+    <params>
+        <name>lsk</name>
+        <value>1</value>
+    </params>
+    <reportType>Account_with_MP_benefit__c</reportType>
+    <showDetails>true</showDetails>
+</Report>

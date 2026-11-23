@@ -17,7 +17,7 @@ Modification Log :
 * Gourav                               10/03/2019              US304935:Added if condition to check update before assigning backend system to avoid 101 error
 * Sneha                                                       US454558 TECH: BES:  Enable changing of DCG JIRA backend systems
 *****************************************************************************************************/
-public without sharing class Core_IPS_CasePromotion_Handler {
+public class Core_IPS_CasePromotion_Handler {
 
 Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrationuser';
     public static boolean initCheck = true;     
@@ -27,13 +27,13 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
 //************************************************************************************// 
    Public static void executeBackendRoutingfromCaseTrigger(List<Case> oldList,List<Case> newList, Map<Id,Case> oldMap, Map<Id,Case> newMap)  
    {
-      List<Core_IPS_Backend_System__c> BackIDs = new List<Core_IPS_Backend_System__c>();
       List<Case> ListCase = new List<Case>();
       List<Case> ListUpdateCase = new List<Case>();
       Set<ID> backID = new Set<ID>();
       boolean continue_flag = true;
       Map<id,id> mapIdOfCaseMap = new Map<id,id>();
       
+      System.debug('Inside executeBackendRoutingfromCaseTrigger method');     
       List<Core_IPSBackendPromoteReprocesing__c> configIds = Core_IPSBackendPromoteReprocesing__c.getAll().values(); 
       Map<String,String> MapOfBackSFId =  new Map<String,String>();
       for(Core_IPSBackendPromoteReprocesing__c configId: configIds)
@@ -43,18 +43,21 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
            // (Userinfo.getUserName().containsIgnoreCase(IPS_BACKEND_INTEGRATION_USER)) ||-- commented by Sadhvika
              (configId.Core_Group_Lookup_Name__c == 'DM_USERNAME' && Userinfo.getUserName() == configId.Core_Translate_value__c) ||
              (configId.Core_Group_Lookup_Name__c == 'BACKENDINTEG_USERNAME' && Userinfo.getUserName() == configId.Core_Translate_value__c)) )             
-          { 
-            continue_flag = false;
-	     break; 
-	   }   
+          { System.debug(configId.Core_Group_Lookup_Name__c + ':' + configId.Core_Translate_value__c + ':' + Userinfo.getUserName() );
+            continue_flag = false; break; }   
             /**********Forming map of backend system id for filtering the redetrminsationLogic**********/ //added by Aswin
             if(configId.Core_Group_Lookup_Name__c <> null && configId.Core_Group_Lookup_Name__c.equalsIgnoreCase('Backend System')){
                    MapOfBackSFId.put(configId.Core_Translate_Value__c,configId.Core_Translate_Value__c);   
              }          
       } 
+      System.debug('MapOfBackSFId'+MapOfBackSFId);
+      System.debug('Continue IPS Backend Case Routing for the current user:' + Userinfo.getUserName() +'is' + continue_flag + 'Profile ID:' + Userinfo.getProfileID() );  
       if(Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('enableIPSCaseBackendRouting') && continue_flag == true){
          try{     
+           System.debug( 'IPS Case Backend Routing is enabled');   
+           System.debug(' Case NewList---'+newList+' Case NewList Size---'+newList.size()+' Old Map---'+oldMap+' Old Map Size---'+oldMap.size());//Added debug log -- 3/14/2017 Manoj
            for(Case cs:newList){
+           //System.debug('--Case Backend Id--'+cs.Core_IPS_Backend_ID__c+'--Case BakcendSystem--'+cs.Core_IPS_Backend_System__c+'--Case Promote Status--'+cs.Core_Promote_Status__c); //Added debug log to track Backend system & Backend Id 3/14/2017 -- Manoj
             if(cs.Core_IPS_Backend_ID__c != null && cs.Core_IPS_Backend_ID__c != '0' && cs.Core_IPS_Backend_ID__c != '-1' && (cs.Core_Promote_Status__c == null || (cs.Core_Promote_Status__c != null && !(cs.core_promote_status__c.equalsignorecase('Done')))))
             { 
                 cs.core_promote_status__c = 'Done'; 
@@ -70,16 +73,21 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
             if(cs.Core_IPS_Backend_ID__c != null && cs.Core_IPS_Backend_System__c != null){
               backID.add(cs.Core_IPS_Backend_System__c);
               //==================aswin============================//
+                  system.debug('backidMappp'+(oldMap.get(cs.id).Core_IPS_Backend_System__c));
+                  //system.debug('MapOfBackSFId.get(oldMap.get(cs.id).Core_IPS_Backend_System__c)'+MapOfBackSFId.containskey(oldMap.get(cs.id).Core_IPS_Backend_System__c));
                   if((oldMap.get(cs.id).Core_IPS_Backend_System__c == cs.Core_IPS_Backend_System__c) && MapOfBackSFId.containskey(oldMap.get(cs.id).Core_IPS_Backend_System__c) ){
                   if((oldMap.get(cs.id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c)||(oldMap.get(cs.id).Core_IPS_Assigned_Queue__c != cs.Core_IPS_Assigned_Queue__c)||(oldMap.get(cs.id).Core_jsonfield__c !=cs.Core_jsonfield__c)||(oldMap.get(cs.id).Core_External_Issue_Category__c != cs.Core_External_Issue_Category__c)||(oldMap.get(cs.id).Core_External_Issue_Subcategory__c != cs.Core_External_Issue_Subcategory__c)||(oldMap.get(cs.id).Status != cs.Status)||(oldMap.get(cs.id).Core_Sub_Status__c != cs.Core_Sub_Status__c)){
+                  //system.debug('entered here1234');
                   if(newMap.get(cs.id).Core_IPS_Backend_System__c == oldMap.get(cs.id).Core_IPS_Backend_System__c){
                      cs.Core_IPS_Backend_System__c =null;
                      mapIdOfCaseMap.put(cs.id,cs.id);
                   }
                  ListUpdateCase.add(cs);
                  
+                 //system.debug('match found');
                  }}
                  else{
+                 system.debug('added to listcase');
               ListUpdateCase.add(cs); } 
               //=======================End aswin=== ===================//
             }
@@ -88,6 +96,7 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
              //  if((oldMap.get(cs.id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c)||(oldMap.get(cs.id).Core_IPS_Assigned_Queue__c != cs.Core_IPS_Assigned_Queue__c)||(oldMap.get(cs.id).Core_jsonfield__c !=cs.Core_jsonfield__c)||(oldMap.get(cs.id).Core_External_Issue_Category__c != cs.Core_External_Issue_Category__c)||(oldMap.get(cs.id).Core_External_Issue_Subcategory__c != cs.Core_External_Issue_Subcategory__c)||(oldMap.get(cs.id).Status != cs.Status)||(oldMap.get(cs.id).Core_Sub_Status__c !=cs.Core_Sub_Status__c)||(oldMap.get(cs.id).Core_Promote_Status__c != cs.Core_Promote_Status__c) ) { 
 
                if( initCheck || (oldMap.get(cs.id).Core_IPS_Supported_Product__c != cs.Core_IPS_Supported_Product__c)||(oldMap.get(cs.id).Core_IPS_Assigned_Queue__c != cs.Core_IPS_Assigned_Queue__c)||(oldMap.get(cs.id).Core_jsonfield__c !=cs.Core_jsonfield__c)||(oldMap.get(cs.id).Core_External_Issue_Category__c != cs.Core_External_Issue_Category__c)||(oldMap.get(cs.id).Core_External_Issue_Subcategory__c != cs.Core_External_Issue_Subcategory__c)||(oldMap.get(cs.id).Status != cs.Status)||(oldMap.get(cs.id).Core_Sub_Status__c !=cs.Core_Sub_Status__c)||(oldMap.get(cs.id).Core_Promote_Status__c != cs.Core_Promote_Status__c) ) { 
+                system.debug('inside init - deleted bd'+initCheck);
                         ListCase.add(cs);
                 } //new if initCheck
             }         
@@ -102,21 +111,27 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
             List<Case> caseUpdateList = new List<Case>();
             //=============aswin===========================//
                 List<Case> caseBackendUpdated = new List<Case>();
+                //system.debug('before reevaluation of backend system');
                
                   Core_IPS_CasePromotion_Handler.getBackendID(ListUpdateCase, oldMap, 'Case') ; 
+                system.debug('after reevaluation of backend system'+ListUpdateCase);  
                   for(case csUpdated:ListUpdateCase){
+                      system.debug('inside for loop 12'+csUpdated.Core_IPS_Backend_System__c+'oldmap'+oldMap.get(csUpdated.id).Core_IPS_Backend_System__c);
                       if(csUpdated.Core_IPS_Backend_System__c == oldMap.get(csUpdated.id).Core_IPS_Backend_System__c ){
+                          system.debug('previous value loop@@@@'+oldMap.get(csUpdated.id));
                           
                          csUpdated.Core_Promote_Status__c = 'Done' ;
                          if(csUpdated.Core_IPS_Backend_Previous_Status__c != null && csUpdated.Core_IPS_Backend_Previous_Status__c.contains('disassociate')){
                               csUpdated.Core_IPS_Backend_Previous_Status__c='promoted';
                           }
                           caseBackendUpdated.add(csUpdated);
+                          //system.debug('list'+caseBackendUpdated);
                       }
                       else{
                           if(csUpdated.Core_IPS_Backend_System__c != null  ){
                           if(mapIdOfCaseMap.containskey(csUpdated.id)){
                           if(oldMap.get(csUpdated.id).Core_IPS_Backend_System__c != null && (oldMap.get(csUpdated.id).Core_IPS_Backend_ID__c != null && oldMap.get(csUpdated.id).Core_IPS_Backend_ID__c!= '')){
+                          //system.debug('prev value not equal');
                           
                           csUpdated.Core_IPS_Backend_Previous_Status__c ='disassociate'+'|'+oldMap.get(csUpdated.id).Core_IPS_Backend_ID__c+'|'+oldMap.get(csUpdated.id).Core_IPS_Backend_System__c;
                           csUpdated.Core_IPS_Backend_ID__c ='';
@@ -141,25 +156,25 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
             
             
             //================end==========================//
-            //FLS check added-Venugopal
-            if(Core_IPS_Backend_System__c.SObjectType.getDescribe().isAccessible()){ 
-            	BackIDs = [Select id from Core_IPS_Backend_System__c WHERE ID=:backID AND Core_IPS_Support_Case_Field_Update__c=true];
-            }
-             Set<ID> backIDSet = new Set<ID>();
+            
+            List<Core_IPS_Backend_System__c> BackIDs = [Select id from Core_IPS_Backend_System__c WHERE ID=:backID AND Core_IPS_Support_Case_Field_Update__c=true];
+            Set<ID> backIDSet = new Set<ID>();
             for(Core_IPS_Backend_System__c back:BackIDs){
               BackIDSet.add(back.id);
             }
             if(backIDSet.size()>0){
               for(Case cs:ListUpdateCase){
                  if(backIDSet.contains(cs.Core_IPS_Backend_System__c)) 
+                // system.debug('csUpdatedListList');
                  caseUpdateList.add(cs);
               }  
             }
             if(caseUpdateList.size()>0){ 
+               // system.debug('call executebackn methode');
                 executeBackendFieldUpdate(oldList, caseUpdateList, oldMap, newMap, backID);
             }
           }         
-         } catch(Exception e){  }
+         } catch(Exception e){ System.debug('Exception occurred during Backend System Determination at case section' + e.getmessage());   }
       } 
    }
 
@@ -176,6 +191,7 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
       //Created an empty map to call 'executeMainRouting' method---05/30/2016---tanvix.chauhan
       Map<Id, Case> emptyCaseMap = new Map<Id, Case>();
            
+      System.debug('Inside executeBackendRoutingfromIPSCaseAttachmentTrigger method');     
       List<Core_IPSBackendPromoteReprocesing__c> configIds = Core_IPSBackendPromoteReprocesing__c.getAll().values(); 
       for(Core_IPSBackendPromoteReprocesing__c configId: configIds)
       {
@@ -184,13 +200,13 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
              (Userinfo.getUserName().containsIgnoreCase(IPS_BACKEND_INTEGRATION_USER)) ||
              (configId.Core_Group_Lookup_Name__c == 'DM_USERNAME' && Userinfo.getUserName() == configId.Core_Translate_value__c) ||
              (configId.Core_Group_Lookup_Name__c == 'BACKENDINTEG_USERNAME' && Userinfo.getUserName() == configId.Core_Translate_value__c)))
-          {  
-             continue_flag = false;
-	     break;
-	  }             
+          {  System.debug(configId.Core_Group_Lookup_Name__c + ':' + configId.Core_Translate_value__c + ':' + Userinfo.getUserName() );
+             continue_flag = false; break; }             
       } 
+      System.debug('Continue IPS Backend Case Routing for the current user:' + Userinfo.getUserName() +'is' + continue_flag + 'Profile ID:' + Userinfo.getProfileID() );      
       
       if(Core_IPS_Helper_Utility.isHandlerMethodExecutionEnabled('enableIPSCaseAttBackendRouting') && continue_flag == true) {
+         //System.debug('IPS Case Attachment Backend Routing is enabled');        
          try{
             if(newList.size()>0){         
                for(Core_IPS_Case_Attachments__c att:newList){
@@ -200,10 +216,7 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
                   }  
                }  
                if(caseIds.size()>0){
-                   //FLS check added-Venugopal
-                   if(case.SObjectType.getDescribe().isAccessible()){
-                 	caseList=[SELECT id, core_ips_backend_System__c, assetid, Core_IPS_Product_Org1__c, productID, Core_Case_Issue_Category__c, Core_External_Issue_Category__c, Core_Case_Issue_Sub_Category__c, Core_External_Issue_Subcategory__c,status,Core_IPS_Backend_ID__c,Core_IPS_gec_flag__c,Core_IPS_gec_status__c,core_promote_status__c,Core_IPS_Supported_Product__c FROM case WHERE id=:caseIds];                  
-                   }
+                 caseList=[SELECT id, core_ips_backend_System__c, assetid, Core_IPS_Product_Org1__c, productID, Core_Case_Issue_Category__c, Core_External_Issue_Category__c, Core_Case_Issue_Sub_Category__c, Core_External_Issue_Subcategory__c,status,Core_IPS_Backend_ID__c,Core_IPS_gec_flag__c,Core_IPS_gec_status__c,core_promote_status__c,Core_IPS_Supported_Product__c FROM case WHERE id=:caseIds];                  
                }
             }
             if(caseList.size()>0){
@@ -211,7 +224,7 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
                 //Passing an empty <ID, CASE> map inorder to skip checkCriteria logic for CaseAttachments ---05/30/2016---tanvix.chauhan
                 executeMainRouting(caseList, emptyCaseMap, 'Core_IPS_Case_Attachments__c');
             }
-         } catch(Exception e){    }
+         } catch(Exception e){System.debug('Exception occurred during Backend System Determination at Attachment section' + e.getmessage());     }
      }
    } 
    
@@ -228,6 +241,7 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
        List<case> ListCase = new List<case>();
        try
        {
+         system.debug('Inside executeMainRouting Method');
          for(Case cs:caseList){         
            if((cs.status == null || !(cs.status.equalsignorecase('Closed'))) && 
              (cs.Core_IPS_gec_flag__c == null || cs.Core_IPS_gec_flag__c == false ||
@@ -241,10 +255,12 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
              )            
              )
            {             
+             //system.debug('Case is considered for backend routing');
              ListCase.add(cs);            
            }
            else
            {            
+             system.debug('Case is not considered for backend routing');
            }
          }
 
@@ -252,8 +268,9 @@ Public Static Final String IPS_BACKEND_INTEGRATION_USER = 'ips.backend.integrati
              Core_IPS_CasePromotion_Handler.getBackendID(ListCase, oldMap, objectType); 
          }  
          else{
+             System.Debug('Either status is closed or backend system and id are not Null');
          } 
-       } catch(Exception e){      }           
+       } catch(Exception e){   System.Debug('Exception occurred in executeMainRouting' + e.getmessage());     }           
   }    
     
 Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newList, Map<Id,Case> oldMap, Map<Id,Case> newMap, Set<ID> backIDList)
@@ -263,39 +280,48 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
    Set<String> envFieldSet = new Set<String>();
    Map<String,String> envFieldSetMap = new Map<String,String>();
    List<Core_IPS_Backend_Field_Mapping__c> fieldUpdateSupportList = new List<Core_IPS_Backend_Field_Mapping__c>();
+   System.debug('Inside ExecuteBackendFieldUpdate method');
    try{     
       if (backIdList <> null)
       {
-       if(Core_IPS_Backend_Field_Mapping__c.SObjectType.getDescribe().isAccessible()){   	
-        	fieldUpdateSupportList = [Select id, Core_IPS_Field_Object_Name__c, Core_IPS_Field_Technical_name__c, Core_IPS_Backend_System__c, (select Id,Core_IPS_Source_Value__c,Core_IPS_Target_Value__c,Core_IPS_Previous_Source_Value__c from Backend_Value_Mappings__r where Core_IPS_Previous_Source_Value__c != Null) from Core_IPS_Backend_Field_Mapping__c WHERE core_IPS_backend_system__c IN: backIdList AND Core_IPS_Support_Update__c = true];
-       }
+        fieldUpdateSupportList = [Select id, Core_IPS_Field_Object_Name__c, Core_IPS_Field_Technical_name__c, Core_IPS_Backend_System__c, (select Id,Core_IPS_Source_Value__c,Core_IPS_Target_Value__c,Core_IPS_Previous_Source_Value__c from Backend_Value_Mappings__r where Core_IPS_Previous_Source_Value__c != Null) from Core_IPS_Backend_Field_Mapping__c WHERE core_IPS_backend_system__c IN: backIdList AND Core_IPS_Support_Update__c = true];
       }
 
       if(fieldUpdateSupportList <> null && fieldUpdateSupportList.size()>0)
       {
         Schema.SObjectType objType = newList.getSObjectType(); 
         Map<String, Schema.SObjectField> mapFields =  Schema.SObjectType.Case.fields.getMap();
+        //System.debug(' Case NewList---'+newList+' Case NewList Size---'+newList.size()+' Old Map---'+oldMap+' Old Map Size---'+oldMap.size());//Added debug log -- 3/14/2017 Manoj
         for(Case cs:newList)       
         {
         if(oldMap.get(cs.Id) != null){
+          System.debug('--Case status--'+cs.Status+'--Case Substatus--'+cs.Core_Sub_Status__c);//Added debug log to track Case Status and Substatus 3/14/2017 -- Manoj
           fieldSet = new Set<String>();
           envFieldSet = new Set<String>();
           envFieldSetMap = new Map<String, String>();
           for(Core_IPS_Backend_Field_Mapping__c fieldlist:fieldUpdateSupportList)
           {
+              //system.debug('filedlistback'+fieldList.Core_IPS_Backend_System__c);
+              //system.debug('casebacknd'+cs.Core_IPS_backend_System__c);
              if(cs.Core_IPS_backend_System__c == fieldList.Core_IPS_Backend_System__c)
              {  
+                 //system.debug('fieldlist.Core_IPS_Field_Object_Name__c '+fieldlist.Core_IPS_Field_Object_Name__c );
                 if(fieldlist.Core_IPS_Field_Object_Name__c == 'Case')
                 {
-                     //Start Routing BackendFieldUpdate for Case 'SubStatus' update through 'Backend_Status_update' workflow--10/04/2016---Manoj Kumar
+                
+                    System.debug('--Backend Field Technical Name--'+fieldlist.Core_IPS_Field_Technical_name__c+'--Case SubStatus--'+cs.Core_Sub_Status__c+'--Case Old Substatus--'+oldMap.get(cs.Id).Core_Sub_Status__c);//Added debug log to track Case Status and Substatus 3/14/2017 -- Manoj
+                    //Start Routing BackendFieldUpdate for Case 'SubStatus' update through 'Backend_Status_update' workflow--10/04/2016---Manoj Kumar
                     if((fieldlist.Core_IPS_Field_Technical_name__c != null && fieldlist.Core_IPS_Field_Technical_name__c == 'Core_Sub_Status__c') && (cs.Core_Sub_Status__c != oldMap.get(cs.Id).Core_Sub_Status__c))
                     {
+                        //system.debug('--Backend field Mapping--'+fieldlist);
                         // check for existing Backend Value Mappings
                         if(!fieldlist.Backend_Value_Mappings__r.isEmpty() && fieldlist.Backend_Value_Mappings__r.size()>0)
                         {
+                            //system.debug('--Backend Value Mapping Size--'+fieldlist.Backend_Value_Mappings__r.size());
                             String bkPreviousValue = '';
                             for(Core_IPS_Backend_Value_Mapping__c bkvalue : fieldlist.Backend_Value_Mappings__r)
                             {
+                                system.debug('--Backend Value--'+bkvalue);
                                 String bkfieldvalueSource = '';
                                 String bkfieldvaluePrevious = '';
                                 
@@ -307,6 +333,7 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
                                 && (bkvalue.Core_IPS_Source_Value__c.equalsIgnoreCase(String.valueof(cs.status))|| 
                                     bkvalue.Core_IPS_Source_Value__c.equalsIgnoreCase(bkfieldvalueSource)))
                                 {   
+                                    system.debug('--Backend Value Status Mapping Found--'); 
                                     cs.Core_IPS_Backend_Previous_Status__c = String.valueof(bkvalue.Core_IPS_Previous_Source_Value__c);
                                     break;
                                 }
@@ -317,11 +344,13 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
                                       (bkvalue.Core_IPS_Source_Value__c.equalsIgnoreCase(String.valueof(cs.status)) || 
                                         bkvalue.Core_IPS_Source_Value__c.equalsIgnoreCase(bkfieldvalueSource)))
                                     {
+                                       //system.debug('--Backend Value SubStatus Mapping Found--');
                                        bkPreviousValue = String.valueof(bkvalue.Core_IPS_Previous_Source_Value__c);
                                     }
                                     
                                     else 
                                     {
+                                        //system.debug('--No Backend Value Mapping Found--');
                                         //updating Case Backend Previous Status field to 'True' if it doesn't match with Backend Value Mapping which triggers 'Backend_Status_update' workflow
                                         cs.Core_IPS_Backend_Previous_Status__c = 'True';
                                     }
@@ -331,6 +360,7 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
                                     //updating Case Backend Previous Status field with Backend Value Mapping which triggers 'Backend_Status_update' workflow
                                     cs.Core_IPS_Backend_Previous_Status__c = bkPreviousValue;
                                 }
+                                system.debug('--Backend Previous Status--'+cs.Core_IPS_Backend_Previous_Status__c);
                             }
                         }
                         //End Routing Case Substatus update-- Manoj Kumar
@@ -341,6 +371,7 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
                     else
                     {
                         fieldSet.add(fieldlist.Core_IPS_Field_Technical_name__c);
+                        System.Debug('Building FieldSet: Actual Field Name' + fieldlist.Core_IPS_Field_Technical_name__c);
                     }
                 
                 }
@@ -349,6 +380,7 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
                     String fieldname = (fieldlist.Core_IPS_Field_Technical_name__c).deleteWhiteSpace();
                     envFieldSetMap.put(fieldname, fieldname);
                     envFieldSet.add(fieldname);
+                    System.Debug('Building envFieldSet: Actual Field Name' + fieldlist.Core_IPS_Field_Technical_name__c);
                 }
              }
           } 
@@ -357,8 +389,10 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
           
           for(String fieldName:fieldSet)
           {
+            // System.debug ('Case field Name' + mapfields.get(fieldname));
              if(mapfields.get(fieldname) != null && cs.get(fieldName) != oldMap.get(cs.Id).get(fieldName))
              {
+                //System.debug('Inside field update check');
                 backendFieldUpdateFlag = true;
              } 
              if(backendFieldUpdateFlag == true)
@@ -369,6 +403,7 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
 // check for Environmental field update
              if(mapfields.get('Core_jsonfield__c') != null && cs.get('Core_jsonfield__c') != oldMap.get(cs.Id).get('Core_jsonfield__c'))    
              {
+                //System.debug('Environmental Details updated');
                 backendFieldUpdateFlag = executeBackendFieldUpdateFromCaseEnvDet(cs, envFieldSet, envFieldSetMap, oldMap.get(cs.Id));
              }      
           }         
@@ -381,15 +416,16 @@ Public Static void executeBackendFieldUpdate(List<Case> oldList, List<Case> newL
              }
              Timezone tz = Timezone.getTimeZone('America/Los_Angeles');
              cs.Core_IPS_BK_Flds_UpdatedAt__c = DateTime.newInstance(System.Now().getTime() + tz.getOffset(System.Now())); 
+            // System.debug(cs.Core_IPS_BK_Flds_UpdatedAt__c);
           }
           else
-          {                                                             
+          {                                                 //System.Debug('Make both backend updated datetime same');              
              if(cs.Core_IPS_BK_Flds_UpdatedAt__c != null){ cs.Core_IPS_BK_Flds_UpdatedAt_PreVal__c = cs.Core_IPS_BK_Flds_UpdatedAt__c;  }
           }
        }
        }
      } 
-   }catch(Exception e) {  }
+   }catch(Exception e) {  System.Debug('Exception occurred in executeBackendFieldUpdate' + e.getMessage()); }
 } 
 Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, Set<String> envFieldSet, Map<String, String> envFieldSetMap, Case oldCaseRecord)
 {  
@@ -401,16 +437,21 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 
   try  
   {    
+     System.debug('Inside executeBackendFieldUpdateFromCaseEnvDet method');
      String jasonStrNew = caseRecord.Core_jsonfield__c;
      String jasonStrOld = oldCaseRecord.Core_jsonfield__c;
+     System.debug('JSON String at Case Object:' + jasonStrNew + caseRecord.CaseNumber);
+     //System.debug('Old JSON String at Case Object:' + jasonStrOld + caseRecord.CaseNumber);
        
 // Parse the Json strings of the previous and new values and check the backend relevant field is changed or not       
      newFields = parseCaseJsonEnvDetString(jasonStrNew, envFieldSetMap);
      oldFields = parseCaseJsonEnvDetString(jasonStrOld, envFieldSetMap);
+      system.debug('oldsize'+oldFields.size()+'newsize'+newFields.size());
      if(newFields.size()>0 && oldFields.size()==0) {  backendFieldUpdateFlag = true; }
 // compare the fields:
      if(newfields.size()>0 && oldFields.size()>0)     
      {
+       //system.debug('New:' + newfields.size() + 'Old:' + oldFields.size() + 'EnvFieldset' + envFieldSet.size());
        for(String field:envFieldSet)
        {
          if(newfields.get(field)!= null)  
@@ -424,7 +465,7 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
          }
        }
      }                 
-   } catch(Exception e)   {       }  
+   } catch(Exception e)   {      System.Debug('Exception occurred in executeBackendFieldUpdateFromCaseEnvDet:' + e.getMessage());   }  
    return backendFieldUpdateFlag; 
  }   
  Public class caseEnvDet
@@ -457,12 +498,13 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
                If(envFieldSetMap.get(question) !=null)
                {
                   mapFields.put(question, csEnvDet.ansr);
+                  //system.debug(question + 'Question:' + csEnvDet.Qstn + 'Answer:' + csEnvDet.Ansr);  
                }
             }
           }
         }
       } 
-    } catch(Exception e) {   }
+    } catch(Exception e) {  System.debug('Inside Jason String Parsor Method:' + e.getMessage()); }
     return mapFields;
  }
 	//************************************************************************************//
@@ -485,13 +527,16 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 		Map<Id, Case> csMapUpdate = new Map<Id, Case>();
 
 		try{      
+			System.debug('Inside getBackendID method');
 			for(Case cs: ListCase){
 				if(cs.id==null){
+					System.debug('Case ID is null'); 
 					continue; 
 				}
 				if(cs.core_ips_backend_system__c != null && 
 				// ( cs.Core_IPS_Restricted_Secret_Content__c == null || ( cs.Core_IPS_Restricted_Secret_Content__c != null && cs.Core_IPS_Restricted_Secret_Content__c == false ))&&
 				(cs.core_promote_status__c != null && (cs.core_promote_status__c.equalsignorecase('Promote')|| cs.core_promote_status__c.equalsignorecase('Failed') || cs.core_promote_status__c.equalsignorecase('Done')))){
+				//System.debug('Case already assigned Backend System');
 					cs.core_promote_status__c = 'In Progress';
 					if(objectType != null && objectType != 'Case'){    csMapUpdate.put(cs.id, cs);   }
 					continue;
@@ -504,6 +549,7 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 			// products part of the Support Org which are considered for Case Backend Routing        
 
 			if(csList <> null && csList.size() > 0){
+				system.debug('Retreive the supported product ID for each case');            
 				spIDCaseListMap = getSupportedProductID(csList);
 				//Aswin added for queue based routing
 				queueCaseListMap = getqueMapRoute(csList);
@@ -527,8 +573,7 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 					Core_IPS_Backend_System_Deactivated__c = false AND
 					Core_IPS_SP_EIOS_Status__c = false];
 					*/
-				//FLS check added-Venugopal
-                		if(Core_IPS_Backend_Supported_Product_Map__c.SObjectType.getDescribe().isAccessible()){
+				System.debug('================keyset=======>>'+spIDCaseListMap.keyset() +'--'+queueCaseListMap.keyset());
 				mapsupptBackend = [SELECT ID, Name, Core_IPS_Backend_System__c, Core_IPS_Default__c,Core_IPS_Queue__c,Core_IPS_Auto_Promote__c, Core_IPS_Supported_Product__c, Core_IPS_Back_Sys_No_Restricted_Secret__c,
                             ( 
                               SELECT Id, Core_IPS_Backend_SP_Map__c, Core_IPS_Case_Category__C, Core_IPS_Case_Category_Name__c, Core_IPS_Case_SubCategory__c, Core_IPS_Case_SubCategory_Name__c 
@@ -536,7 +581,8 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
                             ) 
                             FROM Core_IPS_Backend_Supported_Product_Map__c 
                             WHERE (Core_IPS_Supported_Product__c=: spIDCaseListMap.keyset() OR Core_IPS_Queue__c =: queueCaseListMap.keyset()) AND Core_IPS_Deactivated__c = false AND Core_IPS_Backend_System_Deactivated__c = false AND Core_IPS_SP_EIOS_Status__c = false];     
-               			}
+          
+				System.Debug('***Core Backend Supported product map======'+mapsupptBackend.size());
 			}
 
 			// Main Processing Starts here
@@ -544,22 +590,26 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 			if(mapsupptBackend!=null && mapsupptBackend.size()>0){
 				// for each case get the map of case id with list of backend supported product map id
 				for(Case cs:csList){
-					supProdID = caseIDspIDMap.get((id)cs.id);
+					system.debug('inside for loop');
+					supProdID = caseIDspIDMap.get(cs.id);
 					Boolean isBSUpdated = FALSE;
-					if(supProdID == null){   continue;      }      
+					if(supProdID == null){   continue;      }      //System.debug('Supported Product Could not be determined for the case:' + cs.id);
 					caseListForCriteria = new List<case>();
 					List<Core_IPS_Backend_Supported_Product_Map__c> listProd = new List<Core_IPS_Backend_Supported_Product_Map__c>();          
 					csBKSuppProdMap= new Map<Id, List<Core_IPS_Backend_Supported_Product_Map__c>>();					
 				
 					for(Core_IPS_Backend_Supported_Product_Map__c prod : mapsupptBackend){					
-						
+						//system.debug('inside second for loop'+supProdID );
+						//system.debug('inside second for loop'+prod.Core_IPS_Supported_Product__c);
 						if(prod.Core_IPS_Supported_Product__c ==  supProdID ){
+							//system.debug('satisfy the condition');
 							if(!isBSUpdated && oldMap.get(cs.id).Core_IPS_Backend_System__c != null && cs.Core_IPS_Backend_System__c != null && cs.Core_IPS_Backend_System__c != oldMap.get(cs.id).Core_IPS_Backend_System__c ){ isBSUpdated = TRUE; }
 							
 							/** Commented out below code to allow case records for BackendStamping even if 'Auto-promote' is false 05102016**/
 							//ignore the backend system which does not support auto promote and the case is not set for manual promote
 							/*  if((cs.core_promote_status__c==null || (cs.core_promote_status__c!=null && cs.core_promote_status__c!='Promote')) && prod.core_ips_auto_promote__c==false) 
 							{
+							System.debug(prod.name + 'Auto Promote:' + prod.core_ips_auto_promote__c);
 							continue;
 							}*/
 							/*if(prod.Core_IPS_Back_Sys_No_Restricted_Secret__c != null && prod.Core_IPS_Back_Sys_No_Restricted_Secret__c == true && 
@@ -569,8 +619,12 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 							}*/
 
 							/* Sneha US454558 TECH: BES:  Enable changing of DCG JIRA backend systems START */
-						  
+						  // System.debug('@@ 1'+cs.Core_IPS_Backend_System__c);
+						   //System.debug('@@ 2'+oldMap.get(cs.id).Core_IPS_Backend_System__c);
+						   //System.debug('@@ 3'+prod.Core_IPS_Backend_System__c);
+						   //System.debug('@@ 4 '+!prod.Core_IPS_Auto_Promote__c);
 							if(isBSUpdated && prod.Core_IPS_Backend_System__c.equals(cs.Core_IPS_Backend_System__c) && !prod.Core_IPS_Auto_Promote__c){
+								System.debug('@@New CHange');
 								stampBackendID(prod.Core_IPS_Backend_System__c,prod.Core_IPS_Auto_Promote__c, cs, objectType);
 								break;
 							}
@@ -578,7 +632,9 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 						   if(!isBSUpdated && prod.Core_IPS_Default__c == true){  // stamp the first default backend system  
 							  
 							   if(cs.Core_IPS_Backend_System__c == null) {
+								   //System.debug( 'Default System:' + prod.Core_IPS_Backend_System__c );
 								   stampBackendID(prod.Core_IPS_Backend_System__c,prod.Core_IPS_Auto_Promote__c, cs, objectType);   
+								   //system.debug('default true');                
 								}                   
 							}
 							else{     
@@ -586,22 +642,28 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 									listProd.add(prod); //list of backend supported product records
 									notDefault.put(prod.id, prod);  //list of Backend supported product Ids and records Map                    
 									backendSystemIDs.add(prod.Core_IPS_Backend_System__c);    // get all Backend System IDs for the backend SP map ID 
+									system.debug('default false'+backendSystemIDs);                                     
 								}
 							}                  
 						}
 						//************added for queue routing 
 						else{
+							//system.debug('called else part for pro');
 							if(prod.Core_IPS_Queue__c != null && prod.Core_IPS_Queue__c != ''){
+								system.debug('after 698'+prod.Core_IPS_Queue__c);  
 								if(prod.Core_IPS_Default__c == true){  
 									// stamp the first default backend system  
 									if(cs.Core_IPS_Backend_System__c == null){
+									   System.debug( 'Default System:' + prod.Core_IPS_Backend_System__c );
 									   stampBackendID(prod.Core_IPS_Backend_System__c,prod.Core_IPS_Auto_Promote__c, cs, objectType);   
+									   //system.debug('default true');                
 									}                   
 								}
 								else{                   
 									listProd.add(prod); //list of backend supported product records
 									notDefault.put(prod.id, prod);  //list of Backend supported product Ids and records Map                    
 									backendSystemIDs.add(prod.Core_IPS_Backend_System__c);    // get all Backend System IDs for the backend SP map ID 
+									system.debug('default false'+backendSystemIDs);                                     
 								}   
                      
 							}
@@ -609,19 +671,20 @@ Public Static boolean executeBackendFieldUpdateFromCaseEnvDet(Case caseRecord, S
 						} 
 						//***********end here************                            
 					}  
-                    if(ListProd <> null && Listprod.size()>0){
+					if(ListProd <> null && Listprod.size()>0){
 						csBKSuppProdMap.put(cs.id, ListProd);
-                        suppProdIds.add(supProdID);
+						suppProdIds.add(supProdID);
 						caseListForCriteria.add(cs);
 						if(cs.Core_Case_Issue_Sub_Category__c <> null) { caseSubCatIds.add( cs.Core_Case_Issue_Sub_Category__c ); }                
 					}
 				}
             
 				if(csBKSuppProdMap <> null && csBKSuppProdMap.size()>0){
+					//system.debug('check criteria');
 					checkCriteria(suppProdIds, backendSystemIDs, caseSubCatIds, caseIDspIDMap, csBKSuppProdMap, notDefault, objectType, caseListForCriteria, oldMap); 
 				}             
 			}
-		} catch(Exception e) {  }
+		} catch(Exception e) {  System.debug('Exception occurred in getBackendID method' + e.getmessage()); }
 	}    //End of method  getBackendID 
 
 public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set<ID> caseSubCatIds, Map<Id, ID> caseIDspIDMap, Map<Id, List<Core_IPS_Backend_Supported_Product_Map__c>> csBKSuppProdMap, Map<Id,Core_IPS_Backend_Supported_Product_Map__c> bksupIdObjMap, String objectType, List<Case> caseListAll, Map<Id, Case> oldMap)
@@ -657,11 +720,9 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
  try{
   
 // Get the environmental details criteria for all backend Ids - note environmental details criteria are defined at backend system ID level   
-// FLS check added-Venugopal   
-     if(Core_IPS_Backend_Env_Details_Map__c.SObjectType.getDescribe().isAccessible()){
-     	listEnvCriteria =[SELECT Name, Core_IPS_Backend_System__c, Core_IPS_Environment_Variable_Answer__c,Core_IPS_Environment_Variable_Question__c
-    	FROM Core_IPS_Backend_Env_Details_Map__c WHERE Core_IPS_Backend_System__c IN: backendSysIDs AND Core_IPS_Deactivated__c = false];  
-     }
+    listEnvCriteria =[SELECT Name, Core_IPS_Backend_System__c, Core_IPS_Environment_Variable_Answer__c,Core_IPS_Environment_Variable_Question__c
+    FROM Core_IPS_Backend_Env_Details_Map__c WHERE Core_IPS_Backend_System__c IN: backendSysIDs AND Core_IPS_Deactivated__c = false];  
+
 /** Added this 'IF' condition to query Assigned Env Details only if 'Environment details criteria exists for all Backend Ids 05102016 **/
  if(listEnvCriteria.size() > 0){
     // get the assigned environmental details for the case Supported IDs or Issue Sub Categories
@@ -678,10 +739,8 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
       //Get the environmental responses for the case ID if assigned environmental details exists for the case Supported Ids
       /**********Changing the query for environmental object change*****3/19/18*******/
         //CaseEnvDetResponse=[SELECT Core_Question__c , Core_Answer__c, Core_Case__c FROM Core_IPS_Environment_Details__c WHERE Core_Case__c IN:csBKSuppProdMap.keyset()];
-           //FLS check added-Venugopal
-          if(Core_IPS_Response__c.SObjectType.getDescribe().isAccessible()){
-          	CaseEnvDetResponse=[SELECT Core_IPS_ANswer__c,Core_IPS_Question__c,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c IN:csBKSuppProdMap.keyset()  ];//AND (Core_IPS_Survey_Type__c = null OR Core_IPS_Survey_Type__c ='')
-          }
+      CaseEnvDetResponse=[SELECT Core_IPS_ANswer__c,Core_IPS_Question__c,Core_IPS_Case__c FROM Core_IPS_Response__c WHERE Core_IPS_Case__c IN:csBKSuppProdMap.keyset()  ];//AND (Core_IPS_Survey_Type__c = null OR Core_IPS_Survey_Type__c ='')
+     system.debug('CaseEnvDetResponse'+CaseEnvDetResponse+'sppp'+csBKSuppProdMap.keyset());
       }
 
 }    //End of 'if' listEnvCriteria check
@@ -696,6 +755,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
             spProductsMap.put(assigned.Core_Product_Issue_Sub_Category__c, assigned.Core_Product_Issue_Sub_Category__c);
         }
    }
+   System.debug('***Map of assigned env details along with the Supported Prod/ Issue Sub Category id'+ spProductsMap);
    
   
   for(Case cs:caseListAll){
@@ -725,6 +785,8 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
   }
     
   }
+    System.debug(''+csList + csList.size());
+
   
   if(csList.size() == 0){
       return;
@@ -735,7 +797,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
 // Get Issue categories criteria defined for all support product backend system map IDs    List< Core_IPS_Backend_Case_Categories_Map__c>  
    /*issueCatListCriteria =[SELECT id,Core_IPS_Backend_SP_Map__c,Core_IPS_Case_Category__C, Core_IPS_Case_Category_Name__c, Core_IPS_Case_SubCategory__c, Core_IPS_Case_SubCategory_Name__c FROM Core_IPS_Backend_Case_Categories_Map__c 
        WHERE Core_IPS_Backend_SP_Map__c=:bksupIDObjMap.keyset() AND Core_IPS_Deactivated__c = false];
-   */
+   System.debug('***Issue categories criteria' +issueCatListCriteria);*/
    
   for(Core_IPS_Backend_Supported_Product_Map__c parent : bksupIDObjMap.values()){
     List<Core_IPS_Backend_Case_Categories_Map__c> listOfIssueCat = parent.Backend_Issue_Categories_Maps__r;
@@ -743,6 +805,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
         issueCatListCriteria.add(child);
     }
   } 
+  System.debug('***Issue categories list retrieved from the parent' +issueCatListCriteria);
    
 //Start preparing data for processing
 //First get the Question and answer map for the case environmental details
@@ -764,6 +827,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
              //caseEnvDetQA.put(csenv.Core_Question__c,(csenv.Core_Question__c + csenv.Core_Answer__c).deleteWhitespace());
              /********added new response object fields to map*************3/19/18***/
              caseEnvDetQA.put(csenv.Core_IPS_Question__c,(csenv.Core_IPS_Question__c+ csenv.Core_IPS_Answer__c).deleteWhitespace());
+             //System.debug('Case Environmental Response:' + (csenv.Core_IPS_Question__c+ csenv.Core_IPS_Answer__c).deleteWhitespace());
            }        
         }
         
@@ -787,6 +851,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
                 hasAssignedEnvVar = true;
         }
         
+        //system.debug('Operation Environmental Details : hasAssignedEnvVar:' + hasAssignedEnvVar);
         if(hasAssignedEnvVar == false)  ///go directly for issue categories check for only backend supported product with no environmentl details criteria defined
         {
            if(listEnvCriteria.size() == 0)
@@ -797,6 +862,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
               for(Core_IPS_Backend_Supported_Product_Map__c bksupIDObj1: bksupIDObjList) 
               {
                  env_criteria_exists = false;
+                 //System.debug('Inside Env details Backend System ID:' + bksupIdObj1.Core_IPS_Backend_System__c); 
                  for(Core_IPS_Backend_Env_Details_Map__c env1:listEnvCriteria)   
                  {
                     if(env1.Core_IPS_Backend_System__c!=null && env1.Core_IPS_Backend_System__c == bksupIdObj1.Core_IPS_Backend_System__c)
@@ -819,14 +885,18 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
                questionAns = new Map<String,String>();
                matched_flag = false;                      
                backendID = bksupIdObj.Core_IPS_Backend_System__c; 
+              // System.debug('Backend System ID:' + backendID);             
 // get the environmental check criteria and form the question and answer map
 
               for(Core_IPS_Backend_Env_Details_Map__c env:listEnvCriteria)
               {
+                // System.debug('Inside Env details Backend System ID:' + backendID); 
                  if(env.Core_IPS_Backend_System__c!=null && env.Core_IPS_Backend_System__c == backendID)
                  {
                     String questionanswer = (env.Core_IPS_Environment_Variable_Question__c+env.Core_IPS_Environment_Variable_Answer__c).deleteWhitespace();
+                    System.debug('questionanswer'+questionanswer);
                     questionAns.put(questionanswer,questionanswer);
+                    System.debug('questionanswer'+questionanswer);
                     questionSet.add(env.Core_IPS_Environment_Variable_Question__c);  
                  }
                }
@@ -847,6 +917,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
                         only_env_details = only_env_details + 1;
                         if(cs.Core_IPS_Backend_System__c == null || only_env_details == 1)
                         {
+                           //System.debug('Issue categories not Maintained stamp the first environmental check passed id');
                            csMap = stampBackendID(bksupIDObj.Core_IPS_Backend_System__c, bksupIDObj.Core_IPS_Auto_Promote__c, cs, objectType);                           
                            bk_system_stamped = true;
                            if(csMap!= null && csMap.size()>0){ csMapFinalList.putAll(csMap);  }                         
@@ -859,6 +930,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
                         bk_system_stamped = true;
                         if(csMap!= null && csMap.size()>0)
                         { csmapFinalList.putAll(csMap); }                       
+                        System.debug('All check passed and break');
                         Break;                
                      }                               
                   }           
@@ -873,17 +945,21 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
         {          
           for(Core_IPS_Backend_Supported_Product_Map__c bkspObj:bkSuppProdObjlistNoEnv)
           {         
+             //System.debug('Inside Issue Category check SP ID:' + bkspObj.id);
              Integer res = checkIssueCategoriesCriteria(issueCatListCriteria,bkspObj.id,cs);
+             //system.debug('issue categories check result:' + res);
              if (res == 1){
                 csMap = stampBackendID(bkspObj.Core_IPS_Backend_System__c, bkspObj.Core_IPS_Auto_Promote__c, cs, objectType);
                 bk_system_stamped = true;
                 if(csMap!= null && csMap.size()>0){ csMapFinalList.putAll(csMap);  }
+                //System.debug('Stamping only system which passed Issue category check');
                 Break;                
              }
              if (res == 0 && bk_system_stamped == false){
                 csMap = stampBackendID(bkspObj.Core_IPS_Backend_System__c, bkspObj.Core_IPS_Auto_Promote__c, cs, objectType);
                 if(csMap!= null && csMap.size()>0)
                 { csMapFinalList.putAll(csMap);  }
+                //System.debug('Stamping the first backend system with no environmental or issue categories criteria defined');
              }             
            }            
          } 
@@ -891,7 +967,7 @@ public static void checkCriteria(Set<Id> suppProdIDs, Set<ID> backendSysIDs, Set
      if(csMapFinalList!= null && csMapFinalList.size()>0 && objectType != null && objectType != 'Case' ){ 
         update csmapFinalList.values();  
     }                                           
-  } catch(Exception e) {  }
+  } catch(Exception e) { System.debug('Exception occurred in checkCriteria method' + e.getmessage());  }
 } 
 public static boolean checkEnvironmentalCriteria(Core_IPS_Backend_Supported_Product_Map__c bksuppProdObj,Map<String, String> caseEnvDetQA, Set<String> questionSet,Map<String, String> questionAns)
 {
@@ -903,17 +979,19 @@ public static boolean checkEnvironmentalCriteria(Core_IPS_Backend_Supported_Prod
          for(String question:questionSet)
          {
              String caseQA = caseEnvDetQA.get(question); 
+             system.debug('caseEnvDetQA.get(question)' + caseEnvDetQA.get(question) + 'questionAns.get(caseQA)' + questionAns.get(caseQA));
                     
              if (questionAns.get(caseQA)!= null && caseQA.equalsignorecase(questionAns.get(caseQA)))
              {  matched_flag = true;   }
              else
              {
                 matched_flag = false;
+                //System.debug('Break from environmental check and proceed with next sup id');
                 break;
              }               
            }    
         }
-   } catch(Exception e)  {   }
+   } catch(Exception e)  {  system.debug('Exception occurred in checkEnvironmentalCriteria method' + e.getmessage());  }
    return matched_flag;
 }             
 
@@ -972,11 +1050,8 @@ Public Static Map<ID, List<Case>> getSupportedProductID(List<Case> csList)
      
    if (assetIDs <> null && assetIds.size()>0)
    {
-       //FLS check added-Venugopal
-       if(Asset.SObjectType.getDescribe().isAccessible()){
-       		assetList=[SELECT core_supported_product__c, Product2id, Core_Product_Organization__c From Asset Where id IN:assetIds];
-       }
-       if(assetlist <> null && assetList.size()>0)
+     assetList=[SELECT core_supported_product__c, Product2id, Core_Product_Organization__c From Asset Where id IN:assetIds];
+     if(assetlist <> null && assetList.size()>0)
      {
        for(Asset asset:assetList)
        {
@@ -994,7 +1069,7 @@ Public Static Map<ID, List<Case>> getSupportedProductID(List<Case> csList)
        }
      }
    }  
- } catch(Exception e) {    }   
+ } catch(Exception e) {  System.debug('Exception occurred in getSupportedProductID' + e.getmessage());  }   
  return  suppProdIDCaseListMap;
 
 } //End of method "getSupportedProductID"
@@ -1011,19 +1086,21 @@ public static map<string,list<case>> getqueMapRoute(List<Case> csList){
                       if(mapQueCase.containsKey(dl.Core_IPS_Assigned_Queue__c)) 
                     {
                         mapQueCase.get(dl.Core_IPS_Assigned_Queue__c).add(dl);
+                        //system.debug('enetred here'+fieldmappingMap);
                     }
                     else
                     {
                         List<case> lineList= new List<case>();
                         lineList.add(dl);
                         mapQueCase.put(dl.Core_IPS_Assigned_Queue__c, lineList);
+                        //system.debug('enetred here2'+fieldmappingMap);
                     }
                  
                  //=================end==============
                   
                }
         }
-    } catch(exception e){   }
+    } catch(exception e){ System.debug('Exception occurred in getQueMapRoute' + e.getmessage());   }
 
 return mapQueCase;
 }
@@ -1037,27 +1114,21 @@ Public Static Boolean checkIssueCategoryWithCase(List<Core_IPS_Backend_Case_Cate
   {
     for(Core_IPS_Backend_Case_categories_Map__c issuecat:i_isscatList)
     {
+      //System.debug(i_cs.Core_External_Issue_Category__c + ' vs  ' + issuecat.Core_IPS_Case_Category_Name__c + ' &&& ' + i_cs.Core_External_Issue_SubCategory__c + '  vs  ' + issuecat.Core_IPS_Case_SubCategory_Name__c );
       if(issuecat.Core_IPS_Case_Category_Name__c != null && issuecat.Core_IPS_Case_Category_Name__c == i_cs.Core_External_Issue_Category__c)
       { 
          matched_flag = true;
          if(issuecat.Core_IPS_Case_SubCategory_Name__c == null) 
-         {
-		break;
-	 }
+         {break;}
          else
          { 
-            if(issuecat.Core_IPS_Case_SubCategory_Name__c == i_cs.Core_External_Issue_SubCategory__c){ 
-		matched_flag = true;
-		break;
-	    } 
+            if(issuecat.Core_IPS_Case_SubCategory_Name__c == i_cs.Core_External_Issue_SubCategory__c)     { matched_flag = true; break;} 
             else 
-            {
-		matched_flag = false;
-	    } 
+            {matched_flag = false;} 
          }
       }
    }   
- } catch(Exception e) {    }     
+ } catch(Exception e) {   System.debug('Exception occurred in checkIssueCategoryWithCase'); }     
  return matched_flag;
     
 } //End of Method: "Boolean checkIssueCategoryWithCase(List<Core_IPS_Backend_Case_Categories_Map__c> i_isscatList, case i_cs)" 
@@ -1071,22 +1142,26 @@ public static Integer checkIssueCategoriesCriteria(List<Core_IPS_Backend_Case_Ca
  Integer result = 0;
  try
  {  
+   System.debug('Inside method');
    for(Core_IPS_Backend_Case_Categories_Map__c issCat:issueCatList) 
    {
      if(suppProdId == issCat.Core_IPS_Backend_SP_Map__c)
      {  issueCat.add(issCat); }
    }   
  
+  System.debug('BackendSupportProduct Issue Categories' + issueCat.size());  
   if(issueCat.size()>0)
   {  
+    // System.debug('Issue categories Maintained'+ issueCat.size());
      boolean res = checkIssueCategoryWithCase(issueCat, cs);
+     //System.debug('Issue categories compare with Case object check result'+ res);
      if(res == true)
      {  result = 1;  } //"Check passed          
      else { result = -1;  } //"Check not passed
   }
   else
   { result = 0;  } //"issue categories not maintained
- } catch(Exception e) {   }          
+ } catch(Exception e) {  System.debug('Exception occurred in checkIssueCategoriesCritieria'); }          
  return result;
 }  // End of Method: "Integer checkIssueCategoriesCriteria(List<Core_IPS_Backend_Case_Categories_Map__c > issueCatList, ID suppProdId)" 
 
@@ -1111,8 +1186,8 @@ public Static Map<Id, Case> stampBackendID(ID backendID, Boolean auto_promote, C
        csMap.put(cs.id, cs); 
     }
     else
-    { }
- } catch(Exception e) { } 
+    {  System.Debug('Backend ID is inactive:' + backendID); }
+ } catch(Exception e) { System.debug('Exception occurred in stampBackendID' + e.getmessage());  } 
  return csMap;
 } //End of Method "void stampBackendID(ID backendID, Case cs)"   
 

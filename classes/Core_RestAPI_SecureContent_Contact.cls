@@ -12,7 +12,7 @@ Function    : Apex class to get the list of B2B Contacts for a given list of Acc
 *****************************************************************************************************************************************/
 
 @RestResource(urlMapping='/SecureContent/Contacts')
-global without sharing class Core_RestAPI_SecureContent_Contact {  
+global class Core_RestAPI_SecureContent_Contact {  
 
     // Class to store the list of all Contacts
     global class ContactWrapperList {
@@ -73,7 +73,7 @@ global without sharing class Core_RestAPI_SecureContent_Contact {
         // Get the details of all the Contacts for the given Account Ids
         try { 
 
-            for (Contact record: [SELECT Id, Core_Job_Function__c, LastName, FirstName, Core_English_Only_Last_Name__c, Core_English_Only_First_Name__c, Core_Enterprise_Id__c, Email, AccountId
+            for (Contact record: [SELECT Id, Core_Job_Function__c, LastName, FirstName, Core_Login_Id__c, Core_English_Only_Last_Name__c, Core_English_Only_First_Name__c, Core_Enterprise_Id__c, Email, AccountId
                                     FROM Contact WHERE Core_Contact_B2B_Indicator__c = true AND AccountId IN :lstAccountIds]) {   
 
                 // Increment the total count of Contacts for tracking in log Entry
@@ -83,7 +83,7 @@ global without sharing class Core_RestAPI_SecureContent_Contact {
                 contactWrapper.PRI_OCCP_TTL_CD = record.Core_Job_Function__c;
                 contactWrapper.LST_NM = record.LastName;
                 contactWrapper.FRST_NM = record.FirstName;
-                contactWrapper.EXTRN_LGN_ID = '';
+                contactWrapper.EXTRN_LGN_ID = record.Core_Login_Id__c;
                 contactWrapper.ENG_LST_NM = record.Core_English_Only_Last_Name__c;
                 contactWrapper.ENG_FRST_NM = record.Core_English_Only_First_Name__c; 
                 contactWrapper.CST_ID = record.Core_Enterprise_Id__c;

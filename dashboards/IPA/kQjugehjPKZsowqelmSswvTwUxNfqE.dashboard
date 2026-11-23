@@ -10,11 +10,11 @@
     <dashboardFilters>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2026 - Q3 2027</values>
+            <values>Q4 2023 - Q3 2024</values>
         </dashboardFilterOptions>
         <dashboardFilterOptions>
             <operator>equals</operator>
-            <values>Q4 2025 - Q3 2026</values>
+            <values>Q4 2022 - Q3 2023</values>
         </dashboardFilterOptions>
         <name>Measurement Period</name>
     </dashboardFilters>
@@ -33,10 +33,9 @@
                     <column>PRM_Value_Exchange_Data__c.PRM_TimePeriod_Nm__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>0</decimalPrecision>
-                <displayUnits>Integer</displayUnits>
-                <drillDownUrl>https://partner.intel.com/s/company-training-credits</drillDownUrl>
+                <displayUnits>Auto</displayUnits>
                 <groupingSortProperties/>
-                <header>Total Company Training Credits</header>
+                <header>Company Training Credits</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
@@ -53,8 +52,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>ipa-data-migration-user@intel.com</runningUser>
+    <owner>11227352@intel.com.crm</owner>
+    <runningUser>snehalx.ramesh.banubakode@intel.com</runningUser>
     <textColor>#000000</textColor>
     <title>TRAINING</title>
     <titleColor>#000000</titleColor>

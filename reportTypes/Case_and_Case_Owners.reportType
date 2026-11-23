@@ -450,6 +450,21 @@
             <field>Manager.Manager.Id</field>
             <table>User</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Year__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_IPA_Refresh__c</field>
+            <table>User</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Partner_License_Reclaimed__c</field>
+            <table>User</table>
+        </columns>
         <masterLabel>Users</masterLabel>
     </sections>
     <sections>
@@ -1149,13 +1164,5 @@
             <table>User.Case$OwnerId</table>
         </columns>
         <masterLabel>Cases (Case Owner)</masterLabel>
-    </sections>
-    <sections>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
-            <table>User.Case$OwnerId</table>
-        </columns>
-        <masterLabel>Cases</masterLabel>
     </sections>
 </ReportType>

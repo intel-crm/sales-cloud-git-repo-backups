@@ -4,10 +4,17 @@
     <containerType>Network</containerType>
     <label>Default Navigation</label>
     <navigationMenuItem>
-        <label>Topics</label>
+        <label>Design Registration</label>
         <position>1</position>
         <publiclyAvailable>true</publiclyAvailable>
-        <target>ShowMoreTopics</target>
-        <type>NavigationalTopic</type>
+        <target>PRM_Registration_Request__c</target>
+        <type>SalesforceObject</type>
+    </navigationMenuItem>
+    <navigationMenuItem>
+        <label>Opportunity</label>
+        <position>2</position>
+        <publiclyAvailable>true</publiclyAvailable>
+        <target>Opportunity</target>
+        <type>SalesforceObject</type>
     </navigationMenuItem>
 </NavigationMenu>

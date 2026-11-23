@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfj</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3om</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuo</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">MDF User</value>
+        <value xsi:type="xsd:string">Primary Lead Designated Rep</value>
     </values>
 </CustomMetadata>

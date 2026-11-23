@@ -1,5 +1,5 @@
 /**************************************************************************************************************
-Apex Class Name:  PRM_RetriggerEV_API
+Apex Class Name:  PRM_RetriggerEV_API 
 Version     : 1.0 
 Created Date: 04 March 2020
 Function    : Custom REST service for retriggering email verification
@@ -28,6 +28,7 @@ global class PRM_RetriggerEV_API {
             res.statusCode = 200;
             res.responseBody = Blob.valueOf('Email has been triggered');                            
         }catch(Exception e){
+            System.debug('ERROR 500!!!!');
             res.statusCode = 500;
             SalesforceError[] errs = new SalesforceError[]{ 
                 new SalesforceError('0005','Email Retrigger Failed')

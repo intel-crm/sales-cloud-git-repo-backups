@@ -171,15 +171,6 @@
         <type>Lookup</type>
     </fields>
     <fields>
-        <fullName>Email__c</fullName>
-        <externalId>false</externalId>
-        <label>Email</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Email</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>EndTime</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -188,41 +179,11 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>FirstName__c</fullName>
-        <externalId>false</externalId>
-        <label>FirstName</label>
-        <length>80</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>IpAddress</fullName>
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>LastName__c</fullName>
-        <externalId>false</externalId>
-        <label>LastName</label>
-        <length>80</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>LeadId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>LiveChatButtonId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
-        <fullName>LiveChatDeploymentId</fullName>
         <trackHistory>false</trackHistory>
         <type>Lookup</type>
     </fields>
@@ -234,16 +195,6 @@
     <fields>
         <fullName>Location</fullName>
         <trackHistory>false</trackHistory>
-    </fields>
-    <fields>
-        <fullName>LoggedInUserId__c</fullName>
-        <externalId>false</externalId>
-        <label>LoggedInUserId</label>
-        <length>25</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
     </fields>
     <fields>
         <fullName>MaxResponseTimeOperator</fullName>
@@ -279,11 +230,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>SkillId</fullName>
-        <trackHistory>false</trackHistory>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>StartTime</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -300,16 +246,6 @@
         <trackHistory>false</trackHistory>
     </fields>
     <fields>
-        <fullName>Username__c</fullName>
-        <externalId>false</externalId>
-        <label>Username</label>
-        <length>20</length>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>VisitorMessageCount</fullName>
         <trackHistory>false</trackHistory>
     </fields>
@@ -320,20 +256,6 @@
     <fields>
         <fullName>WaitTime</fullName>
     </fields>
-    <listViews>
-        <fullName>PSG_Sales_Chat_Queue_LiveChatTranscript</fullName>
-        <columns>Name</columns>
-        <columns>LiveChatVisitor</columns>
-        <columns>StartTime</columns>
-        <columns>EndTime</columns>
-        <columns>Status</columns>
-        <filterScope>Everything</filterScope>
-        <label>PSG_Sales_Chat_Queue</label>
-        <language>en_US</language>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>LiveChatVisitor</customTabListAdditionalFields>
         <customTabListAdditionalFields>StartTime</customTabListAdditionalFields>

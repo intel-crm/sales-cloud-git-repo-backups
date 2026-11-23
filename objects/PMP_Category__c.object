@@ -154,7 +154,7 @@
     <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
-    <externalSharingModel>Read</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Core_PMP_Locale__c</fullName>
         <description>Helps segregate the Categories and display based on user locale</description>
@@ -449,6 +449,14 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PMP_Partner_Shadow__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Partner Shadow</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>PMP_Tool_Tip_Chinese_Txt__c</fullName>
         <description>Tool Tip for category in chinese</description>
         <inlineHelpText>Tool Tip for category in chinese</inlineHelpText>
@@ -480,6 +488,23 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
         <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PSS_Eligible_for_GeTM__c</fullName>
+        <defaultValue>false</defaultValue>
+        <label>Eligible for GeTM</label>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Partner_Role_Category__c</fullName>
+        <label>Partner Role Category</label>
+        <summaryForeignKey>PMP_Category_Partner__c.PMP_Category_Id__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
     </fields>
     <fields>
         <fullName>Type__c</fullName>
@@ -524,6 +549,6 @@ IF(NOT(ISBLANK(PMP_Parent_Category_Id__r.Name)),PMP_Parent_Category_Id__r.Name,
     </nameField>
     <pluralLabel>Categories</pluralLabel>
     <searchLayouts/>
-    <sharingModel>Read</sharingModel>
+    <sharingModel>Private</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

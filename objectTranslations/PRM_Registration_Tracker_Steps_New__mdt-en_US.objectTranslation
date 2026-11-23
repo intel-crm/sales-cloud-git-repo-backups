@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_Registration_Tracker_Steps_New</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_Registration_Tracker_Steps_News</value>
+    </caseValues>
+    <fields>
+        <label><!-- IS_CIDAAS_ENABLED --></label>
+        <name>IS_CIDAAS_ENABLED__c</name>
+    </fields>
+    <fields>
+        <label><!-- Scenario_Name --></label>
+        <name>Scenario_Name__c</name>
+        <picklistValues>
+            <masterLabel>New User New Account</masterLabel>
+            <translation><!-- New User New Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New User Old Account</masterLabel>
+            <translation><!-- New User Old Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Old User Old Account</masterLabel>
+            <translation><!-- Old User Old Account --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Step Number to add milestone --></label>
+        <name>Step_Number_to_add_milestone__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

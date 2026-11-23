@@ -10,7 +10,6 @@
         <connector>
             <targetReference>Core_MDF_Check_Status_Value_1</targetReference>
         </connector>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>inputClaims</name>
             <value>
@@ -595,8 +594,6 @@
         <queriedFields>Core_MDF_Member_Manual_Hold_Ind__c</queriedFields>
         <queriedFields>Core_MDF_Intel_Manual_Hold_Ind__c</queriedFields>
         <queriedFields>Core_MDF_Criteria_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_VAT_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Bank_Doc_Hold_Ind__c</queriedFields>
     </recordLookups>
     <recordLookups>
         <name>StoreClaimId</name>
@@ -647,8 +644,6 @@
         <queriedFields>Core_MDF_Intel_Manual_Hold_Ind__c</queriedFields>
         <queriedFields>Core_MDF_Criteria_Hold_Ind__c</queriedFields>
         <queriedFields>Core_MDF_Member_Manual_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_VAT_Hold_Ind__c</queriedFields>
-        <queriedFields>Core_MDF_Bank_Doc_Hold_Ind__c</queriedFields>
     </recordLookups>
     <recordUpdates>
         <name>Core_MDF_Update_the_Bank_Record_Type</name>
@@ -684,7 +679,7 @@
             <targetReference>Core_MDF_Check_if_Bank_Id_and_Status_Are_NOT_NULL</targetReference>
         </connector>
     </start>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <description>This will contain the Claim Ids.</description>
         <name>collClaimIds</name>

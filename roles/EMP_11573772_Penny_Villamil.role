@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Junko Matthews</description>
+    <description>EMP of Adrian De Grazia</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11573772_Penny_Villamil</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11406802_Junko_Matthews</parentRole>
+    <parentRole>EMP_10586764_Adrian_De_Grazia</parentRole>
 </Role>

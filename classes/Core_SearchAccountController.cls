@@ -9,7 +9,7 @@
 *****************************************************************************************************************************************/
 public without sharing class Core_SearchAccountController {
 
-   /* @AuraEnabled
+    @AuraEnabled
     public static List<PickListValueWrapper> fetchPicklistValues(List<String> salutationPickListNames) {
         List<PickListValueWrapper> pickListNameToValueSet = new List<PickListValueWrapper>();
         Map<String, String> pickistNameValue = new Map<String, String>();
@@ -24,7 +24,7 @@ public without sharing class Core_SearchAccountController {
         //for(String pickListName : salutationPickListNames){
         Map<String, Schema.SObjectField> FieldMap = Schema.SObjectType.Contact.fields.getMap();
         for (Schema.SObjectField field : FieldMap.values()) {
-            Schema.DescribeFieldResult DescField = field.getDescribe();             
+            Schema.DescribeFieldResult DescField = field.getDescribe();           	
             if(DescField.getType() != null && DescField.getType() ==  Schema.DisplayType.PICKLIST
                && pickistNameValue.containsKey(DescField.getName())){
                    
@@ -102,7 +102,7 @@ public without sharing class Core_SearchAccountController {
         
         List<Core_MDF_Partner_Group_Mapping__c>  pgMappingList = [SELECT Core_MDF_Account__c, Core_MDF_Works_For__c 
                                                                   FROM Core_MDF_Partner_Group_Mapping__c  
-                                                                  where Core_MDF_Group_Id__c IN :loggedInUserGroupIds and Core_MDF_Inactive_Ind__c = false];
+                                                                  where Core_MDF_Group_Id__c IN :loggedInUserGroupIds];
         
         Set<Id> accIds = new Set<id>();
         Set<Id> corpAccIds = new Set<id>();
@@ -113,7 +113,7 @@ public without sharing class Core_SearchAccountController {
                                                                 Core_MDF_Group_Id__c, Core_MDF_Group_Name__c from 
                                                                 Core_MDF_Partner_Group_Mapping__c
                                                                 where Core_MDF_Account__c = :loggdInUserAccountId 
-                                                                AND Core_MDF_Group_Id__c in :loggedInUserGroupIds AND Core_MDF_Inactive_Ind__c = false];
+                                                                AND Core_MDF_Group_Id__c in :loggedInUserGroupIds];
             
             System.debug('usertype = '+ usertype);
             
@@ -231,40 +231,30 @@ public without sharing class Core_SearchAccountController {
                                                                   Core_Allowed_Email_Domains_txt__c
                                                                   FROM Core_MDF_Partner_Group_Mapping__c  
                                                                   where Core_MDF_Group_Id__c IN :loggedInUserGroupIds
-                                                                  and Core_MDF_Inactive_Ind__c = false 
-                                                                  and  Core_MDF_Account__c = :accId];
+                                                                  and  Core_MDF_Account__c = :accId LIMIT 1];
         
         System.debug('checkForValidEmailDomain > pgMappingList*** = '+ pgMappingList);
-        
-         Set<String> validEmailDomainsSet = new Set<String>();
-        
-        if(pgMappingList != null && pgMappingList.size() > 0) {
-            //collect the pgmmappingIds
-            Set<Id> mappingIds = new Set<Id>();
-            for (Core_MDF_Partner_Group_Mapping__c pgm : pgMappingList) {
-						mappingIds.add(pgm.Id);
-				}
-            if(!mappingIds.isEmpty()){
+		
+		if(pgMappingList != null && pgMappingList.size() > 0) {
+			
             List<Core_MDF_Partner_Group_Domain_Mapping__c> pgDominMappingList = [SELECT id, Name from Core_MDF_Partner_Group_Domain_Mapping__c 
-                                                                                where Core_MDF_Partner_Group_Mapping_Id__c IN: mappingIds    
-                                                                                and Core_MDF_Active_Ind__c = true];                                                      
-        
-           
+																				where Core_MDF_Partner_Group_Mapping_Id__c =: pgMappingList[0].id	
+																				and Core_MDF_Active_Ind__c = true];														 
+		
+            Set<String> validEmailDomainsSet = new Set<String>();
             for(Core_MDF_Partner_Group_Domain_Mapping__c pgdm : pgDominMappingList) {
-                if(!String.isBlank(pgdm.Name)){
                 validEmailDomainsSet.add(pgdm.Name);
-                }
             }
             
-            returnValue = validEmailDomainsSet.contains(emailDomain);
+         	returnValue = validEmailDomainsSet.contains(emailDomain);
             
-            System.debug('checkForValidEmailDomain > pgDominMappingList*** = '+ pgDominMappingList);            
+			System.debug('checkForValidEmailDomain > pgDominMappingList*** = '+ pgDominMappingList);            
         }
-        }
+        
         
         //System.debug('allowedEmails = '+ allowedEmails);
         System.debug('emailDomain = '+ emailDomain);
         System.debug('returnValue = '+ returnValue);
         return returnValue;
-    } */
+    }
 }

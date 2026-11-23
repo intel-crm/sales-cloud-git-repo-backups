@@ -48,7 +48,6 @@ public class Core_IPS_AddProjectMemberController_Test {
         
         // Create Ips Labels
         List<Core_IPS_Labels__c> IPSLabels = TestUtilities.getIPSLabel();
-        
         System.runAs(ListOfUser.get(0)){
             insert IPSLabels;
         }

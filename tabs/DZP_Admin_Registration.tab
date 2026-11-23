@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>DZP Admin registration LWC form.</description>
+    <label>DZP Admin Registration</label>
+    <lwcComponent>eR_Admin_Registration</lwcComponent>
+    <motif>Custom99: CRT TV</motif>
+</CustomTab>

@@ -73,16 +73,6 @@
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>CRM_Opportunity_Coverage__c</fullName>
-        <externalId>false</externalId>
-        <formula>TEXT(Opportunity.Core_Opportunity_Coverage_Nm__c)</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Opportunity Coverage</label>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>ContactId</fullName>
         <type>Lookup</type>
     </fields>

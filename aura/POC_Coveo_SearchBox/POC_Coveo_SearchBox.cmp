@@ -1,0 +1,11 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller = 'IPA_MarqueeMarketplaceController'>
+    <lightning:card title="Redirect to Intel (Aura)">    
+        <div onkeyup="{! c.handleKeyUp }" class="slds-p-around_medium">
+            <lightning:input
+                aura:id="searchBox"
+                name="searchBox"
+                label="Search"
+                type="search"/>
+        </div>	
+    </lightning:card>
+</aura:component>

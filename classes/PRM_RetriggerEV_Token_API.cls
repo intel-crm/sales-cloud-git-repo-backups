@@ -33,12 +33,12 @@ Public with sharing class PRM_RetriggerEV_Token_API {
                 CustomException ex = new CustomException();                    
                 ex.Message = response.getBody();                          
                 ex.StackTraceString = System.Label.PRM_Mulesoft_Api_Error;  
-                createLogEntryAPIWrapper obj2=new createLogEntryAPIWrapper();
-                obj2.message=ex.getMessage();
-                obj2.severity=LOG_ENTRY_INFO;
-                obj2.ex=null;
-                obj2.inputRequest=ex.getStackTraceString();
-                createLogEntry(obj2);//Athr fixes
+				createLogEntryAPIWrapper obj2=new createLogEntryAPIWrapper();
+				obj2.message=ex.getMessage();
+				obj2.severity=LOG_ENTRY_INFO;
+				obj2.ex=null;
+				obj2.inputRequest=ex.getStackTraceString();
+				createLogEntry(obj2);//JB
                 //createLogEntry('Failed To Retrieved EV Token', LOG_ENTRY_INFO,ex,EncodingUtil.urlDecode(response.getBody(), 'UTF-8')); 
             }else{
                 //Pick and Store the EV Token from Response
@@ -50,7 +50,7 @@ Public with sharing class PRM_RetriggerEV_Token_API {
             obj2.severity=LOG_ENTRY_INFO;
             obj2.ex=null;
             obj2.inputRequest=ex.getStackTraceString();
-            createLogEntry(obj2);//Athr fixes
+            createLogEntry(obj2);//JB
             //createLogEntry(ex.getMessage(), LOG_ENTRY_INFO,null, ex.getStackTraceString()); 
         }
         finally {

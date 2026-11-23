@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11638032@intel.com.crm</sharedTo>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>11556404@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10532081_Madhu_Bramharouthu</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+        <sharedTo>10050136@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>EMP_10645190_Dorin_Vanderjack</sharedTo>
-        <sharedToType>RoleAndSubordinatesInternal</sharedToType>
+        <sharedTo>11817264@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
     </folderShares>
-    <name>US OEM &amp; Strat Accts - Landi Dashboards</name>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>10630323@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <folderShares>
+        <accessLevel>View</accessLevel>
+        <sharedTo>11419152@intel.com.crm</sharedTo>
+        <sharedToType>User</sharedToType>
+    </folderShares>
+    <name>US ACCTS LANDI Dashboards</name>
 </DashboardFolder>

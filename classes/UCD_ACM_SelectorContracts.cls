@@ -21,6 +21,7 @@ public without sharing class UCD_ACM_SelectorContracts {
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields);
         List<Account> selectAccountsByName(Set<String> accountNames, String queryFields);
         Map<Id,List<Business_Types__c>> getBusinessTypesByAccountId(Set<Id> accountIds, String queryFields);
+        Map<Id,List<Core_Account_Compliance_Watch_List__c>> getComplianceWatchListByAccountId(Set<Id> accountIds, String queryFields);
         Map<String,Business_Types__c> getBusinessTypeId(Set<String> typeCodes);
         //String getAccountByBpId(String bpId);
         Map<Id,Account> getAccountsByIds(Set<Id> accountIds, String queryFields, String andClause);
@@ -32,16 +33,12 @@ public without sharing class UCD_ACM_SelectorContracts {
         Map<Id,Account> getAccountsByParentId(Set<Id> parentIds, String queryFields);
         Map<Id, Account> getAllChildAccounts(Set<Id> parentAccIds);
         Map< Id, List<Account> > getChildAccountsWithParent(Set<Id> parentIds, String queryFields, String andClause);
-        Map<Id,Account_Create_Request__c> getAccountRequestQueueById(Set<Id> aqrIds, String queryFields);
-        Map<Id,ACM_Integration_Message_Queue__c> getIntegrationMessageQueueByArqId (Set<Id> arqIds);
-
     }
 
     public interface IAccountMutationSelector {
          Map<Id,Account>  createAccount( List <UCD_ACM_Models.AccountModel> accountModel);
          void setIntegrationMessage(Set<Id> accountIds);
          void updateIntegrationMsgQueueStatus(Set<Id> accountIds,String statusType);
-         void updateIntegrationMsgQueueStatusForARQ(Set<Id> arqIds, String statusType);
          //void createAccountByList(List<Account> accounts);
          //Map<Id,Account_Create_Request__c>  approveAccountRequest (List<Account_Create_Request__c> lstOfAccountCreateRequest);
          //Boolean  rejectAccountRequest (List<Account_Create_Request__c> lstOfAccountCreateRequest);

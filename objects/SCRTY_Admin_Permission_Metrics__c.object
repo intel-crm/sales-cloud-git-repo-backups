@@ -143,6 +143,7 @@
     <allowInChatterGroups>false</allowInChatterGroups>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <deploymentStatus>Deployed</deploymentStatus>
+    <deprecated>false</deprecated>
     <enableActivities>true</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableFeeds>false</enableFeeds>
@@ -155,6 +156,7 @@
     <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>SCRTY_Permission_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <description>Name Of User Permission</description>
         <externalId>false</externalId>
         <label>Permission Name</label>
@@ -167,6 +169,7 @@
     </fields>
     <fields>
         <fullName>SCRTY_Permission_Set_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Permission Sets(With Permission Enabled)</label>
         <precision>18</precision>
@@ -179,6 +182,7 @@
     </fields>
     <fields>
         <fullName>SCRTY_Profile_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <label>Profiles (Having Permission Enabled)</label>
         <precision>18</precision>
@@ -191,6 +195,7 @@
     </fields>
     <fields>
         <fullName>SCRTY_User_Cnt__c</fullName>
+        <deprecated>false</deprecated>
         <description>Number of users With true user permission</description>
         <externalId>false</externalId>
         <label>Users (Having Permission Enabled)</label>
@@ -203,6 +208,27 @@
         <unique>false</unique>
     </fields>
     <label>Admin Permission Metrics</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>SCRTY_Permission_Nm__c</columns>
+        <columns>SCRTY_Permission_Set_Cnt__c</columns>
+        <columns>SCRTY_Profile_Cnt__c</columns>
+        <columns>SCRTY_User_Cnt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Myview</fullName>
+        <columns>NAME</columns>
+        <columns>SCRTY_Permission_Nm__c</columns>
+        <columns>SCRTY_Permission_Set_Cnt__c</columns>
+        <columns>SCRTY_Profile_Cnt__c</columns>
+        <columns>OBJECT_ID</columns>
+        <columns>SCRTY_User_Cnt__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>Myview</label>
+    </listViews>
     <nameField>
         <displayFormat>A-{0000}</displayFormat>
         <label>Admin Permission Metrics</label>

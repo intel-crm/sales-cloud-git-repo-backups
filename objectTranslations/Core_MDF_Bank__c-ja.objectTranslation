@@ -117,11 +117,6 @@
         <name>Core_MDF_Country_Name__c</name>
     </fields>
     <fields>
-        <help><!-- The currency used by Supplier database for this bank. --></help>
-        <label><!-- Supplier Currency --></label>
-        <name>Core_MDF_Currency_cd__c</name>
-    </fields>
-    <fields>
         <help>Dun &amp; Bradstreet (D&amp;B) により管理され、各企業に独自の数字の識別コードを割り当てる Data Universal Numbering System。  この番号は、一致するサプライヤー番号に対する企業サプライヤー・データによるものです。</help>
         <label><!-- DUNS --></label>
         <name>Core_MDF_DUNS__c</name>
@@ -202,30 +197,6 @@
         <name>Core_MDF_INTRMD_BNK_ST_NM__c</name>
     </fields>
     <fields>
-        <label><!-- Inactive by Program --></label>
-        <name>Core_MDF_Inactive_by_Program_nm__c</name>
-        <picklistValues>
-            <masterLabel>Client</masterLabel>
-            <translation><!-- Client --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client Co-Marketing Fund Boost</masterLabel>
-            <translation><!-- Client Co-Marketing Fund Boost --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
-            <translation><!-- Datacenter --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Marketing Funds</masterLabel>
-            <translation><!-- Retail Marketing Funds --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
-            <translation><!-- Service Provider Co-Marketing Fund --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
         <help>一度非アクティブになると、償還請求の選択肢としてその銀行をもう選択できなくなります。銀行に有効な請求がある場合、その銀行は非アクティブになりません。 </help>
         <label>失効日</label>
         <name>Core_MDF_Ineffective_Date_dt__c</name>
@@ -243,20 +214,12 @@
             <translation><!-- 100 --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>150</masterLabel>
-            <translation><!-- 150 --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>220</masterLabel>
             <translation><!-- 220 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>420</masterLabel>
             <translation><!-- 420 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>650</masterLabel>
-            <translation><!-- 650 --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>760</masterLabel>
@@ -280,11 +243,6 @@
         <name>Core_MDF_ORIG_APP_SYS_CD__c</name>
     </fields>
     <fields>
-        <help>顧客に支払いを行う時の通貨です。</help>
-        <label>支払い通貨</label>
-        <name>Core_MDF_Payment_Currency_Cd__c</name>
-    </fields>
-    <fields>
         <label>支払方法コード</label>
         <name>Core_MDF_Payment_Method_Code__c</name>
         <picklistValues>
@@ -304,7 +262,7 @@
         <label>プログラム</label>
         <name>Core_MDF_Program__c</name>
         <picklistValues>
-            <masterLabel>Client</masterLabel>
+            <masterLabel>Client Co-Marketing Fund</masterLabel>
             <translation>クライアント共同マーケティング・ファンド (CCF)</translation>
         </picklistValues>
         <picklistValues>
@@ -312,24 +270,8 @@
             <translation>クライアント共同マーケティング・ファンド・ブースト</translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Co-GTM</masterLabel>
-            <translation><!-- Co-GTM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Datacenter</masterLabel>
+            <masterLabel>Data Center Co-Marketing Fund</masterLabel>
             <translation>データセンター共同マーケティング・ファンド (DCF)</translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Ecosystem Extension Fund</masterLabel>
-            <translation><!-- Ecosystem Extension Fund --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Partner Alliance</masterLabel>
-            <translation><!-- Intel Partner Alliance --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Retail Marketing Funds</masterLabel>
-            <translation><!-- Retail Marketing Funds --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Service Provider Co-Marketing Fund</masterLabel>
@@ -342,14 +284,6 @@
         <name>Core_MDF_Routing_Number__c</name>
     </fields>
     <fields>
-        <label><!-- Supplier City --></label>
-        <name>Core_MDF_Supplier_City_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Supplier Country --></label>
-        <name>Core_MDF_Supplier_Country_txt__c</name>
-    </fields>
-    <fields>
         <label>サプライヤー名</label>
         <name>Core_MDF_Supplier_Name__c</name>
     </fields>
@@ -358,78 +292,43 @@
         <name>Core_MDF_Supplier_Number__c</name>
     </fields>
     <fields>
-        <label><!-- Supplier Postal Code --></label>
-        <name>Core_MDF_Supplier_Postal_Code_cd__c</name>
-    </fields>
-    <fields>
-        <label><!-- Supplier Region --></label>
-        <name>Core_MDF_Supplier_Region_txt__c</name>
-    </fields>
-    <fields>
         <help>一致するサプライヤー番号に対する企業サプライヤー・データのとおりの銀行 Swift コード。</help>
         <label>Swift コード</label>
         <name>Core_MDF_Swift_Code__c</name>
     </fields>
-    <fields>
-        <label><!-- Tax codes --></label>
-        <name>Core_MDF_Tax_codes_cd__c</name>
-        <picklistValues>
-            <masterLabel>I0</masterLabel>
-            <translation><!-- I0 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>I1</masterLabel>
-            <translation><!-- I1 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UB</masterLabel>
-            <translation><!-- UB --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UD</masterLabel>
-            <translation><!-- UD --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UY</masterLabel>
-            <translation><!-- UY --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>UZ</masterLabel>
-            <translation><!-- UZ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>V3</masterLabel>
-            <translation><!-- V3 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>V6</masterLabel>
-            <translation><!-- V6 --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- VAT % --></label>
-        <name>Core_MDF_VAT_pct__c</name>
-        <picklistValues>
-            <masterLabel>0%</masterLabel>
-            <translation><!-- 0% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>10%</masterLabel>
-            <translation><!-- 10% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>20%</masterLabel>
-            <translation><!-- 20% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>21%</masterLabel>
-            <translation><!-- 21% --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>8%</masterLabel>
-            <translation><!-- 8% --></translation>
-        </picklistValues>
-    </fields>
+    <layouts>
+        <layout>Bank Layout</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Bank Layout For Active Status</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Bank Layout For Non-Draft Status</layout>
+        <sections>
+            <label><!-- Additional Information --></label>
+            <section>Additional Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel>銀行名</nameFieldLabel>
     <recordTypes>
         <description><!-- Record Type when bank status is Active --></description>
@@ -445,21 +344,9 @@
         <label><!-- AccountBudgetAdmin --></label>
         <name>AccountBudgetAdmin</name>
     </sharingReasons>
-    <sharingReasons>
-        <label><!-- AccountNodeGroup --></label>
-        <name>Core_MDF_AccountNodeGroup</name>
-    </sharingReasons>
     <validationRules>
         <errorMessage><!-- Can only Edit Bank Account field when it&apos;s in initial Draft Status. --></errorMessage>
         <name>Core_MDF_Bank_Account_Not_Editable</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select a supplier currency. --></errorMessage>
-        <name>Core_MDF_Bank_Blank_Currency</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select a payment currency. --></errorMessage>
-        <name>Core_MDF_Bank_Blank_Payment_Currency</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Cannot edit this field at this time --></errorMessage>
@@ -478,56 +365,8 @@
         <name>Core_MDF_InactiveBank_Uneditable_AP_Hold</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Client/Datacenter/SPCF/CCFB can only select Legal Entity 100. --></errorMessage>
-        <name>Core_MDF_LegalEntityForCCFDCFSPCFCCFB</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- IPA cannot select Legal Entity 220. --></errorMessage>
-        <name>Core_MDF_LegalEntityForIPA</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- RMF cannot select Legal Entity 100/220. --></errorMessage>
-        <name>Core_MDF_LegalEntityForRMF</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Co-GTM cannot select Legal Entity 220. --></errorMessage>
-        <name>Core_MDF_LegalEntityFor_Co_GTM</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- This Tax Code is not valid with the Intel Company Code selected. --></errorMessage>
-        <name>Core_MDF_LegalEntity_TaxCode_Restriction</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- CCF/DCF/SPCF/CCFB cannot select Tax Code. --></errorMessage>
-        <name>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFB</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Client/Datacenter/SPCF/CCFB/EEF cannot select Tax Code. --></errorMessage>
-        <name>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFBEEF</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select valid program --></errorMessage>
-        <name>Core_MDF_Paymentadmin_UserPermission</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select only one Program value --></errorMessage>
-        <name>Core_MDF_Restrict_MultipleProgSelection</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- This payment currency is not valid for the program selected. --></errorMessage>
-        <name>Core_MDF_Restrict_PaymtCurrency_ReadOnly</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You cannot use the same bank for the IPA and RMF Programs. Please create a new bank. --></errorMessage>
-        <name>Core_MDF_Restrict_Program_Update</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Tax Code is mandatory for RMF/IPA/Channel MDF --></errorMessage>
-        <name>Core_MDF_TaxCodeMandatoryForRMF</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Selected Account is not a Comarketing Account. --></errorMessage>
-        <name>Core_MDF_ValidateAccountOnBank</name>
+        <errorMessage><!-- Enter valid Account Number and Supplier Number --></errorMessage>
+        <name>Core_MDF_errorIfNotNumber</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Enter Valid Account Number --></errorMessage>

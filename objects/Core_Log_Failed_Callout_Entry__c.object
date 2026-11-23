@@ -150,7 +150,7 @@
     <enableHistory>false</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
-    <enableSearch>false</enableSearch>
+    <enableSearch>true</enableSearch>
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
@@ -328,7 +328,34 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Parent_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>Parent Id</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
     <label>Log Failed Callout Entry</label>
+    <listViews>
+        <fullName>PMP_View</fullName>
+        <columns>NAME</columns>
+        <columns>Core_Object_Name__c</columns>
+        <columns>Core_Origin__c</columns>
+        <columns>Core_Status__c</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Core_Origin__c</field>
+            <operation>contains</operation>
+            <value>PMP</value>
+        </filters>
+        <label>PMP View</label>
+        <language>en_US</language>
+    </listViews>
     <nameField>
         <displayFormat>{000000000}</displayFormat>
         <label>Log Failed Callout Entry Name</label>

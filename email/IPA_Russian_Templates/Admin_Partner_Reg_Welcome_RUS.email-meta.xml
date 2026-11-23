@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Admin_Partner_Reg_Welcome_RUS</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Для завершения регистрации в программе Intel® Partner Alliance необходимо выполнить действие.
+
+
+
+
+Здравствуйте, {!Contact.FirstName}.
+
+Поздравляем, администратор вашей компании или представитель Intel добавил вас в учетную запись Intel® Partner Alliance. До завершения регистрации осталось всего несколько шагов.
+
+Для вас была добавлена следующая информация о профиле:
+
+Имя пользователя: {!Contact.Core_Login_Id__c}
+Адрес электронной почты: {!Contact.Email}
+Название компании: {{ACCOUNTNAME}}
+Идентификатор компании в Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+Для завершения регистрации нажмите на ссылку ниже
+
+
+Завершить регистрацию
+
+Не удается получить доступ к приведенной выше ссылке?
+
+https://intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner-alliance/help/overview.html
+Если у вас возникли вопросы, свяжитесь с нами через форму https://signin.intel.com/ContactUs?Culture=ru-ru.
+Будем рады видеть вас в программе!
+С уважением,
+команда Intel® Partner Alliance
+
+
+Это сообщение было отправлено в качестве важного делового письма и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!Contact.Core_Current_Year__c} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

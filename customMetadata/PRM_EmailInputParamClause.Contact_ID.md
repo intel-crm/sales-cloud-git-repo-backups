@@ -12,6 +12,6 @@
     </values>
     <values>
         <field>Query_Clause__c</field>
-        <value xsi:type="xsd:string">FirstName,LastName,AccountId,Email,Phone,Name,Core_eRPM_Language_Code__c,mailingCountry,Core_Account_Primary_Country__c</value>
+        <value xsi:type="xsd:string">FirstName,LastName,AccountId,Email,Phone,Name,Core_eRPM_Language_Code__c,mailingCountry,Core_Account_Primary_Country__c,Core_Current_Year__c</value>
     </values>
 </CustomMetadata>

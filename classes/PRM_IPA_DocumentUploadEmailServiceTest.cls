@@ -2,7 +2,7 @@
 public class PRM_IPA_DocumentUploadEmailServiceTest {
     
     private static final String TEST_EMAIL = 'test@partner.com';
-    private static final String TEST_SUBJECT = ' Intel Partner Alliance: Business License Needed';
+    private static final String TEST_SUBJECT = 'Intel Partner Alliance: Business License Needed';
     private static final String TEST_HTML_BODY = '<html><body>Test email body</body></html>';
     private static final String TEST_ATTACHMENT_NAME = 'business_license.pdf';
     
@@ -10,9 +10,8 @@ public class PRM_IPA_DocumentUploadEmailServiceTest {
     static void setupTestData() {                
         
         // Create test Group for IPA Admin Users
-        /*Group testGroup = [Select Id from Group where DeveloperName = 'IPA_All_Intel_Admin_Users'];  */            
-        Group testGroup = new Group(Name = 'IPA_All_Intel_Admin_Users_Test' , DeveloperName = 'IPA_All_Intel_Admin_Users_Test' , Type = 'Regular');
-        insert testGroup;
+        Group testGroup = [Select Id from Group where DeveloperName = 'IPA_All_Intel_Admin_Users'];              
+        
         // Create test User for group membership
         User testUser = new User(
             FirstName = 'Test',
@@ -80,8 +79,6 @@ public class PRM_IPA_DocumentUploadEmailServiceTest {
         Messaging.InboundEmail.BinaryAttachment attachment = new Messaging.InboundEmail.BinaryAttachment();
         attachment.fileName = TEST_ATTACHMENT_NAME;
         attachment.body = Blob.valueOf('Test file content');
-        attachment.mimeTypeSubType = 'application/pdf';
-        
         email.binaryAttachments = new Messaging.InboundEmail.BinaryAttachment[] { attachment };
         
         Messaging.InboundEnvelope envelope = new Messaging.InboundEnvelope();
@@ -89,7 +86,6 @@ public class PRM_IPA_DocumentUploadEmailServiceTest {
         
         Test.startTest();
         PRM_IPA_DocumentUploadEmailService service = new PRM_IPA_DocumentUploadEmailService();
-        
         Messaging.InboundEmailResult result = service.handleInboundEmail(email, envelope);
         Test.stopTest();
         
@@ -98,12 +94,12 @@ public class PRM_IPA_DocumentUploadEmailServiceTest {
         
         // Verify ContentVersion was created
         List<ContentVersion> contentVersions = [SELECT Id, Title FROM ContentVersion WHERE Title = :TEST_ATTACHMENT_NAME];
-       // System.assertEquals(1, contentVersions.size(), 'ContentVersion should be created');
-        //System.assertEquals(TEST_ATTACHMENT_NAME, contentVersions[0].Title, 'ContentVersion title should match attachment name');
+        System.assertEquals(1, contentVersions.size(), 'ContentVersion should be created');
+        System.assertEquals(TEST_ATTACHMENT_NAME, contentVersions[0].Title, 'ContentVersion title should match attachment name');
         
         // Verify ContentDocumentLink was created
         List<ContentDocumentLink> links = [SELECT Id, LinkedEntityId FROM ContentDocumentLink WHERE LinkedEntityId = :regRequest.Id];
-       // System.assertEquals(1, links.size(), 'ContentDocumentLink should be created');
+        System.assertEquals(1, links.size(), 'ContentDocumentLink should be created');
         
         // Verify Registration Request status was updated
         PRM_Registration_Request__c updatedRequest = [SELECT Id, PRM_Status__c FROM PRM_Registration_Request__c WHERE Id = :regRequest.Id];
@@ -111,9 +107,9 @@ public class PRM_IPA_DocumentUploadEmailServiceTest {
         
         // Verify Email Log was created
         List<PRM_EmailLog__c> emailLogs = [SELECT Id, PRM_Type__c, PRM_Subject__c FROM PRM_EmailLog__c WHERE PRM_IPA_Registration_Request__c = :regRequest.Id];
-       /* System.assertEquals(1, emailLogs.size(), 'Email log should be created');
+        System.assertEquals(1, emailLogs.size(), 'Email log should be created');
         System.assertEquals('IPA', emailLogs[0].PRM_Type__c, 'Email log type should be IPA');
-        System.assertEquals(TEST_SUBJECT, emailLogs[0].PRM_Subject__c, 'Email log subject should match');*/
+        System.assertEquals(TEST_SUBJECT, emailLogs[0].PRM_Subject__c, 'Email log subject should match');
     }
     
     @isTest

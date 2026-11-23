@@ -14,7 +14,7 @@ public without sharing class Core_MDF_shareRecordToAccountGroup {
     public static Map<String,Boolean> progNameNodeBasedSharingReqdMap = new Map<String,Boolean>();
     
     static{        
-        for(Core_MDF_ChannelProgram__mdt cp : [Select Core_MDF_Node_Based_Sharing_Required_Ind__c,Core_MDF_Technical_Program_Name__c from Core_MDF_ChannelProgram__mdt LIMIT 1000]){
+        for(Core_MDF_ChannelProgram__mdt cp : [Select Core_MDF_Node_Based_Sharing_Required_Ind__c,Core_MDF_Technical_Program_Name__c from Core_MDF_ChannelProgram__mdt]){
             progNameNodeBasedSharingReqdMap.put(cp.Core_MDF_Technical_Program_Name__c,cp.Core_MDF_Node_Based_Sharing_Required_Ind__c);
         }
     }

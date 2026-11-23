@@ -34,5 +34,12 @@
         <name>PSS_Specification_Value__c</name>
         <relationshipLabel><!-- Intel Products --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Intel Products Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

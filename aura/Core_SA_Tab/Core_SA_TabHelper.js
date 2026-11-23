@@ -153,8 +153,6 @@
                 else
                 	//set the URL  if user clicked on assits tab
         			component.set('v.urlParams', encodeURI(SAHost + "req_id=" + req_id + "&cim_id=" + component.get('v.cimId') + "&source=" + component.get('v.source') + "&assist_id=" + component.get('v.Aid') + "&index=" + component.get('v.index') + "&wwid=" + component.get('v.userWWID') + "&eMail=" + component.get('v.userEmail') + "&token=" + component.get('v.sessionId')));
-                
-                component.set('v.urlParams', component.get('v.urlParams') + "&allowfullscreen='true'&webkitallowfullscreen='true'&mozallowfullscreen='true'");
                 console.log("SalesAssistsTab-->getUserSessionId call urlParams: " + component.get('v.urlParams'));
                 component.set("v.pageRefresh", false);
             }

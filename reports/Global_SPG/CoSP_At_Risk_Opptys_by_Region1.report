@@ -24,12 +24,18 @@
             <value>NTG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Wireless &amp; Connectivity</sourceValue>
+            </sourceValues>
             <value>iCDG</value>
         </values>
         <values>
             <value>IoTG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Connected Home</sourceValue>
+            </sourceValues>
             <value>CHD</value>
         </values>
     </buckets>
@@ -201,8 +207,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2026-11-22</endDate>
+        <endDate>2026-11-23</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2026-11-22</startDate>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

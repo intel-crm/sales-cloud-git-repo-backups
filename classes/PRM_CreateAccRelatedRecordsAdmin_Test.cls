@@ -282,14 +282,14 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Test.startTest();
     //    PRM_CreateAccountAndRelatedRecordsAdmin.sendWelcomeEmailNotification(clist);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1,null);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap3,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap3);
         
         
         //System.assertEquals(results.get('AccountId'), a.Id, 'Account match');
         //delete acm;
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
              
         Test.stopTest();
         //System.assertEquals( registrationDetailsMap2.get('AccountName'), 'New Account', 'Value does not match');
@@ -428,13 +428,13 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Test.startTest();
     //    PRM_CreateAccountAndRelatedRecordsAdmin.sendWelcomeEmailNotification(clist);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1,null);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         
         
         //System.assertEquals(results.get('AccountId'), a.Id, 'Account match');
         //delete acm;
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         Test.stopTest();
         //System.assertEquals( registrationDetailsMap2.get('AccountName'), 'New Account', 'Value does not match');
 
@@ -579,7 +579,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -591,13 +591,13 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         Map<String,String> results = new Map<String,String>();
         
         Test.startTest();
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1,null);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         
         
         //System.assertEquals(results.get('AccountId'), a.Id, 'Account match');
         //delete acm;
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         Test.stopTest();
         //System.assertEquals( registrationDetailsMap2.get('AccountName'), 'New Account', 'Value does not match');
 
@@ -725,17 +725,17 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         
         Test.startTest();
        //PRM_CreateAccountAndRelatedRecordsAdmin.sendWelcomeEmailNotification(clist);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1,null);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         //System.assertEquals(results.get('AccountId'), a.Id, 'Account match');
        // delete acm;
         /*registrationDetailsMap1.remove('ContactDuplicateStatus');
         registrationDetailsMap1.put('ContactDuplicateStatus','NoDuplicate');*/
          registrationDetailsMap1.remove('PreferredLanguage');
         registrationDetailsMap1.put('PreferredLanguage','');
-         results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1,null);
+         results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
        // results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap1);
-        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2,null);
+        results = PRM_CreateAccountAndRelatedRecordsAdmin.createAccountAndRelatedRecordsAdmin(registrationDetailsMap2);
         Test.stopTest();
        // System.assertEquals( registrationDetailsMap2.get('AccountName'), 'New Account', 'Value does not match');
     }
@@ -781,7 +781,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -871,7 +871,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
        
         
         List<String> contactList = new List<String>();
-        contactList.add('checkuser@spamok.com');
+        contactList.add('checkuser@malinator.com');
         
         PRM_Registration_Request__c prmRegRequest = new PRM_Registration_Request__c();
         prmRegRequest.Name = 'checkuser';
@@ -880,7 +880,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Service Provider';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';
          prmRegRequest.PRM_Contact_Country__c='US';
@@ -968,7 +968,7 @@ public class PRM_CreateAccRelatedRecordsAdmin_Test
         prmRegRequest.PRM_Partner_Role__c='Guest';
         prmRegRequest.PRM_First_Name__c='Check';
         prmRegRequest.PRM_Last_Name__c='User';
-        prmRegRequest.PRM_Email_ID__c='checkuser@spamok.com';
+        prmRegRequest.PRM_Email_ID__c='checkuser@malinator.com';
         prmRegRequest.PRM_Account_Phone__c = '9000000009';//RT
         //prmRegRequest.PRM_Job_Function__c='Branch Manager';
         prmRegRequest.PRM_Profession__c='PROFESSOR';

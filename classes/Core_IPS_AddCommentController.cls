@@ -18,18 +18,18 @@ Modification Log :
 * Sumukh                   22/10/2018              Added Logic for US193654  
 * Sumukh                   14/01/2019              Added logic for US244578 
 * Aparna                   22/5/2019               Modified for US340937
-* Ganapati                 27/06/2019              Modified for US336530
-* Ganapati                 17/10/2019              Modified for DE55770 - Core_Last_Case_Comment__c not updating properly on Case 00214161
+* Ganapati 				   27/06/2019			   Modified for US336530
+* Ganapati				   17/10/2019			   Modified for DE55770 - Core_Last_Case_Comment__c not updating properly on Case 00214161
 ****************************************************************************************************/ 
-public with sharing class Core_IPS_AddCommentController{
-    
+public class Core_IPS_AddCommentController{
+	
     public Case newcase{get;set;}
     public id urlid;
-    public String profileName = System.Label.Core_IPS_Profile_Name;
+    public String ProfileName = System.Label.Core_IPS_Profile_Name;
     public List<String> selectedVisibilityOption{get;set;}
-    public List<SelectOption> visibilityOptions{get;set;}
-    public Boolean internalColumn{get;set;}
-    public Boolean externalColumn{get;set;}
+    public List<SelectOption> VisibilityOptions{get;set;}
+    public Boolean InternalColumn{get;set;}
+    public Boolean ExternalColumn{get;set;}
     public Boolean ShowRadioButton{get;set;}
     public boolean disableAccess{get;set;}
     
@@ -56,8 +56,8 @@ public with sharing class Core_IPS_AddCommentController{
     
     // Added for Partner Changes by sumukh for I-7 Release 4
     
-    public String partnerProf{get;set;}{partnerProf  = System.Label.Core_IPS_Partner_Profile_Id;}
-    public String extprof{get;set;}{extprof =  System.Label.Core_IPS_External_Customer_Profile_Ids;}
+    public String PartnerProf{get;set;}{PartnerProf  = System.Label.Core_IPS_Partner_Profile_Id;}
+    public String Extprof{get;set;}{Extprof =  System.Label.Core_IPS_External_Customer_Profile_Ids;}
     public boolean ExtUser{get;set;}
     public Boolean partnerAgentUser{get;set;}
     public String partnerAgent{get;set;}{partnerAgent= System.Label.Core_IPS_Agent_Partner_Profile_id;}  
@@ -95,17 +95,16 @@ public with sharing class Core_IPS_AddCommentController{
     //{ User story# :US67444 / US83924 ; Iteration# : PSG Release 2 / Release 4 (Partner changes) ; Developer Name : Sumukh} 
     
     public String selectedRadioButton {get;set;}
-    {        
-        if(extprof.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))){           
+    {           
+        if(Extprof.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))){           
             selectedRadioButton = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;       
-        }                     
-        else if(partnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))){                      
+        }                          
+        else if(PartnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))){                      
             String authrPartnerType= Core_Utility.getPartnerUserType(userinfo.getuserid());           
             
             if(authrPartnerType != null){
-                if(authrPartnerType.split(';').size()>0) {               
-                    partnerType = authrPartnerType.split(';')[0];  
-                }               
+                if(authrPartnerType.split(';').size()>0)                
+                    partnerType = authrPartnerType.split(';')[0];                 
             }                                                       
             if(partnerType !=null && String.isNotBlank(partnerType)){                
                 if(partnerType == 'Partner - DFAE'){
@@ -132,60 +131,54 @@ public with sharing class Core_IPS_AddCommentController{
     }
     public integer numberLimit{get;set;}{
         if(commentPages.size()>0){
-            numberLimit=Integer.valueOf(commentPages[5]);//US704558: Change default # of Case Comments to current max of 60
+            numberLimit=Integer.valueOf(commentPages[0]);
         }else {
-            numberLimit=60;  //US704558: Change default # of Case Comments to current max of 60
+            numberLimit=10;
         }
-        
     }
     
     
     public Core_IPS_AddCommentController(ApexPages.StandardController controller) { 
-        List<AccountShare> acctShare;
+        
         //added for search
         searched=false;
         isNACCase=false;                // added by sumukh for US193654
         disableAccess = false;       
         urlid = apexpages.currentpage().getparameters().get('id');
-        if(urlid !=null){
-            //FLS Check Added - Madhuri
-            if(Case.SObjectType.getDescribe().isAccessible()){
+        if(urlid !=null)
             newCase=[select id,subject,Core_IPS_Comment__c,RecordType.Name,AccountId,Core_Sub_Status__c,status,CreatedBy.Email,contactid,Core_IPS_Date_Time_Close_Pending__c from Case where id =:urlid ];               
-            }
-        }
         loggedInUserProf =[select id,name from Profile where id=:userInfo.getProfileId()]; 
         
         // Added by sumukh for US193654         
-
-        
         if(newCase.RecordType.Name == Core_IPS_Helper_Utility.getIPSLabel('Case_RT_Name_IPS_NoAssignedContact')){         
             isNACCase=true;
         }          
         // end by sumukh for US193654
         
         try{                 
-            partDFAEUser  = [Select id,AssigneeId  from PermissionSetAssignment where AssigneeId =: userInfo.getUserId() and PermissionSetId =:prtDFAE LIMIT 1];
+            partDFAEUser  = [Select id,AssigneeId  from PermissionSetAssignment where AssigneeId =: userInfo.getUserId() and PermissionSetId =:prtDFAE LIMIT 1];                         
             SOAUser = [Select id,AssigneeId  from PermissionSetAssignment where AssigneeId =: userInfo.getUserId() and PermissionSetId =:SOAPermSetID LIMIT 1];    // added by sumukh for US244578
-            
         }
         Catch(Exception e){
-        }  
+            system.debug('exception11 @'+e.getLineNumber()+'\n msg:'+e.getMessage());  }  
         
         partnerUser       =  Label.Core_Partner_Profile_Id.contains(String.valueOf(userInfo.getProfileId().substring(0, 15)));       
-        partnerAgentUser  =  Label.Core_IPS_Agent_Partner_Profile_id.contains(String.valueOf(userInfo.getProfileId().substring(0, 15))); 
-        ExtUser      =  extprof.contains(String.valueOf(userInfo.getProfileId().substring(0,15)));                              
+        partnerAgentUser  =  Label.Core_IPS_Agent_Partner_Profile_id.contains(String.valueOf(userInfo.getProfileId().substring(0, 15)));              
+        ExtUser      =  Extprof.contains(String.valueOf(userInfo.getProfileId().substring(0,15)));               
         userHasAccess =  Label.Core_IPS_Agent_Profiles.contains(String.valueOf(userInfo.getProfileId().substring(0, 15)));       
         
         if(userHasAccess == false && SOAUser !=null && SOAUser.size()>0){ // added by sumukh for US244578
             userHasAccess = true; }
-        internalColumn= false;
-        externalColumn= false;
+        
+        
+        InternalColumn= false;
+        ExternalColumn= false;
         
         /*if(loggedInUserProf.name!= ProfileName || !(externalUser))    // Added by Prem "externalUser" to check for partner profile too where we are checking for "IPS External Customer".
-        InternalOnlyOptions = true;
-        else
-        InternalOnlyOptions = false;
-        */    
+		InternalOnlyOptions = true;
+		else
+		InternalOnlyOptions = false;
+		*/    
         /*Code to prevent form Adding Commments if case is GEC*/
         /*START*/
         if(( !(externalUser))&& newCase.RecordType.Name == System.Label.Core_IPS_GECRecordTypeName){         
@@ -199,24 +192,21 @@ public with sharing class Core_IPS_AddCommentController{
         }
         
         /*Account Association Read Access Check*/
-        if(loggedInUserProf.name!= profileName && !(externalUser)){
+        if(loggedInUserProf.name!= ProfileName && !(externalUser)){
             List<String> caseAccessLevel = new List<String>();
             caseAccessLevel.add(Core_IPS_Helper_Utility.getIPSLabel('AccessLevel_Read'));
             caseAccessLevel.add(Core_IPS_Helper_Utility.getIPSLabel('AccessLevel_Edit'));
             Set<Id> userIdSet = new Set<id>();
             
             if(newCase.AccountId!=null){
-                //FLS Check Added - Madhuri
-             //   if(accountshare.SObjectType.getDescribe().isAccessible()){
-                    acctShare = [select accountId, caseaccesslevel, userOrGroupId from accountshare where caseAccessLevel IN: caseAccessLevel and accountId =: newCase.AccountId and userOrGroupId =: userInfo.getUserId()];
-              //  }
+                List<AccountShare> acctShare = [select accountId, caseaccesslevel, userOrGroupId from accountshare where caseAccessLevel IN: caseAccessLevel and accountId =: newCase.AccountId and userOrGroupId =: userInfo.getUserId()];
                 if(acctShare.size()!=0) {
                     for(AccountShare share: acctShare){ String userId = share.userOrGroupId;
                                                        if(userId <> null && userId.startsWith('005')){ userIdSet.add(share.userOrGroupId);
                                                                                                       
                                                                                                      }
                                                       }
-                    if(userIdSet == null && userIdSet.isEmpty()){ disableAccess = true;
+                    if(userIdSet == null && userIdSet.size() == 0){ disableAccess = true;
                                                                    
                                                                   }
                 }
@@ -230,7 +220,7 @@ public with sharing class Core_IPS_AddCommentController{
             total_size=[select count() from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id];// added by venki for displaying totapages
             
             // Partner Profile seperated with PTOC and PTOP for FAE as per US108037
-        }else if(partnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15)) && partnerType != 'Partner'){
+        }else if(PartnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15)) && partnerType != 'Partner'){
             total_size=[select count() from Core_IPS_Case_Comments__c where Core_IPS_Case__c=:newCase.id and (Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c 
                                                                                                               OR Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c )];
             // End                        
@@ -246,8 +236,10 @@ public with sharing class Core_IPS_AddCommentController{
         }
         
         //---------------end-----------------------//
-     
+        //system.debug('radio btn 2'+ selectedRadioButton );
     }
+    
+    
     
     
     //{user stpry#:US67444 Iteration#:PSG Release 2 Developer Name:Sumukh}
@@ -256,12 +248,8 @@ public with sharing class Core_IPS_AddCommentController{
         //added by sugandha for US99039
         Case cs = new Case();
         //If condition modified by Aayushi DE40236
-         if(newCase != null && newcase.Core_Sub_Status__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus') && newCase.Core_IPS_Date_Time_Close_Pending__c != null && selectedRadioButton == Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c && (System.Label.Core_IPS_Agent_Profile_Ids.Contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)) || System.Label.Core_IPS_DataOps.contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)))){
-            /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-            // Added by chetan as part of ATHR
-            if (Schema.sObjectType.Case.fields.Core_IPS_Date_Time_Close_Pending__c.isUpdateable()) {
-                cs.Core_IPS_Date_Time_Close_Pending__c = null;
-            }
+        if(newCase != null && newcase.Core_Sub_Status__c != Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Close_Pending_SubStatus') && newCase.Core_IPS_Date_Time_Close_Pending__c != null && selectedRadioButton == Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c && (System.Label.Core_IPS_Agent_Profile_Ids.Contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)) || System.Label.Core_IPS_DataOps.contains(String.valueOf(userInfo.getprofileId()).substring(0, 15)))){
+            cs.Core_IPS_Date_Time_Close_Pending__c = null;
             cs.Id = newCase.Id;
         }
         //end 
@@ -269,50 +257,44 @@ public with sharing class Core_IPS_AddCommentController{
         Core_IPS_Case_Attachments__c newAttachment = new Core_IPS_Case_Attachments__c();              
         if(partnerType =='Partner'){               
             selectedRadioButton = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;     
-        }
-        if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case__c.isCreateable()) {
-        	newComment.Core_IPS_Case__c=newCase.id;
-        }
-        // Added by chetan as part of ATHR
-        if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Rich_Comment__c.isCreateable()) {
-        newComment.Core_IPS_Rich_Comment__c=newCase.Core_IPS_Comment__c; 
-        }      
+        }    
+        newComment.Core_IPS_Case__c=newCase.id;        
+        newComment.Core_IPS_Rich_Comment__c=newCase.Core_IPS_Comment__c;       
         
         if( selectedRadioButton!=null ){         
             if(partnerUser){
-                /*TWC745-112 - 05/08/2021 - Vishal - FLS Check for security vulnerability --*/
-                // Added by chetan as part of ATHR
-               if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case_Comment_Type__c.isCreateable()) {
-                     newComment.Core_IPS_Case_Comment_Type__c = selectedRadioButton;  
-                }
-            }
-            else if(!(ExternalUser) || (partnerAgentUser)){  
                 newComment.Core_IPS_Case_Comment_Type__c = selectedRadioButton; 
-                 }
+            }
+            else if(!(ExternalUser) || (partnerAgentUser)){      
+                newComment.Core_IPS_Case_Comment_Type__c = selectedRadioButton;           
+            }
             else {
-					newComment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
-                 }
-            // Added by chetan as part of ATHR
-            if(newComment.Core_IPS_Comment_Attachment_Id__c!=null && Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Author_Type__c.isCreateable()){
-            	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId() ,newAttachment.Core_FileUploadedBy__c);
+                newComment.Core_IPS_Case_Comment_Type__c = Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c;
+            }
+            
+            if(newComment.Core_IPS_Comment_Attachment_Id__c!=null){
+                newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId() ,newAttachment.Core_FileUploadedBy__c);
             }
             else if(newComment.Core_IPS_Comment_Attachment_Id__c==null){
-            	newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(),userinfo.getuserid());
+                newComment.Core_IPS_Comment_Author_Type__c = getAuthr(userInfo.getprofileId(),userinfo.getuserid());
             }
             
             try{
+                //system.debug('newComment==>'+newComment);
                 if(newComment!=null){  
                     insert newComment;
+                    //system.debug('cs::1'+cs);
                     //added by sugandha for US99039
                     // Modified for DE55770 - added curly braces to if
-                    if(cs.Id != null ){  
-                        update cs;
-                    }
+                    if(cs.Id != null ){  system.debug('cs::2'+cs); update cs; }
                         
                 }
-                
+                //system.debug('newComment==>'+newComment);
+                //system.debug('cs::2'+cs);
+                //end
             }
             catch(Exception e){
+                system.debug('exception @'+e.getLineNumber()+'\n msg:'+e.getMessage());
             }
         } 
         return new PageReference('/'+newCase.id);        
@@ -338,8 +320,7 @@ public with sharing class Core_IPS_AddCommentController{
         else if(Label.Core_IPS_Agent_Profiles.contains(loggedUserId.substring(0,15) )){
             return authroTyp=Core_IPS_Labels__c.getValues('Agent').value__c;
         }
-        
-        else if(Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(userInfo.getUserId()) == true){ //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
+        else if(Label.Core_IPS_Data_Migration_ProfileId.contains(loggedUserId.substring(0,15))){
             return authroTyp=Core_IPS_Labels__c.getValues('Data Migration').value__c;
         }
         else if(Label.Core_Integration_Profile_Id.contains(loggedUserId.substring(0,15))){
@@ -355,76 +336,72 @@ public with sharing class Core_IPS_AddCommentController{
             partnerAuthrType  = Core_Utility.getPartnerUserType(Userid.substring(0,15));
             
             if(partnerAuthrType!=null){
-                if(partnerAuthrType.split(';').size()>0){
+                if(partnerAuthrType.split(';').size()>0)
                     partnerType1 = partnerAuthrType.split(';')[0];
-                }
             }
             if(partnerType1 !=null && String.isNotBlank(partnerType1 )){
                 return authroTyp= partnerType1 ;
             }else{
                 return authroTyp=Core_IPS_Labels__c.getValues('Partner').value__c;
             }
-        } 
+        }       
         return null;        
     }
     
     /* Modified by Ganapati for US336530
-     * Description : modified complete function to make dynamic query to return all comments when click on 
-     * export pdf button on case, previously this function was retuning only limited comments 
-     */
-    /* Start ---- Tushar ---- Added with USER MODE vanuability changes*/
-    //Removed user_mode(As part of vulnerability fixes) - Nuthana
+	 * Description : modified complete function to make dynamic query to return all comments when click on 
+	 * export pdf button on case, previously this function was retuning only limited comments 
+	 */
     public List<Core_IPS_Case_Comments__c> getcaseComments() {
         String query = 'select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,Core_IPS_Comment__c,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,CreatedBy.Contact.Account.name,CreatedBy.Profile.Name,CreatedBy.Firstname,CreatedBy.Profileid, CreatedDate,Core_IPS_BgColor__c,Core_IPS_NickName__c,CreatedBy_Name__c, Core_IPS_Case_Comment_Type__c ,CreatedBy.Email,Core_IPS_Comment_Author_Type__c,Core_IPS_Comment_Authored_By__r.Name,Core_IPS_Comment_Authored_By__r.Account.name,Core_IPS_Comment_Authored_By_Email__c,Core_IPS_Comment_Authored_By_FirstName__c,Core_IPS_Comment_Authored_By_Name__c from Core_IPS_Case_Comments__c ';   
         String pageURL = ApexPages.currentPage().getURL();
         String caseId = newCase.Id;
-        if(partnerAgentUser || userhasAccess) {
-            internalColumn= true;
+        System.debug('pageURL : '+pageURL);
+        if(partnerAgentUser || userhasAccess) {           
+            InternalColumn = true;
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\'  ORDER BY CreatedDate DESC NULLS LAST';      // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' ORDER BY CreatedDate DESC NULLS LAST';		// removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';
             }
-        } else if(!(externalUser) || (partnerAgentUser)) {
-            internalColumn= true;         
+        } else if(!(externalUser) || (partnerAgentUser)) {           
+            InternalColumn = true;			
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' AND (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c= \''+String.escapeSingleQuotes(privateToPartner)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToIntel)+'\')  ORDER BY CreatedDate DESC NULLS LAST';  // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' AND (Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' OR Core_IPS_Case_Comment_Type__c= \''+privateToPartner+'\' OR Core_IPS_Case_Comment_Type__c=\''+privateToIntel+'\') ORDER BY CreatedDate DESC NULLS LAST';	// removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' AND (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToIntel)+'\') ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination        
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' AND (Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' OR Core_IPS_Case_Comment_Type__c=\''+privateToPartner+'\' OR Core_IPS_Case_Comment_Type__c=\''+privateToIntel+'\') ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination        
             }
-        } else if(ExtUser) {            externalColumn = true; 
+        } else if(ExtUser) {
+            ExternalColumn = true;
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST';   // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' and Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' ORDER BY CreatedDate DESC NULLS LAST';	// removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination];      // Added by Prem CreatedBy.Email to this query because we are accessing email from visualforce page  
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' and Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';    // limit and offset was aded by venki for pagination];      // Added by Prem CreatedBy.Email to this query because we are accessing email from visualforce page  
             }
-        } else if(partnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))&& partnerType != 'Partner') {
+        } else if(PartnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))&& partnerType != 'Partner') {
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\')  ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' and (Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' OR Core_IPS_Case_Comment_Type__c=\''+privateToPartner+'\') ORDER BY CreatedDate DESC NULLS LAST';		// removed limit & offset
             } else {
-                query = query  + 'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and (Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\' OR Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(privateToPartner)+'\')  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';                        
+                query = query  + 'where Core_IPS_Case__c=\''+caseId+'\' and (Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' OR Core_IPS_Case_Comment_Type__c=\''+privateToPartner+'\') ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';                        
             }
         } else {
             if(String.isNotBlank(pageURL) && pageURL.containsIgnoreCase(EXPORT_PDF_PAGENAME)) {
-                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
+                query = query  +  'where Core_IPS_Case__c=\''+caseId+'\' and Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' ORDER BY CreatedDate DESC NULLS LAST';       // removed limit & offset
             } else {
-                query = query  +  'where Core_IPS_Case__c=\''+String.escapeSingleQuotes(caseId)+'\' and Core_IPS_Case_Comment_Type__c=\''+String.escapeSingleQuotes(publicToCust)+'\'  ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';       
+                query = query  +  'where Core_IPS_Case__c=\''+caseId+'\' and Core_IPS_Case_Comment_Type__c=\''+publicToCust+'\' ORDER BY CreatedDate DESC NULLS LAST limit :numberLimit offset :counter';       
             }
         }
         return Database.query(query);
     }
-    /* END ---- Tushar ---- Added with USER MODE vanuability changes*/
     //Authored by fields end for US108037
     /***********  added by venki for pagination as per DEF:23171 6/4/2017 ****/
     
     public Boolean getdisableprevious() { 
         //this will disable the previous and beginning buttons
-        if (counter>0){ return true; }
-        else{ return false;}
+        if (counter>0) return true; else return false;
     }
     public Boolean getdisbaleNext() { //this will disable the next and end buttons
-        if (counter + numberLimit < total_size){ return true; }
-        else{ return false;} 
+        if (counter + numberLimit < total_size) return true; else return false;
     }
     public Integer getTotal_size() {
         return total_size;
@@ -494,20 +471,17 @@ Modification Log :
         
         cmtResults=new List<Core_IPS_Case_Comments__c>();
         
-        if(partnerAgentUser || userhasAccess){   
-            //FLS Check Added - Madhuri
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
+        if(partnerAgentUser || userhasAccess){           
             cmtResults= [select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,Core_IPS_Comment__c,CreatedBy.Account.Name,Core_IPS_Rich_Comment__c,CreatedBy.Contact.Account.name,CreatedBy.Profile.Name,CreatedBy.Firstname,CreatedBy.Profileid,
                          CreatedDate,Core_IPS_BgColor__c,Core_IPS_NickName__c,CreatedBy_Name__c,
                          Core_IPS_Case_Comment_Type__c ,CreatedBy.Email,Core_IPS_Comment_Author_Type__c,Core_IPS_Comment_Authored_By__r.Name,Core_IPS_Comment_Authored_By__r.Account.name,Core_IPS_Comment_Authored_By_Email__c,Core_IPS_Comment_Authored_By_FirstName__c,Core_IPS_Comment_Authored_By_Name__c
                          from Core_IPS_Case_Comments__c 
                          where Core_IPS_Case__c=:newCase.id 
-                         ORDER BY CreatedDate DESC NULLS LAST ];  
-            }
-        }        
-        else if(!(ExternalUser) || (partnerAgentUser)){  
-            //FLS Check Added - Madhuri
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
+                         ORDER BY CreatedDate DESC NULLS LAST
+                         limit :numberLimit 
+                         offset :counter ];    // limit and offset was aded by venki for pagination        
+        }  
+        else if(!(ExternalUser) || (partnerAgentUser)){   
             cmtResults = [select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,CreatedBy.Account.Name,Core_IPS_Comment__c,
                           Core_IPS_Rich_Comment__c,CreatedBy.Profile.Name,CreatedDate,CreatedBy.Firstname,CreatedBy.Profileid,
                           Core_IPS_BgColor__c,CreatedBy.Email, CreatedBy.Contact.Account.Name,CreatedBy_Name__c,
@@ -516,10 +490,7 @@ Modification Log :
                           from Core_IPS_Case_Comments__c 
                           where Core_IPS_Case__c=:newCase.id  AND (Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c OR Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c OR Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PRIVATE_TO_INTEL').value__c)
                           ORDER BY CreatedDate DESC NULLS LAST ];
-            }
-        } else if(partnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))&& partnerType != 'Partner'){
-            //FLS Check Added - Madhuri
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
+        } else if(PartnerProf.contains(String.valueOf(userinfo.getProfileId()).substring(0,15))&& partnerType != 'Partner'){
             cmtResults = [select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,CreatedBy.Account.Name,Core_IPS_Comment__c,
                           Core_IPS_Rich_Comment__c,CreatedBy.Profile.Name,CreatedDate,CreatedBy.Firstname,CreatedBy.Profileid,
                           Core_IPS_BgColor__c,CreatedBy.Email, CreatedBy.Contact.Account.Name,CreatedBy_Name__c,
@@ -529,10 +500,7 @@ Modification Log :
                           where Core_IPS_Case__c=:newCase.id and (Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c OR Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PRIVATE_TO_PARTNERS').value__c)  
                           ORDER BY CreatedDate DESC NULLS LAST
                          ];
-            }
         }else{
-            //FLS Check Added - Madhuri
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){
             cmtResults = [select id,name,CreatedBy.contactid,CreatedBy.Accountid,CreatedBy.Name,CreatedBy.Account.Name,Core_IPS_Comment__c,
                           Core_IPS_Rich_Comment__c,CreatedBy.Profile.Name,CreatedDate,CreatedBy.Firstname,CreatedBy.Profileid,
                           Core_IPS_BgColor__c,CreatedBy.Email, CreatedBy.Contact.Account.Name,CreatedBy_Name__c,
@@ -542,22 +510,20 @@ Modification Log :
                           where Core_IPS_Case__c=:newCase.id and Core_IPS_Case_Comment_Type__c=:Core_IPS_Labels__c.getValues('PUBLIC_TO_CUSTOMERS').value__c 
                           ORDER BY CreatedDate DESC NULLS LAST
                          ];
-            }
-        }  
+        }       
         searchCmt = new List<Core_IPS_Case_Comments__c>();
         try{
-            if(cmtResults!=null && cmtResults.size()>0 && !String.isBlank(searchText))
+            if(cmtResults!=null && !String.isBlank(searchText))
             {
                 for(Core_IPS_Case_Comments__c objCmt : cmtResults)
                 {
-                    if(objCmt.Core_IPS_Comment__c != Null && objCmt.Core_IPS_Comment__c.containsIgnoreCase(searchText)){
-                        searchCmt.add(objCmt);
-                      }
+                    if(objCmt.Core_IPS_Comment__c.containsIgnoreCase(searchText)){searchCmt.add(objCmt);}
                 }
             }
-            searched=true;
+            searched=true; 
             
         }catch(Exception ex){
+            system.debug('exception found at'+ex.getLineNumber()+'\n msg:'+ex.getMessage());
         }
     } 
     
@@ -583,6 +549,6 @@ Modification Log :
                 searchText = '';
                 Counter = 0;
             }
-        }catch(Exception ex){}
+        }catch(Exception ex){system.debug('exception found at'+ex.getLineNumber()+'\n msg:'+ex.getMessage());}
     } 
 }

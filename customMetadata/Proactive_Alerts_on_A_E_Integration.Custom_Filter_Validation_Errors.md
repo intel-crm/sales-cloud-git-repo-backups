@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Core_Error_Group__c</field>
-        <value xsi:type="xsd:string">Salesforce custom validation error</value>
+        <value xsi:type="xsd:string">Error due to Salesforce DQ issue</value>
     </values>
     <values>
         <field>Core_Error_Source__c</field>
@@ -20,7 +20,7 @@
     </values>
     <values>
         <field>Core_Minimum_count_for_Alert__c</field>
-        <value xsi:type="xsd:double">5.0</value>
+        <value xsi:type="xsd:double">1.0</value>
     </values>
     <values>
         <field>IsIgnore__c</field>

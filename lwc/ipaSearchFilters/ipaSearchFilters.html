@@ -1,5 +1,8 @@
 <template>
     <div class="slds-is-relative filters-main-container" data-fetching-counts={fetchingCounts}>
+        <template if:true={id}>
+            <h1>{id}</h1>
+        </template>
         <template if:true={fetchingCounts}>
             <lightning-spinner alternative-text={labels.loading}></lightning-spinner>
         </template>

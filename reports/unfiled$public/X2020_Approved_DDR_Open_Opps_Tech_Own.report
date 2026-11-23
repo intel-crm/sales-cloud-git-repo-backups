@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_49457126</developerName>
+        <masterLabel>Other Disti</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Xrosgen</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>WPG Holdings</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Vitec</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Toyota Tsusho</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Tokyo Electron Device</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Synnex</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Ryoyo</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Pantek</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Okaya</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Digital China</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Avnet</sourceValue>
+            </sourceValues>
+            <value>Other Disti</value>
+        </values>
+    </buckets>
     <chart>
         <backgroundColor1>#FFFFFF</backgroundColor1>
         <backgroundColor2>#FFFFFF</backgroundColor2>
@@ -36,6 +80,9 @@
     </columns>
     <columns>
         <field>ADDRESS1_STATE_CODE</field>
+    </columns>
+    <columns>
+        <field>FK_$Core_Design_Registration__c.Core_Partner_Account_Name__c</field>
     </columns>
     <columns>
         <field>FK_$Core_Design_Registration__c.Core_End_Customer_PSG_Tier_Nm__c</field>
@@ -161,7 +208,7 @@
         <field>FK_$Core_Design_Registration__c.Core_Intel_Technical_Owner_Id__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2021 Approved DDR Open Opps Tech Own</name>
+    <name>2020 Approved DDR Open Opps Tech Own</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -187,8 +234,8 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2021-12-25</endDate>
+        <endDate>2020-12-26</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-12-27</startDate>
+        <startDate>2019-12-29</startDate>
     </timeFrameFilter>
 </Report>

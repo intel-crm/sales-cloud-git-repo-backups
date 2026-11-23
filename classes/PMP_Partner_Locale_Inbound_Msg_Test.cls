@@ -1,14 +1,12 @@
 @isTest
 private class PMP_Partner_Locale_Inbound_Msg_Test {
-//TranslationEOL
+    //TranslationEOL
     @isTest
     static void testIsWorking() {
         Boolean result = PMP_Partner_Locale_Inbound_Msg.isWorking();
         System.assertEquals(true, result);
     }
-   /* 
-
-    public class InboundPayload {
+   /* public class InboundPayload {
         public String SourceLanguage {get; set;}
         public List<PartnerData> Partners {get; set;}
     } 
@@ -285,7 +283,7 @@ private class PMP_Partner_Locale_Inbound_Msg_Test {
         Test.stopTest();
         
         
-    }  */ 
+    }   */
    
     
 }

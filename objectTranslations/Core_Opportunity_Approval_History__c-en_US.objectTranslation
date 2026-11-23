@@ -122,5 +122,20 @@
             <translation><!-- Win Submitted --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Opportunity Approval History Layout</layout>
+        <sections>
+            <label><!-- Approval Information --></label>
+            <section>Approval Information</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -3,6 +3,11 @@
     <doesIncludeBosses>true</doesIncludeBosses>
     <doesSendEmailToMembers>true</doesSendEmailToMembers>
     <name>SRVPLT - JUNIPER PASS</name>
+    <queueMembers>
+        <publicGroups>
+            <publicGroup>Core_IPS_Org_011_JUNIPER_PASS</publicGroup>
+        </publicGroups>
+    </queueMembers>
     <queueSobject>
         <sobjectType>Case</sobjectType>
     </queueSobject>

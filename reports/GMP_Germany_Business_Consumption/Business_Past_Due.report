@@ -23,34 +23,26 @@
         <field>Opportunity.Core_Time_Till_Opportunity_Decision_Date__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 3 AND 2 AND 4</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>EMEA Germany Sales Group,EMEA Named Account Sales Group</value>
+            <value>GMP Germany Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>FULL_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Donal O Donnabhain,Christian Donitzky,Thomas Kellerer,Oliver Freundel</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>CLOSE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>lessThan</operator>
-            <value>TODAY</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>STAGE_NAME</column>
+            <column>ROLLUP_DESCRIPTION</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <value>EMP of Dieter Hoffend</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Past_Due__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -83,13 +75,14 @@
         <value>1</value>
     </params>
     <reportType>Opportunity</reportType>
-    <roleHierarchyFilter>SMG</roleHierarchyFilter>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2020-12-31</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

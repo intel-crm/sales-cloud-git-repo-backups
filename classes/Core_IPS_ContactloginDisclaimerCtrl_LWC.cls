@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_ContactloginDisclaimerCtrl_LWC {// Changed by tushar because for vanuability changes
+public without sharing class Core_IPS_ContactloginDisclaimerCtrl_LWC {
     public static List<Document> doc;
     public static  User u;
     @AuraEnabled
@@ -6,7 +6,6 @@ public with sharing class Core_IPS_ContactloginDisclaimerCtrl_LWC {// Changed by
         String docBody;
         try {
             if (Schema.sObjectType.Document.isAccessible()) {
-                // Venrublity Fix - Refering query to service class
                 doc = [select id,body from Document where name='NDAConfidential' limit 1];
             }
             if(doc.size()>0){ 
@@ -22,21 +21,13 @@ public with sharing class Core_IPS_ContactloginDisclaimerCtrl_LWC {// Changed by
     @AuraEnabled
     public static string getRedirected(){
         try {
-            // Venrublity Fix - Refering query to service class
-            List<User> userList = [select Id, ContactId,userType from User where Id = :UserInfo.getUserId()];
-            if(!userList.isEmpty()){
-                u = userList[0];
-            }
-            // Venrublity Fix - Refering query to service class
+            u = [select Id, ContactId,userType from User where Id = :UserInfo.getUserId()];
             List<Contact> con = [select id, Core_IPS_NDA_Acceptance_Date__c from Contact where id=:u.ContactId limit 1];
-
             if(u.userType=='PowerCustomerSuccess' || u.userType=='PowerPartner'){   
                 if (Schema.sObjectType.Contact.fields.Core_IPS_NDA_Acceptance_Date__c.isUpdateable()) {
                     con[0].Core_IPS_NDA_Acceptance_Date__c = System.today();
                 }
-                // Venrublity Fix - Refering query to service class
-                // update con;
-                con = (List<Contact>) Core_IPS_QueryService.updateRecords((List<SObject>) con);
+                update con;
             } 
             return 'success';
         } catch (Exception e) {

@@ -5,8 +5,8 @@
     },
     // method called on click of cancel claim button
     manuallyAuditClaim : function(component, event, helper) {
-        component.set("v.Spinner",true);       
-        helper.manuallyAuditClaim(component, event, helper);               
+        component.set("v.Spinner",true);
+        helper.manuallyAuditClaim(component, event, helper);
     },
     CloseToast: function(component, event, helper) {
         var cmpTarget = component.find('toast');
@@ -22,12 +22,7 @@
     },
     
     closeModel: function(component, event, helper) {
-        if(component.get("v.isCustomComp")){
-            let closeModalEvent = component.getEvent("closeModalEvent");
-            closeModalEvent.fire();
-        } else {
-            $A.get("e.force:closeQuickAction").fire();
-        }
+        $A.get("e.force:closeQuickAction").fire();
     },
     
 })

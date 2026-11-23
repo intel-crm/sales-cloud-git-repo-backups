@@ -1,22 +1,24 @@
-<apex:page showHeader="false">
-<style>
-        .center {
-            text-align: center;
-            margin-top: 15vh; /* Adjust this value to position the content */
-            padding: 20px; /* Adjust padding as needed */
-            font-size: 20px; /* Adjust font size as needed */
-        }
- 
-        .center p {
-            margin: 0;
-        }
- 
-        .center a.link {
-            color: blue; /* Change URL color to blue */
-            font-size: 22px; /* Increase font size of the URL */
-        }
-</style>
-<div class="center">
-<p style="margin-bottom: 10px;">Design Registration has moved! To submit design registrations, authorized users can go to and bookmark <a href="https://partner-admin.intel.com/s/ddr" class="link">https://partner-admin.intel.com/s/ddr</a>.</p>
-</div>
+<apex:page >
+
+
+  <div style = "padding-left: 30px">
+
+     <apex:image url="https://intel--c.na17.content.force.com/servlet/servlet.ImageServer?id=015o0000001vfPt&oid=00D8A0000005uU8"></apex:image> 
+
+     
+     <br></br>
+     <br></br>
+     <br></br>
+
+     <h2  style="text-align:left;"><font size = "18">System Error</font></h2>
+
+     <p>Intel&reg; Premier Support Portal is unable to complete your request at this time.  Please contact <a href="mailto:ips.support@intel.com">support</a></p>
+    
+
+     <br />
+
+     <p> We apologize for any inconvenience this may cause and appreciate your patience.</p>
+     
+  </div>
+
 </apex:page>

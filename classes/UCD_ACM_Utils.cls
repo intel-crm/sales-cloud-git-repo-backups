@@ -1,8 +1,9 @@
 public without sharing class UCD_ACM_Utils {
 
     private static Map<String, Account_Create_Process_Mapping__mdt> accountProcessMappingBySourceName = new  Map<String, Account_Create_Process_Mapping__mdt>();
-    private static Map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();      
-    private static Map<String, Map<String,String>> controllingInfo=null;
+    private static Map<String, Core_Country_Reference__c> mCountryCodeGeoRef = new map<String, Core_Country_Reference__c>();
+    private static UCD_ACM_SelectorContracts.IAccountQuerySelector accountQuerySelectorInstance = UCD_ACM_AccountQuerySelector.getInstance();
+
    /** 
     * description : validate Country Code
     * params : String
@@ -41,15 +42,6 @@ public without sharing class UCD_ACM_Utils {
 
             return stateNameByStateCode;
             
-        }
-        public static Map<String,String> getCountryCodeByName(){
-            Map<String,String> countryCodeByCountryName = new Map<String,String>();
-            Schema.DescribeFieldResult fieldResult =  Account.BillingCountryCode.getDescribe();
-            List<Schema.PicklistEntry> pickListValues = fieldResult.getPicklistValues();
-            for( Schema.PicklistEntry pickListVal : pickListValues){
-                countryCodeByCountryName.put(pickListVal.getLabel(),pickListVal.getValue());
-            }
-            return countryCodeByCountryName;
         }
 
 
@@ -117,14 +109,13 @@ public without sharing class UCD_ACM_Utils {
         * return : String RecordTypeId
         * author and date : Harshal Gosavi 10/12/2021
         */
-        /* Unused code Ankit 25/11/23
         public static string recordTypeNameById(string objAPIName, string recordTypeId){
             String recordTypeName;
             if(String.isNotBlank(objAPIName) && String.isNotBlank(recordTypeId)){
                 recordTypeName= Schema.getGlobalDescribe().get(objAPIName).getDescribe().getRecordTypeInfosById().get(recordTypeId).getName();
             }  
             return recordTypeName;  
-        } */
+        }
 
 
 
@@ -134,127 +125,83 @@ public without sharing class UCD_ACM_Utils {
             
         }
 
-        public static Map<String, Map<String,String>> getGlobalPickList( )  {            
-            if(controllingInfo==null){
-                controllingInfo= new Map<String, Map<String,String>>( ) ;
+        public static Map<String, Map<String,String>> getGlobalPickList( )  {
 
             //Define table name that has picklist value set fields
-        
             String objectName = 'Account';
         
             //Define controlling picklist value field
-        
             String controllingField = 'BillingCountryCode' ;
         
-            //Define dependent picklist value field
-        
+            //Define dependent picklist value field        
             String dependentField =  'BillingStateCode';
-                   
+        
+            //Declare map variable to store list of dependent value for controlling field        
+            //Map<String, List<String>> controllingInfo = new Map<String, List<String>>( ) ;
+            Map<String, Map<String,String>> controllingInfo = new Map<String, Map<String,String>>( ) ;
+
             //Get the type being dealt with
         
-            Schema.SObjectType objType = Schema.getGlobalDescribe( ).get(objectName) ;
-        
+            Schema.SObjectType objType = Schema.getGlobalDescribe( ).get(objectName) ;        
             Schema.DescribeSObjectResult  describeResult = objType.getDescribe ( ) ;
         
             //Get controlling field values
         
-            Schema.DescribeFieldResult  controllingFieldInfo = describeResult.fields.getMap ( )
-        
-                .get (controllingField)
-        
+            Schema.DescribeFieldResult  controllingFieldInfo = describeResult.fields.getMap ( )        
+                .get (controllingField)        
                 .getDescribe ( ) ;
         
-            //Get dependent field values
-        
-            Schema.DescribeFieldResult  dependentFieldInfo = describeResult.fields.getMap ( )
-        
-                .get (dependentField)
-        
-                .getDescribe ( ) ;
-        
-            List<Schema.PicklistEntry> controllingValues = controllingFieldInfo.getPicklistValues ( ) ;
-        
-            List<Schema.PicklistEntry> dependentValues = dependentFieldInfo.getPicklistValues ( ) ;
-        
-            //Get the label for controlling picklist value set
-        
-            For (Schema.PicklistEntry  currControllingValue  :  controllingValues)  {
-        
-                controllingInfo.put (currControllingValue.getValue() , new Map<String,String>( ) ) ;
-        
+            //Get dependent field values        
+            Schema.DescribeFieldResult  dependentFieldInfo = describeResult.fields.getMap ( )        
+                .get (dependentField)        
+                .getDescribe ( ) ;        
+            List<Schema.PicklistEntry> controllingValues = controllingFieldInfo.getPicklistValues ( ) ;        
+            List<Schema.PicklistEntry> dependentValues = dependentFieldInfo.getPicklistValues ( ) ;        
+            //Get the label for controlling picklist value set       
+            For (Schema.PicklistEntry  currControllingValue  :  controllingValues)  {    
+                controllingInfo.put (currControllingValue.getValue() , new Map<String,String>( ) ) ;       
             }
-        
-
             //Iterate through the dependent values
 
             for  (Schema.PicklistEntry  currDependentValue  :  dependentValues)  {
 
             //get the validFor
             
-                String  jsonString  =  JSON.serialize(currDependentValue) ;
-            
+                String  jsonString  =  JSON.serialize(currDependentValue) ;           
                 MyPickListInfo  info  =  (MyPickListInfo)  JSON.deserialize( jsonString, MyPickListInfo.class) ;
-                  String hexString  =  EncodingUtil.convertToHex (
-            
-                EncodingUtil.base64Decode (info.validFor)
-            
-                  )
-            
-                .toUpperCase ( ) ;
-            
-                Integer  baseCount  =  0;
-            
-                for (Integer curr  :  hexString.getChars ( ) )  {
-                
-                    Integer  val  =  0;
-                
-                    if  (curr  >=  65) {
-                
-                        val  =  curr  -  65  +  10;
-            
-                    }  else  {
-            
-                        val  =  curr  -  48;
-            
-                    }
-            
-                    if  ((val & 8)  ==  8)  {
-            
-                        controllingInfo.get (controllingValues[baseCount  +  0].getValue( ) )
-            
-                        .Put (currDependentValue.getValue( ) , currDependentValue.getLabel( )) ;
-            
-                    }
-            
-                    if  ((val & 4)  ==  4)  {
-                    
-                    controllingInfo.get (controllingValues[baseCount  +  1].getValue( ) )
-                    
+                String hexString  =  EncodingUtil.convertToHex (          
+                EncodingUtil.base64Decode (info.validFor)            
+                  )            
+                .toUpperCase ( ) ;            
+                Integer  baseCount  =  0;            
+                for (Integer curr  :  hexString.getChars ( ) )  {                
+                    Integer  val  =  0;                
+                    if  (curr  >=  65) {                
+                        val  =  curr  -  65  +  10;            
+                    }  else  {            
+                        val  =  curr  -  48;            
+                    }            
+                    if  ((val & 8)  ==  8)  {            
+                        controllingInfo.get (controllingValues[baseCount  +  0].getValue( ) )            
+                        .Put (currDependentValue.getValue( ) , currDependentValue.getLabel( )) ;            
+                    }            
+                    if  ((val & 4)  ==  4)  {                   
+                    controllingInfo.get (controllingValues[baseCount  +  1].getValue( ) )                    
                     .Put (currDependentValue.getValue( ) , currDependentValue.getLabel( )) ;
-
-                    }
-            
-                    if  ((val & 2)  ==  2)  {
-                    
-                     controllingInfo.get (controllingValues[baseCount  +  2].getValue( ) )
-                    
+                    }           
+                    if  ((val & 2)  ==  2)  {                    
+                     controllingInfo.get (controllingValues[baseCount  +  2].getValue( ) )                    
                     .Put (currDependentValue.getValue( ) , currDependentValue.getLabel( )) ;
-
-                    }
-            
+                    }            
                     if  ((val & 1)  ==  1)  {
                         controllingInfo.get (controllingValues[baseCount  +  3].getValue( ) )
                         .Put (currDependentValue.getValue( ) , currDependentValue.getLabel( )) ;
-
                     }
-            
-                    baseCount  +=  4;
-            
+                    baseCount  +=  4;           
                 }
-            }   
-        }        
+            }           
             return controllingInfo;           
-    }
+            }
 
     /** 
     * description : Method to get Account Process Mapping
@@ -291,12 +238,12 @@ public without sharing class UCD_ACM_Utils {
     */
     public static String getGeoforCountry(String CountryCode){
         
-        String Validgeo = null;
-        if(mCountryCodeGeoRef.isEmpty()){
-            for(Core_Country_Reference__c sobjStateRef : Core_Country_Reference__c.getall().values()){
-                mCountryCodeGeoRef.put(sobjStateRef.Core_ISO_Code__c,sobjStateRef);
-            }
-        } 
+        String Validgeo = null;  
+        if(mCountryCodeGeoRef.isEmpty()){  
+           for(Core_Country_Reference__c sobjStateRef : Core_Country_Reference__c.getall().values()){
+              mCountryCodeGeoRef.put(sobjStateRef.Core_ISO_Code__c,sobjStateRef);
+           }
+        }
         if(mCountryCodeGeoRef.containsKey(CountryCode)){
             Validgeo = mCountryCodeGeoRef.get(CountryCode).Core_Geo__c;
         }
@@ -323,37 +270,66 @@ public without sharing class UCD_ACM_Utils {
         return ValidSubgeo;              
           
     }
-    
-    /**
-        * description : Method to get State global picklist values for a country code
-        * params : String
-        * return : Map<String, String>    
-        * author and date : chethan.s.kunder@intel.com 19-Apr-2024
-     */
-
-    public static Map<String,String> getStateValuesForCountryCode(String countryCode) {
         
-        Map<String, String> mStatePicklistValues = new Map<String, String>();
-        Map<String, Map<String,String>> stateNameAndCodeByCountry = getGlobalPickList();
+    /*
+    * description : Set UCD hierarchy fields
+    * params : Account
+    * author and date : chethan.s.kunder@intel.com, 25 Nov 2021
+    * Updated : chethan.s.kunder@intel.com, 01 Dec 2022 - New UCD hierachy attributes integration
+    * Moved to this utils class by yenugantix.tejasri@intel.com,4-mar-2023.
+    */
 
-        if(stateNameAndCodeByCountry.get(countryCode) != null){
-            for(String statecode : stateNameAndCodeByCountry.get(countryCode).keySet()){                
-                mStatePicklistValues.put(stateNameAndCodeByCountry.get(countryCode).get(statecode),statecode);                
+    public static void setHierarchyFields(Account account, Account parentAcct) {
+        UCD_ACM_Logger.information('UCD_ACM_AccountService','setHierarchyFields','Account:ID: '+account.Id +' and AccountCustAggrType :' + account.Core_Customer_Aggregation_Type__c,'AccountIds: '+account.Id);
+        if(parentAcct == null) {
+            Set<Id> parentAccountIds = new Set<Id>();
+            parentAccountIds.add(account.ParentId);              
+            UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel(); 
+            parentAcct = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent()).get(account.ParentId);
+        }        
+        string parentCustAggrType = parentAcct.Core_Customer_Aggregation_Type__c;
+        Boolean hasSecondaryIntermediateParent = parentCustAggrType == 'UNFD_INTRMD_CUST' ? hasSecondaryIntermediateParent(parentAcct) : false;
+        UCD_ACM_Logger.information('UCD_ACM_AccountService','setHierarchyFields','ParentCustAggrType:' + parentCustAggrType,'AccountIds: '+account.Id);
+        account.Core_Unified_Global_Customer__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Id : parentAcct.Core_Unified_Global_Customer__c;
+        account.Core_Unified_Global_Customer_BP_Id__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Core_Business_Party_Id__c : parentAcct.Core_Unified_Global_Customer__r.Core_Business_Party_Id__c;
+        account.Core_Unified_Global_Customer_Name__c = parentCustAggrType == 'UNFD_GLBL_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c : parentAcct.Core_Unified_Global_Customer__r.Core_Data_Simplified_Account_Nm__c;
+       
+        switch on account.Core_Customer_Aggregation_Type__c {
+            when 'UNFD_LOC_CUST' {
+                account.Core_Unified_Country_Customer__c = parentCustAggrType == 'UNFD_CTRY_CUST' ? parentAcct.Id : null;
+                account.Core_Unified_Intermediate_Customer__c = parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : parentAcct.Core_Unified_Intermediate_Customer__c;  
+                account.Core_Unified_Intermediate_Customer_2__c = hasSecondaryIntermediateParent ? parentAcct.ParentId : parentAcct.Core_Unified_Intermediate_Customer_2__c;
             }
+            when 'UNFD_CTRY_CUST' {
+                account.Core_Unified_Intermediate_Customer__c = hasSecondaryIntermediateParent ? parentAcct.ParentId : (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : null);             
+                account.Core_Unified_Intermediate_Customer_2__c = hasSecondaryIntermediateParent ? parentAcct.Id : null;
+                account.Core_Unified_Intermediate_Customer_BP_Id__c = hasSecondaryIntermediateParent ? parentAcct.Core_Unified_Intermediate_Customer__r.Core_Business_Party_Id__c: (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Business_Party_Id__c : null);
+                account.Core_Unified_Intermediate_Customer_Name__c = hasSecondaryIntermediateParent ? parentAcct.Core_Unified_Intermediate_Customer__r.Core_Data_Simplified_Account_Nm__c: (parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c : null);
+             }
+            when 'UNFD_INTRMD_CUST' {
+                account.Core_Unified_Intermediate_Customer__c = parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Id : null;                
+                account.Core_Unified_Intermediate_Customer_2__c = null;
+                account.Core_Unified_Intermediate_Customer_BP_Id__c = parentCustAggrType == 'UNFD_INTRMD_CUST'? parentAcct.Core_Business_Party_Id__c:account.Core_Business_Party_Id__c;
+                account.Core_Unified_Intermediate_Customer_Name__c =parentCustAggrType == 'UNFD_INTRMD_CUST' ? parentAcct.Core_Data_Simplified_Account_Nm__c :account.Core_Data_Simplified_Account_Nm__c;
+            }
+         }
+    }  
+        /*
+    * description : To check if an intermediate account has secondary intermediate parent
+    * params : Account
+    * author and date : chethan.s.kunder@intel.com, 15 Mar 2022
+    * Moved to this utils class by yenugantix.tejasri@intel.com,4-mar-2023.
+    */
+    private static Boolean hasSecondaryIntermediateParent(Account parentAccount){
+        if(parentAccount.ParentId == null){
+            return false;
         }
-        return mStatePicklistValues;
+        Map<Id, Account> parent2AccountById = new Map<Id,Account>();
+        Set<Id> parent2AccountIds = new Set<Id>();
+        parent2AccountIds.add(parentAccount.ParentId);              
+        UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel(); 
+        parent2AccountById = accountQuerySelectorInstance.getAccountsByIds(parent2AccountIds, model.getParentAccountQueryForEvent());
+        return parent2AccountById.get(parentAccount.ParentId).Core_Customer_Aggregation_Type__c == 'UNFD_INTRMD_CUST';
     }
-
-    /**
-        * description : Method to get State code for a state name
-        * params : String, String
-        * return : String 
-        * author and date : chethan.s.kunder@intel.com 19-Apr-2024
-     */
-    public static String getStateCodeForStateName(String stateName, String countryCode) {
-        Map<String,String> mStateValues = getStateValuesForCountryCode(countryCode);
-        String stateCode = (!mStateValues.isEmpty() && mStateValues.containsKey(stateName)) ? mStateValues.get(stateName) : '';       
-        return stateCode;
-    }
-        
+    
 }

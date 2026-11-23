@@ -4,20 +4,6 @@
         <application>Core_MDF_CoMarketing</application>
         <visible>true</visible>
     </applicationVisibilities>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>Core_MDF_DCF_USER</name>
-    </customPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PartnerFundRequest.Core_MDF_ATF_Flag_nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>PartnerFundRequest.Core_MDF_Approval_Stage__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>CCP DCF USER</label>
     <license>Partner Community</license>
@@ -48,10 +34,6 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ChatterEnabledForUser</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ViewAllForeignKeyNames</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>

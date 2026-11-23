@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>test template</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PartnerAssist Opt-In JPN1</name>
+    <style>none</style>
+    <subject>ビジネスアカウントの更新</subject>
+    <textOnly>ビジネスアカウントの更新
+
+
+!%UserFirstName%!,  様、
+
+本通知は、認定インテル® ディストリビューターおよび / または認定インテル® サプライヤー (サービス・プロバイダー) に対し、インテル® パートナー・アライアンスの情報共有の開始を選択された方をお知らせするものです。。
+
+ビジネスアカウント名: !%AccountName%!
+アカウント番号: !%AccountNumber%!
+更新を行った主要担当者: !%UserEmailAddr%!
+日付: !%DateSigned%!
+選択されたサービス・プロバイダー: !%Distributors%!
+承認: 特典管理のため、インテル® テクノロジー・プロバイダー・プログラムのアカウントに関する情報をサービス・プロバイダーと共有することをここに認可します。また、サービス・プロバイダーによるポイント交換の代行を認可します (アジア太平洋地域および日本では対象外です)。
+
+
+本行為を承認しない、またはエラーが発生したと考えられる場合、ここをクリックして選択を変更、または解除できます。
+ご質問がある場合は、programs@intel.com へお問い合わせください。
+
+よろしくお願いいたします。
+インテル® パートナー・アライアンス
+
+このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+プライバシー・ポリシー  |  Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

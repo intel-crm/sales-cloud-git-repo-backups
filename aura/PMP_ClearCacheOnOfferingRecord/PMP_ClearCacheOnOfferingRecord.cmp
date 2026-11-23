@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction,lightning:isUrlAddressable" access="global" controller="PMP_ClearCacheOnSpecificRecordController">
+	<aura:attribute name="recordId" type="String" access="global" />
+    <aura:attribute name="cacheFlag" type="Boolean" access="global" />
+    <aura:attribute name="objectName" type="String" access="global" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>        
+</aura:component>

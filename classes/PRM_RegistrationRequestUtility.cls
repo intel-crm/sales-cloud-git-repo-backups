@@ -279,7 +279,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                     objEmailNotif.Language = req.PRM_Preferred_Language__c;
                     loginId = '';
                     PRM_EmailUtility.customPlaceholdersMap = new Map<String, String>{'{{USERNAME}}' => loginId };
-                        }*/ //TWC729-8986 - PSG removal from PRM classes
+                        }*/
                 objEmailNotifList.add(objEmailNotif);
                 
             }
@@ -322,12 +322,11 @@ public without sharing class PRM_RegistrationRequestUtility {
             Name,
             PRM_Channel_Program_Id__c,
             PRM_Language_Codes__c,
-            PRM_Partner_Role__c,
             PRM_InActive_Ind__c,
-            PRM_Agreement_Cd__c
+            PRM_Agreement_Cd__c/*,PRM_Partner_Role__c*/
             FROM PRM_PartnerAgreement__c
             WHERE PRM_InActive_Ind__c = FALSE
-        ]) {
+        ]) {//ATHR Fix - TWC729-9556 - SJ
             //Set Without language field
             if (String.isBlank(pa.PRM_Language_Codes__c)) {
                 allPASetWithoutLanguage.add(
@@ -422,15 +421,19 @@ public without sharing class PRM_RegistrationRequestUtility {
                 List<String> partnerRoleArray = new List<String>();
                 //Account acct = new Account();
                 boolean isACRActive = null;
+                boolean hasPartnerAdminACR = false;
                 if (reg.PRM_Salesforce_ID__c != null && mapOfAccIdPartnerRole.containsKey(reg.PRM_Salesforce_ID__c)) {
                     partnerRoleArray = mapOfAccIdPartnerRole.get(reg.PRM_Salesforce_ID__c);
                     if (mapAccountIdTOListACR.containsKey(reg.PRM_Salesforce_ID__c)) {
                         for (PRM_Account_Contact_Relationship__c acr : mapAccountIdTOListACR.get(reg.PRM_Salesforce_ID__c)
                             ) {
-                                if (acr.PRM_Partner_Role__c == reg.PRM_Partner_Role__c && acr.PRM_Status_Nm__c == System.label.PRM_ACR_Status &&
+                                if (acr.PRM_Status_Nm__c == System.label.PRM_ACR_Status &&
                                     acr.PRM_InActive_Ind__c == false && acr.PRM_Status_Nm__c != 'Pending Action' && acr.PRM_Relationship_Id__r.Name == System.Label.PRM_Primary_Contact
                                 ) {
-                                    isACRActive = true;
+                                    hasPartnerAdminACR = true;
+                                    if (acr.PRM_Partner_Role__c == reg.PRM_Partner_Role__c) {
+                                        isACRActive = true;
+                                    }
                                 }
                             }
                         
@@ -458,6 +461,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                     ) {
                         if (
                             (!partnerRoleArray.contains(reg.PRM_Partner_Role__c)|| isACRActive == false) &&
+                            !hasPartnerAdminACR &&
                             !existingAccFromReqIds.contains(reg.PRM_Salesforce_ID__c) //if(isACRActive == false)
                         ) {
                             existingAccFromReqIds.add(reg.PRM_Salesforce_ID__c);
@@ -1095,7 +1099,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                 }
             }
         }
-    }*/ // TWC729-8986 - PSG removal from PRM classes
+    }*/
     private static Boolean adminDomainAutoApprovalEnabled = null;
     
     private static Boolean isAdminDomainAutoApprovalEnabled() {
@@ -1306,7 +1310,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                         reg_Request.PRM_Auto_Approve__c = true;
                         reg_Request.PRM_isSubmitted__c = true;
                         if(reg_Request.PRM_Is_Returning_User__c){
-                            reg_Request.PRM_Review_Note_txt__c = Label.UIOLI_Return_Reason;
+                            reg_Request.PRM_Review_Note_txt__c = 'UIOLI Reactivation';
                         } else {
                             reg_Request.PRM_Review_Note_txt__c = 'Auto-approved by whitelisted account email domain match.';
                         }
@@ -1343,6 +1347,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                 else if(partRoleMetaDataMap.containsKey(reg_Request.PRM_Partner_Type__c) && partRoleMetaDataMap.get(reg_Request.PRM_Partner_Type__c) == true && !isAccIPA){
                     reg_Request.PRM_Pending_Auto_Approval_Criteria__c = PRM_PartnerRoleNA;
                 }
+                //@NJ
                 else if(countryBasedBypass.contains(reg_Request.PRM_Email_ID__c)){
                     reg_Request.PRM_Pending_Auto_Approval_Criteria__c = PRM_EmailCountryBypass;
                 }
@@ -1363,7 +1368,8 @@ public without sharing class PRM_RegistrationRequestUtility {
    {
     // Get Partner Admin/Delegate email domains
     Map<Id, Set<String>> accountAdminEmailDomains = new Map<Id, Set<String>>();
-    
+
+    //@NJ
     // Retrieve country-level domain bypass configuration from Custom Metadata
     Core_CustomMetadataObjectController customMetadata = new Core_CustomMetadataObjectController('Country_Level_Domain_Bypass');
     Map<String, Map<String, Object>> bypassRecords = customMetadata.getAll();
@@ -1401,7 +1407,7 @@ public without sharing class PRM_RegistrationRequestUtility {
             String emailId = reg_Request.PRM_Email_ID__c.trim();
             String emailDomain = emailId.substringAfter('@');
             Set<String> adminDomains = accountAdminEmailDomains.get(reg_Request.PRM_Salesforce_ID__c);
-            
+            //@NJ
             // Check if this domain should bypass the blocked domain validation for the registration country
             Boolean shouldBypass = shouldBypassBlockedDomainCheck(reg_Request.PRM_Country__c, emailDomain,bypassRecords);
             
@@ -1413,7 +1419,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                 reg_Request.PRM_Auto_Approve__c = true;
                 reg_Request.PRM_isSubmitted__c = true;
                 if(reg_Request.PRM_Is_Returning_User__c){
-                    reg_Request.PRM_Review_Note_txt__c = Label.UIOLI_Return_Reason;
+                    reg_Request.PRM_Review_Note_txt__c = 'UIOLI Reactivation';
                 } else {
                     reg_Request.PRM_Review_Note_txt__c = 'Auto-approved by Partner Admin/Delegate email domain match.';
                 }
@@ -1424,7 +1430,7 @@ public without sharing class PRM_RegistrationRequestUtility {
     }
 }
 
-
+//@NJ
  /**
 *  @description      : Check if a domain should bypass blocked domain validation for a specific country
 *  @name             : shouldBypassBlockedDomainCheck
@@ -1577,7 +1583,7 @@ public without sharing class PRM_RegistrationRequestUtility {
                     newReq.PRM_Status__c = oldregRequestMap.get(newReq.id).PRM_Status__c;
                     newReq.PRM_Review_Note_txt__c = System.Label.PRM_BlockedContactAdmins;
                 }
-                if(oldregRequestMap.containsKey(newReq.id) && newReq.PRM_Status__c != 'New' && oldregRequestMap.get(newReq.id).PRM_Status__c == 'New' && !PRM_Registration_Req_Approve_Reject.isApprovedUsingButton && !PRM_SendDocumentUploadEmail.bypassStatusChangeValidation && newReq.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance' && newReq.RecordTypeId == PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT){
+                if(oldregRequestMap.containsKey(newReq.id) && newReq.PRM_Status__c != 'New' && oldregRequestMap.get(newReq.id).PRM_Status__c == 'New' && !PRM_Registration_Req_Approve_Reject.isApprovedUsingButton /*&& !PRM_SendDocumentUploadEmail.bypassStatusChangeValidation*/ && newReq.PRM_Channel_Program_Level_txt__c == 'Intel Partner Alliance' && newReq.RecordTypeId == PRM_IPA_Constants.ACCOUNT_CREATE_REQUEST_RT){
                     newReq.addError('This action is not allowed. Status cannot be modified');
                 }
             

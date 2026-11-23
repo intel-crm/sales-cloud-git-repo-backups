@@ -73,7 +73,7 @@
 )</stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_2_myRule_1_A1_2782400903</name>
+        <name>formula_2_myRule_1_A1_5022267332</name>
         <dataType>String</dataType>
         <expression>IF( 
 	ISPICKVAL({!myVariable_current.Owner.UserType}, &apos;PowerPartner&apos;),
@@ -88,7 +88,7 @@
                 <stringValue>[Contact].CreatedById </stringValue>
             </value>
         </processMetadataValues>
-        <name>formula_3_myRule_1_A1_6336480981</name>
+        <name>formula_3_myRule_1_A1_8771704073</name>
         <dataType>String</dataType>
         <expression>{!myVariable_current.CreatedById}</expression>
     </formulas>
@@ -96,35 +96,25 @@
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>[Contact].RecordType.DeveloperName=&apos;Core_Intel_Contact&apos; &amp;&amp; 
-(ISBLANK([Contact].Core_IPS_Intel_Support_Owner__c) || ISNULL([Contact].Core_IPS_Intel_Support_Owner__c) ) || (
-NOT(ISBLANK([Contact].Core_IPS_Intel_Support_Owner__c))  &amp;&amp; NOT(ISNULL([Contact].Core_IPS_Intel_Support_Owner__c))  &amp;&amp;
-[Contact].Core_IPS_Intel_Support_Owner__r.Id != $Label.PRM_IPARegistration_Integration_UserId )</stringValue>
+                <stringValue>[Contact].RecordType.DeveloperName=&apos;Core_Intel_Contact&apos; &amp;&amp; [Contact].Core_IPS_Intel_Support_Owner__r.Id != $Label.PRM_IPARegistration_Integration_UserId </stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_1</name>
         <dataType>Boolean</dataType>
-        <expression>{!myVariable_current.RecordType.DeveloperName}=&apos;Core_Intel_Contact&apos; &amp;&amp; 
-(ISBLANK({!myVariable_current.Core_IPS_Intel_Support_Owner__c}) || ISNULL({!myVariable_current.Core_IPS_Intel_Support_Owner__c}) ) || (
-NOT(ISBLANK({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp; NOT(ISNULL({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp;
-{!myVariable_current.Core_IPS_Intel_Support_Owner__r.Id} != {!$Label.PRM_IPARegistration_Integration_UserId} )</expression>
+        <expression>{!myVariable_current.RecordType.DeveloperName}=&apos;Core_Intel_Contact&apos; &amp;&amp; {!myVariable_current.Core_IPS_Intel_Support_Owner__r.Id} != {!$Label.PRM_IPARegistration_Integration_UserId}</expression>
     </formulas>
     <formulas>
         <processMetadataValues>
             <name>originalFormula</name>
             <value>
-                <stringValue>!ISPICKVAL([Contact].CreatedBy.UserType , &apos;Standard&apos;) &amp;&amp; NOT(ISBLANK([Contact].Core_IPS_Intel_Support_Owner__c))  &amp;&amp;
-NOT(ISNULL([Contact].Core_IPS_Intel_Support_Owner__c))  &amp;&amp;
-[Contact].Core_IPS_Intel_Support_Owner__r.Id = $Label.PRM_IPARegistration_Integration_UserId </stringValue>
+                <stringValue>!ISPICKVAL([Contact].CreatedBy.UserType , &apos;Standard&apos;) &amp;&amp; [Contact].Core_IPS_Intel_Support_Owner__r.Id = $Label.PRM_IPARegistration_Integration_UserId </stringValue>
             </value>
         </processMetadataValues>
         <name>formula_myRule_5</name>
         <dataType>Boolean</dataType>
-        <expression>!ISPICKVAL({!myVariable_current.CreatedBy.UserType} , &apos;Standard&apos;) &amp;&amp; NOT(ISBLANK({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp;
-NOT(ISNULL({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp;
-{!myVariable_current.Core_IPS_Intel_Support_Owner__r.Id} = {!$Label.PRM_IPARegistration_Integration_UserId}</expression>
+        <expression>!ISPICKVAL({!myVariable_current.CreatedBy.UserType} , &apos;Standard&apos;) &amp;&amp; {!myVariable_current.Core_IPS_Intel_Support_Owner__r.Id} = {!$Label.PRM_IPARegistration_Integration_UserId}</expression>
     </formulas>
-    <interviewLabel>IPS_Contact_Create-13_InterviewLabel</interviewLabel>
+    <interviewLabel>IPS_Contact_Create-17_InterviewLabel</interviewLabel>
     <label>IPS Contact - Create</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -240,7 +230,7 @@ NOT(ISNULL({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp;
             <field>OwnerId</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>formula_2_myRule_1_A1_2782400903</elementReference>
+                <elementReference>formula_2_myRule_1_A1_5022267332</elementReference>
             </value>
         </filters>
         <inputAssignments>
@@ -276,7 +266,7 @@ NOT(ISNULL({!myVariable_current.Core_IPS_Intel_Support_Owner__c}))  &amp;&amp;
             </processMetadataValues>
             <field>Core_IPS_Intel_Support_Owner__c</field>
             <value>
-                <elementReference>formula_3_myRule_1_A1_6336480981</elementReference>
+                <elementReference>formula_3_myRule_1_A1_8771704073</elementReference>
             </value>
         </inputAssignments>
         <object>Contact</object>

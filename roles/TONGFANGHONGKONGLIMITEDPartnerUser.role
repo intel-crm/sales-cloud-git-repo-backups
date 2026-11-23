@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>AIstone Partner User</description>
+    <description>TONGFANG HONG KONG LIMITED Partner User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>AIstone Partner User</name>
+    <name>TONGFANG HONG KONG LIMITED Partner User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>EMP_12106785_Yan_Zhao</parentRole>
+    <parentRole>TONGFANGHONGKONGLIMITEDPartnerManager</parentRole>
 </Role>

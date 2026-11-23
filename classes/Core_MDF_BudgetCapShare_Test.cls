@@ -16,7 +16,7 @@ public class Core_MDF_BudgetCapShare_Test {
     Modified By:                  Date:                      Changes: 
     Accenture – Harika P        05/04/2019                   Created.
 *****************************************************************************************************************************************/
-    @isTest static void createBudgetCapShareRecords() {
+	@isTest static void createBudgetCapShareRecords() {
         
         UserRole usRole = [SELECT Id,Name FROM UserRole where Name = 'Admin' LIMIT 50000];
         // Creating User with utility class 
@@ -25,30 +25,17 @@ public class Core_MDF_BudgetCapShare_Test {
         usr1.UserRoleId = usRole.Id;
         Database.insert(usr1);
         
-        list<PermissionSetAssignment> permList = new list<PermissionSetAssignment>();
-        PermissionSet psFinance = [SELECT Id FROM PermissionSet WHERE Name = 'Core_MDF_CCP_Internal_DCF_MDF_Budget_Loader' LIMIT 1];
-        PermissionSetAssignment perm1 = new PermissionSetAssignment(AssigneeId = usr1.id, PermissionSetId = psFinance.Id);
-        permList.add(perm1);
-        
         System.runAs(usr1){
-            //adding bypass feature to bypass access validation
-			List<String> bypassFunctionKeys = new List<String>();
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Access_Validation');
-            bypassFunctionKeys.add('Bypass_MDF_Budget_Status_Validation');
-            
-            Set<String> myset1 = new Set<String>();
-            List<String> result1 = new List<String>();
-            myset1.addAll(bypassFunctionKeys);
-            result1.addAll(myset1);
-            
-            List<Core_Trigger_Executions__c> bypassfunctinalitylist1 = Core_MDF_CCP_TestDataUtility.byPassFeature(result1,true,true);
-            
             // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Datacenter','Data Center CoMarketing Fund', true);
+            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Data Center Co-Marketing Fund','Data Center CoMarketing Fund', true);
             
             // Creating IntelAccount with utility class
             Account intAcc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Account 1', 
-                                                                              Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type,true);
+                                                                              Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type,false);
+            intAcc.Core_Account_Type__c = 'Reseller';
+            intAcc.Core_Sales_Groups__c = 'Automotive Sales Group';
+            intAcc.Industry = 'Food & Beverage';
+            Database.insert(intAcc);
             
             // Creating Co-marketing Account with utility class
             Account dcfAcc = Core_MDF_CCP_TestDataUtility.createAccount ('Co-marketing DCF Test Account', 
@@ -111,20 +98,17 @@ public class Core_MDF_BudgetCapShare_Test {
             List<PartnerMarketingBudget> pmbList = new List<PartnerMarketingBudget>();
             PartnerMarketingBudget pmb = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                    dcfAcc.Id,cp.Id,5000000,System.today(),System.today().addDays(110), 
-                                                                                   false);
-            pmb.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+                                                                                   true);
+            
             
             PartnerMarketingBudget pmb1 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget',Core_MDF_CCP_TestDataUtility.budget_Record_Type,
                                                                                    dcfAcc.Id,cp.Id,5000000,System.today().addDays(111),System.today().addDays(120), 
-                                                                                   false);
-            pmb1.Core_MDF_Budget_Type_Txt__c='OEM CMP';
+                                                                                   true);
             pmbList.add(pmb);
             pmbList.add(pmb1);
-            insert pmbList;
             
             // Creating Allocation using utility class
-           // Highlight: Unused Local Variable 
-          //  PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb1,dcfAcc,1000000.0,true);
+            PartnerFundAllocation pfa = Core_MDF_CCP_TestDataUtility.createPartnerFundAllocation('Test Allocation',pmb,dcfAcc,1000000.0,true);
             
             // Creating BudgetCap Record
             Core_MDF_Budget_Cap__c budgetCap = new Core_MDF_Budget_Cap__c();
@@ -138,7 +122,7 @@ public class Core_MDF_BudgetCapShare_Test {
             Database.update(pmb);
             Test.stopTest();
             
-            PartnerMarketingBudget pmb2 = [SELECT Id,Core_MDF_Budget_Status__c FROM PartnerMarketingBudget WHERE Id =: pmb.Id];
+			PartnerMarketingBudget pmb2 = [SELECT Id,Core_MDF_Budget_Status__c FROM PartnerMarketingBudget WHERE Id =: pmb.Id];
             System.assertEquals('Released',pmb2.Core_MDF_Budget_Status__c);            
             
             // Calling budgetCapShare method from Core_MDF_BudgetCapShare class
@@ -149,6 +133,7 @@ public class Core_MDF_BudgetCapShare_Test {
             for(Core_MDF_Budget_Cap__Share budgetShare : [SELECT Id, ParentId, UserOrGroupId FROM Core_MDF_Budget_Cap__Share where ParentId =: budgetCap.Id]){
                 userOrGroupIdList.add(budgetShare.UserOrGroupId);
             }
+            //System.assert(userOrGroupIdList.contains(dcfgrp.Id));
             
             // Calling budgetCapShare method from Core_MDF_BudgetCapShare class
             Core_MDF_BudgetCapShare.budgetCapShare(pmbList);            

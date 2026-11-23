@@ -37,7 +37,7 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Product_Type__c</field>

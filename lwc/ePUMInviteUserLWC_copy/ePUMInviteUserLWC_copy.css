@@ -1,0 +1,65 @@
+.sendInvite ,.cancel{
+     font-size: 1rem;
+     line-height: 1.25rem;
+     border-radius: 4px;
+     transition: color 0.1s linear, background-color 0.1s linear !important;
+     padding: 0.625rem 1.5rem;
+     /*font-family: "intel-clear" !important;*/
+     font-size: 1rem;
+ }
+ 
+.sendInvite{
+    background-color: var(--buttonPrimary, #0071C5) !important;
+ }
+
+.customlabel{
+    color: rgb(90, 90, 90); 
+    font-size: 0.75rem;
+    padding-top:0.25rem;
+    font-family: "intel-clear", "tahoma", Helvetica, "helvetica", Arial, sans-serif;
+}
+
+.star{
+    color: rgb(199 74 70);
+}
+
+
+@media only screen and (max-width: 349px) {
+    .footerButtonCancel{
+        float:left;
+    }
+
+    .footerButtonSend{
+        margin-left:0 !important;
+        width: 50%;
+        height: 2.6rem;
+    }
+}
+
+@media only screen and (max-width: 479px){
+    .modalDataClass{
+        height: 65%;
+    }
+    .topMargin{
+        margin-top: 0.2rem;
+    }
+    .modalDivTopMargin{
+        margin-top: 4rem;
+    }
+}
+
+@media only screen and (max-width: 430px){
+    .cancel{
+        padding: .625rem .3rem;
+        width: 100%;
+        order: 2;
+        margin-top: 0.5rem;
+    }
+
+    .sendInvite{
+        padding: .625rem .3rem;
+        width: 100%;
+        order: 1;
+        margin-left: 0 !important;
+    }
+  }

@@ -1,31 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>Audit</fullName>
-        <default>false</default>
-        <label>Audit</label>
-    </customValue>
-    <customValue>
-        <fullName>CAP</fullName>
-        <default>false</default>
-        <label>CAP</label>
-    </customValue>
-    <customValue>
-        <fullName>Document Hold</fullName>
-        <default>false</default>
-        <label>Document Hold</label>
-    </customValue>
-    <customValue>
-        <fullName>Einstein Prediction</fullName>
-        <default>false</default>
-        <label>Einstein Prediction</label>
-    </customValue>
-    <customValue>
-        <fullName>Immediate Rules</fullName>
-        <default>false</default>
-        <label>Immediate Rules</label>
-    </customValue>
-    <customValue>
         <fullName>Manual</fullName>
         <default>false</default>
         <label>Manual</label>
@@ -35,6 +10,11 @@
         <default>false</default>
         <label>Random</label>
     </customValue>
+    <customValue>
+        <fullName>CAP</fullName>
+        <default>false</default>
+        <label>CAP</label>
+    </customValue>
     <masterLabel>Audit Type</masterLabel>
-    <sorted>true</sorted>
+    <sorted>false</sorted>
 </GlobalValueSet>

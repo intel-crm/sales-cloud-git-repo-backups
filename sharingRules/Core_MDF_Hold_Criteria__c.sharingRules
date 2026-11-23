@@ -1,97 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>CORE_MDF_CRITERIA_HOLD_CLAIM_CASE_REVIEWERS_INTERNAL</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>CRITERIA HOLD - CLAIM CASE REVIEWERS INTERNAL</description>
-        <label>CRITERIA HOLD - CLAIM CASE REVIEWERS INTERNAL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Claim_Case_Reviewer_Q_Group</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_CCF_Boost_Program_Group</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>CCF Boost Program Group</label>
-        <sharedTo>
-            <group>CORE_MDF_CCP_CCFB_All</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_CCF_Program_Group</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>CCF Program Group</label>
-        <sharedTo>
-            <group>CORE_MDF_CCP_CCF_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Criteria_Hold_All_Users_CCP_Internal_Read_Write</fullName>
         <accessLevel>Edit</accessLevel>
         <description>To Share all the Hold Criteria List Records with All Users CCP Internal Group</description>
         <label>Criteria Hold All Users - CCP Internal Read Write</label>
         <sharedTo>
             <group>Core_All_Users_CCP_Internal</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_DCF_Program_Group</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>DCF Program Group</label>
-        <sharedTo>
-            <group>CORE_MDF_CCP_DCF_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Retail_Program_Group</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Retail Program Group</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Retail_All</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Name</field>
-            <operation>notEqual</operation>
-            <value>[empty]</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_SPCF_Program_Group</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>SPCF Program Group</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_SPCF_All</group>
         </sharedTo>
         <criteriaItems>
             <field>Name</field>

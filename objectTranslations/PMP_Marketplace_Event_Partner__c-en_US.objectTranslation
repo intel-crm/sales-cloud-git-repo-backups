@@ -18,5 +18,12 @@
         <name>PMP_Event_Id__c</name>
         <relationshipLabel><!-- Marketplace Event Partners --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Marketplace Event Partner Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

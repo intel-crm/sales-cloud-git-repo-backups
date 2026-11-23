@@ -26,33 +26,30 @@ global class PRM_DQBatchForContactWithoutEntitlement
     public String logEntryMsgString='';
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
-        
-        Datetime dt = Datetime.valueOfGmt(Label.PRM_EntitlementDQBatchPickupDate.replace('T', ' ').replace('Z', ''));
-        
 
         return Database.getQueryLocator([
             SELECT Id, Name, Email,Core_IPA_PartnerRole__c,LastModifiedDate,CreatedDate
             FROM Contact
-            WHERE (CreatedDate > :dt
-               OR LastModifiedDate > :dt) AND (Core_IPA_PartnerRole__c != null OR Core_IPA_PartnerRole__c != '')
+            WHERE (CreatedDate > 2026-06-01T00:00:00Z
+               OR LastModifiedDate > 2026-06-01T00:00:00Z) AND (Core_IPA_PartnerRole__c != null OR Core_IPA_PartnerRole__c != '')
         ]);
     }
 
     global void execute(Database.BatchableContext bc, List<Contact> scope) {
-        
-        String agsEntitlement = System.Label.PRM_EntitlementTypeAGS;
-        String sfdcEntitlement = System.Label.PRM_EntitlementTypeSFDC;
+
         logEntryMsgString+='Inside execute method, scope: '+scope;
         try{
             for(Contact con : scope) {
                 contactIds.add(con.Id);
             }
+            System.debug('contactIds : '+ contactIds.size());
             if(contactIds != null && !contactIds.isEmpty()){
                 for(Core_Contact_Entitlement__c ce : [
-                    SELECT Id, Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Entitlement_Type__c,Core_From_Source__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c IN :contactIds AND (Core_Entitlement_Type__c =:agsEntitlement OR Core_Entitlement_Type__c =:sfdcEntitlement)
+                    SELECT Id, Core_Contact_Id__c,Core_Entitlement_Id__c,Core_Entitlement_Type__c,Core_From_Source__c FROM Core_Contact_Entitlement__c WHERE Core_Contact_Id__c IN :contactIds AND (Core_Entitlement_Type__c = 'Entitlement-AGS' OR Core_Entitlement_Type__c = 'Entitlement-SFDC')
                 ]){
                     contactsWithEntitlement.add(ce.Core_Contact_Id__c);
                 }
+                System.debug('contactsWithEntitlement : '+ contactsWithEntitlement.size());
             }
             for(Contact con : scope) {
                 if(!contactsWithEntitlement.contains(con.Id)) {
@@ -60,6 +57,7 @@ global class PRM_DQBatchForContactWithoutEntitlement
                     contactsWithoutEntitlement.add(con.Id);
                 }
             }
+            System.debug('contactsWithoutEntitlement : '+ contactsWithoutEntitlement.size());
             if(contactsWithoutEntitlement != null && !contactsWithoutEntitlement.isEmpty()){
                 for(PRM_Account_Contact_Relationship__c acr : [
                     SELECT Id, PRM_Contact_Id__c,PRM_Account_Id__c,PRM_execute_trigger__c,PRM_InActive_Ind__c,PRM_Partner_Role__c,PRM_Partner_Role_UI__c,PRM_Relationship_Id__c,PRM_Status_Nm__c,PRM_Status_Reason_Txt__c
@@ -74,10 +72,13 @@ global class PRM_DQBatchForContactWithoutEntitlement
             if(contactsWithoutEntitlement!= null && !contactsWithoutEntitlement.isEmpty()){
                 contList = [Select id,name,Core_IPA_PartnerRole__c from Contact Where Id IN:contactsWithoutEntitlement];
             }
+            system.debug('contList-->'+contList.size());
+            System.debug('accountIds : '+ accountIds.size());
+            System.debug('acrToProcess : '+ acrToProcess.size());
             if(accountIds != null && !accountIds.isEmpty()){
                 acmList = [SELECT Id, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Channel_Program_Id__c, PRM_Partner_Role__c, PRM_Status_Nm__c FROM PRM_AccountChannelMembership__c WHERE PRM_Channel_Program_Id__r.Name = :System.Label.PRM_Intel_Partner_Alliance AND PRM_Status_Nm__c = :System.Label.PRM_Status AND PRM_Account_Id__c IN :accountIds];
             }
-            
+            System.debug('acmList : '+ acmList.size());
             
             PRM_IPA_DQ_Logs__c dqLog = new PRM_IPA_DQ_Logs__c();
             dqLog.PRM_Object_Name__c='Contact Entitlement' ;
@@ -87,6 +88,7 @@ global class PRM_DQBatchForContactWithoutEntitlement
         }
         catch(Exception ex){
             logEntryMsgString='\n errors:'+ex;
+            System.debug('Contacts without entitlement in this batch: '+ contactsToProcess.size());
         }
     }
 

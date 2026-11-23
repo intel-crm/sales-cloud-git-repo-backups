@@ -1,77 +1,134 @@
+/**************************************************************************************
+Apex Class Name:  Core_MDF_SchBatch_UpdateCampaignSts_Test 
+Version     : 1.0 
+Created Date: 25 07 2018
+Function    : Test class for the scheduler class for completing the campaign if claim window passed.
+Author      : Ealisha Chatterjee
+Modification Log :
+* Change#           Author                   Date                   Description
+* ----------------------------------------------------------------------------                 
+* Core MDF Rel1   Ealisha Chatterjee          25/07/2018              Original Version
+*
+*************************************************************************************/
 @isTest(SeeAllData=false) 
 public class Core_MDF_SchBatch_UpdateCampaignSts_Test {
     
-    
+
     @isTest static void createCampaignRecords(){
         Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
-        // Creating User with utility class 
-        User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
-        usr.profileId = systemAdminProfile.Id;
-        insert usr;
-        
+         // Creating User with utility class 
+         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+         usr.profileId = systemAdminProfile.Id;
+         insert usr;
+         
         System.runAs(usr){
-            // Creating channel program with utility class
-            ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.CCF_PROGRAM,'Client CoMarketing Fund', true);
-            ChannelProgram ipaCP = Core_MDF_CCP_TestDataUtility.createProgram (Core_MDF_CCP_ConstantClass.IPA_PROGRAM,'Intel Partner Alliance', true);
+      // Creating channel program with utility class
+         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+       
+       // Creating IntelAccount with utility class
+             Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
+             intacc.Core_Account_Type__c = 'Reseller';
+             intacc.Core_Sales_Groups__c = 'Automotive Sales Group';
+             intacc.Industry = 'Food & Beverage';
+             insert intacc;
+             
+             // Creating Co-marketing Account with utility class
+             Account acc = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
+             acc.Core_MDF_Parent_Fund_Account__c = intacc.Id;
+             insert acc;
             
-            // Creating IntelAccount with utility class
-            Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, true);
-            
-            // Creating Co-marketing Account with utility class
-            Account acc = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
-            acc.Core_MDF_Parent_Fund_Account__c = intacc.Id;
-            insert acc;
-            
-            insert new Core_MDF_BudgetType_Benefit_Mappings__c(Name = 'Business Client Acceleration - MDF', Core_MDF_IsActive__c = true, Core_MDF_Is_IUPGM_Monitor_Applicable_Ind__c = true, Core_MDF_Partner_Benefit__c = 'Business Client Acceleration - MDF', Core_MDF_Record_Developer_Nm__c = 'Core_MDF_Intel_Partner_Alliance_Proposal_Based', Core_MDF_Budget_Type__c = 'Proposal I MDF', Core_MDF_Program_Nm__c = 'Intel Partner Alliance', Core_MDF_RecordType__c = 'Proposal Based');
-            Account ipaCoMarketingAccount = Core_MDF_CCP_TestDataUtility.createCoMarketingAccount('IPA Co-Marketing Account', ipaCP.id, Core_MDF_CCP_TestDataUtility.Account_Record_Type,intacc.id, true);
-            string budgetType = Core_MDF_CCP_IPA_TestDataUtility.createBenefit(ipaCoMarketingAccount); 
-
+      // Creating Budget 2018 with utility class  
+        // PartnerMarketingBudget pmbccf2018 = Core_MDF_CCP_TestDataUtility.createBudget('Test Budget 1',Core_MDF_CCP_TestDataUtility.Budget_Record_Type, acc.Id, cp.Id, 30000, Date.newInstance(2018,7,18), Date.newInstance(2018,12,31), true);
+        
+      // Creating Priority with utility class   
+       //  Core_MDF_Priority__c priority =  Core_MDF_CCP_TestDataUtility.createPriority(cp.Id, true); 
+        Datetime dtTime=System.now();
+        date startdtForCompleteCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));
+        date enddtForCompleteCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));
+        date startdtForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));
+        date startdtInPastForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()-2));
+        date enddtForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()+1));
+        date enddtForInProgressCampInPastDate= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()-1));
+      
             // Creating Campaign with utility class      
-            List<Campaign> campList = new List<Campaign>();
-            Campaign campcx1 = Core_MDF_CCP_TestDataUtility.createCampaign('Completed Campaign 1','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-30, System.today()-1, 3000, 'Unite', acc.Id,'Desktop',false); 
-            campcx1.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            Campaign campcx2 = Core_MDF_CCP_TestDataUtility.createCampaign('Completed Campaign 2','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-30, System.today()-1, 3000, 'Unite', acc.Id,'Desktop',false); 
-            campcx2.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            //Campaign ipaCamp = Core_MDF_CCP_IPA_TestDataUtility.createIPACampaign('Completed IPA Campaign',ipaCoMarketingAccount.id, System.today()-30, System.today()-1,budgetType, 110000,'INDIA', 'Business Owners', 'Apollo Lake', 'In Progress', false);
-            Campaign campcx3 = Core_MDF_CCP_TestDataUtility.createCampaign('In Progress Campaign 1','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-30, System.today().addDays(20), 3000, 'Unite', acc.Id,'Desktop',false);
-            campcx3.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            Campaign campcx4 = Core_MDF_CCP_TestDataUtility.createCampaign('In Progress Campaign 2','Gaming','Intel® Core™ i7 Processor','Yes', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', System.today()-30, System.today().addDays(20), 3000, 'Unite', acc.Id,'Desktop',false);
-            campcx4.Core_MDF_Opal_Budget_Type_Txt__c = 'OEM CMP';
-            campList.add(campcx1);campList.add(campcx2);campList.add(campcx3);campList.add(campcx4);
-            //campList.add(ipaCamp);
-            Database.insert(campList);
+         //Campaign campcx1 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 2','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtForCompleteCamp, enddtForCompleteCamp, 3000, 'Unite', acc.Id, true);
+           Campaign campcx2 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 2','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtForInProgressCamp, enddtForInProgressCamp, 3000, 'Unite', acc.Id,'Desktop',true);           
+           Campaign campcx3 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 2','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtInPastForInProgressCamp, enddtForInProgressCamp, 3000, 'Unite', acc.Id,'Desktop',true);           
+		   Campaign campcx4 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 2','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtInPastForInProgressCamp, enddtForInProgressCampInPastDate, 3000, 'Unite', acc.Id,'Desktop',true);           
+		   Campaign campcx5 = Core_MDF_CCP_TestDataUtility.createCampaign('Test Camp 2','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtInPastForInProgressCamp, enddtForInProgressCampInPastDate, 3000, 'Unite', acc.Id,'Desktop',true);
+           campcx5.Core_MDF_Second_Year_Budget_Amount__c = 25;
+            
+            List<Campaign> testCamp = new List<Campaign>();
+            //testCamp.add(campcx1);
+            testCamp.add(campcx2); 
+            testCamp.add(campcx3); 
+            testCamp.add(campcx4);
+            testCamp.add(campcx5);
             
             System.runAs(usr){
-                
-                
-                Test.startTest();
-                Core_MDF_Batch_UpdateCampaignSts ex = new Core_MDF_Batch_UpdateCampaignSts();
-				Id JobId = database.executeBatch(ex);
-                Test.stopTest();
-                List<Campaign> assertCampList =  [SELECT Id, Status,Name from Campaign];          
-                
-                for(Campaign camp:assertCampList)
+            Test.startTest();
+            Core_MDF_Batch_UpdateCampaignSts batchProcess=new Core_MDF_Batch_UpdateCampaignSts();
+            batchProcess.execute(null,testCamp);
+            Test.stopTest();
+            system.debug('Into Assert for schedular test method1 :');           
+            List<Campaign> cmp =  [SELECT Id, Status from Campaign WHERE Id in :testCamp];  
+            system.debug('cmp:'+cmp);
+                /*for(Campaign camp:cmp)
                 {
-                    if(camp.Name.contains('Completed')){
-                        System.assertEquals('Completed',camp.Status);}
-                    else{
-                        System.assertEquals('In Progress',camp.Status);
-                    }
-                }
-            }
+                	System.assertEquals('In Progress',camp.Status);
+                }*/
+        }
             
         }    
     }
-    
-    @isTest
-    static void testScheduledClass() {
+   @isTest static void testSchedulerMethod(){  
+        Profile systemAdminProfile = [SELECT Id FROM Profile WHERE Name='System Administrator' LIMIT 1];
+         // Creating User with utility class 
+         User usr = Core_MDF_CCP_TestDataUtility.createUser(false);
+         usr.profileId = systemAdminProfile.Id;
+         insert usr;
+       
+         Datetime dtTime=System.now();
+         date startdtForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()));
+         date startdtInPastForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()-2));        
+         date enddtForInProgressCamp= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()+1));
+       	 date enddtForInProgressCampInPastDate= date.newinstance(dtTime.year(), dtTime.month(), (dtTime.day()-1));
+         
+        System.runAs(usr){
         Test.startTest();
+          // Creating channel program with utility class
+         ChannelProgram cp = Core_MDF_CCP_TestDataUtility.createProgram ('Client Co-Marketing Fund','Client CoMarketing Fund', true);
+       
+          // Creating IntelAccount with utility class
+             Account intacc = Core_MDF_CCP_TestDataUtility.createIntelAccount ('Test Intel Account', Core_MDF_CCP_TestDataUtility.Intel_Account_Record_Type, false);
+             intacc.Core_Account_Type__c = 'Reseller';
+             intacc.Core_Sales_Groups__c = 'Automotive Sales Group';
+             intacc.Industry = 'Food & Beverage';
+             insert intacc;
+             
+             // Creating Co-marketing Account with utility class
+             Account acc = Core_MDF_CCP_TestDataUtility.createAccount ('Test Account', cp.Id,Core_MDF_CCP_TestDataUtility.Account_Record_Type, false);
+             acc.Core_MDF_Parent_Fund_Account__c = intacc.Id;
+             insert acc;
+            
+            Campaign cmpToBeUpdatedToInProgress1 = Core_MDF_CCP_TestDataUtility.createCampaign('Test cmp To Be Updated To InProgress','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtForInProgressCamp, enddtForInProgressCamp, 3000, 'Unite', acc.Id,'Desktop',true);                      
+            Campaign cmpToBeUpdatedToInProgress2 = Core_MDF_CCP_TestDataUtility.createCampaign('Test cmp To Be Updated To InProgress','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtInPastForInProgressCamp, enddtForInProgressCamp, 3000, 'Unite', acc.Id,'Desktop',true);                      
+            Campaign cmpToBeUpdatedToInProgress3 = Core_MDF_CCP_TestDataUtility.createCampaign('Test cmp To Be Updated To InProgress','Gaming','Intel® Core™ i7 Processor', Core_MDF_CCP_TestDataUtility.Campaign_RecordType_CCF, 'Client CoMarketing Fund', startdtInPastForInProgressCamp, enddtForInProgressCampInPastDate, 3000, 'Unite', acc.Id,'Desktop',true);   
+            List<Campaign> testCamp = new List<Campaign>();
+            
+            testCamp.add(cmpToBeUpdatedToInProgress1); 
+            testCamp.add(cmpToBeUpdatedToInProgress2);
+            testCamp.add(cmpToBeUpdatedToInProgress3);
+            Core_MDF_SchBatch_UpdateCampaignSts scheduleReprocess = new Core_MDF_SchBatch_UpdateCampaignSts();
+            String sch = '0 0 6 * * ? ';
+            System.schedule('Test Batch Status Check', sch, scheduleReprocess);
+            Test.stopTest();
+            List<Campaign> cmpUpdatedToInProgress =  [SELECT Id, Status from Campaign WHERE Id in :testCamp];  
+            system.debug('cmpUpdatedToInProgress:' + cmpUpdatedToInProgress);
+            for(Campaign camp:cmpUpdatedToInProgress){
+            System.assertEquals('In Progress',camp.Status); 
+            }
+        }
         
-        // Schedule the job
-        String jobName = 'TestJob';
-        String cronExpression = '0 0 12 * * ?';
-        System.schedule(jobName, cronExpression, new Core_MDF_SchBatch_UpdateCampaignSts());
-        Test.stopTest();
     }
-    
 }

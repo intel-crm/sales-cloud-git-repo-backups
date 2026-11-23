@@ -7,6 +7,7 @@
     </allowedSubmitters>
     <approvalPageFields>
         <field>Name</field>
+        <field>ButtonBar</field>
         <field>PRM_Email_ID__c</field>
         <field>PRM_Account_Name__c</field>
         <field>PRM_Job_Function__c</field>
@@ -47,7 +48,6 @@
         <name>PRM_Registration_Request_Steps</name>
     </approvalStep>
     <description>Based On Field Values regRequest Record  will be submitted For approval</description>
-    <emailTemplate>test/Registration_Request_Requested_Approval</emailTemplate>
     <enableMobileDeviceAccess>false</enableMobileDeviceAccess>
     <finalApprovalActions>
         <action>
@@ -79,6 +79,6 @@
         <userHierarchyField>Manager</userHierarchyField>
     </nextAutomatedApprover>
     <processOrder>1</processOrder>
-    <recordEditability>AdminOrCurrentApprover</recordEditability>
+    <recordEditability>AdminOnly</recordEditability>
     <showApprovalHistory>true</showApprovalHistory>
 </ApprovalProcess>

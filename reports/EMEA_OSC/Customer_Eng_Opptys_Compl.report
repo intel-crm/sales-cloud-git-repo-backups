@@ -52,13 +52,6 @@
             <value>Katarzyna Bielak,Gosia Dzul,Jaroslaw Tomala,Jadwiszczok,Galin Dimov,Eran Gal,Alexis Garea</value>
         </criteriaItems>
         <criteriaItems>
-            <column>DUE_DATE</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>THIS_FISCAL_QUARTER</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>ASSIGNED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -98,6 +91,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -5,6 +5,14 @@
   "id" : "717eccf7-556b-494f-a294-cc306745ddda",
   "label" : "Partner Fund Claim List",
   "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:Core_MDF_PFC_NewButton",
+      "id" : "39ce7064-409a-4026-8185-9fa964d6530f",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "97882282-c4c1-42f5-a705-83e1b0cf2505",
     "regionName" : "header",
     "type" : "region"
@@ -12,14 +20,7 @@
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:Core_MDF_ExportListView",
-      "id" : "21a86b64-375d-4165-a6d5-de7ba8bfa13b",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    }, {
-      "componentAttributes" : { },
-      "componentName" : "c:Core_MDF_PFC_NewButton",
-      "id" : "0c320de0-77cb-4bb9-af4d-6b6396694977",
+      "id" : "25a996bc-b2b1-4c2a-b214-0fd95ce8db86",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"

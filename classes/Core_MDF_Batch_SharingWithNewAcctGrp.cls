@@ -36,22 +36,20 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
     public void execute(Database.BatchableContext bc,List<Account> accountsList)
     {
         try{
-            //ATHR - Deeply Nested if 16209
-            if(accountsList == NULL || accountsList.isEmpty()) {
-                return;
-            }
+            if(accountsList != NULL && !accountsList.isEmpty())
+            {
                 // Iterating over the accounts from the query
                 for(Account acc : accountsList)
                 {
-                    //ATHR - Deeply Nested if 16209
-                    if(acc.Core_MDF_Parent_Fund_Account__r == NULL || acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c == NULL || acc.Core_MDF_Channel_Program__c == NULL) {
-                        continue;
-                    }
+                    System.debug('Accountsprogram'+acc.Core_MDF_Channel_Program__c);
+                    System.debug('AccountsultimateAcc'+acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c);
                     // Set of ultimate Account Id
                     ultimateAccountIdsSet.add(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c);
                     // Set of Program Ids of the account
                     programIdsSet.add(acc.Core_MDF_Channel_Program__c);
                     // Check if account's ultimate account and program is not null 
+                    if(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c != NULL && acc.Core_MDF_Channel_Program__c != NULL)
+                    {
                         // Making Key for the Map as String - Account's ultimate Accounts Id and Channel Program Id
                         String intelAcctIdProgId = String.valueOf(acc.Core_MDF_Parent_Fund_Account__r.Core_MDF_CoMarketing_Ultimate_Account__c) + String.valueOf(acc.Core_MDF_Channel_Program__c);
                         // Creating Map of ultimate Account + channel Program as key and list of Group Ids
@@ -64,12 +62,14 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
                             ultimateAcctIdProgramIdToGroupIdsListMap.get(intelAcctIdProgId).add(acc.Core_MDF_Group_Id__c);
                         }
                     }
-               
+                }
+                System.debug('ultimateAcctIdProgramIdToGroupIdsListMap'+ultimateAcctIdProgramIdToGroupIdsListMap);
                 
                 // Calling createBudgetShareRecords me to share budgets with new Account's Groups
                 createBudgetShareRecords();
                 // Calling createEscalationShareRecords me to share Escalations with new Account's Groups
                 createEscalationShareRecords();
+            }
         }
         catch(Exception e){         
             Core_MDF_CCP_UtilityClass.logError(e);
@@ -89,7 +89,8 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
         // Iterating over Budget for ultimateAccountIdsSet and programIdsSet            
         for(PartnerMarketingBudget pmb : [Select Id, Core_MDF_Budget_Partner__c, Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c, Core_MDF_Program__c from PartnerMarketingBudget where Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c IN: ultimateAccountIdsSet AND Core_MDF_Program__c IN: programIdsSet])
         {
-            
+            System.debug('pmbprogram' + pmb.Core_MDF_Program__c);
+            System.debug('pmbpartner' + pmb.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c);
             // ultimate Account and channel program String Key
             String ultimateAcctProgramKey = String.valueOf(pmb.Core_MDF_Budget_Partner__r.Core_MDF_CoMarketing_Ultimate_Account__c) + String.valueOf(pmb.Core_MDF_Program__c);
             if(ultimateAcctProgramKey != NULL && ultimateAcctIdProgramIdToGroupIdsListMap.containsKey(ultimateAcctProgramKey))
@@ -103,7 +104,7 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
             Core_MDF_GenericShareRecordActionClass.RecordManualShareClass rmsInst = new Core_MDF_GenericShareRecordActionClass.RecordManualShareClass('PartnerMarketingBudget', objectIdGroupIdListMap, 'Edit', 'Manual');
             Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
         }
-        
+        System.debug('objectIdGroupIdListMap'+objectIdGroupIdListMap);
     }
     
     /***************************************************************************************************** 
@@ -133,5 +134,8 @@ public without sharing class Core_MDF_Batch_SharingWithNewAcctGrp implements Dat
             Core_MDF_GenericShareRecordActionClass.createShareRecordList(rmsInst);
         } 
     }
-    public void finish(Database.BatchableContext bc){}
+    public void finish(Database.BatchableContext bc)
+    {
+        System.debug('Inside finish');
+    }
 }

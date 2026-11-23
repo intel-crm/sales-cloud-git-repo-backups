@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Emails the status of the escalation approval or rejection to the submitter</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <letterhead>CCP_letterhead</letterhead>
+    <name>Escalation Approval Email Template</name>
+    <style>formalLetter</style>
+    <subject>Status Change for your Escalation Request ID: {!Core_MDF_Escalation__c.Name}</subject>
+    <textOnly>See the new status of your Escalation request {!Core_MDF_Escalation__c.Name}:
+{!Core_MDF_Escalation__c.Core_MDF_Escalation_Status_nm__c}</textOnly>
+    <type>html</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

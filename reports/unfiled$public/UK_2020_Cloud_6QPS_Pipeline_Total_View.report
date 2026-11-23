@@ -19,9 +19,6 @@
         <field>FULL_NAME</field>
     </columns>
     <columns>
-        <field>FK_NAME</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</field>
     </columns>
@@ -79,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Rea,Pearsall,Wilkins</value>
+            <value>Rea,Pearsall</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

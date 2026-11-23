@@ -4,19 +4,19 @@
     <protected>false</protected>
     <values>
         <field>Access_Token_URL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>Auth_URL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/authorize</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/v1/auth/authorize</value>
     </values>
     <values>
         <field>Consumer_Key__c</field>
-        <value xsi:type="xsd:string">8cc1c347-4525-4627-b9d8-0adb19ccbcbe</value>
+        <value xsi:type="xsd:string">df96b7d2-99a8-4b9d-b058-990038f3dec8</value>
     </values>
     <values>
         <field>Consumer_Secret__c</field>
-        <value xsi:type="xsd:string">BX38Q~AjxmZ1OTsq43Wt~SgNORLVxb-GFMi51c8K</value>
+        <value xsi:type="xsd:string">CmL8Q~_nNCu3nnjsIMbvuunH9urm_3xAl5JF8b~o</value>
     </values>
     <values>
         <field>Redirect_Url_Suffix__c</field>

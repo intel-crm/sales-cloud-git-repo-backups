@@ -20,8 +20,8 @@ public class PRM_SalesCloud_Integration_Model {
         public Boolean Deactivated {set;get;}
         public String DeactivatedReason {set;get;}
     }
-    /*
-    public class AccountInformation {
+    
+    public class AEAccountInformation {
         public String Name {set;get;}
         public String AccountNo {set;get;}
         public String PrimeAccountName {set;get;}
@@ -30,6 +30,7 @@ public class PRM_SalesCloud_Integration_Model {
         public boolean CoveredAccount {set;get;}
         public String CNDANumber {set;get;}
         public String CIMId {set;get;}
+        public String UnifiedID {set; get;} //TWC729-6800 EOL activities
         public String BusinessPartnerId {set;get;}
         public String BusinessId {set;get;}
         public String BizOrgType {set;get;}
@@ -37,20 +38,35 @@ public class PRM_SalesCloud_Integration_Model {
         public String Region {set;get;}
         public String SubRegion {set;get;}
         public String UserDefinedPhoneNumber {set;get;}
-        public String UserDefinedWebsite {set;get;}        
-        public String EnglishNameOnly {set;get;}        
+        public String UserDefinedWebsite {set;get;}
+        public String EnglishNameOnly {set;get;}
         public String PartnerProgramSegment {set;get;}
-        public String PartnerProgramSpecialty {set;get;}     
+        public String PartnerProgramSpecialty {set;get;}
         public String AccountLegalName {set;get;}
-        public String AccountBUFocus {set;get;}   
+        public String AccountBUFocus {set;get;}
         public String OnePartnerIdAccountName {set;get;}
-        public RecordOwner AccountOwner {set;get;}       
-        public String RecordType {set;get;}     
+        public RecordOwner AccountOwner {set;get;}
+        public String RecordType {set;get;}
+        public String BadgeTier {set;get;}
+        public Boolean Deactivated {set;get;}
+        public String DeactivatedReason {set;get;}
         public boolean IsIPA {set;get;}
+        public Boolean IsODM {set;get;}
         public AccountAddress Address {set; get;}
         public String PAGAccountId {set; get;}
-    }    
-    */
+    }
+    
+    
+    public class AccountBasicInformation {
+        public String Name {set;get;}
+        public String AccountNo {set;get;}
+        public String PrimeAccountName {set;get;}
+        public String BusinessPartnerId {set;get;}
+        public String BusinessId {set;get;}
+        public boolean CoveredAccount {set;get;}
+        public RecordOwner AccountOwner {set;get;}
+        public AccountAddress Address {set; get;}
+    }
     
     public class AccountInformation {
         public String Name {set;get;}
@@ -191,6 +207,104 @@ public class PRM_SalesCloud_Integration_Model {
         public DateTime LastModifiedDate {set;get;}
         public String AccountNum {set;get;}
     }
+    
+    public class AccountAEPayload{
+        public String MessageType {set;get;}
+        public String AccountId {set;get;}
+        public String AccountStatus {set;get;}
+        public AEAccountInformation AccountInformation{set;get;}
+        public List<AccountBusinessType> AccountBusinessTypes {set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        
+    }
+    
+    public class DSAPayload {
+        public String ContactId {set;get;}
+        public String AccountId {set;get;}
+        public String AccountStatus {set;get;}
+        public String ContactStatus {set;get;}
+        public String DeletionReason {set;get;}
+        //public ContactBasicProfile ContactBasicProfile {set;get;}
+        public AccountBasicInformation AccountBasicInformation {set;get;}
+        public ContactBasicInformation ContactBasicInformation {set;get;}
+        //public List<ContactSubscription> ContactSubscriptions {set;get;}
+        public List<ContactEntitlementAnE> ContactEntitlements {set;get;}
+        //public List<AccountContactRelationship> AccountContactRelationships {set;get;}
+        public List<ContactBusinessType> ContactBusinessTypes {set;get;}
+        public String MessageType {set;get;}
+        //public String CIMID {set; get;}
+        public DateTime LastModifiedDate {set;get;}
+        //public String AccountNum {set;get;}
+        public List<cmfWrapper> CMFGroups{set;get;}
+    }
+    
+    public class cmfWrapper {
+        public String GroupName{set;get;}
+        public String GroupId{set;get;}
+        public string Description{set;get;}
+        public Boolean Active{set;get;}
+        public String ActiveCMFCount{set;get;}
+        public String InActiveCMFCount{set;get;}
+        public String ActiveContactCount{set;get;}
+        public String InActiveContactCount{set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        public List <cmfData> CMFs {set;get;}
+        
+        
+    }
+    public class cmfWrapperAnE {
+        public String MessageType{set;get;}
+        public String GroupName{set;get;}
+        public String GroupId{set;get;}
+        public string Description{set;get;}
+        public Boolean Active{set;get;}
+        public String ActiveCMFCount{set;get;}
+        public String InActiveCMFCount{set;get;}
+        public String ActiveContactCount{set;get;}
+        public String InActiveContactCount{set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        public List <cmfData> CMFs {set;get;}
+        public List<ContactBasicInfoAE> ContactBasicInformation {set;get;}
+    }
+    
+    public class cmfData{
+        public String CMFID {set;get;}
+        public string Name {set;get;}
+        public string SalesOrgCode {set;get;}
+        public string SalesOrgName {set;get;}
+        public string SalesDistiChannelCode {set;get;}
+        public string SalesDistiChannelName {set;get;}
+        public string Address {set;get;}
+        public string AccountGroup {set;get;}
+        public string DirectCustomerRoleName {set;get;}
+        public string DirectCustomerRoleCode {set;get;}
+        
+    }
+    
+    public class ContactBasicInfoAE {
+        public String FirstName {set;get;}
+        public String LastName {set;get;}
+        public String AccountName {set;get;}
+        public String AccountId {set;get;}
+        public String Email {set;get;}
+        public String EnterpriseId {set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        
+    }
+    
+    
     /*public class ContactBasicProfile {
         public ContactBasicInformation ContactBasicInformation {set;get;}
         public List<ContactSubscription> ContactSubscriptions {set;get;}
@@ -200,6 +314,28 @@ public class PRM_SalesCloud_Integration_Model {
         //Updated for US604638 (As an IPA admin I would like Contact to Contact integration to be established for all core contact attributes that are synced from Sales cloud to service cloud.)
         //public ContactAccountInformation AccountInformation {set; get;}
     }*/
+    
+    public class ContactBusinessType{
+        public String Name {set;get;}
+        public String BusinessTypeCode {set;get;}
+        public String BusinessTypeCategory {set;get;}
+        public Boolean IsActive {set;get;}
+        public String Status {set;get;}
+        public String StatusReason {set;get;}
+        public Boolean PendingRegistration {set;get;}
+    }
+    public class AccountBusinessType{
+        public String Name {set;get;}
+        public String BusinessTypeCode {set;get;}
+        public Boolean IsActive {set;get;}
+        public String Status {set;get;}
+        public String StatusReason {set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        
+    }
     public class ContactBasicInformation {
         public String FullName {set;get;}
         public String FirstName {set;get;}
@@ -256,6 +392,19 @@ public class PRM_SalesCloud_Integration_Model {
         public String Status {set;get;}
         public DateTime StatusChangeDateUtc {set;get;}
         public boolean IsSelected {set;get;}
+    }
+    
+    public class ContactEntitlementAnE{
+        public String Name {set;get;}
+        public String Type {set;get;}
+        public String Status {set;get;}
+        public DateTime StatusChangeDateUtc {set;get;}
+        public boolean IsSelected {set;get;}
+        public DateTime LastModifiedDate {set;get;}
+        public DateTime CreatedDate {set;get;}
+        public String LastModifiedBy {set;get;}
+        public String CreatedBy {set;get;}
+        
     }
     public class AccountContactRelationship{
         public String Status {set; get;}

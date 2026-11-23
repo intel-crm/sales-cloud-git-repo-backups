@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>CNRS/ IN2P3 CPPM MARSEILLE Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>CNRSIN2P3CPPMMARSEILLECustomerManager</parentRole>
 </Role>

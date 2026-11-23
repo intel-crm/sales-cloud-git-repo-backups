@@ -77,7 +77,6 @@
         <field>Core_IPS_Response__c.Core_IPS_NPS_Category_Indicator__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4 AND (5 OR 6)</booleanFilter>
         <criteriaItems>
             <column>Core_IPS_Response__c.Core_IPS_Survey_Type__c</column>
             <columnToColumn>false</columnToColumn>
@@ -108,13 +107,6 @@
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_Case_Resolution_Reason__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Top_Opps_NA15</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_HC_Help_Needed__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>

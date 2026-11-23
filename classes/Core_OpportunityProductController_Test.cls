@@ -67,24 +67,17 @@ private class Core_OpportunityProductController_Test {
         insert lstPriceBookEntry;
          list<Account> acclist = new list<Account>();
           list<Opportunity> lstOpportunity = new list<Opportunity>();
-          //Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
-            /***
-        	Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',
+          Id newAccountRecTypeId = [select Id from RecordType where DeveloperName = 'Mastered_Account' limit 1][0].Id;
+            Account acct = new Account(Name = 'Test Account territory', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            Account acct1 = new Account(Name = 'Test Account territory1', BillingStreet = '123 Fake St',
+                                       BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='DCG Sales Group');
+            Account acct1 = new Account(Name = 'Test Account territory1', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            Account acct2 = new Account(Name = 'Test Account territory2', BillingStreet = '123 Fake St',
+                                       BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='DCG Sales Group');
+            Account acct2 = new Account(Name = 'Test Account territory2', BillingStreet = '123 Fake St',RecordTypeId = newAccountRecTypeId,
                                        BillingCity = 'Springfield', BillingState = 'IL', BillingCountry = 'USA',
-                                       BillingPostalCode = '12345',Core_Sales_Groups__c='Americas Brazil Sales Group',Industry = 'Gaming',Core_Sub_Industry__c='eSports');
-            ***/
-        
-      		Id masterRecordTypeId = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-	        Account acct = new Account(Name ='Test Account',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct1 = new Account(Name ='Test Account2',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        	Account acct2 = new Account(Name ='Test Account3',Core_Account_Type__c = 'End Customer',RecordTypeId=masterRecordTypeId, BillingCity='Seoul',BillingCountry='KOR',BillingStreet='KOR',Industry='Electronics',Core_Sales_Groups__c= Core_CRM_Utility.getSalesGroupAPI());
-        
+                                       BillingPostalCode = '12345', Core_CIM_ID__c = '8675309',Core_Sales_Groups__c='DCG Sales Group');
+            
             acclist.add(acct);acclist.add(acct1);acclist.add(acct2);
             insert acclist;
         
@@ -140,7 +133,7 @@ private class Core_OpportunityProductController_Test {
 
         Test.startTest();
         
-			List<Opportunity> oppList = [select Id, Name, RecordTypeId, AccountId, StageName, CloseDate from Opportunity Limit 10];
+			List<Opportunity> oppList = [select Id, Name, RecordTypeId, AccountId, StageName, CloseDate from Opportunity];
             // Setting up the page to be tested
             PageReference productEditPage = Page.Core_OpportunityProduct;
     

@@ -3,9 +3,9 @@
 	<aura:attribute name="mainFullWidth" type="Aura.Component[]" required="false"></aura:attribute>
 	<aura:attribute name="main" type="Aura.Component[]" required="false"></aura:attribute>
 	<aura:attribute name="tab1" type="Aura.Component[]" required="false"></aura:attribute>
-        <aura:attribute name="tab01" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab01" type="Aura.Component[]" required="false"></aura:attribute>
 	<aura:attribute name="tab2" type="Aura.Component[]" required="false"></aura:attribute>
-	<aura:attribute name="tab3" type="Aura.Component[]" required="false"></aura:attribute>
+    <aura:attribute name="tab3" type="Aura.Component[]" required="false"></aura:attribute>
 
 	<aura:attribute name="blade1" type="Aura.Component[]" required="false"></aura:attribute>
 	<aura:attribute name="blade1white" type="Aura.Component[]" required="false"></aura:attribute>
@@ -19,6 +19,7 @@
 			{!v.marquee}
 		</div>
 		<div class="bg-blade-even">
+
 			<c:IPAStickyTabset aura:id="partnertabs">
                 <div>
                   <br></br><p>{!$Label.c.PRM_CompanyProfMessage}</p>                    
@@ -35,15 +36,15 @@
                  <div class="profileMessages"> </div>
 			</c:IPAStickyTabset>
 		</div>
-		<div class="container">
+        <div class="container">
         <div class="contentPanel">
             {!v.main}
         </div>
-    </div>
+        </div>
 		<div class="bg-blade-even alignWidth">
 			{!v.mainFullWidth}
 		</div>
-		<div class="bg-blade-odd">
+	<div class="bg-blade-odd">
           <div class="container">
               {!v.blade1}
           </div>

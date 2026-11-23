@@ -5,11 +5,8 @@ public class ER_WelcomeEmailUtility_Test {
     
     static void setupDataCreation()
     {
-        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-        
         Account acc = PRM_TestUtility.getAccount();
         acc.Name = 'Dell US';
-        acc.RecordTypeId = recordTypeIdAccount;
         acc.BillingCity='Bengaluru';
         acc.BillingCountry='India';
         acc.BillingStreet='4th Floor,ITPL,Brookfield';
@@ -18,7 +15,6 @@ public class ER_WelcomeEmailUtility_Test {
         
         Contact cont= PRM_TestUtility.getContact();
         cont.AccountId=acc.Id;
-        cont.MailingCountry='India';
         insert(cont);
         
         String Core_Permission_Set_API_Nm_c = [SELECT id,Name FROM PermissionSet LIMIT 1].Name;
@@ -39,6 +35,7 @@ public class ER_WelcomeEmailUtility_Test {
         objEntitlement1.Core_Sub_Category__c = '';       
         objEntitlement1.Core_Permission_Set_API_Nm__c = Core_Permission_Set_API_Nm_c;
         objEntitlement1.Core_Public_Group_API_Nm__c = Core_Public_Group_API_Nm_c;
+        //insert objEntitlement1;
         objEntitlementList.add(objEntitlement1);
         
         Core_Entitlement__c objEntitlement2 = new Core_Entitlement__c();
@@ -50,6 +47,7 @@ public class ER_WelcomeEmailUtility_Test {
         objEntitlement2.Core_Permission_Set_API_Nm__c = Core_Permission_Set_API_Nm_c;
         objEntitlement2.Core_Public_Group_API_Nm__c = Core_Public_Group_API_Nm_c;
         objEntitlementList.add(objEntitlement2);
+        //insert objEntitlementList;
         
         Core_Entitlement__c ento = new Core_Entitlement__c();
         ento.Name = 'OLO Label Orderer';
@@ -69,7 +67,7 @@ public class ER_WelcomeEmailUtility_Test {
         insert bt;
         
         List<PRM_VXEnttlmntMatrix__c> emList = new List<PRM_VXEnttlmntMatrix__c>();
-        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); 
+        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
         em.PRM_Entitlement_Id__c = objEntitlement1.id;
         em.PRM_Approval_Type_Nm__c='Automatic';
         em.Business_Types__c = bt.Id;
@@ -90,6 +88,7 @@ public class ER_WelcomeEmailUtility_Test {
         ceOld.Core_Selected__c=false;
         ceOld.Core_Status__c='Pending';
         ceOld.Core_Email_Pending_To_Requester_Ind__c=true;
+        //insert ceOld;
         conEntList.add(ceOld);
         
         Core_Contact_Entitlement__c ceOld1=new Core_Contact_Entitlement__c();
@@ -98,6 +97,7 @@ public class ER_WelcomeEmailUtility_Test {
         ceOld1.Core_Selected__c=false;
         ceOld1.Core_Status__c='Pending';
         ceOld1.Core_Email_Pending_To_Requester_Ind__c=true;
+        //insert ceOld1;
         conEntList.add(ceOld1);
         
         Core_Contact_Entitlement__c ceOldO=new Core_Contact_Entitlement__c();
@@ -113,6 +113,7 @@ public class ER_WelcomeEmailUtility_Test {
     }
     
     @isTest 
+    //When EVdatetime is not null
     public static void updateEntitlmentToComplete(){
         Contact testcont =[SELECT id,Core_Email_Verification_Token__c,Core_IPA_Email_Verification_Date__c
                            FROM Contact WHERE Email = 'testrequest@mailinator.com' limit 1 ];
@@ -123,7 +124,8 @@ public class ER_WelcomeEmailUtility_Test {
         Core_Contact_Entitlement__c ce =[SELECT Id,Name,Core_Selected__c,Core_Status__c,Core_Email_Pending_To_Requester_Ind__c FROM Core_Contact_Entitlement__c
                                          where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content' limit 1];
         ce.Core_Selected__c=true;
-        ce.Core_Status__c='Complete'; 
+        ce.Core_Status__c='Complete';
+        system.debug('EVdatetime is not null'+ ce);  
         Test.startTest();
         update ce;
         Test.stopTest();
@@ -136,6 +138,7 @@ public class ER_WelcomeEmailUtility_Test {
     }
     
     @isTest 
+    //When EVdatetime is not null
     public static void updateEntitlmentException(){
         Contact testcont =[SELECT id,Core_Email_Verification_Token__c,Core_IPA_Email_Verification_Date__c
                            FROM Contact WHERE Email = 'testrequest@mailinator.com' limit 1 ];
@@ -147,6 +150,7 @@ public class ER_WelcomeEmailUtility_Test {
                                          where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content1' limit 1];
         ce.Core_Selected__c=true;
         ce.Core_Status__c='Complete';
+        system.debug('EVdatetime is not null'+ ce);
         Test.startTest();
         update ce;
         Test.stopTest();
@@ -159,6 +163,7 @@ public class ER_WelcomeEmailUtility_Test {
     }
     
      @isTest 
+    //When EVtoken is not null
     public static void updateEntitlmentToComplete_withEVToken(){
         Contact testcont =[SELECT id,Core_Email_Verification_Token__c,Core_IPA_Email_Verification_Date__c
                            FROM Contact WHERE Email = 'testrequest@mailinator.com' limit 1 ];
@@ -170,6 +175,7 @@ public class ER_WelcomeEmailUtility_Test {
                                          where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content' limit 1];
         ce.Core_Selected__c=true;
         ce.Core_Status__c='Complete';
+        system.debug('EVtoken is not null'+ ce);
         Test.startTest();
         update ce;
         Test.stopTest();
@@ -182,6 +188,7 @@ public class ER_WelcomeEmailUtility_Test {
     }
     
       @isTest 
+    //When PWdtoken is not null
     public static void updateEntitlmentToComplete_withPwdToken(){
         Contact testcont =[SELECT id,Core_Email_Verification_Token__c,Core_IPA_Email_Verification_Date__c,Core_Password_Token__c
                            FROM Contact WHERE Email = 'testrequest@mailinator.com' limit 1 ];
@@ -193,6 +200,7 @@ public class ER_WelcomeEmailUtility_Test {
                                          where Core_Entitlement_Nm__c='Resource & Design Center for Secure Content' limit 1];
         ce.Core_Selected__c=true;
         ce.Core_Status__c='Complete';
+        system.debug('PwdToken is not null'+ ce);
         Test.startTest();
         update ce;
         Test.stopTest();
@@ -205,7 +213,7 @@ public class ER_WelcomeEmailUtility_Test {
     }
     
     @isTest 
-
+    //When EVdatetime is not null
     public static void updateEntitlmentToCompleteOLO(){
         Contact testcont =[SELECT id,Core_Email_Verification_Token__c,Core_IPA_Email_Verification_Date__c
                            FROM Contact WHERE Email = 'testrequest@mailinator.com' limit 1 ];
@@ -215,11 +223,14 @@ public class ER_WelcomeEmailUtility_Test {
                                          where Core_Entitlement_Nm__c='OLO Label Orderer' limit 1];
         ce.Core_Selected__c=true;
         ce.Core_Status__c='Complete';
-        ce.Core_From_Source__c=false; 
+        ce.Core_From_Source__c=false;
+        system.debug('219EVdatetime is not null'+ ce);  
         Test.startTest();
         update ce;
         Test.stopTest();
         PRM_EmailLog__c eLog = [SELECT Id, name, PRM_EmailDeliverabilityStatus__c FROM PRM_EmailLog__c WHERE PRM_ToEmailID__c = 'testrequest@mailinator.com' LIMIT 1];
+        System.debug('221elog'+elog);
+        //System.debug('email length'+eLog.PRM_ToEmailID__c.length());
         System.assertEquals(eLog.PRM_EmailDeliverabilityStatus__c,true,'Email is sent out!! ');
         
     }

@@ -43,7 +43,7 @@ public without sharing class MarketplaceImageUploader {
         List<ContentDocumentLink> links = [SELECT ContentDocumentId,LinkedEntity.Type FROM ContentDocumentLink where LinkedEntityId = :offeringId];
         List<PMP_Partner_Offering_Resource__c> OffVideoResources= new List<PMP_Partner_Offering_Resource__c>();
         if(Schema.sObjectType.PMP_Partner_Offering_Resource__c.isAccessible()){
-            OffVideoResources= [select Id, Name,PMP_Offering_Id__c from PMP_Partner_Offering_Resource__c 
+            OffVideoResources= [select Id, /*Name,*/PMP_Offering_Id__c from PMP_Partner_Offering_Resource__c 
                                 where PMP_Resource_Type_Nm__c ='Video' and PMP_Offering_Gallery_Video_Ind__c = true and PMP_Delete_BrightCove_Video_Ind__c=false and PMP_Offering_Id__c =:offeringId ORDER BY CREATEDDATE];
         }
         List<Id> linkIds = new List<Id>();
@@ -85,7 +85,7 @@ public without sharing class MarketplaceImageUploader {
     public static Boolean deleteImage(String contentDocumentId, String offeringId) {
            List<sObject> objToBeDeleted = new List<sObject>();
         
-        List <PMP_Partner_Offering_Resource__c> offResList = [Select id,PMP_Partner_Offering_Image__c,PMP_Offering_Id__c from PMP_Partner_Offering_Resource__c WHERE PMP_Partner_Offering_Image__c =: contentDocumentId];
+        List <PMP_Partner_Offering_Resource__c> offResList = [Select id,PMP_Partner_Offering_Image__c/*,PMP_Offering_Id__c*/ from PMP_Partner_Offering_Resource__c WHERE PMP_Partner_Offering_Image__c =: contentDocumentId];
         if ( offResList.size() <=1 ) {
             ContentDocument document = [SELECT Id FROM ContentDocument WHERE Id =: contentDocumentId];
             List<ContentAsset> assets = [SELECT id FROM ContentAsset WHERE ContentDocumentId =:contentDocumentId];
@@ -124,11 +124,13 @@ public without sharing class MarketplaceImageUploader {
     * This method is used in MarketplaceformImageuploader Aura component
     */
     @AuraEnabled
-    public static ValidationWrapper validateVideo(String offeringId, String documentID){
-        try{
+    //public static ValidationWrapper validateVideo(String offeringId, String documentID){
+    public static ValidationWrapper validateVideo( String documentID){
+   
+    try{
             ValidationWrapper output = new ValidationWrapper();
             output.contentDoc = getContentDocument(documentID);
-            output.galleryVideosCount = getGalleryVideosCount(offeringId);
+            //output.galleryVideosCount = getGalleryVideosCount(offeringId);
             return output;
         }
         catch(Exception e){
@@ -142,16 +144,16 @@ public without sharing class MarketplaceImageUploader {
     * @param offerinmgId the Id of the offering
     * This method is used in MarketplaceformImageuploader aura component
     */
-    @AuraEnabled
-    public static Integer getGalleryVideosCount(Id offeringId){
-        List<PMP_Partner_Offering_Resource__c> offeringGalleryVideoResourcesList = [SELECT id,name,PMP_Resource_Type_Nm__c, PMP_Partner_Offering_Resource_URL_Txt__c,
-        PMP_Partner_Offering_Image__c,PMP_Resource_Description_Txt__c,PMP_Offering_Id__c ,PMP_Alt_Text__c,PMP_BrightCoveVideoThumbnail_URL__c,LastModifiedDate,PMP_Offering_Gallery_Video_Ind__c,PMP_BrightCoveVideoAccountID__c,PMP_External_Source_Id__c,PMP_BrightCoveVideoId__c
-        FROM PMP_Partner_Offering_Resource__c WHERE PMP_Offering_Id__c =: offeringId
-        AND PMP_Offering_Gallery_Video_Ind__c = true AND PMP_Delete_BrightCove_Video_Ind__c=false
-        AND PMP_Resource_Type_Nm__c ='Video'];
-        Integer galleryVideosCount =offeringGalleryVideoResourcesList.size();
-        return galleryVideosCount;
-    }
+    // @AuraEnabled
+    // public static Integer getGalleryVideosCount(Id offeringId){
+    //     List<PMP_Partner_Offering_Resource__c> offeringGalleryVideoResourcesList = [SELECT id,name,PMP_Resource_Type_Nm__c, PMP_Partner_Offering_Resource_URL_Txt__c,
+    //     PMP_Partner_Offering_Image__c,PMP_Resource_Description_Txt__c,PMP_Offering_Id__c ,PMP_Alt_Text__c,PMP_BrightCoveVideoThumbnail_URL__c,LastModifiedDate,PMP_Offering_Gallery_Video_Ind__c,PMP_BrightCoveVideoAccountID__c,PMP_External_Source_Id__c,PMP_BrightCoveVideoId__c
+    //     FROM PMP_Partner_Offering_Resource__c WHERE PMP_Offering_Id__c =: offeringId
+    //     AND PMP_Offering_Gallery_Video_Ind__c = true AND PMP_Delete_BrightCove_Video_Ind__c=false
+    //     AND PMP_Resource_Type_Nm__c ='Video'];
+    //     Integer galleryVideosCount =offeringGalleryVideoResourcesList.size();
+    //     return galleryVideosCount;
+    // }
     /*---------------------------End US357476-----------------------------------------------------------------------------------------------*/
     
     //Added by Nikhil as part of US583440

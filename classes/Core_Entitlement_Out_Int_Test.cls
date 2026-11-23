@@ -30,8 +30,8 @@ public class Core_Entitlement_Out_Int_Test {
         cnt = [SELECT Id, Core_ERPM_Integration_Status__c,Core_ERPM_Integration_Queue_txt__c FROM Contact where id=: testConObj.Id];
         Account act = new Account();
         act = [SELECT Id FROM Account WHERE Id =: testConObj.AccountId];
-         //System.assertEquals('In-Progress', cnt.Core_ERPM_Integration_Status__c); 
-        //System.assertEquals('Full', cnt.Core_ERPM_Integration_Queue_txt__c); 
+         System.assertEquals('In-Progress', cnt.Core_ERPM_Integration_Status__c); 
+        System.assertEquals('Full', cnt.Core_ERPM_Integration_Queue_txt__c); 
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
         System.assertEquals(currentNumErpmObm, lstIntOBM.size());
@@ -45,7 +45,9 @@ Map<Id,Contact> lstOldTestContacts = new Map<Id,Contact>();
 Contact testConObj = createTestContact();
 createTestContactEntitlement(testConObj, 1);        
 lstTestContacts.add(testConObj);
+system.debug(':::::: testConObj :::::: ' + testConObj);
 ChannelProgram ChnlPrg = CreateChannelProgram();                       
+system.debug(':::::: ChnlPrg :::::: ' + ChnlPrg);
 
 ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
 cpl.PRM_programlevelcode__c='Titanium';
@@ -63,7 +65,7 @@ ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
 cpl1.Name='Gold';
 cpl1.ProgramId=ChnlPrg.Id;
 insert cpl1; 
-
+System.debug('::::::::::CPL2 Insertion done :::::::' + cpl);
 
 List<PRM_AccountChannelMembership__c> acctMem = new List<PRM_AccountChannelMembership__c>();
 PRM_AccountChannelMembership__c acctMembership = new PRM_AccountChannelMembership__c();        
@@ -75,10 +77,11 @@ acctMembership.PRM_Partner_Role__c = 'Service Provider';
 acctMem.add(acctMembership);
 insert acctMembership;
 //System.enqueuejob(new ContactERPMIntegrationStatusHandler(acctMem,acctMembership.getSObjectType()));
-
+system.debug(':::::::acctMembership::::: ' + acctMembership); 
 
 List<PRM_Account_Contact_Relationship__c> acctRel = new List<PRM_Account_Contact_Relationship__c>();
 PRM_Account_Contact_Relationship__c rel= CreateAccountContactRelationship(testConObj, acctMembership, false ,false);
+system.debug(':::::::acctMembership:::::' + rel);
 acctRel.add(rel);
 
 acctMembership.PRM_Status_Nm__c= 'Approved';
@@ -90,6 +93,7 @@ pb.PRM_Benefit_Cd__c = 'BFTSNDBX';
 pb.PRM_Channel_Program_Id__c = ChnlPrg.id;
 pb.PRM_Account_Type_Nm__c = 'Mastered_Account';
 insert pb;
+System.debug('PB Insertion done');
 
 
 PRM_PartnerType__c pt = new PRM_PartnerType__c(); //Partner Type
@@ -98,6 +102,7 @@ pt.PRM_PartneryTypeCode__c = 'CSP';
 pt.PRM_PartnerRoleCode__c = 'SPR';
 pt.PRM_channelprogram__c = ChnlPrg.id;
 insert pt;
+System.debug('PT Insertion done');
 
 PRM_VXBnftMatrix__c bm = new PRM_VXBnftMatrix__c(); //Benefit Matrix 
 bm.PRM_Partner_Benefit_Id__c = pb.id;
@@ -109,6 +114,7 @@ bm.PRM_Approval_Type_Nm__c = 'Automatic';
 bm.PRM_Partner_Role_Nm__c='Service Provider';
 
 insert bm;//Benefit Matrix insertion with Member as CPL
+System.debug('bm Insertion done'+bm);
 //database.insert(bm,false);       
 
 PRM_PartnerBenefit__c pb1 = new PRM_PartnerBenefit__c(); //Partner Benefit
@@ -117,6 +123,7 @@ pb1.PRM_Benefit_Cd__c = 'BFTMKTSTD';
 pb1.PRM_Channel_Program_Id__c = ChnlPrg.id;
 pb1.PRM_Account_Type_Nm__c = 'Mastered_Account';
 insert pb1;
+System.debug('pb1 Insertion done');
 
 PRM_VXBnftMatrix__c bm1 = new PRM_VXBnftMatrix__c(); //Benefit Matrix
 bm1.PRM_Partner_Benefit_Id__c = pb1.id;
@@ -128,6 +135,7 @@ bm1.PRM_Approval_Type_Nm__c = 'Automatic';
 bm1.PRM_Partner_Role_Nm__c='Service Provider';
 
 insert bm1;//Benefit Matrix insertion with Titanium as CPL
+System.debug('bm1 Insertion done'+bm1); 
 
 List<PRM_AccountBenefitAssociation__c> accountBenefits = new List<PRM_AccountBenefitAssociation__c>();
 PRM_AccountBenefitAssociation__c accntBenft = new PRM_AccountBenefitAssociation__c();        
@@ -145,31 +153,37 @@ accntBenft1.PRM_Status_Nm__c = 'Active';
 accntBenft1.PRM_Source__c = 'Specialty';
 accountBenefits.add(accntBenft1);
 
-      
+system.debug(':::::::accountBenefits::::: ' + accountBenefits);       
 insert accountBenefits;
 
 
-
+system.debug(':::::::accountBenefits after ::::: ' + accountBenefits); 
 
 
 //System.enqueuejob(new ContactERPMIntegrationStatusHandler(acctRel,rel.getSObjectType()));
 
 
+System.debug(':::::::: testConObj :::::::: ' + testConObj);
 
 List<Core_Integration_Outbound_Message__c> lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
 Integer currentNumErpmObm = lstIntOBM.size();
+System.debug('Current Number of ERPM Outbount Message : ' + currentNumErpmObm);
 
-
+System.debug('Begin generateErpmOutboundMessage');
 Contact c = [SELECT Id,Core_ERPM_Integration_Queue_txt__c,Core_ERPM_Integration_Status__c FROM Contact WHERE Id =: testConObj.id];
+System.debug('Core_ERPM_Integration_Queue_txt__c + Core_ERPM_Integration_Status__c'+ c.Core_ERPM_Integration_Queue_txt__c + '   '+c.Core_ERPM_Integration_Status__c);
 c.Core_ERPM_Integration_Queue_txt__c = 'Empty';
 c.Core_ERPM_Integration_Status__c ='Pending';
 update c;
 Core_Entitlement_Outbound_Integrations.hasRun=false;
 Test.startTest();  
+System.debug('Core_ERPM_Integration_Queue_txt__c + Core_ERPM_Integration_Status__c'+ c.Core_ERPM_Integration_Queue_txt__c + '   '+c.Core_ERPM_Integration_Status__c);
 Core_Entitlement_Outbound_Integrations.generateErpmOutboundMessage(lstTestContacts, lstOldTestContacts);
+System.debug('End generateErpmOutboundMessage');
 Test.stopTest();
 
 lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
+System.debug('Current Number of ERPM Outbount Message : ' + lstIntOBM.size());
 System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
 
 }*/
@@ -207,7 +221,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         acctMembership.PRM_Channel_Program_Level_Id__c = cpl2.Id;
         acctMembership.PRM_Status_Nm__c = 'Pending';        
         acctMembership.PRM_Partner_Role__c = 'Service Provider';
-        acctMembership.PRM_Status_Reason_Txt__c='Service Reason';
         insert acctMembership;
         CreateAccountContactRelationship(testConObj,acctMembership,false,false);
         
@@ -264,7 +277,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
          Core_Entitlement_Outbound_Integrations.getPersonTitle('Miss');
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
         
         Test.stopTest();
     }
@@ -272,7 +285,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
     public static testmethod void testGenerateAGSOBM() {
         List<Contact> lstTestContacts = new List<Contact>();
         //Map<Id,Contact> lstOldTestContacts = new Map<Id,Contact>();
-        List<Core_Entitlement__c> lstEnt = new List<Core_Entitlement__c>();
         
         Contact testConObj = createTestContact();
         //Contact testOldConObj = testConObj.clone(true, true, true, true);
@@ -286,11 +298,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         //testOldConObj.Core_ERPM_Integration_Status__c = 'Pending';
         //testOldConObj.Core_AGS_Integration_Status__c = 'Pending';
         //testOldConObj.Core_Enterprise_Id__c = ' ';//draco
-        Core_Entitlement__c entitle=new Core_Entitlement__c (name ='Employee', Core_Display_Name__c='test account setup',Core_IsActive__c=true, Entitlement_B2B_B2C_Indicator__c ='B2B' );
-        lstEnt.add(entitle);
         
-        Core_Entitlement__c entitle1=new Core_Entitlement__c (name ='Employee1', Core_Display_Name__c='test account setup1',Core_IsActive__c=true, Entitlement_B2B_B2C_Indicator__c ='B2B');
-        lstEnt.add(entitle1); 
         
         lstTestContacts.add(testConObj);
         //lstOldTestContacts.put(testConObj.Id, testOldConObj);
@@ -318,7 +326,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         //testOldConObj.Core_Enterprise_Id__c = ' ';
         //testOldConObj.Core_ERPM_Integration_Status__c = 'Successful'; 
         //testOldConObj.Core_AGS_Integration_Status__c = 'Successful';
-        lstTestContacts.clear();
+        
         lstTestContacts.add(testConObj);
         //lstOldTestContacts.put(testConObj.Id, testOldConObj); 
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts,lstOldTestContacts);
@@ -333,7 +341,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         conObj.Core_Enterprise_Id__c = '123026';
         conObj.Core_Login_Id__c = '109255';
         conObj.FirstName = 'Integrations Tester';
-        conObj.MailingCountry='USA';
         conObj.LastName = 'Per';
         conObj.Email = 'OITest123@tester.com';
         conObj.Core_English_Only_First_Name__c = 'Integrations Tester';
@@ -380,10 +387,13 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         testConObj.Core_AGS_Integration_Status__c = 'Pending';
         testConObj.Core_Enterprise_Id__c = '1111';
         update testConObj;
+        //system.debug('AGSOBM Call ==> Before Calling');
+        //system.debug('Call 333');
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts,lstOldTestContacts);
         Assert.isnotNull(lstTestContacts);
         Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
         
+        //system.debug('AGSOBM Call ==> After Calling');
         // Core_Entitlement_Outbound_Integrations.isCallOutboundMsg = true;
         
     }
@@ -393,7 +403,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Account acctObj = new Account();
         acctObj.Name = 'Outbound Test Account acc';
         acctObj.Core_CNDA_Number__c = '102233445560';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         acctObj.BillingStreet = '1221 Tester Account123456789123456789123456789123456789Account1123456789123456789123456789123456789Account11234567891234567891Account 1123456789123456789';
         acctObj.BillingCity = 'Testing City cty';
         acctObj.BillingStateCode = 'OR';
@@ -428,7 +437,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         conObj.Core_Login_Id__c = '109255';
         conObj.FirstName = 'Integrations Tester';
         conObj.LastName = 'Per';
-        conObj.MailingCountry='USA';
         conObj.Email = 'OITest123@tester.com';
         conObj.Core_English_Only_First_Name__c = 'Integrations Tester';
         conObj.Core_English_Only_Last_Name__c = 'Per';
@@ -475,6 +483,8 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         //testConObj.Core_AGS_Integration_Status__c = 'Pending';
         //testConObj.Core_Enterprise_Id__c = '1111';
         //update testConObj;
+       // system.debug('AGSOBM Call ==> Before Calling');
+       // system.debug('Call 333');
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts,lstOldTestContacts);
         Assert.isnotNull(lstTestContacts);
         Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
@@ -495,7 +505,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         acctObj.ShippingStateCode = 'OR';
         acctObj.ShippingCountryCode = 'USA';
         acctObj.ShippingPostalCode = '120000';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         acctObj.Core_User_Defined_Phone_Number__c = '1234567890';
         acctObj.Core_User_Defined_Website__c ='www.xyz.com';
         acctObj.Core_User_Defined_Number_of_Employees__c = '1-9';
@@ -521,7 +530,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         conObj.FirstName = 'Integrations Tester';
         conObj.LastName = 'Per';
         conObj.Email = 'OITest123@tester.com';
-        conObj.MailingCountry='USA';
         conObj.Core_English_Only_First_Name__c = 'Integrations Tester';
         conObj.Core_English_Only_Last_Name__c = 'Per';
         conObj.Core_Do_Not_Contact__c = false;
@@ -545,11 +553,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         //testConObj1.Core_Login_Id__c = null;
         lstTestContacts.add(conObj);
          List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-         Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
-         testAGSRole.Name = 'Test SMP AGS Role ';
-         testAGSRole.Core_IsActive__c = true;
-         testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
-         insert testAGSRole;
         User testUser = new User();
         testUser.LastName = 'User1';
         testUser.Alias = 'tuser1';
@@ -561,16 +564,15 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         testUser.LocaleSidKey = 'en_US';
         testUser.ContactId =conObj.Id;
         testUser.LanguageLocaleKey = 'en_US';
-        testUser.LanguageLocaleKey = 'en_US';
-        //testUser.UserRoleId =usr.id;
-        testUser.IsActive=true;
 		insert testUser;
         //lstOldTestContacts1.put(testConObj1.Id, testOldConObj1);
         //Core_Entitlement_Outbound_Integrations.isCallOutboundMsg = false;
         // createTestContactEntitlement(testConObj, 1);
-       
-        
-        
+        Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
+        testAGSRole.Name = 'Test SMP AGS Role ';
+        testAGSRole.Core_IsActive__c = true;
+        testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
+        insert testAGSRole;
         Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
         testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
         testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
@@ -586,7 +588,8 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         //testConObj.Core_AGS_Integration_Status__c = 'Pending';
         //testConObj.Core_Enterprise_Id__c = '1111';
         //update testConObj;
-       
+       // system.debug('AGSOBM Call ==> Before Calling');
+       // system.debug('Call 333');
         //Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts,lstOldTestContacts);
         Assert.isnotNull(lstTestContacts);
         Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
@@ -701,116 +704,6 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
     }
     
-    public static testmethod void testGenerateAGSOBM4() {
-        List<Account> acc1 = [Select id from Account where name = 'Outbound Test Account acc' limit 1];
-        List<Contact> lstTestContacts = new List<Contact>();
-        Contact testConObj = createTestContact();
-         List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-         Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
-         testAGSRole.Name = 'Test SMP AGS Role ';
-         testAGSRole.Core_IsActive__c = true;
-         testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
-         insert testAGSRole;
-        
-        User testUser = new User();
-        testUser.LastName = 'User1';
-        testUser.Alias = 'tuser1';
-        testUser.Email = 'test.user1@intel.com';
-        testUser.Username = 'test.user1@intel.com.crm.testclass';
-        testUser.ProfileId = lstProfiles[0].id;
-        testUser.EmailEncodingKey = 'UTF-8';
-        testUser.TimeZoneSidKey = 'America/Los_Angeles';
-        testUser.LocaleSidKey = 'en_US';
-        testUser.ContactId =testConObj.Id;
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.IsActive=false;
-		insert testUser;
-       
-        Core_Entitlement__c testEntitlementDetail = new Core_Entitlement__c();
-        testEntitlementDetail.Name = 'Test SMP Entitilement Detail ';
-        testEntitlementDetail.Core_Display_Name__c = 'SMP Entitlement Detail ';
-        testEntitlementDetail.Core_Entitlement_Type__c ='Salesforce';
-        testEntitlementDetail.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail.Core_IsActive__c = true;
-        insert testEntitlementDetail;
-          
-        Core_Entitlement__c testEntitlementDetail2 = new Core_Entitlement__c();
-        testEntitlementDetail2.Name = 'TestNew SMP Entitilement Detail ';
-        testEntitlementDetail2.Core_Display_Name__c = 'SMPNew Entitlement Detail ';
-        testEntitlementDetail2.Core_Entitlement_Type__c ='AGS';
-        testEntitlementDetail2.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail2.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail2.Core_IsActive__c = true;
-        insert testEntitlementDetail2;
-        Core_Contact_Entitlement__c ce = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=testConObj.Id, Core_From_Source__c=true, Core_Selected__c=true,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail.id,Core_Status__c ='Pending');
-        insert ce;
-           Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=testConObj.Id, Core_From_Source__c=true, Core_Selected__c=false,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail2.id,Core_Status__c ='Pending');
-        insert ce2;
-       
-        testConObj.Core_ERPM_Integration_Status__c = 'Successful';
-        testConObj.Core_AGS_Integration_Status__c = 'Pending';
-        lstTestContacts.add(testConObj);
-       
-        Assert.isnotNull(lstTestContacts);
-        Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
-          
-    }
-    
-    public static testmethod void testGenerateAGSOBM5() {
-        List<Contact> lstTestContacts = new List<Contact>();
-        Contact testConObj = createTestContact();
-        
-         List<Profile> lstProfiles = [SELECT Id FROM Profile WHERE Name = 'Partner' LIMIT 1];
-         Core_AGS_Role__c testAGSRole = new Core_AGS_Role__c();
-         testAGSRole.Name = 'Test SMP AGS Role ';
-         testAGSRole.Core_IsActive__c = true;
-         testAGSRole.Core_Technical_Name__c = 'Test SMP AGS Role Tech Name ';
-         insert testAGSRole;
-        
-        User testUser = new User();
-        testUser.LastName = 'User2';
-        testUser.Alias = 'tuser2';
-        testUser.Email = 'test.user2@intel.com';
-        testUser.Username = 'test.user2@intel.com.crm.testclass';
-        testUser.ProfileId = lstProfiles[0].id;
-        testUser.EmailEncodingKey = 'UTF-8';
-        testUser.TimeZoneSidKey = 'America/Los_Angeles';
-        testUser.LocaleSidKey = 'en_US';
-        testUser.ContactId =testConObj.Id;
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.LanguageLocaleKey = 'en_US';
-        testUser.IsActive=true;
-		insert testUser;
-        
-        Core_Entitlement__c testEntitlementDetail2 = new Core_Entitlement__c();
-        testEntitlementDetail2.Name = 'TestNew SMP Entitilement Detail ';
-        testEntitlementDetail2.Core_Display_Name__c = 'SMPNew Entitlement Detail ';
-        testEntitlementDetail2.Core_Entitlement_Type__c ='Salesforce';
-        testEntitlementDetail2.Entitlement_B2B_B2C_Indicator__c = 'B2C';
-        testEntitlementDetail2.Core_AGS_Role_Id__c = testAGSRole.Id;
-        testEntitlementDetail2.Core_IsActive__c = true;
-        insert testEntitlementDetail2;
-        
-        Core_Contact_Entitlement__c ce2 = new Core_Contact_Entitlement__c(
-            Core_Contact_Id__c=testConObj.Id, Core_From_Source__c=true, Core_Selected__c=false,Core_Data_Loaded__c= true,
-            Core_Entitlement_Id__c=testEntitlementDetail2.id,Core_Status__c ='Pending');
-        insert ce2;
-        
-        testConObj.Core_ERPM_Integration_Status__c = 'Successful';
-        testConObj.Core_AGS_Integration_Status__c = 'Pending';
-        lstTestContacts.add(testConObj);
-        
-        Assert.isnotNull(lstTestContacts);
-        Core_Entitlement_Outbound_Integrations.generateAgsOutboundMessage(lstTestContacts);
-          
-    }
-    
     public static testmethod void testGenerateERPMOBM() {
         List<Contact> lstTestContacts = new List<Contact>();
         Map<Id,Contact> lstOldTestContacts = new Map<Id,Contact>();
@@ -846,7 +739,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         createTestSMPContactEntitlement(testConObj, 2);
         Test.stopTest();
@@ -856,12 +749,14 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts); 
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
+        System.assertEquals(currentNumErpmObm, lstIntOBM.size());
         
         createTestEmailTriggerForEntitlement(testConObj, 3);
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c 
                      from Core_Integration_Outbound_Message__c 
-                     where Core_MessageType__c='ERPM Contact Entitlement' limit 100];
+                     where Core_MessageType__c='ERPM Contact Entitlement'];
         currentNumErpmObm = lstIntOBM.size();
+        //System.debug('Zay Inside Test Class Before createTestEmailTriggerForEntitlement - ' + testConObj);
         //Core_Entitlement_Outbound_Integrations.generateErpmOutboundMessage(lstTestContacts,lstOldTestContacts);
        
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
@@ -877,10 +772,10 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         List<Contact> lstCont = new List<Contact>();
         List<Core_Entitlement__c> lstEnt = new List<Core_Entitlement__c>();
         
-        Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234@testing.com.testsetup',MailingCountry='USA',
+        Contact testContact = new Contact(FirstName='testFirstName123', LastName='testLastName', Email='test1234@testing.com.testsetup',
                                           AccountId=acc.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
         lstCont.add(testContact);
-        Contact testContact1 = new Contact(FirstName='testFirstName122', LastName='testLastName', Email='test123@testing.com.testsetup',MailingCountry='USA',
+        Contact testContact1 = new Contact(FirstName='testFirstName122', LastName='testLastName', Email='test123@testing.com.testsetup',
                                            AccountId=acc.id,Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12346',Core_ERPM_Integration_Status__c = 'Pending');
         lstCont.add(testContact1); 
         insert lstCont;
@@ -948,7 +843,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -982,7 +877,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1016,7 +911,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
 
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1060,7 +955,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
          
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
@@ -1094,15 +989,8 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         
         lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
-            List<PRM_BatchCustomSetting__c> prmbatchsetting= new List<PRM_BatchCustomSetting__c>();
-            PRM_BatchCustomSetting__c rec1 = new PRM_BatchCustomSetting__c() ;
-            rec1.Name='BatchFieldValues';
-            rec1.PRM_EntitlementsNotToInactivate__c = 'IPA Developer Zone Standard Entitlement';
-            rec1.PRM_PartnerRole__c='Service Provider';
-            rec1.PRM_PartnerType__c='Cloud Service Provider (CSP)';
-		    prmbatchsetting.add(rec1);
-            insert prmbatchsetting;
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        
         PRM_Account_Contact_Relationship__c rel= CreateAccountContactRelationship(testConObj, acctConMem,true,false);
         rel.PRM_Status_Nm__c = 'Complete';
         update rel;
@@ -1120,7 +1008,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
          lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size()); 
         
         Test.stopTest();
         
@@ -1150,13 +1038,13 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         Core_Entitlement_Outbound_Integrations.publishERPMMessage(lstTestContacts, lstOldTestContacts);
         
                 lstIntOBM = [Select id, Core_Payload__c, Core_MessageType__c from Core_Integration_Outbound_Message__c where Core_MessageType__c='ERPM Contact Entitlement'];
-        //System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
+        System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());        
         
         Test.stopTest();
         
     }
     
-  /*  public static testmethod void testGenerateBoxBAccountOBM() {
+    public static testmethod void testGenerateBoxBAccountOBM() {
         List<Account> lstAccounts = new List<Account>();
         Map<Id,Account> mapOldAccounts = new Map<Id,Account>();
         
@@ -1182,7 +1070,7 @@ System.assertEquals(currentNumErpmObm+1, lstIntOBM.size());
         
         Core_Entitlement_Outbound_Integrations.generateBoxBAccountOutboundMessage(lstAccounts, mapOldAccounts);
         system.assert(acctObj!=null);
-    }*/
+    }
     public static testmethod void testGenerateERPMOnCIMUpdate() {
         List<Contact> lstTestContacts = new List<Contact>();
         Contact testConObj = createB2BTestContact();
@@ -1400,7 +1288,6 @@ insert acctOldObj;*/
         conObj.FirstName = 'Outbound Integrations Tester';
         conObj.LastName = 'Person';
         conObj.Email = 'OITester123@tester.com';
-        conObj.MailingCountry='USA';
         conObj.Core_English_Only_First_Name__c = 'Outbound Integrations Tester';
         conObj.Core_English_Only_Last_Name__c = 'Person';
         conObj.Core_Do_Not_Contact__c = false;
@@ -1457,7 +1344,6 @@ insert acctOldObj;*/
         conObj.FirstName = 'Outbound Integrations Tester';
         conObj.LastName = 'Person';
         conObj.Email = 'OITester124@tester.com';
-        conObj.MailingCountry='USA';
         conObj.Core_English_Only_First_Name__c = 'Outbound Integrations Tester';
         conObj.Core_English_Only_Last_Name__c = 'Person';
         conObj.Core_Do_Not_Contact__c = false;
@@ -1508,7 +1394,6 @@ insert acctOldObj;*/
         acctObj.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
         acctObj.Core_CIM_ID__c = '123456789';
         acctObj.Industry = 'Agriculture';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         insert acctObj;
         
@@ -1521,7 +1406,6 @@ insert acctOldObj;*/
         contSub.PRM_Contact_Id__c = cntct.Id;
         contSub.PRM_Partner_Subscription_Id__c = CreatePartnerSubscription().Id;
         contSub.PRM_Status_Nm__c = 'Active';
-        contSub.PRM_Status_Reason_Txt__c='Service Reason';
         //contSub.PRM_Status_Reason_Txt__c = '';
         
         insert contSub;
@@ -1547,7 +1431,6 @@ insert acctOldObj;*/
         PRM_Account_Contact_Relationship__c acctCon = new PRM_Account_Contact_Relationship__c();
         acctCon.PRM_Account_Id__c = cntct.AccountId;
         acctCon.PRM_Contact_Id__c = cntct.Id;
-        acctCon.PRM_Status_Reason_Txt__c = 'Service Reason';
         acctCon.PRM_Relationship_Id__c = CreateRelationship().Id;
         acctCon.PRM_InActive_Ind__c= inactive;
         if(setToPending)
@@ -1578,8 +1461,7 @@ insert acctOldObj;*/
         PRM_AccountChannelMembership__c acctMembership = new PRM_AccountChannelMembership__c();
         acctMembership.PRM_Account_Id__c = cntct.AccountId;
         acctMembership.PRM_Channel_Program_Id__c = chnlprgm.Id;
-        acctMembership.PRM_Status_Nm__c = statusVal;
-        acctMembership.PRM_Status_Reason_Txt__c='Service Reason';        
+        acctMembership.PRM_Status_Nm__c = statusVal;        
         acctMembership.PRM_Channel_Program_Level_Id__c = GetChannelProgramLevel(chnlprgm.Id).Id;     
         acctMembership.PRM_Partner_Role__c = 'Service Provider';
         
@@ -1702,7 +1584,6 @@ insert acctOldObj;*/
         accntBenft.PRM_Partner_Benefit_Id__c = pb1.ID;
         accntBenft.PRM_Account_Id__c = cntct.AccountId;
         accntBenft.PRM_Status_Nm__c = 'Active';
-        accntBenft.PRM_Status_Reason_Txt__c='Service Reason';
         accountBenefits.add(accntBenft);
         
          insert accountBenefits;
@@ -1721,7 +1602,6 @@ insert acctOldObj;*/
         conObj.FirstName = 'Outbound Integrations Tester';
         conObj.LastName = 'Person';
         conObj.Email = 'OITester123@tester.com';
-        conObj.MailingCountry='USA';
         conObj.Core_English_Only_First_Name__c = 'Outbound Integrations Tester';
         conObj.Core_English_Only_Last_Name__c = 'Person';
         conObj.Core_Do_Not_Contact__c = false;
@@ -1765,7 +1645,6 @@ insert acctOldObj;*/
         acctObj.Core_Deactivated__c = false;
         acctObj.Core_CIM_ID__c = '123456789';
         acctObj.Industry = 'Agriculture';
-        acctObj.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
         
         insert acctObj;
         
@@ -1959,7 +1838,6 @@ insert acctOldObj;*/
         PRM_AccountChannelMembership__c acm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
         acm1.PRM_Account_Id__c=newAccount.id;
         acm1.PRM_Status_Nm__c='Approved';
-        acm1.PRM_Status_Reason_Txt__c='Service Reason';
         acm1.PRM_Channel_Program_Id__c=cp.Id;
         acm1.PRM_Channel_Program_Level_Id__c=cpl.Id;
         acm1.PRM_Partner_Role__c='Solution Integrator';
@@ -1976,7 +1854,6 @@ insert acctOldObj;*/
         PRM_AccountBenefitAssociation__c ben01 = new PRM_AccountBenefitAssociation__c();
         ben01.PRM_Partner_Benefit_Id__c = pb.id;
         ben01.PRM_Status_Nm__c = 'Active';
-        ben01.PRM_Status_Reason_Txt__c='Service Reason';
         ben01.PRM_Account_Id__c = newAccount.id;
         ben01.PRM_Source__c = System.Label.PRM_Source_BenefitMatrix;
         insert ben01;
@@ -2007,7 +1884,6 @@ insert acctOldObj;*/
         con02.lastName='test';
         con02.FirstName='con02';
         con02.email='testcon02@rediff.com';
-        con02.MailingCountry='USA';
         con02.Core_Job_Function__c='Branch Manager';
         con02.Core_eRPM_Language_Code__c='Eng';
         con02.Core_IPA_PartnerRole__c = 'Solution Integrator';

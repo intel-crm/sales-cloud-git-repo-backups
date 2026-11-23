@@ -21,26 +21,6 @@
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
     <sharingCriteriaRules>
-        <fullName>Core_IPS_ProjectAccess_RW_to_IPS_Agent</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>This rule has been specially added to provide Read/write Access to IPS Agent to Project as IPS Agent Role is no longer a subordinate to IPS Product Org Admin Role</description>
-        <label>Core IPS ProjectAccess RW to IPS Agent</label>
-        <sharedTo>
-            <role>EMP_11298293_Kenta_Ueda</role>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>equals</operation>
-            <value>Active</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_IPS_Private__c</field>
-            <operation>notEqual</operation>
-            <value>True</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_IPS_ProjectAccess_R_to_IPS_ReadOnly_Users</fullName>
         <accessLevel>Read</accessLevel>
         <description>this would provide Read Access to all IN Public Group &quot;Group: IPS Read Only&quot;  that includes Dual, sales Ops, Data Ops etc</description>

@@ -9,18 +9,6 @@
         <value>ProcessPendingAutoApprovalRecordEvents</value>
     </caseValues>
     <fields>
-        <label><!-- AccountId --></label>
-        <name>AccountId__c</name>
-    </fields>
-    <fields>
-        <label><!-- ContactId --></label>
-        <name>ContactId__c</name>
-    </fields>
-    <fields>
-        <label><!-- EntitlementId --></label>
-        <name>EntitlementId__c</name>
-    </fields>
-    <fields>
         <label><!-- RequestID --></label>
         <name>RequestID__c</name>
     </fields>

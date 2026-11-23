@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333333;
+        }
+        .container {
+            width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #dddddd;
+        }
+        .header {
+            background-color: #0078d4;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            font-size: 18px;
+        }
+        .content {
+            padding: 15px;
+            background-color: #ffffff;
+            border: 1px solid #dddddd;
+            margin-top: 20px;
+        }
+        .content p {
+            font-size: 14px;
+        }
+        .footer {
+            padding: 10px;
+            font-size: 12px;
+            color: #888888;
+            text-align: center;
+            margin-top: 20px;
+            border-top: 1px solid #dddddd;
+        }
+        .link {
+            color: #0078d4;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h2>Error Log Notification</h2>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <p>Hi team,</p>
+            <p>An error has occurred from <strong>{!Core_Log_Entry__c.Core_Project__c}</strong> application.</p>
+            <p>Below are the details:</p>
+            <ul>
+                <li><strong>Log ID:</strong> {!Core_Log_Entry__c.Name}</li>
+                <li><strong>Origin:</strong> {!Core_Log_Entry__c.Core_Origin__c}</li>
+                <li><strong>Severity:</strong> {!Core_Log_Entry__c.Core_Severity__c}</li>
+                <li><strong>Error Details:</strong> {!Core_Log_Entry__c.Core_Details__c}</li>
+            </ul>
+            <p>To view details <a href="/{!Core_Log_Entry__c.Id}" class="link">click here</a></p>
+        </div>
+
+        <!-- Footer Section -->
+        <div class="footer">
+            <p>________________________________________________________</p>
+            <p>This message contains Intel Confidential information and should be handled in accordance with your Non-Disclosure Agreement (NDA) with Intel. Access to this e-mail by anyone other than the intended recipient is unauthorized. If you are not the intended recipient (or responsible for delivery of the message to such person), you may not use, copy, distribute, or deliver this message or any part of its contents or take any action in reliance on it, and in such case, you should destroy this message.</p>
+            <p>Copyright ©Intel Corporation. All rights reserved. Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054-1549 USA www.intel.com (408) 765-8080</p>
+        </div>
+    </div>
+</body>
+</html>

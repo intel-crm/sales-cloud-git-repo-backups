@@ -100,7 +100,7 @@
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>

@@ -28,7 +28,6 @@
         <field>CREATED_DATE</field>
     </columns>
     <filter>
-        <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
         <criteriaItems>
             <column>OPPORTUNITY_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -36,31 +35,10 @@
             <operator>contains</operator>
             <value>Apollo</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Nimble</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Primera</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Olympus</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Team HPE HPC and Storage Open Opps</name>
+    <name>Team HPE Apollo Open Opportunities</name>
     <params>
         <name>terr</name>
         <value>all</value>

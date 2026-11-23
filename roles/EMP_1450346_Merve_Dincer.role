@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Read</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Brandon Goodyear</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_1450346_Merve_Dincer</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>Role_Marked_for_Delete</parentRole>
+</Role>

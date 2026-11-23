@@ -10,10 +10,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Products_At_Risk_Count__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Risk_Reason__c</field>
     </columns>
     <columns>

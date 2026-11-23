@@ -75,13 +75,12 @@
           "type" : "component"
         }, {
           "componentAttributes" : {
-            "fieldsToMask" : "",
             "internalUserName" : "Intel System User",
             "objectApiName" : "Core_MDF_Payment__c",
             "recordId" : "{!recordId}"
           },
           "componentName" : "c:core_MDF_HistoryComponent",
-          "id" : "f3bcc8bd-ce4f-442e-982e-366c2524f086",
+          "id" : "7c187545-0a60-4752-8276-326a7be708fe",
           "renditionMap" : { },
           "type" : "component"
         } ],

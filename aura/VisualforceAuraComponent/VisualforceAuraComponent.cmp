@@ -1,0 +1,17 @@
+<aura:component >
+	<aura:registerEvent name="VFMsgEvent" type="c:VisualforceEvent"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="strMsg" type="String" default="Initial Value"/>
+    <lightning:card>
+        <lightning:input 
+			label="Message"
+            value="{!v.strMsg}">
+        </lightning:input>
+        <br/>
+    	<lightning:button 
+			variant="brand" 
+            label="Send Message" 
+            onclick="{!c.passDataToVF}">
+        </lightning:button>
+    </lightning:card>
+</aura:component>

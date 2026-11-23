@@ -170,7 +170,7 @@
         <caseSensitive>false</caseSensitive>
         <externalId>false</externalId>
         <label>CMFUnique</label>
-        <length>100</length>
+        <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -192,7 +192,7 @@
         <fullName>ER_CMF_Name__c</fullName>
         <externalId>false</externalId>
         <label>CMF Name</label>
-        <length>120</length>
+        <length>30</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -298,6 +298,19 @@
     <label>Customer Master File</label>
     <listViews>
         <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>ER_CMF_Name__c</columns>
+        <columns>ER_SalesAreaOrderBlockCd__c</columns>
+        <columns>ER_SalesAreaOrderBlockNm__c</columns>
+        <columns>ER_Sales_Disti_Chnl_Code__c</columns>
+        <columns>ER_Sales_Disti_Chnl_Name__c</columns>
+        <columns>ER_Direct_Customer_Relationship_Code__c</columns>
+        <columns>ER_Direct_Customer_Relationship_Name__c</columns>
+        <columns>ER_Sales_Org_Code__c</columns>
+        <columns>ER_Sales_Org_Name__c</columns>
+        <columns>UPDATEDBY_USER.ALIAS</columns>
+        <columns>ER_Account_Group__c</columns>
+        <columns>ER_CMF_Address__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -308,7 +321,6 @@
     </nameField>
     <pluralLabel>Customer Master Files</pluralLabel>
     <searchLayouts>
-        <excludedStandardButtons>New</excludedStandardButtons>
         <searchResultsAdditionalFields>ER_Sales_Org_Code__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>

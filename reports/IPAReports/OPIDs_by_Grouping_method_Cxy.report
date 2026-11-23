@@ -6,6 +6,12 @@
     <columns>
         <field>Account.Core_IPA_Badge_Tier__c</field>
     </columns>
+    <columns>
+        <field>Account.Core_Account_Type__c</field>
+    </columns>
+    <columns>
+        <field>Account.Core_IPA_Partner_Segment__c</field>
+    </columns>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

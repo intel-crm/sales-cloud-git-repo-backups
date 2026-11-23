@@ -1,0 +1,274 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:page ></apex:page>
+<!-- <apex:page controller="PSS_SolutionSubmitCtrl" sidebar="false" showHeader="false">
+    <apex:includeLightning />
+    <apex:stylesheet value="{!URLFOR($Resource.IpaResources, '/styles/ipabundle.min.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.IpaResources, '/fonts/site-global-icons-ipa/css/site-global-icons-ipa-codes.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.IpaResources, '/fonts/site-global-icons-ipa/css/site-global-icons-ipa-embedded.css')}"/> 
+    <apex:slds />
+    <apex:outputPanel id="idPanel" layout="block" style="width:100%;display:flex;" >
+        <html lang="en" style="overflow-y:hidden;">width:70% -->
+            <!-- <head>
+                <body>
+                    <style>
+                        .slds-popover__body,
+                        .slds-popover__footer,
+                        .slds-popover__header {
+                        position: relative;
+                        padding: .5rem .75rem;
+                        word-wrap: break-word
+                        }
+                        
+                        .slds-popover {
+                        position: relative;
+                        border-radius: .25rem;
+                        width: 20rem;
+                        min-height: 2rem;
+                        z-index: 6000;
+                        background-color: #fff;
+                        display: inline-block;
+                        box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .16);
+                        border: 1px solid #d9dbdd
+                        }
+                        
+                        .slds-popover--tooltip,
+                        .slds-popover_tooltip {
+                        width: auto;
+                        max-width: 20rem;
+                        background: #16325c;
+                        border: 0
+                        }
+                        .slds-popover--tooltip .slds-popover__body,
+                        .slds-popover_tooltip .slds-popover__body {
+                        font-size: .75rem;
+                        color: #fff
+                        }
+                        
+                        .slds-fall-into-ground {
+                        visibility: hidden;
+                        opacity: 0;
+                        transform: translate(0, 0);
+                        transition: opacity .1s linear, visibility .1s linear, transform .1s linear;
+                        will-change: transform
+                        }
+                        
+                        .slds-nubbin--bottom-left:before,
+                        .slds-nubbin_bottom-left-corner:before,
+                        .slds-nubbin_bottom-left:before {
+                        width: 1rem;
+                        height: 1rem;
+                        position: absolute;
+                        transform: rotate(45deg);
+                        content: '';
+                        background-color: inherit;
+                        bottom: -.5rem;
+                        margin-left: -.5rem
+                        }
+                        
+                        .slds-nubbin--bottom-left:after,
+                        .slds-nubbin--bottom-left:before,
+                        .slds-nubbin_bottom-left-corner:after,
+                        .slds-nubbin_bottom-left-corner:before,
+                        .slds-nubbin_bottom-left:after,
+                        .slds-nubbin_bottom-left:before {
+                        left: 1.5rem;
+                        top: 100%;
+                        margin-top: -.5rem
+                        }
+                        
+                        .slds-nubbin--bottom-left:after,
+                        .slds-nubbin_bottom-left-corner:after,
+                        .slds-nubbin_bottom-left:after {
+                        box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, .16);
+                        z-index: -1
+                        } -->
+                        
+                       <!-- .slds-popover :last-child {
+                        margin-bottom: 0
+                        }
+                        .color-white {
+                        font-size: 1.75rem !important;
+                        }
+                        .slds-scope a:hover, .slds-scope a:focus {
+                            text-decoration: none !important; 
+                        }
+                        .fa-cancel-thin {
+                        color: white !important;
+                        }-->
+                    <!-- </style>  
+                    <apex:form >
+                        <apex:actionFunction action="{!addContactBtnVisibility}" name="showAddConBtn" oncomplete="setAddContactVisibility({!showAddConFlag})">
+                            <apex:param name="recordId" value=""/>
+                        </apex:actionFunction>
+                    </apex:form> -->
+                    <!-- include the lightning.out.js file -->
+                    <!-- <script src="https://crmdevipa-intelcloudcrm.cs45.force.com/imp/lightning/lightning.out.js"></script> -->
+                    <!-- Provide a section/div for lightning component-->
+                        <!-- <div id="addContact"/>
+                        <div id="ArdiraSurvey_SurveyResponder" style="flex:2;"/>
+                        <div style="flex:1;">
+                            <div id="addConBtn" style="background-color: white;display: none;" class="slds-p-left_medium slds-p-top_small">
+                                <button id="addCon" onclick="openAddContactModal();" disabled="true" class="slds-button slds-button_brand slds-m-around_xx-small"><b>Add Contacts</b></button>
+                            </div>
+                            <div id="parentflex"/>    
+                        </div>
+                        
+                        <script>
+                        var surveyResultId; -->
+                        <!-- to take the url paramter and pass it in lightning out-->
+                        <!-- const url=window.parent.location.href;    
+                        const urlParams = new URL(url);
+                        const companyId=urlParams.searchParams.get('PSS_company_Id__c');
+                    const recordId=urlParams.searchParams.get('recordId');
+                    //alert(recordId);
+                    const isAdmin=urlParams.searchParams.get('admin');
+                    
+                    if(isAdmin){
+                        
+                        document.getElementById("idPanel").style.visibility="hidden";
+                    }
+                    
+                    $Lightning.use("ArdiraSurvey:EmbeddedSurvey", // name of the Lightning app
+                                   function() {
+                                       $Lightning.createComponent(
+                                           "ArdiraSurvey:surveyResponder",
+                                           { /* attributes to set on the component when created */
+                                               recordId:'a808A000000Cu5N'',
+                                               externalIntegration:true,
+                                               logicalId:recordId?'':'{!logicalId}',//'7edde2c2-6311-f640-90a5-fe55ee99c2d5',
+                                               additionalParams:'PSS_company_Id__c='+companyId,
+                                               isCalledFromStandaloneApp:true,
+                                               /* //ArdiraSurvey__Logical_Id__c*/
+                                           },"ArdiraSurvey_SurveyResponder",
+                                           function() {});
+                                       
+                                       $Lightning.createComponent(
+                                           "c:ipaMessaging",
+                                           { /* attributes to set on the component when created */
+                                               recordId:recordId?recordId:'{!createRecordId}',
+                                               heading:'Messages about Your Solution',
+                                               channel:'Solution',
+                                               
+                                           },"parentflex",
+                                           function() {});
+                                       
+                                        
+                                       
+                                   });
+                                    
+                                    
+                                
+                    
+                         
+                    
+                    document.addEventListener("svevent_savedraftclicked", function(event){
+                        setSurveyId(event);
+                    });
+                    
+                    document.addEventListener("svevent_nextbuttonclicked", function(event){
+                        setSurveyId(event);
+                    });
+                    
+                    document.addEventListener("svevent_surveysubmitted", function(event){
+                        setSurveyId(event);
+                        window.parent.location.href = "{!$Label.PMP_Marketplace_Community_URL}" + '/solution-submit?recordId='+surveyResultId;
+                    });
+                    
+                    document.addEventListener("svevent_thankyoubuttonclicked", function(event){
+                        setSurveyId(event);
+                        // window.parent.location.href = "{!$Label.PMP_Marketplace_Community_URL}" + '/solution-submit?recordId='+surveyResultId;
+                    });
+                                       
+                    function setSurveyId(event) {
+                        let detail = event.detail;
+                        if(detail && !surveyResultId) {
+                            surveyResultId = detail.surveyResultId;
+                        }
+                        document.getElementById("addCon").disabled = disableCheck();
+                    }
+                    
+                    function openAddContactModal() {
+                        
+                        let recId = recordId ? recordId : surveyResultId ? surveyResultId : '{!createRecordId}';   
+                        console.log('::recId::', recId);
+                        $Lightning.use("ArdiraSurvey:EmbeddedSurvey", function() {
+                            $Lightning.createComponent(
+                                "c:pssContactShareOnSolution", { 
+                                    solutionId: recId,
+                                }, "addContact", function() {});
+                        });
+                    }
+                    
+                    function disableCheck() {
+                        let recId = recordId ? recordId : surveyResultId ? surveyResultId : '';
+                        return !(recId && recId != '');
+                    }
+                    
+                    function setAddContactVisibility(flag) {
+                        if(flag == true) {
+                            document.getElementById("addConBtn").style.display = "block";
+                            document.getElementById("addCon").disabled = disableCheck(); 
+                        }
+                    }
+                                        
+                    setTimeout(function() { 
+                        showAddConBtn(recordId);
+                    }, 8000);
+                    </script>
+                    <script>
+                                        
+                    window.addEventListener('load', (event) => {
+                        console.log('page is fully loaded');
+                        var element = document.body.querySelectorAll('.brandQuaternaryBgr');
+                        // element.classList.remove("brandQuaternaryBgr");
+                    });
+                        
+                        
+                        
+                        </script>
+                </body>   
+            </head>
+            <body style="overflow-y:hidden;">
+            <div id="ArdiraSurvey_SurveyResponder">
+                <script>
+                /* To auto adjust height of iframe based on contents */
+                let elem = document.querySelector('#ArdiraSurvey_SurveyResponder');
+                setInterval(function(){
+                    if(elem){
+                        let rectHeight = elem.offsetHeight;
+                        if(rectHeight && rectHeight < 500){
+                            rectHeight = 500;
+                        }
+                        window.parent.document.getElementsByTagName('iframe')[0].height = rectHeight + 'px';
+                    }
+                },2000);
+                
+                /* For scroll top on click of next, previous, submit and thank you button */
+                document.addEventListener("svevent_nextbuttonclicked", handler, false);
+                document.addEventListener("svevent_previousbuttonclicked", handler, false);
+                document.addEventListener("svevent_submitbuttonclicked", handler, false);
+                document.addEventListener("svevent_thankyoubuttonclicked", handler, false);
+                document.addEventListener("svevent_thankyouquestionclicked", handler, false);
+                          
+                document.addEventListener("svevent_thankyoubuttonclicked", function(event){
+                var textLabel2 = document.querySelector("#UpdateResultMessage");
+                textLabel2.innerHTML = '';
+                var textLabel = document.querySelector("#NavigationButtonsMessage");
+                textLabel.innerHTML = event.detail ? JSON.stringify(event.detail, null, '\t') : 'no message payload';
+            });
+                // Below event will bring the user at the top of the page.
+          /*      function handler(event){
+                    window.parent.document.body.scrollIntoView(true);
+                }*/
+                
+                </script>
+                </div>
+        </body>
+        </html>
+        
+    </apex:outputpanel>
+    
+    
+    
+    
+</apex:page> -->

@@ -46,13 +46,20 @@
             <translation><!-- Inactive --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Premier Support Account Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Please do not attempt to change the values once created --></errorMessage>
         <name>Core_IPS_PreventEdit</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_Accounts_LEX --></label>
-        <name>Add_Accounts_LEX</name>
+        <label><!-- Add_Accounts --></label>
+        <name>Add_Accounts</name>
     </webLinks>
 </CustomObjectTranslation>

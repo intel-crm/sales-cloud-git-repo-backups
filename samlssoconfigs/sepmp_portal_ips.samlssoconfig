@@ -7,14 +7,14 @@
     <loginUrl>https://sfederation.intel.com/federation/init_SalesforceSalesCRMIPSPortal.asp</loginUrl>
     <logoutUrl>https://signinpp.intel.com/logout</logoutUrl>
     <name>sepmp-portal-ips</name>
-    <oauthTokenEndpoint>https://intel.my.salesforce.com/services/oauth2/token?so=00Do0000000aRcf</oauthTokenEndpoint>
+    <oauthTokenEndpoint>https://intel--crmdevipa.sandbox.my.salesforce.com/services/oauth2/token?so=00D8A0000005uU8</oauthTokenEndpoint>
     <redirectBinding>false</redirectBinding>
     <requestSignatureMethod>1</requestSignatureMethod>
-    <requestSigningCertId>0P1Ho000001Kzks</requestSigningCertId>
-    <salesforceLoginUrl>https://intel.my.salesforce.com?so=00Do0000000aRcf</salesforceLoginUrl>
+    <requestSigningCertId>0P11J000000CgFX</requestSigningCertId>
+    <salesforceLoginUrl>https://intel--crmdevipa.sandbox.my.salesforce.com?so=00D8A0000005uU8</salesforceLoginUrl>
     <samlEntityId>https://saml.salesforce.com.crm.ipsportal</samlEntityId>
     <samlVersion>SAML2_0</samlVersion>
-    <useConfigRequestMethod>true</useConfigRequestMethod>
+    <useConfigRequestMethod>false</useConfigRequestMethod>
     <useSameDigestAlgoForSigning>false</useSameDigestAlgoForSigning>
     <userProvisioning>false</userProvisioning>
     <validationCert>MIIDEzCCAfugAwIBAgIJANrRJjvOhldcMA0GCSqGSIb3DQEBBQUAMCAxHjAcBgNVBAMMFXNmZWRlcmF0aW9uLmludGVsLmNvbTAeFw0xNTAzMDUxNzQwNTFaFw0yNTAzMDUxNzQwNTFaMCAxHjAcBgNVBAMMFXNmZWRlcmF0aW9uLmludGVsLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL0XTlxed6oB+7jgn8DSOhAdwImHp1nyNPu/Rs6ayuEnX3XBG2cOYkYKlQYty5mdUSjPklxhwc6rKPPlsRa6PmgZGGdlEBMmmVy4W+OLRlCE403h2SHxMYtTZpepsAAMgR0pIsUOR/V1gdEKQACzLwB7fCDx40h4sRP09IRWlkKZJQDDoHkS6tdwLKJZgCLKjzlQ8fqdU+5wVPNevUkceygeKxpEkhGiAhW5T4LumqIiYjlx2SJBbtPY1+bogIMf0F0cq87LTXs+l5rOsIqs7uDsVwKSvNWDdNfwimQfYRm2IIjERsAqfNOJwJH+07zye2sjZ1nPKmWhR8t/3W0ZgpsCAwEAAaNQME4wHQYDVR0OBBYEFJk0qEgxgq776l4dsG0STGrnztt6MB8GA1UdIwQYMBaAFJk0qEgxgq776l4dsG0STGrnztt6MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADggEBAD8AHMda+VeJOkf8yPl0jnMe7D3DlwYwFNcrKbCKd1SLGero3nuYgCk0FevE1aXvRio9QIF1p0sCtGwSQ0nkznsDJ/kU48qZtAldOpRHspLGnn7omPf9AAhqlFyaMsmAhgDW9+khfDkhoZUQ39iTNImCikR56W7PNcjKIGNKhCmtP7fhgTngm00CinEt+2JnD+vI1n5I3qHkz8yz2Wu7wagJBQ+kapVN1EaVXDnDWvEJSWY9pQ4JaiOOL4pNkaehufMQ86coUwGobJ7baBSHWxn2Gr4xd6H9bZGv+aQqH9WG8GblOWTUP6dOs4UM6+fp5E4GVWK/YRWZfh5mIr7PWDs=</validationCert>

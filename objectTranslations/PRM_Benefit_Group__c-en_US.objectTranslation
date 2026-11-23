@@ -12,6 +12,13 @@
         <label><!-- Inactive Indicator --></label>
         <name>PRM_InActive_Ind__c</name>
     </fields>
+    <layouts>
+        <layout>Benefit Group Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Inactive Indicator cannot be set while creating the new Benefit Group record --></errorMessage>

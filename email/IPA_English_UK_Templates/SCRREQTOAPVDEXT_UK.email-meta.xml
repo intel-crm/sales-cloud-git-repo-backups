@@ -16,15 +16,18 @@ Business ID: {!Account.AccountNumber}
 
 Log in to view your Intel® Partner Alliance profile details.
 
+Log in to https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/post-launch-primary for your role.
+
+
 Intel partners have a long history of innovation, and with Intel® Partner Alliance, we’ll help you accelerate building solutions for the data-centric economy. Together, we can connect, innovate, and grow, making extraordinary opportunities possible.
 
-Visit https://wcm-ciqa.intel.com/content/www/{​!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}​/{​!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}​/partner-alliance/help/overview.html for more help on getting started.
+Visit https://intel.com/content/www/us/en/secure/partner-alliance/help/overview.html for more help on getting started.
 
 Thank you,
 Your Intel® Partner Alliance team
 
 This message was sent to you as an important business communication related to your current relationship with Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Privacy | Cookies</textOnly>
     <type>custom</type>

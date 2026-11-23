@@ -34,7 +34,7 @@
         <field>AGE</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -89,7 +89,7 @@
             <value>0061J00000ZeeNN,0061J00000Zgwp4,0061J00000Zgwel,0061J00000ZeeO6,0061J00000UXLBy,0061J00000ZeeUc,0061J00000UXLA4,0061J00000WBW66,0061J00000Y3ltY,0061J00000W8MfX,0061J00000UWehB,0061J00000Y1MOY,0061J00000Zgwdk,0061J00000Zgwip</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

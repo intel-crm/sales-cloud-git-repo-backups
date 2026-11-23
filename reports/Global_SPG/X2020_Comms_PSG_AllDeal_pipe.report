@@ -70,9 +70,6 @@
     <columns>
         <field>Account.Core_Sales_Groups__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_At_Risk_Status__c</field>
-    </columns>
     <crossFilters>
         <criteriaItems>
             <column>Name</column>
@@ -127,13 +124,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>DCG Sales Group</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_Status__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Pending</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

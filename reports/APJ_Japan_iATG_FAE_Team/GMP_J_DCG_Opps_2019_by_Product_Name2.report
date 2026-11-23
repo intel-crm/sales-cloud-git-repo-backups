@@ -46,7 +46,7 @@
         <field>OpportunityLineItem.Core_Design_Product_Category__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Product2.Core_Division_Code_Short_Name__c</field>
@@ -138,7 +138,7 @@
             <value>Pending,On Hold,Production Win,Production Lost,Production Cancelled,Win Approved</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

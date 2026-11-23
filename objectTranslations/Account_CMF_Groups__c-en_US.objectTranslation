@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Account CMF Groups</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Account CMF Groups</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Account CMF Groups --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Customer Master File Grouping --></label>
+        <name>Customer_Master_File_Grouping__c</name>
+        <relationshipLabel><!-- Account CMF Groups --></relationshipLabel>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

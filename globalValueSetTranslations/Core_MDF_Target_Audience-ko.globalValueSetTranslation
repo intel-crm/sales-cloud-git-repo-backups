@@ -1,96 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSetTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
     <valueTranslation>
-        <masterLabel>All</masterLabel>
-        <translation><!-- All --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business</masterLabel>
-        <translation><!-- Business --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business Owners/SMB</masterLabel>
-        <translation><!-- Business Owners/SMB --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Business owners</masterLabel>
-        <translation>기업 오너</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>C-Suite</masterLabel>
         <translation><!-- C-Suite --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Channel Partner</masterLabel>
-        <translation>채널 파트너</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Commercial</masterLabel>
         <translation>상용</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Consultant/Influencer</masterLabel>
-        <translation>컨설턴트/인플루언서</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Consumer</masterLabel>
         <translation>소비자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Mainstream</masterLabel>
-        <translation>소비자 - 메인스트림</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Consumer - Premium</masterLabel>
-        <translation>소비자 - 프리미엄</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Creator</masterLabel>
         <translation>제작자</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>DIY</masterLabel>
-        <translation><!-- DIY --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Developer</masterLabel>
         <translation>개발자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Distributors</masterLabel>
-        <translation>디스트리뷰터</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Edge Customers (edge computing)</masterLabel>
-        <translation>에지 고객(에지 컴퓨팅)</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Education</masterLabel>
-        <translation>교육</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Education Professionals</masterLabel>
-        <translation>교육 전문가</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Employees</masterLabel>
-        <translation>직원</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enterprise</masterLabel>
-        <translation>엔터프라이즈</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Enthusiast Gaming</masterLabel>
-        <translation><!-- Enthusiast Gaming --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Entry Gaming</masterLabel>
-        <translation>입문 게이밍</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Gamer</masterLabel>
-        <translation>게이머</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Gaming</masterLabel>
@@ -101,24 +29,8 @@
         <translation>정부</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Government agency heads</masterLabel>
-        <translation>정부 기관 책임자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Government/Public Sector</masterLabel>
-        <translation>정부/공공 부문</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Healthcare</masterLabel>
-        <translation>의료</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>IT Decision Maker</masterLabel>
         <translation>IT 의사결정권자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>IT Manager</masterLabel>
-        <translation><!-- IT Manager --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Large Business</masterLabel>
@@ -129,103 +41,35 @@
         <translation>사업 분야</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Mainstream Consumer (Overwhelmed)</masterLabel>
-        <translation><!-- Mainstream Consumer (Overwhelmed) --></translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Mainstream Consumer - Knowledge</masterLabel>
-        <translation>주류 소비자 - 지식</translation>
+        <translation><!-- Mainstream Consumer - Knowledge --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mainstream Consumer - Overwhelmed</masterLabel>
-        <translation>주류 소비자 – 어려운 결정</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Mainstream Consumer - Tech Knowledgeable</masterLabel>
-        <translation>주류 소비자 – 기술 지식 풍부</translation>
+        <translation><!-- Mainstream Consumer - Overwhelmed --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Managed Business</masterLabel>
-        <translation>관리되는 기업</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Manufacturer/OEM</masterLabel>
-        <translation>제조업체/OEM</translation>
+        <translation><!-- Managed Business --></translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Mid Market</masterLabel>
         <translation>중간 규모 시장</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Mobile Go Getter</masterLabel>
-        <translation>열정적인 모바일 사용자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Modern Consumer (Knowledgeable)</masterLabel>
-        <translation><!-- Modern Consumer (Knowledgeable) --></translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Other</masterLabel>
-        <translation>기타</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner Sales Force</masterLabel>
-        <translation>파트너 영업 인력</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Partner </masterLabel>
-        <translation>파트너 </translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Project / program managers</masterLabel>
-        <translation>프로젝트 / 프로그램 관리자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Purchasing</masterLabel>
-        <translation>구매</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Reseller</masterLabel>
         <translation>리셀러</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Sales Leaders</masterLabel>
-        <translation>판매 선두 주자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Security managers</masterLabel>
-        <translation>보안 관리자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Senior Business Decision Maker</masterLabel>
-        <translation>고위 비즈니스 의사결정자</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>Small Business</masterLabel>
         <translation>소기업</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Small and Medium Business</masterLabel>
-        <translation>중소기업</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Solutions Architect</masterLabel>
         <translation>솔루션 기획자</translation>
     </valueTranslation>
     <valueTranslation>
-        <masterLabel>Sr. Business Decision Maker</masterLabel>
-        <translation>임원 기업 의사결정자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>System Integrators</masterLabel>
-        <translation>시스템 통합자</translation>
-    </valueTranslation>
-    <valueTranslation>
-        <masterLabel>Technical Influencer</masterLabel>
-        <translation>기술 인플루언서</translation>
-    </valueTranslation>
-    <valueTranslation>
         <masterLabel>Unmanaged Small Business</masterLabel>
-        <translation>관리되지 않는 소기업</translation>
+        <translation><!-- Unmanaged Small Business --></translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

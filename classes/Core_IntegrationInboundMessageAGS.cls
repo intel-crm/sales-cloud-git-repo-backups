@@ -1,5 +1,5 @@
 /******************************************************************************************************************************************
-Class Name  : Core_IntegrationInboundMessageAGS  
+Class Name  : Core_IntegrationInboundMessageAGS
 Version     : 1.0
 Created Date: 30 NOV 2016
 Function    : Business logic for processing inbound AGS messages   
@@ -10,11 +10,11 @@ Modification Log :
 * Dave Hood                 11/30/2016              Original version
 * Team : PopcornApps        05/25/2016              Re organized the code
 * Aran Wongsaprome          09/07/2017              US71628 Related list of messages under contact
-* Subhadeep Sadhu                                    04/08/2021                                                  Convert email to lowercase on AGS inbound
-* Akshay [Team:Draco]                28/03/2022                                                  AGS retrigger mechanism upon entitlement assignment/removal failure - TWC1811-1457
-* Akshay [Team:Draco]                05/04/2022                      Don't change ERPM Integration Status in case of 2.0 flow - ERPM Bypass Logic
+* Subhadeep Sadhu			04/08/2021				Convert email to lowercase on AGS inbound
+* Akshay [Team:Draco]		28/03/2022				AGS retrigger mechanism upon entitlement assignment/removal failure - TWC1811-1457
+* Akshay [Team:Draco]		05/04/2022          	Don't change ERPM Integration Status in case of 2.0 flow - ERPM Bypass Logic
 * Shubham [Team:Draco]      30/05/2022              Added variable Core_IntegrationInboundMessageAGS.retryInboundMessageProcessing to do contact entitlement validation in case of retrying IIM reprocessing
-* Akshay [Team: Draco]               05/07/2022                                                  Added logic for Proactive Alerts capability
+* Akshay [Team: Draco]		05/07/2022				Added logic for Proactive Alerts capability
 * Shubham [Team:Draco]      15/07/2022              Handle the inbound when there AGS Time out Failures - TWC1811-2189
 * Team Draco                23/11/2023              Updated logic to process Salesforce Internal and External Entitlements after receiving AGS Role 2.0 Response
 *****************************************************************************************************************************************/
@@ -37,7 +37,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
     // Custom exception we can throw ourselves. Needed to get certain code paths to execute in test classes.
     public class CustomException extends Exception {}
     
-              // Main method for processing AGS messages
+	// Main method for processing AGS messages
     public static void processMessages(List<Core_Integration_Inbound_Message__c> newList) {}
     
     // Main method for processing AGS messages2_0
@@ -124,7 +124,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
             for (Contact c : matchingContacts){
                 ConId.add(c.Id);
             }
-            List<User> UserList = [SELECT ContactId, IsActive, Core_License_Reclaimed_on_Creation__c FROM User WHERE ContactId IN : ConId];
+            List<User> UserList = [SELECT ContactId, IsActive FROM User WHERE ContactId IN : ConId];
             for (Contact c : matchingContacts) {
                 InBoundMessageWrapper ibMsgWrpr = null;
                 //Changes PopcornApps START
@@ -157,9 +157,9 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                     
                     List<Core_IntegrationUtility.AGS_Response_Role> result = agsResponse.result;
                     error = agsResponse.error;
-                    if(String.isBlank(error)){
+                    if(String.isBlank(error) && result != null){
                         
-                        if (result != null) {  
+                          
                             
                             for (Core_IntegrationUtility.AGS_Response_Role currentResult : result) {
                                 String errorDescription = null;
@@ -204,7 +204,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
 
                                 ibMsgWrpr.integrationMessage += '\r\nRole: ' + roleName + ' Operation: ' + roleResult.operation + ' Status: ';
                                 
-                                    if (roleResult.workflowStatus == 'complete') {
+                                if (roleResult.workflowStatus == 'complete') {
                                     ibMsgWrpr.integrationMessage += 'Success';
                                 
                                 //Added Condition - 23-11-2022: Set AGS Integration Status to Failed only if the current failed role is with Core_Status__c = 'Pending'
@@ -250,7 +250,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                                 Core_Contact_Entitlement__c ce = mCurrSfAgsRole_ContEnt.get(roleName.trim());
                                 Boolean isSuccess, isAssigned, isAlreadyAssiged, isRemoved;
                                 if(roleType == 'B2B'){
-                                    isSuccess = (roleResult.workflowStatus) != null;
+                                   	isSuccess = (roleResult.workflowStatus) != null;
                                     isAssigned ='assignUserRole'.equalsIgnoreCase(roleResult.operation) ;
                                     isAlreadyAssiged =  ('Role alreadyAssigned'.equalsIgnoreCase(roleResult.workflowStatus) && 'assignUserRole'.equalsIgnoreCase(roleResult.operation)) ;
                                     isRemoved =  'removeUserRole'.equalsIgnoreCase(roleResult.operation) ;
@@ -290,9 +290,9 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                                                 ce.Core_Status__c = 'Complete';
                                                 ce.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';  
                                                 ce.Core_Update_Reason__c = '';                                 
-                                                /*if(System.Label.Core_Entitlements_B2B_Indicator_Update.split(';').contains(ce.Core_Display_Nm__c)){
+                                                if(System.Label.Core_Entitlements_B2B_Indicator_Update.split(';').contains(ce.Core_Display_Nm__c)){
                                                     c.Core_Contact_B2B_Indicator__c = true;
-                                                } */                       
+                                                }                        
                                             }
                                             else{
                                                 //Failed response from AGS for Role Assignment
@@ -375,9 +375,9 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                                             ce.Core_Update_Reason__c = AGS_RESPONSE;
                                             ce.Core_Selected__c = true;
                                             ce.Core_Status_of_Assignment_Failure__c = 'Successful Assignment';
-                                            /*if(System.Label.Core_Entitlements_B2B_Indicator_Update.split(';').contains(ce.Core_Display_Nm__c)){
+                                            if(System.Label.Core_Entitlements_B2B_Indicator_Update.split(';').contains(ce.Core_Display_Nm__c)){
                                                 c.Core_Contact_B2B_Indicator__c = true;
-                                            }*/
+                                            } 
                                         }
                                     }
                                 } else{
@@ -389,9 +389,9 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                                 }
                                 //Changes PopcornApps END
                             }
-                        }
+                         
                     }
-                    else {              
+                    else {	 
                         // ibMsgWrpr.integrationMessage = Label.Core_A_E_2_0_Error_Message;
                         ibMsgWrpr.integrationStatus = 'Failed';
                         ibMsgWrpr.integrationMessage =   agsResponse.error; 
@@ -410,9 +410,10 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                         c.Core_AGS_Retry_Count__c = 0;
                     }
                     c.Core_AGS_Integration_Status__c = ibMsgWrpr.integrationStatus;
-                    c.Core_AGS_Integration_Message__c = ((ibMsgWrpr.integrationMessage.length() > 9000) ?  ibMsgWrpr.integrationMessage.substring(0, 9000) : ibMsgWrpr.integrationMessage);
-                   // c.Core_Login_Id__c        =   ibMsgWrpr.loginId; //Draco Commented deprecating attributes
-                   // c.Core_Email_Verification_Token__c  = ibMsgWrpr.evToken; //Draco Commented deprecating attributes
+                    c.Core_AGS_Integration_Message__c = ibMsgWrpr.integrationMessage;
+                    c.Core_Entitlement_Assignment_Message__c = 'Timestamp: ' + System.now() + ' GMT';
+                   // c.Core_Login_Id__c				=   ibMsgWrpr.loginId; //Draco Commented deprecating attributes
+                   // c.Core_Email_Verification_Token__c	= ibMsgWrpr.evToken; //Draco Commented deprecating attributes
                    // c.Core_Password_Token__c = ibMsgWrpr.passwordToken; //Draco Commented deprecating attributes
                     c.Core_Enterprise_Id__c = ibMsgWrpr.enterpriseId;
                    // c.Core_IPA_Email_Verification_Date__c = ibMsgWrpr.EVupdatedDate;//added by Draco to populate EV date on AGS response
@@ -426,12 +427,11 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                         //Else 1. Does not Exist in AGS && 2. Status Pending  && 3. Internal Entitlement --> Process the CE record for Internal Entitlements
                         if(!w.existInAgs && 'Pending'.equalsIgnoreCase(w.ent.Core_Status__c) && (w.ent.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'AGS' || String.isBlank(w.ent.Core_Entitlement_Id__r.Core_Entitlement_Type__c ))){
                             if((w.ent.Core_Retrigger_Attempt__c == null || w.ent.Core_Retrigger_Attempt__c < integer.valueof(system.label.Max_Entitlement_Retry_Attempt))){
-                                w.ent.Core_Retrigger_Attempt__c = w.ent.Core_Retrigger_Attempt__c == null ? 1 : w.ent.Core_Retrigger_Attempt__c + 1;
-                                mRetriggerContactAGS.put(c.id, new Contact(Id = c.Id, Core_AGS_Integration_Status__c = 'Pending'));
+                            w.ent.Core_Retrigger_Attempt__c = w.ent.Core_Retrigger_Attempt__c == null ? 1 : w.ent.Core_Retrigger_Attempt__c + 1;
+                            mRetriggerContactAGS.put(c.id, new Contact(Id = c.Id, Core_AGS_Integration_Status__c = 'Pending'));
                             } 
                         }else if(!w.existInAgs && 'Pending'.equalsIgnoreCase(w.ent.Core_Status__c) && w.ent.Core_Entitlement_Id__r.Core_Entitlement_Type__c == 'Salesforce'){
                             c.Core_Entitlement_Assignment_Status__c = 'Pending';
-                            c.Core_Entitlement_Assignment_Message__c = 'Timestamp: ' + System.now() + ' GMT \n';
                             listPendingIntContEnt.add(w.ent);
                             IntEntConId.add(w.ent.Core_Contact_Id__c);
                         }
@@ -446,28 +446,18 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                     }
                     Map<Id, Boolean> IntEntUserMap = new Map<Id, Boolean>();
                     for(User use : IntEntContUserList){
-                        if(use.Core_License_Reclaimed_on_Creation__c){
-                            IntEntUserMap.put(use.ContactId, use.Core_License_Reclaimed_on_Creation__c);
-                        } else {
-                            IntEntUserMap.put(use.ContactId, use.IsActive);
-                        }
+                        IntEntUserMap.put(use.ContactId, use.IsActive);
                     }
+                    Map<Id,String> cont_AGSIntgStatus_Map = new Map<Id,String>();
                     for(Core_Contact_Entitlement__c currIntEnt : listPendingIntContEnt){
-                	String IntgLogTags = currIntEnt.Core_Display_Nm__c;                        
                         if((IntEntUserMap.containsKey(currIntEnt.Core_Contact_Id__c) && IntEntUserMap.get(currIntEnt.Core_Contact_Id__c)) || // If User is Present and Active, mark Internal Entitlements as Successful
                         (!currIntEnt.Core_Selected__c && IntEntUserMap.containsKey(currIntEnt.Core_Contact_Id__c) && !IntEntUserMap.get(currIntEnt.Core_Contact_Id__c) && !retryPending) || // If user is InActive, but Entitlement is for Removal, mark it as Successful
                         (!currIntEnt.Core_Selected__c && !IntEntUserMap.containsKey(currIntEnt.Core_Contact_Id__c) && !retryPending)){ // If user is Not Available, but Entitlement is for Removal, mark it as Successful
                             if(c.Core_AGS_Integration_Status__c != 'Failed'){
                                c.Core_AGS_Integration_Status__c = 'Successful'; //Mark the AGS Integration status to Successful ONLY if its not marked as Failed anywhere else in transaction before.
                             }
-                                if(c.Core_Entitlement_Assignment_Status__c != 'Failed' ){
+                            if(c.Core_Entitlement_Assignment_Status__c != 'Failed' ){
                                c.Core_Entitlement_Assignment_Status__c = 'Successful';
-                                if(currIntEnt.Core_Selected__c){
-                               c.Core_Entitlement_Assignment_Message__c += 'Entitlement: '+currIntEnt.Core_Display_Nm__c +'\n'+'Operation: Assign Entitlement; Status: Successful \n' ;
-                                }
-                                else{
-                                    c.Core_Entitlement_Assignment_Message__c += 'Entitlement: '+currIntEnt.Core_Display_Nm__c +'\n'+ 'Operation: Remove Entitlement; Status: Successful \n' ;
-                                }
                             }
                             currIntEnt.Core_Status__c = 'Complete';
                             currIntEnt.Core_Update_Reason__c='';
@@ -476,24 +466,24 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                             } else {
                                 currIntEnt.Core_Status_of_Assignment_Failure__c = 'Successful Removal';
                             }
-                            Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','Success',currIntEnt.Core_Contact_Id__c, null, 0,IntgLogTags);
-
                         }else if(currIntEnt.Core_Selected__c && IntEntUserMap.containsKey(currIntEnt.Core_Contact_Id__c) && !IntEntUserMap.get(currIntEnt.Core_Contact_Id__c) && !retryPending){ // Update Internal entitlements to failed ONLY if there is nothing pending for Retry also
                             currIntEnt.Core_Status__c = 'Complete';
+                            //c.Core_AGS_Integration_Status__c = 'Failed'; //Mark the AGS Integration status to Failed even if it was Successful in earlier transaction.
+                            //c.Core_AGS_Integration_Message__c +=  currIntEnt.Core_Display_Nm__c + ' : User record Inactive';
                             c.Core_Entitlement_Assignment_Status__c = 'Failed';
-                            c.Core_Entitlement_Assignment_Message__c += 'Entitlement: '+currIntEnt.Core_Display_Nm__c +'\n'+'Operation: Assign Entitlement; Status: Failed'+'\n'+ 'User Record Inactive;'+ '\n';
+                            c.Core_Entitlement_Assignment_Message__c = currIntEnt.Core_Display_Nm__c + ': User record Inactive';
                             currIntEnt.Core_Selected__c = false;
                             currIntEnt.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                            currIntEnt.Core_Update_Reason__c='User Record Inactive';
-                            Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Inactive',currIntEnt.Core_Contact_Id__c, null, 0, IntgLogTags);
+                            currIntEnt.Core_Update_Reason__c='User record Inactive';
                         }else if(currIntEnt.Core_Selected__c && !IntEntUserMap.containsKey(currIntEnt.Core_Contact_Id__c) && !retryPending){ // Update Internal entitlements to failed ONLY if there is nothing pending for Retry also
                             currIntEnt.Core_Status__c = 'Complete';
+                            //c.Core_AGS_Integration_Status__c = 'Failed'; //Mark the AGS Integration status to Failed even if it was Successful in earlier transaction.
+                            //c.Core_AGS_Integration_Message__c +=  currIntEnt.Core_Display_Nm__c + ' : User record not Available;';
                             c.Core_Entitlement_Assignment_Status__c = 'Failed';
-                            c.Core_Entitlement_Assignment_Message__c += 'Entitlement: '+currIntEnt.Core_Display_Nm__c +'\n'+'Operation: Remove Entitlement; Status: Failed' +'\n'+ 'User Record Not Available;'+ '\n';
+                            c.Core_Entitlement_Assignment_Message__c = currIntEnt.Core_Display_Nm__c + ': User record not Available';
                             currIntEnt.Core_Selected__c = false;
                             currIntEnt.Core_Status_of_Assignment_Failure__c = 'Failed Assignment';
-                            currIntEnt.Core_Update_Reason__c='User Record Not Available';
-                            Core_Draco_Misc_Functionalities.createIntgrationMonitoringLog('Salesforce','User Record Not Available',c.Id, null, 0,IntgLogTags);
+                            currIntEnt.Core_Update_Reason__c='User record not Available';
                         }
                     }
                     // *********************Draco Change [END] - Update CE record and Contact AGS Intg Status for Internal Entitlements****************//
@@ -522,28 +512,30 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                 conMsg.Inbound_Message__c = filteredInboundMsgIdMap.get(conMsg.Outbound_Message__c);
             }
             //update conMsgList;
-            // TO DO: add exception handling            
+            // TO DO: add exception handling
+        
+            if (matchingContacts.size() > 0) {
+                insert ContactMsg;
+                update matchingContacts;
+            }
+            
             //--------Changes PopcornApps START
             
             //Update the entilement status to Completed
             List<Core_Contact_Entitlement__c> entForUpdate = new List<Core_Contact_Entitlement__c>();
            // Map<id,id> contactEntMap= new Map<id,id>();
+            Set<id> contactEntFailedIdSet = new Set<id>();
             List<Core_Contact_Entitlement__c> contactEntSuccessIdListToUpdate =  new List<Core_Contact_Entitlement__c>();
             for(Map<String, Core_Contact_Entitlement__c> currentMap : allEntitlementsToUpdate){
                 entForUpdate.addAll(currentMap.values());
             }
-            
            
-            
             contactEntSuccessIdListToUpdate = Core_Draco_Misc_Functionalities.validateBeforeDML(entForUpdate,matchingContacts);
-            
+           
             if(contactEntSuccessIdListToUpdate != null && !contactEntSuccessIdListToUpdate.isEmpty()){
                 update contactEntSuccessIdListToUpdate;
             }
-            if (matchingContacts.size() > 0) {
-                insert ContactMsg;
-                update matchingContacts;
-            }
+            
             
             //Contact ReTrigger to make AGS outbound again for the pending entitlements
             if(String.isBlank(error)){
@@ -609,7 +601,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
                 msg.Core_Retry_Counter__c = 0;
             }
             msg.Core_Log_Entry__c = ib.logEntryId; 
-            msg.Core_Tags__c = Ib.tags.length() > 255 ? Ib.tags.subString(0,255) : Ib.tags;
+            msg.Core_Tags__c = Ib.tags;
             msg.Core_Outbound_Message__c = ( Test.isRunningTest() == true ) ?  null  :  ib.outboundMessageId;
             if(msg.Core_Processing_Status__c == 'Failed'){
                 failedMessageSet.add(msg.Id);
@@ -617,7 +609,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
         }
         update messagesToUpdate;
         Core_IntegrationInboundMessageAGS.processFailedInbound(failedMessageSet);
-        
+      
     }    
     
     
@@ -631,7 +623,7 @@ public without sharing class Core_IntegrationInboundMessageAGS {
 Set<String> enterpriseIdSet = new Set<String>();
 if(wraprObj != null && !wraprObj.isEmpty()){
 for(InBoundMessageWrapper ib : wraprObj.values()){
-
+System.debug(' +++++++ InBoundMessageWrapper '+ib);
 if(String.isNotBlank(ib.enterpriseId))
 enterpriseIdSet.add(ib.enterpriseId);
 }
@@ -761,7 +753,7 @@ return enterpriseIdSet;
             List<String> apexErrorList = string.isNotBlank(Label.Core_InbMsgReprocessingApexErrors) ? Label.Core_InbMsgReprocessingApexErrors.split(',') : null;
             Boolean inboundAdded = false;
             // Mark all the contacts with the failed Inbound as Core_AGS_Integration_Status__c = Failed and pupolate their Core_AGS_Integration_Message__c
-            List<Contact_Message__c> ContactListRealtedToInbound = [Select Contact__r.Name, Contact__c, Inbound_Message__r.Core_Exception_Message__c from Contact_Message__c where Inbound_Message__c =: failedMessageIds ];
+            List<Contact_Message__c> ContactListRealtedToInbound = [Select Contact__r.Name, Contact__c, Inbound_Message__r.Core_Exception_Message__c from Contact_Message__c where Inbound_Message__c =: failedMessageIds];
             //Set<Id> ContactIds = new Set<Id>();
             Map<Id,String> contactAGSMessageMap = new Map<Id,String>();
             for(Contact_Message__c conMessage : ContactListRealtedToInbound){
@@ -827,57 +819,58 @@ return enterpriseIdSet;
     // This method was mainly introduced to cater the fallouts from the reprocessing logic due to the lock row error. 
     @InvocableMethod(label='Reprocess failed Role 2.0 Inbound Flow Batch' description='This method will reprocess the failed inbound one last time which are exhaused in reprocessing logic')
     public static void reprocessFailedInboundFlowBatch() {
-        reprocessFailedInboundAsync();
+     //   reprocessFailedInboundAsync();
     }
 
     // BELOW METHOD SHOULD NOT BE COMMENTED IN DEVINT AND HIGHER ORGS!!!!!!!!!!!!!!!**********************
     
-    @future
+   /* @future
     public static void reprocessFailedInboundAsync(){
-        try{
-            Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
-            List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
-            Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
-            Datetime timeOffset = System.now();
-            timeOffset = timeOffset.addMinutes(-addMins);
-            string failedVal='Failed';
-            string roleVal='Role 2.0';
-            Integer batchSize = integer.valueof(System.Label.Core_Reprocess_Batch_Size);
-            String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
-            
-            //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
-            List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
-            
-            for(Core_Integration_Inbound_Message__c IIM : failedIIM){
-                IIM.Core_Processing_Status__c = 'Pending';
-                IIM.Core_Retry_Counter__c += 1;
-                pendingIIM.add(IIM);
-                
-                
-                Map<String,Object> FailedIIMMap = new Map<String,Object>();
-                FailedIIMMap.put('InboundMessageId',IIM.Id);
-                
-                //create instance of Interview
-                Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
-                
-                //Invoke start method of the flow
-                pendingIIMFlow.start();
-            }
-        }catch(Exception e){
-            UCD_ACM_Logger.error('Core_IntegrationInboundMessageAGS','reprocessFailedInboundAsync',e.getMessage(), null);
-            UCD_ACM_Logger.setLogDetails();
-        }
+        Integer maxRetryAttempt = integer.valueof(system.label.Max_Entitlement_Retry_Attempt);
+        List<Core_Integration_Inbound_Message__c> pendingIIM = new List<Core_Integration_Inbound_Message__c>();
+        Integer addMins = integer.valueof(System.Label.Core_Reprocess_TimeOffset_Minutes);
+        Datetime timeOffset = System.now();
+        timeOffset = timeOffset.addMinutes(-addMins);
+        string failedVal='Failed';
+        string roleVal='Role 2.0';
+        Integer batchSize = integer.valueof(System.Label.Core_Reprocess_Batch_Size);
+        String soqlQueryStr = 'SELECT Id,Core_Retry_Counter__c,Core_Processing_Status__c, Core_Exception_Message__c FROM Core_Integration_Inbound_Message__c WHERE Core_Processing_Status__c =:failedVal  AND Core_Retry_Counter__c <=: maxRetryAttempt AND Core_Retry_Counter__c != 0 AND Core_Message_Type__c =:roleVal AND LastModifiedDate < ' + + timeOffset.formatGMT('yyyy-MM-dd\'T\'HH:mm:ss\'Z\'') + ' LIMIT ' + batchSize;
         
+        //Get the list of Role 2.0 Inbound messages which are exhaused in reprocessing attempt
+        List<Core_Integration_Inbound_Message__c> failedIIM = Database.query(soqlQueryStr);
+     
+        for(Core_Integration_Inbound_Message__c IIM : failedIIM){
+            IIM.Core_Processing_Status__c = 'Pending';
+            IIM.Core_Retry_Counter__c += 1;
+            pendingIIM.add(IIM);
+
+         
+            Map<String,Object> FailedIIMMap = new Map<String,Object>();
+            FailedIIMMap.put('InboundMessageId',IIM.Id);
+
+            //create instance of Interview
+            Flow.Interview.Update_Failed_Inbound_to_Pending pendingIIMFlow = new Flow.Interview.Update_Failed_Inbound_to_Pending(FailedIIMMap);
+
+            //Invoke start method of the flow
+            pendingIIMFlow.start();
+        }
+       
         //update pendingIIM;
-    }
+    }*/
 
 
     // Added by Draco to format the payload information to convert errors in the roles from "Errors": "<some error>" format to 
     // "Errors": [{"description": "Failed to update role","code": 400,"serviceCode": "WorkflowExecutionError","sourceSystemCode": "","sourceSystemMessage": "<some error>","requestId": null}] format
     public static String errorFormatting (String payloadString){
-	Map<String, String> errorMap = new Map<String, String>();
+        String returnPayload = '';
+        String S2 = '';
+        List<String> splitStr = payloadString.split('"Errors": "');
+        
+        Map<String, String> errorMap = new Map<String, String>();
         if(payloadString != null && payloadString != '' && payloadString.containsIgnoreCase('"Errors": "')){
             List<String> strListErrorsSplit = payloadString.split('"Errors": "');
+           
+            List<String> rewErrorList = new List<String>();
             for(Integer i = 1; i < strListErrorsSplit.size(); i++){
                 String errorStrSplit = strListErrorsSplit[i];
               

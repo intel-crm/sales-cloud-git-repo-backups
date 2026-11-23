@@ -57,18 +57,11 @@
             <value>GMP Mexico Sales Group</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Design: Original,Design: Secondary,Design: Software-enable,Deal: Sell-through,Deal: Sell-to</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Opportunity.Core_Solution_Area__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>DCG Partner Consumption $,IOTG Partner Consumption $</value>
+            <value>DCG Partner Consumption $</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -107,6 +100,8 @@
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

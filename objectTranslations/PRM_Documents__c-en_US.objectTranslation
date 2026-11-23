@@ -29,5 +29,12 @@
         <label><!-- Title --></label>
         <name>Title__c</name>
     </fields>
+    <layouts>
+        <layout>Terms and Condition Document Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -11,24 +11,19 @@ public class Core_AccountMeetingBriefHandler_Test {
             Core_Trigger_Events__c='after insert', Core_Active__c=true, Core_Description__c='testing, testing');
         insert triggerEntry;
         
-        String intelAccRecTypeId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         // Insert an account, insert users, associate them with the account via custom account team records
         Account testAccount = Core_Test_Utility.createAccount(1)[0];
-        testAccount.RecordTypeId = intelAccRecTypeId;
         insert testAccount;
         
-        Contact testContact = new Contact(FirstName='Test', LastName='Contact', Email=TEST_CONTACT_EMAIL, AccountId=testAccount.Id,MailingCountry='USA',
-                                         Core_Personal_Email_Indicator__c = true,Core_Enterprise_Id__c='12345',Core_ERPM_Integration_Status__c = 'Pending',Core_eRPM_Person_Id__c = '111111');
+        Contact testContact = new Contact(FirstName='Test', LastName='Contact', Email=TEST_CONTACT_EMAIL, AccountId=testAccount.Id);
         insert testContact;
         
         List<User> testUsers = new List<User>();
-        //Edited and moved the SOQL query from line number 27 by Kavyashree HR(Infosys Pegasus Team) on 30/04/2020 to fix security scan issues(US667274)
-        Id proId=[select Id from Profile where Name = 'Sales Rep-BB' limit 1].Id;
-        //KavyaShree          july22,2020        Security scan fix
         for (Integer i=1; i<5; i++) {
             User testUser = new User(FirstName='Test', LastName='User '+i, UserName=TEST_USER_EMAIL+i+'.03232016.intel.crm',
                                      Email=TEST_USER_EMAIL, Alias='testusr'+i, CommunityNickName='test.user'+i+'.03232016',
-                                     ProfileId=proId,LANGUAGELOCALEKEY='en_US', LOCALESIDKEY='en_US', TIMEZONESIDKEY='America/Los_Angeles',
+                                     ProfileId=[select Id from Profile where Name = 'Sales Rep-BB' limit 1].Id,
+                                     LANGUAGELOCALEKEY='en_US', LOCALESIDKEY='en_US', TIMEZONESIDKEY='America/Los_Angeles',
                                      EMAILENCODINGKEY='ISO-8859-1', Core_Employee_Type_Code__c='NB');
             testUsers.add(testUser);
         }
@@ -50,8 +45,7 @@ public class Core_AccountMeetingBriefHandler_Test {
         
         Account_Meeting_Brief__c brief = new Account_Meeting_Brief__c(Account__c=testAccount.Id, Core_Account_Brief_Event__c='Test Event',
                                                                       Core_Account_Meeting_Location__c='Quahog', Core_Executive_Name__c='Peter Griffin',
-                                                                      Core_Account_Meeting_Date__c=Date.today(), Core_Account_Meeting_Time__c='03:00 am',
-                                                                      Core_Account_Meeting_End_Time__c ='12:00 am',
+                                                                      Core_Account_Meeting_Date__c=Date.today(), Core_Account_Meeting_Time__c='3:00 am',
                                                                       Core_Account_Meeting_Customer_Contact__c=testContact.Id,
                                                                       Core_Account_Meeting_Intel_Contact__c=testContact.Id);
         try{

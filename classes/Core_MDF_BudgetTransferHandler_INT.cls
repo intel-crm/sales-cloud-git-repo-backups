@@ -208,10 +208,10 @@ Accenture- HP		07-02-2019   Modified check for SPCF Record Type
                 Account fromAccount;
                 fromAccount = [select Id, Core_MDF_Channel_Program__r.Name, Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c  from Account WHERE Id =:partnerFrom AND Core_MDF_Active_Ind__c = TRUE];
                 string program = fromAccount.Core_MDF_Channel_Program__r.Core_MDF_Technical_Program_Name__c;
-                //Avoid using Soql / Sosl queries without filters and limits
+                
                 Map<String,String> mapProgramToRecordTypeAPI = new Map<String,String>();
-                for(Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
-                                                                               from Core_MDF_ObjRecType_Budget_FieldSetMap__mdt  Limit 5000]){
+                for(Core_MDF_ClaimActAllocRecTypeMapping__mdt recTypeMetaData:[Select Id,Core_MDF_Channel_Program_Name_txt__c,Core_MDF_Allocation_RecordType_txt__c 
+                                                                               from Core_MDF_ClaimActAllocRecTypeMapping__mdt]){
                                                                                    
                                                                                    mapProgramToRecordTypeAPI.put(recTypeMetaData.Core_MDF_Channel_Program_Name_txt__c, recTypeMetaData.Core_MDF_Allocation_RecordType_txt__c);
                                                                                    
@@ -219,6 +219,8 @@ Accenture- HP		07-02-2019   Modified check for SPCF Record Type
                 
                 
                 String allocationRecTypeDevName = mapProgramToRecordTypeAPI.get(program); 
+                System.debug('mapProgramToRecordTypeAPI: '+mapProgramToRecordTypeAPI);
+                System.debug('allocationRecTypeDevName :' +allocationRecTypeDevName);
                 recordtype = Schema.SObjectType.PartnerFundAllocation.getRecordTypeInfosByDeveloperName().get(allocationRecTypeDevName).getRecordTypeId();
                 
                 

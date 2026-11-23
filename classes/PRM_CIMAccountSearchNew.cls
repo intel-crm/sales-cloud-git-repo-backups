@@ -253,9 +253,10 @@ public static void customSearchErrors(CustomException ce,RestResponse res){
     }
 }
 
-public static void createLogEntries(RestResponse res){
+    //ATHR Fix - TWC729-9556 - JB
+/*public static void createLogEntries(RestResponse res){
    
-}
+}*/
     public static PRM_SBCSearchResults performStep1Search(String EmailAddress/*,RestResponse res*/) {
        // Set<Id> setOfAccountId = new Set<Id>();
        list<Id> listOfAccountId=new list<Id>();
@@ -266,7 +267,7 @@ public static void createLogEntries(RestResponse res){
                 String emailDomain = EmailAddress.substringAfter('@');
                 //Query to get Accounts from SFDC based on email domain
                 for (PRM_SBC_Account_Search_Configuration__c config : [
-                    SELECT ID, Account__c, Account__r.BillingCountryCode
+                    SELECT ID, Account__c/*, Account__r.BillingCountryCode*/ //ATHR Fix - TWC729-9556 - JB
                     FROM PRM_SBC_Account_Search_Configuration__c
                     WHERE
                         Email_Domain__c = :emailDomain

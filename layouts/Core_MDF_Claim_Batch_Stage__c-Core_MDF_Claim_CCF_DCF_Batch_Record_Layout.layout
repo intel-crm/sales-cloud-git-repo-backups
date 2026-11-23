@@ -37,54 +37,42 @@
         <label>Claim Details</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Claim_Nm__c</field>
+                <behavior>Readonly</behavior>
+                <field>Core_MDF_Claim_Reference_Nbr__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Core_MDF_Bank_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Activity_Nbr__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_Ad_Run_Start_Dt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Country_Location_nm__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Total_Amt__c</field>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Media_Vehicle_txt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_Non_Reimbursable_Amt__c</field>
+                <field>Core_MDF_Inv_Receipt_Dt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Inv_Receipt_Cur_Cd__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
                 <field>Core_MDF_Taxes_Local_Amt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Claim_Comment_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Claim_Reference_Nbr__c</field>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Claim_Nm__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Bank_Account_Nbr__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_MDF_Activity_SubType_nm__c</field>
+                <behavior>Required</behavior>
+                <field>Core_MDF_Activity_Nbr__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
@@ -96,15 +84,15 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_Inv_Receipt_Dt__c</field>
+                <field>Core_MDF_Total_Amt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Required</behavior>
-                <field>Core_MDF_Inv_Receipt_Cur_Cd__c</field>
+                <field>Core_MDF_Non_Reimbursable_Amt__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Media_Vehicle_txt__c</field>
+                <field>Core_MDF_Claim_Comment_txt__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -117,13 +105,13 @@
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_CreatedBy_Nm__c</field>
+                <field>CreatedById</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Last_ModifiedBy_Nm__c</field>
+                <field>LastModifiedById</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
@@ -146,36 +134,18 @@
             <sortOrder>0</sortOrder>
         </platformActionListItems>
         <platformActionListItems>
-            <actionName>Core_MDF_Claim_Batch_Stage__c.Core_MDF_Re_process_Failed_Claims</actionName>
-            <actionType>QuickAction</actionType>
+            <actionName>Delete</actionName>
+            <actionType>StandardButton</actionType>
             <sortOrder>1</sortOrder>
+        </platformActionListItems>
+        <platformActionListItems>
+            <actionName>Core_MDF_Claim_Batch_Stage__c.Core_MDF_BatchStage_CreateClaim</actionName>
+            <actionType>QuickAction</actionType>
+            <sortOrder>2</sortOrder>
         </platformActionListItems>
     </platformActionList>
     <relatedLists>
-        <fields>Name</fields>
-        <fields>Core_MDF_Claim_Ref_Number__c</fields>
-        <fields>Request</fields>
-        <fields>Core_MDF_Program__c</fields>
-        <fields>ChannelPartner</fields>
-        <fields>Core_MDF_Country_Location_nm__c</fields>
-        <fields>Core_MDF_Requested_Reimbursement_Amt__c</fields>
-        <fields>Core_MDF_Status__c</fields>
-        <fields>CreatedBy</fields>
-        <fields>CreatedDate</fields>
-        <relatedList>PartnerFundClaim.Core_MDF_Claim_Batch_Stage__c</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>VERSION.TITLE</fields>
-        <fields>VERSION.CREATED_DATE</fields>
-        <fields>VERSION.LAST_UPDATE</fields>
-        <relatedList>ContentDocumentRelatedList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedNoteList</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <fields>NAME</fields>
-        <relatedList>Core_MDF_Audit_Document__c.Core_MDF_Claim_Batch_Record__c</relatedList>
+        <relatedList>RelatedEntityHistoryList</relatedList>
     </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>

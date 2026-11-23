@@ -8,10 +8,6 @@
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>enableActionsConfiguration</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
@@ -61,8 +57,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>core_MDF_DownloadAllDocuments</componentName>
-                <identifier>c_core_MDF_DownloadAllDocuments1</identifier>
+                <componentName>Core_MDF_ManageAuditDocument</componentName>
+                <identifier>Core_MDF_ManageAuditDocument</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -257,16 +253,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>Core_MDF_Scorecard_Aura</componentName>
-                <identifier>c_Core_MDF_Scorecard_Aura1</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-2b45f93d-2514-4629-a594-cf82104539d9</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>false</value>
@@ -329,20 +315,6 @@
                 <identifier>customTab2</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-2b45f93d-2514-4629-a594-cf82104539d9</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Scorecard</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab1</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-88ca4689-920f-40d6-912a-f370fe538f29</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -361,145 +333,6 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>core_MDF_AuditReversal</componentName>
-                <identifier>c_core_MDF_AuditReversal</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 AND 6 AND (2 OR 3 OR 4 OR 5)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Review_Case_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Review Completed</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_Audit_Reversal}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IT Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Co-Marketing L2</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Claim_Lookup_Id__r.Core_MDF_Document_Submission_Missed_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>displayHeader</name>
-                    <value>Planned_Metrics</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objectApiNameinput</name>
-                    <value>PartnerFundRequest</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>recordIdinput</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_KPIDetailSection</componentName>
-                <identifier>core_MDF_KPIDetailSection</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewer}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewerManager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IT Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Comarketing Support L1</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Comarketing Support L2</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>displayHeader</name>
-                    <value>Actual_Metrics</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objectApiNameinput</name>
-                    <value>PartnerFundClaim</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>recordIdinput</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_KPIDetailSection</componentName>
-                <identifier>core_MDF_KPIDetailSection2</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6</booleanFilter>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewer}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewerManager}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>IT Admin</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Comarketing Support L1</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$User.Profile.Name}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Comarketing Support L2</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>

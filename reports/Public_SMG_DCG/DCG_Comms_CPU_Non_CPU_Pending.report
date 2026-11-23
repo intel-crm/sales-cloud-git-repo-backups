@@ -20,7 +20,7 @@
         <field>Opportunity.Core_Consumption_Market__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>INDUSTRY</field>
@@ -47,7 +47,7 @@
     <filter>
         <booleanFilter>(((((1 AND 2 AND 3 and 4) OR (1 AND 5 AND 6)  OR (1 and 5 and 7 and 4)) AND (8 and 1 and 2 and 3)) OR (9 and 1 and 2 and 3)) or (1 and 5 and 10) or (1 and 5 and 7 and 9)) AND 11</booleanFilter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -155,6 +155,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

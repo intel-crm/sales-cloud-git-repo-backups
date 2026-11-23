@@ -140,11 +140,8 @@ export default class IpaPartnerModalViewConfirmation extends LightningElement {
             this.template.querySelector('c-core-intc-modal').closeModal();
         }
     }
-/**
- * 
- * @param {object} value 
- */
-// To fetch the domain list from apex
+
+//to fetch the domain list from apex
 @wire(getCompanyAndRoleInfo)
 companyProfileInfo(value) {
     this.wiredResult = value;
@@ -162,18 +159,11 @@ companyProfileInfo(value) {
     }
 }  
 
-/**
- * 
- * @param {boolean} event domain change event
- */
 // call on change of input text of domain
 handleAcceptDomainChange(event) {
     this.isDomainChange = true;
 }
-/**
- * 
- * @param event domain check event
- */
+
 // call on blur of input text of domain
 handleAcceptDomainBlur(event) {
     let inputDomain = event.target.value;
@@ -185,7 +175,7 @@ handleAcceptDomainBlur(event) {
             isValid = false;
             this.showToastValidDomain();                
         }
-        // To check weather domain is blacklisted or not
+        //to check weather domain is blacklisted or not
         else if (this.blacklistDomain.includes(inputDomain)) {
             this.isDuplicate = false;
             this.isBlacklistDomain = true;
@@ -201,7 +191,7 @@ handleAcceptDomainBlur(event) {
                     break;
                 }
             }
-            // To check duplicacy
+            //to check duplicacy
             if (flag) {
                 this.isDuplicate = false;
                 this.responces[event.target.name] = {
@@ -221,21 +211,15 @@ handleAcceptDomainBlur(event) {
         }
     }
 }
-/**
- * 
- * @param {object} event remove domain event 
- */
-// Remove the whitelist domain
+
+//remove the whitelist domain
 removeDomain(event) {
     let temp = this.template;
     this.responces.splice(event.target.name, 1);
     this.disableSaveButton = false;
 }
-/**
- * 
- * @param {object} event add domain event 
- */
-// Adding domain in text field
+
+// addning domain in text field
 addDomainTextField(event) {
     this.disableSaveButton = false;
     if (this.responces.length === 0) {
@@ -257,12 +241,8 @@ addDomainTextField(event) {
             }
     }
 }
-/**
- * 
- * @param {object} domain 
- * @returns {boolean} The value of domain entered is valid or not
- */
-// Check valid domain
+
+// check valid domain
 CheckIsValidDomain(domain) {
     let vsplit = domain.split(".");
     let isValid = true;
@@ -284,7 +264,7 @@ CheckIsValidDomain(domain) {
     return isValid;
 }
 
-// To save the acceptable domain
+// to save the acceptable domain
 saveAcceptableDomain() {
     if (this.responces.length > 0) {
         this.lastMap.clear();
@@ -349,13 +329,12 @@ saveAcceptableDomain() {
     } 
 }
 
-// After clicking close button
+//after clicking close button
 closeAcceptableDomain() {
     this.responces.splice(0, this.responces.length);
     this.responces = [...this.cancelResponce];
     this.lastMap.clear();
 }
-// When user tries to save domain with no value
 showToastBlankDomain() {
     const event = new ShowToastEvent({
         message: this.label.PRM_DomainBlank_Msg,
@@ -364,7 +343,7 @@ showToastBlankDomain() {
     });
     this.dispatchEvent(event);
 }
-// Max domain limit
+
 showToastMoreDomain() {
     const event = new ShowToastEvent({
         message: this.label.PRM_MaxDomains_Msg,
@@ -373,7 +352,6 @@ showToastMoreDomain() {
     });
     this.dispatchEvent(event);
 }
-// Invalid domain
 showToastValidDomain() {
     const event = new ShowToastEvent({
         message: this.label.PRM_ValidDomain_Msg,
@@ -382,7 +360,6 @@ showToastValidDomain() {
     });
     this.dispatchEvent(event);
 }
-// Blacklisted domain
 showToastBlackListDomain() {
     const event = new ShowToastEvent({
         message: this.label.PRM_BlacklistedDomain_Msg,
@@ -410,7 +387,7 @@ showToastBlackListDomain() {
             this.markAsCompleted();
         }
 
-        // Call mark as complete service here
+        // call mark as complete service here
         e.preventDefault();
     }
 
@@ -442,7 +419,7 @@ showToastBlackListDomain() {
                 this.imageUrl = result.imageUrl;
             }
 
-            // Preprocessing grouping confirmation
+            // preprocessing grouping confirmation
             if (this.componentData === 'grouping-confirmation') {
                 let prevGroup = {
                     id: 'prev-group',
@@ -500,9 +477,9 @@ showToastBlackListDomain() {
     }
 
     async markAsCompleted() {
-        // On close
+        // on close
         this.isLoading = true;
-        // Submitting step loading
+        // submitting step loading
         try {
             if (USE_MOCK) {
                 await MockPartnerOnboardingService.markAsCompleted(this.stepId, true);

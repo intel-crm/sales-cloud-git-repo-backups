@@ -16,7 +16,7 @@
             <name>Populate_User_Id</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>User.CreatedById</field>
             <operation>notEqual</operation>

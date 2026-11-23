@@ -20,7 +20,7 @@ Modification Log :
 *                                                   formatting so it works better with Developer Console auto-formatting.
 *********************************************************************************************************************/
 
-public virtual without sharing class TriggerHandler {
+public virtual class TriggerHandler {
 
     /************* INTEL CODE **************/
     // Collections for optional consolidated DML at the end of trigger execution

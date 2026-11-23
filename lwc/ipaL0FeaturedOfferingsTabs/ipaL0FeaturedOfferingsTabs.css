@@ -1,4 +1,4 @@
-.featured-offerings-container {
+/* .featured-offerings-container {
   padding: 0;
 }
 
@@ -6,11 +6,11 @@
   padding-bottom: 1.5rem;
   padding-left: 1rem;
   padding-top: 1.5rem !important;
-}
+} */
 
 /* Tablet / Desktop */
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .heading {
     padding-left: 0;
   }
-}
+} */

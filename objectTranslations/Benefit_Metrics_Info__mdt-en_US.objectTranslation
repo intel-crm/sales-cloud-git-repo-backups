@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Benefit Metrics Info</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Benefit Metrics Info</value>
+    </caseValues>
+    <fields>
+        <label><!-- Benefit Blade Info --></label>
+        <name>Benefit_Blade_Info__c</name>
+        <relationshipLabel><!-- Benefit Metrics Info --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Metric Action --></label>
+        <name>Metric_Action__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric Description --></label>
+        <name>Metric_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Metric URL --></label>
+        <name>Metric_URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

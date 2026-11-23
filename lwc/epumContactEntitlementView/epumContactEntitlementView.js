@@ -32,10 +32,10 @@ import EPUM_Close from '@salesforce/label/c.EPUM_Close';
 import 	EPUM_PAtoPAMessage from '@salesforce/label/c.EPUM_PAtoPAMessage';
 import 	EPUM_PADtoPADMessage from '@salesforce/label/c.EPUM_PADtoPADMessage';
 import PMP_Request_Support_URL from '@salesforce/label/c.PMP_Request_Support_URL';
-import EPUM_lastSignin from '@salesforce/label/c.EPUM_lastSignin';
+import EPUM_lastSignin from '@salesforce/label/c.EPUM_LastSignIn';
 import EPUM_PartnerRoleTitle from '@salesforce/label/c.EPUM_PartnerRoleTitle';
-import EPUM_delete from '@salesforce/label/c.EPUM_delete';
-import EPUM_reInviteUser from '@salesforce/label/c.EPUM_reInviteUser';
+import EPUM_delete from '@salesforce/label/c.EPUM_Delete';
+import EPUM_reInviteUser from '@salesforce/label/c.EPUM_ReinviteUser';
 
 
 export default class EpumContactEntitlementView extends LightningElement {
@@ -276,8 +276,8 @@ showInviteButton;
                             }
                         }
 
-                        // If selected Contact is anyone , then no one should remove Employee from that contact
-                        if ( conentList.strEntName == "Employee" && conentList.isSelected == true) {
+                        // If selected Contact is Partner Admin , then no one should remove Employee from that contact
+                        if (this.isSelectedConPartnerAdmin && conentList.strEntName == "Employee" && conentList.isSelected == true) {
                             conentList.readOnly = true;
                         }
 
@@ -304,6 +304,7 @@ showInviteButton;
                             //conentList.readOnly = true;
                             this.padToPadMessage = true;
                         }
+
                         //If helptext is not there in entitlement detail, then dont show in the helptext icon in UI
                         if(conentList.entitlehelpText && conentList.entitlehelpText != null){
                             conentList.showHelpText = true;

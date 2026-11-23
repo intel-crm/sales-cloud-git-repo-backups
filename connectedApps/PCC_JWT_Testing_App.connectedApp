@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>shraddhax.sudhakar.more@intel.com</contactEmail>
+    <label>PCC JWT Testing App</label>
+    <oauthConfig>
+        <callbackUrl>https://www.getpostman.com/oauth2/callback</callbackUrl>
+        <certificate>MIIEXjCCA0agAwIBAgIOAYi0lsGpAAAAAHYzDBswDQYJKoZIhvcNAQELBQAweDEQMA4GA1UEAwwHUENDX0pXVDEYMBYGA1UECwwPMDBEOEEwMDAwMDA1dVU4MRcwFQYDVQQKDA5TYWxlc2ZvcmNlLmNvbTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzELMAkGA1UECAwCQ0ExDDAKBgNVBAYTA1VTQTAeFw0yMzA2MTMxMTQ5MThaFw0yNDA2MTMwMDAwMDBaMHgxEDAOBgNVBAMMB1BDQ19KV1QxGDAWBgNVBAsMDzAwRDhBMDAwMDAwNXVVODEXMBUGA1UECgwOU2FsZXNmb3JjZS5jb20xFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xCzAJBgNVBAgMAkNBMQwwCgYDVQQGEwNVU0EwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCIBnCOd7yAyhXHVuO1sUtPf1V1aPgEQu7D6K+H3SpOxOcQxyDkXRY+0q1GzEswNIXJdtOSQzTjUOjujJyW/tz8EyC2DXUTpMkkzDh7WFjcep6Soc9yvg7wWc3gB6BspYgJf6er+ZaAuuOi0Y/4wRzCplLSrrVbM1WCbFRp1RZjRnWLwImmHZCbL+ypSW5lWKBVsJW7AdeC3zSiqXu3mhfuQSNmUM96jNOLVg2QZbWSozrSvt2HiHifEwh1hklfbuztsfi2dAuWHhcZsIq+0Nyl7PiozdqtECk9VU772p4tZMKJOSc5AuhCXEGHz8XJzf1BeoqM2YUeti4aRwzsFltdAgMBAAGjgeUwgeIwHQYDVR0OBBYEFMUpE68yhGuF6UGDp0vSB3PZrn7QMA8GA1UdEwEB/wQFMAMBAf8wga8GA1UdIwSBpzCBpIAUxSkTrzKEa4XpQYOnS9IHc9muftChfKR6MHgxEDAOBgNVBAMMB1BDQ19KV1QxGDAWBgNVBAsMDzAwRDhBMDAwMDAwNXVVODEXMBUGA1UECgwOU2FsZXNmb3JjZS5jb20xFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xCzAJBgNVBAgMAkNBMQwwCgYDVQQGEwNVU0GCDgGItJbBqQAAAAB2MwwbMA0GCSqGSIb3DQEBCwUAA4IBAQAvOAG3rGgFUs/eymEgi/nWCv5O+DpgP7GJInnu0mYGQUNRgjYccG0Z+2jOVmK8gZ2oNwUFMQGDOequgSMHyk//Vuu/dOCJWORBuQpeVIOVKsqDZOnavCa5QZglIQdFsC32bSFAqBhr2Ava1Zy/vXmCV4+xJqOc2cf+wohljTufgTO/4Zil88CATtDXCStwrcIu8OYWLOUOtJ7Y3jG83sl3sYhT9iqvKghHoC9vGecpGJA2JhcYaq6rLQW+OiLq5L5Qr9ZSQUNfQQ5huGd/l1ch7lSdhSBUNFgKjprPa+q4pHwyp8m9uhSaPZxORaXyHMsZv0UMzoNere9ylcyqVNL4</certificate>
+        <consumerKey>3MVG9eQyYZ1h89HfOvSumrC7djSJJ8NzHZxd7_XrkYjIcpB05TmGQJJ8.RzNpTQaEHTxWmqZPyA==</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isCodeCredentialEnabled>false</isCodeCredentialEnabled>
+        <isCodeCredentialPostOnly>false</isCodeCredentialPostOnly>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isDPopEnabled>false</isDPopEnabled>
+        <isDeviceFlowEnabled>false</isDeviceFlowEnabled>
+        <isEnforceRefreshTokenTTL>false</isEnforceRefreshTokenTTL>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isIpBindingEnabled>false</isIpBindingEnabled>
+        <isNamedUserJwtEnabled>true</isNamedUserJwtEnabled>
+        <isPKImTLSEnabled>false</isPKImTLSEnabled>
+        <isPkceRequired>false</isPkceRequired>
+        <isRefreshTokenRotationEnabled>false</isRefreshTokenRotationEnabled>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <isSecretRequiredForTokenExchange>false</isSecretRequiredForTokenExchange>
+        <isTokenExchangeEnabled>false</isTokenExchangeEnabled>
+        <scopes>Api</scopes>
+        <scopes>RefreshToken</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <isTokenExchangeFlowEnabled>false</isTokenExchangeFlowEnabled>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

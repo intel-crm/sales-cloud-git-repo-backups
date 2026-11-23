@@ -38,11 +38,6 @@
             <valueSetDefinition>
                 <sorted>true</sorted>
                 <value>
-                    <fullName>Builder</fullName>
-                    <default>false</default>
-                    <label>Builder</label>
-                </value>
-                <value>
                     <fullName>Service Provider</fullName>
                     <default>false</default>
                     <label>Cloud &amp; Comms Service Provider</label>
@@ -55,7 +50,6 @@
                 <value>
                     <fullName>FPGA Designer</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>FPGA Design Services</label>
                 </value>
                 <value>
@@ -71,24 +65,21 @@
                 <value>
                     <fullName>Manufacturer</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Manufacturer</label>
                 </value>
                 <value>
                     <fullName>Original Equipment Manufacturer (OEM)</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Original Equipment Manufacturer (OEM)</label>
                 </value>
                 <value>
                     <fullName>Solution Integrator</fullName>
                     <default>false</default>
-                    <label>Solution Integrator</label>
+                    <label>Service Integrator</label>
                 </value>
                 <value>
                     <fullName>Seller</fullName>
                     <default>false</default>
-                    <isActive>false</isActive>
                     <label>Solution Provider</label>
                 </value>
                 <value>
@@ -122,29 +113,32 @@
             <valueSetDefinition>
                 <sorted>false</sorted>
                 <value>
-                    <fullName>Member</fullName>
-                    <default>true</default>
-                    <label>Member</label>
-                </value>
-                <value>
-                    <fullName>Gold</fullName>
-                    <default>false</default>
-                    <label>Gold</label>
-                </value>
-                <value>
-                    <fullName>Titanium</fullName>
-                    <default>false</default>
-                    <label>Titanium</label>
-                </value>
-                <value>
                     <fullName>Partner</fullName>
-                    <default>false</default>
+                    <default>true</default>
                     <label>Partner</label>
                 </value>
                 <value>
                     <fullName>Prestige</fullName>
                     <default>false</default>
                     <label>Prestige</label>
+                </value>
+                <value>
+                    <fullName>Gold</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Gold</label>
+                </value>
+                <value>
+                    <fullName>Member</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Member</label>
+                </value>
+                <value>
+                    <fullName>Titanium</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Titanium</label>
                 </value>
             </valueSetDefinition>
         </valueSet>

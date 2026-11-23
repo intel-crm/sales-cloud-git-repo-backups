@@ -95,6 +95,12 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Connected Home</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Wireless &amp; Connectivity</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Client Computing</sourceValue>
             </sourceValues>
             <value>CCG</value>
@@ -181,6 +187,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

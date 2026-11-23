@@ -15,7 +15,7 @@
         <groupingColumn>ACCOUNT_NAME</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</secondaryGroupingColumn>
+        <secondaryGroupingColumn>CDF1</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
@@ -89,6 +89,13 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
+    <customDetailFormulas>
+        <calculatedFormula>TEXT(Year(Datevalue(OpportunityLineItem.Core_Claim_Date__c)))</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF1</developerName>
+        <label>Year Claimed</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <filter>
         <criteriaItems>
             <column>ACCOUNT_OWNER</column>
@@ -107,7 +114,12 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>CDF1</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Rhys/Pippa/Rob-Account Past Performance</name>

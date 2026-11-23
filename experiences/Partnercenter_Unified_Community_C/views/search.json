@@ -32,9 +32,6 @@
         }, {
           "isPublic" : true,
           "name" : "Contact"
-        }, {
-          "isPublic" : true,
-          "name" : "Core_AGS_Role__c"
         } ],
         "searchTerm" : "{!searchString}",
         "showTopResults" : true

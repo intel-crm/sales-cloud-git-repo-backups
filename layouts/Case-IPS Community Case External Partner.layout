@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customButtons>Core_IPS_Edit_Related_Data</customButtons>
     <customButtons>Core_IPS_External_New_Comment</customButtons>
     <customButtons>Attach_File</customButtons>
     <customButtons>Manage_Interested_Party</customButtons>
@@ -13,7 +14,6 @@
     <excludeButtons>CloseCase</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>Edit</excludeButtons>
-    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Share</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <headers>PersonalTagging</headers>
@@ -22,7 +22,15 @@
         <detailHeading>false</detailHeading>
         <editHeading>false</editHeading>
         <label>Alerts &amp; Messaged</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>20</height>
+                <page>Core_IPS_Case_Creation_Notification</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -87,10 +95,6 @@
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_IPS_Legacy_IPS_ID__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -181,7 +185,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>false</editHeading>
         <label>Case Comments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>700</height>
+                <page>Core_IPS_CaseComments</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>true</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -225,7 +237,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Interested Parties</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>200</height>
+                <page>Core_IPS_Show_IP_External</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -233,7 +253,15 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Premier Support Case Attachments</label>
-        <layoutColumns/>
+        <layoutColumns>
+            <layoutItems>
+                <height>500</height>
+                <page>Core_IPS_CaseAttachment_Visibility</page>
+                <showLabel>false</showLabel>
+                <showScrollbars>false</showScrollbars>
+                <width>100%</width>
+            </layoutItems>
+        </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>
     <layoutSections>
@@ -248,7 +276,13 @@
     </layoutSections>
     <quickActionList>
         <quickActionListItems>
-            <quickActionName>Case.SendEmail</quickActionName>
+            <quickActionName>FeedItem.TextPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.ContentPost</quickActionName>
+        </quickActionListItems>
+        <quickActionListItems>
+            <quickActionName>FeedItem.LinkPost</quickActionName>
         </quickActionListItems>
     </quickActionList>
     <relatedObjects>ContactId</relatedObjects>
@@ -259,7 +293,7 @@
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>true</showSubmitAndAttachButton>
     <summaryLayout>
-        <masterLabel>00h1J00000DIcUr</masterLabel>
+        <masterLabel>00h3F000000IuJO</masterLabel>
         <sizeX>3</sizeX>
         <sizeY>4</sizeY>
         <summaryLayoutItems>

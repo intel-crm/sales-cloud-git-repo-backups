@@ -1,39 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>All</fullName>
-        <default>false</default>
-        <label>All</label>
-    </customValue>
-    <customValue>
-        <fullName>Business</fullName>
-        <default>false</default>
-        <label>Business</label>
-    </customValue>
-    <customValue>
-        <fullName>Business owners</fullName>
-        <default>false</default>
-        <label>Business owners</label>
-    </customValue>
-    <customValue>
-        <fullName>Business Owners/SMB</fullName>
-        <default>false</default>
-        <label>Business Owners/SMB</label>
-    </customValue>
-    <customValue>
-        <fullName>Channel Partner</fullName>
-        <default>false</default>
-        <label>Channel Partner</label>
-    </customValue>
-    <customValue>
         <fullName>Commercial</fullName>
         <default>false</default>
         <label>Commercial</label>
-    </customValue>
-    <customValue>
-        <fullName>Consultant/Influencer</fullName>
-        <default>false</default>
-        <label>Consultant/Influencer</label>
     </customValue>
     <customValue>
         <fullName>Consumer</fullName>
@@ -56,56 +26,6 @@
         <label>Developer</label>
     </customValue>
     <customValue>
-        <fullName>Distributors</fullName>
-        <default>false</default>
-        <label>Distributors</label>
-    </customValue>
-    <customValue>
-        <fullName>DIY</fullName>
-        <default>false</default>
-        <label>DIY</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge Customers (edge computing)</fullName>
-        <default>false</default>
-        <label>Edge Customers (edge computing)</label>
-    </customValue>
-    <customValue>
-        <fullName>Education</fullName>
-        <default>false</default>
-        <label>Education</label>
-    </customValue>
-    <customValue>
-        <fullName>Education Professionals</fullName>
-        <default>false</default>
-        <label>Education Professionals</label>
-    </customValue>
-    <customValue>
-        <fullName>Employees</fullName>
-        <default>false</default>
-        <label>Employees</label>
-    </customValue>
-    <customValue>
-        <fullName>Enterprise</fullName>
-        <default>false</default>
-        <label>Enterprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Enthusiast Gaming</fullName>
-        <default>false</default>
-        <label>Enthusiast Gaming</label>
-    </customValue>
-    <customValue>
-        <fullName>Entry Gaming</fullName>
-        <default>false</default>
-        <label>Entry Gaming</label>
-    </customValue>
-    <customValue>
-        <fullName>Gamer</fullName>
-        <default>false</default>
-        <label>Gamer</label>
-    </customValue>
-    <customValue>
         <fullName>Gaming</fullName>
         <default>false</default>
         <label>Gaming</label>
@@ -116,29 +36,9 @@
         <label>Government</label>
     </customValue>
     <customValue>
-        <fullName>Government/Public Sector</fullName>
-        <default>false</default>
-        <label>Government/Public Sector</label>
-    </customValue>
-    <customValue>
-        <fullName>Government agency heads</fullName>
-        <default>false</default>
-        <label>Government agency heads</label>
-    </customValue>
-    <customValue>
-        <fullName>Healthcare</fullName>
-        <default>false</default>
-        <label>Healthcare</label>
-    </customValue>
-    <customValue>
         <fullName>IT Decision Maker</fullName>
         <default>false</default>
         <label>IT Decision Maker</label>
-    </customValue>
-    <customValue>
-        <fullName>IT Manager</fullName>
-        <default>false</default>
-        <label>IT Manager</label>
     </customValue>
     <customValue>
         <fullName>Large Business</fullName>
@@ -151,16 +51,6 @@
         <label>Line of Business</label>
     </customValue>
     <customValue>
-        <fullName>Consumer - Mainstream</fullName>
-        <default>false</default>
-        <label>Consumer - Mainstream</label>
-    </customValue>
-    <customValue>
-        <fullName>Mainstream Consumer (Overwhelmed)</fullName>
-        <default>false</default>
-        <label>Mainstream Consumer (Overwhelmed)</label>
-    </customValue>
-    <customValue>
         <fullName>Mainstream Consumer - Knowledge</fullName>
         <default>false</default>
         <label>Mainstream Consumer - Knowledge</label>
@@ -171,19 +61,9 @@
         <label>Mainstream Consumer - Overwhelmed</label>
     </customValue>
     <customValue>
-        <fullName>Mainstream Consumer - Tech Knowledgeable</fullName>
-        <default>false</default>
-        <label>Mainstream Consumer - Tech Knowledgeable</label>
-    </customValue>
-    <customValue>
         <fullName>Managed Business</fullName>
         <default>false</default>
         <label>Managed Business</label>
-    </customValue>
-    <customValue>
-        <fullName>Manufacturer/OEM</fullName>
-        <default>false</default>
-        <label>Manufacturer/OEM</label>
     </customValue>
     <customValue>
         <fullName>Mid Market</fullName>
@@ -191,64 +71,9 @@
         <label>Mid Market</label>
     </customValue>
     <customValue>
-        <fullName>Mobile Go Getter</fullName>
-        <default>false</default>
-        <label>Mobile Go Getter</label>
-    </customValue>
-    <customValue>
-        <fullName>Modern Consumer (Knowledgeable)</fullName>
-        <default>false</default>
-        <label>Modern Consumer (Knowledgeable)</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Partner </fullName>
-        <default>false</default>
-        <label>Partner </label>
-    </customValue>
-    <customValue>
-        <fullName>Partner Sales Force</fullName>
-        <default>false</default>
-        <label>Partner Sales Force</label>
-    </customValue>
-    <customValue>
-        <fullName>Project / program managers</fullName>
-        <default>false</default>
-        <label>Project / program managers</label>
-    </customValue>
-    <customValue>
-        <fullName>Purchasing</fullName>
-        <default>false</default>
-        <label>Purchasing</label>
-    </customValue>
-    <customValue>
         <fullName>Reseller</fullName>
         <default>false</default>
         <label>Reseller</label>
-    </customValue>
-    <customValue>
-        <fullName>Sales Leaders</fullName>
-        <default>false</default>
-        <label>Sales Leaders</label>
-    </customValue>
-    <customValue>
-        <fullName>Security managers</fullName>
-        <default>false</default>
-        <label>Security managers</label>
-    </customValue>
-    <customValue>
-        <fullName>Senior Business Decision Maker</fullName>
-        <default>false</default>
-        <label>Senior Business Decision Maker</label>
-    </customValue>
-    <customValue>
-        <fullName>Small and Medium Business</fullName>
-        <default>false</default>
-        <label>Small and Medium Business</label>
     </customValue>
     <customValue>
         <fullName>Small Business</fullName>
@@ -261,35 +86,15 @@
         <label>Solutions Architect</label>
     </customValue>
     <customValue>
-        <fullName>Sr. Business Decision Maker</fullName>
-        <default>false</default>
-        <label>Sr. Business Decision Maker</label>
-    </customValue>
-    <customValue>
-        <fullName>System Integrators</fullName>
-        <default>false</default>
-        <label>System Integrators</label>
-    </customValue>
-    <customValue>
-        <fullName>Technical Influencer</fullName>
-        <default>false</default>
-        <label>Technical Influencer</label>
-    </customValue>
-    <customValue>
-        <fullName>Consumer - Premium</fullName>
-        <default>false</default>
-        <label>Consumer - Premium</label>
-    </customValue>
-    <customValue>
         <fullName>Unmanaged Small Business</fullName>
         <default>false</default>
         <label>Unmanaged Small Business</label>
     </customValue>
     <customValue>
-        <fullName>Large Business (1000 + Employees)</fullName>
+        <fullName>Mid Market / Large Enterprise</fullName>
         <default>false</default>
         <isActive>false</isActive>
-        <label>Large Business (1000 + Employees)</label>
+        <label>Mid Market / Large Enterprise</label>
     </customValue>
     <customValue>
         <fullName>Small Business (1 - 1000 Employees)</fullName>
@@ -304,24 +109,17 @@
         <label>LOB</label>
     </customValue>
     <customValue>
+        <fullName>Large Business (1000 + Employees)</fullName>
+        <default>false</default>
+        <isActive>false</isActive>
+        <label>Large Business (1000 + Employees)</label>
+    </customValue>
+    <customValue>
         <fullName>ITDM</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>ITDM</label>
     </customValue>
-    <customValue>
-        <fullName>Mid Market / Large Enterprise</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Mid Market / Large Enterprise</label>
-    </customValue>
-    <customValue>
-        <fullName>Business Owners/SMB </fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Business Owners/SMB </label>
-    </customValue>
-    <description>Store Target Audience values</description>
     <masterLabel>Target Audience</masterLabel>
     <sorted>true</sorted>
 </GlobalValueSet>

@@ -19,6 +19,25 @@ import PRM_Location_Accs_Error_Msg from '@salesforce/label/c.PRM_Location_Accs_E
 import PRM_OPID_Update_Success_Msg from '@salesforce/label/c.PRM_OPID_Update_Success_Msg';
 import PRM_OPID_Update_Error_Msg from '@salesforce/label/c.PRM_OPID_Update_Error_Msg';
 import PRM_Partner_Role_Error_Msg from '@salesforce/label/c.PRM_Partner_Role_Error_Msg';
+import PRM_OPID_Account_Name from '@salesforce/label/c.PRM_OPID_Account_Name';
+import PRM_Partner_Role_Column from '@salesforce/label/c.PRM_Partner_Role_Column';
+import PRM_Tier_Column from '@salesforce/label/c.PRM_Tier_Column';
+import PRM_Market_Type from '@salesforce/label/c.PRM_Market_Type';
+import PRM_Total_Sales from '@salesforce/label/c.PRM_Total_Sales';
+import PRM_Training_Count_Col from '@salesforce/label/c.PRM_Training_Count_Col';
+import PRM_Emp_Training_Col from '@salesforce/label/c.PRM_Emp_Training_Col';
+import PRM_MP_Solutions_Col from '@salesforce/label/c.PRM_MP_Solutions_Col';
+import PRM_Nbr_Achieved_Column from '@salesforce/label/c.PRM_Nbr_Achieved_Column';
+import PRM_Rank from '@salesforce/label/c.PRM_Rank';
+import PRM_Spec_Present from '@salesforce/label/c.PRM_Spec_Present';
+import PRM_Select_Benefit from '@salesforce/label/c.PRM_Select_Benefit';
+import PRM_Notes_Col from '@salesforce/label/c.PRM_Notes_Col';
+import PRM_Integ_Report from '@salesforce/label/c.PRM_Integ_Report';
+import PRM_Acc_Plan_Ind from '@salesforce/label/c.PRM_Acc_Plan_Ind';
+import PRM_Eligibility_Tier from '@salesforce/label/c.PRM_Eligibility_Tier';
+import PRM_Recom_Type from '@salesforce/label/c.PRM_Recom_Type';
+import PRM_Status_Column from '@salesforce/label/c.PRM_Status_Column';
+import PRM_Upgrade_Column from '@salesforce/label/c.PRM_Upgrade_Column';
 
 // Datatable Columns
 const columns = [
@@ -26,7 +45,7 @@ const columns = [
         type: 'button',
         fixedWidth: 110,
         typeAttributes: {
-            label: 'Upgrade',
+            label: PRM_Upgrade_Column,
             name: 'upgrade',
             title: 'Upgrade OPID',
             alternativeText: 'Upgrade OPID',
@@ -50,23 +69,23 @@ const columns = [
             disabled: { fieldName: 'disableIcon'}
         }
     }, {
-        label: 'OPID/Account Name',
+        label: PRM_OPID_Account_Name,
         fieldName: 'nameUrl',
         type: 'url',
         initialWidth: 150,
         typeAttributes: { label: { fieldName: 'opidName' }, target: '_blank' }
     }, {
-        label: 'Partner Role',
+        label: PRM_Partner_Role_Column,
         fieldName: 'partnerRole',
         type: 'text',
         initialWidth: 150
     }, {
-        label: 'Tier',
+        label: PRM_Tier_Column,
         fieldName: 'tier',
         type: 'text',
         initialWidth: 100
     }, {
-        label: 'Market Type',
+        label: PRM_Market_Type,
         fieldName: 'marketType',
         type: 'text',
         initialWidth: 100
@@ -75,75 +94,75 @@ const columns = [
         fieldName: 'salesGroup',
         type: 'text'
     },*/ {
-        label: 'Total Sales',
+        label: PRM_Total_Sales,
         fieldName: 'totalSales',
         type: 'number',
         initialWidth: 100
     },{
-        label: 'Training Credit Points Count',
+        label: PRM_Training_Count_Col,
         fieldName: 'trainingPointsCount',
         type: 'number',
         initialWidth: 100
     }, {
-        label: 'No Of Employees Done training',
+        label: PRM_Emp_Training_Col,
         fieldName: 'noOfEmpDoneTraining',
         type: 'number',
         initialWidth: 100
     }, {
-        label: 'No Of MP Solutions',
+        label: PRM_MP_Solutions_Col,
         fieldName: 'noOfMPSolutions',
         type: 'number',
         initialWidth: 100
     }, {
-        label: 'Total Nbr Acheived Competancy',
+        label: PRM_Nbr_Achieved_Column,
         fieldName: 'trainingCompetancy',
         type: 'number',
         initialWidth: 100
     },  {
-        label: 'Rank',
+        label: PRM_Rank,
         fieldName: 'rank',
         type: 'number',
         initialWidth: 100
     },{
-        label: 'Specialty Present',
+        label: PRM_Spec_Present,
         fieldName: 'specialtyPresent',
         type: 'text',
         initialWidth: 100
     }, {
-        label: 'Select Benefit',
+        label: PRM_Select_Benefit,
         fieldName: 'selectBenefit',
         type: 'text',
         initialWidth: 170
     },{
-        label: 'Notes',
+        label: PRM_Notes_Col,
         fieldName: 'notes',
         type: 'text',
         initialWidth: 200,
         editable: true
     },{
-        label: 'Submitted Integration Report',
+        label: PRM_Integ_Report,
         fieldName: 'submittedIntegReport',
         type: 'boolean',
         initialWidth: 100,
         editable: true
     },{
-        label: 'Account Plan Indicator',
+        label: PRM_Acc_Plan_Ind,
         fieldName: 'accountPlanInd',
         type: 'boolean',
         initialWidth: 100,
         editable: true
     },{
-        label: 'Eligibility Tier',
+        label: PRM_Eligibility_Tier,
         fieldName: 'elegibilityTier',
         type: 'text',
         initialWidth: 100
     }, {
-        label: 'Recommendation Type',
+        label: PRM_Recom_Type,
         fieldName: 'recommType',
         type: 'text',
         initialWidth: 100
     }, {
-        label: 'Status',
+        label: PRM_Status_Column,
         fieldName: 'status',
         type: 'text',
         initialWidth: 100

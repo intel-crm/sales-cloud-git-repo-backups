@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_IPA_Badge_Tier_Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_IPA_Badge_Tier_Config</value>
+    </caseValues>
+    <fields>
+        <label><!-- PMP_IPA_Badge_Tier (Chinese) --></label>
+        <name>PMP_IPA_Badge_Tier_Chinese__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP_IPA_Badge_Tier (Japanese) --></label>
+        <name>PMP_IPA_Badge_Tier_Japanese__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP_IPA_Badge_Tier --></label>
+        <name>PMP_IPA_Badge_Tier__c</name>
+    </fields>
+    <fields>
+        <label><!-- PMP Is Active --></label>
+        <name>PMP_Is_Active__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

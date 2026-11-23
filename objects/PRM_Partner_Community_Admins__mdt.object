@@ -6,7 +6,7 @@
         <externalId>false</externalId>
         <fieldManageability>SubscriberControlled</fieldManageability>
         <label>Community Admin Email</label>
-        <length>255</length>
+        <length>80</length>
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>

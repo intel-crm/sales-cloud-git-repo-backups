@@ -1,0 +1,28 @@
+<template>
+    <div class="component-wrap">
+        <h3 class="slds-m-bottom_medium">{title}</h3>
+        <div class="component-content">
+            <template for:each={cards} for:item="card">
+                <div class="comp-item" key={card.id}>
+                    <h4 class="component-subheading"><span class={card.faIcon}></span>{card.title}</h4>
+                    <template for:each={card.content} for:item="content">
+                        <template if:true={content.isText}>
+                           <p class="slds-m-bottom_medium" key={content.id}>{content.body}</p>
+                        </template>
+                        <template if:true={content.isRichText}>
+                            <div class="slds-m-bottom_medium" key={content.id}><lightning-formatted-rich-text value={content.body}></lightning-formatted-rich-text></div>
+                        </template>
+                        <template if:true={content.isLinks}>
+                            <template for:each={content.body} for:item="link">
+                                <div class="link-out slds-m-bottom_medium" key={link.id}>
+                                    <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage}  object-page={link.objectPage} record-id={link.recordId} caret="true"></c-ipa-link>
+                                </div>
+                            </template>
+                        </template>
+                    </template>
+                </div>
+            </template>
+    
+        </div>
+    </div>
+</template>

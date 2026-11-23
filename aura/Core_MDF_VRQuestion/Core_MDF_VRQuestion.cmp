@@ -31,8 +31,6 @@
 
   <aura:attribute type="boolean" name="showVR" default="false" />
   <aura:attribute type="boolean" name="showVROptIn" default="false" />
-      <aura:attribute name="vrQuestionList" type="String[]" />  
-
   <aura:attribute
     type="PartnerfundRequest[]"
     name="VRdata"
@@ -42,19 +40,23 @@
   <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
 
   <aura:if isTrue="{!v.showVR}">
-    <aura:iteration items="{!v.vrQuestionList}" var="item"> 
     <div class="slds-card">
       <div class="slds-p-around_large">
         <lightning:layout horizontalAlign="spread" multipleRows="true">
-		 <aura:if isTrue="{!item.pmemIncentive}">
-         
+          <lightning:layoutItem
+            padding="around-small"
+            flexibility="grow"
+            size="3"
+            mediumDeviceSize="3"
+            largeDeviceSize="3"
+          ></lightning:layoutItem>
 
           <lightning:layoutItem
             padding="around-small"
             flexibility="grow"
-            size="5"
-            mediumDeviceSize="5"
-            largeDeviceSize="5"
+            size="3"
+            mediumDeviceSize="3"
+            largeDeviceSize="3"
           >
             <lightning:select
               value="{!v.newPFRq.Core_MDF_Incentive_Question_ind__c}"
@@ -68,40 +70,38 @@
               <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
             </lightning:select>
           </lightning:layoutItem>
-              <lightning:layoutItem
-            padding="around-small"
-            flexibility="grow"
-            size="1"
-            mediumDeviceSize="1"
-            largeDeviceSize="1"
-          ></lightning:layoutItem>
-		</aura:if>  
-		 <aura:if isTrue="{!item.otherIncentive}">
+
           <lightning:layoutItem
             padding="around-small"
             flexibility="grow"
-            size="5"
-            mediumDeviceSize="5"
-            largeDeviceSize="5"
+            size="3"
+            mediumDeviceSize="3"
+            largeDeviceSize="3"
           >
-              <lightning:select value="{!item.answer}" required="true" onchange="{!c.loadQuestion}" name="Core_MDF_Incentive_Opted_In_ind__c"
-                                                      label="{!item.question}" disabled = "{!v.disabled}">
-                                        <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
-                                        <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
-                                    </lightning:select> 
+            <aura:if isTrue="{!v.showVROptIn}">
+              <lightning:select
+                value="{!v.newPFRq.Core_MDF_Incentive_Opted_In_ind__c}"
+                required="true"
+                name="Incentive Opt In"
+                label="{!$Label.c.Core_MDF_VRInc_OptIn_Question}"
+                disabled="{!v.disabled}"
+                onchange="{!c.loadQuestion}"
+              >
+                <option value="No">{!$Label.c.Core_MDF_DQNo}</option>
+                <option value="Yes">{!$Label.c.Core_MDF_DQYes}</option>
+              </lightning:select>
+            </aura:if>
           </lightning:layoutItem>
 
           <lightning:layoutItem
             padding="around-small"
             flexibility="grow"
-            size="1"
-            mediumDeviceSize="1"
-            largeDeviceSize="1"
+            size="3"
+            mediumDeviceSize="3"
+            largeDeviceSize="3"
           ></lightning:layoutItem>
-		   </aura:if>
         </lightning:layout>
       </div>
     </div>
-	  </aura:iteration>
   </aura:if>
 </aura:component>

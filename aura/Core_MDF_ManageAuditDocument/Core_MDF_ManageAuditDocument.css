@@ -1,0 +1,12 @@
+.THIS {
+}
+.THIS .slds-input{
+    min-height:6rem;
+}
+.THIS .slds-checkbox [type="checkbox"][disabled] .slds-checkbox_faux:after{
+    border-color: blue !important;
+        
+}
+/*.THIS.div.div.div:nth-child(1).lightning-file-upload.lightning-input.div{
+    top:-1.5rem !important;
+}*/

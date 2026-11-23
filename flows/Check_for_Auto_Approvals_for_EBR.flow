@@ -3,8 +3,8 @@
     <actionCalls>
         <name>Auto_Approval_Check</name>
         <label>Auto Approval Check</label>
-        <locationX>594</locationX>
-        <locationY>403</locationY>
+        <locationX>585</locationX>
+        <locationY>401</locationY>
         <actionName>ER_CheckAutoapprovalCriteria</actionName>
         <actionType>apex</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -15,12 +15,11 @@
             </value>
         </inputParameters>
         <nameSegment>ER_CheckAutoapprovalCriteria</nameSegment>
-        <offset>0</offset>
     </actionCalls>
-    <apiVersion>59.0</apiVersion>
+    <apiVersion>58.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <environments>Default</environments>
-    <interviewLabel>Check for Auto Approvals for EBR {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel>Auto Approval for EBR {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Check for Auto Approvals for EBR</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -47,7 +46,7 @@
         <connector>
             <targetReference>Auto_Approval_Check</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND 3 AND 4 AND 5</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
             <field>Current_Status__c</field>
             <operator>EqualTo</operator>
@@ -74,13 +73,6 @@
             <operator>IsNull</operator>
             <value>
                 <booleanValue>false</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>PRM_Source__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>IPA - Portal</stringValue>
             </value>
         </filters>
         <object>PRM_Registration_Request__c</object>

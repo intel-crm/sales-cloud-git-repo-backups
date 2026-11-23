@@ -5,4 +5,9 @@
     <confirmationTokenRequired>false</confirmationTokenRequired>
     <description>Grid used to manage Opportunities based on Stages.</description>
     <label>Opportunity Stages</label>
+    <packageVersions>
+        <majorNumber>8</majorNumber>
+        <minorNumber>1</minorNumber>
+        <namespace>GBLite</namespace>
+    </packageVersions>
 </ApexPage>

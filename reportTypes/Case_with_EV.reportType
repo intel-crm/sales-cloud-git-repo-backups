@@ -700,11 +700,6 @@
             <field>Core_IPS_Case_Owner_Name__c</field>
             <table>Case</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_IPS_Case_Owner__c</field>
-            <table>Case</table>
-        </columns>
         <masterLabel>Cases</masterLabel>
     </sections>
     <sections>

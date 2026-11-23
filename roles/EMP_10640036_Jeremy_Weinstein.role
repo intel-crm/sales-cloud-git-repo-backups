@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Brent Collins</description>
+    <description>EMP of Trevor Vickers</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10640036_Jeremy_Weinstein</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_12271211_Brent_Collins</parentRole>
+    <parentRole>EMP_10625003_Trevor_Vickers</parentRole>
 </Role>

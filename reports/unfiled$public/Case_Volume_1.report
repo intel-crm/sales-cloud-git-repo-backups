@@ -50,34 +50,12 @@
         <field>Case.Core_IPS_Backend_ID_URL__c</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4)</booleanFilter>
         <criteriaItems>
             <column>RECORDTYPE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>Case.Core_IPS_Case_Create_Self_Assigned,Case.IPS_Case_Create,Case.IPS_Closed_Case,Case.IPS_GEC_ReadOnly</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Product_name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>FPGA,Agilex,Arria,Cyclone,MAX,Stratix,PAC,development kit</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>SUBJECT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>SGDMA</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_Issue_Description__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>SGDMA</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -105,8 +83,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
-        <endDate>2020-12-31</endDate>
-        <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2010-01-01</startDate>
+        <interval>INTERVAL_CURY</interval>
     </timeFrameFilter>
 </Report>

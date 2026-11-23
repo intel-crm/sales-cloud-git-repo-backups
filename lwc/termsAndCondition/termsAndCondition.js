@@ -10,8 +10,7 @@ import PRM_RedirectToOverViewPage from "@salesforce/label/c.PRM_RedirectToOverVi
 import PRM_RedirectToPostLaunchNonPrimary from "@salesforce/label/c.PRM_RedirectToPostLaunchNonPrimary";
 import IPALegalTermsAndConditionStaticLink from "@salesforce/label/c.IPALegalTermsAndConditionStaticLink";
 import getTermsandConditions from "@salesforce/apex/PRM_CompanyProfileController.getTermsandConditions";
-
-import IPASecureHomepageLink from '@salesforce/label/c.IPA_Secure_Homepage_Link';
+//import getDownloadURL from "@salesforce/apex/PRM_CompanyProfileController.getDownloadURL";
 
 export default class TermsAndCondition extends LightningElement {
 	
@@ -32,7 +31,6 @@ export default class TermsAndCondition extends LightningElement {
 			IPALegalTermsAndConditionStaticLink
 	};	
 	isPrimaryContact=false;
-	isInternalUser=false;
 
 	connectedCallback(){
 		this.termsAndConditions();
@@ -41,9 +39,8 @@ export default class TermsAndCondition extends LightningElement {
 	@wire(isLoggedInUserPrimaryContact)
 	checkLoggedinUserIsPrimaryContact({data,error}){
 			if (data) {
-					this.isPrimaryContact=data.isPrimary;
-					this.isInternalUser=data.isInternalUser;
-
+					var result = JSON.parse(data);
+					this.isPrimaryContact=result;
 			}
 			else if(error){
 					console.log(error);
@@ -56,11 +53,7 @@ export default class TermsAndCondition extends LightningElement {
 					var result = JSON.parse(data);
 					this.rowCount = Object.keys(result).length > 0 ? true : false;
 					if(this.rowCount<=0){
-							if(this.isInternalUser)
-							{
-								location.replace(IPASecureHomepageLink + "/accessdenied");
-							}
-							else if(this.isPrimaryContact){
+							if(this.isPrimaryContact){
 									location.replace(this.formLabels.PRM_RedirectToOverViewPage);
 							}else{
 									location.replace(this.formLabels.PRM_RedirectToPostLaunchNonPrimary);
@@ -93,8 +86,29 @@ export default class TermsAndCondition extends LightningElement {
 	 * @param {*} event 
 	 * Generating link to download Document
 	 */
-	handleClick(event){
-		this.openDoc = PRM_org_login_URL+'sfc/servlet.shepherd/document/download/'+event.target.dataset.name+'?operationContext=S1';	
-	}
+	// handleClick(event){
+	// 	// window.location.reload();
+	// 	console.log('name--->'+event.target.dataset.name);
+	// 	// this.openDoc = PRM_org_login_URL+'sfc/servlet.shepherd/document/download/'+event.target.dataset.name+'?operationContext=S1';	
+	// 	getDownloadURL({fileName:event.target.dataset.name }).then(response=>{
+	// 		if(response.length>0){
+    //             this.openDoc = response;
+	// 		}
+	// 	})
+	// 	.catch(error =>{
+	// 		console.log("Error generating download link",error);
+	// 	})
+	// }
+
+
+	// @wire(getDownloadURL,{fileName: this.fileName})
+	// 	getData({ data, error }) {
+    //         if(data){
+	// 			this.openDoc = data;
+	// 		}
+	// 		else if(error){
+	// 			this.error = error;
+	// 		}
+	// }
 
 }

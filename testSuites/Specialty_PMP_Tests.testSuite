@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>PMP_AccountBenefitPartnerUtility_Test</testClassName>
+    <testClassName>PMP_AccountHandler_Test</testClassName>
+    <testClassName>PMP_GenerateDQReportUtilityTest</testClassName>
+    <testClassName>PMP_MarketplaceNewPartnerDetailFeed_Test</testClassName>
+    <testClassName>PMP_OfferingDetailsController_Test</testClassName>
+    <testClassName>PMP_PAG_mem_handler_Test</testClassName>
+    <testClassName>PMP_PartnerOnGoingVisitNotifyBatchTest</testClassName>
+    <testClassName>PMP_SearchContextualFilter_Test</testClassName>
+    <testClassName>PMP_SearchEventTriggerHelper_Test</testClassName>
+    <testClassName>PMP_SearchProductController_Test</testClassName>
+    <testClassName>PMP_SearchUtilityController_Test</testClassName>
+    <testClassName>PMP_SearchUtilityNewTest</testClassName>
+    <testClassName>PMP_SendEmailForCreateOffering_Test</testClassName>
+</ApexTestSuite>

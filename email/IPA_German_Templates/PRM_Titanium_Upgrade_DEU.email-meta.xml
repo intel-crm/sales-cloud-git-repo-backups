@@ -4,17 +4,17 @@
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_DEU</name>
     <style>none</style>
-    <subject>Willkommen bei der Intel® Partner Alliance Prestige</subject>
-    <textOnly>Intel® Partner Alliance – Prestige
+    <subject>Willkommen bei der Intel® Partner Alliance Titanium</subject>
+    <textOnly>Intel® Partner Alliance – Titanium
 
 
 {!Contact.FirstName},
 
-Wir gratulieren Ihnen! Ihr Unternehmen wurde auf die Stufe Intel® Partner Alliance Prestige hochgesetzt. Als Programmpartner haben Sie Anspruch auf diese Leistungen:
+Wir gratulieren Ihnen! Ihr Unternehmen wurde auf die Stufe Intel® Partner Alliance Titanium hochgesetzt. Als Programmpartner haben Sie Anspruch auf diese Leistungen:
 
 Erhöhter Punktverdienst auf sowohl Komponenten als auch Systeme
 Einladung zur bedeutendsten Intel Partnerveranstaltung des Jahres: Intel® Partner Connect
-Prestige-Empfehlungsschreiben des Intel Managements an Ihre potenziellen Kunden
+Titanium-Empfehlungsschreiben des Intel Managements an Ihre potenziellen Kunden
 
 Anmelden zum Zugriff auf Tools und Ressourcen.
 
@@ -30,7 +30,7 @@ Vielen Dank
 Ihr Intel® Partner Alliance Team
 
 Diese Nachricht wurde als wichtige Geschäftskommunikation bezüglich Ihrer aktuellen Beziehung zur Intel® Partner Alliance an Sie gesendet.
-© {!$Label.PRM_CurrentYear} Intel Corporation.
+© {!Contact.Core_Current_Year__c} Intel Corporation.
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
 Datenschutz | Cookies</textOnly>
     <type>custom</type>

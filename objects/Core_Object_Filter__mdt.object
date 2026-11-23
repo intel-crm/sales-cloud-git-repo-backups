@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Default_Filter__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check if it is the default filter</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Check if it is the default filter</inlineHelpText>
+        <label>Default Filter</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Default_for_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this, if this filter is the default for Partners</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Default for Partner</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enabled_for_Partners__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check this, if the list view is enable for partners</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enabled for Partners</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Filter_Label__c</fullName>
+        <description>The Actual Filter Label</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Filter Label</label>
+        <length>80</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Filter_Value__c</fullName>
+        <description>The Filter Criteria</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Filter Value</label>
+        <length>32768</length>
+        <type>LongTextArea</type>
+        <visibleLines>9</visibleLines>
+    </fields>
+    <label>Core Object Filter</label>
+    <listViews>
+        <fullName>All_Objects_List_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Filter_Label__c</columns>
+        <columns>Default_Filter__c</columns>
+        <columns>Enabled_for_Partners__c</columns>
+        <columns>Filter_Value__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All Objects List View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>Core Object Filters</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

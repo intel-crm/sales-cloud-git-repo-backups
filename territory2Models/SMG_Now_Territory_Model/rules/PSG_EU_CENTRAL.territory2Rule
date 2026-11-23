@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Territory2Rule xmlns="http://soap.sforce.com/2006/04/metadata">
     <active>true</active>
-    <booleanFilter>(1 AND 2 AND 8) OR (1 AND 3 AND 4 AND 8) OR (1 AND 5 AND 6 AND 7 AND 8)</booleanFilter>
+    <booleanFilter>(1 AND 2) OR (1 AND 3 AND 4)</booleanFilter>
     <name>PSG-EU-CENTRAL</name>
     <objectType>Account</objectType>
     <ruleItems>
@@ -12,36 +12,16 @@
     <ruleItems>
         <field>Account.BillingCountryCode</field>
         <operation>equals</operation>
-        <value>DEU,RUS</value>
+        <value>ALB,DZA,AGO,ARM,AUT,AZE,BLR,BIH,BGR,COM,HRV,CYP,CZE,EST,ETH,GEO,DEU,GHA,GRC,HUN,IRQ,JOR,KAZ,KGZ,LVA,LIE,LTU,MKD,MDG,MDA,NAM,NGA,OMN,POL,ROU,RUS,SAU,SEN,SCG,SVK,SVN,ZAF,TUR,UKR,UZB,YEM,ZMB,ZWE</value>
     </ruleItems>
     <ruleItems>
         <field>Account.BillingCountryCode</field>
         <operation>equals</operation>
-        <value>AUT</value>
+        <value>CHE,AUT</value>
     </ruleItems>
     <ruleItems>
-        <field>Account.Name</field>
-        <operation>contains</operation>
-        <value>APPLE,GE HEALTHCARE</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Core_Geo__c</field>
-        <operation>equals</operation>
-        <value>EMEA</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Name</field>
-        <operation>contains</operation>
-        <value>ABB,Power-one,B&amp;R,BERNECKER,MONDIAL</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Name</field>
-        <operation>notContain</operation>
-        <value>RABBI</value>
-    </ruleItems>
-    <ruleItems>
-        <field>Account.Core_Deactivated__c</field>
-        <operation>equals</operation>
-        <value>False</value>
+        <field>Account.Core_Account_Tier__c</field>
+        <operation>includes</operation>
+        <value>PSG-Tier 4</value>
     </ruleItems>
 </Territory2Rule>

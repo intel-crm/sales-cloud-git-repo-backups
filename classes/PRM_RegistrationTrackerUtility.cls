@@ -418,7 +418,7 @@ Return: list<PRM_Registration_Tracker_Steps__mdt>
         list<PRM_Registration_Tracker_Steps__mdt> QuerymdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
         string step = '%;' + stepno + ';%';
         //system.debug('---stepno ' + stepno + '--' + step);
-        list<PRM_Registration_Tracker_Steps__mdt> mdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
+        //list<PRM_Registration_Tracker_Steps__mdt> mdtList = new List<PRM_Registration_Tracker_Steps__mdt>();
         string quryStr = 'select id,DeveloperName ,PRM_Revise__c,PRM_Revise_Step__c,PRM_Current_Step__c,PRM_Display_Step_No__c,PRM_Update_field__c,PRM_Registration_Type__c,Masterlabel,Label,PRM_Auto_Approved__c,Retry__c from PRM_Registration_Tracker_Steps__mdt where ';
         if (autoapproved != null && autoapproved) {
             //list<string> stepnoss = stepno.split(';');
@@ -426,11 +426,15 @@ Return: list<PRM_Registration_Tracker_Steps__mdt>
         }
         quryStr += ' PRM_Previous_Step__c like:step  order by PRM_Current_Step__c Asc ';
         QuerymdtList = Database.query(quryStr);
-        for (PRM_Registration_Tracker_Steps__mdt RT : QuerymdtList) {
+        //ATHR Fix - TWC729-9556 - JB - start
+        /*for (PRM_Registration_Tracker_Steps__mdt RT : QuerymdtList) {
             mdtList.add(RT);
         }
+        
        // system.debug('---nextMDTList ' + mdtList.size() + '--' + mdtList);
-        return mdtList;
+        return mdtList;*/
+        //ATHR Fix - TWC729-9556 - JB - end
+        return QuerymdtList;
     }
     
     /************************************************************************************************************************************
@@ -592,7 +596,7 @@ Return: static set<string>
             SELECT
             Id,
             PRM_Contact_Id__r.Email,
-            PRM_Contact_Id__c,
+            /*PRM_Contact_Id__c,*/ //ATHR Fix - TWC729-9556 - JB
             CreatedDate,
             PRM_Activated_Date__c
             FROM PRM_Account_Contact_Relationship__c
@@ -618,10 +622,14 @@ Return: static set<string>
                 FROM PRM_EmailLog__c
                 WHERE
                 PRM_Contact__c IN :conid
-                AND (Email_Template_Name__c LIKE '%SCRRENGENRLREV%'
+                /*AND (Email_Template_Name__c LIKE '%SCRRENGENRLREV%'
                      OR Email_Template_Name__c LIKE '%SCRUACCTADD%'
                      OR Email_Template_Name__c LIKE '%ADMINREG%'
-                     OR Email_Template_Name__c LIKE '%CampaignInviteForBulk%')
+                     OR Email_Template_Name__c LIKE '%CampaignInviteForBulk%')*///ATHR Fix - TWC729-9556 - JB
+                AND (Email_Template_Name__c LIKE 'SCRRENGENRLREV%'
+                     OR Email_Template_Name__c LIKE 'SCRUACCTADD%'
+                     OR Email_Template_Name__c LIKE 'ADMINREG%'
+                     OR Email_Template_Name__c LIKE 'CampaignInviteForBulk%')
                 order by createddate desc
             ]
         );
@@ -720,7 +728,7 @@ Return: map<string,string>
                 }else if(classname =='PRM_SendInviteEmail_Batch'){
                     WrapperList = checkInviteEmail(this.EmailValue);
                 }//IPA2.0 TWC727-2852 starts here 
-		else if(classname=='PRM_ProcessInboundOPIDRecords'){
+    else if(classname=='PRM_ProcessInboundOPIDRecords'){
                     set<string> regIds = new Set<string>();
                     
                     for(PRM_Registration_Request__c regReq : [SELECT id,PRM_DeDup_Criteria__c,Sync_Profile_Response__c,recordtype.developername,PRM_Auto_Approve__c,PRM_Status__c,PRM_Salesforce_ID__c,PRM_Matching_Contact__c,PRM_Email_Log__c,PRM_Email_ID__c,PRM_Email_Log__r.Email_Template_Name__c FROM PRM_Registration_Request__c WHERE PRM_Salesforce_ID__c IN: this.EmailValue  AND PRM_Channel_Program__r.Name = :Label.PRM_Intel_Partner_Alliance order by lastmodifiedDate desc]){ 
@@ -736,7 +744,7 @@ Return: map<string,string>
                         );
                     }
                 }//IPA2.0 TWC727-2852 ends here
-		else {
+    else {
                     getregWithTrackersforGetProfileAPI(EmailValue, intLog, classname);
                 }
                 //system.debug('---WrapperList ' + WrapperList);
@@ -1116,7 +1124,7 @@ Return: map<string,string>
             (
                 SELECT ID, createdDate
                 FROM EmailLogs__r
-                WHERE Email_Template_Name__c LIKE '%SCRREQTOAPVDNEW%' order by createdDate desc
+                WHERE Email_Template_Name__c LIKE'SCRREQTOAPVDNEW%' /*'%SCRREQTOAPVDNEW%'*/  order by createdDate desc //ATHR Fix - TWC729-9556 - JB
             ),
             (
                 SELECT
@@ -1208,7 +1216,7 @@ Return: map<string,string>
                 benefitCount.put(accId, numApps);
             }
         }
-	 //IPA2.0TWC727-2852
+   //IPA2.0TWC727-2852
         for (PRM_Registration_Request__c reg : reqList) {
             //create instance of wrapper class
             RegistrationWrapper regWrap = new RegistrationWrapper();
@@ -1788,10 +1796,10 @@ Return:None
         @AuraEnabled
         public boolean Entitlement_Not_Assigned { get; set; }
         @AuraEnabled
-	//IPA2.0 - TWC727-2852
+  //IPA2.0 - TWC727-2852
         public boolean Benefit_Entitlement_Assigned { get; set; }
         @AuraEnabled
-        public boolean Benefit_Entitlement_Not_Assigned	 { get; set; }
+        public boolean Benefit_Entitlement_Not_Assigned   { get; set; }
         @AuraEnabled
         public boolean Benefit_Entitlement_Yet_to_Assign { get; set; }
         @AuraEnabled

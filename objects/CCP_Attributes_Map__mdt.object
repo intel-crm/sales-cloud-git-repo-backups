@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Budget_Amount__c</fullName>
+        <defaultValue>100000</defaultValue>
+        <description>Has the Budget Amount Mapping For the display of the Upload File for the PFR Record</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Budget Amount controls only file upload</inlineHelpText>
+        <label>Budget Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Category__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Category</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Broadcast</fullName>
+                    <default>true</default>
+                    <label>Broadcast</label>
+                </value>
+                <value>
+                    <fullName>Digital Media</fullName>
+                    <default>false</default>
+                    <label>Digital Media</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Lead Management</fullName>
+                    <default>false</default>
+                    <label>Lead Management</label>
+                </value>
+                <value>
+                    <fullName>Out of Home Media</fullName>
+                    <default>false</default>
+                    <label>Out of Home Media</label>
+                </value>
+                <value>
+                    <fullName>Paid Social Media</fullName>
+                    <default>false</default>
+                    <label>Paid Social Media</label>
+                </value>
+                <value>
+                    <fullName>Print Media</fullName>
+                    <default>false</default>
+                    <label>Print Media</label>
+                </value>
+                <value>
+                    <fullName>Search Engine Marketing (SEM)</fullName>
+                    <default>false</default>
+                    <label>Search Engine Marketing (SEM)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Channel_Partner__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Channel Partner</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Channel_Partner_Led__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Channel Partner Led</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_ELC_Reminder__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable ELC Reminder</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Event_Format_Ind__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Event Format</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_File_Upload__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Used to check if the attachment needs to be uploaded with that Activity</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable File Upload</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Core_MDF_Enable_Question__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Checks if questions needs to be displayed to user</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Question</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Enable_Event_Popup__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Mapping for the Event Popup based on the Activity Type and Category and Budget Amount</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Enable Event Popup</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Event__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Event</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Govt_Nexus_Flag__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Stores mapping for Government Nexus Questions based on Activity Type and Category</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Govt. Nexus Flag</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Print__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Print</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Program__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Program</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>CCF</fullName>
+                    <default>true</default>
+                    <label>CCF</label>
+                </value>
+                <value>
+                    <fullName>DCF</fullName>
+                    <default>false</default>
+                    <label>DCF</label>
+                </value>
+                <value>
+                    <fullName>CCF/DCF</fullName>
+                    <default>false</default>
+                    <label>CCF/DCF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>RecordType_Name__c</fullName>
+        <description>Stores Recordtype name mapping for Activity Category and Activity</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RecordType Name</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Record_Type_Picklist__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Record Type Picklist</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Data_Center_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Service_Provider_CoMarketing_Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
+                    <default>false</default>
+                    <label>Core_MDF_Client_CoMarketing_Fund_Boost</label>
+                </value>
+                <value>
+                    <fullName>CCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCF</label>
+                </value>
+                <value>
+                    <fullName>CCF/DCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>CCF/DCF</label>
+                </value>
+                <value>
+                    <fullName>DCF</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>DCF</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Type__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Type</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Billboard/Transit</fullName>
+                    <default>true</default>
+                    <label>Billboard/Transit</label>
+                </value>
+                <value>
+                    <fullName>Podcast</fullName>
+                    <default>false</default>
+                    <label>Podcast</label>
+                </value>
+                <value>
+                    <fullName>Radio</fullName>
+                    <default>false</default>
+                    <label>Radio</label>
+                </value>
+                <value>
+                    <fullName>Television</fullName>
+                    <default>false</default>
+                    <label>Television</label>
+                </value>
+                <value>
+                    <fullName>Catalog/Brochure</fullName>
+                    <default>false</default>
+                    <label>Catalog/Brochure</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Owned Event</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Owned Event</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Participation in Third-Party Event</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Participation in Third-Party Event</label>
+                </value>
+                <value>
+                    <fullName>Cinema</fullName>
+                    <default>false</default>
+                    <label>Cinema</label>
+                </value>
+                <value>
+                    <fullName>Collateral - Other</fullName>
+                    <default>false</default>
+                    <label>Collateral - Other</label>
+                </value>
+                <value>
+                    <fullName>Digital Video screen</fullName>
+                    <default>false</default>
+                    <label>Digital Video screen</label>
+                </value>
+                <value>
+                    <fullName>Direct Mail</fullName>
+                    <default>false</default>
+                    <label>Direct Mail</label>
+                </value>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Member Owned Event</fullName>
+                    <default>false</default>
+                    <label>Member Owned Event</label>
+                </value>
+                <value>
+                    <fullName>Graphic Ad</fullName>
+                    <default>false</default>
+                    <label>Graphic Ad</label>
+                </value>
+                <value>
+                    <fullName>Insert/Outsert/Flyer</fullName>
+                    <default>false</default>
+                    <label>Insert/Outsert/Flyer</label>
+                </value>
+                <value>
+                    <fullName>Lead Generation</fullName>
+                    <default>false</default>
+                    <label>Lead Generation</label>
+                </value>
+                <value>
+                    <fullName>Lead Nurturing</fullName>
+                    <default>false</default>
+                    <label>Lead Nurturing</label>
+                </value>
+                <value>
+                    <fullName>Magazine/Newspaper</fullName>
+                    <default>false</default>
+                    <label>Magazine/Newspaper</label>
+                </value>
+                <value>
+                    <fullName>Member Participation in Third-Party Event</fullName>
+                    <default>false</default>
+                    <label>Member Participation in Third-Party Event</label>
+                </value>
+                <value>
+                    <fullName>Member Website Online Display</fullName>
+                    <default>false</default>
+                    <label>Member Website Online Display</label>
+                </value>
+                <value>
+                    <fullName>Online Display</fullName>
+                    <default>false</default>
+                    <label>Online Display</label>
+                </value>
+                <value>
+                    <fullName>Online Video Spot</fullName>
+                    <default>false</default>
+                    <label>Online Video Spot</label>
+                </value>
+                <value>
+                    <fullName>Poster/Sign/Banner</fullName>
+                    <default>false</default>
+                    <label>Poster/Sign/Banner</label>
+                </value>
+                <value>
+                    <fullName>Promotion</fullName>
+                    <default>false</default>
+                    <label>Promotion</label>
+                </value>
+                <value>
+                    <fullName>Social Online Display</fullName>
+                    <default>false</default>
+                    <label>Social Online Display</label>
+                </value>
+                <value>
+                    <fullName>Social Post</fullName>
+                    <default>false</default>
+                    <label>Social Post</label>
+                </value>
+                <value>
+                    <fullName>Text Ad</fullName>
+                    <default>false</default>
+                    <label>Text Ad</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Website Online Ad</fullName>
+                    <default>false</default>
+                    <label>Channel Partner Website Online Ad</label>
+                </value>
+                <value>
+                    <fullName>Channel Partner Online Display</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Channel Partner Online Display</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>CCP Attributes Map</label>
+    <listViews>
+        <fullName>CCP_View</fullName>
+        <columns>MasterLabel</columns>
+        <columns>Category__c</columns>
+        <columns>Record_Type_Picklist__c</columns>
+        <columns>Type__c</columns>
+        <columns>Channel_Partner__c</columns>
+        <columns>Budget_Amount__c</columns>
+        <columns>RecordType_Name__c</columns>
+        <columns>Core_MDF_Enable_ELC_Reminder__c</columns>
+        <columns>Enable_Event_Popup__c</columns>
+        <columns>Core_MDF_Enable_File_Upload__c</columns>
+        <columns>Govt_Nexus_Flag__c</columns>
+        <columns>Print__c</columns>
+        <columns>Core_MDF_Enable_Channel_Partner_Led__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>CCP View</label>
+        <language>en_US</language>
+    </listViews>
+    <pluralLabel>CCP Attributes Maps</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

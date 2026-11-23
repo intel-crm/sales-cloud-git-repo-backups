@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Password__c</field>
-        <value xsi:type="xsd:string">Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX</value>
+        <value xsi:type="xsd:string">Zaa8Q~-E0uzRMDmEYTM1Z5zUWiuIiJAYIuB65bp-</value>
     </values>
     <values>
         <field>Scope__c</field>
@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>Username__c</field>
-        <value xsi:type="xsd:string">79159eae-0011-4d83-98f7-9e0a16ff3bf9</value>
+        <value xsi:type="xsd:string">66d60bd5-1f92-47b8-a11f-4ae50ab9f8bd</value>
     </values>
 </CustomMetadata>

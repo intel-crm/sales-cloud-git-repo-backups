@@ -1,10 +1,11 @@
-/** Documentation for the Ipa Partner Onboarding
+/** Documentation for ipaPartnerOnboardingSteps  Component
  * <br>
  * <h2>Partner Onboarding</h2>
- * This is a partner onboarding component, that grabs the data from the 3 types of service and passes it down to ipaPartnerOnboardingSteps for rendering
+ * <p>This component processes the {@link ipaPartnerOnboardingService.BoardingSteps} Object passed in and renders the {@link ipaPartnerWelcomeMat ipaPartnerWelcomeMat} wrapper the said data.  </p>
+ * <p>The steps are rendered as {@link ipaPartnerOnboardingStep ipaPartnerOnboardingStep} For each step this component handles the tracking and marking of the steps completed when the subcomponent triggers the markstepcomplete event as the user goes through each step popup./p>
  * <br>
  * @namespace ipaPartnerOnboardingSteps
- * @property {BoardingSteps} stepsData Set BoardingSteps data to be rendered
+ * @property {BoardingSteps} stepsData BoardingSteps data to be rendered
  * @author Joshua Gonzalez
 */
 import { LightningElement, api, track } from 'lwc';
@@ -59,6 +60,7 @@ export default class IpaPartnerOnboardingSteps extends LightningElement {
                 }
             });
             // for each step get status
+            console.log('steps check',this.steps);
         }
 
     }
@@ -79,10 +81,9 @@ export default class IpaPartnerOnboardingSteps extends LightningElement {
             s3- active
     */
     markStepComplete({detail}){
-        // console.log('ipapartnerOnboardinstepS.markStepComplete', detail);
         if (detail.stepId) {
             this.completeAStep(detail.stepId);
-        }
+        }     
     }
 
     completeAStep(stepId) {

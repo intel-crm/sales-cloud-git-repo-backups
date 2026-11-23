@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dashboard xmlns="http://soap.sforce.com/2006/04/metadata">
+    <backgroundEndColor>#FFFFFF</backgroundEndColor>
+    <backgroundFadeDirection>Diagonal</backgroundFadeDirection>
+    <backgroundStartColor>#FFFFFF</backgroundStartColor>
+    <dashboardFilters>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>CCG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>DCG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>IOTG Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>Automotive Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>PRC Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>US Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Brazil Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP France Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Germany Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP India Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Japan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Korea Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Mexico Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Russia Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Taiwan Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP UK Sales Group</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP Americas Sales Territory</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP APJ Sales Territory</values>
+        </dashboardFilterOptions>
+        <dashboardFilterOptions>
+            <operator>equals</operator>
+            <values>GMP EMEA Sales Territory</values>
+        </dashboardFilterOptions>
+        <name>Sales Group Filter</name>
+    </dashboardFilters>
+    <dashboardType>SpecifiedUser</dashboardType>
+    <isGridLayout>false</isGridLayout>
+    <leftSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Integer</displayUnits>
+            <groupingSortProperties/>
+            <header>Total Pipeline Record Count</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel># of Open Opportunities</metricLabel>
+            <report>Pipeline_Quality/Pipe_Quality_Calc</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <column>FORMULA1</column>
+            </chartSummary>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <groupingSortProperties/>
+            <header>Pipeline Quality</header>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel>Pipeline Quality %</metricLabel>
+            <report>Pipeline_Quality/Pipe_Quality_Calc</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>true</autoselectColumnsFromReport>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Integer</displayUnits>
+            <groupingSortProperties/>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel>Low Velocity Opportunities</metricLabel>
+            <report>Pipeline_Quality/Low_Velocity_Record_Count</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Integer</displayUnits>
+            <groupingSortProperties/>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel>Past Due Opportunities</metricLabel>
+            <report>Pipeline_Quality/Past_Due_Record_Count</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Integer</displayUnits>
+            <groupingSortProperties/>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel>Pushed 4x Opportunities</metricLabel>
+            <report>Pipeline_Quality/Push_Record_Count</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartSummary>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Metric</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Integer</displayUnits>
+            <groupingSortProperties/>
+            <indicatorHighColor>#54C254</indicatorHighColor>
+            <indicatorLowColor>#C25454</indicatorLowColor>
+            <indicatorMiddleColor>#C2C254</indicatorMiddleColor>
+            <metricLabel>Inactive Opportunities</metricLabel>
+            <report>Pipeline_Quality/Inactive_Record_Count</report>
+            <showRange>false</showRange>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>FORMULA1</column>
+            </chartSummary>
+            <componentType>Bar</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <groupingColumn>Opportunity.Core_Sales_Groups__c</groupingColumn>
+            <groupingSortProperties/>
+            <legendPosition>Bottom</legendPosition>
+            <report>Pipeline_Quality/Pipe_Quality_by_Sales_Group1</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowLabelAscending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Pipe Quality % by Sales Group</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </leftSection>
+    <middleSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Displaying top 25 Results</footer>
+            <groupingColumn>ACCOUNT_NAME</groupingColumn>
+            <groupingColumn>Opportunity.Core_Low_Quality__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipeline Quality of Top Accounts</header>
+            <legendPosition>Bottom</legendPosition>
+            <maxValuesDisplayed>25</maxValuesDisplayed>
+            <report>Pipeline_Quality/Pipe_Quality_by_Account_Oppty_Volume</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Pipeline Quality by Account</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Bar</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Displaying top 25 Results</footer>
+            <groupingColumn>ACCOUNT_NAME</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipeline Quality Issues of Top Accounts</header>
+            <legendPosition>Bottom</legendPosition>
+            <maxValuesDisplayed>25</maxValuesDisplayed>
+            <report>Pipeline_Quality/Pipe_Quality_by_Account_Oppty_Volume1</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Pipe Quality Issues by Account</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </middleSection>
+    <owner>11490009@intel.com.crm</owner>
+    <rightSection>
+        <columnSize>Wide</columnSize>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>BarStacked</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Displaying top 50 results.</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingColumn>Opportunity.Core_Low_Quality__c</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipe Quality by Mgr</header>
+            <legendPosition>Bottom</legendPosition>
+            <maxValuesDisplayed>25</maxValuesDisplayed>
+            <report>Pipeline_Quality/Pipe_Quality_Issues_by_Oppty_Owner_Mgr</report>
+            <showPercentage>false</showPercentage>
+            <showValues>false</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Pipe Quality by Oppty Owner Mgr</title>
+            <useReportChart>false</useReportChart>
+        </components>
+        <components>
+            <autoselectColumnsFromReport>false</autoselectColumnsFromReport>
+            <chartAxisRange>Auto</chartAxisRange>
+            <chartSummary>
+                <axisBinding>y</axisBinding>
+                <column>RowCount</column>
+            </chartSummary>
+            <componentType>Bar</componentType>
+            <dashboardFilterColumns>
+                <column>Account.Core_Sales_Groups__c</column>
+            </dashboardFilterColumns>
+            <displayUnits>Auto</displayUnits>
+            <drillEnabled>true</drillEnabled>
+            <drillToDetailEnabled>false</drillToDetailEnabled>
+            <enableHover>true</enableHover>
+            <expandOthers>false</expandOthers>
+            <footer>Displaying Top 50 Results</footer>
+            <groupingColumn>OWNER_MANAGER</groupingColumn>
+            <groupingSortProperties/>
+            <header>Pipe Quality Issues by Mgr</header>
+            <legendPosition>Bottom</legendPosition>
+            <maxValuesDisplayed>25</maxValuesDisplayed>
+            <report>Pipeline_Quality/Pipe_Quality_Issues_Germany_Sales_Group</report>
+            <showPercentage>false</showPercentage>
+            <showPicturesOnCharts>false</showPicturesOnCharts>
+            <showValues>true</showValues>
+            <sortBy>RowValueDescending</sortBy>
+            <sortLegendValues>false</sortLegendValues>
+            <title>Pipe Quality Issues by Oppty Owner Mgr</title>
+            <useReportChart>false</useReportChart>
+        </components>
+    </rightSection>
+    <runningUser>11490009@intel.com.crm</runningUser>
+    <textColor>#000000</textColor>
+    <title>TEST Pipeline Quality Dashboard - SMG Sales Groups</title>
+    <titleColor>#000000</titleColor>
+    <titleSize>12</titleSize>
+</Dashboard>

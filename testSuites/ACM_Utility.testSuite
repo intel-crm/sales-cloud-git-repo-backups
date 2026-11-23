@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>PRM_ACM_Utility_Test</testClassName>
+    <testClassName>PRM_ACMUpdateBatchUtility_Test</testClassName>
+</ApexTestSuite>

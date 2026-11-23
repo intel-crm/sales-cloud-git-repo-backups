@@ -45,6 +45,13 @@
         <label><!-- Survey Link --></label>
         <name>Core_Survey_Link__c</name>
     </fields>
+    <layouts>
+        <layout>IPS Customer Feedback Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Customer Feedback already Submitted --></errorMessage>

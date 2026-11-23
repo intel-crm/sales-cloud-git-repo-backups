@@ -28,7 +28,7 @@
 * Aayushi                     26/02/2019                  Modified for US253172
 * Aparna                      2/4/2019                    Modified for US298949
 * Aparna                      2/5/2019                    Included logic for defect fix-DE40678
-*Ganapati                     07/08/2019                  Modified for US267989 - Case Source Values and API Name need to be aligned
+*Ganapati					  07/08/2019				  Modified for US267989 - Case Source Values and API Name need to be aligned
 ****************************************************************************************************/
 public with sharing class Core_IPS_Internal_Case_Controller{
     //Need to remove unused variables - JP
@@ -144,7 +144,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         //[Dec/16/2015 - START - Checking the accessability.]
         
         if(csId !=null && csId != ''){
-           isEditable = [SELECT HasEditAccess,RecordId FROM UserRecordAccess WHERE UserId =:userinfo.getuserId() AND RecordId = :csId].HasEditAccess;
+            isEditable = [SELECT HasEditAccess,RecordId FROM UserRecordAccess WHERE UserId =:userinfo.getuserId() AND RecordId = :csId].HasEditAccess;
         }
         //[Dec/16/2015 - END]
         items = new List<SelectOption>();
@@ -161,9 +161,8 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             cs.Core_CaseType__c = '';
             //cs.Core_Intel_Sup_Owner__c = Core_IPS_CaseUtility.getIntelSupportOwner();
             caseInformationReadOnly=false;
-                // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-            String recType = ApexPages.currentPage().getParameters().get('rType')?.escapeHtml4();
-
+            String recType = ApexPages.currentPage().getParameters().get('rType');
+            //System.debug('*******'+recordTypeId_NewCase+'*****'+recordTypeId_SA+'******'+recType+'&&'+recordTypeId_NewCase.substring(0,15));
             If(recType == recordTypeId_NewCase.substring(0,15)){
                 displayIPSCase=true;
                 displaySelfAssigned = false;
@@ -195,39 +194,27 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                 cs.Core_IPS_Issue_source__c =  Label.Core_IPS_Internal_Portal;  //Modified by Ganapati for US267989 - prev val - 'IPS Cloud'
             }
             //end for US238527
-            String passedprojectId;
+            
             if(mode=='asset'){
-                caseInformationReadOnly=true;
-                //FLS Check Added - Madhuri
-                if(Asset.SObjectType.getDescribe().isAccessible()){
-                //FLS Check Added - Madhuri
-                    // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-                    passedprojectId = ApexPages.currentPage().getParameters().get('projectId')?.escapeHtml4();
-                 //passedprojectId = String.escapeSingleQuotes(ApexPages.currentPage().getParameters().get('projectId'));
-                }
-                    // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-                String passedproductId = ApexPages.currentPage().getParameters().get('productId')?.escapeHtml4();
-                String passedaccountId = ApexPages.currentPage().getParameters().get('accountId')?.escapeHtml4(); // added by sumukh for US69871               
-                             
+                caseInformationReadOnly=true;                
+                String passedprojectId = ApexPages.currentPage().getParameters().get('projectId');               
+                String passedproductId = ApexPages.currentPage().getParameters().get('productId');
+                String passedaccountId = ApexPages.currentPage().getParameters().get('accountId'); // added by sumukh for US69871               
+               
+                               
                 if(passedprojectId!=null && passedprojectId!=''){
-                    //FLS Check Added - Madhuri
-                    if(core_ips_project__c.SObjectType.getDescribe().isAccessible()){
-                        projSelected = [select id, name from core_ips_project__c where id=:passedprojectId].Name;
-                    }
+                    projSelected = [select id, name from core_ips_project__c where id=:passedprojectId].Name;
                     selectedProjId = passedprojectId;
                 }
                 
                 // added by sumukh for US69871
                 if(passedaccountId!=null && passedaccountId!=''){ 
-                    //FLS Check Added - Madhuri
-                    if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-                        accSelected = [select id,name from Core_IPS_Account__c where id=:passedaccountId].Name; 
-                    }
+                    accSelected = [select id,name from Core_IPS_Account__c where id=:passedaccountId].Name; 
                     selectedAccountId = passedaccountId;                  
                 }
                 // End by sumukh for US69871
-                //FLS Check Added - Madhuri
-                if(passedproductId!=null && passedproductId!='' && asset.SObjectType.getDescribe().isAccessible()){
+                
+                if(passedproductId!=null && passedproductId!=''){
                     ast = [select id, name,core_supported_product__c from asset where id=:passedproductId limit 1];
                     selectedProduct = ast.Name;
                     //Added by Ayesha for DE32945
@@ -252,12 +239,13 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                         subCategoryOptions.add(new SelectOption('', 'Select Category'));
                         displaySubCategories=true;
                     } */
-                }
+                }                 
                 envDetails=getEnvironmentDetailsOperationList(ast.core_supported_product__c,subCategorySelected,isAgent); 
             }
         }
        else if(mode=='edit' || mode=='copy') { // US127333
             displayProdSection=true;
+            System.debug('===============================111====@@@@@@@@@'+csId+isAgent);            
             cs = Core_IPS_CaseUtility.getCase_DynamiCSOQL(csId,isAgent);
            //start added by Aayushi for US217499
            if(cs.Core_IPS_Private_Project__c){
@@ -359,7 +347,10 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                     platformSelected=cs.Core_Platform_Name__c;
                     List<Id> assetIdList = new List<Id>();
                     assetIdList.add(cs.assetId);
-                    platformOptions=getplatformOptions(assetIdList);             
+                    platformOptions=getplatformOptions(assetIdList);
+                    system.debug('AssetIDLISt'+assetIdList);
+                    System.debug('PlatformOptions'+platformOptions);
+                
             }
             
             if(cs <> null && cs.ContactId <> null){
@@ -407,6 +398,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             displayProductVariant_NAC();
             } 
             // End By Sumukh for US107484 
+                        
             envDetails=getEnvironmentDetailsOperationList(cs.Core_IPS_Supported_Product__c,subCategorySelected,isAgent); 
             setCurrentEnvironmentDetails(envDetails,csId);   
             //}
@@ -487,9 +479,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
        PageReference pg;
         if(preURL.indexof('assetid') > -1)
            pg = new PageReference('/02i/o'); 
-        //else if(retURL !=null && retURL !='')
-        //Modified by Rakshitha as part of ATHR fix added('/')
-        else if (retURL != null && retURL != '' && retURL.startsWith('/'))
+        else if(retURL !=null && retURL !='')
            pg = new PageReference(retURL);
         else
            pg = new PageReference('/500/o'); 
@@ -641,8 +631,6 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     * Aparna                      9/10/2018             Modified (US176535-Iteration18)
     ****************************************************************************************************/    
     public pagereference LookupChange(){
-       // Asset ast;
-        Contact con1;
         //added by sugandha for US85567
         if(objectSelected <> null && objectSelected <> '' && objectSelected == 'Project' && selectedContact!=null && selectedContact!='' && projSelected <> null && projSelected <> ''){
             selectedPSO = '';
@@ -655,9 +643,8 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         //product change
         if(objectSelected <> null && objectSelected <> '' && objectSelected == 'Product' )
         {
-                // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-            string passedParam1 = Apexpages.currentPage().getParameters().get('paramId')?.escapeHtml4(); 
-        
+            string passedParam1 = Apexpages.currentPage().getParameters().get('paramId');            
+            system.debug('@@@@@@@@@@2' + passedParam1);
             if(passedParam1 <> null && passedParam1 <> '')
             selectedProductId = passedParam1;//Core_IPS_Helper_Utility.isGECAccount(passedParam1);
             isResetProductRelInfo = true;  //added by amritesh US79768
@@ -666,10 +653,8 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         
         //added by amritesh US79768 - start  
         if(selectedProductId!=null && selectedProductId!=''){
-            //FLS Check Added - Madhuri
-            if(asset.SObjectType.getDescribe().isAccessible()){            
-                ast = [select id, Name,Core_Product_Organization__c,core_supported_product__c,Core_IPS_Project__c from asset where id=:selectedProductId  limit 1];    
-            }
+            system.debug('NAC PROJECT CLEARED');
+            ast = [select id, Name,Core_Product_Organization__c,core_supported_product__c,Core_IPS_Project__c from asset where id=:selectedProductId  limit 1];    
         } else {
             ast = null;
         }
@@ -682,28 +667,20 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                 Asset[] lstAsset;
                 //project changed
                 if(String.isNotBlank(projSelected)) {
-                    //FLS Check Added - Madhuri
-                    if(Asset.SObjectType.getDescribe().isAccessible()){
-                        lstAsset = [SELECT Id FROM Asset WHERE Core_IPS_Project__c=:selectedProjId AND Core_Supported_Product__c=: ast.core_supported_product__c AND Status='Active'];
-                    }
+                    lstAsset = [SELECT Id FROM Asset WHERE Core_IPS_Project__c=:selectedProjId AND Core_Supported_Product__c=: ast.core_supported_product__c AND Status='Active'];
                 } 
                 //project removed
                 else {
+                system.debug('$$$INSIDE PROJ REMOVED$$$');
                     Id accountId;
-                    Contact[] lstCont;
-                    //FLS Check Added - Madhuri
-                    if(Contact.SObjectType.getDescribe().isAccessible()){
-                        lstCont = [SELECT AccountId FROM Contact WHERE Id=:selectedContactId LIMIT 1];
-                    }
+                    Contact[] lstCont = [SELECT AccountId FROM Contact WHERE Id=:selectedContactId LIMIT 1];
                     if(lstCont.size()>0) accountId = lstCont[0].AccountId;
                     if(accountId!=null) {
-                        // Name:Aparna ; Date:9/10/2018 ; Description:Modified query below (US176535-Iteration18) for PAR Hidden products
-                        //Added MAP in soql for DE24083
-                        //FLS Check Added - Madhuri
-                        if(Asset.SObjectType.getDescribe().isAccessible()){
-                            lstAsset = [SELECT Id FROM Asset WHERE Core_Supported_Product__c=:ast.core_supported_product__c AND Status='Active' AND (AccountId=:accountId OR RecordType.Developername=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Global_Asset_RT')) AND Id IN (SELECT Core_Intel_Product__c FROM Core_IPS_Map_Par_Line_Item__c WHERE (RecordType.DeveloperName='MAP' OR (RecordType.DeveloperName='PAR' AND Core_Intel_Product__r.Core_Supported_Product__r.Core_Flag_Status__c!='Par Hidden')) AND  Core_Status__c='ACTIVE' AND Core_Intel_Product__r.Core_Supported_Product__c=:ast.core_supported_product__c)];
-                        }
-                    }     
+                    // Name:Aparna ; Date:9/10/2018 ; Description:Modified query below (US176535-Iteration18) for PAR Hidden products
+                    //Added MAP in soql for DE24083
+                        lstAsset = [SELECT Id FROM Asset WHERE Core_Supported_Product__c=:ast.core_supported_product__c AND Status='Active' AND (AccountId=:accountId OR RecordType.Developername=:Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_Global_Asset_RT')) AND Id IN (SELECT Core_Intel_Product__c FROM Core_IPS_Map_Par_Line_Item__c WHERE (RecordType.DeveloperName='MAP' OR (RecordType.DeveloperName='PAR' AND Core_Intel_Product__r.Core_Supported_Product__r.Core_Flag_Status__c!='Par Hidden')) AND  Core_Status__c='ACTIVE' AND Core_Intel_Product__r.Core_Supported_Product__c=:ast.core_supported_product__c)];
+                        system.debug('LST ASSET:::::::'+lstAsset);
+                    }
                 }
                 if(lstAsset!=null && lstAsset.size()>0) {
                     selectedProductId = lstAsset[0].Id;
@@ -728,21 +705,19 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         //contact change
         if(objectSelected <> null && objectSelected <> '' && objectSelected == 'Contact')
         {
-                // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-            string passedParam1 = Apexpages.currentPage().getParameters().get('paramId')?.escapeHtml4(); 
-           
+            system.debug('inside contact changed method:::');
+            string passedParam1 = Apexpages.currentPage().getParameters().get('paramId');            
+            system.debug('@@@@@@@@@@2' + passedParam1);
             if(passedParam1 <> null && passedParam1 <> '')
             {
              selectedContactId = passedParam1;//Core_IPS_Helper_Utility.isGECAccount(passedParam1);
               //start modification for US253172
              //Pagereference  Pg1 =  showGECFieldsToIntUsrsForMAGAcc();
+             System.debug('In lookupChange--->');
                 mindsOption='No';
                 countrySelected='';
                 if(!String.IsBlank(selectedContactId)){
-                    //FLS Check Added - Madhuri
-                    if(contact.SObjectType.getDescribe().isAccessible()){
-                        con1=[select id,account.ownerId,accountid,Core_IPS_Intel_Support_Owner__c,Core_MINDS__c,Core_Country_Region__c from contact where id=:selectedContactId]; 
-                    }
+                 Contact con1=[select id,account.ownerId,accountid,Core_IPS_Intel_Support_Owner__c,Core_MINDS__c,Core_Country_Region__c from contact where id=:selectedContactId];                 
                     if(con1.Core_MINDS__c){
                     mindsOption='Yes';    
                     }
@@ -818,6 +793,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         }
         //
         if(selectedSAProductId!=null && selectedSAProductId!=''){
+            System.debug('@@@@@@'+selectedSAProductId);  
             Boolean isAsset = String.valueOf(selectedSAProductId).substring(0,3) == '02i' ? true:false;
             
             /*Ashutosh - US106566 - Here we need to create a logic where we can distinguish between asset or supported product id is coming from
@@ -826,22 +802,17 @@ public with sharing class Core_IPS_Internal_Case_Controller{
            
            // Name:Aparna ; Date:9/10/2018 ; Description:Handles when project is removed from NAC Cases for PAR Hidden products(US176535-Iteration18)
             if(String.isNotBlank(objectSelected) && objectSelected == 'Project' && String.isBlank(projSelected)) {
+                system.debug('::Inside NAC project removed Loop:::');
                 
                 list<Core_IPS_Supported_Product__c>supportedProdList;
                            
                 if(isAsset){
-                    //FLS Check Added - Madhuri
-                    if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-                        supportedProdList = [select Id FROM Core_IPS_Supported_Product__c WHERE Core_EOIS__c != True AND Core_Flag_Status__c != 'Par Hidden' AND Id IN (select Core_Supported_Product__c from Asset where id =:selectedSAProductId)]; 
-                    }
-                }
+                    supportedProdList = [select Id FROM Core_IPS_Supported_Product__c WHERE Core_EOIS__c != True AND Core_Flag_Status__c != 'Par Hidden' AND Id IN (select Core_Supported_Product__c from Asset where id =:selectedSAProductId)]; 
+                   }
                 else{
-                    //FLS Check Added - Madhuri
-                    if(Core_IPS_Supported_Product__c.SObjectType.getDescribe().isAccessible()){
-                        supportedProdList = [select Id FROM Core_IPS_Supported_Product__c where Core_EOIS__c != True AND Core_Flag_Status__c != 'Par Hidden' AND id=:selectedSAProductId limit 1];
+                      supportedProdList = [select Id FROM Core_IPS_Supported_Product__c where Core_EOIS__c != True AND Core_Flag_Status__c != 'Par Hidden' AND id=:selectedSAProductId limit 1];
                     }
-                }
-                if(supportedProdList != null && supportedProdList.size()>0)
+                 if(supportedProdList != null && supportedProdList.size()>0)
                     {
                        selectedSAProductId =  supportedProdList[0].ID;
                     }
@@ -858,11 +829,9 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                 //Ashutosh-Us106566 - If we are getting asset Id then we will populate the asset id here and supported product will get from asset
                 //and if only supported product is there then we will populate the supported product id here
                 if(isAsset){
+                system.debug('3:::' +isAsset);
                     cs.AssetId = selectedSAProductId;
-                    //FLS Check Added - Madhuri
-                    if(Asset.SObjectType.getDescribe().isAccessible()){
-                        ast = [select id,Core_Supported_Product__c from Asset where id=:selectedSAProductId];
-                    }
+                    Asset ast = [select id,Core_Supported_Product__c from Asset where id=:selectedSAProductId];    
                     cs.Core_IPS_Supported_Product__c = (ast != null  && ast.Core_Supported_Product__c != null) ? ast.Core_Supported_Product__c : null;
                     //Ashutosh-US106566-In case asset id is there in the SAproductid then we will get the supported product id and set is as SAProductId
                     selectedSAProductId = (cs.Core_IPS_Supported_Product__c != null) ? cs.Core_IPS_Supported_Product__c: null;  
@@ -1132,10 +1101,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     @TestVisible private void getEnvironmentOptions(){
         if(selectedProductId!=null && selectedProductId!=''){
             cs.assetId = selectedProductId;
-            //FLS check Added - Nishitha
-            if(Asset.SObjectType.getDescribe().isAccessible()){
-                ast = [select id, Name,Core_Product_Organization__c,core_supported_product__c,Core_IPS_Project__c,product2Id from asset where id=:selectedProductId];    
-            }
+            ast = [select id, Name,Core_Product_Organization__c,core_supported_product__c,Core_IPS_Project__c,product2Id from asset where id=:selectedProductId];    
             List<Core_IPS_Assigned_Environment_Variables__c> envVars = new List<Core_IPS_Assigned_Environment_Variables__c>();
             //envVars = Core_IPS_CaseUtility.getEnvVariables(ast.core_supported_product__c,null,isAgent);
             envVars = Core_IPS_Questions_Utility.getEnvDetailQuestions(ast.core_supported_product__c,null,isAgent);  // added  by amritesh 12/18/2017 - US8534
@@ -1164,23 +1130,13 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     * Jayaprakash T              10/14/2015              Created
     * Manoj Kumar                06/20/2017              Modified
     * Amritesh                   12/18/2017              Modified - US8534
-    * Hassan Khan                02/27/2024              Modified - TWC745-5614
     ****************************************************************************************************/     
    public List<Core_IPS_EnvironmentDetailQuestion> getDetails(){
        List<Core_IPS_Assigned_Environment_Variables__c> envVars;
        if(selectedProductId!=null && selectedProductId!=''){
         assetId= selectedProductId;
-           //FLS check Added - Nishitha
-           if(Asset.SObjectType.getDescribe().isAccessible()){
-               List<Asset> asstList = [select id, core_supported_product__c from asset where id=:assetId];
-               if(asstList.size() > 0){
-                   ast = asstList[0];
-               }
-           }
-           // if condition added by Hassan Khan to fix "List has no rows for assingment" prod issue.
-           if(ast != null){
-               productId=ast.core_supported_product__c;
-           }           
+        ast = [select id, core_supported_product__c from asset where id=:assetId];
+        productId=ast.core_supported_product__c;
         }
         if(selectedSAProductId!=null)
         productId = selectedSAProductId;
@@ -1212,12 +1168,14 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             //for(Core_IPS_Assigned_Environment_Variables__c subCatQtn : Core_IPS_CaseUtility.getEnvVariables(null,subCategorySelected,isAgent)){
             for(Core_IPS_Assigned_Environment_Variables__c subCatQtn : Core_IPS_Questions_Utility.getEnvDetailQuestions(null,subCategorySelected,isAgent)){  // added  by amritesh 12/18/2017 - US8534
                 
+                //system.debug('--------Sub Categry ----'+subCatQtn.Core_Environment_Variable__c+'--envqstns ---'+envQuestnIds+'--envqstns envDetails---'+envDetails);
                 if(envQuestnIds!=null && !envQuestnIds.isEmpty()){
                     //if(!envQuestnIds.isEmpty() && !envQuestnIds.contains(subCatQtn.Core_Environment_Variable__c))
                     if(!envQuestnIds.isEmpty() && !envQuestnIds.contains(subCatQtn.Core_IPS_Question__c)) // added  by amritesh 12/18/2017 - US8534
                     envVars.add(subCatQtn);                
                 }
                 else {
+                //system.debug('Inside Null envQuestnIds **');
                     envVars.add(subCatQtn);
                 }
             }
@@ -1257,15 +1215,19 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             for(Core_IPS_Assigned_Environment_Variables__c subCatQtn : Core_IPS_Questions_Utility.getEnvDetailQuestions(null,subCategorySelected,isAgent)) {
             //Core_IPS_CaseUtility.getEnvVariables(null,subCategorySelected,isAgent)){
                 
+               // system.debug('--------Sub Categry ----'+subCatQtn.Core_Environment_Variable__c+'--envqstns ---'+envQuestnIds+'--envqstns envDetails---'+envDetails);
                 if(envQuestnIds!=null && !envQuestnIds.isEmpty()){
                     //if(!envQuestnIds.isEmpty() && !envQuestnIds.contains(subCatQtn.Core_Environment_Variable__c))
                     if(!envQuestnIds.isEmpty() && !envQuestnIds.contains(subCatQtn.Core_IPS_Question__c))  //added by amritesh 12/18/2017 - US85344
                     subCatenvVars.add(subCatQtn);  
+                    system.debug('in other loop'+subCatQtn);
                 }
                 else {
+                    //system.debug('Inside Null envQuestnIds');
                     subCatenvVars.add(subCatQtn);
                 }
             }
+            system.debug('--------Sub Categry Questions----'+subCatenvVars);
             /******Ended By Manoj****/
             if(subCatenvVars!=null && subCatenvVars.size()>0){
                 subCatenvDetList = constructWrapper(subCatenvVars);
@@ -1274,8 +1236,10 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         
         }/******Ended By Manoj****/
         else if(subCategoryId!=null && subCategoryId!=''){
+            //system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + subCategoryId);
             //envVars=Core_IPS_CaseUtility.getEnvVariables(null,subCategoryId,isAgent);
             envVars = Core_IPS_Questions_Utility.getEnvDetailQuestions(null,subCategoryId,isAgent);
+            system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + envVars.size());
             if(envVars.size() == 0 && productId!=null)
             {
                //envVars=Core_IPS_CaseUtility.getEnvVariables(productId,null,isAgent);
@@ -1339,7 +1303,10 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             //for(Core_IPS_EnvironmentDetailQuestion En :envDetails)
             for(Core_IPS_EnvironmentDetailQuestion En : Core_IPS_Questions_Utility.getAllWithChildEnvDetails(envDetails))
             {
-                
+                //system.debug(en.Label);
+                //system.debug(en.type);
+                //system.debug(en.questionId);
+                //system.debug(en.selectedValue);
                 if(MapAssigned_EnvironmentVariables.containsKey(en.questionId)==false)
                 {         
                     IsOptionsChanges = true;
@@ -1351,6 +1318,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
         {
             IsOptionsChanges =  true;
         }
+        //system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + IsOptionsChanges);
         if(IsOptionsChanges==false)
         {
             return envDetails;
@@ -1376,6 +1344,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             
             //if(en.Core_Environment_Variable__r.Core_Datatype__c.trim() == Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c.trim()){
             if(en.Core_IPS_Question__r.Core_IPS_Datatype__c.trim() == Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c.trim()) { //added by amritesh 12/18/2017 - US85344                
+                System.debug('----- splaceholder Core_IPS_Datatype_Text');
                 det.type=Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c;
                 det.splaceHolder  = '';
                 /*if(en.Core_Environment_Variable__r.Core_Answers__C!=null)
@@ -1527,6 +1496,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
            if(selectedProductId!=null && selectedProductId!=''){
                 cs.assetId = selectedProductId;
             }
+             system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>' + selectedSAProductId);
             if(selectedSAProductId!=null && selectedSAProductId!=''){
                 //Ashutosh-Us106566 - commenting here the code as we are already finding out that the selected id is asset or supported product
                 //if it is asset then we are getting supp product from asset and adding that on case supp product and if it is just selected product then we 
@@ -1541,25 +1511,19 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             Boolean isPrivateProject = false;
             if(selectedProjId!=null &&  selectedProjId!='' && selectedProjId!='NA'){
                 cs.Core_IPS_Project_Case__c = selectedProjId;
-                //FLS Check Added - Nishitha
-                if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                    isPrivateProject = [SELECT Core_IPS_Private__c FROM Core_IPS_Project__c WHERE Id=:selectedProjId LIMIT 1].Core_IPS_Private__c;
-                }
+                isPrivateProject = [SELECT Core_IPS_Private__c FROM Core_IPS_Project__c WHERE Id=:selectedProjId LIMIT 1].Core_IPS_Private__c;
             }
             else
             {
                cs.Core_IPS_Project_Case__c =null;               
             }
-            
-            //String contactId =selectedContactId; 
-             Contact con;                 
+            //system.debug(cs.Core_IPS_Project_Case__c + 'vaibhav---' +selectedProjId);
+            system.debug('((((((((((((((((((' + selectedContactId);
+            //String contactId =selectedContactId;                  
             if(selectedContactId!=null && selectedContactId!=''){
                 //Added Core_IPS_Intel_Support_Owner__c in soql by Karthick - US92632 - Release 4 - I8
-                //FLS Check Added - Nishitha
-                if(Contact.SObjectType.getDescribe().isAccessible()){
-                    con = [select id,account.ownerId,accountid,Core_IPS_Intel_Support_Owner__c,Core_MINDS__c,Core_Country_Region__c from contact where id=:selectedContactId]; 
-                }
-                    //Private project check - US191343
+                Contact con = [select id,account.ownerId,accountid,Core_IPS_Intel_Support_Owner__c,Core_MINDS__c,Core_Country_Region__c from contact where id=:selectedContactId]; 
+                //Private project check - US191343
                 if(isPrivateProject) {
                     cs.contactId = null;
                     cs.accountid = null;
@@ -1596,8 +1560,9 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             //end for DE40678
             //User u = [select Id, username,userType,contactId from User where Id = :UserInfo.getUserId()];
             //cs.contactId = u.contactId;
+            System.debug('@@@@##@@@@---------------------'+showGECFields);
             //commented for US253172
-          /*  
+          /*  system.debug('@@@@@@-----------------------'+GECAnswer1+GECAnswer2+GECAnswer3);
             if(showGECFields!=null && showGECFields)
              {
                 if(GECAnswer1 == 'Yes' || GECAnswer2 == 'Yes')
@@ -1613,7 +1578,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                     cs.recordtypeID =  recordTypeId_GEC;
                     isGECMarked = true;
                    
-                    
+                   System.debug('---------------setting GEC answer boolean:'+isGECMarked); 
                 }
               
                 
@@ -1675,9 +1640,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                     if(det.isVisible) countEnvDetails++;
                 }
             }
-            if(countEnvDetails==0){
-	    	cs.Core_Environment_Details__c = null;
-	    }
+            if(countEnvDetails==0) cs.Core_Environment_Details__c = null;
             //added by amritesh - DE38937 - end
             
             //Added by Karthick - US104565 - 10-05-2018 - I11
@@ -1725,6 +1688,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             else {msg = new ApexPages.Message(Apexpages.Severity.Warning, 'DML Exception '+e );          }
             //end - Eswar
             ApexPages.addMessage(msg);
+            System.debug('Error:In Catch:'+e);
             return null;
          }         
         return new pageReference('/'+cs.id);
@@ -1849,31 +1813,31 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             for(Core_IPS_EnvironmentDetailQuestion det : lstAllenvDetails){     
                 if(!det.isVisible) continue; // added by amritesh 12/18/2017 - US8534
                 //if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c &&(det.sPlaceHolder==null || det.sPlaceHolder=='') &&det.required){
-                if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text')?.value__c &&(det.sPlaceHolder==null || det.sPlaceHolder=='') &&det.required){
+                if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c &&(det.sPlaceHolder==null || det.sPlaceHolder=='') &&det.required){
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G105')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;    
                 //}else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_text_255').value__c&&(det.sPlaceHolder !=null || det.sPlaceHolder !='') && det.sPlaceHolder.length()>255){
-                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text')?.value__c&&(det.sPlaceHolder !=null || det.sPlaceHolder !='') && det.sPlaceHolder.length()>255){ // added  by amritesh 12/18/2017 - US8534
+                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_Text').value__c&&(det.sPlaceHolder !=null || det.sPlaceHolder !='') && det.sPlaceHolder.length()>255){ // added  by amritesh 12/18/2017 - US8534
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G111')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;    
                 //}else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_textarea_5000').value__c &&(det.tPlaceHolder==null ||det.tPlaceHolder=='')&&det.required){
-                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_TextArea')?.value__c &&(det.tPlaceHolder==null ||det.tPlaceHolder=='')&&det.required){ // added  by amritesh 12/18/2017 - US8534
+                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_TextArea').value__c &&(det.tPlaceHolder==null ||det.tPlaceHolder=='')&&det.required){ // added  by amritesh 12/18/2017 - US8534
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G105')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;
                 //}else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_textarea_5000').value__c && (det.tPlaceHolder != null ||det.tPlaceHolder!='') && det.tPlaceHolder.length()>5000){
-                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_TextArea')?.value__c && (det.tPlaceHolder != null ||det.tPlaceHolder!='') && det.tPlaceHolder.length()>5000){ // added  by amritesh 12/18/2017 - US8534
+                }else if(det.type==Core_IPS_Labels__c.getValues('Core_IPS_Datatype_TextArea').value__c && (det.tPlaceHolder != null ||det.tPlaceHolder!='') && det.tPlaceHolder.length()>5000){ // added  by amritesh 12/18/2017 - US8534
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G110')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;
-                }else if((det.type==Core_IPS_Labels__c.getValues('Core_IPS_Picklist')?.value__c) &&(det.selectedValue==null || det.selectedValue=='' || det.selectedValue=='[]') && det.required){
+                }else if((det.type==Core_IPS_Labels__c.getValues('Core_IPS_Picklist').value__c) &&(det.selectedValue==null || det.selectedValue=='' || det.selectedValue=='[]') && det.required){
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G106')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;
                 }
-                else if((det.type==Core_IPS_Labels__c.getValues('Core_IPS_Multi_Select')?.value__c) &&(det.selectedMValue==null || det.selectedMValue.size() == 0 ||(det.selectedMValue.size()==1 && det.selectedMValue[0]=='')) && det.required){
+                else if((det.type==Core_IPS_Labels__c.getValues('Core_IPS_Multi_Select').value__c) &&(det.selectedMValue==null || det.selectedMValue.size() == 0 ||(det.selectedMValue.size()==1 && det.selectedMValue[0]=='')) && det.required){
                 ApexPages.Message myMsg = new ApexPages.Message(ApexPages.Severity.ERROR,errormessage('G106')+':'+det.label);
                 ApexPages.addMessage(myMsg);
                 return true;
@@ -1901,10 +1865,12 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     public boolean validateGecDetails(){
          if(showGECFields!=null && showGECFields)
              {
+                system.debug('@@@@@@'+mindsOption+countrySelected);
                 if(String.isBlank(mindsOption)  || String.isBlank(countrySelected))
                 {
                     APexPages.Message Msg = new ApexPages.Message(ApexPages.Severity.Error, 'Please Fill the Required Fields');
                     ApexPages.addMessage(Msg);
+                    System.debug('inside error');
                     return true;            
                 }
                 else
@@ -1936,7 +1902,8 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     ****************************************************************************************************/ 
     public boolean validateCaseRelatedInformation(){
         
-          
+        system.debug('@@@@@@'+categorySelected);
+        system.debug('@@@@@@'+displayCategories);    
         // Added check for closed cases by Sugandha for DE40247    
         //string  strdesc  = cs.Core_Issue_Description__c.replaceAll('<p>','').replaceAll('</p>','').replaceAll('&shy;','');
         //if((displayCategories==null || displayCategories) && (categorySelected==null || (categorySelected!=null && categorySelected.trim().length()==0))){
@@ -2086,10 +2053,8 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     /*** commented by amritesh 12/18/2017 - US8534
     public void addEnvDetails(){
     List<Core_IPS_Environment_Details__c> existingDetails = new List<Core_IPS_Environment_Details__c>();
-	//FLS Check Added - Nishitha
-     if(Core_IPS_Environment_Details__c.SObjectType.getDescribe().isAccessible()){
-     existingDetails = [select id from Core_IPS_Environment_Details__c where Core_case__c=:cs.id];
-      }
+        existingDetails = [select id from Core_IPS_Environment_Details__c where Core_case__c=:cs.id];
+        system.debug('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>' + existingDetails);
         if(existingDetails <> null && existingDetails.size()>0){
            // delete ExistingDetails;
            Core_IPS_AdminUtility.DeleteEnvDetails(ExistingDetails);
@@ -2124,6 +2089,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                  //   else
                  //       detail.Core_Answer__c= 'False'; 
                 //}
+                system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + detail);
                 envDetailsToCreate.add(detail);
             }
             }
@@ -2153,6 +2119,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
                             }
                         detail.Core_Answer__c = strSelectedValue;//det.selectedValue;
                     }
+                    system.debug('>>>>>>>>>>>>>>>>>>>>>>>' + detail);
                     envDetailsToCreate.add(detail);
                 }
             }// ENDED By Manoj
@@ -2226,6 +2193,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
      //[Oct/09/2015 - Abhishek Arya - START - Method to show GEC fields for internal users based on Contact's Account is MAG Only.]
      //Commented method for US253172 as part of GEC process changes
    /* public pagereference showGECFieldsToIntUsrsForMAGAcc(){
+            system.debug('********start*******');
             AnswerOptions = new list<SelectOption>();            
             //AnswerOptions.add(new SelectOption('', '--Select--'));
             //AnswerOptions.add(new SelectOption('Yes', 'Yes'));
@@ -2235,12 +2203,14 @@ public with sharing class Core_IPS_Internal_Case_Controller{
             //string passedParam1 = Apexpages.currentPage().getParameters().get('myParam');            
             //If(passedParam1 <> null && passedParam1 <> '' && Id.valueOf(passedParam1).getSObjectType().getDescribe().getName() == 'Contact')
             showGECFields = Core_IPS_Helper_Utility.isGECAccount(selectedContactId);          
+            //system.debug('****passedparam****'+passedParam1+'*******'+showGECFields+'********'+Id.valueOf(passedParam1).getSObjectType().getDescribe().getName());
             return null;                        
     }   */         
     //[Oct/09/2015 - Abhishek Arya - END]
     
     //[Oct/09/2015 - Abhishek Arya - START - Method to show GEC fields for internal users based on Contact's Account is MAG Only.]
    /* public void rerenderGECFieldsToIntUsrsForMAGAcc(){
+        system.debug('@@@render gec@@@@'+selectedContactid+(cs.Id==null));
         if(selectedContactid <> null && selectedContactid <> '' && cs.Id == null){
            showGECFields = Core_IPS_Helper_Utility.isGECAccount(selectedContactid);            
         }else{ 
@@ -2266,6 +2236,7 @@ public with sharing class Core_IPS_Internal_Case_Controller{
     * Abhishek Arya              10/27/2015              Created
     ****************************************************************************************************/     
     public List<SelectOption> getplatformOptions(List<Id> idList){    
+        System.debug('Before'+idList);
         platformOptions = Core_IPS_CaseUtility.getplatform_Options(idList);
         if(platformOptions.size()>1) displayPlatform=true;
         else displayPlatform=false;
@@ -2383,16 +2354,15 @@ Modification Log :
 * Sugandha                   16/03/2018                 Created(UserStory US85567 Iteration 8)
 ****************************************************************************************************/ 
     Public void DisplayPSAPSO(){
-        List<Core_IPS_Project_Member__c> projMem;
         //set of all users assigned to  IPS FAE Partner Permission set     
         Set<Id> userIds = new Set<Id>();
-        List<Account> lstAcc;   
         for(PermissionSetAssignment uId: [SELECT AssigneeId FROM PermissionSetAssignment WHERE PermissionSetId = :System.Label.Core_IPS_Partner_DFAE_Permission_Set AND Assignee.ProfileId = :System.Label.Core_IPS_Partner_Profile_Id]){
             userIds.add(uId.AssigneeId);
         }
         
         //Senario 1:Project Based Cases - When editing the Partner Supported Account field, the picklist will only show accounts associated to project on the case      
         if((selectedProjId <> '' && selectedProjId != null) || cs.Core_IPS_Project_Case__c != null){
+            system.debug(selectedProjId );
             String projtId = '';
             if(selectedProjId == null){
                 projtId = cs.Core_IPS_Project_Case__c;
@@ -2400,15 +2370,14 @@ Modification Log :
             else{
                 projtId = selectedProjId;
             }
+            system.debug('projtId ::'+projtId);
             //List of all Active project members whose profile is Agent Partner profile or FAE Partner permission set
-            //FLS Check Added - Nishitha
-            if(Core_IPS_Project_Member__c.SObjectType.getDescribe().isAccessible()){
-                projMem =[SELECT id FROM Core_IPS_Project_Member__c
-                          WHERE (Core_User__c IN :userIds OR
-                                 Core_User__r.ProfileId = :system.Label.Core_IPS_Agent_Partner_Profile_id) AND
-                          Core_IPS_Project__c =: projtId AND
-                          Core_Status__c = 'Active']; 
-            }
+            List<Core_IPS_Project_Member__c> projMem =[SELECT id 
+                                               FROM Core_IPS_Project_Member__c
+                                               WHERE (Core_User__c IN :userIds OR
+                                               Core_User__r.ProfileId = :system.Label.Core_IPS_Agent_Partner_Profile_id) AND
+                                               Core_IPS_Project__c =: projtId AND
+                                               Core_Status__c = 'Active']; 
             //Render PSO PSA only if there are atleast a project member in above list                                    
             if(projMem != null && !projMem.isEmpty()){
                 displayPSO = true;
@@ -2419,34 +2388,29 @@ Modification Log :
                 lstPSA = new List<SelectOption>();
                 lstPSA.add(new SelectOption('','--None--'));
                 //List of all active Accounts under selected project
-                //FLS Check Added - Nishitha
-                if(Account.SObjectType.getDescribe().isAccessible()){
-                    lstAcc = [SELECT id,Name FROM account
-                              WHERE Id IN (SELECT Core_Account__c FROM Core_IPS_Account__c 
-                                           WHERE Core_IPS_Project__c =:projtId AND 
-                                           Core_Status__c = 'Active')];
-                }
+                List<Account> lstAcc = [SELECT id,Name FROM account
+                                        WHERE Id IN (SELECT Core_Account__c FROM Core_IPS_Account__c 
+                                        WHERE Core_IPS_Project__c =:projtId AND 
+                                        Core_Status__c = 'Active')];
                 for(Account acc : lstAcc){
                     lstPSA.add(new SelectOption(acc.id,acc.Name));
                 }  
             }
-          
         }
         //Senario 2: When editing the Partner Supported Account field, the picklist should display all Accounts associated with all projects in which the PSO is a member.
         else if((selectedContactId != '' && SelectedContactId != null) || cs.AccountId <> null){
+            system.debug('selectedContactId '+selectedContactId );
             String ConId = '';
             if(selectedContactId == null )
                 ConId= cs.ContactId;
             else
                 ConId= selectedContactId;
+             system.debug('selectedContactId '+ConId );
             //AccountId of Contact Case 
             Id AcctId;
-            //FLS Check Added - Nishitha
-            if(Contact.SObjectType.getDescribe().isAccessible()){
-                for(Contact c: [SELECT AccountId FROM Contact WHERE Id =: ConId and Core_IPS_Active__c = True]){
-                    AcctId = c.AccountId;
-                }
-                                                                }
+            for(Contact c: [SELECT AccountId FROM Contact WHERE Id =: ConId and Core_IPS_Active__c = True]){
+                AcctId = c.AccountId;
+            }
             //List of all active user under Account of the case
             if(AcctId != null){
                 List<User> lstAcctUser= [SELECT id FROM User WHERE isActive=True AND 
@@ -2468,22 +2432,17 @@ Modification Log :
                     psoId = cs.Core_IPS_Partner_Sup_Owner__c;
                 else
                     psoId = selectedPSOId;
+                System.debug('selectedPSOId::'+selectedPSOId);    
                 if(selectedPSOId != null && selectedPSOId != ''){ 
                     //set of project ids where PSO is a member
-                    set<Id> allProjIds = new set<Id>();  
-                    //FLS Check Added - Nishitha
-                    if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                        for(Core_IPS_Project__c project: [SELECT id FROM Core_IPS_Project__c WHERE id IN (SELECT Core_IPS_Project__c FROM Core_IPS_Project_Member__c WHERE Core_User__c = :selectedPSOId AND Core_Status__c = 'Active')]){
-                            allProjIds.add(project.Id);
-                        } 
-                    }
+                    set<Id> allProjIds = new set<Id>();     
+                    for(Core_IPS_Project__c project: [SELECT id FROM Core_IPS_Project__c WHERE id IN (SELECT Core_IPS_Project__c FROM Core_IPS_Project_Member__c WHERE Core_User__c = :selectedPSOId AND Core_Status__c = 'Active')]){
+                        allProjIds.add(project.Id);
+                    } 
                     //List of all Active Accounts which are part of above project list
-                    //FLS Check Added - Nishitha
-                    if(Core_IPS_Account__c.SObjectType.getDescribe().isAccessible()){
-                        lstAcc = [SELECT id,Name FROM account
-                                  WHERE id IN (SELECT Core_Account__c FROM Core_IPS_Account__c 
-                                               WHERE Core_IPS_Project__c IN :allProjIds AND Core_Status__c = 'Active')];
-                    }
+                    List<Account> lstAcc = [SELECT id,Name FROM account
+                                            WHERE id IN (SELECT Core_Account__c FROM Core_IPS_Account__c 
+                                            WHERE Core_IPS_Project__c IN :allProjIds AND Core_Status__c = 'Active')];
                     for(Account acc : lstAcc){
                         lstPSA.add(new SelectOption(acc.id,acc.Name));
                     }
@@ -2509,10 +2468,7 @@ Modification Log :
 ****************************************************************************************************/     
      public void PopulateAssetProj(){
         List<Asset> lstProject = new List<Asset>();
-         //FLS Check Added - Nishitha
-         if(Asset.SObjectType.getDescribe().isAccessible()){
-             lstProject = [select Core_IPS_Project__c,Core_IPS_Project__r.Name from Asset where Id=:selectedProductId];
-         }
+        lstProject = [select Core_IPS_Project__c,Core_IPS_Project__r.Name from Asset where Id=:selectedProductId];
         if(lstProject!= null && lstProject.Size()>0)
         {
             selectedProjId = lstProject[0].Core_IPS_Project__c;
@@ -2524,8 +2480,6 @@ Modification Log :
   //added by amritesh - 08/20/2018
     public void copyInterestedParties() {
         List<Core_IPS_Case_Interested_Party__c> newPartyList = new List<Core_IPS_Case_Interested_Party__c>();
-        //FLS Check Added - Nishitha
-        if(Core_IPS_Case_Interested_Party__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Case_Interested_Party__c party : [SELECT User__c,Active__c,Contact__c,Type__c FROM Core_IPS_Case_Interested_Party__c WHERE Case__c=:csId]){
             Core_IPS_Case_Interested_Party__c newParty =  new Core_IPS_Case_Interested_Party__c();
             newParty.Case__c = cs.Id;
@@ -2534,7 +2488,6 @@ Modification Log :
             newParty.Contact__c = party.Contact__c;
             newParty.Type__c = party.Type__c;
             newPartyList.add(newParty);
-            }
         }
         if(newPartyList.size()>0)
             Core_IPS_AdminUtility.insertInterestedParties(newPartyList);//This method insert the parties now

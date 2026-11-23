@@ -8,10 +8,18 @@
         <plural>true</plural>
         <value>Account Contact Relationships</value>
     </caseValues>
+    <fieldSets>
+        <label><!-- RelatedFields --></label>
+        <name>RelatedFields</name>
+    </fieldSets>
     <fields>
         <label><!-- Bulk Data Upload --></label>
         <name>Bulk_Data_Upload__c</name>
         <relationshipLabel><!-- Account Contact Relationships --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Contact Support Temp --></label>
+        <name>Contact_Support_Temp__c</name>
     </fields>
     <fields>
         <label><!-- AGS Failure Notified --></label>
@@ -61,6 +69,10 @@
         <relationshipLabel><!-- Partner Contact Relationship --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Contact Name --></label>
+        <name>PRM_Contact_Name__c</name>
+    </fields>
+    <fields>
         <label><!-- End Date --></label>
         <name>PRM_End_Date_Dt__c</name>
     </fields>
@@ -80,11 +92,6 @@
     <fields>
         <label><!-- PRM No Email --></label>
         <name>PRM_No_Email__c</name>
-    </fields>
-    <fields>
-        <label><!-- Partner Program --></label>
-        <name>PRM_Partner_Program__c</name>
-        <relationshipLabel><!-- Account Contact Relationships --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Partner Role --></label>
@@ -109,6 +116,10 @@
         <name>PRM_Retry_Count__c</name>
     </fields>
     <fields>
+        <label><!-- Send Reminders --></label>
+        <name>PRM_Send_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- SkipValidation --></label>
         <name>PRM_SkipValidation__c</name>
     </fields>
@@ -122,14 +133,6 @@
         <picklistValues>
             <masterLabel>Admin Invite</masterLabel>
             <translation><!-- Admin Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Admin Partner Invite</masterLabel>
-            <translation><!-- Admin Partner Invite --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Auto Granted IPA for DZP</masterLabel>
-            <translation><!-- Auto Granted IPA for DZP --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bulk Add</masterLabel>
@@ -178,6 +181,10 @@
         <name>PRM_Suppress_Email__c</name>
     </fields>
     <fields>
+        <label><!-- Suppress Reminders --></label>
+        <name>PRM_Suppress_Reminders__c</name>
+    </fields>
+    <fields>
         <label><!-- PRM_Unique_Combination --></label>
         <name>PRM_Unique_Combination__c</name>
     </fields>
@@ -189,6 +196,29 @@
         <label><!-- isActive --></label>
         <name>PRM_isActive__c</name>
     </fields>
+    <fields>
+        <label><!-- TempUrl --></label>
+        <name>TempUrl__c</name>
+    </fields>
+    <fields>
+        <label><!-- test - master branch autogetting updated --></label>
+        <name>test_master_branch__c</name>
+    </fields>
+    <layouts>
+        <layout>Account Contact Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Retrigger AGS Aura --></label>
+        <name>Retrigger_AGS_Aura</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Retrigger AGS Identity --></label>
+        <name>Retrigger_AGS_Identity</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
@@ -199,15 +229,15 @@
         <name>PRM_BlockedEmailDomain</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
+        <errorMessage><!-- This registration was denied because the registrant identified their location as an embargoed country or their IP address is from an embargoed country. For more information please visit https://goto.intel.com/gec-sanctioned-country-info --></errorMessage>
         <name>PRM_Contact_Embargoed_Country_Check</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Contact Relationship is required --></errorMessage>
-        <name>PRM_Contact_Relationship_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Website is mandatory for extending invite --></errorMessage>
         <name>PRM_WebsiteCheck</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Status reason cannot contain test keyword --></errorMessage>
+        <name>delete_later</name>
     </validationRules>
 </CustomObjectTranslation>

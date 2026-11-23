@@ -1,0 +1,13 @@
+.light-theme {
+    background: var(--white);
+}
+
+.dark-theme-background {
+    background: var(--blue);
+}
+
+.dark-theme-imagery-background {
+    background: url('/styleguide/s/sfsites/c/resource/DarkThemeImagery');
+    background-size: cover;
+    background-repeat: no-repeat;
+}

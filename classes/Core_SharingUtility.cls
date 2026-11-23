@@ -1,11 +1,6 @@
 public class Core_SharingUtility{
 
     public static boolean AssetAccessFlag=false;
-    // START - Added as part of Code Refactor
-    Public Static List<String> oldAccountIds = new List<String>(); 
-    Public Static List<String> oldUserRoleIds = new List<String>(); 
-    Public Static List<UserRole> globalUserRoleRecords = new List<UserRole>();
-    Public Static List<Group> globalGroupList = new List<Group>(); //ENS
     /***************************************************************************************************
     Method Name:  provideAccess
     Method Type: Sharing Utility Method 
@@ -21,13 +16,14 @@ public class Core_SharingUtility{
     * ----------------------------------------------------------------------------                 
     * JayaPrakash T                                      Created
     ****************************************************************************************************/    
-     public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,Set<id>> recordUserList){
+     public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,Set<id>> Record_UserList){
         List<sObject> shareRecords = new List<sObject>();
         Map<String, Schema.SObjectType> tokens = Schema.getGlobalDescribe();
+        System.debug('Records that are to be shared:'+Record_UserList);
         if(tokens.containsKey(shareTableName)) {
-            for(Id obj : recordUserList.keyset()){
-                if(recordUserList.get(obj) <> null){
-                    for(Id uId: recordUserList.get(obj)){
+            for(Id obj : Record_UserList.keyset()){
+                if(Record_UserList.get(obj) <> null){
+                    for(Id uId: Record_UserList.get(obj)){
                         SObject share = tokens.get(shareTableName).newSObject();
                         if(objectName=='Asset'){
                             share.put('assetId', obj);
@@ -42,17 +38,31 @@ public class Core_SharingUtility{
                         }
                         share.put('UserOrGroupId', uId);
                         share.put('RowCause', 'Manual');
+                        system.debug('share!!!!'+share);    
                         shareRecords.add(share);
                     }
                 }
             }
         try{
-
-// Tushar Garg as part of vulnerabilty change
-            if (!shareRecords.isEmpty()) {
-                Core_IPS_QueryService.insertRecords(shareRecords);
+            Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);
+            for(Database.SaveResult sr:shareInsertResult){
+                if(sr.isSuccess()){
+                    System.debug('Save Result Success:'+sr);
+                }
+                else {
+                   Database.Error err = sr.getErrors()[0];
+                   System.debug('Error:'+err);
+                
+                   if(err.getStatusCode() == StatusCode.FIELD_FILTER_VALIDATION_EXCEPTION  &&  
+                            err.getMessage().contains('AssetAccessLevel')){
+                   }
+                   else{
+                   }
+                 }
             }
+            System.debug('shareInsertResult:'+shareInsertResult);
         }catch(Exception e){
+            System.debug('Exception:'+e);
         }
       } 
     }
@@ -74,12 +84,12 @@ public class Core_SharingUtility{
     * ----------------------------------------------------------------------------                 
     * JRK                        10/07/2015              Created
     ****************************************************************************************************/ 
-    public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,id> recordUserList){
+    public static void provideAccess(String objectName, String shareTableName, string recordAccessLevel, MAP<id,id> Record_UserList){
         List<sObject> shareRecords = new List<sObject>();
-
         Map<String, Schema.SObjectType> tokens = Schema.getGlobalDescribe();
+        System.debug('Records that are to be shared:'+Record_UserList);
         if(tokens.containsKey(shareTableName)) {
-            for(Id obj : recordUserList.keyset()){
+            for(Id obj : Record_UserList.keyset()){
                 SObject share = tokens.get(shareTableName).newSObject();
                 if(objectName=='Asset'){
                     share.put('assetId', obj);
@@ -94,15 +104,12 @@ public class Core_SharingUtility{
                 }
                 //share.put('ParentId', obj);
                 //share.put('AccessLevel',recordAccessLevel);
-
-                share.put('UserOrGroupId', recordUserList.get(obj));
+                share.put('UserOrGroupId', Record_UserList.get(obj));
                 share.put('RowCause', 'Manual');
+                system.debug('share!!!!'+share);    
                 shareRecords.add(share);
-            }    
- // Tushar Garg as part of vulnerabilty change
-            if (!shareRecords.isEmpty()) {
-                Core_IPS_QueryService.insertRecords(shareRecords);
-            }
+            } 
+            Database.SaveResult[] shareInsertResult = Database.insert(shareRecords,false);    
         } 
     }
     
@@ -134,6 +141,7 @@ public class Core_SharingUtility{
     ****************************************************************************************************/ 
       
     public static void RevokeAccess(String objectName, String shareTableName, Map<Id,Set<Id>> InactiveUserList){
+        System.debug('!!'+objectName);System.debug('##'+shareTableName);System.debug('%%'+InactiveUserList);
         List<String> rowCauseList = new List<String>();
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('RowCause_Team'));
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('Rowcause_Owner'));
@@ -153,11 +161,13 @@ public class Core_SharingUtility{
                         AssetIds.add(objId);
                     } else if(objectName=='Case'){
                         CaseIds.add(objId);
+                        system.debug('case unshare 10'+CaseIds);
                     }
                     else{
                        CustomObjIds.add(objId);
                     }
                     InactiveUserIds.add(UserId);
+                    system.debug('case unshare 11'+InactiveUserIds);
                 }
             }
             if(AssetIds <> null && AssetIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
@@ -167,6 +177,7 @@ public class Core_SharingUtility{
             if(CustomObjIds <> null && CustomObjIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
                 SObjectShares = Database.Query('select id,UserorGroupId from  '+shareTableName+ ' where UserOrGroupId IN: InactiveUserIds and ParentId IN: CustomObjIds and RowCause Not In:rowCauseList');
             if(SObjectShares <> null && SObjectShares.size()>0){
+                System.debug('@@'+SObjectShares);
                 delete SObjectShares;
             }
         } 
@@ -189,6 +200,7 @@ public class Core_SharingUtility{
     ****************************************************************************************************/
     @future  
     public static void RevokeAccess(String objectName, String shareTableName, String InactiveUserMap){        
+        System.debug('!!'+objectName);System.debug('##'+shareTableName);System.debug('%%'+InactiveUserMap);
         List<String> rowCauseList = new List<String>();
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('RowCause_Team'));
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('Rowcause_Owner'));
@@ -210,10 +222,12 @@ public class Core_SharingUtility{
                         AssetIds.add(objId);
                     } else if(objectName=='Case'){
                         CaseIds.add(objId);
+                        system.debug('case unshare 10'+CaseIds);
                     }else{
                        CustomObjIds.add(objId);
                     }
                     InactiveUserIds.add(UserId);
+                    system.debug('case unshare 11'+InactiveUserIds);
                 }
             }
             if(AssetIds <> null && AssetIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
@@ -223,6 +237,7 @@ public class Core_SharingUtility{
             if(CustomObjIds <> null && CustomObjIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
                 SObjectShares = Database.Query('select id,UserorGroupId from  '+shareTableName+ ' where UserOrGroupId IN: InactiveUserIds and ParentId IN: CustomObjIds and RowCause Not In:rowCauseList');
             if(SObjectShares <> null && SObjectShares.size()>0){
+                System.debug('@@'+SObjectShares);
                 delete SObjectShares;
             }
         } 
@@ -245,6 +260,7 @@ public class Core_SharingUtility{
     * JRK                        12/22/2015              Created
     ****************************************************************************************************/
     public static void RevokeAccess(String objectName, String shareTableName, Map<Id,Id> InactiveUserMap){        
+        System.debug('!!'+objectName);System.debug('##'+shareTableName);System.debug('%%'+InactiveUserMap);
         List<String> rowCauseList = new List<String>();
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('RowCause_Team'));
         rowCauseList.add(Core_IPS_Helper_Utility.getIPSLabel('Rowcause_Owner'));
@@ -266,12 +282,14 @@ public class Core_SharingUtility{
                     AssetIds.add(objId);
                 } else if(objectName=='Case'){
                     CaseIds.add(objId);
+                    system.debug('case unshare 10'+CaseIds);
                 } 
                 
                 else{
                    CustomObjIds.add(objId);
                 }
                 InactiveUserIds.add(InactiveUserMap.get(objId));
+                system.debug('case unshare 11'+InactiveUserIds);
                 
             }
             if(AssetIds <> null && AssetIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
@@ -281,6 +299,7 @@ public class Core_SharingUtility{
             if(CustomObjIds <> null && CustomObjIds.size()>0 && InactiveUserIds <> null && InactiveUserIds.size()>0)
                 SObjectShares = Database.Query('select id,UserorGroupId from  '+shareTableName+ ' where UserOrGroupId IN: InactiveUserIds and ParentId IN: CustomObjIds and RowCause Not In:rowCauseList');
             if(SObjectShares <> null && SObjectShares.size()>0){
+                System.debug('@@'+SObjectShares);
                 delete SObjectShares;
             }
         } 
@@ -295,6 +314,7 @@ public class Core_SharingUtility{
         UserTypelst.add (partnerUserType);
         // End by PartnerProfile doc
         List<User> customerUsersbyAccount = [select id,ContactId,AccountId,userroleid from User where AccountId In: accountIdSet and UserType=:userTypelst and contact.core_ips_Active__c=true];
+        System.debug('#####Customer Users By Account####'+customerUsersbyAccount);
         Map<id,Set<id>> userRolesbyAccount = new Map<id,Set<id>>();
         Set<Id> userRoleIds;
         if(customerUsersbyAccount <> null && customerUsersbyAccount.size() > 0){
@@ -308,33 +328,15 @@ public class Core_SharingUtility{
                 if(!userRoleIds.isempty())
                     userRolesbyAccount.put(recUser.AccountId,userRoleIds);
             }
+            system.debug('##########userRolesbyAccount#####'+userRolesbyAccount);
         }        
         return userRolesbyAccount;
     }
     
     public static Map<id,Set<id>> getGroupIdsByRoleId(List<id> userRoleIdSet){
-        // Code Refactor Changes Added By Chiru - 
-        // Start
-        List<String> newUserRoleIds  = new List<String>();
-        for(Id idVal : userRoleIdSet) {
-           newUserRoleIds.add(String.valueOf(idVal));
-         } 
-        //END
         Map<id,Set<id>> groupIdsByRoleId = new Map<id,Set<id>>();
         if(userRoleIdSet <> null && userRoleIdSet.size() > 0){
-            // Start --> Added FLS for Query by Chiru
-            List<Group> groupList = new List<Group>();
-            if(!newUserRoleIds.isEmpty() && ( Core_Utility.executeQuery(newUserRoleIds,oldUserRoleIds))){
-            //List<Group> groupList = [select id,developername,relatedid from Group where relatedid in :userRoleIdSet and type in ('role')];
-              groupList = [select id,developername,relatedid from Group where relatedid in :userRoleIdSet and type in ('role')];
-               globalGroupList = new List<Group>(groupList);
-                oldUserRoleIds = new List<String>(newUserRoleIds);
-            } else if(globalGroupList != null && !globalGroupList.isEmpty()){
-               groupList = new List<group> (globalGroupList); 
-            }
-          
-	  
-	    //END
+            List<Group> groupList = [select id,developername,relatedid from Group where relatedid in :userRoleIdSet and type in ('role')];            
             if(groupList <> null && groupList.size() > 0){
                 for(id userRoleId:userRoleIdSet){
                     Set<Id> groupIdSet = new Set<Id>();
@@ -370,6 +372,7 @@ public class Core_SharingUtility{
                 }
             }
             Map<id,Set<Id>> faesByAccount = new Map<Id,Set<Id>>();
+            system.debug('faesByAccount'+faesByAccount);
             faesByAccount = Core_IPS_Helper_Utility.getFAEsByAccount(acctIdSet);
             Map<id,Set<Id>> validFaesByProj = new Map<Id,Set<Id>>();
             
@@ -379,6 +382,7 @@ public class Core_SharingUtility{
                 for(Id userId:deserializedInactiveUser.get(projId)){
                     Integer count=0;
                     for(id acctId: accountsByProjId.get(projId)){
+                    system.debug('faesByAccount'+faesByAccount);
                         for(id faeId:faesByAccount.get(acctId)){
                             if(faeId==userId){
                                count++;

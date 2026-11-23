@@ -1,0 +1,113 @@
+<aura:component controller="EPUM_SearchContact">
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+	<aura:attribute name="showModal" type="Boolean" default="true" />
+    <aura:attribute name="searchedEmail" type="String" />
+    <aura:attribute name="countryPicklistValues" type="List" />
+    <aura:attribute name="preferredLanguagePicklistValues" type="List" />
+    <aura:attribute name="errMessage" type="String" />
+    <aura:attribute name="newContact" type="Contact" 
+                    default="{'sobjectType' : 'Contact',
+                             'Email' : '',
+                             'FirstName' :'',
+                             'LastName' : '',
+                             'MailingCountry' : '',
+                             'Core_Preferred_Language__c' : ''}"/>
+    <aura:attribute name="isLoading" type="Boolean" default="false" />
+    	
+    
+    
+    <aura:if isTrue="{!v.showModal}" >
+        <section role="dialog" tabindex="-1"  aria-modal="true" class="slds-modal slds-fade-in-open" >
+            <div class="slds-modal__container ">
+                <div class="slds-is-relative">
+                <aura:if isTrue="{!v.isLoading}">
+    	<lightning:spinner alternativeText="Loading" size="small" />
+    </aura:if>
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.showModal }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Invite a User</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <aura:if isTrue="{!v.errMessage}">
+                        <div class="slds-box slds-box_small slds-theme_alert-texture slds-theme_error">
+                            <lightning:icon iconName="utility:error" size="small" alternativeText="Error" color="white"/>&nbsp;
+                            <span class="slds-text-body–regular">
+                                <aura:unescapedHtml value="{!v.errMessage}"/>
+                            </span>
+                        </div>
+                    </aura:if>
+                    <form class="slds-form">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:input aura:id="contactForm" label="First Name"
+                                                 name="firstname"
+                                                 value="{!v.newContact.FirstName}"
+                                                 required="true"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:input aura:id="contactForm" label="Last Name"
+                                                 name="lastname"
+                                                 value="{!v.newContact.LastName}"
+                                                 required="true"/>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters slds-m-top_x-small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:input aura:id="contactForm" label="Work Email"
+                                                 type="email"
+                                                 name="email"
+                                                 disabled="true" 
+                                                 value="{!v.newContact.Email}"
+                                                 required="true"/>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning:select aura:id="contactForm" name="country" 
+                                                  label="Country" required="true" 
+                                                  value="{!v.newContact.MailingCountry}">
+                                    <option value="">choose one...</option>
+                                    <aura:iteration items="{!v.countryPicklistValues}" var="countryPicklist" >
+                                    	<option value="{!countryPicklist.strValue}">{!countryPicklist.strLabel}</option>
+                                    </aura:iteration>
+                                    
+                                </lightning:select>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-gutters slds-m-top_x-small">
+                             <div class="slds-col slds-size_1-of-2">
+                                <lightning:select aura:id="contactForm" name="country" 
+                                                  label="Preferred Language"
+                                                  value="{!v.newContact.Core_Preferred_Language__c}">
+                                    <aura:iteration items="{!v.preferredLanguagePicklistValues}" var="preferredLanguageValue" >
+                                    	<option value="{!preferredLanguageValue.strValue}">{!preferredLanguageValue.strLabel}</option>
+                                    </aura:iteration>
+                                    
+                                </lightning:select>
+                            </div>
+                        </div>
+                        <br/>
+                        <div>This person will become a member on your company account upon completion of registration process and approval by Intel Admin.</div>
+                        <br/>
+                    </form>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.showModal }"/>
+                    <lightning:button variant="brand"
+                                      label="Send Invite"
+                                      title="OK"
+                                      onclick="{!c.submitDetails}"/>
+                </footer>
+            </div>
+                </div>
+        </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+</aura:component>

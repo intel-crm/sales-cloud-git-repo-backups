@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>METALAB RESEARCH-CLIFFORD WOLF Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>METALAB RESEARCH-CLIFFORD WOLF Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>METALABRESEARCHCLIFFORDWOLFCustomerExecutive</parentRole>
+</Role>

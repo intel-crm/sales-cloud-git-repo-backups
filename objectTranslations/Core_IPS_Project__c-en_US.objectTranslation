@@ -244,6 +244,65 @@
             <translation><!-- WEUR --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>MASTER Project Page Layout</layout>
+        <sections>
+            <label><!-- Case Defaults --></label>
+            <section>Case Defaults</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MASTER Project Page Layout(After Submit)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+        <sections>
+            <label><!-- System Information --></label>
+            <section>System Information</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Premier Support External Project Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Premier Support Project Layout</layout>
+        <sections>
+            <label><!-- Case Defaults --></label>
+            <section>Case Defaults</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Premier Support Project Layout(After Submit)</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Active --></label>
         <name>Active</name>
@@ -278,12 +337,12 @@
         <name>Core_IPS_Project_Status_field_edit</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
-        <name>Core_IPS_Restrict_Changing_Private</name>
+        <errorMessage><!-- Project cannot be submitted without atleast one Account and one Product --></errorMessage>
+        <name>Core_IPS_Project_cannot_be_activated</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Sub-Region is required when creating / Updating the Project with a specified Region --></errorMessage>
-        <name>SubRegionNotNullIfRegionExistedOnNewProj</name>
+        <errorMessage><!-- Premier Support Projects must be in the Draft state when being set to Private --></errorMessage>
+        <name>Core_IPS_Restrict_Changing_Private</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_IPS_Update_Support_Owners --></label>

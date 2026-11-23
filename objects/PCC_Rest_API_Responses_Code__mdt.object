@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>PCC_Code__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Code</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PCC_Context_of_Error__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Context of Error</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Log_Entry__c</fullName>
+        <defaultValue>false</defaultValue>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Log Entry</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>PCC_Message__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Message</label>
+        <required>false</required>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>PCC_RestAPI_Error_Severity__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>RestAPI Error Severity</label>
+        <required>false</required>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Info</fullName>
+                    <default>true</default>
+                    <label>Info</label>
+                </value>
+                <value>
+                    <fullName>Error</fullName>
+                    <default>false</default>
+                    <label>Error</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>PCC_Status_Code__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Status Code</label>
+        <precision>5</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <label>PCC Rest API Responses Code</label>
+    <pluralLabel>PCC Rest API Responses Codes</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

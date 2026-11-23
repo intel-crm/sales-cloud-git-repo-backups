@@ -9,47 +9,14 @@
         <value>Documentos de revisión de caso</value>
     </caseValues>
     <fields>
-        <label><!-- App Document Types --></label>
-        <name>Core_MDF_App_Document_Types_nm__c</name>
-        <picklistValues>
-            <masterLabel>Proof of Attribution</masterLabel>
-            <translation><!-- Proof of Attribution --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proof of Branding</masterLabel>
-            <translation><!-- Proof of Branding --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proof of Cost</masterLabel>
-            <translation><!-- Proof of Cost --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proof of Execution</masterLabel>
-            <translation><!-- Proof of Execution --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Tipos de documentos que corresponden</label>
-        <name>Core_MDF_Applicable_Document_Types_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Audit --></label>
         <name>Core_MDF_Audit__c</name>
         <relationshipLabel><!-- Case Review Documents --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Claim Batch Record --></label>
-        <name>Core_MDF_Claim_Batch_Record__c</name>
-        <relationshipLabel><!-- Case Review Documents --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Claim --></label>
         <name>Core_MDF_Claim__c</name>
-        <relationshipLabel>Documentos de POP</relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- ContentVersion ID --></label>
-        <name>Core_MDF_ContentVersion_Id__c</name>
+        <relationshipLabel><!-- Claim Review Documents --></relationshipLabel>
     </fields>
     <fields>
         <label><!-- Document Id --></label>
@@ -60,12 +27,8 @@
         <name>Core_MDF_Document_Title__c</name>
     </fields>
     <fields>
-        <label><!-- Sel Document Types --></label>
+        <label><!-- Document Types --></label>
         <name>Core_MDF_Document_Types__c</name>
-        <picklistValues>
-            <masterLabel>Proof of Attribution</masterLabel>
-            <translation><!-- Proof of Attribution --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>Proof of Branding</masterLabel>
             <translation><!-- Proof of Branding --></translation>
@@ -80,25 +43,12 @@
         </picklistValues>
     </fields>
     <fields>
-        <label><!-- Download Document Title --></label>
-        <name>Core_MDF_Download_Document_Title_txt__c</name>
-    </fields>
-    <fields>
-        <help><!-- confirm length with the leads --></help>
-        <label><!-- Encoded Document Title --></label>
-        <name>Core_MDF_Encoded_Document_Title_txt__c</name>
-    </fields>
-    <fields>
         <label>Nombre del documento</label>
         <name>Core_MDF_Ext_Document_Name__c</name>
     </fields>
     <fields>
         <label>Nombre del documento</label>
         <name>Core_MDF_Int_Document_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- App File ID --></label>
-        <name>Core_MDF_Old_Document_Id__c</name>
     </fields>
     <fields>
         <label>Prueba de promoción de marca</label>
@@ -112,22 +62,17 @@
         <label>Prueba de realización</label>
         <name>Core_MDF_Proof_of_Execution__c</name>
     </fields>
-    <fields>
-        <label><!-- SFT File Available Ind --></label>
-        <name>Core_MDF_SFT_File_Download_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- SFT File Download URL --></label>
-        <name>Core_MDF_SFT_File_Download_URL__c</name>
-    </fields>
-    <fields>
-        <label>Tipos de documentos seleccionados</label>
-        <name>Core_MDF_Selected_Document_Types_txt__c</name>
-    </fields>
     <gender>Masculine</gender>
+    <layouts>
+        <layout>Audit Document Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Audit Document Name --></nameFieldLabel>
     <validationRules>
-        <errorMessage>No puede insertar/actualizar documentos sin el tipo de documento (POC, POA, POE).</errorMessage>
-        <name>Core_MDF_DocumentType_Selection_Check</name>
+        <errorMessage><!-- At least one file type should must be selected for each file. --></errorMessage>
+        <name>Core_MDF_File_Select_Check</name>
     </validationRules>
 </CustomObjectTranslation>

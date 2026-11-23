@@ -7,92 +7,42 @@
                     <name>collapsed</name>
                     <value>false</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableActionsConfiguration</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideChatterActions</name>
-                    <value>false</value>
-                </componentInstanceProperties>
                 <componentName>force:highlightsPanel</componentName>
                 <identifier>force_highlightsPanel</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund Boost</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Service Provider CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>fieldAPIName</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isCompactLayout</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objAPIName</name>
-                    <value>Campaign</value>
-                </componentInstanceProperties>
-                <componentName>Core_MDF_Compact_Layout</componentName>
-                <identifier>Core_MDF_Compact_Layout</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Ecosystem Extension Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>CoGTM</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
+        <mode>Replace</mode>
         <name>header</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <name>subheader</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>Core_MDF_ProposalApproval</componentName>
-                <identifier>Core_MDF_ProposalApproval</identifier>
+                <componentInstanceProperties>
+                    <name>relatedListComponentOverride</name>
+                    <value>NONE</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>rowsToDisplay</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showActionBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentName>force:relatedListContainer</componentName>
+                <identifier>force_relatedListContainer</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
+        <name>relatedTabContent</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
@@ -101,370 +51,42 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>fieldAPIName</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isCompactLayout</name>
-                    <value>No</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>isSectionVisible</name>
-                    <value>No</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>objAPIName</name>
-                    <value>Campaign</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>standardFieldAlign</name>
-                    <value>Yes</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_CustomLayoutConfig</componentName>
-                <identifier>core_MDF_CustomLayoutConfig</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>CoGTM</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                    <value>Core_MDF_Active_Ind__c=true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>Core_MDF_Campaign_Outcomes__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                    <value>Core_MDF_CampOutcomeOpt_In_Ind__c = true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                    <value>Core_MDF_Initial_Baseline_Quantity_nbr__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strLabels</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List4</identifier>
-                <visibilityRule>
-                    <booleanFilter>(1 AND 5) OR 2 OR 3 OR 4</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Retail Marketing Funds</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                    <value>Core_MDF_Active_Ind__c=true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                    <value>Core_MDF_Program__c = &apos;Intel Partner Alliance&apos;;Core_MDF_Proposal_Based_Ind__c = true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                    <value>1 AND 2</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                    <value>Core_MDF_Outcome_Criteria_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                    <value>Core_MDF_Campaign_Purpose_Desc_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>Core_MDF_Campaign_Outcomes__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                    <value>Core_MDF_CampOutcomeOpt_In_Ind__c = true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                    <value>Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>Core_MDF_Outcomes_nm__c,Core_MDF_Initial_Baseline_Quantity_nbr__c,Core_MDF_Goal_Quantity_nbr__c,Core_MDF_Baseline_Period_nm__c,Core_MDF_Quantity_nbr__c,Core_MDF_Outcome_Criteria_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                    <value>Core_MDF_Activity_Purpose_Header</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                    <value>Core_MDF_Active_Ind__c=true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>Core_MDF_Camp_to_ActPartner__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>Core_MDF_Activating_Partner_Account_id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List3</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Ecosystem Extension Fund</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_MDF_DisplayActivities</componentName>
-                <identifier>Core_MDF_DisplayActivities</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>additionalCriteria</name>
-                    <value>Core_MDF_Inactive_Ind__c = false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteria</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>componentVisibilityCriteriaLogic</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>criteriaFieldAPIName</name>
-                    <value>Core_MDF_Campaign_Id__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideColumnIfNoData</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>messageBelowTable</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedobjectApiName</name>
-                    <value>Core_MDF_Contract_Line_Item__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityCriteriaFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>restrictFieldVisiblityFieldAPIName</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>sharingFlag</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strFields</name>
-                    <value>Core_MDF_Contract_Section_Details_txt__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>strLabels</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>tableHeader</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_Custom_Related_List</componentName>
-                <identifier>c_core_MDF_Custom_Related_List2</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>CoGTM</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>recordId</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_CampaignBudgets</componentName>
-                <identifier>core_MDF_CampaignBudgets</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2 OR 3 OR 4</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Ecosystem Extension Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>CoGTM</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>Core_MDF_GridViewRegionAndCategory</componentName>
                 <identifier>Core_MDF_GridViewRegionAndCategory</identifier>
-                <visibilityRule>
-                    <booleanFilter>1 OR 2</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>showCreateActivity</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showNewActivity</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>core_MDF_PFR_Grid</componentName>
-                <identifier>c_core_MDF_PFR_Grid</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.RecordType.DeveloperName}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Core_MDF_Co_GTM</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-a038a5c2-de86-4105-8754-ccc30997c80b</name>
+        <mode>Replace</mode>
+        <name>detailTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>active</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-a038a5c2-de86-4105-8754-ccc30997c80b</value>
+                    <value>relatedTabContent</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Standard.Tab.relatedLists</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>relatedListsTab</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>detailTabContent</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -474,137 +96,34 @@
                 <identifier>detailTab</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-ce369180-02ed-4b8e-8dd6-e48ce7432b27</name>
+        <mode>Replace</mode>
+        <name>maintabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-ce369180-02ed-4b8e-8dd6-e48ce7432b27</value>
+                    <value>maintabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
+        <mode>Replace</mode>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField1</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField2</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField2</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_ApprovalHistoryRelatedList</componentName>
-                <identifier>core_MDF_ApprovalHistoryRelatedList</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
+                <componentName>forceChatter:recordFeedContainer</componentName>
+                <identifier>forceChatter_recordFeedContainer</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Campaign.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>Histories</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Campaign.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>PartnerFundRequests</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer2</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Campaign.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>AttachedContentDocuments</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-80e7321c-353f-4187-b551-bec480304570</name>
+        <mode>Replace</mode>
+        <name>feedTabContent</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -616,47 +135,40 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-80e7321c-353f-4187-b551-bec480304570</value>
+                    <value>feedTabContent</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Standard.Tab.relatedLists</value>
+                    <value>Standard.Tab.collaborate</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
-                <identifier>relatedListsTab</identifier>
+                <identifier>collaborateTab</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b47f9a6c-cc49-42f6-827b-77158852838f</name>
+        <mode>Replace</mode>
+        <name>sidebartabs</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>tabs</name>
-                    <value>Facet-b47f9a6c-cc49-42f6-827b-77158852838f</value>
+                    <value>sidebartabs</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>forceChatter:recordFeedContainer</componentName>
-                <identifier>forceChatter_recordFeedContainer</identifier>
-            </componentInstance>
-        </itemInstances>
+        <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>Core MDF Campaign Record Page</masterLabel>
+    <parentFlexiPage>runtime_sales_campaign__Campaign_rec_L_s</parentFlexiPage>
     <sobjectType>Campaign</sobjectType>
     <template>
-        <name>flexipage:recordHomeTemplateDesktop</name>
+        <name>flexipage:recordHomeWithSubheaderTemplateDesktop</name>
     </template>
     <type>RecordPage</type>
 </FlexiPage>

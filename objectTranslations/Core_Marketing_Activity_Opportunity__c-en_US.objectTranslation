@@ -42,5 +42,12 @@
         <name>Core_Opportunity__c</name>
         <relationshipLabel><!-- Marketing Activity Opportunities --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Activity Opportunity Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

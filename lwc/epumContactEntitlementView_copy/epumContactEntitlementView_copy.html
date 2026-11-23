@@ -1,0 +1,133 @@
+<template>
+    <template if:true={isCompVisible}>
+
+        <div class="slds-m-top_large slds-p-around_medium bgWhite">
+            <div class="overflowDataClass">
+                <div class="dataWidthFixClass">
+                    <lightning-layout multiple-rows="true">
+                        <lightning-layout-item class="" size="12" padding="around-small">
+                            {errorMessageStr}
+                            <h3 class="selectedConName">{selectedconname}</h3>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item class="" size="12" padding="around-small">
+                            <lightning-layout class="table-header">
+                                <lightning-layout-item class="" size="6" padding="around-small">
+                                    <b>{label.ResponsibilityName}</b>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="" size="4" padding="around-small">
+                                    <b>{label.EPUM_Status}</b>
+                                </lightning-layout-item>
+                                <lightning-layout-item class="" size="2" padding="around-small">
+                                    <b>{label.EPUM_Access}</b>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                            <template for:each={lstContactEntitlements} for:item="conEnt" for:index="index">
+                                <lightning-layout key={conEnt.entitlementId} class="layoutClass">
+                                    <lightning-layout-item class="" size="6" padding="around-small">
+                                        {conEnt.entitlementNameStr}
+                                        <lightning-helptext class="slds-m-left_xx-small vAlign"
+                                            content={conEnt.entitlehelpText}></lightning-helptext>
+                                    </lightning-layout-item>
+                                    <lightning-layout-item class="" size="4" padding="around-small">
+                                        <template if:true={conEnt.status}>
+
+                                            <template title={conEnt.entitlementNameStr} if:true={conEnt.isSelected}>
+                                                <span class={conEnt.entitlementId}>{label.BeingAssigned}</span>
+                                            </template>
+                                            <template title={conEnt.entitlementNameStr} if:false={conEnt.isSelected}>
+                                                <span class={conEnt.entitlementId}>{label.BeingRemoved}</span>
+                                            </template>
+                                        </template>
+                                        <span class={conEnt.entitlementId}></span>
+
+                                    </lightning-layout-item>
+                                    <lightning-layout-item class="" size="2" padding="around-small">
+                                        <lightning-input type="checkbox" aria-label={conEnt.entitlementId}
+                                            name={conEnt.strEntName} checked={conEnt.isSelected}
+                                            disabled={conEnt.readOnly} onchange={saveEntBtn}></lightning-input>
+                                    </lightning-layout-item>
+                                </lightning-layout>
+                            </template>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </div>
+            </div>
+            <lightning-layout>
+                <lightning-layout-item class="slds-text-align_center" size="12" padding="around-small">
+                    <template if:false={isDisabled}>
+                        <button disabled={isDisabled} title={label.EPUM_Save}
+                            class="slds-button saveCancelButtons slds-button_brand slds-m-right_x-small"
+                            onclick={confirmationNeeded}>
+                            {label.EPUM_Save}</button>
+                    </template>
+                    <template if:true={isDisabled}>
+                        <button disabled={isDisabled} title={label.EPUM_Save}
+                            class="slds-button saveCancelButtons slds-button_brand slds-m-right_x-small"
+                            onclick={confirmationNeeded}>
+                            <span style="color: #555555">{label.EPUM_Save}</span></button>
+                    </template>
+                    <button title={label.EPUM_Cancel}
+                        class="slds-button slds-button_brand saveCancelButtons slds-p-left_small"
+                        onclick={cancelEntitlementChanges}>{label.EPUM_Cancel}</button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </template>
+
+    <template if:true={requireValidation}>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class="slds-is-relative">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01" class="slds-text-heading_medium areyousure">{label.EPUM_AreYouSure}
+                        </h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p>{EmployeeRemoval}</p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="neutral" label={label.EPUM_No} title=""
+                            class="cancelbutton slds-p-right_small" onclick={hideModal}></lightning-button>
+                        <lightning-button variant="brand" label={label.EPUM_Yes} title="" class="okbutton"
+                            onclick={onAgree}>
+                        </lightning-button>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <template if:true={unsavedChangesModal}>
+        <section role="dialog" tabindex="-1" aria-modal="true" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container ">
+                <div class="slds-is-relative">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-02" class="slds-text-heading_medium areyousure">{label.EPUM_AreYouSure}
+                        </h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium">
+                        <p>{label.EPUM_DoYouWantToSave}</p>
+                    </div>
+                    <footer class="slds-modal__footer">
+                        <lightning-button variant="neutral" label={label.EPUM_Discard} title={label.EPUM_Discard}
+                            class="okbutton cancelbutton slds-p-right_small" onclick={onReject}>
+                        </lightning-button>
+                        <lightning-button variant="brand" label={label.EPUM_Save} title={label.EPUM_Save} class=" "
+                            onclick={onAccept}></lightning-button>
+
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <div if:true={isLoading}>
+        <c-epum-spinner></c-epum-spinner>
+    </div>
+
+
+
+</template>

@@ -13,9 +13,5 @@
     </customFields>
     <name>WW Telefonica</name>
     <opportunityAccessLevel>Read</opportunityAccessLevel>
-    <ruleAssociations>
-        <inherited>false</inherited>
-        <ruleName>WW_Telefonica</ruleName>
-    </ruleAssociations>
     <territory2Type>Named_Strategic_Accounts</territory2Type>
 </Territory2>

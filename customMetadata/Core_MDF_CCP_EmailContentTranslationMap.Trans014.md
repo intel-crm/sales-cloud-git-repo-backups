@@ -72,10 +72,10 @@
     </values>
     <values>
         <field>Core_MDF_Program__c</field>
-        <value xsi:type="xsd:string">Datacenter</value>
+        <value xsi:type="xsd:string">Data Center Co-Marketing Fund</value>
     </values>
     <values>
         <field>Core_MDF_Translated_Program__c</field>
-        <value xsi:type="xsd:string">資料中心</value>
+        <value xsi:type="xsd:string">資料中心共同行銷基金</value>
     </values>
 </CustomMetadata>

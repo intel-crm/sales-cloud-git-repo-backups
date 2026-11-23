@@ -64,5 +64,16 @@
         <label><!-- Partner User Role Id --></label>
         <name>Core_IPS_Partner_User_Role_Id__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Conversion - Contact Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Mapping Information --></label>
+            <section>Mapping Information</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -58,7 +58,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>NEXT_N_DAYS:30</value>
+            <value>TODAY</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Past_Due__c</column>
@@ -86,7 +86,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>palmeri,calfin,Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,russell</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

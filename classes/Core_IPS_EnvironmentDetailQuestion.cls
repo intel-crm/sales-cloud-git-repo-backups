@@ -8,28 +8,27 @@ Modification Log :
 * Amritesh               12/18/2017             Created - US8534
 **********************************************************************************/ 
 public class Core_IPS_EnvironmentDetailQuestion {
-  @AuraEnabled  public String type{get;set;}
-  @AuraEnabled  public String label{get;set;}
-  @AuraEnabled  public String splaceholder{get;set;}
+    public String type{get;set;}
+    public String label{get;set;}
+    public String splaceholder{get;set;}
     public List<SelectOption> pplaceholder{get;set;}
-	@AuraEnabled public List<CustomSelectOptions> lwcplaceholder{get;set;}
-   @AuraEnabled public String selectedValue{get;set;}
-   @AuraEnabled public String old_selectedValue{get;set;}
-   @AuraEnabled public boolean cplaceholder{get;set;}
-   @AuraEnabled public String tplaceholder{get;set;}
-  @AuraEnabled  public boolean required{get;set;}
-  @AuraEnabled  public boolean IsAgentOnly{get;set;}
-  @AuraEnabled  public List<string> selectedMValue{get;set;}
+    public String selectedValue{get;set;}
+    public String old_selectedValue{get;set;}
+    public boolean cplaceholder{get;set;}
+    public String tplaceholder{get;set;}
+    public boolean required{get;set;}
+    public boolean IsAgentOnly{get;set;}
+    public List<string> selectedMValue{get;set;}
     
     // added by amritesh 12/18/2017 - US85344 
-   @AuraEnabled public Id selectedParentAnswer{get;set;}
-   @AuraEnabled public Id questionId; 
-  @AuraEnabled public List<Core_IPS_EnvironmentDetailQuestion> childQuestions{get;set;}   
-    @AuraEnabled public Boolean hasChildQuestions{get;set;}
-    @AuraEnabled public Boolean hasParentQuestion{get;set;}
+    public Id selectedParentAnswer{get;set;}
+    public Id questionId; 
+    public List<Core_IPS_EnvironmentDetailQuestion> childQuestions{get;set;}   
+    public Boolean hasChildQuestions{get;set;}
+    public Boolean hasParentQuestion{get;set;}
     //public Boolean showDependentSection{get;set;} 
-  @AuraEnabled public Boolean isVisible{get;set;}
-    @AuraEnabled public String parentQuestionID{get;set;}
+    public Boolean isVisible{get;set;}
+    
     public Core_IPS_EnvironmentDetailQuestion() {
         required = false;
         hasChildQuestions = false;
@@ -42,7 +41,6 @@ public class Core_IPS_EnvironmentDetailQuestion {
     }
     
     public void renderDependentQuestions() {
-        if(childQuestions==null || childQuestions.size()==0) return;
         if(String.isBlank(selectedValue)) {
             //showDependentSection = false;
             for(Core_IPS_EnvironmentDetailQuestion objChildQues : childQuestions) {
@@ -87,12 +85,11 @@ public class Core_IPS_EnvironmentDetailQuestion {
                         objChildQues.isVisible=true;
                     }
                     
+                    System.debug(objChildQues.label + ' - IsVisible : ' + objChildQues.isVisible);
                 }
             }
         }
         old_selectedValue = selectedValue;
         
     }
-
-	
 }

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>POC Profile Response</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>POC Profile Responses</value>
+    </caseValues>
+    <fields>
+        <label><!-- Account Manager Email --></label>
+        <name>Account_Manager_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager Name --></label>
+        <name>Account_Manager_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account Manager Phone --></label>
+        <name>Account_Manager_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- POC Profile Responses --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Branded Point earning excluded (Date) --></label>
+        <name>Branded_Point_earning_excluded_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Branded Point earning excluded --></label>
+        <name>Branded_Point_earning_excluded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component Point earning excluded (Date) --></label>
+        <name>Component_Point_earning_excluded_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Component Point earning excluded --></label>
+        <name>Component_Point_earning_excluded__c</name>
+    </fields>
+    <fields>
+        <label><!-- FAE Email --></label>
+        <name>FAE_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- FAE Name --></label>
+        <name>FAE_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- FAE Phone --></label>
+        <name>FAE_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSE Email --></label>
+        <name>FSE_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSE Name --></label>
+        <name>FSE_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- FSE Phone --></label>
+        <name>FSE_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Acceptable Domains --></label>
+        <name>IPA_Acceptable_Domains__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is partner in the Board of Advisors --></label>
+        <name>Is_partner_in_the_Board_of_Advisors__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Expert Email --></label>
+        <name>Marketing_Expert_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Expert Name --></label>
+        <name>Marketing_Expert_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Marketing Expert Phone --></label>
+        <name>Marketing_Expert_Phone__c</name>
+    </fields>
+    <fields>
+        <label><!-- Migration Notes --></label>
+        <name>Migration_Notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM whitebox Point earning excluded-Date --></label>
+        <name>ODM_whitebox_Point_earning_excluded_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- ODM whitebox Point earning excluded --></label>
+        <name>ODM_whitebox_Point_earning_excluded__c</name>
+    </fields>
+    <fields>
+        <label><!-- Original Tier for the account - from ERP --></label>
+        <name>Original_Tier_for_the_account_from_ERP__c</name>
+    </fields>
+    <fields>
+        <label><!-- Originating Program --></label>
+        <name>Originating_Program__c</name>
+        <picklistValues>
+            <masterLabel>CIP</masterLabel>
+            <translation><!-- CIP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISA</masterLabel>
+            <translation><!-- ISA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ITP</masterLabel>
+            <translation><!-- ITP --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Point Status Date --></label>
+        <name>Point_Status_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Point Status (Reason Text) --></label>
+        <name>Point_Status_Reason_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Point Status --></label>
+        <name>Point_Status__c</name>
+        <picklistValues>
+            <masterLabel>Active</masterLabel>
+            <translation><!-- Active --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Eligible</masterLabel>
+            <translation><!-- Eligible --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Eligible</masterLabel>
+            <translation><!-- Not Eligible --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Points Not Eligible (Date) --></label>
+        <name>Points_Not_Eligible_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Not Eligible (Reason Text) --></label>
+        <name>Points_Not_Eligible_Reason_Text__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Not Eligible --></label>
+        <name>Points_Not_Eligible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Opt-in (Date) --></label>
+        <name>Points_Opt_in_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Opt-in --></label>
+        <name>Points_Opt_in__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Source --></label>
+        <name>Registration_Source__c</name>
+        <picklistValues>
+            <masterLabel>Mobile</masterLabel>
+            <translation><!-- Mobile --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WeChat</masterLabel>
+            <translation><!-- WeChat --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Web</masterLabel>
+            <translation><!-- Web --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Self Reported Revenue $ --></label>
+        <name>Self_Reported_Revenue__c</name>
+    </fields>
+    <layouts>
+        <layout>Profile Response Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Test Profile Response --></label>
+        <name>Test_Profile_Response</name>
+    </quickActions>
+    <recordTypes>
+        <label><!-- Intel Account --></label>
+        <name>Intel_Account</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- OPID --></label>
+        <name>OPID</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -6,7 +6,7 @@
     <aura:handler name="init" value="this" action="{!c.doInit}" 
                   description="This calls loads the custom list views on the object."/>
     
-    <!-- aura attributes -->  
+    <!-- aura attributes -->   
     <aura:attribute name="listViewResult" type="string[]"/>
     <aura:attribute name="ColKeys" type="Map"/>
     <aura:attribute name="fetchedsObjectList" type="Object[]" default=""/>

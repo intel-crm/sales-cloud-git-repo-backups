@@ -133,9 +133,6 @@ public class PMP_CompanyAutoFill_Helper {
         
         //SYNC TRANSLATIONS
         syncCompanyTranslationsFromStage(draftPartnerIds, partnerToStageMap);
-        
-        //SYNC RESOURCES
-        syncCompanyResourcesFromStage(draftPartnerIds,partnerToStageMap);
     }
    
     //UPDATE COMPANY
@@ -340,7 +337,7 @@ public class PMP_CompanyAutoFill_Helper {
         }
     
         // -------------------------------
-        // STEP 4: Existing Records 
+        // STEP 4: Existing Records (DB dedupe)
         // -------------------------------
         Set<Id> companyIds = partnerRegionsMap.keySet();
         Set<String> existingKeys = new Set<String>();
@@ -617,33 +614,4 @@ public class PMP_CompanyAutoFill_Helper {
             );
         }
     }  
-    
-    private static void syncCompanyResourcesFromStage(Set<Id> partnerIds, Map<Id, PMP_CompanyAutoFill__c> partnerToStageMap) {
-        List<PMP_Company_Resource__c> resourcesToInsert = new List<PMP_Company_Resource__c>();
-        for (Id partnerId : partnerIds) {
-            PMP_CompanyAutoFill__c stageRec = partnerToStageMap.get(partnerId);
-            if (stageRec == null || String.isBlank(stageRec.PMP_Resources_JSON__c)) {
-                continue;
-            }
-            try {
-                List<Object> resources = (List<Object>)JSON.deserializeUntyped(stageRec.PMP_Resources_JSON__c);
-                for (Object obj : resources) {
-                    Map<String,Object> resource = (Map<String,Object>)obj;
-                    String resourceName = (String)resource.get('name');
-                    String resourceType = (String)resource.get('type');
-                    String resourceUrl = (String)resource.get('url');
-                    if (String.isBlank(resourceName) || String.isBlank(resourceUrl)) {
-                        continue;
-                    }
-                    resourcesToInsert.add(new PMP_Company_Resource__c(PMP_Company_Id__c = partnerId, Name = resourceName, PMP_Company_Resource_Type_Nm__c = resourceType, PMP_Company_Resource_URL_txt__c = resourceUrl));
-                }
-            } catch (Exception e) {
-                System.debug(LoggingLevel.ERROR, 'Invalid Resource JSON : ' + e.getMessage());
-            }
-        }
-        if (!resourcesToInsert.isEmpty()) {
-            Database.SaveResult[] results = Database.insert(resourcesToInsert, false);
-            PMP_Utility.logDmlErrors((Object[])results, 'PMP_CompanyAutoFill_Helper-syncCompanyResourcesFromStage');
-        }
-    }
 }

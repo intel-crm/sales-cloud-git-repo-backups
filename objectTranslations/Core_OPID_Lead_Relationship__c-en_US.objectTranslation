@@ -18,6 +18,9 @@
     </fields>
     <fields>
         <label><!-- OPID Name --></label>
+        <lookupFilter>
+            <errorMessage><!-- Account record type should be Partner Account Group. --></errorMessage>
+        </lookupFilter>
         <name>Core_OPID_Name__c</name>
         <relationshipLabel><!-- OPID Lead Relationships --></relationshipLabel>
     </fields>

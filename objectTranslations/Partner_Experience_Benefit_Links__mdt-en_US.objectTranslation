@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Partner Experience Benefit Link</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Partner Experience Benefit Links</value>
+    </caseValues>
+    <fields>
+        <label><!-- Label --></label>
+        <name>Label__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Experience Localization --></label>
+        <name>Partner_Experience_Localization__c</name>
+        <relationshipLabel><!-- Partner Experience Benefit Links --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- URL --></label>
+        <name>URL__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

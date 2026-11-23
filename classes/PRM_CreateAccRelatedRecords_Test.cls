@@ -33,20 +33,20 @@ public class PRM_CreateAccRelatedRecords_Test{
         
         Core_Trigger_Executions__c cte1 = new Core_Trigger_Executions__c();
         cte1.Name = 'AccountTriggerExecution';
-    cte1.Core_Active__c = false;
-    cte1.Core_Class_Name__c = 'Core_Account';
-    cte1.Core_Description__c = 'To identify old and new Trigger';
-    cte1.Core_Object__c = 'Account';
-    cte1.Core_Trigger_Events__c = 'All';
+		cte1.Core_Active__c = false;
+		cte1.Core_Class_Name__c = 'Core_Account';
+		cte1.Core_Description__c = 'To identify old and new Trigger';
+		cte1.Core_Object__c = 'Account';
+		cte1.Core_Trigger_Events__c = 'All';
         cteList.add(cte1);
         
         Core_Trigger_Executions__c cte2 = new Core_Trigger_Executions__c();
         cte2.Name = 'BypassAccTriggerOnSalesAssistUpdate';
-    cte2.Core_Active__c = false;
-    cte2.Core_Class_Name__c = 'Core_Account';
-    cte2.Core_Description__c = 'Bypass account trigger logic on change of sales assist update.';
-    cte2.Core_Object__c = 'Account';
-    cte2.Core_Trigger_Events__c = 'Before Update, After Update';
+		cte2.Core_Active__c = false;
+		cte2.Core_Class_Name__c = 'Core_Account';
+		cte2.Core_Description__c = 'Bypass account trigger logic on change of sales assist update.';
+		cte2.Core_Object__c = 'Account';
+		cte2.Core_Trigger_Events__c = 'Before Update, After Update';
         cteList.add(cte2);
         insert cteList;
 
@@ -92,7 +92,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         a.Core_Intel_Partner_Alliance_PartnerGroup__c = 
         a.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         update a;
-    List<Contact> conList = new List<Contact>();
+		List<Contact> conList = new List<Contact>();
         Contact c = PRM_TestUtility.getContact();
         c.AccountId = acct[0].Id;
         c.Core_IPA_PartnerRole__c='Distributor';
@@ -101,7 +101,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         c.Core_Preferred_Language__c = 'ENG';
         c.Core_eRPM_Language_Code__c = 'ENG';
         c.RecordTypeId = contactRecordType;
-  c.MailingCountry='USA';
+	c.MailingCountry='USA';
         //insert c;
         conList.add(c);
         
@@ -118,7 +118,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         c.Core_IPA_PartnerRole__c='Distributor';
         c1.RecordTypeId = contactRecordType;
         c1.Core_IPA_PartnerRole__c = 'Service Provider';
-  c1.MailingCountry='USA';
+	c1.MailingCountry='USA';
        // insert c1;
        conList.add(c1);
         
@@ -588,7 +588,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         insert a2;
       
       
-       Account a3 = new Account();
+     	Account a3 = new Account();
         a3.AccountNumber = '435765';
         a3.Name='New Account';
         a3.Core_Account_Type__c ='Distributor';
@@ -741,12 +741,12 @@ public class PRM_CreateAccRelatedRecords_Test{
         //System.debug('regRequest4'+regRequest4);
         listToInsert2.add(regRequest4);
         PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(listToInsert2);
-        /*PRM_IPA_Utility.createEventLog(null,a3.Id,a2.Id,'ABCD');
-        PRM_IPA_Utility.createEventLog(true,a3.Id,a2.Id,null);
-        PRM_IPA_Utility.createEventLog(false,a3.Id,a2.Id,'ABCD');
-        PRM_IPA_Utility.getNotificationLogInstance('Prime Name Update','ABC',a2.Id,a3.Id);*/
+      	/*PRM_IPA_Utility.createEventLog(null,a3.Id,a2.Id,'ABCD');
+      	PRM_IPA_Utility.createEventLog(true,a3.Id,a2.Id,null);
+      	PRM_IPA_Utility.createEventLog(false,a3.Id,a2.Id,'ABCD');
+      	PRM_IPA_Utility.getNotificationLogInstance('Prime Name Update','ABC',a2.Id,a3.Id);*/
         PRM_IPA_Utility.acrActiveCheck(acrlistt,regRequest4);
-        PRM_IPA_Utility.acrActiveCheck(null,regRequest4);
+      	PRM_IPA_Utility.acrActiveCheck(null,regRequest4);
       
          PRM_IPA_Utility.acmActiveCheck(listToInsert3,regRequest4);
         Test.stopTest();
@@ -847,7 +847,7 @@ public class PRM_CreateAccRelatedRecords_Test{
        // insert acr;
         
         Test.startTest();
-       /* List<PRM_Registration_Request__c> listToInsert2 = new List<PRM_Registration_Request__c>();
+        List<PRM_Registration_Request__c> listToInsert2 = new List<PRM_Registration_Request__c>();
         PRM_Registration_Request__c regRequest4 = PRM_TestUtility.getPRMRegistrationRequest();
         regRequest4.PRM_First_Name__c = 'Casie';
         regRequest4.PRM_Last_Name__c = 'Mccall';
@@ -870,7 +870,7 @@ public class PRM_CreateAccRelatedRecords_Test{
         insert regRequest4;
         //System.debug('regRequest4'+regRequest4);
         listToInsert2.add(regRequest4);
-        PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(listToInsert2);*/
+        PRM_CreateAccountAndRelatedRecords.createAccountAndRelatedRecords(listToInsert2);
         
         
         List<PRM_Registration_Request__c> listToInsert3 = new List<PRM_Registration_Request__c>();
@@ -1136,10 +1136,10 @@ public class PRM_CreateAccRelatedRecords_Test{
         Test.stopTest();
     }
         @isTest
-      public static void linkBulkEmailLogToContactTest(){
-         Test.startTest();
+    	public static void linkBulkEmailLogToContactTest(){
+       	Test.startTest();
        /* UserRole r = new UserRole(Name = 'Admin');
-    insert r;  
+		insert r;  
         User u = new User(
              ProfileId = [SELECT Id FROM Profile WHERE Name = 'System Administrator'].Id,
              LastName = 'last',
@@ -1204,8 +1204,8 @@ public class PRM_CreateAccRelatedRecords_Test{
             System.assertEquals('Script-thrown exception', ex.getMessage());
         }
         Test.stopTest();
-  
-  
+	
+	
     }
 
 }

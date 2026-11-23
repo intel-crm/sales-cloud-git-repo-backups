@@ -16,7 +16,7 @@ Modification Log :
 * Sumukh                    26/6/2018              Added logic for US108595 Iteration 13 , release 4.3
 * Ranjini					27/8/2018			   Added new method updateCase for DE26263
 *****************************************************************************************************************************************/
-public without sharing class Core_IPS_Case_Attachments_Handler {
+public class Core_IPS_Case_Attachments_Handler {
     
     static Boolean isrec = false; //Added to void recursion.
     public static Map<Id,user>userMap = new Map<Id,user>();
@@ -35,7 +35,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
         userMap = returnUserMaps(lstips);
         
         for(Core_IPS_Case_Attachments__c cs:lstips){
-            if(userMap != null && userMap.size()>0 && (userMap.get(cs.Core_FileUploadedBy__c).profileid  != null || userMap.get(cs.Core_FileUploadedBy__c).profileid !='')){
+            if(userMap.size()>0 && (userMap.get(cs.Core_FileUploadedBy__c).profileid  != null || userMap.get(cs.Core_FileUploadedBy__c).profileid !='')){
                 if((system.label.IPS_Portal_Profile_ID==profileId) && userMap.get(cs.Core_FileUploadedBy__c).profileid != label.IPS_Portal_Profile_ID)
                 { 
                     if(!trigger.isdelete) cs.addError(label.IPS_Case_Attachment_Delete_Error); else  cs.addError(label.IPS_Case_Attachment_Update_Error);
@@ -75,17 +75,20 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
                 //Added profile in query for US105986 on 29/5/2018 by Aparna
                 userInfm = new map<id,user>([select IsActive,Email,Name,FirstName,Profile.Name,Profile.Id from User where id IN: UserIds]);
             }
+            System.debug('userInfm --->'+userInfm);
             
             if(userInfm.Values()!=null)
             {
                 
                 list<Core_IPS_Case_Attachments__c> b2bAtt = new list<Core_IPS_Case_Attachments__c>();
+                system.debug('User id::'+userinfo.getuserId());
                 
                 for(Core_IPS_Case_Attachments__c attObj :newMap.values())
                 {  
                     
                     Core_IPS_Case_Attachments__c att = new Core_IPS_Case_Attachments__c();
                     att.id = attObj.id;
+                    System.debug('line 90'+UserInfm.get(attObj.Core_FileUploadedBy__c).IsActive);
                     //Modified for US105986 R4.3 by Aparna on 29/5/2018
                     
                     if(string.valueOf(attObj.Core_FileUploadedby__c).substring(0,15) != label.Backend_IntegrationUser && UserInfm.get(attObj.Core_FileUploadedBy__c).IsActive)
@@ -96,7 +99,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
                         
                     }
                    
-                    if(attObj.Core_IPS_Attachment_Source__c  !=  LABEL.Core_RestAPI_Attachment_Source){ 
+                    
                         if(string.valueOf(attObj.Core_FileUploadedby__c).substring(0,15) == label.Backend_IntegrationUser)
                         {
                             att.Core_IPS_Attachment_Source__c = Core_IPS_Labels__c.getValues('Backend System').value__c;
@@ -112,8 +115,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
                         {
                             att.Core_IPS_Attachment_Source__c = Core_IPS_Labels__c.getValues('Internal Portal').value__c;
                         }
-                        
-                        else if(Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(UserInfm.get(attObj.Core_FileUploadedBy__c).Id) == true) //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access
+                        else if(UserInfm.get(attObj.Core_FileUploadedBy__c).Profile.Id == label.Core_IPS_Data_Migration_ProfileId)
                         {
                             att.Core_IPS_Attachment_Source__c = Core_IPS_Labels__c.getValues('Data Migration').value__c;
                         }
@@ -121,7 +123,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
                         else
                             att.Core_IPS_Attachment_Source__c = Core_IPS_Labels__c.getValues('Attachment Source-N/A').value__c;
                         
-                    }
+                    
                     b2bAtt.add(att);
                 }    
                 if(b2bAtt.size()>0)
@@ -129,7 +131,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
             }
         } 
         Catch(Exception e){
-    	}
+            system.debug('exception occurred at '+e.getLineNumber()+'\n msg:'+e.getMessage()); }  
     }
     //end
     
@@ -158,15 +160,14 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
         
         userMap = returnUserMaps(newList);     
         
-         
-        if((newList != null && newList.size() > 0) && !isrec && Core_IPS_DataMigrationUser_Validation.isIPSDatamigrationUser(userInfo.getUserId()) == false){   //TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access 
+        if(Core_IPS_Labels__c.getValues('Data Migration Profile Id').value__c !=null && (newList != null || newList.size() > 0) && !isrec && Userinfo.getProfileId().substring(0,15)!=Core_IPS_Labels__c.getValues('Data Migration Profile Id').value__c){ 
+            
             for(Core_IPS_Case_Attachments__c attachObj: newList)
             { 
                 
                 if((Trigger.isInsert && attachObj.Core_Upload_Status__c.equalsIgnoreCase(Core_IPS_Labels__c.getValues('COMPLETE').value__c)) || (Trigger.isUpdate && newMap.get(attachObj.id).Core_Upload_Status__c!=oldMap.get(attachObj.id).Core_Upload_Status__c && attachObj.Core_Upload_Status__c.equalsIgnoreCase(Core_IPS_Labels__c.getValues('COMPLETE').value__c))){
                     if(!String.isBlank(attachObj.Core_FileUploadedby__c) && attachObj.Core_FileUploadedby__c!=null){
                         newComment.Core_IPS_Comment_Author_Type__c=Core_IPS_AddCommentController.getAuthr(String.valueOf(userMap.get(attachObj.Core_FileUploadedby__c).ProfileId).substring(0,15),attachObj.Core_FileUploadedby__c);
-                        newComment.Core_IPS_Comment_Authored_By__c = attachObj.Core_FileUploadedby__c;
             }                              
                     
                     String fileDescriptn;
@@ -174,25 +175,18 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
                         fileDescriptn = attachObj.Core_File_Description__c.replaceAll('>','&gt;');
                         fileDescriptn = attachObj.Core_File_Description__c.replaceAll('<','&lt;');
                     }
-                    if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Case__c.isCreateable()) { //Fix added -Aditya
-                        newComment.Core_IPS_Case__c = attachObj.Core_Case__c;
-                    }
+                    newComment.Core_IPS_Case__c = attachObj.Core_Case__c;
                     newComment.Core_IPS_Case_Comment_Type__c = attachObj.Core_IPS_Attachment_Visibility__c; 
                     newComment.CreatedById = attachObj.Core_FileUploadedby__c; 
                     newComment.Core_IPS_Rich_Comment__c = ' New Case Attachment uploaded: ' + '<br/>' + '<a href='+attachObj.Core_File_URL__c+' target="Self">Download link</a>'      + '      &nbsp; &nbsp;     '    + attachObj.Core_File_Name__c   +     '     &nbsp; &nbsp;      '     +   fileDescriptn    ;                                     
                     newComment.Core_IPS_Comment_Attachment_Id__c = attachObj.id;  
-                    if(attachObj.Core_IPS_Attachment_Source__c ==   LABEL.Core_RestAPI_Attachment_Source){
-                        newComment.Core_IPS_Case_Comment_Source__c = attachObj.Core_IPS_Attachment_Source__c;
-                    }
+
                     
                     // Added by Sumukh for US108595   
                     if(newComment.Core_IPS_Comment_Author_Type__c ==Core_IPS_Labels__c.getValues('Backend Integration').value__c){
                         
-                        //pk  newComment.Core_IPS_Comment_Authored_By__c = newComment.createdbyid;
-                        //if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Authored_By__c.isCreateable()) {
-                        newComment.Core_IPS_Comment_Authored_By__c = attachObj.Core_FileUploadedby__c;
-                        //}
-                        //if (Schema.sObjectType.Core_IPS_Case_Comments__c.fields.Core_IPS_Comment_Authored_By_Name__c.isCreateable()) {
+                          newComment.Core_IPS_Comment_Authored_By__c = newComment.createdbyid;
+                        
                         newComment.Core_IPS_Comment_Authored_By_Name__c = attachObj.Core_IPS_Uploaded_By_Name__c;
                         newComment.Core_IPS_Comment_Authored_By_FirstName__c = attachObj.Core_IPS_Uploaded_By_FirstName__c;
                         newComment.Core_IPS_Comment_Authored_By_Email__c = attachObj.Core_IPS_Uploaded_By_Email__c;
@@ -205,12 +199,11 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
         if(commentlist!=null && commentlist.size()>0){
             try{
                 insert commentlist;
-            }
-            Catch(Exception e){
-            }
+            }Catch(Exception e){System.debug('Exception::: '+e.getMessage());}
             
         }
         isrec=true;
+        system.debug('comment inserted');               
     }  
     
     // Added by sumukh for updation of attachment case comments for US94125/US94127 
@@ -220,10 +213,8 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
         list<Core_IPS_Case_Comments__c> commentlist = new list<Core_IPS_Case_Comments__c>();
         Core_IPS_Case_Comments__c newComment = new Core_IPS_Case_Comments__c();       
         
-        if(oldList!=null && oldList.size()>0){ 
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){ //FLS Check added - Aditya         
-                commentlist = [Select id,Core_IPS_Case__c,Core_IPS_Case_Comment_ID__c,Core_IPS_Comment_Attachment_Id__c,Core_IPS_Rich_Comment__c,Core_IPS_Comment__c from Core_IPS_Case_Comments__c where Core_IPS_Comment_Attachment_Id__c IN:oldList];         
-            }
+        if(oldList!=null && oldList.size()>0){          
+            commentlist = [Select id,Core_IPS_Case__c,Core_IPS_Case_Comment_ID__c,Core_IPS_Comment_Attachment_Id__c,Core_IPS_Rich_Comment__c,Core_IPS_Comment__c from Core_IPS_Case_Comments__c where Core_IPS_Comment_Attachment_Id__c IN:oldList];         
         }
         
         for(Core_IPS_Case_Comments__c caseCommentObj : commentlist){
@@ -238,6 +229,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
             try{
                 database.update(commentlist);
             }Catch(Exception e){
+                System.debug('Exception::: '+e.getMessage());
             }                       
         }                          
     }      
@@ -255,10 +247,8 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
             
         }
         
-        if(setFileDescripChangedAttachment!=null && setFileDescripChangedAttachment.size()>0){ 
-            if(Core_IPS_Case_Comments__c.SObjectType.getDescribe().isAccessible()){  //FLS check added - Aditya        
-                commentlist = [Select Core_IPS_Case__c,Core_IPS_Case_Comment_ID__c,Core_IPS_Comment_Attachment_Id__c,Core_IPS_Rich_Comment__c,Core_IPS_Comment__c from Core_IPS_Case_Comments__c where Core_IPS_Comment_Attachment_Id__c in: setFileDescripChangedAttachment];           
-            }
+        if(setFileDescripChangedAttachment!=null && setFileDescripChangedAttachment.size()>0){         
+            commentlist = [Select Core_IPS_Case__c,Core_IPS_Case_Comment_ID__c,Core_IPS_Comment_Attachment_Id__c,Core_IPS_Rich_Comment__c,Core_IPS_Comment__c from Core_IPS_Case_Comments__c where Core_IPS_Comment_Attachment_Id__c in: setFileDescripChangedAttachment];           
         }
         
         if(commentlist.size()>0){
@@ -279,6 +269,7 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
             try{
                 update commentlist;
             }Catch(Exception e){
+                System.debug('Exception::: '+e.getMessage());
             }                       
         }
         
@@ -315,48 +306,15 @@ public without sharing class Core_IPS_Case_Attachments_Handler {
             if(caseIdMap.containskey(attvar.Core_Case__c)) {
                    case c= new case();
                     c.id = attVar.Core_Case__c;
-                   if (Schema.sObjectType.Case.fields.Core_Last_Case_Comment_Submitter__c.isUpdateable()) { //TWC745-5592-FLS update added -Gangadhar -29/02/2024
             	   c.Core_Last_Case_Comment_Submitter__c = attVar.Core_FileUploadedBy__c;
-                   }
 				   caseToupdate.add(c);
                 }
         }
         try{
-            update caseToupdate;}catch(exception e){}
+            update caseToupdate;}catch(exception e){system.debug('Error in Core IPS Case Attachments Handler in updateCase method');}
     }
-//=========================================================================================================
-/* Method Name: sendCaseAttachment
- * Input Params: List of Core_IPS_Case_Attachments__c
- * Function: This method will Create the outbound for case attachment whenever the upload status of case attachment 
- *           is changed to 'Complete' by scft.
- * Author: Chandra Shekar
- */
-    public static void sendCaseAttachment(List<Core_IPS_Case_Attachments__c> newList){
-        List<Case> cases = new List<Case>();
-        try{
-        List<Id> caseIds = new List<Id>();
-        for(Core_IPS_Case_Attachments__c attachmentVar: newList){
-            caseIds.add(attachmentVar.Core_Case__c);
-        }
-            if(Case.SObjectType.getDescribe().isAccessible()){ //FLS already added - Aditya
-             	cases = [select id,Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c,Core_IPS_BackendID__c, Core_IPS_BES_Promote_Status__c,Core_IPS_New_Backend_System__c from case WHERE Id IN:caseIds];
-            }
-        List<Core_IPS_Case_Attachments__c> caseAttachmentsList =new List<Core_IPS_Case_Attachments__c>();
-            for(Core_IPS_Case_Attachments__c caseAttachmentVar: newList){
-                if(caseAttachmentVar.Core_Upload_Status__c == 'Complete') {
-                    for(case caseId: cases) {
-                        //Ajith added this logic to restrict to create Outbound messages, when Backend system is deactivated
-                        if(caseId.Core_IPS_BackendID__c!=null && caseId.Core_IPS_New_Backend_System__c!=null && caseAttachmentVar.Core_Case__c == caseId.Id && caseId.Core_IPS_New_Backend_System__r.Core_IPS_Deactivated__c == false) {
-                            caseAttachmentsList.add(caseAttachmentVar);
-                        }
-                    }
-                }
-            } 
-        if(caseAttachmentsList.size()>0){
-            Core_IPS_BES_OutboundMessage.createPlatformEventHSD(caseAttachmentsList); 
-        }
-        }catch(Exception e){
-            Core_IPS_BES_LogEntry_Utility.insertLog(e, null, null, null , String.join(newList,','));
-                }
-    }   
+
+    
+    
+    
 }

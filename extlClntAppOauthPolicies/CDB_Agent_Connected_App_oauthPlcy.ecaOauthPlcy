@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ExtlClntAppOauthConfigurablePolicies xmlns="http://soap.sforce.com/2006/04/metadata">
-    <commaSeparatedPermissionSet>Pricing_CDB_Agent_Permissionset</commaSeparatedPermissionSet>
-    <commaSeparatedProfile>Core_Integration_Minimal</commaSeparatedProfile>
+    <commaSeparatedProfile>Integration</commaSeparatedProfile>
     <externalClientApplication>CDB_Agent_Connected_App</externalClientApplication>
     <ipRelaxationPolicyType>Enforce</ipRelaxationPolicyType>
     <isClientCredentialsFlowEnabled>false</isClientCredentialsFlowEnabled>

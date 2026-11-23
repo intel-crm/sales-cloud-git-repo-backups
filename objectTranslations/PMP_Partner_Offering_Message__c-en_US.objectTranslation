@@ -56,5 +56,12 @@
         <label><!-- Partner Offering Status --></label>
         <name>PMP_Partner_Offering_Status_Nm__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Offering Message Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

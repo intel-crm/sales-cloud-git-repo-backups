@@ -103,13 +103,10 @@
         <field>Account.Core_Account_Type__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Consumption_Market__c</field>
+        <field>Account.Core_Account_BU_Focus__c</field>
     </columns>
     <columns>
         <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Status_Update__c</field>
@@ -128,14 +125,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>TOTAL_PRICE</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
@@ -165,7 +154,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
-            <value>Approved</value>
+            <value>Submitted,Approved</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -182,10 +171,24 @@
             <value>Germany</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_MANAGER</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>IOTG</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
+            <value>GMP GERMANY</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OWNER_MANAGER</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
             <value>Eran Gal</value>
         </criteriaItems>
         <language>en_US</language>
@@ -226,7 +229,9 @@
     <sortColumn>AMOUNT</sortColumn>
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

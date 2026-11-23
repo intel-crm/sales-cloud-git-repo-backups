@@ -13194,7 +13194,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	            console.log(this.name + " Sending response:");
 	            console.log(JSON.stringify(message, null, '  '));
 	        }
-            message = JSON.parse(JSON.stringify(message));
 	        targetWindow.postMessage(message, "*");
 	    };
 	    /**

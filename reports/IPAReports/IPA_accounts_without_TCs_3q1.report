@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <field>ACCOUNT_ID</field>
+        <field>Account.Core_Account_ID__c</field>
     </columns>
     <columns>
         <field>ACCOUNT.NAME</field>
@@ -15,7 +15,7 @@
     <columns>
         <field>Account.Core_Geo__c</field>
     </columns>
-    <description>Report to track the location accounts who have not signed the T&amp;C</description>
+    <description>Show the IPA accounts who have not signed IPA T&amp;C</description>
     <filter>
         <criteriaItems>
             <column>Account.Core_Intel_Partner_Alliance_PartnerGroup__c</column>
@@ -25,13 +25,6 @@
             <value>1</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Account.Core_IPA_Badge_Tier__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,Partner,Prestige</value>
-        </criteriaItems>
-        <criteriaItems>
             <column>Account.Core_Geo__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -39,11 +32,11 @@
             <value>APJ,ASMO,EMEA,PRC</value>
         </criteriaItems>
         <criteriaItems>
-            <column>RECORDTYPE</column>
+            <column>Account.Core_IPA_Badge_Tier__c</column>
             <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
+            <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Account.Mastered_Account</value>
+            <value>,Partner,Prestige</value>
         </criteriaItems>
         <criteriaItems>
             <column>Account.PRM_Count_IPA_Terms_And_Conditions__c</column>
@@ -51,6 +44,13 @@
             <isUnlocked>false</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Account.Mastered_Account</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -65,7 +65,7 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>Account.Core_Geo__c</sortColumn>
+    <sortColumn>ACCOUNT.NAME</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>

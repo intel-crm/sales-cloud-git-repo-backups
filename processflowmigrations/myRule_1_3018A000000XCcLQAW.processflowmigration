@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_Platform_Event_Bus_Republish_2</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_Platform_Event_Bus_Republish_2-1</destinationFlowVersion>
+    <developerName>myRule_1_3018A000000XCcLQAW</developerName>
+    <masterLabel>PRM_Platform Event Bus_Republish_2</masterLabel>
+    <migratedCriteriaLabel>Check for failed EmailLog Records</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_Platform_Event_Bus_Republish-1</processVersion>
+</ProcessFlowMigration>

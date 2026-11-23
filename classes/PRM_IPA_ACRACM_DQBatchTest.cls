@@ -2,7 +2,7 @@
 public class PRM_IPA_ACRACM_DQBatchTest {
         @TestSetup
         static void setupData() {
-        //Id intelRt = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        //Id intelRt = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId(); 
         Id pagRt = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
 		Id intelRt = Schema.SObjectType.Account.getRecordTypeInfosByName().get(System.Label.PRM_Intel_Account_Record_Type).getRecordTypeId();
 		system.debug('intelRt-->'+intelRt);

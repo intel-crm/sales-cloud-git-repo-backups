@@ -29,10 +29,12 @@
         <name>Core_MDF_Offset_Claim_Nbr__c</name>
         <relationshipLabel><!-- Claim Offsets --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Sub Claim --></label>
-        <name>Core_MDF_Sub_Claim_Id__c</name>
-        <relationshipLabel><!-- Claim Offsets (Sub Claim) --></relationshipLabel>
-    </fields>
+    <layouts>
+        <layout>Claim Offset Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Claim Offset Number --></nameFieldLabel>
 </CustomObjectTranslation>

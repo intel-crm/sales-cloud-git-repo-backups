@@ -36,9 +36,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -96,9 +93,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -222,9 +216,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -345,7 +336,7 @@
             <value>Industry Sales</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>

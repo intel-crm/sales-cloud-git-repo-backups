@@ -243,6 +243,15 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_Notes_Txt__c</fullName>
+        <description>This field will store error log for log when record fails to upsert in VX data when batch run.</description>
+        <label>Notes</label>
+        <length>131072</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
         <fullName>PRM_Number_Of_Employees_Nbr__c</fullName>
         <externalId>false</externalId>
         <label>Number Of Employees Done Training</label>
@@ -324,7 +333,19 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>PRM_TimePeriod_Nm__c</fullName>
+        <description>This field to display the incoming data is for pervious time period or current time period.</description>
+        <externalId>false</externalId>
+        <label>TimePeriod</label>
+        <length>255</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>PRM_Time_Period__c</fullName>
+        <description>This field to display the incoming data is for pervious time period or current time period.</description>
         <externalId>false</externalId>
         <label>Time Period</label>
         <length>20</length>
@@ -357,7 +378,7 @@
         <label>Total Sales Out Units</label>
         <precision>18</precision>
         <required>false</required>
-        <scale>0</scale>
+        <scale>2</scale>
         <trackTrending>false</trackTrending>
         <type>Number</type>
         <unique>false</unique>
@@ -393,6 +414,18 @@
         <unique>true</unique>
     </fields>
     <label>Value Exchange Stage</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>PRM_Country_Market_Type_Nm__c</columns>
+        <columns>PRM_Account_Id__c</columns>
+        <columns>PRM_IsChanged_Ind__c</columns>
+        <columns>PRM_One_Partner_Id__c</columns>
+        <columns>PRM_Partner_Role_Nm__c</columns>
+        <columns>PRM_Tier_Id__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <label>Value Exchange data  Name</label>
         <type>Text</type>

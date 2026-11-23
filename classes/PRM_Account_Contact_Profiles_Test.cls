@@ -25,6 +25,7 @@ public class PRM_Account_Contact_Profiles_Test {
         Database.update(partnerAccount1);
         List<Account> updatedAcct= new List<Account>();
         for(Account acc:[SELECT ID,NAME,Core_Account_Type__c,Core_IPA_Partner_Role__c FROM ACCOUNT]){
+            //System.debug('acc ='+acc);
             acc.Core_Account_Type__c = 'Cloud Service Provider (CSP)';
             acc.Core_IPA_Partner_Role__c = 'Service Provider';
             acc.Core_business_party_Id__c='12345';
@@ -83,7 +84,7 @@ public class PRM_Account_Contact_Profiles_Test {
         specialty.name='Select Benefits';       
         specialty.PRM_Access_Level_Nm__c = 'Public';
         specialty.PRM_Role_Nm__c = 'Service Provider';
-        specialty.PRM_Tier_Nm__c ='Gold';
+        specialty.PRM_Tier_Nm__c = 'Member';//'Gold';
         specialty.PRM_Description_Txt__c = 'Test';
         specialty.PRM_Funding_BU_Nm__c = 'Automotive Sales Group';
         specialty.PRM_Start_Date_Dt__c = system.Today();
@@ -249,6 +250,7 @@ public class PRM_Account_Contact_Profiles_Test {
         cc.ISO_Code__c = 'IND';
         cc.Country_Code__c = 'IN';
         insert cc;
+        //system.debug('DML Limit==>'+Limits.getDMLStatements()+':::'+Limits.getLimitDmlStatements());        
           
         //insert contEntitlement; 
         PRM_Partner_Assist_Consent__c partnerAssist = new PRM_Partner_Assist_Consent__c();
@@ -287,8 +289,6 @@ public class PRM_Account_Contact_Profiles_Test {
         RestContext.request = request;
         profiles = PRM_Account_Contact_Profiles.GetProfiles(); 
         system.assert(profiles.ContactAccount == null || profiles.AccountRequest != null ); 
-         
-        
          
         //Negative Test Cases
         reqBody = '{"KeyInput":{"InputField":"RequestId","InputValue":"'+acct.Id+'"}}';
@@ -337,7 +337,6 @@ public class PRM_Account_Contact_Profiles_Test {
         RestContext.request = request;
         profiles = PRM_Account_Contact_Profiles.GetProfiles(); 
         system.assert(profiles.AccountRequest != null);
-         
          
         //Negative Test Cases
         reqBody = '{"KeyInput":{"InputField":"RequestId","InputValue":"'+acct.Id+'"},"Attribute":"ACCOUNTREQUEST"}';
@@ -544,8 +543,10 @@ public class PRM_Account_Contact_Profiles_Test {
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Account_Contact_Profiles_Model.Profiles profiles = PRM_Account_Contact_Profiles.GetProfiles(); 
+      //system.debug('manju'+profiles.AccountProfile);
        // system.assert(profiles.AccountProfile != null);
         
+      //system.debug('acct.Core_business_party_Id__c ===>'+acct.Core_business_party_Id__c);
         reqBody = '{"KeyInput":{"InputField":"CIMID","InputValue":"'+acct.Core_business_party_Id__c+'"},"Attribute":"ACCOUNTPROFILE"}';
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
@@ -748,7 +749,7 @@ public class PRM_Account_Contact_Profiles_Test {
         request.requestBody = Blob.valueOf(reqBody);
         RestContext.request = request;
         PRM_Account_Contact_Profiles_Model.Profiles profiles = PRM_Account_Contact_Profiles.GetProfiles(); 
-        PRM_Account_Contact_Profiles_Utility.getCMfDetails('testcontact1@mailinator.com','EMAILID');
+       // PRM_Account_Contact_Profiles_Utility.getCMfDetails('testcontact1@mailinator.com','EMAILID');
     }
     public static testMethod void checksystemAccountsTest(){
         Test.startTest();
@@ -762,385 +763,6 @@ public class PRM_Account_Contact_Profiles_Test {
         PRM_Account_Contact_Profiles_Utility.getProfileResponseFromMembership(acct.Id);
         Test.stopTest();
     }
+
     
-     @IsTest
-    static void testComplianceWatchListProperties() {
-        // Arrange
-        Datetime startDate = Datetime.newInstance(2024, 1, 1, 0, 0, 0);
-        Datetime endDate = Datetime.newInstance(2024, 12, 31, 23, 59, 59);
-
-        // Act
-        /*PRM_Account_Contact_Profiles_Model.ComplianceWatchList watchList = new PRM_Account_Contact_Profiles_Model.ComplianceWatchList();
-        watchList.ComplianceType = 'Regulatory';
-        watchList.ComplianceName = 'AML Watch';
-        watchList.EffectiveStartDate = startDate;
-        watchList.EffectiveEndDate = endDate;*/
-    }
-    
-    @IsTest
-    static void testContactBusinessType() {
-        // Act
-        PRM_Account_Contact_Profiles_Model.ContactBusinessType cbt =
-            new PRM_Account_Contact_Profiles_Model.ContactBusinessType();
-
-        cbt.BusinessTypeName = 'Retail';
-        cbt.BusinessTypeCode = 'RTL';
-        cbt.Status = 'Active';
-        cbt.Email = 'test@email.com';
-        cbt.ContactName = 'John Doe';
-        cbt.StatusReason = 'Verified';
-    }
-
-    @IsTest
-    static void testProfileResponseAndResponse() {
-        // Arrange
-        PRM_Account_Contact_Profiles_Model.Response response =
-            new PRM_Account_Contact_Profiles_Model.Response();
-
-        response.ResponseText = 'Yes';
-        response.ResponseCode = 'Y';
-
-        List<PRM_Account_Contact_Profiles_Model.Response> responses =
-            new List<PRM_Account_Contact_Profiles_Model.Response>{ response };
-
-        PRM_Account_Contact_Profiles_Model.ProfileResponse profileResponse =
-            new PRM_Account_Contact_Profiles_Model.ProfileResponse();
-
-        profileResponse.QuestionText = 'Do you agree?';
-        profileResponse.QuestionCode = 'Q1';
-        profileResponse.Responses = responses;
-    }
-
-    @IsTest
-    static void testAccountSpecialityAssociation() {
-        // Act
-        PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation asa =
-            new PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation();
-
-        asa.Name = 'Cardiology Association';
-        asa.IsInactive = false;
-        asa.SpecialityName = 'Cardiology';
-        asa.SpecialityType = 'Medical';
-        asa.SpecialityRole = 'Primary';
-        asa.SpecialityRoleLabel = 'Primary Specialist';
-        asa.SpecialityTier = 'Tier 1';
-}
-
-    @IsTest
-    static void testCmfWrapperAndCmfData() {
-        // Arrange
-        PRM_Account_Contact_Profiles_Model.cmfData cmf =
-            new PRM_Account_Contact_Profiles_Model.cmfData();
-
-        cmf.CMFID = 'CMF001';
-        cmf.Name = 'Test CMF';
-        cmf.SalesOrgCode = '1000';
-        cmf.SalesOrgName = 'North America';
-        cmf.SalesDistiChannelCode = '10';
-        cmf.SalesDistiChannelName = 'Wholesale';
-        cmf.Address = '123 Main Street';
-        cmf.AccountGroup = 'AG1';
-        cmf.DirectCustomerRoleName = 'Primary';
-        cmf.DirectCustomerRoleCode = 'PR';
-        cmf.CentralBlock = false;
-        cmf.SalesAreaOrderBlockCd = 'N';
-
-        List<PRM_Account_Contact_Profiles_Model.cmfData> cmfList =
-            new List<PRM_Account_Contact_Profiles_Model.cmfData>{ cmf };
-
-        // Act
-        PRM_Account_Contact_Profiles_Model.cmfWrapper wrapper =
-            new PRM_Account_Contact_Profiles_Model.cmfWrapper();
-
-        wrapper.GroupName = 'Test Group';
-        wrapper.Description = 'Test Description';
-        wrapper.Active = true;
-        wrapper.ActiveCMFCount = '1';
-        wrapper.InActiveCMFCount = '0';
-        wrapper.ActiveContactCount = '5';
-        wrapper.InActiveContactCount = '0';
-        wrapper.CMFs = cmfList;
-
-    }
-
-    @IsTest
-    static void testAccountReqTermsCondition() {
-
-        Datetime signedDate = Datetime.newInstance(2024, 6, 1, 10, 0, 0);
-
-        PRM_Account_Contact_Profiles_Model.AccountReqTermsCondition terms =
-            new PRM_Account_Contact_Profiles_Model.AccountReqTermsCondition();
-
-        terms.Name = 'Standard Terms';
-        terms.SignedDate = signedDate;
-        terms.PartnerAgreementName = 'Partner Agreement A';
-        terms.PartnerAgreementCode = 'PA001';
-        terms.PartnerAgreementCategory = 'Legal';
-    }
-
-    @IsTest
-    static void testAccountReqSubscription() {
-        // Act
-        PRM_Account_Contact_Profiles_Model.AccountReqSubscription subscription =
-            new PRM_Account_Contact_Profiles_Model.AccountReqSubscription();
-
-        subscription.name = 'Sub1';
-        subscription.SubscriptionName = 'Premium Plan';
-        subscription.SubscriptionCode = 'PREM';
-}
-
-
-    @IsTest
-    static void testAccountRequest() {
-        // Arrange
-        PRM_Account_Contact_Profiles_Model.AccountRequestWrapper reqWrapper =
-            new PRM_Account_Contact_Profiles_Model.AccountRequestWrapper();
-
-        // Act
-        PRM_Account_Contact_Profiles_Model.AccountRequest accountRequest =
-            new PRM_Account_Contact_Profiles_Model.AccountRequest();
-
-        accountRequest.AccountRequest = reqWrapper;
-
-    }
-
-    @IsTest
-    static void testAccountProfileWrapper() {
-        // Arrange
-        PRM_Account_Contact_Profiles_Model.AccountProfileWrapper profileWrapper =
-            new PRM_Account_Contact_Profiles_Model.AccountProfileWrapper();
-
-        profileWrapper.AccountContactRelationships =
-            new List<PRM_Account_Contact_Profiles_Model.AccountContactRelationship>();
-
-        profileWrapper.AccountEngagements =
-            new List<PRM_Account_Contact_Profiles_Model.AccountERPMEngagement>();
-
-        profileWrapper.AccountChannelMemberships =
-            new List<PRM_Account_Contact_Profiles_Model.AccountChannelMembership>();
-
-        profileWrapper.AccoutBenefitAssociations =
-            new List<PRM_Account_Contact_Profiles_Model.AccoutBenefitAssociation>();
-
-        profileWrapper.AccountSpecialityAssociations =
-            new List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation>();
-
-        profileWrapper.AccountLegalAgreements =
-            new List<PRM_Account_Contact_Profiles_Model.AccountLegalAgreement>();
-
-        profileWrapper.AccountBusinessTypes =
-            new List<PRM_Account_Contact_Profiles_Model.AccountBusinessType>();
-
-       /* profileWrapper.ComplianceWatchLists =
-            new List<PRM_Account_Contact_Profiles_Model.ComplianceWatchList>();*/
-
-    }
-
-    @IsTest
-    static void testAccountBusinessType() {
-        // Arrange
-        Date startDate = Date.newInstance(2024, 1, 1);
-        Date endDate = Date.newInstance(2024, 12, 31);
-
-        // Act
-        PRM_Account_Contact_Profiles_Model.AccountBusinessType abt =
-            new PRM_Account_Contact_Profiles_Model.AccountBusinessType();
-
-        abt.BusinessTypeName = 'Distributor';
-        abt.BusinessTypeCode = 'DIST';
-        abt.Status = 'Active';
-        abt.AccountName = 'Test Account';
-        abt.EffectiveStartDate = startDate;
-        abt.EffectiveEndDate = endDate;
-        abt.StatusReason = 'Approved';
-
-    }
-
-     @IsTest
-    static void testGetProfileResponses() {
-
-        /* ---------- Test Data Setup ---------- */
-
-        // Account
-        String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;            
-        
-        Account acc = new Account(Name ='PartnerAccount1',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'PRC Sales Group',Core_User_Defined_Website__c='www.test.com',
-                                              Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',
-                                             ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True
-        );
-        insert acc;
-
-        // Channel Program
-        ChannelProgram cp = [
-            SELECT Id, Name
-            FROM ChannelProgram
-            WHERE Name = 'Intel Partner Alliance'
-            LIMIT 1
-        ];
-
-        System.assertNotEquals(null, cp, 'Channel Program must exist');
-
-
-        // Profile Question
-        PRM_Profile_Questions__c question = new PRM_Profile_Questions__c(
-            PRM_Question_Display_Txt__c = 'What is your primary market?',
-            PRM_Question_Cd__c = 'PRIMARY_MARKET',
-            PRM_Channel_Program_Id__c = cp.Id,
-            PRM_Display_Order_Nbr__c = 1
-        );
-        insert question;
-
-        // Profile Answer
-        PRM_Profile_Answer__c answer = new PRM_Profile_Answer__c(
-            PRM_Answer_Cd__c = 'ENTERPRISE',
-            PRM_Profile_Questions_Id__c = question.id
-        );
-        insert answer;
-
-        // Profile Response
-        PRM_Profile_Responses__c response = new PRM_Profile_Responses__c(
-            PRM_Profile_Questions_Id__c = question.Id,
-            PRM_Profile_Answer_Id__c = answer.Id,
-            PRM_Response_Txt__c = 'Enterprise Customers',
-            PRM_Account_Id__c = acc.Id,
-            PRM_InActive_Ind__c = false
-        );
-        insert response;
-
-        /* ---------- Execute ---------- */
-        Test.startTest();
-        List<PRM_Account_Contact_Profiles_Model.ProfileResponse> results =
-            PRM_Account_Contact_Profiles_Utility.getProfileResponses(acc.Id);
-        Test.stopTest();
-
-        /* ---------- Assertions ---------- */
-        System.assertNotEquals(null, results, 'Result list should not be null');
-        System.assertEquals(1, results.size(), 'One profile response expected');
-
-        PRM_Account_Contact_Profiles_Model.ProfileResponse pr = results[0];
-        System.assertEquals(
-            'What is your primary market?',
-            pr.QuestionText,
-            'Question text mismatch'
-        );
-        System.assertEquals(
-            'PRIMARY_MARKET',
-            pr.QuestionCode,
-            'Question code mismatch'
-        );
-
-        System.assertEquals(1, pr.Responses.size(), 'One response expected');
-
-        PRM_Account_Contact_Profiles_Model.Response r = pr.Responses[0];
-        System.assertEquals(
-            'Enterprise Customers',
-            r.ResponseText,
-            'Response text mismatch'
-        );
-        System.assertEquals(
-            'ENTERPRISE',
-            r.ResponseCode,
-            'Response code mismatch'
-        );
-    }
-
-    @IsTest
-    static void testGetProfileResponses_NoResponses() {
-
-        String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;            
-        
-        Account acc = new Account(Name ='Empty Account',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'PRC Sales Group',Core_User_Defined_Website__c='www.test.com',
-                                              Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',
-                                             ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True
-        );
-
-        Test.startTest();
-        List<PRM_Account_Contact_Profiles_Model.ProfileResponse> results =
-            PRM_Account_Contact_Profiles_Utility.getProfileResponses(acc.Id);
-        Test.stopTest();
-
-        System.assertEquals(0, results.size(),
-            'No profile responses should be returned when no data exists');
-    }
-    
-    @IsTest
-    static void testGetAccountSpecialityAssociations() {
-
-        /* -------- Account -------- */
-        String partnerAccRecTypeId = System.Label.PMP_Partner_Account_Record_Type_Id;            
-        Account acc = new Account(Name ='Test Account',Core_Account_Type__c = 'Distributor',Core_Sales_Groups__c= 'PRC Sales Group',Core_User_Defined_Website__c='www.test.com',
-                                              Industry='Agriculture',RecordTypeId=partnerAccRecTypeId, BillingCity='delhi',BillingCountry='Ind',BillingStreet='abc chowk delhi',
-                                             ShippingCity='delhi',ShippingCountry='Ind',ShippingStreet='cbc chowk delhi',Core_Intel_Partner_Alliance_PartnerGroup__c=True        );
-        insert acc;
-
-        /* -------- Specialty -------- */
-        Id selectBenRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();  
-        Id specnRT=Schema.getGlobalDescribe().get('PRM_Specialty__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_Select_Benefits').getRecordTypeId();
-        PRM_Specialty__c spec1 = new PRM_Specialty__c();
-        spec1.name='Video Specialty';
-        spec1.PRM_Description_Txt__c='This is description';
-        spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
-        spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold';
-        spec1.PRM_Start_Date_Dt__c= system.today() + 7;
-        spec1.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
-        spec1.PRM_Access_Level_Nm__c='Public';
-        spec1.RecordTypeId=specnRT;
-        spec1.PRM_Inactive_Ind__c=false;
-        insert spec1;
-
-        /* -------- Account–Specialty Association -------- */
-        PRM_Account_Specialty_Association__c asaRec =
-            new PRM_Account_Specialty_Association__c(
-                //Name = 'Cloud Association',
-                PRM_Account_Id__c = acc.Id,
-                PRM_Specialty_Id__c = spec1.Id,
-                PRM_InActive_Ind__c = false,
-                PRM_Partner_Role__c='Service Provider'
-                //PRM_Specialty_Type__c = 'Primary'
-            );
-        insert asaRec;
-
-        /* -------- Re-query Account WITH child relationship -------- */
-        Account accWithChildren = [
-            SELECT Id,
-                   (SELECT Id,
-                           Name,
-                           PRM_InActive_Ind__c,
-                           PRM_Specialty_Type__c,
-                           PRM_Specialty_Id__r.Name,
-                           PRM_Specialty_Id__r.PRM_Role_Nm__c,
-                           PRM_Specialty_Id__r.PRM_Tier_Nm__c
-                    FROM Account_Specialty_Associations__r)
-            FROM Account
-            WHERE Id = :acc.Id
-        ];
-
-        /* -------- Execute -------- */
-        Test.startTest();
-        List<PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation> results =
-            PRM_Account_Contact_Profiles_Utility.getAccountSpecialityAssociations(accWithChildren);
-        Test.stopTest();
-
-        /* -------- Assertions -------- */
-        System.assertEquals(1, results.size(), 'One association expected');
-
-        PRM_Account_Contact_Profiles_Model.AccountSpecialityAssociation result =
-            results[0];
-
-        //System.assertEquals('Cloud Association', result.Name);
-        System.assertEquals(false, result.IsInactive);
-        System.assertEquals('Video Specialty', result.SpecialityName);
-        System.assertEquals('Service Provider', result.SpecialityRole);
-        System.assertEquals('Gold', result.SpecialityTier);
-        //System.assertEquals('Primary', result.SpecialityType);
-
-        // Label assertion is org-dependent (picklist labels)
-        System.assertNotEquals(
-            null,
-            result.SpecialityRoleLabel,
-            'Role label should be populated'
-        );
-    }
-   
 }

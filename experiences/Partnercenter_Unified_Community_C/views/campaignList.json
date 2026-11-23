@@ -5,14 +5,6 @@
   "id" : "047710fc-ec40-4b18-9dfb-fe4182a4575e",
   "label" : "Campaign List",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : { },
-      "componentName" : "c:Core_MDF_Campaign_NewButton",
-      "id" : "a7d56c2d-c6a8-4b3e-b28d-9ba7c00bfb7e",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "515e0a23-16d2-4b2c-ad6f-bda4eb2cca76",
     "regionName" : "header",
     "type" : "region"

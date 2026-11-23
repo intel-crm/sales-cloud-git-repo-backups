@@ -14,22 +14,44 @@
         <criterion>
             <criteriaNumber>2</criteriaNumber>
             <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_CCP_Budget_Administrator</permissionName>
-                <permissionType>Custom</permissionType>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>SPCF Account Budget Administrator</fieldValue>
             </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Account Budget Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>DCF Account Budget Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Boost Account Budget Administrator</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
         </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>1a7f3ec5-5290-4714-b191-cd7352db0290</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>AccountTransfer_AccountTransfer_Page</targetValue>
-        </target>
-    </targets>
 </Audience>

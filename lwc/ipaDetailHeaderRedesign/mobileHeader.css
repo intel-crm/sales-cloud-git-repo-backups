@@ -1,0 +1,52 @@
+/* General styling for mobile for offering and storefront detail header */
+.mobile-header-title {
+  display: flex;
+}
+
+c-core-intc-tabset {
+  --intc-tabs-active-bgcolor: var(--white);
+  --intc-tabs-active-bottom-border-color: transparent;
+  --intc-tabs-active-color: var(--black);
+  --intc-tabs-active-weight: 700;
+  --intc-tabs-bottom-border-color: transparent;
+  --intc-tabs-hover-bottom-border-color: transparent;
+  --intc-tabs-inactive-color: var(--white);
+  --intc-tabs-margin-bottom: 0;
+}
+
+c-ipa-contact-partner-button {
+  --classic-blue: var(--blue-steel-shade2);
+}
+
+.detail-marquee {
+  background-color: var(--detail-marquee-background, var(--blue-steel-shade2));
+  color: var(--white);
+}
+
+.h2 {
+  color: unset;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.contact-button {
+  width: 100%;
+}
+
+.partner-status {
+  margin-left: -5px;
+}
+
+.social-share-container {
+  display: inline-block;
+  margin-left: auto;
+  padding-left: 1rem;
+  position: relative;
+  top: 3px;
+}
+
+.sticky-container {
+  width: 100%;
+}

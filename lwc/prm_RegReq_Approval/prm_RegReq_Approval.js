@@ -56,8 +56,9 @@ export default class Prm_RegReq_Approval extends LightningElement {
                   'You Dont have access to Approve this record.',
                   'error'
                 )
-                this.closeAction()
-              } else if(result1.blockedEmailDomain){ // IPA 2.0 - TWC729-8020
+                this.closeAction();
+              } else if(result1.blockedEmailDomain){ 
+                console.log('>>>>Inside error 60')// IPA 2.0 - TWC729-8020
                 this.otherError = true 
                 this.showtoastMessage(
                   'Error',
@@ -65,8 +66,10 @@ export default class Prm_RegReq_Approval extends LightningElement {
                   'error'
                   )
                   this.isSpinner = false
-                  this.closeAction()
+                  this.closeAction();
                 } else {
+                  console.log('>>>>Inside error 70')
+                
                 this.approvalInstanceId = result1.workItemId
                 //to show required fields missing message
                 if (result1.isNewAccCreation) {
@@ -92,6 +95,7 @@ export default class Prm_RegReq_Approval extends LightningElement {
                     this.altLangToPass = result1.companyAltLang;
                   }
                 } 
+
                 if(result1.blockedContact){
                   this.otherError = true
                   this.showtoastMessage(
@@ -142,6 +146,7 @@ export default class Prm_RegReq_Approval extends LightningElement {
                       }
             }).catch(error2 => {
               this.isSpinner = false
+              console.log('>>>>result error 2' + JSON.stringify(error2))
             })
         }
                 this.isSpinner = false
@@ -150,6 +155,8 @@ export default class Prm_RegReq_Approval extends LightningElement {
               this.isSpinner = false
               console.log('>>>>resultiner' + JSON.stringify(error1))
             })
+            console.log('otherError 135>> ', this.otherError);
+           
         } else {
           this.showtoastMessage('Error', result, 'error')
           this.isDataValid = false
@@ -161,6 +168,7 @@ export default class Prm_RegReq_Approval extends LightningElement {
         this.isSpinner = false
         console.log('>>>>result' + JSON.stringify(error))
       })
+      
   }
 
   closeAction () {

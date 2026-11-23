@@ -266,7 +266,7 @@ TEXT(PMP_Marketing_Profile_Id__r.PMP_Active_OPID_Cnt__c)+&quot; Active OPID asso
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
-        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+        <writeRequiresMasterRead>true</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>PMP_RelLastDeactivated__c</fullName>
@@ -303,6 +303,15 @@ TEXT(PMP_Marketing_Profile_Id__r.PMP_Active_OPID_Cnt__c)+&quot; Active OPID asso
         <unique>false</unique>
     </fields>
     <label>OPID MPI Relationship</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Is_Active__c</columns>
+        <columns>PMP_Marketing_Profile_Id__c</columns>
+        <columns>PMP_One_Partner_ID__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>PAG-MPI-{0000000}</displayFormat>
         <label>OPID MPI Relationship Name</label>

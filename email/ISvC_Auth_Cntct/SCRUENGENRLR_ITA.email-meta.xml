@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Secure Org Engagement Request for existing user (without EV link) - Self Reg</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRUENGENRLR_ITA</name>
+    <style>none</style>
+    <subject>Conferma della registrazione con Intel</subject>
+    <textOnly>Benvenuto al Servizio di Gestione Richieste del Supporto Clienti Intel!.
+
+
+Conservare questa e-mail per futura consultazione.
+
+
+ID accesso: !%UserUserName%!
+
+Indirizzo e-mail: !%UserEmailAddr%!
+
+
+
+La password deve essere considerata riservata. L&apos;uso della password e dei siti Web di Intel è regolato dai Termini e Condizioni di utilizzo di Intel, cui è possibile accedere tramite i link riportati in calce a tutte le pagine del sito Web.
+
+
+Per eventuali domande, contattare Intel qui.
+
+
+Visitare questo link in qualsiasi momento per gestire il proprio profilo.
+
+
+Per favore NON rispondere a questo messaggio e-mail. Questa è una risposta automatica.
+
+Per assicurarsi di continuare a ricevere le nostre e-mail, aggiungere il nostro indirizzo alla rubrica.
+
+
+Intel è impegnata a proteggere la privacy degli utenti. Per ulteriori informazioni,
+
+consultare l&apos;Informativa sulla riservatezza dei dati personali di Intel.
+
+
+Informazioni legali | Marchi © Intel Corporation. Tutti i diritti riservati.
+
+*Tutti gli altri marchi e nomi di prodotti appartengono ai rispettivi proprietari.
+
+** Intel non è responsabile del contenuto dei siti esterni alla propria rete intranet.
+
+!%intel_logo%!
+
+!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

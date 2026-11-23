@@ -34,9 +34,6 @@
         <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE</field>
-    </columns>
-    <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>AMOUNT</field>
     </columns>
@@ -53,7 +50,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>DEPARTMENT OF EDUCATION,THE GOVERNMENT OF THE PHILIPPINES</value>
+            <value>DEPARTMENT OF EDUCATION,PHILIPPINES</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
@@ -99,6 +96,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2020-12-26</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

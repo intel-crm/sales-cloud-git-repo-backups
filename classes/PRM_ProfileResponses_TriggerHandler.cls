@@ -13,7 +13,10 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
           //PRM_ProfileResponse.inactiveBenefit((List<PRM_Profile_Responses__c>)Trigger.new,null);
 	     //PRM_ProfileResponse.activateBenefit((List<PRM_Profile_Responses__c>)Trigger.new,null);  
             PRM_ProfileResponse.activateInactiveBenefit((List<PRM_Profile_Responses__c>)Trigger.new, (Map<id, PRM_Profile_Responses__c>)Trigger.oldMap);
-	        PRM_ProfileResponse.pointsCalculation((List<PRM_Profile_Responses__c>)Trigger.new,null);
+	        
+                PRM_ProfileResponse.pointsCalculation((List<PRM_Profile_Responses__c>)Trigger.new,null);
+            
+            
              PRM_ProfileResponse.OPIDToLoctionRollDown((List<PRM_Profile_Responses__c>)Trigger.new, (Map<id, PRM_Profile_Responses__c>)Trigger.oldMap);
             if(system.isBatch() || System.isQueueable()){
                 new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType());
@@ -21,6 +24,7 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
             else{
                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType()));
             }
+            
             if(!fromPoints){
             firstRun = false;
             }
@@ -38,7 +42,7 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
          
             boolean isUpdated = false;             
             //List<PRM_Profile_Responses__c> newProfileresponses = Trigger.New;
-            //system.debug('Equals check next');
+            
             for(PRM_Profile_Responses__c newPrRes : (List<PRM_Profile_Responses__c>)Trigger.New) {
                 PRM_Profile_Responses__c oldPrRes = (PRM_Profile_Responses__c)Trigger.oldMap.get(newPrRes.Id); 
                 if(newPrRes.PRM_Profile_Questions_Id__c != oldPrRes.PRM_Profile_Questions_Id__c
@@ -53,8 +57,8 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
                   }
                 
             }
-            if(isUpdated) {
-               // system.debug('Before update -'+isUpdated);
+            /*if(isUpdated) {
+               
                 if(system.isBatch() || System.isQueueable()){
                     new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType());
                 }
@@ -64,7 +68,16 @@ public class PRM_ProfileResponses_TriggerHandler extends TriggerHandler{
                 if(!fromPoints){
                 firstUpdateRun = false;
                 }
-            }                 
+            } */ //Athr fixes 
+             if(isUpdated && system.isBatch() || System.isQueueable()){
+                        new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType());
+                    }
+             else if(isUpdated && !system.isBatch() || !System.isQueueable()){
+                 System.enqueueJob(new ContactERPMIntegrationStatusHandler((List<PRM_Profile_Responses__c>)Trigger.new,  Trigger.new.getSObjectType()));  
+             }
+             if(!isUpdated&& !fromPoints){
+                 firstUpdateRun = false;
+             }
         }  
     }
     

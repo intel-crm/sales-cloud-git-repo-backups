@@ -50,10 +50,10 @@
         
         //*******************Load WAP Framework*************************
         
-        //analyticsUserLangLocale = 'en_US';
+        var analyticsUserLangLocale = 'en_US';
         console.log('Inside IntelHeaderHelper.js userLangLocale > analyticsUserLangLocale = '+ analyticsUserLangLocale);
         try{
-        	loadAnalyticsScript(analyticsUserLangLocale);  // Used for calling the function in the head script
+        	//loadAnalyticsScript(analyticsUserLangLocale);  // Used for calling the function in the head script
         	//console.log('1. intelHeaderHelper.js > wap_tms = '+ wap_tms);    
             //code before the pause
             /*setTimeout(function(){

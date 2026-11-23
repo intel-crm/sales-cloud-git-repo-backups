@@ -4,10 +4,10 @@
     <protected>false</protected>
     <values>
         <field>Category__c</field>
-        <value xsi:type="xsd:string">PRM</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">Prestige:1;Partner:2;</value>
+        <value xsi:type="xsd:string">Titanium:1;Gold:2;Member:3</value>
     </values>
 </CustomMetadata>

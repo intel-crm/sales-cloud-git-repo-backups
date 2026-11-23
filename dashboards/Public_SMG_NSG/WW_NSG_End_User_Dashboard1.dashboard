@@ -64,7 +64,7 @@
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <calculatePercent>false</calculatePercent>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
                 <showTotal>false</showTotal>
             </dashboardTableColumn>
             <dashboardTableColumn>
@@ -149,7 +149,7 @@
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <calculatePercent>false</calculatePercent>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
                 <showTotal>false</showTotal>
             </dashboardTableColumn>
             <dashboardTableColumn>
@@ -348,7 +348,7 @@
             </dashboardTableColumn>
             <dashboardTableColumn>
                 <calculatePercent>false</calculatePercent>
-                <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+                <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
                 <showTotal>false</showTotal>
             </dashboardTableColumn>
             <dashboardTableColumn>

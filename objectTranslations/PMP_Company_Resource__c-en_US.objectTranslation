@@ -9,6 +9,34 @@
         <value>Marketing Profile Resources</value>
     </caseValues>
     <fields>
+        <label><!-- BrightCove Player Id --></label>
+        <name>PMP_BrightCovePlayerId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Account ID --></label>
+        <name>PMP_BrightCoveVideoAccountID__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Id --></label>
+        <name>PMP_BrightCoveVideoId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Job Id --></label>
+        <name>PMP_BrightCoveVideoJobId__c</name>
+    </fields>
+    <fields>
+        <label><!-- BrightCove Video Thumbnail URL --></label>
+        <name>PMP_BrightCoveVideoThumbnail_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Brightcove Video Preview URL --></label>
+        <name>PMP_Brightcove_VideoPreviewURL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Callout Payload Message --></label>
+        <name>PMP_CalloutPayloadMessage__c</name>
+    </fields>
+    <fields>
         <help><!-- Master Detail  to the Company Information object --></help>
         <label><!-- Marketing  Profile ID --></label>
         <name>PMP_Company_Id__c</name>
@@ -64,5 +92,40 @@
         <label><!-- Marketing  Profile Resource URL Text --></label>
         <name>PMP_Company_Resource_URL_txt__c</name>
     </fields>
+    <fields>
+        <label><!-- S3 Video URL --></label>
+        <name>PMP_S3VideoURL__c</name>
+    </fields>
+    <fields>
+        <label><!-- S3 Video Download URL --></label>
+        <name>PMP_S3_VideoDownload_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Name --></label>
+        <name>PMP_VideoName__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Upload To S3 Failed Reason --></label>
+        <name>PMP_VideoUploadToS3FailedReason__c</name>
+    </fields>
+    <fields>
+        <label><!-- Video Upload To S3 --></label>
+        <name>PMP_VideoUploadToS3__c</name>
+        <picklistValues>
+            <masterLabel>Failed</masterLabel>
+            <translation><!-- Failed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Success</masterLabel>
+            <translation><!-- Success --></translation>
+        </picklistValues>
+    </fields>
+    <layouts>
+        <layout>Marketing Profile Resource Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

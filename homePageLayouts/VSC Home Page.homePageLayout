@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HomePageLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <narrowComponents>standard-Tags</narrowComponents>
+    <narrowComponents>standard-CreateNew</narrowComponents>
+    <narrowComponents>standard-RecentItems</narrowComponents>
+    <narrowComponents>What’s New</narrowComponents>
+    <narrowComponents>VSC Training</narrowComponents>
+    <narrowComponents>standard-UsefulLinks</narrowComponents>
+    <narrowComponents>Analytics</narrowComponents>
+    <narrowComponents>Intel Confidential</narrowComponents>
+    <narrowComponents>Intel Salesforce Privacy Notice</narrowComponents>
+    <wideComponents>Important Information</wideComponents>
+    <wideComponents>standard-ProcessWorkitems</wideComponents>
+    <wideComponents>standard-Dashboard</wideComponents>
+    <wideComponents>standard-Tasks</wideComponents>
+    <wideComponents>standard-Calendar</wideComponents>
+</HomePageLayout>

@@ -6,33 +6,51 @@
     <name>SCRRENGENRLREV_DZP</name>
     <style>none</style>
     <subject>Verify your email address</subject>
-    <textOnly>Verify Your Email Address
-
-{!PRM_Registration_Request__c.PRM_First_Name__c},
-
-Thank you for registering for access to Developer Zone Premier.
-Before we can process it, we need to make sure this email address is yours.
-This link will expire in 24 hours and will require you to trigger another email verification using your Login ID and password.
+    <textOnly>Intel Registration Confirmation
 
 
-Verify Your Email &amp; Set Your Password
+Please verify your Email
 
-To complete the next step and set your password, please use username listed below
-
-Username: {!PRM_Registration_Request__c.PRM_Contact_Login_ID__c}
-Email Address: {!PRM_Registration_Request__c.PRM_Email_ID__c}
-
-Can&apos;t access the link above?
-https://signin.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_EV_Token__c}&amp;culture=en&amp;target=https://www.intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/forms/developer/dzp-account-search.html
+Welcome {!Contact.Name},
 
 
-Thank you,
-Your Developer Zone Premier team
+Thank you for registering for a Developer Zone Premier Account.
 
-This message was sent to you as an important business communication related to your current relationship with Developer Zone Premier.
-© 2020 Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-Privacy | Cookies</textOnly>
+If you don&apos;t yet have a Corporate Non-Disclosure Agreement (CNDA) signed with Intel, it may take up to 10 working days to review your Premier Account request. You will receive a status update within 3 business days.
+
+While your Premier Account application is being reviewed, you can access Intel&apos;s Developer Zone immediately as a Standard user.
+
+Please retain this email for future reference.
+
+Username: {!Contact.Core_Login_Id__c}
+Email Address: {!Contact.Email}
+
+
+Action Required
+
+
+Verify your email
+
+Please verify your email address by clicking the link above or by copying the URL into your browser. The link will expire in 5 days and will require you to request another email verification using your Username and Password.
+
+Your password should be protected as confidential. Your use of the password and Intel&apos;s websites are governed by Intel&apos;s Terms of Use linked from the bottom of each respective site&apos;s web pages.
+
+If you have any questions, please contact us.
+
+
+To manage your profile, including available marketing subscriptions, please visit My Intel.
+
+Please DO NOT reply to this email message. This is an automated response.
+To ensure that you continue receiving our emails, please add us to your address book.
+
+Intel is committed to protecting your privacy. For more information,
+please see the Intel Privacy Notice.
+
+Legal Information | Trademarks © Intel Corporation. All rights reserved.
+*Other names and brands may be claimed as the property of others.
+**Intel is not responsible for content of sites outside our intranet sites.
+
+!%TemplateCode%!</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

@@ -130,6 +130,13 @@
         <label><!-- Upload idsid --></label>
         <name>Core_Upload_idsid__c</name>
     </fields>
+    <layouts>
+        <layout>IPS File Upload Master Layout</layout>
+        <sections>
+            <label><!-- All Assigned Files Report --></label>
+            <section>All Assigned Files Report</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Effective Date cannot exceed Expiration Date --></errorMessage>
@@ -143,4 +150,8 @@
         <errorMessage><!-- Status Change not allowed once set to Complete --></errorMessage>
         <name>Core_IPS_Prevent_StatusChng_FromComplete</name>
     </validationRules>
+    <webLinks>
+        <label><!-- Core_Assign_SP_Account --></label>
+        <name>Core_Assign_SP_Account</name>
+    </webLinks>
 </CustomObjectTranslation>

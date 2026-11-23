@@ -97,24 +97,6 @@
         <language>en_US</language>
     </listViews>
     <listViews>
-        <fullName>OPID_Updates</fullName>
-        <columns>MasterLabel</columns>
-        <columns>DeveloperName</columns>
-        <columns>PRM_Milestone_Display_Name__c</columns>
-        <columns>PRM_Order__c</columns>
-        <columns>PRM_Active__c</columns>
-        <columns>PRM_Conditional_Display__c</columns>
-        <columns>PRM_Failed_Step__c</columns>
-        <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Type__c</field>
-            <operation>equals</operation>
-            <value>OPID Updates</value>
-        </filters>
-        <label>OPID Updates</label>
-        <language>en_US</language>
-    </listViews>
-    <listViews>
         <fullName>OPID_Updates_1PID</fullName>
         <columns>MasterLabel</columns>
         <columns>DeveloperName</columns>
@@ -148,11 +130,6 @@
             <field>PRM_Type__c</field>
             <operation>equals</operation>
             <value>OPID Updates</value>
-        </filters>
-        <filters>
-            <field>PRM_Active__c</field>
-            <operation>equals</operation>
-            <value>1</value>
         </filters>
         <label>OPID Updates LOC</label>
         <language>en_US</language>

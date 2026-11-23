@@ -128,22 +128,16 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Environment_Detail_Question_Record_Page</content>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
         <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Environment_Detail_Question_Record_Page</content>
         <formFactor>Small</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-    </actionOverrides>
-    <actionOverrides>
-        <actionName>View</actionName>
         <type>Default</type>
     </actionOverrides>
     <allowInChatterGroups>false</allowInChatterGroups>
@@ -162,7 +156,7 @@
     <externalSharingModel>Read</externalSharingModel>
     <fields>
         <fullName>Core_IPS_Add_to_Reporting__c</fullName>
-        <defaultValue>true</defaultValue>
+        <defaultValue>false</defaultValue>
         <description>This field is using for external reporting like IAH as well as the IPS MSBI model.</description>
         <label>Add to Reporting</label>
         <trackTrending>false</trackTrending>
@@ -364,13 +358,8 @@
     <label>Environment Detail Question</label>
     <listViews>
         <fullName>All</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Question__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <listViews>
         <fullName>Core_IPS_Org_000_Core_IPS_Question</fullName>
@@ -438,11 +427,8 @@
     </listViews>
     <listViews>
         <fullName>Core_IPS_Org_006_Core_IPS_Question</fullName>
-        <columns>NAME</columns>
-        <columns>Core_IPS_Question__c</columns>
         <filterScope>Queue</filterScope>
         <label>IPS - DCG</label>
-        <language>en_US</language>
         <queue>Core_IPS_Org_006</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
@@ -606,42 +592,6 @@
         <filterScope>Queue</filterScope>
         <label>IPS - PSG</label>
         <queue>Core_IPS_Org_025</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_026_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IOG</label>
-        <queue>Core_IPS_Org_026</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_027_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - AXG-XCC</label>
-        <queue>Core_IPS_Org_027</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_028_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS-SMG</label>
-        <queue>Core_IPS_Org_028</queue>
-        <sharedTo>
-            <allInternalUsers></allInternalUsers>
-        </sharedTo>
-    </listViews>
-    <listViews>
-        <fullName>Core_IPS_Org_029_Core_IPS_Question</fullName>
-        <filterScope>Queue</filterScope>
-        <label>IPS - IGT</label>
-        <queue>Core_IPS_Org_029</queue>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>
@@ -870,7 +820,7 @@ TEXT (PRIORVALUE ( Core_IPS_Status__c )) = &quot;INACTIVE&quot;)</errorCondition
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Remove_text_From_Reporting_Name</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>If Add to Reporting checkbox is unchecked and Reporting Name field has some value then validation rule will fire and display the error message.</description>
         <errorConditionFormula>AND(Core_IPS_Add_to_Reporting__c == false,  NOT(ISBLANK(Core_IPS_Reporting_Name__c)))</errorConditionFormula>
         <errorDisplayField>Core_IPS_Reporting_Name__c</errorDisplayField>
@@ -878,7 +828,7 @@ TEXT (PRIORVALUE ( Core_IPS_Status__c )) = &quot;INACTIVE&quot;)</errorCondition
     </validationRules>
     <validationRules>
         <fullName>Core_IPS_Reporting_Field_mandatory</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>If Add to Reporting checkbox is checked and Reporting Name field is blank then validation rule will fire and display the error message.</description>
         <errorConditionFormula>AND(Core_IPS_Add_to_Reporting__c == true,ISBLANK(Core_IPS_Reporting_Name__c))</errorConditionFormula>
         <errorMessage>Please Enter the Reporting Name Field value.</errorMessage>
@@ -909,25 +859,6 @@ Core_IPS_Product_Organization__c!=null</errorConditionFormula>
     </validationRules>
     <visibility>Public</visibility>
     <webLinks>
-        <fullName>Add_To_Products_LEX_EnvDetailQuestion</fullName>
-        <availability>online</availability>
-        <displayType>button</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <hasMenubar>false</hasMenubar>
-        <hasScrollbars>true</hasScrollbars>
-        <hasToolbar>false</hasToolbar>
-        <height>600</height>
-        <isResizable>true</isResizable>
-        <linkType>url</linkType>
-        <masterLabel>Add To Products</masterLabel>
-        <openType>newWindow</openType>
-        <position>none</position>
-        <protected>false</protected>
-        <showsLocation>false</showsLocation>
-        <showsStatus>false</showsStatus>
-        <url>/lightning/n/Core_IPS_Add_To_Products_LEX?c__recordId={!Core_IPS_Question__c.Id}</url>
-    </webLinks>
-    <webLinks>
         <fullName>Core_IPS_Add_To_Products</fullName>
         <availability>online</availability>
         <displayType>button</displayType>
@@ -950,18 +881,5 @@ Core_IPS_Product_Organization__c!=null</errorConditionFormula>
         <protected>false</protected>
         <requireRowSelection>false</requireRowSelection>
         <url>/apex/Core_IPS_AddDependentAnswers?qid={!Core_IPS_Question__c.Id}</url>
-    </webLinks>
-    <webLinks>
-        <fullName>Manage_Dependent_Answers_LEX</fullName>
-        <availability>online</availability>
-        <displayType>massActionButton</displayType>
-        <encodingKey>UTF-8</encodingKey>
-        <height>600</height>
-        <linkType>url</linkType>
-        <masterLabel>Manage Dependent Answers LEX</masterLabel>
-        <openType>sidebar</openType>
-        <protected>false</protected>
-        <requireRowSelection>true</requireRowSelection>
-        <url>/lightning/n/Manage_Dependent_Answers_LEX?c__recordId={!Core_IPS_Question__c.Id}</url>
     </webLinks>
 </CustomObject>

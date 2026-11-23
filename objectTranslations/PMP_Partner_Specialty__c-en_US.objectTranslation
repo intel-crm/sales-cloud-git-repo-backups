@@ -32,5 +32,12 @@
         <label><!-- Specialty Name (Japanese) --></label>
         <name>PMP_Partner_Specialty_Japanese_Nm__c</name>
     </fields>
+    <layouts>
+        <layout>Marketplace Partner Specialty Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

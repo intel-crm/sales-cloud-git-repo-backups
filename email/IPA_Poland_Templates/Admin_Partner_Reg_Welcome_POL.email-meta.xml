@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Admin_Partner_Reg_Welcome_POL</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Wymagane działanie w celu zakończenia rejestracji w programie Intel® Partner Alliance
+
+
+
+
+{!Contact.FirstName},
+
+Gratulacje, administrator Twojej firmy lub przedstawiciel firmy Intel dodał Cię do konta Intel® Partner Alliance! Pozostało tylko kilka kroków do zakończenia rejestracji.
+
+Poniższe informacje dotyczące profilu zostały utworzone dla Ciebie:
+
+Nazwa użytkownika: {!Contact.Core_Login_Id__c}
+Adres e-mail: {!Contact.Email}
+Nazwa firmy: {{ACCOUNTNAME}}
+Identyfikator firmy w programie Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+Kliknij poniższy link, aby zakończyć rejestrację
+
+
+Ukończ rejestrację
+
+Nie masz dostępu do powyższego łącza?
+
+https://intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner-alliance/help/overview.html
+Jeśli masz jakiekolwiek pytania, skontaktuj się z nami https://signin.intel.com/ContactUs?Culture=pl-pl.
+Cieszymy się, że dołączysz do programu!
+Z wyrazami szacunku
+Twój zespół Intel® Partner Alliance
+
+
+Ta wiadomość jest częścią istotnej komunikacji biznesowej dotyczącej Twoich bieżących relacji z programem Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Prywatność | Pliki cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

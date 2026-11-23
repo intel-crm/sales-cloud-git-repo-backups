@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM_EmailDomain_Config</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM_EmailDomain_Configs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Acc_Email --></label>
+        <name>PRM_Acc_Email__c</name>
+    </fields>
+    <fields>
+        <label><!-- Acc_id --></label>
+        <name>PRM_Acc_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account_Country --></label>
+        <name>PRM_Account_Country__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account email domain --></label>
+        <name>PRM_Account_email_domain__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,4 +1,5 @@
 ({
+    /*
   doInit: function(component, event, helper) {
     helper.setCommunityDisplay(component); 
     helper.helperMethod(component, event, helper);   
@@ -34,5 +35,5 @@
       window.scrollTo(0, rect.top + scrollTop);
     }
   },
-
+*/
 });

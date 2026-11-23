@@ -70,11 +70,11 @@
             <value></value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_EMAIL</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>andrew.ridley@intel.com,ayu.ginanti@intel.com,natrapa.khunnathamdee@intel.com,paul.haines@intel.com</value>
+            <value>Chris Sassone,Christopher Sassone</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

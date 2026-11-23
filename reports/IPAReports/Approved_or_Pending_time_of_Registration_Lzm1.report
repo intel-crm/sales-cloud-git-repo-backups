@@ -15,6 +15,24 @@
     <columns>
         <field>CDF1</field>
     </columns>
+    <columns>
+        <field>CDF2</field>
+    </columns>
+    <customDetailFormulas>
+        <calculatedFormula>IF(
+    AND(
+        NOT(ISBLANK(PRM_Registration_Request__c.Status_Approved_Time__c)),
+        NOT(ISBLANK(PRM_Registration_Request__c.PRM_Submitted_Date__c))
+    ),
+    TEXT(FLOOR((PRM_Registration_Request__c.Status_Approved_Time__c - PRM_Registration_Request__c.PRM_Submitted_Date__c) * 24)) &amp; &quot; hours &quot; &amp;
+    TEXT(ROUND(MOD((PRM_Registration_Request__c.Status_Approved_Time__c - PRM_Registration_Request__c.PRM_Submitted_Date__c) * 24, 1) * 60, 0)) &amp; &quot; minutes&quot;,
+    &quot;&quot;
+)</calculatedFormula>
+        <dataType>Text</dataType>
+        <developerName>CDF2</developerName>
+        <label>Time_to_Approved</label>
+        <scale>2</scale>
+    </customDetailFormulas>
     <customDetailFormulas>
         <calculatedFormula>IF(
     AND(
@@ -60,6 +78,6 @@
     <sortOrder>Desc</sortOrder>
     <timeFrameFilter>
         <dateColumn>PRM_Registration_Request__c.PRM_Submitted_Date__c</dateColumn>
-        <interval>INTERVAL_TODAY</interval>
+        <interval>INTERVAL_YESTERDAY</interval>
     </timeFrameFilter>
 </Report>

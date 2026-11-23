@@ -99,5 +99,12 @@
         <label><!-- skip tracker --></label>
         <name>prm_skip_tracker__c</name>
     </fields>
+    <layouts>
+        <layout>Tracker Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

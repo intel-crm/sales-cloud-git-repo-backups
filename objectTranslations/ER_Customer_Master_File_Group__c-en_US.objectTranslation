@@ -9,8 +9,17 @@
         <value>Customer Master File Groupings</value>
     </caseValues>
     <fields>
+        <label><!-- Account --></label>
+        <name>Account__c</name>
+        <relationshipLabel><!-- Customer Master File Groupings --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Active --></label>
         <name>ER_Active__c</name>
+    </fields>
+    <fields>
+        <label><!-- Clone Source Id --></label>
+        <name>ER_Clone_Source_Id__c</name>
     </fields>
     <fields>
         <label><!-- Active Contacts Associations --></label>
@@ -32,5 +41,16 @@
         <label><!-- InActive CMF Associations --></label>
         <name>ER_Inactive_Customer_Master_Files__c</name>
     </fields>
+    <layouts>
+        <layout>Customer Master File Group Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
+    <webLinks>
+        <label><!-- New_Button --></label>
+        <name>New_Button</name>
+    </webLinks>
 </CustomObjectTranslation>

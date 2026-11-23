@@ -1,0 +1,56 @@
+<template>
+    <div class="slds-container_x-large quick-search-container" data-border-top={separatorAbove}
+        data-border-bottom={separatorBelow} data-padding-top={paddingAbove} data-padding-bottom={paddingBelow}>
+        <div>
+            <span>
+                <button type="button" onclick={showfiltersfunc} class="block"><i class="fa fa-sliders"
+                        aria-hidden="true"></i>{Reflabel}</button>
+            </span>
+        </div>
+    </div>
+    <template if:true={showfilters}>
+        <div class="slds-container_x-large quick-search-container" data-border-top={separatorAbove}
+            data-border-bottom={separatorBelow} data-padding-top={paddingAbove} data-padding-bottom={paddingBelow}>
+            <div class="slds-grid slds-gutters_x-small slds-wrap slds-grid_align-space slds-grid_align-spread">
+                <div class="slds-col slds-align-top slds-size_3-of-12">
+                    <h4><label class="slds-form-element__label" for="combobox-id-5"></label></h4>
+                    <div class="search-keyword.slds-input spaceleft">
+                        <c-core-intc-search onkeywordinput={handleSearchByKeyword} onclearkeyword={helperClearKeyword}
+                            placeholder={searchlabel} keyword-value={keyWordEntered}></c-core-intc-search>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_9-of-12">
+                    <div class="slds-grid slds-wrap quick-search-inner-container slds-is-relative">
+                        <template for:each={looparray} for:item="singlevalarray">
+                            <c-ipamulti-select-pick-list key={singlevalarray} values={singlevalarray}
+                                onselection={handleSelectedValues} onunselect={handleremovalselection}>
+                            </c-ipamulti-select-pick-list>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <template if:true={showpills}>
+            <div class="slds-float_left">
+                <p>{filtersapp}</label></p>
+            </div><br />
+            <div class="slds-listbox_selection-group filtersheight">
+                <ul class="slds-listbox slds-listbox_horizontal slds-m-around_xx-small" role="listbox"
+                    aria-label="Selected Options:" aria-orientation="horizontal">
+                    <template for:each={selections} for:item="eachvalue">
+                        <li key={eachvalue} class="slds-listbox-item" role="presentation">
+                            <span role="option" aria-selected="true">
+                                <span class="pill" title={eachvalue}>{eachvalue}</span>
+                            </span>
+                        </li>
+                    </template>
+                </ul>
+                <template if:true={showsearchinputpill}>
+                    <span class="pill" title={keyWordEntered}>{keyWordEntered}</span>
+                </template>
+                <div class="text-upcase clear-all link-text text-bold slds-show_large" role="button"
+                    onclick={clearallselections} tabindex="0">{clearallfilters}</div>
+            </div>
+        </template>
+    </template>
+</template>

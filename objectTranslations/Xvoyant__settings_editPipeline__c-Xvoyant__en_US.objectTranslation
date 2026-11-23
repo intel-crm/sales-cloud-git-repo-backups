@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_editPipeline</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_editPipeline</value>
+    </caseValues>
+    <fields>
+        <label><!-- closedLost --></label>
+        <name>Xvoyant__closedLost__c</name>
+    </fields>
+    <fields>
+        <label><!-- closedWon --></label>
+        <name>Xvoyant__closedWon__c</name>
+    </fields>
+    <fields>
+        <label><!-- createOpp --></label>
+        <name>Xvoyant__createOpp__c</name>
+    </fields>
+    <fields>
+        <label><!-- editAmount --></label>
+        <name>Xvoyant__editAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- editCloseDate --></label>
+        <name>Xvoyant__editCloseDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- editDescription --></label>
+        <name>Xvoyant__editDescription__c</name>
+    </fields>
+    <fields>
+        <label><!-- editStage --></label>
+        <name>Xvoyant__editStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- logCall --></label>
+        <name>Xvoyant__logCall__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

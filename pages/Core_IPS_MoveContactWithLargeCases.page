@@ -45,8 +45,8 @@
         var callFun = true;
         var keepCaseExists = false;
         var MoveCasesExists = false;
-        var caseCount = '{JSENCODE(!caseCount)}';
-        var hasAccessToAcctSelection = '{JSENCODE(!hasAccessToAcctSelection)}';
+        var caseCount = '{!caseCount}';
+        var hasAccessToAcctSelection = '{!hasAccessToAcctSelection}';
         if(hasAccessToAcctSelection == 'false'){
             $('[id$=errorMessage]').text('User do not have the permission to perform the operation. Only Data Ops can perform the change');
             return false;
@@ -112,7 +112,7 @@
             }
             console.log('===came here==='+lookupType);
             // Following is the url of Custom Lookup page. You need to change that accordingly
-            baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!JSENCODE(currContact.Accountid)}';
+            baseURL = "/apex/Core_CustomContactLookup?txt=" + txtId+'&conaccid='+'{!currContact.Accountid}';
             
             // Following is the id of apex:form control "myForm". You need to change that accordingly
             baseURL = baseURL + "&frm=" + escapeUTF("{!$Component.myForm}");
@@ -170,7 +170,7 @@
                 <apex:outputPanel styleClass="popupBackground" layout="block" rendered="{!displayPopUp}"/> 
                 <apex:outputPanel id="popInnerOutputPnl" styleClass="customPopup" layout="block" rendered="{!displayPopUp}" style="text-align:center;">
                     <apex:pageBlockSection title="Warning Message" collapsible="false"></apex:pageBlockSection><br/>
-                  <apex:outputtext value="{!HTMLENCODE(moveAccoutWarningMessage)}" escape="false"/><br/><br/> <!--- US967150 --- 16/05/21--- Sai krishna--- Stored XSS--- appsec security vulnerability --->
+                  <apex:outputtext value="{!moveAccoutWarningMessage}" escape="false"/><br/><br/>
                 <div class="btns">
                     <apex:commandButton value="Cancel" title="Close the popup"  action="{!closePopup}" styleClass="closeButton"  rerender="accId,popup"/> <!--action="{!closePopup}-->
                    <apex:commandButton value="Ok"  action="{!moveAccountchange}"  styleClass="closeButton" /> 

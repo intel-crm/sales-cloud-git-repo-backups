@@ -2,7 +2,7 @@
     getImages : function(component, helper) {
         return new Promise(function(resolve, reject) {
             var action = component.get("c.getImages");
-            action.setParams({ offeringId: component.get('v.recordIdForUpload') });
+            // action.setParams({ offeringId: component.get('v.recordIdForUpload') });IPA2.0 + US TWC4497-1631
             action.setCallback(this, function(response) {
                 var state = response.getState();
                 if (state === "SUCCESS") {
@@ -63,7 +63,7 @@
         var imageIdx = component.get('v.imageToDelete');
         var imageId = images[imageIdx].id;
         var action = component.get("c.deleteImage");
-        action.setParams({ contentDocumentId: imageId , offeringId: component.get('v.recordIdForUpload')});
+        // action.setParams({ contentDocumentId: imageId , offeringId: component.get('v.recordIdForUpload')});IPA2.0 + US TWC4497-1631
         action.setCallback(this, function(response) {
             var state = response.getState();
             console.log('delete status :',state)
@@ -133,7 +133,8 @@
         var maxFileSize = 5000000;//setting maxFileSize to 5Mb
 		console.log(currentFiles[0].documentId);
         var action=component.get("c.validateVideo");//server call to get contentDocument record
-        action.setParams({documentID:currentFiles[0].documentId,offeringId: component.get('v.recordIdForUpload') });//setting params as documentId of uploaded file
+        // IPA2.0 + US TWC4497-1631
+        // action.setParams({documentID:currentFiles[0].documentId,offeringId: component.get('v.recordIdForUpload') });//setting params as documentId of uploaded file
         action.setCallback(this,function(response){
             var state = response.getState();
             if(state="SUCCESS"){

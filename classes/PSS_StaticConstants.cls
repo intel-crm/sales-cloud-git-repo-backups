@@ -8,6 +8,7 @@ Description : Class to store static constants  and which can be reused in otherc
 * ----------------------------------------------------------------------------
 * Shahrukh Riyan          15/02/2021    Original Version
 *************************************************************************************/
+
 public without sharing class PSS_StaticConstants{   
     public static final String COMPLETED='Completed';
     public static final String ADMIN_REVIEW='Admin Review';
@@ -39,9 +40,8 @@ public without sharing class PSS_StaticConstants{
     public static Boolean questionResultTriggerFlag = True;
     public static final List<String> PARTNER_LISTVIEW = new List<String> {'All','Admin_Review_Queue'};
     //public static final List<String> PARTNER_OFFERING_LISTVIEW = new List<String> {'All_Offerings','Retired_Offerings'};//IPA 2.0 OFFERING EOL
-    /*public static final List<String> ADMIN_REVIEW_LISTVIEW_OFFERING = new List<String> {'Admin_Review_Queue','All_Offerings','Retired_Offerings',
-                                                                        'Draft_Offerings_for_Last_6_Months','Draft_Offerings_Before_6_Months','Retired_Offerings_for_MP_Admins','Expired_Offerings_for_MP_Admins','Offering_Sub_Category_Partner_Solution', 'Offering_Sub_Category_MRS', 'Offering_Sub_Category_RRK'};*/ //IPA 2.0 OFFERING EOL
-    public static final List<String> ADMIN_REVIEW_LISTVIEW = new List<String> {'All_Custom','Admin_Review_DCG','Admin_Review_IOTG','Admin_Review_Partner_Solutions','All_DCG','All_IOTG','All_Partner_Solutions','Approved_Solutions'};
+    //public static final List<String> ADMIN_REVIEW_LISTVIEW_OFFERING = new List<String> {'Admin_Review_Queue','All_Offerings','Retired_Offerings'};//IPA 2.0 OFFERING EOL
+    public static final List<String> ADMIN_REVIEW_LISTVIEW = new List<String> {'All_Custom','Admin_Review_DCG','Admin_Review_IOTG','Admin_Review_Partner_Solutions','All_DCG','All_IOTG','All_Partner_Solutions'};
     public static final String ALL_LISTVIEW = 'All_Custom';
     
     

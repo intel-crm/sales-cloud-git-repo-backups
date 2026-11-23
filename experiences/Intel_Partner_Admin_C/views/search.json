@@ -5,16 +5,6 @@
   "id" : "e92726f6-e033-4321-b5d8-2d1d48da78a5",
   "label" : "Search",
   "regions" : [ {
-    "components" : [ {
-      "componentAttributes" : {
-        "menuItems" : "[]"
-      },
-      "componentName" : "c:pRM_NavigationCompPCC",
-      "id" : "5c829e24-fd92-4de5-bd7a-529f04bdd523",
-      "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
-      "type" : "component"
-    } ],
     "id" : "6f4f213c-2d7f-4756-b0c4-0cbeb032f279",
     "regionName" : "header",
     "type" : "region"
@@ -22,20 +12,20 @@
     "components" : [ {
       "componentAttributes" : {
         "scopes" : [ {
-          "isPublic" : true,
-          "name" : "Core_Design_Registration__c"
+          "isPublic" : false,
+          "name" : "Lead"
         }, {
-          "isPublic" : true,
-          "name" : "Core_Design_Registration_Product__c"
-        }, {
-          "isPublic" : true,
+          "isPublic" : false,
           "name" : "Opportunity"
         }, {
-          "isPublic" : true,
-          "name" : "PCC_DDR_L5_Product_Mapping__c"
+          "isPublic" : false,
+          "name" : "Campaign"
+        }, {
+          "isPublic" : false,
+          "name" : "ContentDocument"
         } ],
         "searchResultFiltering" : true,
-        "searchTerm" : "{!term}",
+        "searchTerm" : "{!searchString}",
         "showTopResults" : true
       },
       "componentName" : "forceCommunity:search",

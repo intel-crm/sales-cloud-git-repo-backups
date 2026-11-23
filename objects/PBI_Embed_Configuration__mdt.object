@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Metadata to store URL and their filters and configuration</description>
+    <fields>
+        <fullName>Dynamic_filter__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the URL needs dynamic filter</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Dynamic filter</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Filter__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>If the URL needs a filter</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Filter?</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Filter_and_Value__c</fullName>
+        <description>Field to store dynamic filter and the corresponding field name for the filter</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Filter and Value</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>No_Access_Error__c</fullName>
+        <description>Error that needs to be displayed if no access</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>No Access Error</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Object__c</fullName>
+        <description>Store the object from where the filter fields need to be retrieved</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Object</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Project__c</fullName>
+        <description>Stores the project name of the URL</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Project</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Security_Query__c</fullName>
+        <description>The condition that needs to be check. Output can be True/False</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Security Query</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Security_enforced__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Check box if additional security check is required to view PowerBI report</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Security enforced</label>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Static_Filter__c</fullName>
+        <description>Static filter value</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Static Filter</label>
+        <length>1000</length>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>URL__c</fullName>
+        <description>Field to store URL</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <inlineHelpText>Field to store URL</inlineHelpText>
+        <label>URL</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>PBI Embed Configuration</label>
+    <pluralLabel>PBI Embed Configurations</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

@@ -36,9 +36,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -96,9 +93,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -171,9 +165,6 @@
             <value>IND</value>
         </values>
         <values>
-            <sourceValues>
-                <sourceValue>Retail</sourceValue>
-            </sourceValues>
             <value>RET</value>
         </values>
         <values>
@@ -385,6 +376,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

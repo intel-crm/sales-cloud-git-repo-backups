@@ -1,0 +1,24 @@
+<div style="font-family: Arial; font-size: 11px;">
+<p><span style="color: #ff0000;"><strong>Action Required</strong></span></p>
+<p><span></span></p>
+<p><span>Dear Intel employee,</span></p>
+<p>The following activity has been submitted and requires Intel review:&nbsp;</p>
+<p><span>&nbsp; &nbsp; &nbsp; Member Name:</span>{!PartnerFundRequest.Core_MDF_Ultimate_Account_Name__c}</p>
+<p>&nbsp; &nbsp; &nbsp; Activity number: {!PartnerFundRequest.Core_MDF_Activity_Number__c}</p>
+<p><span>&nbsp; &nbsp; &nbsp; Activity type:&nbsp;{!PartnerFundRequest.Core_MDF_Activity_Types__c}</span></p>
+<p>&nbsp; &nbsp; &nbsp; Status History:&nbsp;{!PartnerFundRequest.Core_MDF_Fund_Request_Status__c}</p>
+<p><span>&nbsp; &nbsp; &nbsp; Countries/locations:&nbsp;{!PartnerFundRequest.Core_MDF_Country_nm__c}</p>
+<p></p>
+<p>{!PartnerFundRequest.CreatedBy}&nbsp;has requested your approval for the following item:<span>&nbsp;</span><a href="https://intel--crmdevccp.cs17.my.salesforce.com/p/email/template/EmailTemplateEditorUi/{!ApprovalRequest.Internal_URL}">Click here</a></p>
+<p>Please click this link to approve or reject this record.</p>
+<p></p>
+<p>Thank you,</p>
+<p><span>{!PartnerFundRequest.RecordType}&nbsp;Program Team</span></p>
+<p><span>&nbsp;</span></p>
+</div>
+<div style="font-family: Calibri;font-size: 11px;">
+<p><em>Messages to this mailbox are not monitored.</em>&nbsp;<em>Contact&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">customer service</a>&nbsp;</strong>if you have additional questions.</em></p>
+<p>This message and any attachments are for the sole use of the intended recipient(s). If you are not the intended recipient, contact&nbsp;<strong><a href="https://intelinside.intel.com/Support?AppSignOn=Yes">customer service</a>&nbsp;</strong>immediately and confirm you have deleted all copies.</p>
+<p>Intel Corporation, 2111 NE 25th Avenue, Mailstop HF3-17, Hillsboro, OR 97124&nbsp;<br /><a href="https://www.intel.com/content/www/us/en/homepage.html">Intel Corporation</a>&nbsp;|&nbsp;<a href="https://www.intel.com/content/www/us/en/legal/trademarks.html">Trademarks&nbsp;</a>|&nbsp;<a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html?elqTrackId=d66a216e5b8b472c80e421c11f79cbc2&amp;amp;elqaid=13991&amp;amp;elqat=2">Privacy Policy</a>&nbsp;|&nbsp;<a href="http://www.intel.com/cookies">Cookies</a>&nbsp;</p>
+<p></p>
+</div>

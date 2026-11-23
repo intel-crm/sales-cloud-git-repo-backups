@@ -16,11 +16,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Active__c</field>
+                <field>PRM_Domain__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>PRM_Domain__c</field>
+                <field>PRM_Active__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

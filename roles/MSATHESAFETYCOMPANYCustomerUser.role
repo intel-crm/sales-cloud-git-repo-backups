@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>MSA THE SAFETY COMPANY Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>MSATHESAFETYCOMPANYCustomerManager</parentRole>
 </Role>

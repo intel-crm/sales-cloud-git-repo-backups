@@ -170,7 +170,7 @@ public class PRM_ACM_Utility_Test   {
         TriggerHandler.bypass('PRM_BenefitMatrix_Triggerhandler');
         insert bem;
         TriggerHandler.clearbypass('PRM_BenefitMatrix_Triggerhandler');
-        
+
         //Start : Custom setting record creation added by Krishn Ch
         PRM_BatchCustomSetting__c  bCs = new PRM_BatchCustomSetting__c ();
         bCs.PRM_MP_Benefits__c = 'Solution Marketplace Enhanced';
@@ -179,7 +179,7 @@ public class PRM_ACM_Utility_Test   {
         bCs.PRM_PartnerType__c ='Cloud Service Provider (CSP)';
         bcs.PRM_EntitlementsNotToInactivate__c = 'IPA Developer Zone Standard Entitlement';
         insert bCs;
-        
+
         //End : Custom setting record creation added by Krishn Ch
         PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
         aba.PRM_Account_Id__c = newAccount.Id;
@@ -208,13 +208,11 @@ public class PRM_ACM_Utility_Test   {
         em.PRM_IPA_Partner_Role_Nm__c='Service Provider';
         insert em;
         
-        
         PRM_ContactSubscriptionAssociation__c csa = new PRM_ContactSubscriptionAssociation__c();
         csa.PRM_Contact_Id__c = cont.Id;
         csa.PRM_Status_Nm__c = 'Inactive';
         csa.PRM_Status_Reason_Txt__c = 'Test class';
         insert csa;
-        
         Test.startTest();
         try{
             //PRM_ACM_Utility.firstRun = true;
@@ -229,25 +227,25 @@ public class PRM_ACM_Utility_Test   {
             newList.add(acm);
             PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldMap);
             PRM_ACM_Utility.UpsertOPIDACM(newList,oldMap);
-            
+
             PRM_ACMTriggerHandlerNew.firstRunBeforeUpdate = true;
             acm.PRM_Status_Nm__c='Inactive';
             update acm;
             /*//PRM_ACM_Utility.firstRun = true;
-PRM_ACMTriggerHandlerNew.firstRunBeforeUpdate = true;                
-acm.PRM_Status_Nm__c='Approved';
-System.debug('updating acm 200');
-update acm;
-TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
-Map<id, PRM_AccountChannelMembership__c> oldMap = new Map<Id, PRM_AccountChannelMembership__c>();
-oldMap.put(acm.id, acm);
-PRM_ACMTriggerHandlerNew.firstRunBeforeUpdate = true;
-acm.PRM_Channel_Program_Level_Id__c = cpl2.id;
-update acm;
-TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
-List<PRM_AccountChannelMembership__c> newList = new List<PRM_AccountChannelMembership__c>();
-newList.add(acm);
-PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldMap);*/
+            PRM_ACMTriggerHandlerNew.firstRunBeforeUpdate = true;                
+            acm.PRM_Status_Nm__c='Approved';
+            System.debug('updating acm 200');
+            update acm;
+            TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
+            Map<id, PRM_AccountChannelMembership__c> oldMap = new Map<Id, PRM_AccountChannelMembership__c>();
+            oldMap.put(acm.id, acm);
+            PRM_ACMTriggerHandlerNew.firstRunBeforeUpdate = true;
+            acm.PRM_Channel_Program_Level_Id__c = cpl2.id;
+            update acm;
+            TriggerHandler.clearbypass('PRM_ACMTriggerHandlerNew');
+            List<PRM_AccountChannelMembership__c> newList = new List<PRM_AccountChannelMembership__c>();
+            newList.add(acm);
+            PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldMap);*/
         }catch(Exception e){
             
         }
@@ -267,7 +265,7 @@ PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldM
             csa.PRM_Status_Nm__c = 'Inactive';
             update csa;
             Triggerhandler.clearbypass('PRM_VXRecommendation_Handler');
-            
+
         }catch(Exception e){
         }
         //PRM_ACM_Utility.checkPendingMembership(null);  
@@ -449,7 +447,7 @@ PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldM
         abassociation.PRM_Status_Nm__c = 'Active';
         abassociation.PRM_Status_Reason_Txt__c = 'Auto Approved by system';
         abassociation.PRM_Source__c ='Tier';
-        
+
         insert abassociation;
         
         Core_ERPM_Engagement__c ee = new Core_ERPM_Engagement__c();//ERPM Engagement
@@ -666,7 +664,7 @@ PRM_ACMTriggerHandlerNew.createTrackerMilestonesForMembershipUpdate(newList,oldM
         childAccount.Core_IPA_Partner_Segment__c = 'Client Computing';
         //   childAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = true;
         insert childAccount;
-        
+
         Account parentAccount1 = new Account();//Account
         parentAccount1.RecordTypeId = recordTypeIdPAGAccount;
         parentAccount1.Name='Tesco1';
@@ -715,7 +713,7 @@ insert agm; */
         cont1.MailingState ='AK';
         cont1.MailingStreet ='BandraStreet';
         insert cont1;
-        
+
         Contact cont2 = new Contact();  //Contact
         cont2.AccountId=childAccount1.Id;
         cont2.lastName='thomas';
@@ -791,7 +789,7 @@ insert agm; */
         insert level2;
         
         Map<String,String> mapOFTierAndBusinessEvent = new Map<String,String>();
-        
+
         PRM_AccountChannelMembership__c pagAccntACM = new PRM_AccountChannelMembership__c(); //Account Channel Membership
         pagAccntACM.PRM_Account_Id__c= parentAccount.id;
         pagAccntACM.PRM_Status_Nm__c='Approved';
@@ -811,7 +809,7 @@ insert agm; */
         childAccntACM.PRM_Status_Reason_Txt__c = 'Auto Approved by system';
         childAccntACM.PRM_Suppress_Email__c = true;
         insert childAccntACM;
-        
+
         PRM_AccountChannelMembership__c pagAccntACM1 = new PRM_AccountChannelMembership__c(); //Account Channel Membership
         pagAccntACM1.PRM_Account_Id__c= parentAccount1.id;
         pagAccntACM1.PRM_Status_Nm__c='Approved';
@@ -831,7 +829,7 @@ insert agm; */
         childAccntACM1.PRM_Status_Reason_Txt__c = 'Auto Approved by system';
         childAccntACM1.PRM_Suppress_Email__c = true;
         insert childAccntACM1;
-        
+
         List<Core_Account_Group_Member__c> cagList = new List<Core_Account_Group_Member__c>();
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
         coreAccnt.Core_Partner_Account_Id__c = parentAccount.id;
@@ -919,7 +917,7 @@ insert agm2;*/
         TriggerHandler.bypass('PRM_aba_TriggerHandler');
         insert aba;
         
-        
+
         Test.startTest();
         PRM_Value_Exchange_Recommendation__c opidRec = new PRM_Value_Exchange_Recommendation__c();
         opidRec.RecordTypeId=upgradeDowngradeRecordType;
@@ -1063,7 +1061,7 @@ accList.add(accPAG);  */
         acm2.PRM_Status_Reason_Txt__c = 'Auto Approved by system';
         acm2.PRM_Suppress_Email__c = true;
         acmist.add(acm2);
-        
+
         PRM_AccountChannelMembership__c  acm3 = PRM_TestUtility.getMembership();
         acm3.PRM_Account_Id__c = parentAccount.Id;
         acm3.PRM_Channel_Program_Id__c = cprogram.Id;
@@ -1288,7 +1286,7 @@ insert cag;
         
         PRM_AccountChannelMembership__c oldAcm = acm1.clone(true, false, true, true);
         oldAcm.id = acm1.id;
-        PRM_AccountChannelMembership__c oldAcm2 = acm2.clone(true, false, true, true);
+    PRM_AccountChannelMembership__c oldAcm2 = acm2.clone(true, false, true, true);
         oldAcm2.id = acm2.id;        
         Map<Id, PRM_AccountChannelMembership__c> oldACMMap = new Map<Id, PRM_AccountChannelMembership__c>();
         oldACMMap.put(oldAcm.id, oldAcm);  
@@ -1333,7 +1331,7 @@ insert cag;
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         newAccount.Core_CIM_ID__c = '9456456' ; //TWC729-1292
         acclist1.add(newAccount);
-        //insert acclist1;
+         //insert acclist1;
         
         Account newAccount1 = new Account();//Account
         newAccount1.RecordTypeId = recordTypeIdAccount;
@@ -1347,8 +1345,8 @@ insert cag;
         newAccount1.Core_IPA_Partner_Segment__c = 'Client Computing';
         newAccount1.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         newAccount1.Core_CIM_ID__c = null ; //TWC729-1292
-        acclist1.add(newAccount1);
-        TriggerHandler.bypass('Core_AccountTriggerHandler');
+         acclist1.add(newAccount1);
+   TriggerHandler.bypass('Core_AccountTriggerHandler');
         insert acclist1;
         
         Contact cont = new Contact();  //Contact
@@ -1366,7 +1364,7 @@ insert cag;
         cont.MailingPostalCode='421910';
         cont.MailingState ='AK';
         cont.MailingStreet ='BandraStreet';
-        TriggerHandler.bypass('Core_ContactHandler');
+  TriggerHandler.bypass('Core_ContactHandler');
         insert cont;
         
         
@@ -1392,7 +1390,7 @@ insert cag;
         cpl2.ProgramId=cp.Id;
         insert cpl2;
         
-        PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
+         PRM_PartnerBenefit__c pb = new PRM_PartnerBenefit__c(); //Partner Benefit
         pb.Name = 'Partner University';
         pb.PRM_Channel_Program_Id__c = cp.id;
         pb.PRM_Benefit_Cd__c = 'BFTTRGUNI';
@@ -1429,38 +1427,38 @@ insert cag;
         insert contRelation;
         
         /*PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-acctContRel.PRM_Account_Id__c=newAccount.Id;
-acctContRel.PRM_Contact_Id__c=cont.Id;
-acctContRel.PRM_Relationship_Id__c=contRelation.Id;
-acctContRel.PRM_InActive_Ind__c=false;
-acctContRel.PRM_Status_Nm__c =System.Label.PRM_ACR_Status;
-insert acctContRel;
-PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
-acctContRel1.PRM_Account_Id__c=opidAcc.Id;
-acctContRel1.PRM_Contact_Id__c=cont.Id;
-acctContRel1.PRM_Relationship_Id__c=contRelation.Id;
-acctContRel1.PRM_InActive_Ind__c=false;
-acctContRel1.PRM_Status_Nm__c =System.Label.PRM_ACR_Status;
-insert acctContRel1;*/
+        acctContRel.PRM_Account_Id__c=newAccount.Id;
+        acctContRel.PRM_Contact_Id__c=cont.Id;
+        acctContRel.PRM_Relationship_Id__c=contRelation.Id;
+        acctContRel.PRM_InActive_Ind__c=false;
+        acctContRel.PRM_Status_Nm__c =System.Label.PRM_ACR_Status;
+        insert acctContRel;
+        PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c(); //Account Contact Relationship
+        acctContRel1.PRM_Account_Id__c=opidAcc.Id;
+        acctContRel1.PRM_Contact_Id__c=cont.Id;
+        acctContRel1.PRM_Relationship_Id__c=contRelation.Id;
+        acctContRel1.PRM_InActive_Ind__c=false;
+        acctContRel1.PRM_Status_Nm__c =System.Label.PRM_ACR_Status;
+        insert acctContRel1;*/
         
         List<PRM_Account_Contact_Relationship__c> acctContRelList=new List<PRM_Account_Contact_Relationship__c>();
         PRM_Account_Contact_Relationship__c acctContRel=new PRM_Account_Contact_Relationship__c();
         acctContRel.PRM_Account_Id__c=newAccount.Id;
         acctContRel.PRM_Contact_Id__c=cont.Id;
         acctContRel.PRM_Relationship_Id__c=contRelation.Id;
-        acctContRel.PRM_Status_Nm__c='Pending Action';
+        acctContRel.PRM_Status_Nm__c='Complete';
         acctContRel.PRM_isActive__c=true;
         acctContRel.PRM_Status_Reason_Txt__c = 'Testclass run';
         acctContRel.PRM_InActive_Ind__c=false;
         acctContRelList.add(acctContRel);
         
-        /*   PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c();
-acctContRel1.PRM_Account_Id__c=opidAcc.Id;
-acctContRel1.PRM_Contact_Id__c=cont.Id;
-acctContRel1.PRM_Relationship_Id__c=contRelation.Id;
-acctContRel1.PRM_Status_Nm__c='Complete';
-acctContRel1.PRM_InActive_Ind__c=false;
-acctContRelList.add(acctContRel1); */
+     /*   PRM_Account_Contact_Relationship__c acctContRel1=new PRM_Account_Contact_Relationship__c();
+        acctContRel1.PRM_Account_Id__c=opidAcc.Id;
+        acctContRel1.PRM_Contact_Id__c=cont.Id;
+        acctContRel1.PRM_Relationship_Id__c=contRelation.Id;
+        acctContRel1.PRM_Status_Nm__c='Complete';
+        acctContRel1.PRM_InActive_Ind__c=false;
+        acctContRelList.add(acctContRel1); */
         TriggerHandler.bypass('PRM_AcctContRel_TriggerHandlerNew');
         insert acctContRelList;
         List<PRM_AccountChannelMembership__c> AcmList1 = new List<PRM_AccountChannelMembership__c>(); //TWC729-1292        
@@ -1482,16 +1480,16 @@ opidacm.PRM_Channel_Program_Level_Id__c=cpl.Id;
 opidacm.PRM_Partner_Role__c='Service Provider';
 AcmList1.add(opidacm);*/
         insert AcmList1;
-        TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
-        
-        PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
-        aba.PRM_Account_Id__c = newAccount.Id;
-        aba.PRM_Partner_Benefit_Id__c = pb.id;
-        aba.PRM_Status_Reason_Txt__c = 'Testclass run';
-        aba.PRM_Status_Nm__c ='Active';  
-        TriggerHandler.bypass('PRM_aba_TriggerHandler');
-        insert aba;
-        Test.startTest();
+  TriggerHandler.bypass('PRM_ACMTriggerHandlerNew');
+
+    PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
+    aba.PRM_Account_Id__c = newAccount.Id;
+    aba.PRM_Partner_Benefit_Id__c = pb.id;
+    aba.PRM_Status_Reason_Txt__c = 'Testclass run';
+    aba.PRM_Status_Nm__c ='Active';  
+    TriggerHandler.bypass('PRM_aba_TriggerHandler');
+    insert aba;
+  Test.startTest();
         ///PRM_ACM_Utility.CreateOPIDRecomndtn(AcmList1,null); 
         
         Core_Account_Group_Member__c coreAccnt = new Core_Account_Group_Member__c();
@@ -1499,9 +1497,9 @@ AcmList1.add(opidacm);*/
         coreAccnt.Core_Intel_Account_Id__c = newAccount.id;
         coreAccnt.Core_Inactive_Ind__c = false;
         insert coreAccnt;
+
         
-        
-        
+                
         PRM_ACM_Utility.UpsertOPIDACM(AcmList1,null);
         List<PRM_AccountChannelMembership__c> AcmList2 = new List<PRM_AccountChannelMembership__c>();       
         PRM_AccountChannelMembership__c intelacm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
@@ -1552,7 +1550,7 @@ AcmList1.add(opidacm);*/
         acm.PRM_Suppress_Email__c = true;
         //PRM_ACM_Utility.suppressEmail(AcmList1);
         
-        //JB
+        
         PRM_AccountChannelMembership__c suppressAcm =new PRM_AccountChannelMembership__c();        
         suppressAcm.PRM_Account_Id__c = opidAcc.Id;
         suppressAcm.PRM_Partner_Role__c = 'Service Provider';
@@ -1560,41 +1558,40 @@ AcmList1.add(opidacm);*/
         acctContRelList[0].PRM_InActive_Ind__c = false;
         update acctContRelList[0];      
         PRM_ACM_Utility.suppressEmail(new List<PRM_AccountChannelMembership__c>{ suppressAcm });
-        //JB
+        
         
         
         PRM_ACM_Utility.updateSuppressEmail(AcmList1, oldACMMap);
         oldAcm.PRM_Status_Nm__c='Inactive';
         
-        
         PRM_ACM_Utility.updateACMStatusChangeDate(AcmList1, oldACMMap);
-        // PRM_ACM_Utility.AfterOperationsOnACM(AcmList1,oldACMMap);
+       // PRM_ACM_Utility.AfterOperationsOnACM(AcmList1,oldACMMap);
         oldAcm.PRM_Status_Nm__c='Approved';
         oldAcm.PRM_Partner_Role__c='Distributor';
         
-        //JB start
-        oldACMMap.put(oldAcm.Id, oldAcm);
-        List<PRM_AccountChannelMembership__c> refreshedACMList = [SELECT Id,PRM_Account_RT__c,PRM_Channel_Program_Level_Id__c,PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Onepartner_Id__c, PRM_Tier_Name_txt__c FROM PRM_AccountChannelMembership__c WHERE Id = :acm.Id];
         
+      	oldACMMap.put(oldAcm.Id, oldAcm);
+        List<PRM_AccountChannelMembership__c> refreshedACMList = [SELECT Id,PRM_Account_RT__c,PRM_Channel_Program_Level_Id__c,PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Onepartner_Id__c, PRM_Tier_Name_txt__c FROM PRM_AccountChannelMembership__c WHERE Id = :acm.Id];
+
         // Covers Mastered_Account branch
         PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(refreshedACMList,oldACMMap);
-        
+
         oldopidAcm.PRM_Partner_Role__c = 'Distributor';
         oldACMMap2.put(oldopidAcm.Id, oldopidAcm);
         
         List<PRM_AccountChannelMembership__c> refreshedOPIDACMList = [SELECT Id,PRM_Account_RT__c,PRM_Channel_Program_Level_Id__c,PRM_Partner_Role__c,PRM_Account_Id__c,PRM_Onepartner_Id__c, PRM_Tier_Name_txt__c FROM PRM_AccountChannelMembership__c WHERE Id = :opidacm2.Id];
         System.debug('OPID RT : ' + refreshedOPIDACMList[0].PRM_Account_RT__c);
-        
+
         // Covers Core_Partner_Account_Group branch
         PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(refreshedOPIDACMList,oldACMMap2);
-        //JB end
         
+                
         /*PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(AcmList1, oldACMMap);              
-oldopidAcm.PRM_Partner_Role__c='Distributor';       
-List<PRM_AccountChannelMembership__c> opidACMList = new List<PRM_AccountChannelMembership__c>();
-opidACMList.add(opidacm2);
-PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMap2);		
-*/
+        oldopidAcm.PRM_Partner_Role__c='Distributor';       
+        List<PRM_AccountChannelMembership__c> opidACMList = new List<PRM_AccountChannelMembership__c>();
+        opidACMList.add(opidacm2);
+        PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMap2);		
+        */
         Test.stopTest();
     }
     
@@ -1708,7 +1705,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         Id accountRecordTypePAG = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Partner_Account_Group_Record_Type).getRecordTypeId();
         
         List<Account> accountList = new List<Account>();
-        
+
         OPID_Number__c maxopidNum = new OPID_Number__c();
         maxopidNum.Name ='OPID Number';
         maxopidNum.Max_OPID_Number__c='99999999';
@@ -1785,7 +1782,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         acc3.BillingPostalCode = '421910';
         acc3.BillingStreet= 'BandraStreet';
         accountList.add(acc3);
-        
+
         Account opidAcc1 = new Account();
         opidAcc1.RecordTypeId = accountRecordTypePAG;
         opidAcc1.Name ='opid account2';                    
@@ -1823,7 +1820,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         acc6.BillingStreet= 'BandraStreet';
         //acc6.ParentId = '1013333';
         accountList.add(acc6);
-        
+
         Account acc5= new Account();
         acc5.Name ='Test Account5';
         acc5.RecordTypeId = accountRecordTypeIntel;
@@ -1867,7 +1864,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         insert cag1;
         
         List<PRM_AccountChannelMembership__c> acmList = new list<PRM_AccountChannelMembership__c>();
-        //sceanrio 3
+         //sceanrio 3
         PRM_AccountChannelMembership__c acm1 = new PRM_AccountChannelMembership__c();
         acm1.PRM_Account_Id__c=acc1.id;
         acm1.PRM_Channel_Program_Level_Id__c = cpLevel.id;
@@ -1876,7 +1873,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         acm1.PRM_Status_Nm__c = 'Approved';
         acm1.PRM_Status_Reason_Txt__c = 'Test class';
         acmList.add(acm1);
-        
+
         //scenario 2
         PRM_AccountChannelMembership__c acm2 = new PRM_AccountChannelMembership__c();
         acm2.PRM_Account_Id__c=acc3.id;
@@ -1931,8 +1928,8 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         uCDPartnerGrouping.getPicklistValues('Account','Core_Customer_Aggregation_Type__c');
         Test.stopTest();
     }
-    
-    @isTest
+  
+     @isTest
     static void testIPAInactivatedWhenACMInactive(){
         
         
@@ -1953,7 +1950,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         acc1234.Core_IPA_Partner_Role__c = 'Distributor';
         insert acc1234;
         
-        // 2. IPA Membership Attribute (Active)
+           // 2. IPA Membership Attribute (Active)
         PRM_IPAMembership_Attributes__c ipa =
             new PRM_IPAMembership_Attributes__c(
                 PRM_Account_Id__c = acc1234.Id,
@@ -1961,7 +1958,7 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
             );
         insert ipa;
         
-        // 3. ACM (Active)
+            // 3. ACM (Active)
         PRM_AccountChannelMembership__c acm =
             new PRM_AccountChannelMembership__c(
                 PRM_Account_Id__c = acc1234.Id,
@@ -1972,12 +1969,12 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
             );
         insert acm;
         
-        // 4. Update ACM → Inactive
+            // 4. Update ACM → Inactive
         acm.PRM_Status_Nm__c = System.Label.PRM_Status_Inactive;
         acm.PRM_Status_Reason_Txt__c = 'Test Inactive ACM';
         update acm;        
         
-        // 5. Assert IPA inactivated
+            // 5. Assert IPA inactivated
         ipa = [
             SELECT PRM_Inactive_ind__c
             FROM PRM_IPAMembership_Attributes__c
@@ -1985,83 +1982,83 @@ PRM_ACM_Utility.createTrackerMilestonesForMembershipUpdate(opidACMList, oldACMMa
         ];
         
         System.assertEquals(
-            true,
-            ipa.PRM_Inactive_ind__c,
-            'IPA Membership should be inactivated when ACM becomes inactive'
-        );
+        true,
+        ipa.PRM_Inactive_ind__c,
+        'IPA Membership should be inactivated when ACM becomes inactive'
+    );
         
         
     }
     
     
     /*@isTest 
-static void UpdateEntOnRollDown_synchronous() {
-List<account> acclist1  = new List<account>();
-Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
-Id recordTypeIdPAGAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
-Triggerhandler.bypass('PRM_VXRecommendation_Handler');
-Account opidAcc = new Account();//Account
-opidAcc.RecordTypeId = recordTypeIdPAGAccount;
-opidAcc.Name='vista';
-opidAcc.BillingCity='City9';
-opidAcc.BillingStreet='Street9';
-opidAcc.BillingCountry='India';
-opidAcc.BillingPostalCode='Postal code';
-opidAcc.Core_Account_Type__c='Cloud Service Provider (CSP)';
-opidAcc.Core_IPA_Partner_Role__c = 'Solution Integrator';
-acclist1.add(opidAcc) ;
+    static void UpdateEntOnRollDown_synchronous() {
+        List<account> acclist1  = new List<account>();
+        Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
+        Id recordTypeIdPAGAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();
+        Triggerhandler.bypass('PRM_VXRecommendation_Handler');
+        Account opidAcc = new Account();//Account
+        opidAcc.RecordTypeId = recordTypeIdPAGAccount;
+        opidAcc.Name='vista';
+        opidAcc.BillingCity='City9';
+        opidAcc.BillingStreet='Street9';
+        opidAcc.BillingCountry='India';
+        opidAcc.BillingPostalCode='Postal code';
+        opidAcc.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        opidAcc.Core_IPA_Partner_Role__c = 'Solution Integrator';
+        acclist1.add(opidAcc) ;
+        
+        Account newAccount = new Account();//Account
+        newAccount.RecordTypeId = recordTypeIdAccount;
+        newAccount.Name='Greg Thomas';
+        newAccount.BillingCity='City';
+        newAccount.BillingStreet='Street';
+        newAccount.BillingCountry='India';
+        newAccount.BillingPostalCode='Postal code';
+        newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+        newAccount.Core_User_Defined_Website__c='www.sample.com';
+        newAccount.Core_IPA_Partner_Segment__c = 'Client Computing';
+        newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
+        newAccount.Core_IPA_One_Partner_Id__c = opidAcc.id;
+        newAccount.Core_CIM_ID__c = '9456456' ; //TWC729-1292
+        
+        acclist1.add(newAccount);
+        insert acclist1;
+        Contact cont = new Contact();  //Contact
+        cont.AccountId=newAccount.Id;
+        cont.lastName='Grill';
+        cont.FirstName='Adam';
+        cont.email='AdamGrill@rediff.com';
+        cont.Core_Job_Function__c='Branch Manager';
+        cont.Core_eRPM_Language_Code__c='Eng';
+        // cont.Core_IPA_Partner_Role__c = 'Service Provider';
+        cont.Core_IPA_PartnerRole__c ='Service Provider';
+        cont.Core_Do_Not_Contact__c = false;
+        cont.MailingCountry ='USA';
+        cont.MailingCity ='Mississippi';
+        cont.MailingPostalCode='421910';
+        cont.MailingState ='AK';
+        cont.MailingStreet ='BandraStreet';
+        insert cont;
+        
+        Account acct = [SELECT Id FROM Account WHERE Name ='Greg Thomas' LIMIT 1];
+        Contact con = [SELECT Id FROM Contact WHERE AccountId = :acct.Id LIMIT 1];
 
-Account newAccount = new Account();//Account
-newAccount.RecordTypeId = recordTypeIdAccount;
-newAccount.Name='Greg Thomas';
-newAccount.BillingCity='City';
-newAccount.BillingStreet='Street';
-newAccount.BillingCountry='India';
-newAccount.BillingPostalCode='Postal code';
-newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
-newAccount.Core_User_Defined_Website__c='www.sample.com';
-newAccount.Core_IPA_Partner_Segment__c = 'Client Computing';
-newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
-newAccount.Core_IPA_One_Partner_Id__c = opidAcc.id;
-newAccount.Core_CIM_ID__c = '9456456' ; //TWC729-1292
+        Map<Id,String> accChMem = new Map<Id,String>{ acct.Id => 'Service Provider' };
+        Map<Id,String> actIdRoleTierMap = new Map<Id,String>{ acct.Id => 'Service Provider-prestige' };
+        Map<Id,String> tierMap = new Map<Id,String>{ acct.Id => 'prestige' };
 
-acclist1.add(newAccount);
-insert acclist1;
-Contact cont = new Contact();  //Contact
-cont.AccountId=newAccount.Id;
-cont.lastName='Grill';
-cont.FirstName='Adam';
-cont.email='AdamGrill@rediff.com';
-cont.Core_Job_Function__c='Branch Manager';
-cont.Core_eRPM_Language_Code__c='Eng';
-// cont.Core_IPA_Partner_Role__c = 'Service Provider';
-cont.Core_IPA_PartnerRole__c ='Service Provider';
-cont.Core_Do_Not_Contact__c = false;
-cont.MailingCountry ='USA';
-cont.MailingCity ='Mississippi';
-cont.MailingPostalCode='421910';
-cont.MailingState ='AK';
-cont.MailingStreet ='BandraStreet';
-insert cont;
+        Test.startTest();
+            // Direct synchronous call
+            PRM_ACMTriggerHandlerNew.UpdateEntOnRollDown(accChMem, actIdRoleTierMap, tierMap);
+            //PRM_ACMTriggerHandlerNew.UpdateEntitlementOnRollDown(accChMem, actIdRoleTierMap, tierMap);
+        Test.stopTest();
 
-Account acct = [SELECT Id FROM Account WHERE Name ='Greg Thomas' LIMIT 1];
-Contact con = [SELECT Id FROM Contact WHERE AccountId = :acct.Id LIMIT 1];
-
-Map<Id,String> accChMem = new Map<Id,String>{ acct.Id => 'Service Provider' };
-Map<Id,String> actIdRoleTierMap = new Map<Id,String>{ acct.Id => 'Service Provider-prestige' };
-Map<Id,String> tierMap = new Map<Id,String>{ acct.Id => 'prestige' };
-
-Test.startTest();
-// Direct synchronous call
-PRM_ACMTriggerHandlerNew.UpdateEntOnRollDown(accChMem, actIdRoleTierMap, tierMap);
-//PRM_ACMTriggerHandlerNew.UpdateEntitlementOnRollDown(accChMem, actIdRoleTierMap, tierMap);
-Test.stopTest();
-
-// Assert that Core_Contact_Entitlement__c were inserted/updated
-Integer cnt = [SELECT count() FROM Core_Contact_Entitlement__c WHERE Core_Status__c = 'Complete'];
-System.assert(cnt > 0, 'Expected entitlement records to be created synchronously.');
-}
-*/
+        // Assert that Core_Contact_Entitlement__c were inserted/updated
+        Integer cnt = [SELECT count() FROM Core_Contact_Entitlement__c WHERE Core_Status__c = 'Complete'];
+        System.assert(cnt > 0, 'Expected entitlement records to be created synchronously.');
+    }
+    */
     @isTest
     static void Test_assignBenefitsOnRollDown(){
         List<account> acclist1  = new List<account>();
@@ -2093,8 +2090,10 @@ System.assert(cnt > 0, 'Expected entitlement records to be created synchronously
         newAccount.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         newAccount.Core_IPA_One_Partner_Id__c = opidAcc.id;
         newAccount.Core_CIM_ID__c = '9456456' ; //TWC729-1292
-        insert newAccount;
         
+        
+        insert newAccount;
+    
         
         Contact cont = new Contact();  //Contact
         cont.AccountId=newAccount.Id;
@@ -2112,7 +2111,7 @@ System.assert(cnt > 0, 'Expected entitlement records to be created synchronously
         cont.MailingStreet ='BandraStreet';
         insert cont;
         
-        ChannelProgram cp = new ChannelProgram(); //Channel Program
+     	ChannelProgram cp = new ChannelProgram(); //Channel Program
         cp.Name='Intel Partner Alliance';
         cp.PRM_programCode__c='IPA';
         insert cp;
@@ -2154,11 +2153,7 @@ System.assert(cnt > 0, 'Expected entitlement records to be created synchronously
         insert acr;
         acr.PRM_Status_Nm__c = 'Complete';
         update acr;
-        
-        PRM_Account_Contact_Relationship__c res=[select id, PRM_Partner_Role__c,PRM_Status_Nm__c,PRM_InActive_Ind__c,PRM_Account_Id__r.RecordType.DeveloperName,PRM_Account_Id__c,PRM_Relationship_Id__r.Name from PRM_Account_Contact_Relationship__c limit 1];
-        system.debug('ACR RES: ' +res);
-        
-        
+    
         PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
         acm.PRM_Account_Id__c=newAccount.id;
         acm.PRM_Status_Nm__c='Approved';
@@ -2195,7 +2190,7 @@ System.assert(cnt > 0, 'Expected entitlement records to be created synchronously
         TriggerHandler.bypass('PRM_BenefitMatrix_Triggerhandler');
         insert bem;
         TriggerHandler.clearbypass('PRM_BenefitMatrix_Triggerhandler');
-        
+
         PRM_AccountBenefitAssociation__c aba = new PRM_AccountBenefitAssociation__c();
         aba.PRM_Account_Id__c = newAccount.Id;
         aba.PRM_Partner_Benefit_Id__c = pb.id;
@@ -2210,12 +2205,13 @@ System.assert(cnt > 0, 'Expected entitlement records to be created synchronously
         aba1.PRM_Status_Reason_Txt__c = 'Testclass run1';
         insert aba1;
         
+        
         List<Id> accIdList = new List<Id>{newAccount.Id};
-            Map<Id, String> tierIdNames = new Map<Id, String>{newAccount.Id => 'Prestige'};
-                
-                Test.startTest();
+        Map<Id, String> tierIdNames = new Map<Id, String>{newAccount.Id => 'Prestige'};
+        
+        Test.startTest();
         PRM_ACMTriggerHandlerNew.assignBenefitsOnRollDown(accIdList, tierIdNames);
-        Test.stopTest();
+		Test.stopTest();
         
     }
 }

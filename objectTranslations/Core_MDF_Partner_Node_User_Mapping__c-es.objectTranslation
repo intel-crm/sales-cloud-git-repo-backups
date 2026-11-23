@@ -18,18 +18,6 @@
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Action Needed --></label>
-        <name>Core_MDF_Action_Needed_nm__c</name>
-        <picklistValues>
-            <masterLabel>Owner Update</masterLabel>
-            <translation><!-- Owner Update --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>Activo</label>
-        <name>Core_MDF_Active_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -51,14 +39,26 @@
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
     <gender>Feminine</gender>
+    <layouts>
+        <layout>Partner Node User Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>Eliminar</label>
+        <name>Core_MDF_Delete</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage>Este usuario no tiene acceso al programa seleccionado</errorMessage>
+        <name>Core_MDF_Account_User_Validation</name>
+    </validationRules>
     <validationRules>
         <errorMessage>El campo Usuario o el campo Cuenta no deben estar vacíos</errorMessage>
         <name>Core_MDF_CCP_User_Should_not_be_empty</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
-        <name>Core_MDF_IPA_Program_Admin_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage>El usuario seleccionado ha sido desactivado. Seleccione un usuario que esté en estado activo.</errorMessage>

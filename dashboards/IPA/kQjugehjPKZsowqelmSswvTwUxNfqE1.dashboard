@@ -34,9 +34,9 @@
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
-                <drillDownUrl>https://partner.intel.com/s/company-training-credits</drillDownUrl>
+                <drillDownUrl>https://crmdevipa-intelcloudcrm.cs45.force.com/ipa/s/company-training-credits</drillDownUrl>
                 <groupingSortProperties/>
-                <header>Total Company Training Credits</header>
+                <header>Company Training Credits</header>
                 <indicatorBreakpoint1>33.0</indicatorBreakpoint1>
                 <indicatorBreakpoint2>67.0</indicatorBreakpoint2>
                 <indicatorHighColor>#00716B</indicatorHighColor>
@@ -53,8 +53,8 @@
     </dashboardGridLayout>
     <dashboardType>LoggedInUser</dashboardType>
     <isGridLayout>true</isGridLayout>
-    <owner>11540272@intel.com.crm</owner>
-    <runningUser>12031609@intel.com.crm</runningUser>
+    <owner>11854361@intel.com.crm.devipa</owner>
+    <runningUser>11996761@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>TRAININGS</title>
     <titleColor>#000000</titleColor>

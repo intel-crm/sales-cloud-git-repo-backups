@@ -579,7 +579,7 @@ ISCHANGED({!myVariable_current.Core_Military_Aerospace_Govmt_End_Use__c}),
         <object>Opportunity</object>
     </recordUpdates>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

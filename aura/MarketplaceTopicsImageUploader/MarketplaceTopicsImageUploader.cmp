@@ -1,5 +1,6 @@
 <aura:component controller="PMP_SearchMarketplaceController" implements="flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
-	<aura:attribute name="recordId" type="string"/>
+    <!-- IPA2.0:TWC729-8114 Topics Removal/Event Removal -->
+	<!-- <aura:attribute name="recordId" type="string"/>
     <aura:attribute name="documentId" type="String"/>
     <aura:attribute name="language" type="String"/>
     <aura:attribute name="languageOptions" type="Object[]"/>
@@ -22,5 +23,5 @@
             <div class="slds-text-color_error">{!v.errorMessage}</div>
         </aura:set>    
         </aura:if>
-    </lightning:layout>
+    </lightning:layout> -->
 </aura:component>

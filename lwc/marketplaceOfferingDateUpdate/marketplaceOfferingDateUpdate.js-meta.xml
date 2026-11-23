@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="marketplaceOfferingDateUpdate">
+<!-- IPA2.0 + US TWC4497-1631 -->
+<LightningComponentBundle></LightningComponentBundle>
+ <!-- xmlns="http://soap.sforce.com/2006/04/metadata" fqn="marketplaceOfferingDateUpdate">
     <apiVersion>45.0</apiVersion>
     <isExposed>false</isExposed>
-</LightningComponentBundle>
+</LightningComponentBundle> -->

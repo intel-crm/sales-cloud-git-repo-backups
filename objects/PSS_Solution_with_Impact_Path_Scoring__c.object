@@ -169,6 +169,7 @@
     </fields>
     <fields>
         <fullName>PSS_Question_Impact_Path_Score__c</fullName>
+        <defaultValue>0</defaultValue>
         <externalId>false</externalId>
         <label>Question Impact Path Score</label>
         <precision>18</precision>

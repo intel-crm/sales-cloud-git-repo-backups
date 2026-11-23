@@ -24,8 +24,11 @@ export default async () => {
     }
     let isPartner = url.includes('/partner/') ? true: false;
     let  splits = url.indexOf("/partner/") != -1 ? url.split("/partner/") : [];
-    let  splits2 = url.indexOf("/offering/") != -1 ? url.split("/offering/") : [];
-    let partnerId = splits.length > 0 ? splits[1].split("/")[0] : splits2[1].split("/")[0];
+    //IPA2.0:US-4497-1631_OfferingEOL
+    //let  splits2 = url.indexOf("/offering/") != -1 ? url.split("/offering/") : [];
+    //let partnerId = splits.length > 0 ? splits[1].split("/")[0] : splits2[1].split("/")[0];
+    let partnerId = splits.length > 1 ? splits[1].split("/")[0] : null;
+
     let response = {};            
         await getBanners({partnerId : partnerId,isPartner :isPartner, userLanguage : langCode})
             .then(result => {             

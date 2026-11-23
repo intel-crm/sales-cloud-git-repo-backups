@@ -113,9 +113,9 @@ export default class prm_renewalDashboard extends LightningElement {
                 console.log('result -->' + JSON.stringify(result));
                 console.log('recordId----->'+this.recordId);
                 this.totalsaleswithDollar = '$';
-                if(result.totalSalesDataPrevPeriod || result.totalTrainingCreditsPrevPeriod || result.totalApprovedSolutions){
-                  this.total_SalesDatanbr = result.totalSalesDataPrevPeriod;
-                  this.total_TrainingCreditsnbr =result.totalTrainingCreditsPrevPeriod;
+                if(result.totalSalesData || result.totalTrainingCredits || result.totalApprovedSolutions){
+                  this.total_SalesDatanbr = result.totalSalesData;
+                  this.total_TrainingCreditsnbr =result.totalTrainingCredits;
                   this.totalApprovedSolutions= result.totalApprovedSolutions;
                 }else{
                   this.total_SalesDatanbr = 0;

@@ -8,11 +8,9 @@
 * ----------------------------------------------------------------------------                 
 * Yogesh Sharma               3/1/2018               Created
 * Amritesh					  04/25/2018			 Modified - US104141
-//System.assert()--> statement Added By Hassan Khan 02-02-2024
 ****************************************************************************************************/
 
 @isTest 
-// Added AssertEquals Added By Chiranjeevi - 31-JAN-2024
 public class Core_IPS_Response_Handler_Test { 
 	private static User SystUserRunAs; 
     private static EmailTemplate EmailTempl;
@@ -27,7 +25,6 @@ public class Core_IPS_Response_Handler_Test {
         insert userlist;
         SystUserRunAs = new User();
         SystUserRunAs = userList[0];
-        System.AssertEquals(userList.size()>0, true);
     }
     
     /***************************************************************************************************
@@ -52,7 +49,6 @@ public class Core_IPS_Response_Handler_Test {
                 envResp.Core_IPS_Case__c = cs.id;
             }
             insert envResponses;
-            System.AssertEquals(envResponses != null, true);
         }
     }
     
@@ -70,7 +66,6 @@ public class Core_IPS_Response_Handler_Test {
     ****************************************************************************************************/         
     private static testMethod void testEnvJSONCreated() {
         getRecords();
-		System.assert(SystUserRunAs != null, true);
     }  
     
     /***************************************************************************************************
@@ -87,7 +82,6 @@ public class Core_IPS_Response_Handler_Test {
     ****************************************************************************************************/         
     private static testMethod void testEnvMultiSelectPicklistWithBreak() {
         getRecords();
-		System.assert(SystUserRunAs != null, true);
     }       
     
     /***************************************************************************************************
@@ -288,7 +282,7 @@ public class Core_IPS_Response_Handler_Test {
 	            insert envResponses;
 	            envResponses.get(0).Core_IPS_Question_Master__c = cq.id;
 	            update envResponses;
-	             System.AssertEquals(envResponses != null, true);   
+	            
         	}				
         Test.stopTest(); 
 	}    

@@ -3,7 +3,7 @@
     <enableOmniAutoLoginPrompt>true</enableOmniAutoLoginPrompt>
     <enableOmniChannel>true</enableOmniChannel>
     <enableOmniSecondaryRoutingPriority>false</enableOmniSecondaryRoutingPriority>
-    <enableOmniSkillsRouting>true</enableOmniSkillsRouting>
+    <enableOmniSkillsRouting>false</enableOmniSkillsRouting>
     <enableOmniStatusCapModel>false</enableOmniStatusCapModel>
     <omniAutoLoginOption>DisplayConfirmation</omniAutoLoginOption>
 </OmniChannelSettings>

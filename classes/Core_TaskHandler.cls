@@ -9,7 +9,7 @@ Modification Log :
 * Harshith M L             30/09/2014              Original Version
 * Mahesh Manikonda         4/11/2018               Created new methods UpdateTaskFlag,UpdateTaskFlagOnUpdate for US153250
 *************************************************************************************/
-public without sharing class Core_TaskHandler
+public class Core_TaskHandler
 {
     /*
     * Method name  : lastActivityDateHandler
@@ -33,171 +33,217 @@ public without sharing class Core_TaskHandler
         Core_ActivityHandler.lastActivityDateUpdateOnDelete(mapIdOldSobject);
     }
     
-    /*
+      /*
     * Method name  : Checkleadsource
     * Description  : Displaying error message to update the Lead Source on Lead before Creating the Task
     * Return Type  : VOID
     * Parameter    : List Trigger.new
     */
-   /* public static String Checkleadsource(List<Task> newlist)
-    {
-        String message = 'Ok';
+   
+    Public Static string Checkleadsource(List<Task> newlist){
+        String message='Ok';
         String LeadSourceMsg = Label.Core_LeadSource_on_Task;
-        Set<Id> leadIdsforLeadsource = new Set<Id>();
-        String SalesleadRectypeId = Schema.SObjectType.Lead.getRecordTypeInfosByName().get('Sales Lead').getRecordTypeId();
-
-        for(Task t : newlist)
-        {
-            if(t.whoId != null && String.valueOf(t.whoId).startsWith('00Q') == TRUE)
-            {
-                leadIdsforLeadsource.add(t.whoId);
+        List<Id> leadIdsforLeadsource=new List<Id>();
+        
+        String SalesleadRectypeId = [Select id from Recordtype where Name = 'Sales Lead'].id;
+        for(Task t:newlist){
+         if(t.whoId!=null &&String.valueOf(t.whoId).startsWith('00Q')==TRUE){
+           if(String.valueOf(t.whoId).startsWith('00Q')==TRUE){
+                
+                     if( !leadIdsforLeadsource.contains(t.whoid)){   
+                         leadIdsforLeadsource.add(t.whoId);
+                      }
             }
+         }
         }
-
-        List<Lead> leadlstLeadSource = [SELECT id, LeadSource, RecordTypeId FROM Lead WHERE id IN :leadIdsforLeadsource];  
-        for(Lead l : leadlstLeadSource)
-        {
-            if(l.RecordTypeId == SalesleadRectypeId && l.LeadSource == null)
-            {
-                message = 'Not Ok';
-                addLeadSourceError(newlist, l.Id, LeadSourceMsg);
+        List<Lead> leadlstLeadSource=[Select id,Status,Core_Having_Tasks__c,LeadSource,RecordTypeId from Lead where id in: leadIdsforLeadsource];  
+        List<Task> LeadidswoLeadsourc= new List<Task>();
+        For(Lead l:leadlstLeadSource){
+            if(l.RecordTypeId==SalesleadRectypeId && l.LeadSource==null){
+                    message='Not Ok';
+                   
+                for(task t:newlist){
+                       t.addError(LeadSourceMsg);
+                     }
             }
         }
         
-        return message; 
-    } */
+       return message; 
+    }
     
-    /*
-    * Method name  : addLeadSourceError
-    * Description  : Helper method to add errors to tasks
-    * Return Type  : VOID
-    */
-   /* private static void addLeadSourceError(List<Task> newlist, Id leadId, String LeadSourceMsg)
-    {
-        for(Task t : newlist)
-        {
-            if(t.whoId == leadId)
-            {
-                t.addError(LeadSourceMsg);
-            }
-        }
-    }*/
-
-    /*
-    * Method name  : UpdateTaskflag
-    * Description  : Method to check if any tasks is created on Lead  and update a flag  on Lead for new lead process for US153250 
+     /*
+    * Method name  : updatetaskflag
+    * Description  : Method to check if any tasks is created on Lead  and update a flag  on Lead for new lead prorcess for US153250 
     * Return Type  : VOID
     * Parameter    : List Trigger.new
     */
-    /* public static void UpdateTaskflag(List<Task> newlist) 
-    {
-        String message = Checkleadsource(newlist);
-        if(message == 'Ok')
-        {
-            Set<Id> leadIds = new Set<Id>();
-            Set<Id> queryLeadId = new Set<Id>();
+   public Static void UpdateTaskflag(List<Task> newlist){ 
+       
+       // To Check LeadSource is updated for Sales Lead Record
+     String message=Checkleadsource(newlist);
+       system.debug('message'+message);
+       if(message=='OK'){
+           List<Id> leadIds=new List<Id>();
+	       List<Id> leadIdsMeeting=new List<Id>();
+	       Map<Id,Date> taskdates= new Map<Id,Date>();
+         for(Task t:newlist){
+             if(t.whoId!=null &&String.valueOf(t.whoId).startsWith('00Q')==TRUE){
+            if(String.valueOf(t.whoId).startsWith('00Q')==TRUE && (t.Subject == 'Phone' || t.Subject=='Email')){
+                
+                     if( !leadIds.contains(t.whoid)){           
+                                 leadIds.add(t.whoId);
+                      }
+              }else if(String.valueOf(t.whoId).startsWith('00Q')==TRUE && (t.Subject == 'Meeting')){
+				
+				 if( !leadIdsMeeting.contains(t.whoid)){ 
+                                 leadIdsMeeting.add(t.whoId);
+								 taskdates.put(t.whoId,t.ActivityDate);
+                      }
+			  }
+             }
+           }
+		
+        List<Lead> leadlst=[Select id,Status,Core_Having_Tasks__c from Lead where id in: leadIds and Core_Having_Tasks__c=false];  
+        List<Lead> leadlstmeeting=[Select id,Status,Core_Having_Tasks__c,Core_Meeting_Due_Date__c  from Lead where id in: leadIdsMeeting]; 
+   
+        if(leadIds.size()>0){
+           for(lead le : leadlst){
             
-            processTaskSubjects(newlist, leadIds, queryLeadId);
+            if(le.Status=='Marketing Qualified Lead' || le.Status=='Sales Qualified Lead'){
+                le.Core_Having_Tasks__c=false;
+              }
+            else if(le.Status=='Tele Accepted Lead' || le.Status=='Sales Accepted Lead'){
+                le.Core_Having_Tasks__c=True;
+              }
+             }
+          }
+	   if(leadIdsMeeting.size()>0){
+          for(lead le : leadlstmeeting){
             
-            List<Lead> leadList = [SELECT Id, Status, Core_Having_Tasks__c, Core_Meeting_Due_Date__c FROM Lead WHERE Id IN :queryLeadId];
-            
-            if(leadList.size() > 0)
-            {
-                updateLeadTaskFlags(newlist, leadList, leadIds);
-            }
-        }
-    }*/
+           if(le.Status=='Tele Qualified Lead'){
+               le.Core_Having_Tasks_in_TQL__c=True;
+           }else{
+               le.Core_Having_Tasks_in_TQL__c=false;
+           }
+         }
+        } 
+         
+       if(leadlstmeeting.size()>0){
+		  for(Lead l: leadlstmeeting){
+			  for(Task t:newlist){
+			  l.Core_Meeting_Due_Date__c=t.ActivityDate;
+			  }
+		   } 
+	     }
+        update leadlstmeeting;
+        Update leadlst;
+      }  
+    }
     
-    /*
-    * Method name  : processTaskSubjects
-    * Description  : Helper method to process task subjects
+       /*
+    * Method name  : updatetaskflagupdate
+    * Description  : Method to check if any tasks is created on Lead  and update a flag on Lead for new lead prorcess for US153250
     * Return Type  : VOID
-    */    
-   /* private static void processTaskSubjects(List<Task> newlist, Set<Id> leadIds, Set<Id> queryLeadId)
-    {
-        for(Task t : newlist)
-        {
-            if(t.whoId != null && String.valueOf(t.whoId).startsWith('00Q') == TRUE)
-            {
-                if(t.Subject == 'Phone' || t.Subject == 'Email' || t.Subject == 'Meeting')
-                {
-                    leadIds.add(t.whoId);
-                }
-                queryLeadId.add(t.whoId);
-            }
-        }
-    }*/
-    
-    /*
-    * Method name  : updateLeadTaskFlags
-    * Description  : Helper method to update lead task flags
-    * Return Type  : VOID
-    */  
-   /* private static void updateLeadTaskFlags(List<Task> newlist, List<Lead> leadList, Set<Id> leadIds)
-     {
-    Map<Id, Lead> leadMap = new Map<Id, Lead>(leadList);
-
-    for (Lead le : leadList)
-     {
-        le.Core_Having_Tasks__c = ((leadIds.contains(le.Id) && (le.Status == 'Marketing Qualified Lead')) || (leadIds.contains(le.Id) && le.Status == 'Sales Generated Lead')|| (leadIds.contains(le.Id) && le.Status == 'Sales Accepted Lead')) ? true :
-                                  ( le.Status == 'Sales Qualified Lead') ? false : le.Core_Having_Tasks__c;
+    * Parameter    : List Trigger.new,Trigger.Old
+    */
+public Static void UpdateTaskflagOnUpdate( List<Task> oldList , List<Task> newList){
+    List<Id> leadIds=new List<Id>();
+    List<Id> leadIdsnew=new List<Id>();
+    List<Id> MeetingTaskLeadIds=new List<Id>();
+    List<Id> NotMeetingTaskLeadIds=new List<Id>();
         
+    for(Task t:oldList){
+         if(t.whoId!=null &&String.valueOf(t.whoId).startsWith('00Q')==TRUE){
+            if(String.valueOf(t.whoId).startsWith('00Q')==TRUE ){
+                  for(Task tnew :newList){
+                      if(tnew.Subject == 'Phone' || tnew.Subject =='Email'){
+                             if( !leadIds.contains(t.whoid)){           
+                                     leadIds.add(t.whoId); 
+                               }
+                    } else{
+                        if( !leadIdsnew.contains(t.whoid)){           
+                                 leadIdsnew.add(t.whoId); 
+                       }   
+                    } 
+                 }        
+            }
       }
-    update leadList;
-    }*/
-
-    /*
-    * Method name  : UpdateTaskflagOnUpdate
-    * Description  : Method to check if any tasks is created on Lead  and update a flag on Lead for new lead process for US153250
-    * Return Type  : VOID
-    * Parameter    : List Trigger.new, Trigger.Old
-    */
-  /*  public static void UpdateTaskflagOnUpdate(List<Task> oldList, List<Task> newList)
-    {
-        Set<Id> leadIds = new Set<Id>();
-        Set<Id> leadIdsnew = new Set<Id>();
-        Set<Id> queryLeadId = new Set<Id>();
-        
-        processUpdateTaskSubjects(oldList, newList, leadIds, leadIdsnew, queryLeadId);
-        
-        List<Lead> leadlst = [SELECT id, Status, Core_Having_Tasks__c, Core_Meeting_Due_Date__c FROM Lead WHERE id IN :queryLeadId];
-        
-        if(leadlst.size() > 0)
-        {
-            updateLeadTaskFlags(newList, leadlst, leadIds);
-        }
-    }*/
-    /*
-    * Method name  : processUpdateTaskSubjects
-    * Description  : Helper method to process task subjects on update
-    * Return Type  : VOID
-    */
-  /*  private static void processUpdateTaskSubjects(List<Task> oldList, List<Task> newList, Set<Id> leadIds, Set<Id> leadIdsnew,Set<Id> queryLeadId)
-    {
-        for (Task t : oldList)
-        {
-            if (t.whoId != null && String.valueOf(t.whoId).startsWith('00Q') == TRUE)
-            {
-                for (Task tnew : newList)
-                {
-                    addTaskLeadIds(tnew, leadIds, leadIdsnew);
-                    queryLeadId.add(t.whoId);
-                }
-            }        
-        }
-    }*/
-    /*
-    * Method name  : addTaskLeadIds
-    * Description  : Helper method to add task lead IDs based on subject
-    * Return Type  : VOID
-    */ 
-   /* private static void addTaskLeadIds(Task tnew, Set<Id> leadIds, Set<Id> leadIdsnew)
-    {
-        if(tnew.Subject == 'Phone' || tnew.Subject =='Email' || tnew.Subject == 'Meeting'){
-                        leadIds.add(tnew.whoId); 
-                    }else{
-                        leadIdsnew.add(tnew.whoId); 
+    }
+    for(Task t:oldList){
+         if(t.whoId!=null &&String.valueOf(t.whoId).startsWith('00Q')==TRUE){
+            if(String.valueOf(t.whoId).startsWith('00Q')==TRUE ){
+                  for(Task tnew :newList){
+                      if(tnew.Subject == 'Meeting'){
+                        
+                      if( !MeetingTaskLeadIds.contains(t.whoid)){           
+                                 MeetingTaskLeadIds.add(t.whoId); 
+                         }
+                       } else{
+                        
+                         if( !NotMeetingTaskLeadIds.contains(t.whoid)){           
+                                 NotMeetingTaskLeadIds.add(t.whoId); 
+                     } 
                     }
-    }*/
-
+                }      
+            }
+         }  
+    }
+   List<Lead> leadlst=[Select id,Status,Core_Having_Tasks__c from Lead where id in: leadIds ];
+   List<Lead> leadlstnew=[Select id,Status,Core_Having_Tasks__c from Lead where id in: leadIdsnew];
+   List<Lead> MeetingTaskLeadDetails=[Select id,Status,Core_Having_Tasks_in_TQL__c from Lead where id in: MeetingTaskLeadIds];
+   List<Lead> NotMeetingTaskLeadDetails=[Select id,Status,Core_Having_Tasks_in_TQL__c from Lead where id in: NotMeetingTaskLeadIds];
+   if(leadIds.size()>0){
+       for(lead le : leadlst){
+          if(le.Status=='Tele Accepted Lead' || le.Status=='Sales Accepted Lead'){
+                le.Core_Having_Tasks__c=true;
+           
+            }else{
+                  le.Core_Having_Tasks__c=false;
+            }
+       
+      }
+    Update leadlst;
+     }  
+   
+   if(leadlstnew.size()>0){
+       for(lead le : leadlstnew){
+           if(le.Status=='Tele Accepted Lead' || le.Status=='Sales Accepted Lead'){
+             le.Core_Having_Tasks__c=false;
+            }else{
+                //  le.Core_Having_Tasks__c=true;
+            }
+      }
+    Update leadlstnew;
+     }  
+	  if(MeetingTaskLeadDetails.size()>0){
+        for(lead le : MeetingTaskLeadDetails){
+           if(le.Status=='Tele Qualified Lead'){
+               le.Core_Having_Tasks_in_TQL__c=True;
+            }else{
+               le.Core_Having_Tasks_in_TQL__c=false;   
+           }
+      }
+     } 
+    if(NotMeetingTaskLeadDetails.size()>0){
+       for(lead le : NotMeetingTaskLeadDetails){
+		    if(le.Status=='Tele Qualified Lead'){
+            le.Core_Having_Tasks_in_TQL__c=false;
+           }else{
+               system.debug('TQL true new');
+              // le.Core_Having_Tasks_in_TQL__c=true;
+               
+           }
+      }
+   update NotMeetingTaskLeadDetails;
+     }
+   //due date update
+    if(MeetingTaskLeadDetails.size()>0){
+		  for(Lead l: MeetingTaskLeadDetails){
+			  for(Task t:newlist){
+			  l.Core_Meeting_Due_Date__c=t.ActivityDate;
+			  }
+		  }	  
+	  }	 
+	  Update MeetingTaskLeadDetails;
+  }     
 }

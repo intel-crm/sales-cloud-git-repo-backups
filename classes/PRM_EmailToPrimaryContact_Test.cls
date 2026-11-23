@@ -1,3 +1,14 @@
+/*********************************************************************************************************************
+Class Name    : PRM_EmailToPrimaryContact_Test
+Version       : 1.0
+Created Date  : 06 April 2020
+Function      : Test Class for 'PRM_EmailToPrimaryContact'
+
+Modification Log :
+* Developer                 Date                    Description
+* --------------------------------------------------------------------------------------------------
+* Prasant Sahu             April 2020              Test Class for 'PRM_EmailToPrimaryContact'
+*********************************************************************************************************************/
 @isTest
 public class PRM_EmailToPrimaryContact_Test {
     @testSetup

@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>EMP of Stanley Wang</description>
+    <description>EMP of Wen Li</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_11487401_Jie_Xu</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_10666740_Stanley_Wang</parentRole>
+    <parentRole>EMP_11300197_Wen_Li</parentRole>
 </Role>

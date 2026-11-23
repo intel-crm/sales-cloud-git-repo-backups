@@ -61,5 +61,12 @@
             <translation><!-- Sent --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Invitation Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

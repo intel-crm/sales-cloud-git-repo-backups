@@ -21,60 +21,6 @@
         <startsWith>Consonant</startsWith>
     </fields>
     <fields>
-        <label><!-- Account (Company) --></label>
-        <name>Core_MDF_AccountCompany__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approver 10 --></label>
-        <name>Core_MDF_Approver_10__c</name>
-        <relationshipLabel><!-- Budgets (Approver 10) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 1 --></label>
-        <name>Core_MDF_Approver_1__c</name>
-        <relationshipLabel><!-- Budgets (Approver 1) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 2 --></label>
-        <name>Core_MDF_Approver_2__c</name>
-        <relationshipLabel><!-- Budgets (Approver 2) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 3 --></label>
-        <name>Core_MDF_Approver_3__c</name>
-        <relationshipLabel><!-- Budgets (Approver 3) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 4 --></label>
-        <name>Core_MDF_Approver_4__c</name>
-        <relationshipLabel><!-- Budgets (Approver 4) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 5 --></label>
-        <name>Core_MDF_Approver_5__c</name>
-        <relationshipLabel><!-- Budgets (Approver 5) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 6 --></label>
-        <name>Core_MDF_Approver_6__c</name>
-        <relationshipLabel><!-- Budgets (Approver 6) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 7 --></label>
-        <name>Core_MDF_Approver_7__c</name>
-        <relationshipLabel><!-- Budgets (Approver 7) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 8 --></label>
-        <name>Core_MDF_Approver_8__c</name>
-        <relationshipLabel><!-- Budgets (Approver 8) --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Approver 9 --></label>
-        <name>Core_MDF_Approver_9__c</name>
-        <relationshipLabel><!-- Budgets (Approver 9) --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- Budget Comments --></label>
         <name>Core_MDF_Budget_Comments__c</name>
     </fields>
@@ -83,7 +29,7 @@
         <name>Core_MDF_Budget_Identifier__c</name>
     </fields>
     <fields>
-        <label><!-- Account Node --></label>
+        <label><!-- Budget Partner --></label>
         <name>Core_MDF_Budget_Partner__c</name>
         <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
     </fields>
@@ -91,8 +37,8 @@
         <label><!-- Budget Status --></label>
         <name>Core_MDF_Budget_Status__c</name>
         <picklistValues>
-            <masterLabel>Cancelled</masterLabel>
-            <translation><!-- Cancelled --></translation>
+            <masterLabel>Approved</masterLabel>
+            <translation><!-- Approved --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Pending Review</masterLabel>
@@ -109,174 +55,14 @@
     </fields>
     <fields>
         <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Report_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_Txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
         <name>Core_MDF_Budget_Type__c</name>
-        <picklistValues>
-            <masterLabel>Account Plan</masterLabel>
-            <translation><!-- Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CCF 1.0</masterLabel>
-            <translation><!-- CCF 1.0 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client Market Accelerate</masterLabel>
-            <translation><!-- Client Market Accelerate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Client Specialties MDF</masterLabel>
-            <translation><!-- Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Cloud</masterLabel>
-            <translation><!-- Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Co-Engineering</masterLabel>
-            <translation><!-- Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DCF 1.0</masterLabel>
-            <translation><!-- DCF 1.0 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Data Center Market Accelerate</masterLabel>
-            <translation><!-- Data Center Market Accelerate --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Data Center Specialties MDF</masterLabel>
-            <translation><!-- Data Center Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global Ericsson Acceleration - MDF</masterLabel>
-            <translation><!-- Global Ericsson Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global IBM Acceleration - MDF</masterLabel>
-            <translation><!-- Global IBM Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global Microsoft Acceleration - MDF</masterLabel>
-            <translation><!-- Global Microsoft Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global Nokia Acceleration - MDF</masterLabel>
-            <translation><!-- Global Nokia Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global Red Hat Acceleration - MDF</masterLabel>
-            <translation><!-- Global Red Hat Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global SAP Acceleration - MDF</masterLabel>
-            <translation><!-- Global SAP Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global SAS Acceleration - MDF</masterLabel>
-            <translation><!-- Global SAS Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global Suse Acceleration - MDF</masterLabel>
-            <translation><!-- Global Suse Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Global VMware Acceleration - MDF</masterLabel>
-            <translation><!-- Global VMware Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ISV Scale Acceleration - MDF</masterLabel>
-            <translation><!-- ISV Scale Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel MDF Account Based2</masterLabel>
-            <translation><!-- Intel MDF Account Based2 --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Intel Rise Technology Initiative</masterLabel>
-            <translation><!-- Intel Rise Technology Initiative --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IoT Premier - MDF</masterLabel>
-            <translation><!-- IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IoT Targeted - MDF</masterLabel>
-            <translation><!-- IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MDF</masterLabel>
-            <translation><!-- MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>MDF+</masterLabel>
-            <translation><!-- MDF+ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OEM CMP</masterLabel>
-            <translation><!-- OEM CMP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Optane Specialties MDF</masterLabel>
-            <translation><!-- Optane Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proposal I MDF</masterLabel>
-            <translation><!-- Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Proposal II MDF</masterLabel>
-            <translation><!-- Proposal II MDF --></translation>
-        </picklistValues>
         <picklistValues>
             <masterLabel>RSA MD</masterLabel>
             <translation><!-- RSA MD --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Red Hat &quot;Amplify&quot; - MDF</masterLabel>
-            <translation><!-- Red Hat &quot;Amplify&quot; - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Retail MDF</masterLabel>
             <translation><!-- Retail MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SOEM Client MDF</masterLabel>
-            <translation><!-- SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>SOEM Data Center MDF</masterLabel>
-            <translation><!-- SOEM Data Center MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Scale Acceleration - MDF</masterLabel>
-            <translation><!-- Scale Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Service Provider CMP</masterLabel>
-            <translation><!-- Service Provider CMP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>VMWare Amplify - MDF</masterLabel>
-            <translation><!-- VMWare Amplify - MDF --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -293,70 +79,19 @@
         <name>Core_MDF_Last_ModifiedBy_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Legacy Budget --></label>
-        <name>Core_MDF_Legacy_Budget_Ind__c</name>
-    </fields>
-    <fields>
-        <help><!-- Full budget, visible to Intel only --></help>
-        <label><!-- Maximum Approved Budget --></label>
-        <name>Core_MDF_Maximum_Approved_Budget_Amt__c</name>
-    </fields>
-    <fields>
         <label><!-- Owner --></label>
         <name>Core_MDF_Owner_Nm__c</name>
     </fields>
     <fields>
-        <label><!-- Program Name --></label>
-        <name>Core_MDF_Program_Nm__c</name>
-    </fields>
-    <fields>
-        <help><!-- Enter program name --></help>
+        <help><!-- Enter program name – examples include Retail Marketing Fund, Client Co-Marketing Fund, Data Co-Marketing Fund, Service Provider Co-Marketing Fund --></help>
         <label><!-- Program --></label>
         <name>Core_MDF_Program__c</name>
         <relationshipLabel><!-- Partner Marketing Budgets --></relationshipLabel>
     </fields>
-    <fields>
-        <label><!-- Ultimate Account Id --></label>
-        <name>Core_MDF_Ultimate_Account_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Reference Number --></label>
-        <name>Core_MDF_budget_ref_nbr__c</name>
-    </fields>
-    <recordTypes>
-        <description><!-- This is the Record type for Channel MDF Account based --></description>
-        <label><!-- Channel MDF Account Based --></label>
-        <name>Core_MDF_Channel_MDF_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- This is the Record type for Channel MDF Proposal based --></description>
-        <label><!-- Channel MDF Proposal Based --></label>
-        <name>Core_MDF_Channel_MDF_Proposal_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Co-GTM --></description>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Co-Marketing purposes. --></description>
         <label><!-- CoMarketing --></label>
         <name>Core_MDF_Co_Marketing</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Ecosystem Extension Fund --></description>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Intel Partner Alliance - Account Based --></description>
-        <label><!-- Intel Partner Alliance - Account Based --></label>
-        <name>Core_MDF_IPA_Account_Based</name>
-    </recordTypes>
-    <recordTypes>
-        <description><!-- Record Type for Intel Partner Alliance --></description>
-        <label><!-- Intel Partner Alliance - Proposal Based --></label>
-        <name>Core_MDF_IPA_ProposalBased</name>
     </recordTypes>
     <recordTypes>
         <description><!-- It will be used for Retail Co-Marketing purposes --></description>
@@ -364,14 +99,6 @@
         <name>Core_MDF_Retail_Marketing_Funds</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
-    <validationRules>
-        <errorMessage><!-- Budget Type is mandatory for the selected program --></errorMessage>
-        <name>Core_MDF_BudgetTypMandatoryForOEM</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type cannot be changed --></errorMessage>
-        <name>Core_MDF_BudgetType_Cannot_Be_Edited</name>
-    </validationRules>
     <validationRules>
         <errorMessage><!-- Budget reduction amount and Budget amount cannot be updated at the same time --></errorMessage>
         <name>Core_MDF_Budget_Amount_Decrease_Amount</name>
@@ -381,16 +108,12 @@
         <name>Core_MDF_Budget_Decrease_Amount_Create</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- The Program is not same as the Channel Program of the Account Node. Please update. --></errorMessage>
+        <errorMessage><!-- The Program is not same as the Channel Program of the Budget Partner. Please update. --></errorMessage>
         <name>Core_MDF_Budget_Partner_and_Program_rule</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- End date should be after the Start Date. --></errorMessage>
         <name>Core_MDF_Checking_Enddate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget reduction amount cannot be greater than Budget amount --></errorMessage>
-        <name>Core_MDF_DecBudAmtCannotBeGreateThanAmt</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- Budget amount must be greater or equal to zero --></errorMessage>
@@ -401,15 +124,11 @@
         <name>Core_MDF_Negative_Decrease_Amount</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Maximum Approved Budget cannot be negative. --></errorMessage>
-        <name>Core_MDF_Negative_Max_Approved_Amount</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Account Node cannot be edited --></errorMessage>
+        <errorMessage><!-- Budget partner cannot be edited --></errorMessage>
         <name>Core_MDF_PartnerNonEditable</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- You cannot update the budget attributes other than Budget Status with your current level of access. --></errorMessage>
+        <errorMessage><!-- Budget cannot be updated by Finance Manager --></errorMessage>
         <name>Core_MDF_PreventBudgetEditingByFM</name>
     </validationRules>
     <validationRules>
@@ -419,18 +138,6 @@
     <validationRules>
         <errorMessage><!-- Program cannot be changed --></errorMessage>
         <name>Core_MDF_Program_Cannot_Be_Edited</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You are not authorized to create the record for the selected Account --></errorMessage>
-        <name>Core_MDF_Restrict_AccountSelection</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Amount cannot be greater than 9999999999999 --></errorMessage>
-        <name>Core_MDF_ValidateAmount</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget Type is not applicable for selected program --></errorMessage>
-        <name>Core_MDF_ValidateBudgetTypForCCPProgram</name>
     </validationRules>
     <webLinks>
         <label><!-- Core_MDF_Export_List_View --></label>

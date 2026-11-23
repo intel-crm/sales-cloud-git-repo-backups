@@ -22,7 +22,7 @@
         <name>Check_Object_Type</name>
         <label>Check Object Type</label>
         <locationX>578</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>CMF_Association</name>
@@ -31,11 +31,11 @@
                 <leftValueReference>firstrecordofList</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>$Label.ER_CMFAssociation_ObjectIdPrefix</elementReference>
+                    <stringValue>[a9Z</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Query_CMF_Assoc_Records</targetReference>
+                <targetReference>Update_CMF_Records</targetReference>
             </connector>
             <label>CMF Association</label>
         </rules>
@@ -46,11 +46,11 @@
                 <leftValueReference>firstrecordofList</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <elementReference>$Label.ER_ContactAssociation_ObjectIdPrefix</elementReference>
+                    <stringValue>[a9a</stringValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Query_Contact_Assoc_Records</targetReference>
+                <targetReference>Update_Contact_Association_Records</targetReference>
             </connector>
             <label>Contact Association</label>
         </rules>
@@ -59,7 +59,7 @@
         <name>Copy_1_of_How_many_records_were_selected</name>
         <label>Copy 1 of How many records were selected</label>
         <locationX>578</locationX>
-        <locationY>866</locationY>
+        <locationY>758</locationY>
         <defaultConnector>
             <targetReference>Success_Message</targetReference>
         </defaultConnector>
@@ -86,7 +86,7 @@
         <locationX>314</locationX>
         <locationY>242</locationY>
         <defaultConnector>
-            <targetReference>Check_Object_Type</targetReference>
+            <targetReference>Confirmation_screen</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>More than zero</defaultConnectorLabel>
         <rules>
@@ -137,53 +137,11 @@
         </value>
     </processMetadataValues>
     <processType>Flow</processType>
-    <recordLookups>
-        <name>Query_CMF_Assoc_Records</name>
-        <label>Query CMF Assoc Records</label>
-        <locationX>314</locationX>
-        <locationY>458</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Confirmation_screen_CMF_Assoc</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>In</operator>
-            <value>
-                <elementReference>ids</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>ER_CMFGroupAssociation__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>Query_Contact_Assoc_Records</name>
-        <label>Query Contact Assoc Records</label>
-        <locationX>578</locationX>
-        <locationY>458</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Confirmation_screen_Contact_Assoc</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>In</operator>
-            <value>
-                <elementReference>ids</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>false</getFirstRecordOnly>
-        <object>ER_ContactGroupAssociation__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <recordUpdates>
         <name>Update_CMF_Records</name>
         <label>Update CMF Records</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>Copy_1_of_How_many_records_were_selected</targetReference>
         </connector>
@@ -214,7 +172,7 @@
         <name>Update_Contact_Association_Records</name>
         <label>Update Contact Association Records</label>
         <locationX>578</locationX>
-        <locationY>674</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>Copy_1_of_How_many_records_were_selected</targetReference>
         </connector>
@@ -241,160 +199,20 @@
         <object>ER_ContactGroupAssociation__c</object>
     </recordUpdates>
     <screens>
-        <name>Confirmation_screen_CMF_Assoc</name>
-        <label>Confirmation screen CMF Assoc</label>
-        <locationX>314</locationX>
-        <locationY>566</locationY>
+        <name>Confirmation_screen</name>
+        <label>Confirmation screen</label>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Update_CMF_Records</targetReference>
+            <targetReference>Check_Object_Type</targetReference>
         </connector>
         <fields>
             <name>confirmationText</name>
-            <fieldText>&lt;p&gt;You have selected below &lt;strong&gt;{!recordCount} &lt;/strong&gt;records to delete. Click &apos;Yes&apos; if you want to proceed&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong&gt;{!recordCount}&lt;/strong&gt; records have been selected, please click &apos;Yes&apos; if you want to proceed to delete.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <fields>
-            <name>CMFAssocTable</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>ER_CMFGroupAssociation__c</typeValue>
-            </dataTypeMappings>
-            <extensionName>flowruntime:datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Data Table</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>selectionMode</name>
-                <value>
-                    <stringValue>NO_SELECTION</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>minRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>Query_CMF_Assoc_Records</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>maxRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>columns</name>
-                <value>
-                    <stringValue>[{&quot;apiName&quot;:&quot;ER_Customer_Master_File_Id__c&quot;,&quot;guid&quot;:&quot;column-4dab&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Customer Master File&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;ER_CMF_Name__c&quot;,&quot;guid&quot;:&quot;column-e2f6&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;CMF Name&quot;,&quot;type&quot;:&quot;customRichText&quot;}]</stringValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <nextOrFinishButtonLabel>Yes</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Confirmation_screen_Contact_Assoc</name>
-        <label>Confirmation screen Contact Assoc</label>
-        <locationX>578</locationX>
-        <locationY>566</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>Update_Contact_Association_Records</targetReference>
-        </connector>
-        <fields>
-            <name>confirmationTextContact</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;You have selected below &lt;/span&gt;&lt;strong style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!recordCount} &lt;/strong&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;records to delete. Click &apos;Yes&apos; if you want to proceed&lt;/span&gt;&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <styleProperties>
-                <verticalAlignment>
-                    <stringValue>top</stringValue>
-                </verticalAlignment>
-                <width>
-                    <stringValue>12</stringValue>
-                </width>
-            </styleProperties>
-        </fields>
-        <fields>
-            <name>ContactAssocTable</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>ER_ContactGroupAssociation__c</typeValue>
-            </dataTypeMappings>
-            <extensionName>flowruntime:datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Data Table</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>selectionMode</name>
-                <value>
-                    <stringValue>NO_SELECTION</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>minRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>Query_Contact_Assoc_Records</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>maxRowSelection</name>
-                <value>
-                    <numberValue>0.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>columns</name>
-                <value>
-                    <stringValue>[{&quot;apiName&quot;:&quot;ER_First_Name__c&quot;,&quot;guid&quot;:&quot;column-c8c1&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;First Name&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;ER_Last_Name__c&quot;,&quot;guid&quot;:&quot;column-2251&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Last Name&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;ER_Contact_Email__c&quot;,&quot;guid&quot;:&quot;column-3257&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Email&quot;,&quot;type&quot;:&quot;customRichText&quot;}]</stringValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -412,7 +230,7 @@
         <name>Copy_1_of_Success_Message</name>
         <label>Copy 1 of Success Message</label>
         <locationX>446</locationX>
-        <locationY>974</locationY>
+        <locationY>866</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -460,7 +278,7 @@
         <name>Success_Message</name>
         <label>Success Message</label>
         <locationX>710</locationX>
-        <locationY>974</locationY>
+        <locationY>866</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>

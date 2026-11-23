@@ -37,6 +37,17 @@
         <name>PRM_Profile_Questions_Id__c</name>
         <relationshipLabel><!-- Partner Profile Answer --></relationshipLabel>
     </fields>
+    <fields>
+        <label><!-- Status Change Date --></label>
+        <name>PRM_Status_Change_Dt__c</name>
+    </fields>
+    <layouts>
+        <layout>Profile Answer Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

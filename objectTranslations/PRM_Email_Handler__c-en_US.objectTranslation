@@ -111,5 +111,12 @@
         <label><!-- Suppress Email --></label>
         <name>PRM_Suppress_Email__c</name>
     </fields>
+    <layouts>
+        <layout>Email Handler Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

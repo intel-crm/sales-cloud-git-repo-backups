@@ -126,7 +126,7 @@
   }, {
     "components" : [ {
       "componentAttributes" : {
-        "analyticsPageType" : "{\"pageType\": \"ManageBenefits\",\"title\":\"Home\"}",
+        "analyticsPageType" : "",
         "description" : "",
         "marqueeDataSource" : "Benefit Service",
         "pageType" : "BenefitService",
@@ -143,7 +143,7 @@
         "title" : "Lorem Ipsum Title"
       },
       "componentName" : "c:ipaMarqueePartner",
-      "id" : "50788d3f-3a41-4bbe-b5a8-2a58f833e9ef",
+      "id" : "c313dd67-b582-4bf3-84ce-87b26486c101",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -156,11 +156,28 @@
     "regionName" : "mainFullWidth",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:pRM_DownloadBulkInviteTemplate",
+      "id" : "f340c3f9-4ae3-432a-b6ad-af2638147225",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "9b1fdc47-cd0e-471c-9cf4-fe2fa616ef3b",
     "regionName" : "main",
     "type" : "region"
   }, {
     "components" : [ {
+      "componentAttributes" : {
+        "richTextValue" : "<p><strong><span class=\"ql-cursor\">﻿</span>Downtime</strong></p>"
+      },
+      "componentName" : "forceCommunity:richTextInline",
+      "id" : "c773be00-4da2-48be-b1f5-e4ab6271aa09",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : {
         "description" : "Deprecated",
         "title" : "@salesforce/label/c.IPA_Benefits_Manage_Benefits"
@@ -177,8 +194,15 @@
   }, {
     "components" : [ {
       "componentAttributes" : { },
+      "componentName" : "c:doceboAssets",
+      "id" : "694ae7ca-acaf-4353-8eac-7b5a1b904bd3",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : { },
       "componentName" : "c:ipaPartnerMessages",
-      "id" : "9fdd681c-3bc0-4f5b-9af6-b5882de3ae10",
+      "id" : "639ff44c-5d72-466d-b3ba-72372b0d53b6",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
@@ -188,6 +212,19 @@
     "type" : "region"
   }, {
     "components" : [ {
+      "componentAttributes" : {
+        "cacheAge" : 1440,
+        "filterName" : "",
+        "reportId" : "of_Retired_Products_in_SFDC",
+        "showRefreshButton" : true,
+        "showTitle" : true
+      },
+      "componentName" : "forceCommunity:reportChart",
+      "id" : "ec298583-1672-40d7-830e-2be63be65c09",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
       "componentAttributes" : { },
       "componentName" : "c:ipaPartnerQuickLinks",
       "id" : "cc8af0a0-af70-4ed1-b0b5-15a7185cd3d2",
@@ -199,18 +236,18 @@
     "regionName" : "tab3",
     "type" : "region"
   }, {
-    "id" : "c66d253c-832e-441d-b02b-bdc5220e4ed7",
-    "regionName" : "blade1",
-    "type" : "region"
-  }, {
     "components" : [ {
       "componentAttributes" : { },
-      "componentName" : "c:ipaSupportFooterComponent",
-      "id" : "4ccdd4d9-808f-42fd-8151-9227c8e01860",
+      "componentName" : "c:pRM_ProcessUploadedData",
+      "id" : "9b0022df-f9b9-4d70-81d8-7dc719e32bab",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
+    "id" : "c66d253c-832e-441d-b02b-bdc5220e4ed7",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
     "id" : "956eca1a-659e-4e2c-aec4-23d661f8974f",
     "regionName" : "blade1white",
     "type" : "region"
@@ -243,6 +280,14 @@
     "regionName" : "compareTray",
     "type" : "region"
   }, {
+    "components" : [ {
+      "componentAttributes" : { },
+      "componentName" : "c:ipaSupportFooterComponent",
+      "id" : "4ccdd4d9-808f-42fd-8151-9227c8e01860",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
     "id" : "4b55782e-6f0a-49fa-8884-43126583c452",
     "regionName" : "blade5",
     "type" : "region"

@@ -8,22 +8,23 @@
     <subject>New lead assigned to you: {!Lead.Name} from {!Lead.Company}</subject>
     <textOnly>Dear {!Lead.OwnerFirstName},
 
-The lead {!Lead.Name} from {!Lead.Company} has been assigned to you. Be sure to follow the &quot;Guidance for success&quot;. If this is an Unclaimed Lead be sure to Claim it and start attempting to contact the Lead.
-
-Click here to visit this lead record in SFDC
-
-If the Lead has been Qualified, be sure to read the notes, PACTT information and activities to familiarize yourself with the Lead.
+The lead {!Lead.Name} from {!Lead.Company} has been assigned to you because it has been qualified by an LDR. Prior to this assignment you will have met or otherwise communicated with the responsible LDR to get a high-level overview of the potential opportunity, and have agreed to accept the lead.
 
 Actions upon receipt of this notification:
-1. Claim the Lead to change sales stage to &quot;Sales Accepted Lead&quot;.
-2. A call or email must be logged within 1 business day of receipt of this notification.
-3. If contact is established and the lead is considered to have an Opportunity project to enter the Sales Process
-A: Follow the &quot;Search Before Request&quot; to request new Account to be created
-B: After the Account is created, Convert the lead to an Opportunity on the Account
-4. If an Opportunity for Sales is not established, disposition the Lead with the proper Sub Status.
+
+1. Change sales stage to “Sales Accepted Lead”
+
+a. A call or email must be logged within 1 business day of receipt of this notification
+
+
+2. If contact established and the lead is considered an opportunity, change sales stage to “Sales Qualified Lead” to convert the lead.
+
+
+3. If contact cannot be established:
+
+a. Lead status changed to “Unreachable”
 
 If not an opportunity at this time, and if desired, you can convert this lead to a contact for potential contact in the future.
-Leads move to a terminated state if there is no activity for 30 days and 90 days since the creation date.
 
 Good Luck!</textOnly>
     <type>html</type>

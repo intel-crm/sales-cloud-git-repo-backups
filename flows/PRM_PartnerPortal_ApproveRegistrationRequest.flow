@@ -13,7 +13,6 @@
         <locationY>200</locationY>
         <actionName>PRM_CompanyProfileController</actionName>
         <actionType>apex</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <processMetadataValues>
                 <name>dataType</name>
@@ -74,12 +73,67 @@
         <defaultConnectorLabel>default</defaultConnectorLabel>
         <rules>
             <name>myRule_1</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
-                <leftValueReference>formula_myRule_1</leftValueReference>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.PRM_PC_Approve_Reject_Flag__c</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Approved</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <processMetadataValues>
+                    <name>inputDataType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>leftHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>operatorDataType</name>
+                    <value>
+                        <stringValue>String</stringValue>
+                    </value>
+                </processMetadataValues>
+                <processMetadataValues>
+                    <name>rightHandSideType</name>
+                    <value>
+                        <stringValue>Picklist</stringValue>
+                    </value>
+                </processMetadataValues>
+                <leftValueReference>myVariable_current.PRM_PC_Approve_Reject_Flag__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Rejected</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -88,18 +142,7 @@
             <label>Approve Request From Partner Portal</label>
         </rules>
     </decisions>
-    <formulas>
-        <processMetadataValues>
-            <name>originalFormula</name>
-            <value>
-                <stringValue>AND(ISCHANGED([PRM_Registration_Request__c].PRM_PC_Approve_Reject_Flag__c ) ,OR(ISPICKVAL([PRM_Registration_Request__c].PRM_PC_Approve_Reject_Flag__c , &quot;Approved&quot;),ISPICKVAL([PRM_Registration_Request__c].PRM_PC_Approve_Reject_Flag__c , &quot;Rejected&quot;)))</stringValue>
-            </value>
-        </processMetadataValues>
-        <name>formula_myRule_1</name>
-        <dataType>Boolean</dataType>
-        <expression>AND(ISCHANGED({!myVariable_current.PRM_PC_Approve_Reject_Flag__c} ) ,OR(ISPICKVAL({!myVariable_current.PRM_PC_Approve_Reject_Flag__c} , &quot;Approved&quot;),ISPICKVAL({!myVariable_current.PRM_PC_Approve_Reject_Flag__c} , &quot;Rejected&quot;)))</expression>
-    </formulas>
-    <interviewLabel>PRM_PartnerPortal_ApproveRegistrationRequest-2_InterviewLabel</interviewLabel>
+    <interviewLabel>PRM_PartnerPortal_ApproveRegistrationRequest-1_InterviewLabel</interviewLabel>
     <label>PRM_PartnerPortal_ApproveRegistrationRequest</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -127,7 +170,7 @@
     </processMetadataValues>
     <processType>Workflow</processType>
     <startElementReference>myDecision</startElementReference>
-    <status>Obsolete</status>
+    <status>Active</status>
     <variables>
         <name>myVariable_current</name>
         <dataType>SObject</dataType>

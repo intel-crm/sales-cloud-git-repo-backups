@@ -1,0 +1,37 @@
+<template>
+    <div class="cards-container">
+        <h2 class="intel-clear">Cards</h2>
+        
+        <h3 class="slds-p-vertical_medium">Product/Offering Cards (with images)</h3>
+        <c-ipa-card-list cards={data.cards.product}></c-ipa-card-list>
+        <hr>
+
+        <h3 class="slds-p-vertical_medium">Partner Cards (with images)</h3>
+        <c-ipa-card-list cards={data.cards.partner}></c-ipa-card-list>
+        <hr>
+
+        <h3 class="slds-p-vertical_medium">Product/Offering Cards (without images)</h3>
+        <c-ipa-card-list without-images cards={data.cards.product}></c-ipa-card-list>
+        <hr>
+
+        <h3 class="slds-p-vertical_medium">Partner Cards (without images)</h3>
+        <c-ipa-card-list without-images cards={data.cards.partner}></c-ipa-card-list>
+        <hr>
+
+        <h3 class="slds-p-vertical_medium">Member Partner Cards</h3>
+        <c-ipa-card-list cards={data.cards.member}></c-ipa-card-list>
+        <hr>
+        
+        <h3 class="slds-p-vertical_medium">Loading State</h3>
+        <c-ipa-card-list></c-ipa-card-list>
+        <hr>
+
+        <!-- <h3 class="slds-p-vertical_medium">Simple Cards</h3> -->
+        <!-- <c-ipa-simple-card-list cards={data.simpleCards}></c-ipa-simple-card-list> -->
+
+        <div class="slds-p-around_small slds-align_absolute-center text-upcase text-bold color-white h5"
+            style="position: fixed; bottom: 1rem; left: 1rem; border-radius: 4px; background: var(--digitalBlue); z-index: 100000;">
+            {breakpoint.abbr}
+        </div>
+    </div>
+</template>

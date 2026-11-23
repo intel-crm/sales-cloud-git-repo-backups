@@ -11,6 +11,31 @@
         <masterLabel>Pipeline Health %</masterLabel>
         <scale>2</scale>
     </aggregates>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>Donut</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>false</expandOthers>
+        <groupingColumn>Opportunity.Core_Pipeline_Heath__c</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_BOTTOM</location>
+        <showAxisLabels>false</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
     <columns>
         <field>OPPORTUNITY_NAME</field>
     </columns>
@@ -49,9 +74,6 @@
     </columns>
     <columns>
         <field>Opportunity.Core_Technical_Owner_Email_Txt__c</field>
-    </columns>
-    <columns>
-        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <filter>
         <criteriaItems>
@@ -95,6 +117,11 @@
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
         <field>Opportunity.Core_Pipeline_Heath__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>ROLLUP_DESCRIPTION</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <groupingsDown>

@@ -128,14 +128,11 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>Bank_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
+        <type>Default</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
+        <formFactor>Large</formFactor>
         <type>Default</type>
     </actionOverrides>
     <actionOverrides>
@@ -183,46 +180,15 @@
         <label>Account</label>
         <lookupFilter>
             <active>true</active>
-            <booleanFilter>7 OR (1 AND 2) OR ((3 OR 4) AND 5) AND (6 OR 8)</booleanFilter>
             <filterItems>
-                <field>Account.Core_MDF_CoMarketingActive__c</field>
+                <field>Account.RecordType.DeveloperName</field>
                 <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_MDF_ESD_Update__c</field>
-                <operation>equals</operation>
-                <value>False</value>
+                <value>&apos;Mastered_Account&apos;</value>
             </filterItems>
             <filterItems>
                 <field>Account.Core_MDF_CoMarketingActive__c</field>
                 <operation>equals</operation>
                 <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.Core_MDF_CoMarketingActive__c</field>
-                <operation>equals</operation>
-                <value>False</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_MDF_ESD_Update__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.RecordType.Name</field>
-                <operation>equals</operation>
-                <value>Intel Account</value>
-            </filterItems>
-            <filterItems>
-                <field>$Source.Core_MDF_Ineffective_Selection_ind__c</field>
-                <operation>equals</operation>
-                <value>True</value>
-            </filterItems>
-            <filterItems>
-                <field>Account.RecordTypeId</field>
-                <operation>equals</operation>
-                <value>Inactive Account</value>
             </filterItems>
             <isOptional>false</isOptional>
         </lookupFilter>
@@ -429,7 +395,7 @@
         <label>Bank Location</label>
         <length>90</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -441,7 +407,7 @@
         <label>Bank Name</label>
         <length>90</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -451,31 +417,31 @@
         <description>Bank Status</description>
         <label>Bank Status</label>
         <required>false</required>
-        <trackHistory>false</trackHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Active</fullName>
-                    <default>false</default>
-                    <label>Active</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Draft</fullName>
                     <default>true</default>
                     <label>Draft</label>
                 </value>
                 <value>
-                    <fullName>Hold</fullName>
+                    <fullName>Active</fullName>
                     <default>false</default>
-                    <label>Hold</label>
+                    <label>Active</label>
                 </value>
                 <value>
                     <fullName>Inactive</fullName>
                     <default>false</default>
                     <label>Inactive</label>
+                </value>
+                <value>
+                    <fullName>Hold</fullName>
+                    <default>false</default>
+                    <label>Hold</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -496,24 +462,9 @@
         <fullName>Core_MDF_Country_Name__c</fullName>
         <label>Country</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>TextArea</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Currency_cd__c</fullName>
-        <defaultValue>&quot;USD&quot;</defaultValue>
-        <description>This will store the Currency for the Bank with the unique Supplier Number and Bank Account number combination.</description>
-        <inlineHelpText>The currency used by Supplier database for this bank.</inlineHelpText>
-        <label>Supplier Currency</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Currencies</valueSetName>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_DUNS__c</fullName>
@@ -522,7 +473,7 @@
         <label>DUNS</label>
         <length>9</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -561,7 +512,7 @@
         <inlineHelpText>Designates if all claims pending for the bank should be held from appearing on the next AP file.  All claims regarding a bank on Hold will be put on Hold also. When Hold is deselected, then Bank will revert to previous status as well as the claims. </inlineHelpText>
         <label>Hold payments from AP file?</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -718,47 +669,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Inactive_by_Program_nm__c</fullName>
-        <description>This field allows to pick the option of inactivating by program</description>
-        <label>Inactive by Program</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>MultiselectPicklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Client</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
-                    <default>false</default>
-                    <label>Client Co-Marketing Fund Boost</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Datacenter</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                    <default>false</default>
-                    <label>Retail Marketing Funds</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Service Provider Co-Marketing Fund</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-        <visibleLines>5</visibleLines>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Ineffective_Date_dt__c</fullName>
         <description>Field to Capture the Date from when bank becomes Ineffective.</description>
         <formula>IF( Core_MDF_Ineffective_Selection_ind__c, TODAY(), NULL)</formula>
@@ -775,7 +685,7 @@
         <defaultValue>false</defaultValue>
         <description>Captures the option if Bank has to be Ineffective or not.</description>
         <label>Ineffective Selection</label>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>
@@ -790,21 +700,16 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
+                <sorted>false</sorted>
                 <value>
                     <fullName>100</fullName>
                     <default>false</default>
                     <label>100</label>
                 </value>
                 <value>
-                    <fullName>150</fullName>
+                    <fullName>760</fullName>
                     <default>false</default>
-                    <label>150</label>
-                </value>
-                <value>
-                    <fullName>220</fullName>
-                    <default>false</default>
-                    <label>220</label>
+                    <label>760</label>
                 </value>
                 <value>
                     <fullName>420</fullName>
@@ -812,14 +717,9 @@
                     <label>420</label>
                 </value>
                 <value>
-                    <fullName>650</fullName>
+                    <fullName>220</fullName>
                     <default>false</default>
-                    <label>650</label>
-                </value>
-                <value>
-                    <fullName>760</fullName>
-                    <default>false</default>
-                    <label>760</label>
+                    <label>220</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -830,7 +730,7 @@
         <label>Intermediary Indicator</label>
         <length>100</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -838,9 +738,7 @@
     <fields>
         <fullName>Core_MDF_Note__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Intel_Partner_Alliance&quot;),
-($Label.Core_MDF_CorporateOrganizationAndMembershipChangeFormAndLink +&apos; &apos;+ HYPERLINK($Label.Core_MDF_IPA_BankDocLink, $Label.Core_MDF_CorporateOrganization2) +&apos; &apos;+ $Label.Core_MDF_CorporateOrganization +&apos; &apos;+HYPERLINK($Label.Core_MDF_IPABankCorpOrgMailId, $Label.Core_MDF_CorporateOrganizationMail)+&apos;&apos;+$Label.Core_MDF_CorporateOrganization3) ,
-($Label.Core_MDF_CorporateOrganizationAndMembershipChangeFormAndLink +&apos; &apos;+ HYPERLINK($Label.Core_MDF_CorporateOrganizationDocLink, $Label.Core_MDF_CorporateOrganization2) +&apos; &apos;+ $Label.Core_MDF_CorporateOrganization +&apos; &apos;+HYPERLINK($Label.Core_MDF_CorporateOrganizationMailId, $Label.Core_MDF_CorporateOrganizationMail)+&apos;&apos;+$Label.Core_MDF_CorporateOrganization3))</formula>
+        <formula>$Label.Core_MDF_CorporateOrganizationAndMembershipChangeFormAndLink +&apos; &apos;+ HYPERLINK($Label.Core_MDF_CorporateOrganizationDocLink, $Label.Core_MDF_CorporateOrganization2) +&apos; &apos;+ $Label.Core_MDF_CorporateOrganization +&apos; &apos;+HYPERLINK($Label.Core_MDF_CorporateOrganizationMailId, $Label.Core_MDF_CorporateOrganizationMail)+&apos;&apos;+$Label.Core_MDF_CorporateOrganization3</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Note</label>
         <required>false</required>
@@ -873,21 +771,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Payment_Currency_Cd__c</fullName>
-        <defaultValue>IF( $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin, &quot;&quot;, &quot;USD&quot;)</defaultValue>
-        <description>Payment currency holds the currency value for Payments.</description>
-        <inlineHelpText>The currency in which Payments will be made to the customer.</inlineHelpText>
-        <label>Payment Currency</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetName>Core_MDF_Currencies</valueSetName>
-        </valueSet>
     </fields>
     <fields>
         <fullName>Core_MDF_Payment_Method_Code__c</fullName>
@@ -933,23 +816,21 @@
         <valueSet>
             <restricted>true</restricted>
             <valueSetDefinition>
-                <sorted>true</sorted>
-                <value>
-                    <fullName>Both</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Both</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Channel_MDF</fullName>
-                    <default>false</default>
-                    <isActive>false</isActive>
-                    <label>Channel MDF</label>
-                </value>
+                <sorted>false</sorted>
                 <value>
                     <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
                     <default>false</default>
-                    <label>Client</label>
+                    <label>Client Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Data Center Co-Marketing Fund</label>
+                </value>
+                <value>
+                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
+                    <default>false</default>
+                    <label>Service Provider Co-Marketing Fund</label>
                 </value>
                 <value>
                     <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
@@ -957,34 +838,10 @@
                     <label>Client Co-Marketing Fund Boost</label>
                 </value>
                 <value>
-                    <fullName>Core_MDF_Co_GTM</fullName>
+                    <fullName>Both</fullName>
                     <default>false</default>
-                    <label>Co-GTM</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Datacenter</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-                    <default>false</default>
-                    <label>Ecosystem Extension Fund</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
-                    <default>false</default>
-                    <label>Intel Partner Alliance</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                    <default>false</default>
-                    <label>Retail Marketing Funds</label>
-                </value>
-                <value>
-                    <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                    <default>false</default>
-                    <label>Service Provider Co-Marketing Fund</label>
+                    <isActive>false</isActive>
+                    <label>Both</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
@@ -1003,42 +860,19 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Supplier_City_txt__c</fullName>
-        <description>This will contain the City of the Bank Supplier.</description>
-        <externalId>false</externalId>
-        <label>Supplier City</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Supplier_Country_txt__c</fullName>
-        <description>This will contain the Country of the Bank Supplier.</description>
-        <externalId>false</externalId>
-        <label>Supplier Country</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Supplier_Name__c</fullName>
         <externalId>false</externalId>
         <label>Supplier Name</label>
         <length>255</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Supplier_Number__c</fullName>
+        <caseSensitive>false</caseSensitive>
         <description>It holds the supplier number.</description>
         <externalId>false</externalId>
         <label>Supplier Number</label>
@@ -1047,31 +881,7 @@
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Supplier_Postal_Code_cd__c</fullName>
-        <description>This will contain the Postal Code of the Bank Supplier.</description>
-        <externalId>false</externalId>
-        <label>Supplier Postal Code</label>
-        <length>15</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Supplier_Region_txt__c</fullName>
-        <description>This will contain the Region of the Bank Supplier.</description>
-        <externalId>false</externalId>
-        <label>Supplier Region</label>
-        <length>255</length>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
+        <unique>true</unique>
     </fields>
     <fields>
         <fullName>Core_MDF_Swift_Code__c</fullName>
@@ -1084,101 +894,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Tax_codes_cd__c</fullName>
-        <description>This will store the Tax Codes for the Bank.</description>
-        <label>Tax codes</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>I0</fullName>
-                    <default>false</default>
-                    <label>I0</label>
-                </value>
-                <value>
-                    <fullName>I1</fullName>
-                    <default>false</default>
-                    <label>I1</label>
-                </value>
-                <value>
-                    <fullName>UB</fullName>
-                    <default>false</default>
-                    <label>UB</label>
-                </value>
-                <value>
-                    <fullName>UD</fullName>
-                    <default>false</default>
-                    <label>UD</label>
-                </value>
-                <value>
-                    <fullName>UY</fullName>
-                    <default>false</default>
-                    <label>UY</label>
-                </value>
-                <value>
-                    <fullName>UZ</fullName>
-                    <default>false</default>
-                    <label>UZ</label>
-                </value>
-                <value>
-                    <fullName>V3</fullName>
-                    <default>false</default>
-                    <label>V3</label>
-                </value>
-                <value>
-                    <fullName>V6</fullName>
-                    <default>false</default>
-                    <label>V6</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_VAT_pct__c</fullName>
-        <description>This will store the VAT % for the Bank and will depend on Tax Code field value.</description>
-        <label>VAT %</label>
-        <required>false</required>
-        <trackHistory>true</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>0</fullName>
-                    <default>false</default>
-                    <label>0%</label>
-                </value>
-                <value>
-                    <fullName>8</fullName>
-                    <default>false</default>
-                    <label>8%</label>
-                </value>
-                <value>
-                    <fullName>10</fullName>
-                    <default>false</default>
-                    <label>10%</label>
-                </value>
-                <value>
-                    <fullName>20</fullName>
-                    <default>false</default>
-                    <label>20%</label>
-                </value>
-                <value>
-                    <fullName>21</fullName>
-                    <default>false</default>
-                    <label>21%</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <label>Bank</label>
     <listViews>
@@ -1209,11 +924,6 @@
         <columns>UPDATEDBY_USER</columns>
         <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>Core_MDF_Account__c</field>
-            <operation>equals</operation>
-            <value>UNISTOP</value>
-        </filters>
         <label>Co-Marketing Bank</label>
     </listViews>
     <nameField>
@@ -1248,381 +958,6 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_MDF_Currency_cd__c</picklist>
-            <values>
-                <fullName>AED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ALL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ANG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ARS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AUD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BAM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BBD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BDT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BHD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BOB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BWP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CLP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CNY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>COP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CZK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DKK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EGP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GEL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GTQ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HNL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HRK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IDR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ILS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ISK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JOD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KHR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KRW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KZT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LTL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LVL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MXN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NOK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NPR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OMR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PAB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PEN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PHP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PLN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PYG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>QAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SVC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TJS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TRY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>USD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UYU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZAR</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_MDF_Hold_Payments_from_AP_file_ind__c</picklist>
             <values>
                 <fullName>No</fullName>
@@ -1634,36 +969,9 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_MDF_Inactive_by_Program_nm__c</picklist>
-            <values>
-                <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_MDF_Intel_Company_Code__c</picklist>
             <values>
                 <fullName>100</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>150</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -1675,386 +983,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>650</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>760</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Payment_Currency_Cd__c</picklist>
-            <values>
-                <fullName>AED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ALL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ANG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ARS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AUD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BAM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BBD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BDT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BHD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BOB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BWP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CLP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CNY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>COP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CZK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DKK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EGP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GEL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GTQ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HNL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HRK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IDR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ILS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ISK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JOD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KHR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KRW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KZT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LTL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LVL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MXN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NOK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NPR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OMR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PAB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PEN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PHP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PLN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PYG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>QAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SVC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TJS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TRY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>USD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UYU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2084,77 +1013,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Tax_codes_cd__c</picklist>
-            <values>
-                <fullName>I0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>I1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V6</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_VAT_pct__c</picklist>
-            <values>
-                <fullName>0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>10</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>20</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>21</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>8</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -2184,381 +1043,6 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_MDF_Currency_cd__c</picklist>
-            <values>
-                <fullName>AED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ALL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ANG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ARS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AUD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BAM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BBD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BDT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BHD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BOB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BWP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CLP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CNY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>COP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CZK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DKK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EGP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GEL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GTQ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HNL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HRK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IDR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ILS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ISK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JOD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KHR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KRW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KZT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LTL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LVL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MXN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NOK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NPR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OMR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PAB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PEN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PHP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PLN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PYG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>QAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SVC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TJS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TRY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>USD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UYU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZAR</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_MDF_Hold_Payments_from_AP_file_ind__c</picklist>
             <values>
                 <fullName>No</fullName>
@@ -2570,36 +1054,9 @@
             </values>
         </picklistValues>
         <picklistValues>
-            <picklist>Core_MDF_Inactive_by_Program_nm__c</picklist>
-            <values>
-                <fullName>Core_MDF_Client_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Client_CoMarketing_Fund_Boost</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Data_Center_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
             <picklist>Core_MDF_Intel_Company_Code__c</picklist>
             <values>
                 <fullName>100</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>150</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2611,386 +1068,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>650</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>760</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Payment_Currency_Cd__c</picklist>
-            <values>
-                <fullName>AED</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ALL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ANG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ARS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AUD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>AZN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BAM</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BBD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BDT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BHD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BOB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BRL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BWP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>BZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CHF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CLP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CNY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>COP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CRC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>CZK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DKK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DOP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>DZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EGP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>EUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GEL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>GTQ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HNL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HRK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>HUF</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>IDR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ILS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>INR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ISK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JMD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JOD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>JPY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KES</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KHR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KRW</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>KZT</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LBP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LTL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>LVL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MDL</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MKD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MUR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MXN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>MYR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NAD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NGN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NIO</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NOK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NPR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>NZD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>OMR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PAB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PEN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PHP</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PKR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PLN</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>PYG</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>QAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RON</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RSD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>RUB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SAR</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SEK</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SGD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>SVC</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>THB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TJS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TRY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TTD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>TWD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UAH</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>USD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UYU</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZS</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>VND</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>ZAR</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3020,77 +1098,7 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Core_MDF_Ecosystem_Extension_Fund</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Intel_Partner_Alliance</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>Core_MDF_Retail_Marketing_Funds</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Core_MDF_Service_Provider_CoMarketing_Fund</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_Tax_codes_cd__c</picklist>
-            <values>
-                <fullName>I0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>I1</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UB</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UD</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UY</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>UZ</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V3</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>V6</fullName>
-                <default>false</default>
-            </values>
-        </picklistValues>
-        <picklistValues>
-            <picklist>Core_MDF_VAT_pct__c</picklist>
-            <values>
-                <fullName>0</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>10</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>20</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>21</fullName>
-                <default>false</default>
-            </values>
-            <values>
-                <fullName>8</fullName>
                 <default>false</default>
             </values>
         </picklistValues>
@@ -3099,22 +1107,14 @@
         <excludedStandardButtons>ChangeOwner</excludedStandardButtons>
         <excludedStandardButtons>MassChangeOwner</excludedStandardButtons>
         <listViewButtons>Core_MDF_Export_List_View</listViewButtons>
+        <searchResultsAdditionalFields>Core_MDF_Bank_Alias_Name__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Core_MDF_Account__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Supplier_Number__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Bank_Account_Number__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Currency_cd__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Intel_Company_Code__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Program_Value__c</searchResultsAdditionalFields>
-        <searchResultsAdditionalFields>Core_MDF_Bank_Status__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Core_MDF_Bank_Name__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>Private</sharingModel>
     <sharingReasons>
         <fullName>AccountBudgetAdmin__c</fullName>
         <label>AccountBudgetAdmin</label>
-    </sharingReasons>
-    <sharingReasons>
-        <fullName>Core_MDF_AccountNodeGroup__c</fullName>
-        <label>AccountNodeGroup</label>
     </sharingReasons>
     <validationRules>
         <fullName>Core_MDF_Bank_Account_Not_Editable</fullName>
@@ -3125,27 +1125,6 @@
    )</errorConditionFormula>
         <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
         <errorMessage>Can only Edit Bank Account field when it&apos;s in initial Draft Status.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Bank_Blank_Currency</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-	OR(
-		ISNEW(),
-		ISCHANGED(Core_MDF_Currency_cd__c)
-	),
-	ISPICKVAL(Core_MDF_Currency_cd__c, &quot;&quot;)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Currency_cd__c</errorDisplayField>
-        <errorMessage>Please select a supplier currency.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Bank_Blank_Payment_Currency</fullName>
-        <active>true</active>
-        <description>The payment currency on Bank cannot be blank for Retail Program.</description>
-        <errorConditionFormula>AND( OR(ISNEW(),ISCHANGED(Core_MDF_Payment_Currency_Cd__c)),ISPICKVAL(Core_MDF_Payment_Currency_Cd__c, &quot;&quot;))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Payment_Currency_Cd__c</errorDisplayField>
-        <errorMessage>Please select a payment currency.</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_Bank_Name_Non_Editable</fullName>
@@ -3159,51 +1138,27 @@
         <fullName>Core_MDF_CheckUserPermission</fullName>
         <active>true</active>
         <description>Prevents user from creating a Bank when they are not associated to a particular program</description>
-        <errorConditionFormula>AND(
-  NOT($Permission.Core_MDF_Internal_CSC_User),
-  OR(
-AND(
-INCLUDES( Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin, $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Retail_Marketing_Funds&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Intel_Partner_Alliance&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin)
-),
-AND(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;),
-OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,$Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,$Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm),
-NOT($Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin)
-    )
-  )
+        <errorConditionFormula>OR( 
+	AND(
+		INCLUDES( Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
+		OR($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin),
+NOT($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin) 
+), 
+	AND(
+		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
+		OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin),
+NOT($Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin) 
+), 
+	AND(
+		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
+		OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin),
+NOT($Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin) 
+	),
+	AND(
+		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
+		OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,$Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin),
+		NOT($Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin)
+) 
 )</errorConditionFormula>
         <errorMessage>Please select valid program</errorMessage>
     </validationRules>
@@ -3226,193 +1181,19 @@ NOT($Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin)
         <errorMessage>This bank is in Inactive status and cannot currently be edited</errorMessage>
     </validationRules>
     <validationRules>
-        <fullName>Core_MDF_LegalEntityForCCFDCFSPCFCCFB</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-	OR(ISNEW(), ISCHANGED(Core_MDF_Intel_Company_Code__c), ISCHANGED(Core_MDF_Program__c)),
-	OR(
-		ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;150&quot;),
-		ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;220&quot;),
-		ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;420&quot;),
-		ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;650&quot;),
-		ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;760&quot;)
-	),
-	OR(
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;)
-	)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Intel_Company_Code__c</errorDisplayField>
-        <errorMessage>Client/Datacenter/SPCF/CCFB can only select Legal Entity 100.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_LegalEntityForIPA</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-    OR(ISNEW(), ISCHANGED(Core_MDF_Intel_Company_Code__c), ISCHANGED(Core_MDF_Program__c)),
-    INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Intel_Partner_Alliance&quot;),
-    ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;220&quot;)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Intel_Company_Code__c</errorDisplayField>
-        <errorMessage>IPA cannot select Legal Entity 220.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_LegalEntityForRMF</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-OR(ISNEW(), ISCHANGED(Core_MDF_Intel_Company_Code__c), ISCHANGED(Core_MDF_Program__c)),
-INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Retail_Marketing_Funds&quot;),
-OR(
-ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;100&quot;),
-ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;220&quot;)
-)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Intel_Company_Code__c</errorDisplayField>
-        <errorMessage>RMF cannot select Legal Entity 100/220.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_LegalEntityFor_Co_GTM</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-    OR(ISNEW(), ISCHANGED(Core_MDF_Intel_Company_Code__c), ISCHANGED(Core_MDF_Program__c)),
-    INCLUDES(Core_MDF_Program__c, &quot;Core_MDF_Co_GTM&quot;),
-    ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;220&quot;)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Intel_Company_Code__c</errorDisplayField>
-        <errorMessage>Co-GTM cannot select Legal Entity 220.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_LegalEntity_TaxCode_Restriction</fullName>
-        <active>true</active>
-        <description>To restrict the users to create a Bank with Intel Company code(Legal Entity) 420 and select I0 in the tax code.</description>
-        <errorConditionFormula>AND(OR(ISNEW(), ISCHANGED(Core_MDF_Intel_Company_Code__c), ISCHANGED(Core_MDF_Tax_codes_cd__c)),
-ISPICKVAL(Core_MDF_Intel_Company_Code__c, &quot;420&quot;),
-ISPICKVAL(Core_MDF_Tax_codes_cd__c, &quot;I0&quot;))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Tax_codes_cd__c</errorDisplayField>
-        <errorMessage>This Tax Code is not valid with the Intel Company Code selected.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFB</fullName>
+        <fullName>Core_MDF_errorIfNotNumber</fullName>
         <active>false</active>
-        <errorConditionFormula>AND(
-OR(ISNEW(), ISCHANGED(Core_MDF_Tax_codes_cd__c)),
-NOT(ISBLANK(TEXT(Core_MDF_Tax_codes_cd__c))),
-OR(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;)
-)
+        <description>Throws error when user tries to enter other than number.</description>
+        <errorConditionFormula>OR( 
+NOT(REGEX( Core_MDF_Bank_Account_Number__c ,&quot;^[0-9]{4}$&quot;)), 
+NOT(REGEX( Core_MDF_Supplier_Number__c ,&quot;^[0-9]{10}$&quot;)) 
 )</errorConditionFormula>
-        <errorMessage>CCF/DCF/SPCF/CCFB cannot select Tax Code.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_NoTaxCodeForCCFDCFSPCFCCFBEEF</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-	OR(ISNEW(), ISCHANGED(Core_MDF_Tax_codes_cd__c)),
-	NOT(ISBLANK(TEXT(Core_MDF_Tax_codes_cd__c))),
-	OR(
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Data_Center_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Service_Provider_CoMarketing_Fund&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Client_CoMarketing_Fund_Boost&quot;),
-		INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Ecosystem_Extension_Fund&quot;)
-	)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Tax_codes_cd__c</errorDisplayField>
-        <errorMessage>Client/Datacenter/SPCF/CCFB/EEF cannot select Tax Code.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Paymentadmin_UserPermission</fullName>
-        <active>true</active>
-        <description>Prevents user from creating a Bank when they are not associated to a particular program</description>
-        <errorConditionFormula>AND(
-  NOT($Permission.Core_MDF_Internal_CSC_User),
-  OR(
-    AND(
-      INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Co_GTM&quot;),
-      OR($Permission.Core_MDF_CCP_Internal_CCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_DCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_SPCF_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_CCFB_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_Retail_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_IPA_Payment_Admin,
-         $Permission.Core_MDF_CCP_Internal_EEF_Payment_Admin),
-      NOT($Permission.Core_MDF_CCP_Internal_Co_GTM_Payment_Adm)
-    )
-  )
-)</errorConditionFormula>
-        <errorMessage>Please select valid program</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Restrict_MultipleProgSelection</fullName>
-        <active>true</active>
-        <description>To Restrict users from selecting more than one program value.</description>
-        <errorConditionFormula>AND(ISNEW(),PICKLISTCOUNT(Core_MDF_Program__c) &gt; 1, OR(INCLUDES( Core_MDF_Program__c ,&apos;Core_MDF_Intel_Partner_Alliance&apos;),
-INCLUDES(Core_MDF_Program__c,&apos;Core_MDF_Retail_Marketing_Funds&apos;)))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Program__c</errorDisplayField>
-        <errorMessage>Please select only one Program value</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Restrict_PaymtCurrency_ReadOnly</fullName>
-        <active>true</active>
-        <description>Restrict the change of payment currency other than USD for CCP and IPA programs</description>
-        <errorConditionFormula>AND( OR(ISNEW(), ISCHANGED( Core_MDF_Payment_Currency_Cd__c )),
-NOT( ISPICKVAL(Core_MDF_Payment_Currency_Cd__c, &apos;&apos;)), NOT( ISPICKVAL(Core_MDF_Payment_Currency_Cd__c, &quot;USD&quot;)), NOT(INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Retail_Marketing_Funds&quot;)))</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Payment_Currency_Cd__c</errorDisplayField>
-        <errorMessage>This payment currency is not valid for the program selected.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_Restrict_Program_Update</fullName>
-        <active>true</active>
-        <description>To restrict users from updating Program field.</description>
-        <errorConditionFormula>AND(NOT(AND(CONTAINS($Label.Core_MDF_VRBypassByUser, $User.Username),
-$Label.Core_MDF_Is_ValidationBypassed =&apos;TRUE&apos;)), ISCHANGED( Core_MDF_Program__c ), INCLUDES( Core_MDF_Program__c ,&apos;Core_MDF_Intel_Partner_Alliance&apos;),
-INCLUDES(Core_MDF_Program__c,&apos;Core_MDF_Retail_Marketing_Funds&apos;), PICKLISTCOUNT( Core_MDF_Program__c ) &gt;1 )</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Program_Value__c</errorDisplayField>
-        <errorMessage>You cannot use the same bank for the IPA and RMF Programs. Please create a new bank.</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_TaxCodeMandatoryForRMF</fullName>
-        <active>true</active>
-        <description>Making Tax code mandatory for RMF and IPA program.</description>
-        <errorConditionFormula>AND(
-OR(ISNEW(), ISCHANGED(Core_MDF_Tax_codes_cd__c)),
-ISBLANK(TEXT(Core_MDF_Tax_codes_cd__c)),
-OR(
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Retail_Marketing_Funds&quot;),
-INCLUDES(Core_MDF_Program__c,&quot;Core_MDF_Intel_Partner_Alliance&quot;)
-)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Tax_codes_cd__c</errorDisplayField>
-        <errorMessage>Tax Code is mandatory for RMF/IPA/Channel MDF</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Core_MDF_ValidateAccountOnBank</fullName>
-        <active>true</active>
-        <description>This rule checks if the selected account on the bank is co-marketing active or not in active status.</description>
-        <errorConditionFormula>AND(NOT(Core_MDF_Account__r.Core_MDF_CoMarketingActive__c),
-NOT(Core_MDF_Ineffective_Selection_ind__c),
-OR(ISCHANGED(Core_MDF_Ineffective_Selection_ind__c),
-   ISCHANGED(Core_MDF_Account__c),
-   AND(ISCHANGED(Core_MDF_ESD_Update__c),
-Core_MDF_ESD_Update__c, 
-ISPICKVAL(PRIORVALUE(Core_MDF_Bank_Status__c),&apos;Draft&apos; )),
-AND(Core_MDF_ESD_Update__c,ISPICKVAL(PRIORVALUE(Core_MDF_Bank_Status__c),&apos;Draft&apos; ),
-				OR(ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Active&apos;),
-   ISPICKVAL(Core_MDF_Bank_Status__c,&apos;Hold&apos;)))
-)
-)</errorConditionFormula>
-        <errorDisplayField>Core_MDF_Account__c</errorDisplayField>
-        <errorMessage>Selected Account is not a Comarketing Account.</errorMessage>
+        <errorMessage>Enter valid Account Number and Supplier Number</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Core_MDF_errorIfNotNumberAN</fullName>
         <active>true</active>
-        <errorConditionFormula>NOT(REGEX( Core_MDF_Bank_Account_Number__c ,&quot;^[a-zA-Z0-9]{4}$&quot;))</errorConditionFormula>
+        <errorConditionFormula>NOT(REGEX( Core_MDF_Bank_Account_Number__c ,&quot;^[0-9]{4}$&quot;))</errorConditionFormula>
         <errorMessage>Enter Valid Account Number</errorMessage>
     </validationRules>
     <validationRules>

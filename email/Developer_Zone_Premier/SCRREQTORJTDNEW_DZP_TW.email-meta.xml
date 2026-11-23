@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>Request Rejection Email for DZP Contacts - Traditional Chinese</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>SCRREQTORJTDNEW_DZP_TW</name>
+    <style>none</style>
+    <subject>開發者專區的首要訪問請求被拒絕</subject>
+    <textOnly>Intel 註冊確認
+
+
+親愛的 {!Contact.FirstName} {!Contact.LastName},
+
+感謝您對 Intel 開發人員專區的關注。然而，在審核您的申請後，很遺憾地通知您，您的 Premier 帳戶申請未通過。申請未通過的部分原因可能包括：
+
+申請不符開發人員專區 Premier 計畫的標準。
+開發人員專區 Premier 的存取申請不允許使用個人電子郵件。您必須以公司電子郵件地址提交申請。
+如要得到 Intel 開發人員專區的 Premier 存取權限，貴公司必須和 Intel® 簽訂企業保密協議（CNDA）。
+
+您可繼續使用您的 Standard 帳戶存取開發人員專區的公開內容。如果您認為您的申請是被錯誤拒絕，請透過電話或電子郵件聯絡帳戶協助以獲取更多資訊。
+
+敬祝　商祺
+註冊管理員
+開發者專區
+
+請勿回覆此電子郵件訊息。此郵件是系統自動傳送。為確保您可以繼續收到我們的電子郵件，請將我們加進您的通訊錄。
+
+此外，您也可接洽我們的數家經銷商，取得用以協助您專案的資源。  
+
+Intel® 解決方案文件庫：https://builders.intel.com/solutionslibrary
+產品與價格相關問題，請聯絡您的主機板 OEM、Intel 授權代理商（IAD）或 Intel 授權供應商（IAS） 。您可以在下方找到 IAD 或 IAS 清單：https://www.intel.com/content/www/tw/zh/partner/where-to-buy/overview.html
+Intel 計畫的資訊與支援請見：https://www.intel.com.tw/partner-alliance
+產品資訊請見：https://ark.intel.com/
+軟體與驅動程式下載中心：https://downloadcenter.intel.com/
+Intel 社群：https://community.intel.com/
+Intel 解決方案市場目錄：https://marketplace.intel.com/
+Intel 客戶支援：https://www.intel.com/support
+
+Intel 承諾保護您的隱私權。更多資訊
+請參閱 Intel 隱私權聲明。Intel Cookie 注意事項。
+法律聲明 &amp;verbar; 商標 © Intel Corporation。
+
+!%TemplateCode%!</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

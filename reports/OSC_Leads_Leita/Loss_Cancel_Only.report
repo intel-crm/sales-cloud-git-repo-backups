@@ -26,6 +26,7 @@
         <field>Opportunity.Core_Push_Counter__c</field>
     </columns>
     <columns>
+        <aggregateTypes>Average</aggregateTypes>
         <field>AGE</field>
     </columns>
     <columns>
@@ -41,17 +42,6 @@
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
     </columns>
-    <columns>
-        <aggregateTypes>Average</aggregateTypes>
-        <field>CDF1</field>
-    </columns>
-    <customDetailFormulas>
-        <calculatedFormula>LAST_STAGE_CHANGE_DATE-CREATED_DATE</calculatedFormula>
-        <dataType>Double</dataType>
-        <developerName>CDF1</developerName>
-        <label>Avg Age to Close</label>
-        <scale>0</scale>
-    </customDetailFormulas>
     <description>RT: Optys.  Loss and Cancel only, filtered</description>
     <filter>
         <criteriaItems>

@@ -5,8 +5,13 @@
   "isProgressiveRenderingEnabled" : true,
   "loginAppPageId" : "b07655c6-5db9-45fd-a716-3b9f516c8e28",
   "mainAppPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
-  "preferredDomain" : "partner.intel.com",
+  "preferredDomain" : "none",
   "selfRegistrationRouteId" : "8bac6354-05e0-48cd-a9ac-a976f080b779",
+  "trustedSitesForIFrame" : [ {
+    "id" : "0c339dfd-037c-4077-8d1d-4a59d3e4c7f5",
+    "trustedDomainsForInlineFrames" : [ ],
+    "type" : "trustedSitesForIFrame"
+  } ],
   "trustedSitesForScript" : [ {
     "id" : "e5236f42-2b85-4417-a80e-b8804b410178",
     "isActive" : true,
@@ -290,10 +295,22 @@
     "trustedSiteUrl" : "https://*.adoberesources.net",
     "type" : "trustedSitesForScripts"
   }, {
-    "id" : "907b3f98-7870-4a52-8091-a5e63812d077",
+    "id" : "cfa6e925-df7d-47f8-9aa2-88cbcbc59b08",
     "isActive" : true,
     "trustedSiteName" : "Avaamo",
     "trustedSiteUrl" : "https://c0.avaamo.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "9edd99d9-25c8-4119-ba9c-d9a1d9f1ce3b",
+    "isActive" : true,
+    "trustedSiteName" : "sanbox",
+    "trustedSiteUrl" : "https://*.sandbox.vf.force.com",
+    "type" : "trustedSitesForScripts"
+  }, {
+    "id" : "dfe18420-bd62-498a-9ef5-699d6ee9f736",
+    "isActive" : true,
+    "trustedSiteName" : "sandbox",
+    "trustedSiteUrl" : "https://intel--crmdevipa--c.sandbox.vf.force.com",
     "type" : "trustedSitesForScripts"
   } ],
   "type" : "site"

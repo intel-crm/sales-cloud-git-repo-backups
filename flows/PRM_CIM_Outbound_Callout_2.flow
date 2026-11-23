@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Outbound_Message</name>
+        <label>Send Outbound Message</label>
+        <locationX>314</locationX>
+        <locationY>695</locationY>
+        <actionName>PRM_CIMOutboundCallout</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>OBMIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PRM_CIMOutboundCallout</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Outbound_Message_1</name>
+        <label>Send Outbound Message</label>
+        <locationX>50</locationX>
+        <locationY>587</locationY>
+        <actionName>PRM_CIMOutboundCallout</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>OBMIds</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>PRM_CIMOutboundCallout</nameSegment>
+    </actionCalls>
+    <apiVersion>58.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <name>Check_For_Failed_Records</name>
+        <label>Check For Failed Records</label>
+        <locationX>446</locationX>
+        <locationY>587</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Failed_Records</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MessageType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OPID Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Failed</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Outbound_Message</targetReference>
+            </connector>
+            <label>Failed Records</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Verify_OPID_Request_Type</name>
+        <label>Verify OPID Request Type</label>
+        <locationX>248</locationX>
+        <locationY>479</locationY>
+        <defaultConnector>
+            <targetReference>Check_For_Failed_Records</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>OPID_Request_Type</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.Core_MessageType__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>OPID Request</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.Core_Status__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Pending</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Send_Outbound_Message_1</targetReference>
+            </connector>
+            <label>OPID Request Type</label>
+        </rules>
+    </decisions>
+    <environments>Default</environments>
+    <interviewLabel>PRM_CIM_Outbound_Callout {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PRM_CIM_Outbound_Callout</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <object>Core_Integration_Outbound_Message__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Scheduled_Path_1</name>
+            <connector>
+                <targetReference>Verify_OPID_Request_Type</targetReference>
+            </connector>
+            <label>Scheduled Path 1</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Scheduled_Path_2</name>
+            <connector>
+                <targetReference>Verify_OPID_Request_Type</targetReference>
+            </connector>
+            <label>Scheduled Path 2</label>
+            <offsetNumber>4</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Scheduled_Path_3</name>
+            <connector>
+                <targetReference>Verify_OPID_Request_Type</targetReference>
+            </connector>
+            <label>Scheduled Path 3</label>
+            <offsetNumber>6</offsetNumber>
+            <offsetUnit>Hours</offsetUnit>
+            <recordField>CreatedDate</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>

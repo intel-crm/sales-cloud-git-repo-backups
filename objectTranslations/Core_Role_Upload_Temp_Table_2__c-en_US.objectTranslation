@@ -12,5 +12,12 @@
         <label><!-- Update Managers Start --></label>
         <name>Core_Update_Managers_Start__c</name>
     </fields>
+    <layouts>
+        <layout>Role_Upload_Temp_Table_2 Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

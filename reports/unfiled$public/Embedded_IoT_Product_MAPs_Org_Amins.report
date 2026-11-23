@@ -9,12 +9,6 @@
     <columns>
         <field>CUST_CREATED_NAME</field>
     </columns>
-    <columns>
-        <field>CUST_ID</field>
-    </columns>
-    <columns>
-        <field>Core_IPS_MAP_PAR__c.Core_IPS_MAP_Access_Flag__c</field>
-    </columns>
     <description>Product MAPs for IoTG (excludes Migration MAPs)</description>
     <filter>
         <criteriaItems>

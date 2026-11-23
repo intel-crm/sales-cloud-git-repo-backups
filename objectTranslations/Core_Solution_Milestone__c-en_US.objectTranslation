@@ -1105,6 +1105,17 @@
             <translation><!-- vRAN/MEC --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Solution Milestone Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Milestone Information --></label>
+            <section>Milestone Information</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- Standard Solution Milestone Record Type --></description>
         <label><!-- Solution Milestone --></label>
@@ -1131,5 +1142,9 @@ status. Please recall the approval request to change the owner. --></errorMessag
     <webLinks>
         <label><!-- Core_Recall_Approval --></label>
         <name>Core_Recall_Approval</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Core_SM_Submit_for_Approval --></label>
+        <name>Core_SM_Submit_for_Approval</name>
     </webLinks>
 </CustomObjectTranslation>

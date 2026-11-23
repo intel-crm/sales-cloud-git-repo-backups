@@ -37,6 +37,13 @@
             <value>Design Win</value>
         </criteriaItems>
         <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Yaz Yazawa</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Days_from_Opportunity_Create_to_Su__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
@@ -46,7 +53,7 @@
         <language>en_US</language>
     </filter>
     <format>Tabular</format>
-    <name>Yaz submitted and waiting approval</name>
+    <name>Yaz submitted and waiting approval 2019</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -72,8 +79,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <endDate>2020-12-31</endDate>
+        <endDate>2019-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2020-01-01</startDate>
+        <startDate>2019-01-01</startDate>
     </timeFrameFilter>
 </Report>

@@ -34,14 +34,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
-            <value>3/8/2021 12:00 AM</value>
+            <value>1/1/2019 12:00 AM</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Goal__c.Core_Goal_Owner__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Paul Yates</value>
+            <value>George Lan,Rajiv Gupta,Sankalp Ramanujam,Gary I Interdonato,Vipul Shah,Jay Yankeloff,Judy Lu,Tony Mantione</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -62,7 +62,7 @@
         <value>1</value>
     </params>
     <reportType>CustomEntity$Core_Goal__c</reportType>
-    <scope>team</scope>
+    <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>

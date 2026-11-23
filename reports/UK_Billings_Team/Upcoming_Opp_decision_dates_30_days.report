@@ -46,9 +46,6 @@
         <field>AGE</field>
     </columns>
     <columns>
-        <field>CLOSE_DATE2</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
     </columns>
     <description>UK Billings upcoming opportunity decision dates in the next 30 days or less.</description>
@@ -99,6 +96,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

@@ -74,6 +74,7 @@
         <name>PRM_Points_Not_Eligible_Ind__c</name>
     </fields>
     <fields>
+        <help><!-- Update Reason incase of any updates to Points Not Eligible indicator --></help>
         <label><!-- Points Not Eligible Reason Text --></label>
         <name>PRM_Points_Not_Eligible_Reason_Txt__c</name>
     </fields>
@@ -105,6 +106,24 @@
             <translation><!-- Web --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>PRM_IPAMembership Attribute 1PID</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PRM_IPAMembership Attributes Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- PRM IPAMembership Attributes_Update --></label>
+        <name>PRM_IPAMembership_Attributes_Update</name>
+    </quickActions>
     <recordTypes>
         <description><!-- IPA Membership Attributes for Location accounts --></description>
         <label><!-- Intel Account Attributes --></label>

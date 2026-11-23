@@ -16,10 +16,6 @@
                 <field>Core_MDF_Reference_Claim_Nbr__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Account_Node_nm__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_Reason_Cd__c</field>
             </layoutItems>
@@ -38,12 +34,8 @@
                 <field>Core_MDF_Amount_Amt__c</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Core_MDF_Adjustment_Status_nm__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_MDF_Bypass_Amt_Val_Ind__c</field>
+                <field>Core_MDF_Adjustment_Status_nm__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>

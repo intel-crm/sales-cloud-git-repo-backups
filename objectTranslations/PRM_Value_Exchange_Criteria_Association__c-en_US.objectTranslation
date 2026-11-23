@@ -38,5 +38,9 @@
         <label><!-- Value --></label>
         <name>PRM_Value_Txt__c</name>
     </fields>
+    <fields>
+        <label><!-- value --></label>
+        <name>value__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

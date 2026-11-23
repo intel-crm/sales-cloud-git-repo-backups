@@ -35,17 +35,11 @@
     <columns>
         <field>Opportunity.Core_Opportunity_Type__c</field>
     </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Vendor__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
-    </columns>
     <crossFilters>
         <operation>without</operation>
         <primaryTableColumn>OPPORTUNITY_ID</primaryTableColumn>
-        <relatedTable>Core_Oppty_KPI_New__c</relatedTable>
-        <relatedTableJoinColumn>Core_KPI_Opportunity__c</relatedTableJoinColumn>
+        <relatedTable>Core_Opportunity_KPI__c</relatedTable>
+        <relatedTableJoinColumn>Core_Opp_KPI_Opportunity__c</relatedTableJoinColumn>
     </crossFilters>
     <filter>
         <criteriaItems>
@@ -60,14 +54,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>cook,gordon,descheemaeker,o&apos;donnell,swanger,weston,Herrmann,haynes,wood</value>
+            <value>cook,gordon,descheemaeker,o&apos;donnell,swanger,weston,Herrmann,haynes,rodman,mushahwar</value>
         </criteriaItems>
         <criteriaItems>
             <column>CLOSE_DATE</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>lessThan</operator>
-            <value>12/31/2021</value>
+            <value>1/1/2021</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>

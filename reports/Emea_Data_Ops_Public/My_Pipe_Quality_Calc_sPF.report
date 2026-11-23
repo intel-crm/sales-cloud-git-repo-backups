@@ -63,11 +63,15 @@
     <columns>
         <field>Opportunity.Core_Last_Activity_Date__c</field>
     </columns>
-    <columns>
-        <field>RECORDTYPE</field>
-    </columns>
     <description>MySalesforceData</description>
     <filter>
+        <criteriaItems>
+            <column>RECORDTYPE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Opportunity.Core_New_Opportunity,Opportunity.Core_Opportunity</value>
+        </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>

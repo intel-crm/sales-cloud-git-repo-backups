@@ -2,14 +2,14 @@
 *Class Name:  Core_IPS_Project_Controller
 *Version     : 1.0 
 *Created Date: Apr 23 2018
-*Description:  Controller for Core_addProjectAccounts Page 
+*Description:  Controller for Core_addProjectAccounts Page
 *Modification Log :
 * Developer                   Date                        Description
 * ----------------------------------------------------------------------------------------------                 
 * Sugandha                    23/04/2018              Modified(UserStory US89550 Iteration 10)
 * Aparna                      15/6/2018               Modified for US104027 & US108704 -PSG Independent Release
 ************************************************************************************************/
-global with sharing class  Core_IPS_Project_Controller{
+global class  Core_IPS_Project_Controller{
     /*Modified by Aayushi 07-11-2017 US79852 & US80374*/
     global static List<IPSAccountWrapper> acctWrapperList{get;set;}
     public List<IPSMemberWrapper> contWrapperList{get;set;}
@@ -25,14 +25,9 @@ global with sharing class  Core_IPS_Project_Controller{
     public boolean errorMessage{get;set;}
     public String errorMsg{get;set;}
     public String strAccountInfo{get;set;}
-    public String strAccountMembersInfo{get;set;} //START--US964686-- 30/4/2021 -- Rekha -- new variable to fetch the members value
-    public boolean alreadySubmitted{get;set;}
-    public String status=null;
-    public String mpndaErrorMsg=null; 
-    public String nonNDAErrorMsg=null;           //modified by Aayushi US95034
-    public Static boolean checkCodeChange=false;
-    public boolean isPrivateProject = false;
-    
+    public boolean AlreadySubmitted{get;set;}
+    public String status=null,mpndaErrorMsg=null,nonNDAErrorMsg=null;           //modified by Aayushi US95034
+    public Static boolean checkCodeChange=false;    
 
     @TestVisible global class IPSAccountWrapper{
         public account acc{get;set;}
@@ -41,59 +36,49 @@ global with sharing class  Core_IPS_Project_Controller{
         public String participantTypeSelected{get;set;}
         //Added for US104027 by Aparna
         public string ownrname{get;set;} 
-        public string unifiedID{get;set;}
-        public string cimID{get;set;}
+        public string cimId{get;set;}
         public string accntID{get;set;} //Added by Aparna for US108704-PSG Independent Release
         //end
     }
-   
+    
     @TestVisible public class IPSMemberWrapper{
         public contact con{get;set;}
         public boolean selected{get;set;}
-        public User usr{get;set;} 
+        public User Usr{get;set;}
     }
     
     public core_ips_project_controller(){
         
-        if(!String.isBlank(ApexPages.currentPage().getParameters().get('projectId'))){
-            // Unencoded Formulas in Script Tags XSS Fix - TWC745-7251
-            projectId= ApexPages.currentPage().getParameters().get('projectId')?.escapeHtml4();
-            //projectId= String.escapeSingleQuotes(ApexPages.currentPage().getParameters().get('projectId'));//pramodh
-
-        }        
+        projectId= ApexPages.currentPage().getParameters().get('projectId');
         //Set<Id> existingAccountIdSet = getExistingIPSAccountIds();
         participantTypes = getParticipantTypes();
         //acctWrapperList = new List<IPSAccountWrapper>();
         //acctWrapperList = getAccountsWrapper(existingAccountIdSet,participantTypes);
         /*added by Aayushi 07-11-2017 US79852*/
-        Core_IPS_Labels__c ipsLabels = Core_IPS_Labels__c.getValues('CoreStatus_Draft');
+        Core_IPS_Labels__c IpsLabels = Core_IPS_Labels__c.getValues('CoreStatus_Draft');
         status=IpsLabels.Value__c;
         /*added by Aayushi 07-11-2017 US80374*/
-        Core_IPS_Labels__c ipsLabelsMPNDA = Core_IPS_Labels__c.getValues('Core_IPS_MPNDA_ErrorMsg');
+        Core_IPS_Labels__c IpsLabelsMPNDA = Core_IPS_Labels__c.getValues('Core_IPS_MPNDA_ErrorMsg');
         mpndaErrorMsg=IpsLabelsMPNDA.Value__c;
         //added by Aayushi 02-23-2018 US80368
-        Core_IPS_Labels__c ipsLabelsnonNDA = Core_IPS_Labels__c.getValues('Core_IPS_NonNDA_ErrorMSg');
+        Core_IPS_Labels__c IpsLabelsnonNDA = Core_IPS_Labels__c.getValues('Core_IPS_NonNDA_ErrorMSg');
         nonNDAErrorMsg=IpsLabelsnonNDA.Value__c;
         //Set<Id> existingConIdSet = getExistingIPSContIds(); //commented by amritesh 11/12/2017 - US80097
         contWrapperList = new List<IPSMemberWrapper>();
-        //contWrapperList = getContactsWrapper(existingConIdSet);  //commented by amritesh 11/12/2017 - US80097 
+        //contWrapperList = getContactsWrapper(existingConIdSet);  //commented by amritesh 11/12/2017 - US80097      
         throwPageException();
-        
     }
     
 /*START*/    
 // Code for submitting IPS Proj Products for Approval and changing the Status to Submitted-Pending.
     public core_ips_project_controller(ApexPages.standardController controller){
         projectId = controller.getId();
-        //FLS Check Added - Yasasvi
-        if(core_ips_project__c.SObjectType.getDescribe().isAccessible()){
-            project = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c, (Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id=:controller.getId()];        
-        }
+        project = [select id, Name, core_status__c, Core_Number_of_Accounts__c, Core_Number_of_Products__c,Core_Number_of_Users__c,(Select id,Status__c,Core_IPS_IsAutoApprove__c, Core_Supported_Product__c, Core_Supported_Product__r.Core_Flag_Status__c, Core_IPS_Project__c,Core_IsSubmitted_Header__c from IPS_Products__r) from core_ips_project__c where id=:controller.getId()];        
         /*added by Aayushi 07-11-2017 US79852*/
-        Core_IPS_Labels__c ipsLabels = Core_IPS_Labels__c.getValues('CoreStatus_Draft');
+        Core_IPS_Labels__c IpsLabels = Core_IPS_Labels__c.getValues('CoreStatus_Draft');
         status=IpsLabels.Value__c;
         /*added by Aayushi 07-11-2017 US80374*/
-        Core_IPS_Labels__c ipsLabelsMPNDA = Core_IPS_Labels__c.getValues('Core_IPS_MPNDA_ErrorMsg');
+        Core_IPS_Labels__c IpsLabelsMPNDA = Core_IPS_Labels__c.getValues('Core_IPS_MPNDA_ErrorMsg');
         mpndaErrorMsg=IpsLabelsMPNDA.Value__c;
     }
     
@@ -111,20 +96,18 @@ global with sharing class  Core_IPS_Project_Controller{
         
 
             AlreadySubmitted = false;
-            if (Schema.sObjectType.core_ips_project__c.fields.core_status__c.isUpdateable()) {
-                project.core_status__c = 'Submitted Pending';
-            }
+            project.core_status__c = 'Submitted Pending';
             update project;
         
         /*START*/ 
         //added by Roshan
-        List<Core_IPS_Product__c> updateIPSProductList = new List<Core_IPS_Product__c>();
-            for(Core_IPS_Product__c iPSProductRecord: project.IPS_Products__r){
+        List<Core_IPS_Product__c> UpdateIPSProductList = new List<Core_IPS_Product__c>();
+            for(Core_IPS_Product__c IPSProductRecord: project.IPS_Products__r){
                 IPSProductRecord.Core_IsSubmitted_Header__c = true;
                 if(IPSProductRecord.Core_Supported_Product__r.Core_Flag_Status__c == 'Auto Approve'){
                     IPSProductRecord.Core_IPS_IsAutoApprove__c = true;
                     IPSProductRecord.Status__c = 'Auto Approve';
-                }   
+                }
                 UpdateIPSProductList.add(IPSProductRecord);
             }        
         update UpdateIPSProductList;       
@@ -143,14 +126,17 @@ global with sharing class  Core_IPS_Project_Controller{
        for(Core_ips_account__c ipsAct:ipsAcctList){
            selActSet.add(ipsAct.core_account__c);
        }
+       System.debug('Selective Accounts:'+selActSet);
        List<contact> contList;
        List<User> UserList;
+       system.debug('existing???'+existingConIdSet);
        
        if(existingConIdSet!=null && existingConIdSet.size()>0)
            contList = [select id, firstName, lastName,account.name from contact where Core_IPS_Active__c = true and accountId in :selActSet and id not in :existingConIdSet];
        else
            contList = [select id, firstName, lastName, account.name from contact where Core_IPS_Active__c = true and accountId in :selActSet];
         
+       System.debug('Project members Eligible:'+contList);
        if(contList <> null && contList.size()>0)
        UserList = new List<User>([Select id, contactid from User where Contactid IN:contList  and IsActive =true]);
         //added by amritesh 11/12/2017 - US80097 -start
@@ -167,6 +153,7 @@ global with sharing class  Core_IPS_Project_Controller{
            wrapper.con=con;
            //commented by amritesh 11/12/2017 - US80097
            //for(User u:UserList){
+           //    system.debug('!?!'+u);
            //    if(U.contactid == con.id)
            //        wrapper.Usr=u;               
            //}
@@ -175,6 +162,7 @@ global with sharing class  Core_IPS_Project_Controller{
            if(mapContactId2User.containsKey(con.Id)) {
                 wrapper.Usr=mapContactId2User.get(con.Id);
            }
+           system.debug('???'+wrapper);
            wrapperInContext.add(wrapper);
        }
         
@@ -183,11 +171,12 @@ global with sharing class  Core_IPS_Project_Controller{
         }else{
             displayAddMemberSection = false;
         }
+       System.debug('Wrapper:'+wrapperInContext);
        return wrapperInContext;
     }*/
     
     @RemoteAction
-    global static List<IPSAccountWrapper> getAccountsWrapper(string projectId){
+    global static List<IPSAccountWrapper> getAccountsWrapper(string ProjectId){
     
          acctWrapperList = new List<IPSAccountWrapper>();
          Set<Id> existingAccountIdSet = getExistingIPSAccountIds(ProjectId);
@@ -202,21 +191,13 @@ global with sharing class  Core_IPS_Project_Controller{
                 wrapper.selected = false;
                 //Added for US104027 by Aparna
                 wrapper.ownrname= acc.owner.Name;
-                /*--START--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-                // start 10/7/2024 venkatesh added CIM ID and Businesss_Party_Id 
-                if(label.Core_IPS_UCD_Toggle_Switch == '1'){
-                    wrapper.unifiedID = acc.Core_Business_Party_Id__c;
-                }else if(label.Core_IPS_UCD_Toggle_Switch == '0'){
-                    wrapper.cimID = acc.Core_CIM_ID__c; 
-                }   
-                // stop 10/7/2024 venkatesh added CIM ID and Businesss_Party_Id          
-                /*--Stop--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-                wrapper.accntID = acc.Id; //Added by Aparna for US108704-PSG Independent Release
+                wrapper.cimId = acc.Core_CIM_ID__c;
+                wrapper.accntID = acc.id; //Added by Aparna for US108704-PSG Independent Release
                 //end by Aparna
                 acctWrapperList.add(wrapper);
             }
         }
-         if(acctWrapperList.size()>0){
+        if(acctWrapperList.size()>0){
             //displayAddSection = true;
         }else{
             //displayAddSection = false;
@@ -225,29 +206,22 @@ global with sharing class  Core_IPS_Project_Controller{
 
     }
     
-    static Set<id> getExistingIPSAccountIds(string projectId){
-         //existingAccounts = [select id, name,core_account__r.name, core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId];
+    static Set<id> getExistingIPSAccountIds(string ProjectId){
+        //existingAccounts = [select id, name,core_account__r.name, core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId];
         // if(existingAccounts!=null && existingAccounts.size()>0){
             // //displayExistingAccounts=true;
         // }else{
             // //displayExistingAccounts =false;
-        // }        
-         Set<Id> existingAccountIdSet = new Set<id>();
+        // }
+        Set<Id> existingAccountIdSet = new Set<id>();
         //Added Acc Owner Name and CIM Id for US104027 by Aparna
-        //FLS Check Added - Yasasvi
-        if(core_ips_account__c.SObjectType.getDescribe().isAccessible()){
-            /*--START--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-            //10/7/2024 venkatesh added CIM ID and Businesss_Party_Id
-            for(core_ips_account__c ipsAcct:[select id, name,core_account__r.name,core_account__r.Core_Business_Party_Id__c,core_account__r.Core_CIM_ID__c,core_account__r.Owner.Name,core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId]){
-            /*--Stop--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-                existingAccountIdSet.add(ipsAcct.core_account__c);
-            }
+        for(core_ips_account__c ipsAcct:[select id, name,core_account__r.name,core_account__r.Core_CIM_ID__c,core_account__r.Owner.Name,core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId]){
+            existingAccountIdSet.add(ipsAcct.core_account__c);
         }
-        if(existingAccountIdSet.size()>0){
+        if(existingAccountIdSet.size()>0)
             return existingAccountIdSet;
-        } else{
+        else
             return null;
-        }    
     }
     
     /* commented by amritesh 11/12/2017 - US80097
@@ -258,7 +232,7 @@ global with sharing class  Core_IPS_Project_Controller{
         }else{
             displayExistingMembers=false;
         }
-
+        
         Set<Id> existingConIdSet = new Set<id>();
         for(Core_IPS_Project_Member__c ipsMem:existingMembers){
             existingConIdSet.add(ipsMem.core_ips_contact__c);
@@ -269,7 +243,6 @@ global with sharing class  Core_IPS_Project_Controller{
             return null;
     }
     */
-    
     
     @TestVisible private List<SelectOption> getParticipantTypes(){
         List<SelectOption> participantTypes = new List<SelectOption>();
@@ -286,16 +259,14 @@ global with sharing class  Core_IPS_Project_Controller{
         checkVal=addAccounts();
         
         if(checkVal==0){
-        PageReference pg = new PageReference('/apex/Core_addProjectAccounts?projectId='+projectId);
+        PageReference Pg = new PageReference('/apex/Core_addProjectAccounts?projectId='+projectId);
         Pg.setRedirect(true);
         return Pg;
         }
         
-        else if(checkVal==1){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, nonNDAErrorMsg)); 
-                             return null;
+        else if(checkVal==1){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, nonNDAErrorMsg)); return null;
         }
-        else if(checkVal==2){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, mpndaErrorMsg)); 
-                             return null;
+        else if(checkVal==2){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, mpndaErrorMsg)); return null;
              //end
         }
         else {return null;}             //modified my Aayushi 17/04/2018 DE37603
@@ -308,85 +279,51 @@ global with sharing class  Core_IPS_Project_Controller{
         checkVal=addAccounts();
         
         if(checkVal==0){
-        return new PageReference('/'+projectId); 
+        return new PageReference('/'+projectId);
         }
-        else if(checkVal==1){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, nonNDAErrorMsg)); 
-                             return null;}
-        else if(checkVal==2){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, mpndaErrorMsg)); 
-                             return null;}
+        else if(checkVal==1){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, nonNDAErrorMsg)); return null;
+        }
+        else if(checkVal==2){ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error, mpndaErrorMsg)); return null;}
          //end
         else {return null;       }                  //modified my Aayushi 17/04/2018 DE37603
     }
     
     //return type modified by Aayushi US80368
     public Integer addAccounts(){
-        /*--START--US964686-- 30/4/2021 -- Rekha -- get the members information and put it in map--*/
-        List<string> participantsInfo;
-        Map<String,String> participantsMap = new Map<String,String>();
-        if (projectId != null && projectId != '' && Core_IPS_Project__c.SObjectType.getDescribe().isQueryable()) {
-            Core_IPS_Project__c project = [Select Id, Core_IPS_Private__c from Core_IPS_Project__c where Id= :projectId];
-            isPrivateProject = project?.Core_IPS_Private__c;
-        }
-        if (strAccountMembersInfo != null && strAccountMembersInfo != '') {
-            List<string> lsttparticipantTypeSelected = strAccountMembersInfo.split(',');
-            for (String participants: lsttparticipantTypeSelected) {
-                if (participants != null && participants != '') {
-                    participantsInfo = participants.split('=');
-                    participantsMap.put(participantsInfo[0], participantsInfo[1]);
-                }
-            }
-        }
-
-        /*--End--US964686-- 30/4/2021 -- Rekha -- get the members information and put it in map--*/
         if(strAccountInfo !=null && strAccountInfo!='')
         {
             List<core_ips_account__c> ipsAcctList = new list<Core_ips_account__c>();
-            List<string> lstAccountNeedToAdd = strAccountInfo.split(',');
+            List<string> LstAccountNeedToAdd = strAccountInfo.split(',');
+           
             if(LstAccountNeedToAdd.size() > 0)
             {
                 for(string strAccount : LstAccountNeedToAdd)
                 {
+                   
                    if(strAccount!='')
                    {
-                    List<string> lstAccountparticipantTypeSelected =  strAccount.split('=');
+                   system.debug('>>>' + strAccount);
+                    List<string> LstAccount_participantTypeSelected =  strAccount.split('=');
                     core_ips_account__c ipsAcct = new core_ips_account__c();
-                   if (Schema.sObjectType.core_ips_account__c.fields.core_account__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/       
-                        ipsAcct.core_account__c = ((id)LstAccountParticipantTypeSelected[0]);
-                    }
-                       /*--START--US964686-- 30/4/2021 -- Rekha -- assign member value core members field--*/
-                       if (participantsMap.isEmpty() == false && participantsMap?.containsKey(LstAccountParticipantTypeSelected[0])) {
-                           String mememberInfo = participantsMap.get(LstAccountParticipantTypeSelected[0]);
-                           if (mememberInfo != null && mememberInfo != '' && isPrivateProject == false)
-                           ipsAcct.core_members__c = mememberInfo;
-                           else {
-                               ipsAcct.core_members__c = 'Selective';
-                                } 
-                       } else {
-                           //if (Schema.sObjectType.core_ips_account__c.fields.core_members__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/    
-                               ipsAcct.core_members__c = 'Selective';
-                           //}
-                       } 
-                       /*--End--US964686-- 30/4/2021 -- Rekha -- assign member value core members field--*/    
-                       //}    
+                    ipsAcct.core_account__c = ((id)LstAccount_participantTypeSelected[0]);
                     //modified by Aayushi US95034
-                       /* if(LstAccountParticipantTypeSelected[1]=='None')
+                    ipsAcct.core_members__c = 'Selective';
+                                         
+                       /* if(LstAccount_participantTypeSelected[1]=='None')
                             ipsAcct.core_members__c = 'Selective';
                         else
-                            ipsAcct.core_members__c = LstAccountParticipantTypeSelected[1];*/
+                            ipsAcct.core_members__c = LstAccount_participantTypeSelected[1];*/
                      
-                     if (Schema.sObjectType.core_ips_account__c.fields.core_ips_project__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/    
-                         ipsAcct.core_ips_project__c = projectId;
-                     }
-                    // if (Schema.sObjectType.core_ips_account__c.fields.core_status__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/  
-                         ipsAcct.core_status__c= 'Active';
-                     //}
+                         
+                     ipsAcct.core_ips_project__c = projectId;
+                     ipsAcct.core_status__c= 'Active';
                      ipsAcctList.add(ipsAcct);
                     }
                    
                    
                 }
             }
-           // for(IPSAccountWrapper wrapper:acctWrapperList){
+            // for(IPSAccountWrapper wrapper:acctWrapperList){
                 // if(wrapper.selected){
                     // core_ips_account__c ipsAcct = new core_ips_account__c();
                     // ipsAcct.core_account__c = wrapper.acc.id;
@@ -411,10 +348,7 @@ global with sharing class  Core_IPS_Project_Controller{
                   ipsAcctId.add(ipsAcct.core_ips_project__c)  ;
                 }
                 if(ipsAcctId.size()>0){
-                    //FLS Check Added - Yasasvi
-                    if(Core_IPS_Project__c.SObjectType.getDescribe().isAccessible()){
-                        proj=[Select Id,Core_Number_of_Accounts__c,Core_MPNDA__c from Core_IPS_Project__c where Id= :ipsAcctId.get(0) LIMIT 1];
-                    }
+                   proj=[Select Id,Core_Number_of_Accounts__c,Core_MPNDA__c from Core_IPS_Project__c where Id= :ipsAcctId.get(0) LIMIT 1];
                 }
                     if(ipsAcctList.size()>1){
                         noOfAcct=Integer.valueOf(proj.Core_Number_of_Accounts__c)+2;
@@ -423,15 +357,12 @@ global with sharing class  Core_IPS_Project_Controller{
                             accId.add(projAcct.core_account__c);
                         }
                             if(accId.size()>0){
-                                //FLS Check Added - Gangadhar
-                            if(Account.SObjectType.getDescribe().isAccessible()){
-                                accountList=[Select Id,Core_CNDA_Number__c from Account where Id in :accId];
-                                }
-                            }        
+                      accountList=[Select Id,Core_CNDA_Number__c from Account where Id in :accId];
+                            }
                         if(accountList!=null){
                         for(Account acc: accountList){
                             if(String.isBlank(acc.Core_CNDA_Number__c)){
-                                return 1; 
+                                return 1;
                             }
                         }
                         }
@@ -445,13 +376,12 @@ global with sharing class  Core_IPS_Project_Controller{
                     }
                 
                 
-               //acctWrapperList = new List<IPSAccountWrapper>();
-               //acctWrapperList = getAccountsWrapper(getExistingIPSAccountIds(),getParticipantTypes());
+                //acctWrapperList = new List<IPSAccountWrapper>();
+                //acctWrapperList = getAccountsWrapper(getExistingIPSAccountIds(),getParticipantTypes());
                 //added try catch block Aayushi 17/04/2018 DE37603
                 try{
                     insert ipsAcctList;}
-                catch(Exception e){  
-                    return 3;  }
+                catch(Exception e){  System.debug('Error Message: '+e.getMessage()); return 3;  }
    
             }
             
@@ -476,14 +406,12 @@ global with sharing class  Core_IPS_Project_Controller{
     
     public PageReference actionMethod(){
     //Modified SOQL for US104027 by Aparna
-    /*--START--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-    //10/7/2024 venkatesh added CIM ID and Businesss_Party_Id
-    existingAccounts = [select id, name,core_account__r.name,core_account__r.owner.Name,core_account__r.Core_Business_Party_Id__c,core_account__r.Core_CIM_ID__c,core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId];
-    /*--Stop--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
+    existingAccounts = [select id, name,core_account__r.name,core_account__r.owner.Name,core_account__r.Core_CIM_ID__c,core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c= :projectId];
     /*Set<Id> existingAccountIdSet = new Set<id>();
         for(core_ips_account__c ipsAcct:[select id, name,core_account__r.name, core_account__c, Core_Members__c from core_ips_account__c where core_ips_project__c =: projectId]){
             existingAccountIdSet.add(ipsAcct.core_account__c);
-        }*/
+        }
+        system.debug('existing acc'+existingAccountIdSet);*/
     return null;
     }
     
@@ -493,21 +421,11 @@ global with sharing class  Core_IPS_Project_Controller{
         for(IPSMemberWrapper wrapper:contWrapperList){
             if(wrapper.selected){
                 Core_IPS_Project_Member__c ipsMem = new Core_IPS_Project_Member__c();
-               // if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_IPS_Contact__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
-                    ipsMem.Core_IPS_Contact__c = wrapper.con.id;
-                //}
-               // if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_User__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
-                    ipsMem.Core_User__c = wrapper.Usr.id;
-                //}
-                if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.core_ips_project__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
-                    ipsMem.core_ips_project__c = projectId;
-                }
-                //if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.Core_Selective_Member__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
-                    ipsMem.Core_Selective_Member__c = true;
-                //}
-                //if (Schema.sObjectType.Core_IPS_Project_Member__c.fields.core_status__c.isCreateable()) { /**--US1038991--08/07/2021--HARITHA--FLS Check for security vulnerability--**/
-                    ipsMem.core_status__c= 'Active';
-                //}
+                ipsMem.Core_IPS_Contact__c = wrapper.con.id;
+                ipsMem.Core_User__c = wrapper.Usr.id;
+                ipsMem.core_ips_project__c = projectId;
+                ipsMem.Core_Selective_Member__c = true;
+                ipsMem.core_status__c= 'Active';
                 ipsMemList.add(ipsMem);
             }
         }
@@ -532,22 +450,17 @@ global with sharing class  Core_IPS_Project_Controller{
     @TestVisible private boolean throwPageException(){
         if(String.isBlank(projectId)){
        ApexPages.addmessage(new ApexPages.message(ApexPages.severity.Error,'Invalid URL'));
-       errorMessage=true;
-            return true;
+       errorMessage=true;return true;
         }
         User u = [select profile.name from user where id=:userInfo.getUserId()];
-        //FLS Check Added - Yasasvi
-        if(core_ips_project__c.SObjectType.getDescribe().isAccessible()){
-            project = [select id,Core_Number_of_Accounts__c from core_ips_project__c where id=:projectId limit 1];
-        }
+        project = [select id,Core_Number_of_Accounts__c from core_ips_project__c where id=:projectId limit 1];
         List<Core_IPS_Account__c> projAccList=[Select Id,Core_Account__r.Core_CNDA_Number__c from Core_IPS_Account__c where Core_IPS_Project__c =:projectId];
         boolean profilefound = false;
-        List<String> profileList = System.Label.Core_IPS_Profiles_AddAccountPrevention.split(';');
-        for(String profile: ProfileList){
-            if(Profile == u.profile.name){
+        List<String> ProfileList = System.Label.Core_IPS_Profiles_AddAccountPrevention.split(';');
+        for(String Profile: ProfileList){
+            if(Profile == u.profile.name)
                 profilefound = true;    
-            }   
-        } 
+        }
         // start Modified by Aayushi for DE33732 13/12/2017 
       /*  if(project!=null && profilefound){
             //Modified by Aayushi 2-11-17 US79852
@@ -562,9 +475,8 @@ global with sharing class  Core_IPS_Project_Controller{
         for(Core_IPS_Account__c projAcc: projAccList){
         If(String.isBlank(projAcc.Core_Account__r.Core_CNDA_Number__c)){
         errorMsg =String.isNotBlank(Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_cndaErrorMsg')) ? Core_IPS_Helper_Utility.getIPSLabel('Core_IPS_cndaErrorMsg') : 'Any existing Account must have a CNDA prior to adding additional Accounts to a Premier Support Project';
-         displayErrorSection = true; 
-            return true;
-         break; 
+         displayErrorSection = true; return true;
+         break;
           }
          }
         }
@@ -573,13 +485,11 @@ global with sharing class  Core_IPS_Project_Controller{
         Boolean hasEditAccess = hasProjectEditAccess(projectId, UserInfo.getUserId());
         if(!hasEditAccess) {
             errorMsg = String.isNotBlank(Core_IPS_Helper_Utility.getIPSLabel('noPermissiontoAddAccount')) ? Core_IPS_Helper_Utility.getIPSLabel('noPermissiontoAddAccount') : 'You do not have permission to Add Account';
-            displayErrorSection = true; 
-            return true;
+            displayErrorSection = true; return true;
         }
         //check for edit access , Added by Amritesh 11/12/2017 - US80097 -end
-        if(displayErrorSection==null) {
-            displayErrorSection=false;
-        }
+        if(displayErrorSection==null) 
+        displayErrorSection=false;
         return false;
     }
     
@@ -592,7 +502,7 @@ global with sharing class  Core_IPS_Project_Controller{
         User u = [select id, profile.name from user where profileId=:userinfo.getProfileId() limit 1];
         Set<string> prflNameSet = new Set<string>();
         prflNameSet.addAll(Label.Core_IPS_ProjAccount_ProfileSet.split(';'));
-        
+        system.debug('test1'+prflNameSet);
         if(prflNameSet.contains(u.profile.name)){
             return System.Label.IPS_User_FAE;
         }else if(u.profile.name.contains('IPS Agent')){
@@ -605,20 +515,14 @@ global with sharing class  Core_IPS_Project_Controller{
         return null;
     }
     
-    public static List<Account> extAcctList;
     public static List<Account> getAccounts(Set<id> extAcctIdSet){
         //start added by Aayushi 02-23-2018 US80368
         List<Account> acctList=new List<Account>();
         Boolean checkNDAAccount=false;
         if(extAcctIdSet!=null && extAcctIdSet.size()>0){
         //Modified SOQL for US104027 by Aparna on 18/6/2018
-        //FLS Check Added - Yasasvi
-     if(Account.SObjectType.getDescribe().isAccessible()){
-        /*--START--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-        //10/7/2024 venkatesh added CIM ID along with Businesss_Party_Id
-          extAcctList= [Select Id,name,Core_CNDA_Number__c,Owner.Name,Core_Business_Party_Id__c,Core_CIM_ID__c from Account where Id in :extAcctIdSet ];
-        /*--Stop--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id--*/
-     }
+     List<Account> extAcctList= [Select Id,name,Core_CNDA_Number__c,Owner.Name,Core_CIM_ID__c from Account where Id in :extAcctIdSet ];
+       
             if(extAcctList.size()>0 && extAcctList!=null )
         {
             for(Account acct: extAcctList) {
@@ -643,11 +547,10 @@ global with sharing class  Core_IPS_Project_Controller{
     }else{*/
             acctList = getAllIPSAccounts(extAcctIdSet,checkNDAAccount); //modified by Aayushi US80368
         //}
-        if(acctList!=null && acctList.size()>0){
+        if(acctList!=null && acctList.size()>0)
             return acctList;
-        }else{
+        else
             return null;
-        }    
     }
     
     public static Set<Id> getFAEAccounts(){
@@ -680,11 +583,7 @@ global with sharing class  Core_IPS_Project_Controller{
     }
     
     @TestVisible private Static Set<id> getAccountsByISO(){
-         List<Contact> contList;
-        //FLS Check Added - Yasasvi
-        if(Contact.SObjectType.getDescribe().isAccessible()){
-            contList = [select id, name, accountid from Contact where Core_IPS_Intel_Support_Owner__c=:userInfo.getUserId()];
-        }
+        List<Contact> contList = [select id, name, accountid from Contact where Core_IPS_Intel_Support_Owner__c=:userInfo.getUserId()];
         Set<Id> acctIdSet = new Set<Id>();
         for(Contact con:contList){
             acctIdSet.add(con.accountId);
@@ -702,11 +601,7 @@ global with sharing class  Core_IPS_Project_Controller{
     // }
     
     @TestVisible private static Set<id> getAccountsByTeam(){
-        List<AccountShare> acctTeamMemberList;
-        //FLS Check Added - Yasasvi
-        if(accountshare.SObjectType.getDescribe().isAccessible()){
-        acctTeamMemberList = [select accountid from accountshare where userorgroupid=:userInfo.getUserId() and rowcause in ('Team') and caseaccesslevel in ('Edit')];
-        }
+        List<AccountShare> acctTeamMemberList = [select accountid from accountshare where userorgroupid=:userInfo.getUserId() and rowcause in ('Team') and caseaccesslevel in ('Edit')];
         Set<id> acctIdSet = new Set<Id>();
         for(AccountShare share:acctTeamMemberList){
             acctIdSet.add(share.accountId);
@@ -715,11 +610,7 @@ global with sharing class  Core_IPS_Project_Controller{
     }
     
     public static Set<id> getManuallySharedAccounts(){
-         List<AccountShare> manuallySharedAccountList;
-        //FLS Check Added - Yasasvi
-        if(AccountShare.SObjectType.getDescribe().isAccessible()){
-            manuallySharedAccountList = [select accountid from accountshare where userorgroupid=:userInfo.getUserId() and rowcause in ('Owner')];
-        }
+        List<AccountShare> manuallySharedAccountList = [select accountid from accountshare where userorgroupid=:userInfo.getUserId() and rowcause in ('Owner')];
         Set<id> acctIdSet = new Set<Id>();
         for(AccountShare share: manuallySharedAccountList){
             acctIdSet.add(share.accountId);
@@ -731,52 +622,37 @@ global with sharing class  Core_IPS_Project_Controller{
     @TestVisible private static List<Account> getAllIPSAccounts(Set<Id> acctIdSet,Boolean checkNDAAccount){
          //start modified by Aayushi 02-23-2018 US80368
         List<Account> acctList=new List<Account>();
-        if(acctIdSet!=null && acctIdSet.size()>0 && checkNDAAccount){
+        if(acctIdSet!=null && acctIdSet.size()>0 && checkNDAAccount)
             //Modified SOQL for US104027-PSG Independent Release by Aparna 
-            //FLS Check Added - Yasasvi
-            if(Account.SObjectType.getDescribe().isAccessible()){
-                //US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id
-                 //10/7/2024 venkatesh added CIM ID along with Businesss_Party_Id
-                acctList = [select id,name,owner.Name,Core_Business_Party_Id__c,Core_CIM_ID__c from Account where Core_IPS_Active__c=true and (Core_CNDA_Number__c!=null or Core_CNDA_Number__c!='') and id not in :acctIdSet];
-            }  
-        }else if(acctIdSet!=null && acctIdSet.size()>0 && !checkNDAAccount)
+            acctList = [select id,name,owner.Name,Core_CIM_ID__c from Account where Core_IPS_Active__c=true and (Core_CNDA_Number__c!=null or Core_CNDA_Number__c!='') and id not in :acctIdSet];
+            
+        else if(acctIdSet!=null && acctIdSet.size()>0 && !checkNDAAccount)
         {
-            acctList=null;
+           acctList=null;
         }
         //end of modification aayushi
-        else{
+        else
         //Added Owner name and CIM ID in SOQL for US104027 by Aparna
-        //FLS Check Added - Yasasvi
-            if(Account.SObjectType.getDescribe().isAccessible()){
-                //START--US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id
-                //10/7/2024 venkatesh added CIM ID along with Businesss_Party_Id
-                acctList = [select id,name,owner.name,Core_Business_Party_Id__c,Core_CIM_ID__c from Account where Core_IPS_Active__c=true];
-            }
-        }
+            acctList = [select id,name,owner.name,Core_CIM_ID__c from Account where Core_IPS_Active__c=true];
         return acctList;
  
     }
     
     public static List<Contact> getProjectMembers(Set<Id> acctIdSet){
         List<Contact> contList;
-        if(acctIdSet!=null && acctIdSet.size()>0){
-            //FLS Check Added - Yasasvi
-            if(Contact.SObjectType.getDescribe().isAccessible()){
-                contList = [select id, firstName, lastName, account.name from contact where accountId in :acctIdSet];
-            }
-        }
+        if(acctIdSet!=null && acctIdSet.size()>0)
+            contList = [select id, firstName, lastName, account.name from contact where accountId in :acctIdSet];
         return contList;
     }
     
     public static List<Core_ips_account__c> getSelectiveAccounts(String projectId){
     //Added owner name and cim id in SOQL for US104027 by Aparna
-    //US964686-- 30/4/2024 -- Farooq -- Replaced CIM ID with Businesss_Party_Id
-        List<Core_ips_account__c> ipsAcctList = [select id,Core_Account__r.Owner.name,Core_Account__r.Core_Business_Party_Id__c,core_account__r.Core_CIM_ID__c,core_account__c from core_ips_account__c where core_ips_project__c =:projectId and core_members__c='Selective'];  
+        List<Core_ips_account__c> ipsAcctList = [select id,Core_Account__r.Owner.name,Core_Account__r.Core_CIM_ID__c,core_account__c from core_ips_account__c where core_ips_project__c =:projectId and core_members__c='Selective'];
         return ipsAcctList;
     }
-        
+    
     //method added Added by Amritesh 11/12/2017 - US80097
-    public static Boolean hasProjectEditAccess(Id projectId, Id userId) {
+    public static Boolean hasProjectEditAccess(Id ProjectId, Id UserId) {
         Boolean hasProjectEditAccess = false;
         UserRecordAccess objURA = [SELECT RecordId,HasEditAccess FROM UserRecordAccess WHERE UserId=:UserId AND RecordId=:ProjectId];
         if(objURA!=null) {

@@ -12,7 +12,7 @@
     "components" : [ {
       "componentAttributes" : {
         "detailsTabLabel" : "Details",
-        "engagementManagersOnly" : true,
+        "engagementManagersOnly" : false,
         "engagementTabLabel" : "Engagement",
         "feedTabLabel" : "Feed",
         "recordId" : "{!recordId}",
@@ -204,6 +204,7 @@
         "id" : "5f0e5dc9-cca8-4040-8257-e56446875e49",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -213,6 +214,7 @@
         "id" : "2b5a0748-e0e5-4b9b-8bb1-173bdb9be8b5",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -222,6 +224,7 @@
         "id" : "8585dc0e-4a81-41dd-8ad5-b712032ef87e",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -231,6 +234,7 @@
         "id" : "6cd6a844-cda5-446c-b277-3c21c0e6a176",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -240,6 +244,7 @@
         "id" : "3a4c293b-f6b5-4f6c-83c0-95869960489e",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -249,6 +254,7 @@
         "id" : "d8ee10d8-5ba6-4088-ac8a-d196d256f38f",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -258,6 +264,7 @@
         "id" : "f8c90527-124c-4b0b-b4d8-87ba724b8b71",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -267,6 +274,7 @@
         "id" : "db1b05a9-e34b-4878-8251-bb74d54dfd0b",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -276,6 +284,7 @@
         "id" : "90411dd8-ffb6-4fad-9585-fe24647172f4",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -285,6 +294,7 @@
         "id" : "acf78991-356e-4ef3-b46b-d37fa4bafbb7",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -294,6 +304,7 @@
         "id" : "4bfbb85f-e8c9-4905-9c9c-19d21eaa7f85",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }
@@ -303,6 +314,7 @@
         "id" : "ebe25a4c-9a28-47ee-ab78-5888bf4c0b20",
         "renditionValue" : {
           "componentAttributes" : {
+            "customHeadTags" : "",
             "description" : "{!Record._Object}: {!Record._Title}",
             "title" : "{!Record._Object}: {!Record._Title}"
           }

@@ -2,8 +2,8 @@ import { LightningElement, api, track } from 'lwc';
 
 import displayPointsData from '@salesforce/apex/PRM_AccountActvityOverview.displayPointsData'
 //import ispublished from '@salesforce/label/c.PRM_IsPublished';
-//import isNotpublished from '@salesforce/label/c.PRM_IsNotPublished';
-//import publishedStorefrnt from '@salesforce/label/c.PRM_Published_Storefront'; //IPA2.0 TWC727-3228
+//import isNotpublished from '@salesforce/label/c.PRM_IsNotPublished';//IPA2.0
+import publishedStorefrnt from '@salesforce/label/c.PRM_Published_Storefront'; 
 import total_PointsBalance from '@salesforce/label/c.PRM_PointsBalance';
 import total_PointsExpired from '@salesforce/label/c.PRM_totalPointsExpired';
 import total_SalesData from '@salesforce/label/c.PRM_totalSalesData';
@@ -21,10 +21,10 @@ import IPAHelptextvalue from '@salesforce/label/c.PRM_helptext';
 import IPAAWRHelptextvalue from '@salesforce/label/c.PRM_AWR_HelpText';
 import IPAAWRHelptextPointsExpiring from '@salesforce/label/c.PRM_HelpText_PointsExpiring';
 import IPAHelptextvaluePrevPeriod from '@salesforce/label/c.PRM_helptext_prev';
-//import TotalApprovedOffering from '@salesforce/label/c.PRM_Total_Approved_Offering';//IPA2.0 TWC727-3228
+//import TotalApprovedOffering from '@salesforce/label/c.PRM_Total_Approved_Offering';//IPA2.0
 import NumberOfEmployees from '@salesforce/label/c.PRM_No_of_Employees';
 import PointsCurrentBalance from '@salesforce/label/c.PRM_points_current_balance_info';
-//import TotalApprovedSolutions from '@salesforce/label/c.PRM_Total_Approved_Solutions';//IPA2.0 TWC727-3228
+//import TotalApprovedSolutions from '@salesforce/label/c.PRM_Total_Approved_Solutions';//IPA2.0
 import alertMessage from '@salesforce/label/c.PRM_Partner_Performance_Alert';
 
 export default class Prm_salesAndTrainingCmp extends LightningElement {
@@ -47,7 +47,7 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
     @track IPAAWRHelptextvaluelabel=IPAAWRHelptextvalue;
     @track IPAAWRHelptextPointsExpiringLabel=IPAAWRHelptextPointsExpiring;
     @track IPAHelptextvaluePrevPeriod=IPAHelptextvaluePrevPeriod;
-    //@track TotalApprovedOffering = TotalApprovedOffering;//IPA2.0 TWC727-3228
+    //@track TotalApprovedOffering = TotalApprovedOffering;//IPA2.0
     @track NumberOfEmployees = NumberOfEmployees;
     @track IPAHelpTextPointsCurrentBalance = PointsCurrentBalance;
 	@track total_PointsBalancenbr = 0;
@@ -59,15 +59,13 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
     @track total_AWR_allocatednbr = 0;
     @track total_AWR_remainingnbr = 0;
     @track totalTrainedResourcesnbr = 0;
-    //@track totalApprovedOffering = 0;//IPA2.0 TWC727-3228
+    //@track totalApprovedOffering = 0;//IPA2.0
     @track isLoaded = false;
-    // IPA2.0 TWC727-3228 starts here
-    // @track isPublishedStorefront;
+    //@track isPublishedStorefront;//IPA2.0
     // @track publishedStorefrontText = publishedStorefrnt;
-    // @track isPublishedText;//IPA2.0
-    //@track TotalApprovedSolutions = TotalApprovedSolutions;
-    //@track totalApprovedSolutions = 0;//IPA2.0 
-    // IPA2.0 TWC727-3228 ends here
+    // @track isPublishedText;
+    // @track TotalApprovedSolutions = TotalApprovedSolutions;
+    // @track totalApprovedSolutions = 0;//IPA2.0
 
    // @track published = ispublished;
    // @track notPublished = isNotpublished;
@@ -75,7 +73,7 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
     // label = {
     //     ispublished,
     //     isNotpublished
-    // };//IPA2.0 TWC727-3228
+    // };//IPA2.0
 
     resetAttributes() {
 		this.total_PointsBalance= 0;
@@ -87,8 +85,8 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
         this.total_AWR_allocatednbr = 0;
         this.total_AWR_remainingnbr = 0;
         this.totalTrainedResourcesnbr = 0;
-        // this.totalApprovedOffering = 0;
-        // this.totalApprovedSolutions=0;//IPA2.0 TWC727-3228
+        //this.totalApprovedOffering = 0;//IPA2.0
+        //this.totalApprovedSolutions=0;//IPA2.0
     }
     refreshAction() {
         this.isLoaded = false;
@@ -111,12 +109,12 @@ export default class Prm_salesAndTrainingCmp extends LightningElement {
                 this.total_SalesDatanbrPrev=this.convertNumber(result.totalSalesDataPrevPeriod, false,2);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual sales data.
                 this.total_TrainingCreditsnbrPrev=this.convertNumber(result.totalTrainingCreditsPrevPeriod, false);//utkarsh - passed false as a parameter while calling convertNumber method because we need to show actual training data.
                 this.totalTrainedResourcesnbr = this.convertNumber(result.totalTrainedResources, true);
-                //IPA2.0 TWC727-3228 starts here
-                //this.totalApprovedOffering = this.convertNumber(result.totalApprovedOffering, true);
-                //this.isPublishedStorefront = result.publishedStorefront;
-                //this.totalApprovedSolutions=this.convertNumber(result.totalApprovedSolutions, true);
+                //this.totalApprovedOffering = this.convertNumber(result.totalApprovedOffering, true);//IPA2.0
+                //this.isPublishedStorefront = result.publishedStorefront;//IPA2.0
+                //this.totalApprovedSolutions=this.convertNumber(result.totalApprovedSolutions, true);//IPA2.0
                 //console.log('here'+this.isPublishedStorefront );
-                // IPA2.0 TWC727-3228 ends here
+                console.log('current sales data'+JSON.stringify(this.total_SalesDatanbr));
+                console.log('pre sales data'+JSON.stringify(this.total_SalesDatanbrPrev));
                 
             } else {
                 this.isLoaded = true;

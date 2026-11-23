@@ -1,5 +1,5 @@
 @isTest
-public class ICS_AVM_UserInfoControllerTest {
+public with sharing class ICS_AVM_UserInfoControllerTest {
    
     
     @isTest

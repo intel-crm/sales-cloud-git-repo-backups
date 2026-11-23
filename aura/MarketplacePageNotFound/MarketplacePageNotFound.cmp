@@ -7,6 +7,10 @@
         <div class="slds-col slds-size_1-of-6"/>
         <div class="slds-col slds-size_4-of-6 slds-text-align_center">
             <p class="slds-p-around_medium"><aura:unescapedHtml value="{!$Label.c.PMP_PageNotFound_Content}"/></p>
+            <p class="slds-p-around_medium">
+                This link is no longer active, as support for the Offerings/Solutions has been discontinued.
+                Please <a href="https://crmdevipa-intelcloudcrm.cs45.force.com/imp/s/" class="slds-text-link">click here</a> to visit the Partner Showcase homepage.
+            </p>
             <lightning:layout multipleRows="true">
                 <aura:iteration items="{!v.buttons}" var="btn">
                     <lightning:layoutItem size="12" largeDeviceSize="4" padding="around-small">

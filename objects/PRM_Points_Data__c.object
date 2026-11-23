@@ -268,7 +268,7 @@
     <fields>
         <fullName>PRM_Total_Points_Due_to_Expire_Nbr__c</fullName>
         <externalId>false</externalId>
-        <label>Total Points Due to Expire</label>
+        <label>Points Due to Expire</label>
         <precision>18</precision>
         <required>false</required>
         <scale>0</scale>
@@ -299,33 +299,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>PRM_Total_Points_Expiry_Date_Dt__c</fullName>
-        <label>Total Points Expiry Date</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Date</type>
-    </fields>
-    <fields>
-        <fullName>PRM_Total_Points_Expiry_Quarter_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Total Points Expiry Quarter</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>PRM_Total_Points_Expiry_Year_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Total Points Expiry Year</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>PRM_Total_Points_Redeemed_Nbr__c</fullName>
         <externalId>false</externalId>
         <label>Total Points Redeemed</label>
@@ -341,6 +314,11 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_One_Partner_Id__c</field>
+            <operation>equals</operation>
+            <value>Demo PAG_OPID</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>

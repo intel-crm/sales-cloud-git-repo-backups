@@ -39,7 +39,7 @@
         <field>EXP_PRODUCT_AMOUNT</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Segment__c</field>
@@ -116,12 +116,6 @@
     </columns>
     <columns>
         <field>PROBABILITY</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Intel_Platform__c</field>
-    </columns>
-    <columns>
-        <field>Product2.Core_Platform_Name__c</field>
     </columns>
     <filter>
         <criteriaItems>

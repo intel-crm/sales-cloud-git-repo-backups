@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExternalAuthIdentityProvider xmlns="http://soap.sforce.com/2006/04/metadata">
+    <authenticationFlow>AuthorizationCode</authenticationFlow>
+    <authenticationProtocol>OAuth</authenticationProtocol>
+    <externalAuthIdentityProviderParameters>
+        <parameterName>AuthorizeUrl</parameterName>
+        <parameterType>AuthorizeUrl</parameterType>
+        <parameterValue>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/oauth2/v2.0/authorize</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <externalAuthIdentityProviderParameters>
+        <parameterName>ClientAuthentication</parameterName>
+        <parameterType>ClientAuthentication</parameterType>
+        <parameterValue>ClientSecretPost</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <externalAuthIdentityProviderParameters>
+        <parameterName>PkceEnabled</parameterName>
+        <parameterType>IdentityProviderOptions</parameterType>
+        <parameterValue>false</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <externalAuthIdentityProviderParameters>
+        <parameterName>TokenUrl</parameterName>
+        <parameterType>TokenUrl</parameterType>
+        <parameterValue>https://login.microsoftonline.com/46c98d88-e344-4ed4-8496-4ed7712e255d/oauth2/v2.0/token</parameterValue>
+    </externalAuthIdentityProviderParameters>
+    <label>PBI</label>
+</ExternalAuthIdentityProvider>

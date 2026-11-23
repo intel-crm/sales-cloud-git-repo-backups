@@ -14,22 +14,21 @@
         var allProductsLabel = $A.get("$Label.c.PMP_Breadcrumbs_All_Products");
         var showSignIn = false;
         var loginUrl = '';
-           
+
         // Determine if need to display the Sign In Link
         var ssoLibrary = component.find('ssoLibrary');
         var ssoSettings = ssoLibrary.getSSOSettings();
         if (ssoSettings) {
           showSignIn = !!parseInt(ssoSettings.showSignIn);
           loginUrl = ssoSettings.ighf.loginUrl;
-        }
+        }        
         
         // Update the sign in variables
         component.set('v.showSignIn', showSignIn);
         component.set('v.loginUrl', loginUrl);
         component.set('v.userLoggedIn', false);
         if($A.get("$SObjectType.CurrentUser.Email") !== undefined){
-           component.set('v.userLoggedIn', true);  
-             
+          component.set('v.userLoggedIn', true);
         }
         
         // IF L2 Marquee only
@@ -193,8 +192,8 @@
         var ssoLibrary = component.find('ssoLibrary');
         var ssoSettings = ssoLibrary.getSSOSettings();
         if (ssoSettings && ssoSettings.ighf && ssoSettings.ighf.loginUrl) {
-        event.preventDefault();
-        event.stopPropagation();
+          event.preventDefault();
+          event.stopPropagation();
           window.location = ssoSettings.ighf.loginUrl + '?RelayState=' + encodeURIComponent(window.location.pathname);
         }  
     }

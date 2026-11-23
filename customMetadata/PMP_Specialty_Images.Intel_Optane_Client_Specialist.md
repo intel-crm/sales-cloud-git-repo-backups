@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>Grey_Image_URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000005K8tpAAC</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.FileDownload?file=0158A00000038hH</value>
     </values>
     <values>
         <field>PMP_Account_Specialty_Name__c</field>
@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>PMP_Specialty_Name_Chinese__c</field>
-        <value xsi:type="xsd:string">英特尔® 傲腾™ 客户专家</value>
+        <value xsi:type="xsd:string">英特尔® 傲腾™ 客户端专家</value>
     </values>
     <values>
         <field>PMP_Specialty_Name_Japanese__c</field>
@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>URL__c</field>
-        <value xsi:type="xsd:string">/servlet/servlet.FileDownload?file=0153b000004gRQV</value>
+        <value xsi:type="xsd:string">/imp/servlet/servlet.FileDownload?file=0158A0000001u1X</value>
     </values>
 </CustomMetadata>

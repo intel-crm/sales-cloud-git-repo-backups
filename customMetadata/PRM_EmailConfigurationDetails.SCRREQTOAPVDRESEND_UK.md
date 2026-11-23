@@ -28,7 +28,7 @@
     </values>
     <values>
         <field>PRM_Language__c</field>
-        <value xsi:type="xsd:string">ENG</value>
+        <value xsi:type="xsd:string">ENG_GB</value>
     </values>
     <values>
         <field>PRM_Letterhead_Template__c</field>

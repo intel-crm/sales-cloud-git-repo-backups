@@ -1,9 +1,6 @@
 public class Core_Account_Accessor
 {
-     public static String dummyMethod1() {
-        return null;
-    }
-  /*  // READ-WRITE properties        
+    // READ-WRITE properties        
     private Id pAccountId;
     public  Id accountId {
         set {
@@ -39,5 +36,5 @@ public class Core_Account_Accessor
     public Core_Account_Accessor() {
     }
 
-    */    
+        
 }

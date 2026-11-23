@@ -68,7 +68,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>lessThan</operator>
-            <value>90</value>
+            <value>90.0</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -109,6 +109,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>THIS_FISCALPERIOD</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

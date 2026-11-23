@@ -44,16 +44,6 @@
         <field>Account.Core_Account_Cnt__c</field>
     </columns>
     <description>My Account Teams&apos; Salesforce Data dashboard</description>
-    <filter>
-        <criteriaItems>
-            <column>USERS.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>$USER</value>
-        </criteriaItems>
-        <language>en_US</language>
-    </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>

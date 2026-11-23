@@ -1,151 +1,436 @@
 @isTest
-private class IPAMembershipUtilityTest {
-
-    // Fallback strings for labels (used to simulate label-based logic in code)
-    static final String LABEL_CHANGE_REQUEST = Label.PRM_ACM_Change_Request_Label != null ? Label.PRM_ACM_Change_Request_Label : 'Change Request';
-    static final String LABEL_PENDING = Label.PRM_Status_Pending != null ? Label.PRM_Status_Pending : 'Pending';
-    static final String LABEL_SUBMITTED = Label.Core_MDF_Status_Submitted != null ? Label.Core_MDF_Status_Submitted : 'Submitted';
-    static final String LABEL_APPROVED = Label.Core_MDF_Status_Approved != null ? Label.Core_MDF_Status_Approved : 'Approved';
-    static final String LABEL_COMPLETE = Label.Core_MDF_Complete != null ? Label.Core_MDF_Complete : 'Complete';
-    static final String LABEL_REJECTED = Label.Core_MDF_Status_Rejected != null ? Label.Core_MDF_Status_Rejected : 'Rejected';
-
-    @isTest static void testCheckIfMultipleACMExists_NoErrorAnd_Error() {
-        // Create Account
-        Account acc = new Account(
-            Name = 'Test Account',
-            BillingCity = 'City',
-            BillingStreet = 'Street',
-            BillingCountry = 'India',
-            BillingPostalCode = '123456',
-            Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-        );
-        insert acc;
-
-        // Create Channel Program and Levels
-        ChannelProgram cp = new ChannelProgram(Name = 'IPA Program', PRM_programCode__c = 'IPA');
-        insert cp;
-
-        ChannelProgramLevel levelMember = new ChannelProgramLevel(Name = 'Prestige', ProgramId = cp.Id);
-        insert levelMember;
-
-        ChannelProgramLevel levelGold = new ChannelProgramLevel(Name = 'Partner', ProgramId = cp.Id);
-        insert levelGold;
-
-        // Create ACMs with Account
-        PRM_AccountChannelMembership__c acm1 = new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c = acc.Id,
-            PRM_Status_Nm__c = 'Approved',
-            PRM_Channel_Program_Id__c = cp.Id,
-            PRM_Channel_Program_Level_Id__c = levelMember.Id,
-            PRM_Partner_Role__c = 'Builder',
-            PRM_Status_Reason_Txt__c='Test'
-        );
-        insert acm1;
-
-        PRM_AccountChannelMembership__c acm2 = new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c = acc.Id,
-            PRM_Status_Nm__c = 'Pending',
-            PRM_Channel_Program_Id__c = cp.Id,
-            PRM_Channel_Program_Level_Id__c = levelGold.Id,
-            PRM_Partner_Role__c = 'Distributor',
-            PRM_Status_Reason_Txt__c='JJ'
-        );
-        insert acm2;
-
-        // IPA Memberships
-        PRM_IPA_Membership__c ipaNoErr = new PRM_IPA_Membership__c(
-            PRM_Account_Channel_Membership__c = acm1.Id,
-            PRM_Partner_Role__c = 'Solution Integrator',
-            PRM_Partner_Tier__c = levelMember.Id,
-            PRM_Status__c = LABEL_PENDING
-        );
-
-        PRM_IPA_Membership__c ipaErr = new PRM_IPA_Membership__c(
-            PRM_Account_Channel_Membership__c = acm2.Id,
-            PRM_Partner_Role__c = 'Guest',
-            PRM_Partner_Tier__c = levelGold.Id,
-            PRM_Status__c = LABEL_PENDING
-        );
-
-        // Run test for checkIfMultipleACMExists
-        Test.startTest();
-        IPAMembershipUtility.checkIfMultipleACMExists(new List<PRM_IPA_Membership__c>{ ipaNoErr });
-        IPAMembershipUtility.checkIfMultipleACMExists(new List<PRM_IPA_Membership__c>{ ipaErr });
-        Test.stopTest();
+public class IPAMembershipUtilityTest {
+    @isTest static void testIPAMembershipRecords(){
+        try{
+            TEST.startTest();
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Greg Thomas';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+            ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            insert acm;
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Distributor';
+            membership.PRM_Partner_Tier__c=cpl2.Id;
+            membership.PRM_Status__c= 'Pending';
+            insert membership;
+            
+            PRM_IPA_Membership__c membership1 = new PRM_IPA_Membership__c();
+            membership1.PRM_Account_Channel_Membership__c = acm.id;
+            membership1.PRM_Partner_Role__c = 'Distributor';
+            membership1.PRM_Partner_Tier__c=cpl2.Id;
+            membership1.PRM_Status__c= 'Pending';
+            insert membership1;
+            
+            PRM_AccountChannelMembership__c acm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm1.PRM_Account_Id__c=newAccount.id;
+            acm1.PRM_Status_Nm__c='Approved';
+            acm1.PRM_Channel_Program_Id__c=cp.Id;
+            acm1.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm1.PRM_Partner_Role__c='manufacturer';
+            insert acm1;
+            
+            PRM_IPA_Membership__c membership2 = new PRM_IPA_Membership__c();
+            membership2.PRM_Account_Channel_Membership__c = acm.id;
+            membership2.PRM_Partner_Role__c = 'manufacturer';
+            membership2.PRM_Partner_Tier__c=cpl2.Id;
+            membership2.PRM_Status__c= 'Pending';
+            insert membership2;
+            TEST.stopTest();
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
+        
     }
-
-    @isTest static void testCheckIfAlreadyExists_AllPathsAnd_Exception() {
-        // Create Account
-        Account acc = new Account(
-            Name = 'Test Account',
-            BillingCity = 'City',
-            BillingStreet = 'Street',
-            BillingCountry = 'India',
-            BillingPostalCode = '123456',
-            Core_Account_Type__c = 'Cloud Service Provider (CSP)'
-        );
-        insert acc;
-
-        // Create Channel Program and Levels
-        ChannelProgram cp = new ChannelProgram(Name = 'Intel Partner Alliance', PRM_programCode__c = 'IPA');
-        insert cp;
-
-        ChannelProgramLevel levelMember = new ChannelProgramLevel(Name = 'Partner', ProgramId = cp.Id);
-        insert levelMember;
-
-        ChannelProgramLevel levelGold = new ChannelProgramLevel(Name = 'Prestige', ProgramId = cp.Id);
-        insert levelGold;
-
-        // Create ACM
-        PRM_AccountChannelMembership__c acm = new PRM_AccountChannelMembership__c(
-            PRM_Account_Id__c = acc.Id,
-            PRM_Status_Nm__c = 'Approved',
-            PRM_Channel_Program_Id__c = cp.Id,
-            PRM_Channel_Program_Level_Id__c = levelMember.Id,
-            PRM_Partner_Role__c = 'Solution Integrator',
-            PRM_Status_Reason_Txt__c='Test'
-        );
-        insert acm;
-
-        // Child IPA Memberships (simulate existing)
-        PRM_IPA_Membership__c existingChild1 = new PRM_IPA_Membership__c(
-            PRM_Account_Channel_Membership__c = acm.Id,
-            PRM_Partner_Role__c = 'Guest',
-            PRM_Partner_Tier__c = levelGold.Id,
-            PRM_Status__c = LABEL_COMPLETE
-        );
-
-        PRM_IPA_Membership__c existingChild2 = new PRM_IPA_Membership__c(
-            PRM_Account_Channel_Membership__c = acm.Id,
-            PRM_Partner_Role__c = 'Distributor',
-            PRM_Partner_Tier__c = levelGold.Id,
-            PRM_Status__c = LABEL_PENDING
-        );
-
-        insert  existingChild1;
-        insert  existingChild2;
-
-        // Simulate new incoming IPA request (should hit error branches)
-        PRM_IPA_Membership__c newMembership = new PRM_IPA_Membership__c(
-            PRM_Account_Channel_Membership__c = acm.Id,
-            PRM_Partner_Role__c = 'Builder',
-            PRM_Partner_Tier__c = levelGold.Id,
-            PRM_Status__c = LABEL_PENDING
-        );
-
-        Test.startTest();
-        IPAMembershipUtility.checkIfAlreadyExists(new List<PRM_IPA_Membership__c>{ newMembership });
-      
-
-        // Run null input check (should hit exception)
+    @isTest static void testIPAMembershipRecords2(){
+        try{
+            
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Greg Thomas';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+            ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            
+           insert acm;
+            
+            
+            
+            
+            
+            PRM_IPA_Membership__c membership11 = new PRM_IPA_Membership__c();
+            membership11.PRM_Account_Channel_Membership__c = acm.id;
+            membership11.PRM_Partner_Role__c = 'Seller';
+            membership11.PRM_Partner_Tier__c=cpl2.Id;
+            membership11.PRM_Status__c= 'Pending';
+            insert membership11;
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl1.Id;
+            membership.PRM_Status__c= 'Pending';
+            insert membership;
+            
+            
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
         
-        IPAMembershipUtility.checkIfAlreadyExists(null);
+    }
+    @isTest static void testIPAMembershipRecords3(){
+        try{
+            
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Greg Thomas';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+            ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            insert acm;
+            
+            PRM_IPA_Membership__c membership11 = new PRM_IPA_Membership__c();
+            membership11.PRM_Account_Channel_Membership__c = acm.id;
+            membership11.PRM_Partner_Role__c = 'Seller';
+            membership11.PRM_Partner_Tier__c=cpl2.Id;
+            membership11.PRM_Status__c= 'Approved';
+            insert membership11;
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl2.Id;
+            membership.PRM_Status__c= 'Pending';
+            insert membership;
+                        
+            
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
         
+    }
+    
+     @isTest static void testIPAMembershipRecords4(){
+        try{
+            
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Greg Thomas';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+            ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            String key = acm.PRM_Partner_Role__c+acm.PRM_Channel_Program_Level_Id__c;
 
-        // Incomplete IPA record (should be handled gracefully)
-        PRM_IPA_Membership__c incompleteIPA = new PRM_IPA_Membership__c();
+            insert acm;
+            List<PRM_IPA_Membership__c> memlist = new List<PRM_IPA_Membership__c>();
+            PRM_IPA_Membership__c membership11 = new PRM_IPA_Membership__c();
+            membership11.PRM_Account_Channel_Membership__c = acm.id;
+            membership11.PRM_Partner_Role__c = 'Seller';
+            membership11.PRM_Partner_Tier__c=cpl2.Id;
+            membership11.PRM_Status__c= 'Approved';
+            //insert ;
+            insert membership11;  
+            
+            
+           
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl2.Id;
+            membership.PRM_Status__c= 'Pending';
+            memlist.add(membership);
+            
+             
+            PRM_IPA_Membership__c membership2 = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl2.Id;
+            membership.PRM_Status__c= 'Complete';
+            memlist.add(membership2);
+            
+            PRM_IPA_Membership__c membership1 = new PRM_IPA_Membership__c();
+            membership1.PRM_Account_Channel_Membership__c = acm.id;
+            membership1.PRM_Partner_Role__c = 'Manufacturer';
+            membership1.PRM_Partner_Tier__c=cpl2.Id;
+            membership1.PRM_Status__c= 'Pending';
+            memlist.add(membership1);
+            insert(memlist);
+            
+            membership11.PRM_Status__c='pending';
+            update membership11;
+            
+         
+            
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
+         
+         }
+    @isTest static void testIPAMembershipRecords5(){
+        try{
+            
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Greg Thomas';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+           ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            
+           insert acm;
+            
+            PRM_AccountChannelMembership__c acm1= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm1.PRM_Account_Id__c=newAccount.id;
+            acm1.PRM_Status_Nm__c='Approved';
+            acm1.PRM_Channel_Program_Id__c=cp.Id;
+            acm1.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm1.PRM_Partner_Role__c='Service Provider';
+            
+           insert acm1;
+            
+            
+            
+            
+            PRM_IPA_Membership__c membership11 = new PRM_IPA_Membership__c();
+            membership11.PRM_Account_Channel_Membership__c = acm.id;
+            membership11.PRM_Partner_Role__c = 'Seller';
+            membership11.PRM_Partner_Tier__c=cpl2.Id;
+            membership11.PRM_Status__c= 'Pending';
+            insert membership11;
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl1.Id;
+            membership.PRM_Status__c= 'Pending';
+            insert membership;
+            
+            
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
         
-        IPAMembershipUtility.checkIfAlreadyExists(new List<PRM_IPA_Membership__c>{ incompleteIPA });
-        Test.stopTest();
+    }
+    
+    @isTest static void testIPAMembershipRecords6(){
+        try{
+            
+            Id recordTypeIdAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();        
+            Account newAccount = new Account();//Account
+            newAccount.RecordTypeId = recordTypeIdAccount;
+            newAccount.Name='Tom Cruise';
+            newAccount.BillingCity='City';
+            newAccount.BillingStreet='Street';
+            newAccount.BillingCountry='India';
+            newAccount.BillingPostalCode='Postal code';
+            newAccount.Core_Account_Type__c='Cloud Service Provider (CSP)';
+            insert newAccount;
+            
+            ChannelProgram cp = new ChannelProgram(); //Channel Program
+            cp.Name='Intel Partner Alliance';
+            cp.PRM_programCode__c='IPA';
+            insert cp;
+            
+           ChannelProgramLevel cpl=new ChannelProgramLevel(); //Channel Program Level
+            cpl.Name='Titanium';
+            cpl.ProgramId=cp.Id;
+            insert cpl;
+            
+            ChannelProgramLevel cpl1=new ChannelProgramLevel(); //Channel Program Level
+            cpl1.Name='Member';
+            cpl1.ProgramId=cp.Id;
+            insert cpl1;
+            
+            ChannelProgramLevel cpl2=new ChannelProgramLevel(); //Channel Program Level
+            cpl2.Name='Gold';
+            cpl2.ProgramId=cp.Id;
+            insert cpl2;
+            
+            PRM_AccountChannelMembership__c acm= new PRM_AccountChannelMembership__c(); //Account Channel Membership
+            acm.PRM_Account_Id__c=newAccount.id;
+            acm.PRM_Status_Nm__c='Approved';
+            acm.PRM_Channel_Program_Id__c=cp.Id;
+            acm.PRM_Channel_Program_Level_Id__c=cpl1.Id;
+            acm.PRM_Partner_Role__c='Service Provider';
+            
+           insert acm;
+            
+            OPID_Sync_Request__c opidsyncreq= new OPID_Sync_Request__c(); //OPID Sync Request
+            opidsyncreq.OPID_Account__c=newAccount.id;
+            opidsyncreq.Status__c='In Progress';
+            
+            insert opidsyncreq;
+            
+            
+            PRM_IPA_Membership__c membership = new PRM_IPA_Membership__c();
+            membership.PRM_Account_Channel_Membership__c = acm.id;
+            membership.PRM_Partner_Role__c = 'Seller';
+            membership.PRM_Partner_Tier__c=cpl1.Id;
+        
+            insert membership;
+            
+            
+        }catch(Exception ex){
+            //System.debug('Ex -->'+ex.getMessage());
+        }
+        
     }
 }

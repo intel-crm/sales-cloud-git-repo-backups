@@ -2,11 +2,6 @@
 <DashboardFolder xmlns="http://soap.sforce.com/2006/04/metadata">
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10682043@intel.com.crm</sharedTo>
-        <sharedToType>User</sharedToType>
-    </folderShares>
-    <folderShares>
-        <accessLevel>View</accessLevel>
         <sharedTo>11585947@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
@@ -16,13 +11,13 @@
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
-        <accessLevel>View</accessLevel>
-        <sharedTo>11585988@intel.com.crm</sharedTo>
+        <accessLevel>Manage</accessLevel>
+        <sharedTo>10564221@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>11053895@intel.com.crm</sharedTo>
+        <sharedTo>10102173@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
@@ -32,12 +27,12 @@
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>11380901@intel.com.crm</sharedTo>
+        <sharedTo>10631903@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>
         <accessLevel>View</accessLevel>
-        <sharedTo>10509724@intel.com.crm</sharedTo>
+        <sharedTo>11380901@intel.com.crm</sharedTo>
         <sharedToType>User</sharedToType>
     </folderShares>
     <folderShares>

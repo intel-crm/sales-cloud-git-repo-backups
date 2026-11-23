@@ -1,0 +1,21 @@
+<template>
+
+    <div class="taxonomy-list-of-lists-container" data-padding-top={paddingAbove}>
+        <template if:false={loading}>
+            <template for:each={listRecords} for:item="record">
+                <c-marketplace-topic-only-taxonomy
+                    data-padding-top={paddingAbove}
+                    data-padding-bottom={paddingBelow}
+                    key={record.id}
+                    record-id={record.id}
+                    taxonomy={taxonomy}
+                    show-icon={showIcon}
+                    show-heading={showHeading}
+                    show-view-all-link={showViewAllLink}
+                    card-style={cardStyle}>
+                </c-marketplace-topic-only-taxonomy>
+            </template>
+        </template>
+    </div>
+
+</template>

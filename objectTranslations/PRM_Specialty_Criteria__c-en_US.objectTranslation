@@ -32,6 +32,13 @@
             <translation><!-- Quantitative --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Specialty Criteria Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Qualitative --></label>
         <name>PRM_Qualitative</name>

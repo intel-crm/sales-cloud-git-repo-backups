@@ -1,0 +1,98 @@
+<!-- IPA2.0: US-TWC729-7976 -->
+<apex:component ></apex:component>
+<!-- <apex:component access="global" controller="PSS_EmailTemplateController">
+    <html>
+        <style>
+            
+            table {
+            font-family: sans-serif; /*arial, sans-serif , Intel Clear;*/
+            border-collapse: collapse;
+            border-left: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            border-top: 0px;
+            border-bottom: 1px solid #dddddd;
+            }
+            
+            td, th {
+            padding: 8px;
+            }
+            
+            .intelBlue{
+            color:#0071c5;
+            }
+            
+        </style>
+        <apex:attribute name="solutionRecordId" type="Id" description="Solution Record Id" assignTo="{!solutionId}"/>
+        <body>-->
+            <!-- Header Banner -->
+            <!-- <c:PMP_Global_Header message="Contact Removed"/> -->
+            <!-- Header Banner -->
+            
+            <!-- Email content -->
+            <!-- <table width="75%">     -->
+                <!-- Email Body -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Hello, <br/><br/>
+                        You have removed&nbsp;
+                        <apex:repeat value="{!associationDataToBeDisplayed}" var="con" id="theRepeat">
+                            <apex:outputPanel rendered="{!associationDataToBeDisplayed[0].id != con.id}">,&nbsp;</apex:outputPanel>
+                            <apex:outputText value="{!con.PSS_Assigned_Contact__r.Name}" id="theValue"/>
+                        </apex:repeat>&nbsp;from to your draft solution offering, {!solutionData.PSS_Proposal_Name_Txt__c}.<br/><br/>
+                        Removed contacts are no longer be able to view, edit, or submit the solution. <br/><br/>
+                        You may add or remove contacts from your solutions at any time.<br/>
+                        
+                    </td>
+                </tr> -->
+                <!-- CTA -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">      
+                        <p><apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}" styleClass="intelBlue">Manage this solution</apex:outputLink></p>
+                    </td>
+                </tr> -->
+                <!-- CTA -->  
+                <!-- <tr>
+                    <td style="padding-left:50px;">
+                        Thank You,<br/><br/>
+                        Your Intel® Partner Alliance team <br/><br/>
+                    </td>
+                </tr> -->
+                
+                
+                <!-- Email Body -->
+                
+                <!-- Next Best Step -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">      
+                        <p><apex:outputLink value="{!createSolutionURL}" styleClass="intelBlue">Review your solutions</apex:outputLink></p>
+                    </td>
+                </tr> -->
+                <!-- Next Best Step -->
+                <!-- Email shared with -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">   
+                        This email may be shared with others in your organization. You may see the full list of who the solution is shared with in the Solution Summary page.<br/>
+                        <apex:outputLink value="{!solutionPreviewURL}{!solutionData.Id}{!$Label.PSS_Submitter_Tab_URL}" styleClass="intelBlue">View Solution Summary</apex:outputLink>
+                    </td>
+                </tr> -->
+                <!-- Email shared with -->
+                
+                <!-- Questions/Contact -->
+                <!-- <tr>
+                    <td style="padding-left:50px;">  
+                        If you have any questions, please contact us at&nbsp;<apex:outputLink value="mailto:{!$Label.PMP_MailTo}" styleClass="intelBlue">{!$Label.PMP_MailTo}
+                        </apex:outputLink>.<br/><br/>
+                    </td>
+                </tr> -->
+                <!-- Questions/Contact -->
+                
+            <!-- </table> -->
+            
+            <!-- Global Footer -->
+            <!-- <c:PSS_Global_Footer />    -->
+            <!-- Global Footer -->
+        <!-- </body> -->
+        
+    <!-- </html> -->
+    
+<!-- </apex:component>  -->

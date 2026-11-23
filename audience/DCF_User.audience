@@ -4,38 +4,22 @@
     <container>Partnercenter Unified Community</container>
     <criteria>
         <criterion>
-            <criteriaNumber>1</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>DCF User</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
             <criterionValue>
                 <profile>admin</profile>
             </criterionValue>
             <operator>Equal</operator>
             <type>Profile</type>
         </criterion>
-        <criterion>
-            <criteriaNumber>2</criteriaNumber>
-            <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_DCF_USER</permissionName>
-                <permissionType>Custom</permissionType>
-            </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
-        </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>
     <isDefaultAudience>false</isDefaultAudience>
-    <targets>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$f2a75083-576a-4dd8-8daa-6c0c08ec6a50</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_9_Component</targetValue>
-        </target>
-        <target>
-            <groupName>33377e4b-1257-47dc-b86f-398bbcddd619$#$7870b774-9542-47f2-a83a-375d8251752e</groupName>
-            <priority>1</priority>
-            <targetType>ExperienceVariation</targetType>
-            <targetValue>Resources_core_MDF_dynamicURLsOnCommunity_3_Component</targetValue>
-        </target>
-    </targets>
 </Audience>

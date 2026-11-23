@@ -2,14 +2,8 @@
 <PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
     <hasActivationRequired>false</hasActivationRequired>
     <label>PartnerCloudPartnerUserPsg</label>
-    <permissionSets>force__AccessB2bReferrals</permissionSets>
-    <permissionSets>force__AccountPlansWithPartners</permissionSets>
-    <permissionSets>force__AgentforceForPartners</permissionSets>
     <permissionSets>force__ContactInspectionForPartnersPartnerCommunityUser</permissionSets>
-    <permissionSets>force__DesignRegExpCloudUser</permissionSets>
     <permissionSets>force__LeadInspectionForPartnersPartnerCommunityUser</permissionSets>
     <permissionSets>force__MDFForPartnerCommunityUsers</permissionSets>
-    <permissionSets>force__PipelineInspectionForPartnersPartnerCommunityUser</permissionSets>
-    <permissionSets>force__PriceProtectionExpCloudPsl</permissionSets>
     <status>Updated</status>
 </PermissionSetGroup>

@@ -1,0 +1,50 @@
+<template>
+  <div class="slds-grid slds-wrap slds-p-horizontal_large slds-p-top_large mobile-wrapper detail-marquee detail-marquee-content offering-content">
+    <div class="slds-col slds-size_1-of-1">
+      <c-core-intc-gallery thumbnail-on-cover="true" images={images} fixed-height onopen={handleModalOpen}></c-core-intc-gallery>
+    </div>
+    <div class="slds-col slds-size_1-of-1 mobile-header-title">
+      <h1 class="h2">{headline}</h1>
+      <div class="social-share-container">
+        <c-ipa-share email-body={headline} preview-mode={previewMode} button-classes="inverse"></c-ipa-share>
+      </div>
+    </div>
+    <div class="slds-col slds-size_1-of-1">
+      <div>{tagline}</div>
+      <div class="slds-p-top_x-large slds-p-bottom_medium">
+        {labels.by} <c-ipa-link class-name="color-white inverse" object-page="PMP_Company__c" record-id={offeringOwnerId} label={offeringOwner} preview={previewMode}></c-ipa-link>
+      </div>
+      <div class="contact-button slds-m-bottom_x-small slds-p-top_medium">
+        <c-ipa-contact-partner-button
+          preview-mode={previewMode}
+          analytics-details={contactPartnerAnalyticsDetails}
+          button-class="button-inverse text-bold"
+          modal-data={contactPartnerModalData}>
+        </c-ipa-contact-partner-button>      
+      </div>
+    </div>
+    <div class="slds-col slds-size_1-of-1 slds-p-top_large">
+			<c-core-intc-tabset name="marqueeTabs" ontabchange={handleTabChange}>
+        <template for:each={tabs} for:item='tab'>
+          <c-core-intc-tab key={tab.value} heading={tab.value}></c-core-intc-tab>
+        </template>
+      </c-core-intc-tabset>
+		</div>
+  </div>
+
+  <template if:true={contactPartnerVisible}>
+    <c-ipa-sticky full-width preview-mode={previewMode}>
+      <div slot="sticky">
+        <div class="sticky-container detail-marquee offering-content">
+          <div class="sticky-contact-button slds-p-vertical_medium slds-m-horizontal_medium">
+            <c-ipa-contact-partner-button
+              analytics-details={contactPartnerAnalyticsDetails}
+              button-class="button-inverse text-bold"
+              modal-data={contactPartnerModalData}>
+            </c-ipa-contact-partner-button>  
+          </div>
+        </div>
+      </div>
+    </c-ipa-sticky>
+  </template>
+</template>

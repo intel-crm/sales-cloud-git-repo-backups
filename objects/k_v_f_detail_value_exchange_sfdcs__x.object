@@ -120,7 +120,7 @@
     <enableReports>false</enableReports>
     <enableSearch>true</enableSearch>
     <externalDataSource>ipa_sales_out</externalDataSource>
-    <externalName>fact_detail_value_exchange_sfdcs</externalName>
+    <externalName>k_v_f_detail_value_exchange_sfdcs</externalName>
     <fields>
         <fullName>business_organization_nbr__c</fullName>
         <description>business_organization_nbr</description>

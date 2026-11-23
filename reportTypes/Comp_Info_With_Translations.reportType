@@ -198,4 +198,47 @@
         </columns>
         <masterLabel>Marketing Profile Informations</masterLabel>
     </sections>
+    <sections>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Biz_Org_Type_Value_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Opid_Sfid_Ref_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Active_OPID_Cnt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Topic_Count__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Storefront_SiteUrl__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_Autofill_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_ScrapStatusComment_Txt__c</field>
+            <table>PMP_Company__c</table>
+        </columns>
+        <masterLabel>Marketing Profile Information</masterLabel>
+    </sections>
 </ReportType>

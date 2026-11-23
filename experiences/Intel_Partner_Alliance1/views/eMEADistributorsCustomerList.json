@@ -2,10 +2,10 @@
   "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
   "componentName" : "c:IPAPageLayoutFull",
   "dataProviders" : [ ],
-  "id" : "37786a2a-4c5c-47f4-85e2-d75607c5eac3",
+  "id" : "0c216fa3-50ae-4313-b2dd-ef05d66972c4",
   "label" : "EMEA Distributors Customer List",
   "regions" : [ {
-    "id" : "511e67df-98d8-4662-8f7d-5cd872363cde",
+    "id" : "91dfcd8c-5027-470e-bb14-125bbc5f0673",
     "regionName" : "bannerBlade",
     "type" : "region"
   }, {
@@ -28,12 +28,12 @@
         "title" : "EMEA Distributors Plus"
       },
       "componentName" : "c:ipaMarqueePartner",
-      "id" : "74135318-924c-46bb-94b7-735b4a49412f",
+      "id" : "8e71917a-2565-432e-84ed-0509d464c0f0",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "a8d637d4-1df8-4729-8d11-ee90d05dc314",
+    "id" : "686d5445-ba11-4cab-b2ab-8444ed6ad254",
     "regionName" : "marquee",
     "type" : "region"
   }, {
@@ -45,64 +45,64 @@
         "embedPowerBIReport" : false
       },
       "componentName" : "c:pRM_ExternalAPIEmbedLWC",
-      "id" : "e34cab17-8b71-4e5e-a44e-3574f67eff8d",
+      "id" : "6110b353-5da1-42eb-9da3-b14aa8453f87",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "9e20dffa-2ce6-4896-9a15-7373a2557f8c",
+    "id" : "7c54868b-7c72-4b00-9cd0-0362c099a9a4",
     "regionName" : "blade0",
     "type" : "region"
   }, {
     "components" : [ {
       "componentAttributes" : { },
       "componentName" : "c:ipaSupportFooterComponent",
-      "id" : "a85549a1-31af-4a50-bc6f-8c2514e251bf",
+      "id" : "28f995e0-84c0-4321-b4d2-f6d9f2bd31a2",
       "renderPriority" : "NEUTRAL",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "3e1c8bb6-2169-45d5-888a-0cfa3b1cfed5",
+    "id" : "da1bff66-8ecb-4bba-afcb-9562df6686bb",
     "regionName" : "blade1",
     "type" : "region"
   }, {
-    "id" : "8ff2210a-20c1-47ef-879a-02f8ea8d513f",
+    "id" : "a948d3d0-841a-4bda-b352-43c5b01090b3",
     "regionName" : "blade2",
     "type" : "region"
   }, {
-    "id" : "ebfde208-5f03-4e63-a7e0-0af2c7ec7508",
+    "id" : "9d16719b-0a31-4bed-b4dc-264a9ec0f7db",
     "regionName" : "blade3",
     "type" : "region"
   }, {
-    "id" : "9cab913c-c11e-45eb-8a64-c35df75c5efb",
+    "id" : "7d95a494-802e-4091-9979-c2a157465008",
     "regionName" : "blade4",
     "type" : "region"
   }, {
-    "id" : "15b8d6ca-7a5c-4bc8-81af-81b77518fda6",
+    "id" : "9b8cb3be-47f4-4715-8f97-0e94aa066ba0",
     "regionName" : "blade5",
     "type" : "region"
   }, {
-    "id" : "ff941ef4-eaf8-4ea5-b01c-44e8f6702f54",
+    "id" : "51206bbd-64ea-4621-ac23-829fd61ad796",
     "regionName" : "blade6",
     "type" : "region"
   }, {
-    "id" : "844358d8-a849-4064-94ab-0f777f0c7fc4",
+    "id" : "2e762931-8727-4406-9195-c0031078242f",
     "regionName" : "blade7",
     "type" : "region"
   }, {
-    "id" : "695af616-aabe-4891-b46e-9a01db71f8c8",
+    "id" : "c8c8cb9c-65c7-49e5-86d9-31a0c0eb83c9",
     "regionName" : "blade8",
     "type" : "region"
   }, {
-    "id" : "1a3cac43-4123-4881-8881-04a5f426c1dc",
+    "id" : "b116fb91-4b2f-4050-bdb2-c7180003541c",
     "regionName" : "blade9",
     "type" : "region"
   }, {
-    "id" : "b5650e01-8c20-4d17-84d4-cfe031fda420",
+    "id" : "dcbe2237-79e5-4d75-9933-dd7b13d16b17",
     "regionName" : "blade10",
     "type" : "region"
   }, {
-    "id" : "420c0024-545d-4a4d-bf26-3872b55d33d5",
+    "id" : "09e74644-58f1-4584-ac05-4cd149ddfd5a",
     "regionName" : "compareTray",
     "type" : "region"
   }, {
@@ -113,15 +113,15 @@
         "title" : "EMEA Distributors Customer List"
       },
       "componentName" : "forceCommunity:seoAssistant",
-      "id" : "9f98e92d-10ce-41a4-9a7c-f75f3c765478",
+      "id" : "1f18e21f-88b1-4171-9559-c9bf05264c1f",
       "renditionMap" : { },
       "type" : "component"
     } ],
-    "id" : "29dd11bb-3f1c-443d-989a-8bb552d4bd11",
+    "id" : "0626397e-8d6f-4a00-8ea8-4d64829499be",
     "regionName" : "sfdcHiddenRegion",
     "type" : "region"
   } ],
   "themeLayoutType" : "BmuFdGQIxuh8q7SmmgICAQSTqVOAPU",
   "type" : "view",
-  "viewType" : "custom-emea-distributors-customer-list"
+  "viewType" : "custom-emea-distributors"
 }

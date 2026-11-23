@@ -20,6 +20,13 @@
         <label><!-- Start Date --></label>
         <name>Core_Start_Date__c</name>
     </fields>
+    <layouts>
+        <layout>GA Banner Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Start Date should be less than End Date --></errorMessage>

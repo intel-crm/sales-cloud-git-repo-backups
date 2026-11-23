@@ -82,7 +82,7 @@ public with sharing class PMP_BreadcrumbController extends PMP_SearchWrapperStor
         // currentMainBreadCrumbIndex++;
 
         //Added for Breadcrumb POC to navigate to AEM URL
-        //Integer marketplace = currentMainBreadCrumbIndex;
+        Integer marketplace = currentMainBreadCrumbIndex;
         BreadCrumb marketplaceComm = new BreadCrumb();
         marketplaceComm.text = System.Label.PMP_Breadcrumb_Header;
         marketplaceComm.id = 'marketplace';
@@ -167,7 +167,7 @@ public with sharing class PMP_BreadcrumbController extends PMP_SearchWrapperStor
         // }
         // mainBreadCrumb.children.add(submitSolution);
         // currentMainBreadCrumbIndex++;
-        // breadcrumb removal IPA 2.0
+        // breadcrumb removal 
         
         /*Utkarsh changes as part of story TWC727-841*/
         if(!isGuest)
@@ -247,7 +247,7 @@ public with sharing class PMP_BreadcrumbController extends PMP_SearchWrapperStor
             // if(offIndBC.selected) { offIndBC.children = getCategories(langCode, 'NPP_01_Industry'); }
             // breadCrumb.children.add(offIndBC);
             // currentBreadCrumbIndex++;
-            // breadcrumb removal IPA 2.0
+            // breadcrumb removal
             
             
             BreadCrumb part = new BreadCrumb();
@@ -347,7 +347,7 @@ public with sharing class PMP_BreadcrumbController extends PMP_SearchWrapperStor
                                 catIdAndBreadCrumbMap.get(bc.parentId).children.add(bc);
                             }
                         }
-                        // breadcrumb removal IPA 2.0
+                        // breadcrumb removal
                         // BreadCrumb bc = pimId == 'NPP_01_TYPE' ? breadCrumb.children[offCatBCIndex] : pimId == 'NPP_01_APP' ? breadCrumb.children[offAppBCIndex] : pimId == 'NPP_01_Industry' ? breadCrumb.children[offIndBCIndex] : new BreadCrumb();
                        BreadCrumb bc = pimId == 'NPP_01_TYPE' ? breadCrumb.children[offCatBCIndex]  : new BreadCrumb();
 

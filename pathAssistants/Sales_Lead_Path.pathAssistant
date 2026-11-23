@@ -13,27 +13,37 @@
         <fieldNames>Core_Lead_Status__c</fieldNames>
         <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
         <fieldNames>Core_Lead_State__c</fieldNames>
-        <info>&lt;p&gt;Overview: MELs are generated from the first marketing campaign activity; the intent is to provide early visibility into their interests and build a complete view of prospect engagement throughout their customer journey. The goal is to convert them to MQLs within 6 months through their marketing activities and data enrichment. They will automatically convert if they complete a “contact us” or “raise their hand” form&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Actions:&lt;/p&gt;&lt;p&gt;1. No immediate action required from Sales&lt;/p&gt;&lt;p&gt;2. If all MQLs have been dispositioned, switch list view filter to show MEL leads to begin working them if desired&lt;/p&gt;&lt;p&gt;3. Add a note in the Notes field that this person was MQL’d outside of the MQL scoring mechanism and provide details as to why so Marketing can account for potential model enhancements&lt;/p&gt;&lt;p&gt;4. If deemed qualified, contact the person and move the record to MQL&lt;/p&gt;&lt;p&gt;5. Follow the standard MQL Guidance for Success actions from this point&lt;/p&gt;</info>
-        <picklistValueName>Marketing Engaged Lead</picklistValueName>
-    </pathAssistantSteps>
-    <pathAssistantSteps>
-        <fieldNames>Core_Lead_Status__c</fieldNames>
-        <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
-        <fieldNames>Core_Lead_State__c</fieldNames>
-        <info>&lt;p&gt;Overview: In the MQL stage, assess a lead&amp;#39;s suitability for sales pursuit. Gather PACTT info and confirm project start timing within 6 months.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Actions:&lt;/p&gt;&lt;p&gt;1. Check if account is covered; reference it in &amp;#39;Business Information&amp;#39;.&lt;/p&gt;&lt;p&gt;2. Contact the person and log activity.&lt;/p&gt;&lt;p&gt;3. After talking with the customer, change Sub Status to &amp;#39;In Contact&amp;#39;.&lt;/p&gt;&lt;p&gt;4. If lead is not worth pursuing, mark status &amp;#39;Disqualified&amp;#39; with reason.&lt;/p&gt;&lt;p&gt;5. If lead has potential, keep logging activities.&lt;/p&gt;&lt;p&gt;6. If start date exceeds 6 months or lead is not PACTT qualified, mark status &amp;#39;Disqualified&amp;#39; with reason.&lt;/p&gt;&lt;p&gt;7. If lead has purchase propensity, change Status to &amp;#39;Qualified&amp;#39;.&lt;/p&gt;&lt;p&gt;8. If you are a BDR, contact Sales Rep; if they want to pursue, reassign lead.&lt;/p&gt;&lt;p&gt;9. If Sales Rep does not accept lead, mark status &amp;#39;Disqualified&amp;#39; with &amp;#39;Not accepted by Sales&amp;#39;.&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;u&gt;Overview&lt;/u&gt;: In the MAQL stage, you are responsible for assessing a lead&amp;#39;s suitability to enter sales pursuit.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Actions&lt;/u&gt;:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Check to see if account is already covered, if so reassign to account owner.&lt;/li&gt;&lt;li&gt;Evaluate if lead is worth pursuit, if not marked lead status as &amp;quot;Rejected&amp;quot; and mark lead sub-status with proper reject reason.&lt;/li&gt;&lt;li&gt;If you believe the lead has potential, worth further pursuit, and it is not already covered, mark current stage as complete to accept into pursuit.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;u&gt;SLA&amp;#39;s&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;HOT&lt;/b&gt; - Action required within 1 business day of record create.&lt;/p&gt;&lt;p&gt;&lt;b&gt;WARM&lt;/b&gt; - Action required within 2 business days record create.&lt;/p&gt;&lt;p&gt;&lt;b&gt;COLD&lt;/b&gt; - Action required within 4 business days record create.&lt;/p&gt;</info>
         <picklistValueName>Marketing Qualified Lead</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
         <fieldNames>Core_Lead_Status__c</fieldNames>
         <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_BANT_Sub_Status__c</fieldNames>
         <fieldNames>Core_Lead_State__c</fieldNames>
-        <info>&lt;p&gt;Overview: In the SAL stage a Sales Rep has accepted the qualified Lead with PACTT information. The Sales Rep continues to validate the Lead and if there is a high level to purchase an Intel Product/Solution, convert the Lead to on opportunity.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Actions:&lt;/p&gt;&lt;p&gt;1. Attempt to establish contact with the lead.&lt;/p&gt;&lt;p&gt;2. Determine if the lead is an ideal fit and project is ready for opportunity pursuit.&lt;/p&gt;&lt;p&gt;3. If so, mark SAL stage as complete in the status bar, there by converting the lead to an opportunity.&lt;/p&gt;&lt;p&gt;4. If lead is unfit after contact is established , change lead status to &amp;quot;Disqualified&amp;quot; and provide relevant sub-status.&lt;/p&gt;</info>
+        <info>&lt;p&gt;&lt;u&gt;Overview&lt;/u&gt;: In the SAL stage an Intel Sales Rep has accepted a lead with LDRs have collected BANT information for. You must validate the lead is BANT qualified, and if so convert to opportunity pipeline.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Actions&lt;/u&gt;:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Attempt to establish contact with the lead.&lt;/li&gt;&lt;li&gt;Determine if the lead is an ideal fit and project is ready for opportunity pursuit.&lt;/li&gt;&lt;li&gt;If so, mark SAL stage as complete in the status bar, there by converting the lead to an opportunity.&lt;/li&gt;&lt;li&gt;If lead is disqualified as unfit after the contact established, but is a valid partner lead change lead status to &amp;quot;Passed to Partner&amp;quot;.&lt;/li&gt;&lt;li&gt;If lead is rejected as unfit after contact is established and is not a valid partner lead, change lead status to &amp;quot;Disqualified&amp;quot; and provide relevant sub-status.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</info>
         <picklistValueName>Sales Accepted Lead</picklistValueName>
     </pathAssistantSteps>
     <pathAssistantSteps>
         <fieldNames>Core_Lead_Status__c</fieldNames>
         <fieldNames>Core_Lead_State__c</fieldNames>
         <picklistValueName>Sales Qualified Lead</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_BANT_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <info>&lt;p&gt;&lt;u&gt;Overview&lt;/u&gt;: In the TAL stage, you&amp;#39;ll gather BANT information and confirm project start timing is within 6 months.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Actions&lt;/u&gt;:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;If you can collect adequate BANT information and project timeline is within 6 months, mark the current stage as complete.&lt;/li&gt;&lt;li&gt;If start date exceeds 6 months, lead is not BANT qualified, or you can not gather all BANT information, then set lead status to &amp;quot; Disqualified&amp;quot; and mark lead sub-status with proper disqualification reason.&lt;/li&gt;&lt;li&gt;Mark lead status as &amp;quot;Unreachable&amp;quot; if no contact established after three emails and calls.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;u&gt;SLAs&lt;/u&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;HOT&lt;/b&gt; - Initial Task (Email or Phone Call) must be logged within 1 business day of entering TAL stage.&lt;/p&gt;&lt;p&gt;&lt;b&gt;WARM&lt;/b&gt; - Initial Task (Email or Phone Call) must be logged within 2 business days of entering TAL stage.&lt;/p&gt;&lt;p&gt;&lt;b&gt;COLD&lt;/b&gt; - Initial Task (Email or Phone Call) must be logged within 4 business days of entering TAL stage.&lt;/p&gt;</info>
+        <picklistValueName>Tele Accepted Lead</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Core_Lead_Status__c</fieldNames>
+        <fieldNames>Core_Lead_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_BANT_Sub_Status__c</fieldNames>
+        <fieldNames>Core_Lead_State__c</fieldNames>
+        <info>&lt;p&gt;&lt;u&gt;Overview:&lt;/u&gt; In the TQL stage you will book a 1:1 with the relevant sales rep to discuss the particulars of the lead before the Sales Rep will accept the lead.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Action&lt;/u&gt;: &lt;/p&gt;&lt;ol&gt;&lt;li&gt;Contact relevant Sales Rep and book 1:1 meeting, and log a task for this meeting.&lt;/li&gt;&lt;li&gt;As an outcome to the meeting, if Rep accepts the lead, change lead owner to the Rep.&lt;/li&gt;&lt;li&gt;If lead is rejected by Sales but IS a valid partner lead, change lead status to &amp;quot;Passed to Partner&amp;quot;.&lt;/li&gt;&lt;li&gt;If lead is rejected by Sales and IS NOT a valid partner lead, change lead status to &amp;quot;Rejected&amp;quot; and provide relevant lead sub-status.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;u&gt;SLA&lt;/u&gt;: &lt;/p&gt;&lt;p&gt;After 1-on-1 discussion is concluded, Sales Rep must Accept / Reject / Pass to Partner with in 1 business day.&lt;/p&gt;</info>
+        <picklistValueName>Tele Qualified Lead</picklistValueName>
     </pathAssistantSteps>
     <recordTypeName>Lead</recordTypeName>
 </PathAssistant>

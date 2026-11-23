@@ -4,14 +4,6 @@
         <field>Core_Lead_State__c</field>
         <literalValue>Terminated</literalValue>
     </fieldOverrides>
-    <fieldOverrides>
-        <field>Core_Lead_Status__c</field>
-        <literalValue>Disqualified</literalValue>
-    </fieldOverrides>
-    <fieldOverrides>
-        <field>Core_Lead_Sub_Status__c</field>
-        <literalValue>Already Engaged With Intel</literalValue>
-    </fieldOverrides>
     <label>Reject</label>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
     <quickActionLayout>

@@ -17,7 +17,7 @@
             <name>Core_IPS_Insert_Admin_Name_Org</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Workflow rule that populates a &apos;hidden&apos; field in Support Org Admin object to ensure each user can be added only once.</description>
         <formula>TRUE</formula>
         <triggerType>onAllChanges</triggerType>

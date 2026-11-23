@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>CALVIN CLG Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>CALVIN CLG Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>CALVINCLGCustomerExecutive</parentRole>
+</Role>

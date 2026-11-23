@@ -131,39 +131,57 @@
     }, {
       "componentAttributes" : {
         "tabsetConfig" : {
-          "UUID" : "b8c4f7a3-296c-479b-abbd-ed4fdbc64ee6",
-          "activeTab" : "",
+          "UUID" : "539c7291-fbe6-49bf-9771-46f8e86127f1",
+          "activeTab" : "tab1",
           "tabs" : [ {
-            "UUID" : "a973c3bd-e553-48dc-bdff-5fc85a342a41",
+            "UUID" : "ff2d3a25-02e3-4d8f-8ebb-94739607f0a6",
             "allowGuestUser" : false,
             "locked" : false,
-            "seedComponents" : [ ],
-            "tabKey" : "1",
+            "seedComponents" : [ {
+              "attributes" : {
+                "filterName" : "Recent",
+                "scope" : "PartnerFundAllocation"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            } ],
+            "tabKey" : "tab1",
             "tabName" : "Fund Allocations"
           }, {
-            "UUID" : "10e6bd73-628f-4cdb-91dc-3ac69fe6d909",
+            "UUID" : "d141294e-0bf7-4f96-9bac-0fdb930cd018",
             "allowGuestUser" : false,
             "locked" : false,
-            "seedComponents" : [ ],
-            "tabKey" : "2",
+            "seedComponents" : [ {
+              "attributes" : {
+                "filterName" : "Recent",
+                "scope" : "PartnerFundRequest"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            } ],
+            "tabKey" : "tab2",
             "tabName" : "Fund Requests"
           }, {
-            "UUID" : "9fcb5e5a-8712-4956-8a70-00dab8b27a04",
+            "UUID" : "f702a981-4f53-480b-89e7-ca2b3b089947",
             "allowGuestUser" : false,
             "locked" : false,
-            "seedComponents" : [ ],
-            "tabKey" : "3",
+            "seedComponents" : [ {
+              "attributes" : {
+                "filterName" : "Recent",
+                "scope" : "PartnerFundClaim"
+              },
+              "fqn" : "forceCommunity:objectHome"
+            } ],
+            "tabKey" : "tab3",
             "tabName" : "Fund Claims"
           } ],
           "useOverflowMenu" : false
         }
       },
       "componentName" : "forceCommunity:tabset",
-      "id" : "b8c4f7a3-296c-479b-abbd-ed4fdbc64ee6",
+      "id" : "539c7291-fbe6-49bf-9771-46f8e86127f1",
       "regions" : [ {
         "components" : [ {
           "componentAttributes" : {
-            "filterName" : "Recently_Viewed_Partner_Fund_Allocations",
+            "filterName" : "Recent",
             "layout" : "FULL",
             "pageSize" : 25,
             "scope" : "PartnerFundAllocation",
@@ -284,15 +302,77 @@
           } ],
           "type" : "component"
         } ],
-        "id" : "a973c3bd-e553-48dc-bdff-5fc85a342a41",
+        "id" : "ff2d3a25-02e3-4d8f-8ebb-94739607f0a6",
         "regionLabel" : "Fund Allocations",
-        "regionName" : "1",
-        "renditionMap" : { },
+        "regionName" : "tab1",
+        "renditionMap" : {
+          "de" : "8738a6b6-6944-41a6-8708-92e1b4d2811b",
+          "es" : "e3a7ab2e-f6e7-4950-af2c-9802e061bbac",
+          "es_mx" : "17e28885-7438-436c-9c1a-4295ba0426bf",
+          "fr" : "8630560f-ffa7-41dd-a224-170db3dd8ef3",
+          "it" : "cb486777-19fe-4f45-85c9-7a30a4561b52",
+          "ja" : "e981cd43-32de-4363-a52d-c1225adc3762",
+          "ko" : "81611f24-0420-4442-b3e7-dece6ec2be22",
+          "pt_br" : "037cf95a-3d27-4777-a8f6-e4243ed6ae57",
+          "pt_pt" : "cd4b8b80-c782-44e8-8c0b-52a2ef6f89aa",
+          "ru" : "495f7648-a93d-4ca0-b2f7-f1f2e4e32201",
+          "zh_cn" : "dbcb3ac5-0ba7-464c-99d6-3f037095c978",
+          "zh_tw" : "4ea80838-045e-4b83-b54f-9f34a4e94bbd"
+        },
+        "renditions" : [ {
+          "id" : "dbcb3ac5-0ba7-464c-99d6-3f037095c978",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "495f7648-a93d-4ca0-b2f7-f1f2e4e32201",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cd4b8b80-c782-44e8-8c0b-52a2ef6f89aa",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e981cd43-32de-4363-a52d-c1225adc3762",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "cb486777-19fe-4f45-85c9-7a30a4561b52",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8630560f-ffa7-41dd-a224-170db3dd8ef3",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "17e28885-7438-436c-9c1a-4295ba0426bf",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "8738a6b6-6944-41a6-8708-92e1b4d2811b",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "81611f24-0420-4442-b3e7-dece6ec2be22",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "e3a7ab2e-f6e7-4950-af2c-9802e061bbac",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "037cf95a-3d27-4777-a8f6-e4243ed6ae57",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4ea80838-045e-4b83-b54f-9f34a4e94bbd",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        } ],
         "type" : "region"
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "filterName" : "Recently_Viewed_Partner_Fund_Requests",
+            "filterName" : "Recent",
             "layout" : "FULL",
             "pageSize" : 25,
             "scope" : "PartnerFundRequest",
@@ -413,15 +493,77 @@
           } ],
           "type" : "component"
         } ],
-        "id" : "10e6bd73-628f-4cdb-91dc-3ac69fe6d909",
+        "id" : "d141294e-0bf7-4f96-9bac-0fdb930cd018",
         "regionLabel" : "Fund Requests",
-        "regionName" : "2",
-        "renditionMap" : { },
+        "regionName" : "tab2",
+        "renditionMap" : {
+          "de" : "0de400fe-b4e3-46f3-b7d7-ca66556a5ef2",
+          "es" : "b8a2d7b5-0139-4452-98ee-e392ac0d62de",
+          "es_mx" : "5be71f57-4e75-4ded-8ff1-cddd102dedbd",
+          "fr" : "dc37e56f-5712-4d78-835c-e356c68ffac2",
+          "it" : "57101c6e-09a4-4306-a9cb-7c11fc406442",
+          "ja" : "540ca886-5216-4195-86ca-cedee48fe950",
+          "ko" : "2d31d7c9-bc40-4044-8c84-d5a5d1fe3540",
+          "pt_br" : "bf9b8710-3085-4466-9b3e-4ca31885c08b",
+          "pt_pt" : "116b9da4-4a33-4f32-afe9-3ad5d7c82c72",
+          "ru" : "c50ad77f-9e3a-46f3-bf21-3b3e929ef473",
+          "zh_cn" : "a84527a9-1606-47f4-a9a1-c30f2ca413f6",
+          "zh_tw" : "4f8dcbf5-5eb1-407f-979d-f18a787a3455"
+        },
+        "renditions" : [ {
+          "id" : "a84527a9-1606-47f4-a9a1-c30f2ca413f6",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "c50ad77f-9e3a-46f3-bf21-3b3e929ef473",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "116b9da4-4a33-4f32-afe9-3ad5d7c82c72",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "540ca886-5216-4195-86ca-cedee48fe950",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "57101c6e-09a4-4306-a9cb-7c11fc406442",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "dc37e56f-5712-4d78-835c-e356c68ffac2",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "5be71f57-4e75-4ded-8ff1-cddd102dedbd",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "0de400fe-b4e3-46f3-b7d7-ca66556a5ef2",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "2d31d7c9-bc40-4044-8c84-d5a5d1fe3540",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "b8a2d7b5-0139-4452-98ee-e392ac0d62de",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "bf9b8710-3085-4466-9b3e-4ca31885c08b",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4f8dcbf5-5eb1-407f-979d-f18a787a3455",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        } ],
         "type" : "region"
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "filterName" : "Recently_Viewed_Partner_Fund_Claims",
+            "filterName" : "Recent",
             "layout" : "FULL",
             "pageSize" : 25,
             "scope" : "PartnerFundClaim",
@@ -542,14 +684,162 @@
           } ],
           "type" : "component"
         } ],
-        "id" : "9fcb5e5a-8712-4956-8a70-00dab8b27a04",
+        "id" : "f702a981-4f53-480b-89e7-ca2b3b089947",
         "regionLabel" : "Fund Claims",
-        "regionName" : "3",
-        "renditionMap" : { },
+        "regionName" : "tab3",
+        "renditionMap" : {
+          "de" : "fbb524fd-25fa-4470-82b5-956930fe3cc3",
+          "es" : "06c73b23-966c-4079-81cd-c682b34379e7",
+          "es_mx" : "47cb5f29-32aa-43fb-befb-a355ec71d6a6",
+          "fr" : "a79a5220-2267-48b1-bf1d-20a5339eae14",
+          "it" : "4bee34f0-7005-43be-ae7a-8b81f0e8d6a6",
+          "ja" : "6f8f87ce-3a3a-4b50-a5a1-aa90db7d1491",
+          "ko" : "80959ec2-b918-4d6f-a11b-7b06eb36cd83",
+          "pt_br" : "2f09bfd8-09a5-4676-9b70-8d41964a17ab",
+          "pt_pt" : "0bd53a09-29cf-4484-9709-87af35d9bac7",
+          "ru" : "3bf92708-4c95-45c4-b0b6-f9768eccaffd",
+          "zh_cn" : "9b8ede57-912d-483f-8530-e7c8c752c47f",
+          "zh_tw" : "78f062ff-5b42-4111-a20b-4633c7e6cf1a"
+        },
+        "renditions" : [ {
+          "id" : "9b8ede57-912d-483f-8530-e7c8c752c47f",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "3bf92708-4c95-45c4-b0b6-f9768eccaffd",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "0bd53a09-29cf-4484-9709-87af35d9bac7",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "6f8f87ce-3a3a-4b50-a5a1-aa90db7d1491",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "4bee34f0-7005-43be-ae7a-8b81f0e8d6a6",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "a79a5220-2267-48b1-bf1d-20a5339eae14",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "47cb5f29-32aa-43fb-befb-a355ec71d6a6",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "fbb524fd-25fa-4470-82b5-956930fe3cc3",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "80959ec2-b918-4d6f-a11b-7b06eb36cd83",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "06c73b23-966c-4079-81cd-c682b34379e7",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "2f09bfd8-09a5-4676-9b70-8d41964a17ab",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        }, {
+          "id" : "78f062ff-5b42-4111-a20b-4633c7e6cf1a",
+          "renditionValue" : { },
+          "type" : "renditionComponent"
+        } ],
         "type" : "region"
       } ],
       "renderPriority" : "NEUTRAL",
-      "renditionMap" : { },
+      "renditionMap" : {
+        "de" : "9276af5b-00f8-48ce-ad9b-52e4edae169c",
+        "es" : "a48c1a5e-954c-494a-8604-0265e47de730",
+        "es_mx" : "1513ae57-c9d6-4758-a2c9-f56caf7361e8",
+        "fr" : "70f0c813-2718-4855-9de5-70d6eb070fe5",
+        "it" : "8f1bae6b-b378-4287-9239-9c884de9bc09",
+        "ja" : "843b7ac6-d8fe-4b98-bba3-0f4af84e680c",
+        "ko" : "97d28e3d-2108-4bb6-a78f-17b858a750d3",
+        "pt_br" : "7e52242a-a3ad-4f96-bcdb-ca8e03673733",
+        "pt_pt" : "56bbf2bc-8e89-4333-99e6-98156b3d1bed",
+        "ru" : "bb715199-86e4-48c8-887b-6eba979d582e",
+        "zh_cn" : "6cf4ca57-2da5-4478-bc2a-0247db9c8802",
+        "zh_tw" : "232742e1-4ade-490e-8ee3-ed621f8a5865"
+      },
+      "renditions" : [ {
+        "id" : "6cf4ca57-2da5-4478-bc2a-0247db9c8802",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "bb715199-86e4-48c8-887b-6eba979d582e",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "56bbf2bc-8e89-4333-99e6-98156b3d1bed",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "843b7ac6-d8fe-4b98-bba3-0f4af84e680c",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "8f1bae6b-b378-4287-9239-9c884de9bc09",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "70f0c813-2718-4855-9de5-70d6eb070fe5",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "1513ae57-c9d6-4758-a2c9-f56caf7361e8",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "9276af5b-00f8-48ce-ad9b-52e4edae169c",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "97d28e3d-2108-4bb6-a78f-17b858a750d3",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "a48c1a5e-954c-494a-8604-0265e47de730",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "7e52242a-a3ad-4f96-bcdb-ca8e03673733",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      }, {
+        "id" : "232742e1-4ade-490e-8ee3-ed621f8a5865",
+        "renditionValue" : {
+          "componentAttributes" : { }
+        },
+        "type" : "renditionComponent"
+      } ],
       "type" : "component"
     } ],
     "id" : "5fade05a-01de-40a5-9b38-b0afb3648286",

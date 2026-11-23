@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>PMP_List_View_Name__c</field>
-        <value xsi:type="xsd:string">All</value>
+        <value xsi:type="xsd:string">All_Custom</value>
     </values>
     <values>
         <field>PMP_sObjectName__c</field>

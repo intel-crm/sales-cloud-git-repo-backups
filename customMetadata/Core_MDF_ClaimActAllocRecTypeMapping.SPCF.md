@@ -15,10 +15,6 @@
         <value xsi:type="xsd:string">Core_MDF_Service_Provider_CoMarketing_Fund</value>
     </values>
     <values>
-        <field>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Channel_Program_Name_txt__c</field>
         <value xsi:type="xsd:string">Service Provider CoMarketing Fund</value>
     </values>
@@ -29,10 +25,6 @@
     <values>
         <field>Core_MDF_ClaimStage_RecordType_txt__c</field>
         <value xsi:type="xsd:string">Core_MDF_Claim_SPCF_Batch_Record</value>
-    </values>
-    <values>
-        <field>Core_MDF_Claim_Activity_Name_Swap_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
         <field>Core_MDF_Claim_RecordType_txt__c</field>
@@ -51,23 +43,11 @@
         <value xsi:type="xsd:string">Core_MDF_CCP_SPCF_INTERNAL_ALL</value>
     </values>
     <values>
-        <field>Core_MDF_POP_Mandatory_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
         <field>Core_MDF_Payment_RecordType_txt__c</field>
         <value xsi:type="xsd:string">Core_MDF_Service_Provider_Co_Marketing_Fund</value>
     </values>
     <values>
         <field>Core_MDF_Region_cd__c</field>
         <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_isProgramBased_Ind__c</field>
-        <value xsi:type="xsd:boolean">false</value>
-    </values>
-    <values>
-        <field>Core_MDF_isProposalBased__c</field>
-        <value xsi:type="xsd:boolean">false</value>
     </values>
 </CustomMetadata>

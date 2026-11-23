@@ -124,10 +124,9 @@ public class PRM_CDB_CompanyValidation_APICallout {
                 logRec.Core_Integration_Type__c = 'IPA AI Agent Info ';
                 logRec.Core_Record_Id__c = compositeKey;
                 logRec.Core_Log_Status_Nm__c = isSuccess ? 'Successful' : 'Failed';
-                logRec.Core_Retry_Number_Nbr__c = newRetryCounter;
+                logRec.Core_Retry_Number__c = newRetryCounter;
                 logRec.Core_Status_Code__c = statusCode;
                 logRec.Core_Status_Message__c = (res != null) ? res.getStatus() : '';
-                logRec.Core_Integration_Direction_Nm__c = 'Outbound';
                 insertCDBLogList.add(logRec);
                 System.debug('added CDB Log for Upsert:'+logRec);
             }

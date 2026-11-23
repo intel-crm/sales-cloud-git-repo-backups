@@ -7,7 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Approval</template>
     </alerts>
@@ -18,7 +18,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Design_Owner_On_Rejection</template>
     </alerts>
@@ -33,7 +33,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>ddr.admin@intel.com</senderAddress>
+        <senderAddress>salescrm_sb@intel.com</senderAddress>
         <senderType>OrgWideEmailAddress</senderType>
         <template>DDR_Email_Templates/Core_DDR_Notify_Owners_On_Open_Design</template>
     </alerts>
@@ -105,65 +105,13 @@
         <protected>false</protected>
         <reevaluateOnChange>false</reevaluateOnChange>
     </fieldUpdates>
-    <fieldUpdates>
-        <fullName>PCC_Update_the_status_to_L1</fullName>
-        <description>Update the status to L1</description>
-        <field>PCC_Approval_Level__c</field>
-        <literalValue>Level 1</literalValue>
-        <name>Update the status to L1</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Recall_the_Deal</fullName>
-        <field>RecordTypeId</field>
-        <lookupValue>Deal_Registration_Draft</lookupValue>
-        <lookupValueType>RecordType</lookupValueType>
-        <name>Recall the Deal</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>LookupValue</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_Approval_Level_To_Two</fullName>
-        <field>PCC_Approval_Level__c</field>
-        <literalValue>Level 2</literalValue>
-        <name>Update Approval Level To Two</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>false</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_status_to_Precheck_completed</fullName>
-        <field>Core_Design_Registration_Status_Nm__c</field>
-        <literalValue>Pre-Approved</literalValue>
-        <name>Update status to Precheck completed</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
-    <fieldUpdates>
-        <fullName>Update_the_staus</fullName>
-        <field>Core_Design_Registration_Status_Nm__c</field>
-        <literalValue>Draft</literalValue>
-        <name>Update the staus</name>
-        <notifyAssignee>false</notifyAssignee>
-        <operation>Literal</operation>
-        <protected>false</protected>
-        <reevaluateOnChange>true</reevaluateOnChange>
-    </fieldUpdates>
     <rules>
         <fullName>Core_DDR_Calculate_Partner_Region</fullName>
         <actions>
             <name>Core_DDR_Assign_Partner_Region</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <formula>OR(ISNEW(), ISCHANGED(Core_Partner_Account_Id__c))</formula>
         <triggerType>onAllChanges</triggerType>
     </rules>
@@ -173,7 +121,7 @@
             <name>Core_DDR_Design_Record_Type_To_Locked</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Changes the Record Type, so the design fields are NOT editable by Intel user.</description>
         <formula>Owner:User.Profile.Name = &apos;Partner&apos; &amp;&amp; NOT(RecordTypeId =  $Label.Core_DDR_Design_Locked_Record_Type_ID)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -184,7 +132,7 @@
             <name>Core_DDR_Notify_Design_Owner_On_Approval</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
             <operation>equals</operation>
@@ -199,7 +147,7 @@
             <name>Core_DDR_Notify_Design_Owner_On_Rejection</name>
             <type>Alert</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <criteriaItems>
             <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
             <operation>equals</operation>
@@ -210,7 +158,7 @@
     </rules>
     <rules>
         <fullName>Core_DDR_Send_Email_On_Open_Design</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Sends Email to Design Owner and Partner Account Owner when Design is Open for 150 days.</description>
         <formula>ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Submitted&apos;)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
@@ -233,16 +181,15 @@
             <name>Core_DDR_Design_Record_Type_To_Unlocked</name>
             <type>FieldUpdate</type>
         </actions>
-        <active>false</active>
+        <active>true</active>
         <description>Changes the Record Type, so the design fields are editable by Intel user.</description>
         <formula>Owner:User.Profile.Name &lt;&gt; &apos;Partner&apos; &amp;&amp; NOT(RecordTypeId = $Label.Core_DDR_Design_Locked_Record_Type_ID)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
     </rules>
     <rules>
         <fullName>Core_DDR_Update_Status_To_Abandoned</fullName>
-        <active>false</active>
+        <active>true</active>
         <description>Changes the Status of the Design to Abandoned if the Design is Open for 180 days.</description>
-        <failedMigrationToolVersion>238.9.4</failedMigrationToolVersion>
         <formula>ISPICKVAL(Core_Design_Registration_Status_Nm__c, &apos;Submitted&apos;)</formula>
         <triggerType>onCreateOrTriggeringUpdate</triggerType>
         <workflowTimeTriggers>

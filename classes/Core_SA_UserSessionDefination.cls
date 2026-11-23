@@ -16,14 +16,6 @@ public class Core_SA_UserSessionDefination {
     @AuraEnabled
     public string email;
     
-    //Sales Assist Opp
-    @AuraEnabled
-    public List<opportunitylineitem> prodJSON;
-    
-    //Sales Assist Opp
-    @AuraEnabled
-    public string opp_name;
-    
     @AuraEnabled
 	public static Core_SA_UserSessionDefination parse(String json) {
 		return (Core_SA_UserSessionDefination) System.JSON.deserialize(json, Core_SA_UserSessionDefination.class);

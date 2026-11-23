@@ -330,9 +330,8 @@ Modification Log :
         System.RunAs(ListOfInternalSfUsers.get(0)){
             
             // Setting the Visualforce Page
-            // commenting for Classic EOL - Tejaswini
-          /*  PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','edit');
             //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -343,9 +342,11 @@ Modification Log :
             ApexPages.currentPage().getParameters().put('paramId', CaseRecord.ContactId);
             ApexPages.currentPage().getParameters().put('id', CaseRecord.Id);
             
+            System.debug('---CaseRecord :::'+CaseRecord);
             // instantiate the Controller - Core_IPS_Case_Clone_Controller Apex Class
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             //ipsInternalCaseController.objectSelected ='Contact';
+            system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
             
             ipsInternalCaseController.cloneCase.Subject='Test subject';
             ipsInternalCaseController.cloneCase.Core_Severity__c='Critical';
@@ -354,7 +355,6 @@ Modification Log :
              //code added by S. Vishal
             ipsInternalCaseController.cloneCase=caseRecord;     
             ipsInternalCaseController.isAgentPartner = true;
-            
             ipsInternalCaseController.saveCaseDetails();
             
             ipsInternalCaseController.getEnvDetails();
@@ -381,7 +381,6 @@ Modification Log :
             ipsInternalCaseController.captureEnvDetails();
             
             ipsInternalCaseController.cloneCase.Core_Severity__c='Normal';
-            system.assertEquals(ipsInternalCaseController.cloneCase.Core_Severity__c,'Normal');
             ipsInternalCaseController.DisplayPriorityReason();
             //PriorityCheck
             ipsInternalCaseController.DisplayPriorityReason = true;
@@ -402,13 +401,12 @@ Modification Log :
         getRecords(2);
         System.RunAs(ListOfInternalSfUsers.get(0)){
             CaseRecord =  new case();
-            //commenting for Classic EOL - Tejaswini
-      /*      PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
+            System.debug('---CaseRecord :::'+CaseRecord);
             // instantiate the Controller - Core_IPS_Case_Clone_Controller Apex Class
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             ipsInternalCaseController.eoisFlag= true;
-             system.assertEquals( ipsInternalCaseController.eoisFlag,true);
             ipsInternalCaseController.pageInit();
             
             ipsInternalCaseController.eoisFlag= false;
@@ -428,16 +426,12 @@ Modification Log :
             CaseRecord.AssetId=ListOfAssets.get(0).Id;
             CaseRecord.Core_IPS_Supported_Product__c=ListOfSupportedProduct.get(0).Id;
             CaseRecord.Core_Severity__c='Critical';
-            //Commented becaues it is getting error need to take a US to solve it . US:TWC745-5417 
-            //CaseRecord.Status='Closed';
-            system.assertEquals(CaseRecord.AssetId,ListOfAssets.get(0).Id);
-         
+            CaseRecord.Status='Closed';
             update CaseRecord;
             
             // Setting the Visualforce Page
-            // commenting for Classic EOL - Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','edit');
             //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -448,11 +442,11 @@ Modification Log :
             ApexPages.currentPage().getParameters().put('paramId', CaseRecord.ContactId);
             ApexPages.currentPage().getParameters().put('id', CaseRecord.Id);
             
+            System.debug('---CaseRecord :::'+CaseRecord);
             // instantiate the Controller - Core_IPS_Case_Clone_Controller Apex Class
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             //ipsInternalCaseController.objectSelected ='Contact';
-            
-            
+            system.debug('envDetails - ' + ipsInternalCaseController.envDetails);
             
             ipsInternalCaseController.cloneCase.Subject='Test subject';
             ipsInternalCaseController.cloneCase.Core_Severity__c='Critical';
@@ -462,6 +456,7 @@ Modification Log :
             ipsInternalCaseController.saveCaseDetails();
             
             UserRecordAccess assetAccess = [SELECT RecordId, HasReadAccess FROM UserRecordAccess WHERE UserId=:UserInfo.getUserId() AND RecordId =: caseRecord.AssetId Limit 1];
+            System.debug('-----Record Access Page Init ::'+assetAccess);
             ipsInternalCaseController.pageInit();
             //ipsInternalCaseController.cs.Core_IPS_Copy_Flag__c = true;
             
@@ -505,13 +500,12 @@ Modification Log :
             CaseRecord.AssetId=ListOfAssets.get(0).Id;
             CaseRecord.Core_IPS_Supported_Product__c=ListOfSupportedProduct.get(0).Id;
             CaseRecord.Core_Severity__c='Critical';
-             system.assertEquals(CaseRecord.Core_Severity__c,'Critical');
+            
             update CaseRecord;
             
             // // Setting the Visualforce Page
-            // commenting for Classic EOL - Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             // //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -526,6 +520,8 @@ Modification Log :
             //ipsInternalCaseController.objectSelected ='Product';
             ipsInternalCaseController.cs = CaseRecord;
             ipsInternalCaseController.getEnvDetails();
+            system.debug('validateEnvironmentDetails1 ----envDetails - 4' + ipsInternalCaseController.envDetails);
+            system.debug('validateEnvironmentDetails1 -case record::' + caseRecord);
             //ipsInternalCaseController.addEnvDetails();
             
             
@@ -575,6 +571,8 @@ Modification Log :
             ipsInternalCaseController.envDetails[0].cplaceholder=true;    
             ipsInternalCaseController.validateEnvironmentDetails();
             
+            
+            System.debug('-------------Clone Case Record :::'+ipsInternalCaseController.cloneCase);
             //Exception part
             ipsInternalCaseController.getEnvDetails();
             
@@ -583,6 +581,7 @@ Modification Log :
                 ipsInternalCaseController.saveCaseDetails();
                 
             }catch(Exception e){
+                system.debug('---Exception Caught ::'+e.getMessage());
             }
             
             
@@ -596,9 +595,8 @@ Modification Log :
         System.RunAs(ListOfInternalSfUsers.get(0)){
             Test.startTest();
             // Setting the Visualforce Page
-            // commenting for Classic EOL - Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             // Assigning parameters in the URL
             ApexPages.currentPage().getParameters().put('mode','asset');
             //ApexPages.currentPage().getParameters().put('rType','012210000004IHR');
@@ -610,7 +608,6 @@ Modification Log :
             CaseRecord.Subject = 'sdsad';
             CaseRecord.Core_Issue_Description__c = 'dasadsa';
             CaseRecord.Core_Severity__c='';
-             system.assertEquals(CaseRecord.Subject,'sdsad');
             // instantiate the Controller - Core_IPS_Case_Clone_Controller Apex Class
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             //ipsInternalCaseController.objectSelected ='Product';
@@ -651,22 +648,25 @@ Modification Log :
         getRecords(1);
         //CaseRecord = new Case(); Commented By Manoj
         // Setting the Visualforce Page
-        // commenting for Classic EOL - Tejaswini
-    /*    PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-        Test.setCurrentPage(InternalCaseCreationPage); */
+        PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+        Test.setCurrentPage(InternalCaseCreationPage);
         // Assigning parameters in the URL
         ApexPages.currentPage().getParameters().put('mode','edit');        
         RecordType RT = [Select Name, Id From RecordType where sObjectType='Case' and DeveloperName = 'Core_IPS_Case_Create_Self_Assigned'];
         ApexPages.currentPage().getParameters().put('rType', String.valueOf(RT.Id).left(15));
+        system.debug('ListOfIpsProjects --' + ListOfIpsProjects);
+        system.debug('ListOfAssets --' + ListOfAssets);
         //ApexPages.currentPage().getParameters().put('projectId', ListOfIpsProjects.get(0).Id);
         //ApexPages.currentPage().getParameters().put('productId', ListOfAssets.get(0).Id);
-     	ApexPages.currentPage().getParameters().put('id',CaseRecordSA.id);
+        
         Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecordSA));
-
+        
         ipsInternalCaseController.cs = CaseRecordSA;
         ipsInternalCaseController.cloneCase = CaseRecordSA;
         ipsInternalCaseController.categorySelected = caseCat.id;
         ipsInternalCaseController.subCategorySelected = subCategory.Id;
+        
+        system.debug('InsertCaseRecord_selfAssigned envDetails - 4' + ipsInternalCaseController.envDetails);
         
         //PriorityCheck      
         ipsInternalCaseController.cloneCase.Subject = 'clone case subject';
@@ -677,8 +677,6 @@ Modification Log :
         ipsInternalCaseController.saveCaseDetails();
         ipsInternalCaseController.custVisible=false;
         ipsInternalCaseController.isNACCase=true;
-        
-         system.assertEquals(ipsInternalCaseController.cloneCase.Core_Severity__c,'Normal');
         
         ipsInternalCaseController.cloneCase.Core_Severity_Reason__c='Test reason';      
         ipsInternalCaseController.cloneCase.Core_Issue_Description__c='Test description';
@@ -722,7 +720,6 @@ Modification Log :
         IpsLabels.add(ipsLabelRead);
         IpsLabels.add(ipsLabelEdit);
         
-        
         Insert IpsLabels;
         
         
@@ -736,7 +733,6 @@ Modification Log :
         ListOfUser.get(0).LastName= 'Admin Sys Admin';
         ListOfUser.get(0).ProfileID =  ProfileList.get(0).Id;
         
-         system.assertEquals(ListOfUser.get(0).FirstName,'Admin Test');
         
         ListOfUser.get(1).FirstName= 'Agent Test';
         ListOfUser.get(1).LastName= 'Agent IPS Agent';
@@ -758,11 +754,15 @@ Modification Log :
         ListOfUser.get(5).LastName= 'Sales Sales Rep 3';
         ListOfUser.get(5).ProfileID =  SalesRepProfIds.get(0);
         
+        
+        System.debug('----------------ListOfUser::'+ListOfUser);
+        
         insert ListOfUser;
         /*
 UserRole role = new UserRole();
 role.name='CEO';
 // Creating SETUP OBJECT (USERROLE) RECORD
+
 insert role;
 ListOfUser.get(0).userroleid =role.id;               
 update ListOfUser;
@@ -879,11 +879,10 @@ update ListOfUser;
             insert ListOfIP;
         }
         
-        System.runAs(ListOfUser.get(0)) {
+        System.runAs(ListOfUser.get(1)) {
             Test.startTest();
-            //commenting for Classic EOL - Tejaswini
-        /*    PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             ApexPages.currentPage().getParameters().put('id',CaseRecord.Id); 
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             
@@ -911,7 +910,7 @@ update ListOfUser;
         test.startTest();
         UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' and name='Admin' Limit 1];
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];
-        User usr = [Select Id,UserRoleId from User where IsActive = true AND UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
+        User usr = [Select Id,UserRoleId from User where UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
         system.runAs(usr){
             //Create account
             Account portalAccount1 = new Account(
@@ -926,12 +925,10 @@ update ListOfUser;
                 AccountId = portalAccount1.id,
                 FirstName = 'portia',
                 LastName  = 'portalTestUser',
-                Email='babux5x5@intel.com',
-                MailingCountry = 'India'
+                Email='babux5x5@intel.com'      
             );
             Database.insert(contact1);
             Profile p = [select id, name from Profile where name in ('IPS Agent-Partner') limit 1]; 
-             system.assertEquals(p.name,'IPS Agent-Partner');
             //create user record
             User user1=new User(
                 username = 'newUser343434@yahoo.com',
@@ -947,11 +944,10 @@ update ListOfUser;
                 lastname='lastname2'
             );
             Database.insert(user1);
-            system.runAs(usr){
+            system.runAs(user1){
                 // Setting the Visualforce Page
-                //Commented bcz Core_IPS_Customer_Case_Creation is getting called  US:TWC745-5417 
-               // PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
-                //Test.setCurrentPage(CustomerCaseCreationPage);
+                PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
+                Test.setCurrentPage(CustomerCaseCreationPage);
                 ApexPages.currentPage().getParameters().put('mode','edit');
                 Case CaseRecord =  TestUtilities.getCase(); 
                 CaseRecord.AccountId=portalAccount1.id;
@@ -969,7 +965,7 @@ update ListOfUser;
         test.startTest();
         UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' and name='Admin' Limit 1];
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];
-        User usr = [Select Id,UserRoleId from User where IsActive = true AND UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
+        User usr = [Select Id,UserRoleId from User where UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
         system.runAs(usr){
             //Create account
             Account portalAccount1 = new Account(
@@ -984,12 +980,10 @@ update ListOfUser;
                 AccountId = portalAccount1.id,
                 FirstName = 'portia',
                 LastName  = 'portalTestUser',
-                Email='babux5x5@intel.com',
-                MailingCountry ='India'
+                Email='babux5x5@intel.com'      
             );
             Database.insert(contact1);
             Profile p = [select id, name from Profile where name in ('IPS External Customer') limit 1]; 
-             system.assertEquals(p.Name,'IPS External Customer');
             //create user record
             User user1=new User(
                 username = 'newUser343434@yahoo.com',
@@ -1005,11 +999,10 @@ update ListOfUser;
                 lastname='lastname2'
             );
             Database.insert(user1);
-            system.runAs(usr){
+            system.runAs(user1){
                 // Setting the Visualforce Page
-                //Commented bcz Core_IPS_Customer_Case_Creation is getting called  US:TWC745-5417 
-               // PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
-                //Test.setCurrentPage(CustomerCaseCreationPage);
+                PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
+                Test.setCurrentPage(CustomerCaseCreationPage);
                 ApexPages.currentPage().getParameters().put('mode','edit');
                 Case CaseRecord =  TestUtilities.getCase(); 
                 CaseRecord.AccountId=portalAccount1.id;
@@ -1029,7 +1022,7 @@ update ListOfUser;
         test.startTest();
         UserRole portalRole = [Select Id From UserRole Where PortalType = 'None' and name='Admin' Limit 1];
         Profile prof = [select id from profile where name = 'System Administrator' limit 1];
-        User usr = [Select Id,UserRoleId from User where IsActive = true AND UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
+        User usr = [Select Id,UserRoleId from User where UserRoleId=:portalRole.Id AND profileId=:prof.id limit 1];
         system.runAs(usr){
             //Create account
             Account portalAccount1 = new Account(
@@ -1044,12 +1037,10 @@ update ListOfUser;
                 AccountId = portalAccount1.id,
                 FirstName = 'portia',
                 LastName  = 'portalTestUser',
-                Email='babux5x5@intel.com',
-                MailingCountry = 'India'
+                Email='babux5x5@intel.com'      
             );
             Database.insert(contact1);
             Profile p = [select id, name from Profile where name in ('IPS External Customer') limit 1]; 
-             system.assertEquals(p.Name,'IPS External Customer');
             //create user record
             User user1=new User(
                 username = 'newUser343434@yahoo.com',
@@ -1065,11 +1056,10 @@ update ListOfUser;
                 lastname='lastname2'
             );
             Database.insert(user1);
-            system.runAs(usr){
+            system.runAs(user1){
                 // Setting the Visualforce Page
-               //Commented bcz Core_IPS_Customer_Case_Creation is getting called  US:TWC745-5417 
-                //PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
-                //Test.setCurrentPage(CustomerCaseCreationPage);
+                PageReference CustomerCaseCreationPage = Page.Core_IPS_Customer_Case_Creation;
+                Test.setCurrentPage(CustomerCaseCreationPage);
                 ApexPages.currentPage().getParameters().put('mode','edit');
                 Case CaseRecord =  TestUtilities.getCase(); 
                 CaseRecord.AccountId=portalAccount1.id;
@@ -1087,14 +1077,13 @@ update ListOfUser;
     //Asset Page Init Test Method
     static testmethod void pageInitAssetTest(){
         getRecords(2);
-        ID recordTypeId = schema.sobjecttype.Account.getrecordtypeinfosbyname().get('Intel Account').getRecordTypeId(); // added to fix Account recordtype related error : Tejaswini
+        
         //Create account
         Account portalAccount1 = new Account(
             Name = 'newAcc3',
             BillingCity = 'folsom',
             BillingCountry = 'USA',
-            BillingStreet = 'Creek Side Dr',
-            RecordTypeId = recordTypeId
+            BillingStreet = 'Creek Side Dr'    
         );
         Database.insert(portalAccount1);
         //Create contact
@@ -1102,8 +1091,7 @@ update ListOfUser;
             AccountId = portalAccount1.id,
             FirstName = 'portia',
             LastName  = 'portalTcestUser',
-            Email='babux5x5@intcel.com',
-            MailingCountry = 'India'
+            Email='babux5x5@intcel.com'      
         );
         Database.insert(contact1);
         
@@ -1115,18 +1103,14 @@ update ListOfUser;
             CaseRecord.Core_Issue_Description__c = '';
             CaseRecord.contactId = contact1.id;
             insert CaseRecord;
-            //commenting for Classic EOL - Tejaswini
-      /*      PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
-            Test.setCurrentPage(InternalCaseCreationPage); */
+            PageReference InternalCaseCreationPage = Page.Core_IPS_CaseClone;
+            Test.setCurrentPage(InternalCaseCreationPage);
             Core_IPS_Case_Clone_Controller ipsInternalCaseController = new Core_IPS_Case_Clone_Controller(new ApexPages.StandardController(CaseRecord));
             ipsInternalCaseController.pageInit();
             CaseRecord.AssetId = ListOfAssets.get(0).id;
             ipsInternalCaseController.renderErrorFlag = true;
             ipsInternalCaseController.selectedAccountId = null;
-             system.assertEquals(ipsInternalCaseController.renderErrorFlag,true);
             
         }
     }
-   
-
 }

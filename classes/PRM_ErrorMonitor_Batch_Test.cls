@@ -100,7 +100,7 @@ public class PRM_ErrorMonitor_Batch_Test {
         
         
         ChannelProgramLevel cpl=new ChannelProgramLevel();
-        cpl.Name='Gold';
+        cpl.Name='Partner';
         cpl.ProgramId=cp.Id;
         insert cpl;
         

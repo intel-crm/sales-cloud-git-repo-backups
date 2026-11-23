@@ -4,19 +4,19 @@
     <protected>false</protected>
     <values>
         <field>Core_Condition__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3oh,a2W3b00000EW3oc,a2W3b00000ELQFgEAP,a2W3b00000ELQFqEAP,a2W3b00000ELQFlEAP,a2W2i000001EITG,a2W3b00000ELQFbEAP,a2W2i000001EITL,a2W3b00000GlZgj,a2WD30000013gTv</value>
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3p1</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
-        <value xsi:type="xsd:string">MDF Claim Submitter</value>
+        <value xsi:type="xsd:string">Employee</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3om</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsus</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>

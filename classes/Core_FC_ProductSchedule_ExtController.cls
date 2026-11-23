@@ -12,8 +12,8 @@ Modification Log :
 * Ashwin Dash               02/12/2018              DE35986 : 6QPS accept Quantity with Comma and ensured negative values should not be added in quantity
 * Ashwin Dash               04/03/2018              US102131 : 6QPS: Ensure Delegate Manager Can Approve 6QPS
 * Ashwin Dash               11/27/2018              US229893 : LEx Enhancements
-* Sougata Sarkar            02/11/2019              US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card
-* Sougata Sarkar            02/18/2019              US231051 : 6QPS: Ability to recall 6QPS
+* Sougata Sarkar     		02/11/2019              US227105 : Clickjack : Vulnerable IPS securit,y Clickjack and Security Score Card
+* Sougata Sarkar			02/18/2019              US231051 : 6QPS: Ability to recall 6QPS
 *************************************************************************************/
 
 public with sharing class Core_FC_ProductSchedule_ExtController {
@@ -35,9 +35,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         public boolean clearFlag{get;set;}
     public boolean isOwner{get;set;}
     public boolean isManager{get;set;}
-    //Added by Kavyashree HR(Infosys Team) for the US819403
-    public boolean isTechOwnerManager{get;set;}
-    public boolean isSubmitChk{get;set;}   
+    public boolean isSubmitChk{get;set;}
     public boolean noManager{get;set;}
     public boolean isAllZero{get;set;}
     public boolean addQtrCheck{get;set;}
@@ -60,7 +58,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         //US102131 : 6QPS: Ensure Delegate Manager Can Approve 6QPS - Added Owner's manager's delegated approver -- Ashwin
         this.opptyObj1 = [SELECT id, Name, Core_FC_Recall_Count__c, OwnerId, Owner.Name, Account.Name, Owner.ManagerId, Owner.email, Owner.Manager.email, Owner.Manager.DelegatedApproverId, Owner.DelegatedApproverId, Core_Technical_Owner__c, Core_Technical_Owner__r.ManagerId, Core_Technical_Owner__r.Manager.email FROM Opportunity WHERE id = :opptyObj.Id LIMIT 1];
         this.qtrSubmitMsg = Label.Core_FC_SubmitMessage.split(';');
-        //system.debug('opptyObj1.Owner.Manager.DelegatedApproverId '+opptyObj1.Owner.Manager.DelegatedApproverId);
+        system.debug('opptyObj1.Owner.Manager.DelegatedApproverId '+opptyObj1.Owner.Manager.DelegatedApproverId);
         if(opptyObj1.Owner.Manager.DelegatedApproverId != null && String.valueOf(opptyObj1.Owner.Manager.DelegatedApproverId) != '')
             delegatedApp = [SELECT id, name, email FROM User WHERE id = :opptyObj1.Owner.Manager.DelegatedApproverId LIMIT 1];
         else    
@@ -93,13 +91,6 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         }else{
             isManager = false;
         }
-        //Start- Added by Kavyashree HR(Infosys Team) for the US819403
-        if(UserInfo.getUserId() == opptyObj1.Core_Technical_Owner__r.ManagerId || String.valueOf(opptyObj1.Core_Technical_Owner__r.ManagerId) == ''){
-            isTechOwnerManager = true;
-        }else{
-            isTechOwnerManager = false;
-        }
-        //End- Added by Kavyashree HR(Infosys Team) for the US819403
         if(!productSortedForecastMap.isEmpty()){
             forecastTable = getDispWrapperTableMethod(productSortedForecastMap, qtrNameList);
         }else{
@@ -132,12 +123,15 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         //Core_Profiles_which_can_remove_the_Quantities
         isDisabled = true;
         List<String> profileNames1 = Label.Core_Profiles_which_can_remove_the_Quantities.split(',');
+        system.debug('the list of profiles in CL===>'+profileNames1);
         List<Profile> profileList1 = [select Id, Name from Profile where Name IN: profileNames1];
+        system.debug('the list of profiles in Org===>'+profileList1);
         for(Profile prof : profileList1){
             if(prof.id == UserInfo.getProfileId()){
                 isDisabled = False;
             }
         }
+        system.debug('the disable value is===>'+isDisabled);
         
         boolean isApprovedFC = getIsApprovedFC(productSortedForecastMap);
         if(isApprovedFC){
@@ -210,6 +204,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 }
             }
             lastApprovedProdList.add(lastAppProd);
+            system.debug('lastAppProdList '+lastApprovedProdList);
         }
         return isApproved;
     }
@@ -332,10 +327,11 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     public void deleteAllBlankQuantity(){
         Id oppObjId = ApexPages.currentPage().getParameters().get('Id');
         if(oppObjId != null){
-            List<Core_Opp_FC_Prod_Schedule__c> updateIsDeleted = [SELECT id, Name, Core_Opp_FC_isdeleted__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c =: ApexPages.currentPage().getParameters().get('Id') AND Core_Opp_FC_isdeleted__c = true ORDER BY lastModifiedDate DESC];
-            List<Core_Opp_FC_Prod_Schedule__c> deleteBlankQty = [SELECT id, Name, Core_Opp_FC_isdeleted__c, Core_Opp_FC_Quantity__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c =: ApexPages.currentPage().getParameters().get('Id') AND Core_Opp_FC_isdeleted__c = false AND Core_Opp_FC_Quantity__c = null ORDER BY lastModifiedDate DESC];
+            List<Core_Opp_FC_Prod_Schedule__c> updateIsDeleted = [SELECT id, Name, Core_Opp_FC_isdeleted__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppObjId AND Core_Opp_FC_isdeleted__c = true ORDER BY lastModifiedDate DESC];
+            List<Core_Opp_FC_Prod_Schedule__c> deleteBlankQty = [SELECT id, Name, Core_Opp_FC_isdeleted__c, Core_Opp_FC_Quantity__c, lastModifiedDate FROM Core_Opp_FC_Prod_Schedule__c WHERE Core_Opp_FC_Opportunity__c = :oppObjId AND Core_Opp_FC_isdeleted__c = false AND Core_Opp_FC_Quantity__c = null ORDER BY lastModifiedDate DESC];
             Integer size = deleteBlankQty.size();
             if(size != null && size > 0){
+                System.debug('$$$ delete -'+deleteBlankQty);
                 for(Integer i=0; i<size; i++){
                     updateIsDeleted[i].Core_Opp_FC_isdeleted__c = false;
                 }           
@@ -369,6 +365,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         editAll = false;
         updateAppRejClass appRejObj = new updateAppRejClass();
         if(flag){
+            System.debug('### Deleted List - '+insertForeCastList);
             if(!insertForeCastList.isEmpty()){
                 try{
                     delete insertForeCastList;
@@ -398,6 +395,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         cancelQuarter();
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
         PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=true');
+        System.debug('***Pg - '+pgRef);
         pgRef.setRedirect(true);
         return pgRef;
     }
@@ -418,6 +416,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 prodSortForecastMap.put(fc.Core_Opp_Line_Item_RecordID__c, tempList);
             }      
         }
+        System.debug('*** ProdMap - '+prodSortForecastMap);
         return prodSortForecastMap;
     }
     
@@ -482,6 +481,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         }
         qNameList.addAll(quarterNameSet);
         colorList.addAll(colorNameSet);
+        System.debug('***--- Color '+colorList);
         return fcTable;     
     }
     
@@ -551,7 +551,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
         forecastTable = new List<displayWrapper>();
         Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> psFCMap =  getProdSortForecastMapMethod(); 
         forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);
-        //System.debug('### New Table Values - '+forecastTable);  
+        System.debug('### New Table Values - '+forecastTable);  
         //PageReference pgRef = ApexPages.CurrentPage();
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
         PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
@@ -594,9 +594,6 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 }
                 fcObject1.Core_Opp_FC_isdeleted__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_isdeleted__c;
                 fcObject1.Core_FC_4Q_Shed_Quantity__c = productSortedForecastMap.get(item)[num].Core_FC_4Q_Shed_Quantity__c;
-
-                //US664775 : (Implementation of US621437) SPIKE : Report: Blank BU Short Name Implemented By Gopala Krishna Ch 30/06/2020
-                fcObject1.Core_FC_BU_Short_Name__c = productSortedForecastMap.get(item)[num].Core_FC_BU_Short_Name__c;
                 fcObject1.Core_FC_Last_Modified_Date__c = null;
                 fcObject1.Core_FC_Vendor__c = productSortedForecastMap.get(item)[num].Core_FC_Vendor__c;
                 fcObject1.Core_Opp_FC_Prod_Sales_Price__c = productSortedForecastMap.get(item)[num].Core_Opp_FC_Prod_Sales_Price__c;
@@ -619,7 +616,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                         Approval.LockResult[] lrList = Approval.lock(toLockRecords,false);
                     }
                 }Catch(Exception e){
-                    PMP_Utility.logError(e, 'Core_FC_ProductSchedule_ExtController.addQuarterMethod');
+                    System.debug('Insert Exception - '+e.getMessage());
                     excpt = e.getMessage();
                     count1++;
                 }
@@ -634,9 +631,11 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
                 //update updateForeCastList;
                 appRejObj.approve(updateForeCastList);
             }
+            System.debug('*** return not working');
             qtrNameList = new List<String>();
             Map<Id, List<Core_Opp_FC_Prod_Schedule__c>> psFCMap =  getProdSortForecastMapMethod(); 
             forecastTable = getDispWrapperTableMethod(psFCMap, qtrNameList);        
+            System.debug('$$$ New Table Values - '+forecastTable);
         }
     }
     
@@ -660,7 +659,7 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
     
     public void migrate6QPSMethod(){
         List<OpportunityLineItem> oliPresentMap = [SELECT id, Quantity, OpportunityId, Core_Vendor__c, Core_Status__c, Product2Id FROM OpportunityLineItem WHERE OpportunityId = :opptyObj.Id];
-            Core_OpportunityLineItemHandler.insertForecastRecords(oliPresentMap,new List<Core_Opp_FC_Prod_Schedule__c>(),true);
+        Core_OpportunityLineItemHandler.insertForecastRecords(oliPresentMap, true);
     }
     
     public PageReference clearQuantities(){
@@ -733,14 +732,10 @@ public with sharing class Core_FC_ProductSchedule_ExtController {
             oppShareMap.put(oppUserShareList.UserOrGroupId,oppUserShareList);
         }
         if(userIdList.size() > 0 && ! userIdList.isempty()){
-            for(Id usId : userIdList){                
+            for(Id usId : userIdList){
                 if(oppShareMap.containskey(usId)){
                 }
                 else{
-                    opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=usId, OpportunityAccessLevel='Edit'));
-                }
-                //Added by Kavyashree HR(Infosys Team) for the US819403
-                if(usId == techMgrId && usId != opptyObj1.OwnerId){
                     opptyShareList.add(new OpportunityShare(OpportunityId=opptyObj1.Id, UserOrGroupId=usId, OpportunityAccessLevel='Edit'));
                 }
             }
@@ -793,7 +788,7 @@ appRejObj.insertOpptyShare(opptyShareList);
                     lockRecord.addAll(tempList1);
                     
                 }           
-                if(!tempList2.isEmpty() || Test.isRunningTest()){
+                if(!tempList2.isEmpty()){                   
                     //lockRecord.addAll(tempList2);             
                     for(Core_Opp_FC_Prod_Schedule__c fc3 : tempList2){
                         if(fc3.Core_Opp_FC_Approval_Status__c != 'Pending'){
@@ -809,17 +804,13 @@ appRejObj.insertOpptyShare(opptyShareList);
                 //}
             }
             toList.add(opptyObj1.owner.Manager.email);
-            //Added by Kavyashree HR(Infosys Team) for the US819403
-            if(opptyObj1.Core_Technical_Owner__r.ManagerId!= null){
-                toList.add(opptyObj1.Core_Technical_Owner__r.Manager.email);
-            }
             if(delegatedApp != null){
                 toList.add(delegatedApp.email);
             }
-            //System.debug('***toList- '+toList);
+            System.debug('***toList- '+toList);
             ccList.add(opptyObj1.owner.email);
-            //System.debug('****ccList- '+ccList);
-            //System.debug('****LockRecord- '+lockRecord);
+            System.debug('****ccList- '+ccList);
+            System.debug('****LockRecord- '+lockRecord);
             Savepoint sp = Database.setSavepoint();
             try{
                 if(!lockRecord.isEmpty()){                  
@@ -847,8 +838,7 @@ appRejObj.insertOpptyShare(opptyShareList);
     
     public void sendEmail(List<String> toAddList, List<String> ccAddList, Opportunity opptyObj, String qtrSubmitted){
         String[] toAdd = new String[]{};
-        String[] ccAdd = new String[]{};
-        String fromEmailAddress = System.Label.Core_SetFromEmailAddress;
+            String[] ccAdd = new String[]{};
                 for(String str : toAddList){
                     toAdd.add(str);
                 }
@@ -865,11 +855,10 @@ appRejObj.insertOpptyShare(opptyShareList);
         Core_Sales_Opp_Internal_URL__mdt urlValue = [SELECT developerName, masterlabel, Core_Opp_URLValue__c FROM Core_Sales_Opp_Internal_URL__mdt WHERE developerName = 'Core_Url' LIMIT 1];
         String globalUrl = String.valueOf(urlValue.Core_Opp_URLValue__c);
         email.setHtmlBody('Hello, <br/><br/>'+opptyObj.Owner.Name+', has requested for 6QPS approval for the below Opportunity. <br/><br/> Account Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'+opptyObj.Account.name+'<br/> Opportunity Name: &nbsp;'+opptyObj.Name+'<br/><br/> '+globalUrl+'/'+opptyObj.Id+'<br/><br/>');
-        email.setOrgWideEmailAddressId(fromEmailAddress);
         try{
             Messaging.sendEmail(new Messaging.SingleEmailMessage[] { email });
         }catch(exception e){
-            PMP_Utility.logError(e, 'Core_FC_ProductSchedule_ExtController.sendEmail');
+            System.debug('***Exception caught - '+e.getMessage());
             throw e;
         }
     }
@@ -889,7 +878,7 @@ appRejObj.insertOpptyShare(opptyShareList);
                 }
             }
         }
-        if(!tobeApprovedList.isEmpty() || Test.isRunningTest()){
+        if(!tobeApprovedList.isEmpty()){
             //update tobeApprovedList;
             appRejObj.approve(tobeApprovedList);
             //Decreased the FC Recall Count in opportunity
@@ -899,22 +888,13 @@ appRejObj.insertOpptyShare(opptyShareList);
             update obj;
         }
         String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-        // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
-            pgRef.setRedirect(true);
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
+        pgRef.setRedirect(true);
         if(isClassic){
             return null;
         }else{
             return pgRef;
         }
-
     }
     
     public PageReference rejectionMethod(){
@@ -935,16 +915,8 @@ appRejObj.insertOpptyShare(opptyShareList);
             //update tobeRejectedList;
             appRejObj.reject(tobeRejectedList);
         }
-      //  String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
-       // PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        //US664677-Security Scan Fix Startes
-        PageReference pgRef;
-        if(opptyObj.Id !=null && String.valueOf(opptyObj.Id).startsWith('006') && !String.valueOf(opptyObj.Id).contains('/')){
-                  pgRef = new PageReference('/'+'apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
-
-        }
-         //US664677-Security Scan Fix Ends
+        String globalUrl = String.valueOf(System.URL.getSalesforceBaseUrl().toExternalForm());
+        PageReference pgRef = new PageReference(globalUrl+'/apex/Core_FC_Product_Schedule?id='+opptyObj.Id+'&isNew=TRUE');
         pgRef.setRedirect(true);
         if(isClassic){
             return null;
@@ -961,6 +933,7 @@ appRejObj.insertOpptyShare(opptyShareList);
             for(Core_Opp_FC_Prod_Schedule__c fc : qtrFCMap1.get(qtr)){
                 if(fc.Core_Opp_FC_Approval_Status__c == 'Submitted' || fc.Core_Opp_FC_Approval_Status__c == 'Approved'){
                     isCountcheck = true;
+                    system.debug('the check 1st value is==>'+isCountcheck);
                 }
                 else{
                     OppFcProdList1.add(fc);
@@ -968,6 +941,7 @@ appRejObj.insertOpptyShare(opptyShareList);
             }
         }
         
+        system.debug('the check 2nd value is==>'+isCountcheck);
         if(isCountcheck == False){
             if(OppFcProdList1.size() > 0 )
             {
@@ -980,6 +954,7 @@ appRejObj.insertOpptyShare(opptyShareList);
                 // ApexPages.AddMessage(new ApexPages.Message(ApexPages.Severity.CONFIRM,'Record Created Successfully.Thank you!'));
             }
         }
+        system.debug('the check value is==>'+isCountcheck);
         
     }
     

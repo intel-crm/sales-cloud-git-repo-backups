@@ -55,9 +55,6 @@
         <field>ACCOUNT_NAME</field>
     </columns>
     <columns>
-        <field>OPPORTUNITY_NAME</field>
-    </columns>
-    <columns>
         <field>FULL_NAME</field>
     </columns>
     <columns>
@@ -140,10 +137,10 @@
     </groupingsDown>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
+        <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG NA Losses by Decision Date</name>
+    <name>PSG NA Losses by Quarter</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -73,10 +73,6 @@
         <name>Core_IAH_KPI_Record_ID__c</name>
     </fields>
     <fields>
-        <label><!-- KPI Retry Counter --></label>
-        <name>Core_IAH_KPI_Retry_Counter__c</name>
-    </fields>
-    <fields>
         <label><!-- Threshold Met? --></label>
         <name>Core_IAH_KPI_Threshold_Met__c</name>
         <picklistValues>
@@ -104,10 +100,6 @@
         <label><!-- KPI Type --></label>
         <name>Core_IAH_KPI_Type__c</name>
         <picklistValues>
-            <masterLabel>Salesforce Opp KPI Product Group Count</masterLabel>
-            <translation><!-- Salesforce Opp KPI Product Group Count --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Salesforce Pipeline $</masterLabel>
             <translation><!-- Salesforce Pipeline $ --></translation>
         </picklistValues>
@@ -118,14 +110,6 @@
         <picklistValues>
             <masterLabel>Salesforce Pipeline Units</masterLabel>
             <translation><!-- Salesforce Pipeline Units --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Salesforce Production Win $</masterLabel>
-            <translation><!-- Salesforce Production Win $ --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Salesforce Production Win Opp Count</masterLabel>
-            <translation><!-- Salesforce Production Win Opp Count --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -148,5 +132,12 @@
             <translation><!-- Success --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>KPI Integration Inbound Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

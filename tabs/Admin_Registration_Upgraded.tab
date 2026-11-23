@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label>Admin Registration</label>
+    <description>This is an Admin Registration page.</description>
+    <label>Admin Registration - Upgraded</label>
     <lwcComponent>pRM_AdminRegistrationLWC</lwcComponent>
-    <motif>Custom28: Cell phone</motif>
+    <motif>Custom51: Apple</motif>
 </CustomTab>

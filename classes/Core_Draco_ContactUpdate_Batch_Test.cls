@@ -36,7 +36,6 @@ public class Core_Draco_ContactUpdate_Batch_Test {
         c1.Core_AGS_Integration_Status__c = 'Failed';
         c1.Core_AGS_Integration_Message__c = 'Some AGS Error containing AGS getrole api flow failed';
         c1.Core_Enterprise_Id__c = '30000270166';
-        c1.MailingCountry='India';
         insert c1;
         
         Set<Contact> conSet = new Set<Contact>();

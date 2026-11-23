@@ -95,7 +95,7 @@ public class PRM_ABA_Utility_Test {
         spec1.PRM_Description_Txt__c='This is description';
         spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec1.PRM_Role_Nm__c='Service Provider';
-        spec1.PRM_Tier_Nm__c='Gold'; //'Gold';
+        spec1.PRM_Tier_Nm__c='Partner'; //'Gold';
         spec1.PRM_Start_Date_Dt__c= system.today() + 7;
         spec1.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec1.PRM_Access_Level_Nm__c='Public';
@@ -107,7 +107,7 @@ public class PRM_ABA_Utility_Test {
         spec2.PRM_Description_Txt__c='This is description';
         spec2.PRM_Funding_BU_Nm__c='CCG Sales Group';
         spec2.PRM_Role_Nm__c='Service Provider';
-        spec2.PRM_Tier_Nm__c='Gold';
+        spec2.PRM_Tier_Nm__c='Partner'; //'Gold';
         spec2.PRM_Start_Date_Dt__c= system.today() + 7;
         spec2.PRM_End_Date_Dt__c= spec1.PRM_Start_Date_Dt__c + 5;
         spec2.PRM_Access_Level_Nm__c='Public';

@@ -12,7 +12,9 @@
                         padding="around-small">
                         <div class="slds-form-element">
                             <div class="slds-form-element__control">
-                                <lightning-input type="text" label="Search for Account" onchange={handleAccountName}>
+                                <lightning-input type="text" label="Search for Account" onchange={handleAccountNameOrID}
+                                    placeholder="Please Enter Account name or Account Id">
+                                    <!-- Need to add place holder text/custom label-->
                                 </lightning-input>
                             </div>
                         </div>
@@ -158,8 +160,8 @@
 
     <template if:true={selectedRecordLst}>
         <div class="slds-m-around_medium">
-            <!--div class="slds-scrollable_x">
-            <div class="slds-text-longform" style="width:100%"-->
+            <div class="slds-scrollable_x">
+            <div class="slds-text-longform" style="width:100%">
             <table aria-multiselectable="true" class="slds-table slds-table_bordered slds-table_fixed-layout"
                 role="grid">
                 <template for:each={selectedRecordLst} for:item="sobKey" for:index="index">
@@ -174,8 +176,8 @@
                 </template>
 
             </table>
-            <!--/div>
-        </div-->
+            </div>
+        </div>
         </div>
         <br />
     </template>

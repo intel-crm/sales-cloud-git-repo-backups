@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">https://intel--crmqa7.sandbox.my.site.com/ipa/s/reseller-list</value>
+        <value xsi:type="xsd:string">https://intel--crmdevipa.sandbox.my.site.com/ipa/s/reseller-list</value>
     </values>
 </CustomMetadata>

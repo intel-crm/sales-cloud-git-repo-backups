@@ -1,44 +1,140 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Intel Registration Confirmation - Developer Zone Premier Account</title>
+	<title>Intel Resource and Design Center Registration Email Template</title>
 	<meta charset="UTF-8">
+	<style type ="text/css"> 
 	
+	
+	/* IE8 COMPENSATE FOR HTML5 COMPATIBILITY */
+	article, aside, figure, caption, figcaption, footer, header, main, nav, section, summary {
+	display: block;
+	}
+
+	
+	/* STRUCTURE */
+	body {
+	-webkit-text-size-adjust: none;
+	background-color:#f9f9f9;
+	background: url('https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png') repeat-x scroll left top #f9f9f9;
+	height: 100%;      
+	outline: medium none;
+	}
+	
+	#container { /* "Container" contains all the layout code, sets page width in (pixels), and easily centers page. */
+	width: 600px;  /* Good width of the vast majority of computer screens - 960px is standard because most users have 1024×768 resolution or higher */
+	margin-top: 10px; /* Outside the container line */ 
+	margin-right: auto; /* "auto" centers horizontally: tells the web browser to automatically calculate the space that is left over at the left and right of the #container */
+	margin-bottom: 10px;
+	margin-left: auto;  /* "auto" centers horizontally: tells the web browser to automatically calculate the space that is left over at the left and right of the #container */
+	position: relative;  /* "relative" because using things called floats */  /* position options {"relative", "absolute"} */
+	background-color: #FFFFFF;
+	border-color: #E5E5E5;
+	border-style: solid;
+	padding: 25px 50px 0px 50px; /*top right bottom left  -- Inside the container line */ 
+	border-width: 1px;
+	overflow: hidden;   
+	line-height: 1.5em;
+	}
+	
+	
+	hr {
+	background-color: #E5E5E5;
+	color:#E5E5E5;
+	border: 0 none;
+	height: 1px;
+	}	
+
+
+	img.floating {  /* image with text around it */ 
+	float: right;
+	padding: 4px 0px 0px 50px;  /** top right bottom left **/ 
+	}
+
+
+	/* TEXT STYLES */
+	body {
+	font-family: "Intel Clear", Verdana, Helvetica, sans-serif; 
+	font-weight: normal;
+	font-size: 10pt;
+	color: #666666;
+	}
+	
+	header {
+	font-family: "Intel Clear Pro", Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 1.1em;
+	color: #003C71;
+	line-height: 2em;
+	}
+	
+	section  {
+	font-size: 0.8em;	
+	font-style: italic;
+	color: black;
+	line-height: 1.4em;
+	}
+	
+	footer  {
+	font-size: 0.9em;
+	line-height: 1.4em;
+	}
+	
+	footer a {
+	text-decoration: none;
+	}
+	
+	a {
+	color: #086DB6;
+	}
+	
+	.intelBlueTextStyle {
+	color: #086DB6;
+	}
+	
+	.subjectTextStyle {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: #086DB6;
+	line-height: 1.4em;
+	}
+	</style>
 </head>
 
 
-<body style="-webkit-text-size-adjust: none;background-color: #f9f9f9;background: url(https://tstcqcontent-ssl.cps.intel.com/etc/designs/intel/us/en/images/gradiantbg-body.png) repeat-x scroll left top #f9f9f9;height: 100%;outline: medium none;font-family: &quot;Intel Clear&quot;, Verdana, Helvetica, sans-serif;font-weight: normal;font-size: 10pt;color: #666666;">
-<div id="container" style="width: 600px;margin-top: 10px;margin-right: auto;margin-bottom: 10px;margin-left: auto;position: relative;background-color: #FFFFFF;border-color: #E5E5E5;border-style: solid;padding: 25px 50px 0px 50px;border-width: 1px;overflow: hidden;line-height: 1.5em;"><header style="display: block;font-family: &quot;Intel Clear Pro&quot;, Verdana, Helvetica, sans-serif;font-weight: normal;font-size: 1.1em;color: #003C71;line-height: 2em;">
-<h1><img src="https://messagecenter-cons.intel.com/v1/images/uploads/5104bda0-0fc2-11ec-901e-3750230d5760.png" alt="" title="devzone-premier-header_720x160@2x.png" width="700" height="156"></h1>
-<hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;"><span style="font-family: 'intel clear', sans-serif;"></span></header><main style="display: block;">
-</main><p class="subjectTextStyle" style="font-size: 1.2em;font-weight: bold;color: #086DB6;line-height: 1.4em;"><span face="intel clear, sans-serif" style="font-family: 'intel clear', sans-serif; font-size: 18pt;">Your Application is Pending Approval</span></p>
-<p><br><span style="font-family: 'intel clear', sans-serif;">Welcome {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},</span></p>
-<p><span>Thank you for requesting a Developer Zone Premier account. It may take up to ten business days to review your request. </span></p>
+<body>
+<div id="container"><header>
+<h1><img src="https://messagecenter-cons.intel.com/v1/images/uploads/5104bda0-0fc2-11ec-901e-3750230d5760.png" alt="" title="devzone-premier-header_720x160@2x.png" /></h1>
+<hr /><span style="font-family: 'intel clear', sans-serif;"></span></header><main>
+<p class="subjectTextStyle"><span>Pending Approval</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">
+Your Application is Pending Approval</span></p>
+<p><br /><span style="font-family: 'Intel Clear','TAHOMA'; color: #086db6; font-size: 10pt;">Welcome {!PRM_Registration_Request__c.PRM_First_Name__c} {!PRM_Registration_Request__c.PRM_Last_Name__c},</span></p>
+<p><span>Thank you for registering for a Developer Zone Premier Account.If you don't yet have a Corporate Non-Disclosure Agreement (CNDA) signed with Intel, it may take up to ten business days to review your request. You will receive a status update within three business days.</span></p>
 <p><span>While your application is pending, you can engage with the Developer Zone in the following ways:</span></p>
-
-<ol>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Explore content on <a href="https://www.intel.com/content/www/us/en/resources-documentation/developer.html#gs.4qikvp" class="external-link" rel="nofollow" style="color: #086DB6;">Resource & Documentation Center</a> with your Developer Zone Standard access</li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Post a question or comment to our community forums: <a href="https://communities.intel.com/" class="external-link" rel="nofollow" style="color: #086DB6;">communities.intel.com</a></li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Bookmark and follow content of interest. Access your <a href="https://www.intel.com/content/www/us/en/secure/my-intel/content.html/" class="external-link" rel="nofollow" style="color: #086DB6;">bookmark list in My Intel.</a> </li>
+<ul>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">1	Post a question or comment to our community forums: </li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Bookmark and follow content of interest. Access your bookmark list in MyIntel </li>
 <li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Development software downloads</li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Manage your Intel® software license and registration using the License and Entitlement Manager.</li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Access the collaboration platform where developers can share projects: Intel® DevMesh.</li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Enter contests. </li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Sign up for events: <a href="https://www.intel.com/content/www/us/en/developer/community/overview.html" class="external-link" rel="nofollow" style="color: #086DB6;">Developer Community and Events</a> </li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">	Manage your Intel® software license and registration using the License and Entitlement Manager</li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Access the collaboration platform where developers can share projects: Intel® DevMesh. </li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Enter contests </li>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Sign up for events: Developer Community and Events </li>
 <li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Access performance testing applications</li>
-<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Access developer training at <a href="https://learning.intel.com/developer/learn" class="external-link" rel="nofollow" style="color: #086DB6;">Intel Learn</a> </li>
-</ol>
-<p><span style="font-family: 'intel clear', sans-serif;">Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only. </span></p>
-<p><span style="font-family: 'intel clear', sans-serif;">If you have any questions, please contact <a href="https://www.intel.com/content/www/us/en/support/contact-intel.html#support-intel-programs" class="external-link" rel="nofollow" style="color: #086DB6;">Intel® Customer Support</a>.</span></p>
+<li style="font-family: 'Intel Clear','TAHOMA'; color: #666666; font-size: 10pt;">Access developer training at Intel Learn </li>
+</ul>
+</main>
+<p><span style="font-family: 'intel clear', sans-serif;">Please retain this email for future reference and note that Premier access is associated with this email address {!PRM_Registration_Request__c.PRM_Email_ID__c} only.Your password should be protected as confidential. Your password should be protected as confidential information. Your use of the password and Intel’s websites are governed by Intel’s Terms of Use.</span></p>
+<p><span style="font-family: 'intel clear', sans-serif;">If you have any questions, please <a href="https://www.intel.com/content/www/us/en/forms/support/my-intel-sign-on-support.html" class="external-link" rel="nofollow">contact us</a>.</span></p>
 <tr id="salutationDiv" style="padding-bottom: 5px; height: 52px;">
-<td colspan="2" style="font-family: 'Intel Clear', TAHOMA; font-size: 10pt; color: #666666; padding-left: 50px; padding-top: 14px; line-height: 18px; height: 52px;">Sincerely, <br> Developer Zone Registration Administrator</td>
+<td colspan="2" style="font-family: 'Intel Clear', TAHOMA; font-size: 10pt; color: #666666; padding-left: 50px; padding-top: 14px; line-height: 18px; height: 52px;">Sincerely, <br /> Developer Zone Registration Administrator</td>
 </tr>
-<main style="display: block;">
-</main><p><span style="font-family: 'intel clear', sans-serif;">Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.</span></p>
-
-<section style="display: block;font-size: 0.8em;font-style: italic;color: black;line-height: 1.4em;">
-</section><p style="text-align: right;"></p>
-
-<hr style="background-color: #E5E5E5;color: #E5E5E5;border: 0 none;height: 1px;"><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"><img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png" alt="Intel logo" height="42" width="64" style="float: right;padding: 4px 0px 0px 50px;">Intel is committed to protecting your privacy. For more Information, please see the<span> </span><a href="https://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html" style="color: #086DB6;text-decoration: none;">Intel Privacy Notice</a>.<span> </span><a href="https://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html" style="color: #086DB6;text-decoration: none;">Intel Cookie Notice</a>.</span><br><br><span style="font-family: 'intel clear', sans-serif;"><a href="https://www.intel.com/content/www/us/en/legal/terms-of-use.html" style="color: #086DB6;text-decoration: none;">Legal Information</a><span> </span>|<span> </span><a href="https://www.intel.com/content/www/us/en/legal/trademarks.html" style="color: #086DB6;text-decoration: none;">Trademarks</a><span> </span>|<span> </span><span style="font-size: 1em;">©<span> </span></span>Intel Corporation.</span></footer><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer style="display: block;font-size: 0.9em;line-height: 1.4em;"><span style="font-family: 'intel clear', sans-serif;"></span></footer></div>
+<main>
+<p><span style="font-family: 'intel clear', sans-serif;">Please DO NOT reply to this e-mail message. This is an automated response. To ensure that you continue receiving our e-mails, add us to your address book.</span></p>
+</main>
+<section>
+<p style="text-align: right;"></p>
+</section>
+<hr /><footer><span style="font-family: 'intel clear', sans-serif;"><img class="floating" src="https://www.intel.com/content/dam/logos/intel-logo.png" alt="Intel logo" height="42" width="64" />Intel is committed to protecting your privacy. For more Information, please see the<span> </span><a href="http://www.intel.com/content/www/us/en/privacy/intel-privacy-notice.html">Intel Privacy Notice</a>.<span> </span><a href="http://www.intel.com/content/www/us/en/privacy/intel-cookie-notice.html">Intel Cookie Notice</a>.</span><br /><br /><span style="font-family: 'intel clear', sans-serif;"><a href="http://www.intel.com/content/www/us/en/legal/terms-of-use.html">Legal Information</a><span> </span>|<span> </span><a href="http://www.intel.com/content/www/us/en/legal/trademarks.html">Trademarks</a><span> </span>|<span> </span><span style="font-size: 1em;">©<span> </span></span>Intel Corporation.</span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer><footer><span style="font-family: 'intel clear', sans-serif;"></span></footer></div>
 </body>
 </html>

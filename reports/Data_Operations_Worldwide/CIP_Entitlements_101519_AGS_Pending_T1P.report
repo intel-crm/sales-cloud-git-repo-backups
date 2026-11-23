@@ -13,15 +13,44 @@
         <field>EMAIL</field>
     </columns>
     <columns>
+        <field>Contact.Core_Enterprise_Id__c</field>
+    </columns>
+    <columns>
+        <field>FK_$Core_Entitlement__c.Core_Display_Name__c</field>
+    </columns>
+    <columns>
         <field>Contact.Core_ERPM_Integration_Status__c</field>
+    </columns>
+    <columns>
+        <field>Contact.Core_ERPM_Integration_Message__c</field>
     </columns>
     <columns>
         <field>Contact.Core_AGS_Integration_Status__c</field>
     </columns>
     <columns>
+        <field>Contact.Core_AGS_Integration_Message__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <columns>
         <field>CUST_CREATED_NAME</field>
     </columns>
     <filter>
+        <criteriaItems>
+            <column>CUST_CREATED_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>10/9/2019 12:00 AM</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_CREATED_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Sales.CRM.WW. Data.Operations</value>
+        </criteriaItems>
         <criteriaItems>
             <column>Contact.Core_ERPM_Integration_Status__c</column>
             <columnToColumn>false</columnToColumn>
@@ -34,7 +63,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Failed</value>
+            <value>Pending</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

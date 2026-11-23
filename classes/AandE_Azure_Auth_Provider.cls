@@ -19,12 +19,16 @@ global class AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass {
         authUrl = authProviderConfiguration.get('Auth_URL__c');
         key = authProviderConfiguration.get('Consumer_Key__c');
         AUTH_PROVIDER_CLASS_NAME =authProviderConfiguration.get('Redirect_Url_Suffix__c');
-        redirectUrl = EncodingUtil.urlEncode(
-            'https://' + System.Url.getOrgDomainUrl().getHost() + '/services/authcallback/' + AUTH_PROVIDER_CLASS_NAME,
-            'UTF-8');
+        redirectUrl = 'https://' + System.Url.getOrgDomainUrl().getHost() + '/services/authcallback/' + AUTH_PROVIDER_CLASS_NAME;
         
-        String url = authUrl + '?response_type=code&client_id='+ key +'&redirect_uri='+ redirectUrl + '&state=' + stateToPropagate;
-        return new PageReference(url);
+        PageReference pageRef = new PageReference(authUrl);
+		pageRef.getParameters().put('response_type', 'code');
+		pageRef.getParameters().put('client_id', key);
+		pageRef.getParameters().put('redirect_uri', redirectUrl);
+		pageRef.getParameters().put('state', stateToPropagate);
+		
+        System.debug('url from initiate: ' + pageRef.getUrl());
+        return pageRef;
     }
 
     // Return a new object called AuthProviderTokenResponse.  This will contain an optional accessToken and refreshToken.
@@ -39,6 +43,7 @@ global class AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass {
         Map<String,String> queryParams = state.queryParameters;
         String code = queryParams.get('code');
         String sfdcState = queryParams.get('state');
+        System.debug('state params: ' + queryParams);
         HttpRequest req = new HttpRequest();
         // Need to split since it's just over 900 chars, due to limits on System.debug
         String body = 'client_id=' + EncodingUtil.urlEncode(key, 'UTF-8') +
@@ -58,7 +63,9 @@ global class AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass {
         Http http = new Http();
         HTTPResponse res = http.send(req);
         String responseBody = res.getBody(); 
+        System.debug('Token response: ' + responseBody);
         TokenResponse tr = (TokenResponse) (JSON.deserialize(responseBody, TokenResponse.Class));
+         System.debug('token response: ' + tr);
         return new Auth.AuthProviderTokenResponse('Apigee', tr.access_token, tr.refresh_token, sfdcState);
     }
     
@@ -93,7 +100,7 @@ global class AandE_Azure_Auth_Provider extends Auth.AuthProviderPluginClass {
     // We're not currently using this method, so just return blanks/null for now
     global Auth.UserData getUserInfo(Map<string,string> authProviderConfiguration, 
                                      Auth.AuthProviderTokenResponse response) {
-        //String token = response.oauthToken;
+        String token = response.oauthToken;
         Map<String,String> provMap = new Map<String,String>(); 
         provMap.put('what1', 'noidea1'); 
         provMap.put('what2', 'noidea2'); 

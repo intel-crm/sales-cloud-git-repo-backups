@@ -3,6 +3,10 @@
     <label>Manufacturer to ODM</label>
     <protected>false</protected>
     <values>
+        <field>PRM_Bizorg_Type__c</field>
+        <value xsi:type="xsd:string">Original Design Manufacturer (ODM)</value>
+    </values>
+    <values>
         <field>PRM_Partner_Role__c</field>
         <value xsi:type="xsd:string">Manufacturer</value>
     </values>

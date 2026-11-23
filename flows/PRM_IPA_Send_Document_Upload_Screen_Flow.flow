@@ -90,7 +90,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Email_is_sent_already_Msg</name>
-            <fieldText>&lt;p&gt;Email already received from prospective partner.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;The email is already sent to Partner. Please wait for response from Partner. If no response is received, the request will be rejected automatically after 7 days of email sent.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -115,7 +115,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Email_is_Sent_Successfully</name>
-            <fieldText>&lt;p&gt;Email successfully sent to prospective partner.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;The email is sent to Partner successfully.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -140,7 +140,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Error_Sending_Email</name>
-            <fieldText>&lt;p&gt;Error occurred when sending email to prospective partner.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Error occurred when sending email to Partner.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>GroupSettings</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>GroupSettings</value>
+    </caseValues>
+    <fields>
+        <label><!-- Currency --></label>
+        <name>Xvoyant__Currency__c</name>
+    </fields>
+    <fields>
+        <label><!-- Default RASR Program --></label>
+        <name>Xvoyant__Default_RASR_Program__c</name>
+    </fields>
+    <fields>
+        <label><!-- FunctionalGroupId --></label>
+        <name>Xvoyant__FunctionalGroupId__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteActivitySettingsModified --></label>
+        <name>Xvoyant__RemoteActivitySettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteActualsSettingsModified --></label>
+        <name>Xvoyant__RemoteActualsSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteEditPipelineSettingsModified --></label>
+        <name>Xvoyant__RemoteEditPipelineSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteEventTrackingSettingsModified --></label>
+        <name>Xvoyant__RemoteEventTrackingSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteFeatureSettingsModified --></label>
+        <name>Xvoyant__RemoteFeatureSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteMiscSettingsModified --></label>
+        <name>Xvoyant__RemoteMiscSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteRasrSettingsModified --></label>
+        <name>Xvoyant__RemoteRasrSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- RemoteVerifierSettingsModified --></label>
+        <name>Xvoyant__RemoteVerifierSettingsModified__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity0 --></label>
+        <name>Xvoyant__activity0__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity1 --></label>
+        <name>Xvoyant__activity1__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity2 --></label>
+        <name>Xvoyant__activity2__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity3 --></label>
+        <name>Xvoyant__activity3__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity4 --></label>
+        <name>Xvoyant__activity4__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity5 --></label>
+        <name>Xvoyant__activity5__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity6 --></label>
+        <name>Xvoyant__activity6__c</name>
+    </fields>
+    <fields>
+        <label><!-- activity7 --></label>
+        <name>Xvoyant__activity7__c</name>
+    </fields>
+    <fields>
+        <label><!-- actualsGoalLabel --></label>
+        <name>Xvoyant__actualsGoalLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- actualsLabel --></label>
+        <name>Xvoyant__actualsLabel__c</name>
+    </fields>
+    <fields>
+        <label><!-- actualsUseSeparateGoal --></label>
+        <name>Xvoyant__actualsUseSeparateGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- closedLost --></label>
+        <name>Xvoyant__closedLost__c</name>
+    </fields>
+    <fields>
+        <label><!-- closedWon --></label>
+        <name>Xvoyant__closedWon__c</name>
+    </fields>
+    <fields>
+        <label><!-- coachingFreq --></label>
+        <name>Xvoyant__coachingFreq__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_active_completed_goals_queue --></label>
+        <name>Xvoyant__coaching_active_completed_goals_queue__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_career_destination --></label>
+        <name>Xvoyant__coaching_career_destination__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_general_notes --></label>
+        <name>Xvoyant__coaching_general_notes__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_individual_development_plan --></label>
+        <name>Xvoyant__coaching_individual_development_plan__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_overview --></label>
+        <name>Xvoyant__coaching_overview__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_recently_completed_11s --></label>
+        <name>Xvoyant__coaching_recently_completed_11s__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_sales_goal --></label>
+        <name>Xvoyant__coaching_sales_goal__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_overview --></label>
+        <name>Xvoyant__coaching_tab__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_teamCoachHealth --></label>
+        <name>Xvoyant__coaching_teamCoachHealth__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_teamSessions --></label>
+        <name>Xvoyant__coaching_teamSessions__c</name>
+    </fields>
+    <fields>
+        <label><!-- coaching_teamSort --></label>
+        <name>Xvoyant__coaching_teamSort__c</name>
+    </fields>
+    <fields>
+        <label><!-- Combined Chart --></label>
+        <name>Xvoyant__combinedChart__c</name>
+    </fields>
+    <fields>
+        <label><!-- createOpp --></label>
+        <name>Xvoyant__createOpp__c</name>
+    </fields>
+    <fields>
+        <label><!-- editAmount --></label>
+        <name>Xvoyant__editAmount__c</name>
+    </fields>
+    <fields>
+        <label><!-- editCloseDate --></label>
+        <name>Xvoyant__editCloseDate__c</name>
+    </fields>
+    <fields>
+        <label><!-- editDescription --></label>
+        <name>Xvoyant__editDescription__c</name>
+    </fields>
+    <fields>
+        <label><!-- editStage --></label>
+        <name>Xvoyant__editStage__c</name>
+    </fields>
+    <fields>
+        <label><!-- email_cGoals --></label>
+        <name>Xvoyant__email_cGoals__c</name>
+    </fields>
+    <fields>
+        <label><!-- email_coachingReport --></label>
+        <name>Xvoyant__email_coachingReport__c</name>
+    </fields>
+    <fields>
+        <label><!-- email_noSalesGoal --></label>
+        <name>Xvoyant__email_noSalesGoal__c</name>
+    </fields>
+    <fields>
+        <label><!-- enableVerifiers --></label>
+        <name>Xvoyant__enableVerifiers__c</name>
+    </fields>
+    <fields>
+        <label><!-- event0 --></label>
+        <name>Xvoyant__event0__c</name>
+    </fields>
+    <fields>
+        <label><!-- event1 --></label>
+        <name>Xvoyant__event1__c</name>
+    </fields>
+    <fields>
+        <label><!-- event2 --></label>
+        <name>Xvoyant__event2__c</name>
+    </fields>
+    <fields>
+        <label><!-- event3 --></label>
+        <name>Xvoyant__event3__c</name>
+    </fields>
+    <fields>
+        <label><!-- event4 --></label>
+        <name>Xvoyant__event4__c</name>
+    </fields>
+    <fields>
+        <label><!-- event5 --></label>
+        <name>Xvoyant__event5__c</name>
+    </fields>
+    <fields>
+        <label><!-- event6 --></label>
+        <name>Xvoyant__event6__c</name>
+    </fields>
+    <fields>
+        <label><!-- event7 --></label>
+        <name>Xvoyant__event7__c</name>
+    </fields>
+    <fields>
+        <label><!-- logCall --></label>
+        <name>Xvoyant__logCall__c</name>
+    </fields>
+    <fields>
+        <label><!-- reports_custom --></label>
+        <name>Xvoyant__reports_custom__c</name>
+    </fields>
+    <fields>
+        <label><!-- reports_impact --></label>
+        <name>Xvoyant__reports_impact__c</name>
+    </fields>
+    <fields>
+        <label><!-- reports_tab --></label>
+        <name>Xvoyant__reports_tab__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_activities --></label>
+        <name>Xvoyant__scorecard_activities__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_dist__c --></label>
+        <name>Xvoyant__scorecard_dist__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_empHealth --></label>
+        <name>Xvoyant__scorecard_empHealth__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_forecast --></label>
+        <name>Xvoyant__scorecard_forecast__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_funnel --></label>
+        <name>Xvoyant__scorecard_funnel__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_opps --></label>
+        <name>Xvoyant__scorecard_opps__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_pipeline --></label>
+        <name>Xvoyant__scorecard_pipeline__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_procVsOutcomes --></label>
+        <name>Xvoyant__scorecard_procVsOutcomes__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_empHealth --></label>
+        <name>Xvoyant__scorecard_tab__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_teamAnalysis --></label>
+        <name>Xvoyant__scorecard_teamAnalysis__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_whatIf --></label>
+        <name>Xvoyant__scorecard_whatIf__c</name>
+    </fields>
+    <fields>
+        <label><!-- scorecard_willingness --></label>
+        <name>Xvoyant__scorecard_willingness__c</name>
+    </fields>
+    <fields>
+        <label><!-- sweetSpot --></label>
+        <name>Xvoyant__sweetSpot__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_coaching --></label>
+        <name>Xvoyant__team_coaching__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_forecast --></label>
+        <name>Xvoyant__team_forecast__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_procVsOutcomes --></label>
+        <name>Xvoyant__team_procVsOutcomes__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_tab --></label>
+        <name>Xvoyant__team_tab__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_teamHealth --></label>
+        <name>Xvoyant__team_teamHealth__c</name>
+    </fields>
+    <fields>
+        <label><!-- team_willingness --></label>
+        <name>Xvoyant__team_willingness__c</name>
+    </fields>
+    <fields>
+        <label><!-- useActuals --></label>
+        <name>Xvoyant__useActuals__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -18,6 +18,10 @@
         <name>PRM_Change_Date_Dt__c</name>
     </fields>
     <fields>
+        <label><!-- Competency Achieved --></label>
+        <name>PRM_Competency_Achieved_Txt__c</name>
+    </fields>
+    <fields>
         <label><!-- Country Market Type --></label>
         <name>PRM_Country_Market_Type_Nm__c</name>
     </fields>
@@ -51,6 +55,10 @@
         <relationshipLabel><!-- Value Exchange Data (One Partner Id) --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- PAG ID --></label>
+        <name>PRM_PAG_ID__c</name>
+    </fields>
+    <fields>
         <label><!-- Partner Role Check --></label>
         <name>PRM_Partner_Role_Check__c</name>
     </fields>
@@ -59,8 +67,16 @@
         <name>PRM_Partner_Role_Nm__c</name>
     </fields>
     <fields>
+        <label><!-- Total Percent To Next Tier --></label>
+        <name>PRM_Percent_To_Next_Tier_Report_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Percent to next tier --></label>
         <name>PRM_Percent_to_next_tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Previous One Partner Account ID --></label>
+        <name>PRM_Previous_One_Partner_Account_ID__c</name>
     </fields>
     <fields>
         <label><!-- Processed Date Time --></label>
@@ -91,6 +107,10 @@
         <name>PRM_Sales_To_Next_Tier_Report_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Duplicate Sales to next tier --></label>
+        <name>PRM_Sales_To_Next_Tier__c</name>
+    </fields>
+    <fields>
         <label><!-- Sales to next tier percent --></label>
         <name>PRM_Sales_to_next_tier_percent_nbr__c</name>
     </fields>
@@ -116,6 +136,18 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Time Period --></label>
+        <name>PRM_Time_Period__c</name>
+        <picklistValues>
+            <masterLabel>Q4 2024 - Q3 2025</masterLabel>
+            <translation><!-- Q4 2024 - Q3 2025 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Q4 2025 - Q3 2026</masterLabel>
+            <translation><!-- Q4 2025 - Q3 2026 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- To --></label>
         <name>PRM_To_Dt__c</name>
     </fields>
@@ -136,6 +168,10 @@
         <name>PRM_Total_Sales_Out_Units_Report_Nbr__c</name>
     </fields>
     <fields>
+        <label><!-- Training credits to next tier percent --></label>
+        <name>PRM_TrainingToNextTierPer_Report_Nbr__c</name>
+    </fields>
+    <fields>
         <label><!-- Training Credit Points Count --></label>
         <name>PRM_Training_Credit_Points_Count_Nbr__c</name>
     </fields>
@@ -146,6 +182,10 @@
     <fields>
         <label><!-- Training credits to next tier --></label>
         <name>PRM_Training_Credits_to_Next_Tier_Nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- Needs to be deleted Training credits --></label>
+        <name>PRM_Training_Credits_to_Next_Tier__c</name>
     </fields>
     <fields>
         <label><!-- Training credits to next tier percent --></label>
@@ -163,5 +203,12 @@
         <label><!-- Value Exchange External Id --></label>
         <name>PRM_Value_Exchange_ext_id__c</name>
     </fields>
+    <layouts>
+        <layout>Value Exchange Data Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

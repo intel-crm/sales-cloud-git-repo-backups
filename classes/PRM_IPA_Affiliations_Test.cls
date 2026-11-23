@@ -156,9 +156,9 @@ public class PRM_IPA_Affiliations_Test {
     public static testMethod void fetchAccsData_Test1(){
         
         Test.startTest();
-        try{
-            PRM_IPA_Affiliations.tagBuilders(null, null);   
-        }
+         try{
+          PRM_IPA_Affiliations.tagBuilders(null, null);   
+       }
         catch(exception e){
         }
         Test.stopTest();        
@@ -168,7 +168,7 @@ public class PRM_IPA_Affiliations_Test {
         
         Id recordTypeIdAccount =Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         Id recordTypeIdPagAccount = Schema.SObjectType.Account.getRecordTypeInfosByName().get('Partner Account Group').getRecordTypeId();   
-        
+                   
         Account parent2 = new Account();
         parent2.RecordTypeId = recordTypeIdPagAccount;
         parent2.Name='Cello test ltd1';

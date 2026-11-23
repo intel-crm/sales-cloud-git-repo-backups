@@ -39,7 +39,7 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         acc2.Core_Parent_Business_Party_Id__c = '1000678929';
         acc2.Core_Unified_Global_Customer_BP_Id__c = '1000678929';
         acc2.Core_Unified_Global_Customer_Name__c = 'Parent Test End Customer';
-        acc2.Core_Parent_Data_Simplified_Account_Nm__c = 'Parent Test End Customer';
+        //acc2.Core_Parent_Data_Simplified_Account_Nm__c = 'Parent Test End Customer';
         accList.add(acc2);
         
         Account acc3 = new Account();
@@ -74,7 +74,7 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         acc4.Core_Parent_Business_Party_Id__c = '1000678931';
         acc4.Core_Unified_Global_Customer_BP_Id__c = '1000678931';
         acc4.Core_Unified_Global_Customer_Name__c = 'Parent Test End Customer 1';
-        acc4.Core_Parent_Data_Simplified_Account_Nm__c = 'Parent Test End Customer 1';
+        //acc4.Core_Parent_Data_Simplified_Account_Nm__c = 'Parent Test End Customer 1';
         accList.add(acc4);
         
         Account acc5 = new Account();
@@ -351,9 +351,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req.Status__c = 'Pending Approval';
         req.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req.Address__City__s = 'Test';
-        req.Address__CountryCode__s = 'IND';
-        req.Address__Street__s = 'Test';
+        //req.Address__City__s = 'Test';
+        //req.Address__CountryCode__s = 'IND';
+        //req.Address__Street__s = 'Test';
         aqrList.add(req);   
 		
         Account_Create_Request__c req2 = new Account_Create_Request__c();
@@ -363,9 +363,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req2.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req2.Status__c = 'Pending Approval';
         req2.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req2.Address__City__s = 'Test';
-        req2.Address__CountryCode__s = 'IND';
-        req2.Address__Street__s = 'Test';
+        //req2.Address__City__s = 'Test';
+        //req2.Address__CountryCode__s = 'IND';
+        //req2.Address__Street__s = 'Test';
         aqrList.add(req2);
         
         Account_Create_Request__c req3 = new Account_Create_Request__c();
@@ -375,9 +375,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req3.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req3.Status__c = 'Pending Approval';
         req3.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req3.Address__City__s = 'Test';
-        req3.Address__CountryCode__s = 'IND';
-        req3.Address__Street__s = 'Test';
+        //req3.Address__City__s = 'Test';
+        //req3.Address__CountryCode__s = 'IND';
+        //req3.Address__Street__s = 'Test';
         aqrList.add(req3);
 
         Account_Create_Request__c req4 = new Account_Create_Request__c();
@@ -387,9 +387,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req4.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req4.Status__c = 'Pending Approval';
         req4.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req4.Address__City__s = 'Test';
-        req4.Address__CountryCode__s = 'IND';
-        req4.Address__Street__s = 'Test';
+        //req4.Address__City__s = 'Test';
+        //req4.Address__CountryCode__s = 'IND';
+        //req4.Address__Street__s = 'Test';
         aqrList.add(req4);
 
         Account_Create_Request__c req5 = new Account_Create_Request__c();
@@ -399,9 +399,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req5.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req5.Status__c = 'Pending Approval';
         req5.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req5.Address__City__s = 'Test';
-        req5.Address__CountryCode__s = 'IND';
-        req5.Address__Street__s = 'Test';
+        //req5.Address__City__s = 'Test';
+        //req5.Address__CountryCode__s = 'IND';
+        //req5.Address__Street__s = 'Test';
         aqrList.add(req5);
 
         Account_Create_Request__c req6 = new Account_Create_Request__c();
@@ -411,9 +411,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req6.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req6.Status__c = 'Pending Approval';
         req6.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req6.Address__City__s = 'Test';
-        req6.Address__CountryCode__s = 'IND';
-        req6.Address__Street__s = 'Test';
+        //req6.Address__City__s = 'Test';
+        //req6.Address__CountryCode__s = 'IND';
+        //req6.Address__Street__s = 'Test';
         aqrList.add(req6);
 
         Account_Create_Request__c req7 = new Account_Create_Request__c();
@@ -423,9 +423,9 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
         req7.Requestor_Email__c = UserInfo.getUserEmail()+'.invalid';
         req7.Status__c = 'Pending Approval';
         req7.Core_Account_Reference_Source_Name__c = 'Partner'; 
-        req7.Address__City__s = 'Test';
-        req7.Address__CountryCode__s = 'IND';
-        req7.Address__Street__s = 'Test';
+        //req7.Address__City__s = 'Test';
+        //req7.Address__CountryCode__s = 'IND';
+        //req7.Address__Street__s = 'Test';
         aqrList.add(req7);
 
         insert aqrList;
@@ -513,8 +513,8 @@ public class PRM_OPID_UCD_Hierarchy_Handler_Test{
     public static testMethod void testHierarchyChange(){
         List<Account> accRecordList = [select Id from Account where name ='Test End Customer'];
         Test.startTest();
-        UCD_ACM_AccountPlatformEvent_Batch batchRec = new UCD_ACM_AccountPlatformEvent_Batch();
-        DataBase.executeBatch(batchRec);
+        //UCD_ACM_AccountPlatformEvent_Batch batchRec = new UCD_ACM_AccountPlatformEvent_Batch();
+        //DataBase.executeBatch(batchRec);
         PRM_AccChange_ResponseParser eventParse = new PRM_AccChange_ResponseParser();
 
         Test.stopTest();

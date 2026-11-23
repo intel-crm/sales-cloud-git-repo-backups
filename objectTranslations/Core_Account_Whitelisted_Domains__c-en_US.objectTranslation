@@ -26,5 +26,12 @@
         <name>Partner_Program__c</name>
         <relationshipLabel><!-- Account Whitelisted Domains --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Account Whitelisted Domains Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -55,13 +55,6 @@
             <operator>equals</operator>
             <value>Submitted</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>PartnerFundClaim$Core_MDF_AccountCompany__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>A&amp;E Test Account JJ</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>

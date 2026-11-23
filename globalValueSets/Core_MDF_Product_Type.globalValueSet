@@ -11,34 +11,9 @@
         <label>ACPC</label>
     </customValue>
     <customValue>
-        <fullName>AIO</fullName>
-        <default>false</default>
-        <label>AIO</label>
-    </customValue>
-    <customValue>
         <fullName>All-in-one</fullName>
         <default>false</default>
         <label>All-in-one</label>
-    </customValue>
-    <customValue>
-        <fullName>All-in-One Desktop</fullName>
-        <default>false</default>
-        <label>All-in-One Desktop</label>
-    </customValue>
-    <customValue>
-        <fullName>Altera®</fullName>
-        <default>false</default>
-        <label>Altera®</label>
-    </customValue>
-    <customValue>
-        <fullName>Appliance</fullName>
-        <default>false</default>
-        <label>Appliance</label>
-    </customValue>
-    <customValue>
-        <fullName>Athena</fullName>
-        <default>false</default>
-        <label>Athena</label>
     </customValue>
     <customValue>
         <fullName>Chromebook</fullName>
@@ -61,79 +36,9 @@
         <label>Desktop</label>
     </customValue>
     <customValue>
-        <fullName>Edge Gateway</fullName>
-        <default>false</default>
-        <label>Edge Gateway</label>
-    </customValue>
-    <customValue>
         <fullName>Hyper Converged Solutions</fullName>
         <default>false</default>
         <label>Hyper Converged Solutions</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ i3</fullName>
-        <default>false</default>
-        <label>Intel® Core™ i3</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ i5</fullName>
-        <default>false</default>
-        <label>Intel® Core™ i5</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ i7</fullName>
-        <default>false</default>
-        <label>Intel® Core™ i7</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ i9</fullName>
-        <default>false</default>
-        <label>Intel® Core™ i9</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Enpirion®</fullName>
-        <default>false</default>
-        <label>Intel® Enpirion®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Movidius™</fullName>
-        <default>false</default>
-        <label>Intel® Movidius™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Nervana™</fullName>
-        <default>false</default>
-        <label>Intel® Nervana™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Optane™</fullName>
-        <default>false</default>
-        <label>Intel® Optane™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Optane™ DC</fullName>
-        <default>false</default>
-        <label>Intel® Optane™ DC</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® RealSense™</fullName>
-        <default>false</default>
-        <label>Intel® RealSense™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon®</fullName>
-        <default>false</default>
-        <label>Intel® Xeon®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Unite®</fullName>
-        <default>false</default>
-        <label>Intel Unite®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel vPro®</fullName>
-        <default>false</default>
-        <label>Intel vPro®</label>
     </customValue>
     <customValue>
         <fullName>Laptop</fullName>
@@ -146,44 +51,14 @@
         <label>Mini PC</label>
     </customValue>
     <customValue>
-        <fullName>Mini PC/NUC</fullName>
-        <default>false</default>
-        <label>Mini PC/NUC</label>
-    </customValue>
-    <customValue>
         <fullName>Mini PC w/NUC</fullName>
         <default>false</default>
         <label>Mini PC w/NUC</label>
     </customValue>
     <customValue>
-        <fullName>Modern Notebook (2-in-1/T+L)</fullName>
-        <default>false</default>
-        <label>Modern Notebook (2-in-1/T+L)</label>
-    </customValue>
-    <customValue>
-        <fullName>Motherboard</fullName>
-        <default>false</default>
-        <label>Motherboard</label>
-    </customValue>
-    <customValue>
-        <fullName>Notebook</fullName>
-        <default>false</default>
-        <label>Notebook</label>
-    </customValue>
-    <customValue>
         <fullName>NUC</fullName>
         <default>false</default>
         <label>NUC</label>
-    </customValue>
-    <customValue>
-        <fullName>OpenVINO™</fullName>
-        <default>false</default>
-        <label>OpenVINO™</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
     </customValue>
     <customValue>
         <fullName>Server</fullName>
@@ -201,21 +76,6 @@
         <label>Thin &amp; Light</label>
     </customValue>
     <customValue>
-        <fullName>Traditional Desktop</fullName>
-        <default>false</default>
-        <label>Traditional Desktop</label>
-    </customValue>
-    <customValue>
-        <fullName>Traditional Notebook</fullName>
-        <default>false</default>
-        <label>Traditional Notebook</label>
-    </customValue>
-    <customValue>
-        <fullName>Workstation</fullName>
-        <default>false</default>
-        <label>Workstation</label>
-    </customValue>
-    <customValue>
         <fullName>Workstation - Fixed</fullName>
         <default>false</default>
         <label>Workstation - Fixed</label>
@@ -224,121 +84,6 @@
         <fullName>Workstation - Mobile</fullName>
         <default>false</default>
         <label>Workstation - Mobile</label>
-    </customValue>
-    <customValue>
-        <fullName>Component</fullName>
-        <default>false</default>
-        <label>Component</label>
-    </customValue>
-    <customValue>
-        <fullName>Service</fullName>
-        <default>false</default>
-        <label>Service</label>
-    </customValue>
-    <customValue>
-        <fullName>Software</fullName>
-        <default>false</default>
-        <label>Software</label>
-    </customValue>
-    <customValue>
-        <fullName>Solution</fullName>
-        <default>false</default>
-        <label>Solution</label>
-    </customValue>
-    <customValue>
-        <fullName>HPC</fullName>
-        <default>false</default>
-        <label>HPC</label>
-    </customValue>
-    <customValue>
-        <fullName>FPGA Programmable Solution</fullName>
-        <default>false</default>
-        <label>FPGA Programmable Solution</label>
-    </customValue>
-    <customValue>
-        <fullName>Workstation - Desktop</fullName>
-        <default>false</default>
-        <label>Workstation - Desktop</label>
-    </customValue>
-    <customValue>
-        <fullName>Handheld</fullName>
-        <default>false</default>
-        <label>Handheld</label>
-    </customValue>
-    <customValue>
-        <fullName>Programmable Solution</fullName>
-        <default>false</default>
-        <label>Programmable Solution</label>
-    </customValue>
-    <customValue>
-        <fullName>Cloud Instance Consumption</fullName>
-        <default>false</default>
-        <label>Cloud Instance Consumption</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking &amp; Telecommunications</fullName>
-        <default>false</default>
-        <label>Networking &amp; Telecommunications</label>
-    </customValue>
-    <customValue>
-        <fullName>Intelligent Edge/IoT</fullName>
-        <default>false</default>
-        <label>Intelligent Edge/IoT</label>
-    </customValue>
-    <customValue>
-        <fullName>Server (non-HPC)</fullName>
-        <default>false</default>
-        <label>Server (non-HPC)</label>
-    </customValue>
-    <customValue>
-        <fullName>Server (HPC)</fullName>
-        <default>false</default>
-        <label>Server (HPC)</label>
-    </customValue>
-    <customValue>
-        <fullName>Server (Cloud)</fullName>
-        <default>false</default>
-        <label>Server (Cloud)</label>
-    </customValue>
-    <customValue>
-        <fullName>Server (AI/GPU)</fullName>
-        <default>false</default>
-        <label>Server (AI/GPU)</label>
-    </customValue>
-    <customValue>
-        <fullName>Server (ESMB)</fullName>
-        <default>false</default>
-        <label>Server (ESMB)</label>
-    </customValue>
-    <customValue>
-        <fullName>Networking/Ethernet</fullName>
-        <default>false</default>
-        <label>Networking/Ethernet</label>
-    </customValue>
-    <customValue>
-        <fullName>Telco</fullName>
-        <default>false</default>
-        <label>Telco</label>
-    </customValue>
-    <customValue>
-        <fullName>Client</fullName>
-        <default>false</default>
-        <label>Client</label>
-    </customValue>
-    <customValue>
-        <fullName>Xeon</fullName>
-        <default>false</default>
-        <label>Xeon</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge/IOT</fullName>
-        <default>false</default>
-        <label>Edge/IOT</label>
-    </customValue>
-    <customValue>
-        <fullName>Data Center DGPU</fullName>
-        <default>false</default>
-        <label>Data Center DGPU</label>
     </customValue>
     <masterLabel>Product Type</masterLabel>
     <sorted>true</sorted>

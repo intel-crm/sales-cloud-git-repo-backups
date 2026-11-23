@@ -4,15 +4,15 @@
     <protected>false</protected>
     <values>
         <field>API_Key__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/v1/auth/token</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/v1/auth/token</value>
     </values>
     <values>
         <field>EndPointURL__c</field>
-        <value xsi:type="xsd:string">https://apis.intel.com/m2r/opid-informatica/v1/manual-services/one-partner-id</value>
+        <value xsi:type="xsd:string">https://apis-stage.intel.com/m2r/opid-informatica/v1/manual-services/one-partner-id</value>
     </values>
     <values>
         <field>Password__c</field>
-        <value xsi:type="xsd:string">Fe28Q~PnizvFSRWcI9RHgA4~wx-3eiK2snXcbbTX</value>
+        <value xsi:type="xsd:string">~5xYdx_-xv.TT8_Z6Wp2M220~Y45R_-6pv</value>
     </values>
     <values>
         <field>Scope__c</field>
@@ -20,6 +20,6 @@
     </values>
     <values>
         <field>Username__c</field>
-        <value xsi:type="xsd:string">79159eae-0011-4d83-98f7-9e0a16ff3bf9</value>
+        <value xsi:type="xsd:string">ddbf065e-4abc-4072-b625-5792c33e9b3d</value>
     </values>
 </CustomMetadata>

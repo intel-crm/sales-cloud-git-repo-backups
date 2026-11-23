@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Community_Request_Indonesian</name>
+    <style>none</style>
+    <subject>Permintaan Komunitas dari Mitra Baru</subject>
+    <textOnly>Permintaan Komunitas
+
+
+Yth. {!PRM_Partner_Community_Enrollment_Request__c.PRM_Approver_Id__c},
+
+Nama Kontak: {!Contact.Name}
+Email Kontak: {!Contact.Email}
+Nama Akun: {!Account.Name}
+ID Salesforce: {!Account.Id}
+
+
+
+Login ke Salesforce untuk menyediakan akses ke kontak.
+
+Terima kasih,
+Tim Intel® Partner Alliance Anda
+
+Pesan ini dikirim kepada Anda sebagai komunikasi bisnis penting terkait hubungan Anda saat ini dengan Intel® Partner Alliance.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Privasi | Cookie</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

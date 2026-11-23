@@ -1,0 +1,130 @@
+.THIS {
+  background: t(white);
+  /*color: t(white);*/
+}
+
+.THIS .userText {
+  text-align: center;
+  padding-bottom: 1.5em;
+}
+
+.THIS .borderLine {
+
+  border-left: 2px solid grey;
+
+}
+
+.THIS .leftButton,
+.THIS .rightButton {
+  padding: .5rem;
+}
+@media (max-width: 1023px) {
+  .THIS .cISG_Button.inline button.has-body,
+  .THIS .cISG_Button.inline button.has-body:not(.has-icon) {
+    min-width: 300px;
+  }  
+  .THIS .buttonContainer a {
+    display: block;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+@media (max-width: 1023px) {
+  .THIS {
+    padding: 2px 0 ;
+  }
+  .THIS .buttonContainer {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .THIS {
+    padding: 1.875em 0;
+  }
+  .THIS.fullWidth {
+    padding: 1rem 1.5rem;
+  }
+  .THIS .userText {
+    text-align: left;
+    padding-bottom: 0;
+    line-height: 1.5;
+    flex-grow:1;
+    flex-basis: 280px;
+    width: auto;
+  }
+  .THIS .buttonContainer {
+    flex-grow:1;
+    /*text-align: right;*/
+    width: auto;
+    margin-top: 3%;
+
+  }
+  .THIS .rightButton {
+    padding-right: 0;
+  }
+}
+@media (min-width: 1200px) {
+
+  .THIS .userText {
+    flex-basis: 400px;
+    font-size: larger;
+  }
+}
+/*Accordion Code */
+.THIS .accordionSectionHeader h3 {
+  display: block;
+  position: relative;
+  padding-right: 1rem;
+}
+.THIS .userText a,
+.THIS .accordionSectionHeader h3,
+.THIS .accordionSectionHeader h3 a {
+  color: t(white);
+  font-size: 1em;
+  line-height: 1.25;
+  font-weight: 400;
+}
+.THIS .accordionSectionHeader .icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.THIS .accordionSectionHeader .slds-icon {
+  cursor: pointer;
+  height: 1rem;
+  width: 1rem;
+}
+
+.THIS .accordionSection {
+  border-color: t(darkestGray);
+  border-top-width: 1px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+  border-left-width: 0;
+  border-style: solid;
+}
+.THIS.accordionSection:last-child {
+  border-bottom-width: 1px;
+}
+
+.THIS .userText a:hover,
+.THIS .userText a:active,
+.THIS .accordionSectionHeader h3 a:hover,
+.THIS .accordionSectionHeader h3 a:active {
+  color: t(digitalBlue);
+}
+
+.THIS .accordionSectionHeader .icon  svg {
+  fill: t(white);
+}
+
+.THIS.spinner {
+    position:fixed;
+    background: t(darkestGray);
+     
+}
+
+.THIS .slds-spinner_container{
+    background: t(darkestGray);
+}

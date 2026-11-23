@@ -13,15 +13,6 @@
         <name>Core_IAH_KPI_Record_ID__c</name>
     </fields>
     <fields>
-        <label><!-- KPI Name --></label>
-        <name>Core_KPI_Name__c</name>
-    </fields>
-    <fields>
-        <label><!-- New Opportunity KPI --></label>
-        <name>Core_New_Opportunity_KPI__c</name>
-        <relationshipLabel><!-- Opportunity KPI History --></relationshipLabel>
-    </fields>
-    <fields>
         <label><!-- KPI Achieved? --></label>
         <name>Core_Opp_KPI_Achieved_History__c</name>
     </fields>
@@ -40,10 +31,6 @@
     <fields>
         <label><!-- KPI Id --></label>
         <name>Core_Opp_KPI_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- KPI IsActive --></label>
-        <name>Core_Opp_KPI_IsActive__c</name>
     </fields>
     <fields>
         <label><!-- KPI Last Updated Date --></label>
@@ -111,5 +98,12 @@
         <label><!-- KPI Type --></label>
         <name>Core_Opp_KPI_Type__c</name>
     </fields>
+    <layouts>
+        <layout>Opportunity KPI History Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,78 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "c:PCC_DDRLayout",
+  "dataProviders" : [ ],
+  "id" : "d03a8f79-fb19-4f2f-b611-6878fce3ebe5",
+  "label" : "testy",
+  "regions" : [ {
+    "id" : "3448e238-9648-4114-b06b-1b0d92dd8901",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "id" : "7d57ffb7-bb08-4631-af05-d96ec81299aa",
+    "regionName" : "main",
+    "type" : "region"
+  }, {
+    "id" : "20b5f798-d214-4c3c-a89e-3a136186c066",
+    "regionName" : "blade1white",
+    "type" : "region"
+  }, {
+    "id" : "ef7f815d-d597-478c-84fd-629620a17b50",
+    "regionName" : "blade2white",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "testy"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "c5d8f0fd-3b5b-430d-b2c1-54a5dac196df",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "c729f317-29f6-417a-9cc8-dfafde67f79c",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "23624efd-dc49-4ba8-a6b1-2bd886f9809a",
+    "regionName" : "mainFullWidth",
+    "type" : "region"
+  }, {
+    "id" : "0a86fdbc-72af-4b96-9c25-34037db64e7d",
+    "regionName" : "tab1",
+    "type" : "region"
+  }, {
+    "id" : "1611778b-c3ee-4b92-b4f3-f87fb84d0538",
+    "regionName" : "tab2",
+    "type" : "region"
+  }, {
+    "id" : "e107fa1b-8c53-461f-81eb-39b4fafe0f73",
+    "regionName" : "tab3",
+    "type" : "region"
+  }, {
+    "id" : "a92e9d86-8a34-43dd-9e64-789014b71e8b",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "id" : "5563efc4-e9e9-478e-b8f9-21b3a2446aff",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "1552558c-45c9-4edf-8293-735049eb9ebf",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "id" : "b972624f-793a-40a9-ae94-7f70e913ee7d",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "a49bcad9-fbf8-4ea9-a992-f36b19ff3a29",
+    "regionName" : "blade5",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-testy"
+}

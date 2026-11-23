@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>Edit</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>EMP of Firas Alfanney</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>EMP_11338956_Youssef_Abouseif</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
+    <parentRole>EMP_11014593_Firas_Alfanney</parentRole>
+</Role>

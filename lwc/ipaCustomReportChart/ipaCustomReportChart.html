@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Chart" icon-name="utility:chart">
+        <!--<div class="slds-m-around_medium">
+           <div class="slds-col">
+            <lightning-combobox
+             name="Group By"
+             label="Group By"
+             value={selectedGroup}
+             options={groupOptions}
+             onchange={handleGroupChange}
+             style="width:100px;"></lightning-combobox>
+            </div>
+        </div>-->
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <div class="slds-grid slds-wrap slds-grid--pull-padded">
+                        <div if:true={chartjsInitialized} class="slds-col--padded slds-size--1-of-1">
+                            <canvas class={chartType} lwc:dom="manual"></canvas>
+                        </div>
+                        <div if:false={chartjsInitialized} class="slds-col--padded slds-size--1-of-1">
+                            Chart Not loaded yet
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <span>&nbsp;</span>
+                </div>
+                <div class="slds-col">
+        
+                </div>
+              </div>
+       
+        </div>
+    </lightning-card>
+</template>

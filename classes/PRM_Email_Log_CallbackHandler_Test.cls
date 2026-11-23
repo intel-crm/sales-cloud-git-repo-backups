@@ -31,6 +31,7 @@ public class PRM_Email_Log_CallbackHandler_Test {
         PRM_Email_Log_CallbackHandler.EmailLogDetails emaillogparser =new PRM_Email_Log_CallbackHandler.EmailLogDetails();
         emaillogparser.MessageReadInd=true;
         emaillogparser.MessageId = recordIdList;
+        //system.debug('MessageId'+recordId);
         String emailMsgInJsonFormat = JSON.serialize(emaillogparser);        
         request.requestUri = '/services/apexrest/myIntel/EmailUpdate';
         request.httpMethod = 'POST';
@@ -53,6 +54,7 @@ public class PRM_Email_Log_CallbackHandler_Test {
         PRM_Email_Log_CallbackHandler.EmailLogDetails emaillogparser =new PRM_Email_Log_CallbackHandler.EmailLogDetails();
         emaillogparser.MessageReadInd=false;
         emaillogparser.MessageId = recordIdList;
+        //system.debug('MessageId'+recordId);
         String emailMsgInJsonFormat = JSON.serialize(emaillogparser);        
         request.requestUri = '/services/apexrest/myIntel/EmailUpdate';
         request.httpMethod = 'POST';
@@ -76,6 +78,7 @@ public class PRM_Email_Log_CallbackHandler_Test {
         PRM_Email_Log_CallbackHandler.EmailLogDetails emaillogparser =new PRM_Email_Log_CallbackHandler.EmailLogDetails();
         emaillogparser.MessageDeleteInd=true;
         emaillogparser.MessageId = recordIdList;
+        //system.debug('MessageId'+recordId);
         String emailMsgInJsonFormat = JSON.serialize(emaillogparser);        
         request.requestUri = '/services/apexrest/myIntel/EmailUpdate';
         request.httpMethod = 'POST';
@@ -96,6 +99,7 @@ public class PRM_Email_Log_CallbackHandler_Test {
         emaillogparser.MessageReadInd=false;
         emaillogparser.MessagedeleteInd=false;
         emaillogparser.MessageId = recordIdList;
+        //system.debug('MessageId'+recordIdList);
         String emailMsgInJsonFormat = JSON.serialize(emaillogparser);
         RestRequest request = new RestRequest();
         RestResponse response = new RestResponse();        

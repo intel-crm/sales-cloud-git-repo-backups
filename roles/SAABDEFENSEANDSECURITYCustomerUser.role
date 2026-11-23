@@ -2,9 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>None</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
-    <description>Saab, Inc. Customer User</description>
+    <description>SAAB DEFENSE AND SECURITY Customer User</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
-    <name>Saab, Inc. Customer User</name>
+    <name>SAAB DEFENSE AND SECURITY Customer User</name>
     <opportunityAccessLevel>None</opportunityAccessLevel>
-    <parentRole>Admin</parentRole>
+    <parentRole>SAABDEFENSEANDSECURITYCustomerManager</parentRole>
 </Role>

@@ -23,8 +23,9 @@ import dtSeleErrorMsg from '@salesforce/label/c.PRM_Date_Selection_Error_Message
 import noDataError from '@salesforce/label/c.PRM_Criteria_Search_Error';
 import noDataErrorMsg from '@salesforce/label/c.PRM_No_Data_Training_Error_Message';
 import pagesize from '@salesforce/label/c.PRM_SOD_Training_Page_Size';
-import datasetName from '@salesforce/label/c.PRM_Company_Training_Credits_Dataset';
+import dataSetNameLbl from '@salesforce/label/c.PRM_Company_Training_Credits_Dataset';
 import MeasurementPeriod from '@salesforce/label/c.PRM_Measurement_Period';
+import {NavigationMixin} from 'lightning/navigation';
 
 const columns = [{
     label: AccountNo,
@@ -70,7 +71,7 @@ const columns = [{
     }];
 
 
-export default class PRM_CompanyTrainingCreadits extends LightningElement {
+export default class PRM_CompanyTrainingCreadits extends NavigationMixin(LightningElement) {
     nextBtnLbl = nextBtn;
     prevBtnLbl = prevBtn;
     exportBtnLbl = exportBtn;
@@ -84,7 +85,7 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
     endDatePlaceHolderlbl = endDatePlaceHolder;
     dtSeleErrorLbl = dtSeleError;
     dtSeleErrorMsgLbl = dtSeleErrorMsg;
-    measurementPeriod=MeasurementPeriod;
+		measurementPeriod=MeasurementPeriod;
     @track filteredRecordsList = [];
     @track currentAccount = 0;
     @track noFPages;
@@ -117,10 +118,54 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
     @track diffDays;
     @track exprtdata;
     @track isDataAvailable;
+    @track allRecordsExport = [];
+    @track allAccountRecords = [];
+    @track isFilterOn = false;
+    dataSetName = dataSetNameLbl;
+    
     // dataSetName = dataSetName;
     handleExport() {
         //console.log('Exported Data :' + this.exprtdata);
-        exportAsCSV(datasetName, this.currentpage, this.exprtdata);
+       // exportAsCSV(datasetName, this.currentpage, this.allRecordsExport);
+       if (this.isFilterOn) {
+        exportAsCSV(
+            this.dataSetName,
+            this.currentpage,
+            this.allRecordsExport
+        );
+        console.log("isFilterOn" + this.isFilterOn);
+        } else {
+        console.log('pageSize '+this.pagesize);
+        TrainingDetails({
+            startDate: "", 
+            endDate: "",
+            pageSize: this.pagesize, 
+            isDownload: true 
+        })
+            .then((result) => {
+                console.log('>>>>result.limitBreachedopidTraining : '+JSON.stringify(result.limitBreachedopidTraining));
+                if (
+                    result != null &&
+                    result != undefined &&
+                    !result.limitBreachedopidTraining
+                ) {
+                    exportAsCSV(this.dataSetName, this.currentpage, result.wrapopidTraining);
+                } else {
+                    this[NavigationMixin.GenerateUrl]({
+                        type: 'standard__webPage',
+                        attributes: {
+                            url: "/apex/prm_downloadVF?startDate"+this.startDate+"&endDate="+this.endDate+"&dataType=opidTrainingsData",
+                        }
+                    }).then(generatedUrl => {
+                        window.open(generatedUrl, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=200,left=200,width=800,height=400");
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log("Error :" + JSON.stringify(error));
+            });
+        // console.log("isFilterOnelse" + this.isFilterOn);
+        }
     }
 
     nxtEvt() {
@@ -166,6 +211,7 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
     }
 
     criteriaSearch() {
+        this.isFilterOn = true;
         // console.log(' >> :' + dtSeleError + ' >> :' + dtSeleErrorMsg);
         if ((this.startDate.length > 0 && this.endDate.length > 0) || (this.startDate.length > 0 && this.endDate.length === 0) || (this.startDate.length < 1 && this.endDate.length > 0)) {
             if (this.startDate.length > 0 && this.endDate.length === 0) {
@@ -208,9 +254,9 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
     commonCode() {
         this.hasRender = true;
         this.spinner = true;
-        TrainingDetails()
+        TrainingDetails({startDate: this.startDate, endDate: this.endDate,pageSize: this.pagesize, isDownload: false})
             .then(result => {
-                if (result.length === 0) {
+                if (result.wrapopidTraining.length === 0) {
                     this.spinner = false;
                     this.isData = false;
                     this.loadMore = true;
@@ -218,8 +264,9 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
                     this.isDataAvailable = true;
                     this.currentAccount = 0;
                 } else {
+                    this.allRecordsExport = result.wrapopidTraining;
                     this.hasRender = true;
-                    this.records = result;
+                    this.records = result.wrapopidTraining;
                     this.error = undefined;
                     this.spinner = false;
                     this.isData = true;
@@ -261,21 +308,27 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
         let end = parseInt(start) + parseInt(pagesize);
         //  console.log('start :' + start + ' End' + end);
         this.exprtdata = [];
+        this.allRecordsExport = [];
         if (this.byFilter) {
             //  console.log('You are inside filtered records');
             this.currentAccountRecords = this.filteredRecordsList.slice(start, end);
+            this.allAccountRecords = this.filteredRecordsList;
             this.loadMore = (this.currentpage > 1 && this.noFFilteredPages <= this.currentpage) ? true : false;
             this.loadPrev = (this.currentpage === 1) ? true : false;
         } else {
             this.filteredRecordsList = [];
+            this.allAccountRecords = this.records;
             // console.log('Your are innside another method...');
             this.currentAccountRecords = this.records.slice(start, end);
             this.checkPrevANDNext();
         }
         if (this.currentAccountRecords != null && this.currentAccountRecords.length > 0) {
+
             this.exprtdata = this.currentAccountRecords;
+            this.allRecordsExport = this.allAccountRecords;
         } else {
             this.exprtdata = [];
+            this.allRecordsExport = [];
         }
         this.spinner = false;
         //console.log('Data to append on table :' + this.currentAccountRecords);
@@ -311,6 +364,7 @@ export default class PRM_CompanyTrainingCreadits extends LightningElement {
                 this.exprtdata = [];
                 this.currentAccountRecords = this.records.slice(start, end);
                 this.exprtdata = this.currentAccountRecords;
+                this.allRecordsExport = this.records;
                 if (this.currentAccountRecords.length < 1) {
                     this.isDataAvailable = (this.currentAccountRecords.length < 1) ? true : false;
                     this.spinner = false;

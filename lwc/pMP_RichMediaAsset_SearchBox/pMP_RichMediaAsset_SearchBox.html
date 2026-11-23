@@ -1,0 +1,163 @@
+<template>
+   <div class="slds-form-element">
+      <label class="slds-form-element__label" for="combobox-id-3">Partner Keyword</label>
+      <div class="slds-form-element__control">
+          <div class="slds-combobox_container">
+              <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
+                  aria-expanded="false"
+                  aria-haspopup="listbox"
+                  role="combobox">
+                  <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right"
+                      role="none">
+                      <!-- hide this by default-->
+                      <div class="selectedOption slds-hide">
+                        <!-- IPA2.0 + US TWC4497-1631 -->
+                          <!-- <span
+                              class="slds-icon_container slds-icon-standard-account slds-combobox__input-entity-icon"
+                              title="Partner Offering">
+                          </span> -->
+                          <lightning-input
+                              type="text"
+                              class="slds-input slds-combobox__input slds-combobox__input-value search-result_left-pad"
+                              id="combobox-id-5"
+                              aria-controls="listbox-id-5"
+                              autocomplete="off"
+                              role="textbox"
+                              placeholder="Select an Option"
+                              readonly=""
+                              variant="label-hidden" 
+                              value={selectedpartner}></lightning-input>
+                          <lightning-button
+                              class="slds-button slds-button_icon slds-input__icon slds-input__icon_right"
+                              title="Remove selected option"
+                              >
+                              <lightning-icon
+                                  icon-name="utility:close"
+                                  alternative-text="close"
+                                  size="x-small"
+                                  onclick={handleRemoveSelectedOption}></lightning-icon>
+                              <span class="slds-assistive-text">Remove selected option</span>
+                          </lightning-button>
+                      </div>
+                      <!-- end hide this by default-->
+                      <div class="defaultClass">
+                          <input
+                              type="text"
+                              class="slds-input slds-combobox__input slds-has-focus"
+                              id="combobox-id-3"
+                              aria-activedescendant="option1"
+                              aria-autocomplete="list"
+                              aria-controls="listbox-id-3"
+                              autocomplete="off"
+                              role="textbox"
+                              placeholder="Search..."
+                              onkeyup={handleKeyUp}
+                              value={searchValue}/>
+                          <span
+                              class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                              <lightning-icon
+                                  icon-name="utility:search"
+                                  alternative-text="Approved"
+                                  size="x-small"></lightning-icon>
+                          </span>
+                      </div>
+                  </div>
+                  <div
+                      id="listbox-id-3"
+                      class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid partners_list slds-hide"
+                      role="listbox">
+                      <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                          <li role="presentation" class="slds-listbox__item">
+                              <div aria-selected="true" id="option0"
+                                  class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term slds-has-focus"
+                                  role="option">
+                                  <span
+                                      class="slds-media__figure slds-listbox__option-icon">
+                                      <span
+                                          class="slds-icon_container slds-icon-utility-search"
+                                          title="Search for term: ">
+                                          <lightning-icon icon-name="utility:search" alternative-text="search"
+                                              size="x-small"></lightning-icon>
+                                          <span class="slds-assistive-text">Search for term:</span>
+                                      </span>
+                                  </span>
+                                  <span class="slds-media__body">
+                                      <span
+                                          class="slds-listbox__option-text slds-listbox__option-text_entity">{search}
+                                      </span>
+                                  </span>
+                              </div>
+                          </li>
+                          <template for:each={partners.data} for:item="partner">
+                              <li
+                                  role="presentation"
+                                  class="slds-listbox__item"
+                                  key={partner.value}
+                                  onclick={handleOptionSelect}
+                                  data-id={partner.value}
+                                  data-name={partner.label}>
+                                  <div aria-selected = "false" aria-multiselectable="true" id={partner.value} role="option" tabindex="0"
+                                      class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_has-meta">
+                                      <span class="slds-media__body">
+                                          <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                              {partner.label}
+                                          </span>
+                                          <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">
+                                              partner
+                                          </span>
+                                      </span>
+                                      <template if:true={par}>
+                                       <lightning-icon icon-name="utility:check" size="x-small" alternative-text="icon" ></lightning-icon>
+                                      </template>
+                                  </div>
+                              </li>
+                          </template>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <template for:each={partners.data} for:item="partner">
+            <template if:true={par}>
+                <lightning-pill key={partner.value} class="slds-m-around_xx-small" name={partner.label} label={partner.label} onremove={removePill}></lightning-pill>
+            </template>
+        </template>
+      </div>
+   </div> 
+   <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered slds-var-m-top_small">
+          <thead>
+             <tr class="slds-line-height_reset">
+                <th class="" scope="col">
+                    <div class="slds-truncate" title="Select">Select</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Name">Name</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Accont Industry">Lifecycle Status</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Badge Tier">Start Date</div>
+                </th>
+                <th class="" scope="col">
+                   <div class="slds-truncate" title="Benefit Type">End Date</div>
+                </th>
+             </tr>
+          </thead>  
+          <tbody>   
+             <template for:each={companyRecord} for:item="com">
+                <tr class="slds-hint-parent" key={companyRecord.Id}>
+                   <td><div class="slds-truncate"><input type="checkbox"></div>
+                   </td>
+                   <td><div class="slds-truncate">{com.Name}</div>
+                   </td>
+                   <td><div class="slds-truncate">{com.PMP_Account_Industry__c}</div>
+                   </td>
+                   <td><div class="slds-truncate">{com.PMP_IPA_Badge_Tier_Txt__c} ></div>
+                   </td>
+                   <td><div class="slds-truncate">{com.PMP_Partner_Benefit_Type__c} ></div>
+                   </td>
+                </tr>
+             </template>
+          </tbody>
+   </table>
+ </template>

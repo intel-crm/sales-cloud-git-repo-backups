@@ -34,14 +34,14 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>ALICE UYEN NGUYEN THI NGOC,Chia Hoey Oon,Issac Wei Lun Lee,Kevin Wei Ming Tan,Sheryl Lim,Yat-Lee Mun,Xuan Ying Lim,Wei Lun Lee,THI NGOC UYEN NGUYEN,Tomomi Aoki</value>
+            <value>ALICE UYEN NGUYEN THI NGOC,Chia Hoey Oon,Issac Wei Lun Lee,Kevin Wei Ming Tan,Sheryl Lim,Yat-Lee Mun,Xuan Ying Lim,Wei Lun Lee,THI NGOC UYEN NGUYEN</value>
         </criteriaItems>
         <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Lost,Cancelled</value>
+            <value>Lost</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -56,7 +56,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>APJ SDR Lost &amp; Cancelled Opportunities</name>
+    <name>Copy of Copy of SDR Lost Optys</name>
     <params>
         <name>terr</name>
         <value>all</value>

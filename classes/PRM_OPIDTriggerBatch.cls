@@ -8,18 +8,27 @@ Modification Log    :
 * Developer                         Date                           Description
 * ------------------------------------------------------------------------------------------------------------------------------------
 * Srishty                        4-March-2020                     US599996-Start method will return all the VX data with OPID null.
-* Srishty 						 24-March-2020					  US570458-Added the condition to return vx data with OPID 
+* Srishty              24-March-2020            US570458-Added the condition to return vx data with OPID 
 for upgrade scenario
-*Srishty						 3-April-2020 					  US619504-Added the aggregate query for quantiative criteria for 
+*Srishty             3-April-2020             US619504-Added the aggregate query for quantiative criteria for 
 Upgrade Recommendation
 *Srishty                        24-April-2020                     US643150-Added 'Total Nbr Achieved Competency' field and replaced 'Competency Achieved field' from VX data and VX Recommendation 
 *Srishty                        4-May-2020                        US638610,US632701,US638612-Optimized Execute Method 
 *Srishty                        13-May-2020                       Start Method query result was optimised by using PRM_IsChanged_Ind__c formula field which will return 
 only those records which needs to be processed.
-*Srishty						12-June-2020					 PRM_FPGA_Project_Registration_Count_Nbr__c replaced by PRM_Design_Registration_Count_Nbr__c field.
+*Srishty            12-June-2020           PRM_FPGA_Project_Registration_Count_Nbr__c replaced by PRM_Design_Registration_Count_Nbr__c field.
 *************************************************************************************************************************************/
 
 public class PRM_OPIDTriggerBatch implements Database.Batchable<sObject>,Database.Stateful {
+    
+    //IPA2.0 - TWC727-2862 - Start
+    public static final String LOG_ENTRY_ORIGIN   = 'PRM_OPIDTriggerBatch';
+    public static final String LOG_ENTRY_PROJECT  = 'IPA';
+    public static final String LOG_ENTRY_SCOPE    = 'Batch class failures - IPA';
+    public static final String LOG_ENTRY_SEVERITY = 'Exception';
+    public String strTags;
+    String logEntryMsgString='';
+    //IPA2.0 - TWC727-2862 - End
     
     public static Database.QueryLocator start(Database.BatchableContext context){
         
@@ -28,7 +37,15 @@ public class PRM_OPIDTriggerBatch implements Database.Batchable<sObject>,Databas
     }
     
     public void execute(Database.BatchableContext context, List<PRM_Value_Exchange_Data__c> scope){
-        PRM_OPIDTriggerBatchUtility opidTriggerBatch = new PRM_OPIDTriggerBatchUtility(scope); //calling constructor of utility class and passing the scope.
+        //IPA2.0 - TWC727-2862 - Added try catch block for creating log entry in case of failures
+        try{
+            PRM_OPIDTriggerBatchUtility opidTriggerBatch = new PRM_OPIDTriggerBatchUtility(scope); //calling constructor of utility class and passing the scope.
+        }
+        catch(Exception ex){
+            logEntryMsgString+='\n\nException occurred:'+ex.getMessage() + '-' + ex.getStackTraceString();
+            PRM_IPA_Utility.createLogEntry(logEntryMsgString, LOG_ENTRY_ORIGIN, LOG_ENTRY_PROJECT ,LOG_ENTRY_SCOPE , LOG_ENTRY_SEVERITY , strTags); 
+        }
+        //IPA2.0 - TWC727-2862 - End
     }
     
     public void finish(Database.BatchableContext context){

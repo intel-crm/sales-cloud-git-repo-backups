@@ -133,7 +133,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>excludes</operator>
-            <value>NFV Other,Visual Cloud,NFV Workload</value>
+            <value>Analytics,NFV Other,Visual Cloud,NFV Workload</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Solution_Type__c</column>
@@ -191,6 +191,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

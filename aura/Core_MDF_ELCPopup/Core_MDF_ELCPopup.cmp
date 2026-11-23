@@ -5,7 +5,6 @@
     <aura:attribute name="AgreeLabel" type="String" description="It checks if it is Elc popup or Event Popup"/>
     <aura:attribute name="DisagreeLabel" type="String" description="It checks if it is Elc popup or Event Popup"/>
     <aura:attribute name="PopupType" type="String" description="It checks if it is Elc popup or Event Popup"/>
-    <aura:attribute name="recordtypeDeveloperName" type="String" default=""/>
     <!--Event Register for click of YES/NO -->
     <aura:registerEvent name="ButtonClickEvent" type="c:Core_MDF_PopupButtonClick"/>   
     <!-- Event Reminder Model Box Start -->
@@ -13,12 +12,9 @@
         <div aura:id="modalIdForNewRecord" role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
             <div class="slds-modal__container">
                 <div class="slds-modal__header">
-                    <aura:if isTrue="{!v.PopupType != 'budgetCap'}">
-                    <!--<button class="slds-button slds-modal__close slds-button-icon-inverse" title="Close" onclick="{!c.handleNo}">
+                    <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.handleNo}">
                         X<span class="slds-assistive-text">Cancel</span>
-                    </button>-->
-                    <lightning:buttonIcon iconName="utility:close" class="slds-button slds-modal__close slds-button_icon-border slds-button_icon-large" variant="bare" onclick="{!c.handleNo}"  alternativeText="Close" />
-                     </aura:if>
+                    </button>
                     <h2 id="header43" class="slds-text-heading--medium">{!$Label.c.Core_MDF_Popup_Header}</h2>
                 </div>
                 
@@ -28,14 +24,8 @@
                             <lightning:layoutItem flexibility="auto" padding="around-small">
                                 <p align="justify">{!v.EventMessage} 
                                     <aura:if isTrue="{!(v.PopupType == 'ELC')}">
-                                        <aura:if isTrue="{!or(v.recordtypeDeveloperName == $Label.c.Core_MDF_PFR_CCF,v.recordtypeDeveloperName ==$Label.c.Core_MDF_PFR_DCF)}">
-                                    	,<a href="{!$Label.c.Core_MDF_CCF_DCF_Terms}" target="_blank">{!$Label.c.Core_MDF_Termslink}</a> and  <a href="{!$Label.c.Core_MDF_CCF_DCF_Compliance}" target="_blank">{!$Label.c.Core_MDF_CompliancePolicyLink}</a>.
-                                        <aura:set attribute="else">
-                                        ,<a href="{!$Label.c.Core_MDF_LinkTerms}" target="_blank">{!$Label.c.Core_MDF_Termslink}</a> and  <a href="{!$Label.c.Core_MDF_LinkCompliance}" target="_blank">{!$Label.c.Core_MDF_CompliancePolicyLink}</a>.
-                                            
-                                           </aura:set>
-                                    </aura:if>  
-                                        </aura:if> 
+                                    	,<a href="{!$Label.c.Core_MDF_LinkTerms}" target="_blank">{!$Label.c.Core_MDF_Termslink}</a> and  <a href="{!$Label.c.Core_MDF_LinkCompliance}" target="_blank">{!$Label.c.Core_MDF_CompliancePolicyLink}</a>.
+                                    </aura:if>   
                                 </p> 
                             </lightning:layoutItem>
                             
@@ -45,10 +35,8 @@
                 <div class="slds-modal__footer">
                     <div align="center">
                         <lightning:button variant="Success" label="{!v.AgreeLabel}" onclick="{!c.handleYes}"/>
-                        <aura:if isTrue="{!v.PopupType != 'budgetCap'}">
-                        	<lightning:button variant="Destructive" label="{!v.DisagreeLabel}" onclick="{!c.handleNo}"/>
-                        </aura:if>
-                        </div>   
+                        <lightning:button variant="Destructive" label="{!v.DisagreeLabel}" onclick="{!c.handleNo}"/>
+                    </div>   
                 </div>
             </div>
         </div>  

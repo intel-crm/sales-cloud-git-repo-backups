@@ -1,5 +1,5 @@
 /**************************************************************************************************************
-Apex Class Name:  PRM_SearchAccounts
+Apex Class Name:  PRM_SearchAccounts  
 Version     : 1.0 
 Created Date: 28 Jan 2020
 Function    : It act as wrapper class which is used in PRM_CIMAccountSearch.apxc and PRM_searchsfdcAccounts.apxc

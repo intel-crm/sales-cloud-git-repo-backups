@@ -9,6 +9,14 @@
         <value>Account Benefit Associations</value>
     </caseValues>
     <fields>
+        <label><!-- IsValid --></label>
+        <name>IsValid__c</name>
+    </fields>
+    <fields>
+        <label><!-- MPI Benefit --></label>
+        <name>MPI_Benefit__c</name>
+    </fields>
+    <fields>
         <label><!-- Account --></label>
         <name>PRM_Account_Id__c</name>
         <relationshipLabel><!-- Benefits --></relationshipLabel>
@@ -20,6 +28,10 @@
     <fields>
         <label><!-- Account RT --></label>
         <name>PRM_Account_RT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Benefit Name --></label>
+        <name>PRM_Benefit_Name__c</name>
     </fields>
     <fields>
         <label><!-- Partner Benefit --></label>
@@ -70,11 +82,22 @@
         <label><!-- Suppress Email --></label>
         <name>PRM_Suppress_Email__c</name>
     </fields>
+    <layouts>
+        <layout>AccountBenefitAssociation Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- This Benefit cannot be assigned manually --></errorMessage>
+        <name>PRM_MP_Enhanced_Benefit_Restriction</name>
+    </validationRules>
     <validationRules>
         <errorMessage><!-- Please add a reason in the Status reason --></errorMessage>
         <name>PRM_Status_Reason_Removal_Mandatory</name>

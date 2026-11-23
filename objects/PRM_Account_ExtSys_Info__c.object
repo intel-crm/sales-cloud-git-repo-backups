@@ -314,6 +314,12 @@
                     <default>false</default>
                     <label>ITP-ODM-LOEM</label>
                 </value>
+                <value>
+                    <fullName>TIP-HPC</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>TIP-HPC</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

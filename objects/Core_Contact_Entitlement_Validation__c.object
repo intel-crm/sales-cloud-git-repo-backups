@@ -17,13 +17,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_Business_Party_Id__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Unified ID</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_CIM_ID__c</fullName>
         <defaultValue>false</defaultValue>
         <label>CIM ID</label>

@@ -13,36 +13,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_Source__c</fullName>
-        <description>This field will signify the ownership of the record. Records with Source as &quot;ERPM&quot; will be owned by Team Quest and Source as &quot;Salesforce&quot; will be owned by Team Draco.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <inlineHelpText>This field will signify the ownership of the record.</inlineHelpText>
-        <label>Source</label>
-        <required>true</required>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>ERPM</fullName>
-                    <default>true</default>
-                    <label>ERPM</label>
-                </value>
-                <value>
-                    <fullName>Salesforce</fullName>
-                    <default>false</default>
-                    <label>Salesforce</label>
-                </value>
-                <value>
-                    <fullName>Both</fullName>
-                    <default>false</default>
-                    <label>Both</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <fields>
         <fullName>EntitlementProgName__c</fullName>
         <description>Contains entitlement name or program name</description>
         <externalId>false</externalId>
@@ -67,7 +37,8 @@
         <fullName>core_removalRequired__c</fullName>
         <defaultValue>false</defaultValue>
         <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>removalRequired</label>
+        <inlineHelpText>Check this box if Engagement is to be removed upon removal of the Entitlement</inlineHelpText>
+        <label>Removal Required</label>
         <type>Checkbox</type>
     </fields>
     <label>ERPMSFEngagementSetting</label>

@@ -37,10 +37,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Core_IPS_Owner_Group_Comment__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Core_IPS_Owner_Team_1__c</field>
             </layoutItems>
             <layoutItems>
@@ -50,10 +46,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Owner_Team_3__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Core_IPS_Unique_Owner_Group__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns/>
@@ -88,19 +80,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <fields>CASES.CASE_NUMBER</fields>
-        <fields>ACCOUNT.NAME</fields>
-        <fields>NAME</fields>
-        <fields>CASES.SUBJECT</fields>
-        <fields>CASES.PRIORITY</fields>
-        <fields>CASES.CREATED_DATE</fields>
-        <fields>CASES.STATUS</fields>
-        <fields>Core_Sub_Status__c</fields>
-        <fields>OWNER_NAME</fields>
-        <fields>Core_IPS_Product__c</fields>
-        <relatedList>Case.Core_IPS_Case_Owner_Groups__c</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showHighlightsPanel>false</showHighlightsPanel>
     <showInteractionLogPanel>false</showInteractionLogPanel>

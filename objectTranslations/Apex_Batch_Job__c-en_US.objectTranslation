@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Apex Batch Job</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Apex Batch Jobs</value>
+    </caseValues>
+    <fields>
+        <label><!-- Batch Size --></label>
+        <name>Batch_Size__c</name>
+    </fields>
+    <fields>
+        <label><!-- Class Name --></label>
+        <name>Class_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Execution Order --></label>
+        <name>Execution_Order__c</name>
+    </fields>
+    <fields>
+        <label><!-- Interface Name --></label>
+        <name>Interface_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Query --></label>
+        <name>Query__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

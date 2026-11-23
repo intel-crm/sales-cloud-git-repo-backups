@@ -25,5 +25,19 @@
         <label><!-- Question --></label>
         <name>Core_Question__c</name>
     </fields>
+    <layouts>
+        <layout>CustomerPortalEnvironmentDetailsLayout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Environment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

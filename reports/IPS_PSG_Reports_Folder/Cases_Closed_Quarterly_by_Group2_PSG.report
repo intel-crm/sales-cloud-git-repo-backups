@@ -383,7 +383,7 @@
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
         <textSize>12</textSize>
-        <title>Obsoleted-Cases Closed Quarterly by Grou</title>
+        <title>Cases Closed Quarterly by Group</title>
         <titleColor>#000000</titleColor>
         <titleSize>18</titleSize>
     </chart>
@@ -462,20 +462,6 @@
             <operator>notEqual</operator>
             <value>Invalid</value>
         </criteriaItems>
-        <criteriaItems>
-            <column>Case.Core_IPS_Assigned_Queue__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>Enpirion,CQE,Admin,CSTOOLS,Deflected,IR,ZBB,CAT2,eASIC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT.NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>IPS Test Account</value>
-        </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
@@ -489,7 +475,7 @@
         <field>CLOSED_DATEONLY</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>Obsolete-Cases Closed Quarterly by Group</name>
+    <name>Cases Closed Quarterly by Group2 - PSG</name>
     <params>
         <name>units</name>
         <value>d</value>

@@ -24,12 +24,18 @@
             <value>NTG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Wireless &amp; Connectivity</sourceValue>
+            </sourceValues>
             <value>iCDG</value>
         </values>
         <values>
             <value>IoTG</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Connected Home</sourceValue>
+            </sourceValues>
             <value>CHD</value>
         </values>
     </buckets>
@@ -188,6 +194,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_At_Risk_Created_Date__c</dateColumn>
-        <interval>INTERVAL_CURPREV1</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

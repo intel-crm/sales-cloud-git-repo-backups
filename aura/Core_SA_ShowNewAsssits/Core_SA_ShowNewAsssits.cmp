@@ -11,7 +11,6 @@
     <aura:attribute name="cimId" type="string" />
 	<aura:attribute name="userWWID" type="String" />    
     <aura:attribute name="recordId" type="String" />
-    <aura:attribute name="saSwitchToggle" type = "Boolean" default= "{!$Label.c.CRM_SA_Switch}" />
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     
   	<aura:if isTrue="{! !empty(v.data)}">

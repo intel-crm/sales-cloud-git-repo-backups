@@ -8,8 +8,24 @@
     <label>Approvals</label>
     <navType>Console</navType>
     <tabs>standard-ApprovalsHome</tabs>
+    <tabs>Core_CustomMetadata_Object__c</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>Core_CustomMetadata_Object__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PMP_CompanyAutoFill__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PRM_IPAMembership_Attributes__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PRM_IPA_DQ_Logs__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-ApprovalsHome</tab>
         </mappings>

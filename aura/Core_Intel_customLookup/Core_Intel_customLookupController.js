@@ -11,9 +11,9 @@
            $A.util.addClass(forclose, 'slds-show');
            $A.util.removeClass(forclose, 'slds-hide');
   
-        var searchResult = component.find("searchRes");
-           $A.util.addClass(searchResult, 'slds-is-close');
-           $A.util.removeClass(searchResult, 'slds-is-open');
+        var forclose = component.find("searchRes");
+           $A.util.addClass(forclose, 'slds-is-close');
+           $A.util.removeClass(forclose, 'slds-is-open');
         
         var lookUpTarget = component.find("lookupField");
             $A.util.addClass(lookUpTarget, 'slds-hide');

@@ -33,7 +33,7 @@
     </columns>
     <filter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Product_Segment_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Product_Segment__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -54,7 +54,7 @@
         <field>OPPORTUNITY_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>2020 ASUS NSG DW Revenue</name>
+    <name>ASUS NSG DW Revenue</name>
     <params>
         <name>terr</name>
         <value>all</value>
@@ -80,6 +80,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Opportunity.Core_Approved_Date__c</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

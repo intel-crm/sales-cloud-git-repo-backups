@@ -5,25 +5,20 @@
         var searchKeyFld = component.find("searchId");
         var srcValue1 = searchKeyFld.get("v.value");        
         var srcValue = srcValue1.trim();
-        component.set("v.isShowSpinner",true);
         //alert('**'+srcValue+'***');
         var userId = $A.get("$SObjectType.CurrentUser.Id");
         console.log('userId = '+ userId);       
         var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;    
         
-        if (srcValue == '' || srcValue == null || typeof searchKeyFld == 'undefined') {
-            component.set("v.isShowSpinner",false);
+        if (srcValue == '' || srcValue == null) {
             // display error message if input value is blank or null
             searchKeyFld.set("v.errors", [{
-                //message: "Enter Search Keyword..."
-                message: $A.get("$Label.c.Core_MDF_Search_Keyword")
+                message: "Enter Search Keyword..."
             }]);
         }
         else if(!filter.test(srcValue)){
-            component.set("v.isShowSpinner",false);
             searchKeyFld.set("v.errors", [{
-                //message: "Please provide a valid email address..."
-                message: $A.get("$Label.c.Core_MDF_Valid_Email")
+                message: "Please provide a valid email address..."
             }]);
         }
             else {
@@ -37,7 +32,7 @@
         component.set("v.isNew",false);
         component.set("v.isView",true);
         component.set("v.objId",event.target.id); 
-        component.set("v.headerText",$A.get("$Label.c.Core_MDF_My_Contact"));
+        component.set("v.headerText","My Contact");
         
         // Get the application event by using the
         // e.. syntax
@@ -54,8 +49,7 @@
                 emailAddress = searchResultList[0].Email;
             }*/
             component.set("v.isNew",true);
-            //component.set("v.headerText","New Contact");
-            component.set("v.headerText",$A.get("$Label.c.Core_MDF_New_Contact"));
+            component.set("v.headerText","New Contact");
             component.set("v.isNew",true);
             component.set("v.isView",false);
             component.set("v.isNewContact",true);
@@ -82,7 +76,7 @@
         }*/
     },
     searchShow : function(component){ 
-        component.set("v.headerText",$A.get("$Label.c.Core_MDF_Search_Contact"));
+        component.set("v.headerText","Search Contact");
         component.set("v.isNew",false);
         component.set("v.isView",false);
     },
@@ -90,8 +84,6 @@
     passEmailFromSavedContactToDisplay : function(component, event, helper){
         var userId = $A.get("$SObjectType.CurrentUser.Id");
         component.set("v.searchKeyword",event.getParam("passEmail"));
-        component.set("v.isNew",false);
-        console.log("In event hanlder"+event.getParam("passEmail"));
         helper.SearchHelper(component, event, userId);
     },
     
@@ -108,7 +100,7 @@
             //var compEvent = component.getEvent("loadEntitlementEvent");
             var contactRecordId = component.get("v.contactRecId");
             console.log('contactRecordId = '+ contactRecordId);
-            compEvent.setParams({'contactId' : contactRecordId, 'isClearEntitlements': false});  //'0033D00000W6A5YDEVCCPV'
+            compEvent.setParams({'contactId' : contactRecordId, 'isClearEntitlements': false});  //'0033D00000W6A5YQAV'
             console.log(compEvent);
             compEvent.fire(); 
         }catch(error){

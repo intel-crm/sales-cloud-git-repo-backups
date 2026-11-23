@@ -16,21 +16,21 @@
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r$Core_Issue_Category_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r$Core_Status__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</field>
     </columns>
     <columns>
-        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Issue_Sub_Category_Name__c</field>
+        <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r$Core_Status__c</field>
     </columns>
     <columns>
         <field>Core_IPS_Supported_Product__c.Product_Issue_Categories__r.Product_Issue_Sub_Categories__r$Core_Status__c</field>
     </columns>
     <filter>
         <criteriaItems>
-            <column>Core_IPS_Supported_Product__c$Core_Product_Organization__c</column>
+            <column>Core_IPS_Supported_Product__c$Name</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>Org-005</value>
+            <operator>contains</operator>
+            <value>2775</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -45,6 +45,8 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
+    <sortColumn>Core_IPS_Supported_Product__c.Product_Issue_Categories__r$Core_Issue_Category_Name__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>Core_IPS_Supported_Product__c$CreatedDate</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

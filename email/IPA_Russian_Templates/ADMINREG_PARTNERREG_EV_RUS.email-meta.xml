@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_RUS</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Для завершения регистрации в программе Intel® Partner Alliance необходимо выполнить действие.
+
+
+
+
+Здравствуйте, {!Contact.FirstName}.
+
+Поздравляем, администратор вашей компании или представитель Intel добавил вас в учетную запись Intel® Partner Alliance. До завершения регистрации осталось всего несколько шагов.
+
+Для вас была добавлена следующая информация о профиле:
+
+Имя пользователя: {!Contact.Core_Login_Id__c}
+Адрес электронной почты: {!Contact.Email}
+Название компании: {{ACCOUNTNAME}}
+Идентификатор компании в Intel® Partner Alliance: {{ACCOUNTNUMBER}}
+
+
+Для завершения регистрации нажмите на ссылку ниже
+
+
+Подтвердите свой адрес электронной почты и установите пароль
+
+
+Обратите внимание, что эта ссылка действительна в течение 24 часов.Не удается получить доступ к приведенной выше ссылке?
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=ru&amp;target=https://www.intel.com/content/www/ru/ru/secure/partner/forms/ipa-account-search.html
+Если у вас возникли вопросы, свяжитесь с нами через форму https://signin.intel.com/ContactUs?Culture=ru-ru.
+Будем рады видеть вас в программе!
+С уважением,
+команда Intel® Partner Alliance
+
+
+Это сообщение было отправлено в качестве важного делового письма и связано с вашими текущими отношениями с Intel® Partner Alliance.
+© Корпорация Intel, {!Contact.Core_Current_Year__c} г.
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Конфиденциальность | Файлы cookie
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

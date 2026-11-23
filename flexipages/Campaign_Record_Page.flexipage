@@ -4,14 +4,7 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>actionNames</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>collapsed</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableActionsConfiguration</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -31,26 +24,6 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField1</name>
-                    <value>Core_MDF_Proposal_Based_Ind__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierCheckboxField2</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField1</name>
-                    <value>Core_MDF_Program__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>identifierTextField2</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_ApprovalHistoryRelatedList</componentName>
-                <identifier>c_core_MDF_ApprovalHistoryRelatedList</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -78,48 +51,6 @@
             <componentInstance>
                 <componentName>force:detailPanel</componentName>
                 <identifier>force_detailPanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>recordId</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_CampaignBudgets</componentName>
-                <identifier>core_MDF_CampaignBudgets</identifier>
-                <visibilityRule>
-                    <booleanFilter>((1 OR 2) AND (3 OR 4)) OR ( 5 AND 6)</booleanFilter>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_Opal__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Yes CMP Only</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Is_Opal__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Yes MDF or both CMP &amp; MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Client CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Data Center CoMarketing Fund</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Channel MDF</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Proposal_Based_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
-                    </criteria>
-                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
@@ -178,38 +109,9 @@
                 <identifier>flexipage_tabset</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_MDF_GridViewRegionAndCategory</componentName>
-                <identifier>Core_MDF_GridViewRegionAndCategory</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_MDF_DisplayActivities</componentName>
-                <identifier>Core_MDF_DisplayActivities</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Program__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Intel Partner Alliance</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
         <mode>Replace</mode>
         <name>main</name>
         <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>forceChatter:recordFeedContainer</componentName>
-                <identifier>forceChatter_recordFeedContainer</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</name>
-        <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
@@ -228,24 +130,6 @@
                 <componentInstanceProperties>
                     <name>active</name>
                     <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fcf971fb-15cd-4867-be9f-a9a396ed1bb4</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Standard.Tab.collaborate</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>collaborateTab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>active</name>
-                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>body</name>
@@ -272,32 +156,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>parentFieldApiName</name>
-                    <value>Campaign.Id</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListApiName</name>
-                    <value>AttachedContentDocuments</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>rowsToDisplay</name>
-                    <value>10</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showActionBar</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentName>force:relatedListSingleContainer</componentName>
-                <identifier>force_relatedListSingleContainer</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>

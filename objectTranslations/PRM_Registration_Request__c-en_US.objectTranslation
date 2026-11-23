@@ -13,20 +13,16 @@
         <name>PRM_Kanban_View</name>
     </fieldSets>
     <fields>
-        <label><!-- SDP Product Code --></label>
-        <name>ACM_SDP_Product_Code__c</name>
-    </fields>
-    <fields>
-        <label><!-- SDP System Serial Number --></label>
-        <name>ACM_SDP_System_Serial_Number__c</name>
-    </fields>
-    <fields>
         <label><!-- AE_ApprovedRejectedTimeStamp --></label>
         <name>AE_ApprovedRejectedTimeStamp__c</name>
     </fields>
     <fields>
         <label><!-- AE_PendingTimeStamp --></label>
         <name>AE_PendingTimeStamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- AE_TPT --></label>
+        <name>AE_TPT__c</name>
     </fields>
     <fields>
         <label><!-- Account_ID --></label>
@@ -40,6 +36,10 @@
     <fields>
         <label><!-- Approved/Rejected Timestamp --></label>
         <name>Approved_Timestamp__c</name>
+    </fields>
+    <fields>
+        <label><!-- ArchiveTest --></label>
+        <name>ArchiveTest__c</name>
     </fields>
     <fields>
         <label><!-- Assigned To --></label>
@@ -242,10 +242,6 @@
             <translation><!-- Chile --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>China</masterLabel>
-            <translation><!-- China --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Christmas Islnd</masterLabel>
             <translation><!-- Christmas Islnd --></translation>
         </picklistValues>
@@ -296,10 +292,6 @@
         <picklistValues>
             <masterLabel>Czech Republic</masterLabel>
             <translation><!-- Czech Republic --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Czechia</masterLabel>
-            <translation><!-- Czechia --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Dem. Rep. Congo</masterLabel>
@@ -584,6 +576,10 @@
         <picklistValues>
             <masterLabel>Madagascar</masterLabel>
             <translation><!-- Madagascar --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mainland China</masterLabel>
+            <translation><!-- Mainland China --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Malawi</masterLabel>
@@ -982,8 +978,8 @@
             <translation><!-- Tunisia --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Turkiye</masterLabel>
-            <translation><!-- Turkiye --></translation>
+            <masterLabel>Turkey</masterLabel>
+            <translation><!-- Turkey --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Turkmenistan</masterLabel>
@@ -1067,6 +1063,1010 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Country --></label>
+        <name>Country_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Country Code --></label>
+        <name>Country__c</name>
+        <picklistValues>
+            <masterLabel>AD</masterLabel>
+            <translation><!-- AD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AE</masterLabel>
+            <translation><!-- AE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AF</masterLabel>
+            <translation><!-- AF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AG</masterLabel>
+            <translation><!-- AG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AI</masterLabel>
+            <translation><!-- AI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AL</masterLabel>
+            <translation><!-- AL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AM</masterLabel>
+            <translation><!-- AM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AO</masterLabel>
+            <translation><!-- AO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AQ</masterLabel>
+            <translation><!-- AQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AR</masterLabel>
+            <translation><!-- AR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AS</masterLabel>
+            <translation><!-- AS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AT</masterLabel>
+            <translation><!-- AT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AU</masterLabel>
+            <translation><!-- AU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AW</masterLabel>
+            <translation><!-- AW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AX</masterLabel>
+            <translation><!-- AX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>AZ</masterLabel>
+            <translation><!-- AZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BA</masterLabel>
+            <translation><!-- BA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BB</masterLabel>
+            <translation><!-- BB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BD</masterLabel>
+            <translation><!-- BD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BE</masterLabel>
+            <translation><!-- BE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BF</masterLabel>
+            <translation><!-- BF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BG</masterLabel>
+            <translation><!-- BG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BH</masterLabel>
+            <translation><!-- BH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BI</masterLabel>
+            <translation><!-- BI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BJ</masterLabel>
+            <translation><!-- BJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BL</masterLabel>
+            <translation><!-- BL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BM</masterLabel>
+            <translation><!-- BM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BN</masterLabel>
+            <translation><!-- BN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BO</masterLabel>
+            <translation><!-- BO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BQ</masterLabel>
+            <translation><!-- BQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BR</masterLabel>
+            <translation><!-- BR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BS</masterLabel>
+            <translation><!-- BS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BT</masterLabel>
+            <translation><!-- BT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BV</masterLabel>
+            <translation><!-- BV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BW</masterLabel>
+            <translation><!-- BW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BY</masterLabel>
+            <translation><!-- BY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>BZ</masterLabel>
+            <translation><!-- BZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CA</masterLabel>
+            <translation><!-- CA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CC</masterLabel>
+            <translation><!-- CC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CD</masterLabel>
+            <translation><!-- CD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CF</masterLabel>
+            <translation><!-- CF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CG</masterLabel>
+            <translation><!-- CG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CH</masterLabel>
+            <translation><!-- CH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CI</masterLabel>
+            <translation><!-- CI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CK</masterLabel>
+            <translation><!-- CK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CL</masterLabel>
+            <translation><!-- CL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CM</masterLabel>
+            <translation><!-- CM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CN</masterLabel>
+            <translation><!-- CN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CO</masterLabel>
+            <translation><!-- CO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CR</masterLabel>
+            <translation><!-- CR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CU</masterLabel>
+            <translation><!-- CU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CV</masterLabel>
+            <translation><!-- CV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CW</masterLabel>
+            <translation><!-- CW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CX</masterLabel>
+            <translation><!-- CX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CY</masterLabel>
+            <translation><!-- CY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>CZ</masterLabel>
+            <translation><!-- CZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DE</masterLabel>
+            <translation><!-- DE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DJ</masterLabel>
+            <translation><!-- DJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DK</masterLabel>
+            <translation><!-- DK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DM</masterLabel>
+            <translation><!-- DM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DO</masterLabel>
+            <translation><!-- DO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>DZ</masterLabel>
+            <translation><!-- DZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EC</masterLabel>
+            <translation><!-- EC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EE</masterLabel>
+            <translation><!-- EE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EG</masterLabel>
+            <translation><!-- EG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>EH</masterLabel>
+            <translation><!-- EH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ER</masterLabel>
+            <translation><!-- ER --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ES</masterLabel>
+            <translation><!-- ES --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ET</masterLabel>
+            <translation><!-- ET --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FI</masterLabel>
+            <translation><!-- FI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FJ</masterLabel>
+            <translation><!-- FJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FK</masterLabel>
+            <translation><!-- FK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FM</masterLabel>
+            <translation><!-- FM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FO</masterLabel>
+            <translation><!-- FO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FR</masterLabel>
+            <translation><!-- FR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GA</masterLabel>
+            <translation><!-- GA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GB</masterLabel>
+            <translation><!-- GB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GD</masterLabel>
+            <translation><!-- GD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GE</masterLabel>
+            <translation><!-- GE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GF</masterLabel>
+            <translation><!-- GF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GG</masterLabel>
+            <translation><!-- GG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GH</masterLabel>
+            <translation><!-- GH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GI</masterLabel>
+            <translation><!-- GI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GL</masterLabel>
+            <translation><!-- GL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GM</masterLabel>
+            <translation><!-- GM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GN</masterLabel>
+            <translation><!-- GN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GP</masterLabel>
+            <translation><!-- GP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GQ</masterLabel>
+            <translation><!-- GQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GR</masterLabel>
+            <translation><!-- GR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GS</masterLabel>
+            <translation><!-- GS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GT</masterLabel>
+            <translation><!-- GT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GU</masterLabel>
+            <translation><!-- GU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GW</masterLabel>
+            <translation><!-- GW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>GY</masterLabel>
+            <translation><!-- GY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HK</masterLabel>
+            <translation><!-- HK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HM</masterLabel>
+            <translation><!-- HM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HN</masterLabel>
+            <translation><!-- HN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HR</masterLabel>
+            <translation><!-- HR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HT</masterLabel>
+            <translation><!-- HT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>HU</masterLabel>
+            <translation><!-- HU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ID</masterLabel>
+            <translation><!-- ID --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IE</masterLabel>
+            <translation><!-- IE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IL</masterLabel>
+            <translation><!-- IL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IM</masterLabel>
+            <translation><!-- IM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IO</masterLabel>
+            <translation><!-- IO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IQ</masterLabel>
+            <translation><!-- IQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IR</masterLabel>
+            <translation><!-- IR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IS</masterLabel>
+            <translation><!-- IS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>IT</masterLabel>
+            <translation><!-- IT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>India</masterLabel>
+            <translation><!-- India --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JE</masterLabel>
+            <translation><!-- JE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JM</masterLabel>
+            <translation><!-- JM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JO</masterLabel>
+            <translation><!-- JO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>JP</masterLabel>
+            <translation><!-- JP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KE</masterLabel>
+            <translation><!-- KE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KG</masterLabel>
+            <translation><!-- KG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KH</masterLabel>
+            <translation><!-- KH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KI</masterLabel>
+            <translation><!-- KI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KM</masterLabel>
+            <translation><!-- KM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KN</masterLabel>
+            <translation><!-- KN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KP</masterLabel>
+            <translation><!-- KP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KR</masterLabel>
+            <translation><!-- KR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KW</masterLabel>
+            <translation><!-- KW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KY</masterLabel>
+            <translation><!-- KY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>KZ</masterLabel>
+            <translation><!-- KZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LA</masterLabel>
+            <translation><!-- LA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LB</masterLabel>
+            <translation><!-- LB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LC</masterLabel>
+            <translation><!-- LC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LI</masterLabel>
+            <translation><!-- LI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LK</masterLabel>
+            <translation><!-- LK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LR</masterLabel>
+            <translation><!-- LR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LS</masterLabel>
+            <translation><!-- LS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LT</masterLabel>
+            <translation><!-- LT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LU</masterLabel>
+            <translation><!-- LU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LV</masterLabel>
+            <translation><!-- LV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>LY</masterLabel>
+            <translation><!-- LY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MA</masterLabel>
+            <translation><!-- MA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MC</masterLabel>
+            <translation><!-- MC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MD</masterLabel>
+            <translation><!-- MD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ME</masterLabel>
+            <translation><!-- ME --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MF</masterLabel>
+            <translation><!-- MF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MG</masterLabel>
+            <translation><!-- MG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MH</masterLabel>
+            <translation><!-- MH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MK</masterLabel>
+            <translation><!-- MK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ML</masterLabel>
+            <translation><!-- ML --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MM</masterLabel>
+            <translation><!-- MM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MN</masterLabel>
+            <translation><!-- MN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MO</masterLabel>
+            <translation><!-- MO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MP</masterLabel>
+            <translation><!-- MP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MQ</masterLabel>
+            <translation><!-- MQ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MR</masterLabel>
+            <translation><!-- MR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MS</masterLabel>
+            <translation><!-- MS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MT</masterLabel>
+            <translation><!-- MT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MU</masterLabel>
+            <translation><!-- MU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MV</masterLabel>
+            <translation><!-- MV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MW</masterLabel>
+            <translation><!-- MW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MX</masterLabel>
+            <translation><!-- MX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MY</masterLabel>
+            <translation><!-- MY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>MZ</masterLabel>
+            <translation><!-- MZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NA</masterLabel>
+            <translation><!-- NA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NC</masterLabel>
+            <translation><!-- NC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NE</masterLabel>
+            <translation><!-- NE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NF</masterLabel>
+            <translation><!-- NF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NG</masterLabel>
+            <translation><!-- NG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NI</masterLabel>
+            <translation><!-- NI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NL</masterLabel>
+            <translation><!-- NL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NO</masterLabel>
+            <translation><!-- NO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NP</masterLabel>
+            <translation><!-- NP --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NR</masterLabel>
+            <translation><!-- NR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NU</masterLabel>
+            <translation><!-- NU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NZ</masterLabel>
+            <translation><!-- NZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OM</masterLabel>
+            <translation><!-- OM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PA</masterLabel>
+            <translation><!-- PA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PE</masterLabel>
+            <translation><!-- PE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PF</masterLabel>
+            <translation><!-- PF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PG</masterLabel>
+            <translation><!-- PG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PH</masterLabel>
+            <translation><!-- PH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PK</masterLabel>
+            <translation><!-- PK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PL</masterLabel>
+            <translation><!-- PL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PM</masterLabel>
+            <translation><!-- PM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PN</masterLabel>
+            <translation><!-- PN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PR</masterLabel>
+            <translation><!-- PR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PS</masterLabel>
+            <translation><!-- PS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PT</masterLabel>
+            <translation><!-- PT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PW</masterLabel>
+            <translation><!-- PW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>PY</masterLabel>
+            <translation><!-- PY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>QA</masterLabel>
+            <translation><!-- QA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RE</masterLabel>
+            <translation><!-- RE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RO</masterLabel>
+            <translation><!-- RO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RS</masterLabel>
+            <translation><!-- RS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RU</masterLabel>
+            <translation><!-- RU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>RW</masterLabel>
+            <translation><!-- RW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SA</masterLabel>
+            <translation><!-- SA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SB</masterLabel>
+            <translation><!-- SB --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SC</masterLabel>
+            <translation><!-- SC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SD</masterLabel>
+            <translation><!-- SD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SE</masterLabel>
+            <translation><!-- SE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SG</masterLabel>
+            <translation><!-- SG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SH</masterLabel>
+            <translation><!-- SH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SI</masterLabel>
+            <translation><!-- SI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SJ</masterLabel>
+            <translation><!-- SJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SK</masterLabel>
+            <translation><!-- SK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SL</masterLabel>
+            <translation><!-- SL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SM</masterLabel>
+            <translation><!-- SM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SN</masterLabel>
+            <translation><!-- SN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SO</masterLabel>
+            <translation><!-- SO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SR</masterLabel>
+            <translation><!-- SR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SS</masterLabel>
+            <translation><!-- SS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ST</masterLabel>
+            <translation><!-- ST --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SV</masterLabel>
+            <translation><!-- SV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SX</masterLabel>
+            <translation><!-- SX --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SY</masterLabel>
+            <translation><!-- SY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>SZ</masterLabel>
+            <translation><!-- SZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TC</masterLabel>
+            <translation><!-- TC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TD</masterLabel>
+            <translation><!-- TD --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TF</masterLabel>
+            <translation><!-- TF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TG</masterLabel>
+            <translation><!-- TG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TH</masterLabel>
+            <translation><!-- TH --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TJ</masterLabel>
+            <translation><!-- TJ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TK</masterLabel>
+            <translation><!-- TK --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TL</masterLabel>
+            <translation><!-- TL --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TM</masterLabel>
+            <translation><!-- TM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TN</masterLabel>
+            <translation><!-- TN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TO</masterLabel>
+            <translation><!-- TO --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TR</masterLabel>
+            <translation><!-- TR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TT</masterLabel>
+            <translation><!-- TT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TV</masterLabel>
+            <translation><!-- TV --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TW</masterLabel>
+            <translation><!-- TW --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>TZ</masterLabel>
+            <translation><!-- TZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UA</masterLabel>
+            <translation><!-- UA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UG</masterLabel>
+            <translation><!-- UG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UM</masterLabel>
+            <translation><!-- UM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UY</masterLabel>
+            <translation><!-- UY --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>UZ</masterLabel>
+            <translation><!-- UZ --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>United States</masterLabel>
+            <translation><!-- United States --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VA</masterLabel>
+            <translation><!-- VA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VC</masterLabel>
+            <translation><!-- VC --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VE</masterLabel>
+            <translation><!-- VE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VG</masterLabel>
+            <translation><!-- VG --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VI</masterLabel>
+            <translation><!-- VI --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VN</masterLabel>
+            <translation><!-- VN --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>VU</masterLabel>
+            <translation><!-- VU --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WF</masterLabel>
+            <translation><!-- WF --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>WS</masterLabel>
+            <translation><!-- WS --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YE</masterLabel>
+            <translation><!-- YE --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>YT</masterLabel>
+            <translation><!-- YT --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZA</masterLabel>
+            <translation><!-- ZA --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZM</masterLabel>
+            <translation><!-- ZM --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ZW</masterLabel>
+            <translation><!-- ZW --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Created Date/Time --></label>
         <name>Created_Date_Time__c</name>
     </fields>
@@ -1092,6 +2092,10 @@
         <picklistValues>
             <masterLabel>Auto-Approval Pending</masterLabel>
             <translation><!-- Auto-Approval Pending --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto-Approval Rejected</masterLabel>
+            <translation><!-- Auto-Approval Rejected --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Closed</masterLabel>
@@ -1147,7 +2151,7 @@
         <name>Days_Left_for_Identity_Deletion__c</name>
     </fields>
     <fields>
-        <label><!-- Days in &apos;AE Open&apos; status --></label>
+        <label><!-- Hours in &apos;AE Open&apos; status --></label>
         <name>Days_in_AE_Open_status__c</name>
     </fields>
     <fields>
@@ -1155,7 +2159,7 @@
         <name>Days_in_AE_Pending_status__c</name>
     </fields>
     <fields>
-        <label><!-- Days in &apos;Open&apos; status --></label>
+        <label><!-- Hours in &apos;Open&apos; status --></label>
         <name>Days_in_Open_status__c</name>
     </fields>
     <fields>
@@ -1163,16 +2167,16 @@
         <name>Days_in_Pending_status__c</name>
     </fields>
     <fields>
-        <label><!-- Days in &apos;Sales Open&apos; status --></label>
+        <label><!-- Hours in &apos;Sales Open&apos; status --></label>
         <name>Days_in_Sales_Open_status__c</name>
     </fields>
     <fields>
-        <label><!-- Days in &apos;Sales Pending&apos; status --></label>
+        <label><!-- Hours in &apos;Sales Pending&apos; status --></label>
         <name>Days_in_Sales_Pending_status__c</name>
     </fields>
     <fields>
-        <label><!-- CMP ID --></label>
-        <name>ER_CMP_ID__c</name>
+        <label><!-- EBR Automation Processed --></label>
+        <name>EBR_Automation_Processed__c</name>
     </fields>
     <fields>
         <label><!-- Entitlement Detail Name --></label>
@@ -1192,7 +2196,11 @@
         <relationshipLabel><!-- New Registrations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Geo --></label>
+        <label><!-- From Date --></label>
+        <name>From_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo Code --></label>
         <name>Geo_Code__c</name>
         <picklistValues>
             <masterLabel>APJ</masterLabel>
@@ -1216,6 +2224,26 @@
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- Geo (Region) --></label>
+        <name>Geo_Region__c</name>
+    </fields>
+    <fields>
+        <label><!-- Geo --></label>
+        <name>Geo__c</name>
+    </fields>
+    <fields>
+        <label><!-- IsArchive --></label>
+        <name>IsArchive__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Duplicate --></label>
+        <name>Is_Duplicate__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Entitlement Record --></label>
+        <name>Is_Entitlement_Record__c</name>
+    </fields>
+    <fields>
         <label><!-- Job Title --></label>
         <name>Job_Title__c</name>
     </fields>
@@ -1237,12 +2265,24 @@
         <relationshipLabel><!-- New Registrations --></relationshipLabel>
     </fields>
     <fields>
+        <label><!-- Legal Agreements F --></label>
+        <name>Legal_Agreements_F__c</name>
+    </fields>
+    <fields>
         <label><!-- Open to Approved/Rejected TPT --></label>
         <name>Open_to_Approved_Rejected_TPT__c</name>
     </fields>
     <fields>
         <label><!-- Open to Pending TPT --></label>
         <name>Open_to_Pending_TPT__c</name>
+    </fields>
+    <fields>
+        <label><!-- Assigned  To --></label>
+        <name>Original_Approver__c</name>
+    </fields>
+    <fields>
+        <label><!-- Account ID --></label>
+        <name>PRM_Account_ID__c</name>
     </fields>
     <fields>
         <label><!-- Company Name --></label>
@@ -1491,6 +2531,10 @@ The field allows only English letters, digits (0-9), and the following special c
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- ContactId --></label>
+        <name>PRM_ContactId__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact Country --></label>
         <name>PRM_Contact_Country__c</name>
     </fields>
@@ -1621,8 +2665,20 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_Enterprise_ID__c</name>
     </fields>
     <fields>
+        <label><!-- Errors Logged --></label>
+        <name>PRM_Errors_Logged__c</name>
+    </fields>
+    <fields>
         <label><!-- Contact First Name --></label>
         <name>PRM_First_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Refresh --></label>
+        <name>PRM_IPARefresh__c</name>
+    </fields>
+    <fields>
+        <label><!-- IPA Approved Time --></label>
+        <name>PRM_IPA_Approved_Time__c</name>
     </fields>
     <fields>
         <label><!-- Is Returning User --></label>
@@ -1856,34 +2912,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- DZP_TANDC --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>DZP_TANDC_CH_TW</masterLabel>
-            <translation><!-- DZP_TANDC_CH_TW --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_CH_ZHO</masterLabel>
-            <translation><!-- DZP_TANDC_CH_ZHO --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_JPN</masterLabel>
-            <translation><!-- DZP_TANDC_JPN --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>DZP_TANDC_KOR</masterLabel>
-            <translation><!-- DZP_TANDC_KOR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EDC_BASIC_TNC_ALL_ENG</masterLabel>
-            <translation><!-- EDC_BASIC_TNC_ALL_ENG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>GNRL_REG_TNC</masterLabel>
-            <translation><!-- GNRL_REG_TNC --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>INTEL_TERMS_OF_USE</masterLabel>
-            <translation><!-- INTEL_TERMS_OF_USE --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IPA_TANDC</masterLabel>
             <translation><!-- IPA_TANDC --></translation>
         </picklistValues>
@@ -1928,6 +2956,18 @@ The field allows only English letters, digits (0-9), and the following special c
         </picklistValues>
     </fields>
     <fields>
+        <label><!-- PSG Entitlement Status --></label>
+        <name>PRM_PSG_Entitlement_Status__c</name>
+        <picklistValues>
+            <masterLabel>Assigned</masterLabel>
+            <translation><!-- Assigned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pending Assignment</masterLabel>
+            <translation><!-- Pending Assignment --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Partner Relationship --></label>
         <name>PRM_Partner_Relationship__c</name>
         <picklistValues>
@@ -1937,6 +2977,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Partner Admin</masterLabel>
             <translation><!-- Partner Admin --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Partner Drafter</masterLabel>
+            <translation><!-- Partner Drafter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Points Benefit Manager</masterLabel>
@@ -1975,6 +3019,10 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Distributor --></translation>
         </picklistValues>
         <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
+        </picklistValues>
+        <picklistValues>
             <masterLabel>Guest</masterLabel>
             <translation><!-- Guest --></translation>
         </picklistValues>
@@ -1983,8 +3031,20 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Independent Software Vendor --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Solution Integrator</masterLabel>
-            <translation><!-- Solution Integrator --></translation>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Original Equipment Manufacturer (OEM)</masterLabel>
+            <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Integrator</masterLabel>
+            <translation><!-- Service Integrator --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Provider</masterLabel>
+            <translation><!-- Solution Provider --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2119,10 +3179,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Original Equipment Manufacturer (OEM) --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Other</masterLabel>
-            <translation><!-- Other --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Retailer</masterLabel>
             <translation><!-- Retailer --></translation>
         </picklistValues>
@@ -2219,10 +3275,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Finance/Procurement --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Government</masterLabel>
-            <translation><!-- Government --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Hardware Development/Engineering</masterLabel>
             <translation><!-- Hardware Development/Engineering --></translation>
         </picklistValues>
@@ -2291,10 +3343,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Scientist/Researcher --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Software Operations</masterLabel>
-            <translation><!-- Software Operations --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Software/Application Development/Engineering</masterLabel>
             <translation><!-- Software/Application Development/Engineering --></translation>
         </picklistValues>
@@ -2312,8 +3360,8 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_Profile_Response__c</name>
     </fields>
     <fields>
-        <label><!-- Record Link --></label>
-        <name>PRM_Record_Link__c</name>
+        <label><!-- Record Errored Out --></label>
+        <name>PRM_Record_Errored_Out__c</name>
     </fields>
     <fields>
         <label><!-- Record Status --></label>
@@ -2322,6 +3370,14 @@ The field allows only English letters, digits (0-9), and the following special c
     <fields>
         <label><!-- Record Type Name --></label>
         <name>PRM_Record_Type_Name_rpt_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- Registration Type --></label>
+        <name>PRM_Registration_Type__c</name>
+    </fields>
+    <fields>
+        <label><!-- Reject Reason - Others --></label>
+        <name>PRM_Reject_Reason_Others__c</name>
     </fields>
     <fields>
         <label><!-- Rejection Reason --></label>
@@ -2382,91 +3438,23 @@ The field allows only English letters, digits (0-9), and the following special c
         <relationshipLabel><!-- New Registrations --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Engagement Code --></label>
+        <label><!-- Source --></label>
         <name>PRM_Source__c</name>
         <picklistValues>
             <masterLabel>DZP</masterLabel>
             <translation><!-- DZP --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Dev_Cloud_Ent</masterLabel>
-            <translation><!-- Dev_Cloud_Ent --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EPS_Verified_C</masterLabel>
-            <translation><!-- EPS_Verified_C --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ESR</masterLabel>
-            <translation><!-- ESR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IBR</masterLabel>
-            <translation><!-- IBR --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IIPAM</masterLabel>
-            <translation><!-- IIPAM --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>IPA - Portal</masterLabel>
             <translation><!-- IPA - Portal --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPS</masterLabel>
-            <translation><!-- IPS --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>IQR</masterLabel>
             <translation><!-- IQR --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>ISvC_Auth_Cntct</masterLabel>
-            <translation><!-- ISvC_Auth_Cntct --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OnDemand_Rev</masterLabel>
-            <translation><!-- OnDemand_Rev --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PFT</masterLabel>
-            <translation><!-- PFT --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>PSG</masterLabel>
             <translation><!-- PSG --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PSG_SEP</masterLabel>
-            <translation><!-- PSG_SEP --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>QDMS</masterLabel>
-            <translation><!-- QDMS --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RPS_Agency</masterLabel>
-            <translation><!-- RPS_Agency --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>RPS_Retailer</masterLabel>
-            <translation><!-- RPS_Retailer --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Siaas_Service</masterLabel>
-            <translation><!-- Siaas_Service --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Tend_Mgmt</masterLabel>
-            <translation><!-- Tend_Mgmt --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WOM</masterLabel>
-            <translation><!-- WOM --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WebQuote</masterLabel>
-            <translation><!-- WebQuote --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2485,12 +3473,16 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Access granted to Existing User --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Account/contact not in English format</masterLabel>
-            <translation><!-- Account/contact not in English format --></translation>
+            <masterLabel>Auto Approval Rejected</masterLabel>
+            <translation><!-- Auto Approval Rejected --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Approved for Targeted Doc Only</masterLabel>
-            <translation><!-- Approved for Targeted Doc Only --></translation>
+            <masterLabel>Auto rejected as the Account Project budget does not meet RDC Privilege criteria</masterLabel>
+            <translation><!-- Auto rejected as the Account Project budget does not meet RDC Privilege criteria --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Auto rejected as the Account belongs to LAR/Canada</masterLabel>
+            <translation><!-- Auto rejected as the Account belongs to LAR/Canada --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Bad / junk / test data</masterLabel>
@@ -2499,10 +3491,6 @@ The field allows only English letters, digits (0-9), and the following special c
         <picklistValues>
             <masterLabel>Below Threshold</masterLabel>
             <translation><!-- Below Threshold --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>CNDA Initiated</masterLabel>
-            <translation><!-- CNDA Initiated --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Contact is already Associated to an existing Intel Account</masterLabel>
@@ -2517,24 +3505,12 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Contacted applicant --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Does not meet criteria</masterLabel>
-            <translation><!-- Does not meet criteria --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Duplicate Request</masterLabel>
             <translation><!-- Duplicate Request --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Education</masterLabel>
             <translation><!-- Education --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>IPA Invite in-process</masterLabel>
-            <translation><!-- IPA Invite in-process --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Incorrect route - not partner-led/end customer scenario</masterLabel>
-            <translation><!-- Incorrect route - not partner-led/end customer scenario --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Inquiry assigned to LDR</masterLabel>
@@ -2553,22 +3529,6 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- New Contact Creation --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>No project details provided</masterLabel>
-            <translation><!-- No project details provided --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No response to CNDA request</masterLabel>
-            <translation><!-- No response to CNDA request --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>No valid Intel opportunity indicated</masterLabel>
-            <translation><!-- No valid Intel opportunity indicated --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Not IPA-eligible</masterLabel>
-            <translation><!-- Not IPA-eligible --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Others</masterLabel>
             <translation><!-- Others --></translation>
         </picklistValues>
@@ -2585,16 +3545,8 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Personal email --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Product no longer available for new designs</masterLabel>
-            <translation><!-- Product no longer available for new designs --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Request approved with CNDA pending</masterLabel>
-            <translation><!-- Request approved with CNDA pending --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Unable to contact</masterLabel>
-            <translation><!-- Unable to contact --></translation>
+            <masterLabel>Unable to Contact</masterLabel>
+            <translation><!-- Unable to Contact --></translation>
         </picklistValues>
     </fields>
     <fields>
@@ -2629,16 +3581,24 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Subscriptions --></label>
         <name>PRM_Subscriptions__c</name>
         <picklistValues>
-            <masterLabel>Education and Training</masterLabel>
-            <translation><!-- Education and Training --></translation>
+            <masterLabel>Dev_edu_training</masterLabel>
+            <translation><!-- Dev_edu_training --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Events and Tradeshows</masterLabel>
-            <translation><!-- Events and Tradeshows --></translation>
+            <masterLabel>Developer Zone Newsletter</masterLabel>
+            <translation><!-- Developer Zone Newsletter --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Industry Solutions</masterLabel>
-            <translation><!-- Industry Solutions --></translation>
+            <masterLabel>Events Communications</masterLabel>
+            <translation><!-- Events Communications --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Partner Program Newsletter</masterLabel>
+            <translation><!-- FPGA Partner Program Newsletter --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Inside Edge Newsletter</masterLabel>
+            <translation><!-- Inside Edge Newsletter --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Intel® Cloud Insider Events and Tradeshows</masterLabel>
@@ -2661,57 +3621,33 @@ The field allows only English letters, digits (0-9), and the following special c
             <translation><!-- Membership Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Newsletters</masterLabel>
-            <translation><!-- Newsletters --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Offers and Promotions</masterLabel>
-            <translation><!-- Offers and Promotions --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>OpenVINO &amp; AI Inference Newsletter</masterLabel>
-            <translation><!-- OpenVINO &amp; AI Inference Newsletter --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Partner Research Communications</masterLabel>
             <translation><!-- Partner Research Communications --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Partner Training, Webinar &amp; Events</masterLabel>
-            <translation><!-- Partner Training, Webinar &amp; Events --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Points Communications</masterLabel>
             <translation><!-- Points Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Press Releases</masterLabel>
-            <translation><!-- Press Releases --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Product Updates</masterLabel>
-            <translation><!-- Product Updates --></translation>
-        </picklistValues>
-        <picklistValues>
             <masterLabel>Product and Solution Communications</masterLabel>
             <translation><!-- Product and Solution Communications --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Surveys</masterLabel>
-            <translation><!-- Surveys --></translation>
+            <masterLabel>Programmable Logic Newsletters</masterLabel>
+            <translation><!-- Programmable Logic Newsletters --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Training and Webinar Communications</masterLabel>
             <translation><!-- Training and Webinar Communications --></translation>
         </picklistValues>
-        <picklistValues>
-            <masterLabel>Webinars</masterLabel>
-            <translation><!-- Webinars --></translation>
-        </picklistValues>
     </fields>
     <fields>
         <label><!-- Suggested Account --></label>
         <name>PRM_Suggested_Account__c</name>
+    </fields>
+    <fields>
+        <label><!-- Suppress Email --></label>
+        <name>PRM_Suppress_Email__c</name>
     </fields>
     <fields>
         <label><!-- Tax ID/Registration # --></label>
@@ -2726,6 +3662,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_TriggerProcess__c</name>
     </fields>
     <fields>
+        <label><!-- User Loggedin Time --></label>
+        <name>PRM_User_Loggedin_Time__c</name>
+    </fields>
+    <fields>
         <label><!-- User Login History --></label>
         <name>PRM_User_Login_History__c</name>
     </fields>
@@ -2738,12 +3678,20 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_Zip_Postal_Code__c</name>
     </fields>
     <fields>
+        <label><!-- isBulkLoadedContact --></label>
+        <name>PRM_isBulkLoadedContact__c</name>
+    </fields>
+    <fields>
         <label><!-- isLocked --></label>
         <name>PRM_isLocked__c</name>
     </fields>
     <fields>
         <label><!-- isSubmitted --></label>
         <name>PRM_isSubmitted__c</name>
+    </fields>
+    <fields>
+        <label><!-- is First EV Reminder Sent --></label>
+        <name>PRM_is_First_EV_Reminder_Sent__c</name>
     </fields>
     <fields>
         <label><!-- manualRecordCheck --></label>
@@ -2794,6 +3742,10 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>Sales_PendingTimeStamp__c</name>
     </fields>
     <fields>
+        <label><!-- Sales_TPT --></label>
+        <name>Sales_TPT__c</name>
+    </fields>
+    <fields>
         <label><!-- Status Approved Time --></label>
         <name>Status_Approved_Time__c</name>
     </fields>
@@ -2822,6 +3774,14 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>TPT__c</name>
     </fields>
     <fields>
+        <label><!-- Title --></label>
+        <name>Title__c</name>
+    </fields>
+    <fields>
+        <label><!-- To Date --></label>
+        <name>To_Date__c</name>
+    </fields>
+    <fields>
         <label><!-- Total TPT(AE and sales) --></label>
         <name>Total_TPT_AE_and_sales__c</name>
     </fields>
@@ -2829,6 +3789,96 @@ The field allows only English letters, digits (0-9), and the following special c
         <label><!-- Total TPT --></label>
         <name>Total_TPT__c</name>
     </fields>
+    <layouts>
+        <layout>Bulk Contact Upload</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Fields --></label>
+            <section>Fields</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Email Verification Registration Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Entitlement Based Registration Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>RegReqLayout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Registration Request Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Registration Request Page</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Approve Registration --></label>
+        <name>Approve_Registration</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Create Lead --></label>
+        <name>Create_Lead</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Approve --></label>
+        <name>ER_Approve</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Initiate Automation --></label>
+        <name>Initiate_Automation</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Invite to complete application --></label>
+        <name>Invite_to_complete_application</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Approve --></label>
+        <name>PRM_RegReq_Approve</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Reject --></label>
+        <name>PRM_RegReq_Reject</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Retrigger Email --></label>
+        <name>PRM_Retrigger_EV</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Re-Validate --></label>
+        <name>Re_Validate</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Request Company Document --></label>
+        <name>Request_Company_Document</name>
+    </quickActions>
+    <quickActions>
+        <label><!-- Submit To Elaqua --></label>
+        <name>SubmitToElaqua</name>
+    </quickActions>
     <recordTypes>
         <description><!-- It identifies &apos;Account Create Request&apos; records --></description>
         <label><!-- Account Create Request --></label>
@@ -2850,8 +3900,17 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>Admin_Registration</name>
     </recordTypes>
     <recordTypes>
+        <label><!-- Bulk Contact Upload --></label>
+        <name>Bulk_Contact_Upload</name>
+    </recordTypes>
+    <recordTypes>
         <label><!-- Email Verification Request --></label>
         <name>PRM_Email_Verification_Request</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Creating a new record type for PSG Registrations --></description>
+        <label><!-- PSG Registration --></label>
+        <name>PRM_PSG_Registration</name>
     </recordTypes>
     <recordTypes>
         <description><!-- Approve/Reject button will not be there --></description>
@@ -2860,12 +3919,12 @@ The field allows only English letters, digits (0-9), and the following special c
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- The field allows only English letters, digits (0-9), and the following special characters: &apos;-&apos;, &apos;(&apos;, &apos;)&apos;, &apos;/&apos;, &apos;&apos;, &apos;@&apos;, &apos;&amp;&apos;, &apos;*&apos;, &apos;,&apos;, &apos;#&apos;, &apos;.&apos;, &apos;_&apos;, and space --></errorMessage>
-        <name>Company_NameEng_Should_be_alphanumeric</name>
+        <errorMessage><!-- A record already exist with this details --></errorMessage>
+        <name>Check_Duplicate_record</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Please provide rejection reason. --></errorMessage>
-        <name>DZP_Registration_Status_Validation</name>
+        <errorMessage><!-- The field allows only English letters, digits (0-9), and the following special characters: &apos;-&apos;, &apos;(&apos;, &apos;)&apos;, &apos;/&apos;, &apos;&apos;, &apos;@&apos;, &apos;&amp;&apos;, &apos;*&apos;, &apos;,&apos;, &apos;#&apos;, &apos;.&apos;, &apos;_&apos;, and space --></errorMessage>
+        <name>Company_NameEng_Should_be_alphanumeric</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- GST Number should not have special characters --></errorMessage>
@@ -2880,11 +3939,19 @@ The field allows only English letters, digits (0-9), and the following special c
         <name>PRM_SF_ID_RecordTypeIntel_Mandatory</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- This action is not allowed. Status cannot be modified --></errorMessage>
+        <errorMessage><!-- Status Can&apos;t be change. --></errorMessage>
         <name>PRM_StatusOnRegistration</name>
     </validationRules>
     <validationRules>
-        <errorMessage><!-- Select Status Reason, when Current status is Rejected/Closed --></errorMessage>
+        <errorMessage><!-- Exception Thrown : Please check it. --></errorMessage>
+        <name>PRM_Throw_Exception</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Select Status Reason, when Current status is Rejected --></errorMessage>
         <name>Status_Reason_Mandatory_for_Rejection</name>
     </validationRules>
+    <webLinks>
+        <label><!-- View_Report --></label>
+        <name>View_Report</name>
+    </webLinks>
 </CustomObjectTranslation>

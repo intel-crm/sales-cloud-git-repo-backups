@@ -25,7 +25,6 @@
         <field>AMOUNT</field>
     </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
         <criteriaItems>
             <column>HASOPPLINEITEM</column>
             <columnToColumn>false</columnToColumn>
@@ -48,11 +47,11 @@
             <value>Develop,Design</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OWNER_EMAIL</column>
+            <column>OWNER_MANAGER</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>jovern.lim@intel.com,ida.zulaika@intel.com,fransiskus.leonardus@intel.com,hendi.satrio@intel.com,harris.kristanto@intel.com,nicholas.gilbert.samudi@intel.com</value>
+            <value>Mark Burby</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

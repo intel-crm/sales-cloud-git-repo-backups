@@ -1,99 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <customValue>
-        <fullName>3rd party software</fullName>
-        <default>false</default>
-        <label>3rd party software</label>
-    </customValue>
-    <customValue>
         <fullName>ACPC</fullName>
         <default>false</default>
         <label>ACPC</label>
     </customValue>
     <customValue>
-        <fullName>Advanced 360 Library</fullName>
-        <default>false</default>
-        <label>Advanced 360 Library</label>
-    </customValue>
-    <customValue>
-        <fullName>Advanced Volumetric Library</fullName>
-        <default>false</default>
-        <label>Advanced Volumetric Library</label>
-    </customValue>
-    <customValue>
-        <fullName>AI for Media Enhancement</fullName>
-        <default>false</default>
-        <label>AI for Media Enhancement</label>
-    </customValue>
-    <customValue>
-        <fullName>Alder Lake (ADL)</fullName>
-        <default>false</default>
-        <label>Alder Lake (ADL)</label>
-    </customValue>
-    <customValue>
-        <fullName>Alder Lake - 12th Gen Core</fullName>
-        <default>false</default>
-        <label>Alder Lake - 12th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Alder Lake - 12th Gen Core K-SKU</fullName>
-        <default>false</default>
-        <label>Alder Lake - 12th Gen Core K-SKU</label>
-    </customValue>
-    <customValue>
-        <fullName>Alder Lake - N</fullName>
-        <default>false</default>
-        <label>Alder Lake - N</label>
-    </customValue>
-    <customValue>
-        <fullName>Alder Lake-N - 12th Gen Core</fullName>
-        <default>false</default>
-        <label>Alder Lake-N - 12th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Amber</fullName>
-        <default>false</default>
-        <label>Amber</label>
-    </customValue>
-    <customValue>
         <fullName>Amber Lake (AML)</fullName>
         <default>false</default>
         <label>Amber Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Amber Lake - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Amber Lake - 8th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Apollo Lake</fullName>
-        <default>false</default>
-        <label>Apollo Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Arrow Lake (ARL) Intel Core Ultra (Series 2)</fullName>
-        <default>false</default>
-        <label>Arrow Lake (ARL) Intel Core Ultra (Series 2)</label>
-    </customValue>
-    <customValue>
-        <fullName>Arrow Lake (ARL) Series 2</fullName>
-        <default>false</default>
-        <label>Arrow Lake (ARL) Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Bay Trail</fullName>
-        <default>false</default>
-        <label>Bay Trail</label>
-    </customValue>
-    <customValue>
-        <fullName>Broadwell</fullName>
-        <default>false</default>
-        <label>Broadwell</label>
-    </customValue>
-    <customValue>
-        <fullName>Broadwell DE</fullName>
-        <default>false</default>
-        <label>Broadwell DE</label>
     </customValue>
     <customValue>
         <fullName>Cascade Lake</fullName>
@@ -126,39 +41,9 @@
         <label>Ci9</label>
     </customValue>
     <customValue>
-        <fullName>Clearwater Forest</fullName>
-        <default>false</default>
-        <label>Clearwater Forest</label>
-    </customValue>
-    <customValue>
-        <fullName>cnvrg.io</fullName>
-        <default>false</default>
-        <label>cnvrg.io</label>
-    </customValue>
-    <customValue>
-        <fullName>Coffee Lake</fullName>
-        <default>false</default>
-        <label>Coffee Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Coffee Lake - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Coffee Lake - 8th Gen Core</label>
-    </customValue>
-    <customValue>
         <fullName>Coffee Lake - H</fullName>
         <default>false</default>
         <label>Coffee Lake - H</label>
-    </customValue>
-    <customValue>
-        <fullName>Coffee Lake – H - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Coffee Lake – H - 8th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Coffee Lake Refresh - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Coffee Lake Refresh - 8th Gen Core</label>
     </customValue>
     <customValue>
         <fullName>Coffee Lake - S</fullName>
@@ -166,24 +51,9 @@
         <label>Coffee Lake - S</label>
     </customValue>
     <customValue>
-        <fullName>Coffee Lake – S - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Coffee Lake – S - 8th Gen Core</label>
-    </customValue>
-    <customValue>
         <fullName>Comet Lake (CML)</fullName>
         <default>false</default>
         <label>Comet Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Comet Lake - 10th Gen Core</fullName>
-        <default>false</default>
-        <label>Comet Lake - 10th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Converged Edge Media Platform</fullName>
-        <default>false</default>
-        <label>Converged Edge Media Platform</label>
     </customValue>
     <customValue>
         <fullName>Core on Chrome OS*</fullName>
@@ -191,164 +61,9 @@
         <label>Core on Chrome OS*</label>
     </customValue>
     <customValue>
-        <fullName>Crypto-Acceleration (AES-NI)</fullName>
-        <default>false</default>
-        <label>Crypto-Acceleration (AES-NI)</label>
-    </customValue>
-    <customValue>
-        <fullName>DATA STREAMING ACCELERATOR (INTEL® DSA)</fullName>
-        <default>false</default>
-        <label>DATA STREAMING ACCELERATOR (INTEL® DSA)</label>
-    </customValue>
-    <customValue>
-        <fullName>Denverton</fullName>
-        <default>false</default>
-        <label>Denverton</label>
-    </customValue>
-    <customValue>
-        <fullName>Denverton - Atom C3xxx</fullName>
-        <default>false</default>
-        <label>Denverton - Atom C3xxx</label>
-    </customValue>
-    <customValue>
-        <fullName>DFX</fullName>
-        <default>false</default>
-        <label>DFX</label>
-    </customValue>
-    <customValue>
-        <fullName>dGPU Flex (ATS-M)</fullName>
-        <default>false</default>
-        <label>dGPU Flex (ATS-M)</label>
-    </customValue>
-    <customValue>
-        <fullName>dGPU Flex (PVC)</fullName>
-        <default>false</default>
-        <label>dGPU Flex (PVC)</label>
-    </customValue>
-    <customValue>
-        <fullName>Diamond Rapids/16-ch</fullName>
-        <default>false</default>
-        <label>Diamond Rapids/16-ch</label>
-    </customValue>
-    <customValue>
-        <fullName>Diamond Rapids/8-ch</fullName>
-        <default>false</default>
-        <label>Diamond Rapids/8-ch</label>
-    </customValue>
-    <customValue>
-        <fullName>Discrete graphics</fullName>
-        <default>false</default>
-        <label>Discrete graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Dynamic Device Personalization (DDP)</fullName>
-        <default>false</default>
-        <label>Dynamic Device Personalization (DDP)</label>
-    </customValue>
-    <customValue>
-        <fullName>Dynamic Load Balancer (DLB)</fullName>
-        <default>false</default>
-        <label>Dynamic Load Balancer (DLB)</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge Control</fullName>
-        <default>false</default>
-        <label>Edge Control</label>
-    </customValue>
-    <customValue>
-        <fullName>Edge Insights</fullName>
-        <default>false</default>
-        <label>Edge Insights</label>
-    </customValue>
-    <customValue>
-        <fullName>Elkhart Lake</fullName>
-        <default>false</default>
-        <label>Elkhart Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Emerald Rapids</fullName>
-        <default>false</default>
-        <label>Emerald Rapids</label>
-    </customValue>
-    <customValue>
-        <fullName>Endpoint Management Assisstant (EMA)</fullName>
-        <default>false</default>
-        <label>Endpoint Management Assistant (EMA)</label>
-    </customValue>
-    <customValue>
-        <fullName>Ethernet</fullName>
-        <default>false</default>
-        <label>Ethernet</label>
-    </customValue>
-    <customValue>
-        <fullName>FPGA</fullName>
-        <default>false</default>
-        <label>FPGA</label>
-    </customValue>
-    <customValue>
-        <fullName>FPGA IPU</fullName>
-        <default>false</default>
-        <label>FPGA IPU</label>
-    </customValue>
-    <customValue>
-        <fullName>Gemini Lake</fullName>
-        <default>false</default>
-        <label>Gemini Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Granite Rapids-AP</fullName>
-        <default>false</default>
-        <label>Granite Rapids-AP</label>
-    </customValue>
-    <customValue>
-        <fullName>Granite Rapids-SP</fullName>
-        <default>false</default>
-        <label>Granite Rapids-SP</label>
-    </customValue>
-    <customValue>
-        <fullName>Granulate</fullName>
-        <default>false</default>
-        <label>Granulate</label>
-    </customValue>
-    <customValue>
-        <fullName>Habana Gaudi</fullName>
-        <default>false</default>
-        <label>Habana Gaudi</label>
-    </customValue>
-    <customValue>
-        <fullName>HDDL</fullName>
-        <default>false</default>
-        <label>HDDL</label>
-    </customValue>
-    <customValue>
         <fullName>Ice Lake</fullName>
         <default>false</default>
         <label>Ice Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Ice Lake - 10th Gen Core</fullName>
-        <default>false</default>
-        <label>Ice Lake - 10th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Integrated Graphics</fullName>
-        <default>false</default>
-        <label>Integrated Graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel(R) Graphics</fullName>
-        <default>false</default>
-        <label>Intel(R) Graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Agilex™</fullName>
-        <default>false</default>
-        <label>Intel® Agilex™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ graphics</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ graphics</label>
     </customValue>
     <customValue>
         <fullName>Intel® Aria® 10 PFGAs</fullName>
@@ -356,24 +71,9 @@
         <label>Intel® Aria® 10 PFGAs</label>
     </customValue>
     <customValue>
-        <fullName>Intel® Arria® 10 PFGAs</fullName>
-        <default>false</default>
-        <label>Intel® Arria® 10 PFGAs</label>
-    </customValue>
-    <customValue>
         <fullName>Intel® Atom Processor</fullName>
         <default>false</default>
         <label>Intel® Atom Processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Cyclone®</fullName>
-        <default>false</default>
-        <label>Intel® Cyclone®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Data Center GPU Flex</fullName>
-        <default>false</default>
-        <label>Intel® Data Center GPU Flex</label>
     </customValue>
     <customValue>
         <fullName>Intel® Ethernet Network Adapters</fullName>
@@ -381,29 +81,9 @@
         <label>Intel® Ethernet Network Adapters</label>
     </customValue>
     <customValue>
-        <fullName>Intel® MAX®</fullName>
-        <default>false</default>
-        <label>Intel® MAX®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Media Transport Library (IMTL)</fullName>
-        <default>false</default>
-        <label>Intel® Media Transport Library (IMTL)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Movidius™</fullName>
-        <default>false</default>
-        <label>Intel® Movidius™</label>
-    </customValue>
-    <customValue>
         <fullName>Intel® Omni-Path Fabric</fullName>
         <default>false</default>
         <label>Intel® Omni-Path Fabric</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® OpenVINO™</fullName>
-        <default>false</default>
-        <label>Intel® OpenVINO™</label>
     </customValue>
     <customValue>
         <fullName>Intel® Optane™ DC Persistent Memory</fullName>
@@ -431,16 +111,6 @@
         <label>Intel® Optane™ Memory M10</label>
     </customValue>
     <customValue>
-        <fullName>Intel® Optane™ Memory w SSD</fullName>
-        <default>false</default>
-        <label>Intel® Optane™ Memory w SSD</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® RealSense™</fullName>
-        <default>false</default>
-        <label>Intel® RealSense™</label>
-    </customValue>
-    <customValue>
         <fullName>Intel® Silicon Photonics</fullName>
         <default>false</default>
         <label>Intel® Silicon Photonics</label>
@@ -451,54 +121,14 @@
         <label>Intel® Stratix® 10 FPGAs</label>
     </customValue>
     <customValue>
-        <fullName>Intel® vPro™</fullName>
-        <default>false</default>
-        <label>Intel® vPro™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xe</fullName>
-        <default>false</default>
-        <label>Intel® Xe</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Geti</fullName>
-        <default>false</default>
-        <label>Intel Geti</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Power Management</fullName>
-        <default>false</default>
-        <label>Intel Power Management</label>
-    </customValue>
-    <customValue>
         <fullName>Intel vPro</fullName>
         <default>false</default>
         <label>Intel vPro</label>
     </customValue>
     <customValue>
-        <fullName>Intel vPro®</fullName>
-        <default>false</default>
-        <label>Intel vPro®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel vPro Essentials</fullName>
-        <default>false</default>
-        <label>Intel vPro Essentials</label>
-    </customValue>
-    <customValue>
-        <fullName>IPU (Ingregrated Processor Unit)</fullName>
-        <default>false</default>
-        <label>IPU (Ingregrated Processor Unit)</label>
-    </customValue>
-    <customValue>
         <fullName>Iris Graphics</fullName>
         <default>false</default>
         <label>Iris Graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Kaby Lake</fullName>
-        <default>false</default>
-        <label>Kaby Lake</label>
     </customValue>
     <customValue>
         <fullName>Kaby Lake - R</fullName>
@@ -511,49 +141,9 @@
         <label>Kaby Lake - Y</label>
     </customValue>
     <customValue>
-        <fullName>Lunar Lake (LNL) Intel Core Ultra (Series 2)</fullName>
-        <default>false</default>
-        <label>Lunar Lake (LNL) Intel Core Ultra (Series 2)</label>
-    </customValue>
-    <customValue>
-        <fullName>Lunar Lake (LNL) Series 2</fullName>
-        <default>false</default>
-        <label>Lunar Lake (LNL) Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Meteor Lake (MTL)</fullName>
-        <default>false</default>
-        <label>Meteor Lake (MTL)</label>
-    </customValue>
-    <customValue>
         <fullName>Modern Devices</fullName>
         <default>false</default>
         <label>Modern Devices</label>
-    </customValue>
-    <customValue>
-        <fullName>Movidius VPU</fullName>
-        <default>false</default>
-        <label>Movidius VPU</label>
-    </customValue>
-    <customValue>
-        <fullName>Movidius VPU - Keem Bay</fullName>
-        <default>false</default>
-        <label>Movidius VPU - Keem Bay</label>
-    </customValue>
-    <customValue>
-        <fullName>Movidius VPU - Other</fullName>
-        <default>false</default>
-        <label>Movidius VPU - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Movius VPU - Other</fullName>
-        <default>false</default>
-        <label>Movius VPU - Other</label>
-    </customValue>
-    <customValue>
-        <fullName>Multi-Cloud NAT (MC-NAT)</fullName>
-        <default>false</default>
-        <label>Multi-Cloud NAT (MC-NAT)</label>
     </customValue>
     <customValue>
         <fullName>Multicore</fullName>
@@ -561,189 +151,9 @@
         <label>Multicore</label>
     </customValue>
     <customValue>
-        <fullName>Network &amp; Cloud Edge Reference System Architecture</fullName>
-        <default>false</default>
-        <label>Network &amp; Cloud Edge Reference System Architecture</label>
-    </customValue>
-    <customValue>
-        <fullName>None</fullName>
-        <default>false</default>
-        <label>None</label>
-    </customValue>
-    <customValue>
-        <fullName>NPU (Neural Processor Unit)</fullName>
-        <default>false</default>
-        <label>NPU (Neural Processor Unit)</label>
-    </customValue>
-    <customValue>
-        <fullName>NUC Board</fullName>
-        <default>false</default>
-        <label>NUC Board</label>
-    </customValue>
-    <customValue>
-        <fullName>NUC Element</fullName>
-        <default>false</default>
-        <label>NUC Element</label>
-    </customValue>
-    <customValue>
-        <fullName>NUC Enthusiast/Extreme</fullName>
-        <default>false</default>
-        <label>NUC Enthusiast/Extreme</label>
-    </customValue>
-    <customValue>
-        <fullName>NUC Mini PC/Kit</fullName>
-        <default>false</default>
-        <label>NUC Mini PC/Kit</label>
-    </customValue>
-    <customValue>
-        <fullName>NUC Mini PC Kit</fullName>
-        <default>false</default>
-        <label>NUC Mini PC Kit</label>
-    </customValue>
-    <customValue>
-        <fullName>oneAPI</fullName>
-        <default>false</default>
-        <label>oneAPI</label>
-    </customValue>
-    <customValue>
-        <fullName>Open Visual Cloud</fullName>
-        <default>false</default>
-        <label>Open Visual Cloud</label>
-    </customValue>
-    <customValue>
-        <fullName>Other</fullName>
-        <default>false</default>
-        <label>Other</label>
-    </customValue>
-    <customValue>
-        <fullName>P4</fullName>
-        <default>false</default>
-        <label>P4</label>
-    </customValue>
-    <customValue>
-        <fullName>Panther Lake</fullName>
-        <default>false</default>
-        <label>Panther Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Parker Ridge - Atom C5xxx</fullName>
-        <default>false</default>
-        <label>Parker Ridge - Atom C5xxx</label>
-    </customValue>
-    <customValue>
         <fullName>Pentium</fullName>
         <default>false</default>
         <label>Pentium</label>
-    </customValue>
-    <customValue>
-        <fullName>Purley</fullName>
-        <default>false</default>
-        <label>Purley</label>
-    </customValue>
-    <customValue>
-        <fullName>Purley - 1st/2nd Gen Xeon Scalable</fullName>
-        <default>false</default>
-        <label>Purley - 1st/2nd Gen Xeon Scalable</label>
-    </customValue>
-    <customValue>
-        <fullName>QuickAssist Technology (QAT)</fullName>
-        <default>false</default>
-        <label>QuickAssist Technology (QAT)</label>
-    </customValue>
-    <customValue>
-        <fullName>Rangeley</fullName>
-        <default>false</default>
-        <label>Rangeley</label>
-    </customValue>
-    <customValue>
-        <fullName>Rangeley - Atom C2xxx</fullName>
-        <default>false</default>
-        <label>Rangeley - Atom C2xxx</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake (RPL)</fullName>
-        <default>false</default>
-        <label>Raptor Lake (RPL)</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake (RPL) - 13th Gen Core</fullName>
-        <default>false</default>
-        <label>Raptor Lake (RPL) - 13th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake - 13th Gen Core</fullName>
-        <default>false</default>
-        <label>Raptor Lake - 13th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake - 13th Gen Core K-SKU</fullName>
-        <default>false</default>
-        <label>Raptor Lake - 13th Gen Core K-SKU</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake – HX/S (RPL) 14th Gen</fullName>
-        <default>false</default>
-        <label>Raptor Lake – HX/S (RPL) 14th Gen</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake – U (RPL)</fullName>
-        <default>false</default>
-        <label>Raptor Lake – U (RPL)</label>
-    </customValue>
-    <customValue>
-        <fullName>Rendering Toolkit &amp; Deep Neural Network Library </fullName>
-        <default>false</default>
-        <label>Rendering Toolkit &amp; Deep Neural Network Library </label>
-    </customValue>
-    <customValue>
-        <fullName>Retail Edge</fullName>
-        <default>false</default>
-        <label>Retail Edge</label>
-    </customValue>
-    <customValue>
-        <fullName>Rocket Lake (RKL)</fullName>
-        <default>false</default>
-        <label>Rocket Lake (RKL)</label>
-    </customValue>
-    <customValue>
-        <fullName>Rocket Lake (RKL) - 11th Gen Core</fullName>
-        <default>false</default>
-        <label>Rocket Lake (RKL) - 11th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Rocket Lake - 11th Gen Core</fullName>
-        <default>false</default>
-        <label>Rocket Lake - 11th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Sapphire Rapids</fullName>
-        <default>false</default>
-        <label>Sapphire Rapids</label>
-    </customValue>
-    <customValue>
-        <fullName>Sapphire Rapids - 4th Gen Xeon Scalable</fullName>
-        <default>false</default>
-        <label>Sapphire Rapids - 4th Gen Xeon Scalable</label>
-    </customValue>
-    <customValue>
-        <fullName>Sapphire Rapids - HBM</fullName>
-        <default>false</default>
-        <label>Sapphire Rapids - HBM</label>
-    </customValue>
-    <customValue>
-        <fullName>Scalable Video Technology (SVT)</fullName>
-        <default>false</default>
-        <label>Scalable Video Technology (SVT)</label>
-    </customValue>
-    <customValue>
-        <fullName>SGX</fullName>
-        <default>false</default>
-        <label>SGX</label>
-    </customValue>
-    <customValue>
-        <fullName>SigOpt</fullName>
-        <default>false</default>
-        <label>SigOpt</label>
     </customValue>
     <customValue>
         <fullName>Skylake</fullName>
@@ -751,49 +161,9 @@
         <label>Skylake</label>
     </customValue>
     <customValue>
-        <fullName>SmartEdge</fullName>
-        <default>false</default>
-        <label>SmartEdge</label>
-    </customValue>
-    <customValue>
-        <fullName>SmartNIC</fullName>
-        <default>false</default>
-        <label>SmartNIC</label>
-    </customValue>
-    <customValue>
-        <fullName>Software Guard Extension (SGX)</fullName>
-        <default>false</default>
-        <label>Software Guard Extension (SGX)</label>
-    </customValue>
-    <customValue>
-        <fullName>Structured ASICs</fullName>
-        <default>false</default>
-        <label>Structured ASICs</label>
-    </customValue>
-    <customValue>
-        <fullName>Thunderbolt</fullName>
-        <default>false</default>
-        <label>Thunderbolt</label>
-    </customValue>
-    <customValue>
         <fullName>Tiger Lake (TGL)</fullName>
         <default>false</default>
         <label>Tiger Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Tiger Lake - 11th Gen Core</fullName>
-        <default>false</default>
-        <label>Tiger Lake - 11th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Tiger Lake - 11th Gen Core K-SKU</fullName>
-        <default>false</default>
-        <label>Tiger Lake - 11th Gen Core K-SKU</label>
-    </customValue>
-    <customValue>
-        <fullName>Tiger Lake - Intel® 11th Gen</fullName>
-        <default>false</default>
-        <label>Tiger Lake - Intel® 11th Gen</label>
     </customValue>
     <customValue>
         <fullName>vPro</fullName>
@@ -801,54 +171,9 @@
         <label>vPro</label>
     </customValue>
     <customValue>
-        <fullName>vPro Essentials</fullName>
-        <default>false</default>
-        <label>vPro Essentials</label>
-    </customValue>
-    <customValue>
-        <fullName>VPU (Video Processor Unit)</fullName>
-        <default>false</default>
-        <label>VPU (Video Processor Unit)</label>
-    </customValue>
-    <customValue>
-        <fullName>vRAN Boost</fullName>
-        <default>false</default>
-        <label>vRAN Boost</label>
-    </customValue>
-    <customValue>
         <fullName>Whiskey Lake</fullName>
         <default>false</default>
         <label>Whiskey Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Whiskey Lake - 8th Gen Core</fullName>
-        <default>false</default>
-        <label>Whiskey Lake - 8th Gen Core</label>
-    </customValue>
-    <customValue>
-        <fullName>Wifi6</fullName>
-        <default>false</default>
-        <label>Wifi6</label>
-    </customValue>
-    <customValue>
-        <fullName>Wi-Fi 6</fullName>
-        <default>false</default>
-        <label>Wi-Fi 6</label>
-    </customValue>
-    <customValue>
-        <fullName>Wifi7</fullName>
-        <default>false</default>
-        <label>Wifi7</label>
-    </customValue>
-    <customValue>
-        <fullName>Wi-Fi 7</fullName>
-        <default>false</default>
-        <label>Wi-Fi 7</label>
-    </customValue>
-    <customValue>
-        <fullName>Wildcat Lake</fullName>
-        <default>false</default>
-        <label>Wildcat Lake</label>
     </customValue>
     <customValue>
         <fullName>Xeon</fullName>
@@ -856,368 +181,15 @@
         <label>Xeon</label>
     </customValue>
     <customValue>
-        <fullName>xPU Manager</fullName>
-        <default>false</default>
-        <label>xPU Manager</label>
-    </customValue>
-    <customValue>
         <fullName>X Series</fullName>
         <default>false</default>
         <label>X Series</label>
-    </customValue>
-    <customValue>
-        <fullName>Twin Lake</fullName>
-        <default>false</default>
-        <label>Twin Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Nova Lake</fullName>
-        <default>false</default>
-        <label>Nova Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Panther Lake (PTL) Intel Core Ultra Series 3</fullName>
-        <default>false</default>
-        <label>Panther Lake (PTL) Intel Core Ultra Series 3</label>
-    </customValue>
-    <customValue>
-        <fullName>Arrow Lake (ARL) - HX/S Refresh Core Ultra Series 2</fullName>
-        <default>false</default>
-        <label>Arrow Lake (ARL) - HX/S Refresh Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Wildcat Lake (WCL) Intel Core Ultra Series 3</fullName>
-        <default>false</default>
-        <label>Wildcat Lake (WCL) Intel Core Ultra Series 3</label>
-    </customValue>
-    <customValue>
-        <fullName>Granite Rapids</fullName>
-        <default>false</default>
-        <label>Granite Rapids</label>
-    </customValue>
-    <customValue>
-        <fullName>Panther Lake (PTL) Intel Core Ultra Series 2</fullName>
-        <default>false</default>
-        <label>Panther Lake (PTL) Intel Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 (E‑core) Processors (Granite Rapids)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 (E‑core) Processors (Granite Rapids)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Libraries / Tools</fullName>
-        <default>false</default>
-        <label>Intel Libraries / Tools</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® AVX (Advanced Vector Extensions)®</fullName>
-        <default>false</default>
-        <label>Intel® AVX (Advanced Vector Extensions)®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® AMX (Advanced Matrix Extensions)®</fullName>
-        <default>false</default>
-        <label>Intel® AMX (Advanced Matrix Extensions)®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Ethernet Solutions®</fullName>
-        <default>false</default>
-        <label>Intel® Ethernet Solutions®</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® vRAN AI Development Kit™</fullName>
-        <default>false</default>
-        <label>Intel® vRAN AI Development Kit™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6700P processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6700P processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6500P Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6500P Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon®  600 Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon®  600 Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6300 Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6300 Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ Pro B50 graphics</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ Pro B50 graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ Pro B60 Graphics</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ Pro B60 Graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6900P Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6900P Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6700P-B Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6700P-B Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6500P-B Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6500P-B Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Pentium® P6000 processor</fullName>
-        <default>false</default>
-        <label>Intel® Pentium® P6000 processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ processors (Series 2)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ processors (Series 2)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Series 3 processors</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Series 3 processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra 200S series processors</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra 200S series processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Atom® x7000 Series processors</fullName>
-        <default>false</default>
-        <label>Intel® Atom® x7000 Series processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Processor N Series processors</fullName>
-        <default>false</default>
-        <label>Intel® Processor N Series processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ processors (13th Gen)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ processors (13th Gen)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ processors (14th Gen)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ processors (14th Gen)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra Series 2 (Lunar Lake)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra Series 2 (Lunar Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra Series 2 (Arrow Lake)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra Series 2 (Arrow Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra Series 3 (Panther Lake)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra Series 3 (Panther Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>HX/S Refresh Core™ Ultra Series 2 (Arrow Lake)</fullName>
-        <default>false</default>
-        <label>HX/S Refresh Core™ Ultra Series 2 (Arrow Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® 4th Generation Xeon® Scalable Processors</fullName>
-        <default>false</default>
-        <label>Intel® 4th Generation Xeon® Scalable Processors</label>
-    </customValue>
-    <customValue>
-        <fullName>Habana® Gaudi®</fullName>
-        <default>false</default>
-        <label>Habana® Gaudi®</label>
-    </customValue>
-    <customValue>
-        <fullName>oneAPI™</fullName>
-        <default>false</default>
-        <label>oneAPI™</label>
-    </customValue>
-    <customValue>
-        <fullName>SGX™</fullName>
-        <default>false</default>
-        <label>SGX™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® QuickAssist Technology (Intel® QAT)</fullName>
-        <default>false</default>
-        <label>Intel® QuickAssist Technology (Intel® QAT)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Software Guard Extensions (Intel® SGX™)</fullName>
-        <default>false</default>
-        <label>Intel® Software Guard Extensions (Intel® SGX™)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Dynamic Device Personalization (DDP)</fullName>
-        <default>false</default>
-        <label>Intel® Dynamic Device Personalization (DDP)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™)</fullName>
-        <default>false</default>
-        <label>Intel® Advanced Encryption Standard New Instructions (Intel® AES‑NI™)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 5th Generation Scalable Processors (Emerald Rapids)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 (P‑core) Processors (Granite Rapids)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 (P‑core) Processors (Granite Rapids)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® vRAN Boost</fullName>
-        <default>false</default>
-        <label>Intel® vRAN Boost</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel Geti™</fullName>
-        <default>false</default>
-        <label>Intel Geti™</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 4th Generation</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 4th Generation</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ i3‑N300 processor</fullName>
-        <default>false</default>
-        <label>Intel® Core™ i3‑N300 processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra Series 1</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra Series 1</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Series 1</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Series 1</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra 200V Series processor</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra 200V Series processor</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 5th Generation (Emerald Rapids)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 5th Generation (Emerald Rapids)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® Max Series</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® Max Series</label>
-    </customValue>
-    <customValue>
-        <fullName>Wildcat Lake (WCL) Intel Core Series 3</fullName>
-        <default>false</default>
-        <label>Wildcat Lake (WCL) Intel Core Series 3</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Series 3 (Wildcat Lake)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Series 3 (Wildcat Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 Processors (Granite Rapids P-Core)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 Processors (Granite Rapids E-Core)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 Processors (Granite Rapids E-Core)</label>
-    </customValue>
-    <customValue>
-        <fullName>Geti™ Software</fullName>
-        <default>false</default>
-        <label>Geti™ Software</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Core™ Ultra Series 1 (Meteor Lake)</fullName>
-        <default>false</default>
-        <label>Intel® Core™ Ultra Series 1 (Meteor Lake)</label>
-    </customValue>
-    <customValue>
-        <fullName>Wildcat Lake Refresh</fullName>
-        <default>false</default>
-        <label>Wildcat Lake Refresh</label>
-    </customValue>
-    <customValue>
-        <fullName>Moon Lake</fullName>
-        <default>false</default>
-        <label>Moon Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>Razor Lake</fullName>
-        <default>false</default>
-        <label>Razor Lake</label>
-    </customValue>
-    <customValue>
-        <fullName>vPro Fleet Services</fullName>
-        <default>false</default>
-        <label>vPro Fleet Services</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 SoC (Granite Rapids-D)</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 SoC (Granite Rapids-D)</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Arc™ A-series Graphics</fullName>
-        <default>false</default>
-        <label>Intel® Arc™ A-series Graphics</label>
-    </customValue>
-    <customValue>
-        <fullName>Intel® Xeon® 6 W Processors</fullName>
-        <default>false</default>
-        <label>Intel® Xeon® 6 W Processors</label>
     </customValue>
     <customValue>
         <fullName>Intel® OptaneTM DC Persistent Memory</fullName>
         <default>false</default>
         <isActive>false</isActive>
         <label>Intel® OptaneTM DC Persistent Memory</label>
-    </customValue>
-    <customValue>
-        <fullName>Arrow Lake (ARL) Intel Core Ultra Series 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Arrow Lake (ARL) Intel Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Lunar Lake (LNL) Intel Core Ultra Series 2</fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Lunar Lake (LNL) Intel Core Ultra Series 2</label>
-    </customValue>
-    <customValue>
-        <fullName>Raptor Lake – U (RPL)  </fullName>
-        <default>false</default>
-        <isActive>false</isActive>
-        <label>Raptor Lake – U (RPL)  </label>
     </customValue>
     <customValue>
         <fullName>Intel® OptaneTM DC SSDs</fullName>

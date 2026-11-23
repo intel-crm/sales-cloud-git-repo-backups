@@ -202,6 +202,29 @@
         <visibleLines>3</visibleLines>
     </fields>
     <fields>
+        <fullName>PRM_Type_Nm__c</fullName>
+        <label>Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Adhoc</fullName>
+                    <default>false</default>
+                    <label>Adhoc</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>PRM_UI_Display_Area_Nm__c</fullName>
         <label>UI Display Area</label>
         <required>false</required>
@@ -374,8 +397,9 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PRM_Title_Txt__c</columns>
-        <columns>PRM_Message_Cd__c</columns>
         <columns>PRM_UI_Display_Area_Nm__c</columns>
+        <columns>PRM_Message_Cd__c</columns>
+        <columns>RECORDTYPE</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -389,6 +413,17 @@
         <fullName>PRM_Adhoc</fullName>
         <active>true</active>
         <label>Adhoc</label>
+        <picklistValues>
+            <picklist>PRM_Type_Nm__c</picklist>
+            <values>
+                <fullName>Adhoc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>PRM_UI_Display_Area_Nm__c</picklist>
             <values>
@@ -460,10 +495,6 @@
                 <default>false</default>
             </values>
             <values>
-                <fullName>Notification Area</fullName>
-                <default>false</default>
-            </values>
-            <values>
                 <fullName>Optane Client Specialty</fullName>
                 <default>false</default>
             </values>
@@ -473,6 +504,10 @@
             </values>
             <values>
                 <fullName>Partner Help</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Lookup Tool</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -518,13 +553,60 @@
         <active>true</active>
         <label>Event</label>
         <picklistValues>
+            <picklist>PRM_Type_Nm__c</picklist>
+            <values>
+                <fullName>Adhoc</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Event</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>PRM_UI_Display_Area_Nm__c</picklist>
+            <values>
+                <fullName>Artificial Intelligence Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cloud Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Device as a Service Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Enthusiast PC Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FPGA Tools and Resources</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>High Performance Computing Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Industrial Solutions Builder Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Intel%C2%AE Developer Zone - Premier</fullName>
+                <default>false</default>
+            </values>
             <values>
                 <fullName>Leads</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>MDF</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Managed Services Specialty</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -536,7 +618,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Networking Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Notification Area</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane Client Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Optane Data Center Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Partner Help</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -544,7 +642,27 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Pricing%2C Points and Promotions</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Products %26 Roadmaps</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Select Benefit</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Training</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Video Specialty</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Visual Display Solutions Specialty</fullName>
                 <default>false</default>
             </values>
         </picklistValues>

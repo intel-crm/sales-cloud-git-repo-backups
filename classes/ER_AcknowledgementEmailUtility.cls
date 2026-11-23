@@ -1,4 +1,4 @@
-/******************************************************************************************************************************************
+/*     *****************************************************************************************************************************************
 Class Name  : ER_AcknowledgementEmailUtility
 Test Class Name : ER_AcknowledgementEmailUtility_Test, Coverage:100%
 Version     : 1.0 
@@ -7,7 +7,7 @@ Function    : Handles Logic to send to Acknowledgement Email after step2 during 
 Modification Log :
 * Developer                 Date                    Description
 * ----------------------------------------------------------------------------      
-* E.Janakiraman            03/02/2022              Original version 
+* E.Janakiraman            03/02/2022              Original version
 * Narahari				   20/01/2024			   Updated (Bulkification)
 *****************************************************************************************************************************************/
 public without sharing class ER_AcknowledgementEmailUtility {
@@ -17,13 +17,12 @@ public without sharing class ER_AcknowledgementEmailUtility {
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'ER_AcknowledgementEmailUtility';
     Public static string params = '';
-    
+    //Method to Send Email Notification upon new Registration request record created.
     public static void sendAcknowledgementEmail(List<PRM_Registration_Request__c> newList, Map<id, PRM_Registration_Request__c> oldregRequestMap)
     {
         
         try
         {
-           
             Id accCreateRequestId = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Account_Create_Request).getRecordTypeId();            
             Id emailVerificationRT = Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Email_Verification_Request).getRecordTypeId();
             Map<String, String> businessTypeMap = new Map<String, String>();
@@ -38,16 +37,19 @@ public without sharing class ER_AcknowledgementEmailUtility {
                 {
                     enttlNames.add(req.ER_Entitlement_Detail_Name__c);
                     regReqIDs.add(req.Id);
-            }        
+                   }
             }  
             objectRegMap = ER_EmailNotification_Utility.getMapofInputParameter('Registration_Request_ID',regReqIDs);
             //  Commented as part of TWC722-1818 - Team Quest         
             /*for(Core_Entitlement__c enttl : [SELECT Id, Name FROM Core_Entitlement__c WHERE Id in: enttlIds]){
-                enttlMap.put(enttl.Id, enttl.Name);
-				}*/
+enttlMap.put(enttl.Id, enttl.Name);
+System.debug('38enttlMap'+enttlMap);
+System.debug('39EntitlementDetailRecords'+enttl.Id+' '+enttl.Name);
+}*/
             if(Test.isRunningTest() && enttlNames.size() == 0){
                 throw new CustomException('Empty');
-            }
+            }            
+            //Get business type based on entitlement names
             businessTypeMap = ER_RegistrationUtility.getBusinessTypesByEntitlementNames(enttlNames);
             List<ER_Email_Configuration__mdt> emailConfigMdtList = [SELECT id,Business_Event__c,BusinessType__c, 
                                                                     Country__c,Entitlements__c,Geo__c,Input_Parameter__c,
@@ -66,8 +68,9 @@ public without sharing class ER_AcknowledgementEmailUtility {
                 if(	regRequest.Entitlement_Details__c != Null && regRequest.RecordTypeId == accCreateRequestId
                    /*&& (oldRequest == null || oldRequest.RecordTypeId == emailVerificationRT)*/ //has been removed as part of TWC722-672 : Team Quest - Harshitha
                    && regRequest.PRM_Status__c == 'New')
-                { 
-                   
+                { //Starting of if
+                    System.debug('Inside if');                    
+                    //Send Email Logic
                     //Bulkified as part of TWC722-1818 - Team Quest
                     ER_EmailNotification_Utility.EmailNotification objEmailNotif = new ER_EmailNotification_Utility.EmailNotification();
                     objEmailNotif.Entitlements= regRequest.ER_Entitlement_Detail_Name__c;
@@ -85,18 +88,18 @@ public without sharing class ER_AcknowledgementEmailUtility {
                     if(emailConfigMapValue!=Null && !emailConfigMapValue.isEmpty()){
                         for(ER_Email_Configuration__mdt emailconfig1value: emailConfigMapValue.get(objEmailNotif)){
                             emailTempMapList.add(emailconfig1value.Template_Name__c);
-                            objEmailNotif.emailConfigMapValue = emailConfigMapValue;
-                            objEmailNotifList.add(objEmailNotif);
                             }
                     }
-                }               
-            } 
+                    objEmailNotif.emailConfigMapValue = emailConfigMapValue;
+                    objEmailNotifList.add(objEmailNotif);
+                }//end of if                
+            } //End of For5
             //Bulkified as part of TWC722-1818 - Team Quest
-            if(!objEmailNotifList.isEmpty() && emailTempMapList.size() > 0){
-             
+            if(!objEmailNotifList.isEmpty()){
+                // calling sendEmail method for more than one request..
                 ER_EmailNotification_Utility.sendEmail(objEmailNotifList,emailTempMapList);
             }
-        }
+        }//try
         catch(Exception ex)
         {                       
             ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
@@ -107,7 +110,8 @@ public without sharing class ER_AcknowledgementEmailUtility {
             custEx.TypeName = ex.getTypeName();    
             ER_ErrorUtility.createLogEntry('Error in SendAcknowledgementEmail', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }        
-    } 
+    }//End of method 
+    
     
     public class CustomException extends Exception{}
-}
+}//End of class

@@ -1,0 +1,33 @@
+<template>
+    <lightning-card title="Generate DQ Report" icon-name="utility:metrics">
+        <div class="slds-m-around_medium">
+            <div if:true={loadSpinner}>
+                <lightning-spinner variant="brand" size="small"> </lightning-spinner>
+            </div>
+
+            <template if:true={apexJob}>
+                  <template if:false={jobCompleted}>
+                    <lightning-spinner variant="brand" size="small"> </lightning-spinner>
+                    Processing <b>{apexJob.JobItemsProcessed}</b> of <b>{apexJob.TotalJobItems}</b>
+                  </template>
+                  <template if:true={jobCompleted}>
+                    Completed with <b>{apexJob.NumberOfErrors}</b> errors.
+                  </template>     
+             
+            </template>
+            <div if:true={batchCompleted}> 
+                    Completed : <b>100%</b>
+            </div>
+            <div>
+                <br/>
+                <lightning-progress-bar value={progress} size="small" variant="circular"></lightning-progress-bar>
+            </div><br/>
+            <div class="slds-align_absolute-center">
+            <lightning-button disabled={disabled}
+                label="Generate"
+                onclick={executeBatch}>
+            </lightning-button>
+            </div>
+        </div>
+    </lightning-card>
+</template>

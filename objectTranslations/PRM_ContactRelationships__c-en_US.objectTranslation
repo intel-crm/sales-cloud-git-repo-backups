@@ -37,6 +37,13 @@
         <label><!-- Mandatory Relationship --></label>
         <name>PRM_Mandatory_Relationship_Ind__c</name>
     </fields>
+    <layouts>
+        <layout>Contact Relationship Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>

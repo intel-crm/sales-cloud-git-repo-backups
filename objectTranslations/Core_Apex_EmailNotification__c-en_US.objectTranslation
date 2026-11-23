@@ -44,5 +44,12 @@
         <label><!-- Core Query String --></label>
         <name>Core_Query_String_Txt__c</name>
     </fields>
+    <layouts>
+        <layout>Core Apex EmailNotification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>BEG BUERKLE GMBH &amp; CO. Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>BEG BUERKLE GMBH &amp; CO. Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>BEGBUERKLEGMBHCOCustomerExecutive</parentRole>
+</Role>

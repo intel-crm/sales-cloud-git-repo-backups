@@ -7,9 +7,8 @@
 * -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 * Intel - Narayani Perachi 		04-03-2019					  Batch class to log into Core_MDF_UserGroupMapping_Log__c object 
 **************************************************************************************************************************************************************************************/
-//global class Core_MDF_UGMLog implements Database.Batchable<Core_MDF_UserGroupMapping_Log__c> {
-//US949837 - Added without sharing keyword to fix checkmarx issues
-global without sharing class Core_MDF_UGMLog implements Database.Batchable<Core_MDF_UserGroupMapping_Log__c> {  
+global class Core_MDF_UGMLog implements Database.Batchable<Core_MDF_UserGroupMapping_Log__c> {
+    
    public List<Core_MDF_UserGroupMapping_Log__c> tobeLogged = new List<Core_MDF_UserGroupMapping_Log__c>();
    public static String logEntryMsg = '';
    public static exception ex;
@@ -28,11 +27,12 @@ global without sharing class Core_MDF_UGMLog implements Database.Batchable<Core_
    {
 
       try{
+          system.debug('tobeLogged' + tobeLogged);
           Database.SaveResult[] saveList = Database.insert(tobeLogged,false);
-               
+          system.debug('saveList' + saveList);      
        }
        
-       catch(exception ex){logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex); Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Core_MDF_UserGroupMappingAutomation - Core_MDF_UGMLog()');}     
+       catch(exception ex){logEntryMsg = Core_MDF_CCP_UtilityClass.getErrorDetails(ex); Core_MDF_CCP_UtilityClass.logErrorinLogObject(logEntryMsg,'Core_MDF_UserGroupMappingAutomation - Core_MDF_UGMLog()');/*system.debug('logEntryMsg' + logEntryMsg +isError );*/}     
    }
 
    global void finish(Database.BatchableContext BC)

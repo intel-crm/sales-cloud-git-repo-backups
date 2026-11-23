@@ -1,0 +1,13 @@
+<aura:component  controller="EPUM_ContactEntitlementUtility" access="global">
+    <aura:method name="gotoEPUMRnRPage"
+                 description="This method will navigate to EPUM Roles and Responsibilities Page">
+    </aura:method>
+    <aura:method name="callAuraMethodController"
+                 action="{!c.callAuraMethodController}"
+                 description="This method is used to make an asynchronous call to server side controller method">
+        <aura:attribute name="component" type="Aura.Component"/>
+        <aura:attribute name="controllerMethod" type="String" />
+        <aura:attribute name="actionParameters" type="Object" />
+        <aura:attribute name="successCallBack" type="Function" />
+    </aura:method>
+</aura:component>

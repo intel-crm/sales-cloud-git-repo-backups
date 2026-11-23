@@ -53,7 +53,7 @@
         <field>OpportunityLineItem.Core_Competitor_Product__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Product_Application__c</field>
@@ -66,7 +66,7 @@
         <field>OpportunityLineItem.Core_Lost_Total_Price__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>Account.Core_Geo__c</field>

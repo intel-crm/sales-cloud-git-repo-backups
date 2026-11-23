@@ -263,11 +263,6 @@
         <columns>PRM_Start_Date_Dt__c</columns>
         <columns>PRM_End_Date_Dt__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>PRM_Account_Id__c</field>
-            <operation>contains</operation>
-            <value>test</value>
-        </filters>
         <label>All</label>
     </listViews>
     <nameField>

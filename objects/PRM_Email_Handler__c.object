@@ -332,6 +332,11 @@
         <type>Checkbox</type>
     </fields>
     <label>Email Handler</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
     <nameField>
         <displayFormat>EHR-{0000}</displayFormat>
         <label>Email Handler Request</label>

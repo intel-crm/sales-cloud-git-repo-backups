@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
     <sharingCriteriaRules>
-        <fullName>AGS_CCP_All_Programs</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>AGS_CCP All Programs</label>
-        <sharedTo>
-            <group>AGS_CCP_Payment_Admin_Manager</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>RecordTypeId</field>
-            <operation>notEqual</operation>
-            <value></value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
         <fullName>Core_MDF_Payment_Run_CCP_CCFB_ALL</fullName>
         <accessLevel>Edit</accessLevel>
         <label>Payment Run CCP CCFB ALL</label>
@@ -22,9 +8,9 @@
             <group>CORE_MDF_CCP_CCFB_All</group>
         </sharedTo>
         <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
+            <field>Core_MDF_Program_Id__c</field>
             <operation>equals</operation>
-            <value>Client Co-Marketing Fund Boost</value>
+            <value>0Pk1J000000KywA</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -36,9 +22,9 @@
             <group>CORE_MDF_CCP_CCF_ALL</group>
         </sharedTo>
         <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
+            <field>Core_MDF_Program_Id__c</field>
             <operation>equals</operation>
-            <value>Client</value>
+            <value>0Pk1J000000CaSe</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -50,9 +36,9 @@
             <group>CORE_MDF_CCP_DCF_ALL</group>
         </sharedTo>
         <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
+            <field>Core_MDF_Program_Id__c</field>
             <operation>equals</operation>
-            <value>Datacenter</value>
+            <value>0Pk1J000000CaSZ</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
@@ -64,312 +50,10 @@
             <group>Core_MDF_CCP_SPCF_All</group>
         </sharedTo>
         <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
+            <field>Core_MDF_Program_Id__c</field>
             <operation>equals</operation>
-            <value>Service Provider Co-Marketing Fund</value>
+            <value>0Pk1J000000CaUp</value>
         </criteriaItems>
         <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_APJ</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with APJ region</description>
-        <label>Payment Run IPA APJ</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_APJ</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>APJ</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_ASMO</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with ASMO</description>
-        <label>Payment Run IPA ASMO</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_ASMO</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>ASMO</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_ASMO_LAR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with ASMO LAR</description>
-        <label>Payment Run IPA ASMO LAR</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_IPA_ASMO_LAR</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Subgeo_Txt__c</field>
-            <operation>equals</operation>
-            <value>LAR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_ASMO_NAR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with ASMO NAR</description>
-        <label>Payment Run IPA ASMO NAR</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_IPA_ASMO_NAR</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Subgeo_Txt__c</field>
-            <operation>equals</operation>
-            <value>NAR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_All</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run IPA All</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_IPA_ALL</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_EMEA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with EMEA region</description>
-        <label>Payment Run IPA EMEA</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_EMEA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>EMEA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_IPA_PRC</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with PRC region</description>
-        <label>Payment Run IPA PRC</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_PRC</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>PRC</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_ALL</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail ALL</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Retail_All</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_APJ</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail APJ</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_APJ</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>APJ</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_ASMO_LAR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail ASMO LAR</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_ASMO_LAR</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Subgeo_Txt__c</field>
-            <operation>equals</operation>
-            <value>LAR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_ASMO_NAR</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail ASMO NAR</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_ASMO_NAR</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>ASMO</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Subgeo_Txt__c</field>
-            <operation>equals</operation>
-            <value>NAR</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_EMEA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail EMEA</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_EMEA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>EMEA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Core_MDF_Payment_Run_Retail_PRC</fullName>
-        <accessLevel>Edit</accessLevel>
-        <label>Payment Run Retail PRC</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_PRC</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>PRC</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>false</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Payment_Run_IPA_INDIA</fullName>
-        <accessLevel>Edit</accessLevel>
-        <description>To share with INDIA region</description>
-        <label>Payment Run IPA INDIA</label>
-        <sharedTo>
-            <group>Core_MDF_Int_IPA_INDIA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Intel Partner Alliance</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>INDIA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
-    </sharingCriteriaRules>
-    <sharingCriteriaRules>
-        <fullName>Payment_Run_Retail_INDIA</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Payment Run Retail INDIA</label>
-        <sharedTo>
-            <group>Core_MDF_CCP_Int_Retail_INDIA</group>
-        </sharedTo>
-        <criteriaItems>
-            <field>Core_MDF_Program_Txt__c</field>
-            <operation>equals</operation>
-            <value>Retail Marketing Funds</value>
-        </criteriaItems>
-        <criteriaItems>
-            <field>Core_MDF_Geo_Txt__c</field>
-            <operation>equals</operation>
-            <value>INDIA</value>
-        </criteriaItems>
-        <includeRecordsOwnedByAll>true</includeRecordsOwnedByAll>
     </sharingCriteriaRules>
 </SharingRules>

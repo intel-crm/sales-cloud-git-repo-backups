@@ -1,0 +1,16 @@
+<apex:page standardController="Contact" tabStyle="Contact" showHeader="false">
+    <apex:includeLightning />
+    <div id="lwcContainer"></div>
+    <script>
+        $Lightning.use("c:core_show_Contact_Ent", function(){
+            $Lightning.createComponent("c:Core_showContactEnt", 
+            {
+                recordId : "{!$CurrentPage.parameters.id}"
+            }, 
+            "lwcContainer",
+            function(cmp){
+                
+            }); 
+        });
+    </script>
+</apex:page>

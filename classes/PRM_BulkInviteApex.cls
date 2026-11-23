@@ -46,8 +46,7 @@ public with sharing class PRM_BulkInviteApex {
             bulkNew.PRM_First_Name__c=row.firstname;
             bulkNew.PRM_Last_Name__c=row.lastname;
             //bulkNew.PRM_ContactEmail__c=row.ContactEmail.toLowercase();
-            //bulkNew.PRM_Mailing_Country__c=row.ContactCountry;
-             if (row!=null && row.ContactEmail != null){
+            if (row!=null && row.ContactEmail != null){
                 bulkNew.PRM_ContactEmail__c = row.ContactEmail.toLowerCase();
 			}
             if(row!=null && row.ContactCountry != null){

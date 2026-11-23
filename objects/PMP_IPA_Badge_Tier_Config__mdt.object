@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>To store IPA badge tier values and their translations.</description>
+    <fields>
+        <fullName>PMP_IPA_Badge_Tier_Chinese__c</fullName>
+        <description>To store IPA Badge tier Chinese value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP_IPA_Badge_Tier (Chinese)</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_IPA_Badge_Tier_Japanese__c</fullName>
+        <description>To store IPA Badge Tier Japanese Value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP_IPA_Badge_Tier (Japanese)</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_IPA_Badge_Tier__c</fullName>
+        <description>To Store IPA Badge English Value</description>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP_IPA_Badge_Tier</label>
+        <length>255</length>
+        <required>false</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PMP_Is_Active__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>To Check whether the tier value is active</description>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>PMP Is Active</label>
+        <type>Checkbox</type>
+    </fields>
+    <label>PMP_IPA_Badge_Tier_Config</label>
+    <pluralLabel>PMP_IPA_Badge_Tier_Config</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

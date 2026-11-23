@@ -1,0 +1,225 @@
+{
+  "appPageId" : "dde4c0d5-ff4e-4f59-bf7a-bd762901c13a",
+  "componentName" : "c:IPAPageLayoutFull",
+  "dataProviders" : [ ],
+  "id" : "1f5c1d1e-6fe7-4b50-be47-b5bf68985f55",
+  "label" : "IPA BENEFIT PAGE",
+  "regions" : [ {
+    "id" : "546a1a1e-e10c-47ef-9230-5c7d21f9666c",
+    "regionName" : "marquee",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "heading" : "Intel® Partner Offerings",
+        "subheading" : "See ways our partners are utilizing Intel® products—to benefit your business."
+      },
+      "componentName" : "c:ipaHeading",
+      "id" : "917f3ec7-4cf2-4d96-ba66-de11cc8323c6",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "autoScroll" : 0
+      },
+      "componentName" : "c:ipaL0FeaturedOfferingsTabs",
+      "id" : "97169120-c1c9-4cf8-b589-e595845916d7",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorAbove" : true,
+        "separatorBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Offering Categories",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "10f5512b-413c-41b0-88c0-1cfa5e224066",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Offering Applications",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "25ac40a4-2982-4485-839b-59cadb9b1214",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Offering Industries",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "59fc804f-5734-455c-81e8-8b116cccf1e9",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorAbove" : false,
+        "separatorBelow" : false
+      },
+      "componentName" : "c:ipaQuickSearch",
+      "id" : "d5fe6de4-4414-47bc-a857-0718367df454",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "005d5639-5195-496b-a6fa-93b7c511e4d6",
+    "regionName" : "blade1",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "heading" : "Intel® Solutions Marketplace Partners",
+        "subheading" : "Discover and make valuable connections with Intel Partners."
+      },
+      "componentName" : "c:ipaHeading",
+      "id" : "28b4aae3-7398-4a1c-810b-f30a0e17f723",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : false,
+        "paddingBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Partner Directory",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "d54383ca-9e60-4c5a-864a-79cf86f019fb",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorAbove" : true,
+        "separatorBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Partner Industries",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "9487bfb9-a398-4b82-8854-6ab183ca0832",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    }, {
+      "componentAttributes" : {
+        "cardStyle" : "No Icon",
+        "limitRecordsValue" : "5",
+        "paddingAbove" : true,
+        "paddingBelow" : true,
+        "separatorAbove" : false,
+        "separatorBelow" : true,
+        "showHeading" : true,
+        "showIcon" : false,
+        "showViewAllLink" : true,
+        "taxonomy" : "Partner Specialties",
+        "viewAllCommunityPage" : "Home"
+      },
+      "componentName" : "c:ipaTaxonomyList",
+      "id" : "e84e2693-fe47-4275-83ef-706bbfdcb2cd",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "a2f0f77f-da8f-48d5-90da-8175c7e4411e",
+    "regionName" : "blade2",
+    "type" : "region"
+  }, {
+    "id" : "af6d5482-1f95-46a6-8b69-334150a41ec1",
+    "regionName" : "blade3",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "ctaExternalURL" : "https://www.intel.com",
+        "ctaLabel" : "Learn More",
+        "subtitle" : "Don’t miss out on special promotions, offers, training, marketing tools, and other valuable benefits of being a member.",
+        "theme" : "primary",
+        "title" : "Join the Intel® Partner Alliance"
+      },
+      "componentName" : "c:ipaCtaBar",
+      "id" : "ebccb740-eab5-466a-91d3-888350f00a71",
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "fba54c94-cdd8-445d-843c-728506cae417",
+    "regionName" : "blade4",
+    "type" : "region"
+  }, {
+    "id" : "bdd1f0e4-ee0b-4a06-a69e-501706fe7bc1",
+    "regionName" : "compareTray",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "<meta name=\"title\" content=\"Marketplace Home\"/> \n<meta name=\"keywords\" content=\"sf,mp,marketplace home\"/> \n<meta name=\"language\" content=\"en\"/> \n<meta name=\"location\" content=\"us\"/>\n<meta name=\"pageType\" content=\"MarketplaceHome\"/>\n<meta name=\"robots\" content=\"index,follow,noarchive\"/>",
+        "description" : "View all offerings and solutions on the Intel® Solutions Marketplace and discover the latest software, components, and other market ready solutions all in one location.",
+        "title" : "Intel® Solutions Marketplace"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "ebcb8bc1-30e1-425b-a663-95f3723bb23d",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "9a71109f-658c-4225-8d23-6b83012e183f",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  }, {
+    "id" : "c63205b0-36e7-4092-87f7-2019eda1b2dc",
+    "regionName" : "bannerBlade",
+    "type" : "region"
+  }, {
+    "id" : "0e4a526f-b3a8-4d3d-a885-c14a5a222d86",
+    "regionName" : "blade0",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-ipa-benefit-page"
+}

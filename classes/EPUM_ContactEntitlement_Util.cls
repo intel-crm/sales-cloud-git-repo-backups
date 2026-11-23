@@ -12,16 +12,10 @@ public without sharing class EPUM_ContactEntitlement_Util{
     public static String sContactIdStr;
     public static Contact objContact;
     private final static String RICHTEXT='richtext';
-	// ADDED NEW
-	private static final String PAD_ENTITLEMENT = 'Partner Admin Delegate';
-    private static final String STATUS_PENDING = 'Pending';
     
     public static Contact getContact(){
         System.debug('*****getContact => sContactIdStr::'+ sContactIdStr);
-        if(String.isBlank(sContactIdStr)){
-            return null;
-        }
-        objContact = [SELECT Id, AccountId,Core_AGS_Integration_Status__c,Core_ERPM_Integration_Status__c,Core_Enterprise_Id__c FROM Contact WHERE Id=:sContactIdStr limit 1];
+        objContact = [SELECT Id, Core_AGS_Integration_Status__c,Core_ERPM_Integration_Status__c,Core_Enterprise_Id__c,Core_Contact_B2B_Indicator__c FROM Contact WHERE Id=:sContactIdStr limit 1];
         return objContact;
     }
     
@@ -50,17 +44,13 @@ Description:        This method is used to save entitlement data by passing seco
 Added By:           Accenture - AD - 04/13/2020
 Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
 *******************************************************************************************************/
-    public static Boolean saveContactEntitlements(List<Object> lstContactEntWrap){ //STORES MULTIPLE ENT
+    public static Boolean saveContactEntitlements(List<Object> lstContactEntWrap){
         List<Exception> exceptionMessages = new List<Exception>();
         system.debug('saveContactEntitlements lstContactEntWrap'+ lstContactEntWrap);
         system.debug('saveContactEntitlements con id'+ sContactIdStr);
         String updateReasonEPUM = 'External Partner User Management';
         Core_Contact_Entitlement__c objConEnt;
         List<Core_Contact_Entitlement__c> lstCoreContactEntitlements = new List<Core_Contact_Entitlement__c>();
-        Contact ContactForPAD = new Contact();
-		if(objContact == null){
-			getContact();
-        }
         for(Object entWrap : lstContactEntWrap){
             EPUM_ContactEntitlement_Wrapper objConEntWrapper = (EPUM_ContactEntitlement_Wrapper)JSON.deserialize(JSON.serialize(entWrap) , EPUM_ContactEntitlement_Wrapper.class);
             //Core_EPUM_ContactEntitlement_Wrapper objConEntWrapper = entWrap;
@@ -70,33 +60,23 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                 objConEnt = objConEntWrapper.ContactEntitlement;
                 if(  objConEntWrapper.isSelected && !objConEnt.Core_Selected__c){
                     objConEnt.Core_Selected__c = objConEntWrapper.isSelected;
-                    objConEnt.Core_Status__c=STATUS_PENDING;
+                    objConEnt.Core_Status__c='Pending';
                     lstCoreContactEntitlements.add(objConEnt);
                 }else if( objConEntWrapper.isSelected && objConEnt.Core_Selected__c){
                     //do nothing
                 }else{
                     if(objConEnt.Core_Selected__c != false){
                         objConEnt.Core_Selected__c = false;
-                        objConEnt.Core_Status__c= STATUS_PENDING;
+                        objConEnt.Core_Status__c='Pending';
                         lstCoreContactEntitlements.add(objConEnt);
                     }
                 }
-				if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
-
-                    ContactForPAD = objContact;
-                }
-
             }else if(objConEntWrapper.isSelected){
                 objConEnt = new Core_Contact_Entitlement__c(Core_Contact_Id__c=sContactIdStr, 
                                                             Core_Entitlement_Id__c=objConEntWrapper.entitlementId,Core_Status__c='Pending',
                                                             Core_Selected__c=true);
                 objConEnt.Core_Source__c = updateReasonEPUM;                        
-                lstCoreContactEntitlements.add(objConEnt);  
-				if(objConEntWrapper.entitlementNameStr == PAD_ENTITLEMENT && objContact != null){
-
-                    ContactForPAD = objContact;
-                }
-                
+                lstCoreContactEntitlements.add(objConEnt);          
             }
         }
         System.debug('#55 lstCoreContactEntitlements: ' + lstCoreContactEntitlements);
@@ -116,17 +96,10 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         }
         if(updated) {
             System.debug('objContact:'+objContact);
-			if(objContact != null){
-				objContact.Core_ERPM_Integration_Status__c = 'Pending';
-				objContact.Core_AGS_Integration_Status__c = 'Pending';
-				update objContact;
-			}
-            if(ContactForPAD != null  && ContactForPAD.Id != null && ContactForPAD.AccountId != null){
-                EPUM_ContactEntitlement_Util.updateACR(ContactForPAD);
-            }
+            objContact.Core_ERPM_Integration_Status__c = 'Pending';
+            objContact.Core_AGS_Integration_Status__c = 'Pending';
+            update objContact;
         }
-
-        
         //return false;
         return updated;
     }
@@ -378,52 +351,52 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         String partnerRoleIStr  = loggedUserInfo.Contact.Core_IPA_PartnerRole__c;
         //list<Core_Entitlement__c> lstEntitlements = EPUM_ContactEntitlement_Util.getCoreEntitlements();
         String query = 'SELECT Id,Name,phone,(SELECT Core_Contact_Id__c,Core_Entitlement_Id__r.Core_Display_Name__c,Core_Entitlement_Id__c FROM Contact_Entitlements__r WHERE Core_Selected__c =true AND Core_Status__c =\'Complete\' and Core_Category__c=\'Intel Partner Alliance (IPA)\'),(SELECT Id , PRM_Contact_Id__c,PRM_Relationship_Id__r.Name,PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c FROM Account_Contact_Relationships__r WHERE PRM_Status_Nm__c =\'Complete\' and  PRM_InActive_Ind__c = false) FROM Contact WHERE Core_IPA_PartnerRole__c =:partnerRoleIStr and';
-     query += '( AccountID =:intelAccountOfPC';
-    if(onePartnerIdOfPC != null && onePartnerIdOfPC !='')
-      query += ' OR Core_IPA_One_Partner_Id__c  =:onePartnerIdOfPC'; 
+ 		query += '( AccountID =:intelAccountOfPC';
+		if(onePartnerIdOfPC != null && onePartnerIdOfPC !='')
+			query += ' OR Core_IPA_One_Partner_Id__c  =:onePartnerIdOfPC'; 
         query+=')';
         
         return Database.query(query);
     }
-    public static user getUserInformation(){  
-        return [SELECT AccountId, ContactId,Profile.Name,Core_IPA_One_Partner_Id__c, Contact.Core_IPA_PartnerRole__c   
-                FROM User  
-                WHERE Id =:userinfo.getUserId() limit 1 ];  
+    public static user getUserInformation(){	
+        return [SELECT AccountId, ContactId,Profile.Name,Core_IPA_One_Partner_Id__c, Contact.Core_IPA_PartnerRole__c 	
+                FROM User	
+                WHERE Id =:userinfo.getUserId() limit 1 ];	
     }
 
-    @AuraEnabled(cacheable=true)  
-    public static list<String> getAvailableRoles(){  
-        user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();  
-        list<Core_Entitlement__c> lstCoreEntitlements = EPUM_ContactEntitlement_Util.getCoreEntitlements();  
-        list<contact> lstContactsWithRole = EPUM_ContactEntitlement_Util.getContactsWithRole();  
-        set<String> rolesTaken = new set<String>();  
-        set<String> setAvailableRoles = new set<String>();  
-        String loggedInContactId = loggedUserInfo.ContactId;  
-        for ( contact con : lstContactsWithRole ) {  
-            if ( loggedInContactId == con.Id ){  
-                for ( PRM_Account_Contact_Relationship__c acr : con.Account_Contact_Relationships__r ) {  
-                    if ( acr.PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c != 'WORKSFOR' ) {  
-                        setAvailableRoles.add(acr.PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c);  
-                    }  
-                }  
-            }  
-            for ( Core_Contact_Entitlement__c ce : con.Contact_Entitlements__r ){  
-                rolesTaken.add(ce.Core_Entitlement_Id__r.Core_Display_Name__c);  
-            }  
-        }  
-        for (Core_Entitlement__c ent : lstCoreEntitlements ){  
-            if ( !rolesTaken.contains(ent.Core_Display_Name__c) ){  
-                setAvailableRoles.add(ent.Core_Display_Name__c);  
-            }  
-        }  
-        list<String> lstAvailableRoles = new list<String>();  
-        lstAvailableRoles.addAll(setAvailableRoles);  
-        return lstAvailableRoles;  
+    @AuraEnabled(cacheable=true)	
+    public static list<String> getAvailableRoles(){	
+        user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();	
+        list<Core_Entitlement__c> lstCoreEntitlements = EPUM_ContactEntitlement_Util.getCoreEntitlements();	
+        list<contact> lstContactsWithRole = EPUM_ContactEntitlement_Util.getContactsWithRole();	
+        set<String> rolesTaken = new set<String>();	
+        set<String> setAvailableRoles = new set<String>();	
+        String loggedInContactId = loggedUserInfo.ContactId;	
+        for ( contact con : lstContactsWithRole ) {	
+            if ( loggedInContactId == con.Id ){	
+                for ( PRM_Account_Contact_Relationship__c acr : con.Account_Contact_Relationships__r ) {	
+                    if ( acr.PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c != 'WORKSFOR' ) {	
+                        setAvailableRoles.add(acr.PRM_Relationship_Id__r.PRM_Contact_Relationship_Cd__c);	
+                    }	
+                }	
+            }	
+            for ( Core_Contact_Entitlement__c ce : con.Contact_Entitlements__r ){	
+                rolesTaken.add(ce.Core_Entitlement_Id__r.Core_Display_Name__c);	
+            }	
+        }	
+        for (Core_Entitlement__c ent : lstCoreEntitlements ){	
+            if ( !rolesTaken.contains(ent.Core_Display_Name__c) ){	
+                setAvailableRoles.add(ent.Core_Display_Name__c);	
+            }	
+        }	
+        list<String> lstAvailableRoles = new list<String>();	
+        lstAvailableRoles.addAll(setAvailableRoles);	
+        return lstAvailableRoles;	
     }
     
     @AuraEnabled(cacheable=true)
-    public static String getLogoUrl(){  
-      user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();
+    public static String getLogoUrl(){	
+    	user loggedUserInfo = EPUM_ContactEntitlement_Util.getUserInformation();
         String strApproved = 'Approved';
         String strProgram = 'Intel Partner Alliance';
         String tierName = '';
@@ -442,13 +415,13 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
                                                            AND PRM_Status_Nm__c =: strApproved  
                                                            ORDER BY PRM_Channel_Program_Level_Id__r.Rank DESC LIMIT 1];
             if(acmObj.size() > 0){
-              tierName = (String)acmObj[0].PRM_Channel_Program_Level_Id__r.Name; 
+            	tierName = (String)acmObj[0].PRM_Channel_Program_Level_Id__r.Name; 
             }
         }        
         return tierName;
     }
 
-    @AuraEnabled(cacheable=true)  
+    @AuraEnabled(cacheable=true)	
     public static String getResponsibilitiesConfirmationData(){
         PRM_ResponsibilitiesDataWrapper responsibilitesDataWrapper = new PRM_ResponsibilitiesDataWrapper();
         responsibilitesDataWrapper.title = System.Label.EPUM_VerifyrolesandrespTitle;
@@ -496,54 +469,4 @@ Modified By: Hema        Date:  04/13/2020     Changes: Initial Version
         return JSON.serialize(responsibilitesDataWrapper);
     }
 
-    public static void updateACR(Contact contid){
-            
-                String STR_ELIGIBLE_ENTITLEMENT = 'Partner Admin Delegate';
-
-                Id contactid = contid.Id;
-				// Step 1: Get the Relationship Id safely
-				List<PRM_ContactRelationships__c> rels = [SELECT Id FROM PRM_ContactRelationships__c WHERE Name = :STR_ELIGIBLE_ENTITLEMENT AND PRM_InActive_Ind__c = false LIMIT 1];
-    
-				if(rels.isEmpty()){
-					System.debug('PAD relationship metadata not found for ' + STR_ELIGIBLE_ENTITLEMENT);
-					return; // Exit safely if metadata missing
-				}
-    
-				Id relationId = rels[0].Id;
-		
-
-                List<PRM_Account_Contact_Relationship__c> existingContEnt = [SELECT id,PRM_Contact_Id__c,PRM_Relationship_Id__c,PRM_Relationship_Id__r.name,PRM_Status_Nm__c,PRM_Start_Date_Dt__c,PRM_InActive_Ind__c,PRM_Status_Reason_Txt__c FROM PRM_Account_Contact_Relationship__c WHERE /*PRM_Relationship_Id__r.name = :STR_ELIGIBLE_ENTITLEMENT*/ PRM_Relationship_Id__c = :relationId AND PRM_Contact_Id__c = :contactid];
-
-
-                list<PRM_Account_Contact_Relationship__c> acrForPAD = new list<PRM_Account_Contact_Relationship__c>();
-
-                if(existingContEnt != null && !existingContEnt.isEmpty()){
-                    for(PRM_Account_Contact_Relationship__c acr : existingContEnt){
-                        if(acr.PRM_InActive_Ind__c == true){
-                            acr.PRM_Status_Nm__c = 'Complete';
-                            acr.PRM_InActive_Ind__c = false;
-                            acr.PRM_Start_Date_Dt__c = Date.today();
-                            acr.PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel';
-                        }
-                        acrForPAD.add(acr);
-                    }
-                }
-                else{
-                    acrForPAD.add(new PRM_Account_Contact_Relationship__c (
-                                    PRM_Account_Id__c = contid.AccountId,
-                                    PRM_Contact_Id__c = contid.Id,
-                                    PRM_Relationship_Id__c =  relationId,
-                                    PRM_Status_Reason_Txt__c = 'ACR activated due to assignment of PAD from Manage personnel',
-                                    PRM_Start_Date_Dt__c = Date.today(),
-                                    PRM_Status_Nm__c = 'Complete'
-                                    ));
-                }
-
-
-                    if(!acrForPAD.isEmpty()){
-
-                        Database.UpsertResult[] results = Database.upsert(acrForPAD, false);
-                    }
-                
-            }
 }

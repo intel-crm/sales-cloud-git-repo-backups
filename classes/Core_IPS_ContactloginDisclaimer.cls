@@ -1,4 +1,4 @@
-public with sharing class Core_IPS_ContactloginDisclaimer 
+public class Core_IPS_ContactloginDisclaimer 
 {
     public string docBody{get;set;}
     public  Core_IPS_ContactloginDisclaimer() 
@@ -11,7 +11,7 @@ public with sharing class Core_IPS_ContactloginDisclaimer
     {
         User u = [select Id, ContactId,userType from User where Id = :UserInfo.getUserId()];
         List<Contact> con = [select id, Core_IPS_NDA_Acceptance_Date__c from Contact where id=:u.ContactId limit 1];
-        if(u.userType=='PowerCustomerSuccess' || u.userType=='PowerPartner')
+        if(u.userType=='PowerCustomerSuccess')
         {   
             con[0].Core_IPS_NDA_Acceptance_Date__c = System.today();
             update con;
@@ -36,10 +36,11 @@ public with sharing class Core_IPS_ContactloginDisclaimer
         List<User> u = [select Id, ContactId,userType from User where Id = :UserInfo.getUserId()];        
     
         List<Contact> con = [select id, Core_IPS_NDA_Acceptance_Date__c from Contact where id=:u[0].ContactId limit 1];
-        if(u[0].userType=='PowerCustomerSuccess' || u[0].userType=='PowerPartner')
+        if(u[0].userType=='PowerCustomerSuccess')
         {            
             if(con[0].Core_IPS_NDA_Acceptance_Date__c != null)  
             {
+               system.debug(con[0].Core_IPS_NDA_Acceptance_Date__c + '>=' + System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)));
                 if(con[0].Core_IPS_NDA_Acceptance_Date__c >= System.today().adddays(-Integer.valueOf(System.Label.NDA_Acceptance_Time)) )
                     flag = true;            
                  else

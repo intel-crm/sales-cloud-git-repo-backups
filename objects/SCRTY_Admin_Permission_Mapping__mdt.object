@@ -4,6 +4,7 @@
     <fields>
         <fullName>SCRTY_Inactive_Ind__c</fullName>
         <defaultValue>false</defaultValue>
+        <deprecated>false</deprecated>
         <description>Whether to display the permission on dashboard or not.</description>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <inlineHelpText>Check if permission to be displayed on dashboard.</inlineHelpText>
@@ -12,6 +13,7 @@
     </fields>
     <fields>
         <fullName>SCRTY_Permission_API_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>
         <label>Permission API Name</label>
@@ -22,6 +24,7 @@
     </fields>
     <fields>
         <fullName>SCRTY_Permission_Nm__c</fullName>
+        <deprecated>false</deprecated>
         <description>This field is used to hold the Name of the system permissions.</description>
         <externalId>false</externalId>
         <fieldManageability>DeveloperControlled</fieldManageability>

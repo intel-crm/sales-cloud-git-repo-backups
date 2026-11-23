@@ -1,13 +1,6 @@
 @isTest
 public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore {
-    @isTest
-    static void testIsWorking() {
-        Boolean result = PMP_SearchEventDetailController.isWorking();
-        System.assertEquals(true, result);
-    }
-
-    
-/*    @testSetup static void setup (){//IPA2.0:TWC729-8114 Topics Removal/Event Removal
+    @testSetup static void setup (){
         
         PMP_Company__c testPartner1 =  new PMP_Company__c();
         testPartner1.PMP_Account_Specialty__c = 'None';       
@@ -19,24 +12,24 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         testPartner1.PMP_Company_Lifecycle_Status_Nm__c = 'Published';
         insert testPartner1; 
         
-        
+         
         List<String> ss=new List<String>();
-        PMP_Partner_Offering__c off = new PMP_Partner_Offering__c();
-        off.Name = 'Test_Off';
-        off.PMP_Company_Id__c = testPartner1.Id;
-        off.PMP_Partner_Offering_Lifecycle_Status_Nm__c='Published';
-        off.PMP_Partner_Offering_Start_Dt__c=System.today();
-        insert off;
-        ss.add(off.Id);
+        // PMP_Partner_Offering__c off = new PMP_Partner_Offering__c();
+        // off.Name = 'Test_Off';
+        // off.PMP_Company_Id__c = testPartner1.Id;
+        // off.PMP_Partner_Offering_Lifecycle_Status_Nm__c='Published';
+        // off.PMP_Partner_Offering_Start_Dt__c=System.today();
+        // insert off;
+        // ss.add(off.Id);
         
         
-        PMP_Partner_Offering__c off1 = new PMP_Partner_Offering__c();
-        off1.Name = 'Test_Off1';
-        off1.PMP_Company_Id__c = testPartner1.Id;
-        off1.PMP_Partner_Offering_Lifecycle_Status_Nm__c='Published';
-        off.PMP_Partner_Offering_Start_Dt__c=System.today();
-        insert off1;
-        ss.add(off1.Id);
+        // PMP_Partner_Offering__c off1 = new PMP_Partner_Offering__c();
+        // off1.Name = 'Test_Off1';
+        // off1.PMP_Company_Id__c = testPartner1.Id;
+        // off1.PMP_Partner_Offering_Lifecycle_Status_Nm__c='Published';
+        // off.PMP_Partner_Offering_Start_Dt__c=System.today();
+        // insert off1;
+        // ss.add(off1.Id);
         
         ContentDocument doc1 = PMP_SearchTestDataFactory.createContentDocument(true)[0];
         ContentAsset ca1= new ContentAsset();
@@ -99,15 +92,15 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         eveIds.add(eve1.Id);
         
         
-        PMP_Marketplace_Event_Offering__c eveOff=new PMP_Marketplace_Event_Offering__c();
-        eveOff.PMP_Offering_Id__c=ss[0];
-        eveOff.PMP_Event_Id__c=eveIds[0];
-        insert eveoff;
+        // PMP_Marketplace_Event_Offering__c eveOff=new PMP_Marketplace_Event_Offering__c();
+        // eveOff.PMP_Offering_Id__c=ss[0];
+        // eveOff.PMP_Event_Id__c=eveIds[0];
+        // insert eveoff;
         
-        PMP_Marketplace_Event_Offering__c eveOff1=new PMP_Marketplace_Event_Offering__c();
-        eveOff1.PMP_Offering_Id__c=ss[1];
-        eveOff1.PMP_Event_Id__c=eveIds[1];
-        insert eveoff1;
+        // PMP_Marketplace_Event_Offering__c eveOff1=new PMP_Marketplace_Event_Offering__c();
+        // eveOff1.PMP_Offering_Id__c=ss[1];
+        // eveOff1.PMP_Event_Id__c=eveIds[1];
+        // insert eveoff1;
         
         PMP_Marketplace_Event_Partner__c  evePar=new PMP_Marketplace_Event_Partner__c ();
         evePar.PMP_Company_Id__c=testPartner1.Id;
@@ -175,38 +168,38 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         Filter filters= New Filter();
         eventList.add('Marketplace_event');
         selectedFilters.put('Marketplace_event', eventList);
-        List<String> offIds=new List<String>();
+        //List<String> offIds=new List<String>();
         List<Id> parIds=new List<Id>();
         Test.startTest();
-        filters = PMP_SearchEventDetailController.getEvents(selectedFilters,'',offIds,parIds);
+       // filters = PMP_SearchEventDetailController.getEvents(selectedFilters,'',offIds,parIds);
         Test.stopTest();
         System.assert(filters!=null,'Test Failed');
         
-    }//
-    @isTest static void getEventOfferingsTest()
-    {
-        List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
-        List<String> offIds=new List<String>();
+    }*/
+    // @isTest static void getEventOfferingsTest()
+    // {
+    //     List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
+    //     List<String> offIds=new List<String>();
         
-        for(PMP_Partner_Offering__c offLists:off)
-        {
-            offIds.add(offLists.Id);
-        }
-        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
-        List<Id> eveIds=new List<Id>();
+    //     for(PMP_Partner_Offering__c offLists:off)
+    //     {
+    //         offIds.add(offLists.Id);
+    //     }
+    //     List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
+    //     List<Id> eveIds=new List<Id>();
         
-        for(PMP_Marketplace_Event__c eveLists:eve)
-        {
-            eveIds.add(eveLists.Id);
-        }
+    //     for(PMP_Marketplace_Event__c eveLists:eve)
+    //     {
+    //         eveIds.add(eveLists.Id);
+    //     }
         
         
         
-        Test.startTest();
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOfferings(eveIds,offIds).size(),'Test Failed');
-        Test.stopTest();
+    //     Test.startTest();
+    //     	system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOfferings(eveIds,offIds).size(),'Test Failed');
+    //     Test.stopTest();
        
-    }
+    // }
     /*@isTest static void getEventPartnersTest()
     {
         List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c LIMIT 10]; 
@@ -228,64 +221,64 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
         Test.stopTest();
         
         
-    }//
-    @isTest static void getEventOffCountTest()
-    {
-        Map<String,Tag> eventTag=new Map<String,Tag>();
-        Tag tag = new Tag();
-        tag.label ='';
-        tag.count = 3;
-        tag.value ='';
-        tag.parent ='';
-        tag.children = new List<Tag>();
-        tag.pimId = '';
-        eventTag.put('IPC Connect',tag);
-        List<PMP_Marketplace_Event_Offering__c> eveOff=[SELECT id, Name,PMP_Offering_Id__c,PMP_Event_Id__c from PMP_Marketplace_Event_Offering__c where Name LIKE 'Test Event Partner%'];
-        List<Id> eveIds=new List<Id>();
-        for(PMP_Marketplace_Event_Offering__c eveoffLists:eveOff)
-        {
-            eveIds.add(eveoffLists.PMP_Event_Id__c);
-        }
-        List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c LIMIT 10];
-        List<Id> parIds=new List<Id>();
-        for( PMP_Company__c  parLists:par)
-        {
-            parIds.add(parLists.Id);
-        }
-        List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
+    }*/
+    // @isTest static void getEventOffCountTest()
+    // {
+    //     Map<String,Tag> eventTag=new Map<String,Tag>();
+    //     Tag tag = new Tag();
+    //     tag.label ='';
+    //     tag.count = 3;
+    //     tag.value ='';
+    //     tag.parent ='';
+    //     tag.children = new List<Tag>();
+    //     tag.pimId = '';
+    //     eventTag.put('IPC Connect',tag);
+    //     List<PMP_Marketplace_Event_Offering__c> eveOff=[SELECT id, Name,PMP_Offering_Id__c,PMP_Event_Id__c from PMP_Marketplace_Event_Offering__c where Name LIKE 'Test Event Partner%'];
+    //     List<Id> eveIds=new List<Id>();
+    //     for(PMP_Marketplace_Event_Offering__c eveoffLists:eveOff)
+    //     {
+    //         eveIds.add(eveoffLists.PMP_Event_Id__c);
+    //     }
+    //     List<PMP_Company__c> par=[Select Id,Name from PMP_Company__c LIMIT 10];
+    //     List<Id> parIds=new List<Id>();
+    //     for( PMP_Company__c  parLists:par)
+    //     {
+    //         parIds.add(parLists.Id);
+    //     }
+    //     List<PMP_Marketplace_Event__c> eve=[Select Id,Name from PMP_Marketplace_Event__c LIMIT 10];
         
         
-        for(PMP_Marketplace_Event__c eveLists:eve)
-        {
-            eveIds.add(eveLists.Id);
-        }
+    //     for(PMP_Marketplace_Event__c eveLists:eve)
+    //     {
+    //         eveIds.add(eveLists.Id);
+    //     }
         
-        List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
-        List<String> offIds=new List<String>();
+    //     List<PMP_Partner_Offering__c> off=[Select Id,Name from PMP_Partner_Offering__c LIMIT 10];
+    //     List<String> offIds=new List<String>();
         
-        for(PMP_Partner_Offering__c offLists:off)
-        {
-            offIds.add(offLists.Id);
-        }
+    //     for(PMP_Partner_Offering__c offLists:off)
+    //     {
+    //         offIds.add(offLists.Id);
+    //     }
         
         
-        Test.startTest();
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOffCount(eventTag,eveIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Partner',eventTag,parIds,offIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Product',eventTag,parIds,offIds).size(),'Test Failed');
-        //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventPartnerCount(eventTag,parIds).size(),'Test Failed');
-        Test.stopTest();
+    //     Test.startTest();
+    //     system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventOffCount(eventTag,eveIds).size(),'Test Failed');
+    //     system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Partner',eventTag,parIds,offIds).size(),'Test Failed');
+    //     system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventCount('Product',eventTag,parIds,offIds).size(),'Test Failed');
+    //     system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getEventPartnerCount(eventTag,parIds).size(),'Test Failed');
+    //     Test.stopTest();
         
-    }
+    // }
     
-     @isTest 
-     static void getEventOfferingsIdTest(){
-         PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
+    //  @isTest 
+    //  static void getEventOfferingsIdTest(){
+    //      PMP_Marketplace_Event__c eve=[Select Id,Name from PMP_Marketplace_Event__c Limit 1];
          
-         Test.startTest();
-         	//system.assertNotEquals( NULL , PMP_SearchEventDetailController.getEventOfferingsId(eve.Id).size(),'Test Failed');
-         Test.stopTest();
-     }
+    //      Test.startTest();
+    //      	system.assertNotEquals( NULL , PMP_SearchEventDetailController.getEventOfferingsId(eve.Id).size(),'Test Failed');
+    //      Test.stopTest();
+    //  }
     
     /*@isTest 
      static void getEventPartnerIdTest(){
@@ -315,20 +308,20 @@ public class PMP_SearchEventDetailController_Test extends PMP_SearchWrapperStore
          	camp = PMP_SearchEventDetailController.getCampaignCardDetails(eve.Id,'partner','en_US',1,8);
          Test.stopTest();
            system.assert(camp!=Null,'Test Failed');
-     } //
+     } */
     
-     @isTest 
-    static void getCampaignBannerDetailsTest(){
-         PMP_Company__c par=[Select Id,Name from PMP_Company__c Limit 1];
-         PMP_Partner_Offering__c off=[Select Id,Name from PMP_Partner_Offering__c Limit 1];
-         String lang = 'en_US';
-         Test.startTest();
-         	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,lang).size(),'Test Failed');
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,NULL).size(),'Test Failed');
-            //system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,NULL).size(),'Test Failed');
-        	//system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,lang).size(),'Test Failed');
-         Test.stopTest();
-    }*/
+    //  @isTest 
+    // static void getCampaignBannerDetailsTest(){
+    //      PMP_Company__c par=[Select Id,Name from PMP_Company__c Limit 1];
+    //      PMP_Partner_Offering__c off=[Select Id,Name from PMP_Partner_Offering__c Limit 1];
+    //      String lang = 'en_US';
+    //      Test.startTest();
+    //      	system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,lang).size(),'Test Failed');
+    //     	system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(par.Id,true,NULL).size(),'Test Failed');
+    //         system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,NULL).size(),'Test Failed');
+    //     	system.assertNotEquals( NULL ,PMP_SearchEventDetailController.getCampaignBannerDetails(off.Id,false,lang).size(),'Test Failed');
+    //      Test.stopTest();
+    // }
     
     
 }

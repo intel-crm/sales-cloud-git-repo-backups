@@ -1,0 +1,8 @@
+<template>
+    <div class="slds-boxl">
+        <span class="performance-header-text">{totalSalesData}</span>
+        <lightning-helptext class="performance-help" content={IPAHelptextvaluelabel}></lightning-helptext>:
+        <lightning-formatted-number class="performance-value" value={total_SalesDatanbr.value} format-style="currency" currency-code="USD" currency-display-as="symbol" maximum-fraction-digits={total_SalesDatanbr.decimals} minimum-fraction-digits="0"></lightning-formatted-number>
+        <span class="performance-value-text">{total_SalesDatanbr.text}</span>
+      </div>
+</template>

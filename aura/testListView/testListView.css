@@ -1,0 +1,11 @@
+/* align picklist inside list view*/
+.THIS .customCls{
+    margin-top: -10px;
+    width: 20%;
+    position: absolute;
+    right: 17px;
+}
+.THIS .slds-page-header__title{
+    cursor: default !important;
+    pointer-events: none !important;  
+}

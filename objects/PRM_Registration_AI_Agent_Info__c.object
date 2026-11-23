@@ -177,6 +177,34 @@
         <type>Checkbox</type>
     </fields>
     <fields>
+        <fullName>PRM_Field_Name__c</fullName>
+        <label>Field Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Email</fullName>
+                    <default>false</default>
+                    <label>Email</label>
+                </value>
+                <value>
+                    <fullName>Website</fullName>
+                    <default>false</default>
+                    <label>Website</label>
+                </value>
+                <value>
+                    <fullName>Company</fullName>
+                    <default>false</default>
+                    <label>Company</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>PRM_Registration_Request__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Registration Request</label>

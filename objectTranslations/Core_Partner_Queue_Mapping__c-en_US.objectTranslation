@@ -17,10 +17,6 @@
         <name>Core_Disposition_Reminder_Email_Opt_In__c</name>
     </fields>
     <fields>
-        <label><!-- Disposition as PLCL --></label>
-        <name>Core_Disposition_as_PLCL__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Name --></label>
         <name>Core_Partner_Name__c</name>
     </fields>
@@ -29,24 +25,15 @@
         <name>Core_Queue_Name__c</name>
     </fields>
     <fields>
-        <label><!-- Storefront Id --></label>
-        <name>Core_Storefront_Id__c</name>
-    </fields>
-    <fields>
-        <label><!-- Storefront Name --></label>
-        <name>Core_Storefront_Name__c</name>
-    </fields>
-    <fields>
         <label><!-- Partner Identifier ID --></label>
         <name>PMP_MDA_BizOrg_Id__c</name>
     </fields>
-    <recordTypes>
-        <label><!-- Dispositioned Partner Lead for PLCL --></label>
-        <name>Core_Dispositioned_Partner_Lead_for_PLCL</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Master Partner Queue Mapping --></label>
-        <name>Core_PartnerQueueMapping</name>
-    </recordTypes>
+    <layouts>
+        <layout>Partner-Queue Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

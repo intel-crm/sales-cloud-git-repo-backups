@@ -436,6 +436,7 @@ class IpaSearchFilters extends LightningElement {
       bubbles: true,
       composed: true,
     }));
+    console.log('performsearch:'+searchParams,searchParams);
   }
 
   /**
@@ -730,6 +731,7 @@ class IpaSearchFilters extends LightningElement {
    * @private
    */
   helperSelectAll(evt) {
+    console.log('helper.selectAll');
     const { filterName, isDraft } = evt.currentTarget.dataset;
     this.dispatchEvent(new CustomEvent('filterchange', {
       detail: {
@@ -929,6 +931,7 @@ class IpaSearchFilters extends LightningElement {
     this._skipClearingDraftFilters = true; // closes modal before resetting draft for better UI
     this.template.querySelector('c-core-intc-modal').closeModal();
     // no analytics on filter change just change in keyword/clear all/category update
+    console.log('draftfilters applied:'+this.draftFilters,this.draftFilters);
     this.performSearch({ filters: { ...this.draftFilters }, page: 1 });
     this.clearDraftFilters();
   }

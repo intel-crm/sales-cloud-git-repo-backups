@@ -107,7 +107,7 @@
                 testspecialty.PRM_Access_Level_Nm__c = 'public';
                 testspecialty.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
                 testspecialty.PRM_Role_Nm__c = System.Label.PRM_Service_Provider;
-                testspecialty.PRM_Tier_Nm__c = 'Gold';
+                testspecialty.PRM_Tier_Nm__c = 'Partner';//'Gold';
                 testspecialty.PRM_Start_Date_Dt__c = system.today()+7;
                 insert testspecialty;
                 
@@ -117,7 +117,7 @@
                 testspecialty1.PRM_Access_Level_Nm__c = 'public';
                 testspecialty1.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
                 testspecialty1.PRM_Role_Nm__c = 'Distributor';
-                testspecialty1.PRM_Tier_Nm__c = 'Gold';//'Gold';
+                testspecialty1.PRM_Tier_Nm__c = 'Partner';//'Gold';
                 testspecialty1.PRM_Start_Date_Dt__c = system.today()+7;
                 insert testspecialty1;
                 
@@ -142,7 +142,7 @@
                 PRM_AddPartnerController.fetchTierPickListValue();
                 PRM_AddPartnerController.fetchPendingData(testspecialty.Id);
                 Test.stopTest();
-                //System.assertEquals('Partner',testspecialty.PRM_Tier_Nm__c,'Specialty should be inserted');
+                System.assertEquals('Partner',testspecialty.PRM_Tier_Nm__c,'Specialty should be inserted');
             }
             
             static testmethod void getSpCritTestMethod()
@@ -188,7 +188,7 @@
                 spec.PRM_Description_Txt__c='This is description';
                 spec.PRM_Funding_BU_Nm__c='CCG Sales Group';
                 spec.PRM_Role_Nm__c='Service Provider';
-                spec.PRM_Tier_Nm__c='Gold';
+                spec.PRM_Tier_Nm__c='Partner';//'Gold';
                 spec.PRM_Start_Date_Dt__c= system.today() + 7;
                 spec.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
                 spec.PRM_Access_Level_Nm__c='Public';
@@ -199,7 +199,7 @@
                 spec1.PRM_Description_Txt__c='This is description';
                 spec1.PRM_Funding_BU_Nm__c='CCG Sales Group';
                 spec1.PRM_Role_Nm__c='Service Provider';
-                spec1.PRM_Tier_Nm__c='Gold';//'Gold';
+                spec1.PRM_Tier_Nm__c='Partner';//'Gold';
                 spec1.PRM_Start_Date_Dt__c= system.today() + 7;
                 spec1.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
                 spec1.PRM_Access_Level_Nm__c='Public';
@@ -417,7 +417,7 @@
             PRM_AddPartnerController.fetchAccsData(testAcc.Name,spec.Id);
             PRM_AddPartnerController.filterAccsData(testAcc.Name, acm.PRM_Partner_Role__c, testAcc.Core_Account_BU_Focus__c, 'USA', acm.PRM_Channel_Program_Level_Id__r.Name,spec.Id);
             test.stopTest();
-            //System.assertEquals('Partner',spec.PRM_Tier_Nm__c,'Specialty Should be inserted');
+            System.assertEquals('Partner',spec.PRM_Tier_Nm__c,'Specialty Should be inserted');
         }
         @isTest public static void fetchSpCritRelatedToCurrentSpTest(){
             
@@ -438,7 +438,7 @@
             sp.PRM_Start_Date_Dt__c = Date.today();
             sp.PRM_End_Date_Dt__c = Date.today()+5;
             sp.PRM_Funding_BU_Nm__c = 'Automotive Sales Group';
-            sp.PRM_Tier_Nm__c ='Gold';
+            sp.PRM_Tier_Nm__c = 'Partner';//'Gold';
             sp.PRM_Access_Level_Nm__c = 'Public';
             sp.PRM_Role_Nm__c = 'Distributor';
             insert sp;
@@ -515,7 +515,7 @@
             spec.PRM_Description_Txt__c='This is description';
             spec.PRM_Funding_BU_Nm__c='CCG Sales Group';
             spec.PRM_Role_Nm__c='Service Provider';
-            spec.PRM_Tier_Nm__c='Gold';
+            spec.PRM_Tier_Nm__c='Partner';//'Gold';
             spec.PRM_Start_Date_Dt__c= system.today() + 7;
             spec.PRM_End_Date_Dt__c= spec.PRM_Start_Date_Dt__c + 5;
             spec.PRM_Access_Level_Nm__c='Public';
@@ -596,7 +596,7 @@
         PRM_AddPartnerController.fetchAccsData(testAcc2.Name,spec.Id);
         
         test.stopTest();
-        //System.assertEquals('Partner',spec.PRM_Tier_Nm__c,'Specialty Should be inserted');
+        System.assertEquals('Partner',spec.PRM_Tier_Nm__c,'Specialty Should be inserted');
     }
     
     //wrapper of ACM Id and related Specialty Criteria

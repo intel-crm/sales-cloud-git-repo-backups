@@ -4,22 +4,31 @@
         <field>ASSIGNED</field>
     </columns>
     <columns>
-        <field>ACCOUNT</field>
+        <field>SUBJECT</field>
     </columns>
     <columns>
         <field>DUE_DATE</field>
     </columns>
     <columns>
-        <field>SUBJECT</field>
+        <field>PRIORITY</field>
     </columns>
     <columns>
         <field>STATUS</field>
+    </columns>
+    <columns>
+        <field>TASK</field>
+    </columns>
+    <columns>
+        <field>ACCOUNT</field>
     </columns>
     <columns>
         <field>CONTACT</field>
     </columns>
     <columns>
         <field>LEAD</field>
+    </columns>
+    <columns>
+        <field>OPPORTUNITY</field>
     </columns>
     <format>Tabular</format>
     <name>KM - Completed Activity Report</name>
@@ -42,8 +51,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>DUE_DATE</dateColumn>
-        <endDate>2021-03-26</endDate>
+        <endDate>2020-05-01</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2021-03-22</startDate>
+        <startDate>2020-04-27</startDate>
     </timeFrameFilter>
 </Report>

@@ -1,0 +1,14 @@
+<!--
+ - Created by doug on 3/24/18.
+ -->
+
+<apex:page id="RecordTypePage" controller="Xvoyant.RecordTypeController">
+	<apex:form id="oppRecordTypeForm">
+		<apex:repeat value="{!OppRecordTypes}" var="opp" id="recordTypeRepeat">
+			<apex:inputField styleClass="hidden" id="oppFilteredStages" value="{!opp.StageName}"/>
+		</apex:repeat>
+		<apex:repeat value="{!rtIdList}" var="rtId" id="rtIdRepeat">
+			<apex:outputText styleClass="hidden" id="recordTypeIds" value="{!rtId}"/><br/>
+		</apex:repeat>
+	</apex:form>
+</apex:page>

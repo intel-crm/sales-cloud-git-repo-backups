@@ -17,5 +17,12 @@
         <name>Core_AAQC_Commissions_Inquiry_Details__c</name>
         <relationshipLabel><!-- Admin Comments --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Admin Comment Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Vowel</startsWith>
 </CustomObjectTranslation>

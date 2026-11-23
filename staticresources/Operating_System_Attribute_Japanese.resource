@@ -32,7 +32,6 @@
 "Sequence" : "1",
 "Is_Active" : "Yes",
 	"ChildCategories" : [
-			{ "SpecKey" : "NPP_Operating_System_Level3", "SpecRawValue" : "218609",		"SpecDisplayValue" : "",		"SpecValueSequence" : "1",		"Is_Active":"Yes" },
 			{ "SpecKey" : "NPP_Operating_System_Level3", "SpecRawValue" : "88003",		"SpecDisplayValue" : "",		"SpecValueSequence" : "2",		"Is_Active":"Yes" },
 			{ "SpecKey" : "NPP_Operating_System_Level3", "SpecRawValue" : "77655",		"SpecDisplayValue" : "",		"SpecValueSequence" : "8",		"Is_Active":"Yes" },
 			{ "SpecKey" : "NPP_Operating_System_Level3", "SpecRawValue" : "66973",		"SpecDisplayValue" : "",		"SpecValueSequence" : "11",		"Is_Active":"Yes" },
@@ -120,16 +119,6 @@
 "Is_Active" : "Yes",
 	"ChildCategories" : [
 				{ "SpecKey" : "NPP_Operating_System_Level4", "SpecRawValue" : "46435",		"SpecDisplayValue" : "",		"SpecValueSequence" : "1",		"Product_Catalog_URL" : "",		"NPP_Is_Active" : "Yes",		"NPP_Is_Published" : "Yes"  },
-				{	}]
-},
-{
-"ParentIdentifier" :  "218609",
-"ParentName" : 		"",
-"Level" : "3",
-"Sequence" : "1",
-"Is_Active" : "Yes",
-	"ChildCategories" : [
-				{ "SpecKey" : "NPP_Operating_System_Level4", "SpecRawValue" : "218611",		"SpecDisplayValue" : "",		"SpecValueSequence" : "1",		"Product_Catalog_URL" : "",		"NPP_Is_Active" : "Yes",		"NPP_Is_Published" : "Yes"  },
 				{	}]
 },
 {

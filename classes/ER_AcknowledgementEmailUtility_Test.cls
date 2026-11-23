@@ -16,7 +16,7 @@ public class ER_AcknowledgementEmailUtility_Test {
         insert bt;
         
         List<PRM_VXEnttlmntMatrix__c> emList = new List<PRM_VXEnttlmntMatrix__c>();
-        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); 
+        PRM_VXEnttlmntMatrix__c em= new PRM_VXEnttlmntMatrix__c(); //Entitlement Matrix
         em.PRM_Entitlement_Id__c = ent.id;
         em.PRM_Approval_Type_Nm__c='Automatic';
         em.Business_Types__c = bt.Id;
@@ -41,6 +41,7 @@ public class ER_AcknowledgementEmailUtility_Test {
         regRequest.PRM_EV_Token__c= 'EAAAAFEKpZnzESjs92XoY55f4ngu9BUyuOIraFcrFXziDwRdlXdOuIOyDgk3K+dJD7x3mZ83lu3LT3yn9PHHd7Z2q0CXeXQOFnEV2oKB/DivrTpg+TYum1pfXY2/Yq5Vin+38436zR3W4Z7zO9albgNnAljH0lj7JnfGAu90Z8Ju9K4oa1uzPqUoRXcacHaLGediMDSAhLcrvxqNwgthOeJ0loAbLMZYnQQ+3a6YOWAiyAsvUsGEXKfV1M2KNSbYeos8lA==';
         regRequest.PRM_Person_Phone_Number__c= '3232';
         regRequest.PRM_Preferred_Language__c= 'ENG';
+        //regRequest.PRM_Profession__c = 'CONSULTANT';
         regRequest.PRM_Status__c= 'New';
         regRequestList.add(regRequest);
         }    
@@ -63,6 +64,7 @@ public class ER_AcknowledgementEmailUtility_Test {
                                           PRM_Company_Size__c,
                                           PRM_Company_Email_Domain__c,
                                           PRM_EV_flag__c,
+                                          //PRM_Job_Function__c,
                                           PRM_Profession__c,
                                           Entitlement_Details__c,
                                           PRM_EmailVerifiedDateTime__c,
@@ -70,7 +72,7 @@ public class ER_AcknowledgementEmailUtility_Test {
                                           PRM_Status__c,
                                           PRM_Status_Reason__c
                                           FROM PRM_Registration_Request__c];
-        
+        system.debug('reqTest'+reqlist);
         for(PRM_Registration_Request__c req:reqlist){
         req.RecordTypeId=accountApprovalRT;
         req.PRM_Account_Name__c= 'Apple; Inc.';
@@ -84,6 +86,8 @@ public class ER_AcknowledgementEmailUtility_Test {
         req.PRM_Company_Size__c  = '10000+' ;      
         req.PRM_Company_Email_Domain__c  = null;
         req.PRM_EV_flag__c  = false ;
+        //req.PRM_Job_Function__c  = 'SALES-MKT' ;  
+        //req.PRM_Profession__c  = 'CONSULTANT' ; 
         req.Entitlement_Details__c = entt.Id ;                             
         req.PRM_EmailVerifiedDateTime__c  = DateTime.now() ;
         req.PRM_Legal_Agreements__c  = 'DZP_TANDC' ;
@@ -114,6 +118,7 @@ public class ER_AcknowledgementEmailUtility_Test {
                                           PRM_Company_Size__c,
                                           PRM_Company_Email_Domain__c,
                                           PRM_EV_flag__c,
+                                          //PRM_Job_Function__c,
                                           PRM_Profession__c,
                                           Entitlement_Details__c,
                                           PRM_EmailVerifiedDateTime__c,
@@ -121,7 +126,7 @@ public class ER_AcknowledgementEmailUtility_Test {
                                           PRM_Status__c,
                                           PRM_Status_Reason__c
                                           FROM PRM_Registration_Request__c];
-        
+        system.debug('reqTest'+reqlist);
         for(PRM_Registration_Request__c req:reqlist){
         req.Name=Null;
         req.RecordTypeId=accountApprovalRT;
@@ -135,7 +140,9 @@ public class ER_AcknowledgementEmailUtility_Test {
         req.PRM_Account_Phone__c  = '9891744632' ;
         req.PRM_Company_Size__c  = '10000+' ;      
         req.PRM_Company_Email_Domain__c  = null;
-        req.PRM_EV_flag__c  = false ; 
+        req.PRM_EV_flag__c  = false ;
+        //req.PRM_Job_Function__c  = 'SALES-MKT' ;  
+        //req.PRM_Profession__c  = 'CONSULTANT' ; 
         req.Entitlement_Details__c = null ;                             
         req.PRM_EmailVerifiedDateTime__c  = DateTime.now() ;
         req.PRM_Legal_Agreements__c  = 'DZP_TANDC' ;

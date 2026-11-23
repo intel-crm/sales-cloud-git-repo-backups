@@ -442,8 +442,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
 * Return:      Boolean
 * Description: This is a generic method to check for if a aba record exsist or not. 
 ****************************************************************************************************************************************** */
-    
-    Public Static boolean duplicateRecordCheck(string accountId, string benefitId, List<PRM_AccountBenefitAssociation__c> lstOfABARecord){
+    //ATHR Fix - TWC729-9556 - JB
+   /* Public Static boolean duplicateRecordCheck(string accountId, string benefitId, List<PRM_AccountBenefitAssociation__c> lstOfABARecord){
         boolean result = false;
         for(PRM_AccountBenefitAssociation__c aBARecord: lstOfABARecord){
             if(aBARecord.PRM_Account_Id__c == accountId && aBARecord.PRM_Partner_Benefit_Id__c == benefitId){
@@ -452,7 +452,8 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
             }
         }
         return result;
-    }
+    }*/
+    
     //Sheetal Changes End 
     
     /* *****************************************************************************************************************************************
@@ -597,15 +598,16 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
 * Return:      List<PRM_AccountBenefitAssociation__c>
 * Description: This is a generic method to check for if a aba record exsist and then process it for inactivation. 
 ****************************************************************************************************************************************** */
-    public static List<PRM_AccountBenefitAssociation__c> processingAba(Set<PRM_AccountBenefitAssociation__c> tempAbaRecord,Set<PRM_AccountBenefitAssociation__c> exsistingAbaRecord){
+    //ATHR Fix - TWC729-9556 - JB
+    /*public static List<PRM_AccountBenefitAssociation__c> processingAba(Set<PRM_AccountBenefitAssociation__c> tempAbaRecord,Set<PRM_AccountBenefitAssociation__c> exsistingAbaRecord){
         Set<PRM_AccountBenefitAssociation__c> setOfAbaToProcess = new Set<PRM_AccountBenefitAssociation__c>();
         List<PRM_AccountBenefitAssociation__c> listOfFinalAbaToProcess = new list<PRM_AccountBenefitAssociation__c>();
         
         if(tempAbaRecord !=null && !tempAbaRecord.isEmpty() && exsistingAbaRecord != null && !exsistingAbaRecord.isEmpty()){
             for(PRM_AccountBenefitAssociation__c aba: exsistingAbaRecord){
                 for(PRM_AccountBenefitAssociation__c tempAba: tempAbaRecord){
-                    if(/*(tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c)*/ //added as a fix for ww31
-                    (tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c || tempAba.PRM_Account_Id__c==aba.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)
+                   // if((tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c) //added as a fix for ww31
+                   if((tempAba.PRM_Account_Id__c == aba.PRM_Account_Id__c || tempAba.PRM_Account_Id__c==aba.PRM_Account_Id__r.Core_IPA_One_Partner_Id__c)
                      && (tempAba.PRM_Partner_Benefit_Id__c == aba.PRM_Partner_Benefit_Id__c)){
                         setOfAbaToProcess.add(aba); 
                     }
@@ -627,7 +629,7 @@ public without sharing class PRM_Benefit_Group_Benefit_Assoc_Utility {
             }
         }
         return listOfFinalAbaToProcess;
-    }
+    }*/
 
     
 }

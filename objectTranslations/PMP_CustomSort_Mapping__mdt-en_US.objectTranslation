@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PMP_CustomSort_Mapping</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PMP_CustomSort_Mapping</value>
+    </caseValues>
+    <fields>
+        <label><!-- Rank --></label>
+        <name>Rank__c</name>
+    </fields>
+    <fields>
+        <label><!-- Sort Type --></label>
+        <name>Sort_Type__c</name>
+        <picklistValues>
+            <masterLabel>Partner Tier</masterLabel>
+            <translation><!-- Partner Tier --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Value --></label>
+        <name>Value__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

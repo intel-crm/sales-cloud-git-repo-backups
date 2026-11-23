@@ -638,13 +638,13 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         lstCE.add(entitle);
         Core_Entitlement__c entitle1=new Core_Entitlement__c (Core_Permission_Set_API_Nm__c = 'PMP_External_Partner_Admin', name ='Partner Admin Delegate', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Value Exchange',Core_Help_Text__c='Help text',Core_Display_Name__c='Partner Admin Delegate',Core_IsActive__c=true);
         lstCE.add(entitle1);
-        Core_Entitlement__c entitle2=new Core_Entitlement__c (name ='Employee', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Solutions Marketplace',Core_Help_Text__c='Help text',Core_Display_Name__c='Employee',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_Lead_Partner_Users1' ); 
+        Core_Entitlement__c entitle2=new Core_Entitlement__c (name ='Employee', Core_Category__c='Intel Partner Alliance (IPA)',Core_Sub_Category__c='Solutions Marketplace',Core_Help_Text__c='Help text',Core_Display_Name__c='Employee',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_All_Employees_Group' ); 
         lstCE.add(entitle2);
-        Core_Entitlement__c entitle3=new Core_Entitlement__c (name ='Web Ticketing & Return for Credit Dual', Core_Category__c='Support',Core_Sub_Category__c='',Core_Help_Text__c='Help text',Core_Display_Name__c='Web Ticketing & Return for Credit Dual',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_Lead_Partner_Users1' ); 
+        Core_Entitlement__c entitle3=new Core_Entitlement__c (name ='Web Ticketing & Return for Credit Dual', Core_Category__c='Support',Core_Sub_Category__c='',Core_Help_Text__c='Help text',Core_Display_Name__c='Web Ticketing & Return for Credit Dual',Core_IsActive__c=true, Core_Permission_Set_API_Nm__c = 'PMP_External_Employee', Core_Public_Group_API_Nm__c = 'Core_All_Employees_Group' ); 
         lstCE.add(entitle3);
         insert lstCE;
         
-        Group gp = new Group(Name = 'Leads Partner Users2', DeveloperName = 'Core_Lead_Partner_Users1', Type = 'Regular');
+        Group gp = new Group(Name = 'Test Account', DeveloperName = 'PMP_External_Employee', Type = 'Regular');
         insert gp;
         
         User currentUser = [ select Id from User where Id = :UserInfo.getUserId() ];
@@ -666,21 +666,11 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
                                   alias='nuser', lastname='lastname', contactId = con1.id);
             lstUsers.add(user1);
             insert lstUsers;
-            List<GroupMember> gms = new List<GroupMember>();
             GroupMember gm = new GroupMember(UserOrGroupId = user.id, GroupId = gp.id);
-            gms.add(gm);
-            GroupMember gm1 = new GroupMember(UserOrGroupId = user1.id, GroupId = gp.id);
-            gms.add(gm1);
-            insert gms;
-            
+            insert gm;
             id psId = [SELECT Id FROM PermissionSet WHERE Name = 'PMP_External_Employee'].id;
-            List<PermissionSetAssignment> psaList = new List<PermissionSetAssignment>();
             PermissionSetAssignment ps = new PermissionSetAssignment(AssigneeId = user.id, PermissionSetId = psId);
-            psaList.add(ps);
-            PermissionSetAssignment ps1 = new PermissionSetAssignment(AssigneeId = user1.id, PermissionSetId = psId);
-            psaList.add(ps1);
-            insert psaList;
-            
+            insert ps;
         }
         
         
@@ -690,13 +680,6 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         acr.PRM_Relationship_Id__c = cr3.Id;
         acr.PRM_Status_Reason_Txt__c='Test';
         insert acr;
-
-        PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c();
-        acr1.PRM_Account_Id__c = acc.Id;
-        acr1.PRM_Contact_Id__c = con1.Id;
-        acr1.PRM_Relationship_Id__c = cr3.Id;
-        acr1.PRM_Status_Reason_Txt__c='Test';
-        insert acr1;
         
         List<Core_Contact_Entitlement__c> lstConCE = new List<Core_Contact_Entitlement__c>();
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,Core_Entitlement_Id__c = entitle.Id, Core_Selected__c=false,Core_Status__c='Pending');
@@ -774,13 +757,6 @@ System.assert(e.getMessage().contains('Service Agreement cannot be deleted.'), '
         acr.PRM_Relationship_Id__c = cr3.Id;
         acr.PRM_Status_Reason_Txt__c='Test';
         insert acr;
-
-        PRM_Account_Contact_Relationship__c acr1 = new PRM_Account_Contact_Relationship__c();
-        acr1.PRM_Account_Id__c = acc.Id;
-        acr1.PRM_Contact_Id__c = con1.Id;
-        acr1.PRM_Relationship_Id__c = cr3.Id;
-        acr1.PRM_Status_Reason_Txt__c='Test';
-        insert acr1;
         
         Core_Contact_Entitlement__c ce1 = new Core_Contact_Entitlement__c(Core_Contact_Id__c=con.Id,Core_Entitlement_Id__c = entitle.Id, Core_Selected__c=false,Core_Status__c='Pending');
         insert ce1;

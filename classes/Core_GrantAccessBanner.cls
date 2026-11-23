@@ -15,7 +15,7 @@ public without sharing class Core_GrantAccessBanner {
         Date d1 = System.today();
 
         List<Core_GA_Banner__c> bannerList = new List<Core_GA_Banner__c>();
-        For(Core_GA_Banner__c ban : [SELECT Id, Name, Core_Message__c, Core_Start_Date__c, Core_End_Date__c from Core_GA_Banner__c Order by createdDate desc]){            
+        For(Core_GA_Banner__c ban : [SELECT Id, Name, Core_Message__c, Core_Start_Date__c, Core_End_Date__c from Core_GA_Banner__c WITH SECURITY_ENFORCED Order by createdDate desc]){            
            
             If(ban.Core_End_Date__c >= d1 && d1 >= ban.Core_Start_Date__c ){
                 bannerList.add(ban);
@@ -32,7 +32,7 @@ public without sharing class Core_GrantAccessBanner {
     @AuraEnabled(cacheable=true)
     public static boolean checkContactGec(Id recordId){
         Boolean flag;
-        List<Contact> contRec = [Select id, Name, Core_Contact_Export_Compliance_Block__c from Contact where Id=: recordId];
+        List<Contact> contRec = [Select id, Name, Core_Contact_Export_Compliance_Block__c from Contact where Id=: recordId WITH SECURITY_ENFORCED];
         
         For(Contact con : contRec){
         if(con.Core_Contact_Export_Compliance_Block__c == true){
@@ -42,5 +42,5 @@ public without sharing class Core_GrantAccessBanner {
         }
          return flag;   
     }
-    
+
 }

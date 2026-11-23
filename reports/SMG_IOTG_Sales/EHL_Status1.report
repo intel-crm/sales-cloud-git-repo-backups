@@ -13,7 +13,7 @@
         <field>OpportunityLineItem.Core_Opp_OpportunityType__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <columns>
         <field>OpportunityLineItem.Core_Product_Segment__c</field>
@@ -97,15 +97,10 @@
     <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Opportunity_Count__c</field>
-    </columns>
     <description>Elkhart Lake Opportunites</description>
     <filter>
-        <booleanFilter>1 AND (2 OR 4) AND 3</booleanFilter>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
@@ -124,13 +119,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Product2.Core_Code_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>Elkhart Lake</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -160,7 +148,7 @@
     <sortColumn>Opportunity.Core_Opp_Prime_Account_Name__c</sortColumn>
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
-        <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
+        <dateColumn>CLOSE_DATE</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

@@ -44,7 +44,7 @@ import nextPaddleLabel from '@salesforce/label/c.Core_Intc_Navigate_Next';
  * | intc-carousel-indicator-width | 4rem | Width of the indicator images. |
  *
  * ### Notes:
- * * It's recommended you don't use <code>indicatorImages</code> if <code>itemsPerPageMobile</code>, <code>itemsPerPageTablet</code>, and
+ * * It is recommended you don't use <code>indicatorImages</code> if <code>itemsPerPageMobile</code>, <code>itemsPerPageTablet</code>, and
  *  <code>itemsPerPageDesktop</code> are different since the indicator images will not match the slide content.
  * * Auto-scroll functionality is not supported due to challenges with accessibility.
  *

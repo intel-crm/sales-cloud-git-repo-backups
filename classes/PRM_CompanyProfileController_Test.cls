@@ -89,7 +89,7 @@ public class PRM_CompanyProfileController_Test {
         specialty1.Name = 'Enthusiast PC Specialty';        
         specialty1.PRM_Access_Level_Nm__c = 'Public';
         specialty1.PRM_Role_Nm__c = 'Service Provider';
-        specialty1.PRM_Tier_Nm__c = 'Gold';
+        specialty1.PRM_Tier_Nm__c = 'Gold';//'Gold';
         specialty1.PRM_Description_Txt__c = 'Test1';
         specialty1.PRM_Funding_BU_Nm__c = 'CCG Sales Group';
         specialty1.PRM_Start_Date_Dt__c = system.Today();

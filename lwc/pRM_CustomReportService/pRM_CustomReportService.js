@@ -1,5 +1,5 @@
 import { LightningElement, track, api, wire } from 'lwc';
-import getAccountsAndBenefits from '@salesforce/apex/PRM_BenefitMisMatchReport.getAccountsAndBenefits';
+import getAccountsAndBenefits from '@salesforce/apex/PRM_BenefitMisMatchReport.getAccountsAndBenefitsLWC';
 import requiredBenefits from '@salesforce/apex/PRM_BenefitMisMatchReport.getRequiredBenefits';
 import getAccountIds from '@salesforce/apex/PRM_BenefitMisMatchReport.getAccountIds';
 import prevBtn from '@salesforce/label/c.PRM_Previous_Button';
@@ -40,16 +40,12 @@ export default class PRM_CustomReportService extends LightningElement {
     result = [];
     @track matrixRecords;
     @track noMismatchFlag = true;
-    @track actsinlist=[];
-    @track searchVal;
-    @track recordPresent=true;
 
     getRequiredBenefits() {
         requiredBenefits().then(result => {
             if (result !== undefined) {
                 console.log('PRM_CustomReportService.getRequiredBenefits :', result);
-                 this.matrixRecords = result;
-                //this.matrixRecords.push('0012i00000IK2NuAAL');
+                this.matrixRecords = result;
                 this.getAccountIdsAndMissingBnfts();
             }
 
@@ -60,7 +56,6 @@ export default class PRM_CustomReportService extends LightningElement {
     }
 
     getAccountsandBenefits(res) {
-        
         getAccountsAndBenefits({ accountIds: res, wrapper: JSON.stringify(this.matrixRecords) }).then(result => {
             if (result !== undefined) {
                 console.log('PRM_CustomReportService.getAccountsandBenefits :', result);
@@ -73,14 +68,13 @@ export default class PRM_CustomReportService extends LightningElement {
                 this.result = result;//.slice(1, 20);                JSON.parse(JSON.stringify())               
                 this.result.map(item => {
                     let row = {};
-                    row.accountId = item.accountId;
                     row.accountName = item.accountName;
                     row.recordTypeName = item.recordTypeName === 'Mastered_Account' ? 'Location Account' : 'One Partner Id Account';
                     row.accountURL = '/' + item.accountId;
 
                     //iterate over benefits
                     let bnfts = '';
-                    if (item.missedBenefits || item.bnftsToBeremoved) {
+                    if (item.missedBenefits) {
                         let missedbnfts = '';
                         // missing benefits
                         bnfts = item.missedBenefits;
@@ -93,7 +87,7 @@ export default class PRM_CustomReportService extends LightningElement {
                         let extradbnfts = '';
                         bnfts = item.bnftsToBeremoved;
                         bnfts.map(bnftrecord => {
-                            extradbnfts += '' + bnftrecord + ';';
+                            extradbnfts = '' + bnftrecord + ';';
                         });
 
                         row.extraBenefits = extradbnfts;
@@ -113,7 +107,7 @@ export default class PRM_CustomReportService extends LightningElement {
 
                         row.role = roles;
                         row.tier = tiers;
-                        if (extradbnfts.length > 0 && missedbnfts.length > 0) {
+                        if (extradbnfts.length > 0 || missedbnfts.length > 0) {
                             tdata.push(row);
                         }
 
@@ -122,10 +116,7 @@ export default class PRM_CustomReportService extends LightningElement {
                 });
                 this.tableData = tdata;
                 this.tableData.map(item => {
-                    if(!this.actsinlist.includes(item.accountId)){
-                        this.actsinlist.push(item.accountId);
-                        this.mainCopy.push(item);
-                    }
+                    this.mainCopy.push(item);
                 })
 
                 this.noOfPages = Math.ceil(this.mainCopy.length / this.pagesize); // calcualtes total no of pages
@@ -148,7 +139,6 @@ export default class PRM_CustomReportService extends LightningElement {
                 console.error('Error -->', error);
             });
     }
-
 
     getAccountIdsAndMissingBnfts() {
         getAccountIds().then(res => {
@@ -211,12 +201,10 @@ export default class PRM_CustomReportService extends LightningElement {
     handleChange(event) {
         console.log('event ', event.target.value);
         if (event.target.value.length >= 3 && event.target.value.length > 0) {
-            this.searchVal = event.target.value;
             this.searchFilter = true;
-            this.search(event.target.value.trim());
+            this.search(event.target.value);
         }
         if (event.target.value.length === 0) {
-            this.searchVal=null;
             this.searchFilter = false;
             this.clearFilter();
         }
@@ -224,7 +212,7 @@ export default class PRM_CustomReportService extends LightningElement {
     }
 
     search(key) {
-        let copy = JSON.parse(JSON.stringify(this.mainCopy)); // this.tableData
+        let copy = JSON.parse(JSON.stringify(this.tableData));
         let filtereResult = [];
         copy.map(item => {
             let actName = item.accountName.toLowerCase();
@@ -234,12 +222,8 @@ export default class PRM_CustomReportService extends LightningElement {
             }
         });
         if (filtereResult.length > 0) {
-            this.recordPresent = true;
             this.tableData = [];
             this.tableData = filtereResult;
-        }else{
-            this.recordPresent = false;
-            this.tableData = [];
         }
         // console.log('Filtred data -->', filtereResult);
 

@@ -1,0 +1,27 @@
+<apex:page >
+ 
+ <apex:includeScript value="{!$Resource.jQuery_3_4_1}"/>
+ <script src ="{!$Resource.jQuery_3_4_1}" type="text/javascript" />
+ <script>
+
+   var ufRecoEmbedViewerConfig = {
+       'base'          : 'https://flipbot.uberflip.com/',
+       'open_in'       : 'viewer',
+       'open_in_mobile': 'viewer',
+       'logo'          : '',
+       'embed_id'      : 'uberflip-tiles',
+       'cta_label'     : '',
+       'cta_url'       : '',
+       'max_per_row'   : 4,
+       'hub_id'        : 63774,
+       'auto_link'     : false,
+       'debug'         : false
+    };
+   jQuery.when( jQuery.getScript(ufRecoEmbedViewerConfig.base + 'widgets/reco-embed-viewer/uf-reco-embed-viewer.min.js') ).done(function(){
+        ufRecoEmbedViewer.init( ufRecoEmbedViewerConfig );
+   });
+</script>
+
+ <div id="uberflip-tiles"></div>
+ 
+</apex:page>

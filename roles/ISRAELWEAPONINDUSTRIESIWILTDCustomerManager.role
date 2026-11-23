@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>ISRAEL WEAPON INDUSTRIES (I.W.I) LTD. Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>ISRAEL WEAPON INDUSTRIES (I.W.I) LTD. Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>ISRAELWEAPONINDUSTRIESIWILTDCustomerExecutive</parentRole>
+</Role>

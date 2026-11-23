@@ -4,11 +4,11 @@
     <protected>false</protected>
     <values>
         <field>AccountType__c</field>
-        <value xsi:type="xsd:string">Developer Zone Premier</value>
+        <value xsi:type="xsd:string">RDC</value>
     </values>
     <values>
         <field>PriorityField__c</field>
-        <value xsi:type="xsd:string">Core_B2B_Entitlement__c</value>
+        <value xsi:type="xsd:string">Core_Covered_Account__c</value>
     </values>
     <values>
         <field>PriorityNumber__c</field>

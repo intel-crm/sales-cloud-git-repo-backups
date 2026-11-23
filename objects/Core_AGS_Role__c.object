@@ -205,24 +205,12 @@
     <label>AGS Role</label>
     <listViews>
         <fullName>All</fullName>
-        <booleanFilter>1 OR 2</booleanFilter>
         <columns>NAME</columns>
         <columns>Core_Technical_Name__c</columns>
         <columns>Core_IsActive__c</columns>
         <columns>Core_Description__c</columns>
         <filterScope>Everything</filterScope>
-        <filters>
-            <field>NAME</field>
-            <operation>contains</operation>
-            <value>nonworker</value>
-        </filters>
-        <filters>
-            <field>Core_Technical_Name__c</field>
-            <operation>contains</operation>
-            <value>nonworker</value>
-        </filters>
         <label>All</label>
-        <language>en_US</language>
     </listViews>
     <nameField>
         <label>AGS Role Name</label>

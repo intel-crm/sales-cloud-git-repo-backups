@@ -60,6 +60,6 @@
     </values>
     <values>
         <field>PRM_TemplateUniqueName__c</field>
-        <value xsi:type="xsd:string">PRM_Registration_Request_Acknowledgement_Email</value>
+        <value xsi:type="xsd:string">PRM_Registration_Request_Acknowledgement_Email_IND</value>
     </values>
 </CustomMetadata>

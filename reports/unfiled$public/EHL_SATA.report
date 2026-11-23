@@ -10,9 +10,6 @@
         <field>Case.Core_CaseType__c</field>
     </columns>
     <columns>
-        <field>STATUS</field>
-    </columns>
-    <columns>
         <field>SUBJECT</field>
     </columns>
     <columns>
@@ -60,8 +57,6 @@
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>true</showSubTotals>
-    <sortColumn>STATUS</sortColumn>
-    <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CREATED_DATEONLY</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>

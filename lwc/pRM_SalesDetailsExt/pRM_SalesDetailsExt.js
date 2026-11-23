@@ -1,6 +1,6 @@
 import { LightningElement, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
-import getExtSalesDetails from "@salesforce/apex/PRM_External_Objects_Data.getExtSalesDetails1";
+import getExtSalesDetails from "@salesforce/apex/PRM_External_Objects_Data.getExtSalesDetails";
 import { exportAsCSV } from "c/pRM_Utils";
 import AccountNo from "@salesforce/label/c.PRM_Account_No";
 import InvoiceNumberCol from "@salesforce/label/c.PRM_Invoice_Number";
@@ -149,12 +149,7 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
     @track prevInvLst1 = [];
     @track allRecordsExport = [];
     @track isFilterData = false;
-    offsetCount = 0;
-    lastInvtoPass = '';
-    showBtmButton = false;
-
     handleExport() {
-        this.offsetCount = (this.currentpage - 1) *  this.pagesize;
         if (this.isFilterOn) {
             exportAsCSV(
                 this.dataSetName,
@@ -166,24 +161,23 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
             console.log(">>>>>>11111");
             getExtSalesDetails({
                 invoiceNumber: "",
-                lastInv: this.lastInv,
+                lastInv: "",
                 prevInv: "",
                 prevInv1: "",
                 pageSize: this.pagesize,
                 startDate: "",
                 endDate: "",
-                isDownload: true,
-                lastInvtoPass: this.lastInvtoPass
+                isDownload: true
             })
                 .then((result) => {
                     console.log('>>>>result.limitBreached : '+result.limitBreached);
                     if (
                         result != null &&
-                        result != undefined /*&&
-                        !result.limitBreached*/
+                        result != undefined &&
+                        !result.limitBreached
                     ) {
                         exportAsCSV(this.dataSetName, this.currentpage, result.wrap);
-                    } /*else {
+                    } else {
                         this[NavigationMixin.GenerateUrl]({
                             type: 'standard__webPage',
                             attributes: {
@@ -192,10 +186,10 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
                         }).then(generatedUrl => {
                             window.open(generatedUrl, "_blank", "toolbar=no,scrollbars=no,resizable=no,top=200,left=200,width=800,height=400");
                         });
-                    }*/
+                    }
                 })
                 .catch((error) => {
-                    console.log("Error :" + JSON.stringify(error));
+                    console.log("Error :" + error);
                 });
             console.log("isFilterOnelse" + this.isFilterOn);
         }
@@ -410,14 +404,12 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
                 pageSize: this.pagesize,
                 startDate: this.startDate,
                 endDate: this.endDate,
-                isDownload: false,
-                lastInvtoPass: 0
+                isDownload: false
             })
                 .then((result) => {
                     if (result.wrap.length == 0) {
                         this.allRecordsExport = result.wrap;
                         this.records = result.wrap;
-                        this.showBtmButton = this.records.length > 50 ? true : false; 
                         //     console.log('Last invoice :' + this.lastInv + 'Lenght of inv' + this.lastInv.length);
                         this.spinner = false;
                         this.hasRender = true;
@@ -466,10 +458,6 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
                         this.hasRender = true;
                         this.isData = true;
                         this.records = result.wrap.slice(0, this.pagesize);
-                        this.showBtmButton = this.records.length > 50 ? true : false; 
-                        console.log('Data from record' + JSON.stringify(this.records));
-                        this.lastInvtoPass = this.records[0].invoice_number;
-                        console.log('Passed data<1 ' + this.lastInvtoPass);
                         this.exprtData = this.records;
                         this.getDataFromFN(this.records);
                         this.isDataAvailable =
@@ -482,9 +470,7 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
                         this.loadMore =
                             result.wrap.length < this.pagesize ? true : false;
                         this.records = result.wrap;
-                        this.showBtmButton = this.records.length > 50 ? true : false; 
-                        this.lastInvtoPass = this.records[0].invoice_number;
-                        console.log('Passed data<1 ' + this.lastInvtoPass);
+                        //     console.log('Passed data<1 ' + this.records);
                         this.exprtData = this.records;
                         //     console.log('Passed data<2 ' + this.exprtData);
                         this.getDataFromFN(this.records);
@@ -537,7 +523,5 @@ export default class PRM_SalesDetailsExt extends NavigationMixin(LightningElemen
             this.count++;
             this.commonCode();
         }
-        console.log('isDownload'+this.isDownload);
-     //   this.downloadUrl = window.location.origin+'/ipa/s/downloads';
     }
 }

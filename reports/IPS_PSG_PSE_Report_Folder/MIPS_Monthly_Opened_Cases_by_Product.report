@@ -364,6 +364,21 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ F-Series and SoC FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ I-Series SoC FPGA</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
+            </sourceValues>
+            <value>Agilex F-Series</value>
+        </values>
+        <values>
+            <sourceValues>
                 <sourceValue>Intel® PAC With Arria® 10 GT FPGA</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -439,36 +454,6 @@
                 <sourceValue>Intel® MAX® 10 FPGA</sourceValue>
             </sourceValues>
             <value>MAX10</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ F-Series and SoC FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ I-Series SoC FPGA</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel® Agilex™ M-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs F-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs I-Series</sourceValue>
-            </sourceValues>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 7 FPGAs and SoC FPGAs M-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 7</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>Intel Agilex® 5 FPGAs and SoC FPGAs E-Series</sourceValue>
-            </sourceValues>
-            <value>Agilex 5</value>
         </values>
     </buckets>
     <chart>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_MANAGED_SERVICES_ZHT</name>
     <style>none</style>
@@ -18,17 +18,15 @@
 優先邀請參加業界活動和訓練課程
 使用 Intel 平台測試服務
 
-若要開始使用，請回信至 ITP-MS@intel.com，並包含以下資訊：
+若要開始使用，請回信至 ITP-Cloud@intel.com，並包含以下資訊：
 
 
 管理服務專家的主要聯絡人
-名稱：
-電子郵件：
+名稱：電子郵件：
 
 
 關於其他的銷售與促銷資料
-郵寄地址：
-電話：
+郵寄地址：電話：
 
 享用福利
 
@@ -37,15 +35,15 @@
 
 Intel 夥伴擁有悠久的創新歷史， 透過 Intel® 夥伴聯盟，我們將協助您加速建立以資料為中心的經濟體的解決方案。透過攜手合作，我們能互相連接，共同創新與成長，讓極佳商機成為可能。
 
-請造訪 https://www.intel.com/content/www/tw/zh/partner-alliance/help/overview.html 取得將您的會員資格效益最大化的協助與說明。
+請造訪 intel.com/partnerhelp 取得將您的會員資格效益最大化的協助與說明。
 
 
 謝謝您，
 您的 Intel® 夥伴聯盟團隊
 
 此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+© {!Contact.Core_Current_Year__c} Intel 公司
+Intel 公司，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA。  www.intel.com
 隱私權 | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

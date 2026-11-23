@@ -64,7 +64,7 @@
         <field>OpportunityLineItem.Core_KPI_Product_Group__c</field>
     </columns>
     <columns>
-        <field>OpportunityLineItem.Core_BU_Product_Segment_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Product_Segment__c</field>
     </columns>
     <format>Tabular</format>
     <name>Dimension Data All Optys</name>

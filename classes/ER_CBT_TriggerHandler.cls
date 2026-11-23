@@ -5,8 +5,7 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
     public override void beforeInsert() {
         if(isActive('ER_Before_Insert_ABT_Appd_Check')) {
             //Check if ABT status is approved before inserting CBT
-            //Commented as part of EBR framework, as ABT should be approved only after CBT approved
-            //Core_Contact_Business_Type_Handler.ABTApprovedCheck(Trigger.new);
+            Core_Contact_Business_Type_Handler.ABTApprovedCheck(Trigger.new);
         }
         //Comment for TWC722-178 - This has been implemented in validation rule.
         /*if(isActive('ER_Before_Insert_CBT_Con_Eng_Name_Check')) {
@@ -18,8 +17,7 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
     public override void beforeUpdate() {
         if(isActive('ER_Before_Update_ABT_Appd_Check')) {
             //Check if ABT status is approved before Updating CBT
-            //Commented as part of EBR framework, as ABT should be approved only after CBT approved
-            //Core_Contact_Business_Type_Handler.ABTApprovedCheck(Trigger.new);
+            Core_Contact_Business_Type_Handler.ABTApprovedCheck(Trigger.new);
         }
         
     }
@@ -27,14 +25,8 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
     public override void afterInsert() {        
         if(isActive('ER_Insert_Contact_Ent_Check')) {
             //Insert contact entitlement on CBT insert only on status Approval - Pending
+            System.debug('In ENT');
             Core_Contact_Business_Type_Handler.insertContactEntitlement(Trigger.new);
-        }
-        //Add this by Sai as IPS CBT is having Pending status issue, this will be removed from here once the IPS CBT is fixed. 
-        if(isActive('ER_Update_Contact_Enttl_Check')){
-            //Remove/add again contact entitlement on CBT update
-            //Core_Contact_Business_Type_Handler.updateContactEntitlement(Trigger.new, (Map<Id, Contact_Business_Types__c>)Trigger.OldMap);
-            
-            Core_Contact_Business_Type_Handler.upsertSubscription(Trigger.new);
         }
     }
     
@@ -42,7 +34,9 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
         if(isActive('ER_Update_Contact_Enttl_Check')){
             //Remove/add again contact entitlement on CBT update
             Core_Contact_Business_Type_Handler.updateContactEntitlement(Trigger.new, (Map<Id, Contact_Business_Types__c>)Trigger.OldMap);
-            Core_Contact_Business_Type_Handler.upsertSubscription(Trigger.new);
+            
+            System.debug('In Subs');
+            //Core_Contact_Business_Type_Handler.upsertSubscription(Trigger.new);
         }
         
          if(isActive('ER_eRPM_Integration_Check') && firstRun){
@@ -51,6 +45,7 @@ public class ER_CBT_TriggerHandler extends TriggerHandler {
          }
         if(isActive('ER_Update_Auto_Approve_Reg_Req'))
         {
+            System.debug('In ER_Update_Auto_Approve_Reg_Req');
             ER_RegistrationUtility.autoApproveRegReq(Trigger.new, (Map<Id, Contact_Business_Types__c>)Trigger.OldMap);
         }
     }

@@ -125,6 +125,10 @@
         <name>PMP_Partner_Product_Parent_Category_Cd__c</name>
     </fields>
     <fields>
+        <label><!-- Partner Shadow --></label>
+        <name>PMP_Partner_Shadow__c</name>
+    </fields>
+    <fields>
         <help><!-- Tool Tip for category in chinese --></help>
         <label><!-- Tool Tip Chinese --></label>
         <name>PMP_Tool_Tip_Chinese_Txt__c</name>
@@ -140,8 +144,23 @@
         <name>PMP_Tool_Tip_Japanese_Txt__c</name>
     </fields>
     <fields>
+        <label><!-- Eligible for GeTM --></label>
+        <name>PSS_Eligible_for_GeTM__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role Category --></label>
+        <name>Partner_Role_Category__c</name>
+    </fields>
+    <fields>
         <label><!-- Type --></label>
         <name>Type__c</name>
     </fields>
+    <layouts>
+        <layout>Category Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

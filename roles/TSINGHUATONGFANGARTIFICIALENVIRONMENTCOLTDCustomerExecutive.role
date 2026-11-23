@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>TSINGHUA TONGFANG ARTIFICIAL ENVIRONMENTCO., LTD Customer Executive</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>TSINGHUA TONGFANG ARTIFICIAL ENVIRONMENTCO., LTD Customer Executive</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>EMP_11574351_Binhua_Li</parentRole>
+</Role>

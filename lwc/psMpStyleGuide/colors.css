@@ -1,0 +1,87 @@
+p {
+    margin: 1em 0;
+}
+
+ul,
+li {
+    margin: 0.5em;
+}
+
+.color-box {
+    border: 1px solid var(--lightGray);
+    border-radius: 4px 4px 0px 0px;
+    border-top: 50px solid var(--black);
+    min-width: 300px;
+}
+/* Blue color boxes */
+.color-box.paleBlueDemo {
+    border-top-color:  var(--paleBlue);
+}
+.color-box.digitalBlueDemo {
+    border-top-color:  var(--digitalBlue);
+}
+.color-box.blueDemo {
+    border-top-color:  var(--blue);
+}
+.color-box.mediumBlueDemo {
+    border-top-color:  var(--mediumBlue);
+}
+.color-box.darkBlueDemo {
+    border-top-color:  var(--darkBlue);
+}
+.color-box.progressBarBlueDemo {
+    border-top-color:  var(--progressBarBlue);
+}
+
+/* Gray color boxes */
+.color-box.darkestGrayDemo {
+    border-top-color:  var(--darkestGray);
+}
+.color-box.charcoalDemo {
+    border-top-color:  var(--charcoal);
+}
+.color-box.darkGrayDemo {
+    border-top-color:  var(--darkGray);
+}
+.color-box.grayDemo {
+    border-top-color:  var(--gray);
+}
+.color-box.lightGrayDemo {
+    border-top-color:  var(--lightGray);
+}
+.color-box.veryLightGrayDemo {
+    border-top-color:  var(--veryLightGray);
+}
+.color-box.lightestGrayDemo {
+    border-top-color:  var(--lightestGray);
+}
+
+.color-box.greenDemo {
+    border-top-color:  var(--green);
+}
+.color-box.yellowDemo {
+    border-top-color:  var(--yellow);
+}
+.color-box.orangeDemo {
+    border-top-color:  var(--orange);
+}
+.color-box.goldDemo {
+    border-top-color: var(--gold);
+}
+.color-box.redLockDemo {
+    border-top-color:  var(--redLock);
+}
+.color-box.redErrorDemo {
+    border-top-color:  var(--redError);
+}
+.color-box.darkRedDemo {
+    border-top-color:  var(--darkRed);
+}
+
+/* B & W color boxes */
+.color-box.whiteDemo {
+    border-top-color:  var(--white);
+}
+.color-box.blackDemo {
+    border-top-color:  var(--black);
+}

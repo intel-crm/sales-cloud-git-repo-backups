@@ -66,6 +66,14 @@
                 <behavior>Edit</behavior>
                 <field>PMP_Filter_Sequence__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>LayoutItem_Size__c</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>is_Inline_Radio__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>

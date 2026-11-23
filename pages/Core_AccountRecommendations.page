@@ -166,11 +166,11 @@
                 </div>
                 
                 <apex:outputPanel rendered="{!!((Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
                     
                     <div style="margin-top:8px; font-weight:bold; font-size: 1.30em; text-align:center">
                         Top Branded Sales
@@ -242,11 +242,11 @@
                 </apex:outputPanel>
                 
                 <apex:outputPanel rendered="{!!((Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
                     &nbsp;<br/>
                     <div style="margin-top:8px; font-weight:bold; font-size: 1.30em; text-align:center">
                         Top Component Sales
@@ -318,17 +318,17 @@
                 </apex:outputPanel>
                 
                 <apex:outputPanel rendered="{!((Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
-                                                (Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Brand_Top_Sales_3_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_1_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_2_Last_Purchase_Qty__c == 0) &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Item__c == '') &&
+                                            	(Core_Account_Recommendations__c.Core_Comp_Top_Sales_3_Last_Purchase_Qty__c == 0))}">
                     <p>&nbsp;</p>
                     No sales history found in the past year
                     <p>&nbsp;</p>

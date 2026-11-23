@@ -161,6 +161,25 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
+        <fullName>LastModifiedBy__c</fullName>
+        <externalId>false</externalId>
+        <label>LastModifiedBy</label>
+        <length>255</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>LastModifiedDate__c</fullName>
+        <label>LastModifiedDate</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>DateTime</type>
+    </fields>
+    <fields>
         <fullName>PRM_Account_Id__c</fullName>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
@@ -247,10 +266,22 @@
     <fields>
         <fullName>PRM_Reason_Text__c</fullName>
         <label>Reason Text</label>
+        <length>131072</length>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PRM_ResponseDate__c</fullName>
+        <externalId>false</externalId>
+        <label>ResponseDate</label>
+        <length>255</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
-        <type>TextArea</type>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>PRM_Response_Txt__c</fullName>
@@ -267,7 +298,7 @@
         <fullName>PRM_View_History__c</fullName>
         <description>This is used to navigate to the Profile Response</description>
         <externalId>false</externalId>
-        <formula>HYPERLINK(&quot;/&quot; &amp; Id, &apos;View History&apos;, &quot;_blank&quot;)</formula>
+        <formula>HYPERLINK(&quot;/&quot; &amp; Id , &apos;View History&apos;, &quot;_blank&quot;)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>View History</label>
         <required>false</required>
@@ -292,13 +323,16 @@
     <listViews>
         <fullName>All</fullName>
         <columns>PRM_Account_Id__c</columns>
-        <columns>PRM_Contact_Id__c</columns>
         <columns>PRM_Profile_Questions_Id__c</columns>
-        <columns>PRM_Profile_Answer_Id__c</columns>
         <columns>PRM_Response_Txt__c</columns>
         <columns>NAME</columns>
-        <columns>CREATEDBY_USER</columns>
         <columns>LAST_UPDATE</columns>
+        <columns>CREATEDBY_USER</columns>
+        <columns>CREATED_DATE</columns>
+        <columns>PRM_Question_Display_Text__c</columns>
+        <columns>PRM_Reason_Text__c</columns>
+        <columns>LastModifiedBy__c</columns>
+        <columns>LastModifiedDate__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -317,5 +351,13 @@
     </recordTypes>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Disable_Points</fullName>
+        <active>false</active>
+        <errorConditionFormula>AND(PRM_Account_Id__r.Core_Account_ID__c!=null,
+PRM_Question_Display_Text__c==&apos;Branded Point earning excluded&apos;,(PRIORVALUE(PRM_Response_Txt__c)=&apos;True&apos;),
+ISCHANGED(PRM_Response_Txt__c))</errorConditionFormula>
+        <errorMessage>You can not edit this flag</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

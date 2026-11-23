@@ -1,0 +1,13 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="12">
+            <nav class="slds-p-around_medium slds-m-bottom_small">
+                <lightning-tabset>
+                    <template for:each={navItems} for:item="items">
+                        <lightning-tab label={items.label} key={items.value} value={items.value} onactive={navigateToPage}></lightning-tab>
+                    </template>
+                </lightning-tabset>
+            </nav>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -8,6 +8,7 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Sooriya     08/18/2021                   Test class of PSS_listViewController
 *****************************************************************************************************************************************/
+/*IPA2.0: US-TWC729-7976*/
 @isTest
 public class PSS_listViewController_Test {
     
@@ -15,7 +16,6 @@ public class PSS_listViewController_Test {
      public static void listValuesTest(){
 
          Test.startTest();
-         /*IPA2.0: US-TWC729-7976*/
          /*Map<String,object> listReturn = PSS_listViewController.listValues('ArdiraSurvey__Survey_Result__c');
          system.assertNotEquals(listReturn.get('listViewWrapper'), Null,'List View is Not Null');*/
          Map<String,object> listReturn2 = PSS_listViewController.listValues('PMP_Partner_offering__c');

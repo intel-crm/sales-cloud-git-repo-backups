@@ -417,7 +417,40 @@ if(component.get("v.showBlockedContact")==false){
 
         let emailId = component.find("emailId");
         let regExpEmailformat = $A.get("$Label.c.PRM_ContactEmail_Regex");
-   
+    //    //blockedContact
+    //    // let blockedContact=component.get("c.getBlockedContact")
+    //    let action = component.get("c.getBlockedContact");
+
+            
+    //    action.setParams({
+    //        emailId: component.get("v.emailId")
+    //    });
+
+       
+       
+    //    action.setCallback(this, function (data) {
+    //        var state = data.getState();
+    //        if (component.isValid() && state === "SUCCESS") {
+    //            let result = data.getReturnValue();
+    //            console.log('result' + JSON.stringify(result));
+
+    //            if (result != null) {
+    //               component.set("v.blockedContact",result);
+    //               if(component.get("v.blockedContact") != true){
+                    
+    //                component.set("v.showBlockedContact", true);
+    //                let toastEvent = $A.get("e.force:showToast");
+    //                toastEvent.setParams({
+    //                    "type": "warning",
+    //                    "message": "Above contact is blocked"
+    //                });
+    //                toastEvent.fire();
+    //                component.find("nextBtn").set("v.disabled", true);
+    //               }
+    //            }
+    //        }
+    //    });
+    //    $A.enqueueAction(action);
 
         
         if ((component.get("v.accName") != null && component.get("v.accName") != '') &&
@@ -551,9 +584,9 @@ if(component.get("v.showBlockedContact")==false){
             "type": "error",
             "mode": "sticky",
             "message": "Required message",
-            "messageTemplate": $A.get("$Label.c.PRM_UCD_AdminRegErr"),
+            "messageTemplate":"New account creation is restricted through {0} registration. You can either reuse an account from the same page or initiate creating a new account using the SBR process. To Create New Account {1}",
             "messageTemplateData":["Admin",{
-                url: $A.get("$Label.c.PRM_UCD_ClickHere"),
+                url: "/lightning/n/New_Account_SBR",
                 label:"click here"
             }]
         });

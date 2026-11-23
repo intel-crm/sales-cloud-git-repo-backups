@@ -11,10 +11,10 @@ implements Database.Batchable<SObject>, Database.Stateful {
     global Database.QueryLocator start(Database.BatchableContext bc) {
         
         DateTime lastSuccessfulRun;
-        Integer batchExecutionInterval = Integer.ValueOf(System.Label.PMP_MPDQBatch_ExecutionHours);
+        Integer batchExecutionInterval = 12;//Integer.ValueOf(System.Label.PMP_MPDQBatch_ExecutionHours);
         DateTime batchExecutionHours = System.now().addHours(-batchExecutionInterval);        
         List<AsyncApexJob> lastBatchRun = [SELECT CompletedDate FROM AsyncApexJob WHERE ApexClass.Name ='PMP_MPDQBatchFix' AND Status = :System.Label.PRM_AsyncStatus ORDER BY CompletedDate DESC LIMIT 1];
-        String excludedUserName = System.Label.PMP_MPDQBatchString1;        
+        String excludedUserName = 'IPA Data Migration User';//System.Label.PMP_MPDQBatchString1;        
         Boolean applyUserFilter = String.isNotBlank(excludedUserName) && excludedUserName != '__IGNORE__';
         
         String query ='SELECT Id, PRM_Account_Id__c, PRM_Account_Id__r.Id FROM PRM_AccountChannelMembership__c WHERE PRM_Account_Id__r.RecordType.DeveloperName = \'Core_Partner_Account_Group\' ';
@@ -29,6 +29,8 @@ implements Database.Batchable<SObject>, Database.Stateful {
         if (applyUserFilter) {
             query += 'AND LastModifiedBy.Name != :excludedUserName ';
         }
+        
+        System.debug('PMP_MPDQBatchFix SOQL => ' + query);
         
         return Database.getQueryLocator(query);
     }
@@ -67,55 +69,93 @@ EXECUTE
         List<PMP_OPID_MPI_Rel__c> allRels = [SELECT Id, Is_Active__c,CreatedDate, LastModifiedDate, PMP_One_Partner_ID__c,PMP_Marketing_Profile_Id__c,PMP_RelLastDeactivated__c FROM PMP_OPID_MPI_Rel__c
                                              WHERE PMP_Marketing_Profile_Id__c IN :publishedCompanyIds /*AND Is_Active__c = true*/];
         Map<Id,PMP_OPID_MPI_Rel__c> relIdMap = new Map<Id,PMP_OPID_MPI_Rel__c>();
-        
-        
+        //optimisation Loop1
+        /*
+for(PMP_OPID_MPI_Rel__c rel : allRels){
+relIdMap.put(rel.Id, rel);
+}*/
         // ✅ NEW: Bulk fetch Is_Active__c history once
         Set<Id> relIds = new Set<Id>();
+        //optimisation Loop2
+        /*for (PMP_OPID_MPI_Rel__c r : allRels) {
+if (r.PMP_One_Partner_ID__c != null /*&& r.Is_Active__c==true*///) {               
+        /* if (!accIdToPAGs.containsKey(r.PMP_One_Partner_ID__c)) {
+accIdToPAGs.put(r.PMP_One_Partner_ID__c, new List<PMP_OPID_MPI_Rel__c>());
+}               
+accIdToPAGs.get(r.PMP_One_Partner_ID__c).add(r);
+}
+relIds.add(r.Id);
+}*/
+        system.debug('accIdToPAGs---'+accIdToPAGs);
+        
         //This map stores the  MPI ID, List<PAGs>
         Map<Id, List<PMP_OPID_MPI_Rel__c>> companyToRels = new Map<Id, List<PMP_OPID_MPI_Rel__c>>();
+        //optimisation LOOp3
+        /*for (PMP_OPID_MPI_Rel__c r : allRels) {
+if (!companyToRels.containsKey(r.PMP_Marketing_Profile_Id__c)) {
+companyToRels.put(r.PMP_Marketing_Profile_Id__c,new List<PMP_OPID_MPI_Rel__c>());
+}
+companyToRels.get(r.PMP_Marketing_Profile_Id__c).add(r);
+}    */
         for (PMP_OPID_MPI_Rel__c rel : allRels) {                    
             relIdMap.put(rel.Id, rel);                   
             relIds.add(rel.Id);                    
             if (rel.PMP_One_Partner_ID__c != null) {                    
-                if (!accIdToPAGs.containsKey(rel.PMP_One_Partner_ID__c)) {
-                    accIdToPAGs.put(rel.PMP_One_Partner_ID__c,new List<PMP_OPID_MPI_Rel__c>());
+                if (accIdToPAGs.get(rel.PMP_One_Partner_ID__c) == null) {
+                    accIdToPAGs.put(
+                        rel.PMP_One_Partner_ID__c,
+                        new List<PMP_OPID_MPI_Rel__c>()
+                    );
                 }                        
-	accIdToPAGs.get(rel.PMP_One_Partner_ID__c).add(rel);
-	            }
+                accIdToPAGs.get(rel.PMP_One_Partner_ID__c).add(rel);
+            }
             
-            if (!companyToRels.containsKey(rel.PMP_Marketing_Profile_Id__c)) {
+            if (companyToRels.get(rel.PMP_Marketing_Profile_Id__c) == null) {
                 companyToRels.put(rel.PMP_Marketing_Profile_Id__c,new List<PMP_OPID_MPI_Rel__c>());
             }                  
             companyToRels.get(rel.PMP_Marketing_Profile_Id__c).add(rel);
         }
-       
         Map<Id, PMP_OPID_MPI_Rel__c> accToLatestRel = new Map<Id, PMP_OPID_MPI_Rel__c>();
-       // Map<Id, Datetime> accToLatestDate = new Map<Id, Datetime>();
+
 for (PMP_OPID_MPI_Rel__c rel : allRels) {
+
     if (rel.PMP_One_Partner_ID__c == null || rel.Is_Active__c) {
         continue;
     }
-    PMP_OPID_MPI_Rel__c existing = accToLatestRel.get(rel.PMP_One_Partner_ID__c);
+
+    PMP_OPID_MPI_Rel__c existing =
+        accToLatestRel.get(rel.PMP_One_Partner_ID__c);
+
     if (existing == null) {
         accToLatestRel.put(rel.PMP_One_Partner_ID__c, rel);
         continue;
     }
+
     Datetime existingDt = existing.PMP_RelLastDeactivated__c;
     Datetime currentDt = rel.PMP_RelLastDeactivated__c;
+
     // Prefer non-null deactivation timestamp
     if (existingDt == null && currentDt != null) {
         accToLatestRel.put(rel.PMP_One_Partner_ID__c, rel);
     }
+
     // Latest timestamp wins
-    else if (existingDt != null && currentDt != null && currentDt > existingDt) {
+    else if (existingDt != null &&
+             currentDt != null &&
+             currentDt > existingDt) {
         accToLatestRel.put(rel.PMP_One_Partner_ID__c, rel);
     }
+
     // Fallback if both timestamps are null
-    else if (existingDt == null && currentDt == null && rel.CreatedDate > existing.CreatedDate) {
+    else if (existingDt == null &&
+             currentDt == null &&
+             rel.CreatedDate > existing.CreatedDate) {
         accToLatestRel.put(rel.PMP_One_Partner_ID__c, rel);
     }
 }
-System.debug('accToLatestRel = ' + accToLatestRel);    
+
+System.debug('accToLatestRel = ' + accToLatestRel);
+        
         Map<Id, Set<Id>> companyToAccountIds = new Map<Id, Set<Id>>();
         Set<Id> allAccountIds = new Set<Id>();
         for (Id cid : companyToRels.keySet()) {
@@ -148,7 +188,9 @@ System.debug('accToLatestRel = ' + accToLatestRel);
         List<SObject> companyUpdates = new List<SObject>();
         List<SObject> workingCopyUpdates = new List<SObject>();
         List<PMP_OPID_MPI_Rel__c> relUpdates = new List<PMP_OPID_MPI_Rel__c>();
-        List<Id> workingCopyIds = new List<Id>();
+        Set<Id> queuedRelIds = new Set<Id>();
+        Set<Id> workingCopyIds = new Set<Id>();
+        //Map<Id,SObject> companyPcMap = new Map<Id,SObject>();
         Map<Id,PMP_Company__c> companyPcMap = new Map<Id,PMP_Company__c>();
         Map<String, Integer> tierRank = new Map<String, Integer>{'Member' => 1, 'Gold' => 2, 'Titanium' => 3,'Partner' => 4, 'Prestige' => 5};
             Map<Integer, String> rankToTier = new Map<Integer, String>{1 => 'Member', 2 => 'Gold', 3 => 'Titanium', 4 => 'Partner', 5 => 'Prestige'};
@@ -186,93 +228,52 @@ System.debug('accToLatestRel = ' + accToLatestRel);
                     Boolean inactivateMPI = false;
                     boolean inactiveOPIDMPIREL=false;
                     // accIdToPAGs
-                    // Scenario 1- mpi has active acm and active pag 
+                    if(hasActiveACM  && hasAnyActivePAG && pub.PMP_Benefit_Update_Ind__c){ 
+                        pub.PMP_Benefit_Update_Ind__c = false;
+                        changed = true;
+                    }
                     
-                    //scneario 2 - active acm no active pag
-                    /* else if(hasActiveACM && !hasAnyActivePAG){                      
-for (Id accId : accIds) {                          
-// Account must have approved ACM
-if (!acctToActiveACMs.containsKey(accId)) {
-continue;
-}                          
-// Check whether account already has an active PAG anywhere
-Boolean hasActivePagForAccount = false;
-
-if (accIdToPAGs.containsKey(accId)) {                             
-for (PMP_OPID_MPI_Rel__c rel : accIdToPAGs.get(accId)) {                                   
-if (rel.Is_Active__c) {
-hasActivePagForAccount = true;
-break;
-}
-}
-}
-
-if (hasActivePagForAccount) {
-continue;
-}
-
-PMP_OPID_MPI_Rel__c latestRel = accToLatestRel.get(accId);
-
-if (latestRel == null || latestRel.Is_Active__c) {
-continue;
-}
-
-Boolean alreadyQueued = false;
-for (PMP_OPID_MPI_Rel__c updRel : relUpdates) {
-if (updRel.Id == latestRel.Id) { alreadyQueued = true;
-break;
-}}
-if (!alreadyQueued) {
-latestRel.Is_Active__c = true;
-relUpdates.add(latestRel);
-logEntryMsgString +='\nReactivated latest deactivated PAG '
-+ latestRel.Id + ' for Account ' + accId;
-}
-}
-} */
-                    if(hasActiveACM){                    
-                        for (Id accId : accIds) {                           
+                    else if(hasActiveACM && !hasAnyActivePAG){
+                        
+                        for (Id accId : accIds) {
+                            
                             // Account must have approved ACM
                             if (!acctToActiveACMs.containsKey(accId)) {
                                 continue;
-                            }                           
-                            // Check if THIS ACCOUNT already has an active PAG
-                            Boolean hasActivePagForAccount = false;                            
+                            }
+                            
+                            // Check whether account already has an active PAG anywhere
+                            Boolean hasActivePagForAccount = false;
+                            
                             if (accIdToPAGs.containsKey(accId)) {
+                                
                                 for (PMP_OPID_MPI_Rel__c rel : accIdToPAGs.get(accId)) {
+                                    
                                     if (rel.Is_Active__c) {
                                         hasActivePagForAccount = true;
                                         break;
                                     }
                                 }
-                            }                          
-                            // Account already has active PAG, skip
+                            }
+                            
                             if (hasActivePagForAccount) {
                                 continue;
-                            }                       
-                            // No active PAG for this account, activate latest deactivated one
-                            PMP_OPID_MPI_Rel__c latestRel = accToLatestRel.get(accId);                          
+                            }
+                            
+                            PMP_OPID_MPI_Rel__c latestRel = accToLatestRel.get(accId);
+                            
                             if (latestRel == null || latestRel.Is_Active__c) {
                                 continue;
-                            }                           
-                            Boolean alreadyQueued = false;
-                            for (PMP_OPID_MPI_Rel__c updRel : relUpdates) {
-                                if (updRel.Id == latestRel.Id) {
-                                    alreadyQueued = true;
-                                    break;
-                                }
-                            }                          
-                            if (!alreadyQueued) {
+                            }
+                            
+                            if (!queuedRelIds.contains(latestRel.Id)) {
                                 latestRel.Is_Active__c = true;
-                                relUpdates.add(latestRel);                         
-                                logEntryMsgString +='\nReactivated latest deactivated PAG ' + latestRel.Id +' for Account ' + accId;
+                                relUpdates.add(latestRel);
+                                queuedRelIds.add(latestRel.Id);                                
+                                logEntryMsgString += '\nReactivated latest deactivated PAG '+ latestRel.Id + ' for Account ' + accId;
                             }
                         }
-                    }
-                    else if(hasActiveACM  && hasAnyActivePAG && pub.PMP_Benefit_Update_Ind__c){ 
-                        pub.PMP_Benefit_Update_Ind__c = false;
-                        changed = true;
-                    }
+                    }    
                     /*  else if(hasActiveACM  && !hasAnyActivePAG){
 //make the last associated mpi active
 // Track if any active PAG exists across ALL companies for involved accounts
@@ -385,7 +386,8 @@ APPLY MPI CHANGE
                         }
                         
                         String finalTier = rankToTier.get(highestRank);
-                       
+                        system.debug('finalTier----'+finalTier);
+                        system.debug('pub.PMP_IPA_Badge_Tier_Txt__c=-='+pub.PMP_IPA_Badge_Tier_Txt__c);
                         if (pub.PMP_IPA_Badge_Tier_Txt__c != finalTier) {
                             pub.PMP_IPA_Badge_Tier_Txt__c = finalTier;
                             changed = true;
@@ -398,7 +400,8 @@ APPLY MPI CHANGE
                             pub.PMP_Partner_Program_nm__c = partnerProgram;
                             changed = true;
                         }
-                       
+                        system.debug('pub.PMP_Account_Program_Membership__c=='+pub.PMP_Account_Program_Membership__c);
+                        system.debug('programMembership====='+programMembership);
                         /*  if (pub.PMP_Account_Program_Membership__c != programMembership) {
 pub.PMP_Account_Program_Membership__c = programMembership;
 changed = true;
@@ -420,14 +423,17 @@ changed = true;
                     if (!inactiveOPIDMPIREL && (IfInactivatedMPI || changed)) {
                         companyUpdates.add(pub);
                         companyPcMap.put(pub.id,pub);
+                        system.debug('companyUpdates.add(pub);'+companyUpdates);
                         workingCopyIds.add(pub.PMP_Working_Copy_Id__r.id);
                     }
                 } 
+        system.debug('workingCopyUpdatess1'+workingCopyUpdates);
         //GET THE WORKING COPIES FOR UPDATED PUBLISHED MPIS AND MAKE CHANGE ON THEM AS WELL
         List<PMP_Company__c> CompanyWCList = New List<PMP_Company__c>();
         CompanyWCList = [Select Id,PMP_Company_Lifecycle_Status_Nm__c,PMP_IPA_Badge_Tier_Txt__c,PMP_Partner_Program_nm__c,PMP_Account_Program_Membership__c,PMP_Benefit_Update_Ind__c,PMP_Published_Copy_Id__c,
                          PMP_Published_Copy_Id__r.PMP_IPA_Badge_Tier_Txt__c,PMP_Published_Copy_Id__r.PMP_Partner_Program_nm__c,PMP_Published_Copy_Id__r.PMP_Account_Program_Membership__c,PMP_Published_Copy_Id__r.PMP_Benefit_Update_Ind__c from PMP_Company__c where Id IN :workingCopyIds];
         for(PMP_Company__c wc:CompanyWCList){
+            system.debug('companyUpdates.add(pub)11;'+companyPcMap);
             if (companyPcMap.get(wc.PMP_Published_Copy_Id__c) != null) {
                 // PMP_Company__c wc = new PMP_Company__c( Id = pub.PMP_Working_Copy_Id__r.id);
                 if(wc.PMP_Company_Lifecycle_Status_Nm__c=='Approved' || wc.PMP_Company_Lifecycle_Status_Nm__c=='Draft'){                  
@@ -442,6 +448,7 @@ changed = true;
                         wc.PMP_Benefit_Update_Ind__c = pubCompany.PMP_Benefit_Update_Ind__c;
                     }
                     
+                    system.debug('workingCopyUpdatess'+workingCopyUpdates);
                     workingCopyUpdates.add(wc);
                 }
             }
@@ -462,7 +469,14 @@ changed = true;
     private void handleDml(List<SObject> records, String objectName) {
         if (records.isEmpty()) return;
         
-        Database.SaveResult[] results = Database.update(records, false);
+        //Database.SaveResult[] results = Database.update(records, false);
+        
+        //ATHR 
+        Map<Id,SObject> uniqueMap=new Map<Id,SObject>();       
+        for(SObject sObj:records){
+            uniqueMap.put(sObj.id,sObj);
+        }
+        Database.SaveResult[] results=Database.update(uniqueMap.values(),false);
         
         String message = 'Time: ' + System.now();
         for (Database.SaveResult sr : results) {
@@ -556,7 +570,7 @@ changed = true;
     global void finish(Database.BatchableContext bc) {
         Decimal threshold;
         Map<String, Map<String, Object>> dqObjectsMap = getCustomMetadataRecords();
-      
+        system.debug('dqObjectsMap===='+dqObjectsMap);
         if(dqObjectsMap != null && !dqObjectsMap.isEmpty()){
             if(dqObjectsMap.containsKey('Threshold')){
                 threshold = Decimal.valueOf(String.valueOf(dqObjectsMap.get('Threshold').get('Threshold__c')));

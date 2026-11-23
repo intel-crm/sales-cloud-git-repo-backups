@@ -3,28 +3,12 @@
     <label>Retail - EMEA</label>
     <protected>false</protected>
     <values>
-        <field>Core_MDF_Budget_Type_Abbr_txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_Budget_Type_txt__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
         <field>Core_MDF_Check_SubGeo__c</field>
         <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
-        <field>Core_MDF_Group_Name_RO__c</field>
-        <value xsi:type="xsd:string">Core_MDF_CCP_Int_Retail_EMEA_RO</value>
-    </values>
-    <values>
         <field>Core_MDF_Group_Name__c</field>
         <value xsi:type="xsd:string">Core_MDF_CCP_Int_Retail_EMEA</value>
-    </values>
-    <values>
-        <field>Core_MDF_Payment_Admin_Queue_Id__c</field>
-        <value xsi:type="xsd:string">00G3b000003gfQxEAI</value>
     </values>
     <values>
         <field>Core_MDF_Program__c</field>
@@ -36,10 +20,6 @@
     </values>
     <values>
         <field>Core_MDF_Sub_Region__c</field>
-        <value xsi:nil="true"/>
-    </values>
-    <values>
-        <field>Core_MDF_Type_txt__c</field>
         <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

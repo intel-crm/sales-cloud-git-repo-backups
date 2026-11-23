@@ -55,14 +55,6 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
-    <fields>
-        <fullName>Core_Run_As_Flow__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field typically contains a boolean value its purpose is to guide the behavior of the process or system.</description>
-        <label>Run As Flow</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
     <label>Core AAQ Profile Handler</label>
     <listViews>
         <fullName>All</fullName>

@@ -1,0 +1,68 @@
+{
+  "appPageId" : "eab14069-e565-4f42-a34d-f7dbaa3f7007",
+  "componentName" : "siteforce:dynamicLayout",
+  "dataProviders" : [ ],
+  "id" : "9ad7b0ec-9a2f-49d3-82d4-6710913deebd",
+  "label" : "newsbcsearchpoc",
+  "regions" : [ {
+    "components" : [ {
+      "componentAttributes" : {
+        "background" : "background: rgba(0,0,0,0)",
+        "backgroundOverlay" : "rgba(0,0,0,0.5)",
+        "contentAreaWidth" : 100,
+        "sectionConfig" : {
+          "UUID" : "1c7c7e0f-190c-4048-ad8b-5578894e554b",
+          "columns" : [ {
+            "UUID" : "fece6688-e787-4eb0-9a62-1491856db37e",
+            "columnKey" : "1",
+            "columnName" : "Column 1",
+            "columnWidth" : "12",
+            "seedComponents" : [ ]
+          } ]
+        },
+        "sectionHeight" : 300
+      },
+      "componentName" : "forceCommunity:section",
+      "id" : "1c7c7e0f-190c-4048-ad8b-5578894e554b",
+      "regions" : [ {
+        "components" : [ {
+          "componentAttributes" : { },
+          "componentName" : "c:prm_SelfReg",
+          "id" : "ceadf772-9eb3-4fe0-96ee-d33352080c72",
+          "renderPriority" : "NEUTRAL",
+          "renditionMap" : { },
+          "type" : "component"
+        } ],
+        "id" : "fece6688-e787-4eb0-9a62-1491856db37e",
+        "regionLabel" : "Column 1",
+        "regionName" : "1",
+        "renditionMap" : { },
+        "type" : "region"
+      } ],
+      "renderPriority" : "NEUTRAL",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "eac4d3f4-d81b-47f6-bcdb-09ab488b14cf",
+    "regionName" : "content",
+    "type" : "region"
+  }, {
+    "components" : [ {
+      "componentAttributes" : {
+        "customHeadTags" : "",
+        "description" : "",
+        "title" : "newsbcsearchpoc"
+      },
+      "componentName" : "forceCommunity:seoAssistant",
+      "id" : "7e4f30e9-215d-4036-8875-5c1efc802c41",
+      "renditionMap" : { },
+      "type" : "component"
+    } ],
+    "id" : "27998e65-6427-4ced-8e0e-945098545523",
+    "regionName" : "sfdcHiddenRegion",
+    "type" : "region"
+  } ],
+  "themeLayoutType" : "Inner",
+  "type" : "view",
+  "viewType" : "custom-newsbcsearchpoc"
+}

@@ -4,6 +4,6 @@
     <protected>false</protected>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">false</value>
+        <value xsi:type="xsd:string">true</value>
     </values>
 </CustomMetadata>

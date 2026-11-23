@@ -1,0 +1,107 @@
+<template>
+    <div if:true={showModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <div class="slds-is-relative modalDivTopMargin">
+                    <div if:true={isLoading}>
+                        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+                    </div>
+                    <!-- Modal/Popup Box LWC header here -->
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title={label.EPUM_Close} onclick={closeModal}>
+                            <lightning-icon icon-name="utility:close" alternative-text="close" variant="inverse"
+                                size="small"></lightning-icon>
+                            <span class="slds-assistive-text">{label.EPUM_Close}</span>
+                        </button>
+                        <h3 class="slds-hyphenate">{label.EPUM_InviteAUser}</h3>
+                    </header>
+                    <!-- Modal/Popup Box LWC body starts here -->
+                    <div class="slds-modal__content slds-p-around_medium" style="height: 65%;" id="modal-content-id-1">
+                        <div if:true={errMessage}
+                            class="slds-grid slds-box slds-box_small slds-theme_alert-texture slds-theme_error">
+                            <div class="slds-col">
+                                <lightning-icon icon-name="utility:error" alternative-text="error" variant="inverse"
+                                    color="white" size="small"></lightning-icon>
+                                <span class="slds-text-body–regular slds-p-left_medium">
+                                    {errMessage}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="slds-form">
+                            <div class="slds-grid slds-gutters slds-wrap">
+                                <div class="topMargin slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                    <lightning-input data-id="contactForm" label={label.EPUM_FirstName} name="firstname"
+                                        value={newContact.FirstName} onchange={onChange} required></lightning-input>
+                                </div>
+                                <div class="topMargin slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                    <lightning-input data-id="contactForm" label={label.EPUM_LastName} name="lastname"
+                                        value={newContact.LastName} onchange={onChange} required></lightning-input>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-gutters slds-wrap ">
+                                <div class="topMargin slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                    <lightning-input data-id="contactForm" label={label.EPUM_WorkEmail} type="email"
+                                        name="email" disabled value={newContact.Email} required></lightning-input>
+                                </div>
+                                <div class="topMargin slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                    <!--<lightning-combobox name="Country" label={label.EPUM_Country} onchange={onChange}
+                                        value={newContact.Email} options={countryPicklistValues} required>
+                                    </lightning-combobox>-->
+                                    <span class="customlabel"><span class="star">*</span>
+                                        {label.EPUM_Country}</span>
+                                    <select class="slds-select selectClass" name="Country" required onchange={onChange}>
+                                        <option key={countryPicklist} value="Select an Option">
+                                            {label.EPUM_SelectOption}</option>
+                                        <template for:each={countryPicklistValues} for:item="countryPicklist"
+                                            for:index="index">
+                                            <option key={countryPicklist} value={countryPicklist.value}>
+                                                {countryPicklist.label}</option>
+                                        </template>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="slds-grid slds-gutters slds-wrap ">
+                                <div class="topMargin slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                    <!--<lightning-combobox
+                                name="Preferred Language"
+                                label={label.EPUM_PreferredLanguage}
+                                onchange={onChange}
+                                value={newContact.Core_Preferred_Language__c}
+                                options={preferredLanguagePicklistValues}
+                                required
+                                 ></lightning-combobox>-->
+                                    <span class="customlabel"><span class="star">*</span>
+                                        {label.EPUM_PreferredLanguage}</span>
+                                    <select class="slds-select selectClass" aria-label={label.EPUM_PreferredLanguage}
+                                        name="Preferred Language" required onchange={onChange}>
+                                        <template for:each={preferredLanguagePicklistValues}
+                                            for:item="preferredLanguage" for:index="index">
+                                            <option key={preferredLanguage} value={preferredLanguage.value}>
+                                                {preferredLanguage.label}</option>
+                                        </template>
+                                    </select>
+                                </div>
+
+                                <div class="slds-p-horizontal_x-small slds-m-top_x-small slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-2 slds-large-size_1-of-2"></div>
+                            </div>
+                            <div class="slds-p-bottom_medium slds-p-top_medium">{label.EPUM_InviteUserMsg}</div>
+                        </div>
+                    </div>
+                    <!-- Modal/Popup Box LWC footer starts here -->
+                    <footer class="slds-modal__footer">
+                        <div class="slds-grid slds-wrap slds-grid_align-end">
+                        <button class="slds-button slds-button_neutral footerButtonCancel cancel" onclick={closeModal}
+                            title={label.EPUM_Cancel}>{label.EPUM_Cancel}</button>
+                        <button class="slds-button slds-button_brand sendInvite footerButtonSend"
+                            onclick={submitDetails} title={label.EPUM_SendInvite}>{label.EPUM_SendInvite}</button>
+
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </div>
+</template>

@@ -171,6 +171,8 @@
         <fullName>All</fullName>
         <columns>NAME</columns>
         <columns>PMP_Category_Id__c</columns>
+        <columns>LAST_UPDATE</columns>
+        <columns>OBJECT_ID</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>

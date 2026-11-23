@@ -39,13 +39,20 @@
             <translation><!-- Inactive --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Intel Support Team Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- An Intel Support Team member cannot be made Inactive if currently the Project Owner. --></errorMessage>
         <name>Restrict_PrivateProjOwner_Inactive_IST</name>
     </validationRules>
     <webLinks>
-        <label><!-- Add_Intel_Support_Team_Members --></label>
-        <name>Add_Intel_Support_Team_Members</name>
+        <label><!-- Core_IPS_Add_Intel_Support_Team_Members --></label>
+        <name>Core_IPS_Add_Intel_Support_Team_Members</name>
     </webLinks>
 </CustomObjectTranslation>

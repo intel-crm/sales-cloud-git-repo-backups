@@ -34,7 +34,7 @@ https://signinpp.intel.com/PasswordUpdate?var={!PRM_Registration_Request__c.PRM_
 
 
 此消息作为英特尔® 可编程解决方案事业集团与您的FPGA软件和/或 IP许可权相关的重要业务通信发送。
-© {!$Label.PRM_CurrentYear} 英特尔公司
+© {!Contact.Core_Current_Year__c} 英特尔公司
 英特尔公司, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.cn
 隐私条款&amp;verbar;Cookie</textOnly>
     <type>custom</type>

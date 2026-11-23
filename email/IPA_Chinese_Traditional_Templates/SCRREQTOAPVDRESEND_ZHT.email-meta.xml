@@ -5,13 +5,13 @@
     <encodingKey>UTF-8</encodingKey>
     <name>SCRREQTOAPVDRESEND_ZHT</name>
     <style>none</style>
-    <subject>完成您的 Intel® 夥伴聯盟申請</subject>
+    <subject>Complete your Intel® Partner Alliance application</subject>
     <textOnly>您就快達到目標了！
 
 
 
 
-{!PRM_Registration_Request__c.PRM_First_Name__c},
+{!PRM_Registration_Request__c.PRM_First_Name__c}，
 
 感謝您提出申請。{!PRM_Registration_Request__c.PRM_Email_ID__c} 的設定檔已建立，您只要再完成幾個步驟，即可成為 Intel® 夥伴聯盟的一員。
 
@@ -23,8 +23,7 @@
 
 無法存取上方的連結？
 
-https://www.intel.com/content/www/tw/zh/secure/partner/forms/ipa-account-search.html。
-
+https://wcm-ciqa.intel.com/content/www/tw/zh/secure/partner/forms/ipa-account-search.html。
 如果您有任何疑問，請來信至 programs@intel.com 與我們聯絡。
 
 謝謝您，
@@ -33,8 +32,8 @@ https://www.intel.com/content/www/tw/zh/secure/partner/forms/ipa-account-search.
 
 
 此訊息作為您目前與 Intel® 夥伴聯盟關係相關的重要商業通訊發送給您。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation，2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA  www.intel.com
 隱私權 | Cookies</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>

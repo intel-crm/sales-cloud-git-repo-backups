@@ -1,0 +1,16 @@
+iframe {
+  border: 0;
+  height: 7rem;
+  overflow: hidden;
+  transition: height .3s linear;
+}
+
+.error,
+.preview {
+  background-color: var(--lightestGray);
+}
+
+.error lightning-icon {
+  opacity: .75;
+  --iconColor: var(--redError, red);
+}

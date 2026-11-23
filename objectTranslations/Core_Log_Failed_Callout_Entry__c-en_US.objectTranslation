@@ -82,5 +82,9 @@
         <label><!-- Record Id --></label>
         <name>Core_sObjectId__c</name>
     </fields>
+    <fields>
+        <label><!-- Parent Id --></label>
+        <name>Parent_Id__c</name>
+    </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

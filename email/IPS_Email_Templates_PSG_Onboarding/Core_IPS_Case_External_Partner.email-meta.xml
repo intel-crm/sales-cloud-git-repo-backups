@@ -2,7 +2,7 @@
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
     <available>true</available>
     <encodingKey>UTF-8</encodingKey>
-    <letterhead>IPS_Letterhead_External</letterhead>
+    <letterhead>IPS_Letterhead</letterhead>
     <name>Core IPS Case External Partner</name>
     <style>freeForm</style>
     <subject>{!Case.Core_IPS_email_text__c } {!Case.CaseNumber} - {!LEFT(Case.core_Account_Name__c,50)} {!if(Case.Core_IPS_Restricted_Secret_Content__c,&quot;&quot;,&quot; - &quot; &amp; LEFT(Case.Subject, 120))} [{!Case.Id}x3]</subject>

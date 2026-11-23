@@ -10,34 +10,34 @@
 *****************************************************************************************************************************************/
 @isTest
 public class MarketplaceImageUploaderTest {
-    
-    @isTest
-    static void testdeleteImage(){
+     
+     @isTest
+     static void testdeleteImage(){
       
-       Account acc1 = PMP_TestDataUtility.createIntelAccount('TestAccount1', PMP_TestDataUtility.intel_Account_Record_Type, true);
+        Account acc1 = PMP_TestDataUtility.createIntelAccount('TestAccount1', PMP_TestDataUtility.intel_Account_Record_Type, true);
         
-       Contact con1 = PMP_TestDataUtility.createContact(acc1.id,true);
+        Contact con1 = PMP_TestDataUtility.createContact(acc1.id,true);
        
-       PMP_Company__c cmp1 = PMP_TestDataUtility.createCompanyInformation('TestCompany1', acc1.Id, true);
+        PMP_Company__c cmp1 = PMP_TestDataUtility.createCompanyInformation('TestCompany1', acc1.Id, true);
                                 
     //    PMP_Partner_Offering__c offering1 = PMP_TestDataUtility.createOffering('TestDuplicateOffering1','Public Content', 
     //                                                                              'TestDuplicate',cmp1.Id, true,'Draft','');
                                                                              
-       List<contentDocument> contentDocuments=PMP_TestDataUtility.createContentDocument(true);
+        List<contentDocument> contentDocuments=PMP_TestDataUtility.createContentDocument(true);
        
-       if(!contentDocuments.isEmpty()){
-            ContentDocumentLink cdl = new ContentDocumentLink();
-            cdl.ContentDocumentId = contentDocuments[0].Id;
-            cdl.LinkedEntityId = cmp1.Id;
-            cdl.ShareType = 'I';
-            cdl.Visibility = 'AllUsers'; 
-            insert cdl;
-            system.assertNotEquals('',MarketplaceImageUploader.getImages(cmp1.Id));
-       }
-       test.startTest();
-       system.assertEquals(true,MarketplaceImageUploader.deleteImage(contentDocuments[0].Id, cmp1.Id));
-        test.stopTest();
-    }
+        if(!contentDocuments.isEmpty()){
+             ContentDocumentLink cdl = new ContentDocumentLink();
+             cdl.ContentDocumentId = contentDocuments[0].Id;
+             cdl.LinkedEntityId = cmp1.Id;
+             cdl.ShareType = 'I';
+             cdl.Visibility = 'AllUsers'; 
+             insert cdl;
+             system.assertNotEquals('',MarketplaceImageUploader.getImages(cmp1.Id));
+        }
+        test.startTest();
+        system.assertEquals(true,MarketplaceImageUploader.deleteImage(contentDocuments[0].Id, cmp1.Id));
+         test.stopTest();
+     }
     
     @isTest
     static void testgetContentDocument(){

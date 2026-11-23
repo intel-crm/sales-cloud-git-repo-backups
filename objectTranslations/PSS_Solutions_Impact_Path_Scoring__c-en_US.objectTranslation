@@ -25,5 +25,12 @@
         <name>PSS_Solution_Scoring__c</name>
         <relationshipLabel><!-- Solutions Impact Path Scorings --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Solutions Select Benefit Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

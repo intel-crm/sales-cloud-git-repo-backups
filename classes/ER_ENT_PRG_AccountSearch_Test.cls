@@ -1,6 +1,5 @@
 @isTest
 public class ER_ENT_PRG_AccountSearch_Test {
-    public static Id accountRecordTypeIntel = Schema.sObjectType.Account.getRecordTypeInfosByName().get('Intel Account').getRecordTypeId();
 
     @isTest 
     public static void DoPostTest_One(){
@@ -112,7 +111,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         cimm.EntitlementName = null;
         
         Test.startTest();
-        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         req.requestURI = 'https://intel--nppdev.lightning.force.com';  // sample Endpoint
         req.httpMethod = 'post';
         RestContext.request = req;
@@ -149,7 +148,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         
         Account acc = new Account();
         acc.name='Test';
-        acc.RecordTypeId = accountRecordTypeIntel;
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
         acc.BillingStreet='700 Chestnut Ridge Rd New';
@@ -158,7 +157,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingState=null;
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-       // acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = '';
         insert acc;
         
@@ -166,7 +165,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b1.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
         
@@ -190,14 +188,13 @@ public class ER_ENT_PRG_AccountSearch_Test {
         prtLegal.PRM_Agreement_Sign_Dt__c = system.today();
         insert prtLegal;
         
-        Account acct = [Select Id,Name,(Select Id,PRM_Account_Id__c,PRM_Partner_Agreement_Id__c,PRM_InActive_Ind__c,PRM_Agreement_Sign_Dt__c,PRM_Partner_Agreement_Id__r.PRM_Channel_Program_Id__r.Name,PRM_Partner_Agreement_Id__r.PRM_InActive_Ind__c FROM AccountLegalAgreementAssociations__r) FROM Account limit 1];
         Test.startTest();
         //Test.setMock(HttpCalloutMock.class, new ER_ENT_PRG_AccountSearchHttpResponse());
         req.requestURI = 'https://intel--nppdev.lightning.force.com';  // sample Endpoint
         req.httpMethod = 'post';
         RestContext.request = req;
         RestContext.response = res; 
-        ER_ENT_PRG_AccountSearch.getAccountLegalAgreements(acct);
+        ER_ENT_PRG_AccountSearch.getAccountLegalAgreements(acc);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');
     }
@@ -209,7 +206,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         
 		Account acc = new Account();
         acc.name='Test';
-        acc.RecordTypeId = accountRecordTypeIntel;
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
         acc.BillingStreet='700 Chestnut Ridge Rd New';
@@ -254,7 +251,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         RestResponse res = new RestResponse();  
          Account acc = new Account();
         acc.name='Test';
-        acc.RecordTypeId = accountRecordTypeIntel;
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
         acc.BillingStreet='700 Chestnut Ridge Rd New';
@@ -263,7 +260,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingState=null;
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = '';
         insert acc;
        // PRM_AccountChannelMembership__c partnRole = new PRM_AccountChannelMembership__c();
@@ -301,7 +298,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         RestResponse res = new RestResponse();  
          Account acc = new Account();
         acc.name='Test';
-        acc.RecordTypeId = accountRecordTypeIntel;
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
         acc.BillingStreet='700 Chestnut Ridge Rd New';
@@ -310,7 +307,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingState=null;
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = '';
         insert acc;
     
@@ -331,11 +328,9 @@ public class ER_ENT_PRG_AccountSearch_Test {
         RestContext.response = res; 
         
         ER_ENT_PRG_AccountSearch.getResponseJSON(lstSrcAccount,'10',countryMap);
-        
         //ER_ENT_PRG_AccountSearch.mapToPartnerRoleInfo(listdata);
         Test.stopTest();
         System.assertEquals('https://intel--nppdev.lightning.force.com', req.requestURI, 'Incorrect URI');
-       
         
     }
     
@@ -465,7 +460,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         Address address = new Address('Magarpatta','Hadapsar','Pune','IND','Maharashtra','02039399');
         Account acc = new Account();
         Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
-        acc.name ='Test FPGA Licensing Account';
+        acc.name ='Test';
         acc.RecordTypeId = intelaccountRT;
         acc.Core_CIM_ID__c = '22213672';
         acc.BillingCountry='USA';
@@ -493,8 +488,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         RestRequest req = new RestRequest(); 
         RestResponse res = new RestResponse();  
         
-        //Address address = new Address('4733 Locust Street Near Vision University','Las Vegas','Las Vegas','','NY','02039399');
-        Address address = new Address('StreetTest',null,null,'IND',null,'560098');
+        Address address = new Address('4733 Locust Street Near Vision University','Las Vegas','Las Vegas','','NY','02039399');
         Core_Country_Code_Mapping__c countryIsoSetting = new Core_Country_Code_Mapping__c ();
         countryIsoSetting.Name='TestName';
         countryIsoSetting.ISO_Code__c='IND';
@@ -502,27 +496,23 @@ public class ER_ENT_PRG_AccountSearch_Test {
         insert countryIsoSetting;
         
         Account acc = new Account();
-        acc.name='Test FPGA Licensing Account';
-        acc.RecordTypeId = accountRecordTypeIntel;
+        acc.name='Test';
+        acc.RecordTypeId = '012o0000000GlzTAAS';
         acc.Core_CIM_ID__c = '22213672';
-        acc.Core_Business_Party_Id__c ='12345';
-        acc.BillingCountryCode='IND';
-        acc.BillingStreet='StreetTest';
-        acc.BillingCity='Mumbai';
-        acc.BillingPostalCode='560098';
-        acc.BillingStateCode='MH';
+        acc.BillingCountry='USA';
+        acc.BillingStreet='700 Chestnut Ridge Rd New';
+        acc.BillingCity='Chestnut Ridge';
+        acc.BillingPostalCode='109776435';
+        acc.BillingState=null;
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = '';
-        acc.Core_MDM_Website__c = 'www.test.com';
         insert acc;
         
         ER_ENT_PRG_AccountSearch.CIMSearchBeforeCreate cim = new ER_ENT_PRG_AccountSearch.CIMSearchBeforeCreate(); 
-        cim.AccountName = 'Test FPGA Licensing Account';
+        cim.AccountName = 'Test';
         cim.AccountAddress = address;
-        cim.AccountAddress.CountryCode2 = 'IND';
-        //cim.AccountAddress.StateCode2 = 'MH';   
         cim.AccountURL = 'www.test.com';
         cim.EmailAddress = 'test@mailinator.com';
         cim.SearchLimit = '10';
@@ -535,7 +525,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         insert ent;
         
         Business_Types__c bt = new Business_Types__c();
-        bt.Name = 'PSG';
+        bt.Name = 'RDC';
         bt.Is_Active__c = true;
         bt.Business_Type_Code__c = 'Test';
         insert bt;
@@ -550,39 +540,11 @@ public class ER_ENT_PRG_AccountSearch_Test {
         //testData.PRM_Entitlement_Id__c = 'Resource & Design Center for Secure Content';
         insert testData;
         //lstTestData.add(testData);
-        Account ac = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestAccount1','Intel Account','UNFD_GLBL_CUST');
-        ac.Core_Business_Party_Id__c = '12345';
-        ac.Core_Data_Country_Nm__c = 'India';
-        ac.Core_Data_Simplified_Account_Nm__c = 'TestDuplicateAccount';
-        ac.OwnerId = UserInfo.getUserId();
-        ac.BillingCountryCode = 'IND';
-        ac.Core_MDM_Website__c = 'www.test.com';
-        ac.Core_User_Defined_Website__c = 'Sample';
-        ac.Core_Requested_Name__c = 'TestAccount1';
-
-        insert ac;
-        Account accountDup = UCD_ACM_Cntrlr_TestDataInitialization.createAccountByRecordType('TestAccountDuplicateCheck','Intel Account','UNFD_GLBL_CUST');
-        accountDup.Core_Business_Party_Id__c = '12345';
-        accountDup.Core_Data_Country_Nm__c = 'India';
-        accountDup.Core_Data_Simplified_Account_Nm__c = 'TestAccountDuplicateCheck';
-        accountDup.OwnerId = UserInfo.getUserId();
-        accountDup.BillingCountryCode = 'IND';
-        accountDup.BillingStreet='StreetTest';
-        accountDup.BillingCity='Mumbai';
-        accountDup.Core_MDM_Website__c = 'www.test.com';
-        accountDup.BillingStateCode='MH';
-        accountDup.BillingPostalCode='560098';
-        insert accountDup;
-        List<UCD_GenericAcctSearch_SBR.fieldsetwrapper> fswList = new List<UCD_GenericAcctSearch_SBR.fieldsetwrapper>();
+       
         
-        UCD_GenericAcctSearch_SBR.fieldsetwrapper fsw1 = new UCD_GenericAcctSearch_SBR.fieldsetwrapper();
-        fsw1.fieldLabel = 'BillingCountry';
-        fsw1.fieldAPIName = 'BillingCountry';
-        fsw1.fieldValue = 'India';
-        fswList.add(fsw1);
         
         Test.startTest();
-        //Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
+        Test.setMock(HttpCalloutMock.class, new PRM_CIMAccountSearchHttpResponse());
         req.requestURI = 'https://intel--nppdev.lightning.force.com';  // sample Endpoint
         req.httpMethod = 'post';
         RestContext.request = req;
@@ -600,7 +562,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_One()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -609,17 +570,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
        
@@ -651,11 +610,11 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('State',null);
         requestDetails.put('PostalCode','109776435');
         requestDetails.put('Country','US');
-        //requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
+        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         
         		try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -668,7 +627,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Two()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -677,17 +635,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
        
@@ -719,11 +675,11 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('State',null);
         requestDetails.put('PostalCode','109776435');
         requestDetails.put('Country','US');
-        //requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
+        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         
         		try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -736,7 +692,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Three()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -745,17 +700,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
        
@@ -787,11 +740,11 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('State',null);
         requestDetails.put('PostalCode','109776435');
         requestDetails.put('Country','US');
-        //requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
+        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         
        		try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -804,7 +757,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
      @isTest
     public static void testCallout_Seven()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
 		Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -813,17 +765,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
         
@@ -844,8 +794,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c='Builder';
-        acm.PRM_Status_Reason_Txt__c='Test';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         
         Test.startTest();
@@ -869,11 +818,11 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('State',null);
         requestDetails.put('PostalCode','109776435');
         requestDetails.put('Country','US');
-        //requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
+        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         
        		try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -886,7 +835,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
      @isTest
     public static void testCallout_Four()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
 		Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -895,17 +843,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
         
@@ -925,8 +871,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acm.PRM_Account_Id__c=acc.id;
         acm.PRM_Channel_Program_Id__c=cp.id;
         acm.PRM_Status_Nm__c='Approved';
-        acm.PRM_Partner_Role__c='Builder';
-        acm.PRM_Status_Reason_Txt__c='Test';
+        acm.PRM_Partner_Role__c='Seller';
         insert acm;
         
         Test.startTest();
@@ -950,10 +895,10 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('State',null);
         requestDetails.put('PostalCode','109776435');
         requestDetails.put('Country','US');
-        //requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
+        requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+            accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){ 
             
@@ -967,7 +912,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Five()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -976,17 +920,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
        
@@ -1021,7 +963,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('PartnerRole','Seller');        
         
 		try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -1034,7 +976,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
     @isTest
     public static void testCallout_Six()
     {
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
         PRM_AdminRegistrationDuplicateDetails.accountContactList accCntList= new PRM_AdminRegistrationDuplicateDetails.accountContactList();
         Account acc = PRM_TestUtility.getAccount();
         acc.BillingCity='Bengaluru';
@@ -1043,17 +984,15 @@ public class ER_ENT_PRG_AccountSearch_Test {
         acc.BillingPostalCode='560037';
         acc.Core_Intel_Partner_Alliance_PartnerGroup__c = false;
         acc.Core_IPA_Partner_Role__c = 'Distributor';
-        //acc.Core_Account_Type__c = 'Distributor';
+        acc.Core_Account_Type__c = 'Distributor';
         acc.Industry = 'Construction';
         acc.Core_CIM_ID__c='22213672';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         
         contact ct = new contact();
         ct.FirstName='None';
         ct.LastName='New';
         ct.Email='new@b.com';
-        ct.MailingCountry='IND';
         ct.AccountId=acc.id;
         insert ct;
        
@@ -1087,7 +1026,7 @@ public class ER_ENT_PRG_AccountSearch_Test {
         requestDetails.put('BizOrgType','Cloud Service Provider (CSP)');
         requestDetails.put('PartnerRole','Seller');        
         try{
-        accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
+             accCntList=PRM_AdminRegistrationDuplicateDetails.showAccountsContacts(requestDetails);
         }
         catch(exception ex){
             
@@ -1097,10 +1036,6 @@ public class ER_ENT_PRG_AccountSearch_Test {
         System.assertEquals(requestDetails.get('ContactEmail'), 'new@b.com', 'Value does not match');
 
     }
-     @isTest
-    public static void testMain()
-    {
-        
-        
-    }   
+
+    
 }

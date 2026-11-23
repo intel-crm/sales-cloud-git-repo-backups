@@ -7,10 +7,6 @@
         <label>Information</label>
         <layoutColumns>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Channel_Program_id__c</field>
-            </layoutItems>
-            <layoutItems>
                 <behavior>Required</behavior>
                 <field>Core_MDF_Root_Cause_nm__c</field>
             </layoutItems>
@@ -28,9 +24,6 @@
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <emptySpace>true</emptySpace>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>Core_MDF_Escalation_Status_nm__c</field>
@@ -114,7 +107,7 @@
         </quickActionListItems>
     </quickActionList>
     <relatedLists>
-        <relatedList>RelatedFileList</relatedList>
+        <relatedList>RelatedNoteList</relatedList>
     </relatedLists>
     <relatedLists>
         <fields>CreatedDate</fields>

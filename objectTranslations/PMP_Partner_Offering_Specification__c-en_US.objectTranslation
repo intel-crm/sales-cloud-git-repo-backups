@@ -92,5 +92,12 @@
         <label><!-- Specification Value Product URL --></label>
         <name>PMP_Specification_Value_Product_URL_Nm__c</name>
     </fields>
+    <layouts>
+        <layout>Partner Offering Specification Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

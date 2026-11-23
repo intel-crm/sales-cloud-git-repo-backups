@@ -318,6 +318,14 @@ ISPICKVAL(Core_Datatype__c, &apos;Picklist&apos;), ISPICKVAL(Core_Datatype__c, &
         <errorDisplayField>Core_Answers__c</errorDisplayField>
         <errorMessage>Enter at least 1 row of text when Datatype is &apos;Picklist&apos; or &apos;Multiselect Picklist&apos;.</errorMessage>
     </validationRules>
+    <validationRules>
+        <fullName>Core_IPS_Env_Dtls_Master_Choose_DataType</fullName>
+        <active>false</active>
+        <description>Ensure the DataType field cannot be blank. Input is mandatory.</description>
+        <errorConditionFormula>ISBLANK (TEXT(Core_Datatype__c))</errorConditionFormula>
+        <errorDisplayField>Core_Datatype__c</errorDisplayField>
+        <errorMessage>Datatype must be specified.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
     <webLinks>
         <fullName>Core_IPS_Add_To_Products</fullName>

@@ -15,12 +15,13 @@ SSLC 采用引导法帮助您执行基本许可权利功能。我们还提供参
 
 请保存您的登录信息以方便未来使用：
 
+用户名: {!Contact.Core_Login_Id__c}
 电子邮件地址: {!Contact.Email}
 
 您的密码应该像机密一样受到保护。在英特尔网站上使用此密码受英特尔使用条款和条件（链接来自各个网站的网页底部）约束。
 
 
-登录  licensing.intel.com  查看并管理您的英特尔® PSG 软件和 IP 许可权利。
+登录 intel.com/sslc 查看并管理您的英特尔® PSG 软件和 IP 许可权利。
 
 
 谢谢！
@@ -28,7 +29,7 @@ SSLC 采用引导法帮助您执行基本许可权利功能。我们还提供参
 
 
 此消息作为英特尔® 可编程解决方案事业集团与您的 FPGA 软件和/或 IP许可权相关的重要业务通信发送。
-© {!$Label.PRM_CurrentYear} 英特尔公司
+© {!Contact.Core_Current_Year__c} 英特尔公司
 英特尔公司, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.www.intel.cn
 隐私条款&amp;verbar;Cookie</textOnly>
     <type>custom</type>

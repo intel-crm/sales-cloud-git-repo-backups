@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>picklist</bucketType>
+        <developerName>BucketField_75936595</developerName>
+        <masterLabel>B</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</sourceColumnName>
+        <useOther>false</useOther>
+    </buckets>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CHILD_NAME</field>
+    </columns>
+    <columns>
+        <field>FK_NAME</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>Approved,Archived,Draft,In Approval,Rejected,Published</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>PMP_Partner_Offering__c.PMP_Partner_Offering_Lifecycle_Status_Nm__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Partner Offering by Status</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntityCustomEntity$PMP_Partner_Offering__c$PMP_Partner_Offering_Category__c@PMP_Partner_Offering_Category__c.PMP_Category_Id__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>PMP_Partner_Offering__c.PMP_Workflow_One_Week_Trigger_Dt__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

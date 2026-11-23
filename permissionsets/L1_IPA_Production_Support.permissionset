@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>Core_PRM_PartnerAdministration_Lightning</application>
-        <visible>true</visible>
-    </applicationVisibilities>
     <classAccesses>
         <apexClass>Address</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>CIMAccountSearchInfo</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_ContactEntitlementHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>Core_ContactEntitlementHandler_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -45,7 +49,23 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PRM_CIMAccountSearch</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PRM_CIMAccountSearchHttpResponse</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMAccountSearchTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMCallout</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>PRM_CIMCallout_Test</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -170,7 +190,59 @@
     </classAccesses>
     <customMetadataTypeAccesses>
         <enabled>true</enabled>
+        <name>PRM_AEM_Support_Redirect_Links__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_BulkUploadBatchVariable__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_CIM_Request__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Email_Template_Names__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_IPABadgeMapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Integration__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_IntelLogo__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_LanguageLocaleMapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Language_Culture_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
         <name>PRM_PartnerRoleTypeMappings__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Role_Descriptions__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_SalesCloud_Warranty__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Subscription_Mapping__mdt</name>
+    </customMetadataTypeAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>PRM_Warranty_Benefits_Configuration__mdt</name>
     </customMetadataTypeAccesses>
     <description>This permission set is for IPA IT production support team, this permission set assignment is managed via AGs please refrain from manual assignment of this permission set.</description>
     <fieldPermissions>
@@ -1020,6 +1092,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Account.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Account.Lead_to_Account_on_Contact_NoOpportunity__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1389,7 +1466,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Contact.Core_IPA_Contact_Segment__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1655,6 +1732,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Company_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Contact.LID__LinkedIn_Member_Token__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Contact.LeadSource</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1905,6 +1992,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Integration_Outbound_Message__c.Core_Last_Retried_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Integration_Outbound_Message__c.Core_Payload__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1980,6 +2072,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Core_Log_Entry__c.PRM_Auto_Approve__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Core_Log_Entry__c.Review_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1996,6 +2093,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_OnePartner_Inbound_Message__c.Core_Effective_Start_Date_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_OnePartner_Inbound_Message__c.Core_InboundToProcess__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_OnePartner_Inbound_Message__c.Core_OnDemandReqId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2026,6 +2133,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Core_OnePartner_Inbound_Message__c.Core_SalesCloud_AccountID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Core_OnePartner_Inbound_Message__c.Core_Status_Effective_End_Date_Time__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2415,6 +2527,31 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_CP_Ask_A_Question_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_CP_Combined_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_CP_Open_Click_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_CP_Request_A_Quote_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_CP_Submit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Lang__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2431,6 +2568,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Offering_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_PageViews_Count__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -2455,6 +2597,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Partner_Offering_Category__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Partner_Website_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Resource_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -2466,6 +2618,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Sum_PageViews__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Marketplace_Dashboard__c.PMP_Rpt_Valuable_Assert_Count__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3080,6 +3237,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_AccountChannelMembership__c.Dummy_Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_AccountChannelMembership__c.PRM_Account_Channel_Program_Key__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3140,7 +3302,62 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_AGS_Failure_Notified__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_AGS_Identity_Creation_Fail__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_AGS_Integration_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_AGS_Response_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Activated_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_CampaignId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_End_Date_Dt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Error_Message__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Account_Contact_Relationship__c.PRM_InActive_Ind__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Initiated_By__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_No_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Partner_Role_UI__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3155,7 +3372,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Retry_Count__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_SkipValidation__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Soft_Contact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Source_Agent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Start_Date_Dt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Account_Contact_Relationship__c.PRM_Status_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.PRM_Suppress_Email__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3171,6 +3418,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Account_Contact_Relationship__c.PRM_isActive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Account_Contact_Relationship__c.test_master_branch__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3690,6 +3942,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Profile_Responses__c.LastModifiedBy__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Profile_Responses__c.LastModifiedDate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Profile_Responses__c.PRM_Active_Ind__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3721,6 +3983,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Profile_Responses__c.PRM_Reason_Text__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Profile_Responses__c.PRM_ResponseDate__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3770,6 +4037,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.ArchiveTest__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.Assigned_To__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -3786,6 +4058,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Registration_Request__c.Countries__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Country_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Country__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3830,7 +4112,37 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.From_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.Geo_Code__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Geo_Region__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Geo__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.IsArchive__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Is_Duplicate__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Is_Entitlement_Record__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3866,6 +4178,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Registration_Request__c.Open_to_Pending_TPT__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Original_Approver__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Account_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3906,6 +4228,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_Approve_Time__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Auto_Approve__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -3956,6 +4283,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_Company_Size__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_ContactId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4060,6 +4392,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_PSG_Entitlement_Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_Partner_Relationship__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4140,6 +4477,26 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Registration_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Reject_Reason_Others__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Reject_Reason__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Review_Note_txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_Salesforce_ID__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4170,6 +4527,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_Suppress_Email__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_Tax_ID_Registration__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4190,6 +4552,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_isBulkLoadedContact__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_isLocked__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4200,7 +4567,27 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.PRM_is_First_EV_Reminder_Sent__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.PRM_manualRecordCheck__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Pending_TPT__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Pending_TimeStamp__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.Pending_to_Approved_Rejected_TPT__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4240,6 +4627,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Registration_Request__c.Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Registration_Request__c.To_Date__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Registration_Request__c.Total_TPT__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4265,6 +4662,31 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_VXBnftMatrix__c.PRM_Partner_Type_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXBnftMatrix__c.PRM_Total_Quantity_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXEnttlmntMatrix__c.Account__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXEnttlmntMatrix__c.Business_Types__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXEnttlmntMatrix__c.Communities__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_VXEnttlmntMatrix__c.PRM_AGS_Role__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4276,6 +4698,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_VXEnttlmntMatrix__c.PRM_Channel_Program_Level_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXEnttlmntMatrix__c.PRM_Contact_Relationship_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_VXEnttlmntMatrix__c.PRM_IPA_Partner_Role_Nm__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4310,6 +4742,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Account_Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Competency_Achieved_Txt__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Design_Registration_Count_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4340,7 +4782,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_PAG_ID__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Partner_Role_Check__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Percent_To_Next_Tier_Report_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4385,12 +4837,22 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Sales_To_Next_Tier__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Sales_to_next_tier_percent_nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_TimePeriod_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Time_Period__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -4415,6 +4877,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_TrainingToNextTierPer_Report_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Training_Credit_Points_Count_Nbr__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -4426,6 +4893,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PRM_Value_Exchange_Data__c.PRM_Training_Credits_to_Next_Tier_Nbr__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PRM_Value_Exchange_Data__c.PRM_Training_Credits_to_Next_Tier__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -5075,15 +5547,19 @@
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
+        <tab>Core_Integration_Inbound_Message__c</tab>
+        <visibility>Available</visibility>
+    </tabSettings>
+    <tabSettings>
+        <tab>Core_Integration_Outbound_Message__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+    <tabSettings>
         <tab>Core_Log_Entry__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>
         <tab>PMP_Company__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>PMP_Partner_Offering__c</tab>
         <visibility>Visible</visibility>
     </tabSettings>
     <tabSettings>

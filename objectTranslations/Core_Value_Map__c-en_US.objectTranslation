@@ -53,6 +53,13 @@
         <label><!-- Opportunity Assigned --></label>
         <name>Core_Opportunity_Assigned__c</name>
     </fields>
+    <layouts>
+        <layout>Value Map Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Make edits to existing Value Map records:  1 - High; 2 - Medium; 3 - Low. --></errorMessage>

@@ -76,7 +76,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Field Sales</value>
+            <value>OSC,Field Sales</value>
         </criteriaItems>
         <criteriaItems>
             <column>USERS.NAME</column>

@@ -16,24 +16,12 @@
                 <field>BudgetId</field>
             </layoutItems>
             <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Budget_Type__c</field>
+                <behavior>Edit</behavior>
+                <field>Description</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Intel_Account_Name_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Program_Txt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Start_Date_dt__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_End_Date_dt__c</field>
+                <field>Core_MDF_Available_Allocation_Amount__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
@@ -45,10 +33,6 @@
                 <behavior>Required</behavior>
                 <field>ChannelPartnerId</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>Description</field>
-            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
     </layoutSections>
@@ -57,48 +41,20 @@
         <detailHeading>true</detailHeading>
         <editHeading>true</editHeading>
         <label>Allocation Usage</label>
-        <layoutColumns/>
-        <layoutColumns/>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Activity Fund Allocation Usage</label>
         <layoutColumns>
             <layoutItems>
                 <behavior>Readonly</behavior>
-                <field>Core_MDF_Total_Activity_Allocated_Amount__c</field>
+                <field>TotalApprovedFrs</field>
+            </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>TotalApprovedFcs</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Available_Activity_Alloc_Amt__c</field>
-            </layoutItems>
-        </layoutColumns>
-        <style>TwoColumnsLeftToRight</style>
-    </layoutSections>
-    <layoutSections>
-        <customLabel>true</customLabel>
-        <detailHeading>true</detailHeading>
-        <editHeading>true</editHeading>
-        <label>Claim Fund Allocation Usage</label>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Claim_Reserved_Amount_Amt__c</field>
-            </layoutItems>
             <layoutItems>
                 <behavior>Readonly</behavior>
                 <field>TotalReimbursedFcs</field>
-            </layoutItems>
-        </layoutColumns>
-        <layoutColumns>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_MDF_Available_Allocation_Amount__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsLeftToRight</style>
@@ -136,28 +92,6 @@
         <layoutColumns/>
         <style>CustomLinks</style>
     </layoutSections>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>Name</fields>
-        <fields>Core_MDF_Fund_Request_Status__c</fields>
-        <fields>Core_MDF_Start_Date_End_Date__c</fields>
-        <fields>Core_MDF_Activity_Number__c</fields>
-        <fields>Core_MDF_Activity_Types__c</fields>
-        <fields>RequestedAmount</fields>
-        <relatedList>PartnerFundRequests</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <excludeButtons>New</excludeButtons>
-        <fields>Name</fields>
-        <fields>Core_MDF_Claim_Ref_Number__c</fields>
-        <fields>Request</fields>
-        <fields>Amount</fields>
-        <fields>Core_MDF_Status__c</fields>
-        <relatedList>PartnerFundClaims</relatedList>
-    </relatedLists>
-    <relatedLists>
-        <relatedList>RelatedEntityHistoryList</relatedList>
-    </relatedLists>
     <showEmailCheckbox>false</showEmailCheckbox>
     <showRunAssignmentRulesCheckbox>false</showRunAssignmentRulesCheckbox>
     <showSubmitAndAttachButton>false</showSubmitAndAttachButton>

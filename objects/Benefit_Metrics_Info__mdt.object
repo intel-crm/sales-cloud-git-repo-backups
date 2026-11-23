@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Benefit_Blade_Info__c</fullName>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Benefit Blade Info</label>
+        <referenceTo>Benefit_Blade_Info__mdt</referenceTo>
+        <relationshipLabel>Benefit Metrics Info</relationshipLabel>
+        <relationshipName>Benefit_Metrics_Info</relationshipName>
+        <required>true</required>
+        <type>MetadataRelationship</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Metric_Action__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Metric Action</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Metric_Description__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Metric Description</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Metric_URL__c</fullName>
+        <externalId>false</externalId>
+        <fieldManageability>DeveloperControlled</fieldManageability>
+        <label>Metric URL</label>
+        <length>40</length>
+        <required>true</required>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Benefit Metrics Info</label>
+    <pluralLabel>Benefit Metrics Info</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>

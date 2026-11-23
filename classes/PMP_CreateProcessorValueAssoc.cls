@@ -34,16 +34,16 @@ public With Sharing class PMP_CreateProcessorValueAssoc {
         specsByLanguageCode = (Map<String, Object>)JSON.deserializeUntyped(jsonStr);//deserializing string and storing it in a Map<String, Object>
         jsonStr = null;
         leafLevel = PMP_Utility.getLeafNode(specsByLanguageCode);//fetch the leaf level of the current list of specifications.
-        
+        System.debug('leafLevel'+leafLevel);
         languageCode = new list<String>(specsByLanguageCode.keySet())[0];
         
         List<Object> specNodes = (List<Object>)specsByLanguageCode.get(languageCode);//get the list of specifications associated with the current language code
-        
+        System.debug('specNodes'+specNodes.toString());
         for(Integer specNodesIndex = 0; specNodesIndex < specNodes.size(); specNodesIndex++){//iterate over all specNodes in the list and create spec and specValue records
             Map<String, Object> specNodeByAttribute = (Map<String, Object>)specNodes[specNodesIndex];//fetch specNodes and use diiferent attributes to create spec and specValue records
             //if childspecAttribute map has level attribute and level is not equals to leaf level then create category-spec association records 
             if(specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.Level) && specNodeByAttribute.get(PMP_StaticConstants_MasterData.Level) == leafLevel){
-                
+                System.debug('specNodeByAttribute'+specNodeByAttribute.toString());
                 leafNodes.add(specNodeByAttribute);
                 
                
@@ -57,25 +57,29 @@ public With Sharing class PMP_CreateProcessorValueAssoc {
         if(math.mod(leafNodes.size(), noOfParentsToBeProcessed) != 0){
             noOfPartitions += 1;
         }
-           
+         System.debug('noOfPartitions'+ noOfPartitions);     
         for(Integer i = 0; i<noOfPartitions; i++){
         	List<Map<String, Object>> batch = new List<Map<String, Object>>();
             for(Integer j = noOfParentsToBeProcessed*i; j<noOfParentsToBeProcessed*(i+1); j++){
                 if(j == leafNodes.size()){
                     break;
                 }
-                
+                System.debug('leafNodes[j]'+leafNodes[j]);
                 batch.add(leafNodes[j]);
             }
-            
+            System.debug('batch'+batch);
             leafNodeBatches.add(batch);
         }
-        
+        System.debug('leafNodeBatches' + leafNodeBatches);
         System.enqueueJob(new PMP_ProcessorUpload_Queueable(leafNodeBatches));
     }
     
     public static void createSpecValueAssociations(List<Map<String, Object>> specNodeByAttributes){
-        
+        for(Map<String, Object> spec : specNodeByAttributes)
+        {
+             System.debug('specNodeByAttribute Values'+spec.values());
+        }
+        System.debug('specNodeByAttributes'+specNodeByAttributes);
         final String ultimateParentPIMId = 'NPP_Processors';//UltimateParentId
         final String specificationType = 'Processor';
         Set<Id> associatedCategories = new Set<Id>();//set consisting category Ids related to Processor spec
@@ -113,12 +117,12 @@ public With Sharing class PMP_CreateProcessorValueAssoc {
         //map containing category records by recordId
         Map<Id,PMP_Category__c> categoriesById= new Map<Id,PMP_Category__c>([SELECT Id,PMP_Active_Ind__c,PMP_Partner_Product_Category_Cd__c,PMP_Partner_Product_Category_Key__c,Name 
                                                                              FROM PMP_Category__c WHERE Id in: associatedCategories and PMP_Active_Ind__c = true]);
-          
+          System.debug('categoriesById'+categoriesById);
         
         for(Integer i = 0; i<specNodeByAttributes.size(); i++){
             Map<String, Object> specNodeByAttribute = specNodeByAttributes[i];
             parentSpecs.add(String.valueOf(specNodeByAttribute.get(PMP_StaticConstants_MasterData.ParentIdentifier)));
-            
+            System.debug('parentSpecs'+parentSpecs);
             if(specNodeByAttribute.containsKey(PMP_StaticConstants_MasterData.ChildCategories)){//if spec node has child specs
                 List<Object> childSpecifications = new List<Object>();
                 childSpecifications = (List<Object>)specNodeByAttribute.get(PMP_StaticConstants_MasterData.ChildCategories);//get all the child specs
@@ -170,7 +174,8 @@ public With Sharing class PMP_CreateProcessorValueAssoc {
             													existingSpecSpecValueAssocByExternalKey.put(sva.PMP_Category_Spec_Value_External_Key__c, sva);
                                                               }
         }
-        
+        System.debug('existingSpecSpecValueAssocByExternalKey'+existingSpecSpecValueAssocByExternalKey);
+        System.debug('existingSpecSpecValueAssocByExternalKey Size'+ existingSpecSpecValueAssocByExternalKey.values().size());
         
         if(!existingSpecSpecValueAssocByExternalKey.isEmpty() && !uploadableSpecValuesAssocByExternalkey.isEmpty()){
             for(String keyId : existingSpecSpecValueAssocByExternalKey.keySet()){

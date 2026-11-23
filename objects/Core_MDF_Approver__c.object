@@ -165,18 +165,6 @@
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Core_MDF_Approval_Criteria_Description__c</fullName>
-        <description>Field shows all the criteria for an Approval Criteria record.</description>
-        <externalId>false</externalId>
-        <formula>Core_MDF_Criteria__r.Core_MDF_Approval_Criteria_Description__c</formula>
-        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
-        <label>Approval Criteria Description</label>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Approver_10__c</fullName>
         <deleteConstraint>SetNull</deleteConstraint>
         <label>Approver 10</label>
@@ -618,23 +606,6 @@
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Group_Name_txt__c</fullName>
-        <externalId>false</externalId>
-        <label>Group Name</label>
-        <length>255</length>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Is_Approver_From_Group_ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <label>Is Approver From Group</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Step_Number__c</fullName>

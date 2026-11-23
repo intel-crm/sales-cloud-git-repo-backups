@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <description>Intel® Partner Alliance Cloud Data Center Specialty</description>
     <encodingKey>UTF-8</encodingKey>
     <name>SPECIALTY_CLOUD_DATA_CENTER_JPN</name>
@@ -21,17 +21,15 @@
 業界イベントやトレーニング・セッションへの優先的な招待
 インテル® Platform Testing Services へのアクセス
 
-開始するには、以下の情報を明記して ITP-CLOUD@intel.com 宛てに返信してください。
+開始するには、以下の情報を明記して ITP-Cloud@intel.com 宛てに返信してください。
 
 
 クラウド・スペシャリスト関連情報の主な連絡先
-名前:
-電子メール:
+名前:電子メール:
 
 
 その他販売やプロモーション素材
-現住所:
-電話番号:
+現住所:電話番号:
 
 特典を活用する
 
@@ -40,16 +38,16 @@
 
 インテルのパートナーはイノベーションの長い歴史を持ち、インテル® パートナー・アライアンスにより、データ中心の経済におけるソリューション構築の促進を支援します。パートナー企業の力を結集し、私達がつながり、革新し、成長することで、類い稀な機会を実現することができます。
 
-メンバーシップの最適化についてのヘルプやガイダンスは、https://cqpreview.intel.com/content/www/jp/ja/partner-alliance/help/overview.html を参照してください。
+メンバーシップの最適化についてのヘルプやガイダンスは、intel.com/partnerhelp を参照してください。
 
 
 よろしくお願いいたします。
 インテル® パートナー・アライアンス
 
 このメッセージは、インテル® パートナー・アライアンス関係者の皆様に、重要なビジネス・コミュニケーションとして送信されました。
-© {!$Label.PRM_CurrentYear} Intel Corporation
-Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
-プライバシー  |  Cookies</textOnly>
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA.  www.intel.com
+プライバシー・ポリシー  |  Cookie</textOnly>
     <type>custom</type>
     <uiType>Aloha</uiType>
 </EmailTemplate>

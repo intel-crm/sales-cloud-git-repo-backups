@@ -4,6 +4,10 @@
         <aggregateTypes>Sum</aggregateTypes>
         <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</field>
     </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Sched_Revenue__c</field>
+    </columns>
     <description>CPU Only</description>
     <filter>
         <criteriaItems>
@@ -94,7 +98,7 @@
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
-    <showSubTotals>false</showSubTotals>
+    <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
         <endDate>2020-12-31</endDate>

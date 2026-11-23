@@ -8,7 +8,6 @@
 * Date              By                      User-Story              Details 
 * 25-10-18          Nikhil Godhani          US:90414                Edit and NEW BUTTON Override with this VF Page 
 * 13-11-18          Nikhil Godhani          US:110974               Add Case Details and status field on Comment Screen
-* 10-Feb-25          Swati Paraste          TWC4767-3917              Access for Permission set
 ********************/
 
 public with sharing class Core_AAQC_Case_Comment_Controller{
@@ -23,8 +22,6 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
     public Boolean blnCheckAccess{get;set;}                                                         // variable to control Admin/FAE Field Access
     public String profileName;                                                                      // variable to store logged in users profile name part of US:110974
     public Profile objProfile;                                                                      // variable to store logged in users profil part of US:110974
-    public List<PermissionSetAssignment> lstcurrentUserPerSet;
-    public String permissionSetName='';
     
     public Core_AAQC_Case_Comment_Controller(ApexPages.StandardController controller) {
         
@@ -80,6 +77,7 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
             // checked whether case status is updated or not, if it is updated then only update the case object part of US:110974
             if(objCase!= null && Schema.sObjectType.Case.isUpdateable() &&
                                                 Schema.sObjectType.Case.isCreateable()){
+                system.debug('inside updating case object');
                 upsert objCase;
             }
             upsert objCaseComment; 
@@ -106,21 +104,8 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
     
         
         objProfile = [Select Name from Profile where Id =: UserInfo.getProfileId() LIMIT 1];
-        lstcurrentUserPerSet = [SELECT Id, PermissionSet.Name,AssigneeId FROM PermissionSetAssignment
-                                WHERE AssigneeId = :Userinfo.getUserId() ];
-         
-        if (lstcurrentUserPerSet.size()>0)
-        {
-            for (PermissionSetAssignment psa: lstcurrentUserPerSet)
-            {
-                if(System.Label.Core_AAQC_Non_Admin_Permission_set.Contains(psa.PermissionSet.Name))
-                {
-                    permissionSetName = psa.PermissionSet.Name;
-                }                                
-            }
-        }
         
-        if(objProfile!=null || permissionSetName!=null)
+        if(objProfile!=null)
         {
             profileName = objProfile.name; 
             
@@ -131,22 +116,7 @@ public with sharing class Core_AAQC_Case_Comment_Controller{
             else
             {
                 blnCheckAccess = false;      
-            }
-            
-            //code start of Non Admin Permission set
-            if(permissionSetName!=null){
-                
-                if(System.Label.Core_AAQC_Non_Admin_Permission_set.Contains(permissionSetName))
-                {
-                    blnCheckAccess = true;
-                }    
-                else
-                {
-                    blnCheckAccess = false;
-                }
-                //code end of Non Admin Permission set
-            }
-            
+            }  
         }
         
     }

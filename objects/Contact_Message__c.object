@@ -155,17 +155,6 @@
     <enableStreamingApi>false</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>ACM_Integration_Queue__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <label>ACM Integration Queue</label>
-        <referenceTo>Core_ACM_Integration_Queue__c</referenceTo>
-        <relationshipLabel>Contact Messages</relationshipLabel>
-        <relationshipName>Contact_Messages</relationshipName>
-        <required>false</required>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>Contact__c</fullName>
         <label>Contact</label>
         <referenceTo>Contact</referenceTo>
@@ -180,7 +169,11 @@
     <fields>
         <fullName>Core_Inbound_Message_Status__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(NOT(ISBLANK(Inbound_Message__c)), 
+        <formula>IF(
+AND(
+NOT(ISBLANK(Inbound_Message__c)), 
+(Outbound_Message__r.Core_MessageType__c = &quot;Role 2.0&quot;) 
+),
 TEXT(Inbound_Message__r.Core_Processing_Status__c),
 NULL
 )</formula>
@@ -194,7 +187,10 @@ NULL
     <fields>
         <fullName>Core_Message_Type__c</fullName>
         <externalId>false</externalId>
-        <formula>IF( AND(ISBLANK(Outbound_Message__c), NOT(ISBLANK(Inbound_Message__c))), TEXT(Inbound_Message__r.Core_Message_Type__c), IF( NOT(ISBLANK(ACM_Integration_Queue__c)), ACM_Integration_Queue__r.Core_Message_Type__c, Outbound_Message__r.Core_MessageType__c ) )</formula>
+        <formula>IF(NOT(ISBLANK(Inbound_Message__c)),
+  TEXT(Inbound_Message__r.Core_Message_Type__c),
+  Outbound_Message__r.Core_MessageType__c
+)</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Message Type</label>
         <required>false</required>

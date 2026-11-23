@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>Core_Account_Group_Member__c$Name</field>
+    </columns>
+    <columns>
+        <field>Core_Account_Group_Member__c$Core_Intel_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Account_Group_Member__c$Core_Partner_Account_Id__c</field>
+    </columns>
+    <columns>
+        <field>Core_Account_Group_Member__c$Id</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Core_Account_Group_Member__c$Core_MDA_Ind__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Core_Account_Group_Member__c$Core_MDA_Ind__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>1</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Tabular</format>
+    <name>New One Partners MDA Check</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>One_Partners__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Core_Account_Group_Member__c$CreatedDate</dateColumn>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
+    </timeFrameFilter>
+</Report>

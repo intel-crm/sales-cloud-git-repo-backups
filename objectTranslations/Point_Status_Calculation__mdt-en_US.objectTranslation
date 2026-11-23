@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Point Status Calculation</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Point Status Calculation</value>
+    </caseValues>
+    <fields>
+        <label><!-- Opt In --></label>
+        <name>Opt_In__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Not eligible --></label>
+        <name>Points_Not_eligible__c</name>
+    </fields>
+    <fields>
+        <label><!-- Points Status --></label>
+        <name>Points_Status__c</name>
+    </fields>
+    <fields>
+        <label><!-- Status Date --></label>
+        <name>Status_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- T&amp;C Signed --></label>
+        <name>T_C_Signed__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

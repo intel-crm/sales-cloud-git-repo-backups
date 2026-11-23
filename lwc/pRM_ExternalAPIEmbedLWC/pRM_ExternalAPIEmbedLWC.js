@@ -27,7 +27,6 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
   @api DeveloperName;
   @track report;
   @track isaccessible = false;
-
   connectedCallback() {
     console.log('checkreport -->', this.report);
     console.log('reportDetails -->', this.reportDetails);
@@ -47,14 +46,13 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
       this.WorkspaceId = result.workspaceId;
       this.columnName = result.columnName;
       this.tableName = result.tableName;
-
       // Check access permission
       hasAccess().then((result) => {
         if (result === true) {
           this.isaccessible = true;
 
           // Get the account ID
-          getAccountId({pageName})
+          getAccountId()
             .then((result) => {
               if (result != null) {
                 this.accountId = result;
@@ -76,7 +74,8 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
                       console.log('response', response);
                       this.report = response;
 
-                      if (response) {                       
+                      if (response) {
+                        console.log('Account Id -->', this.accountId);
                         if (response.embedUrl && response.embedToken) {
                           // Get the report container element
                           var reportContainer = this.template.querySelector(
@@ -155,6 +154,7 @@ export default class PRM_ExternalAPIEmbedLWC extends LightningElement {
     }).catch((error) => {
       console.log('Error from get report details method', error);
       this.loaded = true;
-    });    
+    });
+    console.log('Account Id -->', this.accountId);
   }
 }

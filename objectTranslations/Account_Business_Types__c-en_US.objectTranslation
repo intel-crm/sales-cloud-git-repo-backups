@@ -9,10 +9,6 @@
         <value>Account Business Types</value>
     </caseValues>
     <fields>
-        <label><!-- Account Staging Id --></label>
-        <name>Account_Staging_Id__c</name>
-    </fields>
-    <fields>
         <label><!-- Account --></label>
         <name>Account__c</name>
         <relationshipLabel><!-- Account Business Types --></relationshipLabel>
@@ -42,14 +38,21 @@
             <translation><!-- Approved --></translation>
         </picklistValues>
         <picklistValues>
-            <masterLabel>Removed</masterLabel>
-            <translation><!-- Removed --></translation>
+            <masterLabel>Rejected</masterLabel>
+            <translation><!-- Rejected --></translation>
         </picklistValues>
     </fields>
     <fields>
         <label><!-- skipValidation --></label>
         <name>skipValidation__c</name>
     </fields>
+    <layouts>
+        <layout>Account Business Types Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- ABT cannot be approved due one or more validations errors.
@@ -58,11 +61,9 @@
 
 •	Account&apos;s &apos;Covered Account&apos; should be checked.
 
-•	Account&apos;s &apos;English Only Name&apos; should have a Name. --></errorMessage>
+•	Account&apos;s &apos;English Only Name&apos; should have a Name.
+
+•	 Account&apos;s CIM ID should have value. --></errorMessage>
         <name>ABT_Validations</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- DPE CPE Can not be added to Intel Accounts --></errorMessage>
-        <name>ECD_Only_CPE</name>
     </validationRules>
 </CustomObjectTranslation>

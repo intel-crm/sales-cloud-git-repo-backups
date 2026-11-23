@@ -55,6 +55,13 @@ div[slot="footer"] {
     border: 0 none;
     padding: 1.5rem;
 }
+/*.slds-icon.slds-icon-text-default{
+		fill: var(--white) !important;
+}
+.slds-icon, .link-text .slds-icon {
+    --iconColor: var(--white) !important;
+}*/
+
 @media only screen and (max-width: 767px) {
     .slds-modal__footer {
         margin-bottom: 8rem;

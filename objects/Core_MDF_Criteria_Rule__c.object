@@ -236,11 +236,6 @@
                     <default>false</default>
                     <label>Not In</label>
                 </value>
-                <value>
-                    <fullName>Any</fullName>
-                    <default>false</default>
-                    <label>Any</label>
-                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

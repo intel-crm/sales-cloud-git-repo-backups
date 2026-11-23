@@ -9,24 +9,36 @@
         <sourceColumnName>Opportunity.Core_Product_Application__c</sourceColumnName>
         <useOther>true</useOther>
         <values>
+            <sourceValues>
+                <sourceValue>Energy - Other</sourceValue>
+            </sourceValues>
             <value>Energy</value>
         </values>
         <values>
             <value>Transportation</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Industrial - Other</sourceValue>
+            </sourceValues>
             <value>Industrial</value>
         </values>
         <values>
             <value>Medical</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Smart Home</sourceValue>
+            </sourceValues>
             <value>Smart Home</value>
         </values>
         <values>
             <value>Retail</value>
         </values>
         <values>
+            <sourceValues>
+                <sourceValue>Blade SBC (Single Board Computer)</sourceValue>
+            </sourceValues>
             <value>Emb Other</value>
         </values>
     </buckets>
@@ -54,23 +66,30 @@
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
-        <field>Account.Core_Unified_Global_Customer_Name__c</field>
-    </columns>
-    <columns>
-        <field>PRODUCT_NAME</field>
+        <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
     </columns>
     <columns>
         <aggregateTypes>Sum</aggregateTypes>
         <field>Opportunity.Core_Opportunity_Count__c</field>
     </columns>
+    <columns>
+        <field>PRODUCT_NAME</field>
+    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND (3 OR 4) AND 5 AND 6 AND 7</booleanFilter>
+        <booleanFilter>1 AND 2 AND 3 AND (4 OR 5) AND 6 AND 7</booleanFilter>
         <criteriaItems>
             <column>OpportunityLineItem.Core_Status__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>iotg</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Type__c</column>
@@ -106,13 +125,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
             <value>0</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>CCG ECG</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

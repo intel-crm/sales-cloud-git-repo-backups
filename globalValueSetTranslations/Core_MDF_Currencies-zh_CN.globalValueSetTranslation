@@ -73,12 +73,24 @@
         <translation>BWP - 博茨瓦纳普拉</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>BYN - Belarussian Ruble</masterLabel>
+        <translation>BYN - 白俄罗斯卢布</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>BYR - Belarus Ruble</masterLabel>
+        <translation>BYR - 白俄罗斯卢布</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>BZD - Belize Dollar</masterLabel>
         <translation>BZD - 伯利兹元</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CAD - Canadian Dollar</masterLabel>
         <translation>CAD - 加拿大元</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CDF - Franc Congolais</masterLabel>
+        <translation>CDF - 刚果法郎</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CHF - Swiss Franc</masterLabel>
@@ -99,6 +111,10 @@
     <valueTranslation>
         <masterLabel>CRC - Costa Rica Colon</masterLabel>
         <translation>CRC - 哥斯达黎加科郎</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>CYP - Cypriot Pound</masterLabel>
+        <translation>CYP - 塞浦路斯镑</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>CZK - Czech Koruna</masterLabel>
@@ -133,6 +149,10 @@
         <translation>GEL - 格鲁吉亚拉里</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>GHC - Ghana Cedi</masterLabel>
+        <translation>GHC - 加纳的塞地</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>GTQ - Guatemala Quetzal</masterLabel>
         <translation>GTQ - 危地马拉格查尔</translation>
     </valueTranslation>
@@ -163,6 +183,10 @@
     <valueTranslation>
         <masterLabel>INR - Indian Rupee</masterLabel>
         <translation>INR - 印度卢比</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>IQD - Iraqi Dinar</masterLabel>
+        <translation>IQD - 伊拉克第纳尔</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>ISK - Iceland Krona</masterLabel>
@@ -217,6 +241,10 @@
         <translation>LVL - 拉脱维亚拉特</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>LYD - Libyan Dinar</masterLabel>
+        <translation>LYD - 利比亚第纳尔</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>MAD - Moroccan Dirham</masterLabel>
         <translation>MAD - 摩洛哥迪拉姆</translation>
     </valueTranslation>
@@ -227,6 +255,14 @@
     <valueTranslation>
         <masterLabel>MKD - Macedonian Denar</masterLabel>
         <translation>MKD - 马其顿第纳尔</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MMK - Myanmar Kyat</masterLabel>
+        <translation>MMK - 缅甸元</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>MTL - Maltese Lira</masterLabel>
+        <translation>MTL - 马尔他里拉</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>MUR - Mauritius Rupee</masterLabel>
@@ -309,6 +345,10 @@
         <translation>RUB - 俄罗斯卢布</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>RWF - Rwanda Franc</masterLabel>
+        <translation>RWF - 卢旺达法郎</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>SAR - Saudi Arabian Riyal</masterLabel>
         <translation>SAR - 沙特里亚尔</translation>
     </valueTranslation>
@@ -319,6 +359,10 @@
     <valueTranslation>
         <masterLabel>SGD - Singapore Dollar</masterLabel>
         <translation>SGD - 新加坡元</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>SIT - Slovenian Tolar</masterLabel>
+        <translation>SIT - 斯洛文尼亚托拉尔</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>SVC - El Salvador Colon</masterLabel>
@@ -349,8 +393,16 @@
         <translation>TWD - 台币</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>TZS - Tanzanian Shilling</masterLabel>
+        <translation>TZS - 坦桑尼亚先令</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>UAH - Ukraine Hryvnia</masterLabel>
         <translation>UAH - 乌克兰格里夫纳</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>UGX - Ugandan Shilling</masterLabel>
+        <translation>UGX - 乌干达先令</translation>
     </valueTranslation>
     <valueTranslation>
         <masterLabel>USD - U.S. Dollar</masterLabel>
@@ -365,11 +417,31 @@
         <translation>UZS - 乌兹别克斯坦苏姆</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>VES  - Venezuelan Bolivar Fuerte</masterLabel>
+        <translation>VES - 委内瑞拉玻利瓦尔富尔特</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>VND - Vietnam Dong</masterLabel>
         <translation>VND - 越南盾</translation>
     </valueTranslation>
     <valueTranslation>
+        <masterLabel>XAF - CFA Franc (BEAC)</masterLabel>
+        <translation>XAF - 中非法郎（中非国家银行）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>XOF - CFA Franc (BCEAO)</masterLabel>
+        <translation>XOF - 中非法郎（中非国家银行）</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>YUM - Yugoslav Dinar</masterLabel>
+        <translation>YUM - 南斯拉夫第纳尔</translation>
+    </valueTranslation>
+    <valueTranslation>
         <masterLabel>ZAR - South African Rand</masterLabel>
         <translation>ZAR - 南非兰特</translation>
+    </valueTranslation>
+    <valueTranslation>
+        <masterLabel>ZMK - Zambian Kwacha (New)</masterLabel>
+        <translation>ZMK - 赞比亚克瓦查（新）</translation>
     </valueTranslation>
 </GlobalValueSetTranslation>

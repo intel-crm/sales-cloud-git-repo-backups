@@ -16,6 +16,9 @@
         <field>Core_Design_Registration__c.Core_Design_Registration_Nm__c</field>
     </columns>
     <columns>
+        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
+    </columns>
+    <columns>
         <field>Core_Design_Registration_Product__c.Core_Product_Id__c</field>
     </columns>
     <columns>
@@ -81,9 +84,6 @@
     <columns>
         <field>Core_Design_Registration_Product__c.Core_Full_Year_Value_Amt__c</field>
     </columns>
-    <columns>
-        <field>Core_Design_Registration__c.Core_End_Customer_Country_Subdivision_Nm__c</field>
-    </columns>
     <description>DRegs for Toronto/Montreal</description>
     <filter>
         <criteriaItems>
@@ -95,12 +95,7 @@
         </criteriaItems>
         <language>en_US</language>
     </filter>
-    <format>Summary</format>
-    <groupingsDown>
-        <dateGranularity>Day</dateGranularity>
-        <field>Core_Design_Registration__c.Core_Design_Registration_Status_Nm__c</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
+    <format>Tabular</format>
     <name>All Design Registrations - Dirk Purfurst</name>
     <params>
         <name>co</name>

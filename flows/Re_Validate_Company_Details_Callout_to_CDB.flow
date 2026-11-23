@@ -168,7 +168,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Error_Message_Text</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Error occurred when sending Registration for Company validation.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Error occurred when sending Registration  details for Company validation.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -193,7 +193,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>NewRegInProgressText</name>
-            <fieldText>&lt;p&gt;Company details validation in progress for this registration.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Company details validation is In-Progress for this Registration&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>
@@ -218,7 +218,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>NewRegValidationText</name>
-            <fieldText>&lt;p&gt;Registration successfully submitted for company validation.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Registration has been successfully submitted for Company validation.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
             <styleProperties>
                 <verticalAlignment>

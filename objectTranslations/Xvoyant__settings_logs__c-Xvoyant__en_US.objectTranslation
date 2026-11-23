@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>settings_logs</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>settings_logs</value>
+    </caseValues>
+    <fields>
+        <label><!-- dailyGoalCheckLogsDisabled --></label>
+        <name>Xvoyant__dailyGoalCheckLogsDisabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- devLogsDisabled --></label>
+        <name>Xvoyant__devLogsDisabled__c</name>
+    </fields>
+    <fields>
+        <label><!-- exceptionLogsDisabled --></label>
+        <name>Xvoyant__exceptionLogsDisabled__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

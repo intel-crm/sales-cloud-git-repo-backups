@@ -24,9 +24,6 @@
     <columns>
         <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_Sales_Disti_Chnl_Name__c</field>
     </columns>
-    <columns>
-        <field>ER_Customer_Master_File_Group__c.CMFGroupAssociations__r$ER_SalesAreaOrderBlockCd__c</field>
-    </columns>
     <description>You can filter here by CMF Id and get all the Group Name from which that Active CMF is associated with.</description>
     <filter>
         <criteriaItems>

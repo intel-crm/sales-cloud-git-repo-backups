@@ -199,6 +199,10 @@ access="global" >
                                             messageWhenPatternMismatch="Illegal character on username/email id" 
                                             value="{!v.conEmail}" required="true" onchange="{!c.updateEmail}" 
                                             oncommit="{!c.getAccount}"/>
+                                            <!-- <aura:if isTrue="{!v.showBlockedContact}">
+                                                <lightning:helptext
+                                                content="The above contact is blocked"/>
+                                            </aura:if> -->
                                         </div>
                                     </div>
                                 </div>

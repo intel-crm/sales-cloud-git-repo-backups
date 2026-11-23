@@ -60,8 +60,8 @@
             <column>CREATED</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>eloqua</value>
+            <operator>equals</operator>
+            <value>user eloqua</value>
         </criteriaItems>
         <criteriaItems>
             <column>RECORDTYPE</column>
@@ -96,7 +96,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>INSIDE</value>
+            <value>OSC</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -116,7 +116,7 @@
         <field>Lead.Core_Lead_State__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>TBD Global Inside MGL TQLs UNREAD</name>
+    <name>Global Inside MGL TQLs UNREAD</name>
     <params>
         <name>co</name>
         <value>1</value>

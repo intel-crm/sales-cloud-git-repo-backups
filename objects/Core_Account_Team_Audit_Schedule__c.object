@@ -38,12 +38,8 @@
         <columns>Core_Execution_Month_Day__c</columns>
         <columns>Core_Escalation_Level__c</columns>
         <columns>Core_Email_Template__c</columns>
-        <columns>CREATED_DATE</columns>
-        <columns>LAST_UPDATE</columns>
-        <columns>UPDATEDBY_USER</columns>
         <filterScope>Everything</filterScope>
         <label>All Fields</label>
-        <language>en_US</language>
         <sharedTo>
             <allInternalUsers></allInternalUsers>
         </sharedTo>

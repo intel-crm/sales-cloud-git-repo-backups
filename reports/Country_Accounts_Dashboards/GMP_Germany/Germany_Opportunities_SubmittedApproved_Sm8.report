@@ -18,6 +18,9 @@
         </values>
         <values>
             <sourceValues>
+                <sourceValue>Deal: Scale-enable</sourceValue>
+            </sourceValues>
+            <sourceValues>
                 <sourceValue>Deal: Sell-through</sourceValue>
             </sourceValues>
             <sourceValues>
@@ -123,7 +126,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value></value>
+            <value>OSC</value>
         </criteriaItems>
         <criteriaItems>
             <column>ROLLUP_DESCRIPTION</column>
@@ -174,6 +177,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_CURFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

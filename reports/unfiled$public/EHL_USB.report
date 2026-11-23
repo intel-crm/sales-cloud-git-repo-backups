@@ -34,7 +34,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>USB,TYPEC,TYPE-C,DRD,Dual Role,xhci,xdci,otg,on the go,tcss</value>
+            <value>USB,TYPEC,TYPE-C,DRD,Dual Role</value>
         </criteriaItems>
         <criteriaItems>
             <column>Case.Core_IPS_Product_name__c</column>

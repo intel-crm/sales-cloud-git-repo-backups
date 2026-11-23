@@ -1,7 +1,6 @@
 ({
-    /*myAction : function(component, event, helper) {
+    myAction : function(component, event, helper) {
         console.log('account id'+component.get('v.recordId'));
-        
         
         var action = component.get('c.getAccountDetails');
         action.setParams({sfdcOnepartnerId:component.get('v.recordId') });// set parameter like, OPID, one partner account numbber etc,
@@ -47,16 +46,15 @@
   
     
     handleConfirmButton : function (component, event, helper) {
-        
         var action = component.get("c.createSyncRequest");
-    	var regRequestId = component.get("v.recordId");
+    var regRequestId = component.get("v.recordId");
         action.setParams({
             recordId : regRequestId           
         });
 
          $A.enqueueAction(action);
-         window.location.reload();
-}*/
+        window.location.reload();
+}
     
        
         

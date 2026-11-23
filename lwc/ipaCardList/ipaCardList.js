@@ -79,6 +79,7 @@ class IpaCardList extends LightningElement {
      */
     get responsiveCardsPerRow() {
       let { cardsPerRow } = this;
+      this.breakpoint.isMobile = true;
       if (this.breakpoint.isMobile) cardsPerRow = this.cardsPerRowMobile || cardsPerRow;
       if (this.breakpoint.isTablet) cardsPerRow = this.cardsPerRowTablet || cardsPerRow;
       if (this.breakpoint.isDesktop) cardsPerRow = this.cardsPerRowDesktop || cardsPerRow;

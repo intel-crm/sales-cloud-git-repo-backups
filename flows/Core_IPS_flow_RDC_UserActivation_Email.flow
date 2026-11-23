@@ -4,27 +4,14 @@
         <description>This Send Email component is used to send email to the recipient defined in  EMail Address parameter.</description>
         <name>sendUserActivationNotificationEmail</name>
         <label>sendUserActivationNotificationEmail</label>
-        <locationX>867</locationX>
-        <locationY>21</locationY>
+        <locationX>630</locationX>
+        <locationY>359</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>emailAddressesArray</name>
+            <name>emailBody</name>
             <value>
-                <elementReference>collEmailRecipients</elementReference>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderType</name>
-            <value>
-                <stringValue>OrgWideEmailAddress</stringValue>
-            </value>
-        </inputParameters>
-        <inputParameters>
-            <name>senderAddress</name>
-            <value>
-                <elementReference>frmlSenderEmail</elementReference>
+                <elementReference>txttemplate_UserActivationEmailTempalte</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -34,15 +21,21 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>emailBody</name>
+            <name>emailAddressesArray</name>
             <value>
-                <elementReference>txttemplate_UserActivationEmailTempalte</elementReference>
+                <elementReference>collEmailRecipients</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>sendRichBody</name>
+            <name>senderAddress</name>
             <value>
-                <booleanValue>true</booleanValue>
+                <elementReference>frmlSenderEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>senderType</name>
+            <value>
+                <stringValue>OrgWideEmailAddress</stringValue>
             </value>
         </inputParameters>
         <nameSegment>emailSimple</nameSegment>
@@ -53,8 +46,8 @@
         <description>Assigning recipient email id before sending the email.</description>
         <name>emailAddressAssignment</name>
         <label>emailAddressAssignment</label>
-        <locationX>592</locationX>
-        <locationY>320</locationY>
+        <locationX>429</locationX>
+        <locationY>362</locationY>
         <assignmentItems>
             <assignToReference>collEmailRecipients</assignToReference>
             <operator>Add</operator>
@@ -67,12 +60,6 @@
         </connector>
     </assignments>
     <description>This Flow is used to send email to RDC Support Team when an external user is activated with RDC Privileged access for IPS enabled contact</description>
-    <environments>Default</environments>
-    <formulas>
-        <name>CIM_Business_Party_ID_Switch</name>
-        <dataType>String</dataType>
-        <expression>IF({!$Label.Core_IPS_UCD_Toggle_Switch}== &apos;0&apos;,  &apos;Unified ID : &apos;&amp;{!sobj_AccountDetails.Core_Business_Party_Id__c}, &apos;CIM ID: &apos;&amp;{!sobj_AccountDetails.Core_CIM_ID__c})</expression>
-    </formulas>
     <formulas>
         <description>This formula field is used to refer email id from Custom Label.</description>
         <name>frmlEmailRecipient</name>
@@ -87,25 +74,13 @@
     </formulas>
     <interviewLabel>Core IPS flow RDC UserActivation Email {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Core IPS flow RDC UserActivation Email</label>
-    <processMetadataValues>
-        <name>BuilderType</name>
-        <value>
-            <stringValue>LightningFlowBuilder</stringValue>
-        </value>
-    </processMetadataValues>
-    <processMetadataValues>
-        <name>CanvasMode</name>
-        <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
-        </value>
-    </processMetadataValues>
     <processType>AutoLaunchedFlow</processType>
     <recordLookups>
         <description>This Fast Lookup component is used to search account record related to the user record.</description>
         <name>fastLkUp_Account</name>
         <label>fastLkUp_Account</label>
-        <locationX>428</locationX>
-        <locationY>321</locationY>
+        <locationX>223</locationX>
+        <locationY>359</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>emailAddressAssignment</targetReference>
@@ -122,21 +97,20 @@
         <outputReference>sobj_AccountDetails</outputReference>
         <queriedFields>Name</queriedFields>
         <queriedFields>Core_Account_Legal_Name__c</queriedFields>
-        <queriedFields>Core_Business_Party_Id__c</queriedFields>
+        <queriedFields>Core_CIM_ID__c</queriedFields>
         <queriedFields>BillingStreet</queriedFields>
         <queriedFields>BillingCountry</queriedFields>
         <queriedFields>BillingCity</queriedFields>
         <queriedFields>BillingState</queriedFields>
         <queriedFields>BillingPostalCode</queriedFields>
         <queriedFields>Id</queriedFields>
-        <queriedFields>Core_CIM_ID__c</queriedFields>
     </recordLookups>
     <recordLookups>
         <description>This Fast Lookup component is used to search contact record related to the user record.</description>
         <name>fastLkUp_Contact</name>
         <label>fastLkUp_Contact</label>
-        <locationX>426</locationX>
-        <locationY>203</locationY>
+        <locationX>226</locationX>
+        <locationY>228</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>fastLkUp_Account</targetReference>
@@ -159,8 +133,8 @@
     <recordLookups>
         <name>fastLkUp_User</name>
         <label>fastLkUp_User</label>
-        <locationX>428</locationX>
-        <locationY>73</locationY>
+        <locationX>224</locationX>
+        <locationY>101</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>fastLkUp_Contact</targetReference>
@@ -181,19 +155,38 @@
         <queriedFields>AccountId</queriedFields>
         <queriedFields>ContactId</queriedFields>
     </recordLookups>
-    <start>
-        <locationX>50</locationX>
-        <locationY>50</locationY>
-        <connector>
-            <targetReference>fastLkUp_User</targetReference>
-        </connector>
-    </start>
+    <startElementReference>fastLkUp_User</startElementReference>
     <status>Active</status>
     <textTemplates>
         <description>This is used to define email template for user activation notification.</description>
         <name>txttemplate_UserActivationEmailTempalte</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;The following IPS Enabled Contact needs RDC access.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Enterprise Information&lt;/p&gt;&lt;p&gt;Login Id:  {!sobj_UserDetails.Core_Login_Id__c}&lt;/p&gt;&lt;p&gt;Enterprise Id: {!sobj_UserDetails.FederationIdentifier}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Contact Information&lt;/p&gt;&lt;p&gt;Name:  {!sobj_ContactDetails.Name}&lt;/p&gt;&lt;p&gt;Email Address: {!sobj_ContactDetails.Email}&lt;/p&gt;&lt;p&gt;Sales/IPS Cloud Id: {!sobj_ContactDetails.Id}&lt;/p&gt;&lt;p&gt;ERPM Id: {!sobj_ContactDetails.Core_eRPM_Person_Id__c}&lt;/p&gt;&lt;p&gt;User Id: {!sobj_UserDetails.Id}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Account Information&lt;/p&gt;&lt;p&gt;Name:  {!sobj_AccountDetails.Name}&lt;/p&gt;&lt;p&gt;Legal Name: {!sobj_AccountDetails.Core_Account_Legal_Name__c}&lt;/p&gt;&lt;p&gt;Sales/IPS Cloud Id: {!sobj_AccountDetails.Id}&lt;/p&gt;&lt;p&gt;{!CIM_Business_Party_ID_Switch}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Address:&lt;/p&gt;&lt;p&gt;           {!sobj_AccountDetails.BillingStreet}&lt;/p&gt;&lt;p&gt;           {!sobj_AccountDetails.BillingCity}&lt;/p&gt;&lt;p&gt;           {!sobj_AccountDetails.BillingState}  {!sobj_AccountDetails.BillingPostalCode}&lt;/p&gt;&lt;p&gt;           {!sobj_AccountDetails.BillingCountry}&lt;/p&gt;</text>
+        <text>The following IPS Enabled Contact needs RDC access.
+
+Enterprise Information
+
+Login Id:  {!sobj_UserDetails.Core_Login_Id__c}
+Enterprise Id: {!sobj_UserDetails.FederationIdentifier}
+
+Contact Information
+
+Name:  {!sobj_ContactDetails.Name}
+Email Address: {!sobj_ContactDetails.Email}
+Sales/IPS Cloud Id: {!sobj_ContactDetails.Id}
+ERPM Id: {!sobj_ContactDetails.Core_eRPM_Person_Id__c}
+User Id: {!sobj_UserDetails.Id}
+
+Account Information 
+
+Name:  {!sobj_AccountDetails.Name}
+Legal Name: {!sobj_AccountDetails.Core_Account_Legal_Name__c}
+Sales/IPS Cloud Id: {!sobj_AccountDetails.Id}
+CIM Id: {!sobj_AccountDetails.Core_CIM_ID__c}
+Address: 
+           {!sobj_AccountDetails.BillingStreet}
+           {!sobj_AccountDetails.BillingCity}
+           {!sobj_AccountDetails.BillingState}  {!sobj_AccountDetails.BillingPostalCode}
+           {!sobj_AccountDetails.BillingCountry}</text>
     </textTemplates>
     <variables>
         <description>This collection variable is used to store email ids of the recipients.</description>

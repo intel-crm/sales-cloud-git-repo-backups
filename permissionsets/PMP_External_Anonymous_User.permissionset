@@ -49,6 +49,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PMP_RefineFilterController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PMP_SearchAttributeNewController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -109,6 +113,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>PMP_SearchTopicDetailController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>PMP_SearchUtilityController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -125,6 +133,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <description>Market Place permissions for Anonymous User.</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>PMP_Category__c.PMP_Ancestor_Category_Nm__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Company__c.PMP_Biz_Org_Type_Txt__c</field>
@@ -148,11 +161,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Company__c.PMP_Disti_Sys_Solutions_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Company__c.PMP_IPA_Badge_Tier_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -192,11 +200,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PMP_Marketplace_Event__c.PMP_Event_Screen_Reader_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PMP_OPID_MPI_Rel__c.Core_Marketing_Profile_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -212,97 +215,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Alt_Text__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_BrightCoveVideoAccountID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_BrightCoveVideoId__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_BrightCoveVideoJobId__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_BrightCoveVideoThumbnail_URL__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_BrightCove_Video_Extension_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Delete_BrightCove_Video_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_File_Size_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Integration_Status_Nm__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Integration_Status_Reason_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Offering_Gallery_Video_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Offering_Resource__c.PMP_Video_Title_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PMP_Partner_Offering__c.PMP_Offering_Id__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>PMP_Partner_Program__c.PMP_Is_Active_Ind__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Program__c.PMP_Partner_Program_Desc_Chinese__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Program__c.PMP_Partner_Program_Desc_Japanese__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Program__c.PMP_Partner_Program_Desc__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Program__c.PMP_Partner_Program_Name_Chinese__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Program__c.PMP_Partner_Program_Name_Japanese__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -322,27 +240,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>PMP_Partner_Segment__c.PMP_Partner_Segment_Chinese_Dsc_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Segment__c.PMP_Partner_Segment_Chinese_Name_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>PMP_Partner_Segment__c.PMP_Partner_Segment_English_Dsc_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Segment__c.PMP_Partner_Segment_Japanese_Dsc_Txt__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>PMP_Partner_Segment__c.PMP_Partner_Segment_Japanese_Name_Txt__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -404,6 +302,16 @@
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
         <object>Account</object>
+        <viewAllFields>false</viewAllFields>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>Core_Sales_Support_Request__c</object>
         <viewAllFields>false</viewAllFields>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>

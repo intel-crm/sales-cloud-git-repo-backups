@@ -97,7 +97,10 @@ global class Core_IPS_MoveContactWithBatch implements
         if('PageContact'.equals(batchProcessedFrom)){
             List<Case> updateCases = new List<Case>();
             for(Case c : CaseList){
-                c.contactId = targetContId;
+                /*US1038991 - 07/08/2021 - Vishal - FLS Check for security vulnerability --*/
+                if (Schema.sObjectType.Case.fields.contactId.isUpdateable()) {
+                    c.contactId = targetContId;
+                }
                 updateCases.add(c);
             }
             try{
@@ -135,18 +138,14 @@ global class Core_IPS_MoveContactWithBatch implements
             List<Messaging.SingleEmailMessage> mails = new List<Messaging.SingleEmailMessage>();
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             List<String> sendTo = new List<String>();
-            if(Account.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
             targetAccountName=[select name from Account where id=:stAccId].name;
-            }
             sendTo.addAll(getMailAddresses());
             User activeUser = [Select Email From User where Username = : UserInfo.getUserName() limit 1];
             sendTo.add(activeUser.Email);
             mail.setToAddresses(sendTo);
             //code added as per US120420
             if(targetContId!=null){
-            if(Contact.SObjectType.getDescribe().isAccessible()){  //Fls-Read-Applied-Suresh-30/09/2022
                 targetContactName = [select name from contact where id =: targetContId].name;
-            }
             }
             //Add the total # of cases moved from old to new contact
             //Add the case number/case subject for each of the contacts moved
@@ -169,7 +168,6 @@ global class Core_IPS_MoveContactWithBatch implements
                      }
                  }
                 mail.setHtmlBody(htmlBody );
-                mail.setOrgWideEmailAddressId(Label.Core_Ownership_Orgwide_Email_Id);
                 mails.add(mail);
                 Messaging.sendEmail(mails);
             }

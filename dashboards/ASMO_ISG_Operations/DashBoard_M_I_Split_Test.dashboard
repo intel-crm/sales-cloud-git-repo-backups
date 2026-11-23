@@ -539,7 +539,7 @@
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
@@ -646,7 +646,7 @@
             <drillToDetailEnabled>false</drillToDetailEnabled>
             <enableHover>true</enableHover>
             <expandOthers>false</expandOthers>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>
@@ -822,7 +822,7 @@
             <enableHover>false</enableHover>
             <expandOthers>false</expandOthers>
             <groupingColumn>OpportunityLineItem.Core_KPI_Date__c</groupingColumn>
-            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+            <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
             <groupingSortProperties/>
             <legendPosition>Bottom</legendPosition>
             <report>unfiled$public/AE_Revenue_Pending_by_Quarter_Report</report>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
+        <name>X10_Day_s_Reminder_Emails_for_Company_Update_Required</name>
+        <label>10 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
+        <locationX>578</locationX>
+        <locationY>408</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_CompanyUpdateReqSecondNotification</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <actionCalls>
+        <description>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</description>
+        <name>X3_Day_s_Reminder_Emails_for_Company_Update_Required</name>
+        <label>3 Day(s) Reminder Emails for Company &apos;Update Required&apos;</label>
+        <locationX>50</locationX>
+        <locationY>408</locationY>
+        <actionName>PMP_SendEmailAlertsForPartners</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>partnerId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>templateName</name>
+            <value>
+                <stringValue>PMP_CompanyUpdateReqFirstNotification</stringValue>
+            </value>
+        </inputParameters>
+        <nameSegment>PMP_SendEmailAlertsForPartners</nameSegment>
+    </actionCalls>
+    <apiVersion>55.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <decisions>
+        <description>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
+        <name>Is_10_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
+        <label>Is 10 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
+        <locationX>710</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entry_Criteria_10_Day_s_Company_Update_Required_Reminder_Emails</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Lifecycle_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Status_Update_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Workflow_One_Week_Trigger_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Do_Not_Contact_Enabled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X10_Day_s_Reminder_Emails_for_Company_Update_Required</targetReference>
+            </connector>
+            <label>Entry Criteria : 10 Day(s) Company &apos;Update Required&apos; Reminder Emails</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <description>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</description>
+        <name>Is_3_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</name>
+        <label>Is 3 Day(s) &apos;Update Required&apos; Reminder Emails Sent to Company ?</label>
+        <locationX>182</locationX>
+        <locationY>288</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Entry_Criteria_3_Day_s_Company_Update_Required_Reminder_Emails</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Lifecycle_Status_Nm__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Update Required</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Workflow_Three_Day_Trigger_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Company_Status_Update_Dt__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Partner_Submitter_UserId__c</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.PMP_Do_Not_Contact_Enabled__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>X3_Day_s_Reminder_Emails_for_Company_Update_Required</targetReference>
+            </connector>
+            <label>Entry Criteria : 3 Day(s) Company &apos;Update Required Reminder&apos; Emails</label>
+        </rules>
+    </decisions>
+    <description>Automation Process on Company related changes</description>
+    <environments>Default</environments>
+    <interviewLabel>PMP_CompanyUpdateRequiredReminderEmails {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>PMP_CompanyProcessAutomation</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>122</locationX>
+        <locationY>0</locationY>
+        <object>PMP_Company__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Action_After_3_Business_Days</name>
+            <connector>
+                <targetReference>Is_3_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</targetReference>
+            </connector>
+            <label>Action  After 3 Business Days</label>
+            <maxBatchSize>1</maxBatchSize>
+            <offsetNumber>3</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>PMP_Workflow_Three_Day_Trigger_Dt__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <scheduledPaths>
+            <name>Action_After_10_Business_Days</name>
+            <connector>
+                <targetReference>Is_10_Day_s_Update_Required_Reminder_Emails_Sent_to_Company</targetReference>
+            </connector>
+            <label>Action  After 10 Business Days</label>
+            <maxBatchSize>1</maxBatchSize>
+            <offsetNumber>10</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>PMP_Workflow_One_Week_Trigger_Dt__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Obsolete</status>
+</Flow>

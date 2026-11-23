@@ -33,8 +33,6 @@ public without sharing class Core_MDF_CancelExceptionRecord {
         public Boolean isUserEligibleToCancel=false;
         @AuraEnabled
         public Boolean isSubmitterCancellingApproved=false;
-        @AuraEnabled
-        public Boolean isDraft=false;
     } 
 
     /****************************************************************************************************** 
@@ -46,14 +44,11 @@ public without sharing class Core_MDF_CancelExceptionRecord {
     Modified By:        Date:      Changes: 
     *******************************************************************************************************/
     @AuraEnabled
-    public static cancelExceptionWrapper isUserEligibiletoCancel(Id recordId){
+    public static cancelExceptionWrapper isUserEligibiletoCancel(){
         cancelExceptionWrapper exptWrap = new cancelExceptionWrapper();
-        Boolean hasAllAccountCancelPermission = false;
         try {
-           //Check custom permission for Cancellation
             Boolean hasCustomPermission = FeatureManagement.checkPermission(Label.Core_MDF_ExceptionCancellationAccess);
-            hasAllAccountCancelPermission = isCancellationAllowed(recordId);
-            if(hasCustomPermission && hasAllAccountCancelPermission){exptWrap.isUserEligibleToCancel = true;
+            if(hasCustomPermission){exptWrap.isUserEligibleToCancel = true;
             }
             else{
                 exptWrap.isUserEligibleToCancel = false;
@@ -115,10 +110,7 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                 }
                 else if(((Label.Core_MDF_Exception_Approved_Status).containsIgnoreCase(exceptionVar.Core_MDF_Exception_Status_nm__c)) && exceptionWrap.isSubmitter){
                     exceptionWrap.isSubmitterCancellingApproved = true;
-                }
-                else if(exceptionVar.Core_MDF_Exception_Status_nm__c=='Draft'){
-                    exceptionWrap.isDraft= true;
-                }
+                }    
             }
             
             if((!exceptionWrap.isDenied) && (!exceptionWrap.isCancelled) && (!exceptionWrap.isSubmitterCancellingApproved)){
@@ -128,15 +120,19 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                     
                     //Unlocking the record
                     Approval.UnlockResult[] urList = Approval.unlock(exceptionList, false);
+                    System.debug('urList: ' + urList);
                     //Removing the record from the Approval Process
                     for(ProcessInstance pi : [SELECT Id, TargetObjectId,(SELECT Id FROM Workitems)
                                               FROM ProcessInstance
-                                              WHERE TargetObjectId =: exceptionId]){
-                    //Avoid Deeply Nested IF Statements       
-                    piList.addAll((pi.Workitems.size() > 0) ? pi.Workitems : null);
+                                              WHERE TargetObjectId =: exceptionId]){   
+                        if(pi.Workitems.size() > 0){
+                            System.debug('pi.Workitems: ' + pi.Workitems);
+                            piList.addAll(pi.Workitems);
+                        }
                     }
-                    //Avoid Deeply Nested IF Statements
-                    List<Database.DeleteResult> deleteResults = (piList.size() > 0) ? Database.delete(piList) : null;
+
+                    if(piList.size() > 0){Database.delete(piList);
+                    }
 
                     exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
                     Database.update (exceptionVar);
@@ -144,33 +140,10 @@ public without sharing class Core_MDF_CancelExceptionRecord {
                 else if(exceptionWrap.isApproved){
                     exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
                     Database.update (exceptionVar);
-                }else if (exceptionWrap.isDraft){
-                    exceptionVar.Core_MDF_Exception_Status_nm__c = 'Cancelled';
-                    Database.update (exceptionVar);
                 }   
             }
             return exceptionWrap;
         }
-        catch(AuraHandledException e){Core_MDF_CCP_UtilityClass.logError(e);
-                                      throw e;
-                                     }
-    }
-    
-    Public static Boolean isCancellationAllowed(Id exceptionId){
-        Boolean isExceptionReviewer = false;
-        try{
-            List<Core_MDF_Exception__c> exceptionList = new List<Core_MDF_Exception__c>();
-            exceptionList = [SELECT Core_MDF_Exception_Status_nm__c,Core_MDF_Select_All_Accounts_ind__c,Core_MDF_Program_nm__c 
-                             FROM Core_MDF_Exception__c 
-                             WHERE Id =: exceptionId Limit 1];
-            if(!exceptionList[0].Core_MDF_Select_All_Accounts_ind__c){
-                isExceptionReviewer = true;
-            }else{
-                isExceptionReviewer = FeatureManagement.checkPermission('Core_MDF_ExceptionReviewer');
-            }
-             return isExceptionReviewer;  
-        }
         catch(Exception e){Core_MDF_CCP_UtilityClass.logError(e);return null;}
     }
- 
 }

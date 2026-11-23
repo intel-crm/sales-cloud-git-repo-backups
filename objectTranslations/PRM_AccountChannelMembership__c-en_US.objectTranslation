@@ -9,6 +9,11 @@
         <value>Account  Channel Memberships</value>
     </caseValues>
     <fields>
+        <label><!-- Account --></label>
+        <name>Dummy_Account__c</name>
+        <relationshipLabel><!-- IQR Membership --></relationshipLabel>
+    </fields>
+    <fields>
         <label><!-- Account Channel Program Key --></label>
         <name>PRM_Account_Channel_Program_Key__c</name>
     </fields>
@@ -57,6 +62,10 @@
         <picklistValues>
             <masterLabel>Distributor</masterLabel>
             <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Design Services</masterLabel>
+            <translation><!-- FPGA Design Services --></translation>
         </picklistValues>
         <picklistValues>
             <masterLabel>Guest</masterLabel>
@@ -108,9 +117,38 @@
         <label><!-- Tier Name --></label>
         <name>PRM_Tier_Name_txt__c</name>
     </fields>
+    <layouts>
+        <layout>Channel Membership Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Test Page layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Test_Pagelayout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- New ACM Change Request --></label>
+        <name>Membership</name>
+    </quickActions>
     <recordTypes>
         <label><!-- Standard --></label>
         <name>Standard</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Test RecordType --></label>
+        <name>Test_RecordType</name>
     </recordTypes>
     <startsWith>Consonant</startsWith>
     <validationRules>

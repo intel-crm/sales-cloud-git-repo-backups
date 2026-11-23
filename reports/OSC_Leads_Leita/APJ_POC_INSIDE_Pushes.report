@@ -20,9 +20,6 @@
         <field>AGE</field>
     </columns>
     <columns>
-        <field>User.Core_User_Geo__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
@@ -47,15 +44,29 @@
     <columns>
         <field>ALIAS</field>
     </columns>
-    <description>RT: Opportunities.  APJ Inside Sales Optys with 4 or more pushes</description>
+    <description>RT: Opportunities.  Just for Erica&apos;s Team and SDR&apos;s</description>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Opportunity_Coverage__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>OSC</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>OSC,inside</value>
+            <value>Erica Tor</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>ALIAS</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>aliceuye,kevinwei,weilunle,xuanying,ymun</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Push_Counter__c</column>
@@ -63,13 +74,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>greaterOrEqual</operator>
             <value>4</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>User.Core_User_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>APJ</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

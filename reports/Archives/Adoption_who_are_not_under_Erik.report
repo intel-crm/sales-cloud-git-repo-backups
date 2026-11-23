@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <buckets>
+        <bucketType>number</bucketType>
+        <developerName>BucketField_25332621</developerName>
+        <masterLabel>Last Logged In</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <to>-1</to>
+            </sourceValues>
+            <value>N/A</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>-1</from>
+                <to>7</to>
+            </sourceValues>
+            <value>Last Week</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>7</from>
+                <to>30</to>
+            </sourceValues>
+            <value>8-30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>30</from>
+                <to>60</to>
+            </sourceValues>
+            <value>&gt; 30 Days</value>
+        </values>
+        <values>
+            <sourceValues>
+                <from>60</from>
+            </sourceValues>
+            <value>&gt; 60 Days</value>
+        </values>
+    </buckets>
+    <buckets>
+        <bucketType>text</bucketType>
+        <developerName>BucketField_34524108</developerName>
+        <masterLabel>Team</masterLabel>
+        <nullTreatment>n</nullTreatment>
+        <sourceColumnName>CUST_OWNER_ROLE</sourceColumnName>
+        <useOther>false</useOther>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Steven W Swartz</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Swartz, Steven W</sourceValue>
+            </sourceValues>
+            <value>Steven Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Michael Han</sourceValue>
+            </sourceValues>
+            <sourceValues>
+                <sourceValue>Han, Michael</sourceValue>
+            </sourceValues>
+            <value>Michael Team</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Joachim Aertebjerg</sourceValue>
+            </sourceValues>
+            <value>Medion</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Keiichi Otsuka</sourceValue>
+            </sourceValues>
+            <value>NEC</value>
+        </values>
+        <values>
+            <sourceValues>
+                <sourceValue>Employee of Santiago V Durante</sourceValue>
+            </sourceValues>
+            <value>CCE</value>
+        </values>
+    </buckets>
+    <chart>
+        <backgroundColor1>#FFFFFF</backgroundColor1>
+        <backgroundColor2>#FFFFFF</backgroundColor2>
+        <backgroundFadeDir>Diagonal</backgroundFadeDir>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartSummaries>
+            <axisBinding>y</axisBinding>
+            <column>RowCount</column>
+        </chartSummaries>
+        <chartType>VerticalColumnGroupedLine</chartType>
+        <enableHoverLabels>false</enableHoverLabels>
+        <expandOthers>true</expandOthers>
+        <groupingColumn>BucketField_25332621</groupingColumn>
+        <legendPosition>Right</legendPosition>
+        <location>CHART_TOP</location>
+        <secondaryGroupingColumn>Core_User_Login_Snapshot__c.Core_Full_Name__c</secondaryGroupingColumn>
+        <showAxisLabels>true</showAxisLabels>
+        <showPercentage>false</showPercentage>
+        <showTotal>false</showTotal>
+        <showValues>false</showValues>
+        <size>Medium</size>
+        <summaryAxisRange>Auto</summaryAxisRange>
+        <textColor>#000000</textColor>
+        <textSize>12</textSize>
+        <titleColor>#000000</titleColor>
+        <titleSize>18</titleSize>
+    </chart>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_WWID__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Profile__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login__c</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Last_Login_Duration__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_ROLE</field>
+    </columns>
+    <columns>
+        <field>Core_User_Login_Snapshot__c.Core_Department__c</field>
+    </columns>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>CUST_ID</field>
+    </columns>
+    <filter>
+        <booleanFilter>1 AND 2 AND (3 or 4 or 5)</booleanFilter>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Geo__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_Is_HQ_User__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>0</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_OWNER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Employee of Michael Han</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Core_User_Login_Snapshot__c.Core_WWID__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>10567637,10581829,10624078,10701465,10644401</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CUST_OWNER_ROLE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Employee of Steven W Swartz</value>
+        </criteriaItems>
+        <language>en_US</language>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_25332621</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>BucketField_34524108</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Core_User_Login_Snapshot__c.Core_Full_Name__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Adoption who are not under Erik</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Core_User_Login_Snapshot__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_LAST7</interval>
+    </timeFrameFilter>
+</Report>

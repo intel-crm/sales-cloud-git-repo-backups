@@ -59,7 +59,7 @@
         <name>PRM_Total_Points_Available_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Total Points Due to Expire --></label>
+        <label><!-- Points Due to Expire --></label>
         <name>PRM_Total_Points_Due_to_Expire_Nbr__c</name>
     </fields>
     <fields>
@@ -71,20 +71,15 @@
         <name>PRM_Total_Points_Expired_Nbr__c</name>
     </fields>
     <fields>
-        <label><!-- Total Points Expiry Date --></label>
-        <name>PRM_Total_Points_Expiry_Date_Dt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Total Points Expiry Quarter --></label>
-        <name>PRM_Total_Points_Expiry_Quarter_txt__c</name>
-    </fields>
-    <fields>
-        <label><!-- Total Points Expiry Year --></label>
-        <name>PRM_Total_Points_Expiry_Year_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Total Points Redeemed --></label>
         <name>PRM_Total_Points_Redeemed_Nbr__c</name>
     </fields>
+    <layouts>
+        <layout>Points Data Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

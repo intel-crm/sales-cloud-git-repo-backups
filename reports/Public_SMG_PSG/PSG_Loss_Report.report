@@ -4,9 +4,6 @@
         <field>Account.Core_Geo__c</field>
     </columns>
     <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Business_Unit_Territory__c</field>
     </columns>
     <columns>
@@ -87,7 +84,7 @@
     <columns>
         <field>OPPORTUNITY_ID</field>
     </columns>
-    <description>Product Level PSG Loss Report for Approval Meeting</description>
+    <description>PSG Loss Report for Approval Meeting</description>
     <filter>
         <booleanFilter>1 AND 2 AND 3</booleanFilter>
         <criteriaItems>
@@ -109,7 +106,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>greaterThan</operator>
-            <value>1/1/2022 12:00 AM</value>
+            <value>1/1/2018 12:00 AM</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -119,7 +116,7 @@
         <field>OpportunityLineItem.Core_Claim_Date__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>PSG Loss Report - Product Level</name>
+    <name>PSG Loss Report</name>
     <params>
         <name>terr</name>
         <value>all</value>

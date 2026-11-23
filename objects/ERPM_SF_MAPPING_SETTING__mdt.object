@@ -67,6 +67,11 @@
                     <default>false</default>
                     <label>Relationship_Entitlement</label>
                 </value>
+                <value>
+                    <fullName>Profession</fullName>
+                    <default>false</default>
+                    <label>Profession</label>
+                </value>
             </valueSetDefinition>
         </valueSet>
     </fields>

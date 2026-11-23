@@ -8,7 +8,7 @@
 * Intel - SM      7/7/2020          Class for IPA account creation functionality
 *******************************************************************************************************/
 public without sharing class Core_MDF_CCPAccount_Onboard {
-    
+     public static boolean ipaRefresh =  Boolean.valueOf(label.PRM_IPARefresh); //IPA2.0 - TWC727-2861
     //Map of technical program name to program abbrivated name
     public static Map<string,string> prgmAbbName = new Map<string,string>();
     //Map of technical program name to program Id
@@ -45,6 +45,8 @@ Modified By:        Date:       Changes:
         {
             groupDeveloperName = 'Core_MDF_CCP_'+String.valueOf(accWrap.account.Id)+'_'+prgmAbbName.get(accWrap.program)+'_'+'EXT';
             groupName = 'CCP '+String.valueOf(accWrap.account.Id)+ ' ' + prgmAbbName.get(accWrap.program) + ' ' + ' EXT';
+            System.debug('groupName:' + groupName);
+            System.debug('groupDeveloperName:' + groupDeveloperName);
             Group newGroup = new Group();
             newGroup.Name = groupName;
             newGroup.DeveloperName = groupDeveloperName;
@@ -161,7 +163,7 @@ Added By:           Accenture - AD - 7/7/2020
 Modified By:        Date:       Changes: 
 
 *******************************************************************************************************/
-/*    public static void isAccountEligibleForMDF(List<Account> newAccountList){
+    public static void isAccountEligibleForMDF(List<Account> newAccountList){
         //List of account onboard wrapper
         List<Core_MDF_CCPAccountOnboardWrapper> listOfAccountOnboardWrapper =  new List<Core_MDF_CCPAccountOnboardWrapper>();
         //set of account which has MDF benefit
@@ -181,19 +183,21 @@ Modified By:        Date:       Changes:
                 //Checking account has MDF benefit
                 setOfMdfBenefitAcc = hasMDFBenefit(setOfComarketingActiveAcc);
             }
-           
+            system.debug('final accounts '+setOfMdfBenefitAcc);
             if(setOfMdfBenefitAcc!=null && setOfMdfBenefitAcc.size()>0){
                 for(Account acc : setOfMdfBenefitAcc){
                     Core_MDF_CCPAccountOnboardWrapper ccpAccOnBoardWrpper = new Core_MDF_CCPAccountOnboardWrapper();
-                    ccpAccOnBoardWrpper.account = acc;ccpAccOnBoardWrpper.program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name');
+                    ccpAccOnBoardWrpper.account = acc;
+                    ccpAccOnBoardWrpper.program = Core_MDF_CustomLabelConfig.getTextValues('Core_MDF_IPA_Technical_program_name');
                     //preparing list of final accounts which is eligible for MDF benfit
                     listOfAccountOnboardWrapper.add(ccpAccOnBoardWrpper);
                 }
-                if(listOfAccountOnboardWrapper!=null && listOfAccountOnboardWrapper.size()>0){onboardAccountToCCP(listOfAccountOnboardWrapper); 
+                if(listOfAccountOnboardWrapper!=null && listOfAccountOnboardWrapper.size()>0){
+                     onboardAccountToCCP(listOfAccountOnboardWrapper); 
                 }
             }
         }
-    }*/
+    }
     
     /****************************************************************************************************** 
 Method Name:        isOpiAccount
@@ -236,13 +240,15 @@ Modified By:        Date:       Changes:
                 if(mapOfIntelAccountandOpId!=null && mapOfIntelAccountandOpId.size()>0 
                     && mapOfIntelAccountandOpId.keySet().contains(account.Id)){
                         accountsToBeProcessed.add(account);
-                    }else{setOfFailedAccounts.add(account);
+                    }else{
+                        setOfFailedAccounts.add(account);
                     }
             }
         }
         
         //Adding error for all failed accounts
-        for(Account failedAcc : setOfFailedAccounts){failedAcc.addError(Label.Core_MDF_AccHasNoOpidError);
+        for(Account failedAcc : setOfFailedAccounts){
+            failedAcc.addError(Label.Core_MDF_AccHasNoOpidError);
         }
         
         return accountsToBeProcessed;
@@ -302,11 +308,13 @@ Modified By:        Date:       Changes:
                (setOfCoMarketingActiveOPIDs!=null && setOfCoMarketingActiveOPIDs.size()>0
                 && !setOfCoMarketingActiveOPIDs.contains(mapOfIntelAccountandOpId.get(account.id)))){
                     accountsToBeProcessed.add(account);
-                }else{listOfFailedAccounts.add(account);
+                }else{
+                    listOfFailedAccounts.add(account);
                 }
         }
         //Adding error for all failed accounts
-        for(Account failedAcc : listOfFailedAccounts){failedAcc.addError(Label.Core_MDF_OtherComarketingActiveAccExist);
+        for(Account failedAcc : listOfFailedAccounts){
+            failedAcc.addError(Label.Core_MDF_OtherComarketingActiveAccExist);
         }
         return accountsToBeProcessed;
     }
@@ -321,7 +329,7 @@ Modified By:        Date:       Changes:
 
 *******************************************************************************************************/
     
-  /*  public static Set<Account> hasMDFBenefit(Set<Account> newAccountSet)
+    public static Set<Account> hasMDFBenefit(Set<Account> newAccountSet)
     {
         //to hold benefit name string for search 
         //'%MDF%'
@@ -338,7 +346,7 @@ Modified By:        Date:       Changes:
         Set<Id> setOfOpIds = new Set<Id>();
         //set of MDF benefits 
         Set<String> setOfMDFPartnerBenefits = new Set<String>();
-        
+        System.debug('newAccountSet:::'+newAccountSet);
         for(Account account : newAccountSet){            
             if(mapOfIntelAccountandOpId!=null && mapOfIntelAccountandOpId.size()>0 && mapOfIntelAccountandOpId.containsKey(account.id) && mapOfIntelAccountandOpId.get(account.Id)!=null){
                 //Add account OPID
@@ -348,9 +356,11 @@ Modified By:        Date:       Changes:
             }
         }
         //Querying Core_MDF_BudgetType_Benefit_Mapping__mdt fields and adding it in setOfMDFPartnerBenefits 
-        for(Core_MDF_BudgetType_Benefit_Mapping__mdt mdfPartnerBenefit : [Select Id, Core_MDF_Partner_Benefit__c from Core_MDF_BudgetType_Benefit_Mapping__mdt LIMIT 1000])
-        {setOfMDFPartnerBenefits.add(mdfPartnerBenefit.Core_MDF_Partner_Benefit__c);            
+        for(Core_MDF_BudgetType_Benefit_Mapping__mdt mdfPartnerBenefit : [Select Id, Core_MDF_Partner_Benefit__c from Core_MDF_BudgetType_Benefit_Mapping__mdt])
+        {
+            setOfMDFPartnerBenefits.add(mdfPartnerBenefit.Core_MDF_Partner_Benefit__c);            
         }
+        if(!ipaRefresh  || test.isrunningtest()){ //IPA2.0-TWC727-2861 Start
         //Quering existig account specialty association records, to check for MDF specialty corresponding to account Id or one partner Id
 		List<PRM_Account_Specialty_Association__c> listOfExistingAccBenefitAccoc = [SELECT ID, PRM_Account_Id__c, PRM_Specialty_Id__r.name from PRM_Account_Specialty_Association__c
                                                                                     where PRM_Specialty_Id__r.name IN: (setOfMDFPartnerBenefits) and PRM_Account_Id__c IN: (setOfAccIdOrOpid) and PRM_InActive_Ind__c = FALSE ];
@@ -358,25 +368,31 @@ Modified By:        Date:       Changes:
         //preparing set of associated accounts
         for(PRM_Account_Specialty_Association__c accBenefitAssoc : listOfExistingAccBenefitAccoc){
             // If Account is an Intel Account having Op Id , then Add Account's Op Id in setOfOpIds  
-            if(mapOfAllIntelAcctsIdOpId.containsKey(accBenefitAssoc.PRM_Account_Id__c)){setOfOpIds.add(mapOfAllIntelAcctsIdOpId.get(accBenefitAssoc.PRM_Account_Id__c));
+            if(mapOfAllIntelAcctsIdOpId.containsKey(accBenefitAssoc.PRM_Account_Id__c)){
+                setOfOpIds.add(mapOfAllIntelAcctsIdOpId.get(accBenefitAssoc.PRM_Account_Id__c));
             }
             //If the Account is One Partner Group Account
-            else{setOfOpIds.add(accBenefitAssoc.PRM_Account_Id__c);
+            else{
+                setOfOpIds.add(accBenefitAssoc.PRM_Account_Id__c);
             }
-            
+            system.debug('accBenefitAssoc::'+accBenefitAssoc);
         }
+     }//IPA2.0-TWC727-2861 End
         //preparing final set of accounts which has to be processed
         for(Account account : newAccountSet){
             
             // only those account will ve processed whose benefit association exists for any Account in the same One Partner Account Group
-            if(setOfOpIds!=null && setOfOpIds.size()>0 && setOfOpIds.contains(mapOfIntelAccountandOpId.get(account.Id))){accountsToBeProcessed.add(account);
+            if(setOfOpIds!=null && setOfOpIds.size()>0 && setOfOpIds.contains(mapOfIntelAccountandOpId.get(account.Id))){
+                accountsToBeProcessed.add(account);
             }
-            else{listOfFailedAccounts.add(account);
+            else{
+                listOfFailedAccounts.add(account);
             }           
         }
         //Adding error for all failed accounts
-        for(Account failedAcc : listOfFailedAccounts){failedAcc.addError(Label.Core_MDF_AccHasNoMDFBenefitError);
+        for(Account failedAcc : listOfFailedAccounts){
+            failedAcc.addError(Label.Core_MDF_AccHasNoMDFBenefitError);
         }
         return accountsToBeProcessed;
-    }*/
+    }
 }

@@ -1,50 +1,17 @@
 <aura:component  controller="Core_DDR_Accept_Approve_Reject_Design" implements="flexipage:availableForRecordHome,force:hasRecordId,force:lightningQuickActionWithoutHeader" access="public" >
-    <aura:attribute name="alertMessage" type="String"  default=""/>
-    <aura:attribute name="lowTouchORHighTouch" type="String"  default=""/>
-    <aura:attribute name="recordId" type="String"/>
-    <aura:registerEvent name="childEvent" type="c:DDR_ChildToParentCmmn" />
-    <aura:attribute name="LexSpinner" type="boolean" default="false"/>
+    <aura:attribute name="alertMessage" type="String"/>
+     <aura:attribute name="LexSpinner" type="boolean" default="false"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <aura:html tag="style">
-        .slds-modal__content{
-        overflow-y:hidden !important;
-        height:unset !important;
-        max-height:unset !important;
-        min-height: 20vh;
-        }
-    </aura:html>
-    <!-- SPINNER -->
-    <div aura:id="spinner" class="slds-is-relative">
-        <aura:if isTrue="{!v.LexSpinner}">    
-            <lightning:spinner alternativeText="Loading" size="medium" variant="brand" 
-                               style="min-height: 20vh;background-color:white;"/>  
-        </aura:if>
-        
-        <!--<aura:if isTrue="{!(v.alertMessage != null)}">
-            <div class="slds-text-heading_small" >{!v.alertMessage}</div>
-            <div style="float: right;padding-top: 2%;">
-                <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}"/>
-            </div>
-        </aura:if>-->
-        <aura:if isTrue="{!(v.alertMessage != null)}">
-            <div class="slds-p-around_medium">
-                <div aura:id="errorMessage" class="slds-text-longform">
-                    <div class="slds-is-relative slds-align_absolute-left">
-                        <div class="slds-notify" role="status">
-                            <div class="slds-notify__content">
-                                <ul>
-                                    <aura:iteration items="{!v.alertMessage}" var="item">
-                                        <li class="slds-text-heading_small">{!item}</li>
-                                    </aura:iteration>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- <div style="float: right;padding-top: 2%;">
-                <lightning:button label="Close" variant="brand" onclick="{!c.cancelPopup}"/>
-            </div> -->
-        </aura:if>
-    </div>
+    
+    <aura:if isTrue="{!v.LexSpinner}">    
+          <lightning:spinner alternativeText="Loading" size="large" variant="brand"/>  
+    </aura:if>
+    
+    <aura:if isTrue="{!(v.alertMessage != null)}">
+        <div class="slds-text-heading_small" >{!v.alertMessage}</div>
+        <div style="float: right;padding-top: 2%;">
+            <lightning:button label="Cancel" variant="brand" onclick="{!c.cancelPopup}"/>
+        </div>
+    </aura:if>
+    
 </aura:component>

@@ -24,9 +24,6 @@
     <columns>
         <field>Case.Core_IPS_Product_name__c</field>
     </columns>
-    <columns>
-        <field>Case.Core_IPS_Backend_ID_URL__c</field>
-    </columns>
     <filter>
         <criteriaItems>
             <column>Case.Core_Promote_Status__c</column>

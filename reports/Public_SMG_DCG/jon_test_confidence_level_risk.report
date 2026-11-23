@@ -79,7 +79,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>50,75</value>
+            <value>50.0,75.00</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

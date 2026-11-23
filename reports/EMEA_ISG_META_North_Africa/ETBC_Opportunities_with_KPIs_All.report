@@ -103,7 +103,7 @@
         <field>BucketField_25346800</field>
     </columns>
     <filter>
-        <booleanFilter>(((1 AND (2 OR 3) AND 4) AND 5) AND 6) AND 7</booleanFilter>
+        <booleanFilter>1 AND (2 OR 3) AND 4</booleanFilter>
         <criteriaItems>
             <column>CUST_NAME</column>
             <columnToColumn>false</columnToColumn>
@@ -131,27 +131,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>#,Consumption,Partner</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>false</isUnlocked>
-            <operator>notContain</operator>
-            <value>Frans</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -195,6 +174,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
-        <interval>INTERVAL_PREVFY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

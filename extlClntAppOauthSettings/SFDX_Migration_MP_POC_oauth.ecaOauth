@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtlClntAppOauthSettings xmlns="http://soap.sforce.com/2006/04/metadata">
+    <commaSeparatedOauthScopes>Api, Web, RefreshToken</commaSeparatedOauthScopes>
+    <externalClientApplication>SFDX_Migration_MP_POC</externalClientApplication>
+    <isFirstPartyAppEnabled>false</isFirstPartyAppEnabled>
+    <label>SFDX_Migration_MP_POC_oauth</label>
+    <oauthLink>00D8A0000005uU8:888KR000000L0sh</oauthLink>
+</ExtlClntAppOauthSettings>

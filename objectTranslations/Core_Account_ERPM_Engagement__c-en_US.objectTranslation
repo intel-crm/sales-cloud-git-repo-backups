@@ -30,5 +30,12 @@
         <label><!-- Extended Questions --></label>
         <name>Core_Extended_Questions__c</name>
     </fields>
+    <layouts>
+        <layout>Account ERPM Engagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

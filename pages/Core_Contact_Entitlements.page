@@ -14,7 +14,7 @@
     </apex:outputPanel>
     
     
-    <style> 
+    <style>  
         
         .btnEnabled{
         font-family: 'Verdana','Geneva',sans-serif !important; 
@@ -403,7 +403,7 @@
                         sd.createDialog();             
                         sd.setWidth(500);
                         window.parent.sd = sd;   
-                        sd.setContentInnerHTML("<p align='center'><b><i> Please De-Select the selected Entitlement if not required</i></b></p><p align='left'>"+name+" Entitlement can only be granted if OPID has any one of the following benefit(s)  <div class='benifitsClass'></div></p><p align='center'><br /><button class='btn' onclick='callSaveMethod();'>Ok</button></p> </p>");   
+                        sd.setContentInnerHTML("<p align='center'><b><i> Please De-Select the selected Entitlement if not required</i></b></p><p align='left'>"+name+" Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)  <div class='benifitsClass'></div></p><p align='center'><br /><button class='btn' onclick='callSaveMethod();'>Ok</button></p> </p>");   
                         sd.show(); 
                         for (let val in value) {
                             let list = document.createElement('li');
@@ -441,14 +441,14 @@
         console.log(val);
         //console.log(sd);
         console.log(name+'/'+ acrCount+'/'+ acrPA+'/'+ acrPAD);
-        /*if(name == 'Employee' && acrCount == 1 && val.checked){
+        if(name == 'Employee' && acrCount == 1 && val.checked){
             
             sd.createDialog();             
             sd.setWidth(500);
             window.parent.sd = sd;   
             sd.setContentInnerHTML("<p align='center'><b><i> Please De-Select the selected Entitlement if not required</i></b></p><p align='left'>Contact does not have correct contact relationship.Are you sure you want to proceed?</p><p align='center'><br /><button class='btn' onclick='callSaveMethod();'>Ok</button> </p> </p>");    
             sd.show();
-        } 
+        }  
         if(((name == 'Employee' && acrCount == 0)||(name == 'Partner Admin' && acrPA == 0)||(name == 'Partner Admin Delegate' && acrPAD == 0)) && val.checked){
             
             sd.createDialog();             
@@ -456,7 +456,7 @@
             window.parent.sd = sd;   
             sd.setContentInnerHTML("<p align='center'><b><i> Please De-Select the selected Entitlement if not required</i></b></p><p align='left'>Contact does not have correct contact relationship.Are you sure you want to proceed?</p><p align='center'><br /><button class='btn' onclick='callSaveMethod();'>Ok</button> </p> </p>");    
             sd.show();
-        }*/
+        }
         /*if(name == 'Partner Admin' && acrPA == 0 && val.checked){
             
             sd.createDialog();             
@@ -606,7 +606,7 @@
                                             <div class="headerPlusMinusIcon">+</div>
                                         </div>
                                         <div class="apexColumn categoryColumn">
-                                            <apex:outputText value="{!HTMLENCODE(section[0].category)}" escape="false"></apex:outputText>
+                                            <apex:outputText value="{!HTMLENCODE(section[0].category)}"></apex:outputText>
                                         </div>
                                         <!-- <div class="apexColumn accessColumn">
 <apex:outputText value="Access"></apex:outputText>
@@ -620,7 +620,7 @@
                                                 <div style="height: 30px;" class="subCategoryBgColor">
                                                     <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}"
                                                                       styleClass="slds-panel1" layout="block">
-                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false"
+                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}"
                                                                          style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px;"></apex:outputText>
                                                         <apex:outputText value="Access" style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px;"></apex:outputText>
                                                         <span class="vfHelpText">
@@ -647,7 +647,7 @@ new function()
                                                     <!-- <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">-->
                                                     <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}"
                                                                       layout="block">
-                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false"
+                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}"
                                                                          style=" width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px; "></apex:outputText>
                                                         <apex:outputText value="Access" style=" float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px; "></apex:outputText>
                                                         <!-- </apex:pageBlockSectionItem> -->
@@ -673,9 +673,9 @@ new function()
                                                     <div style="height: 30px;">
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}"
                                                                           styleClass="slds-panel1" layout="block">
-                                                            <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(row.name)}"
                                                                              style="padding-left:25px;" />
-                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}"
                                                                              style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection">
                                                             </apex:outputText>
                                                             <span class="vfHelpText">
@@ -703,9 +703,9 @@ new function()
 <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" > -->
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}"
                                                                           styleClass="slds-panel1" layout="block">
-                                                            <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(row.name)}"
                                                                              style="padding-left:25px;" />
-                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}"
                                                                              style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                         </apex:outputPanel>
                                                     </div>
@@ -795,7 +795,7 @@ new function()
                         
                         <apex:outputPanel rendered="{!isNotExist == TRUE}" layout="block" >
                             <div class = "blankSearchTextMessage">
-                                <apex:outputText value="{!HTMLENCODE($Label.Core_A_E_Entitlement_Does_Not_Exist)}" escape="false"></apex:outputText>
+                                <apex:outputText value="{!HTMLENCODE($Label.Core_A_E_Entitlement_Does_Not_Exist)}"></apex:outputText>
                             </div>
                         </apex:outputPanel>
                         
@@ -811,7 +811,7 @@ new function()
                                             <div class="headerPlusMinusIcon">+</div>
                                         </div>
                                         <div class="apexColumn categoryColumn">
-                                            <apex:outputText value="{!HTMLENCODE(section[0].category)}" escape="false"></apex:outputText>
+                                            <apex:outputText value="{!HTMLENCODE(section[0].category)}"></apex:outputText>
                                         </div>
                                         <!-- <div class="apexColumn accessColumn">
 <apex:outputText value="Access"></apex:outputText>
@@ -825,7 +825,7 @@ new function()
                                                 <div style="height: 30px;" class="subCategoryBgColor">
                                                     <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),false, true)}"
                                                                       styleClass="slds-panel1" layout="block">
-                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false"
+                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}"
                                                                          style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px;"></apex:outputText>
                                                         <apex:outputText value="Access"  style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px;"></apex:outputText>
                                                         <span class="vfHelpText">
@@ -852,7 +852,7 @@ new function()
                                                     <!-- <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}">-->
                                                     <apex:outputPanel rendered="{!IF((ISNULL(row.subCatHelpText) || row.subCatHelpText==''),true, false)}"
                                                                       layout="block">
-                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}" escape="false"
+                                                        <apex:outputText value="{!HTMLENCODE(row.SubCategory)}"
                                                                          style="width: 88%; float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px; "></apex:outputText>
                                                         <apex:outputText value="Access" style="float:left; text-align: left;  padding-left:5px; font-weight: bold;font-size:13px; margin-top:7px; "></apex:outputText>
                                                         <!-- </apex:pageBlockSectionItem> -->
@@ -878,9 +878,9 @@ new function()
                                                     <div style="height: 30px;">
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),false, true)}"
                                                                           styleClass="slds-panel1" layout="block">
-                                                            <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(row.name)}"
                                                                              style="padding-left:25px;" />
-                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}"
                                                                              style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection">
                                                             </apex:outputText>
                                                             <span class="vfHelpText">
@@ -908,9 +908,9 @@ new function()
 <apex:pageBlockSectionItem rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}" > -->
                                                         <apex:outputPanel rendered="{!IF((ISNULL(row.entitlehelpText) || row.entitlehelpText ==''),true, false)}"
                                                                           styleClass="slds-panel1" layout="block">
-                                                            <apex:outputText value="{!HTMLENCODE(row.name)}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(row.name)}"
                                                                              style="padding-left:25px;" />
-                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}" escape="false"
+                                                            <apex:outputText value="{!HTMLENCODE(entitlementStatus[LEFT(row.idEntitlement,15)])}"
                                                                              style="white-space: nowrap;color: cornflowerblue;" styleClass="entitlementStatusSection"></apex:outputText>
                                                         </apex:outputPanel>
                                                     </div>

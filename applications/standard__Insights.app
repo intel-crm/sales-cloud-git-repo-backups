@@ -20,10 +20,14 @@
     <tabs>standard-Asset</tabs>
     <tabs>Account_Meeting_Brief__c</tabs>
     <tabs>standard-ProfilePlatformFeed</tabs>
+    <tabs>DFSS_SnapShot_Push__c</tabs>
     <tabs>Account_Meeting_Summary</tabs>
+    <tabs>BLND_TableTop</tabs>
     <tabs>standard-OtherUserProfile</tabs>
     <tabs>standard-Order</tabs>
     <tabs>standard-ProfilePlatformOverview</tabs>
+    <tabs>BLND_Snapshot</tabs>
+    <tabs>BLND_Monarch</tabs>
     <tabs>Core_AccountCoverage_Export__c</tabs>
     <tabs>standard-Campaign</tabs>
     <tabs>standard-Idea</tabs>
@@ -60,15 +64,21 @@
     <tabs>standard-DuplicateRecordSet</tabs>
     <tabs>GBLite__Buy_GridBuddy</tabs>
     <tabs>GBLite__All_Grids</tabs>
+    <tabs>APXTConga4__Conga_Template__c</tabs>
     <tabs>Core_Tab_Newsfeeds</tabs>
     <tabs>MaritzCX__Allegiance_Configuration_Settings</tabs>
     <tabs>standard-AppLauncher</tabs>
+    <tabs>APXTConga4__Conga_Setup</tabs>
     <tabs>standard-Solution</tabs>
     <tabs>MaritzCX__Survey_Response__c</tabs>
     <tabs>MaritzCX__Survey_Question__c</tabs>
+    <tabs>APXTConga4__CongaMerge</tabs>
+    <tabs>APXTConga4__About_Conga_Composer</tabs>
     <tabs>Core_IPS_Backend_Field_Mapping__c</tabs>
+    <tabs>APXTConga4__Conga_Merge_Query__c</tabs>
     <tabs>Core_Opportunity_Stages</tabs>
     <tabs>Core_IPS_Backend_Supported_Product_Map__c</tabs>
+    <tabs>APXTConga4__Conga_Email_Template__c</tabs>
     <tabs>Core_Opportunity_Review</tabs>
     <tabs>Core_IPS_Backend_System__c</tabs>
     <tabs>Core_Opportunity_Teams</tabs>
@@ -79,4 +89,43 @@
     <tabs>Ask_a_Question</tabs>
     <tabs>Core_Channel_Sales_Analysis</tabs>
     <tabs>Core_Opportunity_Search</tabs>
+    <tabs>PMP_Partner_Program__c</tabs>
+    <tabs>PRM_Message_Entitlement_Association__c</tabs>
+    <tabs>Core_Apex_EmailNotification__c</tabs>
+    <tabs>PMP_Partner_Segment__c</tabs>
+    <tabs>SCRTY_Object_Permission_Metrics__c</tabs>
+    <tabs>A_E_Error_Mapping__c</tabs>
+    <tabs>A_E_Integration_Status_Detail__c</tabs>
+    <tabs>Core_Platform_Event_Log__c</tabs>
+    <tabs>PSS_Solution_Contact_Association__c</tabs>
+    <tabs>Core_Channel_Program_Domaindetails__c</tabs>
+    <tabs>PRM_Bulk_Data_Upload__c</tabs>
+    <tabs>PMP_OPID_MPI_Rel__c</tabs>
+    <tabs>PRM_Email_Handler__c</tabs>
+    <tabs>PMP_Company_Resource__c</tabs>
+    <tabs>PMP_Rich_Media_Asset_Stage__c</tabs>
+    <tabs>PMP_Rich_Media_Asset_Category_Stage__c</tabs>
+    <tabs>Core_Log_Failed_Callout_Entry__c</tabs>
+    <tabs>Bulk_Data_Upload_Summary__c</tabs>
+    <tabs>Attachment__c</tabs>
+    <tabs>PRM_Notification_Event_Log__c</tabs>
+    <tabs>Core_GA_Banner__c</tabs>
+    <tabs>PRM_Registration_Tracker__c</tabs>
+    <tabs>PRM_IPA_Affiliation__c</tabs>
+    <tabs>PRM_Builder_Strategy__c</tabs>
+    <tabs>PMP_Partner_Tier__c</tabs>
+    <tabs>Problem_Request__c</tabs>
+    <tabs>Problem_Collaborator__c</tabs>
+    <tabs>PRM_Security_Test__c</tabs>
+    <tabs>PRM_Child_Security_Testing__c</tabs>
+    <tabs>PRM_Partner_Report_Matrix__c</tabs>
+    <tabs>Account_Create_Request__c</tabs>
+    <tabs>ER_Customer_Master_File__c</tabs>
+    <tabs>ER_Customer_Master_File_Group__c</tabs>
+    <tabs>ER_CMFGroupAssociation__c</tabs>
+    <tabs>ER_ContactGroupAssociation__c</tabs>
+    <tabs>Core_CustomMetadata_Object__c</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
 </CustomApplication>

@@ -46,10 +46,7 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
             return Database.getQuerylocator(query);
             
         } catch(Exception e) {
-            batchProcessing.Batch_Header__c = header.id;
-            batchProcessing.Core_Exception_Log__c=e.getMessage();
-            insert batchProcessing;
-            return null;
+            System.debug(e.getMessage());  batchProcessing.Batch_Header__c = header.id; batchProcessing.Core_Exception_Log__c=e.getMessage(); insert batchProcessing; return null;
         }
         
     }
@@ -80,6 +77,7 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
                 searchKey = createSearchKey(custTeamMember.Core_Account__c, custTeamMember.Core_Team_Member__c);
                 mapCustAccountTeam.put(searchKey, custTeamMember);
             }
+            System.debug('#2 mapCustAccountTeam : ' + mapCustAccountTeam);
             
             lineItem.Core_Change_Log__c='<table><tr><th>Batch Started</th><th>'+String.join(new List<Id>(setAcctIds), ';')+'</th></tr>';
             
@@ -93,10 +91,13 @@ global class Core_IPS_AccountTeam_DeleteSync implements Database.Batchable<sObje
             for (AccountTeamMember stdAcctTeam : lstAcctTeamMember) {
                 searchKey = createSearchKey(stdAcctTeam.AccountId, stdAcctTeam.UserId);
                 custMatch = mapCustAccountTeam.remove(searchKey);                
+                //System.debug('#25 custMatch: ' + custMatch + '  stdAcctTeam: ' + stdAcctTeam);
             }
+            System.debug('#3 mapCustAccountTeam : ' + mapCustAccountTeam);
             
             if (mapCustAccountTeam.size() > 0) {
                 delete mapCustAccountTeam.values();    
+                System.debug('#26 DELETED mapCustAccountTeam.values(): ' + mapCustAccountTeam.values());
                 
                 lineItem.Core_Change_Log__c+='<tr><th>Deleted AccountTeam Members</th><th>'+mapCustAccountTeam.size()+'</th></tr>';
                 lineItem.Core_Number_of_Deletes__c = mapCustAccountTeam.size();

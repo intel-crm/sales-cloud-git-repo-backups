@@ -72,7 +72,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
-            <value>Cancelled,Rejected</value>
+            <value>Open,Cancelled,Rejected</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

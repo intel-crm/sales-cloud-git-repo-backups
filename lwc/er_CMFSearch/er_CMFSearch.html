@@ -1,116 +1,122 @@
 <template>
-    <div class="slds-box slds-theme_default slds-container">
+    <div class="slds-box">
+    <div class="slds-col slds-scrollable ">
+    <lightning-layout >
+    <lightning-card title="Search available CMF's" icon-name="standard:ai_accelerator_card" >
+        <template if:true={showSpinner}>
+            <div >
+                <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
+            </div>
+            </template>   
+    <div class="slds-grid slds-gutters slds-p-bottom_small" style="width:500px">
+       <div class="slds-col">
+            <lightning-combobox
+            name="Search Filter"
+            label=" Search By"
+            value={value}
+            placeholder="SELECT"
+            options={options}
+            onchange={handleChange} 
+            style="color:grey;width:200px;">
+        </lightning-combobox>
+        </div>
         <div class="slds-col">
-            <lightning-layout>
-                <lightning-card title="Search to CMF" icon-name="standard:ai_accelerator_card" style="width: 100%;">
-                   
-                   
-                    <template if:true={showSpinner}>
-                        <div>
-                            <lightning-spinner alternative-text="Loading" variant="brand" size="medium"></lightning-spinner>
-                        </div>
-                    </template>
- 
-                   
-                    <div class="slds-grid slds-wrap slds-p-around_large">
-                        <div class="slds-col slds-size_1-of-3 slds-p-right_small">
-                            <lightning-combobox
-                                name="Search Filter"
-                                label="Search By"
-                                value={value}
-                                placeholder="SELECT"
-                                options={options}
-                                onchange={handleChange}
-                                dropdown-alignment="auto"
-                                class="full-width-dropdown">
-                            </lightning-combobox>
-                        </div>
-                        <div class="slds-col slds-size_1-of-3 slds-p-right_small">
-                            <lightning-input type="text" label="Enter Value" onchange={textinputchanged}  
-                            value={searchvalue} disabled={isInputDisabled}></lightning-input>
-                        </div>
-                        <div class="slds-col slds-size_1-of-3 slds-p-top_large">
-                            <lightning-button label="Search" variant="brand" onclick={handleSearchNew} disabled={searchButtonSwitch}></lightning-button>
-                        </div>
-                    </div>
- 
-                    <!-- Data Table Section -->
-                    <template if:true={dataRetrieved}>
-                        <div class="slds-grid slds-wrap">
-                            <div class="slds-col slds-size_1-of-1">
-                                <lightning-layout class="slds-box slds-theme_shade slds-theme_alert-texture">
-                                    <lightning-layout-item class="left-align">
-                                        Showing {pageFirstRecord} to {pageLastRecord}
-                                    </lightning-layout-item>
-                                    <lightning-layout-item class="slds-align_absolute-center">
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="First" onclick={firstPageHandler} disabled={disableFirst}></lightning-button>
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_x-small" label="Previous" icon-name="utility:chevronleft" onclick={previousHandlerNew} disabled={disablePrevious}></lightning-button>
-                                        <lightning-input type="number" value={page} variant="label-hidden" style="width:60px;" onkeypress={handlePageChange}></lightning-input>&nbsp; of {totalPage}  
-                                        <lightning-button class="slds-p-left_x-small slds-p-right_xx-small" label="Next" icon-name="utility:chevronright" icon-position="right"
-                                            onclick={nextHandlerNew} disabled={disableNext}></lightning-button>
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="Last" onclick={lastPageHandler} disabled={disableLast}></lightning-button>    
-                                    </lightning-layout-item>
-                                    <lightning-layout-item class="right-align">
-                                        Total: {totalRecountCount}
-                                    </lightning-layout-item>
-                                </lightning-layout>
- 
-                                <!-- Search Within CMF Data -->
-                                <div class="slds-border">
-                                    <div class="slds-grid slds-gutters slds-p-around_small">
-                                        <div>
-                                            <lightning-button label="Add to CMF Group" onclick={handleAddNew} disabled={disableAdd}></lightning-button>
-                                        </div>
-                                        <div>
-                                            <lightning-input type="text" onchange={onchangeHandleSearch} variant="label-hidden" style="width:350px;" placeholder="Search CMF" disabled={disableSearch}></lightning-input>
-                                        </div>
-                                    </div>
- 
-                                    <!-- Data Table -->
-                                    <lightning-layout-item>
-                                        <div style="height:400px; width:100%;">
-                                            <lightning-datatable
-                                                key-field="concatedKeyField"
-                                                data-id="datarow"
-                                                data={cmfData}
-                                                columns={cmfColumns}
-                                                onrowselection={handleRowSelection}
-                                                selected-rows={selectedRows}
-                                                resize-column-disabled="true"
-                                                sorted-by={sortBy}
-                                                sorted-direction={sortDirection}
-                                                onsort={doSorting}
-                                                column-widths-mode="fixed"
-                                                onrowaction={handleOpenModal}
-                                                hide-checkbox-column={hideCheckBoxColumn}>
-                                            </lightning-datatable>
-                                        </div>
-                                    </lightning-layout-item>
-                                </div>
- 
-                                <!-- Pagination Controls -->
-                                <lightning-layout class="slds-box slds-theme_shade slds-theme_alert-texture slds-p-around_small">
-                                    <lightning-layout-item class="left-align">
-                                        Showing {pageFirstRecord} to {pageLastRecord}
-                                    </lightning-layout-item>
-                                    <lightning-layout-item class="slds-align_absolute-center">
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="First" onclick={firstPageHandler} disabled={disableFirst}></lightning-button>
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_x-small" label="Previous" icon-name="utility:chevronleft" onclick={previousHandlerNew} disabled={disablePrevious}></lightning-button>
-                                        <lightning-input type="number" value={page} variant="label-hidden" style="width:60px;" onkeypress={handlePageChange}></lightning-input>&nbsp; of {totalPage}  
-                                        <lightning-button class="slds-p-left_x-small slds-p-right_xx-small" label="Next" icon-name="utility:chevronright" icon-position="right"
-                                            onclick={nextHandlerNew} disabled={disableNext}></lightning-button>
-                                        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="Last" onclick={lastPageHandler} disabled={disableLast}></lightning-button>    
-                                    </lightning-layout-item>
-                                    <lightning-layout-item class="right-align">
-                                        Total: {totalRecountCount}
-                                    </lightning-layout-item>
-                                </lightning-layout>
-                            </div>
-                        </div>
-                    </template>
-                   
-                </lightning-card>
-            </lightning-layout>
+            <lightning-input type="text" label="Enter Value" onchange={textinputchanged}  value={searchvalue} disabled={isInputDisabled}></lightning-input>
+        </div>
+        <div class="slds-col slds-p-top_large">
+            <lightning-button label="Search" variant="brand" onclick={handleSearchNew} disabled = {searchButtonSwitch}></lightning-button>
         </div>
     </div>
+    
+<template if:true={dataRetrieved}>
+<div class="slds-grid slds-wrap">
+<div class="slds-col slds-size_12-of-12" >
+<lightning-layout class="slds-box slds-box_x-small slds-theme_shade slds-theme_alert-texture ">
+    <lightning-layout-item class="left-align">
+        showing {pageFirstRecord} to {pageLastRecord}
+        </lightning-layout-item>
+    <lightning-layout-item class ="slds-align_absolute-center">
+        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="First" onclick={firstPageHandler} disabled={disableFirst}>
+        </lightning-button>
+        <lightning-button class="slds-p-left_xx-small slds-p-right_x-small" label="Previous" icon-name="utility:chevronleft" onclick={previousHandlerNew} disabled={disablePrevious}>
+        </lightning-button>
+        <lightning-input type="number" value={page} variant="label-hidden" style="width:60px;" onkeypress={handlePageChange} ></lightning-input> &nbsp; of {totalPage}   
+        <lightning-button class="slds-p-left_x-small slds-p-right_xx-small" label="Next" icon-name="utility:chevronright" icon-position="right"
+            onclick={nextHandlerNew} disabled ={disableNext}> </lightning-button>
+         <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="Last" onclick={lastPageHandler} disabled={disableLast}>
+        </lightning-button>    
+    </lightning-layout-item>
+    <lightning-layout-item class="right-align">
+      Total: {totalRecountCount}
+    </lightning-layout-item>
+</lightning-layout> 
+<lightning-layout>       
+<div class="slds-border_left slds-border_right slds-border_bottom slds-border_top">
+<div class = "slds-grid slds-gutters slds-p-right_xx-small slds-p-left_xx-small slds-p-bottom_xx-small slds-p-top_xx-small">
+<div class="slds-p-left_x-small">
+<lightning-button  label="Add to CMF Group" onclick={handleAddNew} disabled={disableAdd} slot="actions"></lightning-button>
+</div>
+&nbsp;&nbsp;
+<div >
+    <lightning-input  type="text" onchange={onchangeHandleSearch} variant="label-hidden" style="width:250px;" placeholder="Search CMFs" disabled={disableSearch}></lightning-input>
+    </div>
+</div>
+<lightning-layout-item > 
+    <div  style="height:300px;width:100%">
+    <lightning-datatable 
+        class="wrapped-header-datatable"
+        key-field="concatedKeyField"
+        data-id="datarow"
+        data={cmfData}
+        columns={cmfColumns}
+        onrowselection={handleRowSelection}
+        selected-rows={selectedRows}
+        resize-column-disabled ="True"
+        sorted-by={sortBy}
+        sorted-direction={sortDirection}
+        onsort={doSorting}
+        column-widths-mode="fixed"
+
+       >
+    </lightning-datatable>
+</div>
+</lightning-layout-item>
+    <div class = "slds-grid slds-gutters  slds-p-left_xx-small slds-p-bottom_xx-small slds-p-top_xx-small">
+<div class="slds-p-left_x-small">
+<lightning-button  label="Add to CMF Group" onclick={handleAddNew} disabled={disableAdd} slot="actions"></lightning-button>
+</div>
+</div>
+    </div>
+    </lightning-layout>
+<lightning-layout class="slds-box slds-box_x-small slds-theme_shade slds-theme_alert-texture slds-p-top_xxx-small">
+    <lightning-layout-item class="left-align">
+        showing {pageFirstRecord} to {pageLastRecord}
+    </lightning-layout-item>
+    <lightning-layout-item class ="slds-align_absolute-center">
+        <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="First" onclick={firstPageHandler} disabled={disableFirst}>
+        </lightning-button>
+        <lightning-button class="slds-p-left_xx-small slds-p-right_x-small" label="Previous" icon-name="utility:chevronleft" onclick={previousHandlerNew} disabled={disablePrevious}>
+        </lightning-button>
+        <lightning-input type="number" value={page} variant="label-hidden" style="width:60px;" onkeypress={handlePageChange} ></lightning-input>&nbsp; of {totalPage}   
+        <lightning-button class="slds-p-left_x-small slds-p-right_xx-small" label="Next" icon-name="utility:chevronright" icon-position="right"
+            onclick={nextHandlerNew} disabled ={disableNext}> </lightning-button>
+         <lightning-button class="slds-p-left_xx-small slds-p-right_xx-small" label="Last" onclick={lastPageHandler} disabled={disableLast}>
+        </lightning-button>    
+    </lightning-layout-item>
+    <lightning-layout-item class="right-align">
+        Total: {totalRecountCount}
+    </lightning-layout-item>
+</lightning-layout>
+</div>
+    </div>
+</template>
+
+</lightning-card>
+</lightning-layout>
+<template if:false={dataRetrieved}>
+<div style="height:150px">
+</div>
+</template>
+</div>
+    </div>    
 </template>

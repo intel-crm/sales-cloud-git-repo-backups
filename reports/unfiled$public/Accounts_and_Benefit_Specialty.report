@@ -29,6 +29,9 @@
         <field>FK_$Account.Core_Account_ID__c</field>
     </columns>
     <columns>
+        <field>FK_ACC_ID</field>
+    </columns>
+    <columns>
         <field>FK_$Account.Core_Business_ID__c</field>
     </columns>
     <columns>
@@ -59,10 +62,17 @@
         <field>FK_ACC_PHONE1</field>
     </columns>
     <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>FK_$Account.Core_Partner_Alliance_Program_Member__c</field>
+    </columns>
+    <columns>
         <field>FK_$Account.Core_IPA_Partner_Segment__c</field>
     </columns>
     <columns>
         <field>FK_$Account.Core_IPA_Partner_Role__c</field>
+    </columns>
+    <columns>
+        <field>FK_ACC_ADDR1_COUNTRY_CODE</field>
     </columns>
     <description>Accounts and Benefit and Specialty on Marketplace</description>
     <filter>
@@ -86,20 +96,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notContain</operator>
             <value>ipatest</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>FK_$Account.Core_Geo__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>,APJ,ASMO,EMEA,PRC</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>PRM_AccountBenefitAssociation__c.PRM_Partner_Benefit_Id__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

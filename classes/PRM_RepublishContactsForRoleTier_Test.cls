@@ -47,6 +47,7 @@ public class PRM_RepublishContactsForRoleTier_Test {
         contact repCon = new contact();
         repCon.Id = c1.Id;
         repCon.Core_Republish_OBM_s__c = true;
+        
         conList1.add(repCon);
         
         Update conList1;          

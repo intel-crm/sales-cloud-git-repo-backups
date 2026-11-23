@@ -61,5 +61,12 @@
         <label><!-- Intel Value Proposal --></label>
         <name>Core_Proposals__c</name>
     </fields>
+    <layouts>
+        <layout>Value Chain Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

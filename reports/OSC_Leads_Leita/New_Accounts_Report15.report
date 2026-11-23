@@ -19,38 +19,6 @@
         <masterLabel>Percent Complete</masterLabel>
         <scale>1</scale>
     </aggregates>
-    <buckets>
-        <bucketType>picklist</bucketType>
-        <developerName>BucketField_43031887</developerName>
-        <masterLabel>INSIDE Sales Region</masterLabel>
-        <nullTreatment>n</nullTreatment>
-        <sourceColumnName>Account.Core_Sales_Groups__c</sourceColumnName>
-        <useOther>false</useOther>
-        <values>
-            <value>Americas</value>
-        </values>
-        <values>
-            <value>APJ</value>
-        </values>
-        <values>
-            <value>EMEA</value>
-        </values>
-        <values>
-            <sourceValues>
-                <sourceValue>PRC Sales Group</sourceValue>
-            </sourceValues>
-            <value>PRC</value>
-        </values>
-        <values>
-            <value>US</value>
-        </values>
-        <values>
-            <value>BU Incorrect Classification</value>
-        </values>
-    </buckets>
-    <columns>
-        <field>Account.Core_Sales_Groups__c</field>
-    </columns>
     <columns>
         <field>User.Core_User_Geo__c</field>
     </columns>
@@ -113,7 +81,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>BucketField_43031887</field>
+        <field>Account.Core_Sales_Groups__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Inside Sales Account Audit</name>

@@ -4,18 +4,7 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>actionNames</name>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
                     <name>collapsed</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableActionsConfiguration</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableActionsInNative</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -68,11 +57,8 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>recordId</name>
-                </componentInstanceProperties>
-                <componentName>core_MDF_DownloadAllDocuments</componentName>
-                <identifier>c_core_MDF_DownloadAllDocuments1</identifier>
+                <componentName>Core_MDF_ManageAuditDocument</componentName>
+                <identifier>Core_MDF_ManageAuditDocument</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -186,7 +172,7 @@
                 <componentName>Core_MDF_Checklist</componentName>
                 <identifier>Core_MDF_Checklist</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7)</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3 OR 4 OR 5 OR 6 OR 7</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewer}</leftValue>
                         <operator>EQUAL</operator>
@@ -236,16 +222,6 @@
             </componentInstance>
         </itemInstances>
         <name>Facet-6707f59b-183e-49d6-bd79-166cb7ca5288</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentName>Core_MDF_Scorecard_Aura</componentName>
-                <identifier>c_Core_MDF_Scorecard_Aura2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-3f026b41-2fcd-4943-b118-e41d84fe19be</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -313,20 +289,6 @@
                 <identifier>customTab2</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-3f026b41-2fcd-4943-b118-e41d84fe19be</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Scorecard</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab1</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-bb752222-225d-4eb0-b924-cc8febebd0bf</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -350,7 +312,7 @@
                 <componentName>forceChatter:recordFeedContainer</componentName>
                 <identifier>forceChatter_recordFeedContainer</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 OR 2 OR 3 OR (5 AND 6) ) AND 4</booleanFilter>
+                    <booleanFilter>1 OR 2 OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!$Permission.CustomPermission.Core_MDF_ClaimCaseReviewer}</leftValue>
                         <operator>EQUAL</operator>
@@ -365,21 +327,6 @@
                         <leftValue>{!$User.Profile.Name}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>System Administrator</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_Status__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>Under Review</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!$Permission.CustomPermission.Core_MDF_CCP_PIC_Reviewer}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                    <criteria>
-                        <leftValue>{!Record.Core_MDF_PIC_Review_Completed_Ind__c}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

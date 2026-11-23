@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>When a support owner is assigned or changed, the new support will receive a notification.</description>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Core Support Request Support Owner Change Email Alert to New Owner</name>
+    <style>none</style>
+    <subject>ALERT: You are the new Support Owner of IPS/Sales CRM Support Request {!Core_Ask_A_Question__c.Name}</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

@@ -6,19 +6,18 @@
         <div class="slds-modal__container">
             <!-- ###### MODAL BOX HEADER Part Start From Here ######-->
             <div class="slds-modal__header" style="border-color: white;">
-<button class="slds-button slds-modal__close" title="Close" onclick="{!c.closeModel}">
-<lightning:icon iconName="utility:close" size="medium"/>
-<span class="slds-assistive-text">Close</span>
-</button>
-</div>
-
+                <button class="slds-button slds-modal__close slds-button--icon-inverse" title="Close" onclick="{!c.closeModel}">
+                    X
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+            </div>
             <!--###### MODAL BOX BODY Part Start From Here ######-->
             <div class="slds-modal__content slds-p-around--medium" style="text-align: center;">
                 <p><b>{!v.showMessage}</b></p>
             </div>
             <!--###### MODAL BOX FOOTER Part Start From Here ######-->
             <div class="slds-modal__footer" style="border-color: white;">
-                <button class="slds-button slds-button--brand" onclick="{!c.closeModel}" >Close</button>
+                <button class="slds-button slds-button--neutral" onclick="{!c.closeModel}" >OK</button>
             </div>
         </div>
     </div>

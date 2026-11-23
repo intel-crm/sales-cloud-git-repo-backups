@@ -14,12 +14,42 @@
         <criterion>
             <criteriaNumber>2</criteriaNumber>
             <criterionValue>
-                <isEnabled>true</isEnabled>
-                <permissionName>Core_MDF_CCP_Claim_Submitter</permissionName>
-                <permissionType>Custom</permissionType>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Claim Submitter</fieldValue>
             </criterionValue>
-            <operator>Equal</operator>
-            <type>Permission</type>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>DCF Claim Submitter</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>SPCF Claim Submitter</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
+        </criterion>
+        <criterion>
+            <criteriaNumber>2</criteriaNumber>
+            <criterionValue>
+                <entityField>Contact.$Contact.Core_Audience__c</entityField>
+                <entityType>User</entityType>
+                <fieldValue>CCF Boost Claim Submitter</fieldValue>
+            </criterionValue>
+            <operator>Contains</operator>
+            <type>FieldBased</type>
         </criterion>
     </criteria>
     <formulaFilterType>AnyCriterionMatches</formulaFilterType>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
-    <available>false</available>
+    <available>true</available>
     <encodingKey>UTF-8</encodingKey>
     <name>PRM_Titanium_Upgrade_SPA</name>
     <style>none</style>
-    <subject>Bienvenido a Intel® Partner Alliance Prestige</subject>
-    <textOnly>Intel® Partner Alliance Prestige
+    <subject>Bienvenido a Intel® Partner Alliance Titanium</subject>
+    <textOnly>Intel® Partner Alliance Titanium
 
 
 {!Contact.FirstName},
 
-¡Felicitaciones! Su empresa ha ascendido de categoría a Intel® Partner Alliance Prestige. Aproveche estos beneficios de la membresía:
+¡Felicitaciones! Su empresa ha ascendido de categoría a Intel® Partner Alliance Titanium. Aproveche estos beneficios de la membresía:
 
 Obtenga más puntos tanto en componentes como en sistemas
 Invitación al principal evento de socios de Intel del año: la Intel® Partner Connect
-Carta de presentación con estatus Prestige de los gerentes de Intel a sus clientes potenciales.
+Carta de presentación con estatus Titanium de los gerentes de Intel a sus clientes potenciales.
 
 Inicie sesión para acceder a herramientas y recursos.
 
@@ -30,7 +30,7 @@ Atentamente,
 Su equipo de Intel® Partner Alliance
 
 Este mensaje se le envió como una comunicación empresarial importante relacionada con su relación actual con Intel® Partner Alliance.
-© {!$Label.PRM_CurrentYear} Intel Corporation
+© {!Contact.Core_Current_Year__c} Intel Corporation
 Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 EE. UU. www.intel.com
 Privacidad|  Cookies</textOnly>
     <type>custom</type>

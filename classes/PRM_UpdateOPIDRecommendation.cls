@@ -26,15 +26,17 @@ public without sharing class PRM_UpdateOPIDRecommendation {
         Map<String, PRM_Tracker__c> listOfAvailableMilestone = new Map<String, PRM_Tracker__c>();
         Map<string,PRM_Tracker_steps__mdt> trackerMetaData = new Map<string,PRM_Tracker_steps__mdt>();
         String CimPrimeEol=System.label.PRM_CIM_PRIME_Switch;// TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
         for(PRM_Tracker_steps__mdt tm : PRM_Tracker_steps__mdt.getAll().values()){
             if(tm.PRM_Type__c == 'OPID Recommendation'){
                 trackerMetaData.put(tm.DeveloperName, tm);
             }
-        }}
+        }}*/
 
         //TWC729-6800 EOL activities--Start
-        if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing
+        /*if(CimPrimeEol!='TRUE' || test.isrunningtest()){ // TWC729-6990 : CIM Prime EOL – Code changes switch set up for regression testing//IPA2.0 -TWC729-8008 - commenting out as part of IPA refresh cim prime code removal
+ 
                     //Initializing tracker
             PRM_Tracker_steps__mdt opidCreatedMdt = PRM_Tracker_steps__mdt.getInstance('OPID_REQ_PROCESSED');
             List<PRM_Value_Exchange_Recommendation__c> listOpidRecommendation = new List<PRM_Value_Exchange_Recommendation__c>();
@@ -107,7 +109,7 @@ public without sharing class PRM_UpdateOPIDRecommendation {
                     updateResultList = Database.update(listOpidRecommendation,false); 
                     logEntryMsg+=PRM_ProcessInboundOPIDLogEntriesUtility.processDatabaseSaveResult(listOpidRecommendation, updateResultList,'PRM_Value_Exchange_Recommendation__c');
             }
-        }
+        }*/
         //TWC729-6800 EOL activities--End
         //Inserting tracker records
         if(!trackerMap.isEmpty()){
@@ -266,7 +268,7 @@ public without sharing class PRM_UpdateOPIDRecommendation {
                                         }                                        
                                         isCompleted = true;  // update tracker with false value
                                         tracker  = PRM_IPA_Utility.createTrackerInstance(mapAccTrckMlstnAvlblList.get(recmmList.PRM_Account_Id__c+'_'+applcbleMileStone).id, trackerMetaData.get(applcbleMileStone).PRM_Type__c, trackerMetaData.get(applcbleMileStone).DeveloperName, recmmList.Id, recmmList.PRM_Account_Id__c, isCompleted ,milestonerec, true); 
-                                       // trackerListToUpsert.add(tracker); 
+                                        trackerListToUpsert.add(tracker); 
                                        trackerMap.put(tracker.id,tracker);
                                       }else if(mapAccTrckMlstnAvlblList.size()>0 && (mapAccTrckMlstnAvlblList.get(recmmList.PRM_Account_Id__c+'_'+applcbleMileStone).PRM_Completed__c == false || mapAccTrckMlstnAvlblList.get(recmmList.PRM_Account_Id__c+'_'+applcbleMileStone).One_Partner_Inbound_Message__c == null)){
                                         isCompleted = true;    // update tracker with true value   
@@ -294,12 +296,13 @@ public without sharing class PRM_UpdateOPIDRecommendation {
                 }               
                 
                 //Upsert tracker records
-              //  if(trackerListToUpsert.size() > 0){
-                if(!trackerMap.isEmpty()){
+               if(trackerListToUpsert.size() > 0){
+               // if(!trackerMap.isEmpty()){
+                    //System.debug('@@ TRACKER UPSERT LIST : '+trackerListToUpsert);
                     //System.debug('@@ TRACKER UPSERT LIST : '+trackerMap);
                     Database.UpsertResult [] upsertTrackerList=null;
                     logEntryMessage+='\n****** UPSERT of TRACKER LIST'+trackerMap+'******';
-                    upsertTrackerList = Database.upsert(trackerMap.values(),false); 
+                    upsertTrackerList = Database.upsert(trackerListToUpsert,false); 
                 } 
                 
                 //update Opid Recommendation records

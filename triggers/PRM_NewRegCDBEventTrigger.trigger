@@ -7,35 +7,33 @@ trigger PRM_NewRegCDBEventTrigger on PRM_CDB_Platform_Event__e (after insert) {
     
     
     // Collect all event record IDs first to avoid SOQL in loop
-   Set<String> eventRecordIds = new Set<String>();
+    Set<Id> eventRecordIds = new Set<Id>();
     for (PRM_CDB_Platform_Event__e evt : Trigger.new) {
         if (evt.Core_Record_Id__c != null && !String.isEmpty(evt.Core_Record_Id__c)) {
             eventRecordIds.add(evt.Core_Record_Id__c);
         }
     }
-     system.debug('eventRecordIds>>>'+eventRecordIds);
-  
+    
     // Query all related records in one SOQL statement
     List<PRM_Registration_Request__c> newRegList = new List<PRM_Registration_Request__c>();
     if (!eventRecordIds.isEmpty()) {
-        system.debug('eventRecordIds>>>'+eventRecordIds);
-       // Id recId= eventRecordIds[0];
         newRegList = [SELECT Id FROM PRM_Registration_Request__c WHERE Id IN :eventRecordIds];
     } 
     
-/* List<PRM_Registration_Request__c> newRegList = new List<PRM_Registration_Request__c>();    
-   List<PRM_CDB_Platform_Event__e> eventList = Trigger.new;
+    
+    /* List<Core_CDB_Platform_Event__e> eventList = Trigger.new;
 
-for (PRM_CDB_Platform_Event__e evt : eventList) {
+for (Core_CDB_Platform_Event__e evt : eventList) {
 
-ID newRegId=Id.valueOf(evt.Core_Record_Id__c);
+List<PRM_Registration_Request__c> newRegList = new  List<PRM_Registration_Request__c>();
+try {
+string newRegId=evt.Core_Record_Id__c;
 
-if(newRegId!=null){
-  
-newRegList= [select id from PRM_Registration_Request__c where id =:evt.Core_Record_Id__c];
-System.debug('RegList>> : ' + newRegList);
-}
-}  */
+if(!String.isEmpty(newRegId)){
+
+newRegList= [select id from PRM_Registration_Request__c where id =: newRegId];
+}*/
+    
     System.debug('RegList>> : ' + newRegList);
     try {
         PRM_CDB_CompanyValidation_APICallout.processWebsiteValidationRequest(newRegList);

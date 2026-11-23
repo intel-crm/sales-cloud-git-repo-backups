@@ -84,17 +84,56 @@
     <columns>
         <field>LAST_UPDATE</field>
     </columns>
-    <columns>
-        <field>Opportunity.Core_Product_Segment__c</field>
-    </columns>
     <filter>
-        <booleanFilter>1 AND 2 AND 3</booleanFilter>
+        <booleanFilter>1 AND 8 AND ((2 OR 3 OR 4 OR 6 OR 7 OR 10) OR (5 AND 9))</booleanFilter>
         <criteriaItems>
-            <column>Opportunity.Core_Business_Unit_Territory__c</column>
+            <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>PSG-EU-UK</value>
+            <value>Qualify,Define,Develop,Design</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Marcus Ward</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Mark Brant</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Nisha Ruhomutally</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Bettina Smithson</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>David Clarke</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>FULL_NAME</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>contains</operator>
+            <value>Graham Copperwheat</value>
         </criteriaItems>
         <criteriaItems>
             <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
@@ -104,11 +143,18 @@
             <value>PSG</value>
         </criteriaItems>
         <criteriaItems>
-            <column>Opportunity.Core_Opportunity_Type__c</column>
+            <column>Account.Core_Sales_Groups__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Design: Original,Design: Secondary</value>
+            <value>GMP UK Sales Group</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Opportunity.Core_Opportunity_Owner__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>contains</operator>
+            <value>Bogdan Stefan Pop</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -154,6 +200,8 @@
     <sortOrder>Asc</sortOrder>
     <timeFrameFilter>
         <dateColumn>CLOSE_DATE</dateColumn>
+        <endDate>2021-12-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2017-01-01</startDate>
     </timeFrameFilter>
 </Report>

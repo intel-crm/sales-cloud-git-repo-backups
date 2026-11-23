@@ -117,5 +117,12 @@
             <translation><!-- 2020 --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Intel Business Summary Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -1,0 +1,45 @@
+<template>
+<h1 id="intelmarketplacestyleguide">Intel Marketplace Styleguide</h1>
+<h3 id="currentversionmarketplace20batch1">Current Version (Marketplace 2.0 - Batch 1)</h3>
+<h4 id="releasemarketplace20batch1"><strong>release/marketplace2.0-batch1</strong></h4>
+<pre><code>version: 'x.y.z',
+description: 'Marketplace 2.0'
+
+(in package.json)
+</code></pre>
+<p>Release Branch Format: <strong>release/(description)-batch(x)</strong></p>
+<h1 id="setup">Setup</h1>
+<ul>
+<li><code>npm install</code></li>
+<li>Authorize Salesforce orgs (in VSCode with sfdx)</li>
+</ul>
+<h1 id="development">Development</h1>
+<p>While developing code is deployed manually to Salesforce.  </p>
+<p>All current branch changes can also be deployed with this command:   </p>
+<p><code>npm run deploy:wip</code>  </p>
+<p><em>make sure you are on the right default sfdx org</em></p>
+<h2 id="gitflowandautomaticdeployment">Git Flow and Automatic Deployment</h2>
+<p>Pull requests once merged --&gt; <strong>development branch</strong> --&gt; are deployed daily to development org  </p>
+<p><code>npm run deploy:prepare</code> --&gt; merges development to <strong>current release branch</strong> --&gt; which is then deployed to qa/staging org  </p>
+<p><strong>With this flow never RETRIEVE code (using sfdx) from Salesforce!!</strong></p>
+<h1 id="testing">Testing</h1>
+<p>To run JEST unit/integration tests for the Lightning Web Components:  </p>
+<p><code>npm test</code></p>
+<p><code>npm run test:unit:watch</code> (watch tests for changes)</p>
+<h1 id="devopscontinuousintegration">DevOps - Continuous Integration</h1>
+<p>Package.json scripts and Bitbucket pipelines are used to prepare commits and deploy code automatically.</p>
+<h2 id="gitprecommithooks">Git Pre-Commit Hooks</h2>
+<p>For each commit, hooks run <code>eslint</code> to lint code, fix any changes, and create css bundle if necessary.  </p>
+<p>All of the changes/new files created are then included in the commit automatically.  </p>
+<h2 id="cssstaticresourcebundleautomatic">CSS Static Resource Bundle (automatic)</h2>
+<p>This script builds a global css file in the static resource:  </p>
+<p><code>npm run build</code>  </p>
+<p>This outputs the following file --&gt; <code>styles/ipabundle.min.css</code> in <code>PsMpResources</code> static resource.  </p>
+<p>This bundle is then included in the custom theme layouts (ie. <code>ISG_CustomThemeLayout</code>)  </p>
+<p><strong>this is automatically included in pre-commit check</strong></p>
+<h2 id="devopsdocumentation">DevOps Documentation</h2>
+<ul>
+<li><a href="https://blog.enree.co/2019/06/setting-up-sfdx-continuous-integration-using-bitbucket-pipelines-with-docker-image.html">How to Setup SFDX Pipeline</a></li>
+<li><a href="https://github.com/forcedotcom/sfdx-bitbucket-org">Salesforce Bitbucket Pipeline Example - w/ Key Encryption</a></li>
+</ul>
+</template>

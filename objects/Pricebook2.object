@@ -128,7 +128,7 @@
     </actionOverrides>
     <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
     <enableFeeds>false</enableFeeds>
-    <externalSharingModel>ReadSelect</externalSharingModel>
+    <externalSharingModel>Private</externalSharingModel>
     <fields>
         <fullName>Description</fullName>
         <trackHistory>true</trackHistory>
@@ -145,35 +145,6 @@
         <fullName>Name</fullName>
         <trackHistory>true</trackHistory>
     </fields>
-    <fields>
-        <fullName>core_cpq_program__c</fullName>
-        <description>Used to define the type of price book</description>
-        <label>Program</label>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>PSG</fullName>
-                    <default>false</default>
-                    <label>PSG</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
-    </fields>
-    <listViews>
-        <fullName>All_Records</fullName>
-        <columns>PRICEBOOK2.NAME</columns>
-        <columns>PRICEBOOK2.DESCRIPTION</columns>
-        <columns>PRICEBOOK2.IS_ACTIVE</columns>
-        <columns>CREATEDBY_USER.ALIAS</columns>
-        <columns>PRICEBOOK2.CREATED_DATE</columns>
-        <filterScope>Everything</filterScope>
-        <label>All Records</label>
-    </listViews>
     <searchLayouts>
         <customTabListAdditionalFields>PRICEBOOK2.NAME</customTabListAdditionalFields>
         <customTabListAdditionalFields>PRICEBOOK2.DESCRIPTION</customTabListAdditionalFields>
@@ -192,5 +163,5 @@
         <searchResultsAdditionalFields>PRICEBOOK2.LAST_UPDATE</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>PRICEBOOK2.IS_ACTIVE</searchResultsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadSelect</sharingModel>
+    <sharingModel>Private</sharingModel>
 </CustomObject>

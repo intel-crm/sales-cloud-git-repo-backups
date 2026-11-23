@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>New request but its not entitlement or program based</description>
+    <flowApiName>CIDAAS_Assign_ERPM_Engagements_on_new_registration</flowApiName>
+    <label>New Req Not Enttl and Prog</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;ArchiveTest__c&quot;:false,&quot;Current_Status__c&quot;:&quot;Open&quot;,&quot;Is_Duplicate__c&quot;:false,&quot;Is_Entitlement_Record__c&quot;:false,&quot;OwnerId&quot;:&quot;0051J000006eTInQAM&quot;,&quot;PRM_Auto_Approve__c&quot;:false,&quot;PRM_Channel_Program__c&quot;:&quot;0Pk8A0000008UURSA2&quot;,&quot;PRM_EV_flag__c&quot;:false,&quot;PRM_Email_ID__c&quot;:&quot;testdzpatb0026@mailinator.com&quot;,&quot;PRM_First_Name__c&quot;:&quot;test&quot;,&quot;PRM_Last_Name__c&quot;:&quot;last&quot;,&quot;PRM_Partner_Relationship__c&quot;:&quot;Partner Admin&quot;,&quot;PRM_Record_Errored_Out__c&quot;:false,&quot;PRM_Status__c&quot;:&quot;New&quot;,&quot;PRM_Suppress_Email__c&quot;:false,&quot;PRM_TriggerProcess__c&quot;:false,&quot;PRM_User_Login_History__c&quot;:false,&quot;PRM_isBulkLoadedContact__c&quot;:false,&quot;PRM_isLocked__c&quot;:false,&quot;PRM_isSubmitted__c&quot;:false,&quot;PRM_is_First_EV_Reminder_Sent__c&quot;:false,&quot;PRM_manualRecordCheck__c&quot;:&quot;FALSE&quot;}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>$Record.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

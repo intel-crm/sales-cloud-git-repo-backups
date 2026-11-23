@@ -1,0 +1,7 @@
+<messaging:emailTemplate subject="Action Required: Create Offerings for Your {!relatedTo.Name} Storefront" recipientType="User" relatedToType="PMP_Company__c">
+<messaging:htmlEmailBody >
+    
+        <c:PMP_SfrontCreateOffReminder />
+    
+    </messaging:htmlEmailBody>
+</messaging:emailTemplate>

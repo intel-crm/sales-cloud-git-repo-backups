@@ -40,6 +40,226 @@
             <field>Core_Login_Id__c</field>
             <table>Account.Contacts</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Account_Primary_Name__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AGS_Inactive__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ContactStub__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email_2__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email_Domain__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Groove_Notes__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Created_By_Groove__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Languages__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Groove_Log_a_Call__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Normalized_Mobile__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Normalized_Phone__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>No_longer_at_Company__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Session_Id__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Groove_Create_Opportunity__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Suppress_IPA_Email__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_IPA_Contact_Assignment__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Email_Verification_Status__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User_Status__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status_of_deletion__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>User_statuss__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Is_FederationId_Valid_Ind__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_User_Status__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PMP_IsBounced_Email_check__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_isEmailBounced_Ind__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Community_History__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Community_Change_Agent__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Current_Year__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Con_Export_Compliance_Block_Reason__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>External_User_State__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>External_User_State_Change_Date_Times__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_AGS_Retry_Count__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TempUrl_contact__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_Registration__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_AGS_Republish_Signal__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Deletion_Reason__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_AGS_Inactive__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Contacts_Fields_Merged__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Assignment_Status__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Assignment_Message__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Status_Change_Date_Time__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Entitlement_Assignment_Duration__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Core_Next_Steps__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Mailing_Country_Region__c</field>
+            <table>Account.Contacts</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Impartner_Deal_Sync__c</field>
+            <table>Account.Contacts</table>
+        </columns>
         <masterLabel>Contacts</masterLabel>
     </sections>
     <sections>
@@ -69,6 +289,426 @@
             <field>RecordType</field>
             <table>Account.Contacts.Registration_Requests__r</table>
         </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Registration_Type__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_EV_Token_Renewed_Date__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Channel_Program_Level_txt__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Entitlement_Details__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_is_First_EV_Reminder_Sent__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Suppress_Email__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_isBulkLoadedContact__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Account_ID__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_ContactId__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Title__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Account_ID__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>CNDA_Number__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Lead_ID__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadCreationDate__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadOwnerName__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>LeadOwnerEmail__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Completed_date__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>IsArchive__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ArchiveTest__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Current_Status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ActualApprover__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Profession__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Country__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Assigned_To__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo_Code__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Country_Name__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_TimeStamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Approved_Timestamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Original_Approver__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Geo_Region__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>From_Date__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>To_Date__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TPT_Approved_Rejected_Days__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TPT_Pending_Days__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>TPT_Pending_Days_Record_Count__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Countries__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_PSG_Entitlement_Status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Submitted_Date__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Open_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Open_to_Pending_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Pending_to_Approved_Rejected_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Open_to_Approved_Rejected_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Pending_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Timeframe__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Size__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Reject_Reason__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Reject_Reason_Others__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Entitlement_Record__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Project_Description__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Is_Duplicate__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Job_Title__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Created_Date_Time__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_PendingTimeStamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_PendingTimeStamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_ApprovedRejectedTimeStamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_ApprovedRejectedTimeStamp__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>AE_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Sales_TPT__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_AE_Open_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_AE_Pending_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Sales_Open_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Days_in_Sales_Pending_status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Total_TPT_AE_and_sales__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_IPA_Approved_Time__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_User_Login_History__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_User_Loggedin_Time__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Request_Duration__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Errored_Out__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Errors_Logged__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Record_Status__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Duration__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Source__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Account_Request_Queue__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>EBR_Automation_Processed__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>ER_Entitlement_Detail_Name__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Legal_Agreements_F__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Company_Nm_Eng__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Tax_Number__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status_Pending_Time__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
+            <field>Status_Approved_Time__c</field>
+            <table>Account.Contacts.Registration_Requests__r</table>
+        </columns>
         <masterLabel>New Registrations</masterLabel>
     </sections>
     <sections>
@@ -84,177 +724,142 @@
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
+            <field>PRM_Active_Associations__c</field>
+            <table>Account</table>
+        </columns>
+        <columns>
+            <checkedByDefault>false</checkedByDefault>
             <field>OPID_Hierarchy__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.IsActive</field>
+            <field>Core_Sales_Group_New__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Alias</field>
+            <field>Core_MDF_Group_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CompanyName</field>
+            <field>Core_Direct_Incoterm_Dsc__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Profile_Name__c</field>
+            <field>Core_Direct_Sales_Organization_Nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CreatedBy</field>
+            <field>Core_Direct_Payment_Term_Nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Department</field>
+            <field>Core_Direct_Shipping_Condition_Nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Email</field>
+            <field>Core_Direct_Ship_To_End_Customer_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Name</field>
+            <field>Core_Customer_Aggregation_Type__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.LastLoginDate</field>
+            <field>Core_MDF_External_Group_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_Manager__c</field>
+            <field>Core_Direct_Primary_Account_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.CommunityNickname</field>
+            <field>Core_PrimaryAccountCalucationLogic__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.UserRole</field>
+            <field>Account_OPID__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Title</field>
+            <field>Account_OPID_Dummy__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Country_Code__c</field>
+            <field>Core_Data_Simplified_Local_Language_Nm__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_Coverage__c</field>
+            <field>Core_UnifiedHierarchy__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_User_License__c</field>
+            <field>Core_Prime_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Owner.Core_WWID__c</field>
+            <field>PRM_IPA_Badge_Tier_Date__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.IsActive</field>
+            <field>PRM_Count_IPA_Terms_And_Conditions__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Alias</field>
+            <field>Core_Parent_Business_Party_Id__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CompanyName</field>
+            <field>Core_Business_Party_Idd__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Profile_Name__c</field>
+            <field>Exception_Opid__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CreatedBy</field>
+            <field>Exception_Comments__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Department</field>
+            <field>POC_Profile_Response__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Email</field>
+            <field>PRM_IPAMembership_Attributes__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Name</field>
+            <field>Core_Account_Primary_Coverage__c</field>
             <table>Account</table>
         </columns>
         <columns>
             <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.LastLoginDate</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_Manager__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.CommunityNickname</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.UserRole</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Title</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Country_Code__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_Coverage__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_User_License__c</field>
-            <table>Account</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_Technical_Owner__c.Core_WWID__c</field>
+            <field>PRM_Impartner_Deal_Sync__c</field>
             <table>Account</table>
         </columns>
         <masterLabel>Accounts</masterLabel>

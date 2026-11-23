@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowTest xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flowApiName>Registration_Tracker_for_OPID</flowApiName>
+    <label>Registration tracker records</label>
+    <testPoints>
+        <elementApiName>Start</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+        <parameters>
+            <leftValueReference>$Record</leftValueReference>
+            <type>InputTriggeringRecordInitial</type>
+            <value>
+                <sobjectValue>{&quot;OwnerId&quot;:&quot;005KR000000hFetYAE&quot;,&quot;PRM_Completed__c&quot;:false,&quot;PRM_Location_Account__c&quot;:&quot;0018A00000vD9lGQAS&quot;,&quot;PRM_Milestone_Display_Name__c&quot;:&quot;&quot;,&quot;PRM_Milestone__c&quot;:&quot;OPID_ASSOCIATED&quot;,&quot;PRM_OPID__c&quot;:&quot;0018A00000o9I4BQAU&quot;,&quot;PRM_Type__c&quot;:&quot;OPID Updates&quot;,&quot;prm_skip_tracker__c&quot;:false}</sobjectValue>
+            </value>
+        </parameters>
+    </testPoints>
+    <testPoints>
+        <assertions>
+            <conditions>
+                <leftValueReference>logEntry</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <errorMessage>Not created tracker</errorMessage>
+        </assertions>
+        <elementApiName>Finish</elementApiName>
+        <isUseMockOutput>false</isUseMockOutput>
+    </testPoints>
+    <testType>WithAssertion</testType>
+</FlowTest>

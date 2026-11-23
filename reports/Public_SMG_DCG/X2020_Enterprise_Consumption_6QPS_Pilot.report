@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report xmlns="http://soap.sforce.com/2006/04/metadata">
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Account.Core_Account_Cnt__c</field>
-    </columns>
-    <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>Opportunity.Core_Oppty_Approved_Total_Price__c</field>
-    </columns>
-    <columns>
         <field>Opportunity.Core_Opp_Prime_Account_Name__c</field>
-    </columns>
-    <columns>
-        <field>OPPORTUNITY_NAME</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Commissionable__c</field>
@@ -71,7 +60,6 @@
         <field>Opportunity.Core_Solution_Area__c</field>
     </columns>
     <filter>
-        <booleanFilter>((1 AND 2 AND 3 AND 4 AND 5) or ((6 AND 7) and 1 and 2 and 3)) AND 8</booleanFilter>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quantity__c</column>
             <columnToColumn>false</columnToColumn>
@@ -85,6 +73,13 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Production Lost,Production Cancelled,Group Cancelled,Group Closed</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>CLOSE_DATE</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>greaterThan</operator>
+            <value>1/1/2020</value>
         </criteriaItems>
         <criteriaItems>
             <column>Core_Opp_FC_Prod_Schedule__c.Core_FC_BU_Short_Name__c</column>
@@ -106,27 +101,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
             <value>1</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>fedex,fed ex,proctor,procter,BOEHRINGER</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_Sales_Groups__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>contains</operator>
-            <value>us sales group</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
-            <value>expedia,texas instruments,advocate health,walmart</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -175,6 +149,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>Core_Opp_FC_Prod_Schedule__c.Core_Opp_FC_Quarter_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2020-12-26</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2020-01-01</startDate>
     </timeFrameFilter>
 </Report>

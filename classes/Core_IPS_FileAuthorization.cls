@@ -42,12 +42,16 @@ global with sharing class Core_IPS_FileAuthorization {
         try {
             //Get Salesforce User Id from HTTP Request Object
             String UserId = RestContext.request.headers.get('userid');
+            system.debug('###### UserId:' + UserId );
             //Get FileGUID from HTTP Request Object  
             String AppFileId = RestContext.request.headers.get('appfileid'); 
+            system.debug('###### AppFileId:' + AppFileId );
             //Get AppData from HTTP Request Object  
             String AppData = RestContext.request.headers.get('appdata'); 
+            system.debug('###### AppData:' + AppData );
             //Get CaseId from HTTP Request Object
             String CaseId = RestContext.request.headers.get('caseId');
+            system.debug('###### CaseId:' + CaseId );
             
             //Exception scenario for Apex Unit Test coverage
             if(Test.isRunningTest()){
@@ -55,7 +59,9 @@ global with sharing class Core_IPS_FileAuthorization {
             }           
             //File Upload (non-case related) Authorization Check scenario
             if (AppData == null || AppData == '' || AppData == 'null'){ 
+                system.debug('###### File Upload Authorization Start: AppData is NULL');
                 if (AppFileId != null && AppFileId != ''){  
+                system.debug('###### File Upload Authorization: AppFileId exists');    
                     HasAccess = CheckUserFileUploadAccess(UserId, AppFileId);
                     AuResp.Authorized = HasAccess;
                     return AuResp;
@@ -63,9 +69,12 @@ global with sharing class Core_IPS_FileAuthorization {
             }
             //Case Authorization Check scenario
             if (AppData != null || AppData != '' || AppData != 'null'){
+                system.debug('###### Case Authorization Start: AppData is NOT NULL');
                 if (CaseId != null && Caseid != ''){
+                    system.debug('###### Case Authorization for Case Id:' + CaseId );
                     HasAccess = Core_IPS_File_Utility.CheckUserRecordAccess(UserId, CaseId);
                     AuResp.Authorized = HasAccess;
+                    system.debug('###### User:' + UserId + ' '  + HasAccess);                    
                     return AuResp;
                 } 
             }
@@ -126,13 +135,16 @@ global with sharing class Core_IPS_FileAuthorization {
         List<Core_IPS_File_Upload_Master__c> lstFileUploadMaster = new List<Core_IPS_File_Upload_Master__c>();
         Set<ID> sFileUploadMasterIds = new Set<ID>();
         Boolean HasAccess = false;       
+        system.debug('###### File Authorization Start for File Id:' + AppFileId );       
         //Get user details
         User Usr = [Select Id, UserRoleId, UserType, Profile.name, ProfileId, Alias, Core_Login_Id__c, ContactId, Contact.AccountId 
                     From User where Id= :UserId ]; 
         //Check for Access against User's authorized File ID's
         
+        system.debug('###### Start All File Upload Processing');            
         //Call Utility to get Authorized File ID's
         sFileUploadMasterIds = Core_IPS_File_Utility.GetAuthUserFileID(Usr, AppFileId);                           
+        system.debug('###### sFileUploadMasterIds' + sFileUploadMasterIds.size() );            
         //Further Processing if Records found
         if(sFileUploadMasterIds != null && sFileUploadMasterIds.size() > 0){                
             //Get File GUID's for Authorized File ID's
@@ -140,10 +152,12 @@ global with sharing class Core_IPS_FileAuthorization {
                                    where id in :sFileUploadMasterIds];                
             //Check for a Match with the SFT AppFileId   
             if(lstFileUploadMaster != null && lstFileUploadMaster.size() > 0){     
+                system.debug('###### lstFileUploadMaster has values: ' + lstFileUploadMaster.size() );
                 for(Core_IPS_File_Upload_Master__c FileMasterObj : lstFileUploadMaster)    
                 {
                     if(FileMasterObj.Core_File_GUID__c == AppFileId){
                         HasAccess = true;
+                        system.debug('###### User:' + UserId + ' '  + 'Has Access');
                         break;
                     }
                 }

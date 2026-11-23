@@ -13,10 +13,6 @@
         <name>Core_MDF_AccountIdProgramRoleUserId_txt__c</name>
     </fields>
     <fields>
-        <label><!-- Account Name --></label>
-        <name>Core_MDF_Account_Name_txt__c</name>
-    </fields>
-    <fields>
         <label><!-- Account --></label>
         <name>Core_MDF_Account_id__c</name>
         <relationshipLabel><!-- Internal Users Partner Geo Mappings --></relationshipLabel>
@@ -26,309 +22,9 @@
         <name>Core_MDF_Active_Ind__c</name>
     </fields>
     <fields>
-        <label><!-- Activity Classification --></label>
-        <name>Core_MDF_Activity_Classification_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- All Accounts --></label>
-        <name>Core_MDF_All_Accounts_cd__c</name>
-        <picklistValues>
-            <masterLabel>No</masterLabel>
-            <translation><!-- No --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>Yes</masterLabel>
-            <translation><!-- Yes --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- All Budget Type Access --></label>
-        <name>Core_MDF_All_Budget_Type_Access_Ind__c</name>
-    </fields>
-    <fields>
-        <label><!-- Approval Region --></label>
-        <name>Core_MDF_Approval_Region_nm__c</name>
-    </fields>
-    <fields>
-        <label><!-- Budget Type --></label>
-        <name>Core_MDF_Budget_Type_nm__c</name>
-    </fields>
-    <fields>
         <label><!-- Channel Program --></label>
         <name>Core_MDF_Channel_Program_id__c</name>
         <relationshipLabel><!-- Internal Users Partner Geo Mappings --></relationshipLabel>
-    </fields>
-    <fields>
-        <label><!-- Days After Modified --></label>
-        <name>Core_MDF_Days_After_Modified__c</name>
-    </fields>
-    <fields>
-        <label><!-- Region SubRegion - Budget Type --></label>
-        <name>Core_MDF_GeoSubGeo_Budget_Type_nm__c</name>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Account Plan</masterLabel>
-            <translation><!-- APJ-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- APJ-&gt;Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Client Specialties MDF</masterLabel>
-            <translation><!-- APJ-&gt;Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Cloud</masterLabel>
-            <translation><!-- APJ-&gt;Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Co-Engineering</masterLabel>
-            <translation><!-- APJ-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- APJ-&gt;Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;IoT Premier - MDF</masterLabel>
-            <translation><!-- APJ-&gt;IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;IoT Targeted - MDF</masterLabel>
-            <translation><!-- APJ-&gt;IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- APJ-&gt;ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- APJ-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- APJ-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;SOEM Client MDF</masterLabel>
-            <translation><!-- APJ-&gt;SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>APJ-&gt;SOEM Data Center MDF</masterLabel>
-            <translation><!-- APJ-&gt;SOEM Data Center MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Account Plan</masterLabel>
-            <translation><!-- ASMO-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Client Specialties MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Cloud</masterLabel>
-            <translation><!-- ASMO-&gt;Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Co-Engineering</masterLabel>
-            <translation><!-- ASMO-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;IoT Premier - MDF</masterLabel>
-            <translation><!-- ASMO-&gt;IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;IoT Targeted - MDF</masterLabel>
-            <translation><!-- ASMO-&gt;IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- ASMO-&gt;ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- ASMO-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;SOEM Client MDF</masterLabel>
-            <translation><!-- ASMO-&gt;SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>ASMO-&gt;SOEM Data Center MDF</masterLabel>
-            <translation><!-- ASMO-&gt;SOEM Data Center MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Account Plan</masterLabel>
-            <translation><!-- EMEA-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Client Specialties MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Cloud</masterLabel>
-            <translation><!-- EMEA-&gt;Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Co-Engineering</masterLabel>
-            <translation><!-- EMEA-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;IoT Premier - MDF</masterLabel>
-            <translation><!-- EMEA-&gt;IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;IoT Targeted - MDF</masterLabel>
-            <translation><!-- EMEA-&gt;IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- EMEA-&gt;ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- EMEA-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;SOEM Client MDF</masterLabel>
-            <translation><!-- EMEA-&gt;SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>EMEA-&gt;SOEM Data Center MDF</masterLabel>
-            <translation><!-- EMEA-&gt;SOEM Data Center MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Account Plan</masterLabel>
-            <translation><!-- PRC-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- PRC-&gt;Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Client Specialties MDF</masterLabel>
-            <translation><!-- PRC-&gt;Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Cloud</masterLabel>
-            <translation><!-- PRC-&gt;Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Co-Engineering</masterLabel>
-            <translation><!-- PRC-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- PRC-&gt;Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;IoT Premier - MDF</masterLabel>
-            <translation><!-- PRC-&gt;IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;IoT Targeted - MDF</masterLabel>
-            <translation><!-- PRC-&gt;IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- PRC-&gt;ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- PRC-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- PRC-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;SOEM Client MDF</masterLabel>
-            <translation><!-- PRC-&gt;SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>PRC-&gt;SOEM Data Center MDF</masterLabel>
-            <translation><!-- PRC-&gt;SOEM Data Center MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Account Plan</masterLabel>
-            <translation><!-- WW-&gt;Account Plan --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Business Client Acceleration - MDF</masterLabel>
-            <translation><!-- WW-&gt;Business Client Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Client Specialties MDF</masterLabel>
-            <translation><!-- WW-&gt;Client Specialties MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Cloud</masterLabel>
-            <translation><!-- WW-&gt;Cloud --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Co-Engineering</masterLabel>
-            <translation><!-- WW-&gt;Co-Engineering --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Data Centric Acceleration - MDF</masterLabel>
-            <translation><!-- WW-&gt;Data Centric Acceleration - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;IoT Premier - MDF</masterLabel>
-            <translation><!-- WW-&gt;IoT Premier - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;IoT Targeted - MDF</masterLabel>
-            <translation><!-- WW-&gt;IoT Targeted - MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;ODM Growth Plan - Client MDF</masterLabel>
-            <translation><!-- WW-&gt;ODM Growth Plan - Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Proposal I MDF</masterLabel>
-            <translation><!-- WW-&gt;Proposal I MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;Proposal II MDF</masterLabel>
-            <translation><!-- WW-&gt;Proposal II MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;SOEM Client MDF</masterLabel>
-            <translation><!-- WW-&gt;SOEM Client MDF --></translation>
-        </picklistValues>
-        <picklistValues>
-            <masterLabel>WW-&gt;SOEM Data Center MDF</masterLabel>
-            <translation><!-- WW-&gt;SOEM Data Center MDF --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label><!-- Is Not an Approver? --></label>
-        <name>Core_MDF_Is_Not_an_Approver_Ind__c</name>
     </fields>
     <fields>
         <label><!-- Program --></label>
@@ -379,102 +75,21 @@
         <label><!-- Is User Active --></label>
         <name>Core_MDF_is_User_Active_ind__c</name>
     </fields>
-    <recordTypes>
-        <label><!-- Channel MDF --></label>
-        <name>Core_MDF_Channel_MDF</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Client --></label>
-        <name>Core_MDF_Client_Co_Marketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Client Co-Marketing Fund Boost --></label>
-        <name>Core_MDF_Client_Co_Marketing_Fund_Boost</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Co-GTM --></label>
-        <name>Core_MDF_Co_GTM</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Datacenter --></label>
-        <name>Core_MDF_Data_Center_Co_Marketing_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Ecosystem Extension Fund --></label>
-        <name>Core_MDF_Ecosystem_Extension_Fund</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Intel Partner Alliance --></label>
-        <name>Core_MDF_Intel_Partner_Alliance</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Retail Marketing Funds --></label>
-        <name>Core_MDF_Retail_Marketing_Funds</name>
-    </recordTypes>
-    <recordTypes>
-        <label><!-- Service Provider Co-Marketing Fund --></label>
-        <name>Core_MDF_Service_Provider_Co_Marketing_Fund</name>
-    </recordTypes>
+    <layouts>
+        <layout>Internal Users Partner Geo Mapping Layout</layout>
+        <sections>
+            <label><!-- Active Indicators --></label>
+            <section>Active Indicators</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
-        <errorMessage><!-- No other geos allowed when WW is selected on Approval Region --></errorMessage>
-        <name>Core_MDF_Approval_Region_SelectOnlyWW</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- For CCF/DCF Budget Loader and Approver, &apos;WW&apos; region has to be selected --></errorMessage>
-        <name>Core_MDF_CCFDCF_Region_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Cannot Update Account/Program/Role/User/All Accounts. Please deactivate and create new. --></errorMessage>
+        <errorMessage><!-- Cannot Update Account/Program/Role/User --></errorMessage>
         <name>Core_MDF_CannotUpdateIUPGM</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select an Account. --></errorMessage>
-        <name>Core_MDF_Check_Account</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- WW not allowed for any role except Read Only role for Retail. --></errorMessage>
-        <name>Core_MDF_Check_WW</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please leave an Account blank if All Account is selected as Yes. --></errorMessage>
-        <name>Core_MDF_Do_Not_Select_Account</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select Region - Sub Region --></errorMessage>
-        <name>Core_MDF_GeoMandate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Region - Sub Region is not applicable for selected Role --></errorMessage>
-        <name>Core_MDF_GeoNotMandate</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select the Activity Classification for the selected role --></errorMessage>
-        <name>Core_MDF_IPA_ActivityClassification</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Region - Sub Region must be WW --></errorMessage>
-        <name>Core_MDF_IPA_CMDF_Region_Validation</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select the Region SubRegion - Budget type or All Budget type Access --></errorMessage>
-        <name>Core_MDF_IPA_MandateChecks</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Please select the Approval Region for the selected role --></errorMessage>
-        <name>Core_MDF_MandateAppRegionForPriceReviewr</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Region - Sub Region:  Please select only WW for this role. --></errorMessage>
-        <name>Core_MDF_OnlyWWAllowed</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Budget type selection is not applicable for the selected role --></errorMessage>
-        <name>Core_MDF_PreventBTselectionforIPA</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- Select all Regions --></errorMessage>
-        <name>Core_MDF_Region_BudgetType_Validation</name>
     </validationRules>
     <validationRules>
         <errorMessage><!-- No other geos allowed when WW is selected. --></errorMessage>
@@ -483,9 +98,5 @@
     <validationRules>
         <errorMessage><!-- All geos are selected, just grant WW instead. --></errorMessage>
         <name>Core_MDF_SelectWWInsteadOfAllGeo</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- All geos are selected, just grant WW on Approval Region --></errorMessage>
-        <name>Core_MDF_WWInsteadOfAllGeo_AppRegion</name>
     </validationRules>
 </CustomObjectTranslation>

@@ -5,14 +5,7 @@
         <field>OpportunityLineItem.Core_KPI_Total_Price__c</field>
     </columns>
     <columns>
-        <aggregateTypes>Sum</aggregateTypes>
-        <field>OpportunityLineItem.Core_KPI_CPU_Units__c</field>
-    </columns>
-    <columns>
         <field>CREATED_DATE</field>
-    </columns>
-    <columns>
-        <field>Opportunity.Core_Sales_Groups__c</field>
     </columns>
     <columns>
         <field>CLOSE_DATE</field>
@@ -22,15 +15,6 @@
     </columns>
     <columns>
         <field>PROBABILITY</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Vendor_Group__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Vendor__c</field>
-    </columns>
-    <columns>
-        <field>OpportunityLineItem.Core_Vertical_Market__c</field>
     </columns>
     <columns>
         <field>Opportunity.Core_Loss_Cancel_Reason__c</field>
@@ -110,7 +94,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Won,Win Approved,Production Win,pending,submit,lost,cancel,hold,production lo</value>
+            <value>Won,Win Approved,Production Win,pending,submit,lost,cancel,hold</value>
         </criteriaItems>
         <criteriaItems>
             <column>PRODUCT_NAME</column>
@@ -162,7 +146,7 @@
             <value>DCG Compute Deal $,DCG Enterprise &amp; Gov&apos;t Deal #</value>
         </criteriaItems>
         <criteriaItems>
-            <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+            <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
@@ -215,6 +199,8 @@
     <showSubTotals>true</showSubTotals>
     <timeFrameFilter>
         <dateColumn>OpportunityLineItem.Core_KPI_Date__c</dateColumn>
-        <interval>INTERVAL_CURY</interval>
+        <endDate>2026-11-23</endDate>
+        <interval>INTERVAL_CUSTOM</interval>
+        <startDate>2026-11-23</startDate>
     </timeFrameFilter>
 </Report>

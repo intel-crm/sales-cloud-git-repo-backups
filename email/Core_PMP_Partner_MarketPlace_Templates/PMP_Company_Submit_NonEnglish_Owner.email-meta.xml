@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>46.0</apiVersion>
+    <available>true</available>
+    <description>Template to send email when storefront changes are submitted in non english language</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>PMP_Company_Submit_NonEnglish_Owner</name>
+    <style>none</style>
+    <subject>Submitted: Your  Storefront</subject>
+    <type>visualforce</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

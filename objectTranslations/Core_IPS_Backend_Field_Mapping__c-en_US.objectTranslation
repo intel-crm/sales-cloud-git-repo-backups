@@ -62,6 +62,13 @@
         <label><!-- Update Only --></label>
         <name>Core_IPS_Update_Only__c</name>
     </fields>
+    <layouts>
+        <layout>Backend Field Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Support Update field requires the source field, target field, technical object and field name to be supplied. --></errorMessage>

@@ -1,0 +1,90 @@
+<template>
+    <div class={classes.containerClass}>
+        <h2 class="slds-p-horizontal_large icon-container">
+            <template if:true={faIcon}>
+                
+                <span class={classes.iconClass}></span>
+            </template>
+            <span class="label">{title}</span>
+        </h2>
+        <div class="slds-grid slds-p-top_medium benefit-columns">
+            <div class=" column">
+                <template for:each={alerts} for:item="alert">
+                    <div class="alert-item icon-container slds-m-bottom_medium" key={alert.id}><span class={classes.attentionClass}></span><span class="label">{alert.label}</span></div>
+                </template>
+                <p>{description}</p>
+            </div>
+            <div class=" column">
+                <template for:each={metrics} for:item="metric">
+                    <div key={metric.id}>
+                        <div class="metric-container" >
+                            <div class="metric-value">
+                                {metric.value}<span class="unit">{metric.unit}</span>
+                            </div>
+                            <div class="metric-text">
+                                <span>
+                                    {metric.label}
+                                </span>
+                            </div>
+                        </div>
+                        <template if:false={ifs.singleCtaButton}>
+                            <div class="metric-cta">
+                                
+                                <c-ipa-link external-url={metric.link.externalUrl} community-page={metric.link.communityPage}  object-page={metric.link.objectPage} record-id={metric.link.recordId} hide-icon="true"> 
+                                    <lightning-button label={metric.link.label} variant="brand"></lightning-button>
+                                </c-ipa-link>
+                            </div>
+                        </template>
+                        <template if:false={ifs.hasCombinedFooter}>
+                            <template if:true={metric.description}>
+                                <div class="metric-footer">{metric.description}</div>
+                            </template>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={ifs.singleCtaButton}>
+                    <div class="metric-cta">
+                        
+                        <c-ipa-link external-url={ctaButton.externalUrl} community-page={ctaButton.communityPage}  object-page={ctaButton.objectPage} record-id={ctaButton.recordId} hide-icon="true">
+                            <lightning-button label={ctaButton.label} variant="brand"></lightning-button>
+                        </c-ipa-link>
+                    </div>
+                </template>
+                <template if:true={ifs.hasCombinedFooter}>
+                    <template for:each={combinedFooter} for:item="footer">
+                        <div class="metric-footer" key={footer}>{footer}</div>
+                    </template>
+                </template>
+            </div>
+            <div class="links-container column">
+                <template for:each={links} for:item="link">
+                    <div class="link-out slds-m-bottom_small" key={link.id} >
+                        
+                        <c-ipa-link label={link.label} external-url={link.externalUrl} community-page={link.communityPage} object-page={link.objectPage} record-id={link.recordId} caret="true" ></c-ipa-link>
+                    </div>
+                </template>
+            </div>
+
+        </div>
+        <template if:true={ifs.hasContacts}>
+            <div class="slds-p-horizontal_large">
+                <h3>{contacts.label}</h3>
+                <div class="contact-card-list">
+                    <template for:each={contactList} for:item="card">
+                        <div class="contact-card-list-item" key={card.id}>
+                            <c-core-intc-simple-card card={card} card-template-type={cardStyle} theme="gray" type="contact-card">
+                                <slot slot="body">
+                                    <p>{card.bodyTitle}</p>
+                                    <p>{card.role}</p>
+                                    <p>{card.phone}</p>
+                                    
+                                    <c-ipa-link label={sendEmail}  external-url={card.emailHref} hide-icon="true"></c-ipa-link>
+                                </slot>
+                            </c-core-intc-simple-card>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

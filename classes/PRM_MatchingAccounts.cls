@@ -20,7 +20,8 @@ public without sharing class PRM_MatchingAccounts {
     @AuraEnabled
     public static map<string,boolean> getBlockedAccount(list<String> accntId){
         system.debug('accntId'+accntId);
-        Id blocedAccContRT = Schema.getGlobalDescribe().get('PRM_SBC_Account_Search_Configuration__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_BlockedAccountContacts').getRecordTypeId();
+        //Id blocedAccContRT = Schema.getGlobalDescribe().get('PRM_SBC_Account_Search_Configuration__c').getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_BlockedAccountContacts').getRecordTypeId();
+        Id blocedAccContRT = PRM_SBC_Account_Search_Configuration__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get('PRM_BlockedAccountContacts').getRecordTypeId();
        list<PRM_SBC_Account_Search_Configuration__c> ipaAdminConfigLst=[SELECT Id,RecordTypeId,PRM_Type__c, Account__c, Account__r.id,PRM_isActive__c, PRM_Contact__c, PRM_Contact__r.id, PRM_Contact__r.email,Email_Domain__c,
         Country__c, PRM_RegContactEmail__c  from PRM_SBC_Account_Search_Configuration__c  
         where RecordTypeId=:blocedAccContRT and Account__r.id IN:accntId and PRM_Type__c='Account_Blocked' and PRM_isActive__c=true];
@@ -52,7 +53,8 @@ public without sharing class PRM_MatchingAccounts {
         String errorMsg = 'Please provide a valid Account Id with record type as Intel Account';
         Account acc;
         Account parentAcc;//TWC729-7054 - Nandana - new logic as part of removal of Core_Unified_Global_Customer__c
-        Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
+        //Id intelaccountRT = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
+        Id intelaccountRT = Account.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Intel_Account).getRecordTypeId();
         map<string,boolean> mapOfAccWithBlokedStatus=new Map<String,Boolean>(); 
         list<string> accIdList=new list<string>();
         try {
@@ -185,7 +187,7 @@ public without sharing class PRM_MatchingAccounts {
                         PRM_Status__c, PRM_Status_Reason__c, PRM_Subscriptions__c, PRM_Tax_ID_Registration__c, PRM_TriggerProcess__c, PRM_Wechat_Union_Id__c, 
                         PRM_Zip_Postal_Code__c,PRM_Channel_Program_Level_txt__c, PRM_Is_Returning_User__c,RecordTypeId from PRM_Registration_Request__c where Id=: regRequestId];            
             for (PRM_Registration_Request__c regR : regRList) {
-                if ((regR.PRM_Status__c=='New' || regR.PRM_Status__c == 'Pending') && regR.PRM_Channel_Program_Level_txt__c== Label.PRM_Intel_Partner_Alliance && regR.RecordTypeid != Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()) {
+                if ((regR.PRM_Status__c=='New' || regR.PRM_Status__c == 'Pending') && regR.PRM_Channel_Program_Level_txt__c== Label.PRM_Intel_Partner_Alliance && regR.RecordTypeid != /*Schema.getGlobalDescribe().get('PRM_Registration_Request__c').getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId())*/PRM_Registration_Request__c.SObjectType.getDescribe().getRecordTypeInfosByDeveloperName().get(System.Label.PRM_Admin_Registration).getRecordTypeId()) {
                     regR.PRM_Salesforce_ID__c = AccountId;
                     regR.PRM_TriggerProcess__c = true;
                     regR.PRM_Status__c = 'Approved';

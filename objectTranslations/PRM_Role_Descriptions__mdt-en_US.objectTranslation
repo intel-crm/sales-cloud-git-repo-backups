@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>PRM Role Description</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>PRM Role Descriptions</value>
+    </caseValues>
+    <fields>
+        <label><!-- Description --></label>
+        <name>PRM_Description__c</name>
+    </fields>
+    <fields>
+        <label><!-- Language Code --></label>
+        <name>PRM_Language_Code__c</name>
+    </fields>
+    <fields>
+        <label><!-- Short Description --></label>
+        <name>PRM_ShortDescription__c</name>
+    </fields>
+    <fields>
+        <label><!-- Support URL --></label>
+        <name>PRM_Support_URL__c</name>
+    </fields>
+    <fields>
+        <label><!-- Partner Role --></label>
+        <name>Partner_Role__c</name>
+        <picklistValues>
+            <masterLabel>Distributor</masterLabel>
+            <translation><!-- Distributor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>FPGA Designer</masterLabel>
+            <translation><!-- FPGA Designer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Independent Software Vendor</masterLabel>
+            <translation><!-- Independent Software Vendor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manufacturer</masterLabel>
+            <translation><!-- Manufacturer --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Not Applicable</masterLabel>
+            <translation><!-- Not Applicable --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seller</masterLabel>
+            <translation><!-- Seller --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Service Provider</masterLabel>
+            <translation><!-- Service Provider --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solution Integrator</masterLabel>
+            <translation><!-- Solution Integrator --></translation>
+        </picklistValues>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>Admin_Partner_Reg_Welcome_VIE</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Hành động cần thực hiện để hoàn thành đăng ký Liên minh Đối tác Intel®
+
+
+
+
+{!Contact.FirstName},
+
+Chúc mừng, người quản trị công ty của bạn hoặc đại diện của Intel đã thêm bạn vào tài khoản Liên minh Đối tác Intel®! Bạn chỉ cần thực hiện vài bước nữa là hoàn thành đăng ký.
+
+Hệ thống đã tạo thông tin hồ sơ dưới đây cho bạn:
+
+Tên người dùng: {!Contact.Core_Login_Id__c}
+Địa chỉ email: {!Contact.Email}
+Tên Công Ty: {{ACCOUNTNAME}}
+ID Doanh nghiệp trong Liên minh Đối tác Intel®: {{ACCOUNTNUMBER}}
+
+
+Vui lòng bấm vào liên kết bên dưới để hoàn thành đăng ký của bạn
+
+
+Hoàn thành đăng ký
+
+Không thể truy cập liên kết trên?
+
+https://intel.com/content/www/{!PRM_Language_Culture_Mapping__mdt.PRM_Country_Cd__c}/{!PRM_Language_Culture_Mapping__mdt.PRM_Culture__c}/secure/partner-alliance/help/overview.html
+Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi tại https://signin.intel.com/ContactUs?Culture=vi-vn.
+Chúng tôi mong chờ sự tham gia của bạn trong chương trình!
+Thân ái,
+Nhóm Liên minh Đối tác Intel® của bạn
+
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

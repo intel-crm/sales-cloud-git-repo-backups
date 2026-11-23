@@ -1,0 +1,7 @@
+<apex:page showHeader="false">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+   <apex:iframe src="https://kprabuddh-developer-edition.ap17.force.com/ArdiraSurvey/SurveyResponse.app?recordId=a0H2x000001ST6E&logicalId=3813458e-b756-c821-534f-74f57dd3dbec" height="900px" width="100%" scrolling="true" id="testId"/>
+ <!-- End Default Content REMOVE THIS -->
+</apex:page>

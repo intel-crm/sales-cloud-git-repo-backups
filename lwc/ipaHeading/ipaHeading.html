@@ -1,8 +1,8 @@
 <template>
-    
-    <div class="heading-container">
-        <h3 class="slds-p-bottom_xx-small">{heading}</h3>
-        <p>{subheading}</p>
-    </div>
-
+        <div class="heading-container">
+            <h2 class={headerClasses}>{heading}</h2>
+            <template if:true={subheading}>
+                <p class={classes}>{subheading}</p>
+            </template>
+        </div>
 </template>

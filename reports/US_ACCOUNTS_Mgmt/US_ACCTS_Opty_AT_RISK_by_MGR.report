@@ -35,6 +35,9 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
+        <field>Opportunity.Core_Risk_Reason__c</field>
+    </columns>
+    <columns>
         <field>STAGE_DURATION</field>
     </columns>
     <columns>
@@ -59,6 +62,13 @@
             <value>0</value>
         </criteriaItems>
         <criteriaItems>
+            <column>Opportunity.Core_Risk_Reason__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>notEqual</operator>
+            <value></value>
+        </criteriaItems>
+        <criteriaItems>
             <column>Opportunity.Core_Support_Completed__c</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
@@ -70,14 +80,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>Opportunity.Core_At_Risk__c</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>1</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -97,7 +100,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strategic Acct AT RISK Opptys</name>
+    <name>US ACCTS Opty AT RISK by MGR</name>
     <params>
         <name>terr</name>
         <value>all</value>

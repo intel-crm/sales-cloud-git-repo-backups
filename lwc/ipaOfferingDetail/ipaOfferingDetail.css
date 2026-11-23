@@ -1,8 +1,8 @@
-/* @import './table.css';
+@import './table.css';
 
 .offering-detail-container {
   /* background-color: var(--lightestGray); */
-/*  padding: .75rem 0 0 0;
+  padding: .75rem 0 0 0;
   width: 100%;
 }
 
@@ -30,7 +30,7 @@ c-ipa-tab {
 }
 
 /* Partner Sidebar */
-/*.sidebar-contact {
+.sidebar-contact {
   padding: 1.25rem;
 }
 
@@ -93,7 +93,7 @@ c-ipa-tab {
 }
 
 /* Tech Specs and Technologies columns */
-/*section.tech-spec-section .slds-size_3-of-12 {
+section.tech-spec-section .slds-size_3-of-12 {
   margin-right: 1.5rem;
 }
 
@@ -111,7 +111,7 @@ section.tech-card-section .slds-size_9-of-12 {
 }
 
 /* Included Technologies */
-/*.tech-card-section {
+.tech-card-section {
   border-bottom: 1px solid var(--carbon-tint3);
   padding: 1rem 0;
 }
@@ -347,4 +347,4 @@ section.tech-card-section .slds-size_9-of-12 {
     border-bottom: 1px solid var(--carbon-tint3);
     padding: 1rem 0;
   }
-} */
+}

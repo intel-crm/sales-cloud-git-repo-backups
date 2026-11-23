@@ -9,17 +9,15 @@
             <axisBinding>y</axisBinding>
             <column>TOTAL_PRICE</column>
         </chartSummaries>
-        <chartType>HorizontalBarStacked</chartType>
+        <chartType>VerticalColumn</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>true</expandOthers>
-        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
-        <legendPosition>Right</legendPosition>
+        <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
         <location>CHART_BOTTOM</location>
-        <secondaryGroupingColumn>CLOSE_DATE</secondaryGroupingColumn>
         <showAxisLabels>false</showAxisLabels>
         <showPercentage>false</showPercentage>
         <showTotal>false</showTotal>
-        <showValues>false</showValues>
+        <showValues>true</showValues>
         <size>Medium</size>
         <summaryAxisRange>Auto</summaryAxisRange>
         <textColor>#000000</textColor>
@@ -28,7 +26,7 @@
         <titleSize>18</titleSize>
     </chart>
     <columns>
-        <field>Opportunity.Core_Opportunity_Owner__c</field>
+        <field>ROLLUP_DESCRIPTION</field>
     </columns>
     <columns>
         <field>ACCOUNT_NAME</field>
@@ -43,6 +41,9 @@
         <field>AMOUNT</field>
     </columns>
     <columns>
+        <field>CLOSE_DATE</field>
+    </columns>
+    <columns>
         <field>STAGE_NAME</field>
     </columns>
     <columns>
@@ -54,47 +55,28 @@
     </columns>
     <filter>
         <criteriaItems>
+            <column>ROLLUP_DESCRIPTION</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>true</isUnlocked>
+            <operator>equals</operator>
+            <value>EMP of Swee Hoon Chan</value>
+        </criteriaItems>
+        <criteriaItems>
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>ACCOUNT_OWNER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>vineet giri</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OWNER_MANAGER</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>equals</operator>
-            <value>swee hoon chan</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>AMOUNT</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value></value>
+            <value>Qualify,Define,Develop,Design,Design Win</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>OpportunityLineItem.Core_BU_Short_Name_Old__c</field>
+        <field>OpportunityLineItem.Core_BU_Short_Name__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <groupingsDown>
-        <dateGranularity>Quarter</dateGranularity>
-        <field>CLOSE_DATE</field>
-        <sortOrder>Asc</sortOrder>
-    </groupingsDown>
-    <name>2020 SG BC Pipelines by BU</name>
+    <name>2020 SG BC Opps BU report</name>
     <params>
         <name>terr</name>
         <value>all</value>

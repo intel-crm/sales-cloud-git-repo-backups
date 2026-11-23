@@ -40,7 +40,7 @@
         <scale>2</scale>
     </customDetailFormulas>
     <filter>
-        <booleanFilter>(1 AND 2 AND 3 AND 4) AND 5 AND 6</booleanFilter>
+        <booleanFilter>((1 AND 2 AND 3 AND 4) AND 5)</booleanFilter>
         <criteriaItems>
             <column>Opportunity.Core_Business_Unit_Territory__c</column>
             <columnToColumn>false</columnToColumn>
@@ -75,13 +75,6 @@
             <isUnlocked>true</isUnlocked>
             <operator>notEqual</operator>
             <value>Lost,Cancelled,Deleted</value>
-        </criteriaItems>
-        <criteriaItems>
-            <column>OPPORTUNITY_NAME</column>
-            <columnToColumn>false</columnToColumn>
-            <isUnlocked>true</isUnlocked>
-            <operator>notEqual</operator>
-            <value>VER-6248_Far_Edge_Poseidon_RFP</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>

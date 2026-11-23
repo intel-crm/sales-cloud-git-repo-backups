@@ -25,20 +25,13 @@ public without sharing class PRM_VxDataStageBatchUtility {
     private static final string NA = 'NA';
     private static Map<String,String> mapOfPicklistValues = new Map<String,String>();
     private static Map<String,String> groupMethodMap =  new Map<String,String>();
-	public static Map<String,PRM_Value_Exchange_Data__c> UpdateExistingVXData = new Map<String,PRM_Value_Exchange_Data__c>();
+  public static Map<String,PRM_Value_Exchange_Data__c> UpdateExistingVXData = new Map<String,PRM_Value_Exchange_Data__c>();
     //Constructor where scope is passed from execute method of batch class 
     public PRM_VxDataStageBatchUtility(List<PRM_Value_Exchange_UCD_Stage__c> scope){
-        //Using Schema methods to retrieve all picklist values of Partner Role field on Value Exchange Data.
-        //Schema.DescribeFieldResult fieldResult = PRM_Value_Exchange_Data__c.PRM_Account_Id__r.Core_IPA_Partner_Role__c.getDescribe(); //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
-        //List<Schema.PicklistEntry> picklistEntry = fieldResult.getPicklistValues(); //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
-        Map<String,String> opidPartnerCountryWithCountryTypeMap = new Map<String,String>();//map of OPID Partner Role+Tier with value country market type of VX stage records  
+        Map<String,String> opidPartnerCountryWithCountryTypeMap = new Map<String,String>();
         Set<String> opidSet=new Set<String>();//Set of OPID from VX Stage record which is picked by batch.
         Set<String> intelaccountSet=new Set<String>();//Set of Account Id of location account of VX stage record
-        /*for(Schema.PicklistEntry pickListVal : picklistEntry){
-            if(pickListVal.isActive()){
-                mapOfPicklistValues.put(pickListVal.getLabel(),pickListVal.getValue()); //Mapping picklist values with their respective Picklist label as Key 
-            } 
-        } //loop ends here*/ //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
+        
         System.debug(LoggingLevel.INFO, 'Before building ID sets, heap=' + Limits.getHeapSize());
         
 
@@ -50,38 +43,40 @@ public without sharing class PRM_VxDataStageBatchUtility {
                 }
             }
         } //loop ends here
-
+    
+        System.debug(LoggingLevel.INFO, 'Before building ID sets, heap=' + Limits.getHeapSize());
         
-
-        for(PRM_Value_Exchange_UCD_Stage__c vxStageWithOPID:[Select Id,PRM_Country_Market_Type_Nm__c,PRM_Account_Id__c,
-                                                         /*PRM_Partner_Role_Nm__c,*/PRM_Tier_Id__c ,PRM_Time_Period__c,PRM_One_Partner_Id__c
-                                                         from PRM_Value_Exchange_UCD_Stage__c where PRM_One_Partner_Id__c IN:opidSet OR PRM_Account_Id__c IN:intelaccountSet]){ //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087
-                                                             //loop start here
-                                                                 String key= vxStageWithOPID.PRM_Account_Id__c/*+vxStageWithOPID.PRM_Partner_Role_Nm__c+vxStageWithOPID.PRM_Tier_Id__c*/; //IPA Refresh 2.0 - Removed partner role as part of TWC729-8087 -- tier might cause a problem here if 1pid have more than 1 acm with diff tier, so removed tier as well
-                                                                    if(!opidPartnerCountryWithCountryTypeMap.containsKey(key)){
-                                                                            if(!String.isBlank(vxStageWithOPID.PRM_Country_Market_Type_Nm__c)){
-                                                                                    opidPartnerCountryWithCountryTypeMap.put(key,vxStageWithOPID.PRM_Country_Market_Type_Nm__c);//if Country Market Type of location account is not null, then adding location account's CountryMarketType as value with key as OPID+PartnerRole+Tier 
-                                                                            }
-                                                                            else{
-                                                                                    opidPartnerCountryWithCountryTypeMap.put(key,NA); //if Country Market Type of location account is null, then adding NA as value with key as OPID+PartnerRole+Tier 
-                                                                            }
-                                                                    }
-                                                                    else if ((((opidPartnerCountryWithCountryTypeMap.get(key) == 'Emerging') || (opidPartnerCountryWithCountryTypeMap.get(key) == NA)) && (vxStageWithOPID.PRM_Country_Market_Type_Nm__c == 'Mature')) || ((opidPartnerCountryWithCountryTypeMap.get(key) == NA) && (vxStageWithOPID.PRM_Country_Market_Type_Nm__c == 'Emerging'))){
-                                                                            opidPartnerCountryWithCountryTypeMap.put(key,vxStageWithOPID.PRM_Country_Market_Type_Nm__c);
-                                                                    }
-                                                         }//loop end here...
-
+        System.debug(LoggingLevel.INFO, 'Before SOQL loop, heap=' + Limits.getHeapSize());
+        for(PRM_Value_Exchange_UCD_Stage__c vxStageWithOPID:[Select Id,PRM_Country_Market_Type_Nm__c,PRM_Account_Id__c,PRM_Tier_Id__c ,PRM_Time_Period__c,PRM_One_Partner_Id__c from PRM_Value_Exchange_UCD_Stage__c where PRM_One_Partner_Id__c IN:opidSet OR PRM_Account_Id__c IN:intelaccountSet]){ 
+            String key= vxStageWithOPID.PRM_Account_Id__c; 
+            if(!opidPartnerCountryWithCountryTypeMap.containsKey(key)){
+                if(!String.isBlank(vxStageWithOPID.PRM_Country_Market_Type_Nm__c)){
+                    opidPartnerCountryWithCountryTypeMap.put(key,vxStageWithOPID.PRM_Country_Market_Type_Nm__c);
+                }
+                else{
+                    opidPartnerCountryWithCountryTypeMap.put(key,NA); //if Country Market Type of location account is null, then adding NA as value with key as OPID+PartnerRole+Tier 
+                    }
+            }
+            else if ((((opidPartnerCountryWithCountryTypeMap.get(key) == 'Emerging') || (opidPartnerCountryWithCountryTypeMap.get(key) == NA)) && (vxStageWithOPID.PRM_Country_Market_Type_Nm__c == 'Mature')) || ((opidPartnerCountryWithCountryTypeMap.get(key) == NA) && (vxStageWithOPID.PRM_Country_Market_Type_Nm__c == 'Emerging'))){
+                opidPartnerCountryWithCountryTypeMap.put(key,vxStageWithOPID.PRM_Country_Market_Type_Nm__c);
+            }
+        }//loop end here...
+        
+        System.debug(LoggingLevel.INFO, 'After SOQL loop: map size=' + opidPartnerCountryWithCountryTypeMap.size() + ', heap=' + Limits.getHeapSize());
+    
+        System.debug(LoggingLevel.INFO, 'Before addVxDataList, heap=' + Limits.getHeapSize());
         addVxDataList(scope,opidPartnerCountryWithCountryTypeMap); //method to update VX data list with correct partner role and market type mapping 
+        System.debug(LoggingLevel.INFO, 'After addVxDataList, heap=' + Limits.getHeapSize());
     }
     
     //Method to populate VXStage fields Values to VxData field values with proper Partner Role and Market type field.
     private static void addVxDataList(List<PRM_Value_Exchange_UCD_Stage__c> vxStageList,Map<String,String> opidPartnerCountryWithCountryTypeMap){
         //IPA Refresh 2.0 - Added to check duplicate VX Data check as part of TWC729-8087
-		Map<String,PRM_Value_Exchange_UCD_Stage__c> UniqueVXDataRecordtoInsert = new Map<String,PRM_Value_Exchange_UCD_Stage__c>();
+    Map<String,PRM_Value_Exchange_UCD_Stage__c> UniqueVXDataRecordtoInsert = new Map<String,PRM_Value_Exchange_UCD_Stage__c>();
         Map<String,PRM_Value_Exchange_Data__c> ExistingVXData = new Map<String,PRM_Value_Exchange_Data__c>();// Map of Existing VX Data in main table
         List<PRM_Value_Exchange_UCD_Stage__c> FinalVXDataToInsert = new List<PRM_Value_Exchange_UCD_Stage__c>();//List of VXData records which needs to be updated
         List<Id> Accountfortiermap = new List<Id>();//list of Account Ids from VXStage records
-        // PB fix
+        //NJ PB fix
         Set<id> accountIds = new Set<id>();
         Set<String> salesCalcTextList = new Set<String>();
         Set<String> timePeriodList = new Set<String>();
@@ -101,16 +96,17 @@ public without sharing class PRM_VxDataStageBatchUtility {
                                             PRM_Percent_to_next_tier_Nbr__c,PRM_Value_Exchange_ext_id__c,PRM_Sales_Calculation_Group_Txt__c,PRM_Processed_Date_Time_Dt__c,PRM_TimePeriod_Nm__c
                                             from PRM_Value_Exchange_Data__c where PRM_Account_Id__c IN :accountIds and PRM_Sales_Calculation_Group_Txt__c IN :salesCalcTextList and PRM_TimePeriod_Nm__c IN :timePeriodList]){
                                                 String key = ExistingVXDataRecord.PRM_Account_Id__c + ExistingVXDataRecord.PRM_Sales_Calculation_Group_Txt__c + ExistingVXDataRecord.PRM_TimePeriod_Nm__c +ExistingVXDataRecord.PRM_Sales_Amount_Nbr__c + ExistingVXDataRecord.PRM_Total_Sales_Out_Units_Nbr__c + ExistingVXDataRecord.PRM_Training_Credit_Points_Count_Nbr__c; 
-												String externalIdKey = ExistingVXDataRecord.PRM_Account_Id__c + ExistingVXDataRecord.PRM_Sales_Calculation_Group_Txt__c + ExistingVXDataRecord.PRM_TimePeriod_Nm__c;
-												ExistingVXData.put(key,ExistingVXDataRecord);
-												UpdateExistingVXData.put(externalIdKey,ExistingVXDataRecord);
-											}                                
+                        String externalIdKey = ExistingVXDataRecord.PRM_Account_Id__c + ExistingVXDataRecord.PRM_Sales_Calculation_Group_Txt__c + ExistingVXDataRecord.PRM_TimePeriod_Nm__c;
+                        ExistingVXData.put(key,ExistingVXDataRecord);
+                        UpdateExistingVXData.put(externalIdKey,ExistingVXDataRecord);
+                      }                                
         for(PRM_Value_Exchange_UCD_Stage__c stageOPID:vxStageList){
             String key = stageOPID.PRM_Account_Id__c + stageOPID.PRM_Sales_Calculation_Group_Txt__c + stageOPID.PRM_Time_Period__c +stageOPID.PRM_Sales_Amount_Nbr__c + stageOPID.PRM_Total_Sales_Out_Units_Nbr__c + stageOPID.PRM_Training_Credit_Points_Count_Nbr__c; 
             if((!(UniqueVXDataRecordtoInsert.containsKey(key))) && (!(ExistingVXData.containsKey(key)))){ 
                 UniqueVXDataRecordtoInsert.put(key,stageOPID); 
                 FinalVXDataToInsert.add(stageOPID);
                 Accountfortiermap.add(stageOPID.PRM_Account_Id__c);
+                System.debug('RRT-------uniquevxdatatoload--inside if'+stageOPID);
             }
         }
         List<PRM_Value_Exchange_Data__c> listOfVxData = new List<PRM_Value_Exchange_Data__c>();
@@ -137,6 +133,7 @@ public without sharing class PRM_VxDataStageBatchUtility {
                     vxData.PRM_Country_Market_Type_Nm__c=opidPartnerCountryWithCountryTypeMap.get(key);
                     vxData.PRM_Tier_Id__c=AccountTierMap.get(key);
                     listOfVxData.add(vxData);//list of VX data record with Account Id as location account.
+                  System.debug('RRT---------vxdatatoinsert--accountidopidnotequal'+vxData);
             }
             else{
                 listOfVxStageWithSameOpidAndAcc.add(vxStage);//list of non ipa account of VX stage record
@@ -148,8 +145,11 @@ public without sharing class PRM_VxDataStageBatchUtility {
             vxData.PRM_Country_Market_Type_Nm__c = opidPartnerCountryWithCountryTypeMap.get(key);
             vxData.PRM_Tier_Id__c=AccountTierMap.get(key);
             listOfVxData.add(vxData);
+            
+            System.debug('RRT---------vxdatatoinsert--accountidopidequal'+vxData);
         }//loop ends here
-		upsertVxData(listOfVxData,vxExternalIdWithStageMap); //Calling upsertVxData method 
+        calculateAndInsertVXcalculation(listOfVxData);
+    upsertVxData(listOfVxData,vxExternalIdWithStageMap); //Calling upsertVxData method 
     }
     
     /*
@@ -166,11 +166,11 @@ public without sharing class PRM_VxDataStageBatchUtility {
     //Method to populate vx data record from vx stage
     private static PRM_Value_Exchange_Data__c populateVxDataRecord(PRM_Value_Exchange_UCD_Stage__c vxStageRecord){
         PRM_Value_Exchange_Data__c vxData = new PRM_Value_Exchange_Data__c();
-		String externalIdKey = vxStageRecord.PRM_Account_Id__c + vxStageRecord.PRM_Sales_Calculation_Group_Txt__c + vxStageRecord.PRM_Time_Period__c;
+    String externalIdKey = vxStageRecord.PRM_Account_Id__c + vxStageRecord.PRM_Sales_Calculation_Group_Txt__c + vxStageRecord.PRM_Time_Period__c;
         if((UpdateExistingVXData.containsKey(externalIdKey))){
-			vxData.Id=UpdateExistingVXData.get(externalIdKey).Id;
-		}
-		vxData.Name=vxStageRecord.Name;
+      vxData.Id=UpdateExistingVXData.get(externalIdKey).Id;
+    }
+    vxData.Name=vxStageRecord.Name;
         vxData.PRM_Account_Id__c=vxStageRecord.PRM_Account_Id__c;
         vxData.PRM_Change_Date_Dt__c=vxStageRecord.PRM_Change_Date_Dt__c;
         vxData.PRM_Design_Registration_Count_Nbr__c=vxStageRecord.PRM_Design_Registration_Count_Nbr__c;
@@ -190,8 +190,8 @@ public without sharing class PRM_VxDataStageBatchUtility {
         vxData.PRM_Total_Sales_Out_Units_Nbr__c=vxStageRecord.PRM_Total_Sales_Out_Units_Nbr__c;
         vxData.PRM_Training_Credit_Points_Count_Nbr__c=vxStageRecord.PRM_Training_Credit_Points_Count_Nbr__c;
         vxData.PRM_Type_Of_Solutions_Txt__c=vxStageRecord.PRM_Type_Of_Solutions_Txt__c;
-		vxData.PRM_Value_Exchange_ext_id__c=vxStageRecord.PRM_Value_Exchange_ext_id__c;
-		vxData.PRM_TimePeriod_Nm__c=vxStageRecord.PRM_Time_Period__c;
+    vxData.PRM_Value_Exchange_ext_id__c=vxStageRecord.PRM_Value_Exchange_ext_id__c;
+    vxData.PRM_TimePeriod_Nm__c=vxStageRecord.PRM_Time_Period__c;
         return vxData;
     }
     
@@ -200,8 +200,8 @@ public without sharing class PRM_VxDataStageBatchUtility {
         List<Database.UpsertResult> upsertResultList = new List<Database.UpsertResult>();
         List<PRM_Value_Exchange_UCD_Stage__c> updateVxStageList=new List<PRM_Value_Exchange_UCD_Stage__c>();
         if(vxDataList.size() < Limits.getLimitDMLRows() && !vxDataList.isEmpty() && vxDataList.size()>0){
-			upsertResultList=Database.upsert(vxDataList,PRM_Value_Exchange_Data__c.Fields.Id,false);
-			integer index = 0;
+      upsertResultList=Database.upsert(vxDataList,PRM_Value_Exchange_Data__c.Fields.Id,false);
+      integer index = 0;
             for(Database.UpsertResult result: upsertResultList)
             {
                 if(!result.isSuccess()){
@@ -253,5 +253,60 @@ public without sharing class PRM_VxDataStageBatchUtility {
         catch(Exception e){
            // system.debug('Exception occured' +e.getMessage());
         } 
-    }    
+    }
+    public static void calculateAndInsertVXcalculation(List<PRM_Value_Exchange_Data__c> vxDataRecList) {
+
+        Set<String> opidSet = new Set<String>();
+        List<PRM_Value_Exchange_Calculation__c> calculationRecords = new List<PRM_Value_Exchange_Calculation__c>();
+        Set<Id> vxRecId = new Set<Id>();
+        Set<String> periodSet = new Set<String>();
+        Map<String, PRM_Value_Exchange_Calculation__c> existingMap = new Map<String, PRM_Value_Exchange_Calculation__c>();
+        List<PRM_Value_Exchange_Calculation__c> recordsToUpsert = new List<PRM_Value_Exchange_Calculation__c>();
+        
+        for (PRM_Value_Exchange_Data__c rec : vxDataRecList) {
+            if (rec.PRM_One_Partner_Id__c != null) {
+                opidSet.add(rec.PRM_One_Partner_Id__c);
+            }
+        }
+        List<AggregateResult> results = [SELECT PRM_One_Partner_Id__c,PRM_TimePeriod_Nm__c,SUM(PRM_Sales_Amount_Nbr__c) totalSales,SUM(PRM_Training_Credit_Points_Count_Nbr__c) totalTraining FROM PRM_Value_Exchange_Data__c where PRM_One_Partner_Id__c IN :opidSet GROUP BY PRM_One_Partner_Id__c, PRM_TimePeriod_Nm__c];
+
+        if (results.isEmpty()) {
+            return;
+        }
+
+        for (AggregateResult ar : results) {opidSet.add((String)ar.get('PRM_One_Partner_Id__c'));
+            periodSet.add((String)ar.get('PRM_TimePeriod_Nm__c'));
+        }
+        for (PRM_Value_Exchange_Calculation__c rec : [SELECT Id,PRM_One_Partner_Id__c,PRM_Sales_Calculation_Group_Txt__c,PRM_Time_Period__c,PRM_Sales_Amount__c,PRM_Training_Credit_Points_Count_Nbr__c FROM PRM_Value_Exchange_Calculation__c WHERE PRM_One_Partner_Id__c IN :opidSet AND PRM_Time_Period__c IN :periodSet]) {
+            String key = rec.PRM_One_Partner_Id__c + '|' + rec.PRM_Time_Period__c;
+            //String key = rec.PRM_One_Partner_Id__c + '|' + rec.PRM_Time_Period__c+ '|' + rec.PRM_Sales_Calculation_Group_Txt__c;
+            existingMap.put(key, rec);
+        }
+        for (AggregateResult ar : results) {String opid = (String)ar.get('PRM_One_Partner_Id__c');
+            String period = (String)ar.get('PRM_TimePeriod_Nm__c');
+            //String salesGroup = (String)ar.get('PRM_Sales_Calculation_Group_Txt__c');
+
+            String key = opid + '|' + period;
+            //String key = opid + '|' + period+ '|' + salesGroup;
+
+            PRM_Value_Exchange_Calculation__c calc;
+
+            if (existingMap.containsKey(key)) {calc = existingMap.get(key);
+            } else {
+                calc = new PRM_Value_Exchange_Calculation__c();
+                calc.PRM_One_Partner_Id__c = opid;
+                calc.PRM_Time_Period__c = period;
+            }
+
+            calc.PRM_Sales_Amount__c =(Decimal)ar.get('totalSales');
+            calc.PRM_Training_Credit_Points_Count_Nbr__c =(Decimal)ar.get('totalTraining');
+            
+
+            recordsToUpsert.add(calc);
+        }
+
+        if (!recordsToUpsert.isEmpty()) { upsert recordsToUpsert;
+        }
+    }
+
 }

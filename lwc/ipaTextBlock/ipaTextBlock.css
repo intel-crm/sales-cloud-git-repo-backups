@@ -1,0 +1,51 @@
+lightning-formatted-rich-text {
+    line-height: 1.3;
+  }
+  
+  .host .control {
+    display: block;
+    margin-top: 10px;
+  }
+  .host .slds-rich-text-editor__output p {
+    margin-bottom: 0.6rem;
+  }
+  
+  .host .heightLimited .innerContent {
+    position: relative;
+  }
+  
+  .host .heightLimited:after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    transform: translateY(-100%);
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.3) 20%,
+      rgba(255, 255, 255, 1) 100%
+    );
+  }
+  .host .heightLimited.h-disabled:after {
+      display: none;
+  }
+  
+  .host .heightLimited.compact {
+    overflow: hidden;
+    position: relative;
+  }
+  .host .heightLimited.expanded:after {
+    display: none;
+  }
+  .host .heightLimited.compact.small {
+    max-height: 200px;
+  }
+  .host .heightLimited.compact.medium {
+    max-height: 400px;
+  }
+  .host .heightLimited.compact.large {
+    max-height: 600px;
+  }

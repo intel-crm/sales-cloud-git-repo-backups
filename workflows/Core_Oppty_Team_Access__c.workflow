@@ -7,8 +7,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>CurrentUser</senderType>
         <template>Core_Opportunity_Management/Core_OpptyTeamAccess_Rejection</template>
     </alerts>
     <alerts>
@@ -18,8 +17,7 @@
         <recipients>
             <type>owner</type>
         </recipients>
-        <senderAddress>wsm-postmaster@intel.com</senderAddress>
-        <senderType>OrgWideEmailAddress</senderType>
+        <senderType>CurrentUser</senderType>
         <template>Core_Opportunity_Management/Core_OpptyTeamAccess_Approval</template>
     </alerts>
     <fieldUpdates>

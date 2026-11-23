@@ -1,0 +1,93 @@
+<apex:page standardController="Contact" extensions="Core_IPS_Migrate_CustToPartController" >
+    <apex:pageMessages ></apex:pageMessages>
+    <style>
+        .contactTab .secondaryPalette, .individualPalette .contactBlock .secondaryPalette {
+            background-color: #f8f8f8;
+            border-color: #56458c;
+        }
+    </style>     
+    <apex:sectionHeader title="Account : {!Contact.Account.Name}" subtitle="{!Contact.Name}" />
+    <apex:pageBlock title="Migrate Customer To Partner">
+        <apex:form >
+            <apex:pageBlock > 
+                <apex:pageBlockSection columns="1" title="Steps"> 
+                    <apex:outputText value="Follow Step To Migrate Customer To partner"></apex:outputText>
+                    <apex:outputText value="Step1. Click On ''Commit'' to save the customer related data to custom object"></apex:outputText>
+                    <apex:outputText value="Step2. Click On ''Disable Customer User'' to disable customer user record "></apex:outputText>
+                    <apex:outputText value="Step3. Click On ''Enable Partner / Cancel'' to enable as a partner "></apex:outputText>
+                    <apex:outputText value="Step4. Click On ''Complete'' to update sharing rule for partner"></apex:outputText>
+                   
+                   <!-- <apex:outputText value="<b>Note:</b> Premier Support Project Member ==>  Validation Rule ==> Core_IPS_PreventUserLookupChange Disable If project member need to be updated" escape="false"></apex:outputText> -->
+                </apex:pageBlockSection>
+                <apex:pageblockButtons location="top">
+                    <apex:commandButton action="{!fetchCustomerRecords}" value="Commit"/>
+                    <apex:commandButton action="{!updateUser}" value="Disable Customer User"/>
+                    <apex:commandButton action="{!updateShareForPartner}" value="Complete"/>
+                    <apex:commandButton action="{!createPartner}" value="Enable Partner/ Cancel"/>    
+                </apex:pageblockButtons>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:pageblockSection columns="1" title="Entitlement Records" collapsible="false" rendered="{!contactEntList!=null && contactEntList.size>0}" >
+             <apex:pageBlockSectionItem > 
+                <apex:pageBlockTable value="{!contactEntList}" var="item" rows="10">
+                    <apex:column value="{!item.Core_Contact_Id__c}"/>
+                    <apex:column value="{!item.Id}"/>
+                    <apex:column value="{!item.Core_Entitlement_Id__r.name}"/> 
+                    <apex:column value="{!item.Core_Selected__c}"/> 
+                    <apex:column value="{!item.Core_Status__c}"/> 
+                </apex:pageBlockTable>
+            </apex:pageBlockSectionItem>
+            </apex:pageblockSection>
+             <apex:pageblockSection columns="1" title="Sharing Records" collapsible="false" rendered="{!sobjRecdList!=null && sobjRecdList.size>0}">
+       
+            <apex:pageBlockSectionItem > 
+                <apex:pageBlockTable value="{!sobjRecdList}" var="item">
+                    <apex:column value="{!item.Core_IPS_Contact_Id__c}"/>
+                    <apex:column value="{!item.Core_IPS_Customer_User_Id__c}"/>
+                    <apex:column value="{!item.Core_IPS_Status__c}"/>
+                    <apex:column value="{!item.Core_IPS_Sobject_Type__c}"/> 
+                    <apex:column value="{!item.name}"/> 
+                    <apex:column value="{!item.Core_IPS_RowCause__c}"/>
+                    <apex:column value="{!item.Core_IPS_SobjectAccessLevel__c}"/>
+                    <apex:column value="{!item.Core_IPS_SobjectId__c}"/>
+                    <apex:column value="{!item.Core_IPS_UserOrGroupId__c}"/>
+                    <apex:column value="{!item.Partner_User_Id__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSectionItem>
+            </apex:pageblockSection>
+              <apex:pageblockSection columns="1" title="Interested Party Records" collapsible="false" rendered="{!interestedPartiesList!=null && interestedPartiesList.size>0}">
+       
+           <apex:pageBlockSectionItem > 
+                <apex:pageBlockTable value="{!interestedPartiesList}" var="item" rows="10">
+                    <apex:column value="{!item.Contact__c}"/>
+                    <apex:column value="{!item.User__c}"/>
+                    <apex:column value="{!item.id}"/>
+                    <apex:column value="{!item.name}"/>
+                    <apex:column value="{!item.Active__c}"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSectionItem>
+            </apex:pageblockSection>
+             <apex:pageblockSection columns="1" title="Project Owner Records" collapsible="false" rendered="{!projOwnerList!=null && projOwnerList.size>0}">
+       
+            <apex:pageBlockSectionItem > 
+                <apex:pageBlockTable value="{!projOwnerList}" var="item" rows="10">
+                    <apex:column value="{!item.OwnerId}"/>
+                    <apex:column value="{!item.Id}"/>  
+                    <apex:column value="{!item.name}"/>
+                    <apex:column value="{!item.Core_Status__c}"/>       
+                </apex:pageBlockTable>
+            </apex:pageBlockSectionItem>
+             </apex:pageblockSection>
+             <apex:pageblockSection columns="1" title="Project Member Records" collapsible="false" rendered="{!projMemList!=null && projMemList.size>0}" >
+                <apex:pageBlockSectionItem > 
+                    <apex:pageBlockTable value="{!projMemList}" var="item" rows="10">
+                        <apex:column value="{!item.Core_IPS_Contact__c}"/>
+                        <apex:column value="{!item.Core_User__c}"/>
+                        <apex:column value="{!item.Id}"/>  
+                        <apex:column value="{!item.name}"/>
+                        <apex:column value="{!item.Core_Status__c}"/>
+                    </apex:pageBlockTable>
+                </apex:pageBlockSectionItem>
+        </apex:pageblockSection>  
+    </apex:pageBlock>
+</apex:page>

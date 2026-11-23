@@ -52,7 +52,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>startsWith</operator>
-            <value>GM Info 3.5</value>
+            <value>GM</value>
         </criteriaItems>
         <criteriaItems>
             <column>FK_NAME</column>

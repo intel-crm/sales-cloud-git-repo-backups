@@ -33,7 +33,7 @@ public without sharing  class Core_Draco_Misc_Functionalities {
         Integer accUpdateLimit = integer.valueof(system.label.Core_Account_B2B_Flag_Update_Batch_Size);
         List<Account> accList = new List<Account>();
         //Loop through all the Accounts where B2B flag is TRUE
-        for(Account acc : [SELECT Id, Core_B2B_Entitlement__c, (SELECT Id, Core_Contact_B2B_Indicator__c FROM Contacts) FROM Account WHERE Core_B2B_Entitlement__c = TRUE]){
+        for(Account acc : [SELECT Id, Core_B2B_Entitlement__c, (SELECT Id, Core_Contact_B2B_Indicator__c FROM Contacts) FROM Account WHERE Core_B2B_Entitlement__c = TRUE WITH SECURITY_ENFORCED]){
             //Loop through all the contacts in that Account and see if at least 1 contact has Core_Contact_B2B_Indicator__c flag = TRUE
             Boolean b2bAccount = false;
             for(Contact con : acc.Contacts){
@@ -41,14 +41,13 @@ public without sharing  class Core_Draco_Misc_Functionalities {
                     b2bAccount = true;
                 }
             }
-            
             //If there are no contacts with Core_Contact_B2B_Indicator__c = TRUE, then mark Core_B2B_Entitlement__c = FALSE on Account
             if(!b2bAccount){
                 acc.Core_B2B_Entitlement__c = false;
                 accList.add(acc);
             }
-            
         }
+       
         
         //Prepare a sub-list of accounts with total size as specified in Core_Account_B2B_Flag_Update_Batch_Size custom label. This is because CPU time out exception
         //is being thrown if we try to update large number of accounts at a time
@@ -60,7 +59,9 @@ public without sharing  class Core_Draco_Misc_Functionalities {
                 listSize ++;
             }
         }
-        database.update (accToUpdate,false);
+        if(Schema.sObjectType.Account.isUpdateable()){
+            database.update (accToUpdate,false);
+        }
     }
     
     
@@ -68,6 +69,7 @@ public without sharing  class Core_Draco_Misc_Functionalities {
     public static void createIntgrationMonitoringLog(String IntgScr, String ErrDetail, Id ContactId, Id IIMid, Integer IntgDuration, String IntgLogTags){
         
         Boolean errorCategorised = false;
+        Boolean errorTobeIgnored = false;
         Core_AE_Integration_Log__c intgLog = new Core_AE_Integration_Log__c();
         
         //Get the list of Custom Metadata containing the Error String 
@@ -76,6 +78,7 @@ public without sharing  class Core_Draco_Misc_Functionalities {
         
         //Loop across the metadata and see if we can categorise the error into a category
         for(Proactive_Alerts_on_A_E_Integration__mdt ProActAlert : lstProactiveAlertMtd){
+        
             if(ProActAlert.Core_Is_Active__c && ProActAlert.DeveloperName != 'Other_Errors' && ProActAlert.Core_Error_Source__c == IntgScr){                    
                 if(ErrDetail != null && ErrDetail == 'Success'){
                     intgLog = new Core_AE_Integration_Log__c(Core_Integration_Source__c = IntgScr, Core_Error_Category__c = 'Success', Core_Error_Group__c = 'Success', Core_Error_Detail__c = null, Core_Integration_Contact__c = ContactId,
@@ -97,10 +100,11 @@ public without sharing  class Core_Draco_Misc_Functionalities {
         
         //Insert the Integration Monitoring Log
         try{
+            if(Schema.sObjectType.Core_AE_Integration_Log__c.isCreateable()){
             insert intgLog;
+            }
         } catch(DmlException e) {
-            Core_Log_Entry__c excepLog = new Core_Log_Entry__c(Core_Message__c = e.getMessage(), Core_Origin__c = 'createIntgrationMonitoringLog', Core_Project__c = 'Core_Draco_Misc_Functionalities' , Core_Details__c = 'Error while creating integration log', Core_Severity__c = 'info', Core_When__c = System.Now());     
-            insert excepLog;
+           
         }
     }
    
@@ -166,10 +170,14 @@ Akshay More         30-08-2023      Original Version (Only contains logic for pr
             Core_Contact_Entitlement__c conEnt = new Core_Contact_Entitlement__c(Id = conEntId, Core_Status__c = 'Pending', Core_Data_Loaded__c = true);
             conEntListToRepublish.add(conEnt);
         }
-        Integer addSeconds = Integer.valueOf(System.label.Delay_for_Entitlement_Republish_on_Validation_Seconds);
+        //Integer addSeconds = Integer.valueOf(System.label.Delay_for_Entitlement_Republish_on_Validation_Seconds);
+        Integer addSeconds = 5;
         Datetime endTime = System.Now().addSeconds(addSeconds);
+        
         while(System.Now() < endTime){ 
         }
+        if(Schema.sObjectType.Core_Contact_Entitlement__c.isUpdateable()){
         update conEntListToRepublish;
+        }
     }
 }

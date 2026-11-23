@@ -3,34 +3,19 @@
     <aura:attribute name = "isIntManualChecked" type = "Boolean" default="false"/>
     <aura:attribute name = "isMemManualChecked" type = "Boolean" default="false"/>
     <aura:attribute name = "isCriteriaChecked" type = "Boolean" default="false"/>
-    <aura:attribute name = "isBankDocumentChecked" type="Boolean" default="false"/>
     <aura:attribute name = "isPartnerUser"  type = "Boolean" default="false"/>
     <aura:attribute name = "isStandardUser"  type = "Boolean" default="false"/>
     <aura:attribute name = "isUserEligibleToReleaseHold" type = "Boolean" default="false"/>
-    <aura:attribute name = "isUserEligibleToRelaseBankHold" type="Boolean" default="false"/>
     <aura:attribute name = "pfcRecord" type = "PartnerFundClaim"/>
     <aura:attribute name="Spinner" type="boolean" default="false" />
     <aura:attribute name = "wrapperClassVar"  type = "Core_MDF_ReleaseHold"/>
-    <!--Added by VB-->
-    <aura:attribute name="isCustomComp" type="boolean" default="false" description="Indicates whether this component is rendered from standard quick action or from custom compact layout"/>
-
     
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-    <!--This is to fire a component event to close a modal popup-->
-    <aura:registerEvent name="closeModalEvent" type="c:Core_MDF_closeModalEvent"/>
-
     
     <div>
-        <aura:if isTrue="{!v.isCustomComp}"> 
-            <div class="slds-modal__header custom-header">
-                <h2 class="slds-text-heading_medium">Release Hold</h2>
-            </div>
-        </aura:if>    
-
         <lightning:layout verticalAlign="center" class="x-large">
             <lightning:layoutItem class="slds-align_absolute-center">
-                <aura:if isTrue="{!(v.isUserEligibleToReleaseHold)}">
-                    
+                <aura:if isTrue="{!v.isUserEligibleToReleaseHold}">
                     <aura:if isTrue="{!and(v.isPartnerUser,v.wrapperClassVar.isOnMembManualHold)}">
                         <div class="slds-text-align_center slds-p-around_x-large slds-m-around--x-large">
                             <div class="slds-card slds-grid slds-align_absolute-center">
@@ -43,10 +28,8 @@
                                 <lightning:button variant="neutral" label="{!$Label.c.Core_MDF_Cancel_Claim_No}" title="{!$Label.c.Core_MDF_Cancel_Claim_No}" onclick="{!c.closeModel}"/>   
                             </div>
                         </div>
-                        
                         <aura:set attribute="else">
-                            <!--aura:if isTrue="{!or(and(v.isStandardUser,or(v.wrapperClassVar.isOnCriteriaHold,or(v.wrapperClassVar.isOnIntManualHold,v.wrapperClassVar.isOnMembManualHold))),(and(v.isUserEligibleToRelaseBankHold, and(v.wrapperClassVar.isOnBankDocumentHold,!v.pfcRecord.Core_MDF_Audit_Hold__c))))}" -->     
-                            <aura:if isTrue="{!or(and(v.isStandardUser,or(v.wrapperClassVar.isOnCriteriaHold,or(v.wrapperClassVar.isOnIntManualHold,v.wrapperClassVar.isOnMembManualHold))),(and(v.isUserEligibleToRelaseBankHold, v.wrapperClassVar.isOnBankDocumentHold)))}">               
+                            <aura:if isTrue="{!and(v.isStandardUser,or(v.wrapperClassVar.isOnCriteriaHold,or(v.wrapperClassVar.isOnIntManualHold,v.wrapperClassVar.isOnMembManualHold)))}">
                                 <div>
                                     <div class="slds-grid slds-grid--pull-padded slds-p-top_medium">
                                         <div class="slds-col--padded">
@@ -56,18 +39,14 @@
                                     </div>
                                     <br/>
                                     <div>
-                                        <aura:if isTrue="{!and(v.wrapperClassVar.isOnCriteriaHold,v.wrapperClassVar.hasAccess)}">
+                                        <aura:if isTrue="{!v.wrapperClassVar.isOnCriteriaHold}">
                                             <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_ReleaseHold_CriteriaHoldCheckbox}" name="{!$Label.c.Core_MDF_ReleaseHold_CriteriaHoldCheckbox}" aura:id="criteriaH" checked="{!v.isCriteriaChecked}" onchange="{!c.toggleReleaseSubmissionButton}"/><br/>
                                         </aura:if>
-                                        <aura:if isTrue="{!and(v.wrapperClassVar.isOnIntManualHold,v.wrapperClassVar.hasAccess)}">
+                                        <aura:if isTrue="{!v.wrapperClassVar.isOnIntManualHold}">
                                             <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_ReleaseHold_IntelManualHoldCheckbox}" name="{!$Label.c.Core_MDF_ReleaseHold_IntelManualHoldCheckbox}" aura:id="intManualH" checked="{!v.isIntManualChecked}" onchange="{!c.toggleReleaseSubmissionButton}"/><br/>
                                         </aura:if>
-                                        <aura:if isTrue="{!and(v.wrapperClassVar.isOnMembManualHold,v.wrapperClassVar.hasAccess)}">
+                                        <aura:if isTrue="{!v.wrapperClassVar.isOnMembManualHold}">
                                             <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_ReleaseHold_MemberManualHoldCheckbox}" name="{!$Label.c.Core_MDF_ReleaseHold_MemberManualHoldCheckbox}" aura:id="memManualH" checked="{!v.isMemManualChecked}" onchange="{!c.toggleReleaseSubmissionButton}"/><br/>
-                                        </aura:if>
-                                         <!--aura:if isTrue="{!and(!v.pfcRecord.Core_MDF_Audit_Hold__c, and(v.wrapperClassVar.isOnBankDocumentHold,v.wrapperClassVar.hasAccessForBankDocumentHold))}" -->
-                                         <aura:if isTrue="{!and(v.wrapperClassVar.isOnBankDocumentHold,v.wrapperClassVar.hasAccessForBankDocumentHold)}">
-                                            <lightning:input type="checkbox" label="{!$Label.c.Core_MDF_ReleaseHold_BankDocumentHold}" name="{!$Label.c.Core_MDF_ReleaseHold_BankDocumentHold}" aura:id="bankDocumentH" checked="{!v.isBankDocumentChecked}" onchange="{!c.toggleReleaseSubmissionButton}"/><br/>
                                         </aura:if>
                                     </div>
                                     <br/>
@@ -96,11 +75,5 @@
                 </aura:if>
             </lightning:layoutItem>
         </lightning:layout>
-        <aura:if isTrue="{!v.isCustomComp}"> 
-            <footer class="slds-modal__footer slds-p-top_x-large">
-                <lightning:button variant="brand" label="{!$Label.c.Core_MDF_Cancel_Button}" title="{!$Label.c.Core_MDF_Cancel_Button}" onclick="{!c.closeModel}" class="slds-m-left_x-small"/>
-            </footer>
-        </aura:if>
-
     </div>
 </aura:component>

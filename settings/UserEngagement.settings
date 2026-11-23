@@ -2,7 +2,7 @@
 <UserEngagementSettings xmlns="http://soap.sforce.com/2006/04/metadata">
     <canUseAdoptionApps>false</canUseAdoptionApps>
     <doesScheduledSwitcherRunDaily>true</doesScheduledSwitcherRunDaily>
-    <enableCustomHelpGlobalSection>true</enableCustomHelpGlobalSection>
+    <enableCustomHelpGlobalSection>false</enableCustomHelpGlobalSection>
     <enableHelpMenuShowFeedback>true</enableHelpMenuShowFeedback>
     <enableHelpMenuShowHelp>true</enableHelpMenuShowHelp>
     <enableHelpMenuShowNewUser>true</enableHelpMenuShowNewUser>
@@ -20,7 +20,7 @@
     <enableOrgUserAssistEnabled>true</enableOrgUserAssistEnabled>
     <enableScheduledSwitcher>true</enableScheduledSwitcher>
     <enableSfdcProductFeedbackSurvey>true</enableSfdcProductFeedbackSurvey>
-    <enableShowSalesforceUserAssist>false</enableShowSalesforceUserAssist>
+    <enableShowSalesforceUserAssist>true</enableShowSalesforceUserAssist>
     <isAutoTransitionDelayed>false</isAutoTransitionDelayed>
     <isCrucNotificationDisabled>false</isCrucNotificationDisabled>
     <isCustomProfileAutoTransitionDelayed>false</isCustomProfileAutoTransitionDelayed>
@@ -28,6 +28,6 @@
     <isMeetTheAssistantDisabledInClassic>true</isMeetTheAssistantDisabledInClassic>
     <isMeetTheAssistantDisabledInLightning>false</isMeetTheAssistantDisabledInLightning>
     <isSmartNudgesDisabled>false</isSmartNudgesDisabled>
-    <optimizerAppEnabled>true</optimizerAppEnabled>
+    <optimizerAppEnabled>false</optimizerAppEnabled>
     <suggestedForYou>true</suggestedForYou>
 </UserEngagementSettings>

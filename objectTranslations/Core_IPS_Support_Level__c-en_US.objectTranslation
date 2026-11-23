@@ -46,5 +46,12 @@
         <name>Core_IPS_Support_Org__c</name>
         <relationshipLabel><!-- Support Level --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Support Level Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

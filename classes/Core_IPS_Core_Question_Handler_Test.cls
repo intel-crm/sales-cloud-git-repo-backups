@@ -274,6 +274,7 @@ public class Core_IPS_Core_Question_Handler_Test {
               delete cq;  
             }
             catch(Exception e){
+              System.debug('Exception-->'+e.getMessage() + 'At Line Number-->'+e.getLineNumber());
             }
             } 
     Test.stopTest();  
@@ -458,8 +459,7 @@ public class Core_IPS_Core_Question_Handler_Test {
             cq.Core_IPS_Question__c = 'Test';
             cq.Core_IPS_Required__c = false;
             cq.Core_IPS_Status__c = 'Active';
-            cq.Core_IPS_Add_to_Reporting__c = true;
-			cq.Core_IPS_Reporting_Name__c = 'Test ReportName';
+            
             insert cq;
             
                 
@@ -609,10 +609,12 @@ public class Core_IPS_Core_Question_Handler_Test {
             
             //Update Parent Question DataType 
             Core_IPS_Question__c parentQuestion = [select id,Core_IPS_Datatype__c from Core_IPS_Question__c where id=:cq.Id];
+            System.debug('----parentQuestion ::'+parentQuestion);
             try{
                 parentQuestion.Core_IPS_Datatype__c = 'Text';
                 update parentQuestion;
             }catch(Exception e){
+                System.debug('---Exception Message :::'+e.getMessage());
             }
             
             try{
@@ -662,6 +664,7 @@ public class Core_IPS_Core_Question_Handler_Test {
                 update ques;
                 
             }catch(Exception e){
+                System.debug('---Exception Message :::'+e.getMessage());
             }
             
            

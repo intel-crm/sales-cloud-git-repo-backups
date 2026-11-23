@@ -7,13 +7,11 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - Shridhar K       05/01/2019                    Core_MDF_ExportToExcel_Mock class is created to generate dummy response for ExportToExcel test class.
 *****************************************************************************************************************************************/
-
 @isTest
 global class Core_MDF_ExportToExcelAccount_Mock implements HTTPCalloutMock {
-  @SuppressWarnings('PMD') 
     global HTTPResponse respond(HTTPRequest request) {
     
-        Id accountRecordType = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_Marketing').getRecordTypeId();
+        Id account_Record_Type = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Core_MDF_Co_Marketing').getRecordTypeId();
         HTTPResponse response = new HTTPResponse();
         response.setHeader('Content-type', 'application/json');
         String strJSONResponse = 
@@ -128,7 +126,7 @@ global class Core_MDF_ExportToExcelAccount_Mock implements HTTPCalloutMock {
                 '"nullsPosition" : "first",'+
                 '"sortDirection" : "ascending"'+
               '} ],'+
-              '"query" : "SELECT Name, Core_MDF_Parent_Fund_Account__r.Name, Core_MDF_Channel_Program__r.Name, Core_Account_Owner__c, Id, RecordTypeId, CreatedDate, LastModifiedDate, SystemModstamp FROM Account WHERE RecordTypeId ='+ '\''+accountRecordType+'\''+ 'AND Core_MDF_Active_Ind__c = true ORDER BY Name ASC NULLS FIRST, Id ASC NULLS FIRST",'+
+              '"query" : "SELECT Name, Core_MDF_Parent_Fund_Account__r.Name, Core_MDF_Channel_Program__r.Name, Core_Account_Owner__c, Id, RecordTypeId, CreatedDate, LastModifiedDate, SystemModstamp FROM Account WHERE RecordTypeId ='+ '\''+account_Record_Type+'\''+ 'AND Core_MDF_Active_Ind__c = true ORDER BY Name ASC NULLS FIRST, Id ASC NULLS FIRST",'+
               '"scope" : "everything",'+
               '"sobjectType" : "Account",'+
               '"whereCondition" : {'+

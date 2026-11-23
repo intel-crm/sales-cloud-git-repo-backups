@@ -25,6 +25,10 @@
         <name>PRM_MP_Benefits__c</name>
     </fields>
     <fields>
+        <label><!-- PRM_ManualEntitlements --></label>
+        <name>PRM_ManualEntitlements__c</name>
+    </fields>
+    <fields>
         <label><!-- PRM_Manual_Benefits --></label>
         <name>PRM_Manual_Benefits__c</name>
     </fields>

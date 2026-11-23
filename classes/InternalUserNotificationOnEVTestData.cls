@@ -2,7 +2,7 @@
 public class InternalUserNotificationOnEVTestData {
     
     public static List<Id> createTestData(){
-        String intelAccRecTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByDeveloperName().get('Mastered_Account').getRecordTypeId();
+        
         //Core_Source__c
         List<Contact> contacts = new List<Contact>();
         Contact NewContact = new Contact();
@@ -11,20 +11,17 @@ public class InternalUserNotificationOnEVTestData {
         acc.BillingCity ='test';
         acc.BillingCountry='India';
         acc.BillingStreet='Bangalore';
-        acc.RecordTypeId=intelAccRecTypeId;
         insert acc;
         NewContact.FirstName = 'Test';
         NewContact.LastName = 'Email';
         NewContact.AccountId = acc.Id;
         NewContact.Email = 'testsend@mail.com';
-        NewContact.MailingCountry = 'India';
         //NewContact.Core_Source__c = 'Grant Access';
         
         contacts.add(NewContact);
         
         Contact NewContact2 = new Contact();
         NewContact2.FirstName = 'Test';
-        NewContact2.MailingCountry = 'India';
         NewContact2.LastName = 'Email2';
         NewContact2.AccountId = acc.Id;
         NewContact2.Email = 'testsend2@mail.com';
@@ -49,8 +46,8 @@ contacts.add(NewContact3);*/
         entitlement.Core_Display_Name__c = 'CCF Activity Submitter Test';
         /* entitlement.Core_ERPM_Engagement_Id__c = erpmEng.Id;
 entitlement.Core_AGS_Role_Id__c = agsRole.Id;*/
-        entitlement.Core_Category__c = 'Test Entitlements - Access and Entitlements';
-        entitlement.Core_Sub_Category__c = 'Client Co-Marketing Fund Boost (CCF Boost)';
+        entitlement.Core_Category__c = 'Consolidated Co-marketing Platform';
+        entitlement.Core_Sub_Category__c = 'Client Co-Marketing Fund (CCF)';
         entitlements.add(entitlement);
         
         Core_Entitlement__c entitlement1 = new Core_Entitlement__c();
@@ -58,8 +55,8 @@ entitlement.Core_AGS_Role_Id__c = agsRole.Id;*/
         entitlement1.Core_Display_Name__c = 'DCF Activity Submitter Test';
         // entitlement1.Core_ERPM_Engagement_Id__c = erpmEng.Id;
         // entitlement1.Core_AGS_Role_Id__c = agsRole.Id;
-        entitlement1.Core_Category__c = 'Test Entitlements - Access and Entitlements';
-        entitlement1.Core_Sub_Category__c = 'Client Co-Marketing Fund Boost (CCF Boost)';
+        entitlement1.Core_Category__c = 'Consolidated Co-marketing Platform';
+        entitlement1.Core_Sub_Category__c = 'Client Co-Marketing Fund (CCF)';
         entitlements.add(entitlement1);
         //insert entitlement1;
         insert entitlements;

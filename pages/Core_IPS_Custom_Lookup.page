@@ -1,0 +1,183 @@
+<!------------------------------------------------------------------------------------------------
+*VF Page Name:  Core_IPS_Custom_Lookup
+*Description:  Custom Lookup Screen
+*Modification Log :
+* Developer                   Date                        Description
+* ------------------------------------------------------------------------------------------------                 
+* Sugandha                    16/03/2018                  Modified(UserStory US85567 Iteration 8)   
+----------------------------------------------------------------------------------------------------->
+<apex:page controller="Core_IPS_LookupController" sidebar="false" showheader="false" action="{!pageLoad}" cache="FALSE">
+<script language="javascript">
+   window.onload = new function() 
+   { 
+      //bring popup window to front
+      window.focus(); 
+      var ele=document.getElementById('{!$Component.form.block.section.query}');
+      
+      if (ele)
+      {
+         ele.focus();
+      }
+   }
+   
+   function fillIn(name, id)
+   {
+      var winMain=window.opener;
+      if (null==winMain)
+      {
+         winMain=window.parent.opener;
+      }
+      
+      // Set the namefield parameter
+      var ele=winMain.document.getElementById('{!$CurrentPage.parameters.namefield}');
+      ele.value=name;
+                        
+      // Set the idfield parameter
+      ele=winMain.document.getElementById('{!$CurrentPage.parameters.idfield}');
+      ele.value=id;
+      
+      passIdToShowGECFields(id);
+      passIdForSelectedProd(id);
+      CloseWindow();      
+   }
+
+      
+   function passIdToShowGECFields(id){
+       var winMain=window.opener;
+       if (null==winMain)
+       {
+           winMain=window.parent.opener;
+       }
+       winMain.callParentPageForGECFields(id);       
+   }   
+
+
+   function passIdForSelectedProd(id){
+       var winMain=window.opener;
+       if (null==winMain)
+       {
+           winMain=window.parent.opener;
+       }
+       winMain.updProjListBasedOnSelectedProd(id);
+   }      
+
+
+   function CloseWindow()
+   {
+      var winMain=window.opener;
+      if (null==winMain)
+      {
+         winMain=window.parent.opener;
+      }
+     
+      winMain.callParentPage('{!$CurrentPage.parameters.object}');
+      winMain.closeLookupPopup();       
+   }
+   
+       
+    
+</script>
+
+  <apex:messages />
+  <apex:form id="form" > 
+
+     <div style="width 100%">
+        <apex:pageBlock title="{!IF(objectName=='CustProd','Product',objectName)} Lookup" id="block">
+          <apex:pageBlockSection id="section">
+              Enter search text and click Go<br/>
+              <apex:inputText value="{!query}" id="query"/> 
+              <apex:commandButton value="Go" action="{!getRecords}" />
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!displayContacts}">        
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!conList}" var="con">
+                <apex:repeat value="{!$ObjectType.Contact.FieldSets.ContactFieldSet}" var="ContactField"> 
+                <apex:column rendered="{!If(AND(ContactField=='Name',conList != null),true,false)}">
+                    <apex:facet name="header">{!ContactField.Label}</apex:facet>
+                    <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(con[ContactField])}', '{!con.id}')">{!con[ContactField]}                    
+                    </apex:outputLink> 
+                </apex:column>
+                <apex:column value="{!con[ContactField]}" rendered="{!If(AND(ContactField !='Name',conList != null),true,false) }"/>
+                </apex:repeat>  
+                </apex:pageBlockTable>  
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!displayProjects}">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable value="{!projList}" var="proj">
+                    <apex:repeat value="{!$ObjectType.Core_IPS_Project__c.FieldSets.IpsProjectFieldSet}" var="ipsProjField">
+                        <apex:column rendered="{!If(AND(ipsProjField=='Name',projList != null),true,false)}">
+                            <apex:facet name="header">{!ipsProjField.Label}</apex:facet>
+                            <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(proj[ipsProjField])}', '{!proj.id}')">{!proj[ipsProjField]}</apex:outputLink> 
+                        </apex:column>
+                      <!-- start modified by aayushi US104733-->
+                    <apex:column rendered="{!If(AND(ipsProjField !='Name',projList != null),true,false) }">
+                    <apex:facet name="header">{!ipsProjField.Label}</apex:facet>
+                        <apex:outputLink value="#" onclick="fillIn('{!proj.Name}', '{!proj.id}')">{!proj[ipsProjField]}</apex:outputLink>  
+                        </apex:column>
+                        <!--end-->
+                    </apex:repeat>
+                </apex:pageBlockTable>    
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!displayProducts}">
+            <apex:pageBlockSection columns="1">
+                <apex:pageBlockTable cellspacing="0" cellpadding="0" value="{!prodList}" var="prod" >
+                    <apex:repeat value="{!$ObjectType.Asset.FieldSets.AssetFieldSet}" var="AssetField">
+                        <apex:column rendered="{!If(AND(AssetField=='Product2.Name',prodList != null),true,false)}" >
+                            <apex:facet name="header">{!AssetField.Label}</apex:facet>
+                            <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(prod[AssetField])}', '{!prod.id}')">{!prod[AssetField]}</apex:outputLink> 
+                        </apex:column>
+                        <apex:column value="{!prod[AssetField]}" rendered="{!If(AND(AssetField!='Product2.Name',prodList != null),true,false)}"/>
+                    </apex:repeat>
+                </apex:pageBlockTable>    
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        <apex:pageBlock rendered="{!displaySAProducts}">
+          <apex:pageBlockSection columns="1">
+              <apex:pageBlockTable value="{!productList}" var="saprod">
+                <apex:repeat value="{!$ObjectType.Core_IPS_Supported_Product__c.FieldSets.SupportedProductFieldSet}" var="ProductField">
+                    <apex:column headerValue="Name" rendered="{!If(ProductField=='Core_Product__r.Name',true,false)}">
+                        <apex:facet name="header">{!ProductField.Label}</apex:facet>
+                        <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(saprod[ProductField])}', '{!saprod.id}')">{!saprod[ProductField]}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!saprod[ProductField]}" rendered="{!If(ProductField!='Core_Product__r.Name',true,false)}"/>
+                </apex:repeat>
+              </apex:pageBlockTable>    
+          </apex:pageBlockSection>
+        </apex:pageBlock>   
+        <apex:pageBlock rendered="{!displayCustProds}">
+          <apex:pageBlockSection columns="1">
+              <apex:pageBlockTable value="{!custProdList}" var="cusProd" >
+                <apex:repeat value="{!$ObjectType.Asset.FieldSets.AssetFieldSet2}" var="AssetField">  
+                    <apex:column headerValue="Name" rendered="{!If(AND(AssetField=='Name',custProdList != null),true,false)}">
+                        <apex:facet name="header">{!AssetField.Label}</apex:facet>
+                        <apex:outputLink value="#" onclick="fillIn('{!JSENCODE(cusProd[AssetField])}', '{!cusProd.id}')">{!cusProd[AssetField]}</apex:outputLink>
+                    </apex:column>
+                    <apex:column value="{!cusProd[AssetField]}" rendered="{!If(AND(AssetField!='Name',custProdList != null),true,false)}"/>
+                </apex:repeat>
+              </apex:pageBlockTable>    
+          </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <!-- added by Sugandha for US85567-->
+          <apex:pageBlock rendered="{!displayPSO}">
+          <apex:pageBlockSection columns="1">
+              <apex:pageBlockTable value="{!lstPSO}" var="pso">
+                    <apex:column headerValue="Name" >
+                        <apex:outputLink value="#" onclick="fillIn('{!pso.Name}', '{!pso.id}')">{!pso.Name}</apex:outputLink>
+                    </apex:column>
+                    <apex:column headerValue="First Name" value="{!pso.FirstName}"/>
+                    <apex:column headerValue="Last Name" value="{!pso.LastName}"/>
+                    <apex:column headerValue="Email" value="{!pso.Email}"/>
+                    <apex:column headerValue="Account" value="{!pso.Contact.Account.Name}"/>
+              </apex:pageBlockTable>    
+          </apex:pageBlockSection>
+        </apex:pageBlock>    
+        <!-- End -->
+        
+        <button type="button" onclick="CloseWindow();">Close Window</button>
+     </div>
+   </apex:form>
+</apex:page>

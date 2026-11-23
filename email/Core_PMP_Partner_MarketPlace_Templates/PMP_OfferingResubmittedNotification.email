@@ -1,0 +1,9 @@
+<messaging:emailTemplate subject="Edit Submitted: Your {!relatedTo.PMP_Partner_Offering_Nm__c} Offering" recipientType="User" relatedToType="PMP_Partner_Offering__c">
+
+    <messaging:htmlEmailBody >
+    
+        <c:PMP_OfferingResubmitted offeringRecordId="{!relatedTo.Id}"/>
+    
+    </messaging:htmlEmailBody>
+
+</messaging:emailTemplate>

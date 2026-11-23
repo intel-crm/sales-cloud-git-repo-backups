@@ -709,7 +709,8 @@ public without sharing class PRM_ProfileResponseOptIn {
     public static List<Core_Account_Group_Member__c> getCAGList(Set<Id> accIdSet){
         List<Core_Account_Group_Member__c> cagList = new List<Core_Account_Group_Member__c>();
         if(accIdSet!= null && !accIdSet.isEmpty()){
-          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND Core_Inactive_Ind__c != true];    
+            //ATHR Fix - TWC729-9556 - JB
+          cagList = [SELECT Id, Name, Core_Partner_Account_Id__c, Core_Partner_Account_Id__r.Core_Account_Type__c,  Core_Partner_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__r.Core_IPA_Partner_Segment__c, Core_Intel_Account_Id__c,Core_Intel_Account_Id__r.Core_Intel_Partner_Alliance_PartnerGroup__c,Core_Partner_Account_Id__r.Core_OnePartnerID__c,Core_Inactive_Ind__c,Core_Intel_Partner_Alliance_PartnerGroup__c from Core_Account_Group_Member__c WHERE Core_Intel_Account_Id__c in :accIdSet  AND  /* Core_Inactive_Ind__c != true*/ Core_Inactive_Ind__c=false];    
         }
         return cagList;
     }
@@ -732,7 +733,8 @@ public without sharing class PRM_ProfileResponseOptIn {
                     
             }  
              logEntryMsg+='\nopidaccIdLocAccIdMap:'+opidaccIdLocAccIdMap;
-            for(PRM_AccountChannelMembership__c acm: [Select id, PRM_Partner_Role__c, PRM_Status_Nm__c, PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN: opidaccIdLocAccIdMap.keyset() and PRM_Status_Nm__c = 'Approved']){
+            //ATHR Fix - TWC729-9556 - JB
+            for(PRM_AccountChannelMembership__c acm: [Select id, PRM_Partner_Role__c, /*PRM_Status_Nm__c,*/ PRM_Account_Id__c from PRM_AccountChannelMembership__c where PRM_Account_Id__c IN: opidaccIdLocAccIdMap.keyset() and PRM_Status_Nm__c = 'Approved']){
               
                 if(opidAccIdWithApprovedPartnerRole.containsKey(acm.PRM_Account_Id__c) && 
                 ((opidAccIdWithApprovedPartnerRole.get(acm.PRM_Account_Id__c) == 'Eligible' && !System.label.PointsOptInEligiblePartners.split(',').contains(acm.PRM_Partner_Role__c)) || 
@@ -874,7 +876,7 @@ public without sharing class PRM_ProfileResponseOptIn {
             for(PRM_IPAMembership_Attributes__c pr : [select id,PRM_Account_Id__c,PRM_Points_Not_Eligible_Ind__c,PRM_Points_Not_Eligible_Dt__c,PRM_Points_Opt_in_Ind__c,PRM_Points_Opt_in_Dt__c, PRM_Inactive_ind__c from PRM_IPAMembership_Attributes__c where PRM_Account_Id__c IN:accList]) { 
                 exisitngPRMap.put(pr.PRM_Account_Id__c , pr);
             }
-            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c, PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Account_Id__c, PRM_Channel_Program_Level_Id__c, PRM_Partner_Role__c,PRM_Account_Id__r.RecordType.DeveloperName 
+            for(PRM_AccountChannelMembership__c acm:[select id, PRM_Status_Nm__c,PRM_Account_Id__c,PRM_Partner_Role__c /*PRM_Account_Id__r.Core_IPA_One_Partner_Id__c, PRM_Channel_Program_Level_Id__c, ,PRM_Account_Id__r.RecordType.DeveloperName */ //ATHR Fix - TWC729-9556 - JB
                                                     from PRM_AccountChannelMembership__c where PRM_Account_Id__c in: accList]){
                 if(acm.PRM_Status_Nm__c=='Inactive' ){
                     if (!accIdACMRecMap.containsKey(acm.PRM_Account_Id__c)) {

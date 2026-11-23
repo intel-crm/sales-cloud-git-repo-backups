@@ -1,4 +1,4 @@
-public without sharing class Core_OpportunityCreate_SalesAssistCtrl { //TWC3123-5376: codescan fix: added without sharing
+public class Core_OpportunityCreate_SalesAssistCtrl {
     
     public String objectName{get;set;}
     public String objectPrefix{get;set;}

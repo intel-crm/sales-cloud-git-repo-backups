@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>UTF-8</encodingKey>
+    <name>ADMINREG_PARTNERREG_EV_VIE</name>
+    <style>none</style>
+    <subject>Action Required to Complete Your IPA Registration</subject>
+    <textOnly>Hành động cần thực hiện để hoàn thành đăng ký Liên minh Đối tác Intel®
+
+
+
+
+{!Contact.FirstName},
+
+Chúc mừng, người quản trị công ty của bạn hoặc đại diện của Intel đã thêm bạn vào tài khoản Liên minh Đối tác Intel®! Bạn chỉ cần thực hiện vài bước nữa là hoàn thành đăng ký.
+
+Hệ thống đã tạo thông tin hồ sơ dưới đây cho bạn:
+
+Tên người dùng: {!Contact.Core_Login_Id__c}
+Địa chỉ email: {!Contact.Email}
+Tên Công Ty: {{ACCOUNTNAME}}
+ID Doanh nghiệp trong Liên minh Đối tác Intel®: {{ACCOUNTNUMBER}}
+
+
+Vui lòng bấm vào liên kết bên dưới để hoàn thành đăng ký của bạn
+
+
+Xác minh Email &amp; Đặt mật khẩu của bạn
+
+
+Vui lòng lưu ý liên kết này sẽ hết hạn trong vòng 24 giờKhông thể truy cập liên kết trên?
+https://signin.intel.com/PasswordUpdate?var=EAAAAAypJSlMdWvyZgOdq0iFZx0AxyIenfpRX1JU/9fR/OdNLu7aQ91ipMBmnQauAEU7kPo8vleTbh2WCuMzXLgy1DstIHakd5Ak2uSrxfec9z8071I0MJReWcYgtFGFLoox31QPJK1+tOVxRk7W2KjhUMCoTgjG/E35EzIEV3ppQgaEAGzhyssHbVc2T2hNlfTERo7NxcfKzHL79Oc+DJ7tjw9eQf9kz7N/21vNm9FI+QhJ18NTk2XRHNNhM+NIKKnetQ==&amp;Culture=vi&amp;target=https://www.intel.com/content/www/vi/vn/secure/partner/forms/ipa-account-search.html
+Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi tại https://signin.intel.com/ContactUs?Culture=vi-vn.
+Chúng tôi mong chờ sự tham gia của bạn trong chương trình!
+Thân ái,
+Nhóm Liên minh Đối tác Intel® của bạn
+
+
+Tin nhắn này được gửi đến bạn như một thông báo kinh doanh quan trọng liên quan đến mối quan hệ hiện tại của bạn với Liên minh Đối tác Intel®.
+© {!Contact.Core_Current_Year__c} Intel Corporation
+Intel Corporation, 2200 Mission College Blvd., M/S RNB4-145, Santa Clara, CA 95054 USA. www.intel.com
+Quyền riêng tư | Cookies
+
+
+__PRESENT</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

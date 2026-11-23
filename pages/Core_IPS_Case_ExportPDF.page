@@ -1,20 +1,8 @@
-<apex:page id="mypage"  applyBodyTag="false"  standardController="case"
-sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Core_IPS_AddCommentController" >
-<head>    
-        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />    
-        <style type="text/css">
-            @page {
-                padding-left: 5px;    
-                padding-right: 5px;  
-                size: A4 landscape;
-            }
-            td span div{
-             white-space: pre-line !important;
-           }
-        </style>    
-    </head> 
+<apex:page id="mypage"  applyBodyTag="false"  standardController="case"  
+sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf"    extensions="Core_IPS_AddCommentController" >
     <!-- Removed pre defined width by Karthick 01/06/2018 US106567 I12 -R4.3 -->
    <div style="font-family: Arial Unicode MS; font-size:10px;">
+    
   <apex:detail relatedList="true"/>
   
  
@@ -24,8 +12,8 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
       <!-- Removed pre defined width by Karthick 01/06/2018 US106567 I12 -R4.3 -->
   <apex:pageBlock >
   
-        <apex:pageBlockSection title="Recent Comments" columns="1"  >
-            <apex:pageBlockTable value="{!caseComments}" var="comnt" cellspacing="20px"  columnsWidth="100%">                                          
+        <apex:pageBlockSection title="Recent Comments" >
+            <apex:pageBlockTable value="{!caseComments}" columns="1" var="comnt" cellspacing="20px"  styleclass="TblMember">                                        
                    
                <!-- Customer, Partner, Partner DFAE X Public to Customers-->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_External}" rendered="{!AND(OR(comnt.Core_IPS_Comment_Author_Type__c == 'Customer',comnt.Core_IPS_Comment_Author_Type__c == 'Partner',comnt.Core_IPS_Comment_Author_Type__c == 'Partner - DFAE'),comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                         
@@ -37,7 +25,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.CreatedBy.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                          
                             </apex:column>    
                             
@@ -53,7 +41,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.CreatedBy.Account.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                            
                             </apex:column>                   
                                                      
@@ -65,7 +53,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />  
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                                                     
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                            
                             </apex:column> 
                             
@@ -78,7 +66,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" /> 
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Sales_Representative}</b> &nbsp; &nbsp; &nbsp;                                                     
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                         
                             </apex:column> 
                             
@@ -94,7 +82,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />                                                    
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                         
                             </apex:column> 
                             
@@ -108,7 +96,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" /> 
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                          
                             </apex:column> 
                             
@@ -124,7 +112,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                    
                             </apex:column> 
                             
@@ -136,7 +124,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                                                      
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                          
                             </apex:column> 
                             
@@ -149,7 +137,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputText value="{!comnt.CreatedBy.FirstName}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                                                      
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                       
                             </apex:column> 
                             
@@ -164,7 +152,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />                                                  
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                          
                             </apex:column> 
                             
@@ -177,23 +165,23 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                        
                             </apex:column> 
                             
                             
                             <!-- AGENTS/Agent Partner X Private to Intel-->
-                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent',comnt.Core_IPS_Comment_Author_Type__c == 'System'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                         
+                            <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(OR(!(ExternalUser),(partnerAgentUser)), OR (comnt.Core_IPS_Comment_Author_Type__c == 'Partner - Agent',comnt.Core_IPS_Comment_Author_Type__c == 'Agent'), comnt.Core_IPS_Case_Comment_Type__c=='Private to Intel' )}" >                         
                                 
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <b><apex:outputText value="{!comnt.Core_IPS_Comment_Authored_By_Name__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />  
                                 <b><apex:outputText value="{!comnt.CreatedBy.name}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
-                                <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!AND(comnt.Core_IPS_Comment_Authored_By__c !=null,comnt.Core_IPS_Comment_Authored_By__r.Id != gecSystemUser)}" /></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
+                                <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                        
                             </apex:column> 
                             
@@ -209,7 +197,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b><apex:outputField value="{!comnt.Core_IPS_Comment_Authored_By_Email__c}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c !=null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedBy.Email}" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}"/></b> <apex:outputText value="&nbsp; &nbsp; &nbsp;" rendered="{!comnt.Core_IPS_Comment_Authored_By__c ==null}" escape="false" />
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                          
                             </apex:column> 
                             
@@ -222,7 +210,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                           <!-- BackendIntegration X Agent comments -->
@@ -232,7 +220,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                  <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                           <!-- BackendIntegration X Partner comments -->
@@ -242,7 +230,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp; 
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                              <!-- BackendIntegration X public comments -->
@@ -251,7 +239,7 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                 
                                 <b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;                       
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             
@@ -260,10 +248,10 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                
                                 <apex:outputText >**</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_to_Intel } </b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <!--<b>{!$Label.Core_IPS_CaseRTF_Intel_Technical_Specialist}</b> &nbsp; &nbsp; &nbsp;-->
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             
@@ -272,9 +260,9 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                
                                <apex:outputText >*</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Private_To_Partner } </b> &nbsp; &nbsp; &nbsp;     
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp;  <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->                        
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp;                          
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
                             
                             
@@ -283,16 +271,16 @@ sidebar="false" showHeader="false" tabStyle="Case" renderAs="pdf" extensions="Co
                                
                                 <apex:outputText >***</apex:outputText>
                                 <b>{!$Label.Core_IPS_CaseRTF_Notetype_PrivateToAgents }</b> &nbsp; &nbsp; &nbsp;
-                               <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; 
+                               <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column> 
                             
                             <!-- Data Migration X Public comments -->
                             <apex:column style="{!$Label.Core_IPS_CaseRTF_Color_Internal}" rendered="{!AND(comnt.Core_IPS_Comment_Author_Type__c == 'Data Migration',comnt.Core_IPS_Case_Comment_Type__c=='Public to Customers')}" >                          
-                                <b>{!$Label.Core_IPS_CCP_CoreAccess_ProfileName} </b> &nbsp; &nbsp; &nbsp; <!--TWC745-6044 -Merging IPS Data Migration Profile to generic profile -CCP Core Access -->
+                                <b>{!$Label.Core_IPS_Data_Migration_Profile_Name} </b> &nbsp; &nbsp; &nbsp; 
                                 <b><apex:outputField value="{!comnt.CreatedDate }" /></b> &nbsp; &nbsp; &nbsp; <br/>                       
-                                <div style='width:100%; white-space: pre-line !important;'><apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> </div> 
+                                <apex:outputField value="{!comnt.Core_IPS_Rich_Comment__c}"></apex:outputField> 
                             </apex:column>
                         
                             

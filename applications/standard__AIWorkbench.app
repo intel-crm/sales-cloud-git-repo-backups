@@ -9,8 +9,16 @@
     <navType>Console</navType>
     <tabs>standard-WorkbenchHome</tabs>
     <tabs>standard-TestSuite</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
     <workspaceConfig>
+        <mappings>
+            <tab>PMP_CompanyAutoFill__c</tab>
+        </mappings>
+        <mappings>
+            <tab>PRM_IPA_DQ_Logs__c</tab>
+        </mappings>
         <mappings>
             <tab>standard-TestSuite</tab>
         </mappings>

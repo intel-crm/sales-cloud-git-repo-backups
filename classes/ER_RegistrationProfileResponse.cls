@@ -19,7 +19,6 @@ public class ER_RegistrationProfileResponse {
     public static final String LOG_ENTRY_INFO     = 'info';
     public static final String LOG_ENTRY_SCOPE    = 'ER_RegistrationProfileResponse';
 
-    /*commented as part of EBR framework and implemented this logic with flows
     public static void getProfileResponseValues(List<PRM_Registration_Request__c> regRequestListNew, Map<id, PRM_Registration_Request__c> oldregRequestMap){
       
         String params = '';
@@ -64,5 +63,5 @@ public class ER_RegistrationProfileResponse {
             ER_ErrorUtility.createLogEntry('Error in ER_RegistrationProfileResponse', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
         }
         
-    }*/
+    }
 }

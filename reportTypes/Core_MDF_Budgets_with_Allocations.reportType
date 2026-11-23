@@ -98,11 +98,6 @@
             <field>Core_MDF_Budget_Partner__c.Name</field>
             <table>PartnerMarketingBudget</table>
         </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Partner__c.Core_MDF_CoMarketing_Ultimate_Account__c.Name</field>
-            <table>PartnerMarketingBudget</table>
-        </columns>
         <masterLabel>Partner Marketing Budgets</masterLabel>
     </sections>
     <sections>
@@ -156,26 +151,6 @@
         <columns>
             <checkedByDefault>false</checkedByDefault>
             <field>Budget</field>
-            <table>PartnerMarketingBudget.PartnerFundAllocations</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Available_Allocation_Amount__c</field>
-            <table>PartnerMarketingBudget.PartnerFundAllocations</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Program_Txt__c</field>
-            <table>PartnerMarketingBudget.PartnerFundAllocations</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>Core_MDF_Budget_Type__c</field>
-            <table>PartnerMarketingBudget.PartnerFundAllocations</table>
-        </columns>
-        <columns>
-            <checkedByDefault>false</checkedByDefault>
-            <field>RecordType</field>
             <table>PartnerMarketingBudget.PartnerFundAllocations</table>
         </columns>
         <masterLabel>Partner Fund Allocations</masterLabel>

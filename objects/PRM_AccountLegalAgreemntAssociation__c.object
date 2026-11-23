@@ -146,7 +146,7 @@
     <enableActivities>false</enableActivities>
     <enableBulkApi>true</enableBulkApi>
     <enableEnhancedLookup>false</enableEnhancedLookup>
-    <enableFeeds>false</enableFeeds>
+    <enableFeeds>true</enableFeeds>
     <enableHistory>true</enableHistory>
     <enableLicensing>false</enableLicensing>
     <enableReports>true</enableReports>
@@ -155,19 +155,6 @@
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>ControlledByParent</externalSharingModel>
     <fields>
-        <fullName>PCC_Design_Deal_Registration__c</fullName>
-        <deleteConstraint>SetNull</deleteConstraint>
-        <description>This Field holds legal agreement signed by partner user</description>
-        <label>Design-Deal Registration</label>
-        <referenceTo>Core_Design_Registration__c</referenceTo>
-        <relationshipLabel>Account Legal Agreement Associations</relationshipLabel>
-        <relationshipName>Account_Legal_Agreement_Associations</relationshipName>
-        <required>false</required>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Lookup</type>
-    </fields>
-    <fields>
         <fullName>PRM_Account_Id__c</fullName>
         <label>Account</label>
         <referenceTo>Account</referenceTo>
@@ -175,15 +162,17 @@
         <relationshipName>AccountLegalAgreementAssociations</relationshipName>
         <relationshipOrder>0</relationshipOrder>
         <reparentableMasterDetail>false</reparentableMasterDetail>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>MasterDetail</type>
-        <writeRequiresMasterRead>true</writeRequiresMasterRead>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
         <fullName>PRM_Agreement_Sign_Dt__c</fullName>
         <label>Agreement Signed Date</label>
         <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>DateTime</type>
@@ -196,6 +185,7 @@
         <relationshipLabel>Partner Legal Agreement Association</relationshipLabel>
         <relationshipName>Account_Legal_Agreement_Associations</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -204,6 +194,7 @@
         <fullName>PRM_InActive_Ind__c</fullName>
         <defaultValue>false</defaultValue>
         <label>Inactive Indicator</label>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
@@ -214,6 +205,7 @@
         <label>Legal Agreement Name Text</label>
         <length>255</length>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -223,6 +215,7 @@
         <fullName>PRM_Notes_Txt__c</fullName>
         <label>Notes</label>
         <length>32768</length>
+        <trackFeedHistory>true</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -236,6 +229,7 @@
         <relationshipLabel>Partner Legal Agreement Association</relationshipLabel>
         <relationshipName>AccountLegalAgreementAssociations</relationshipName>
         <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Lookup</type>
@@ -270,7 +264,8 @@
         <externalId>false</externalId>
         <label>Signed By Email</label>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Email</type>
         <unique>false</unique>
@@ -279,9 +274,10 @@
         <fullName>PRM_Signed_By_Name__c</fullName>
         <externalId>false</externalId>
         <label>Signed By Name</label>
-        <length>150</length>
+        <length>50</length>
         <required>false</required>
-        <trackHistory>true</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -295,10 +291,12 @@
         <columns>PRM_Partner_Agreement_Id__c</columns>
         <columns>PRM_Contact__c</columns>
         <columns>PRM_Agreement_Sign_Dt__c</columns>
-        <columns>RECORDTYPE</columns>
-        <columns>PCC_Design_Deal_Registration__c</columns>
-        <columns>PRM_Partner_Agreement_Name__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>PRM_Account_Id__c</field>
+            <operation>equals</operation>
+            <value>EotAdmin3_AccName3_cip_7sep</value>
+        </filters>
         <label>All</label>
     </listViews>
     <listViews>
@@ -316,11 +314,13 @@
     <nameField>
         <displayFormat>ALAA-{00000}</displayFormat>
         <label>Account Legal Agreement Association Name</label>
-        <trackHistory>false</trackHistory>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
         <type>AutoNumber</type>
     </nameField>
     <pluralLabel>Account Legal Agreement Associations</pluralLabel>
-    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>true</recordTypeTrackHistory>
     <recordTypes>
         <fullName>Standard</fullName>
         <active>true</active>

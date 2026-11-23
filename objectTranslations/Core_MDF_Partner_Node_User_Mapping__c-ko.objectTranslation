@@ -14,18 +14,6 @@
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
     <fields>
-        <label><!-- Action Needed --></label>
-        <name>Core_MDF_Action_Needed_nm__c</name>
-        <picklistValues>
-            <masterLabel>Owner Update</masterLabel>
-            <translation><!-- Owner Update --></translation>
-        </picklistValues>
-    </fields>
-    <fields>
-        <label>활성</label>
-        <name>Core_MDF_Active_Ind__c</name>
-    </fields>
-    <fields>
         <label><!-- Created By --></label>
         <name>Core_MDF_CreatedBy_Nm__c</name>
     </fields>
@@ -46,14 +34,26 @@
         <name>Core_MDF_User__c</name>
         <relationshipLabel><!-- Account Users --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Partner Node User Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <nameFieldLabel><!-- Account User Name --></nameFieldLabel>
+    <quickActions>
+        <aspect>Master</aspect>
+        <label>삭제</label>
+        <name>Core_MDF_Delete</name>
+    </quickActions>
+    <validationRules>
+        <errorMessage>이 사용자는 선택된 프로그램에 대한 액세스 권한이 없습니다</errorMessage>
+        <name>Core_MDF_Account_User_Validation</name>
+    </validationRules>
     <validationRules>
         <errorMessage>사용자 필드나 계정 필드는 비워 둘 수 없습니다</errorMessage>
         <name>Core_MDF_CCP_User_Should_not_be_empty</name>
-    </validationRules>
-    <validationRules>
-        <errorMessage><!-- You do not have permission to create an Account User for the selected Program. --></errorMessage>
-        <name>Core_MDF_IPA_Program_Admin_Check</name>
     </validationRules>
     <validationRules>
         <errorMessage>선택한 사용자가 비활성화되었습니다. 활성 상태인 사용자를 선택하십시오.</errorMessage>

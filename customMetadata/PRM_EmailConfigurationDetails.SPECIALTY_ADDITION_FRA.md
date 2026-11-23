@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_ChannelProgram__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Intel Partner Alliance</value>
     </values>
     <values>
         <field>PRM_Country__c</field>
@@ -24,7 +24,7 @@
     </values>
     <values>
         <field>PRM_InputParameter__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">Contact_ID</value>
     </values>
     <values>
         <field>PRM_Language__c</field>
@@ -48,7 +48,7 @@
     </values>
     <values>
         <field>PRM_Recipient__c</field>
-        <value xsi:type="xsd:string">Partner User</value>
+        <value xsi:type="xsd:string">External Emails</value>
     </values>
     <values>
         <field>PRM_Specialty__c</field>

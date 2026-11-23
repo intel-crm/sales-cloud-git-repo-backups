@@ -1,0 +1,80 @@
+<template>
+    <lightning-button variant="brand"
+    label="Verify Responsibilities"
+    title="Verify Responsibilities"
+    onclick={openModal}
+    class="slds-m-left_x-small">
+ </lightning-button>
+ <template if:true={isModalOpen}>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+
+    <div class="slds-modal__container">
+        <lightning-layout class="slds-p-around_medium header">
+            <lightning-layout-item size="11" class="slds-text-align_center slds-text-heading_small header-text">
+                {label.EPUM_VerifyrolesandrespTitle}
+            </lightning-layout-item>
+            <lightning-layout-item size="1" class="slds-text-align_right">
+                <button class="slds-button slds-button_icon slds-p-around_xxx-small" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close" size="small" variant="bare">
+                    </lightning-icon>
+                    <span class="slds-assistive-text">{label.EPUM_Close}</span>
+                </button>
+            </lightning-layout-item>
+        </lightning-layout>
+        <lightning-layout class="slds-p-horizontal_large background-white" multiple-rows>
+            <lightning-layout-item size="12" class="slds-p-top_medium">
+                <lightning-layout class="slds-p-vertical_medium">
+                    <lightning-layout-item size="1" class="slds-text-align_left">
+                        <img src={img} alt="Partner Tier" />
+                    </lightning-layout-item>
+                    <lightning-layout-item size="11" class="slds-p-left_small">                        
+                        {label.EPUM_AsThe} {roleDesc} {label.EPUM_RolesResPopupMsg}
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-layout class="slds-p-vertical_medium slds-border_bottom">
+                    <lightning-layout-item size="6" class="slds-text-title_bold slds-text-align_left">
+                            <b>{label.EPUM_Responsibilities}</b>
+                    </lightning-layout-item>
+                    <lightning-layout-item size="6" class="slds-text-title_bold slds-text-align_right slds-p-right_large">
+                        <b>{label.EPUM_Employee}</b>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <!--Add Iteration at this point-->
+        <div class="slds-scrollable_y" style="height:10rem;width:100%">
+            <template iterator:con={openRoles}>
+                <lightning-layout-item size="12" key={con.value.role} flexibility="auto">
+                    <lightning-layout class="slds-p-vertical_small slds-border_bottom">
+                            <lightning-layout-item size="6" class="slds-text-align_left slds-text-title_bold" if:true={con.first}>
+                                {con.value.role}
+                            </lightning-layout-item>
+                            <lightning-layout-item size="6" class="slds-text-align_right slds-text-title_bold slds-p-right_small" if:true={con.first}>
+                                {con.value.emp}
+                            </lightning-layout-item>
+                        <lightning-layout-item size="6" class="slds-text-align_left" if:false={con.first}>
+                            {con.value.role}
+                        </lightning-layout-item>
+                        <lightning-layout-item size="6" class="slds-text-align_right slds-p-right_small" if:false={con.first}>
+                            {con.value.emp}
+                        </lightning-layout-item>
+                  
+                    </lightning-layout>
+                </lightning-layout-item>
+            </template>
+</div>
+<lightning-layout-item size="12" class="slds-p-vertical_x-large slds-text-align_center">
+   <!--- <a onclick={goToEPUMPage}>Manage Personnel</a>-->
+   <a href={managepersonalLink}>{label.EPUM_ManagePersonnel}</a>
+</lightning-layout-item>
+<lightning-layout-item size="12" class="slds-p-bottom_medium slds-text-align_right">
+    <lightning-button variant="brand" class="slds-button slds-p-around_xxx-small" label={label.EPUM_Close} title={label.EPUM_Close} onclick={closeModal}>
+    </lightning-button>
+</lightning-layout-item>
+</lightning-layout>
+</div>
+</section>
+<div class="slds-backdrop slds-backdrop_open"></div>
+</template>
+</template>

@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>PRM_Entitlement_List__c</field>
-        <value xsi:type="xsd:string">Employee</value>
+        <value xsi:type="xsd:string">FPGA Partner Program Member Tier Access,Partner Marketing Studio</value>
     </values>
     <values>
         <field>PRM_Inactive_Indicator__c</field>

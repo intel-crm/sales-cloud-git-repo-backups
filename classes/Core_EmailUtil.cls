@@ -163,7 +163,7 @@ Other Bulk Actions
     }
     
     public static Boolean hasEmailsToSend() {
-        return bulk_stash.size() != 0 ? true : false;       
+        return bulk_stash.size() != 0 ? true : false;		
     }
     
     // static method for holding email results, so I can test when triggers send emails
@@ -214,74 +214,5 @@ Helpers & private constructors
                 bulk_stash = new Messaging.SingleEmailMessage[]{};
                     return bulk_stash;
         } private set;
-    }
-    
-    @future 
-    public static void SendEmail_ScheduledJob_Exception(boolean IsSuccess, String JobName, String JobErrorMessage)
-    {
-    try
-{
-        system.debug('SendEmail');
-        List<OrgWideEmailAddress> orgWideEmailList=new List<OrgWideEmailAddress>();
-       
-        if(OrgWideEmailAddress.SObjectType.getDescribe().isAccessible()){
-        orgWideEmailList = [select id, address from OrgWideEmailAddress where Address =: System.Label.Core_Job_OrgWide_Email limit 1];
-        }
-        String orgWideEmailId = (orgWideEmailList!=null && orgWideEmailList.size()>0) ? orgWideEmailList[0].id : '';
-        String Email_Template ='';
-        if (IsSuccess)
-        {
-            Email_Template =System.Label.Core_Job_Email_Template;
-        }
-        else
-        {
-             Email_Template =System.Label.Core_Job_Failure_Email_Template;
-        }
-        
-        List<EmailTemplate> emailTemp = [SELECT Id , DeveloperName ,Subject , HtmlValue FROM EmailTemplate WHERE DeveloperName =: Email_Template  LIMIT 1];
-        string templateId = emailTemp.size() > 0 ? emailTemp[0].id : null;
-        string emailSubject = emailTemp.size() > 0 ? emailTemp[0].Subject  : null;
-        string emailBody = emailTemp.size() > 0 ? emailTemp[0].HtmlValue : null;
-        system.debug('templateId--->'+templateId);
-        List<Core_Exceptions__c> emailException = new List<Core_Exceptions__c>();
-        
-        String[] sendingTo = System.Label.Core_Job_Custom_Email.split(',');       
-      
-        List<Messaging.SingleEmailMessage> emailList = new List<Messaging.SingleEmailMessage>();
-        Messaging.SingleEmailMessage email = new Messaging.SingleEmailMessage();
-        
-        if(emailTemp != null && sendingTo != null  && orgWideEmailId != null){            
-            email.setToAddresses(sendingTo);           
-            email.setTemplateId(orgWideEmailId);
-            email.setTargetObjectId(UserInfo.getUserId());
-            email.setTemplateId(templateId);            
-            email.setSaveAsActivity(false);
-            email.setOrgWideEmailAddressId(orgWideEmailId);
-            email.setSubject(emailSubject.replace('$Job', JobName)); 
-            email.setHtmlBody(emailBody.replace('$Error', JobErrorMessage )); 
-           
-        }
-            emailList.add(email);
-       
-        system.debug('emailList--->'+emailList);
-        List<Messaging.SendEmailResult> sendResults = Messaging.sendEmail(emailList);
-  
-        // Process the send results if needed
-        for (Messaging.SendEmailResult result : sendResults) {
-            if (result.isSuccess()) {
-                System.debug('Email sent successfully.-----'+ result);
-            } else {
-               System.debug('Email failure.');
-               System.debug('Email failure.------' + result);
-            }
-        }
-}
-catch(Exception ex)
-{
-     System.debug('Exception-->' + ex);
-    
-}
-    }
-    
-    
+    }	
 }

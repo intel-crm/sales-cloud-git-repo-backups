@@ -8,7 +8,7 @@
     </values>
     <values>
         <field>Core_Entitlement_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000Civfj</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsuk</value>
     </values>
     <values>
         <field>Core_Entitlement_Name__c</field>
@@ -16,10 +16,10 @@
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Id__c</field>
-        <value xsi:type="xsd:string">a2W3b00000EW3oX</value>
+        <value xsi:type="xsd:string">a2W8A000003Hsum</value>
     </values>
     <values>
         <field>Core_Entitlement_Subordinate_Name__c</field>
-        <value xsi:type="xsd:string">Intel Solutions Library</value>
+        <value xsi:type="xsd:string">Offering Editor</value>
     </values>
 </CustomMetadata>

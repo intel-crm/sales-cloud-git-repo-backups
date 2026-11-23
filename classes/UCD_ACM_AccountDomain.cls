@@ -28,7 +28,7 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
         List<Schema.PicklistEntry> picklistValues = fieldResult.getPicklistValues();
 
         for (Integer index = 0; index < validAccountRequests.size(); index++) {
-            validAccountRequests[index].recordTypeId = requestedAccountRecordType;
+            validAccountRequests[index].recordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get('Requested Account').getRecordTypeId();
             Boolean validCustomerAggregationType = false;
             for (Schema.PicklistEntry pickListVal : picklistValues) {
                 if (pickListVal.getValue() == validAccountRequests[index].CustomerAggregationTypeCode) {
@@ -142,19 +142,20 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
         }
         Map<Id, Account> parentAccountById = accountQuerySelectorInstance.getAccountsByIds(parentAccountIds, model.getParentAccountQueryForEvent());
         Map<Id,List<Business_Types__c> > businessTypesByAccountId = accountQuerySelectorInstance.getBusinessTypesByAccountId(accountIds, model.getAccountBusinessTypesQueryForEvent());
+        Map<Id,List<Core_Account_Compliance_Watch_List__c> > complianceWatchListByAccountId = accountQuerySelectorInstance.getComplianceWatchListByAccountId(accountIds, model.getComplianceWatchListQueryForEvent());
         for (Account account : accounts) {
-            duplicateInfoByAccountId.put(account.Id, mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId));
+            duplicateInfoByAccountId.put(account.Id, mapAccountResponseModel(account,parentAccountById,businessTypesByAccountId,complianceWatchListByAccountId));
         }
         return duplicateInfoByAccountId;
     }
 
     /*
      * description : Map account Data to AccountResponseModel from UCD_ACM_Models to publish platform event and duplicate accounts.
-     * params : Account,Map<Id, Account>,Map<Id,List<Business_Types__c>>
+     * params : Account,Map<Id, Account>,Map<Id,List<Business_Types__c>>,Map<Id,List<Core_Account_Compliance_Watch_List__c>>
      * return : UCD_ACM_Models.AccountResponseModel
      * author and date : harshalx.sunil.gosavi@intel.com, 23 Nov 2021
      */
-    public static UCD_ACM_Models.AccountResponseModel mapAccountResponseModel(Account account,Map<Id, Account> parentAccountById,Map<Id,List<Business_Types__c> > businessTypesByAccountId) {
+    public static UCD_ACM_Models.AccountResponseModel mapAccountResponseModel(Account account,Map<Id, Account> parentAccountById,Map<Id,List<Business_Types__c> > businessTypesByAccountId,Map<Id,List<Core_Account_Compliance_Watch_List__c> > complianceWatchListByAccountId) {
         UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
         UCD_ACM_Models.AccountResponseModel mappedResponse = new UCD_ACM_Models.AccountResponseModel();
         try {
@@ -162,10 +163,12 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
             mappedResponse = model.mapAccountsToAccountResponseModel(account, parentAccountById);
             //map CustomerProcessEngagement to the model classes
             if (businessTypesByAccountId != null && businessTypesByAccountId.containsKey(account.Id))
-                mappedResponse = model.mapBusinessTypesToModel(mappedResponse,businessTypesByAccountId.get(account.Id));   
+                mappedResponse = model.mapBusinessTypesToModel(mappedResponse,businessTypesByAccountId.get(account.Id));
+            //map Compliance Watch List to the model classes
+            if (complianceWatchListByAccountId != null && complianceWatchListByAccountId.containsKey(account.Id))
+                mappedResponse = model.mapComplianceWatchListToModel(mappedResponse,complianceWatchListByAccountId.get(account.Id));
         }
         catch (exception ex) {
-            //System.debug('error in domain@@@%%%'+ex.getStackTraceString());
             UCD_ACM_Logger.error('UCD_ACM_AccountDomain','mapAccountResponseModel','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString(),'AccountIds: ' + account.Id);
         }
         finally{
@@ -173,49 +176,37 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
         }
         return mappedResponse;
     }
-    
+
     /*
-     * description : Map account- req Data to AccountRequestQueueModel from UCD_ACM_Models to publish platform event.
-     * params : Account_Create_Request__c, Map<Id, Account>,Map<Id, Account>, Map<Id, List<Business_Types__c>>
-     * return : UCD_ACM_Models.AccountRequestQueueModel
-     * author and date : Tejasri, 13 Nov 2023
+     * description : Ignore updating Name/Billing/Shipping Address/Account Owner if existing UCD SF record.
+     * params : List<Account> newValues, List<Account> oldvalues
+     * return : NA
+     * author and date : ankit1x.sharma@intel.com, 20/11/2021
+     * Update : 
+     *    Author: chethan.s.kunder@intel.com
+     *    Date: 23/12/2022
+     *    Change Description: 
+     *          # Simplified the code for ownerid update - Connector defaults the owner to 'Uncovered Account', we are not allowing the change(if any), 
+     *            setting it back to existing value
+     *          # Name field is set from connector - dont allow name updates for 'Deal Accounts'
+     *          # Since remaining fields are not updated by Reltio connector, commenting code WRT those fields.
      */
-    public static UCD_ACM_Models.AccountRequestQueueModel mapAccountRequestQueueResponseModel(Account_Create_Request__c acrRecord, Account account, Map<Id, Account> parentAccountById, Map<Id,List<Business_Types__c> > businessTypesByAccountId) {
-        UCD_ACM_Models.AccountResponseModel model = new UCD_ACM_Models.AccountResponseModel();
-        UCD_ACM_Models.AccountResponseModel mappedResponse = new UCD_ACM_Models.AccountResponseModel();
-        UCD_ACM_Models.AccountRequestQueueModel finalResponse = new UCD_ACM_Models.AccountRequestQueueModel();
-
-        try {
-            if (acrRecord != null) {
-                finalResponse.RequestId = acrRecord.Id;
-                finalResponse.Status = acrRecord.Status__c;
-                finalResponse.AccountId = acrRecord.Requested_Account__c;
-                finalResponse.RejectionReason = acrRecord.Rejected_Reason__c;
-                finalResponse.AccountReferenceSourceName = acrRecord.Core_Account_Reference_Source_Name__c;
-            }
-
-            if (account != null) {
-                //map Account response to the model classes
-                mappedResponse = model.mapAccountsToAccountResponseModel(account, parentAccountById);
-
-                //map Compliance Watch List to the model classes
-                if (businessTypesByAccountId != null && businessTypesByAccountId.containsKey(account.Id)) {
-                    model.mapBusinessTypesToModel(mappedResponse, businessTypesByAccountId.get(account.Id));
+    public void restrictUpdatingSFFields(List<Account> newValues, List<Account> oldvalues) {
+        Id reqAccountRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('Requested_Account').getRecordTypeId();
+        Id dealAccountRTId = Schema.SObjectType.Account.getRecordTypeInfosByDeveloperName().get('End_Customer_Deal_Account').getRecordTypeId();
+        for (Integer i = 0; i < newValues.size(); i++) {
+            if (newValues[i].Core_Customer_Aggregation_Type__c != Null) {
+                newValues[i].OwnerId = oldvalues[i].OwnerId; //oldvalues[i].OwnerIdnewValues[i].OwnerId != oldvalues[i].OwnerId ? oldvalues[i].OwnerId: newValues[i].OwnerId;
+                if(oldvalues[i].Core_Account_Reference_Source_Name__c!='Opportunity Management'){
+                    newValues[i].Name = oldvalues[i].Name;
                 }
+                /*if((oldvalues[i].RecordTypeId == reqAccountRTId || oldvalues[i].RecordTypeId == dealAccountRTId) && (oldvalues[i].Core_Account_Reference_Source_Name__c == 'IQR' || oldvalues[i].Core_Account_Reference_Source_Name__c == 'MyDeals')) {
+                    newValues[i].Name = oldvalues[i].Name;
+                }*/
+
             }
-
-            finalResponse.Account = mappedResponse;
-                        
-        } catch (exception ex) {
-            UCD_ACM_Logger.error('UCD_ACM_AccountDomain','mapAccountRequestQueueResponseModel','Message: ' + ex.getMessage() + '. StackTrace: ' + ex.getStackTraceString(),'Account Request Queue Id: ' + acrRecord.Id);
-        } finally{
-            UCD_ACM_Logger.setLogDetails();
         }
-
-        return finalResponse;
     }
-
-
 
     /*
      * description : Sync parent and child accounts with Reltio data on account merge and parent change
@@ -483,5 +474,127 @@ public without sharing class UCD_ACM_AccountDomain implements UCD_ACM_DomainCont
         }
     }
 
-    
+     /*
+    * description : If account approves,rejects from Reltio then check source and assign record type
+    * params : Trigger.New
+    * return : NA
+    * author and date :ankit1x.sharma@intel.com, 10/11/2022
+    */
+    // need to discuss with Yash for refactoring
+    public void updateRecordtype(List< Account > newAccounts , Map< Id , Account > oldAccountById){
+        Map< String , Account_Create_process_Mapping__mdt > accountCreateProcessMapping = Account_Create_Process_Mapping__mdt.getAll();
+        Map<String,List<Account>> accountsByBpId = new Map<String,List<Account>>();
+        Set<String> accountsBpId = new Set<String>();
+
+        For(Account account : newAccounts){
+            //yash
+            if(account.recordTypeId == endCustomerRecordType || account.recordTypeId == intelAccountRecordType){
+                if(account.Core_Business_Party_Id__c != null){
+                    accountsBpId.add(account.Core_Business_Party_Id__c);
+                }
+            }
+        }
+
+        if(accountsBpId.size() > 0){
+            accountsByBpId = accountQuerySelectorInstance.getAccountByBpId(accountsBpId);
+        }
+
+        System.debug('accountsByBpId@@@'+accountsByBpId);
+
+        for( Account account : newAccounts ){
+            Boolean identifyRejectAccount = true;
+            if(account.Core_Business_Party_Id__c != null  || account.Core_Business_Party_Id__c != oldAccountById.get(account.Id).Core_Business_Party_Id__c  ){
+
+                if(accountsByBpId != null && accountsByBpId.size() > 0 && accountsByBpId.containsKey(account.Core_Business_Party_Id__c)){
+  
+                    For(Account siblingAccount : accountsByBpId.get(account.Core_Business_Party_Id__c)){
+                        if(oldAccountById!= null &&  oldAccountById.get(account.Id)!= NULL){
+
+                            if(oldAccountById.get(account.Id).Core_Business_Party_Id__c == null || (oldAccountById.get(account.Id).RecordTypeId == requestedAccountRecordType
+                               || oldAccountById.get(account.Id).RecordTypeId == rejectedAcountRecordType)){
+
+                                if( account.Id !=siblingAccount.Id &&  account.RecordTypeId == intelAccountRecordType ){
+
+                                    if(siblingAccount.RecordTypeId == endCustomerRecordType && account.Core_Account_Reference_Source_Name__c != 'Opportunity Management'){
+                                        account.RecordTypeId = rejectedAcountRecordType;
+                                        account.Core_Survivor_Account_Id__c = siblingAccount.Id;
+                                        account.Core_Account_Request_Rejection_Reason__c = 'DUP';
+                                        identifyRejectAccount = false;
+                                        break;
+                                    }
+                                    else if(siblingAccount.RecordTypeId == intelAccountRecordType){
+                                        System.debug('Test@@@');
+                                        identifyRejectAccount = false;
+                                        break;
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                if( identifyRejectAccount && String.isNotBlank(account.Core_Business_Party_Id__c) &&  account.RecordTypeId == intelAccountRecordType)
+                {        
+                    System.debug('Test2@@@');
+                    for( String accountCreateProcessRecord : accountCreateProcessMapping.KeySet() ) {
+                        if( account.Core_Account_Reference_Source_Name__c == accountCreateProcessMapping.get(accountCreateProcessRecord).label){
+                            account.RecordTypeId = Schema.getGlobalDescribe().get('Account').getDescribe().getRecordTypeInfosByName().get(accountCreateProcessMapping.get(accountCreateProcessRecord).RecordType_Name__c).getRecordTypeId();
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void updateParentAccountRecordtype(UCD_ACM_UnitOfWork unitwork, List< Account > newAccounts , Map< Id , Account > oldAccountById){
+        System.debug('@@@@ start method');
+        Set< Id > accountParentIds = new Set< Id >();
+        Map< Id, List<Account> > accountsByParentId = new Map< Id, List<Account> > ();
+
+        For(Account account : newAccounts){
+            if(account.ParentId != null && account.Core_Business_Party_Id__c != null && (account.recordTypeId == endCustomerRecordType || account.recordTypeId == intelAccountRecordType)){
+                 if( account.ParentId != oldAccountById.get(account.Id).ParentId ){
+                    accountParentIds.add(account.ParentId);
+                }
+            }
+        }
+        System.debug('@@@@newAccounts '+newAccounts);
+        System.debug('@@@@accountParentIds '+accountParentIds);
+
+        if( !accountParentIds.isEmpty() && accountParentIds.size() > 0 ){
+           /* System.debug('@@@@accountParentIds NEw '+accountParentIds);
+            String queryFields = 'Id, recordTypeId' ;
+            String andClause = 'Core_Business_Party_Id__c != null AND  (RecordType.Name = \'End Customer Deal Account\' OR RecordType.Name = \'Intel Account\') Limit 200';
+            accountsByParentId = accountQuerySelectorInstance.getAccountsByParentId(accountParentIds, queryFields, andClause);
+            */
+
+            String queryFields = 'Id, recordTypeId, ParentId' ;
+            String andClause = 'Core_Business_Party_Id__c != null AND  (RecordType.Name = \'End Customer Deal Account\' OR RecordType.Name = \'Intel Account\') Limit 100';
+
+            accountsByParentId = accountQuerySelectorInstance.getChildAccountsWithParent(accountParentIds, queryFields, andClause);
+
+
+           
+        }
+
+        System.debug('@@@@accountsByParentId '+accountsByParentId);
+
+        for( Account account : newAccounts ){
+               /* if(!( accountsByParentId != null && AccountsByParentId.size() > 0 &&  AccountsByParentId.containsKey(account.ParentId))   ) {
+                    System.debug('@@@@account '+account);
+                        unitwork.registerModified( new Account( id = account.ParentId ,  recordTypeId = account.recordTypeId ) );
+                }*/
+
+                if(account.ParentId != null && account.Core_Business_Party_Id__c != null && (account.recordTypeId == endCustomerRecordType || account.recordTypeId == intelAccountRecordType)){
+                    if( account.ParentId != oldAccountById.get(account.Id).ParentId ){
+
+                        if( !(!accountsByParentId.isEmpty() && accountsByParentId.get(account.ParentId)!= null && accountsByParentId.get(account.ParentId).size() > 0 )){
+                            unitwork.registerModified( new Account( id = account.ParentId ,  recordTypeId = account.recordTypeId ) );
+                        }
+                    }
+            }
+        }
+
+    }
 }

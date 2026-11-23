@@ -28,5 +28,12 @@
         <label><!-- Object Name --></label>
         <name>PMP_Object_Nm__c</name>
     </fields>
+    <layouts>
+        <layout>PMP Language to Field API Mapping Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

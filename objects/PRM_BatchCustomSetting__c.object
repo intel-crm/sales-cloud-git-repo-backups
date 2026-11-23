@@ -14,7 +14,7 @@
     </fields>
     <fields>
         <fullName>PRM_EntitlementsNotToInactivate__c</fullName>
-        <description>To not inactivate DZS entitlement</description>
+        <description>To not inactivate the DZS entitlement</description>
         <externalId>false</externalId>
         <label>PRM_EntitlementsNotToInactivate</label>
         <length>100</length>
@@ -39,6 +39,13 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PRM_ManualEntitlements__c</fullName>
+        <label>PRM_ManualEntitlements</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
     </fields>
     <fields>
         <fullName>PRM_Manual_Benefits__c</fullName>

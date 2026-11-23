@@ -7,6 +7,8 @@
 * ---------------------------------------------------------------------------------------------------------------------------------------
 * Accenture - AD       07-15-2019        Trigger on Content document link object
 *****************************************************************************************************************************************/
-trigger Core_ContentDocumentLinkTrigger on ContentDocumentLink (before insert,after insert,after delete) {
-    new Core_ContentDocumentLinkTriggerHandler().run();
+trigger Core_ContentDocumentLinkTrigger on ContentDocumentLink (before insert) {
+    // Invoke handler methods
+    Core_ContentDocumentLinkTriggerHandler contentDocumentLinkTriggerHandler = new Core_ContentDocumentLinkTriggerHandler();
+    contentDocumentLinkTriggerHandler.run();
 }

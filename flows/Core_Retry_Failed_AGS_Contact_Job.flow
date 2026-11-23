@@ -3,13 +3,10 @@
     <actionCalls>
         <name>Call_Apex_Method</name>
         <label>Call Apex Method</label>
-        <locationX>636</locationX>
-        <locationY>471</locationY>
+        <locationX>626</locationX>
+        <locationY>434</locationY>
         <actionName>Core_Draco_Misc_Functionalities</actionName>
         <actionType>apex</actionType>
-        <connector>
-            <targetReference>Pause_Element</targetReference>
-        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>calledFeature</name>
@@ -18,7 +15,6 @@
             </value>
         </inputParameters>
         <nameSegment>Core_Draco_Misc_Functionalities</nameSegment>
-        <offset>0</offset>
     </actionCalls>
     <apiVersion>57.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
@@ -38,34 +34,7 @@
             <targetReference>Call_Apex_Method</targetReference>
         </connector>
     </assignments>
-    <decisions>
-        <name>IsStartedToday</name>
-        <label>IsStartedToday</label>
-        <locationX>913</locationX>
-        <locationY>290</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>StartedToday</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>FlowStartDateOnly</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>$Flow.CurrentDate</elementReference>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Update_Called_Feature</targetReference>
-            </connector>
-            <label>StartedToday</label>
-        </rules>
-    </decisions>
     <environments>Default</environments>
-    <formulas>
-        <name>FlowStartDateOnly</name>
-        <dataType>Date</dataType>
-        <expression>DATEVALUE({!FlowStartDateTime})</expression>
-    </formulas>
     <interviewLabel>Retry Failed AGS Contact Job {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Retry Failed AGS Contact Job</label>
     <processMetadataValues>
@@ -95,8 +64,8 @@
         </connector>
         <schedule>
             <frequency>Daily</frequency>
-            <startDate>2025-07-08</startDate>
-            <startTime>00:00:00.000Z</startTime>
+            <startDate>2023-01-31</startDate>
+            <startTime>11:45:00.000Z</startTime>
         </schedule>
         <triggerType>Scheduled</triggerType>
     </start>
@@ -108,31 +77,4 @@
         <isInput>true</isInput>
         <isOutput>true</isOutput>
     </variables>
-    <variables>
-        <name>FlowStartDateTime</name>
-        <dataType>DateTime</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-        <value>
-            <elementReference>$Flow.InterviewStartTime</elementReference>
-        </value>
-    </variables>
-    <waits>
-        <name>Pause_Element</name>
-        <elementSubtype>WaitDuration</elementSubtype>
-        <label>Pause Element</label>
-        <locationX>921</locationX>
-        <locationY>471</locationY>
-        <defaultConnectorLabel>Default Path</defaultConnectorLabel>
-        <waitEvents>
-            <conditionLogic>and</conditionLogic>
-            <connector>
-                <targetReference>IsStartedToday</targetReference>
-            </connector>
-            <label>el_0</label>
-            <offset>2</offset>
-            <offsetUnit>Hours</offsetUnit>
-        </waitEvents>
-    </waits>
 </Flow>

@@ -1,4 +1,3 @@
-@isTest
 public class ER_MockCIMHttpResponse implements HttpCalloutMock {
     // Implement this interface method
     public HTTPResponse respond(HTTPRequest request) 

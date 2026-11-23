@@ -48,10 +48,6 @@
         <name>Core_Asset_Status__c</name>
     </fields>
     <fields>
-        <label><!-- ProfileBasedRecordLink --></label>
-        <name>Core_IPS_ProfileBasedRecordLink__c</name>
-    </fields>
-    <fields>
         <help><!-- The asset referred to by this Product Access Line Item --></help>
         <label><!-- Intel® Product --></label>
         <name>Core_Intel_Product__c</name>
@@ -141,10 +137,62 @@
         <label><!-- isPARRequest --></label>
         <name>Core_isPARRequest__c</name>
     </fields>
-    <fields>
-        <label><!-- Map Item Internal Assigned Subject --></label>
-        <name>Map_Item_internal_Subject__c</name>
-    </fields>
+    <layouts>
+        <layout>MAP Line Item Layout - Edit for Support Org Admin</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- NOTE: You cannot edit the Line Item from this page. Please use the detail page. --></label>
+            <section>NOTE: You cannot edit the Line Item from this page. Please use the detail page.</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save] or the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save] or the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>MAP Line Item Layout - View Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PAR Line Item Layout - Edit for Support Org Admins</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- PAR Detail (If Applicable) --></label>
+            <section>PAR Detail (If Applicable)</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save] or the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save] or the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>PAR Line Item Layout - View Only</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- PAR Approval Detail (If Applicable) --></label>
+            <section>PAR Approval Detail (If Applicable)</section>
+        </sections>
+        <sections>
+            <label><!-- WARNING: Please **DO NOT** click the [Save &amp; New] button! --></label>
+            <section>WARNING: Please **DO NOT** click the [Save &amp; New] button!</section>
+        </sections>
+    </layouts>
     <recordTypes>
         <description><!-- Record Type for Managed Access Policies (MAP) --></description>
         <label><!-- MAP --></label>

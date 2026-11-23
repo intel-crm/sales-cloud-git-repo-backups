@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Role xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseAccessLevel>None</caseAccessLevel>
+    <contactAccessLevel>Edit</contactAccessLevel>
+    <description>High Energy Accelerator Research Organization Customer Manager</description>
+    <mayForecastManagerShare>false</mayForecastManagerShare>
+    <name>High Energy Accelerator Research Organization Customer Manager</name>
+    <opportunityAccessLevel>None</opportunityAccessLevel>
+    <parentRole>HighEnergyAcceleratorResearchOrganizationCustomerExecutive</parentRole>
+</Role>

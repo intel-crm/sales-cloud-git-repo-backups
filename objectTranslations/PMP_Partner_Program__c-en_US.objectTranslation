@@ -41,5 +41,12 @@
         <name>PMP_Partner_Role_Parent_Id__c</name>
         <relationshipLabel><!-- Marketplace Partner Programs --></relationshipLabel>
     </fields>
+    <layouts>
+        <layout>Marketplace Partner Program Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

@@ -117,7 +117,7 @@
             <column>INDUSTRY</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
-            <operator>notContain</operator>
+            <operator>notEqual</operator>
             <value>Consulting</value>
         </criteriaItems>
         <language>en_US</language>

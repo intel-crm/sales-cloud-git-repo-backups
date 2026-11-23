@@ -4,69 +4,128 @@ public with Sharing class ER_ABT_TriggerHandler_Utility {
     public static final String LOG_ENTRY_SCOPE    = 'ER_ABT_TriggerHandler_Utility';
     public static boolean ABTSuccess = false;
     
-    //Assign Account business type for auto approval process
-    public static Map<Id, String> AssignAccountBusinessTypes(List<PRM_Registration_Request__c> reqs, Map<Id,Id> entBusinessTypeMap) 
+    // TWC722-178 Commented, because standard validations rules are implemented
+    //Validations for ABT
+    /* public static void ABTValidations(List<Account_Business_Types__c> newList) {
+Set<Id> accountIds = new Set<Id>();
+String params = '';
+try{
+for (Account_Business_Types__c abt : newList) {
+accountIds.add(abt.Account__c);
+}            
+Map<Id, Account> acctsMap = new Map<Id, Account>([SELECT Id, Core_English_Only_Name__c, OwnerId, Core_CNDA_Number__c, 
+Core_CIM_ID__c, Core_Covered_Account__c,Owner.UserRoleId
+FROM Account WHERE Id in : accountIds]);             
+
+for (Account_Business_Types__c abt : newList) {
+Account acct = acctsMap.get(abt.Account__c);
+params = params + 'Account Business Type Id-'+abt.Id+'- AccountID-'+acct.Id+';';
+if(String.isBlank(acct.Core_English_Only_Name__c)) {
+abt.addError(Label.ABT_Eng_Account_Name_Check);
+}
+if(String.isBlank(acct.Owner.UserRoleId)) {
+abt.addError(Label.ABT_Account_Owner_Role_Check);
+}
+if(String.isBlank(acct.Core_CNDA_Number__c)) {
+abt.addError(Label.ABT_CNDA_Check);
+}
+if(String.isBlank(acct.Core_CIM_ID__c)) {
+abt.addError(Label.ABT_Account_CIM_Check);
+}
+if(!acct.Core_Covered_Account__c) {
+abt.addError(Label.ABT_Covered_Account_Check);
+}
+if(Test.isRunningTest() && acct.Core_English_Only_Name__c == 'exception'){
+throw new ER_ErrorUtility.CustomException('exception');
+}
+}                                
+}
+catch(Exception ex) {
+ER_ErrorUtility.CustomException custEx = new ER_ErrorUtility.CustomException();
+custEx.Message = ex.getMessage();
+custEx.Cause = ex.getCause();
+custEx.StackTraceString = ex.getStackTraceString();
+custEx.LineNumber = ex.getLineNumber();                
+custEx.TypeName = ex.getTypeName();            
+ER_ErrorUtility.createLogEntry('Error in ABTValidations', custEx, LOG_ENTRY_ERROR, LOG_ENTRY_SCOPE, params);
+}
+} */
+    
+    public static Map<Id, String> AssignAccountBusinessTypes(List<Id> reqIds) 
     {
         List<Account_Business_Types__c> abtToBeInserted = new List<Account_Business_Types__c>();
         Map<Id, String> failedReqIdMap = new Map<Id, String>();
         Map<Id, Id> reqAcctIdMap = new Map<Id, Id>();
+        Set<Id> entIds = new Set<Id>();
         Set<Id> acctIds = new Set<Id>();
         List<PRM_Registration_Request__c> regReqs = new List<PRM_Registration_Request__c>();
+        Map<Id,Id> entBusinessTypeMap = new Map<Id,Id>();
         Map<Id,Account_Business_Types__c> abtApprovedMap = new Map<Id,Account_Business_Types__c>();
         String params = '';
+        Id eBREnttRecTypeId = Schema.SObjectType.PRM_VXEnttlmntMatrix__c.getRecordTypeInfosByName().get(System.Label.EBREntitlementRecordTypeName).getRecordTypeId();
         try
         {
-            for(PRM_Registration_Request__c req : reqs)
+        for(PRM_Registration_Request__c req : [Select ID,PRM_Salesforce_ID__c,Entitlement_Details__c from PRM_Registration_Request__c where ID =: reqIds])
+        {
+            entIds.add(req.Entitlement_Details__c);
+            regReqs.add(req);
+            acctIds.add(req.PRM_Salesforce_ID__c);
+        }
+        for(PRM_VXEnttlmntMatrix__c mat : [SELECT Business_Types__c,PRM_Entitlement_Id__c FROM PRM_VXEnttlmntMatrix__c WHERE PRM_Entitlement_Id__c IN : entIds and RecordTypeId=: eBREnttRecTypeId])
+        {
+            entBusinessTypeMap.put(mat.PRM_Entitlement_Id__c,mat.Business_Types__c);
+        }
+        
+       for(Account_Business_Types__c abt : [SELECT Id,Account__c from Account_Business_Types__c where Account__c IN : acctIds and Business_Types__c IN : entBusinessTypeMap.values() and Status__c = 'Approved'])
+       {
+           abtApprovedMap.put(abt.Account__c,abt);
+       }
+        
+        for (PRM_Registration_Request__c req : regReqs) 
+        {
+            reqAcctIdMap.put(req.PRM_Salesforce_ID__c,req.Id);
+            ER_skipValidation__mdt skipV = [Select ValidationFields__c from ER_skipValidation__mdt where ProgramCode__c = 'IPA'];
+            if(abtApprovedMap.get(req.PRM_Salesforce_ID__c) == null)
             {
-                regReqs.add(req);
-                acctIds.add(req.PRM_Salesforce_ID__c);
+                Account_Business_Types__c abt = new Account_Business_Types__c(Account__c = req.PRM_Salesforce_ID__c, 
+                                                                              Business_Types__c = entBusinessTypeMap.get(req.Entitlement_Details__c), 
+                                                                              Status__c = 'Approved',
+                                                                              skipValidation__c = skipV.ValidationFields__c);
+                abtToBeInserted.add(abt);
             }
-			//Retrive any existing Account Business type in approved status            
-            for(Account_Business_Types__c abt : [SELECT Id,Account__c from Account_Business_Types__c where Account__c IN : acctIds and Business_Types__c IN : entBusinessTypeMap.values() and Status__c = 'Approved'])
+        }
+        System.debug('abtToBeInserted'+abtToBeInserted);
+        System.debug('reqAcctIdMap '+reqAcctIdMap);
+        
+        if(abtToBeInserted.size() > 0)
+        {
+            if(Schema.sObjectType.Account_Business_Types__c.isCreateable())
             {
-                abtApprovedMap.put(abt.Account__c,abt);
-            }            
-            for (PRM_Registration_Request__c req : regReqs) 
-            {
-                reqAcctIdMap.put(req.PRM_Salesforce_ID__c,req.Id);
-                //Check if ABT is already added in approved status, if yes ignore else add new ABT
-                if(abtApprovedMap.get(req.PRM_Salesforce_ID__c) == null)
+                System.debug('Insert Success'+abtToBeInserted);
+                Database.SaveResult[] srList = Database.insert(abtToBeInserted, false);
+                integer i = 0;
+                string exceptiondetails = '';
+                for (Account_Business_Types__c abt : abtToBeInserted) 
                 {
-                    Account_Business_Types__c abt = new Account_Business_Types__c(Account__c = req.PRM_Salesforce_ID__c,
-                                                                                  Business_Types__c = entBusinessTypeMap.get(req.Entitlement_Details__c),
-                                                                                  Status__c = 'Approved',
-                                                                                  skipValidation__c = system.label.ER_IPA_Skip_Validation);
-                                                                                                                                              
-                    abtToBeInserted.add(abt);
+                    System.debug('abt : '+abt);
+                    if (!srList[i].isSuccess()) 
+                    {
+                        failedReqIdMap.put(reqAcctIdMap.get(abt.Account__c),srList[i].getErrors().get(0).getMessage());
+                        System.debug('sr : '+srList[i].getErrors());
+                        params = params + 'Account Id-'+abt.Account__c+';'+' Request ID- '+reqAcctIdMap.get(abt.Account__c)+' ;';
+                        exceptiondetails = exceptiondetails + ' Request ID- '+reqAcctIdMap.get(abt.Account__c) + ' : '+srList[i].getErrors().get(0).getMessage() +' ;';
+                    }
+                    i++;
                 }
+                System.debug('failedReqIdMap : '+failedReqIdMap);
+                if(failedReqIdMap.size() > 0)
+                {
+                    throw new CustomException(exceptiondetails);
+                }
+                //list of accountids<id,string> abtsfailed with error message
+                    System.debug('Insert Success 2'+abtToBeInserted);
             }
-                if(Schema.sObjectType.Account_Business_Types__c.isCreateable() && abtToBeInserted.size() > 0)
-                {
-                    Database.SaveResult[] srList = Database.insert(abtToBeInserted, false);
-                    integer i = 0;
-                    string exceptiondetails = '';
-                    for (Account_Business_Types__c abt : abtToBeInserted) 
-                    {
-                        if (!srList[i].isSuccess()) 
-                        {
-                            failedReqIdMap.put(reqAcctIdMap.get(abt.Account__c),srList[i].getErrors().get(0).getMessage());
-                            params = params + 'Account Id-'+abt.Account__c+';'+' Request ID- '+reqAcctIdMap.get(abt.Account__c)+' ;';
-                            exceptiondetails = exceptiondetails + ' Request ID- '+reqAcctIdMap.get(abt.Account__c) + ' : '+srList[i].getErrors().get(0).getMessage() +' ;';
-                        }
-                        i++;
-                    }
-                    if(failedReqIdMap.size() > 0)
-                    {
-                        throw new CustomException(exceptiondetails);
-                    }
-                }
-				else if((!Schema.sObjectType.Account_Business_Types__c.isCreateable()) && abtToBeInserted.size() > 0)
-				{
-					for (Account_Business_Types__c abt : abtToBeInserted) 
-					{
-						failedReqIdMap.put(reqAcctIdMap.get(abt.Account__c),'ABT insertion failed due to insufficient access');
-					}
-				}
+        }
         }
         catch(Exception ex)
         {
@@ -127,9 +186,12 @@ public with Sharing class ER_ABT_TriggerHandler_Utility {
                     throw new ER_ErrorUtility.CustomException('exception');
                 }
             }
-                if(Schema.sObjectType.Contact_Business_Types__c.isUpdateable() && cbtsToUpdate.size() > 0){
+            if(cbtsToUpdate.size() > 0){
+                if(Schema.sObjectType.Contact_Business_Types__c.isUpdateable()){
                     update cbtsToUpdate;
                 }
+                
+            }
             
         }
         catch(Exception ex) {

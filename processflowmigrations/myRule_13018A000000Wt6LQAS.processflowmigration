@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessFlowMigration xmlns="http://soap.sforce.com/2006/04/metadata">
+    <destinationFlowDefinition>PRM_ACR_Notification_Message_1</destinationFlowDefinition>
+    <destinationFlowVersion>PRM_ACR_Notification_Message_1-1</destinationFlowVersion>
+    <developerName>myRule_13018A000000Wt6LQAS</developerName>
+    <masterLabel>PRM_ACR_Notification_Message_1</masterLabel>
+    <migratedCriteriaLabel>ACR Create/Update</migratedCriteriaLabel>
+    <migratedCriteriaName>myRule_1</migratedCriteriaName>
+    <processVersion>PRM_ACR_Notification_Message-6</processVersion>
+</ProcessFlowMigration>

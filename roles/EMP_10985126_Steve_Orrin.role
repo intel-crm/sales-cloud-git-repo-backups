@@ -2,8 +2,9 @@
 <Role xmlns="http://soap.sforce.com/2006/04/metadata">
     <caseAccessLevel>Edit</caseAccessLevel>
     <contactAccessLevel>Edit</contactAccessLevel>
+    <description>Manager not assigned in Salesforce</description>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>EMP_10985126_Steve_Orrin</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>EMP_11527520_Rob_Gillis</parentRole>
+    <parentRole>Role_Users_With_No_Manager</parentRole>
 </Role>

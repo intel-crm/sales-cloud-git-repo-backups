@@ -8,6 +8,6 @@
     </values>
     <values>
         <field>Value__c</field>
-        <value xsi:type="xsd:string">/partneradmin/s/deal</value>
+        <value xsi:type="xsd:string">www.google.com</value>
     </values>
 </CustomMetadata>

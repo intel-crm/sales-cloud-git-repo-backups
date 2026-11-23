@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>B2C_Code__c</field>
-        <value xsi:type="xsd:string">en-GB</value>
+        <value xsi:type="xsd:string">en-UK</value>
     </values>
     <values>
         <field>Core_ISO_3_Language_Code__c</field>

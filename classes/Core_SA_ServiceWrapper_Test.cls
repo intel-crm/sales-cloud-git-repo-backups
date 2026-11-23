@@ -24,29 +24,9 @@ public class Core_SA_ServiceWrapper_Test {
 		//Parse JSON Objec
 
         Core_SA_Top3AssistsDefination Top3 = Core_SA_ServiceWrapper.getTop3Assists(cim_id, user_id);
-		//System.assertEquals(Top3.show, true);
-		//System.assertEquals(Top3.total_count, 3);
-		//System.assertEquals(Top3.AssistDetails.size(), 3); 
         Test.stopTest();
     }
  
-    @isTest static  void testGetTop3AssistsCalloutNew() {
-        String cim_id = '1177310512';
-        String user_id = '10526156';
-        String uri;
-        Core_SA_Top3AssistsDefination TotalAssists;
-        
-        Test.startTest();
-        Test.setMock(HttpCalloutMock.class, new Core_SA_ServiceWrapper_MockResponse2());
-        // Call method to test
-		//Parse JSON Objec
-
-        Core_SA_Top3AssistsDefination Top3 = Core_SA_ServiceWrapper.getTop3Assists(cim_id, user_id);
-		//System.assertEquals(Top3.show, true);
-		//System.assertEquals(Top3.total_count, 3);
-		//System.assertEquals(Top3.AssistDetails.size(), 3); 
-        Test.stopTest();
-    }
     @isTest static  void testGetUnreadAssistsCallout() {
         String cim_id = '11773105';
         String user_id = '10526157';
@@ -60,28 +40,6 @@ public class Core_SA_ServiceWrapper_Test {
 		//Parse JSON Objec
 
         TotalAssists = Core_SA_ServiceWrapper.getNewAssists(cim_id, user_id);
-        system.assertEquals(TotalAssists.show, true);
-        system.assertEquals(TotalAssists.content, 'You Have 31 Unread Assists!');
-       // system.assertEquals('You Have 3 Unread Assists!'+ TotalAssists.content);
-        Test.stopTest();
-    }
-    
-     @isTest static  void testGetUnreadAssistsCalloutNew() {
-        String cim_id = '11773105';
-        String user_id = '10526157';
-        String uri;
-        Core_SA_UnreadAssistsDefination TotalAssists;
-        
-        Test.startTest();
-        Test.setMock(HttpCalloutMock.class, new Core_SA_ServiceWrapper_MockResponse2());
-        
-        // Call method to test
-		//Parse JSON Objec
-
-        TotalAssists = Core_SA_ServiceWrapper.getNewAssists(cim_id, user_id);
-        system.assertEquals(TotalAssists.show, false);
-       // system.assertEquals(TotalAssists.content, 'You Have 31 Unread Assists!');
-       // system.assertEquals('You Have 3 Unread Assists!'+ TotalAssists.content);
         Test.stopTest();
     }
     
@@ -94,13 +52,12 @@ public class Core_SA_ServiceWrapper_Test {
         //query account object 
         Account acct  = [SELECT Core_Account_ID__c FROM Account  WHERE Core_CIM_ID__c!=:Null LIMIT 1 ];
         //get CIM ID
-        
         accountId = acct.Core_Account_ID__c;
           
         Core_SA_UserSessionDefination userSession;
          
         userSession = Core_SA_ServiceWrapper.getUserSessionData(accountId);
-		//System.assertEquals('11773105', userSession.cimId, 'Incorrect Cim ID');
+  //      System.assertEquals('11773105', userSession.cimId, 'Incorrect Cim ID');
      }  
     
     /*

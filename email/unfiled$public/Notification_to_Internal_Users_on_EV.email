@@ -1,0 +1,21 @@
+<messaging:emailTemplate subject="EV is completed for contact {!relatedTo.Name} " recipientType="user" relatedToType="contact" replyTo="donotreply@test.com">
+<messaging:htmlEmailBody >
+Dear  {!recipient.Name}, 
+<br/>
+<br/>
+<!--<br/><apex:outputPanel rendered="{!relatedTo.Core_AGS_Integration_Status__c == 'Successful'}">-->
+The contact person {!relatedTo.Name} at {!relatedTo.Account.Name} that you entitled with
+<!--</apex:outputPanel>-->
+
+<br/>
+<c:emailNotificationOnEV contactId="{!relatedTo.Id}" reqId="{!recipient.Id}"/>
+<br/>
+
+
+has completed their Email Verification. They should be able to use the entitlement now.
+<br/>
+<br/>
+
+Thank you!
+</messaging:htmlEmailBody>
+</messaging:emailTemplate>

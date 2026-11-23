@@ -44,8 +44,8 @@
             <column>STAGE_NAME</column>
             <columnToColumn>false</columnToColumn>
             <isUnlocked>false</isUnlocked>
-            <operator>equals</operator>
-            <value>Qualify,Define,Develop,Design</value>
+            <operator>notEqual</operator>
+            <value>Group</value>
         </criteriaItems>
         <criteriaItems>
             <column>Opportunity.Core_Flag_for_Deletion__c</column>
@@ -66,7 +66,7 @@
             <columnToColumn>false</columnToColumn>
             <isUnlocked>true</isUnlocked>
             <operator>contains</operator>
-            <value>Brian Landi,Gilad Gitlin,Dorin,Michelle Luo,Corredor,Moore,Westall,Legette,yuen,dan russell</value>
+            <value>Chuck Palmeri,Calfin,Brian Landi,Gilad Gitlin,Oscar Ham,Dorin,Michelle Luo,Gloria Nogales,Radhika Kunte,Gina Moore</value>
         </criteriaItems>
         <language>en_US</language>
     </filter>
@@ -86,7 +86,7 @@
         <field>STAGE_NAME</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
-    <name>US OEM &amp; Strategic Acct Inactive Opptys</name>
+    <name>US ACCTS Opty INACTIVE by Mgr</name>
     <params>
         <name>terr</name>
         <value>all</value>

@@ -26,7 +26,7 @@ public class PRM_IPADQFixBatch implements  Database.Batchable<sObject>,Database.
     }
     
     public void execute(Database.BatchableContext context, List<PRM_AccountChannelMembership__c> scope){
-        logEntryMsgString+='Inside execute method, scope size: '+scope.size();
+        logEntryMsgString+='Inside execute method, scope: '+scope;
         Set<String> accountIds = new Set<String>();
         Set<String> triggeringAcmIds = new Set<String>();
         Map<String,List<PRM_AccountChannelMembership__c>> approvedAccAcmMap = new Map<String,List<PRM_AccountChannelMembership__c>>();
@@ -154,7 +154,7 @@ public class PRM_IPADQFixBatch implements  Database.Batchable<sObject>,Database.
             
             // Fallback to default message if no scenario found
             if(String.isEmpty(scenarioDescription)){
-                scenarioDescription = 'Scenario description not found.';
+                scenarioDescription = 'God knows what happened.';
             }
             
             // Prepare placeholder map similar to opidAssociationEmail

@@ -9,5 +9,8 @@
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
     <tabs>standard-DataMgmtPolicy</tabs>
+    <tabs>PRM_IPAMembership_Attributes__c</tabs>
+    <tabs>PRM_IPA_DQ_Logs__c</tabs>
+    <tabs>PMP_CompanyAutoFill__c</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>

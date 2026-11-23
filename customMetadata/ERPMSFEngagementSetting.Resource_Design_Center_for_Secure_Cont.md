@@ -7,10 +7,6 @@
         <value xsi:type="xsd:string">UDE_Standard</value>
     </values>
     <values>
-        <field>Core_Source__c</field>
-        <value xsi:type="xsd:string">Both</value>
-    </values>
-    <values>
         <field>EntitlementProgName__c</field>
         <value xsi:type="xsd:string">Resource &amp; Design Center for Secure Content</value>
     </values>

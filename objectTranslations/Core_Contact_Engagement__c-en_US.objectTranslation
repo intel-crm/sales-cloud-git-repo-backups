@@ -45,6 +45,13 @@
         <label><!-- ExtId --></label>
         <name>Core_ExtId__c</name>
     </fields>
+    <layouts>
+        <layout>Contact Engagement Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
     <validationRules>
         <errorMessage><!-- Engagement cannot be changed. --></errorMessage>

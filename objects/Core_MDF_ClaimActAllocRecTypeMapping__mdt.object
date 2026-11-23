@@ -36,16 +36,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_Budget_Cap_RecType_DevName_Txt__c</fullName>
-        <externalId>false</externalId>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Budget Cap Record Type Developer Name</label>
-        <length>50</length>
-        <required>false</required>
-        <type>Text</type>
-        <unique>false</unique>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Channel_Program_Name_txt__c</fullName>
         <description>This field is used to store the Channel Program Name</description>
         <externalId>false</externalId>
@@ -75,14 +65,6 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_Claim_Activity_Name_Swap_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field will indicate the sequence of Activity and Claim Title during claim creation.</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>Claim Activity Name Swap</label>
-        <type>Checkbox</type>
     </fields>
     <fields>
         <fullName>Core_MDF_Claim_RecordType_txt__c</fullName>
@@ -126,14 +108,6 @@
         <unique>false</unique>
     </fields>
     <fields>
-        <fullName>Core_MDF_POP_Mandatory_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>This field is to check if pop submission is mandatory for claim submission</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>POP Mandatory</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Core_MDF_Payment_RecordType_txt__c</fullName>
         <description>This field is used to store the Payment&apos;s Record Type Developer Name</description>
         <externalId>false</externalId>
@@ -154,21 +128,6 @@
         <required>false</required>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_isProgramBased_Ind__c</fullName>
-        <defaultValue>false</defaultValue>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>isProgramBased</label>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
-        <fullName>Core_MDF_isProposalBased__c</fullName>
-        <defaultValue>false</defaultValue>
-        <description>To indicate if it is a proposal based record type</description>
-        <fieldManageability>DeveloperControlled</fieldManageability>
-        <label>isProposalBased</label>
-        <type>Checkbox</type>
     </fields>
     <label>ClaimActivityAllocationRecordtypeMapping</label>
     <listViews>

@@ -30,10 +30,6 @@
                 <behavior>Edit</behavior>
                 <field>Core_IPS_Bug_Doc_Fix_ID__c</field>
             </layoutItems>
-            <layoutItems>
-                <behavior>Readonly</behavior>
-                <field>Core_IPS_Case_Owner__c</field>
-            </layoutItems>
         </layoutColumns>
         <style>OneColumn</style>
     </layoutSections>

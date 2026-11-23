@@ -731,13 +731,14 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
         }
     }
     
-    public static String getPartnerSegment(String segType) {
+    //ATHR Fix - TWC729-9556 - JB
+    /*public static String getPartnerSegment(String segType) {
         String partnerSegment = '';
         if(segType != '') {
             /* fetching role type from metadata */
             //Map<String,String> roleTypeMap = new Map<String,String>();
             
-            /* fetch segment type from metadata */
+            /* fetch segment type from metadata 
             Map<String,String> segTypeMap = new Map<String,String>();
             for(PRM_PartnerRoleTypeMappings__mdt segTypeReq : [Select Id,PRM_Partner_Role__c,PRM_Partner_Segment__c from PRM_PartnerRoleTypeMappings__mdt where PRM_Partner_Segment__c != null]){
                 segTypeMap.put(segTypeReq.PRM_Partner_Role__c,segTypeReq.PRM_Partner_Segment__c);
@@ -749,7 +750,7 @@ public without sharing class PRM_CreateAccountAndRelatedRecords
             }
         }
         return partnerSegment;
-    }
+    }*/
     
     private class processRegRecordWrapper{
         Account acc;
@@ -1350,7 +1351,7 @@ inputParameters.put('EmailContent_Setup',emailSetup.Id);
             if(conList != null && conList.size()>0)
             {
                 List<User> userList = new List<User>();
-                userList = [Select id,Email,contactId from User where contactId=:conList[0].id];  
+                userList = [Select id/*,Email,contactId*/ from User where contactId=:conList[0].id];  //ATHR Fix - TWC729-9556 - JB
                 for(PRM_EmailLog__c log : emailLogList)
                 {
                     log.PRM_Contact__c = conList[0].id; 
@@ -1835,9 +1836,8 @@ inputParameters.put('EmailContent_Setup',emailSetup.Id);
                
                 if(existingACRMap != null && existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c)) != null )
                 {
-                   
                     accConRel = existingACRMap.get(String.valueOf(accConRel.PRM_Account_Id__c)+String.valueOf(accConRel.PRM_Contact_Id__c)+String.valueOf(accConRel.PRM_Relationship_Id__c));
-                    
+                    //accConRel.PRM_Status_Reason_Txt__c = 'Approved as part of Self Registration';
                     if(regRequest.PRM_Is_Returning_User__c &&
                        String.isNotBlank(regRequest.PRM_Review_Note_txt__c))//TWC729-9379  PCR status reason should be UIOLI Return Journey when the contact has come through Self Reg process of UIOLI
                     {

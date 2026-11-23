@@ -21,6 +21,22 @@
         <name>PRM_AI_Response__c</name>
     </fields>
     <fields>
+        <label><!-- Field Name --></label>
+        <name>PRM_Field_Name__c</name>
+        <picklistValues>
+            <masterLabel>Company</masterLabel>
+            <translation><!-- Company --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Email</masterLabel>
+            <translation><!-- Email --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Website</masterLabel>
+            <translation><!-- Website --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
         <label><!-- Registration Request --></label>
         <name>PRM_Registration_Request__c</name>
         <relationshipLabel><!-- Registration AI Agent Info --></relationshipLabel>
@@ -41,5 +57,12 @@
             <translation><!-- Success --></translation>
         </picklistValues>
     </fields>
+    <layouts>
+        <layout>Registration AI Agent Info Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

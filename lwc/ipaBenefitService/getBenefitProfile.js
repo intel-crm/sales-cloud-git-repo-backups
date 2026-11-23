@@ -28,7 +28,7 @@ const getBenefitProfile = (userId , pageType) => {
             return Promise.resolve(resultdata);
         }
     }).catch(error => {
-        console.log("this.error" + JSON.stringify(error));
+        console.log("this.error" + JSON.stringify(error.body.message));
         // return Promise.reject(error);
     });
 }

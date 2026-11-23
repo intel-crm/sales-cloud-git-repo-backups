@@ -114,9 +114,9 @@
         <locationX>0</locationX>
         <locationY>0</locationY>
         <inputAssignments>
-            <field>PRM_Reject_Reason__c</field>
+            <field>PRM_Status_Reason__c</field>
             <value>
-                <stringValue>Company information cannot be verified (ex. Address)</stringValue>
+                <stringValue>Others</stringValue>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -161,8 +161,8 @@
                 <targetReference>Is_Status_Pending_with_Partner</targetReference>
             </connector>
             <label>Send Reminder Email to Partner for Document Upload after 3 days</label>
-            <offsetNumber>3</offsetNumber>
-            <offsetUnit>Days</offsetUnit>
+            <offsetNumber>5</offsetNumber>
+            <offsetUnit>Minutes</offsetUnit>
             <timeSource>RecordTriggerEvent</timeSource>
         </scheduledPaths>
         <scheduledPaths>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>v_f_non_revenue_sales_kudu8s</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>v_f_non_revenue_sales_kudu8s</value>
+    </caseValues>
+    <fields>
+        <label><!-- branch_country_nm --></label>
+        <name>branch_country_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- customer_transaction_type_cd --></label>
+        <name>customer_transaction_type_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- design_win_cd --></label>
+        <name>design_win_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- design_win_nbr --></label>
+        <name>design_win_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_cost_amt --></label>
+        <name>distributor_cost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_id --></label>
+        <name>distributor_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_price_adjustment_amt --></label>
+        <name>distributor_price_adjustment_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_price_adjustment_id_number_t --></label>
+        <name>distributor_price_adjustment_id_number_t__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_resale_price_amt --></label>
+        <name>distributor_resale_price_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- distributor_unit_cost_amt --></label>
+        <name>distributor_unit_cost_amt__c</name>
+    </fields>
+    <fields>
+        <label><!-- document_id --></label>
+        <name>document_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- document_id_document_line_number_txt --></label>
+        <name>document_id_document_line_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- document_line_number_txt --></label>
+        <name>document_line_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- finance_date_txt --></label>
+        <name>finance_date_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- form_factor_group_txt --></label>
+        <name>form_factor_group_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- headquarter_business_id_number_customer_ --></label>
+        <name>headquarter_business_id_number_customer__c</name>
+    </fields>
+    <fields>
+        <label><!-- headquarter_business_number_id --></label>
+        <name>headquarter_business_number_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- headquarter_business_organization_id_nbr --></label>
+        <name>headquarter_business_organization_id_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- headquarter_customer_master_id_nbr --></label>
+        <name>headquarter_customer_master_id_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- invoice_date_txt --></label>
+        <name>invoice_date_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- manufacturer_nm --></label>
+        <name>manufacturer_nm__c</name>
+    </fields>
+    <fields>
+        <label><!-- manufacturer_part_number_txt --></label>
+        <name>manufacturer_part_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- material_long_dsc --></label>
+        <name>material_long_dsc__c</name>
+    </fields>
+    <fields>
+        <label><!-- material_master_number_id --></label>
+        <name>material_master_number_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- mview_ts --></label>
+        <name>mview_ts__c</name>
+    </fields>
+    <fields>
+        <label><!-- old_material_15_character_id --></label>
+        <name>old_material_15_character_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- old_material_id --></label>
+        <name>old_material_id__c</name>
+    </fields>
+    <fields>
+        <label><!-- parent_form_factor_txt --></label>
+        <name>parent_form_factor_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- primary_business_number_id_customer_mast --></label>
+        <name>primary_business_number_id_customer_mast__c</name>
+    </fields>
+    <fields>
+        <label><!-- primary_id_nbr --></label>
+        <name>primary_id_nbr__c</name>
+    </fields>
+    <fields>
+        <label><!-- processor_number_txt --></label>
+        <name>processor_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- product_form_factor_txt --></label>
+        <name>product_form_factor_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- reported_company_invoice_line_number_txt --></label>
+        <name>reported_company_invoice_line_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- reported_company_invoice_number_txt --></label>
+        <name>reported_company_invoice_number_txt__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_organization_group_cd --></label>
+        <name>sales_organization_group_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_out_quantity_cnt --></label>
+        <name>sales_out_quantity_cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_out_unpacked_quantity_cnt --></label>
+        <name>sales_out_unpacked_quantity_cnt__c</name>
+    </fields>
+    <fields>
+        <label><!-- sales_type_cd --></label>
+        <name>sales_type_cd__c</name>
+    </fields>
+    <fields>
+        <label><!-- yyyymmdd_invoice_date_txt --></label>
+        <name>yyyymmdd_invoice_date_txt__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

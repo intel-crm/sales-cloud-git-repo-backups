@@ -84,7 +84,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -93,7 +93,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>Account.Core_Sales_Groups__c</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -135,7 +135,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -144,7 +144,7 @@
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
                 <groupingColumn>Account.Core_Sales_Groups__c</groupingColumn>
-                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
                         <groupingLevel>g1</groupingLevel>
@@ -186,7 +186,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -194,7 +194,7 @@
                 <drillToDetailEnabled>false</drillToDetailEnabled>
                 <enableHover>false</enableHover>
                 <expandOthers>false</expandOthers>
-                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name_Old__c</groupingColumn>
+                <groupingColumn>OpportunityLineItem.Core_BU_Short_Name__c</groupingColumn>
                 <groupingColumn>Opportunity.Core_Loss_Cancel_Reason__c</groupingColumn>
                 <groupingSortProperties>
                     <groupingSorts>
@@ -237,7 +237,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -288,7 +288,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -339,7 +339,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -390,7 +390,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -438,7 +438,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -490,7 +490,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -538,7 +538,7 @@
                     <column>Opportunity.Core_Opportunity_Type__c</column>
                 </dashboardFilterColumns>
                 <dashboardFilterColumns>
-                    <column>OpportunityLineItem.Core_BU_Short_Name_Old__c</column>
+                    <column>OpportunityLineItem.Core_BU_Short_Name__c</column>
                 </dashboardFilterColumns>
                 <decimalPrecision>-1</decimalPrecision>
                 <displayUnits>Auto</displayUnits>
@@ -578,7 +578,7 @@
     <dashboardType>SpecifiedUser</dashboardType>
     <isGridLayout>true</isGridLayout>
     <owner>11568039@intel.com.crm</owner>
-    <runningUser>10689819@intel.com.crm</runningUser>
+    <runningUser>11568039@intel.com.crm</runningUser>
     <textColor>#000000</textColor>
     <title>Loss Report (Recording Losses is Good for Intel)</title>
     <titleColor>#000000</titleColor>

@@ -66,13 +66,12 @@
       }, {
         "components" : [ {
           "componentAttributes" : {
-            "fieldsToMask" : "",
             "internalUserName" : "Intel System User",
             "objectApiName" : "Core_MDF_Partner_Node_User_Mapping__c",
             "recordId" : "{!recordId}"
           },
           "componentName" : "c:core_MDF_HistoryComponent",
-          "id" : "1dca5ad5-2f06-48e1-a9b1-46e457aa4469",
+          "id" : "8b4e157a-0e17-4d35-a580-9dc246a5d1eb",
           "renditionMap" : { },
           "type" : "component"
         } ],

@@ -21,8 +21,7 @@
     <aura:attribute name="recordFound" default="true" type="Boolean"/>
     <aura:attribute name="isNewContact" default="false" type="Boolean"/>
     <aura:handler event="c:Core_Contact_Creation_DisplayEvent" action="{!c.passEmailFromSavedContactToDisplay}"/>
-    <aura:attribute name="isComarketing" default="false" type="Boolean"/>
-    <aura:attribute type="Boolean" name="isShowSpinner" default="false"/>
+    
     <!-- start of PAGE HEADER -->
     <lightning:layout class="slds-page-header slds-page-header--object-home" horizontalAlign="spread" >
         
@@ -30,11 +29,10 @@
             
             <lightning:icon iconName="standard:people" alternativeText="Contacts"/>
             <div class="page-section page-header">
-                <b><h1 class="slds-text-heading--label">{!$Label.c.Core_MDF_Contact_ContactLookup}</h1></b>
+                <b><h1 class="slds-text-heading--label">Contacts</h1></b>
                 <b><h2 class="slds-text-heading--medium">{!v.headerText}</h2></b>
             </div>  
         </lightning:layoutItem>
-        
         
         <lightning:layoutItem padding="horizontal-large">
             
@@ -56,63 +54,58 @@
                 <form class="slds-form--inline">
                     <div class="slds-form-element">
                         <label class="slds-form-element__label" for="search"></label>
-                       <div class="slds-form-element__control">
-                            <ui:inputText aura:id="searchId" size="50" class="slds-input" value="{!v.searchKeyword}" required="true" placeholder="{!$Label.c.Core_MDF_Type_here}"/>
+                        <div class="slds-form-element__control">
+                            <ui:inputText aura:id="searchId" size="50" class="slds-input" value="{!v.searchKeyword}" required="true" placeholder="Type here..."/>
                         </div>
                     </div>
-                    <button type="button" onclick="{!c.Search}" class="slds-button slds-button--brand">{!$Label.c.Core_MDF_Search_Contact}</button>    
+                    <button type="button" onclick="{!c.Search}" class="slds-button slds-button--brand">Search Contact</button>    
                 </form>
                 <br/>
                 <table class="slds-table slds-table--bordered slds-table--cell-buffer">
                     <thead>
                         <tr class="slds-text-title--caps">
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Full_Name}">{!$Label.c.Core_MDF_Full_Name}</div>
+                                <div class="slds-truncate" title="Id">Full Name</div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_First_Name_Contact_Creation}">{!$Label.c.Core_MDF_First_Name_Contact_Creation}</div>
+                                <div class="slds-truncate" title="First Name">First Name</div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Last_Name_cc}">{!$Label.c.Core_MDF_Last_Name_cc}</div>
+                                <div class="slds-truncate" title="Last Name">Last Name</div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Account}">{!$Label.c.Core_MDF_Account}</div>
+                                <div class="slds-truncate" title="Phone">Account</div>
                             </th>
                             <th scope="col">
-                                <div class="slds-truncate" title="{!$Label.c.Core_MDF_Business_Email}">{!$Label.c.Core_MDF_Business_Email}</div>
+                                <div class="slds-truncate" title="Email">Email</div>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <aura:if isTrue="{!v.infoMessage}">
-                            <div class="slds-text-color--error noResultFoundSec"> {!$Label.c.Core_MDF_NoResult}</div>
+                            <div class="slds-text-color--error noResultFoundSec"> No Result Found...</div>
                         </aura:if>
                         <!--### display all records of searchResult attribute by aura:iteration ###-->
-                        <aura:if isTrue="{!v.isShowSpinner}"> 
-                        <lightning:spinner alternativeText="Loading" size="medium" />
-                        <aura:set attribute="else">
                         <aura:iteration items="{!v.searchResult}" var="staff">
                             <tr>
                                 <td>
-                                    <div >{!staff.contact.Name} </div>
+                                    <div >{!staff.Name} </div>
                                     <!--<a onclick = "{!c.navigateToContact}" id="{!staff.Id}" target="_blank"></a>-->
                                 </td>
                                 <td>
-                                    <div >{!staff.contact.FirstName}</div>
+                                    <div >{!staff.FirstName}</div>
                                 </td>
                                 <td>
-                                    <div class="slds-truncate">{!staff.contact.LastName}</div>
+                                    <div class="slds-truncate">{!staff.LastName}</div>
                                 </td>
                                 <td>
-                                    <div class="slds-truncate">{!staff.contact.Account.Name}</div>
+                                    <div class="slds-truncate">{!staff.Account.Name}</div>
                                 </td>
                                 <td>
-                                    <div class="slds-truncate">{!staff.contact.Email}</div>
+                                    <div class="slds-truncate">{!staff.Email}</div>
                                 </td>
                             </tr>
                         </aura:iteration>
-                        </aura:set>
-                    </aura:if>
                     </tbody>
                 </table>
                 
@@ -135,8 +128,8 @@
     <aura:if isTrue="{!and(!v.isNew,!v.isView)}">
         <div class="slds-float_leftsearchFooterSec">
             <!--Is Record found = {!v.recordFound}-->
-           	<lightning:button aura:id="entitlementLoaderBtn"  onclick="{!c.loadEntitlements}" variant="brand" class="{!v.recordFound == true ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordNotFound}">{!$Label.c.Core_MDF_Load_Entitlements}</lightning:button> <!--hideCmp-->
-            <lightning:button aura:id="creatContactBtn"  onclick="{!c.createNew}" variant="brand" class="{!v.recordFound == false ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordFound}">{!$Label.c.Core_MDF_Create_Contact}</lightning:button>    
+           	<lightning:button aura:id="entitlementLoaderBtn"  onclick="{!c.loadEntitlements}" variant="brand" class="{!v.recordFound == true ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordNotFound}">Load Entitlements</lightning:button> <!--hideCmp-->
+            <lightning:button aura:id="creatContactBtn"  onclick="{!c.createNew}" variant="brand" class="{!v.recordFound == false ? 'slds-button slds-show displayButton': 'slds-button slds-hide displayButton'}" disabled="{!v.recordFound}">Create Contact</lightning:button>    
         </div>
     </aura:if>
     

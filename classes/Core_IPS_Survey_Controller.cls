@@ -11,7 +11,7 @@
 * Karthick                   27/06/2018         Modified - US108700
 ****************************************************************************************************/ 
 
-public with sharing class Core_IPS_Survey_Controller {
+public class Core_IPS_Survey_Controller {
     public List<wrapQuestion> lstQuestions{get;set;}
     public Boolean isSurveySubmitted{get;set;}
     public Boolean isCaseClosed{get;set;}
@@ -72,7 +72,6 @@ public with sharing class Core_IPS_Survey_Controller {
     * Amritesh                   12/12/2017              Modified
     ****************************************************************************************************/
     public void init() {
-        Case objCase;
         try{
             isSurveySubmitted = false;
             isCaseClosed = false;
@@ -106,10 +105,8 @@ public with sharing class Core_IPS_Survey_Controller {
                 ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.Survey_Invalid_Link));
                 return;
             }
-            //FLS Check Added _ Madhuri
-            if(Case.SObjectType.getDescribe().isAccessible()){
-                 objCase = [SELECT isClosed,Core_Sub_Status__c,CaseNumber,Contact.Name,RecordType.Name FROM Case WHERE Id=:caseId LIMIT 1]; //modified US103747
-            }
+            
+            Case objCase = [SELECT isClosed,Core_Sub_Status__c,CaseNumber,Contact.Name,RecordType.Name FROM Case WHERE Id=:caseId LIMIT 1]; //modified US103747
             isCaseClosed = objCase.isClosed;
             caseNumber = objCase.CaseNumber;
             contactname = objCase.Contact.Name;
@@ -148,6 +145,7 @@ public with sharing class Core_IPS_Survey_Controller {
             
             fetchSurvey();
         } catch(Exception ex) {
+            System.debug(ex.getMessage());
             ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.Core_IPS_Survey_Error_Message_2)); 
             //Core_IPS_ExceptionHandling.logEntryWithException(ex, '', 'Core_IPS_Survey_Controller');
         }
@@ -167,23 +165,18 @@ public with sharing class Core_IPS_Survey_Controller {
     * Amritesh                   12/12/2017              Modified
     ****************************************************************************************************/
     private void fetchSurvey() {
-        lstQuestions = new List<wrapQuestion>();   
-        List<Core_IPS_Question__c> lstQuestion;
+        lstQuestions = new List<wrapQuestion>();        
         Map<Id,List<Core_IPS_Answer__c>> mapQuesId2Answers = new Map<Id,List<Core_IPS_Answer__c>>();
-        //FLS Check Added _ Madhuri
-        if(Core_IPS_Question__c.SObjectType.getDescribe().isAccessible()){
-            lstQuestion = new List<Core_IPS_Question__c>([SELECT Id,Name,Core_IPS_Datatype__c,Core_IPS_Question__c,Core_IPS_Required__c,Core_IPS_Order_No__c                                                               
+        
+        List<Core_IPS_Question__c> lstQuestion = new List<Core_IPS_Question__c>([SELECT Id,Name,Core_IPS_Datatype__c,Core_IPS_Question__c,Core_IPS_Required__c,Core_IPS_Order_No__c                                                               
                                                                                  /*(SELECT Id,Core_IPS_Translation__c FROM Translations__r WHERE Core_IPS_Language__c=:lang)*/ // localization/translation will be enabled later
                                                                                  FROM Core_IPS_Question__c WHERE Core_IPS_Survey_Type__c=:surveyType AND RecordType.DeveloperName='Survey' AND //added recordtype filter by amritesh 12/12/2017 US79635
                                                                                  Core_IPS_Status__c='Active' ORDER BY Core_IPS_Order_No__c]);
-        }
-            if(lstQuestion.size()==0) {
+        if(lstQuestion.size()==0) {
             isError = true;
             ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.Core_IPS_Survey_not_available));
             return;
         }
-        //FLS Check Added _ Madhuri
-        if(Core_IPS_Answer__c.SObjectType.getDescribe().isAccessible()){
         for(Core_IPS_Answer__c objEnvAnswer : [SELECT Id,Core_IPS_Answer__c,Core_IPS_Question__c
                                                /*(SELECT Id,Core_IPS_Translation__c FROM Translations__r WHERE Core_IPS_Language__c=:lang)*/  // localization/translation will be enabled later
                                                FROM Core_IPS_Answer__c WHERE Core_IPS_Question__c IN :lstQuestion AND Core_IPS_Status__c='Active' 
@@ -194,7 +187,6 @@ public with sharing class Core_IPS_Survey_Controller {
                 mapQuesId2Answers.put(QuesId, new List<Core_IPS_Answer__c>());
             }
             mapQuesId2Answers.get(QuesId).add(objEnvAnswer);
-        }
         }
         
         for(Core_IPS_Question__c objEnv : lstQuestion) 
@@ -255,18 +247,12 @@ public with sharing class Core_IPS_Survey_Controller {
                 
                 Core_IPS_Response__c objEnvResponse = new Core_IPS_Response__c();                
                 //objEnvResponse.Core_IPS_Question__c = wQues.question; 
-                    objEnvResponse.Core_IPS_Answer__c = wQues.answer;
-                
+                objEnvResponse.Core_IPS_Answer__c = wQues.answer;
                 //objEnvResponse.Core_IPS_Language__c = lang; // will be enabled later for localization/translation
-               // if (Schema.sObjectType.Core_IPS_Response__c.fields.Core_IPS_Case__c.isCreateable()) {
-                	objEnvResponse.Core_IPS_Case__c = caseId; 
-                //}
-                
-                    objEnvResponse.Core_IPS_Question_Master__c = wQues.questionId;
-                
+                objEnvResponse.Core_IPS_Case__c = caseId;                
+                objEnvResponse.Core_IPS_Question_Master__c = wQues.questionId;
                 if(wQues.mapAnswerId.containsKey(wQues.answer)) {
-                        objEnvResponse.Core_IPS_Answer_Master__c = wQues.mapAnswerId.get(wQues.answer);
-                    
+                    objEnvResponse.Core_IPS_Answer_Master__c = wQues.mapAnswerId.get(wQues.answer);
                 }
                 lstEnvResponse.add(objEnvResponse);
             }
@@ -280,6 +266,7 @@ public with sharing class Core_IPS_Survey_Controller {
         } 
         catch(Exception ex) {
             Database.rollback(sp);
+            System.debug(ex.getMessage());
             ApexPages.addMessage(new ApexPages.message(ApexPages.Severity.ERROR, System.Label.Core_IPS_Survey_Error_Message_2));  
             Core_IPS_ExceptionHandling.logEntryWithException(ex, 'Core_IPS_Response__c', 'Core_IPS_Survey_Controller');
         }
@@ -297,8 +284,8 @@ public with sharing class Core_IPS_Survey_Controller {
     * ----------------------------------------------------------------------------                 
     * Amritesh                   08/28/2017              Created
     ****************************************************************************************************/
-    /* Will be enabled when page if introduced in community 
-       public Pagereference Back() {
+    /* Will be enabled when page if introduced in community
+     * public Pagereference Back() {
         Pagereference pgref;
         if(getParam('retURL')!=null) {
             String returl = getParam('retURL');
@@ -384,13 +371,11 @@ public with sharing class Core_IPS_Survey_Controller {
     
     //Added by karthick - US108700 - R4.3 - 27/06/2018  
     private boolean isBlacklistCountry(){
-        List<Case> caseRecord;
+        
         Set<Id> userIds = new Set<Id>();
         caseId = getParam('caid');
-        //FLS Check Added _ Madhuri
-        if(Case.SObjectType.getDescribe().isAccessible()){
-             caseRecord=[select id,casenumber,ownerid,Core_IPS_Survey_Captured__c from case where id=:caseId];
-        }
+        List<Case> caseRecord=[select id,casenumber,ownerid,Core_IPS_Survey_Captured__c from case where id=:caseId];
+        
         userIds.add(caseRecord[0].ownerid); 
         for(CaseHistory objCH : [Select Field,NewValue,OldValue from CaseHistory where CaseId=:caseId and Field='Owner']){
             String OldValue = String.ValueOf(objCH.OldValue);
