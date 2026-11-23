@@ -382,6 +382,6 @@
         <dateColumn>PartnerFundRequest$Core_MDF_Start_Date__c</dateColumn>
         <endDate>2027-03-31</endDate>
         <interval>INTERVAL_CUSTOM</interval>
-        <startDate>2024-01-01</startDate>
+        <startDate>2025-03-01</startDate>
     </timeFrameFilter>
 </Report>
